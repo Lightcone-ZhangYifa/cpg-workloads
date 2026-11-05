@@ -1,0 +1,162 @@
+{
+  "build": "2-static-read1-56cb0b72",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "libjpeg-turbo",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 2540379,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Media"
+      ],
+      "container_strategy": "Build with pinned NASM and declared SIMD settings in dev; execute deterministic image bundles and validation on target.",
+      "corpus_contract": {
+        "code": "Codec and tests included.",
+        "inputs": "Included samples plus a separately licensed image corpus.",
+        "oracle": "Decode/encode conformance and declared numerical tolerances.",
+        "split_unit": "Codec family; input content families are a separate axis."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/libjpeg-turbo/libjpeg-turbo"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/libjpeg-turbo.measurement.json",
+        "workspace-evidence/resources-v050/open-research/libjpeg-turbo.refs.json"
+      ],
+      "extract": true,
+      "id": "libjpeg-turbo",
+      "immutable_ref": "c85e6b905bf237038faa936dab160ebfc5da0344",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "IJG AND BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "corpora/libjpeg-turbo",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Image codec loops, integer arithmetic, memory access and SIMD dispatch coverage.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "JPEG is lossy; correctness needs fixed codec settings and a defined decoded-image/quality contract.",
+        "Image corpus licenses and external reference decoders are separate resources."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "45209a3f315ed6156dac8d7fa451b8be62d83f2daa5581cb6b94ee9f3f82cf6f",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/libjpeg-turbo/libjpeg-turbo",
+        "https://codeload.github.com/libjpeg-turbo/libjpeg-turbo/tar.gz/c85e6b905bf237038faa936dab160ebfc5da0344",
+        "https://github.com/libjpeg-turbo/libjpeg-turbo/commit/c85e6b905bf237038faa936dab160ebfc5da0344"
+      ],
+      "source_logical_bytes": 9246273,
+      "source_url": "https://codeload.github.com/libjpeg-turbo/libjpeg-turbo/tar.gz/c85e6b905bf237038faa936dab160ebfc5da0344",
+      "title": "libjpeg-turbo image codec workload",
+      "upstream": "https://github.com/libjpeg-turbo/libjpeg-turbo",
+      "version": "3.2.0"
+    },
+    "catalog_sha256": "05c43daada2f2c042fa0d944dcf6a296e465d931cf99c5fef075ddd295b9f2db",
+    "historical_checks": [],
+    "static_material_read_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "original_artifact_sha256": "56cb0b720131afa56c5c6003d2149801e03cfd43868afe6477753b78e8ff7ae9",
+      "original_build": "2",
+      "original_manifest_sha256": "d684ed186aa389ad7be2e0c9a8d9e0c0c62ffb2f0c95e66d44a32b4bf6f2a863",
+      "payload_inventory_unchanged": true,
+      "read_check_executed": false,
+      "reader_ast_checked": true,
+      "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33",
+      "reader_definition_source_artifact_sha256": "b669fcf90909834d4c289cc17e290b4f830d36bb0ce0becb0012cadbbb4b0000",
+      "source_locks_unchanged": true
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "qualified": false,
+    "source_dependencies": [],
+    "system_packages": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2540379,
+      "extract": true,
+      "id": "libjpeg-turbo",
+      "material_path": "corpora/libjpeg-turbo",
+      "sha256": "45209a3f315ed6156dac8d7fa451b8be62d83f2daa5581cb6b94ee9f3f82cf6f",
+      "strip_root": true,
+      "url": "https://codeload.github.com/libjpeg-turbo/libjpeg-turbo/tar.gz/c85e6b905bf237038faa936dab160ebfc5da0344"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/libjpeg-turbo/libjpeg-turbo"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete raw source",
+        "path": "{prefix}",
+        "purpose": "Independent original archive contents, including all tests, samples and documentation."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "A complete installed-file, mode and symlink read/integrity check is declared. This metadata revision did not run that check or execute upstream programs."
+    ],
+    "summary": "Image codec loops, integer arithmetic, memory access and SIMD dispatch coverage."
+  },
+  "version": "3.2.0"
+}
