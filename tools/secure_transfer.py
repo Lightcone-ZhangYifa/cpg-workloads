@@ -12,13 +12,15 @@ from __future__ import annotations
 import base64
 from datetime import datetime, timezone
 import hashlib
+import io
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
 import secrets
 import shutil
 import subprocess
+import tarfile
 import tempfile
 import time
 from urllib.error import HTTPError, URLError
@@ -222,7 +224,68 @@ def _download(row, spec, destination):
     return destination
 
 
-def receive(request: dict, branch: str, scratch: Path, *, wait_seconds: int = 1800) -> list[Path]:
+def _materialize_reader(descriptor, encrypted_value, destination):
+    """Materialize only an independently pinned Python reader from the CMS body."""
+    if (not isinstance(descriptor, dict) or not _SHA40.fullmatch(str(descriptor.get("source_commit", "")))
+            or not _SHA256.fullmatch(str(descriptor.get("sha256", "")))
+            or type(descriptor.get("bytes")) is not int or not 0 < descriptor["bytes"] <= 768 * 1024
+            or not isinstance(encrypted_value, dict) or set(encrypted_value) != {"archive_base64"}
+            or not isinstance(encrypted_value["archive_base64"], str)):
+        raise TransferError("Encrypted format reader lacks its pinned identity")
+    try:
+        packed = base64.b64decode(encrypted_value["archive_base64"], validate=True)
+    except ValueError:
+        raise TransferError("Encrypted format reader is not valid base64") from None
+    if len(packed) != descriptor["bytes"] or hashlib.sha256(packed).hexdigest() != descriptor["sha256"]:
+        raise TransferError("Encrypted format reader differs from its full byte lock")
+    rows = descriptor.get("files")
+    if not isinstance(rows, list) or not 1 <= len(rows) <= 256:
+        raise TransferError("Format reader lacks a bounded complete file inventory")
+    expected, total = {}, 0
+    for row in rows:
+        if not isinstance(row, dict) or not isinstance(row.get("path"), str):
+            raise TransferError("Invalid pinned reader path")
+        name = row["path"]
+        path = PurePosixPath(name)
+        if (path.is_absolute() or ".." in path.parts or "\\" in name or path.as_posix() != name
+                or not name.startswith("src/compiler_playground/") or not name.endswith(".py")
+                or name in expected or type(row.get("bytes")) is not int or row["bytes"] < 0
+                or not _SHA256.fullmatch(str(row.get("sha256", "")))):
+            raise TransferError("Invalid pinned reader file identity")
+        expected[name] = row
+        total += row["bytes"]
+    if total > 8 * 1024 * 1024:
+        raise TransferError("Pinned reader exceeds its expanded size bound")
+    destination = Path(destination)
+    if destination.exists() or destination.is_symlink():
+        raise TransferError("Refusing to overwrite an existing format reader")
+    destination.mkdir(mode=0o700)
+    found = set()
+    try:
+        with tarfile.open(fileobj=io.BytesIO(packed), mode="r:gz") as archive:
+            for member in archive:
+                row = expected.get(member.name)
+                if (row is None or member.name in found or not member.isreg() or member.issparse()
+                        or member.size != row["bytes"] or member.mode != 0o644):
+                    raise TransferError("Format reader contains an unplanned archive member")
+                raw = archive.extractfile(member).read(member.size + 1)
+                if len(raw) != row["bytes"] or hashlib.sha256(raw).hexdigest() != row["sha256"]:
+                    raise TransferError("Format reader member differs from its pinned identity")
+                target = destination / member.name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                with target.open("xb") as handle:
+                    handle.write(raw)
+                target.chmod(0o600)
+                found.add(member.name)
+        if found != set(expected):
+            raise TransferError("Format reader is missing pinned source files")
+    except BaseException:
+        shutil.rmtree(destination)
+        raise
+
+
+def receive(request: dict, branch: str, scratch: Path, *, wait_seconds: int = 1800,
+            reader_destination: Path | None = None) -> list[Path]:
     """Receive locked files; retain downloads for the caller and remove private state."""
     inputs = _validate_request(request, branch)
     scratch = Path(scratch).resolve()
@@ -247,6 +310,13 @@ def receive(request: dict, branch: str, scratch: Path, *, wait_seconds: int = 18
         _publish_challenge(branch, challenge, certificate, private)
         encrypted = _read_envelope(branch, challenge, certificate, wait_seconds)
         envelope = _decrypt(encrypted, cert, key, binding)
+        if reader_destination is not None:
+            descriptor = request.get("format_reader")
+            if not isinstance(descriptor, dict) or descriptor.get("source_commit") != request.get("framework_commit"):
+                raise TransferError("Format reader differs from the requested framework source")
+            _materialize_reader(descriptor, envelope.get("format_reader"), reader_destination)
+        elif "format_reader" in envelope:
+            raise TransferError("This transfer did not request a private format reader")
         transfers = envelope.get("transfers")
         if (not isinstance(transfers, list) or len(transfers) != len(inputs)
                 or any(not isinstance(item, dict) or not isinstance(item.get("id"), str)
@@ -268,17 +338,24 @@ def receive(request: dict, branch: str, scratch: Path, *, wait_seconds: int = 18
     return outputs
 
 
-def seal_response(challenge: dict, certificate: bytes, transfers: list[dict]) -> str:
+def seal_response(challenge: dict, certificate: bytes, transfers: list[dict], *,
+                  format_reader_archive: bytes | None = None) -> str:
     """Encrypt a local official transfer specification; return only public ciphertext."""
     binding = challenge.get("binding", {})
     if (challenge.get("schema_version") != 1 or binding.get("repository") != REPOSITORY
             or binding.get("certificate_sha256") != hashlib.sha256(certificate).hexdigest()):
         raise TransferError("Public certificate differs from the selected challenge")
-    plaintext = canonical({"schema_version": 1, "binding": binding, "transfers": transfers})
+    envelope = {"schema_version": 1, "binding": binding, "transfers": transfers}
+    if format_reader_archive is not None:
+        envelope["format_reader"] = {"archive_base64": base64.b64encode(format_reader_archive).decode("ascii")}
+    plaintext = canonical(envelope)
     with tempfile.TemporaryDirectory(prefix="cpg-public-cert-") as directory:
         cert = Path(directory) / "certificate.pem"
         cert.write_bytes(certificate)
         result = _command(["openssl", "cms", "-encrypt", "-binary", "-aes-256-gcm", "-outform", "DER",
                            "-recip", str(cert), "-keyopt", "rsa_padding_mode:oaep",
                            "-keyopt", "rsa_oaep_md:sha256"], data=plaintext)
-    return base64.b64encode(result.stdout).decode("ascii") + "\n"
+    encoded = base64.b64encode(result.stdout).decode("ascii") + "\n"
+    if len(encoded) > 1024 * 1024:
+        raise TransferError("Encrypted response exceeds the bounded transfer envelope")
+    return encoded

@@ -29,23 +29,7 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
           python-version: '3.12'
-      - name: Prepare the pinned package-format reader
+      - name: Receive locked deliveries, inspect static content, publish original bytes
         run: |
           gh auth setup-git
-          python - <<'PY'
-          import json, os, pathlib, re, subprocess
-          request = json.loads(pathlib.Path('.transfer/request.json').read_text())
-          commit = request['framework_commit']
-          if not isinstance(commit, str) or re.fullmatch(r'[0-9a-f]{40}', commit) is None:
-              raise ValueError('An exact framework source commit is required')
-          folder = pathlib.Path(os.environ['RUNNER_TEMP']) / 'cpg-format-reader'
-          subprocess.run(['git', 'init', str(folder)], check=True)
-          subprocess.run(['git', '-C', str(folder), 'remote', 'add', 'origin',
-                          'https://github.com/Lightcone-ZhangYifa/compiler-playground.git'], check=True)
-          subprocess.run(['git', '-C', str(folder), 'fetch', '--depth', '1', 'origin', commit], check=True)
-          subprocess.run(['git', '-C', str(folder), 'checkout', '--detach', 'FETCH_HEAD'], check=True)
-          with open(os.environ['GITHUB_ENV'], 'a') as env:
-              env.write('CPG_FRAMEWORK=' + str(folder) + '\n')
-          PY
-      - name: Receive locked deliveries, inspect static content, publish original bytes
-        run: python tools/publish_deliveries.py
+          python tools/publish_deliveries.py

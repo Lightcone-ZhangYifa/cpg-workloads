@@ -262,12 +262,14 @@ def main():
     git("fetch", "--no-tags", "origin", "main")
     if git("merge-base", "--is-ancestor", request["source_commit"], "FETCH_HEAD", check=False).returncode:
         raise ValueError("Transfer's source commit is not in canonical main history")
-    # The framework is pinned by the public request; its archive verifier only reads data.
-    import sys
-    sys.path.insert(0, str(Path(os.environ["CPG_FRAMEWORK"]) / "src"))
     with tempfile.TemporaryDirectory(prefix="cpg-delivery-", dir=os.environ["RUNNER_TEMP"]) as folder:
         scratch = Path(folder)
-        paths = receive(request, branch, scratch)
+        # A private repository reader arrives inside the authenticated CMS body.
+        # It is pinned by every original source file and remains in RUNNER_TEMP.
+        reader = scratch / "format-reader"
+        paths = receive(request, branch, scratch, reader_destination=reader)
+        import sys
+        sys.path.insert(0, str(reader / "src"))
         for number, (path, item) in enumerate(zip(paths, request["inputs"])):
             current = scratch / ("batch-" + str(number))
             current.mkdir()
