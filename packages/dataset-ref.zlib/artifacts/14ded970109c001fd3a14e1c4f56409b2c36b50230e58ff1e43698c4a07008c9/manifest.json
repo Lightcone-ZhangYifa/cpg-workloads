@@ -1,0 +1,320 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 5729,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "1fbd6ac70547df3a8424201a36f926f045bafbd679e9500cd2ca26e7efe4889c"
+    },
+    {
+      "bytes": 4083,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "9f89cc676fe2ac65119d7a7c0ffa18c8573231717fe86dfe77fb279b6bc6cd98"
+    },
+    {
+      "bytes": 1062,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/config.json",
+      "sha256": "5c009c476af07e07887504af7fffe5c7a71157f31f639855429afdcecf44e020"
+    },
+    {
+      "bytes": 1681,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/consumer.c",
+      "sha256": "f27a048cfeba1c27d454b978afc47c0529e8efb9a411d2002718499bb29bb0fa"
+    },
+    {
+      "bytes": 3837,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/ctest_evidence.py",
+      "sha256": "919a8ecf7d118f9e2c82e0c3c1cca38eba232773f376c02fc211b833090d5882"
+    },
+    {
+      "bytes": 7275,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/original-package.json",
+      "sha256": "27dc9810bae6cd093cd8edf885b21d22f74b16c123a785bbaa0289ce440eeb7e"
+    },
+    {
+      "bytes": 7534,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/package.json",
+      "sha256": "569e3fd354a9021dafbb647b716f026fc65df82f5b380cc96be09052215fa5b3"
+    },
+    {
+      "bytes": 338,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/resolved-sources.json",
+      "sha256": "2f438c2253fc1f05f4160f9bd3d32b4afcad9d65a19bf3cbfb98b9b838fb3b9e"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 1570307,
+      "kind": "file",
+      "mode": 292,
+      "path": "sources/cafa75b907cd067b471fba32a2772c010a859086241ef70d3d57eda6aeea3a64",
+      "sha256": "cafa75b907cd067b471fba32a2772c010a859086241ef70d3d57eda6aeea3a64"
+    }
+  ],
+  "inventory_sha256": "0d5f69e7e55806fb78a2c2d1ee9162b25aa93a9637ec35754b9a742f5e96022e",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "6cdc74e35ba02816a6e31fc3a2174d435e70c7b84b5baa80f87deb2ad6e46940",
+  "method": "source",
+  "package": {
+    "build": "r07-debian13-native-final",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "dataset-ref.zlib-native-api",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 300
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "dataset-ref.zlib",
+    "metadata": {
+      "additional_platform_profile": {
+        "canonical_target": {
+          "arch": "x86_64",
+          "distribution": "ubuntu",
+          "distribution_version": "24.04",
+          "os": "linux"
+        },
+        "official_benchmark_qualification": false,
+        "original_definition_sha256": "27dc9810bae6cd093cd8edf885b21d22f74b16c123a785bbaa0289ce440eeb7e",
+        "original_dependencies": {
+          "build": [],
+          "run": [],
+          "system": [
+            "apt.python3"
+          ]
+        },
+        "original_provider": "material",
+        "original_target_promotion": false,
+        "prerequisites": "An existing Debian 13 x86_64 C build toolchain, Python 3, Make, CMake, Ninja and ctest as appropriate. No APT actions are performed.",
+        "profile": "debian13-x86_64-r07",
+        "source_resolution_policy": "Only null SHA-256/bytes are filled by artifact resolved_sources; canonical sources and metadata.catalog are unchanged."
+      },
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": null,
+        "build_peak_bytes": null,
+        "category": [
+          "Dataset research",
+          "Benchmarks and inputs"
+        ],
+        "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+        "dataset_card_id": "zlib",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "requires_controller_only_storage": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "target_exports": [],
+          "visibility_policy": "developer_selected_complete_materials",
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/madler/zlib"
+        ],
+        "evidence_files": [
+          "workspace-evidence/datasets-v090/benchmarks/cards.json"
+        ],
+        "extract": true,
+        "id": "dataset-ref.zlib",
+        "immutable_ref": "767c4c947852e143f582c85f14cf573411df1b35",
+        "installed_bytes": null,
+        "kind": "dataset",
+        "license_class": "open",
+        "license_id": "Zlib",
+        "mandatory": false,
+        "material_path": "dataset-research/zlib",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Real-application training or transfer testing with fixed inputs, output checks and explicit compiler-controlled code attribution.",
+        "qualification": {
+          "archive_measured": false,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+          "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+          "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+          "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+          "Popular mature code may offer limited compiler headroom.",
+          "Use round-trip and known-answer tests across structured and random data."
+        ],
+        "redistributable": "license-and-component-review-required",
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+        "source_evidence": [
+          "https://raw.githubusercontent.com/madler/zlib/767c4c947852e143f582c85f14cf573411df1b35/README",
+          "https://raw.githubusercontent.com/madler/zlib/767c4c947852e143f582c85f14cf573411df1b35/LICENSE"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/madler/zlib/tar.gz/767c4c947852e143f582c85f14cf573411df1b35",
+        "title": "zlib research material",
+        "upstream": "https://github.com/madler/zlib",
+        "version": "HEAD observed at retrieval; use the full recorded commit"
+      },
+      "catalog_sha256": "940b32fb754b12ee9d845467ee3fdae5bfe17691830deb7d32148a5afea4891e"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "-B",
+          "{recipe}/build.py",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "qualification_scope": "debian13-x86_64-selected-native-profile",
+      "required_host_commands": [
+        "python3",
+        "cc",
+        "make",
+        "cmake",
+        "ninja",
+        "ctest"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/cpg-native-check"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": null,
+        "extract": true,
+        "id": "dataset-ref.zlib",
+        "material_path": "dataset-research/zlib",
+        "sha256": null,
+        "strip_root": true,
+        "url": "https://codeload.github.com/madler/zlib/tar.gz/767c4c947852e143f582c85f14cf573411df1b35"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "debian",
+      "distribution_version": "13",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/madler/zlib"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Native binaries",
+          "path": "{prefix}/bin",
+          "purpose": "Independent installed CLI and bounded C-API consumer."
+        },
+        {
+          "label": "Preserved license notices",
+          "path": "{prefix}/share/licenses",
+          "purpose": "Original upstream notices retained without granting license clearance."
+        }
+      ],
+      "notes": [
+        "The canonical Ubuntu 24.04 definition and its catalog/source fields remain unchanged. Select this additional Debian 13 profile explicitly.",
+        "Build tools are host prerequisites, not installed through a hidden package-manager transaction. Exact observed versions are recorded in qualification evidence.",
+        "The source package includes the complete locked original archive. The binary package is separately installed with source state unavailable.",
+        "Bounded tests are not a numerical reference oracle, official performance result, OCI deployment or hardware qualification.",
+        "Source archive resolution requires compiler-playground >=0.21.6; older runtimes fail closed on the original unknown source identity."
+      ],
+      "summary": "Opt-in Debian 13 native profile of dataset-ref.zlib at its original pinned revision."
+    },
+    "version": "HEAD observed at retrieval; use the full recorded commit"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "minimum_source_resolution_runtime": "0.21.6",
+    "original_definition_sha256": "27dc9810bae6cd093cd8edf885b21d22f74b16c123a785bbaa0289ce440eeb7e",
+    "original_target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "profile": "additional-platform",
+    "round": "r07"
+  },
+  "resolved_dependencies": [],
+  "resolved_sources": [
+    {
+      "bytes": 1570307,
+      "extract": true,
+      "id": "dataset-ref.zlib",
+      "material_path": "dataset-research/zlib",
+      "sha256": "cafa75b907cd067b471fba32a2772c010a859086241ef70d3d57eda6aeea3a64",
+      "strip_root": true,
+      "url": "https://codeload.github.com/madler/zlib/tar.gz/767c4c947852e143f582c85f14cf573411df1b35"
+    }
+  ],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "dataset-ref.zlib",
+      "path": "sources/cafa75b907cd067b471fba32a2772c010a859086241ef70d3d57eda6aeea3a64"
+    }
+  ]
+}
