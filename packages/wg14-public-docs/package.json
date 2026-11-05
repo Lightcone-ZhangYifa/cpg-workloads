@@ -1,0 +1,122 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/verify.py",
+        "--root",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "offline-corpus-index-and-locks",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "wg14-public-docs",
+  "metadata": {
+    "license": "MIT (CPG metadata/code only; document bodies not distributed)",
+    "publication_license": {
+      "evidence": [
+        "{prefix}/LICENSE-CPG.txt",
+        "{prefix}/rights-review.json"
+      ],
+      "license_class": "open",
+      "license_id": "MIT",
+      "redistributable": true,
+      "scope": "Publicly downloadable is not treated as redistribution permission. This bundle contains original factual metadata, hashes, rights decisions and retrieval tooling; the selected PDF/HTML document bodies are not distributed.",
+      "unbundled_upstream_bodies_authorized": false
+    },
+    "publication_policy": {
+      "build_check": "not_run",
+      "functional": "not_run",
+      "preserved_delivery_scope": {
+        "dataset_verified": null,
+        "formal_baseline_promotion": false,
+        "functional": null,
+        "material": false
+      },
+      "review_policy": "static-trust-v1"
+    },
+    "qualification": {
+      "dataset_verified": null,
+      "formal_baseline_promotion": false,
+      "functional": null,
+      "material": false
+    },
+    "record_id": "review.engineering.wg14-public-docs",
+    "scope": "Bounded selection of N1256, N1570, N3096 plus DR236, DR260, DR283, DR400, DR451, DR452 and DR481 (in N2244). Per-file SHA256, size, official URLs and rights status; explicit download/import only. Metadata search is not full-text draft search.",
+    "source_identity": {
+      "after_dataset_verified": null,
+      "after_functional": null,
+      "after_material": false,
+      "license_notice": "Publicly downloadable is not treated as redistribution permission. This bundle contains original factual metadata, hashes, rights decisions and retrieval tooling; the selected PDF/HTML document bodies are not distributed.",
+      "network_policy": "Only explicit prepare_external --download may download; normal installation/check/reader remain offline.",
+      "resource_id": "wg14-public-docs",
+      "schema_version": 1,
+      "scope": "Bounded selection of N1256, N1570, N3096 plus DR236, DR260, DR283, DR400, DR451, DR452 and DR481 (in N2244). Per-file SHA256, size, official URLs and rights status; explicit download/import only. Metadata search is not full-text draft search.",
+      "title": "WG14 selected C drafts and defect reports — pinned registry",
+      "version": "selection-20261102-v1"
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "required_installed_paths": [
+      "{prefix}/reader.py",
+      "{prefix}/search.sqlite",
+      "{prefix}/metadata.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.open-std.org/jtc1/sc22/wg14/www/docs/"
+    ],
+    "examples": [
+      {
+        "command": "python3 \"{prefix}/verify.py\" --root \"{prefix}\"",
+        "description": "Verify all distributed material and query behavior"
+      },
+      {
+        "command": "python3 \"{prefix}/reader.py\" --help",
+        "description": "Read command help for source-aware offline search"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Offline corpus",
+        "path": "{prefix}",
+        "purpose": "Bounded selection of N1256, N1570, N3096 plus DR236, DR260, DR283, DR400, DR451, DR452 and DR481 (in N2244). Per-file SHA256, size, official URLs and rights status; explicit download/import only. Metadata search is not full-text draft search."
+      }
+    ],
+    "notes": [
+      "Bounded selection of N1256, N1570, N3096 plus DR236, DR260, DR283, DR400, DR451, DR452 and DR481 (in N2244). Per-file SHA256, size, official URLs and rights status; explicit download/import only. Metadata search is not full-text draft search.",
+      "Install and query locally with Python 3 and SQLite FTS5. No acquisition runs during installation.",
+      "Publication used static review only; no reader, installation, rendering, compiler, or functional check was executed for this artifact identity."
+    ],
+    "summary": "C语义、未定义行为与规范演进依据"
+  },
+  "version": "selection-20261102-v1"
+}
