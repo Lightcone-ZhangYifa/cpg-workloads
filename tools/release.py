@@ -191,8 +191,10 @@ def material_member(template, row, binaries):
             or any(item.is_symlink() for item in (path, *path.parents))):
         raise ValueError("Invalid ordinary material member: " + row["path"])
     if row["kind"] == "directory":
-        if not path.is_dir():
-            raise ValueError("Missing material directory: " + row["path"])
+        # Git has no empty-directory objects; frozen directory rows are replayed
+        # directly, including parents of externally locked archive inputs.
+        if path.exists() and not path.is_dir():
+            raise ValueError("Material directory is occupied by a non-directory: " + row["path"])
         return None
     if row["kind"] != "file" or not path.is_file() or not stat.S_ISREG(path.stat().st_mode):
         raise ValueError("Material members must be ordinary files or directories")
