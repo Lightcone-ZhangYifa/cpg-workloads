@@ -13,6 +13,16 @@ _FIELDS = ("schema_version", "id", "version", "build", "provider", "target",
            "dependencies", "sources", "recipe", "checks", "usage", "metadata")
 
 
+def license_metadata(spec):
+    """Read explicit publication licensing without synthesizing a source catalog."""
+    metadata = spec.get("metadata", {})
+    if not isinstance(metadata, dict):
+        return {}
+    value = (metadata["catalog"] if "catalog" in metadata
+             else metadata.get("publication_license", {}))
+    return value if isinstance(value, dict) else {}
+
+
 def common_qualification_errors(record, manifest):
     """Identity, structure and license gates shared with execution-based admission."""
     errors = []
@@ -34,10 +44,7 @@ def common_qualification_errors(record, manifest):
         errors.append("Artifact byte identity is incomplete")
     if record.get("structure") != "passed":
         errors.append("The delivered archive must pass structural verification")
-    metadata = spec.get("metadata")
-    catalog = metadata.get("catalog", {}) if isinstance(metadata, dict) else {}
-    if not isinstance(catalog, dict):
-        catalog = {}
+    catalog = license_metadata(spec)
     if any(not catalog.get(key) for key in ("license_class", "license_id")):
         errors.append("License metadata is incomplete")
     if catalog.get("license_class") != "open" or catalog.get("redistributable") is False:

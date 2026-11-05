@@ -272,6 +272,7 @@ def artifact_name(spec, method, checksum):
 def import_package(path, root, origin, *, attempt_build=False, jobs=2, source_overrides=None, static_trust=False):
     from compiler_playground.packages import pack, verify_package
     from compiler_playground.packages.manager import PackageManager
+    from static_review import license_metadata
 
     path, root = Path(path), Path(root)
     checked = verify_package(path)
@@ -281,7 +282,7 @@ def import_package(path, root, origin, *, attempt_build=False, jobs=2, source_ov
     copy_template(path, directory, manifest)
     checks = [check for check in spec["checks"] if check["kind"] == "functional"]
     apt = method == "wrapper" and spec["provider"] == "apt" and spec["recipe"].get("manager") == "apt"
-    catalog = spec["metadata"].get("catalog", {})
+    catalog = license_metadata(spec)
     missing = [name for name in ("license_class", "license_id") if not catalog.get(name)]
     locked = source_locks_complete(manifest)
     record = {
@@ -322,7 +323,8 @@ def import_package(path, root, origin, *, attempt_build=False, jobs=2, source_ov
             record["reproduced_sha256"] = result["sha256"]
         record["functional"] = "exempt_apt_wrapper"
     elif not apt and not checks:
-        record["functional"] = "blocked_missing_functional_test"
+        if not (static_trust and method == "material"):
+            record["functional"] = "blocked_missing_functional_test"
     elif not apt and attempt_build and installation_errors(record, spec):
         if any(key in record for key in ("qualification", "failure")) or record["build_check"] != "not_run":
             record.setdefault("previous_attempts", []).append({key: copy.deepcopy(record[key]) for key in (
