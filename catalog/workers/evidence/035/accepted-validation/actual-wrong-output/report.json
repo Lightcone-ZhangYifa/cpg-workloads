@@ -1,0 +1,303 @@
+{
+  "schema_version": 1,
+  "seed": 3501,
+  "blocks": 6,
+  "orders": [
+    [
+      "candidate",
+      "baseline"
+    ],
+    [
+      "candidate",
+      "baseline"
+    ],
+    [
+      "baseline",
+      "candidate"
+    ],
+    [
+      "baseline",
+      "candidate"
+    ],
+    [
+      "candidate",
+      "baseline"
+    ],
+    [
+      "baseline",
+      "candidate"
+    ]
+  ],
+  "warmups_per_variant": 1,
+  "spec": {
+    "baseline": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/scratch/556578a69b7f/rolling/worker-035/extracted/examples/pair_workload.py",
+      "baseline",
+      "120000"
+    ],
+    "candidate": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-c",
+      "print('incorrect')"
+    ],
+    "blocks": 6,
+    "seed": 3501,
+    "warmups": 1,
+    "timeout_seconds": 10,
+    "expected_stdout_sha256": "35b2ba53c2b04bdf144f926005be9d02f606296873c3564c13488013f8651aa2",
+    "workload_sha256": "68f9b6b0028e7d721e2c70c527bd6486b0704913bcb4cc1c773202502dbe37f1"
+  },
+  "host_before": {
+    "utc": "2026-11-05T07:46:51.523078+00:00",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "loadavg": [
+      1.55859375,
+      1.6923828125,
+      1.62255859375
+    ],
+    "governors": {},
+    "intel_pstate_no_turbo": null,
+    "cpufreq_boost": null,
+    "cgroup_cpu_max": "800000 100000",
+    "cgroup_cpu_stat": "usage_usec 68242671645\nuser_usec 53930680739\nsystem_usec 14311990906\nnice_usec 0\nnr_periods 436573\nnr_throttled 9388\nthrottled_usec 530754144\nnr_bursts 0\nburst_usec 0",
+    "clock": {
+      "implementation": "clock_gettime(CLOCK_MONOTONIC)",
+      "resolution": 1e-09
+    },
+    "system_performance_profiler": null,
+    "scope": "read-only host metadata, no tuning and no profiler"
+  },
+  "invocations": [
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/556578a69b7f/rolling/worker-035/extracted/examples/pair_workload.py",
+        "baseline",
+        "120000"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "wall_seconds": 0.046679068,
+      "stdout": "575992800020000\n",
+      "stderr": "",
+      "stdout_sha256": "35b2ba53c2b04bdf144f926005be9d02f606296873c3564c13488013f8651aa2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cleanup": {
+        "confirmed": true,
+        "unexpected_descendants": false,
+        "owned_pgid": 37,
+        "process_group_present_before": false,
+        "process_group_present_after": false,
+        "error": null,
+        "seconds": 3.2539e-05,
+        "scope": "owned Linux process group only; detached sessions need CPG target lifecycle management"
+      },
+      "kind": "preflight",
+      "block": null,
+      "variant": "baseline",
+      "host_before": {
+        "utc": "2026-11-05T07:46:51.574171+00:00",
+        "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "loadavg": [
+          1.55859375,
+          1.6923828125,
+          1.62255859375
+        ],
+        "governors": {},
+        "intel_pstate_no_turbo": null,
+        "cpufreq_boost": null,
+        "cgroup_cpu_max": "800000 100000",
+        "cgroup_cpu_stat": "usage_usec 68242875704\nuser_usec 53930830476\nsystem_usec 14312045228\nnice_usec 0\nnr_periods 436574\nnr_throttled 9388\nthrottled_usec 530754144\nnr_bursts 0\nburst_usec 0",
+        "clock": {
+          "implementation": "clock_gettime(CLOCK_MONOTONIC)",
+          "resolution": 1e-09
+        },
+        "system_performance_profiler": null,
+        "scope": "read-only host metadata, no tuning and no profiler"
+      },
+      "host_after": {
+        "utc": "2026-11-05T07:46:51.621181+00:00",
+        "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "loadavg": [
+          1.55859375,
+          1.6923828125,
+          1.62255859375
+        ],
+        "governors": {},
+        "intel_pstate_no_turbo": null,
+        "cpufreq_boost": null,
+        "cgroup_cpu_max": "800000 100000",
+        "cgroup_cpu_stat": "usage_usec 68243018582\nuser_usec 53930936189\nsystem_usec 14312082392\nnice_usec 0\nnr_periods 436574\nnr_throttled 9388\nthrottled_usec 530754144\nnr_bursts 0\nburst_usec 0",
+        "clock": {
+          "implementation": "clock_gettime(CLOCK_MONOTONIC)",
+          "resolution": 1e-09
+        },
+        "system_performance_profiler": null,
+        "scope": "read-only host metadata, no tuning and no profiler"
+      },
+      "correct": true
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-c",
+        "print('incorrect')"
+      ],
+      "returncode": 0,
+      "timeout": false,
+      "wall_seconds": 0.015815609,
+      "stdout": "incorrect\n",
+      "stderr": "",
+      "stdout_sha256": "df1a225671a8e4a4ecf107bf110a35902c822fa775f37ee85d540aa3c09991ce",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cleanup": {
+        "confirmed": true,
+        "unexpected_descendants": false,
+        "owned_pgid": 38,
+        "process_group_present_before": false,
+        "process_group_present_after": false,
+        "error": null,
+        "seconds": 2.5869e-05,
+        "scope": "owned Linux process group only; detached sessions need CPG target lifecycle management"
+      },
+      "kind": "preflight",
+      "block": null,
+      "variant": "candidate",
+      "host_before": {
+        "utc": "2026-11-05T07:46:51.621551+00:00",
+        "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "loadavg": [
+          1.55859375,
+          1.6923828125,
+          1.62255859375
+        ],
+        "governors": {},
+        "intel_pstate_no_turbo": null,
+        "cpufreq_boost": null,
+        "cgroup_cpu_max": "800000 100000",
+        "cgroup_cpu_stat": "usage_usec 68243018582\nuser_usec 53930936189\nsystem_usec 14312082392\nnice_usec 0\nnr_periods 436574\nnr_throttled 9388\nthrottled_usec 530754144\nnr_bursts 0\nburst_usec 0",
+        "clock": {
+          "implementation": "clock_gettime(CLOCK_MONOTONIC)",
+          "resolution": 1e-09
+        },
+        "system_performance_profiler": null,
+        "scope": "read-only host metadata, no tuning and no profiler"
+      },
+      "host_after": {
+        "utc": "2026-11-05T07:46:51.637602+00:00",
+        "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "loadavg": [
+          1.55859375,
+          1.6923828125,
+          1.62255859375
+        ],
+        "governors": {},
+        "intel_pstate_no_turbo": null,
+        "cpufreq_boost": null,
+        "cgroup_cpu_max": "800000 100000",
+        "cgroup_cpu_stat": "usage_usec 68243072351\nuser_usec 53930976152\nsystem_usec 14312096199\nnice_usec 0\nnr_periods 436574\nnr_throttled 9388\nthrottled_usec 530754144\nnr_bursts 0\nburst_usec 0",
+        "clock": {
+          "implementation": "clock_gettime(CLOCK_MONOTONIC)",
+          "resolution": 1e-09
+        },
+        "system_performance_profiler": null,
+        "scope": "read-only host metadata, no tuning and no profiler"
+      },
+      "correct": false
+    }
+  ],
+  "accepted": false,
+  "scope": "whole-process wall time; measured here using stdlib, not a run of the five reused tools",
+  "executable_sha256": {
+    "baseline": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+    "candidate": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+  },
+  "error": "candidate: nonzero exit, timeout, correctness mismatch, unexpected child, or unconfirmed cleanup",
+  "host_after": {
+    "utc": "2026-11-05T07:46:51.638035+00:00",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "loadavg": [
+      1.55859375,
+      1.6923828125,
+      1.62255859375
+    ],
+    "governors": {},
+    "intel_pstate_no_turbo": null,
+    "cpufreq_boost": null,
+    "cgroup_cpu_max": "800000 100000",
+    "cgroup_cpu_stat": "usage_usec 68243081123\nuser_usec 53930977425\nsystem_usec 14312103697\nnice_usec 0\nnr_periods 436574\nnr_throttled 9388\nthrottled_usec 530754144\nnr_bursts 0\nburst_usec 0",
+    "clock": {
+      "implementation": "clock_gettime(CLOCK_MONOTONIC)",
+      "resolution": 1e-09
+    },
+    "system_performance_profiler": null,
+    "scope": "read-only host metadata, no tuning and no profiler"
+  }
+}

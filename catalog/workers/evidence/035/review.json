@@ -1,0 +1,108 @@
+{
+  "worker": "035",
+  "delivery_kind": "reuse_integration",
+  "recommended_destination": "resource-integrations/workers/035",
+  "archive_name": "cpg-20261101-worker-035-delta-v001.zip",
+  "archive_bytes": 203525,
+  "archive_sha256": "dc62c12f3820daf952a287552c715168d658387c8920841385cf9a3f0df00930",
+  "original_files": 76,
+  "original_bytes": 807315,
+  "original_manifests_verified": {
+    "delivery-manifest.json": 75,
+    "file-manifest.json": 74
+  },
+  "assignment_result_contract": "5 matching rows, exactly 17 result fields, unique plan/kind/entity identities, all evidence files present",
+  "reused_resource_ids": [
+    "py.asv",
+    "google-benchmark",
+    "apt.hyperfine",
+    "py.pyperf",
+    "apt.time"
+  ],
+  "new_resources": 0,
+  "new_functional": 0,
+  "new_material": 0,
+  "new_dataset": 0,
+  "new_benchmark_protocols": 0,
+  "finished_cpg_artifacts": 0,
+  "release_eligible_artifacts": 0,
+  "upstream_tool_installs": 0,
+  "upstream_tool_executions": 0,
+  "historical_qualification": {
+    "baseline": "0.21.14",
+    "functional": 3,
+    "trusted_apt": 2,
+    "promoted_by_migration": false
+  },
+  "initial_tests": {
+    "normal": 39,
+    "optimized_via_validate": 39,
+    "passed": true
+  },
+  "fixed_tests": {
+    "normal": 42,
+    "optimized_via_validate": 42,
+    "passed": true,
+    "new_cases": 3,
+    "interruption_subcases": [
+      "actual SIGINT / KeyboardInterrupt",
+      "actual SIGUSR1 / SystemExit(23)"
+    ],
+    "unrelated_process_survives": true,
+    "interrupted_owned_group_absent_after": true
+  },
+  "fixed_validate_summary": {
+    "status": "passed",
+    "tests": 42,
+    "python_optimized_mode": true,
+    "actual_paired_blocks": 6,
+    "actual_timed_invocations": 12,
+    "actual_failed_output_rejected": true,
+    "actual_timeout_rejected": true,
+    "actual_background_descendant_rejected_and_cleaned": true,
+    "upstream_tool_executions": 0,
+    "upstream_tools_installed": 0,
+    "formal_qualification_changes": 0,
+    "scope": "adapter/integration checks only; no five-tool rerun or performance claim"
+  },
+  "changed_files": [
+    {
+      "path": "src/measurement_reuse.py",
+      "archive_member": "src/measurement_reuse.py",
+      "original_sha256": "68f8079ef94f1bb397e41bd5cbcb49ab77a7c222ffad31c870a27c7b8d213b66",
+      "current_sha256": "0a431536ac0bb9187a90c7cb038e7cc7794b5e60339652591c2a42dcf8089551",
+      "original_bytes": 24947,
+      "current_bytes": 25722
+    },
+    {
+      "path": "tests/test_measurement_reuse.py",
+      "archive_member": "tests/test_measurement_reuse.py",
+      "original_sha256": "36c0cadbc0ccbe1d43b813602b0db6816dd112ba97660e38b6a58ed7bc6b63dc",
+      "current_sha256": "d91c90d42ff4815ad2b0c3a424caa9b0f9508a8b00eaf55cda0fee6e5e14aada",
+      "original_bytes": 12100,
+      "current_bytes": 16053
+    }
+  ],
+  "preserve": "All 76 original files including original definitions, assignments/results, source references/licenses, and historical failures. Preserve original manifests as ZIP provenance; current files have an explicitly separate inventory.",
+  "limitations": [
+    "Synthetic five-tool format fixtures and Python scheduling demos are not actual upstream tool runs.",
+    "Inherited 3 functional / 2 trusted APT qualifications are historical 0.21.14 observations, not newly earned status.",
+    "audit_existing.py deliberately binds CPG 0.21.14 and was not relaxed or executed under CPG 1.0.0. Current definition schema validation is recorded separately by package_contract.",
+    "The paired runner handles its owned POSIX process group only; escaped/detached sessions still require the formal CPG target lifecycle. This remains a resource integration example, not a replacement core target runner.",
+    "No measurement claim, package build, install, or finished artifact publication was inferred from successful adapter tests."
+  ],
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.39"
+  },
+  "evidence_files": {
+    "initial_integrity": "integrity.json",
+    "normal": "tests-fixed-normal.stderr.log",
+    "optimized": "fixed-validation/tests.stderr.log",
+    "validation": "fixed-validation/validation.json",
+    "patch": "migration-fixes.patch",
+    "changes": "modified-files.json",
+    "zero_warmup_original_failure": "pyperf-regression-red.stderr.log",
+    "focused_fixes": "fixes-focused.stderr.log"
+  }
+}

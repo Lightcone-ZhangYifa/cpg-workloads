@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "kind": "cpg_numbered_worker_import",
+  "worker_ids": [
+    35
+  ],
+  "source_archive": {
+    "filename": "cpg-20261101-worker-035-delta-v001.zip",
+    "sha256": "dc62c12f3820daf952a287552c715168d658387c8920841385cf9a3f0df00930",
+    "bytes": 203525,
+    "library_file_id": "libfile_37e6b6ecc0e88191831f89d50440b54c"
+  },
+  "source_template": "resource-integrations/workers/035",
+  "content_type": "existing_measurement_tool_reuse_integration",
+  "archive_integrity": {
+    "status": "passed",
+    "files": 76,
+    "uncompressed_bytes": 807315,
+    "delivery_manifest_entries": 75,
+    "file_manifest_entries": 74
+  },
+  "source_review": {
+    "status": "passed_with_repairs",
+    "modified_files": [
+      "src/measurement_reuse.py",
+      "tests/test_measurement_reuse.py"
+    ],
+    "repairs": [
+      "Accept zero pyperf warmups while rejecting zero measurements",
+      "Clean and record owned process groups before propagating interruption"
+    ]
+  },
+  "schema_validation": {
+    "status": "passed",
+    "definitions": 5,
+    "framework_version": "1.0.0",
+    "runtime_tree_sha": "5338ea456824b128e4298dd88b9ecd567af88ecb"
+  },
+  "build_install": {
+    "status": "not_applicable",
+    "reason": "The original delivery contains no CPG package or new upstream build",
+    "upstream_installs": 0
+  },
+  "functional_validation": {
+    "status": "passed",
+    "scope": "adapter and standalone integration fixture",
+    "tests_normal": 42,
+    "tests_optimized": 42,
+    "real_paired_blocks": 6,
+    "real_timed_invocations": 12,
+    "real_interruption_cases": [
+      "SIGINT KeyboardInterrupt",
+      "SIGUSR1 SystemExit"
+    ],
+    "unrelated_process_survival": true,
+    "upstream_tool_executions": 0
+  },
+  "release": {
+    "status": "not_applicable",
+    "reason": "No finished CPG artifact is contained or generated",
+    "assets_uploaded": 0
+  },
+  "reused_resources": [
+    "py.asv",
+    "google-benchmark",
+    "apt.hyperfine",
+    "py.pyperf",
+    "apt.time"
+  ],
+  "new_resources": 0,
+  "new_qualifications": 0,
+  "historical_resource_denominator": 1862,
+  "evidence": "catalog/workers/evidence/035",
+  "group_status": "reviewed_repaired_validated"
+}
