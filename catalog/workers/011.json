@@ -79,11 +79,22 @@
     "cross_install_isolation": true
   },
   "release": {
-    "plan": "release-plans/workers/worker-011-20261105-v002.json",
-    "publication_receipt": "catalog/releases/worker-011-20261105-v002.json",
+    "plan": "release-plans/workers/worker-011-20261105-v002-r2.json",
+    "publication_receipt": "catalog/releases/worker-011-20261105-v002-r2.json",
     "assets_uploaded_at_source_commit": 0,
     "status_at_source_commit": "planned",
-    "current_status_source": "The referenced publication receipt and root manifest are authoritative after verified upload."
+    "current_status_source": "The referenced publication receipt and root manifest are authoritative after verified upload.",
+    "previous_attempts": [
+      {
+        "tag": "worker-011-20261105-v002",
+        "source_commit": "0cff01603df1738da55a4178ba5935628e7d5f95",
+        "run_url": "https://github.com/Lightcone-ZhangYifa/cpg-workloads/actions/runs/41992635320",
+        "release_id": 434928023,
+        "status": "draft_upload_not_started",
+        "assets": 0,
+        "reason": "Draft creation succeeded; subsequent tag lookup returned HTTP 404."
+      }
+    ]
   },
   "reference_entities": [
     "reference.doc.openmp-opt",
@@ -102,5 +113,11 @@
     "regression_tests": 11,
     "frozen_archive_replay_sha256": "050720b9f7b9095d878996dc014f7ab68f411fe1f0be3e9695a19cad04c40b38",
     "scope": "Local byte replay, failure gates, simulated remote publication and real local Git; actual remote publication is recorded separately."
+  },
+  "publication_retry_validation": {
+    "status": "passed",
+    "regression_tests": 15,
+    "evidence": "catalog/workers/evidence/011/publication-tests-r2",
+    "scope": "Release-ID draft transport regression; artifact bytes and package qualification unchanged."
   }
 }

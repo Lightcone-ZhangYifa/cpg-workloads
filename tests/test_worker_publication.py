@@ -18,6 +18,7 @@ import subprocess
 import tempfile
 import unittest
 from unittest import mock
+from urllib.parse import parse_qs, urlsplit
 
 SOURCE_ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("worker_publication", SOURCE_ROOT / "tools/publish_workers.py")
@@ -36,51 +37,98 @@ def write_json(path, value):
 
 
 class GitHubBoundary:
-    """The GitHub responses needed by publish, retaining actual uploaded bytes."""
+    """REST boundary with drafts that have no resolvable tag or Git ref.
+
+    Uploads retain real bytes and refuse replacement. Only publishing the draft
+    creates a tag; a draft lookup through releases/tags therefore returns 404.
+    """
 
     def __init__(self, *, existing=False):
         self.release = self._release() if existing else None
         self.assets = {}
         self.uploads = {}
+        self.requests = []
         self.writes = []
-        self.tag_exists = existing
+        self.other_releases = []
+        self.tag_exists = False
+        self.tag_commit = COMMIT
+        self.tag_after_publication = COMMIT
 
     @staticmethod
     def _release():
         return {"id": 7311, "tag_name": TAG, "target_commitish": COMMIT,
                 "draft": True, "published_at": None,
+                "upload_url": f"https://uploads.github.com/repos/{publisher.REPOSITORY}/releases/7311/assets{{?name,label}}",
                 "html_url": f"https://github.com/{publisher.REPOSITORY}/releases/tag/{TAG}"}
 
-    def __call__(self, *args, missing=False):
-        if args[0] == "api":
-            endpoint = args[1]
-            if endpoint.endswith("/releases/tags/" + TAG):
-                return copy.deepcopy(self.release)
-            if endpoint.endswith("/git/ref/tags/" + TAG):
-                return {"object": {"type": "commit", "sha": COMMIT}} if self.tag_exists else None
-            if "/releases/7311/assets?" in endpoint:
-                return list(copy.deepcopy(self.assets).values())
-            raise AssertionError("Unexpected remote read: " + repr(args))
-        self.writes.append(args)
-        if args[:2] == ("release", "create"):
-            if args[args.index("--target") + 1] != COMMIT or self.release is not None:
+    def __call__(self, *args, missing=False, input_data=None):
+        if args[0] != "api":
+            raise AssertionError("Publication must use the REST release ID: " + repr(args))
+        endpoint = args[1]
+        method = args[args.index("--method") + 1] if "--method" in args else "GET"
+        request = {"method": method, "endpoint": endpoint, "args": args,
+                   "missing": missing, "input_data": copy.deepcopy(input_data)}
+        self.requests.append(request)
+        if method != "GET":
+            self.writes.append(request)
+        path = endpoint.partition("?")[0]
+        query = parse_qs(urlsplit(endpoint).query)
+        releases = f"repos/{publisher.REPOSITORY}/releases"
+        release_id = releases + "/7311"
+        uploads = f"https://uploads.github.com/repos/{publisher.REPOSITORY}/releases/7311/assets"
+
+        def page(rows):
+            offset = (int(query["page"][0]) - 1) * int(query["per_page"][0])
+            return copy.deepcopy(rows[offset:offset + int(query["per_page"][0])])
+
+        if method == "GET" and path == releases:
+            return page(self.other_releases + ([self.release] if self.release else []))
+        if method == "GET" and path == releases + "/tags/" + TAG:
+            if self.release is None or self.release["draft"]:
+                if missing:
+                    return None
+                raise RuntimeError("HTTP 404: draft tag is not resolvable")
+            return copy.deepcopy(self.release)
+        if method == "GET" and path == f"repos/{publisher.REPOSITORY}/git/ref/tags/{TAG}":
+            if self.tag_exists:
+                return {"object": {"type": "commit", "sha": self.tag_commit}}
+            if missing:
+                return None
+            raise RuntimeError("HTTP 404: tag has not been created")
+        if method == "GET" and path == release_id:
+            if self.release is None:
+                raise AssertionError("Unknown release ID")
+            return copy.deepcopy(self.release)
+        if method == "GET" and path == release_id + "/assets":
+            return page(list(self.assets.values()))
+        if method == "POST" and path == releases:
+            if (self.release is not None or input_data["target_commitish"] != COMMIT
+                    or input_data["tag_name"] != TAG or input_data["draft"] is not True
+                    or input_data["make_latest"] != "false"):
                 raise AssertionError("Unexpected release creation")
             self.release = self._release()
-            return self.release["html_url"]
-        if args[:2] == ("release", "upload"):
-            path = Path(args[-1])
-            raw = path.read_bytes()
-            if path.name in self.assets:
+            return copy.deepcopy(self.release)
+        if method == "POST" and path == uploads:
+            source = Path(args[args.index("--input") + 1])
+            name = query["name"][0]
+            if (name != source.name or input_data is not None
+                    or args[args.index("--header") + 1] != "Content-Type: application/octet-stream"):
+                raise AssertionError("Unexpected binary upload")
+            raw = source.read_bytes()
+            if name in self.assets:
                 raise AssertionError("An existing asset was overwritten")
-            self.uploads[path.name] = raw
-            self.assets[path.name] = {"name": path.name, "state": "uploaded", "size": len(raw),
-                                      "digest": "sha256:" + hashlib.sha256(raw).hexdigest()}
-            return ""
-        if args[:2] == ("release", "edit") and "--draft=false" in args:
+            self.uploads[name] = raw
+            self.assets[name] = {"name": name, "state": "uploaded", "size": len(raw),
+                                 "digest": "sha256:" + hashlib.sha256(raw).hexdigest()}
+            return copy.deepcopy(self.assets[name])
+        if method == "PATCH" and path == release_id:
+            if input_data != {"draft": False, "make_latest": "false"}:
+                raise AssertionError("Unexpected release publication")
             self.release.update(draft=False, published_at="2026-11-05T00:00:00Z")
             self.tag_exists = True
-            return ""
-        raise AssertionError("Unexpected remote write: " + repr(args))
+            self.tag_commit = self.tag_after_publication
+            return copy.deepcopy(self.release)
+        raise AssertionError("Unexpected remote request: " + repr(args))
 
 
 class WorkerPublication(unittest.TestCase):
@@ -206,6 +254,87 @@ class WorkerPublication(unittest.TestCase):
                 self.assertEqual(boundary.writes, [])
                 self.assertFalse((output / "publication.json").exists())
 
+    def test_unresolvable_draft_tag_publishes_by_id_without_replacing_assets(self):
+        for existing in (False, True):
+            with self.subTest(existing_draft=existing):
+                output = self.base / ("resumed-draft" if existing else "new-draft")
+                boundary = GitHubBoundary(existing=existing)
+                self.assertFalse(boundary.tag_exists)
+                if existing:
+                    boundary.assets[self.record["asset_name"]] = {
+                        "name": self.record["asset_name"], "state": "uploaded",
+                        "size": PACKAGE_BYTES, "digest": "sha256:" + SHA,
+                    }
+                    with self.assertRaisesRegex(RuntimeError, "HTTP 404"):
+                        boundary("api", f"repos/{publisher.REPOSITORY}/releases/tags/{TAG}")
+                    boundary.requests.clear()
+                with mock.patch.object(publisher, "gh", boundary), mock.patch.object(publisher, "frozen"):
+                    with contextlib.redirect_stdout(io.StringIO()):
+                        publisher.publish(TAG, output)
+                receipt = json.loads((output / "publication.json").read_text())
+                self.assertTrue(receipt["release"]["published"])
+                self.assertEqual(receipt["release"]["release_id"], 7311)
+                self.assertFalse(any("/releases/tags/" in row["endpoint"] for row in boundary.requests))
+                self.assertEqual(set(boundary.assets), {self.record["asset_name"], "manifest.json", "SHA256SUMS"})
+                expected_uploads = {"manifest.json", "SHA256SUMS"}
+                if not existing:
+                    expected_uploads.add(self.record["asset_name"])
+                self.assertEqual(set(boundary.uploads), expected_uploads)
+                release_endpoint = f"repos/{publisher.REPOSITORY}/releases/7311"
+                creations = [row for row in boundary.writes
+                             if row["endpoint"] == f"repos/{publisher.REPOSITORY}/releases"]
+                self.assertEqual(len(creations), int(not existing))
+                for row in boundary.writes:
+                    if row in creations:
+                        self.assertEqual(row["method"], "POST")
+                    elif row["method"] == "PATCH":
+                        self.assertEqual(row["endpoint"], release_endpoint)
+                    else:
+                        self.assertEqual(row["method"], "POST")
+                        self.assertEqual(row["endpoint"].partition("?")[0],
+                                         f"https://uploads.github.com/repos/{publisher.REPOSITORY}/releases/7311/assets")
+                self.assertEqual(sum(row["method"] == "PATCH" for row in boundary.writes), 1)
+                self.assertEqual(boundary.tag_commit, COMMIT)
+
+    def test_paginated_draft_listing_requires_one_unique_release(self):
+        boundary = GitHubBoundary(existing=True)
+        boundary.other_releases = [{"id": 8000 + i, "tag_name": f"unrelated-{i}"} for i in range(100)]
+        with mock.patch.object(publisher, "gh", boundary):
+            self.assertEqual(publisher.release_for(TAG)["id"], 7311)
+            self.assertEqual([parse_qs(urlsplit(row["endpoint"]).query)["page"] for row in boundary.requests],
+                             [["1"], ["2"]])
+            boundary.other_releases.append({"id": 7312, "tag_name": TAG})
+            with self.assertRaisesRegex(ValueError, "Multiple releases"):
+                publisher.release_for(TAG)
+        self.assertEqual(boundary.writes, [])
+
+    def test_noncanonical_upload_url_is_rejected_before_any_write(self):
+        urls = ("https://example.invalid/repos/owner/repo/releases/7311/assets{?name,label}",
+                "https://uploads.github.com/repos/other/repository/releases/7311/assets{?name,label}",
+                f"https://uploads.github.com/repos/{publisher.REPOSITORY}/releases/7312/assets{{?name,label}}")
+        for index, url in enumerate(urls):
+            with self.subTest(upload_url=url):
+                boundary = GitHubBoundary(existing=True)
+                boundary.release["upload_url"] = url
+                output = self.base / f"wrong-upload-url-{index}"
+                with mock.patch.object(publisher, "gh", boundary), mock.patch.object(publisher, "frozen"):
+                    with self.assertRaisesRegex(ValueError, "upload URL is not canonical"):
+                        publisher.publish(TAG, output)
+                self.assertEqual(boundary.writes, [])
+                self.assertFalse((output / "publication.json").exists())
+
+    def test_final_tag_must_match_the_published_release_before_receipt(self):
+        boundary = GitHubBoundary()
+        boundary.tag_after_publication = "2" * 40
+        output = self.base / "changed-final-tag"
+        with mock.patch.object(publisher, "gh", boundary), mock.patch.object(publisher, "frozen"):
+            with self.assertRaisesRegex(ValueError, "Publication is not confirmed at the expected commit"):
+                publisher.publish(TAG, output)
+        self.assertFalse(boundary.release["draft"])
+        self.assertEqual(len(boundary.uploads), 3)
+        self.assertFalse((output / "publication.json").exists())
+        self.assertEqual(json.loads((self.root / "manifest.json").read_text())["packages"], [])
+
     def test_receipt_and_catalog_bind_the_exact_uploaded_manifest(self):
         boundary, output, receipt = self.publish_to_boundary()
         self.assertEqual(set(boundary.uploads), {self.record["asset_name"], "manifest.json", "SHA256SUMS"})
@@ -237,14 +366,17 @@ class WorkerPublication(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Receipt is not bound to the uploaded checksums"):
             publisher.validate_receipt(changed_checksums)
 
-    def test_gh_release_create_accepts_plain_stdout_and_api_decodes_json(self):
+    def test_gh_accepts_plain_stdout_and_encodes_api_json_without_losing_types(self):
         release_url = f"https://github.com/{publisher.REPOSITORY}/releases/tag/{TAG}"
         result = subprocess.CompletedProcess(["gh"], 0, stdout=release_url + "\n", stderr="")
         with mock.patch.object(publisher.subprocess, "run", return_value=result):
             self.assertEqual(publisher.gh("release", "create", TAG), release_url)
         result = subprocess.CompletedProcess(["gh"], 0, stdout='{"id": 7311}\n', stderr="")
-        with mock.patch.object(publisher.subprocess, "run", return_value=result):
-            self.assertEqual(publisher.gh("api", "repos/example/releases/7311"), {"id": 7311})
+        payload = {"draft": False, "make_latest": "false", "body": "First line\nSecond line"}
+        with mock.patch.object(publisher.subprocess, "run", return_value=result) as run:
+            self.assertEqual(publisher.gh("api", "repos/example/releases/7311", "--method", "PATCH",
+                                          "--input", "-", input_data=payload), {"id": 7311})
+            self.assertEqual(json.loads(run.call_args.kwargs["input"]), payload)
 
     def test_frozen_rejects_real_git_head_mismatch_and_dirty_master(self):
         def git(*args):

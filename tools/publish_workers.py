@@ -16,6 +16,7 @@ from pathlib import Path, PurePosixPath
 import re
 import subprocess
 import tarfile
+from urllib.parse import urlencode
 
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = "Lightcone-ZhangYifa/cpg-workloads"
@@ -286,13 +287,50 @@ def build(tag, output):
     return value, assets, paths
 
 
-def gh(*args, missing=False):
-    result = subprocess.run(["gh", *args], text=True, capture_output=True)
+def gh(*args, missing=False, input_data=None):
+    result = subprocess.run(["gh", *args], text=True, capture_output=True,
+                            input=encoded(input_data).decode("utf-8") if input_data is not None else None)
     if result.returncode:
         if missing and "HTTP 404" in result.stderr:
             return None
         raise RuntimeError(result.stderr)
     return json.loads(result.stdout) if args[0] == "api" and result.stdout.strip() else result.stdout.strip() or None
+
+
+def release_for(tag):
+    """Find one release, including drafts that the tag endpoint may not expose."""
+    found, page = None, 1
+    while True:
+        rows = gh("api", f"repos/{REPOSITORY}/releases?per_page=100&page={page}")
+        if not isinstance(rows, list):
+            raise ValueError("Unexpected release listing")
+        for row in rows:
+            if row.get("tag_name") == tag:
+                if found is not None:
+                    raise ValueError("Multiple releases use the requested immutable tag")
+                found = row
+        if len(rows) < 100:
+            return found
+        page += 1
+
+
+def upload_endpoint(release):
+    release_id = release.get("id")
+    if type(release_id) is not int or release_id <= 0:
+        raise ValueError("Invalid release ID")
+    endpoint = f"https://uploads.github.com/repos/{REPOSITORY}/releases/{release_id}/assets"
+    if release.get("upload_url", endpoint) not in (endpoint, endpoint + "{?name,label}"):
+        raise ValueError("Release upload URL is not canonical for this repository and ID")
+    return endpoint
+
+
+def verify_release(release, tag, commit, release_id=None):
+    if (not isinstance(release, dict) or release.get("tag_name") != tag
+            or release.get("target_commitish") != commit or type(release.get("draft")) is not bool
+            or release_id is not None and release.get("id") != release_id):
+        raise ValueError("Release identity or target differs from the frozen source commit")
+    upload_endpoint(release)
+    return release["id"]
 
 
 def assets_for(release_id):
@@ -347,7 +385,7 @@ def publish(tag, output):
     value, paths_on_disk, paths = build(tag, output)
     frozen(commit, paths)
     expected = {path.name: {"sha256": checksum(path), "bytes": path.stat().st_size} for path in paths_on_disk}
-    existing = gh("api", f"repos/{REPOSITORY}/releases/tags/{tag}", missing=True)
+    existing = release_for(tag)
     tag_ref = gh("api", f"repos/{REPOSITORY}/git/ref/tags/{tag}", missing=True)
     if tag_ref and (tag_ref["object"]["type"] != "commit" or tag_ref["object"]["sha"] != commit):
         raise ValueError("Existing immutable tag differs from the source commit")
@@ -356,25 +394,36 @@ def publish(tag, output):
         notes.write_text(f"# {tag}\n\nAudited numbered-worker material packages, reproduced from unpacked text masters. "
                          "Each asset matches the complete SHA-256 and size of the CPG-created artifact tested locally. "
                          "Reader functionality does not establish compiler execution, official benchmark or hardware qualification.\n")
-        gh("release", "create", tag, "--repo", REPOSITORY, "--target", commit, "--title", tag, "--notes-file", str(notes), "--draft")
-        existing = gh("api", f"repos/{REPOSITORY}/releases/tags/{tag}")
-    if existing.get("tag_name") != tag or existing.get("target_commitish") != commit:
-        raise ValueError("Release target differs from the frozen source commit")
-    actual = assets_for(existing["id"])
+        existing = gh("api", f"repos/{REPOSITORY}/releases", "--method", "POST", "--input", "-",
+                      input_data={"tag_name": tag, "target_commitish": commit, "name": tag,
+                                  "body": notes.read_text(), "draft": True, "make_latest": "false"})
+        if not isinstance(existing, dict) or existing.get("draft") is not True:
+            raise ValueError("Release creation did not return a draft")
+    release_id = verify_release(existing, tag, commit)
+    endpoint = f"repos/{REPOSITORY}/releases/{release_id}"
+    existing = gh("api", endpoint)
+    verify_release(existing, tag, commit, release_id)
+    actual = assets_for(release_id)
     verify_assets(actual, expected, not existing["draft"])
     for path in paths_on_disk:
         if path.name not in actual:
-            gh("release", "upload", tag, "--repo", REPOSITORY, str(path))
-    verify_assets(assets_for(existing["id"]), expected, True)
+            gh("api", upload_endpoint(existing) + "?" + urlencode({"name": path.name}),
+               "--method", "POST", "--header", "Content-Type: application/octet-stream", "--input", str(path))
+    verify_assets(assets_for(release_id), expected, True)
     frozen(commit, paths)
     tag_ref = gh("api", f"repos/{REPOSITORY}/git/ref/tags/{tag}", missing=True)
     if tag_ref and (tag_ref["object"]["type"] != "commit" or tag_ref["object"]["sha"] != commit):
         raise ValueError("Tag changed during upload")
+    existing = gh("api", endpoint)
+    verify_release(existing, tag, commit, release_id)
     if existing["draft"]:
-        gh("release", "edit", tag, "--repo", REPOSITORY, "--draft=false", "--latest=false")
-    final = gh("api", f"repos/{REPOSITORY}/releases/tags/{tag}")
+        updated = gh("api", endpoint, "--method", "PATCH", "--input", "-",
+                     input_data={"draft": False, "make_latest": "false"})
+        verify_release(updated, tag, commit, release_id)
+    final = gh("api", endpoint)
+    verify_release(final, tag, commit, release_id)
     tag_ref = gh("api", f"repos/{REPOSITORY}/git/ref/tags/{tag}")
-    if (final["id"] != existing["id"] or final["draft"] is not False or not final.get("published_at")
+    if (final["draft"] is not False or not final.get("published_at")
             or tag_ref["object"]["type"] != "commit" or tag_ref["object"]["sha"] != commit):
         raise ValueError("Publication is not confirmed at the expected commit")
     verify_assets(assets_for(final["id"]), expected, True)
