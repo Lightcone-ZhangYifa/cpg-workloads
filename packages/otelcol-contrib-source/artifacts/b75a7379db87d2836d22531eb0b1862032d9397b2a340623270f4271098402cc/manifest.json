@@ -1,0 +1,197 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/sources"
+    },
+    {
+      "bytes": 16944016,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/sources/otelcol-contrib-0.163.0.tar.gz",
+      "sha256": "a9277bf9d19f9359a4a6f262e9c6cd98524bd6f2442950a8dce615fbe062f98e"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1716,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/qa_check_archive.py",
+      "sha256": "cf4f70605de0dd8399450a59040ba664aa0e50e1393d6dce81b20ee70db35154"
+    }
+  ],
+  "inventory_sha256": "bd1190961a9d76bca8e406333b2e26c178f13df579c5bad4d61115b245526453",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "f3cd78e4c91b636c91a2194d6b5cc1c7e9e35bafdbbcf6b729c73d01a0d968d3",
+  "method": "material",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/qa_check_archive.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "pinned-complete-upstream-tar",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "requires_paths": [
+          "{prefix}/sources/otelcol-contrib-0.163.0.tar.gz"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "otelcol-contrib-source",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 16944016,
+        "bundled_path": null,
+        "category": [
+          "Agent and observability",
+          "Collector and policy"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "copy",
+          "handled_by": "controller-bootstrap",
+          "state": "downloaded-and-hashed"
+        },
+        "documentation": [],
+        "extract": false,
+        "id": "otelcol-contrib-source",
+        "immutable_ref": "sha256:a9277bf9d19f9359a4a6f262e9c6cd98524bd6f2442950a8dce615fbe062f98e",
+        "installed_bytes": null,
+        "kind": "url",
+        "license_class": "open",
+        "license_id": "Apache-2.0",
+        "mandatory": false,
+        "material_path": "sources/otelcol-contrib-0.163.0.tar.gz",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Versioned observability or container policy initialization artifact.",
+        "qualification_gaps": [],
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "a9277bf9d19f9359a4a6f262e9c6cd98524bd6f2442950a8dce615fbe062f98e",
+        "size_basis": "Complete payload GET with measured bytes and SHA256",
+        "source_evidence": [
+          "https://github.com/open-telemetry/opentelemetry-collector-contrib/archive/refs/tags/v0.163.0.tar.gz"
+        ],
+        "source_logical_bytes": 90310786,
+        "source_url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/archive/refs/tags/v0.163.0.tar.gz",
+        "title": "otelcol-contrib-source",
+        "upstream": "https://github.com/open-telemetry/opentelemetry-collector-contrib/archive/refs/tags/v0.163.0.tar.gz",
+        "version": "0.163.0"
+      },
+      "catalog_sha256": "fbf2528429b2dfb628355779a2ca5d052a0fbdd151a67b32f1b4387b9e18998f"
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "copy",
+      "handled_by": "controller-bootstrap",
+      "state": "downloaded-and-hashed"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 16944016,
+        "extract": false,
+        "id": "otelcol-contrib-source",
+        "material_path": "sources/otelcol-contrib-0.163.0.tar.gz",
+        "sha256": "a9277bf9d19f9359a4a6f262e9c6cd98524bd6f2442950a8dce615fbe062f98e",
+        "strip_root": true,
+        "url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/archive/refs/tags/v0.163.0.tar.gz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "debian",
+      "distribution_version": "13",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/sources/otelcol-contrib-0.163.0.tar.gz",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution."
+      ],
+      "summary": "Versioned observability or container policy initialization artifact."
+    },
+    "version": "0.163.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "host_target": {
+      "arch": "x86_64",
+      "distribution": "debian",
+      "distribution_version": "13",
+      "os": "linux"
+    },
+    "not_verified": [
+      "Go module dependency closure",
+      "Go build",
+      "native instrumentation",
+      "original Ubuntu target"
+    ],
+    "original_check_declarations": "empty; new host QA added in cloned spec",
+    "original_id": "otelcol-contrib-source",
+    "original_lock": {
+      "bytes": 16944016,
+      "extract": false,
+      "id": "otelcol-contrib-source",
+      "material_path": "sources/otelcol-contrib-0.163.0.tar.gz",
+      "sha256": "a9277bf9d19f9359a4a6f262e9c6cd98524bd6f2442950a8dce615fbe062f98e",
+      "strip_root": true,
+      "url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/archive/refs/tags/v0.163.0.tar.gz"
+    },
+    "original_target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "scope": "host_qa_only"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
