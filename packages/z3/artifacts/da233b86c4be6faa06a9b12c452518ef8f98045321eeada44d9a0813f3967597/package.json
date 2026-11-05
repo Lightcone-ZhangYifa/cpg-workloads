@@ -1,0 +1,262 @@
+{
+  "build": "4",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--case",
+        "api"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "z3-api",
+      "kind": "functional",
+      "requires_commands": [
+        "/usr/bin/python3",
+        "/usr/bin/g++"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--case",
+        "cli"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "z3-cli",
+      "kind": "functional",
+      "requires_commands": [
+        "/usr/bin/python3",
+        "/usr/bin/g++"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "apt.cmake",
+      "apt.ninja-build"
+    ],
+    "run": [],
+    "system": [
+      "apt.g++",
+      "apt.python3"
+    ]
+  },
+  "id": "z3",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 7876101,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Correctness",
+        "SMT solvers"
+      ],
+      "container_strategy": "Install the solver and development library in a dedicated dev prefix; match the loaded libz3 hash to the qualification receipt.",
+      "dependencies": [
+        "apt.cmake",
+        "apt.g++",
+        "apt.ninja-build",
+        "apt.python3"
+      ],
+      "deployment": {
+        "adapter": "cmake",
+        "build_argv": [
+          "cmake",
+          "--build",
+          "{build}",
+          "--parallel",
+          "{jobs}"
+        ],
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_INSTALL_PREFIX={prefix}"
+        ],
+        "install_argv": [
+          "cmake",
+          "--install",
+          "{build}"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{prefix}/bin/z3",
+          "-version"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "python3",
+          "g++"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/Z3Prover/z3"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/z3.measurement.json",
+        "workspace-evidence/resources-v050/open-research/z3.refs.json"
+      ],
+      "extract": true,
+      "id": "z3",
+      "immutable_ref": "ac9156f97cb44e56472e1c841f7a2beb1e976b24",
+      "kind": "source_archive",
+      "legacy_source_id": "z3",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/z3",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Bit-vector, floating-point, array and arithmetic reasoning for validators, bounded verification and superoptimization.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Solver regression tests and known SAT/UNSAT controls are required after building this exact version."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "33558971c286653d47b03f97f9f973d0350629c827cacda2583608ba14d74ea6",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/Z3Prover/z3",
+        "https://codeload.github.com/Z3Prover/z3/tar.gz/ac9156f97cb44e56472e1c841f7a2beb1e976b24",
+        "https://github.com/Z3Prover/z3/commit/ac9156f97cb44e56472e1c841f7a2beb1e976b24"
+      ],
+      "source_logical_bytes": 36745875,
+      "source_url": "https://codeload.github.com/Z3Prover/z3/tar.gz/ac9156f97cb44e56472e1c841f7a2beb1e976b24",
+      "title": "Z3 SMT solver",
+      "upstream": "https://github.com/Z3Prover/z3",
+      "version": "z3-5.3.1"
+    },
+    "catalog_sha256": "a387d69462f3da5cf43229a94eb5004aad7484087b3a90954eb62f6ba4007858"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "cmake",
+    "commands": [
+      [
+        "/usr/bin/python3",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "qualified": false,
+    "required_installed_paths": [
+      "{prefix}/bin/z3",
+      "{prefix}/lib/libz3.so",
+      "{prefix}/include/z3++.h",
+      "{prefix}/lib/cmake/z3/Z3Config.cmake",
+      "{prefix}/share/compiler-playground/z3/profile.json"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "python3",
+      "g++"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 7876101,
+      "extract": true,
+      "id": "z3",
+      "material_path": "sources/z3",
+      "sha256": "33558971c286653d47b03f97f9f973d0350629c827cacda2583608ba14d74ea6",
+      "strip_root": true,
+      "url": "https://codeload.github.com/Z3Prover/z3/tar.gz/ac9156f97cb44e56472e1c841f7a2beb1e976b24"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/Z3Prover/z3"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages check z3 --kind functional",
+        "description": "Run API and SMT-LIB known-answer checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Solver",
+        "path": "{prefix}/bin/z3",
+        "purpose": "Independently installed SMT-LIB CLI."
+      },
+      {
+        "label": "C/C++ API",
+        "path": "{prefix}/include",
+        "purpose": "Public API headers; link the matching lib/libz3.so or z3::libz3 CMake target."
+      },
+      {
+        "label": "Original source",
+        "path": "{prefix}/share/z3/source",
+        "purpose": "Complete unchanged original tree including all tests and license."
+      },
+      {
+        "label": "Qualification profile",
+        "path": "{prefix}/share/compiler-playground/z3/profile.json",
+        "purpose": "Exact build flags, named executed upstream groups and scope exclusions."
+      }
+    ],
+    "notes": [
+      "This profile uses Debug assertions with -O0 -g0 and generic x86-64; compiler performance and optimized solver speed are outside qualification.",
+      "CMake and Ninja are build-only dependencies; private fixed deb bindings do not claim deployment of the full APT dependency closure.",
+      "Installed checks compile a fresh C++ API consumer and require the declared g++ and Python system versions.",
+      "Binary relocation is qualified on Ubuntu 24.04 x86_64 with the observed runtime ABI.",
+      "Complete upstream unit-test matrix and external z3test regressions",
+      "Static library and language bindings",
+      "Optimized Release performance, solver benchmark scores, cross-platform or cross-ABI deployment"
+    ],
+    "summary": "Build and independently deploy the immutable Z3 5.3.1 shared library and CLI with assertion-enabled source regression checks."
+  },
+  "version": "z3-5.3.1"
+}
