@@ -199,7 +199,7 @@ def index_publication(output, tag):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(receipt)
         release.merge_manifest()
-        git("add", "--", path.relative_to(release.ROOT).as_posix(), "manifest.json")
+        git("add", "--all", "--", path.relative_to(release.ROOT).as_posix(), "manifest.json", "profiles")
         if git("diff", "--cached", "--quiet", check=False).returncode == 0:
             return git("rev-parse", "HEAD").stdout.decode().strip()
         git("commit", "-m", "Index statically reviewed delivery " + tag)
@@ -219,7 +219,7 @@ def import_and_publish(archive, item, scratch):
     extracted.mkdir()
     files, admitted = [], []
     existing_rows, _ = release.published_rows()
-    existing_hashes = {row["sha256"] for row in existing_rows.values()}
+    existing_hashes = {row["sha256"] for row in [*existing_rows.values(), *release.published_variants(), *release.published_recipes()]}
     for number, (path, member) in enumerate(prepared_members(archive, item, extracted), 1):
         origin = {"archive": item["file_name"], "sha256": item["sha256"], "bytes": item["bytes"],
                   "member": member.get("member")}
@@ -249,6 +249,7 @@ def import_and_publish(archive, item, scratch):
         if "canonical_primary_index" in member:
             record["index_role"] = "canonical" if member["canonical_primary_index"] else "dependency-variant"
             record["origin_profile"] = member.get("origin_role", {})
+            record["dependency_profiles"] = member.get("original_dependency_profiles", [])
         record_path = "catalog/artifacts/" + checksum + ".json"
         import_archives.write_json(release.ROOT / record_path, record)
         files.append(record_path)

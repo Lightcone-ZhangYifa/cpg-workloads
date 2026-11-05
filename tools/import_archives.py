@@ -303,7 +303,7 @@ def import_package(path, root, origin, *, attempt_build=False, jobs=2, source_ov
             if previous.get(key) != record[key]:
                 raise ValueError("Existing artifact record differs from verified input: " + key)
         for key in ("build_check", "functional", "qualification", "failure", "blocker", "previous_attempts",
-                    "reproduced_sha256", "origins", "review_policy", "static_review"):
+                    "reproduced_sha256", "origins", "review_policy", "static_review", "exact_git_tree_review"):
             if key in previous:
                 record[key] = previous[key]
         if origin not in record["origins"]:

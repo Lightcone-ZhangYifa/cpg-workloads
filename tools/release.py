@@ -493,6 +493,7 @@ def checked_record(checksum):
     if problems:
         raise ValueError("; ".join(problems))
     verify_evidence(record, ROOT / safe_relative(record["template"]))
+    checked_variant_origin(record)
     if manifest["method"] == "material" and record.get("review_policy") != "static-trust-v1":
         verify_material(record, manifest, ROOT / safe_relative(record["template"]))
     elif manifest["method"] == "binary" and record.get("review_policy") != "static-trust-v1":
@@ -526,6 +527,34 @@ def row_mirror_path(row):
     return prefix + "/sha256/" + row["sha256"] + suffix
 
 
+def dependency_variant(row):
+    role = row.get("index_role", "canonical")
+    if role not in {"canonical", "dependency-variant"}:
+        raise ValueError("Unknown package index role")
+    if role == "dependency-variant" and row["method"] == "online-recipe":
+        raise ValueError("Online preparation recipes are separate from package dependency profiles")
+    return role == "dependency-variant"
+
+
+def publication_key(row):
+    return identity(row) + (":" + row["sha256"] if dependency_variant(row) else "")
+
+
+def checked_variant_origin(record):
+    if not dependency_variant(record):
+        return
+    catalog = load_json(ROOT / "catalog/dependency-variants.json")
+    matches = [row for row in catalog["artifacts"] if row["sha256"] == record["sha256"]]
+    if len(matches) != 1:
+        raise ValueError("Dependency variant lacks its original explicit source context")
+    source = matches[0]
+    if any(record.get(key) != source[key] for key in (
+            "id", "version", "build", "method", "target", "sha256", "bytes", "manifest_sha256")):
+        raise ValueError("Dependency variant differs from the frozen original context")
+    if record.get("dependency_profiles") != source["original_profiles"]:
+        raise ValueError("Dependency variant lost its original profile membership")
+
+
 def check_publication_receipt(value, tag):
     """Bind an index receipt to the exact manifest and assets verified remotely."""
     validate_tag(tag)
@@ -538,12 +567,15 @@ def check_publication_receipt(value, tag):
             or type(info.get("release_id")) is not int or info["release_id"] <= 0
             or not isinstance(info.get("published_at"), str) or not info["published_at"]):
         raise ValueError("Unverified or mismatched publication receipt: " + tag)
-    packages, recipes, assets = value.get("packages"), value.get("online_recipes", []), info.get("verified_assets")
-    if (not isinstance(packages, list) or not isinstance(recipes, list)
-            or not 1 <= len(packages) + len(recipes) <= 950 or not isinstance(assets, dict)):
+    packages, recipes, variants = value.get("packages"), value.get("online_recipes", []), value.get("dependency_variants", [])
+    assets = info.get("verified_assets")
+    if (not isinstance(packages, list) or not isinstance(recipes, list) or not isinstance(variants, list)
+            or not 1 <= len(packages) + len(recipes) + len(variants) <= 950 or not isinstance(assets, dict)):
         raise ValueError("A publication receipt needs its package rows and verified assets")
     names, identities = set(), set()
-    for row in packages + recipes:
+    for row in packages + recipes + variants:
+        if dependency_variant(row) != (row in variants):
+            raise ValueError("Dependency variants must remain outside the canonical package list")
         if (row["method"] == "online-recipe") != (row in recipes):
             raise ValueError("Recipe and package rows must use their respective manifest lists")
         checksum, size = row.get("sha256"), row.get("bytes")
@@ -551,7 +583,7 @@ def check_publication_receipt(value, tag):
                 or type(size) is not int or size <= 0):
             raise ValueError("Published package hash or size is invalid")
         name = row_asset_name(row)
-        key = identity(row)
+        key = publication_key(row)
         if name in names or key in identities:
             raise ValueError("Duplicate package identity in publication receipt")
         names.add(name)
@@ -792,13 +824,17 @@ def repository_row(record, tag):
         qualification.update(review_policy=record["review_policy"], static_review=record["static_review"])
     if record.get("qualification_mode") == "trusted_delivery_static_review":
         qualification.update(qualification_mode=record["qualification_mode"], static_review=record["static_review"])
-    return {**{key: spec[key] for key in ("id", "version", "build", "target")},
+    row = {**{key: spec[key] for key in ("id", "version", "build", "target")},
             "method": manifest["method"], "sha256": record["sha256"], "bytes": record["bytes"],
             "manifest_sha256": manifest["manifest_sha256"], "dependencies": dependencies,
             "path": "packages/sha256/" + record["sha256"] + ".cpgpkg.tar.gz",
             "download_url": f"https://github.com/{REPOSITORY}/releases/download/{tag}/{record['asset_name']}",
             "qualification": qualification,
             "template": record["template"]}
+    if dependency_variant(record):
+        row["index_role"] = "dependency-variant"
+        row["dependency_profiles"] = record["dependency_profiles"]
+    return row
 
 
 def plan_software(prefix, batch_size):
@@ -866,27 +902,32 @@ def build_plan(tag, output, *, network, source_commit=None):
     if output.resolve().is_relative_to(ROOT.resolve()) or output.is_symlink():
         raise ValueError("Build output must be an ordinary directory outside the source checkout")
     plan = load_plan(tag)
-    rows, recipes, assets = [], [], []
+    rows, recipes, variants, assets = [], [], [], []
     published, _ = published_rows()
     identities = {key: row["sha256"] for key, row in published.items()}
     records = [checked_record(checksum) for checksum in plan["artifacts"]]
     for record in records:
+        if dependency_variant(record):
+            continue
         key = identity(record)
         if key in identities and identities[key] != record["sha256"]:
             raise ValueError("Conflicting immutable package identity in publication plan")
         identities[key] = record["sha256"]
-    if len({identity(record) for record in records}) != len(records):
+    if len({publication_key(record) for record in records}) != len(records):
         raise ValueError("Duplicate package identity in publication plan")
     for record in records:
         destination = rebuild(record, output, output / ".source-cache", network=network)
         assets.append(destination)
-        (recipes if record["method"] == "online-recipe" else rows).append(repository_row(record, tag))
+        destination_rows = recipes if record["method"] == "online-recipe" else variants if dependency_variant(record) else rows
+        destination_rows.append(repository_row(record, tag))
     manifest = {"schema_version": 1, "kind": "compiler_playground_package_repository", "packages": rows,
                 "release": {"tag": tag, "repository": REPOSITORY,
                             "source_commit": source_commit or os.environ.get("GITHUB_SHA"),
                             "scope": "historical workload deliveries"}}
     if recipes:
         manifest["online_recipes"] = recipes
+    if variants:
+        manifest["dependency_variants"] = variants
     write_json(output / "manifest.json", manifest)
     assets.append(output / "manifest.json")
     (output / "SHA256SUMS").write_text("".join(f"{sha256(path)}  {path.name}\n" for path in sorted(assets)))
@@ -981,6 +1022,8 @@ def verify_publication_source(commit, main, tag, *, checkout_commit=None):
         record = checked_record(checksum)
         records.append(record)
         paths.extend(("catalog/artifacts/" + checksum + ".json", record["template"]))
+    if any(dependency_variant(record) for record in records):
+        paths.append("catalog/dependency-variants.json")
     head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, check=True,
                           capture_output=True, text=True).stdout.strip()
     dirty = subprocess.run(["git", "status", "--porcelain", "--untracked-files=all", "--",
@@ -1013,6 +1056,8 @@ def verify_publication_source(commit, main, tag, *, checkout_commit=None):
         receipts.append((PurePosixPath(name).stem, json.loads(raw)))
     published, _ = published_rows(receipts)
     for record in records:
+        if dependency_variant(record):
+            continue
         previous = published.get(identity(record))
         if previous is not None and previous["sha256"] != record["sha256"]:
             raise ValueError("Current main already published different bytes for this package identity")
@@ -1118,6 +1163,20 @@ def published_recipes():
     return sorted(rows.values(), key=lambda row: (row["id"], row["version"], row["build"], row["sha256"]))
 
 
+def published_variants():
+    rows = {}
+    for path in sorted((ROOT / "catalog/releases").glob("*.json")):
+        value = load_json(path)
+        check_publication_receipt(value, path.stem)
+        for row in value.get("dependency_variants", []):
+            previous = rows.get(row["sha256"])
+            if previous is not None and {k: v for k, v in previous.items() if k != "download_url"} != {
+                    k: v for k, v in row.items() if k != "download_url"}:
+                raise ValueError("Conflicting published dependency variant metadata")
+            rows.setdefault(row["sha256"], row)
+    return sorted(rows.values(), key=lambda row: (row["id"], row["version"], row["build"], row["method"], row["sha256"]))
+
+
 def merge_manifest():
     rows, releases = published_rows()
     previous = load_json(ROOT / "manifest.json")
@@ -1127,10 +1186,19 @@ def merge_manifest():
              "repository": "https://github.com/" + REPOSITORY,
              "packages": sorted(rows.values(), key=lambda row: (row["id"], row["version"], row["build"], row["method"], row["sha256"])),
              "releases": releases, "online_recipes": published_recipes(),
+             "dependency_variants": published_variants(),
              "policy": {**previous.get("policy", {}),
                         "git": "Unpacked definitions, build recipes, tests, provenance and manifests only",
                         "release": "Verified immutable artifacts; no silent fallback to untested variants",
                         "historical_resource_denominator": 1862, "scope": "individual software package publication"}}
+    if (ROOT / "catalog/dependency-profiles/index.json").is_file():
+        from dependency_profiles import build_profiles
+        value["dependency_profiles"] = build_profiles(
+            value["packages"] + value["dependency_variants"],
+            ROOT / "catalog/dependency-profiles", ROOT / "profiles")
+        value["policy"]["dependency_selection"] = (
+            "The root package list is canonical discovery. Select a complete profile manifest "
+            "for frozen dependencies; profile variants are never merged into the default identity resolver.")
     write_json(ROOT / "manifest.json", value)
     return value
 

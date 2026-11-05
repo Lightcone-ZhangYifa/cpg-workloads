@@ -10,7 +10,7 @@ from urllib.parse import urlparse
 
 from import_archives import safe_relative
 from release import (ROOT, artifact_name, digest, load_json, load_manifest, publication_errors,
-                     published_rows, published_recipes, row_asset_name, sha256,
+                     published_rows, published_recipes, published_variants, checked_variant_origin, row_asset_name, sha256,
                      verify_binary, verify_evidence, verify_material)
 
 
@@ -76,6 +76,7 @@ def validate(root=ROOT):
                     if problems:
                         raise ValueError("; ".join(problems))
                     verify_evidence(row, template)
+                    checked_variant_origin(row)
                     if row["method"] == "material" and row.get("review_policy") != "static-trust-v1":
                         verify_material(row, manifest, template)
                     elif row["method"] == "binary" and row.get("review_policy") != "static-trust-v1":
@@ -133,6 +134,21 @@ def validate(root=ROOT):
         errors.append("Root manifest release summaries differ from verified receipts")
     if manifest.get("online_recipes", []) != published_recipes():
         errors.append("Root online recipes differ from verified publication receipts")
+    variants = published_variants()
+    if manifest.get("dependency_variants", []) != variants:
+        errors.append("Root dependency variants differ from verified publication receipts")
+    if "dependency_profiles" in manifest:
+        from dependency_profiles import build_profiles
+        import tempfile
+        with tempfile.TemporaryDirectory(prefix="cpg-profile-validation-") as folder:
+            expected_profiles = build_profiles(list(verified.values()) + variants,
+                                               root / "catalog/dependency-profiles", Path(folder))
+            if manifest["dependency_profiles"] != expected_profiles:
+                errors.append("Dependency profile availability differs from verified public artifacts")
+            for profile in expected_profiles["ready_profiles"]:
+                path = root / safe_relative(profile["path"])
+                if path.is_symlink() or not path.is_file() or path.stat().st_size != profile["bytes"] or sha256(path) != profile["sha256"]:
+                    errors.append("Generated dependency profile differs from its complete closure: " + profile["id"])
     identities = set()
     for row in manifest.get("packages", []):
         key = digest({name: row[name] for name in ("id", "version", "build", "method", "target")})

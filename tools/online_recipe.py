@@ -131,7 +131,7 @@ def _validate_spec_shape(spec):
     return spec
 
 
-def _validate_contents(contents):
+def _validate_contents(contents, members):
     if 'online.json' not in contents:
         _require({'package.json', 'run.py'} <= set(contents), 'Authored online recipe lacks its package or entry point')
         spec = _validate_spec_shape(_json(contents['package.json']))
@@ -149,11 +149,26 @@ def _validate_contents(contents):
         return {'kind':'cpg_authored_online_recipe', 'resource_id':spec['id'],
             'embedded_payload_bytes':0, 'package_definition_sha256':_digest(spec),
             'original_source_locks':spec['sources']}, spec
-    _require({'online.json', 'offline-manifest.json', 'run.py'} <= set(contents),
-        'Modern recipe lacks its descriptor, offline manifest, or entry point')
+    _require({'online.json', 'offline-manifest.json'} <= set(contents),
+        'Modern recipe lacks its descriptor or offline manifest')
     descriptor = _json(contents['online.json'])
     _require(descriptor.get('kind') in FORMATS and descriptor.get('embedded_payload_bytes') == 0,
         'Unsupported modern online recipe contract')
+    # Both delivered contracts are standalone preparation scripts. Earlier
+    # material recipes name recipe/prepare.py explicitly instead of run.py;
+    # their README and script use the same public acquire_file/pack APIs.
+    entry = descriptor.get('entrypoint')
+    if entry is None:
+        _require('run.py' in contents, 'Modern recipe has no preparation entry point')
+        entry_path = 'run.py'
+    else:
+        _require(isinstance(entry, list) and len(entry) >= 2
+            and entry[0] in {'python3', 'python'}
+            and all(isinstance(arg, str) and arg and '\0' not in arg for arg in entry),
+            'Unsupported declared preparation entry point')
+        entry_path = _relative(entry[1]).as_posix()
+        _require(entry_path.endswith('.py') and entry_path in contents,
+            'Declared preparation entry point is absent')
     offline = _json(contents['offline-manifest.json'])
     _require(offline.get('kind') == 'compiler_playground_resource_package'
         and offline.get('schema_version') == 1 and offline.get('method') in {'source', 'binary', 'material', 'wrapper'},
@@ -162,11 +177,19 @@ def _validate_contents(contents):
     _require(IDENTIFIER.fullmatch(spec['id']) and spec['id'] == descriptor['resource_id'],
         'Online and offline package identities differ')
     _require(_digest({k:v for k,v in offline.items() if k != 'manifest_sha256'})
-        == offline.get('manifest_sha256') == descriptor['offline_artifact']['manifest_sha256'],
+        == offline.get('manifest_sha256'),
         'Offline manifest identity differs from the recipe')
     artifact = descriptor['offline_artifact']
+    _require(isinstance(artifact, dict), 'Missing expected offline artifact')
+    if 'manifest_sha256' in artifact:
+        _require(artifact['manifest_sha256'] == offline['manifest_sha256'],
+            'Declared offline manifest identity differs')
+    if entry_path != 'run.py':
+        _require('package.json' in contents and _json(contents['package.json']) == spec,
+            'Declared preparation script package differs from the offline package')
     _require(_digest(offline['files']) == offline.get('inventory_sha256'), 'Offline inventory fingerprint differs')
-    _require(artifact.get('method') == offline['method'], 'Offline installation method differs')
+    if 'method' in artifact:
+        _require(artifact['method'] == offline['method'], 'Offline installation method differs')
     _require(isinstance(artifact.get('sha256'), str) and SHA.fullmatch(artifact['sha256'])
         and type(artifact.get('bytes')) is int and artifact['bytes'] > 0,
         'Missing expected offline artifact identity')
@@ -183,6 +206,26 @@ def _validate_contents(contents):
     for name, row in expected.items():
         _require(len(contents[name]) == row['bytes'] and hashlib.sha256(contents[name]).hexdigest() == row['sha256'],
             'Authored recipe file changed: ' + name)
+    headers = {row['path']:row for row in members}
+    for name, row in expected.items():
+        if 'mode' in row:
+            _require(headers[name]['mode'] == row['mode'], 'Authored recipe file mode differs: ' + name)
+    declared_directories = descriptor.get('recipe_directories', [])
+    _require(isinstance(declared_directories, list), 'Invalid recipe directory declarations')
+    directories = {}
+    for row in declared_directories:
+        name = _relative(row['path']).as_posix()
+        _require(row.get('kind') == 'directory' and row.get('mode') == 0o755
+            and name not in directories and name not in contents,
+            'Invalid or duplicate authored directory declaration')
+        _require(any(path.startswith(name + '/') for path in contents),
+            'Recipe directory has no authored contents')
+        directories[name] = row
+    actual_directories = {name:row for name,row in headers.items() if row['type'] == '5'}
+    _require(set(directories) == set(actual_directories), 'Authored directory inventory differs')
+    for name, row in actual_directories.items():
+        _require(row['bytes'] == 0 and row['mode'] == directories[name]['mode'],
+            'Authored directory mode differs: ' + name)
     original = descriptor.get('original_source_locks')
     _require(isinstance(original, list) and original, 'Missing original source declarations')
     _require(original == spec['sources'], 'Online source declarations differ from the offline package')
@@ -205,23 +248,29 @@ def _validate_contents(contents):
 def _read_archive(path):
     path = Path(path)
     _require(path.is_file() and not path.is_symlink(), 'Recipe archive is not an ordinary file')
-    contents, members, total = {}, [], 0
+    contents, members, total, names = {}, [], 0, set()
     with tarfile.open(path, 'r:gz') as archive:
         for m in archive:
             name = _relative(m.name).as_posix()
-            _require(m.isfile() and not m.issparse(), 'Online recipes contain ordinary authored files only')
-            _require(name not in contents and len(contents) < MAX_FILES, 'Duplicate or excessive recipe members')
+            _require((m.isfile() or m.isdir()) and not m.issparse(),
+                'Online recipes contain ordinary authored files and declared directories only')
+            _require(name not in names and len(names) < MAX_FILES, 'Duplicate or excessive recipe members')
+            names.add(name)
             total += m.size
             _require(0 <= m.size <= MAX_EXPANDED_BYTES and total <= MAX_EXPANDED_BYTES,
                 'Online recipe exceeds the authored-metadata size limit')
             _require(0 <= m.mode <= 0o777, 'Invalid ordinary recipe mode')
-            data = archive.extractfile(m).read(m.size + 1)
-            _require(len(data) == m.size, 'Truncated authored recipe file')
-            contents[name] = data
+            if m.isdir():
+                _require(m.size == 0 and m.mode == 0o755, 'Unsupported authored directory header')
+                data = b''
+            else:
+                data = archive.extractfile(m).read(m.size + 1)
+                _require(len(data) == m.size, 'Truncated authored recipe file')
+                contents[name] = data
             members.append({'path':name, 'bytes':m.size, 'sha256':hashlib.sha256(data).hexdigest(),
                 'mode':m.mode, 'type':m.type.decode('ascii'), 'uid':m.uid, 'gid':m.gid,
                 'uname':m.uname, 'gname':m.gname, 'mtime':m.mtime, 'pax_headers':dict(m.pax_headers)})
-    descriptor, spec = _validate_contents(contents)
+    descriptor, spec = _validate_contents(contents, members)
     return contents, members, descriptor, spec
 
 
@@ -262,7 +311,10 @@ def _import_modern_recipe(path, root, origin=None):
             for row in members:
                 target = stage / _relative(row['path'])
                 target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_bytes(contents[row['path']])
+                if row['type'] == '5':
+                    target.mkdir(exist_ok=True)
+                else:
+                    target.write_bytes(contents[row['path']])
                 target.chmod(row['mode'])
             os.replace(stage, destination)
     return record
@@ -273,15 +325,22 @@ def _verify_modern_template(template, record):
     template = _directory(template)
     _require(template.is_dir(), 'Missing online recipe template')
     rows = record['archive_members']
-    expected = {r['path']:r for r in rows}
-    _require(len(expected) == len(rows), 'Duplicate retained recipe member')
+    expected = {r['path']:r for r in rows if r['type'] != '5'}
+    directories = {r['path']:r for r in rows if r['type'] == '5'}
+    _require(len(expected) + len(directories) == len(rows) and not set(expected) & set(directories),
+        'Duplicate retained recipe member')
     contents = {}
+    seen_directories = set()
     parents = {p.as_posix() for name in expected for p in PurePosixPath(name).parents if p != PurePosixPath('.')}
     for p in template.rglob('*'):
         _require(not p.is_symlink(), 'Unpacked online recipe contains a symlink')
         relative = p.relative_to(template).as_posix()
         if p.is_dir():
-            _require(relative in parents, 'Undeclared recipe directory')
+            _require(relative in parents or relative in directories, 'Undeclared recipe directory')
+            if relative in directories:
+                _require(p.stat().st_mode & 0o7777 == directories[relative]['mode'],
+                    'Retained recipe directory mode differs')
+                seen_directories.add(relative)
             continue
         _require(p.is_file() and relative in expected, 'Undeclared online recipe file')
         row = expected[relative]
@@ -290,7 +349,8 @@ def _verify_modern_template(template, record):
             and p.stat().st_mode & 0o7777 == row['mode'], 'Retained online recipe identity differs: ' + relative)
         contents[relative] = data
     _require(set(contents) == set(expected), 'Retained online recipe files are missing')
-    descriptor, spec = _validate_contents(contents)
+    _require(seen_directories == set(directories), 'Retained authored directories are missing')
+    descriptor, spec = _validate_contents(contents, rows)
     _require(all(record.get(k) == spec[k] for k in ('id', 'version', 'target')),
         'Retained online artifact identity differs')
     _require(record.get('online_format') == descriptor['kind']
@@ -313,8 +373,11 @@ def _repack_modern(template, record, output):
                         setattr(info, key, row[key])
                     info.type = row['type'].encode('ascii')
                     info.size = row['bytes']
-                    with (template / _relative(row['path'])).open('rb') as source:
-                        archive.addfile(info, source)
+                    if row['type'] == '5':
+                        archive.addfile(info)
+                    else:
+                        with (template / _relative(row['path'])).open('rb') as source:
+                            archive.addfile(info, source)
         if output.stat().st_size != record['bytes'] or _sha(output) != record['sha256']:
             raise ValueError('Original archive envelope does not reproduce exactly; use the verified original archive pass-through')
     except BaseException:

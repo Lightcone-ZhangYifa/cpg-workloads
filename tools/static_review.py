@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import ast
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
 from urllib.parse import urlparse
 
@@ -81,6 +81,86 @@ def _inventory_is_locked(manifest):
                                for row in files)
 
 
+def _exact_git_tree_material(record, manifest):
+    """Recognize a bound static review of delivered source-tree material.
+
+    This does not supply an upstream archive checksum or authorize source builds.
+    The review is recorded only after the original delivered files have been
+    hashed and their Git tree has been reconstructed independently.
+    """
+    if record.get("method") != "material" or manifest.get("method") != "material":
+        return False
+    review = record.get("exact_git_tree_review")
+    provenance = manifest.get("provenance")
+    if not isinstance(review, dict) or not isinstance(provenance, dict):
+        return False
+    source = provenance.get("exact_git_tree_source")
+    if not isinstance(source, dict):
+        return False
+    fields = ("original_artifact_sha256", "original_manifest_sha256", "source_commit",
+              "git_tree", "payload_root", "files", "bytes")
+    if (any(not isinstance(review.get(key), str) or not _SHA256.fullmatch(review[key])
+            for key in ("artifact_sha256", "manifest_sha256"))
+            or review.get("status") != "passed"
+            or review.get("basis") != "delivered_payload_sha256_and_git_tree"
+            or review.get("artifact_sha256") != record.get("sha256")
+            or review.get("manifest_sha256") != manifest.get("manifest_sha256")
+            or any(review.get(key) != source.get(key) for key in fields)):
+        return False
+    if any(not isinstance(source.get(key), str) or not _SHA256.fullmatch(source[key])
+           for key in ("original_artifact_sha256", "original_manifest_sha256")):
+        return False
+    commit, tree = source.get("source_commit"), source.get("git_tree")
+    if (not isinstance(commit, str) or not re.fullmatch(r"[0-9a-f]{40}", commit)
+            or not isinstance(tree, str) or not re.fullmatch(r"[0-9a-f]{40}", tree)
+            or commit != provenance.get("original_fixed_commit")
+            or tree != provenance.get("reconstructed_exact_Git_root")):
+        return False
+    sources = manifest.get("package", {}).get("sources")
+    if not isinstance(sources, list) or len(sources) != 1 or not isinstance(sources[0], dict):
+        return False
+    # Only absent historical archive locks qualify. Never excuse a changed
+    # fixed checksum, an incomplete lock that purports to be exact, or a second
+    # source that this delivered Git tree does not cover.
+    if sources[0].get("sha256") is not None or sources[0].get("bytes") is not None:
+        return False
+    parsed = urlparse(sources[0].get("url") or "")
+    if (parsed.scheme != "https" or not parsed.netloc or parsed.username or parsed.password
+            or parsed.query or parsed.fragment
+            or not re.search(r"(?:^|/)" + commit + r"(?=$|[/.])", parsed.path)):
+        return False
+    prefix = source.get("payload_root")
+    if (not isinstance(prefix, str) or not prefix.startswith("payload/")
+            or "\\" in prefix or "\0" in prefix or ".." in prefix.split("/")
+            or PurePosixPath(prefix).as_posix() != prefix):
+        return False
+    rows = manifest.get("files")
+    if not isinstance(rows, list) or not _inventory_is_locked(manifest):
+        return False
+    files, total, names = 0, 0, set()
+    for row in rows:
+        if not isinstance(row, dict) or not isinstance(row.get("path"), str):
+            return False
+        name = row["path"]
+        if name in names:
+            return False
+        names.add(name)
+        if not (name == "payload" or name.startswith("payload/")):
+            continue
+        under = name.startswith(prefix + "/")
+        ancestor = name == prefix or prefix.startswith(name + "/")
+        if (row.get("kind") not in {"file", "directory"}
+                or (not under and not ancestor)):
+            return False
+        if row["kind"] == "file":
+            if not under:
+                return False
+            files += 1
+            total += row["bytes"]
+    return (type(source.get("files")) is int and source["files"] == files and files > 0
+            and type(source.get("bytes")) is int and source["bytes"] == total and total > 0)
+
+
 def static_review(record, manifest, template):
     """Return reproducible review results without changing historical runtime evidence.
 
@@ -127,6 +207,11 @@ def static_review(record, manifest, template):
         warnings.append("Delivered binary has complete payload hashes and commit-pinned HTTPS sources, "
                         "but its historical definition omits source archive byte locks. Source rebuilding "
                         "is not newly established by this static review.")
+    elif _exact_git_tree_material(record, manifest):
+        checks["source_locks"] = "reviewed_exact_git_tree_with_locked_delivered_inventory"
+        warnings.append("Delivered material is bound to its reviewed source commit, exact Git tree, "
+                        "and complete payload inventory. The historical upstream archive byte lock "
+                        "remains unresolved; this review does not qualify source archive rebuilding.")
     else:
         errors.append("Effective source locks are incomplete or changed fixed fields")
     declarations = spec.get("checks")

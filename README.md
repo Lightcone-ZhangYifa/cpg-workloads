@@ -120,3 +120,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
 ### Static migration of historical deliveries
 
 Artifacts marked `review_policy: static-trust-v1` were reviewed for structure, metadata, licensing, source locks and check definitions. Their existing execution evidence is retained; this migration does not claim a new build or test run. Each published file is verified against its original full SHA-256 and byte size. Large deliveries may be transferred directly to an ephemeral publishing runner using an encrypted, short-lived download specification; secrets and finished packages do not enter the source branch.
+
+### Exact dependency profiles
+
+Historical Python environments sometimes use different archives with the same software/version/build/method/target. Their original context and full hashes are retained in `catalog/dependency-profiles/`; build numbers and dependency pins are not rewritten. Published alternatives appear in the root `dependency_variants` list, separate from canonical software discovery.
+
+For a package with frozen dependencies, select its ready manifest under `profiles/`. Each generated manifest contains one complete, unambiguous original context or package-specific dependency closure. The root `dependency_profiles` summary reports missing hashes until all required artifacts are public; an incomplete profile is never presented as installable. Online preparation recipes remain in `online_recipes` and are not CPG installation packages.
