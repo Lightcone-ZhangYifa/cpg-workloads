@@ -1,0 +1,253 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "zlib-ng-version",
+      "kind": "version",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 30
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "zlib-ng-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "apt.build-essential"
+    ],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "zlib-ng",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 2450038,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Compression"
+      ],
+      "container_strategy": "Build tests/benchmarks in dev, pin native dispatch/compatibility mode, and preserve the exact binary dependency closure on target.",
+      "corpus_contract": {
+        "code": "Library and tests included.",
+        "inputs": "Frozen compression input corpus and level choices.",
+        "oracle": "Byte-exact decompress comparison and independent zlib reference.",
+        "split_unit": "zlib-derived implementation family, including forks."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/zlib-ng/zlib-ng"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/zlib-ng.measurement.json",
+        "workspace-evidence/resources-v050/open-research/zlib-ng.refs.json"
+      ],
+      "extract": true,
+      "id": "zlib-ng",
+      "immutable_ref": "12731092979c6d07f42da27da673a9f6c7b13586",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "Zlib",
+      "mandatory": false,
+      "material_path": "corpora/zlib-ng",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "C compression code, optimized primitives and ISA dispatch under an alternative implementation.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "ISA dispatch and assembly contribution must be reported; avoid interpreting library implementation selection as compiler-only improvement."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "a0d2a5d122c84b56a793a1553a9c3327fb2eb7469bf7a86b79e3c7be5d92e8d6",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/zlib-ng/zlib-ng",
+        "https://codeload.github.com/zlib-ng/zlib-ng/tar.gz/12731092979c6d07f42da27da673a9f6c7b13586",
+        "https://github.com/zlib-ng/zlib-ng/commit/12731092979c6d07f42da27da673a9f6c7b13586"
+      ],
+      "source_logical_bytes": 7375350,
+      "source_url": "https://codeload.github.com/zlib-ng/zlib-ng/tar.gz/12731092979c6d07f42da27da673a9f6c7b13586",
+      "title": "zlib-ng compression workload",
+      "upstream": "https://github.com/zlib-ng/zlib-ng",
+      "version": "2.3.3"
+    },
+    "catalog_sha256": "795e12e6f359a8f36119b9c153628d230ac8a42890baf2bccb245d3130e7e710"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "configure-make",
+    "install_argv": [
+      "/usr/bin/python3",
+      "{recipe}/build.py",
+      "--source",
+      "{source}",
+      "--build",
+      "{build}",
+      "--prefix",
+      "{prefix}",
+      "--jobs",
+      "{jobs}"
+    ],
+    "required_installed_paths": [
+      "{prefix}/lib/libz-ng.so.2.3.3",
+      "{prefix}/lib/libz-ng.a",
+      "{prefix}/include/zlib-ng.h",
+      "{prefix}/include/zconf-ng.h",
+      "{prefix}/include/zlib_name_mangling-ng.h",
+      "{prefix}/lib/pkgconfig/zlib-ng.pc",
+      "{prefix}/bin/zlib-ng-minigzip",
+      "{prefix}/bin/cpg-zlib-ng-api-probe",
+      "{prefix}/bin/cpg-zlib-ng-api-probe-static",
+      "{prefix}/share/compiler-playground/zlib-ng/LICENSE.md"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2450038,
+      "extract": true,
+      "id": "zlib-ng",
+      "material_path": "corpora/zlib-ng",
+      "sha256": "a0d2a5d122c84b56a793a1553a9c3327fb2eb7469bf7a86b79e3c7be5d92e8d6",
+      "strip_root": true,
+      "url": "https://codeload.github.com/zlib-ng/zlib-ng/tar.gz/12731092979c6d07f42da27da673a9f6c7b13586"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Run cpg packages info zlib-ng and paths zlib-ng to select a version/prefix. The native ABI uses zlib-ng.h, zng_* APIs and libz-ng, so it coexists with system zlib.",
+      "Optionally add <prefix>/bin to PATH and <prefix>/lib/pkgconfig to PKG_CONFIG_PATH. Use explicit include/library paths; no global ldconfig or LD_PRELOAD is needed."
+    ],
+    "documentation": [
+      "https://github.com/zlib-ng/zlib-ng/tree/12731092979c6d07f42da27da673a9f6c7b13586",
+      "https://github.com/zlib-ng/zlib-ng/blob/12731092979c6d07f42da27da673a9f6c7b13586/README.md",
+      "https://github.com/zlib-ng/zlib-ng/blob/12731092979c6d07f42da27da673a9f6c7b13586/PORTING.md",
+      "https://github.com/zlib-ng/zlib-ng/blob/12731092979c6d07f42da27da673a9f6c7b13586/test/Makefile.in"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages info zlib-ng --json; cpg packages paths zlib-ng; cpg packages check zlib-ng --prefix <prefix>",
+        "description": "Discover and check the selected copy"
+      },
+      {
+        "command": "<prefix>/bin/zlib-ng-minigzip -6 < input.bin > input.gz; <prefix>/bin/zlib-ng-minigzip -d < input.gz > restored.bin",
+        "description": "Create and decompress gzip using the upstream utility"
+      },
+      {
+        "command": "cc program.c -I<prefix>/include -L<prefix>/lib -lz-ng -Wl,-rpath,<prefix>/lib -o program",
+        "description": "Link the native API"
+      },
+      {
+        "command": "cpg packages pack packages/zlib-ng/package.json --definition --method source --source zlib-ng=/path/to/locked-archive --recipe packages/zlib-ng/recipe --output zlib-ng.source.cpgpkg.tar.gz",
+        "description": "Pack source and recipe"
+      },
+      {
+        "command": "cpg packages pack packages/zlib-ng/material-profile.json --definition --method material --payload /path/to/verified-unpacked-source --output zlib-ng.material.cpgpkg.tar.gz",
+        "description": "Pack every original raw material file with the same ID"
+      },
+      {
+        "command": "cpg packages pack packages/zlib-ng/package.json --definition --method binary --payload <checked-prefix> --recipe packages/zlib-ng/recipe --relocatable --output zlib-ng.binary.cpgpkg.tar.gz",
+        "description": "Pack a checked same-target binary installation"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Native development libraries",
+        "path": "{prefix}/lib",
+        "purpose": "libz-ng.a and libz-ng.so.2.3.3 with relative SONAME links; not a replacement for libz.so."
+      },
+      {
+        "label": "Native C headers",
+        "path": "{prefix}/include",
+        "purpose": "zlib-ng.h, zconf-ng.h and zlib_name_mangling-ng.h."
+      },
+      {
+        "label": "pkg-config",
+        "path": "{prefix}/lib/pkgconfig/zlib-ng.pc",
+        "purpose": "pcfiledir-relative native ABI development metadata."
+      },
+      {
+        "label": "Utilities and probes",
+        "path": "{prefix}/bin",
+        "purpose": "zlib-ng-minigzip is the installed upstream static utility. cpg-zlib-ng-api-probe and its -static variant verify both library forms."
+      },
+      {
+        "label": "Usage, actual build configuration, checks and licenses",
+        "path": "{prefix}/share/compiler-playground/zlib-ng",
+        "purpose": "Upstream README/PORTING/LICENSE, configure.log, original example/minigzip/infcover sources, checker and C API probe."
+      },
+      {
+        "label": "Complete original source after source installation",
+        "path": "{assets}/corpora/zlib-ng",
+        "purpose": "Every upstream source/test/reference, including zlib-compat build support. Binary-only installation does not populate this path."
+      },
+      {
+        "label": "Raw material profile",
+        "path": "{prefix}",
+        "purpose": "With material-profile.json this is the full unbuilt upstream tree, not the bin/lib installation."
+      }
+    ],
+    "notes": [
+      "Two maintained definitions use the existing ID: package.json for source/binary and original material-profile.json for the complete raw tree. Select explicitly with pack --definition. Source lock and metadata.catalog are unchanged.",
+      "Native Linux x86_64 Ubuntu24.04 profile: upstream configure defaults, optimization/ISA dispatch enabled, -O2 -g0 and no -march=native added. Native and zlib-compatible ABIs are different profiles; this profile chooses upstream default native ABI. The original source preserves all compat support for developer-selected builds.",
+      "Exact prerequisites: apt.build-essential=12.10ubuntu1 for building/tests; apt.python3=3.12.3-0ubuntu2.1 for version/functional checks and independent gzip reference. No APT transaction or system-loader configuration change is performed.",
+      "Build runs official make test for static/shared examples and upstream regression cases, then builds/runs infcover directly. No gcov percentage is claimed. The larger CMake/GoogleTest/sanitizer/cross-platform matrix remains a separate qualification.",
+      "Installed checks execute native shared and static APIs against fixed checksum vectors, 15 length/level cases per linkage, malformed/truncated streams, wrong-dictionary rejection, dictionary round trip, two-chunk streaming and gzFile IO. Python gzip/zlib cross-checks actual gzip output in both directions at levels1/6/9; damaged CRC trailers must be rejected.",
+      "Relocation is limited to two actual independent prefixes on the declared target, with relative library links, RUNPATH and pkg-config. Compiler/dispatch effects are not benchmark results. Material installs verify complete inventory while executable checks remain not_run."
+    ],
+    "summary": "zlib-ng 2.3.3 native API with independently checked shared/static libraries, gzip file APIs and upstream minigzip; full original source/test material remains available under the same resource ID."
+  },
+  "version": "2.3.3"
+}
