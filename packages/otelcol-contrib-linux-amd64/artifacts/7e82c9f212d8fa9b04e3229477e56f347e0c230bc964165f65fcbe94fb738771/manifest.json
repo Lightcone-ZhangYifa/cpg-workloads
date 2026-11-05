@@ -1,0 +1,259 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 3689,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "0c2072b5dfa3b42bed9d0441c930e1424c0487637ff58be46ff113525a8684f4"
+    },
+    {
+      "bytes": 14515,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "0850a04c96199d40380056c5dc08c8f1593119136b5c5be4346629aa96dcdb12"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 115292512,
+      "kind": "file",
+      "mode": 384,
+      "path": "sources/e93e6fd2b59427420a9e8eba5b9e78260df6d21e95283a7298084d2aa07f9df7",
+      "sha256": "e93e6fd2b59427420a9e8eba5b9e78260df6d21e95283a7298084d2aa07f9df7"
+    }
+  ],
+  "inventory_sha256": "d1f8fe0ce7d8fd180ab2310743fe2e98dde3676466e8a370292cd920428c6b9a",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "e483fed031cd37b5bd3d7672e98c33cf4889a52d176984810659ac6a8cc3bb17",
+  "method": "source",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--expected-version",
+          "{version}",
+          "--case",
+          "version"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "version",
+        "kind": "version",
+        "requires_commands": [
+          "python3"
+        ],
+        "requires_paths": [
+          "{prefix}/bin/otelcol-contrib",
+          "{prefix}/share/otelcol-contrib/profile.json"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--expected-version",
+          "{version}",
+          "--case",
+          "collector"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "collector",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "requires_paths": [
+          "{prefix}/bin/otelcol-contrib",
+          "{prefix}/share/otelcol-contrib/profile.json"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "otelcol-contrib-linux-amd64",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 115292512,
+        "bundled_path": null,
+        "category": [
+          "Agent and observability",
+          "Collector and policy"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "copy",
+          "handled_by": "controller-bootstrap",
+          "state": "downloaded-and-hashed"
+        },
+        "documentation": [],
+        "extract": false,
+        "id": "otelcol-contrib-linux-amd64",
+        "immutable_ref": "sha256:e93e6fd2b59427420a9e8eba5b9e78260df6d21e95283a7298084d2aa07f9df7",
+        "installed_bytes": null,
+        "kind": "url",
+        "license_class": "open",
+        "license_id": "Apache-2.0",
+        "mandatory": false,
+        "material_path": "observability/otelcol-contrib_0.163.1_linux_amd64.tar.gz",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Versioned observability or container policy initialization artifact.",
+        "qualification_gaps": [],
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "e93e6fd2b59427420a9e8eba5b9e78260df6d21e95283a7298084d2aa07f9df7",
+        "size_basis": "Complete payload GET with measured bytes and SHA256",
+        "source_evidence": [
+          "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.163.1/otelcol-contrib_0.163.1_linux_amd64.tar.gz"
+        ],
+        "source_logical_bytes": 419161702,
+        "source_url": "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.163.1/otelcol-contrib_0.163.1_linux_amd64.tar.gz",
+        "title": "otelcol-contrib-linux-amd64",
+        "upstream": "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.163.1/otelcol-contrib_0.163.1_linux_amd64.tar.gz",
+        "version": "0.163.1"
+      },
+      "catalog_sha256": "4f451235819e9e300358d3d5eb5113f142f1994e9729c8f3a6b0486f0f76622d"
+    },
+    "provider": "binary",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/build.py",
+          "--source",
+          "{source}",
+          "--prefix",
+          "{prefix}"
+        ]
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/otelcol-contrib",
+        "{prefix}/share/otelcol-contrib/profile.json",
+        "{prefix}/share/compiler-playground/otelcol-contrib-linux-amd64/check.py"
+      ],
+      "runtime_environment": {
+        "GOMAXPROCS": "2",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 115292512,
+        "extract": false,
+        "id": "otelcol-contrib-linux-amd64",
+        "material_path": "observability/otelcol-contrib_0.163.1_linux_amd64.tar.gz",
+        "sha256": "e93e6fd2b59427420a9e8eba5b9e78260df6d21e95283a7298084d2aa07f9df7",
+        "strip_root": true,
+        "url": "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.163.1/otelcol-contrib_0.163.1_linux_amd64.tar.gz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.163.1/otelcol-contrib_0.163.1_linux_amd64.tar.gz"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/otelcol-contrib --version",
+          "description": "Report the installed release version."
+        },
+        {
+          "command": "{prefix}/bin/otelcol-contrib validate --config=collector.yaml",
+          "description": "Validate an explicitly prepared collector configuration without starting it."
+        },
+        {
+          "command": "{prefix}/bin/otelcol-contrib --config=collector.yaml",
+          "description": "Run the collector in the foreground with the selected configuration."
+        },
+        {
+          "command": "python3 {prefix}/share/compiler-playground/otelcol-contrib-linux-amd64/check.py --prefix {prefix} --build /tmp/cpg-otel-check --case collector",
+          "description": "Exercise known log/span/integer-gauge controls through a temporary loopback receiver and local file exporters; reject invalid input and reap the child."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Collector executable",
+          "path": "{prefix}/bin/otelcol-contrib",
+          "purpose": "Relative local link into the unchanged release files."
+        },
+        {
+          "label": "Complete upstream binary release",
+          "path": "{prefix}/share/otelcol-contrib/release",
+          "purpose": "Every member of the exact original release, including legal notices."
+        },
+        {
+          "label": "Release identity",
+          "path": "{prefix}/share/otelcol-contrib/profile.json",
+          "purpose": "Original archive and extracted file SHA-256 values and precise qualification scope."
+        }
+      ],
+      "notes": [
+        "The source-input artifact installs a pinned upstream precompiled release; it does not rebuild Go source.",
+        "The tested native profile covers loopback OTLP/HTTP logs, spans and an integer gauge, local file export, malformed configuration and malformed JSON, graceful shutdown, independent relocated copies and removal.",
+        "No production exporter, external service, OCI execution, authentication, TLS deployment, throughput or official benchmark score is inferred.",
+        "Original controller-bootstrap tools and their release-metadata admission remain available; this package profile is an additional explicit installation route."
+      ],
+      "summary": "Run the exact OpenTelemetry Collector Contrib Linux amd64 release with local raw logs, spans and metrics."
+    },
+    "version": "0.163.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "input_origin": "exact-original-archives",
+    "qualification": "v0.20.0"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "otelcol-contrib-linux-amd64",
+      "path": "sources/e93e6fd2b59427420a9e8eba5b9e78260df6d21e95283a7298084d2aa07f9df7"
+    }
+  ]
+}
