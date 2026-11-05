@@ -70,25 +70,19 @@ def source_locks_complete(manifest):
                and type(row.get("bytes")) is int and row["bytes"] >= 0 for row in locks)
 
 
-def qualification_errors(record, manifest):
+def qualification_errors(record, manifest, template=None):
     """One publication gate, shared by import, planning, build, and repository CI."""
+    from static_review import POLICY, common_qualification_errors, static_review
     spec, method = manifest["package"], manifest["method"]
-    errors = []
-    for field in ("id", "version", "build", "target"):
-        if record.get(field) != spec[field]:
-            errors.append("Artifact identity differs from its template: " + field)
-    if record.get("method") != method or record.get("manifest_sha256") != manifest["manifest_sha256"]:
-        errors.append("Artifact manifest identity differs")
-    if (not isinstance(record.get("sha256"), str) or not re.fullmatch(r"[0-9a-f]{64}", record["sha256"])
-            or type(record.get("bytes")) is not int or record["bytes"] <= 0):
-        errors.append("Artifact byte identity is incomplete")
-    if record.get("structure") != "passed" or record.get("build_check") != "passed":
+    errors = common_qualification_errors(record, manifest)
+    if record.get("review_policy") == POLICY:
+        if template is None:
+            if record.get("static_review", {}).get("status") != "passed":
+                errors.append("Static review has not passed")
+            return errors
+        return static_review(record, manifest, template)["errors"]
+    if record.get("build_check") != "passed":
         errors.append("Structure and build/install qualification must pass")
-    catalog = spec["metadata"].get("catalog", {})
-    if any(not catalog.get(key) for key in ("license_class", "license_id")):
-        errors.append("License metadata is incomplete")
-    if catalog.get("license_class") != "open" or catalog.get("redistributable") is False:
-        errors.append("Public redistribution is not established by the original license metadata")
     if not source_locks_complete(manifest):
         errors.append("Effective source locks are incomplete or changed fixed fields")
     apt = method == "wrapper" and spec["provider"] == "apt" and spec["recipe"].get("manager") == "apt"
@@ -269,7 +263,7 @@ def artifact_name(spec, method, checksum):
     return "cpg--" + "--".join(values) + ".cpgpkg.tar.gz"
 
 
-def import_package(path, root, origin, *, attempt_build=False, jobs=2, source_overrides=None):
+def import_package(path, root, origin, *, attempt_build=False, jobs=2, source_overrides=None, static_trust=False):
     from compiler_playground.packages import pack, verify_package
     from compiler_playground.packages.manager import PackageManager
 
@@ -303,7 +297,7 @@ def import_package(path, root, origin, *, attempt_build=False, jobs=2, source_ov
             if previous.get(key) != record[key]:
                 raise ValueError("Existing artifact record differs from verified input: " + key)
         for key in ("build_check", "functional", "qualification", "failure", "blocker", "previous_attempts",
-                    "reproduced_sha256", "origins"):
+                    "reproduced_sha256", "origins", "review_policy", "static_review"):
             if key in previous:
                 record[key] = previous[key]
         if origin not in record["origins"]:
@@ -360,7 +354,11 @@ def import_package(path, root, origin, *, attempt_build=False, jobs=2, source_ov
                     record["qualification_errors"] = qualification_errors(record, manifest)
                     write_json(previous_path, record)
                     raise
-    record["qualification_errors"] = qualification_errors(record, manifest)
+    if static_trust:
+        from static_review import POLICY, static_review
+        record["review_policy"] = POLICY
+        record["static_review"] = static_review(record, manifest, directory)
+    record["qualification_errors"] = qualification_errors(record, manifest, directory)
     record["release_eligible"] = not record["qualification_errors"]
     write_json(previous_path, record)
     return {key: record[key] for key in ("sha256", "id", "method", "structure", "build_check", "functional", "release_eligible")}
@@ -434,7 +432,7 @@ def open_outer_tar(path):
             process.stdout.close()
 
 
-def inspect_archive(path, root, scratch, *, attempt_build=False, depth=0, origin=None):
+def inspect_archive(path, root, scratch, *, attempt_build=False, depth=0, origin=None, static_trust=False):
     path, root, scratch = Path(path), Path(root), Path(scratch)
     root.mkdir(parents=True, exist_ok=True)
     scratch.mkdir(parents=True, exist_ok=True)
@@ -446,7 +444,7 @@ def inspect_archive(path, root, scratch, *, attempt_build=False, depth=0, origin
     def consume(member_path, kind, source):
         try:
             if kind == "package":
-                result = import_package(member_path, root, source, attempt_build=attempt_build)
+                result = import_package(member_path, root, source, attempt_build=attempt_build, static_trust=static_trust)
                 receipt["packages"].append(result)
             elif kind == "online":
                 receipt["online_recipes"].append(import_online(member_path, root, source))
@@ -492,7 +490,7 @@ def inspect_archive(path, root, scratch, *, attempt_build=False, depth=0, origin
                     "error": "Unsupported or invalid declared CPG archive format/schema"})
             elif depth < 3:
                 child = inspect_archive(local, root, scratch, attempt_build=attempt_build,
-                                        depth=depth + 1, origin=source)
+                                        depth=depth + 1, origin=source, static_trust=static_trust)
                 for key in ("packages", "online_recipes", "errors"):
                     receipt[key].extend(child[key])
                 for key in ("nonpackage_members", "worker_excluded"):
@@ -545,13 +543,15 @@ def main():
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--scratch", type=Path, required=True)
     parser.add_argument("--framework", type=Path)
-    parser.add_argument("--attempt-build", action="store_true")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--attempt-build", action="store_true")
+    mode.add_argument("--static-trust", action="store_true")
     args = parser.parse_args()
     if args.framework:
         sys.path.insert(0, str(args.framework.resolve() / "src"))
     if WORKER.search(args.archive.name):
         parser.error("Worker-numbered deliveries are outside this migration")
-    result = inspect_archive(args.archive, args.root, args.scratch, attempt_build=args.attempt_build)
+    result = inspect_archive(args.archive, args.root, args.scratch, attempt_build=args.attempt_build, static_trust=args.static_trust)
     print(json.dumps({"archive": result["archive"], "status": result["status"],
                       "packages": len(result["packages"]), "online_recipes": len(result["online_recipes"]),
                       "errors": len(result["errors"]), "nonpackage_members": result["nonpackage_members"]}))

@@ -1,0 +1,51 @@
+name: Publish statically reviewed deliveries
+on:
+  push:
+    branches: ['transport/secure-*']
+    paths: ['.transfer/request.json']
+permissions:
+  contents: read
+concurrency:
+  group: cpg-workloads-publication
+  queue: max
+  cancel-in-progress: false
+defaults:
+  run:
+    shell: bash
+jobs:
+  publish:
+    if: github.repository == 'Lightcone-ZhangYifa/cpg-workloads'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - name: Prepare the pinned package-format reader
+        run: |
+          gh auth setup-git
+          python - <<'PY'
+          import json, os, pathlib, re, subprocess
+          request = json.loads(pathlib.Path('.transfer/request.json').read_text())
+          commit = request['framework_commit']
+          if not isinstance(commit, str) or re.fullmatch(r'[0-9a-f]{40}', commit) is None:
+              raise ValueError('An exact framework source commit is required')
+          folder = pathlib.Path(os.environ['RUNNER_TEMP']) / 'cpg-format-reader'
+          subprocess.run(['git', 'init', str(folder)], check=True)
+          subprocess.run(['git', '-C', str(folder), 'remote', 'add', 'origin',
+                          'https://github.com/Lightcone-ZhangYifa/compiler-playground.git'], check=True)
+          subprocess.run(['git', '-C', str(folder), 'fetch', '--depth', '1', 'origin', commit], check=True)
+          subprocess.run(['git', '-C', str(folder), 'checkout', '--detach', 'FETCH_HEAD'], check=True)
+          with open(os.environ['GITHUB_ENV'], 'a') as env:
+              env.write('CPG_FRAMEWORK=' + str(folder) + '\n')
+          PY
+      - name: Receive locked deliveries, inspect static content, publish original bytes
+        run: python tools/publish_deliveries.py

@@ -18,3 +18,7 @@ same version/build/method/target may not replace already published bytes.
 For parallel contributions, add disjoint catalog receipts and package paths,
 refresh `main`, and regenerate the root manifest. Preserve work already submitted
 by other contributors. Do not force-push or rebuild historical qualification counts.
+
+## Static migration of previously delivered artifacts
+
+For an explicitly requested static migration, set `review_policy: static-trust-v1` and retain the original execution evidence. Inspect identities, package structure, licenses, source locks, and declared checks without running a build or workload. A software artifact other than an APT wrapper must declare a meaningful functional check; a material artifact may declare an integrity/read check. Record unexecuted checks honestly. Publish original bytes after full SHA-256 and size verification; keep masters in Git and products in Releases.

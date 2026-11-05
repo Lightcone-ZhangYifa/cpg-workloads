@@ -32,3 +32,7 @@
 - Treat `publish/<tag>` as an explicit publication request. Existing release tags,
   plans, and assets are immutable. Same package identity with different bytes needs
   a new build identity and a separately reviewed record.
+
+## Static migration of previously delivered artifacts
+
+For an explicitly requested static migration, set `review_policy: static-trust-v1` and retain the original execution evidence. Inspect identities, package structure, licenses, source locks, and declared checks without running a build or workload. A software artifact other than an APT wrapper must declare a meaningful functional check; a material artifact may declare an integrity/read check. Record unexecuted checks honestly. Publish original bytes after full SHA-256 and size verification; keep masters in Git and products in Releases.

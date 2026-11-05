@@ -16,6 +16,7 @@ from pathlib import Path, PurePosixPath
 import re
 import shutil
 import stat
+import shutil
 import subprocess
 import tarfile
 import tempfile
@@ -83,6 +84,8 @@ def load_manifest(template):
 
 def publication_errors(record, manifest):
     """Keep execution evidence honest; permit an explicit trusted static review."""
+    if record.get("review_policy") == "static-trust-v1":
+        return qualification_errors(record, manifest, ROOT / safe_relative(record["template"]))
     if record.get("qualification_mode") != "trusted_delivery_static_review":
         return qualification_errors(record, manifest)
     spec, errors = manifest["package"], []
@@ -236,7 +239,7 @@ def checked_record(checksum):
     if problems:
         raise ValueError("; ".join(problems))
     verify_evidence(record, ROOT / safe_relative(record["template"]))
-    if manifest["method"] == "material":
+    if manifest["method"] == "material" and record.get("review_policy") != "static-trust-v1":
         verify_material(record, manifest, ROOT / safe_relative(record["template"]))
     if record.get("asset_name") != artifact_name(manifest["package"], manifest["method"], checksum):
         raise ValueError("Noncanonical artifact filename")
@@ -369,6 +372,25 @@ def rebuild(record, output, cache, *, network=False):
     template = ROOT / safe_relative(record["template"])
     manifest = load_manifest(template)
     spec, method = manifest["package"], manifest["method"]
+    delivered = os.environ.get("CPG_DELIVERED_ARTIFACTS")
+    if delivered and record.get("review_policy") == "static-trust-v1":
+        # Migration publishes exactly the delivered bytes; no workload recipe runs.
+        problems = publication_errors(record, manifest)
+        if record.get("release_eligible") is not True or problems:
+            raise ValueError("Unqualified delivered artifact: " + "; ".join(problems))
+        source = Path(delivered) / record["sha256"]
+        if (source.is_symlink() or not source.is_file() or source.stat().st_size != record["bytes"]
+                or sha256(source) != record["sha256"]):
+            raise ValueError("Delivered artifact differs from its complete SHA-256/size lock")
+        output.mkdir(parents=True, exist_ok=True)
+        destination = output / record["asset_name"]
+        if destination.exists() or destination.is_symlink():
+            if (destination.is_symlink() or destination.stat().st_size != record["bytes"]
+                    or sha256(destination) != record["sha256"]):
+                raise ValueError("Refusing to overwrite different release bytes")
+        else:
+            shutil.copyfile(source, destination)
+        return destination
     if method not in {"wrapper", "source", "material"}:
         raise ValueError("This template needs its separately reviewed payload reproducer")
     problems = publication_errors(record, manifest)
@@ -458,6 +480,8 @@ def repository_row(record, tag):
             spec["dependencies"]["run"] + spec["dependencies"]["system"])
         dependencies = [row for row in dependencies if row["id"] not in build_only]
     qualification = {key: record[key] for key in ("structure", "build_check", "functional")}
+    if record.get("review_policy") == "static-trust-v1":
+        qualification.update(review_policy=record["review_policy"], static_review=record["static_review"])
     if record.get("qualification_mode") == "trusted_delivery_static_review":
         qualification.update(qualification_mode=record["qualification_mode"], static_review=record["static_review"])
     return {**{key: spec[key] for key in ("id", "version", "build", "target")},
@@ -635,7 +659,7 @@ def verify_release_commit(tag, commit, *, missing=False):
     raise ValueError("Release tag does not resolve to an ordinary source commit")
 
 
-def verify_publication_source(commit, main, tag):
+def verify_publication_source(commit, main, tag, *, checkout_commit=None):
     """Allow queued software releases when main has not changed their inputs."""
     plan_path = "release-plans/" + tag + ".json"
     plan = load_plan(tag)
@@ -652,7 +676,7 @@ def verify_publication_source(commit, main, tag):
     dirty = subprocess.run(["git", "status", "--porcelain", "--untracked-files=all", "--",
                             "tools", ".github", "tests/test_release_pipeline.py", *paths],
                            cwd=ROOT, check=True, capture_output=True, text=True).stdout
-    if head != os.environ.get("GITHUB_SHA", commit) or dirty:
+    if head != (checkout_commit or os.environ.get("GITHUB_SHA", commit)) or dirty:
         raise ValueError("Publication requires the exact committed source and unchanged publication inputs")
     if subprocess.run(["git", "diff", "--quiet", commit, "HEAD", "--", *paths], cwd=ROOT).returncode:
         raise ValueError("Current checkout differs from the Release's frozen publication data")
@@ -684,10 +708,16 @@ def verify_publication_source(commit, main, tag):
             raise ValueError("Current main already published different bytes for this package identity")
 
 
-def publish(tag, output):
+def publish(tag, output, *, source_commit=None):
     validate_tag(tag)
     repository, ref, commit = (os.environ.get(name, "") for name in ("GITHUB_REPOSITORY", "GITHUB_REF_NAME", "GITHUB_SHA"))
-    if repository != REPOSITORY or ref != "publish/" + tag or COMMIT.fullmatch(commit) is None:
+    transport = source_commit is not None
+    if transport:
+        if (repository != REPOSITORY or not ref.startswith("transport/secure-")
+                or COMMIT.fullmatch(source_commit) is None or COMMIT.fullmatch(commit) is None):
+            raise ValueError("Delivered publication requires an explicit secure transport request")
+        commit = source_commit
+    elif repository != REPOSITORY or ref != "publish/" + tag or COMMIT.fullmatch(commit) is None:
         raise ValueError("Publication requires an explicit publish/<tag> push in the canonical repository")
     existing = release_for(tag)
     if existing is not None:
@@ -696,11 +726,11 @@ def publish(tag, output):
             raise ValueError("Existing Release does not pin an exact source commit")
         verify_release(existing, tag, commit)
     main = gh("api", f"repos/{REPOSITORY}/git/ref/heads/main", json_output=True)["object"]["sha"]
-    verify_publication_source(commit, main, tag)
+    verify_publication_source(commit, main, tag, checkout_commit=source_commit if transport else None)
     plan, manifest, assets = build_plan(tag, output, network=True, source_commit=commit)
     output = Path(output)
     notes = output / "release-notes.md"
-    notes.write_text(f"# {tag}\n\nReproduces {len(plan['artifacts'])} audited CPG artifacts from unpacked source templates.\n\n"
+    notes.write_text(f"# {tag}\n\nPublishes {len(plan['artifacts'])} individually addressed CPG artifacts with unpacked source templates.\n\n"
                      "Every published asset matches the previously verified complete SHA-256 and byte size. "
                      "APT wrappers are metadata-only and carry an explicit functional-test exemption. "
                      "Each artifact records its review scope; a static review does not claim a new build or functional run. "
@@ -743,7 +773,7 @@ def publish(tag, output):
         # Uploads can take a long time. Recheck both the inputs and any tag just
         # before the irreversible public transition, not only at job startup.
         main = gh("api", f"repos/{REPOSITORY}/git/ref/heads/main", json_output=True)["object"]["sha"]
-        verify_publication_source(commit, main, tag)
+        verify_publication_source(commit, main, tag, checkout_commit=source_commit if transport else None)
         verify_release_commit(tag, commit, missing=True)
         latest = gh("api", endpoint, json_output=True)
         verify_release(latest, tag, commit, release_id=release_id)

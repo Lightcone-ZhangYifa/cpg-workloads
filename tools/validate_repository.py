@@ -75,7 +75,7 @@ def validate(root=ROOT):
                     if problems:
                         raise ValueError("; ".join(problems))
                     verify_evidence(row, template)
-                    if row["method"] == "material":
+                    if row["method"] == "material" and row.get("review_policy") != "static-trust-v1":
                         verify_material(row, manifest, template)
             records[row["sha256"]] = row
         except (OSError, ValueError, KeyError, TypeError) as error:
