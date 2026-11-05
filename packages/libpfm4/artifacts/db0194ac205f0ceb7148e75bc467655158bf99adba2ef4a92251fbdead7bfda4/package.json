@@ -1,0 +1,452 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--check",
+        "encoding"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "named-event-encoding",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "requires_paths": [
+        "{prefix}/bin/showevtinfo"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 60
+    },
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--check",
+        "c-api"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "public-c-api",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "requires_paths": [
+        "{prefix}/bin/libpfm-api-check"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 60
+    },
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--check",
+        "compile-link"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "compile-link-c-api",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "cc"
+      ],
+      "requires_paths": [
+        "{prefix}/bin/libpfm-api-check"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.build-essential",
+      "apt.python3"
+    ]
+  },
+  "id": "libpfm4",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1128221,
+      "build_peak_bytes": null,
+      "category": [
+        "Profiling",
+        "PMU libraries"
+      ],
+      "container_strategy": "Build in dev, export libraries, headers and event-query utility; target receives libraries and utilities. Keep the Ubuntu runtime and source-built prefix distinct.",
+      "dependencies": [
+        "apt.build-essential"
+      ],
+      "deployment": {
+        "adapter": "make",
+        "additional_install_commands": [
+          [
+            "install",
+            "-D",
+            "-m",
+            "755",
+            "{build}/examples/showevtinfo",
+            "{prefix}/bin/showevtinfo"
+          ]
+        ],
+        "apt_dependencies": {
+          "dev": [
+            "build-essential"
+          ],
+          "target": []
+        },
+        "build_argv": [
+          "make",
+          "-C",
+          "{build}",
+          "-j{jobs}",
+          "PREFIX={prefix}"
+        ],
+        "build_role": "dev",
+        "configure_argv": [],
+        "install_argv": [
+          "make",
+          "-C",
+          "{build}",
+          "PREFIX={prefix}",
+          "install"
+        ],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "prepare_commands": [
+          [
+            "cp",
+            "-a",
+            "{source}/.",
+            "{build}"
+          ]
+        ],
+        "probe_requires_host": [
+          "target PMU event enumeration"
+        ],
+        "smoke_argv": [
+          "{build}/examples/showevtinfo"
+        ],
+        "state": "recipe-described-not-executed",
+        "target_exports": [
+          {
+            "destination": "opt/research/selected/libpfm4",
+            "kind": "tree",
+            "required": true,
+            "role": "profiler",
+            "source": "{prefix}"
+          }
+        ],
+        "target_smoke_commands": [
+          [
+            "{prefix}/bin/showevtinfo",
+            "-h"
+          ]
+        ]
+      },
+      "documentation": "https://perfmon2.sourceforge.net/manv4/libpfm.html",
+      "extract": true,
+      "id": "libpfm4",
+      "immutable_ref": "sha256:d18b97764c755528c1051d376e33545d0eb60c6ebf85680436813fa5b04cc3d1",
+      "installed_bytes": null,
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/libpfm4",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Encode named PMU events for perf and instrumented profiling tools; retain a separate current event database for newer CPUs.",
+      "qualification_gaps": [
+        "A physical target CPU, kernel, PMU and container launch profile must pass feature-specific collection probes; an installed executable is not full runtime qualification.",
+        "The stable 4.13.0 release predates newer CPUs; event-name support must be checked against the exact target."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "d18b97764c755528c1051d376e33545d0eb60c6ebf85680436813fa5b04cc3d1",
+      "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+      "size_evidence": "workspace-evidence/resources-v050/platform-research/archive-measurements.json",
+      "source_evidence": [
+        "https://perfmon2.sourceforge.net/",
+        "https://perfmon2.sourceforge.net/manv4/libpfm.html",
+        "https://downloads.sourceforge.net/project/perfmon2/libpfm4/libpfm-4.13.0.tar.gz"
+      ],
+      "source_url": "https://downloads.sourceforge.net/project/perfmon2/libpfm4/libpfm-4.13.0.tar.gz",
+      "title": "libpfm4 event encoding library",
+      "upstream": "https://perfmon2.sourceforge.net/",
+      "version": "4.13.0"
+    },
+    "catalog_sha256": "c3e9267ed0cc87d186a7074746ec6723b82706ef5a0664ad1cd199fab54447fe"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "make",
+    "additional_install_commands": [
+      [
+        "install",
+        "-D",
+        "-m",
+        "755",
+        "{build}/examples/showevtinfo",
+        "{prefix}/bin/showevtinfo"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "755",
+        "{build}/examples/check_events",
+        "{prefix}/bin/check_events"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "755",
+        "{build}/tests/validate",
+        "{prefix}/bin/libpfm-validate"
+      ],
+      [
+        "cc",
+        "-std=c11",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-I{prefix}/include",
+        "{recipe}/api-check.c",
+        "-L{prefix}/lib",
+        "-Wl,-rpath,$ORIGIN/../lib",
+        "-lpfm",
+        "-ldl",
+        "-o",
+        "{prefix}/bin/libpfm-api-check"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{recipe}/api-check.c",
+        "{prefix}/share/compiler-playground/libpfm4/api-check.c"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "755",
+        "{recipe}/check.py",
+        "{prefix}/share/compiler-playground/libpfm4/check.py"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{source}/COPYING",
+        "{prefix}/share/doc/libpfm4/COPYING"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{source}/README",
+        "{prefix}/share/doc/libpfm4/README"
+      ]
+    ],
+    "apt_dependencies": {
+      "dev": [
+        "build-essential"
+      ],
+      "target": []
+    },
+    "build_argv": [
+      "make",
+      "-C",
+      "{build}",
+      "-j{jobs}",
+      "PREFIX={prefix}",
+      "LDCONFIG=true",
+      "CONFIG_PFMLIB_SHARED=y",
+      "CONFIG_PFMLIB_NOPYTHON=y"
+    ],
+    "build_role": "dev",
+    "configure_argv": [],
+    "install_argv": [
+      "make",
+      "-C",
+      "{build}",
+      "PREFIX={prefix}",
+      "LDCONFIG=true",
+      "CONFIG_PFMLIB_SHARED=y",
+      "CONFIG_PFMLIB_NOPYTHON=y",
+      "install"
+    ],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "prepare_commands": [
+      [
+        "cp",
+        "-a",
+        "{source}/.",
+        "{build}"
+      ]
+    ],
+    "probe_requires_host": [],
+    "required_installed_paths": [
+      "{prefix}/lib/libpfm.so.4.13.0",
+      "{prefix}/lib/libpfm.a",
+      "{prefix}/include/perfmon/pfmlib.h",
+      "{prefix}/bin/showevtinfo",
+      "{prefix}/bin/libpfm-api-check",
+      "{prefix}/share/compiler-playground/libpfm4/check.py"
+    ],
+    "smoke_argv": [
+      "{build}/examples/showevtinfo"
+    ],
+    "state": "prepared-for-native-source-binary-qualification",
+    "target_exports": [
+      {
+        "destination": "opt/research/selected/libpfm4",
+        "kind": "tree",
+        "required": true,
+        "role": "profiler",
+        "source": "{prefix}"
+      }
+    ],
+    "target_smoke_commands": [
+      [
+        "{prefix}/bin/showevtinfo",
+        "-h"
+      ]
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1128221,
+      "extract": true,
+      "id": "libpfm4",
+      "material_path": "sources/libpfm4",
+      "sha256": "d18b97764c755528c1051d376e33545d0eb60c6ebf85680436813fa5b04cc3d1",
+      "strip_root": true,
+      "url": "https://downloads.sourceforge.net/project/perfmon2/libpfm4/libpfm-4.13.0.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use these absolute executable paths. showevtinfo and check_events contain the upstream static libpfm library; libpfm-api-check uses $ORIGIN/../lib RUNPATH for the dynamic copy.",
+      "For custom C programs, compile with -I<prefix>/include and link with -L<prefix>/lib -lpfm. Select a suitable RUNPATH or use a command-local LD_LIBRARY_PATH=<prefix>/lib when running your own executable.",
+      "No global ldconfig, PATH, alternatives or loader-cache changes are made."
+    ],
+    "documentation": [
+      "https://perfmon2.sourceforge.net/",
+      "https://perfmon2.sourceforge.net/manv4/libpfm.html"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/showevtinfo -E",
+        "description": "List encoded named events"
+      },
+      {
+        "command": "{prefix}/bin/showevtinfo",
+        "description": "Inspect event definitions"
+      },
+      {
+        "command": "{prefix}/bin/check_events PERF_COUNT_HW_CPU_CYCLES PERF_COUNT_SW_TASK_CLOCK",
+        "description": "Encode two generic perf events without opening a counter"
+      },
+      {
+        "command": "{prefix}/bin/libpfm-api-check",
+        "description": "Run the C API probe using the library beside this executable"
+      },
+      {
+        "command": "python3 {prefix}/share/compiler-playground/libpfm4/check.py --prefix {prefix} --check compile-link",
+        "description": "Compile, link and run the installed C example with this prefix"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Event encoder",
+        "path": "{prefix}/bin/showevtinfo",
+        "purpose": "Installed event enumeration and encoding utility"
+      },
+      {
+        "label": "C API",
+        "path": "{prefix}/include/perfmon",
+        "purpose": "libpfm4 public headers"
+      },
+      {
+        "label": "Library",
+        "path": "{prefix}/lib",
+        "purpose": "Source-built libpfm4 runtime"
+      },
+      {
+        "label": "Public C API probe",
+        "path": "{prefix}/bin/libpfm-api-check",
+        "purpose": "Runs three exact generic perf event encodings and reports the actual dynamic library path"
+      },
+      {
+        "label": "Reusable API source and checks",
+        "path": "{prefix}/share/compiler-playground/libpfm4",
+        "purpose": "Small compile/link example and installed validation script"
+      },
+      {
+        "label": "Upstream validator",
+        "path": "{prefix}/bin/libpfm-validate",
+        "purpose": "Validates upstream event tables and software encoding test cases; does not collect counters"
+      },
+      {
+        "label": "Manual pages",
+        "path": "{prefix}/share/man/man3",
+        "purpose": "Upstream public C API and supported PMU manuals"
+      },
+      {
+        "label": "License and README",
+        "path": "{prefix}/share/doc/libpfm4",
+        "purpose": "Original upstream documentation retained with the package"
+      }
+    ],
+    "notes": [
+      "The complete source/binary package profile is installed through cpg packages. The retained environment-creator/bootstrap route keeps its original installation and does not install the newer API probe, check_events, validator, or reusable check files; those locations and examples require the complete package profile.",
+      "The retained target-image smoke runs showevtinfo -h on its original exported path and establishes availability only. The three full package checks remain independent: older development prefixes report the missing API-probe checks as blocked, while event encoding remains checkable.",
+      "Event encoding succeeds independently of perf_event permission. Positive counter collection is a separate hardware check.",
+      "The stable 4.13.0 event database may not identify a newer CPU; do not equate generic event support with model-specific coverage.",
+      "pfm_get_version reports the library API version 4.0 in upstream 4.13.0. Release identity comes from the exact source archive and installed libpfm.so.4.13.0, not from inventing a different API version.",
+      "Upstream installs no pkg-config .pc or libtool .la files in this profile. Use explicit include/library paths for custom builds.",
+      "The prepared profile includes static/shared C libraries, headers, upstream manuals, event utilities, validator, and the C API probe; optional upstream Python bindings are not built.",
+      "The dynamic API probe clears ambient LD_LIBRARY_PATH/LD_PRELOAD in the package check so a foreign libpfm cannot satisfy this installation check."
+    ],
+    "summary": "Encode named PMU/perf events, inspect CPU event databases, and link the libpfm4 C API without opening hardware counters."
+  },
+  "version": "4.13.0"
+}

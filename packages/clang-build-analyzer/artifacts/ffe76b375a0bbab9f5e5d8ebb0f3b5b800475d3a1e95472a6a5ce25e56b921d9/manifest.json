@@ -1,0 +1,463 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1587,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "a360910b51eda3e1f31fb8f11d34519097f833ed566b160aea3d4bc6664f41d7"
+    },
+    {
+      "bytes": 7876,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "516aeed3cfe28017ed9b71541d1d4915ee0153a0f27659f236786ead255d6d9b"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 2081461,
+      "kind": "file",
+      "mode": 384,
+      "path": "sources/ce35d99f924250bd0e963584918bce9d1f90318ef9ab19b779d4ffe2ffbb33d1",
+      "sha256": "ce35d99f924250bd0e963584918bce9d1f90318ef9ab19b779d4ffe2ffbb33d1"
+    }
+  ],
+  "inventory_sha256": "981a8678a25ddf6dbf5f5f4a2ad8cc516bbafb4d6ab886ebb656d6bf5e47b9c8",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "aca40581d51a583ebffc0f446c26aae8c323c7b479cb7f91041310f1d856d07a",
+  "method": "source",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/ClangBuildAnalyzer",
+          "--version"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "declared-001",
+        "kind": "version",
+        "timeout_seconds": 120
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "upstream-tests"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "upstream-tests",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "requires_paths": [
+          "{prefix}/bin/ClangBuildAnalyzer",
+          "{prefix}/share/clang-build-analyzer/source/tests"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 600
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "trace-workflow"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "trace-workflow",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "requires_paths": [
+          "{prefix}/bin/ClangBuildAnalyzer",
+          "{prefix}/share/clang-build-analyzer/source/tests"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 600
+      }
+    ],
+    "dependencies": {
+      "build": [
+        "apt.cmake",
+        "apt.ninja-build"
+      ],
+      "run": [],
+      "system": [
+        "apt.build-essential",
+        "apt.python3"
+      ]
+    },
+    "id": "clang-build-analyzer",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [],
+        "archive_bytes": 2081461,
+        "build_peak_bytes": null,
+        "category": [
+          "Development",
+          "Compile-time diagnostics"
+        ],
+        "conflicts": [],
+        "container_strategy": "Build the pinned C++17 source in an isolated dev prefix, install the analyzer and retain source/tests/notices. Target-side compiler builds are unnecessary. Preserve raw time-trace JSON alongside summaries.",
+        "dependencies": [
+          "apt.build-essential",
+          "apt.cmake",
+          "apt.ninja-build"
+        ],
+        "deployment": {
+          "adapter": "cmake",
+          "additional_install_commands": [
+            [
+              "mkdir",
+              "-p",
+              "{prefix}/share/clang-build-analyzer/source"
+            ],
+            [
+              "cp",
+              "-a",
+              "{source}/.",
+              "{prefix}/share/clang-build-analyzer/source/"
+            ]
+          ],
+          "additional_smoke_commands": [
+            [
+              "{prefix}/bin/ClangBuildAnalyzer",
+              "--test",
+              "tests"
+            ]
+          ],
+          "apt_dependencies": {
+            "dev": [
+              "build-essential",
+              "cmake",
+              "ninja-build"
+            ]
+          },
+          "build_argv": [
+            "cmake",
+            "--build",
+            "{build}",
+            "--parallel",
+            "{jobs}"
+          ],
+          "build_role": "dev",
+          "configure_argv": [
+            "cmake",
+            "-S",
+            "{source}",
+            "-B",
+            "{build}",
+            "-G",
+            "Ninja",
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DCMAKE_INSTALL_PREFIX={prefix}"
+          ],
+          "install_argv": [
+            "cmake",
+            "--install",
+            "{build}"
+          ],
+          "install_roles": [
+            "dev"
+          ],
+          "prepare_commands": [
+            [
+              "cp",
+              "-a",
+              "{source}/tests",
+              "{build}/tests"
+            ],
+            [
+              "cp",
+              "{source}/ClangBuildAnalyzer.ini",
+              "{build}/ClangBuildAnalyzer.ini"
+            ]
+          ],
+          "probe_requires_host": [],
+          "required_installed_paths": [
+            "{prefix}/bin/ClangBuildAnalyzer",
+            "{prefix}/share/clang-build-analyzer/source/license.md",
+            "{prefix}/share/clang-build-analyzer/source/tests"
+          ],
+          "smoke_argv": [
+            "{prefix}/bin/ClangBuildAnalyzer",
+            "--version"
+          ],
+          "state": "native-build-install-and-10-upstream-tests-passed; OCI-and-catalog-APT-environment-not-executed",
+          "submodule_closure_complete": true,
+          "target_exports": [],
+          "target_smoke_commands": [],
+          "upstream_test_commands": [
+            [
+              "{prefix}/bin/ClangBuildAnalyzer",
+              "--test",
+              "tests"
+            ]
+          ],
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/aras-p/ClangBuildAnalyzer"
+        ],
+        "evidence_files": [
+          "workspace-evidence/community-v070/resource-audit/git-refs.json",
+          "workspace-evidence/community-v070/resource-audit/archive-measurements.json",
+          "workspace-evidence/community-v070/resource-audit/http-headers/clang-build-analyzer.json",
+          "workspace-evidence/community-v070/resource-audit/clang-build-analyzer-native-probe/receipt.json"
+        ],
+        "extract": true,
+        "id": "clang-build-analyzer",
+        "immutable_ref": "bae0cb488cce944bfc3da9850a69ad621701ebef",
+        "installed_allocated_bytes": null,
+        "installed_bytes": null,
+        "kind": "source_archive",
+        "license_class": "open",
+        "license_id": "Unlicense AND MIT AND Zlib AND BSL-1.0 AND BSD-3-Clause AND BSD-2-Clause AND Apache-2.0 AND Apache-2.0 WITH LLVM-exception",
+        "mandatory": false,
+        "material_path": "sources/clang-build-analyzer",
+        "native_probe": {
+          "allocated_installed_file_bytes": 18210816,
+          "logical_installed_bytes": 17927047,
+          "logical_retained_build_tree_bytes": 2455857,
+          "receipt": "workspace-evidence/community-v070/resource-audit/clang-build-analyzer-native-probe/receipt.json",
+          "scope": "Isolated native fixture-tool build, installation and all upstream fixture tests; no OCI or physical target qualification.",
+          "upstream_fixture_count": 10
+        },
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Aggregate Clang time-trace files to diagnose frontend, template, header and backend compilation costs. Compiler development throughput is a diagnostic metric; generated-program runtime remains the primary objective.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": true,
+          "catalog_apt_environment_qualified": false,
+          "container_qualified": false,
+          "native_recipe_smoke_qualified": true,
+          "native_upstream_tests_passed": true,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Native CMake/Ninja fixture build and all 10 upstream tests passed. OCI and exact catalog APT environment have not been executed.",
+          "This tool does not capture linking or LTO costs; retain separate linker/LTO traces."
+        ],
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "ce35d99f924250bd0e963584918bce9d1f90318ef9ab19b779d4ffe2ffbb33d1",
+        "size_basis": "Complete HTTPS payload measured locally; source logical bytes sum regular archive members and exclude filesystem allocation, external dependencies and build trees.",
+        "size_evidence": "workspace-evidence/community-v070/resource-audit/archive-measurements.json",
+        "source_evidence": [
+          "https://github.com/aras-p/ClangBuildAnalyzer",
+          "https://github.com/aras-p/ClangBuildAnalyzer/commit/bae0cb488cce944bfc3da9850a69ad621701ebef",
+          "https://codeload.github.com/aras-p/ClangBuildAnalyzer/tar.gz/bae0cb488cce944bfc3da9850a69ad621701ebef"
+        ],
+        "source_logical_bytes": 17094999,
+        "source_url": "https://codeload.github.com/aras-p/ClangBuildAnalyzer/tar.gz/bae0cb488cce944bfc3da9850a69ad621701ebef",
+        "title": "ClangBuildAnalyzer",
+        "upstream": "https://github.com/aras-p/ClangBuildAnalyzer",
+        "version": "1.6.0"
+      },
+      "catalog_sha256": "a333bf80dae0a8bf593ab39cba19810f66e107b22300518a28fac825bee33c1d"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "cmake",
+      "additional_install_commands": [],
+      "additional_smoke_commands": [
+        [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "upstream-tests"
+        ]
+      ],
+      "apt_dependencies": {
+        "dev": [
+          "build-essential",
+          "cmake",
+          "ninja-build"
+        ]
+      },
+      "build_argv": [],
+      "build_role": "dev",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/build.py",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "configure_argv": [],
+      "install_argv": [],
+      "install_roles": [
+        "dev"
+      ],
+      "prepare_commands": [],
+      "probe_requires_host": [],
+      "required_installed_paths": [
+        "{prefix}/bin/ClangBuildAnalyzer",
+        "{prefix}/share/clang-build-analyzer/source/license.md",
+        "{prefix}/share/clang-build-analyzer/source/tests"
+      ],
+      "smoke_argv": [
+        "{prefix}/bin/ClangBuildAnalyzer",
+        "--version"
+      ],
+      "state": "native-build-install-and-10-upstream-tests-passed; OCI-and-catalog-APT-environment-not-executed",
+      "submodule_closure_complete": true,
+      "target_exports": [],
+      "target_smoke_commands": [],
+      "upstream_test_commands": [
+        [
+          "{prefix}/bin/ClangBuildAnalyzer",
+          "--test",
+          "tests"
+        ]
+      ],
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 2081461,
+        "extract": true,
+        "id": "clang-build-analyzer",
+        "material_path": "sources/clang-build-analyzer",
+        "sha256": "ce35d99f924250bd0e963584918bce9d1f90318ef9ab19b779d4ffe2ffbb33d1",
+        "strip_root": true,
+        "url": "https://codeload.github.com/aras-p/ClangBuildAnalyzer/tar.gz/bae0cb488cce944bfc3da9850a69ad621701ebef"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/aras-p/ClangBuildAnalyzer"
+      ],
+      "examples": [
+        {
+          "command": "'{prefix}/bin/ClangBuildAnalyzer' --version",
+          "description": "Run the recorded version check."
+        },
+        {
+          "command": "'{prefix}/bin/ClangBuildAnalyzer' --start ./build",
+          "description": "Start a timestamp-bounded capture before compiling with a separately installed Clang and -ftime-trace."
+        },
+        {
+          "command": "'{prefix}/bin/ClangBuildAnalyzer' --stop ./build capture.bin",
+          "description": "Collect compatible traces changed within the recorded build session."
+        },
+        {
+          "command": "'{prefix}/bin/ClangBuildAnalyzer' --all ./build capture.bin",
+          "description": "Alternatively collect every compatible trace recursively, regardless of timestamps."
+        },
+        {
+          "command": "'{prefix}/bin/ClangBuildAnalyzer' --analyze capture.bin",
+          "description": "Analyze frontend, backend, template and header costs. Put a copy of the retained ClangBuildAnalyzer.ini in the current directory to configure reporting."
+        },
+        {
+          "command": "python3 '{recipe}/check.py' --prefix '{prefix}' --case upstream-tests",
+          "description": "Run all ten exact upstream fixtures in writable scratch copies, preserving original expected outputs and installed material."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/sources/clang-build-analyzer",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Installation prefix",
+          "path": "{prefix}",
+          "purpose": "The selected version's independently installed files."
+        },
+        {
+          "label": "Original sources and official fixtures",
+          "path": "{prefix}/share/clang-build-analyzer/source",
+          "purpose": "Complete original source including all ten trace/expected-output fixtures, third-party license files, platform build projects and sample ClangBuildAnalyzer.ini."
+        }
+      ],
+      "notes": [
+        "Original catalog facts, source archive identity and target/export capabilities remain unchanged. The package source and binary profiles retain all original upstream files.",
+        "Upstream --test can return zero for an empty or nonexistent test directory. The installed check requires exactly ten pinned fixtures, nonempty original expected outputs, actual execution of ten tests and matching output bytes.",
+        "Official fixture checks execute on writable scratch copies: the original test oracles and installed source tree are never rewritten.",
+        "The functional workflow also checks --start/--stop timestamp selection, recursive --all, capture-file analysis and errors using explicitly synthetic trace durations. These tests are not measurements of a compiler or physical system.",
+        "Clang is not needed to analyze existing traces. Producing new traces requires a compatible separately installed Clang with -ftime-trace. This profile does not run a new Clang compilation, linking/LTO analysis or a full OCI build.",
+        "CMake/Ninja are build-only and can use exact private Debian bindings during maintainer replay. Existing system build tools and runtime libraries are recorded without claiming a complete pinned APT installation."
+      ],
+      "summary": "Aggregate Clang time-trace files to diagnose frontend, template, header and backend compilation costs. Compiler development throughput is a diagnostic metric; generated-program runtime remains the primary objective."
+    },
+    "version": "1.6.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "f3c53a50f5affbcf58d2c13706797ea3facc226b480c7237f973e8a780d7b3d8",
+    "profile": "Complete source recipe and installed functional checks",
+    "source_locks": [
+      {
+        "bytes": 2081461,
+        "extract": true,
+        "id": "clang-build-analyzer",
+        "material_path": "sources/clang-build-analyzer",
+        "sha256": "ce35d99f924250bd0e963584918bce9d1f90318ef9ab19b779d4ffe2ffbb33d1",
+        "strip_root": true,
+        "url": "https://codeload.github.com/aras-p/ClangBuildAnalyzer/tar.gz/bae0cb488cce944bfc3da9850a69ad621701ebef"
+      }
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "clang-build-analyzer",
+      "path": "sources/ce35d99f924250bd0e963584918bce9d1f90318ef9ab19b779d4ffe2ffbb33d1"
+    }
+  ]
+}
