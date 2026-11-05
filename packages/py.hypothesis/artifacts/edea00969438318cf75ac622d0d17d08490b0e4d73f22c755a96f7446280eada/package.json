@@ -1,0 +1,198 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "distribution-identity",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "installed-api-contract",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.sortedcontainers"
+    ],
+    "system": []
+  },
+  "id": "py.hypothesis",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1163728,
+      "category": [
+        "Python packages",
+        "Core research environment"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.sortedcontainers"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/hypothesis/"
+      ],
+      "id": "py.hypothesis",
+      "immutable_ref": "sha256:83a29bd457f5aad739bc22b15cc295545c9372a254d6be77f253eae2908e5e5a",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "MPL-2.0",
+      "mandatory": false,
+      "material_path": "wheels/hypothesis-6.170.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "package_name": "hypothesis",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "83a29bd457f5aad739bc22b15cc295545c9372a254d6be77f253eae2908e5e5a",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/hypothesis/6.170.5/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/b9/52/3adb311211b1f65320a9cd9dfed6237eef901ba030456e1be441fb4a70dc/hypothesis-6.170.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "title": "hypothesis",
+      "upstream": "https://pypi.org/project/hypothesis/6.170.5/",
+      "version": "6.170.5"
+    },
+    "catalog_sha256": "df95e82cef51653375e46dfed01a29f229a546552b34823d99c7c0f5ddf3ee57"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "hypothesis",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1163728,
+      "extract": false,
+      "id": "py.hypothesis",
+      "material_path": "wheels/hypothesis-6.170.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "sha256": "83a29bd457f5aad739bc22b15cc295545c9372a254d6be77f253eae2908e5e5a",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/b9/52/3adb311211b1f65320a9cd9dfed6237eef901ba030456e1be441fb4a70dc/hypothesis-6.170.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use {prefix}/bin/python explicitly. The selected environment owns the exact distribution and its declared dependencies."
+    ],
+    "documentation": [
+      "https://hypothesis.readthedocs.io/en/latest/",
+      "https://pypi.org/project/hypothesis/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Read the installed distribution identity in the selected environment."
+      },
+      {
+        "command": "cpg packages check py.hypothesis --prefix {prefix} --kind functional",
+        "description": "Run the package-specific API, data and failure-contract checks."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/hypothesis-6.170.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "The functional check uses the selected installed module, requires the exact distribution version, and checks actual results. It does not download data or contact external services.",
+      "This is a bounded application-level qualification, not the entire upstream test suite or every optional backend. Read the package recipe for each exercised operation.",
+      "The wrapper delegates installation and removal to pip. Its archive does not contain the locked wheel or its dependency closure; those have separate source identities.",
+      "metadata.catalog preserves the original discovery and resolver evidence. Current execution results are recorded separately by the package manager."
+    ],
+    "summary": "Property-based data generation, failure discovery and reproducible local checks."
+  },
+  "version": "6.170.5"
+}
