@@ -1,0 +1,290 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/upstream-original"
+    },
+    {
+      "bytes": 33266574,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/upstream-original/b629c80de18f1534ec71fddd8b567aa7027a0876",
+      "sha256": "3f9dd59a7b5013e006eafac8a0628cd28f408be89626c3c6e57a2fa596fddfa2"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2291,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 743,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "a7be5ea4a6ff8d721236883648f54ec43319e40aec68b3bc057f17078d8de8d8"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "tools"
+    },
+    {
+      "bytes": 481,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/VERIFY-ORIGINAL.zh.md",
+      "sha256": "f33d77cef852f90fa22c0ab38774b09bd55a8115d7b15d04f9adfd02d238dc43"
+    },
+    {
+      "bytes": 9931,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/locked-source.json",
+      "sha256": "ae5c3244837fccc8257c548022fc8ca85e5849128232dab74d60c955c28ea79a"
+    }
+  ],
+  "inventory_sha256": "f888a2b204ec335d24f0706ec4172d61878a7164d1c7ef1e5c455b853543d7ea",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "06abf9aca67d057dce6896d2756684fbdc4c9b09a593796c3d50262800ffdb28",
+  "method": "material",
+  "package": {
+    "build": "1-static-read1-d79065b2",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-manifest.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "complete-original-material-availability",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.cmake",
+        "apt.libjpeg-dev",
+        "apt.libpng-dev",
+        "apt.ninja-build",
+        "apt.python3-dev",
+        "apt.zlib1g-dev"
+      ]
+    },
+    "id": "halide",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 33266574,
+        "archive_scope": "Root repository only; recursive Git submodule payloads are excluded.",
+        "category": [
+          "Compilers",
+          "Domain-specific CPU compilers"
+        ],
+        "container_strategy": "Use a compatible LLVM capsule, build the compiler and selected autoschedulers in dev, and ship AOT pipeline objects plus the matching Halide runtime to target.",
+        "dependencies": [
+          "apt.cmake",
+          "apt.libjpeg-dev",
+          "apt.libpng-dev",
+          "apt.ninja-build",
+          "apt.python3-dev",
+          "apt.zlib1g-dev"
+        ],
+        "deployment": {
+          "adapter": "reference",
+          "configure_argv": [
+            "cmake",
+            "-S",
+            "{source}",
+            "-B",
+            "{build}",
+            "-G",
+            "Ninja",
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DCMAKE_INSTALL_PREFIX={prefix}",
+            "-DHalide_LLVM_ROOT={compatible_llvm_prefix}"
+          ],
+          "qualified": false,
+          "source_dependencies": [],
+          "system_packages": [
+            "cmake",
+            "ninja-build",
+            "python3-dev",
+            "libjpeg-dev",
+            "libpng-dev",
+            "zlib1g-dev"
+          ],
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/halide/Halide/tree/v21.0.0",
+          "https://halide-lang.org/docs/BuildingHalideWithCMake.html"
+        ],
+        "evidence_files": [
+          "workspace-evidence/resources-v050/open-research/halide.measurement.json",
+          "workspace-evidence/resources-v050/open-research/halide.refs.json"
+        ],
+        "extract": true,
+        "id": "halide",
+        "immutable_ref": "b629c80de18f1534ec71fddd8b567aa7027a0876",
+        "kind": "source_archive",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "material_path": "sources/halide",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Algorithm/schedule separation, CPU loop scheduling, autoscheduler design and image/numerical pipeline optimization research.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "The pinned v21 README names LLVM 18/19/20 and requires clang/lld plus X86 and WebAssembly backends; a core X86-only LLVM 23 prefix is not assumed compatible.",
+          "Autoscheduler models, training corpus and Python bindings need independent frozen dependencies and qualification.",
+          "Schedule exploration is a distinct optimization layer and must preserve the algorithm/precision contract."
+        ],
+        "redistributable": true,
+        "roles": [
+          "dev",
+          "host"
+        ],
+        "sha256": "3f9dd59a7b5013e006eafac8a0628cd28f408be89626c3c6e57a2fa596fddfa2",
+        "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+        "source_evidence": [
+          "https://github.com/halide/Halide",
+          "https://codeload.github.com/halide/Halide/tar.gz/b629c80de18f1534ec71fddd8b567aa7027a0876",
+          "https://github.com/halide/Halide/commit/b629c80de18f1534ec71fddd8b567aa7027a0876"
+        ],
+        "source_logical_bytes": 49520457,
+        "source_url": "https://codeload.github.com/halide/Halide/tar.gz/b629c80de18f1534ec71fddd8b567aa7027a0876",
+        "title": "Halide scheduling and autoscheduling",
+        "upstream": "https://github.com/halide/Halide",
+        "version": "v21.0.0"
+      },
+      "catalog_sha256": "45c0eb615ceb470bf0af66f18e18367c17a14e022ddb1da77fee319006a0b675",
+      "historical_checks": [],
+      "static_historical_metadata_revision": {
+        "build_executed": false,
+        "check_executed": false,
+        "functional_tests_executed": false,
+        "original_artifact_sha256": "d79065b2e1c7a2aad68ef1ec69ab83a3b1b9a2c4077a64be7aae9edaf539a2ed",
+        "original_build": "1",
+        "original_manifest_sha256": "2c9266834a3af52f3d7488aaa005cab46e28579ecfacf25dbb3bcf7db5378e97",
+        "original_program_and_source_bytes_modes_unchanged": true,
+        "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+      }
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "reference",
+      "configure_argv": [
+        "cmake",
+        "-S",
+        "{source}",
+        "-B",
+        "{build}",
+        "-G",
+        "Ninja",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_INSTALL_PREFIX={prefix}",
+        "-DHalide_LLVM_ROOT={compatible_llvm_prefix}"
+      ],
+      "qualified": false,
+      "source_dependencies": [],
+      "system_packages": [
+        "cmake",
+        "ninja-build",
+        "python3-dev",
+        "libjpeg-dev",
+        "libpng-dev",
+        "zlib1g-dev"
+      ],
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 33266574,
+        "extract": true,
+        "id": "halide",
+        "material_path": "sources/halide",
+        "sha256": "3f9dd59a7b5013e006eafac8a0628cd28f408be89626c3c6e57a2fa596fddfa2",
+        "strip_root": true,
+        "url": "https://codeload.github.com/halide/Halide/tar.gz/b629c80de18f1534ec71fddd8b567aa7027a0876"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/halide/Halide/tree/v21.0.0",
+        "https://halide-lang.org/docs/BuildingHalideWithCMake.html"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/sources/halide",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers.",
+        "The read/integrity definition verifies the complete delivered original upstream archive and its installed inventory. It does not build Halide, extract optional submodules, or qualify execution."
+      ],
+      "summary": "Algorithm/schedule separation, CPU loop scheduling, autoscheduler design and image/numerical pipeline optimization research."
+    },
+    "version": "v21.0.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "static_historical_metadata_revision": {
+      "build_executed": false,
+      "check_executed": false,
+      "functional_tests_executed": false,
+      "original_artifact_sha256": "d79065b2e1c7a2aad68ef1ec69ab83a3b1b9a2c4077a64be7aae9edaf539a2ed",
+      "original_build": "1",
+      "original_manifest_sha256": "2c9266834a3af52f3d7488aaa005cab46e28579ecfacf25dbb3bcf7db5378e97",
+      "original_program_and_source_bytes_modes_unchanged": true,
+      "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    }
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
