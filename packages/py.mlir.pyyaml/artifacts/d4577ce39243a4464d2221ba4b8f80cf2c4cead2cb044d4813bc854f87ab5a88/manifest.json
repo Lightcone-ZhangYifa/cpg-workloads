@@ -1,0 +1,236 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1203,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "76fe911b325fc0acd1358452ec9a4ce42c4f2c23d3fb8cb3bcfc54fe54a3c0d3"
+    },
+    {
+      "bytes": 3265,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_support.py",
+      "sha256": "54949e628b6756f0ba72c4b5e80f8383e510ad57b52bbe2b5452e8d962e123b8"
+    }
+  ],
+  "inventory_sha256": "b6efd177248bd4142f0706e451e0a7dcdabcabec3da58608d91523c2c2c4729c",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "924efdacccf616dc007b2d05a8bfe263b1b18d4922b5cd96d120993d1bcb9a55",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.mlir.pyyaml",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 807870,
+        "category": [
+          "Python packages",
+          "MLIR binding environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "mlir",
+          "state": "resolved-independent-LLVM-binding-capsule; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://mlir.llvm.org/docs/Bindings/Python/"
+        ],
+        "id": "py.mlir.pyyaml",
+        "immutable_ref": "sha256:ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "LicenseRef-Python-distribution-notices",
+        "mandatory": false,
+        "material_path": "wheels/mlir/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "package_name": "pyyaml",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Exact Python dependency for the MLIR bindings from the locked LLVM source, isolated from analysis package constraints.",
+        "qualification_gaps": [],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/PyYAML/6.0.3/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/8b/9d/b3589d3877982d4f2329302ef98a8026e7f4443c765c46cfecc8858c6b4b/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "title": "PyYAML (MLIR Python capsule)",
+        "version": "6.0.3"
+      },
+      "catalog_sha256": "ce071c07eee72728c29365e38c62bb648b7315070d1aef42ec656b9320bd8125"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "mlir",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "pyyaml",
+      "state": "resolved-independent-LLVM-binding-capsule; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 807870,
+        "extract": false,
+        "id": "py.mlir.pyyaml",
+        "material_path": "wheels/mlir/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/8b/9d/b3589d3877982d4f2329302ef98a8026e7f4443c765c46cfecc8858c6b4b/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://mlir.llvm.org/docs/Bindings/Python/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/mlir/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The recipe validates this original distribution in a private environment with exact offline wheel bytes.",
+        "Bounded API operations, negative cases and exact module location are checked. Actual qualification is recorded in the separate versioned evidence.",
+        "The wrapper remains payload-free; original wheel, original catalog, dependency arrays and environment grouping are unchanged."
+      ],
+      "summary": "Exact Python dependency for the MLIR bindings from the locked LLVM source, isolated from analysis package constraints."
+    },
+    "version": "6.0.3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "original_input_sha256": "ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc",
+    "recipe_scope": "Exact offline wheel and bounded local API operations; engineering qualification recorded separately.",
+    "release": "0.21.9",
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

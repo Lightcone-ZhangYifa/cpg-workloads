@@ -1,0 +1,132 @@
+{
+  "build": "v0219-reviewed-static-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "intel-pcm.supplement.googletest-full-material-check",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "intel-pcm.supplement.googletest",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 886892,
+      "category": [
+        "Profiling",
+        "PMU collectors",
+        "Pinned source closure"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "supplement"
+      },
+      "extract": true,
+      "id": "intel-pcm.supplement.googletest",
+      "immutable_ref": "sha256:77c07aa8054c173671cdd02b11081cffc080debec08197cfd860cb0832f743b0",
+      "installed_bytes": null,
+      "kind": "source_supplement",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "supplements/intel-pcm.supplement.googletest",
+      "presets": [],
+      "qualification_gaps": [],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "77c07aa8054c173671cdd02b11081cffc080debec08197cfd860cb0832f743b0",
+      "size_basis": "Measured exact immutable supplemental artifact",
+      "source_evidence": [
+        "https://codeload.github.com/google/googletest/tar.gz/cd430b47a54841ec45d64d2377d7cabaf0eba610"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/google/googletest/tar.gz/cd430b47a54841ec45d64d2377d7cabaf0eba610",
+      "strip_archive_root": true,
+      "supplement_to": "sources/intel-pcm/tests/googletest",
+      "title": "Intel Performance Counter Monitor / tests/googletest",
+      "version": "202604"
+    },
+    "catalog_sha256": "34599ffebde23a1317cd3e9487ada61dcc12f2014da55e7f8c84b583a61f9d26",
+    "current_material_evidence": {
+      "canonical_sources_and_catalog_unchanged": true,
+      "live_origin": "not_run",
+      "native_execution": "not_run",
+      "original_dependencies_unchanged": true,
+      "source_file_count": 250,
+      "source_logical_bytes": 4095777
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "supplement",
+    "material_layout": "expanded_original_archive",
+    "native_execution_qualified": false,
+    "physical_pmu_qualified": false,
+    "qualification_scope": "complete_original_archive_static_material_no_native_or_hardware_qualification",
+    "qualified": true,
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_scope": "complete_archive_member_inventory_no_gitmodules_or_lfs_observed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 886892,
+      "extract": true,
+      "id": "intel-pcm.supplement.googletest",
+      "material_path": "supplements/intel-pcm.supplement.googletest",
+      "sha256": "77c07aa8054c173671cdd02b11081cffc080debec08197cfd860cb0832f743b0",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/googletest/tar.gz/cd430b47a54841ec45d64d2377d7cabaf0eba610"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete pinned original source supplement",
+        "path": "{prefix}",
+        "purpose": "250 verified original files, licenses and build materials."
+      }
+    ],
+    "notes": [
+      "Complete original archive material only; no compilation, Intel PCM execution, PMU, OCI or official benchmark qualification.",
+      "Run recipe/prepare.py using an exact verified cache or the preserved original URL. This round verifies offline cache replay.",
+      "Original source locks, target, exact dependencies, version and catalog are unchanged. Each installed prefix is an independent ordinary copy."
+    ],
+    "summary": "Intel Performance Counter Monitor / tests/googletest"
+  },
+  "version": "202604"
+}

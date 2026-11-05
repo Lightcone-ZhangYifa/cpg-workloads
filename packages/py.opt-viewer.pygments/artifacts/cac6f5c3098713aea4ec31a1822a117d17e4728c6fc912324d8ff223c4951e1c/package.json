@@ -1,0 +1,200 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exact-private-distribution",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-installed-operations",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "py.opt-viewer.pygments",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1250147,
+      "category": [
+        "Python packages",
+        "LLVM optimization-remark environment"
+      ],
+      "container_strategy": "Install the two hash-pinned wheels from the prepared materials into an opt-viewer Python venv; preserve the complete upstream script/module/CSS component.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "opt-viewer",
+        "state": "official-artifact-verified; offline-core-functionality-passed; container-not-executed"
+      },
+      "documentation": [
+        "https://pypi.org/project/Pygments/"
+      ],
+      "id": "py.opt-viewer.pygments",
+      "immutable_ref": "sha256:2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9",
+      "installed_bytes": 8551743,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "BSD-2-Clause",
+      "mandatory": false,
+      "material_path": "wheels/opt-viewer/pygments-2.21.0-py3-none-any.whl",
+      "package_name": "pygments",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Pinned Python dependency for the LLVM optimization-remark visualization tools, isolated from other analysis environments.",
+      "qualification_gaps": [
+        "Container runtime and real Clang-emitted-record integration are not exercised by this synthetic-fixture probe."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "same_artifact_as": "py.pygments",
+      "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9",
+      "size_basis": "Actual wheel bytes matched to official PyPI and existing catalog hash; installed RECORD payload measured after an offline core-functionality smoke on CPython 3.12 Linux x86_64.",
+      "source_evidence": [
+        "https://pypi.org/pypi/Pygments/2.21.0/json",
+        "workspace-evidence/community-v070/opt-viewer-capsule/qualification.json"
+      ],
+      "source_logical_bytes": 4621166,
+      "source_url": "https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl",
+      "title": "Pygments (LLVM opt-viewer capsule)",
+      "upstream": "https://pypi.org/project/Pygments/2.21.0/",
+      "version": "2.21.0"
+    },
+    "catalog_sha256": "11bba84f6bcb3cd01d38d095d6ec1f36d2be25263da500771cf1e232034c79d2"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "opt-viewer",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "--disable-pip-version-check",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "pygments",
+    "state": "official-artifact-verified; offline-core-functionality-passed; container-not-executed",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "--disable-pip-version-check",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1250147,
+      "extract": false,
+      "id": "py.opt-viewer.pygments",
+      "material_path": "wheels/opt-viewer/pygments-2.21.0-py3-none-any.whl",
+      "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+    ],
+    "documentation": [
+      "https://pypi.org/project/Pygments/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect package metadata in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/opt-viewer/pygments-2.21.0-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+      "The recipe validates this original distribution in a private environment with exact offline wheel bytes.",
+      "Bounded API operations, negative cases and exact module location are checked. Actual qualification is recorded in the separate versioned evidence.",
+      "The wrapper remains payload-free; original wheel, original catalog, dependency arrays and environment grouping are unchanged."
+    ],
+    "summary": "Pinned Python dependency for the LLVM optimization-remark visualization tools, isolated from other analysis environments."
+  },
+  "version": "2.21.0"
+}

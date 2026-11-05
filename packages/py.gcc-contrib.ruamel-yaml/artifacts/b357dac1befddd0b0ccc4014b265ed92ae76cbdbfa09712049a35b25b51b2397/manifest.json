@@ -1,0 +1,241 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 236,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "beec3dcd970d8dc68e13c91d7096253ce89f329ddd56773e471e0cc8c858dd5a"
+    },
+    {
+      "bytes": 16919,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "7be8cfbbe75c5eea7d482c23012368185a4c8f138f731ea7298422cffd3fb9fd"
+    }
+  ],
+  "inventory_sha256": "907e55f26eb65ab8e5ef442331263e960aaca85041ecae53fc506953ab4ec864",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "d3980c6cf3bb8e5391d9946d7318c7b372fc221a1684da2e3e0c0bb44433bc4d",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.gcc-contrib.ruamel-yaml",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 118102,
+        "category": [
+          "Python packages",
+          "GCC contribution environment"
+        ],
+        "container_strategy": "Install with the gcc-contrib requirements.lock into a dedicated CPython 3.12 venv from the prepared wheel directory using --no-index --require-hashes.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "gcc-contrib",
+          "state": "official-artifact-hashes-verified; isolated-offline-runtime-smoke-passed; container-not-executed"
+        },
+        "documentation": [
+          "https://pypi.org/pypi/ruamel-yaml/0.19.1/json"
+        ],
+        "id": "py.gcc-contrib.ruamel-yaml",
+        "immutable_ref": "sha256:27592957fedf6e0b62f281e96effd28043345e0e66001f97683aa9a40c667c93",
+        "installed_bytes": 1197694,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "material_path": "wheels/gcc-contrib/ruamel_yaml-0.19.1-py3-none-any.whl",
+        "package_name": "ruamel-yaml",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Isolated GCC contribution-tool runtime and its exact dependency closure for patch parsing, local Git analysis, schema validation, HTTP clients, and Python checks.",
+        "qualification_gaps": [
+          "No Docker or Podman container was started in this acquisition task.",
+          "Complete GCC contrib workflow acceptance remains separate from dependency-capsule qualification."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "27592957fedf6e0b62f281e96effd28043345e0e66001f97683aa9a40c667c93",
+        "size_basis": "Actual downloaded wheel bytes matched to official PyPI; installed logical bytes measured from distribution RECORD files after offline smoke on CPython 3.12 Linux x86_64.",
+        "source_evidence": [
+          "https://pypi.org/pypi/ruamel-yaml/0.19.1/json",
+          "workspace-evidence/community-v070/python-capsule/qualification.json",
+          "workspace-evidence/community-v070/python-capsule/manifest.json"
+        ],
+        "source_logical_bytes": 562508,
+        "source_url": "https://files.pythonhosted.org/packages/b8/0c/51f6841f1d84f404f92463fc2b1ba0da357ca1e3db6b7fbda26956c3b82a/ruamel_yaml-0.19.1-py3-none-any.whl",
+        "title": "ruamel-yaml",
+        "upstream": "https://pypi.org/project/ruamel-yaml/0.19.1/",
+        "version": "0.19.1"
+      },
+      "catalog_sha256": "58561666e183e5cd8c06fe0572091d579f24b1f63f5ad6edaeeb01538ec4b0e5"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "gcc-contrib",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "ruamel-yaml",
+      "state": "official-artifact-hashes-verified; isolated-offline-runtime-smoke-passed; container-not-executed",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 118102,
+        "extract": false,
+        "id": "py.gcc-contrib.ruamel-yaml",
+        "material_path": "wheels/gcc-contrib/ruamel_yaml-0.19.1-py3-none-any.whl",
+        "sha256": "27592957fedf6e0b62f281e96effd28043345e0e66001f97683aa9a40c667c93",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/b8/0c/51f6841f1d84f404f92463fc2b1ba0da357ca1e3db6b7fbda26956c3b82a/ruamel_yaml-0.19.1-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/pypi/ruamel-yaml/0.19.1/json"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/gcc-contrib/ruamel_yaml-0.19.1-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The recipe validates this original distribution in a private environment with exact offline wheel bytes.",
+        "Bounded API operations, negative cases and exact module location are checked. Actual qualification is recorded in the separate versioned evidence.",
+        "The wrapper remains payload-free; original wheel, original catalog, dependency arrays and environment grouping are unchanged."
+      ],
+      "summary": "Isolated GCC contribution-tool runtime and its exact dependency closure for patch parsing, local Git analysis, schema validation, HTTP clients, and Python checks."
+    },
+    "version": "0.19.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "original_input_sha256": "27592957fedf6e0b62f281e96effd28043345e0e66001f97683aa9a40c667c93",
+    "recipe_scope": "Exact offline wheel and bounded local API operations; engineering qualification recorded separately.",
+    "release": "0.21.9",
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

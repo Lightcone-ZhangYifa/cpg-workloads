@@ -1,0 +1,241 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2442,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "33008e70f9d4e8a3d77a7608fc574c7b86b879f70e049821c1afe02384e18bd4"
+    },
+    {
+      "bytes": 3274,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_support.py",
+      "sha256": "4777d4eaacfa66e129f87f07aba3d9846295bbead6744562b574fb6a849bf61f"
+    }
+  ],
+  "inventory_sha256": "9c62160d8e3001144e09192ea56d41e3604975ad1366d251401df3a404674edd",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "c3198baf6af906caaa224449b4918f25f3e27dba1331e08af49ffe96b79d141b",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.gcc-contrib.pygments",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 1250147,
+        "category": [
+          "Python packages",
+          "GCC contribution environment"
+        ],
+        "container_strategy": "Install with the gcc-contrib requirements.lock into a dedicated CPython 3.12 venv from the prepared wheel directory using --no-index --require-hashes.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "gcc-contrib",
+          "state": "official-artifact-hashes-verified; isolated-offline-runtime-smoke-passed; container-not-executed"
+        },
+        "documentation": [
+          "https://pypi.org/pypi/pygments/2.21.0/json"
+        ],
+        "id": "py.gcc-contrib.pygments",
+        "immutable_ref": "sha256:2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9",
+        "installed_bytes": 8550367,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "BSD-2-Clause",
+        "mandatory": false,
+        "material_path": "wheels/gcc-contrib/pygments-2.21.0-py3-none-any.whl",
+        "package_name": "pygments",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Isolated GCC contribution-tool runtime and its exact dependency closure for patch parsing, local Git analysis, schema validation, HTTP clients, and Python checks.",
+        "qualification_gaps": [
+          "No Docker or Podman container was started in this acquisition task.",
+          "Complete GCC contrib workflow acceptance remains separate from dependency-capsule qualification."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9",
+        "size_basis": "Actual downloaded wheel bytes matched to official PyPI; installed logical bytes measured from distribution RECORD files after offline smoke on CPython 3.12 Linux x86_64.",
+        "source_evidence": [
+          "https://pypi.org/pypi/pygments/2.21.0/json",
+          "workspace-evidence/community-v070/python-capsule/qualification.json",
+          "workspace-evidence/community-v070/python-capsule/manifest.json"
+        ],
+        "source_logical_bytes": 4621166,
+        "source_url": "https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl",
+        "title": "pygments",
+        "upstream": "https://pypi.org/project/pygments/2.21.0/",
+        "version": "2.21.0"
+      },
+      "catalog_sha256": "f8a86ad49c1a835adb3afe41da590cab71ebc7867f454c6b11e3efcea8110a32"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "gcc-contrib",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "pygments",
+      "state": "official-artifact-hashes-verified; isolated-offline-runtime-smoke-passed; container-not-executed",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1250147,
+        "extract": false,
+        "id": "py.gcc-contrib.pygments",
+        "material_path": "wheels/gcc-contrib/pygments-2.21.0-py3-none-any.whl",
+        "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/pypi/pygments/2.21.0/json"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/gcc-contrib/pygments-2.21.0-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The recipe validates this original distribution in a private environment with exact offline wheel bytes.",
+        "Bounded API operations, negative cases and exact module location are checked. Actual qualification is recorded in the separate versioned evidence.",
+        "The wrapper remains payload-free; original wheel, original catalog, dependency arrays and environment grouping are unchanged."
+      ],
+      "summary": "Isolated GCC contribution-tool runtime and its exact dependency closure for patch parsing, local Git analysis, schema validation, HTTP clients, and Python checks."
+    },
+    "version": "2.21.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "original_input_sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9",
+    "recipe_scope": "Exact offline wheel and bounded local API operations; engineering qualification recorded separately.",
+    "release": "0.21.9",
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
