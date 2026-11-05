@@ -1,0 +1,196 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "fe78e7ba113848dd4e3285e68331b40aafc09821c31c8bcc281ccc61293ce6b1",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.base-passwd",
+        "apt.gpgv",
+        "apt.libapt-pkg6.0t64",
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libgnutls30t64",
+        "apt.libseccomp2",
+        "apt.libstdc++6",
+        "apt.libsystemd0",
+        "apt.ubuntu-keyring"
+      ]
+    },
+    "id": "apt.apt",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.base-passwd",
+          "apt.gpgv",
+          "apt.libapt-pkg6.0t64",
+          "apt.libc6",
+          "apt.libgcc-s1",
+          "apt.libgnutls30t64",
+          "apt.libseccomp2",
+          "apt.libstdc++6",
+          "apt.libsystemd0",
+          "apt.ubuntu-keyring"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 1375526,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/apt"
+        ],
+        "id": "apt.apt",
+        "immutable_ref": "sha256:c9ace99efc7726fe0035f921a9acf262a9723bbf35b861aab4f9075a0be67442",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 4108,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/apt_2.8.3_amd64.deb",
+        "package_name": "apt",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "commandline package manager",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "c9ace99efc7726fe0035f921a9acf262a9723bbf35b861aab4f9075a0be67442",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/a/apt/apt_2.8.3_amd64.deb",
+        "title": "apt",
+        "upstream": "https://packages.ubuntu.com/noble/apt",
+        "version": "2.8.3"
+      },
+      "catalog_sha256": "0ba107b5b1d17233bb2e6a167304abbb390faae985da08e8f7a2e587dea9efb1"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "apt",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1375526,
+        "extract": false,
+        "id": "apt.apt",
+        "material_path": "apt/apt_2.8.3_amd64.deb",
+        "sha256": "c9ace99efc7726fe0035f921a9acf262a9723bbf35b861aab4f9075a0be67442",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/apt/apt_2.8.3_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/apt"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W apt",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L apt",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/apt.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for apt (= 2.8.3). commandline package manager"
+    },
+    "version": "2.8.3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "b132c371248adfa589cdcfea3cde45e239ca064c7cadaa6553d2dbd15da5d0ef",
+    "dependencies_sha256": "0edb9d857ad6e0467d8883855e936a4c4637a01ac53204489437c3be7932ec60",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "cfc4e8aaf52f144d56d5facc377393cc7c7ff78cb9d85a8b22a7c61523a86dfb",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "ef550afdd17f304c66bd124eca071bb4f117a9d6d191cbc27b5534b43087ad51"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

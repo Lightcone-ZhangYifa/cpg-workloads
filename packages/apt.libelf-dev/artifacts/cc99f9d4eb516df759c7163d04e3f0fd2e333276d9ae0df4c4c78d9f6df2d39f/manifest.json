@@ -1,0 +1,183 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "33adf11c90521995517f1dd29e838d697ea22d9e857213c591118d4f8013c9b6",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libelf1t64",
+        "apt.libzstd-dev",
+        "apt.zlib1g-dev"
+      ]
+    },
+    "id": "apt.libelf-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libelf1t64",
+          "apt.libzstd-dev",
+          "apt.zlib1g-dev"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 68530,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libelf-dev"
+        ],
+        "id": "apt.libelf-dev",
+        "immutable_ref": "sha256:81affb95c29f7323f2ae24386aaa1f61d311578e3e27c5f78ef7b7d55cd3cf49",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 376,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libelf-dev_0.190-1.1ubuntu0.1_amd64.deb",
+        "package_name": "libelf-dev",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "libelf1t64 development libraries and header files",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "81affb95c29f7323f2ae24386aaa1f61d311578e3e27c5f78ef7b7d55cd3cf49",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/libelf-dev_0.190-1.1ubuntu0.1_amd64.deb",
+        "title": "libelf-dev",
+        "upstream": "https://sourceware.org/elfutils/",
+        "version": "0.190-1.1ubuntu0.1"
+      },
+      "catalog_sha256": "3da1b2c20d3435c3c99eee16a4bf989743f009b9fad105db90b61a85bc98869d"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libelf-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 68530,
+        "extract": false,
+        "id": "apt.libelf-dev",
+        "material_path": "apt/libelf-dev_0.190-1.1ubuntu0.1_amd64.deb",
+        "sha256": "81affb95c29f7323f2ae24386aaa1f61d311578e3e27c5f78ef7b7d55cd3cf49",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/libelf-dev_0.190-1.1ubuntu0.1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libelf-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libelf-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libelf-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libelf-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libelf-dev (= 0.190-1.1ubuntu0.1). libelf1t64 development libraries and header files"
+    },
+    "version": "0.190-1.1ubuntu0.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "3ece966e465337a0f16ead1867ff75d875e2f534c6d123121e07e801c64f79cc",
+    "dependencies_sha256": "4614070ead25bbe0544fc4c4bef37f4b7e33d57c9949f452ddcf33e160ac50eb",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "56e3fb18d87da409eaa1e867a103182af06bec563c4bb7a0e1acf9cfdab06a92",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "b4f77fc120587743a7ec66ed3704e2895095934fec511802e5ab93eaf9259d09"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "bf7156662ec3a62bcae1997744ce56aa704f29ff97f3beb1bb0bf399db8e9d01",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.gawk",
+        "apt.libc6",
+        "apt.libcrypt1"
+      ]
+    },
+    "id": "apt.base-files",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.gawk",
+          "apt.libc6",
+          "apt.libcrypt1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 73220,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/base-files"
+        ],
+        "id": "apt.base-files",
+        "immutable_ref": "sha256:87e8c41e62f61625fb78a982d0bc0a70f40ef8375bc313b154914d1b3759c823",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 426,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/base-files_13ubuntu10.5_amd64.deb",
+        "package_name": "base-files",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Debian base system miscellaneous files",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "87e8c41e62f61625fb78a982d0bc0a70f40ef8375bc313b154914d1b3759c823",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/b/base-files/base-files_13ubuntu10.5_amd64.deb",
+        "title": "base-files",
+        "upstream": "https://packages.ubuntu.com/noble/base-files",
+        "version": "13ubuntu10.5"
+      },
+      "catalog_sha256": "20dcab46d7678d58fcfade141af084cfff89f5c47b388da109fa75152e85dc00"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "base-files",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 73220,
+        "extract": false,
+        "id": "apt.base-files",
+        "material_path": "apt/base-files_13ubuntu10.5_amd64.deb",
+        "sha256": "87e8c41e62f61625fb78a982d0bc0a70f40ef8375bc313b154914d1b3759c823",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/base-files/base-files_13ubuntu10.5_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/base-files"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W base-files",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L base-files",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/base-files.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for base-files (= 13ubuntu10.5). Debian base system miscellaneous files"
+    },
+    "version": "13ubuntu10.5"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "7fec2c8279490c37f4f1ce26e25a901edb421037b8922ed7c99ed9f0a004e85c",
+    "dependencies_sha256": "46d758363489fa0bfe84b470c4057548e46494bb5c5bfdfcd79f087e05d5ef84",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "35f4b0b283392f777a13da8979e32c16c47b6f3173c81991f7141d8a52b09534",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "56117b6318d2fd21714eab52191d2e31b2f846f7af2298f21aeb275426de9202"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

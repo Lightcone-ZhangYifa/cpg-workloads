@@ -1,0 +1,185 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "266e219cd16688f54ddbc7db12721f5e5f48b6b25cb6b33304427a2f25833cea",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libgmp10",
+        "apt.libstdc++6"
+      ]
+    },
+    "id": "apt.libgmpxx4ldbl",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libgcc-s1",
+          "apt.libgmp10",
+          "apt.libstdc++6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 9888,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libgmpxx4ldbl"
+        ],
+        "id": "apt.libgmpxx4ldbl",
+        "immutable_ref": "sha256:6f59344240b6dc139ed23ef236b8aa146e5d25e23aa90e79f814e2e4cc4b5752",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 53,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libgmpxx4ldbl_6.3.0+dfsg-2ubuntu6.1_amd64.deb",
+        "package_name": "libgmpxx4ldbl",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Multiprecision arithmetic library (C++ bindings)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "6f59344240b6dc139ed23ef236b8aa146e5d25e23aa90e79f814e2e4cc4b5752",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/libgmpxx4ldbl_6.3.0+dfsg-2ubuntu6.1_amd64.deb",
+        "title": "libgmpxx4ldbl",
+        "upstream": "https://gmplib.org/",
+        "version": "2:6.3.0+dfsg-2ubuntu6.1"
+      },
+      "catalog_sha256": "407584e37a7b6ca0362ac148dc617ff64a2d5681e8b46f534e14bb3952698e85"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libgmpxx4ldbl",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 9888,
+        "extract": false,
+        "id": "apt.libgmpxx4ldbl",
+        "material_path": "apt/libgmpxx4ldbl_6.3.0+dfsg-2ubuntu6.1_amd64.deb",
+        "sha256": "6f59344240b6dc139ed23ef236b8aa146e5d25e23aa90e79f814e2e4cc4b5752",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/libgmpxx4ldbl_6.3.0+dfsg-2ubuntu6.1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libgmpxx4ldbl"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libgmpxx4ldbl",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libgmpxx4ldbl",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libgmpxx4ldbl.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libgmpxx4ldbl (= 2:6.3.0+dfsg-2ubuntu6.1). Multiprecision arithmetic library (C++ bindings)"
+    },
+    "version": "2:6.3.0+dfsg-2ubuntu6.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "d6a4292d716a66496f0dc5b892ac5afb6b6d6969e13ec31877445a6763199916",
+    "dependencies_sha256": "afe45792fd382b2c59a87efa764d7734f90eafa625c7cf65b3f5a511948deccc",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "fb4a40dd1ac75004a7a9b528ebbae3ef17b17216d0070fc3166b3222a3f13c28",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "72844c3edfbba9349ba52936df56002bc48945436d97cc622d0b587f0df797c9"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

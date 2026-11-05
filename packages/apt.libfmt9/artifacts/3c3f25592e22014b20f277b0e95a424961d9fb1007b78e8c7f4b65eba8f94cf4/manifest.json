@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "f8f674afc85aefa0dd2ea6f9d1ae67b78fccce18343e928362d212baf9b756cc",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libstdc++6"
+      ]
+    },
+    "id": "apt.libfmt9",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libgcc-s1",
+          "apt.libstdc++6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 62960,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libfmt9"
+        ],
+        "id": "apt.libfmt9",
+        "immutable_ref": "sha256:0a9dd337aea7ae59aba44994a92dd2780365b534a714518477c4e906f0efd297",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 160,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libfmt9_9.1.0+ds1-2_amd64.deb",
+        "package_name": "libfmt9",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "fast type-safe C++ formatting library -- library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "0a9dd337aea7ae59aba44994a92dd2780365b534a714518477c4e906f0efd297",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/f/fmtlib/libfmt9_9.1.0+ds1-2_amd64.deb",
+        "title": "libfmt9",
+        "upstream": "https://fmt.dev/",
+        "version": "9.1.0+ds1-2"
+      },
+      "catalog_sha256": "15fb68b451131cd2f04fce0153fe230c01885984aa9bd0c291610316d624ede9"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libfmt9",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 62960,
+        "extract": false,
+        "id": "apt.libfmt9",
+        "material_path": "apt/libfmt9_9.1.0+ds1-2_amd64.deb",
+        "sha256": "0a9dd337aea7ae59aba44994a92dd2780365b534a714518477c4e906f0efd297",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/f/fmtlib/libfmt9_9.1.0+ds1-2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libfmt9"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libfmt9",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libfmt9",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libfmt9.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libfmt9 (= 9.1.0+ds1-2). fast type-safe C++ formatting library -- library"
+    },
+    "version": "9.1.0+ds1-2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "b445e07425389d014bb9550f4c312accc22771054971d80199944e8ef83dd9ef",
+    "dependencies_sha256": "e8c7fef34bc992e765e6fab24ddf2e8d01b7007f703a86b6311c3321a259c38d",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "eaa0badda6657588731fdb0b8d9f87ed9da05c59d7cef6988a010be7f4a67955",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "5e8839861c73d601ce4190101211fa6883024c3106430cbe08b894ebf34d08e9"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

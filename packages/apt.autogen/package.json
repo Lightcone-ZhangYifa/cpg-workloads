@@ -1,0 +1,155 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.guile-3.0-libs",
+      "apt.libc6",
+      "apt.libopts25",
+      "apt.libopts25-dev",
+      "apt.libxml2",
+      "apt.perl"
+    ]
+  },
+  "id": "apt.autogen",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.guile-3.0-libs",
+        "apt.libc6",
+        "apt.libopts25",
+        "apt.libopts25-dev",
+        "apt.libxml2",
+        "apt.perl"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 568096,
+      "category": [
+        "Community development",
+        "System tools"
+      ],
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built"
+      },
+      "id": "apt.autogen",
+      "immutable_ref": "sha256:0a507cc31d69dd0f654416201f3c2aa452ba812bcdedb28541057ad9b67d9d81",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 1166,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/autogen_5.18.16-5build1_amd64.deb",
+      "package_name": "autogen",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "automated text file generator",
+      "qualification_gaps": [
+        "Perform role-specific installation and first-use checks in the selected dev image."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "0a507cc31d69dd0f654416201f3c2aa452ba812bcdedb28541057ad9b67d9d81",
+      "size_basis": "Exact signed captured Packages metadata; actual APT resolver with all existing catalog versions fixed; no deb or OCI installation measurement.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://gcc.gnu.org/install/prerequisites.html"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/a/autogen/autogen_5.18.16-5build1_amd64.deb",
+      "title": "autogen",
+      "version": "1:5.18.16-5build1"
+    },
+    "catalog_sha256": "1f9a405374d29bb2d197e3ac4e1e3d4010e06183989da57bfd5459786c8e7715"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "autogen",
+    "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 568096,
+      "extract": false,
+      "id": "apt.autogen",
+      "material_path": "apt/autogen_5.18.16-5build1_amd64.deb",
+      "sha256": "0a507cc31d69dd0f654416201f3c2aa452ba812bcdedb28541057ad9b67d9d81",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/a/autogen/autogen_5.18.16-5build1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [
+      {
+        "command": "dpkg-query -W autogen",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L autogen",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/autogen.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for autogen (= 1:5.18.16-5build1). automated text file generator"
+  },
+  "version": "1:5.18.16-5build1"
+}

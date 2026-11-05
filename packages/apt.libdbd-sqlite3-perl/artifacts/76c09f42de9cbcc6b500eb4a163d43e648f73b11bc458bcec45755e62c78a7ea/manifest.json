@@ -1,0 +1,186 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "6b757ac3a44a239b4bf18e9f73332fea335026552a4af7972c397ce4187e979e",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libdbi-perl",
+        "apt.libsqlite3-0",
+        "apt.perl",
+        "apt.perl-base"
+      ]
+    },
+    "id": "apt.libdbd-sqlite3-perl",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libdbi-perl",
+          "apt.libsqlite3-0",
+          "apt.perl",
+          "apt.perl-base"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 161176,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libdbd-sqlite3-perl"
+        ],
+        "id": "apt.libdbd-sqlite3-perl",
+        "immutable_ref": "sha256:a0df7eb867b3dfe37130225f4fcdfb258d7ef4aa13c7b496de58538ddb57cb17",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 473,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libdbd-sqlite3-perl_1.74-1build3_amd64.deb",
+        "package_name": "libdbd-sqlite3-perl",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Perl DBI driver with a self-contained RDBMS",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "a0df7eb867b3dfe37130225f4fcdfb258d7ef4aa13c7b496de58538ddb57cb17",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/libd/libdbd-sqlite3-perl/libdbd-sqlite3-perl_1.74-1build3_amd64.deb",
+        "title": "libdbd-sqlite3-perl",
+        "upstream": "https://metacpan.org/release/DBD-SQLite",
+        "version": "1.74-1build3"
+      },
+      "catalog_sha256": "96e83ad084ad2bc735a9eaf35de0b7b887f334db198816b8ae04664309bf05f5"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libdbd-sqlite3-perl",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 161176,
+        "extract": false,
+        "id": "apt.libdbd-sqlite3-perl",
+        "material_path": "apt/libdbd-sqlite3-perl_1.74-1build3_amd64.deb",
+        "sha256": "a0df7eb867b3dfe37130225f4fcdfb258d7ef4aa13c7b496de58538ddb57cb17",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/libd/libdbd-sqlite3-perl/libdbd-sqlite3-perl_1.74-1build3_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libdbd-sqlite3-perl"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libdbd-sqlite3-perl",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libdbd-sqlite3-perl",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libdbd-sqlite3-perl.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libdbd-sqlite3-perl (= 1.74-1build3). Perl DBI driver with a self-contained RDBMS"
+    },
+    "version": "1.74-1build3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "60351a15d97dd0f357a950381861a8b6d7da0274cb8604b567e7d46dca0cd69c",
+    "dependencies_sha256": "d1a94330b314a0fec40e7a5a1e0207530b4a37f01807cf6b73b64f5d600c415a",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "0e3e86ef1ccbbdc2c53d710da516d814464d0c303feec42f2ebfee21add16992",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "84258fda3b7b231dc1fc826a24c960f4e89bd9d4240eb91a164f37e47d1bdb82"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

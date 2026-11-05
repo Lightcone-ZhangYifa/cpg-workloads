@@ -1,0 +1,181 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "0b71c8f43224494fa19d9d2d05e76d722d8f2ee943048c1218cbed423618b7e9",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libbsd0",
+        "apt.libmd-dev"
+      ]
+    },
+    "id": "apt.libbsd-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libbsd0",
+          "apt.libmd-dev"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 168930,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libbsd-dev"
+        ],
+        "id": "apt.libbsd-dev",
+        "immutable_ref": "sha256:d5de7e2205fc68167ecd07bc4fc0f65b53610ce48d514bf097cc076ceefa4b5b",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 664,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libbsd-dev_0.12.1-1build1.1_amd64.deb",
+        "package_name": "libbsd-dev",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "utility functions from BSD systems - development files",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "d5de7e2205fc68167ecd07bc4fc0f65b53610ce48d514bf097cc076ceefa4b5b",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libb/libbsd/libbsd-dev_0.12.1-1build1.1_amd64.deb",
+        "title": "libbsd-dev",
+        "upstream": "https://libbsd.freedesktop.org/",
+        "version": "0.12.1-1build1.1"
+      },
+      "catalog_sha256": "f0a2901cf6e9367fb5e260f8dbda5961e5c6aa5c5b69e647d371cbdc9818e952"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libbsd-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 168930,
+        "extract": false,
+        "id": "apt.libbsd-dev",
+        "material_path": "apt/libbsd-dev_0.12.1-1build1.1_amd64.deb",
+        "sha256": "d5de7e2205fc68167ecd07bc4fc0f65b53610ce48d514bf097cc076ceefa4b5b",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libb/libbsd/libbsd-dev_0.12.1-1build1.1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libbsd-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libbsd-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libbsd-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libbsd-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libbsd-dev (= 0.12.1-1build1.1). utility functions from BSD systems - development files"
+    },
+    "version": "0.12.1-1build1.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "925a3636d94eb713c1f8357215fceed13c6efe4dcde8a908d763a5fabf08b4d6",
+    "dependencies_sha256": "4ac359d29caec65843882ac0195dd81832c32b943cd79276cff861c4c2827428",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "527490c0ae5b7513684178788656c6d97f44ff5a346cbebbc3fe9f92b1922890",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "d31fa68154ed1db9a12cbb5efe21ec6a48b22d73add5e5bd15992b53056dee2c"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

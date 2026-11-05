@@ -1,0 +1,154 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6"
+    ]
+  },
+  "id": "apt.libc6-i386",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 2786562,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libc6-i386"
+      ],
+      "id": "apt.libc6-i386",
+      "immutable_ref": "sha256:a7120e4653c257e87385d0be55afcaca6d28e27ff4879afe576ccf3832ef80e4",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 11994,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libc6-i386_2.39-0ubuntu8.9_amd64.deb",
+      "package_name": "libc6-i386",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "GNU C Library: 32-bit shared libraries for AMD64",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "a7120e4653c257e87385d0be55afcaca6d28e27ff4879afe576ccf3832ef80e4",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6-i386_2.39-0ubuntu8.9_amd64.deb",
+      "title": "libc6-i386",
+      "upstream": "https://www.gnu.org/software/libc/libc.html",
+      "version": "2.39-0ubuntu8.9"
+    },
+    "catalog_sha256": "8917a46d09c7b026e977107a89605e0e14f18fd94c1f1f91327df5556ce294b2"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libc6-i386",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2786562,
+      "extract": false,
+      "id": "apt.libc6-i386",
+      "material_path": "apt/libc6-i386_2.39-0ubuntu8.9_amd64.deb",
+      "sha256": "a7120e4653c257e87385d0be55afcaca6d28e27ff4879afe576ccf3832ef80e4",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6-i386_2.39-0ubuntu8.9_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libc6-i386"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libc6-i386",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libc6-i386",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libc6-i386.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libc6-i386 (= 2.39-0ubuntu8.9). GNU C Library: 32-bit shared libraries for AMD64"
+  },
+  "version": "2.39-0ubuntu8.9"
+}

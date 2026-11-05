@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "d835b0a5ee02bfc6a27a0fe9434f25da1a9443b6798005147b19c97192144e8a",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libelf1t64",
+        "apt.zlib1g"
+      ]
+    },
+    "id": "apt.libdwarf1",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libelf1t64",
+          "apt.zlib1g"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 305694,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libdwarf1"
+        ],
+        "id": "apt.libdwarf1",
+        "immutable_ref": "sha256:536aa664efdc35a4c5fea851751830cae4cf1dd5bd470ae563be398fc4f734bd",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 700,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libdwarf1_20210528-1build2_amd64.deb",
+        "package_name": "libdwarf1",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "library to consume and produce DWARF debug information (runtime)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "536aa664efdc35a4c5fea851751830cae4cf1dd5bd470ae563be398fc4f734bd",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/d/dwarfutils/libdwarf1_20210528-1build2_amd64.deb",
+        "title": "libdwarf1",
+        "upstream": "https://www.prevanders.net/dwarf.html",
+        "version": "20210528-1build2"
+      },
+      "catalog_sha256": "118edc62cb89f5f922824a2770ae6e85cc42b65d1527e6f9cfe1bd4f1697a7e7"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libdwarf1",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 305694,
+        "extract": false,
+        "id": "apt.libdwarf1",
+        "material_path": "apt/libdwarf1_20210528-1build2_amd64.deb",
+        "sha256": "536aa664efdc35a4c5fea851751830cae4cf1dd5bd470ae563be398fc4f734bd",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/d/dwarfutils/libdwarf1_20210528-1build2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libdwarf1"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libdwarf1",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libdwarf1",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libdwarf1.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libdwarf1 (= 20210528-1build2). library to consume and produce DWARF debug information (runtime)"
+    },
+    "version": "20210528-1build2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "a2aacb4b5db1dd9d51bc4087a556dfa6c1685fa80553d2bcb955a7388f7c9a76",
+    "dependencies_sha256": "ce3ba92cb7cd34ecbfb1f82edd908dea2403f81008961e8631d9e31bcb08323b",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "f215d6a33e10a813b1844c252f6d316472a92497772e4a8bb5ef0811db4fccba",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "a1d98413be90e7aaccf4da3efd5fe87b05bc0967e25acf0efa3dc263bf2c7548"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

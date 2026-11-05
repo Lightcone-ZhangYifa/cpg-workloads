@@ -1,0 +1,150 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "apt.autotools-dev",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [],
+      "architecture": "all",
+      "archive_bytes": 44886,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/autotools-dev"
+      ],
+      "id": "apt.autotools-dev",
+      "immutable_ref": "sha256:d909f0327b09d9a9136239caca975df89782fa28efd721c4eb4caea422d3fc5a",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 134,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/autotools-dev_20220109.1_all.deb",
+      "package_name": "autotools-dev",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Update infrastructure for config.{guess,sub} files",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "d909f0327b09d9a9136239caca975df89782fa28efd721c4eb4caea422d3fc5a",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/a/autotools-dev/autotools-dev_20220109.1_all.deb",
+      "title": "autotools-dev",
+      "upstream": "https://savannah.gnu.org/projects/config/",
+      "version": "20220109.1"
+    },
+    "catalog_sha256": "d900fe8743231d2fd8b550be0a3b5ae282b0e8ed6137834b233ec74235a8cacf"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "autotools-dev",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 44886,
+      "extract": false,
+      "id": "apt.autotools-dev",
+      "material_path": "apt/autotools-dev_20220109.1_all.deb",
+      "sha256": "d909f0327b09d9a9136239caca975df89782fa28efd721c4eb4caea422d3fc5a",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/autotools-dev/autotools-dev_20220109.1_all.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/autotools-dev"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W autotools-dev",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L autotools-dev",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/autotools-dev.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for autotools-dev (= 20220109.1). Update infrastructure for config.{guess,sub} files"
+  },
+  "version": "20220109.1"
+}

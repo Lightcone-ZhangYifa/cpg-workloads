@@ -1,0 +1,158 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.cpp-x86-64-linux-gnu",
+      "apt.gcc-x86-64-linux-gnu",
+      "apt.gfortran-13-x86-64-linux-gnu"
+    ]
+  },
+  "id": "apt.gfortran-x86-64-linux-gnu",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.cpp-x86-64-linux-gnu",
+        "apt.gcc-x86-64-linux-gnu",
+        "apt.gfortran-13-x86-64-linux-gnu"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 1024,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/gfortran-x86-64-linux-gnu"
+      ],
+      "id": "apt.gfortran-x86-64-linux-gnu",
+      "immutable_ref": "sha256:f83ad19c3255fab79785dac8b9d6710aad24aa2533f2e8ef645446c3e899b42f",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 11,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/gfortran-x86-64-linux-gnu_13.2.0-7ubuntu1_amd64.deb",
+      "package_name": "gfortran-x86-64-linux-gnu",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "GNU Fortran 95 compiler for the amd64 architecture",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "f83ad19c3255fab79785dac8b9d6710aad24aa2533f2e8ef645446c3e899b42f",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gcc-defaults/gfortran-x86-64-linux-gnu_13.2.0-7ubuntu1_amd64.deb",
+      "title": "gfortran-x86-64-linux-gnu",
+      "upstream": "https://packages.ubuntu.com/noble/gfortran-x86-64-linux-gnu",
+      "version": "4:13.2.0-7ubuntu1"
+    },
+    "catalog_sha256": "c79312d7c693562c69fc397ccf5fa23d46285c67ea314d297efde5631794715f"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "gfortran-x86-64-linux-gnu",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1024,
+      "extract": false,
+      "id": "apt.gfortran-x86-64-linux-gnu",
+      "material_path": "apt/gfortran-x86-64-linux-gnu_13.2.0-7ubuntu1_amd64.deb",
+      "sha256": "f83ad19c3255fab79785dac8b9d6710aad24aa2533f2e8ef645446c3e899b42f",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gcc-defaults/gfortran-x86-64-linux-gnu_13.2.0-7ubuntu1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/gfortran-x86-64-linux-gnu"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W gfortran-x86-64-linux-gnu",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L gfortran-x86-64-linux-gnu",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/gfortran-x86-64-linux-gnu.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for gfortran-x86-64-linux-gnu (= 4:13.2.0-7ubuntu1). GNU Fortran 95 compiler for the amd64 architecture"
+  },
+  "version": "4:13.2.0-7ubuntu1"
+}

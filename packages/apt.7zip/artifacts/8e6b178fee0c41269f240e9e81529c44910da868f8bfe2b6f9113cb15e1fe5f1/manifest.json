@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "3fd6b88d229772e44e5957a27022295946dc103ba992009e44d4f930577539ea",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libstdc++6"
+      ]
+    },
+    "id": "apt.7zip",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libgcc-s1",
+          "apt.libstdc++6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 1846156,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/7zip"
+        ],
+        "id": "apt.7zip",
+        "immutable_ref": "sha256:0f79450d81e64326a862a8645ae1613890e486115101e51e41ca07d929388d87",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 6158,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/7zip_23.01+dfsg-11_amd64.deb",
+        "package_name": "7zip",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "7-Zip file archiver with a high compression ratio",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "0f79450d81e64326a862a8645ae1613890e486115101e51e41ca07d929388d87",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/7/7zip/7zip_23.01+dfsg-11_amd64.deb",
+        "title": "7zip",
+        "upstream": "https://www.7-zip.org/",
+        "version": "23.01+dfsg-11"
+      },
+      "catalog_sha256": "6c7f848f910071ea97b96b39612c736999143268bba0bed11964465b5c0a9e86"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "7zip",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1846156,
+        "extract": false,
+        "id": "apt.7zip",
+        "material_path": "apt/7zip_23.01+dfsg-11_amd64.deb",
+        "sha256": "0f79450d81e64326a862a8645ae1613890e486115101e51e41ca07d929388d87",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/7/7zip/7zip_23.01+dfsg-11_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/7zip"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W 7zip",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L 7zip",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/7zip.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for 7zip (= 23.01+dfsg-11). 7-Zip file archiver with a high compression ratio"
+    },
+    "version": "23.01+dfsg-11"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "b3c31f1c2ca74e9b86556e8d236dd787d4400703632ab40e0f88b3eb7644bb4d",
+    "dependencies_sha256": "e8c7fef34bc992e765e6fab24ddf2e8d01b7007f703a86b6311c3321a259c38d",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "9452d31967c12d0c766ff3999e438f4442216b574fbcecef88e3b9d2dd0f7699",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "260f075faf1a6338fe2034e84153ca104be09df41ef206dccf1b53e721bd43ac"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

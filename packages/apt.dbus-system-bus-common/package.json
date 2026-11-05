@@ -1,0 +1,153 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.adduser"
+    ]
+  },
+  "id": "apt.dbus-system-bus-common",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.adduser"
+      ],
+      "architecture": "all",
+      "archive_bytes": 81648,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/dbus-system-bus-common"
+      ],
+      "id": "apt.dbus-system-bus-common",
+      "immutable_ref": "sha256:4db2e3e18c6abee1a1d1e2f91289e229dd862e6e1ef00463c5533c612c4f1809",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 120,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/dbus-system-bus-common_1.14.10-4ubuntu4.1_all.deb",
+      "package_name": "dbus-system-bus-common",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "simple interprocess messaging system (system bus configuration)",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "4db2e3e18c6abee1a1d1e2f91289e229dd862e6e1ef00463c5533c612c4f1809",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dbus/dbus-system-bus-common_1.14.10-4ubuntu4.1_all.deb",
+      "title": "dbus-system-bus-common",
+      "upstream": "https://dbus.freedesktop.org/",
+      "version": "1.14.10-4ubuntu4.1"
+    },
+    "catalog_sha256": "8f098385ecd6b91a2aaf706ded0907d7b1249299647e474af1bd43c63ee31fdb"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "dbus-system-bus-common",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 81648,
+      "extract": false,
+      "id": "apt.dbus-system-bus-common",
+      "material_path": "apt/dbus-system-bus-common_1.14.10-4ubuntu4.1_all.deb",
+      "sha256": "4db2e3e18c6abee1a1d1e2f91289e229dd862e6e1ef00463c5533c612c4f1809",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dbus/dbus-system-bus-common_1.14.10-4ubuntu4.1_all.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/dbus-system-bus-common"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W dbus-system-bus-common",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L dbus-system-bus-common",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/dbus-system-bus-common.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for dbus-system-bus-common (= 1.14.10-4ubuntu4.1). simple interprocess messaging system (system bus configuration)"
+  },
+  "version": "1.14.10-4ubuntu4.1"
+}

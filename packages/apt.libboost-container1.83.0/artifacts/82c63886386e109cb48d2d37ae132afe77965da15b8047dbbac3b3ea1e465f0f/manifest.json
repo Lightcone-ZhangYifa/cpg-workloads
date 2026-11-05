@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "de23db096b1a17a1a313883fb137767903251534037a8a1097a61535bdc9b3d5",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libstdc++6"
+      ]
+    },
+    "id": "apt.libboost-container1.83.0",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libgcc-s1",
+          "apt.libstdc++6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 260666,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libboost-container1.83.0"
+        ],
+        "id": "apt.libboost-container1.83.0",
+        "immutable_ref": "sha256:357e79b00081085994db5f752fe73a46dbbe41ee8987847a792ce4296978b606",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 2207,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libboost-container1.83.0_1.83.0-2.1ubuntu3.2_amd64.deb",
+        "package_name": "libboost-container1.83.0",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "C++ library that implements several well-known containers",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "357e79b00081085994db5f752fe73a46dbbe41ee8987847a792ce4296978b606",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/b/boost1.83/libboost-container1.83.0_1.83.0-2.1ubuntu3.2_amd64.deb",
+        "title": "libboost-container1.83.0",
+        "upstream": "http://boost.org/libs/container/",
+        "version": "1.83.0-2.1ubuntu3.2"
+      },
+      "catalog_sha256": "ea4c96baccbe77f6e00d7fd33eb2acd743f15ae27742d6a0c53430b59b8e587c"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libboost-container1.83.0",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 260666,
+        "extract": false,
+        "id": "apt.libboost-container1.83.0",
+        "material_path": "apt/libboost-container1.83.0_1.83.0-2.1ubuntu3.2_amd64.deb",
+        "sha256": "357e79b00081085994db5f752fe73a46dbbe41ee8987847a792ce4296978b606",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/b/boost1.83/libboost-container1.83.0_1.83.0-2.1ubuntu3.2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libboost-container1.83.0"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libboost-container1.83.0",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libboost-container1.83.0",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libboost-container1.83.0.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libboost-container1.83.0 (= 1.83.0-2.1ubuntu3.2). C++ library that implements several well-known containers"
+    },
+    "version": "1.83.0-2.1ubuntu3.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "665458720c23163b2626f07d254cad841153f728564b202a937e91af7e9bc82d",
+    "dependencies_sha256": "e8c7fef34bc992e765e6fab24ddf2e8d01b7007f703a86b6311c3321a259c38d",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "8950441d76b3bab653aece31c8d7d83aa719b16b491fbc0aaf85f82e9bdb3fa2",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "5bdb10cdcd7a7b7225fc11f0342805ca4a82cd60e1b31bf63872833d88b3bc05"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

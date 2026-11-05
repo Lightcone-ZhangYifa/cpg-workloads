@@ -1,0 +1,178 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "7ff7b8f23976aeb60c6c77a9b272ba38f65c97af353d1f98dac646e0a9bc0602",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6"
+      ]
+    },
+    "id": "apt.libevent-core-2.1-7t64",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 91942,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libevent-core-2.1-7t64"
+        ],
+        "id": "apt.libevent-core-2.1-7t64",
+        "immutable_ref": "sha256:2a5264b572f5fe50fc9d63e115d308c79b9fb746d13cc55b5ea1f0f01a78daa7",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 259,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libevent-core-2.1-7t64_2.1.12-stable-9ubuntu2.2_amd64.deb",
+        "package_name": "libevent-core-2.1-7t64",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Asynchronous event notification library (core)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "2a5264b572f5fe50fc9d63e115d308c79b9fb746d13cc55b5ea1f0f01a78daa7",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libe/libevent/libevent-core-2.1-7t64_2.1.12-stable-9ubuntu2.2_amd64.deb",
+        "title": "libevent-core-2.1-7t64",
+        "upstream": "https://libevent.org/",
+        "version": "2.1.12-stable-9ubuntu2.2"
+      },
+      "catalog_sha256": "f2ef3c39a1441760d45421ac0b75c7d904c608b0b8288be7ffccd5a8f0c5f876"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libevent-core-2.1-7t64",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 91942,
+        "extract": false,
+        "id": "apt.libevent-core-2.1-7t64",
+        "material_path": "apt/libevent-core-2.1-7t64_2.1.12-stable-9ubuntu2.2_amd64.deb",
+        "sha256": "2a5264b572f5fe50fc9d63e115d308c79b9fb746d13cc55b5ea1f0f01a78daa7",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libe/libevent/libevent-core-2.1-7t64_2.1.12-stable-9ubuntu2.2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libevent-core-2.1-7t64"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libevent-core-2.1-7t64",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libevent-core-2.1-7t64",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libevent-core-2.1-7t64.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libevent-core-2.1-7t64 (= 2.1.12-stable-9ubuntu2.2). Asynchronous event notification library (core)"
+    },
+    "version": "2.1.12-stable-9ubuntu2.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "e25f873625b530465e35fdf773b30c11374dbdfb6d564c95581f359f32f3d7ee",
+    "dependencies_sha256": "e6500e4e5e944fbdcb2f43c99ead4cf5965b7614b33deb860ba9cdce7a582712",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "e69d5ec53361bc3f4068e62da301f48082b889a50586968104564feff387a204",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "f430f88dd903df55e64050100200e3dcb3b72c50d948a089483a17ed3847492a"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

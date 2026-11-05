@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "b47df31e3668ac3fd31866233f86cf339181fbdc35a842979079807de0b50cbf",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libaudit-common",
+        "apt.libc6",
+        "apt.libcap-ng0"
+      ]
+    },
+    "id": "apt.libaudit1",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libaudit-common",
+          "apt.libc6",
+          "apt.libcap-ng0"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 47082,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libaudit1"
+        ],
+        "id": "apt.libaudit1",
+        "immutable_ref": "sha256:326a55fce45a620f12b98baf581fb037eb0fcea1ab3969c54cf177f51be8abfe",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 152,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libaudit1_3.1.2-2.1ubuntu0.1_amd64.deb",
+        "package_name": "libaudit1",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Dynamic library for security auditing",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "326a55fce45a620f12b98baf581fb037eb0fcea1ab3969c54cf177f51be8abfe",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/a/audit/libaudit1_3.1.2-2.1ubuntu0.1_amd64.deb",
+        "title": "libaudit1",
+        "upstream": "https://people.redhat.com/sgrubb/audit/",
+        "version": "1:3.1.2-2.1ubuntu0.1"
+      },
+      "catalog_sha256": "10623136a79a323acc33987753359e9251df6feaee8d976976a020f0378ce2a8"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libaudit1",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 47082,
+        "extract": false,
+        "id": "apt.libaudit1",
+        "material_path": "apt/libaudit1_3.1.2-2.1ubuntu0.1_amd64.deb",
+        "sha256": "326a55fce45a620f12b98baf581fb037eb0fcea1ab3969c54cf177f51be8abfe",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/audit/libaudit1_3.1.2-2.1ubuntu0.1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libaudit1"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libaudit1",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libaudit1",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libaudit1.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libaudit1 (= 1:3.1.2-2.1ubuntu0.1). Dynamic library for security auditing"
+    },
+    "version": "1:3.1.2-2.1ubuntu0.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "af9d52a29f8bb6ceecefaaa82d415fca47dd6b9eb848668473344cc6de70237d",
+    "dependencies_sha256": "685641bbda6f871e094b5e65c40175c270985b2b8dd87032361cd03164803c81",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "557cdee07e23c5076a16935d46f6b31fd94af4e39f47e6d9606294df9f47402a",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "389ad5bd22fea265a9b57d940a1da82646717612ef7a3eb0be01f006dcf888a4"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

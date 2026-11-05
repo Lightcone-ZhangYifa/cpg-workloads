@@ -1,0 +1,170 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.binutils",
+      "apt.bzip2",
+      "apt.libdpkg-perl",
+      "apt.lto-disabled-list",
+      "apt.make",
+      "apt.patch",
+      "apt.perl",
+      "apt.tar",
+      "apt.xz-utils"
+    ]
+  },
+  "id": "apt.dpkg-dev",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.binutils",
+        "apt.bzip2",
+        "apt.libdpkg-perl",
+        "apt.lto-disabled-list",
+        "apt.make",
+        "apt.patch",
+        "apt.perl",
+        "apt.tar",
+        "apt.xz-utils"
+      ],
+      "architecture": "all",
+      "archive_bytes": 1074218,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/dpkg-dev"
+      ],
+      "id": "apt.dpkg-dev",
+      "immutable_ref": "sha256:70da073557dbed76dc14eb1e682e7ec30fcb736f3d98812490a4c785b4c481cb",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 1721,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/dpkg-dev_1.22.6ubuntu6.6_all.deb",
+      "package_name": "dpkg-dev",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Debian package development tools",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "70da073557dbed76dc14eb1e682e7ec30fcb736f3d98812490a4c785b4c481cb",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dpkg/dpkg-dev_1.22.6ubuntu6.6_all.deb",
+      "title": "dpkg-dev",
+      "upstream": "https://wiki.debian.org/Teams/Dpkg",
+      "version": "1.22.6ubuntu6.6"
+    },
+    "catalog_sha256": "c344cbe92f0c64c41b9fce98716587df7f679e344787bc95205a4208c8684690"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "dpkg-dev",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1074218,
+      "extract": false,
+      "id": "apt.dpkg-dev",
+      "material_path": "apt/dpkg-dev_1.22.6ubuntu6.6_all.deb",
+      "sha256": "70da073557dbed76dc14eb1e682e7ec30fcb736f3d98812490a4c785b4c481cb",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dpkg/dpkg-dev_1.22.6ubuntu6.6_all.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/dpkg-dev"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W dpkg-dev",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L dpkg-dev",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/dpkg-dev.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for dpkg-dev (= 1.22.6ubuntu6.6). Debian package development tools"
+  },
+  "version": "1.22.6ubuntu6.6"
+}

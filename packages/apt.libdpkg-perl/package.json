@@ -1,0 +1,156 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.dpkg",
+      "apt.perl"
+    ]
+  },
+  "id": "apt.libdpkg-perl",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.dpkg",
+        "apt.perl"
+      ],
+      "architecture": "all",
+      "archive_bytes": 268420,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libdpkg-perl"
+      ],
+      "id": "apt.libdpkg-perl",
+      "immutable_ref": "sha256:db57f9f0608f78001b5f468e03541fdb88b7e30a07b46d0bcdb57a916a6e8c11",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 1612,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libdpkg-perl_1.22.6ubuntu6.6_all.deb",
+      "package_name": "libdpkg-perl",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Dpkg perl modules",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "db57f9f0608f78001b5f468e03541fdb88b7e30a07b46d0bcdb57a916a6e8c11",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dpkg/libdpkg-perl_1.22.6ubuntu6.6_all.deb",
+      "title": "libdpkg-perl",
+      "upstream": "https://wiki.debian.org/Teams/Dpkg",
+      "version": "1.22.6ubuntu6.6"
+    },
+    "catalog_sha256": "85f2f90668194b9963c68f540037583182777aa30101f264c4740216c12494ba"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libdpkg-perl",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 268420,
+      "extract": false,
+      "id": "apt.libdpkg-perl",
+      "material_path": "apt/libdpkg-perl_1.22.6ubuntu6.6_all.deb",
+      "sha256": "db57f9f0608f78001b5f468e03541fdb88b7e30a07b46d0bcdb57a916a6e8c11",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dpkg/libdpkg-perl_1.22.6ubuntu6.6_all.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libdpkg-perl"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libdpkg-perl",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libdpkg-perl",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libdpkg-perl.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libdpkg-perl (= 1.22.6ubuntu6.6). Dpkg perl modules"
+  },
+  "version": "1.22.6ubuntu6.6"
+}

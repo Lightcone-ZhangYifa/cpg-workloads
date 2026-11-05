@@ -1,0 +1,178 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "2c7244df75904b91ec36bb26b3b6607088129673334593eeea6962e7cc522e39",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libboost-math1.83-dev"
+      ]
+    },
+    "id": "apt.libboost-math-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libboost-math1.83-dev"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 4264,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libboost-math-dev"
+        ],
+        "id": "apt.libboost-math-dev",
+        "immutable_ref": "sha256:96393eae569b233c58c464600ae5a3a9b307c28e4324534d5a8b99689ad6d90b",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 10,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libboost-math-dev_1.83.0.1ubuntu2_amd64.deb",
+        "package_name": "libboost-math-dev",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Boost.Math Library development files (default version)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "96393eae569b233c58c464600ae5a3a9b307c28e4324534d5a8b99689ad6d90b",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/b/boost-defaults/libboost-math-dev_1.83.0.1ubuntu2_amd64.deb",
+        "title": "libboost-math-dev",
+        "upstream": "http://www.boost.org/libs/math/",
+        "version": "1.83.0.1ubuntu2"
+      },
+      "catalog_sha256": "bfb064725c5a5b3725a3020a75be31e22d0f6ef895fec30f59bb5cded0966386"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libboost-math-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 4264,
+        "extract": false,
+        "id": "apt.libboost-math-dev",
+        "material_path": "apt/libboost-math-dev_1.83.0.1ubuntu2_amd64.deb",
+        "sha256": "96393eae569b233c58c464600ae5a3a9b307c28e4324534d5a8b99689ad6d90b",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/b/boost-defaults/libboost-math-dev_1.83.0.1ubuntu2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libboost-math-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libboost-math-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libboost-math-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libboost-math-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libboost-math-dev (= 1.83.0.1ubuntu2). Boost.Math Library development files (default version)"
+    },
+    "version": "1.83.0.1ubuntu2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "5385e161c49a8209c042c6865d446b0fb0bc693f87e030fce4d5a8bc3b065199",
+    "dependencies_sha256": "86b852d658909915ff38d474323f5439d92c51e4fd15b62f973235e58bdb7670",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "3cd4413381e1177cdc4ac297654955ed5e82143878aab9bcce347e73490c488f",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "b5b848202a05c1b8be0e7f4a685e8ae5aad90de65c47e12279dddca4bddc86fb"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

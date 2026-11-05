@@ -1,0 +1,174 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "d5a3ccb938b2f778be706be64fc61c31684c5a5f07450cfbc986eb63702469fd",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.gcc-13",
+        "apt.gcc-13-base",
+        "apt.gnat-13-x86-64-linux-gnu"
+      ]
+    },
+    "id": "apt.gnat-13",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.gcc-13",
+          "apt.gcc-13-base",
+          "apt.gnat-13-x86-64-linux-gnu"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 24446,
+        "category": [
+          "Community development",
+          "System tools"
+        ],
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built"
+        },
+        "id": "apt.gnat-13",
+        "immutable_ref": "sha256:31a468f43985bf3a0deac9a39a1efd0d01695b1fd79b62ac1c8f5b22a58f5157",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 81,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/gnat-13_13.3.0-6ubuntu2~24.04.1_amd64.deb",
+        "package_name": "gnat-13",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "GNU Ada compiler",
+        "qualification_gaps": [
+          "Perform role-specific installation and first-use checks in the selected dev image."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "31a468f43985bf3a0deac9a39a1efd0d01695b1fd79b62ac1c8f5b22a58f5157",
+        "size_basis": "Exact signed captured Packages metadata; actual APT resolver with all existing catalog versions fixed; no deb or OCI installation measurement.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://gcc.gnu.org/install/prerequisites.html"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/gcc-13/gnat-13_13.3.0-6ubuntu2~24.04.1_amd64.deb",
+        "title": "gnat-13",
+        "version": "13.3.0-6ubuntu2~24.04.1"
+      },
+      "catalog_sha256": "dcf8cebee8c2fdb7e90816039187515177aaa2542c837053a1c8742e5c4c5b50"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "gnat-13",
+      "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 24446,
+        "extract": false,
+        "id": "apt.gnat-13",
+        "material_path": "apt/gnat-13_13.3.0-6ubuntu2~24.04.1_amd64.deb",
+        "sha256": "31a468f43985bf3a0deac9a39a1efd0d01695b1fd79b62ac1c8f5b22a58f5157",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/gcc-13/gnat-13_13.3.0-6ubuntu2~24.04.1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [
+        {
+          "command": "dpkg-query -W gnat-13",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L gnat-13",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/gnat-13.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for gnat-13 (= 13.3.0-6ubuntu2~24.04.1). GNU Ada compiler"
+    },
+    "version": "13.3.0-6ubuntu2~24.04.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "90d1926d58eac951b1185244ac9d0ea888a5c57b976f19c2e24c773ff4d5e3c8",
+    "dependencies_sha256": "321f8fd327e6c61fa414cbc9dbc816b62385ccca6be67d44d1779b1b091090ec",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "494515a15b42db4444b2b5424fb0ae55553c91df909324a759a2f7d6984869bf",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "d143241e77472ab710df620c5a91cb861081a7f846b825e5efe6ebfde00a0396"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

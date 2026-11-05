@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ef7372cc262d050c24ac88dee966841d5e5ba252eff0cba8ec9aa619ed71b384",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libsystemd0"
+      ]
+    },
+    "id": "apt.bsdutils",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libsystemd0"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 96370,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/bsdutils"
+        ],
+        "id": "apt.bsdutils",
+        "immutable_ref": "sha256:761e5ad2ff5c30d1bfa9f41dcfe042b3475495c78c11949a9792585bd1f6765b",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 289,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/bsdutils_2.39.3-9ubuntu6.6_amd64.deb",
+        "package_name": "bsdutils",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "basic utilities from 4.4BSD-Lite",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "761e5ad2ff5c30d1bfa9f41dcfe042b3475495c78c11949a9792585bd1f6765b",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/u/util-linux/bsdutils_2.39.3-9ubuntu6.6_amd64.deb",
+        "title": "bsdutils",
+        "upstream": "https://www.kernel.org/pub/linux/utils/util-linux/",
+        "version": "1:2.39.3-9ubuntu6.6"
+      },
+      "catalog_sha256": "d70d0cfe6b2bbef50fd39c10b3420ae702a563622f281892d86095b7e66aa4e4"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "bsdutils",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 96370,
+        "extract": false,
+        "id": "apt.bsdutils",
+        "material_path": "apt/bsdutils_2.39.3-9ubuntu6.6_amd64.deb",
+        "sha256": "761e5ad2ff5c30d1bfa9f41dcfe042b3475495c78c11949a9792585bd1f6765b",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/u/util-linux/bsdutils_2.39.3-9ubuntu6.6_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/bsdutils"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W bsdutils",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L bsdutils",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/bsdutils.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for bsdutils (= 1:2.39.3-9ubuntu6.6). basic utilities from 4.4BSD-Lite"
+    },
+    "version": "1:2.39.3-9ubuntu6.6"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "790861a938241c8450feba0c32fff9153e750be9f09ccb676b6cd346d60816fa",
+    "dependencies_sha256": "7700fc50f3882a01704189b5d6121e561ffcc18d6defa7b24933a650f4888216",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "9cdc3d1b12b755213297bccc11cb159f4140a308c21095b509d47f45ece4a265",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "a62c1cd76ab14e4c08af8c959cd7ab0b237a5ad96d2b009a8f072f679c507bda"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

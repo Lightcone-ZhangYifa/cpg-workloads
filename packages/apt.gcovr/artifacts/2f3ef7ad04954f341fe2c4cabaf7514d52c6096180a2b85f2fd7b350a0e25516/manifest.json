@@ -1,0 +1,186 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "53c4e2af4b08f124f6b0e2994e7d137cdbc592fbda74b3d24e68619f6e064ba8",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.python3",
+        "apt.python3-jinja2",
+        "apt.python3-lxml",
+        "apt.python3-pkg-resources",
+        "apt.python3-pygments"
+      ]
+    },
+    "id": "apt.gcovr",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.python3",
+          "apt.python3-jinja2",
+          "apt.python3-lxml",
+          "apt.python3-pkg-resources",
+          "apt.python3-pygments"
+        ],
+        "architecture": "all",
+        "archive_bytes": 127278,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/gcovr"
+        ],
+        "id": "apt.gcovr",
+        "immutable_ref": "sha256:69e8764ad64c71d4f524ec1cfd1fb7e23deb609d230754c4794bc42037176e72",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 1277,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/gcovr_7.0-1_all.deb",
+        "package_name": "gcovr",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Manages the compilation of coverage information from gcov",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "69e8764ad64c71d4f524ec1cfd1fb7e23deb609d230754c4794bc42037176e72",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/gcovr/gcovr_7.0-1_all.deb",
+        "title": "gcovr",
+        "upstream": "http://gcovr.com/",
+        "version": "7.0-1"
+      },
+      "catalog_sha256": "57d6f0793d5d68b8f6dda2561fc9368343d38a2f5339eaea4dd4ccc775856c76"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "gcovr",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 127278,
+        "extract": false,
+        "id": "apt.gcovr",
+        "material_path": "apt/gcovr_7.0-1_all.deb",
+        "sha256": "69e8764ad64c71d4f524ec1cfd1fb7e23deb609d230754c4794bc42037176e72",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/gcovr/gcovr_7.0-1_all.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/gcovr"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W gcovr",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L gcovr",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/gcovr.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for gcovr (= 7.0-1). Manages the compilation of coverage information from gcov"
+    },
+    "version": "7.0-1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "964a4a2b245173568f46b23ec42bfeb6d751a7247499c811c3e1bc92b3f29347",
+    "dependencies_sha256": "df61b302e6b8996c16cd34afd476c4568f02d5271b5ca87118df764de41d3dd1",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "28bec518ca8fdda704d33717610b5d9a65c6f7a62b3e4037becb93b7aeb7a860",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "855a773735b085b98e47fc0ecd9f04fe87131f7d16894ca429f795ef352d989d"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

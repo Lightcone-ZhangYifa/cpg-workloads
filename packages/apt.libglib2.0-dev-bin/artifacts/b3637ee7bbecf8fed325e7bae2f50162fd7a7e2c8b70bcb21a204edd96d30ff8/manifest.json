@@ -1,0 +1,184 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "3497013c7d5c79b1022bf7f88fe1ca9262fdd8e27b9675a8eeda8154f8d1e755",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libglib2.0-0t64",
+        "apt.python3",
+        "apt.python3-packaging"
+      ]
+    },
+    "id": "apt.libglib2.0-dev-bin",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libglib2.0-0t64",
+          "apt.python3",
+          "apt.python3-packaging"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 137856,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libglib2.0-dev-bin"
+        ],
+        "id": "apt.libglib2.0-dev-bin",
+        "immutable_ref": "sha256:18c23eb263f0afdd9455dd52f9ef287f8203f1fe33ff4a97934ad636f8bbb522",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 717,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libglib2.0-dev-bin_2.80.0-6ubuntu3.10_amd64.deb",
+        "package_name": "libglib2.0-dev-bin",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Development utilities for the GLib library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "18c23eb263f0afdd9455dd52f9ef287f8203f1fe33ff4a97934ad636f8bbb522",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/g/glib2.0/libglib2.0-dev-bin_2.80.0-6ubuntu3.10_amd64.deb",
+        "title": "libglib2.0-dev-bin",
+        "upstream": "https://wiki.gnome.org/Projects/GLib",
+        "version": "2.80.0-6ubuntu3.10"
+      },
+      "catalog_sha256": "07a490676589801f25d83cd90a3590ae2a60880c23425d1def31d4aaed5753e6"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libglib2.0-dev-bin",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 137856,
+        "extract": false,
+        "id": "apt.libglib2.0-dev-bin",
+        "material_path": "apt/libglib2.0-dev-bin_2.80.0-6ubuntu3.10_amd64.deb",
+        "sha256": "18c23eb263f0afdd9455dd52f9ef287f8203f1fe33ff4a97934ad636f8bbb522",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/glib2.0/libglib2.0-dev-bin_2.80.0-6ubuntu3.10_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libglib2.0-dev-bin"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libglib2.0-dev-bin",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libglib2.0-dev-bin",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libglib2.0-dev-bin.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libglib2.0-dev-bin (= 2.80.0-6ubuntu3.10). Development utilities for the GLib library"
+    },
+    "version": "2.80.0-6ubuntu3.10"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "baf61e8e81a345219de14fcbec9269b3eba4ef54c3bdb6df9eca4d1d0eb20e0c",
+    "dependencies_sha256": "a8e153e8f049009e66a20642853908398baed6d5058ae00fec76e642ca94d7eb",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "d970197511db09bcb99bf150b1b5b8f4a7a5785b978bd5e97d7ac51873a6471d",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "1a1dd7ec3b3d3eb7b25277db20e5e821f7daba9b9cf71cdb2ac0967f6570a71f"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

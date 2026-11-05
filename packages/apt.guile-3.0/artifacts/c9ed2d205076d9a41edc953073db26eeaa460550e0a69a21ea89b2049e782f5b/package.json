@@ -1,0 +1,145 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.guile-3.0-libs"
+    ]
+  },
+  "id": "apt.guile-3.0",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.guile-3.0-libs"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 16416,
+      "category": [
+        "Community development",
+        "Resolved system dependencies"
+      ],
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built"
+      },
+      "id": "apt.guile-3.0",
+      "immutable_ref": "sha256:6aa7c8ae9dcbf176d1b4aa2d3fb9ea0b5cec561588a57af1580b4bc0fa95aff3",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 80,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/guile-3.0_3.0.9-1build2_amd64.deb",
+      "package_name": "guile-3.0",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "GNU extension language and Scheme interpreter",
+      "qualification_gaps": [
+        "Perform role-specific installation and first-use checks in the selected dev image."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "6aa7c8ae9dcbf176d1b4aa2d3fb9ea0b5cec561588a57af1580b4bc0fa95aff3",
+      "size_basis": "Exact signed captured Packages metadata; actual APT resolver with all existing catalog versions fixed; no deb or OCI installation measurement.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://gcc.gnu.org/install/prerequisites.html"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/guile-3.0/guile-3.0_3.0.9-1build2_amd64.deb",
+      "title": "guile-3.0",
+      "version": "3.0.9-1build2"
+    },
+    "catalog_sha256": "f7241979d5e3da426d794375f038164867ee6d331ba86ac1591ea99416ce1681"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "guile-3.0",
+    "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 16416,
+      "extract": false,
+      "id": "apt.guile-3.0",
+      "material_path": "apt/guile-3.0_3.0.9-1build2_amd64.deb",
+      "sha256": "6aa7c8ae9dcbf176d1b4aa2d3fb9ea0b5cec561588a57af1580b4bc0fa95aff3",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/guile-3.0/guile-3.0_3.0.9-1build2_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [
+      {
+        "command": "dpkg-query -W guile-3.0",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L guile-3.0",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/guile-3.0.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for guile-3.0 (= 3.0.9-1build2). GNU extension language and Scheme interpreter"
+  },
+  "version": "3.0.9-1build2"
+}

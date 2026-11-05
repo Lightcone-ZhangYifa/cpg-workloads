@@ -1,0 +1,178 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "da6407914651b505048c5c31da940acd684c9d2faeb2041c67fe7d9ef51ab8e1",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libgcc-s1"
+      ]
+    },
+    "id": "apt.libc6",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libgcc-s1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 3264314,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libc6"
+        ],
+        "id": "apt.libc6",
+        "immutable_ref": "sha256:ff5557d99b51f761c4b7c92368b9cc45565eda17df9bf9eb4b134d09825008be",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 13432,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libc6_2.39-0ubuntu8.9_amd64.deb",
+        "package_name": "libc6",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "GNU C Library: Shared libraries",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "ff5557d99b51f761c4b7c92368b9cc45565eda17df9bf9eb4b134d09825008be",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6_2.39-0ubuntu8.9_amd64.deb",
+        "title": "libc6",
+        "upstream": "https://www.gnu.org/software/libc/libc.html",
+        "version": "2.39-0ubuntu8.9"
+      },
+      "catalog_sha256": "609ae208f3a3479496c354f4e4b36c25c4d8c1f2578bf591841656e47bc490a5"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libc6",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 3264314,
+        "extract": false,
+        "id": "apt.libc6",
+        "material_path": "apt/libc6_2.39-0ubuntu8.9_amd64.deb",
+        "sha256": "ff5557d99b51f761c4b7c92368b9cc45565eda17df9bf9eb4b134d09825008be",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6_2.39-0ubuntu8.9_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libc6"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libc6",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libc6",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libc6.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libc6 (= 2.39-0ubuntu8.9). GNU C Library: Shared libraries"
+    },
+    "version": "2.39-0ubuntu8.9"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "4fe8f2153b0cb15401658c4af440cbff7b5bb0abc824d0ba9f7a93d2ebac43d2",
+    "dependencies_sha256": "c096b1ee07b1f1df9911f19bc3e8c91459a3ac64fe23fea6a408653bb0b30c92",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "90f3bceeda9dd29b60b2c4d62c5d0e0ecf0f0c476e013fe47662fcc315f36d0f",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "e29009024b000fb8c5b0feeeebb67754ba1603537a66586bf9bbd83770a945c2"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

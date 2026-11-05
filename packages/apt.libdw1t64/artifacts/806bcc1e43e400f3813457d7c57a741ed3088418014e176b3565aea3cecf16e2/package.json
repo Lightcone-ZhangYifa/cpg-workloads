@@ -1,0 +1,165 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libbz2-1.0",
+      "apt.libc6",
+      "apt.libelf1t64",
+      "apt.liblzma5",
+      "apt.libzstd1",
+      "apt.zlib1g"
+    ]
+  },
+  "id": "apt.libdw1t64",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libbz2-1.0",
+        "apt.libc6",
+        "apt.libelf1t64",
+        "apt.liblzma5",
+        "apt.libzstd1",
+        "apt.zlib1g"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 261194,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libdw1t64"
+      ],
+      "id": "apt.libdw1t64",
+      "immutable_ref": "sha256:edaa9ce4221d95f4bd72a9805100902e313092a2f31a7a51e7186be97734714d",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 766,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libdw1t64_0.190-1.1ubuntu0.1_amd64.deb",
+      "package_name": "libdw1t64",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "library that provides access to the DWARF debug information",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "edaa9ce4221d95f4bd72a9805100902e313092a2f31a7a51e7186be97734714d",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/libdw1t64_0.190-1.1ubuntu0.1_amd64.deb",
+      "title": "libdw1t64",
+      "upstream": "https://sourceware.org/elfutils/",
+      "version": "0.190-1.1ubuntu0.1"
+    },
+    "catalog_sha256": "fb6b7443f456148af2facb934da5b33b47f161265d887b17b10662903cca173e"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libdw1t64",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 261194,
+      "extract": false,
+      "id": "apt.libdw1t64",
+      "material_path": "apt/libdw1t64_0.190-1.1ubuntu0.1_amd64.deb",
+      "sha256": "edaa9ce4221d95f4bd72a9805100902e313092a2f31a7a51e7186be97734714d",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/libdw1t64_0.190-1.1ubuntu0.1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libdw1t64"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libdw1t64",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libdw1t64",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libdw1t64.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libdw1t64 (= 0.190-1.1ubuntu0.1). library that provides access to the DWARF debug information"
+  },
+  "version": "0.190-1.1ubuntu0.1"
+}

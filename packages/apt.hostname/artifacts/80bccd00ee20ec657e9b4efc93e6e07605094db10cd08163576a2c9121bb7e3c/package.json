@@ -1,0 +1,153 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6"
+    ]
+  },
+  "id": "apt.hostname",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 11058,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/hostname"
+      ],
+      "id": "apt.hostname",
+      "immutable_ref": "sha256:c9b3109d868c1e5a26f0bd10e005171420d83f6da84a527aa6293bc350892504",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 46,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/hostname_3.23+nmu2ubuntu2_amd64.deb",
+      "package_name": "hostname",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "utility to set/show the host name or domain name",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "c9b3109d868c1e5a26f0bd10e005171420d83f6da84a527aa6293bc350892504",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/h/hostname/hostname_3.23+nmu2ubuntu2_amd64.deb",
+      "title": "hostname",
+      "upstream": "https://packages.ubuntu.com/noble/hostname",
+      "version": "3.23+nmu2ubuntu2"
+    },
+    "catalog_sha256": "d9ec7a5156e7d53235467bc3e6ae5dbb640d924cdc2c38b125c972ba332b25b9"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "hostname",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 11058,
+      "extract": false,
+      "id": "apt.hostname",
+      "material_path": "apt/hostname_3.23+nmu2ubuntu2_amd64.deb",
+      "sha256": "c9b3109d868c1e5a26f0bd10e005171420d83f6da84a527aa6293bc350892504",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/h/hostname/hostname_3.23+nmu2ubuntu2_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/hostname"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W hostname",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L hostname",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/hostname.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for hostname (= 3.23+nmu2ubuntu2). utility to set/show the host name or domain name"
+  },
+  "version": "3.23+nmu2ubuntu2"
+}

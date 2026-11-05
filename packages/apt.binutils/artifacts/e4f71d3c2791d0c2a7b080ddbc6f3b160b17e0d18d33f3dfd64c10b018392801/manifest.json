@@ -1,0 +1,187 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "a2459d55959a61ac1645849910d4c913f29e6135c8984aa2576ca93c670053f4",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.binutils-common",
+        "apt.binutils-x86-64-linux-gnu",
+        "apt.libbinutils"
+      ]
+    },
+    "id": "apt.binutils",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.binutils-common",
+          "apt.binutils-x86-64-linux-gnu",
+          "apt.libbinutils"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 18154,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/binutils"
+        ],
+        "id": "apt.binutils",
+        "immutable_ref": "sha256:b3b5a84181a38fd191820b2cdcc1a3eeb1cd6333ad472f2092f96e81047e9c74",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 161,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/binutils_2.42-4ubuntu2.10_amd64.deb",
+        "package_name": "binutils",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "GNU assembler, linker and binary utilities",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "b3b5a84181a38fd191820b2cdcc1a3eeb1cd6333ad472f2092f96e81047e9c74",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils_2.42-4ubuntu2.10_amd64.deb",
+        "title": "binutils",
+        "upstream": "https://www.gnu.org/software/binutils/",
+        "version": "2.42-4ubuntu2.10"
+      },
+      "catalog_sha256": "3be93ca9e78d083717a4ce62686c8ff562e67d5e7226a6690191b8ad1b2586fb"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "binutils",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 18154,
+        "extract": false,
+        "id": "apt.binutils",
+        "material_path": "apt/binutils_2.42-4ubuntu2.10_amd64.deb",
+        "sha256": "b3b5a84181a38fd191820b2cdcc1a3eeb1cd6333ad472f2092f96e81047e9c74",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils_2.42-4ubuntu2.10_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/binutils",
+        "https://sourceware.org/binutils/docs/binutils.html",
+        "https://sourceware.org/binutils/docs/binutils/objcopy.html",
+        "https://sourceware.org/binutils/docs/binutils/addr2line.html"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W binutils",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L binutils",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/binutils.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for binutils (= 2.42-4ubuntu2.10). GNU assembler, linker and binary utilities"
+    },
+    "version": "2.42-4ubuntu2.10"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "94bc2f90dc7c89065d0abf45321513d0710d65544a7bd58a6a3f71119f6aa8b6",
+    "dependencies_sha256": "6d2dc45b6e1fab0209c7f1136c144d9e268d1254745daba0871b3018aaf59026",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "013fbb1b1e0eb051deeda0c59a0bda5afdb45e3b7643a379a8830ed882cbc9cb",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "753c0f6918ad9d56527bf06a89c3e45e925cff242e3087ac466afaeea4754075"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,156 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.gcc-14-base",
+      "apt.libc6-i386"
+    ]
+  },
+  "id": "apt.lib32gcc-s1",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.gcc-14-base",
+        "apt.libc6-i386"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 92278,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/lib32gcc-s1"
+      ],
+      "id": "apt.lib32gcc-s1",
+      "immutable_ref": "sha256:1802dc75345ccce457b44110a3819ca74ff8c33fc62394a78d0e59a11c0cf770",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 223,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/lib32gcc-s1_14.2.0-4ubuntu2~24.04.1_amd64.deb",
+      "package_name": "lib32gcc-s1",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "GCC support library (32 bit Version)",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "1802dc75345ccce457b44110a3819ca74ff8c33fc62394a78d0e59a11c0cf770",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gcc-14/lib32gcc-s1_14.2.0-4ubuntu2~24.04.1_amd64.deb",
+      "title": "lib32gcc-s1",
+      "upstream": "http://gcc.gnu.org/",
+      "version": "14.2.0-4ubuntu2~24.04.1"
+    },
+    "catalog_sha256": "94c9104600f3b70004d99d6b341cd8046615cc4a1ae695c2ae155538867c7885"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "lib32gcc-s1",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 92278,
+      "extract": false,
+      "id": "apt.lib32gcc-s1",
+      "material_path": "apt/lib32gcc-s1_14.2.0-4ubuntu2~24.04.1_amd64.deb",
+      "sha256": "1802dc75345ccce457b44110a3819ca74ff8c33fc62394a78d0e59a11c0cf770",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gcc-14/lib32gcc-s1_14.2.0-4ubuntu2~24.04.1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/lib32gcc-s1"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W lib32gcc-s1",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L lib32gcc-s1",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/lib32gcc-s1.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for lib32gcc-s1 (= 14.2.0-4ubuntu2~24.04.1). GCC support library (32 bit Version)"
+  },
+  "version": "14.2.0-4ubuntu2~24.04.1"
+}

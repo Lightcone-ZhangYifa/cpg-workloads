@@ -1,0 +1,169 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libdatetime-locale-perl",
+      "apt.libdatetime-timezone-perl",
+      "apt.libnamespace-autoclean-perl",
+      "apt.libparams-validationcompiler-perl",
+      "apt.libspecio-perl",
+      "apt.libtry-tiny-perl",
+      "apt.perl",
+      "apt.perl-base"
+    ]
+  },
+  "id": "apt.libdatetime-perl",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libdatetime-locale-perl",
+        "apt.libdatetime-timezone-perl",
+        "apt.libnamespace-autoclean-perl",
+        "apt.libparams-validationcompiler-perl",
+        "apt.libspecio-perl",
+        "apt.libtry-tiny-perl",
+        "apt.perl",
+        "apt.perl-base"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 95750,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libdatetime-perl"
+      ],
+      "id": "apt.libdatetime-perl",
+      "immutable_ref": "sha256:025cff049d175b2c3d323a9677103da41d3f0c1bf6d75a4b9a3929e1b850aaec",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 273,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libdatetime-perl_1.65-1build2_amd64.deb",
+      "package_name": "libdatetime-perl",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "module for manipulating dates, times and timestamps",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "025cff049d175b2c3d323a9677103da41d3f0c1bf6d75a4b9a3929e1b850aaec",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/libd/libdatetime-perl/libdatetime-perl_1.65-1build2_amd64.deb",
+      "title": "libdatetime-perl",
+      "upstream": "https://github.com/houseabsolute/DateTime.pm/wiki",
+      "version": "2:1.65-1build2"
+    },
+    "catalog_sha256": "0ecc533429bfbed360b99b6e2f8f42a87ae9a0d3575808d7d56c28d6f31ae365"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libdatetime-perl",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 95750,
+      "extract": false,
+      "id": "apt.libdatetime-perl",
+      "material_path": "apt/libdatetime-perl_1.65-1build2_amd64.deb",
+      "sha256": "025cff049d175b2c3d323a9677103da41d3f0c1bf6d75a4b9a3929e1b850aaec",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/libd/libdatetime-perl/libdatetime-perl_1.65-1build2_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libdatetime-perl"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libdatetime-perl",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libdatetime-perl",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libdatetime-perl.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libdatetime-perl (= 2:1.65-1build2). module for manipulating dates, times and timestamps"
+  },
+  "version": "2:1.65-1build2"
+}

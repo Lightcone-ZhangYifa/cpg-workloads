@@ -1,0 +1,169 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libfontconfig1",
+      "apt.libfreetype6",
+      "apt.libheif1",
+      "apt.libjpeg8",
+      "apt.libpng16-16t64",
+      "apt.libtiff6",
+      "apt.libwebp7",
+      "apt.libxpm4"
+    ]
+  },
+  "id": "apt.libgd3",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libfontconfig1",
+        "apt.libfreetype6",
+        "apt.libheif1",
+        "apt.libjpeg8",
+        "apt.libpng16-16t64",
+        "apt.libtiff6",
+        "apt.libwebp7",
+        "apt.libxpm4"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 127506,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libgd3"
+      ],
+      "id": "apt.libgd3",
+      "immutable_ref": "sha256:dbef5ad99eec399fd6afeb6d0cc92d81a8b3295a7ac80ac71311ea09c49704ae",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 437,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libgd3_2.3.3-9ubuntu5_amd64.deb",
+      "package_name": "libgd3",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "GD Graphics Library",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "dbef5ad99eec399fd6afeb6d0cc92d81a8b3295a7ac80ac71311ea09c49704ae",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libgd2/libgd3_2.3.3-9ubuntu5_amd64.deb",
+      "title": "libgd3",
+      "upstream": "http://www.libgd.org/",
+      "version": "2.3.3-9ubuntu5"
+    },
+    "catalog_sha256": "9ed44279cf7ddf71de347f2c278764af9a25d23693abc58758afd0d0fa9bdf9f"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libgd3",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 127506,
+      "extract": false,
+      "id": "apt.libgd3",
+      "material_path": "apt/libgd3_2.3.3-9ubuntu5_amd64.deb",
+      "sha256": "dbef5ad99eec399fd6afeb6d0cc92d81a8b3295a7ac80ac71311ea09c49704ae",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libgd2/libgd3_2.3.3-9ubuntu5_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libgd3"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libgd3",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libgd3",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libgd3.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libgd3 (= 2.3.3-9ubuntu5). GD Graphics Library"
+  },
+  "version": "2.3.3-9ubuntu5"
+}

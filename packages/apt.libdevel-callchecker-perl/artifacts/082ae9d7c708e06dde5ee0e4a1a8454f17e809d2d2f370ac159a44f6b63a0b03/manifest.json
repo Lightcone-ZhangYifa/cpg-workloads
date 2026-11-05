@@ -1,0 +1,184 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "27dfbfec85c48393b1432ec4ee1eb96e77cc3886fcd73ab0aa33c1384d322ff3",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libb-hooks-op-check-perl",
+        "apt.libdynaloader-functions-perl",
+        "apt.perl",
+        "apt.perl-base"
+      ]
+    },
+    "id": "apt.libdevel-callchecker-perl",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libb-hooks-op-check-perl",
+          "apt.libdynaloader-functions-perl",
+          "apt.perl",
+          "apt.perl-base"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 13224,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libdevel-callchecker-perl"
+        ],
+        "id": "apt.libdevel-callchecker-perl",
+        "immutable_ref": "sha256:8f1d52aba20ff6f8a93104f70253ba0436d0307b489221b0542f0af904f30a2d",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 51,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libdevel-callchecker-perl_0.008-2build3_amd64.deb",
+        "package_name": "libdevel-callchecker-perl",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "custom op checking attached to subroutines",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "8f1d52aba20ff6f8a93104f70253ba0436d0307b489221b0542f0af904f30a2d",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libd/libdevel-callchecker-perl/libdevel-callchecker-perl_0.008-2build3_amd64.deb",
+        "title": "libdevel-callchecker-perl",
+        "upstream": "https://metacpan.org/release/Devel-CallChecker",
+        "version": "0.008-2build3"
+      },
+      "catalog_sha256": "a3695277d70b07a7193a25d65cb2ed887b4896ce09fb2475ee1dc8b93d457c9c"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libdevel-callchecker-perl",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 13224,
+        "extract": false,
+        "id": "apt.libdevel-callchecker-perl",
+        "material_path": "apt/libdevel-callchecker-perl_0.008-2build3_amd64.deb",
+        "sha256": "8f1d52aba20ff6f8a93104f70253ba0436d0307b489221b0542f0af904f30a2d",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libd/libdevel-callchecker-perl/libdevel-callchecker-perl_0.008-2build3_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libdevel-callchecker-perl"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libdevel-callchecker-perl",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libdevel-callchecker-perl",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libdevel-callchecker-perl.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libdevel-callchecker-perl (= 0.008-2build3). custom op checking attached to subroutines"
+    },
+    "version": "0.008-2build3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "0c2cd0e9a7e76b30f06efc75b358451999ac4055ff339f40eda2190244f1482f",
+    "dependencies_sha256": "6ebc7509fec5463c1a4e704db618c9e79cd730457192654bf99134c95068504a",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "be135946ddc5962c2fe7ba0fb84accb5d4a9626da30a85e9f362b876c4686b90",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "93372c4205cbbab6ef5d2d389f952e01999967c3532f2cf682ef271eac45b4e6"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

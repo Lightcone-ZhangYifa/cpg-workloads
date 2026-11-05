@@ -1,0 +1,181 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "f465ff4556ce0bab845e3afdb10e6a686a65eafe171d454fb52d988b540c6ba8",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libstdc++6"
+      ]
+    },
+    "id": "apt.libboost-atomic1.83.0",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libstdc++6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 240046,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libboost-atomic1.83.0"
+        ],
+        "id": "apt.libboost-atomic1.83.0",
+        "immutable_ref": "sha256:e31f9d318ceffbc44d7317a5d150b8cfbe65ebd0e9e4d9ea7c217eaaae9eaaf9",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 2163,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libboost-atomic1.83.0_1.83.0-2.1ubuntu3.2_amd64.deb",
+        "package_name": "libboost-atomic1.83.0",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "atomic data types, operations, and memory ordering constraints",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "e31f9d318ceffbc44d7317a5d150b8cfbe65ebd0e9e4d9ea7c217eaaae9eaaf9",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/b/boost1.83/libboost-atomic1.83.0_1.83.0-2.1ubuntu3.2_amd64.deb",
+        "title": "libboost-atomic1.83.0",
+        "upstream": "http://www.boost.org/libs/atomic/",
+        "version": "1.83.0-2.1ubuntu3.2"
+      },
+      "catalog_sha256": "b3eb044a0e0748e98417f03715421682fec709fc1932a842313401cf7780a4ef"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libboost-atomic1.83.0",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 240046,
+        "extract": false,
+        "id": "apt.libboost-atomic1.83.0",
+        "material_path": "apt/libboost-atomic1.83.0_1.83.0-2.1ubuntu3.2_amd64.deb",
+        "sha256": "e31f9d318ceffbc44d7317a5d150b8cfbe65ebd0e9e4d9ea7c217eaaae9eaaf9",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/boost1.83/libboost-atomic1.83.0_1.83.0-2.1ubuntu3.2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libboost-atomic1.83.0"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libboost-atomic1.83.0",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libboost-atomic1.83.0",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libboost-atomic1.83.0.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libboost-atomic1.83.0 (= 1.83.0-2.1ubuntu3.2). atomic data types, operations, and memory ordering constraints"
+    },
+    "version": "1.83.0-2.1ubuntu3.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "40faf7bdd54ffe26d109898f98ba34a0050b1696292ca24e8365964428eb6911",
+    "dependencies_sha256": "620d53445677c3b7ae7a8d2e82efad0db90bef5801c39a6597c621e69365d978",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "8a89117528b4081e405d08de5f87bef9d98040f3fcf793e2a2cd06f69cf56c07",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "43cf6d945c0d0219d5231e637cdf65d2660f0c512076d2ab5f8f142c4586b541"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

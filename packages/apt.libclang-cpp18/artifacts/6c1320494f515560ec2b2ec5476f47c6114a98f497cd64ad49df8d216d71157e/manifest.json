@@ -1,0 +1,183 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "3e71b61b2931078553e13ada01af9e23d289d17c39eca7c8d66632ec2bddc928",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libllvm18",
+        "apt.libstdc++6"
+      ]
+    },
+    "id": "apt.libclang-cpp18",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libllvm18",
+          "apt.libstdc++6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 13492572,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libclang-cpp18"
+        ],
+        "id": "apt.libclang-cpp18",
+        "immutable_ref": "sha256:e91eda104813ee0468d145d010a4a4e142401f3f17f9a65596c66d416298d018",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 63335,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libclang-cpp18_18.1.3-1ubuntu1_amd64.deb",
+        "package_name": "libclang-cpp18",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "C++ interface to the Clang library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "e91eda104813ee0468d145d010a4a4e142401f3f17f9a65596c66d416298d018",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-18/libclang-cpp18_18.1.3-1ubuntu1_amd64.deb",
+        "title": "libclang-cpp18",
+        "upstream": "https://www.llvm.org/",
+        "version": "1:18.1.3-1ubuntu1"
+      },
+      "catalog_sha256": "88fb65eff54e768b07903919260c007cbff887087eae3a9abc4ffaf826d0be6f"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libclang-cpp18",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 13492572,
+        "extract": false,
+        "id": "apt.libclang-cpp18",
+        "material_path": "apt/libclang-cpp18_18.1.3-1ubuntu1_amd64.deb",
+        "sha256": "e91eda104813ee0468d145d010a4a4e142401f3f17f9a65596c66d416298d018",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-18/libclang-cpp18_18.1.3-1ubuntu1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libclang-cpp18"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libclang-cpp18",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libclang-cpp18",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libclang-cpp18.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libclang-cpp18 (= 1:18.1.3-1ubuntu1). C++ interface to the Clang library"
+    },
+    "version": "1:18.1.3-1ubuntu1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "fdca1d42c7c0ea2fd7afd3e44192bd13c0d7b5cc9a1ff560d44366b0c34463fe",
+    "dependencies_sha256": "8c66b8fdb5561be94cf98f643ce1a30cf7e1f21cf56a3640be0be36b9889584b",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "b7b2aa9bc83a15bb395c49416e060e9689e6bcea2ee0b48c75ac2b5add45c9fc",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "0d609007b0c133efe5122bf182f891bffc1f1afa1ae311e24c60322832c0937a"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "44e0a6802cc986beefbf7595a6ba34b5a4be9167f3a4dea0b52e92dabf84de3b",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6-dev",
+        "apt.libgc1"
+      ]
+    },
+    "id": "apt.libgc-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6-dev",
+          "apt.libgc1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 260652,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libgc-dev"
+        ],
+        "id": "apt.libgc-dev",
+        "immutable_ref": "sha256:e5d9a3129688bcf6722c381561aeef1c938e7a70bcade830c04c04e55cfa0744",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 968,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libgc-dev_8.2.6-1build1_amd64.deb",
+        "package_name": "libgc-dev",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "conservative garbage collector for C (development)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "e5d9a3129688bcf6722c381561aeef1c938e7a70bcade830c04c04e55cfa0744",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libgc/libgc-dev_8.2.6-1build1_amd64.deb",
+        "title": "libgc-dev",
+        "upstream": "https://www.hboehm.info/gc/",
+        "version": "1:8.2.6-1build1"
+      },
+      "catalog_sha256": "0e1a82aa62757ac2396f042d0f2ed44a77d5ef04d6f9427e02a5f3807d8b22f9"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libgc-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 260652,
+        "extract": false,
+        "id": "apt.libgc-dev",
+        "material_path": "apt/libgc-dev_8.2.6-1build1_amd64.deb",
+        "sha256": "e5d9a3129688bcf6722c381561aeef1c938e7a70bcade830c04c04e55cfa0744",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libgc/libgc-dev_8.2.6-1build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libgc-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libgc-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libgc-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libgc-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libgc-dev (= 1:8.2.6-1build1). conservative garbage collector for C (development)"
+    },
+    "version": "1:8.2.6-1build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "0f44c4b3a5d65d4222732df5d3264c7f06a12ae37432813a645c907efe52f7f8",
+    "dependencies_sha256": "88e1326277de6d03eb0d53bf26153a7d05db812665770dc55e3007109e486f19",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "602730ab1052b5345f6a7bba30d90f849e1afd0c5e0f1b020f9851f832a283c7",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "b33a774dda4b374e63c93b8c4ac7a3a4e2448c9cff76fae24fc9b1fe8b1d6d86"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

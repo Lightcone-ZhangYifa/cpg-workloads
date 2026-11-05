@@ -1,0 +1,155 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libdbus-1-3"
+    ]
+  },
+  "id": "apt.dbus-bin",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libdbus-1-3"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 39310,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/dbus-bin"
+      ],
+      "id": "apt.dbus-bin",
+      "immutable_ref": "sha256:0d2c7e425967039594ea099f6128231769e1ed2cc2f6fd7d895fea135c9e1964",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 215,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/dbus-bin_1.14.10-4ubuntu4.1_amd64.deb",
+      "package_name": "dbus-bin",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "simple interprocess messaging system (command line utilities)",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "0d2c7e425967039594ea099f6128231769e1ed2cc2f6fd7d895fea135c9e1964",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dbus/dbus-bin_1.14.10-4ubuntu4.1_amd64.deb",
+      "title": "dbus-bin",
+      "upstream": "https://dbus.freedesktop.org/",
+      "version": "1.14.10-4ubuntu4.1"
+    },
+    "catalog_sha256": "33dcb90e54d39a341a8d2a2de9258be00ee98b1c6b7404f4d13e763abed9585e"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "dbus-bin",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 39310,
+      "extract": false,
+      "id": "apt.dbus-bin",
+      "material_path": "apt/dbus-bin_1.14.10-4ubuntu4.1_amd64.deb",
+      "sha256": "0d2c7e425967039594ea099f6128231769e1ed2cc2f6fd7d895fea135c9e1964",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dbus/dbus-bin_1.14.10-4ubuntu4.1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/dbus-bin"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W dbus-bin",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L dbus-bin",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/dbus-bin.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for dbus-bin (= 1.14.10-4ubuntu4.1). simple interprocess messaging system (command line utilities)"
+  },
+  "version": "1.14.10-4ubuntu4.1"
+}

@@ -1,0 +1,155 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libglib2.0-0t64"
+    ]
+  },
+  "id": "apt.libdconf1",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libglib2.0-0t64"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 39588,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libdconf1"
+      ],
+      "id": "apt.libdconf1",
+      "immutable_ref": "sha256:86bf3825fbaec0d5159c5e6bd88f10ade991a086c821aeef15631c510c6d9904",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 102,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libdconf1_0.40.0-4ubuntu0.1_amd64.deb",
+      "package_name": "libdconf1",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "simple configuration storage system - runtime library",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "86bf3825fbaec0d5159c5e6bd88f10ade991a086c821aeef15631c510c6d9904",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dconf/libdconf1_0.40.0-4ubuntu0.1_amd64.deb",
+      "title": "libdconf1",
+      "upstream": "https://wiki.gnome.org/Projects/dconf",
+      "version": "0.40.0-4ubuntu0.1"
+    },
+    "catalog_sha256": "ea2d791d2e6c8233e332434abcfa5484918b8c2f8229bc1d1a822b05b7707156"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libdconf1",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 39588,
+      "extract": false,
+      "id": "apt.libdconf1",
+      "material_path": "apt/libdconf1_0.40.0-4ubuntu0.1_amd64.deb",
+      "sha256": "86bf3825fbaec0d5159c5e6bd88f10ade991a086c821aeef15631c510c6d9904",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dconf/libdconf1_0.40.0-4ubuntu0.1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libdconf1"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libdconf1",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libdconf1",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libdconf1.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libdconf1 (= 0.40.0-4ubuntu0.1). simple configuration storage system - runtime library"
+  },
+  "version": "0.40.0-4ubuntu0.1"
+}

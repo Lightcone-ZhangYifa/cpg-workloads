@@ -1,0 +1,163 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.gpgconf",
+      "apt.libassuan0",
+      "apt.libbz2-1.0",
+      "apt.libc6",
+      "apt.libgcrypt20",
+      "apt.libgpg-error0",
+      "apt.libnpth0t64",
+      "apt.libreadline8t64",
+      "apt.libsqlite3-0",
+      "apt.zlib1g"
+    ]
+  },
+  "id": "apt.gpg",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.gpgconf",
+        "apt.libassuan0",
+        "apt.libbz2-1.0",
+        "apt.libc6",
+        "apt.libgcrypt20",
+        "apt.libgpg-error0",
+        "apt.libnpth0t64",
+        "apt.libreadline8t64",
+        "apt.libsqlite3-0",
+        "apt.zlib1g"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 565004,
+      "category": [
+        "Community development",
+        "Resolved system dependencies"
+      ],
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built"
+      },
+      "id": "apt.gpg",
+      "immutable_ref": "sha256:34a775d73a2fe9b6e9205668e39954fe0c1e5c046b1a30c307c7d1e6e22cd1a7",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 1206,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/gpg_2.4.4-2ubuntu17.6_amd64.deb",
+      "package_name": "gpg",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "GNU Privacy Guard -- minimalist public key operations",
+      "qualification_gaps": [
+        "Perform role-specific installation and first-use checks in the selected dev image."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "34a775d73a2fe9b6e9205668e39954fe0c1e5c046b1a30c307c7d1e6e22cd1a7",
+      "size_basis": "Exact signed captured Packages metadata; actual APT resolver with all existing catalog versions fixed; no deb or OCI installation measurement.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://gcc.gnu.org/install/prerequisites.html"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gnupg2/gpg_2.4.4-2ubuntu17.6_amd64.deb",
+      "title": "gpg",
+      "version": "2.4.4-2ubuntu17.6"
+    },
+    "catalog_sha256": "872173f7f4691e25d2027c002b171c39c80751fe8fbe941c4854a2e8c2e7ad4d"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "gpg",
+    "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 565004,
+      "extract": false,
+      "id": "apt.gpg",
+      "material_path": "apt/gpg_2.4.4-2ubuntu17.6_amd64.deb",
+      "sha256": "34a775d73a2fe9b6e9205668e39954fe0c1e5c046b1a30c307c7d1e6e22cd1a7",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gnupg2/gpg_2.4.4-2ubuntu17.6_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [
+      {
+        "command": "dpkg-query -W gpg",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L gpg",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/gpg.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for gpg (= 2.4.4-2ubuntu17.6). GNU Privacy Guard -- minimalist public key operations"
+  },
+  "version": "2.4.4-2ubuntu17.6"
+}

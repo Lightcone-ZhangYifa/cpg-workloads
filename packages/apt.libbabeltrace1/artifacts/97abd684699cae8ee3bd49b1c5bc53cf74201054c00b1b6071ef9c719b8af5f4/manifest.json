@@ -1,0 +1,188 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "93431701ecd987c1d02cb5cbeca3445529e51a98254efdfed25feaf7c22ad27d",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libdw1t64",
+        "apt.libelf1t64",
+        "apt.libglib2.0-0t64",
+        "apt.libuuid1"
+      ]
+    },
+    "id": "apt.libbabeltrace1",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libdw1t64",
+          "apt.libelf1t64",
+          "apt.libglib2.0-0t64",
+          "apt.libuuid1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 163626,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libbabeltrace1"
+        ],
+        "id": "apt.libbabeltrace1",
+        "immutable_ref": "sha256:30f0b9fbe68115d7b50d478458e4d830695bce579529b52c7827720da9c0c2df",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 508,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libbabeltrace1_1.5.11-3build3_amd64.deb",
+        "package_name": "libbabeltrace1",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Babeltrace conversion libraries",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "30f0b9fbe68115d7b50d478458e4d830695bce579529b52c7827720da9c0c2df",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/b/babeltrace/libbabeltrace1_1.5.11-3build3_amd64.deb",
+        "title": "libbabeltrace1",
+        "upstream": "https://www.efficios.com/babeltrace",
+        "version": "1.5.11-3build3"
+      },
+      "catalog_sha256": "8184735b4ea1f65bf76f94bcbd665f2c251301d855a7d28a508de8ff8e933d7b"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libbabeltrace1",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 163626,
+        "extract": false,
+        "id": "apt.libbabeltrace1",
+        "material_path": "apt/libbabeltrace1_1.5.11-3build3_amd64.deb",
+        "sha256": "30f0b9fbe68115d7b50d478458e4d830695bce579529b52c7827720da9c0c2df",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/babeltrace/libbabeltrace1_1.5.11-3build3_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libbabeltrace1"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libbabeltrace1",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libbabeltrace1",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libbabeltrace1.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libbabeltrace1 (= 1.5.11-3build3). Babeltrace conversion libraries"
+    },
+    "version": "1.5.11-3build3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "9fd93ba6df0a0eb9e431873bdd7eec03e031b6375b867f2c41f3b5cc84ea6b47",
+    "dependencies_sha256": "07f49fa65b11ebea115fb6886790e79db26ff01143d5c850a76ff7e3b5240096",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "7bd273d103864622b5fd6220810aa09efb1cedbe60b832d01edb0d9c90966708",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "17a49b9e4c3bd22c709b3c99cd1e31e5ffdd13c21860e27a112e894c99a29cc9"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

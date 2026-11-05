@@ -1,0 +1,174 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "387222c660d30ee268cb3729f54f0eb9229703b29441ad9aa47decdc3847aa23",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.g++-13",
+        "apt.gcc-13-base",
+        "apt.gm2-13-x86-64-linux-gnu"
+      ]
+    },
+    "id": "apt.gm2-13",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.g++-13",
+          "apt.gcc-13-base",
+          "apt.gm2-13-x86-64-linux-gnu"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 75196,
+        "category": [
+          "Community development",
+          "System tools"
+        ],
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built"
+        },
+        "id": "apt.gm2-13",
+        "immutable_ref": "sha256:2a2aa4cbc34b04b47cad830b7af0daba7bfdb58296b6ebb5802e373294d95e7c",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 140,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/gm2-13_13.3.0-6ubuntu2~24.04.1_amd64.deb",
+        "package_name": "gm2-13",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "GNU D compiler (version 2)",
+        "qualification_gaps": [
+          "Perform role-specific installation and first-use checks in the selected dev image."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "2a2aa4cbc34b04b47cad830b7af0daba7bfdb58296b6ebb5802e373294d95e7c",
+        "size_basis": "Exact signed captured Packages metadata; actual APT resolver with all existing catalog versions fixed; no deb or OCI installation measurement.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://gcc.gnu.org/install/prerequisites.html"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/gcc-13/gm2-13_13.3.0-6ubuntu2~24.04.1_amd64.deb",
+        "title": "gm2-13",
+        "version": "13.3.0-6ubuntu2~24.04.1"
+      },
+      "catalog_sha256": "2dffb2e08abe6d4324c5240afde19ccc4325e079ed14758b6d52d4b8e77895a3"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "gm2-13",
+      "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 75196,
+        "extract": false,
+        "id": "apt.gm2-13",
+        "material_path": "apt/gm2-13_13.3.0-6ubuntu2~24.04.1_amd64.deb",
+        "sha256": "2a2aa4cbc34b04b47cad830b7af0daba7bfdb58296b6ebb5802e373294d95e7c",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/gcc-13/gm2-13_13.3.0-6ubuntu2~24.04.1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [
+        {
+          "command": "dpkg-query -W gm2-13",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L gm2-13",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/gm2-13.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for gm2-13 (= 13.3.0-6ubuntu2~24.04.1). GNU D compiler (version 2)"
+    },
+    "version": "13.3.0-6ubuntu2~24.04.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "20ab4d4ef45b0544c86e5c4385c0b700cf852f7ccd6f46804fd03538c371349a",
+    "dependencies_sha256": "2ec2b068e0c5f61d524e4fae24a8ca5ed911535c69585192f39495df54b2bd37",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "d935bd7b5d7fa23d15d397657c47508d0e103533966a9d1444755aa6fbeaf67d",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "8f63645e8afe7be9f40760845ddfd45e061700ab28096179e6770f91dbbb5059"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

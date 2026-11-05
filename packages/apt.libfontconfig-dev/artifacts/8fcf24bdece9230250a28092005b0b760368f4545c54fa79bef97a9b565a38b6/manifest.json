@@ -1,0 +1,186 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "764b042eab3b732ca68d61ba3e36dd4afbab6df03a3d22d3e7489c1f5da1961a",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libexpat1-dev",
+        "apt.libfontconfig1",
+        "apt.libfreetype-dev",
+        "apt.pkgconf",
+        "apt.uuid-dev"
+      ]
+    },
+    "id": "apt.libfontconfig-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libexpat1-dev",
+          "apt.libfontconfig1",
+          "apt.libfreetype-dev",
+          "apt.pkgconf",
+          "apt.uuid-dev"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 161130,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libfontconfig-dev"
+        ],
+        "id": "apt.libfontconfig-dev",
+        "immutable_ref": "sha256:7948f3037b39d8bc751dc6104ff490c2d2f1b145d2969227ba591ceb917f9f05",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 598,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libfontconfig-dev_2.15.0-1.1ubuntu2_amd64.deb",
+        "package_name": "libfontconfig-dev",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "generic font configuration library - development",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "7948f3037b39d8bc751dc6104ff490c2d2f1b145d2969227ba591ceb917f9f05",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/f/fontconfig/libfontconfig-dev_2.15.0-1.1ubuntu2_amd64.deb",
+        "title": "libfontconfig-dev",
+        "upstream": "https://www.freedesktop.org/wiki/Software/fontconfig/",
+        "version": "2.15.0-1.1ubuntu2"
+      },
+      "catalog_sha256": "a728a711ef247d4265a0c952538d9afded5e5608b5797e67acf190ebed67ae22"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libfontconfig-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 161130,
+        "extract": false,
+        "id": "apt.libfontconfig-dev",
+        "material_path": "apt/libfontconfig-dev_2.15.0-1.1ubuntu2_amd64.deb",
+        "sha256": "7948f3037b39d8bc751dc6104ff490c2d2f1b145d2969227ba591ceb917f9f05",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/f/fontconfig/libfontconfig-dev_2.15.0-1.1ubuntu2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libfontconfig-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libfontconfig-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libfontconfig-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libfontconfig-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libfontconfig-dev (= 2.15.0-1.1ubuntu2). generic font configuration library - development"
+    },
+    "version": "2.15.0-1.1ubuntu2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "fe8f4086f57e26f1187f51fe7c52490af64428fe56f9e43f16b5df25bb50d05e",
+    "dependencies_sha256": "83b1bb52cce241014be5d475108c8c725314b20cdcab384572f67f4253595dbc",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "b711e599fc75511b71757a9e8b74a380d2611bc3cd4097ff2b7a8caad4d64457",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "3737377bdd8b557747da34d8969c8022c53c251666d15e92854c63185a0c62ea"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

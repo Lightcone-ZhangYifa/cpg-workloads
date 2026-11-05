@@ -1,0 +1,168 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.clang-tools-18",
+      "apt.libc6",
+      "apt.libclang-common-18-dev",
+      "apt.libclang-cpp18",
+      "apt.libllvm18",
+      "apt.libstdc++6",
+      "apt.python3",
+      "apt.python3-yaml"
+    ]
+  },
+  "id": "apt.clang-tidy-18",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.clang-tools-18",
+        "apt.libc6",
+        "apt.libclang-common-18-dev",
+        "apt.libclang-cpp18",
+        "apt.libllvm18",
+        "apt.libstdc++6",
+        "apt.python3",
+        "apt.python3-yaml"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 4956862,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/clang-tidy-18"
+      ],
+      "id": "apt.clang-tidy-18",
+      "immutable_ref": "sha256:4880055c77877bce65de8733f0931021a28826bbae3f450b4dc0065fb6b70363",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 26805,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/clang-tidy-18_18.1.3-1ubuntu1_amd64.deb",
+      "package_name": "clang-tidy-18",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "clang-based C++ linter tool",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "4880055c77877bce65de8733f0931021a28826bbae3f450b4dc0065fb6b70363",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/clang-tidy-18_18.1.3-1ubuntu1_amd64.deb",
+      "title": "clang-tidy-18",
+      "upstream": "https://www.llvm.org/",
+      "version": "1:18.1.3-1ubuntu1"
+    },
+    "catalog_sha256": "fe68b7e918dbff66631ecd15c8c06e2cf5c38c34d93acf150f15013cd38f95ec"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "clang-tidy-18",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 4956862,
+      "extract": false,
+      "id": "apt.clang-tidy-18",
+      "material_path": "apt/clang-tidy-18_18.1.3-1ubuntu1_amd64.deb",
+      "sha256": "4880055c77877bce65de8733f0931021a28826bbae3f450b4dc0065fb6b70363",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/clang-tidy-18_18.1.3-1ubuntu1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/clang-tidy-18"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W clang-tidy-18",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L clang-tidy-18",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/clang-tidy-18.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for clang-tidy-18 (= 1:18.1.3-1ubuntu1). clang-based C++ linter tool"
+  },
+  "version": "1:18.1.3-1ubuntu1"
+}

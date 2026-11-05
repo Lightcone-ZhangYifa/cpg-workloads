@@ -1,0 +1,184 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "8709e3c56437fd9a555dc7e5a5a600da392f6bf3009bf66d7a0b8f7e2680e9b5",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.gpgconf",
+        "apt.init-system-helpers",
+        "apt.libassuan0",
+        "apt.libc6",
+        "apt.libgcrypt20",
+        "apt.libgpg-error0",
+        "apt.libnpth0t64",
+        "apt.pinentry-curses"
+      ]
+    },
+    "id": "apt.gpg-agent",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.gpgconf",
+          "apt.init-system-helpers",
+          "apt.libassuan0",
+          "apt.libc6",
+          "apt.libgcrypt20",
+          "apt.libgpg-error0",
+          "apt.libnpth0t64",
+          "apt.pinentry-curses"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 227154,
+        "category": [
+          "Community development",
+          "Resolved system dependencies"
+        ],
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built"
+        },
+        "id": "apt.gpg-agent",
+        "immutable_ref": "sha256:7b6778c1d297a4d4e889005917a0b9996a24d704e2e79d52be65b5d1f6b651ce",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 627,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/gpg-agent_2.4.4-2ubuntu17.6_amd64.deb",
+        "package_name": "gpg-agent",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "GNU privacy guard - cryptographic agent",
+        "qualification_gaps": [
+          "Perform role-specific installation and first-use checks in the selected dev image."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "7b6778c1d297a4d4e889005917a0b9996a24d704e2e79d52be65b5d1f6b651ce",
+        "size_basis": "Exact signed captured Packages metadata; actual APT resolver with all existing catalog versions fixed; no deb or OCI installation measurement.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://gcc.gnu.org/install/prerequisites.html"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gnupg2/gpg-agent_2.4.4-2ubuntu17.6_amd64.deb",
+        "title": "gpg-agent",
+        "version": "2.4.4-2ubuntu17.6"
+      },
+      "catalog_sha256": "28a189c3ff0973113b70f2c64a65c4eb1e984d2a0aa1b7b17282bd9a7f0cdd0d"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "gpg-agent",
+      "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 227154,
+        "extract": false,
+        "id": "apt.gpg-agent",
+        "material_path": "apt/gpg-agent_2.4.4-2ubuntu17.6_amd64.deb",
+        "sha256": "7b6778c1d297a4d4e889005917a0b9996a24d704e2e79d52be65b5d1f6b651ce",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gnupg2/gpg-agent_2.4.4-2ubuntu17.6_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [
+        {
+          "command": "dpkg-query -W gpg-agent",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L gpg-agent",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/gpg-agent.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for gpg-agent (= 2.4.4-2ubuntu17.6). GNU privacy guard - cryptographic agent"
+    },
+    "version": "2.4.4-2ubuntu17.6"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "b23a6534fc801a319b05745d6e7b2c463b79e8a60ef7fc94d1524b1f06c6e69d",
+    "dependencies_sha256": "81cd33e73484d158e9fdccaa5e46acf50309664d5d78cb306b439ab7375f55a8",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "5d615a606f8fd6c0f64383817406a474b463bcc0e983968f5c4b3880a5676895",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "c13d8d8433a733434f901bb42472133886a94f043d642074cd8a301f02b151f3"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,153 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6"
+    ]
+  },
+  "id": "apt.libapparmor1",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 51476,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libapparmor1"
+      ],
+      "id": "apt.libapparmor1",
+      "immutable_ref": "sha256:75b570d7517e24c3693c4503b4691ac1fd82934d93faa91460309f22104c5617",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 120,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libapparmor1_4.0.1really4.0.1-0ubuntu0.24.04.9_amd64.deb",
+      "package_name": "libapparmor1",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "changehat AppArmor library",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "75b570d7517e24c3693c4503b4691ac1fd82934d93faa91460309f22104c5617",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/a/apparmor/libapparmor1_4.0.1really4.0.1-0ubuntu0.24.04.9_amd64.deb",
+      "title": "libapparmor1",
+      "upstream": "https://apparmor.net/",
+      "version": "4.0.1really4.0.1-0ubuntu0.24.04.9"
+    },
+    "catalog_sha256": "1cf283ff8fe537a98c7cd76f486e33714f6d3b5d6cf55b967c99fdb2cb3c7f3f"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libapparmor1",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 51476,
+      "extract": false,
+      "id": "apt.libapparmor1",
+      "material_path": "apt/libapparmor1_4.0.1really4.0.1-0ubuntu0.24.04.9_amd64.deb",
+      "sha256": "75b570d7517e24c3693c4503b4691ac1fd82934d93faa91460309f22104c5617",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/apparmor/libapparmor1_4.0.1really4.0.1-0ubuntu0.24.04.9_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libapparmor1"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libapparmor1",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libapparmor1",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libapparmor1.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libapparmor1 (= 4.0.1really4.0.1-0ubuntu0.24.04.9). changehat AppArmor library"
+  },
+  "version": "4.0.1really4.0.1-0ubuntu0.24.04.9"
+}

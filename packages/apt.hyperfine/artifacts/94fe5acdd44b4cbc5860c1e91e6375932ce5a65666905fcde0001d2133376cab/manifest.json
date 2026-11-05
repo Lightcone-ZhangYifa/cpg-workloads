@@ -1,0 +1,183 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "4ebd711476742041e4872361c7840904e831627cede9f972cf191162aeae3084",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libgcc-s1"
+      ]
+    },
+    "id": "apt.hyperfine",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libgcc-s1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 526974,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/hyperfine"
+        ],
+        "id": "apt.hyperfine",
+        "immutable_ref": "sha256:832a5344830827d39fb3e059c3c6609fab468115212287db255443bdd270ab26",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 1314,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/hyperfine_1.18.0-2build1_amd64.deb",
+        "package_name": "hyperfine",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Command-line benchmarking tool",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "832a5344830827d39fb3e059c3c6609fab468115212287db255443bdd270ab26",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/r/rust-hyperfine/hyperfine_1.18.0-2build1_amd64.deb",
+        "title": "hyperfine",
+        "upstream": "https://github.com/sharkdp/hyperfine",
+        "version": "1.18.0-2build1"
+      },
+      "catalog_sha256": "6ce5d5cb2465b9660cb2d45e41b26261d620622ee50290ca10f756838a7b272b"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "hyperfine",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 526974,
+        "extract": false,
+        "id": "apt.hyperfine",
+        "material_path": "apt/hyperfine_1.18.0-2build1_amd64.deb",
+        "sha256": "832a5344830827d39fb3e059c3c6609fab468115212287db255443bdd270ab26",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/r/rust-hyperfine/hyperfine_1.18.0-2build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/sharkdp/hyperfine",
+        "https://github.com/sharkdp/hyperfine/releases/tag/v1.18.0",
+        "https://packages.ubuntu.com/noble/hyperfine"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W hyperfine",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L hyperfine",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/hyperfine.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for hyperfine (= 1.18.0-2build1). Command-line benchmarking tool"
+    },
+    "version": "1.18.0-2build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "67819b49f4ab1075e248aec1ac80b21cba6fa07c22a806ba8519e5d22d71c708",
+    "dependencies_sha256": "c6ab3afc12a23abfdcbb855f6f747f259e6dffdc97f3439c47f3437577d2c68e",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "d6e4d4f4dec79fbc27b621fdcda4a31c359ccd9406227b4e906912f35fda03c3",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "415e2a4617735bbc6e7d05cc92a234fd1c55d7201961464bdc92cea7678473ba"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
