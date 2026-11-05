@@ -1,0 +1,340 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 1083,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSE",
+      "sha256": "bcba3de214851cce46ed5af42d6698044616eeace887c3231bc7a20474ab639e"
+    },
+    {
+      "bytes": 5031,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.md",
+      "sha256": "a6a3741a64527ae20026b7880e37af5de88e8ae4dcfed81eb19620c674b6e272"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/data"
+    },
+    {
+      "bytes": 44877,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/data/HumanEval.jsonl.gz",
+      "sha256": "b796127e635a67f93fb35c04f4cb03cf06f38c8072ee7cee8833d7bee06979ef"
+    },
+    {
+      "bytes": 178,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/data/example_problem.jsonl",
+      "sha256": "701442bbe5a65db1e4ac218d0d2bb29a6caf9615a769759bcf4ca38621ba1d7f"
+    },
+    {
+      "bytes": 419,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/data/example_samples.jsonl",
+      "sha256": "1dcf9fc120e380b8669fe69cf45da2e510e71cae507555db9634e7893c807627"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/human_eval"
+    },
+    {
+      "bytes": 0,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/human_eval/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1529,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/human_eval/data.py",
+      "sha256": "e1351f0ded89b072490180ce94ce33b88bac4e38b26f08eb26ab0714586585ab"
+    },
+    {
+      "bytes": 635,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/human_eval/evaluate_functional_correctness.py",
+      "sha256": "fe8cf3b5074c180f045517dc5efedaea608aa6887a077885aeafae5b194e9217"
+    },
+    {
+      "bytes": 3438,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/human_eval/evaluation.py",
+      "sha256": "e926d5e9b8f1ec040096cd5952e8cf79f8dc0b7fb80ba6667ce604ffea0397bc"
+    },
+    {
+      "bytes": 6582,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/human_eval/execution.py",
+      "sha256": "79901c6f5b59701c465b164aed290fa53abc35abc80a5378fc10f4dac1f9a84c"
+    },
+    {
+      "bytes": 16,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/requirements.txt",
+      "sha256": "eccea7623d46bd795f2257da161a162bae2429b1e5ffa5dd8ba92968e164d18f"
+    },
+    {
+      "bytes": 571,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/setup.py",
+      "sha256": "cb6647a9cef9be06ecfecfcdce857444b0e1ec837f51465143d6126c29d92d41"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2291,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 2998,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/input-audit.json",
+      "sha256": "692ba2b4d68f2036151cc417a174b00c76915ca9b01636fd68581ad2a38b616e"
+    },
+    {
+      "bytes": 3161,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "2169e5a31d2e9dbbc99acc0999308494aa40e48f054623bd567ef50000fa3484"
+    }
+  ],
+  "inventory_sha256": "b98767b70ce7f89efc39dfb778663de4084788fd6bcbae9a7593b2be4baf81e1",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "77debb8ea9bb6513d4d7e4287e4c60303d446a66b757da951a61b6bc97af1799",
+  "method": "material",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-manifest.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "dataset-ref.humaneval-complete-materials",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.python3"
+      ]
+    },
+    "id": "dataset-ref.humaneval",
+    "metadata": {
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": null,
+        "build_peak_bytes": null,
+        "category": [
+          "Dataset research",
+          "Code and IR corpora"
+        ],
+        "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+        "dataset_card_id": "humaneval",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "requires_controller_only_storage": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "target_exports": [],
+          "visibility_policy": "developer_selected_complete_materials",
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/openai/human-eval"
+        ],
+        "evidence_files": [
+          "workspace-evidence/datasets-v090/corpora/cards.json"
+        ],
+        "extract": true,
+        "id": "dataset-ref.humaneval",
+        "immutable_ref": "b9453e8f1865df0a0057a1383767caa400acfbcf",
+        "installed_bytes": null,
+        "kind": "dataset",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "material_path": "dataset-research/humaneval",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Small correctness/control benchmark for the surrounding agent, separated from native compiler performance scores.",
+        "qualification": {
+          "archive_measured": false,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+          "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+          "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+          "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+          "Python execution primarily exercises its interpreter and libraries; it is not a direct native C/C++ compiler-speed benchmark.",
+          "Finite tests provide observational evidence, not a general semantic equivalence proof.",
+          "Public task text and canonical solutions are likely to be widely exposed; local train/test splits do not establish model-unseen evaluation."
+        ],
+        "redistributable": "license-and-component-review-required",
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+        "source_evidence": [
+          "https://github.com/openai/human-eval"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/openai/human-eval/tar.gz/b9453e8f1865df0a0057a1383767caa400acfbcf",
+        "title": "HumanEval research material",
+        "upstream": "https://github.com/openai/human-eval",
+        "version": "HEAD observed on 2026-10-23"
+      },
+      "catalog_sha256": "89c053ae601b724429984b6a126d90ac4bcad3f6110b8841cdec66ffb460de6a"
+    },
+    "provider": "material",
+    "recipe": {
+      "acquisition_lock": {
+        "bytes": 54276,
+        "extract": true,
+        "id": "dataset-ref.humaneval",
+        "material_path": "dataset-research/humaneval",
+        "sha256": "20fcd846463cbcb0cdacc36eaa66641cfb3eefa7dbca8250b4be2dbeefc68c45",
+        "strip_root": true,
+        "url": "https://codeload.github.com/openai/human-eval/tar.gz/b9453e8f1865df0a0057a1383767caa400acfbcf"
+      },
+      "adapter": "corpus",
+      "qualification_scope": "complete_static_material_availability_only",
+      "qualified": true,
+      "required_installed_paths": [
+        "{prefix}/LICENSE"
+      ],
+      "requires_controller_only_storage": false,
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "source_closure_scope": "complete_declared_main_archive; no_gitmodules_or_lfs_pointers_observed; native_dependency_closure_not_qualified",
+      "source_dependencies": [],
+      "system_packages": [],
+      "target_exports": [],
+      "unfetched_submodule_declarations": 0,
+      "visibility_policy": "developer_selected_complete_materials",
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": null,
+        "extract": true,
+        "id": "dataset-ref.humaneval",
+        "material_path": "dataset-research/humaneval",
+        "sha256": null,
+        "strip_root": true,
+        "url": "https://codeload.github.com/openai/human-eval/tar.gz/b9453e8f1865df0a0057a1383767caa400acfbcf"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/openai/human-eval"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Complete declared main-archive materials",
+          "path": "{prefix}",
+          "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+        }
+      ],
+      "notes": [
+        "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+        "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+        "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+        "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+        "No .gitmodules or Git LFS pointers were observed in this exact archive; native build dependencies are not qualified by this material check."
+      ],
+      "summary": "Small correctness/control benchmark for the surrounding agent, separated from native compiler performance scores."
+    },
+    "version": "HEAD observed on 2026-10-23"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "corpus_programs_executed": 0,
+    "existing_fixed_source_fields_preserved": true,
+    "original_definition_sha256": "b7c61667bcb144ac4d7baca957ef0995f854af8ed1f466e76c9b89f99306fc13",
+    "project_version": "0.21.2",
+    "qualification_scope": "complete_static_material_availability",
+    "release_version": "0.21.3",
+    "round": "r04",
+    "source_archive": {
+      "bytes": 54276,
+      "extract": true,
+      "id": "dataset-ref.humaneval",
+      "material_path": "dataset-research/humaneval",
+      "sha256": "20fcd846463cbcb0cdacc36eaa66641cfb3eefa7dbca8250b4be2dbeefc68c45",
+      "strip_root": true,
+      "url": "https://codeload.github.com/openai/human-eval/tar.gz/b9453e8f1865df0a0057a1383767caa400acfbcf"
+    },
+    "source_lock_extension_audit": "692ba2b4d68f2036151cc417a174b00c76915ca9b01636fd68581ad2a38b616e",
+    "upstream_files": {
+      "entries": 12,
+      "files": 12,
+      "logical_bytes": 64359,
+      "symlinks": 0
+    }
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
