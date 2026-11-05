@@ -1,0 +1,354 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 42912,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/rsbench",
+      "sha256": "9b6ac2534c27ba45290d03cf40d72c90b25a4c85da9065a6d05d3956769e9c2a"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/compiler-playground"
+    },
+    {
+      "bytes": 2852,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/compiler-playground/rsbench-native-profile.json",
+      "sha256": "6d8f8ac499555f0397ee401e9b94df2e0e7677a37bda6fd22133bcff82f442a8"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/doc"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/doc/rsbench"
+    },
+    {
+      "bytes": 17524,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/doc/rsbench/CHANGES.txt",
+      "sha256": "64385e3fbcedee80a08e0e6227191d73cb43c33e129d05c2bb5cc37fb6b339c3"
+    },
+    {
+      "bytes": 20308,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/doc/rsbench/README.md",
+      "sha256": "484429a51a0b5ec4d3f31b04d1c7e65c095d993490800577f5aa36ad2928bb10"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/licenses"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/licenses/rsbench"
+    },
+    {
+      "bytes": 1099,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/licenses/rsbench/LICENSE",
+      "sha256": "89bff36b58d0f7ed68b3982fd8a82b9811b22ec7d7cadfefe2dc21a425d2e43a"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 8836,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "ad67b90fedde72cc1d3db0a178734565f7f2d3f35c3681b5a8a42414335f70d0"
+    },
+    {
+      "bytes": 5842,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "7c7740ad231e4744a40cb779998c60f1cb6cd437592a9f50d4258404a486c6db"
+    }
+  ],
+  "inventory_sha256": "39774b31e32a4a79034bfcf98ba6498733cca8fa537d7445e065860410724146",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "977bc5f05d55b1eb598161f9077cae39b33b62c099264e5334b6454c6f62295c",
+  "method": "binary",
+  "package": {
+    "build": "r12-native-cpu-20261029-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--resource",
+          "rsbench",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "dataset-ref.rsbench-native-functional",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 300
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.python3"
+      ]
+    },
+    "id": "dataset-ref.rsbench",
+    "metadata": {
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": null,
+        "build_peak_bytes": null,
+        "category": [
+          "Dataset research",
+          "Benchmarks and inputs"
+        ],
+        "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+        "dataset_card_id": "rsbench",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "requires_controller_only_storage": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "target_exports": [],
+          "visibility_policy": "developer_selected_complete_materials",
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/ANL-CESAR/RSBench"
+        ],
+        "evidence_files": [
+          "workspace-evidence/datasets-v090/benchmarks/cards.json"
+        ],
+        "extract": true,
+        "id": "dataset-ref.rsbench",
+        "immutable_ref": "34b644787ea9af4fb188e1253da72e09bbed9989",
+        "installed_bytes": null,
+        "kind": "dataset",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "material_path": "dataset-research/rsbench",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Later-stage scientific training or whole-family transfer testing; freeze numerical, input and execution contracts.",
+        "qualification": {
+          "archive_measured": false,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+          "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+          "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+          "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+          "Math-library identity and FP contract affect numerical kernels.",
+          "Seeds and algorithm variants remain one family."
+        ],
+        "redistributable": "license-and-component-review-required",
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+        "source_evidence": [
+          "https://raw.githubusercontent.com/ANL-CESAR/RSBench/34b644787ea9af4fb188e1253da72e09bbed9989/README.md",
+          "https://raw.githubusercontent.com/ANL-CESAR/RSBench/34b644787ea9af4fb188e1253da72e09bbed9989/LICENSE"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/ANL-CESAR/RSBench/tar.gz/34b644787ea9af4fb188e1253da72e09bbed9989",
+        "title": "RSBench research material",
+        "upstream": "https://github.com/ANL-CESAR/RSBench",
+        "version": "HEAD observed at retrieval; use the full recorded commit"
+      },
+      "catalog_sha256": "4276c1ddcb23649c027f785289179eea05ed74c92d75d9ce10ebde37cff3dee2",
+      "native_candidate": {
+        "build_status": "this_candidate_requires_real_manager_install_build_and_test",
+        "full_immutable_ref": "34b644787ea9af4fb188e1253da72e09bbed9989",
+        "host_dependency_override": {
+          "reason": "Original apt.python3 lock is Ubuntu 24.04-specific. Debian 13 qualification checks the actual python3 and gcc commands without impersonating Ubuntu apt versions; canonical dependencies are unchanged.",
+          "system": []
+        },
+        "host_observed": {
+          "arch": "x86_64",
+          "distribution": "debian",
+          "distribution_version": "13",
+          "os": "linux"
+        },
+        "original_definition_sha256": "928faf1f0051db2011e8a952e7baca2d5b28aadb111bc7ff950e40e596c7d686",
+        "original_dependencies": {
+          "build": [],
+          "run": [],
+          "system": [
+            "apt.python3"
+          ]
+        },
+        "original_provider": "material",
+        "original_target": {
+          "arch": "x86_64",
+          "distribution": "ubuntu",
+          "distribution_version": "24.04",
+          "os": "linux"
+        },
+        "original_upstream_url": "https://codeload.github.com/ANL-CESAR/RSBench/tar.gz/34b644787ea9af4fb188e1253da72e09bbed9989",
+        "qualification_scope": "OpenMP CPU source-to-binary host profile only; official benchmark, OCI and Ubuntu target untested",
+        "status": "isolated_host_profile_not_canonical_release",
+        "upstream_source_input_sha256": "703448e4a7518d6f81957174bd08e6393e66fe7c5b75f68f9d86a2e0d35b5730"
+      }
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "-B",
+          "{recipe}/build.py",
+          "--resource",
+          "rsbench",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "host_requirements_policy": "Actual OS/arch, commands, ELF/runtime and original exact APT system dependency; no distribution equality gate.",
+      "qualification_scope": "C/OpenMP; original Small default workload; one thread; upstream checksum 879693.",
+      "required_host_commands": [
+        "python3",
+        "gcc",
+        "make"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/rsbench",
+        "{prefix}/share/licenses/rsbench",
+        "{prefix}/share/compiler-playground/rsbench-native-profile.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "source_policy": "Original prepared source unchanged; complete independent ordinary-file build copy.",
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": null,
+        "extract": true,
+        "id": "dataset-ref.rsbench",
+        "material_path": "dataset-research/rsbench",
+        "sha256": null,
+        "strip_root": true,
+        "url": "https://codeload.github.com/ANL-CESAR/RSBench/tar.gz/34b644787ea9af4fb188e1253da72e09bbed9989"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://codeload.github.com/ANL-CESAR/RSBench/tar.gz/34b644787ea9af4fb188e1253da72e09bbed9989"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Native executable directory",
+          "path": "{prefix}/bin",
+          "purpose": "C/OpenMP; original Small default workload; one thread; upstream checksum 879693."
+        },
+        {
+          "label": "Original notices",
+          "path": "{prefix}/share/licenses/rsbench",
+          "purpose": "Every license/notice file from the fixed archive."
+        },
+        {
+          "label": "Actual build identity",
+          "path": "{prefix}/share/compiler-playground/rsbench-native-profile.json",
+          "purpose": "Observed toolchain identity, original revision and installed executable digests."
+        }
+      ],
+      "notes": [
+        "Complete original archive is retained in the source package; the binary installs declared executables, notices, profile and selected original runtime decks.",
+        "Original sources, metadata.catalog and exact apt.python3 dependency remain unchanged.",
+        "The source recipe builds an independent complete copy; original prepared source files are checked before and after compilation.",
+        "C/OpenMP; original Small default workload; one thread; upstream checksum 879693.",
+        "Host native functionality does not qualify official benchmark scores, other profiles, accelerators, OCI or physical PMU hardware.",
+        "Binary installation checks actual ELF/runtime requirements; no universal Linux or CPU compatibility claim."
+      ],
+      "summary": "Pinned rsbench native CPU profile with explicit source and binary artifacts."
+    },
+    "version": "HEAD observed at retrieval; use the full recorded commit"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "independent_source_builds": 2,
+    "kind": "actual-current-host-source-build",
+    "original_binary_candidate": {
+      "bytes": 28774,
+      "path": "/workspace/scratch/0b533472f84f/cpg-resume-v0218/branches/native/candidate-packages/dataset-ref.rsbench.binary.cpgpkg.tar.gz",
+      "sha256": "22492cfa73376a098a0678df9d4f46b21f4be9f567e195ff85e4facc61d88467"
+    },
+    "qualification_boundary": "C/OpenMP; original Small default workload; one thread; upstream checksum 879693.",
+    "source_package_sha256": "d907e227380bbeb93dc53836a0eeeeefec82de85839fdc31697d8e7aeb5f182e",
+    "source_receipt_path": "/workspace/scratch/0b533472f84f/cpg-resume-v0218/branches/native/qa-run-01/dataset-ref.rsbench/source-a-receipt.json",
+    "source_receipt_sha256": "c2e418b998b519459926046a769af9d442e11375c12fa45ca69ec2ec1925c74c"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,321 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 39472,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/XSBench",
+      "sha256": "d25b0ec50476773af7e64f3f96ad4cc056c5114e070e0d35e0f9da5580f35a3d"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/compiler-playground"
+    },
+    {
+      "bytes": 2918,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/compiler-playground/xsbench-native-profile.json",
+      "sha256": "a1c60ae3f5eb65a9d5cb4a0c11786e523aa18ce78be2845022899902474a6cd1"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/doc"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/doc/xsbench"
+    },
+    {
+      "bytes": 25156,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/doc/xsbench/CHANGES.txt",
+      "sha256": "73a6a83015989ca31abad8e7c8fa2553a9cdf362c3bf9525131974b0b18bfe6c"
+    },
+    {
+      "bytes": 28927,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/doc/xsbench/README.md",
+      "sha256": "070685591f3474bc2eb0713e9b512f32edbbe087fd3d6f0625e2e1e75b19dd21"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/licenses"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/licenses/xsbench"
+    },
+    {
+      "bytes": 1076,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/licenses/xsbench/LICENSE",
+      "sha256": "161c19a3f626abc49b93cea189ccdcc96f5d2bc154467550e08a7d6f0815558d"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 8836,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "ad67b90fedde72cc1d3db0a178734565f7f2d3f35c3681b5a8a42414335f70d0"
+    },
+    {
+      "bytes": 5842,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "7c7740ad231e4744a40cb779998c60f1cb6cd437592a9f50d4258404a486c6db"
+    }
+  ],
+  "inventory_sha256": "662ea706a2667240681537c24c3d8deb160a7a3d2ff83919cb1bbf3be403244c",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "666c5b6785492d87e89b8c3ccbf0c9493d0fd69eca3e54712a07270f87674bde",
+  "method": "binary",
+  "package": {
+    "build": "r12-native-cpu-20261029-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--resource",
+          "xsbench",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "dataset-ref.xsbench-native-functional",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 300
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.python3"
+      ]
+    },
+    "id": "dataset-ref.xsbench",
+    "metadata": {
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": null,
+        "build_peak_bytes": null,
+        "category": [
+          "Dataset research",
+          "Benchmarks and inputs"
+        ],
+        "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+        "dataset_card_id": "xsbench",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "requires_controller_only_storage": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "target_exports": [],
+          "visibility_policy": "developer_selected_complete_materials",
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/ANL-CESAR/XSBench"
+        ],
+        "evidence_files": [
+          "workspace-evidence/datasets-v090/benchmarks/cards.json"
+        ],
+        "extract": true,
+        "id": "dataset-ref.xsbench",
+        "immutable_ref": "ba08e5221af6106252b866e50ea123c69d31a4e2",
+        "installed_bytes": null,
+        "kind": "dataset",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "material_path": "dataset-research/xsbench",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Later-stage scientific training or whole-family transfer testing; freeze numerical, input and execution contracts.",
+        "qualification": {
+          "archive_measured": false,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+          "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+          "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+          "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+          "Lookup distribution, material count and seed define the workload.",
+          "GPU variants do not belong in the current CPU result aggregate."
+        ],
+        "redistributable": "license-and-component-review-required",
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+        "source_evidence": [
+          "https://raw.githubusercontent.com/ANL-CESAR/XSBench/ba08e5221af6106252b866e50ea123c69d31a4e2/README.md",
+          "https://raw.githubusercontent.com/ANL-CESAR/XSBench/ba08e5221af6106252b866e50ea123c69d31a4e2/LICENSE"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/ANL-CESAR/XSBench/tar.gz/ba08e5221af6106252b866e50ea123c69d31a4e2",
+        "title": "XSBench research material",
+        "upstream": "https://github.com/ANL-CESAR/XSBench",
+        "version": "HEAD observed at retrieval; use the full recorded commit"
+      },
+      "catalog_sha256": "3463b70d78c2f094f61e7a41a9c36fb9c4b966243a6baed5179077a25bf7cbb0"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "-B",
+          "{recipe}/build.py",
+          "--resource",
+          "xsbench",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "host_requirements_policy": "Actual OS/arch, commands, ELF/runtime and original exact APT system dependency; no distribution equality gate.",
+      "qualification_scope": "C/OpenMP; original Small history workload; 17,000,000 lookups; two threads; upstream checksum 941535.",
+      "required_host_commands": [
+        "python3",
+        "gcc",
+        "make"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/XSBench",
+        "{prefix}/share/licenses/xsbench",
+        "{prefix}/share/compiler-playground/xsbench-native-profile.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "source_policy": "Original prepared source unchanged; complete independent ordinary-file build copy.",
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": null,
+        "extract": true,
+        "id": "dataset-ref.xsbench",
+        "material_path": "dataset-research/xsbench",
+        "sha256": null,
+        "strip_root": true,
+        "url": "https://codeload.github.com/ANL-CESAR/XSBench/tar.gz/ba08e5221af6106252b866e50ea123c69d31a4e2"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://codeload.github.com/ANL-CESAR/XSBench/tar.gz/ba08e5221af6106252b866e50ea123c69d31a4e2"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Native executable directory",
+          "path": "{prefix}/bin",
+          "purpose": "C/OpenMP; original Small history workload; 17,000,000 lookups; two threads; upstream checksum 941535."
+        },
+        {
+          "label": "Original notices",
+          "path": "{prefix}/share/licenses/xsbench",
+          "purpose": "Every license/notice file from the fixed archive."
+        },
+        {
+          "label": "Actual build identity",
+          "path": "{prefix}/share/compiler-playground/xsbench-native-profile.json",
+          "purpose": "Observed toolchain identity, original revision and installed executable digests."
+        }
+      ],
+      "notes": [
+        "Complete original archive is retained in the source package; the binary installs declared executables, notices, profile and selected original runtime decks.",
+        "Original sources, metadata.catalog and exact apt.python3 dependency remain unchanged.",
+        "The source recipe builds an independent complete copy; original prepared source files are checked before and after compilation.",
+        "C/OpenMP; original Small history workload; 17,000,000 lookups; two threads; upstream checksum 941535.",
+        "Host native functionality does not qualify official benchmark scores, other profiles, accelerators, OCI or physical PMU hardware.",
+        "Binary installation checks actual ELF/runtime requirements; no universal Linux or CPU compatibility claim."
+      ],
+      "summary": "Pinned xsbench native CPU profile with explicit source and binary artifacts."
+    },
+    "version": "HEAD observed at retrieval; use the full recorded commit"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "independent_source_builds": 2,
+    "kind": "actual-current-host-source-build",
+    "original_binary_candidate": {
+      "bytes": 41146,
+      "path": "/workspace/scratch/0b533472f84f/cpg-resume-v0218/handoffs/CompilerPlayground/parallel-handoffs/20261029T0237Z/packages/XSBench-cpu-openmp-binary-host-portable-v3.cpgpkg.tar.gz",
+      "sha256": "08dfef9d690ab23a6d4ebfcd79a04cab258a7470bf30c89d6a75a89aeea74af8"
+    },
+    "qualification_boundary": "C/OpenMP; original Small history workload; 17,000,000 lookups; two threads; upstream checksum 941535.",
+    "source_package_sha256": "9a4f02020497dfd7b2876f3908e01e1acb36ae5e4ad9b2236e78ffa2c79e9c32",
+    "source_receipt_path": "/workspace/scratch/0b533472f84f/cpg-resume-v0218/branches/native/qa-run-01/dataset-ref.xsbench/source-a-receipt.json",
+    "source_receipt_sha256": "20a9233f6379fa2882ee602c41f8002f96db3804649ee5b0e8b6feec2edcc7d0"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
