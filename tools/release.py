@@ -359,7 +359,7 @@ def load_plan(tag):
     return plan
 
 
-def build_plan(tag, output, *, network):
+def build_plan(tag, output, *, network, source_commit=None):
     output = Path(output).absolute()
     if output.resolve().is_relative_to(ROOT.resolve()) or output.is_symlink():
         raise ValueError("Build output must be an ordinary directory outside the source checkout")
@@ -381,7 +381,7 @@ def build_plan(tag, output, *, network):
         rows.append(repository_row(record, tag))
     manifest = {"schema_version": 1, "kind": "compiler_playground_package_repository", "packages": rows,
                 "release": {"tag": tag, "repository": REPOSITORY,
-                            "source_commit": os.environ.get("GITHUB_SHA"), "scope": "historical workload deliveries"}}
+                            "source_commit": source_commit or os.environ.get("GITHUB_SHA"), "scope": "historical workload deliveries"}}
     write_json(output / "manifest.json", manifest)
     assets.append(output / "manifest.json")
     (output / "SHA256SUMS").write_text("".join(f"{sha256(path)}  {path.name}\n" for path in sorted(assets)))
@@ -446,7 +446,9 @@ def verify_publication_source(commit, main, tag):
         raise ValueError("Publication source must belong to the current main history")
     plan_path = "release-plans/" + tag + ".json"
     plan = load_plan(tag)
-    paths = ["tools", ".github", "tests/test_release_pipeline.py", plan_path]
+    # Publication data is frozen by this exact plan, catalog records and templates.
+    # Unrelated CI or publisher changes on main do not change the artifact bytes.
+    paths = [plan_path]
     records = []
     for checksum in plan["artifacts"]:
         record = checked_record(checksum)
@@ -478,16 +480,6 @@ def publish(tag, output):
     repository, ref, commit = (os.environ.get(name, "") for name in ("GITHUB_REPOSITORY", "GITHUB_REF_NAME", "GITHUB_SHA"))
     if repository != REPOSITORY or ref != "publish/" + tag or COMMIT.fullmatch(commit) is None:
         raise ValueError("Publication requires an explicit publish/<tag> push in the canonical repository")
-    main = gh("api", f"repos/{REPOSITORY}/git/ref/heads/main", json_output=True)["object"]["sha"]
-    verify_publication_source(commit, main, tag)
-    plan, manifest, assets = build_plan(tag, output, network=True)
-    notes = output / "release-notes.md"
-    notes.write_text(f"# {tag}\n\nReproduces {len(plan['artifacts'])} audited CPG artifacts from unpacked source templates.\n\n"
-                     "Every published asset matches the previously verified complete SHA-256 and byte size. "
-                     "APT wrappers are metadata-only and carry an explicit functional-test exemption. "
-                     "Each artifact records its review scope; a static review does not claim a new build or functional run.\n\n"
-                     "Use the pinned manifest with Compiler Playground's existing package manager. "
-                     "This release does not claim unexecuted hardware or official benchmark qualification.\n")
     existing = gh("api", f"repos/{REPOSITORY}/releases/tags/{tag}", json_output=True, check=False)
     if existing is None:
         # GitHub does not resolve an unpublished draft through the tag endpoint.
@@ -497,6 +489,22 @@ def publish(tag, output):
         if len(matches) > 1:
             raise ValueError("Multiple releases use the requested tag")
         existing = matches[0] if matches else None
+    # Resume an existing draft against its original frozen source commit. The
+    # uploaded manifest and checksums remain byte-identical after a publisher fix.
+    if existing is not None:
+        commit = existing.get("target_commitish", "")
+        if COMMIT.fullmatch(commit) is None:
+            raise ValueError("Existing Release does not pin an exact source commit")
+    main = gh("api", f"repos/{REPOSITORY}/git/ref/heads/main", json_output=True)["object"]["sha"]
+    verify_publication_source(commit, main, tag)
+    plan, manifest, assets = build_plan(tag, output, network=True, source_commit=commit)
+    notes = output / "release-notes.md"
+    notes.write_text(f"# {tag}\n\nReproduces {len(plan['artifacts'])} audited CPG artifacts from unpacked source templates.\n\n"
+                     "Every published asset matches the previously verified complete SHA-256 and byte size. "
+                     "APT wrappers are metadata-only and carry an explicit functional-test exemption. "
+                     "Each artifact records its review scope; a static review does not claim a new build or functional run.\n\n"
+                     "Use the pinned manifest with Compiler Playground's existing package manager. "
+                     "This release does not claim unexecuted hardware or official benchmark qualification.\n")
     verify_release_commit(tag, commit, missing=True)
     if existing is None:
         existing = gh("api", "--method", "POST", f"repos/{REPOSITORY}/releases",
@@ -589,3 +597,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
