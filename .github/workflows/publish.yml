@@ -1,0 +1,76 @@
+name: Publish workload batch
+on:
+  push:
+    branches: ['publish/**']
+permissions:
+  contents: read
+concurrency:
+  group: cpg-workloads-publication
+  # Keep every explicit batch request; the default only retains one pending run.
+  queue: max
+  cancel-in-progress: false
+defaults:
+  run:
+    shell: bash
+jobs:
+  validate:
+    if: github.repository == 'Lightcone-ZhangYifa/cpg-workloads'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - run: python tools/validate_repository.py
+      - run: python tests/test_release_pipeline.py -v
+  publish:
+    needs: validate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REQUEST_REF: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - name: Reproduce, publish, and verify exact assets
+        run: |
+          tag="${REQUEST_REF#publish/}"
+          gh auth setup-git
+          python tools/release.py publish "$tag" --output "$RUNNER_TEMP/workload-release"
+      - name: Add the verified release to the software-source index
+        run: |
+          tag="${REQUEST_REF#publish/}"
+          gh auth setup-git
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git checkout -B publication-index origin/main
+            mkdir -p catalog/releases
+            if test -f "catalog/releases/$tag.json"; then
+              cmp "$RUNNER_TEMP/workload-release/publication.json" "catalog/releases/$tag.json"
+            fi
+            cp "$RUNNER_TEMP/workload-release/publication.json" "catalog/releases/$tag.json"
+            python tools/release.py manifest
+            python tools/validate_repository.py
+            git add "catalog/releases/$tag.json" manifest.json
+            if git diff --cached --quiet; then
+              exit 0
+            fi
+            git commit -m "Publish verified workload manifest for $tag"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+          done
+          exit 1
