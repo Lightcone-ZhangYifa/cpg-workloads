@@ -23,6 +23,7 @@ FORMATS = {
     'cpg_online_source_recipe',
     'cpg_online_binary_recipe',
     'cpg_authored_online_recipe',
+    'cpg_exact_native_source_replay',
 }
 MAX_EXPANDED_BYTES = 128 * 1024 * 1024
 MAX_FILES = 4096
@@ -131,7 +132,102 @@ def _validate_spec_shape(spec):
     return spec
 
 
+def _validate_native_replay(contents, members):
+    """Validate the delivered standalone source-preparation controller contract."""
+    _require({'replay.json', 'source-manifest.json', 'run.py'} <= set(contents),
+        'Native replay lacks descriptor, source template, or controller')
+    descriptor = _json(contents['replay.json'])
+    _require(descriptor.get('schema_version') == 1
+        and descriptor.get('kind') == 'cpg_exact_native_source_replay'
+        and descriptor.get('embedded_resource_archive_bytes') == 0,
+        'Unsupported native source replay contract')
+    controller = descriptor.get('controller', {})
+    _require(controller.get('path') == 'run.py'
+        and controller.get('sha256') == hashlib.sha256(contents['run.py']).hexdigest(),
+        'Native replay controller identity differs')
+    source_descriptor = descriptor.get('source_manifest', {})
+    _require(source_descriptor.get('path') == 'source-manifest.json'
+        and source_descriptor.get('sha256') == hashlib.sha256(contents['source-manifest.json']).hexdigest(),
+        'Native replay source template identity differs')
+    offline = _json(contents['source-manifest.json'])
+    _require(offline.get('kind') == 'compiler_playground_resource_package'
+        and offline.get('schema_version') == 1 and offline.get('method') == 'source',
+        'Native replay must prepare an existing source-format package')
+    _require(_digest({k:v for k,v in offline.items() if k != 'manifest_sha256'})
+        == offline.get('manifest_sha256'), 'Native replay source manifest fingerprint differs')
+    _require(_digest(offline['files']) == offline.get('inventory_sha256'),
+        'Native replay source inventory fingerprint differs')
+    spec = _validate_spec_shape(offline['package'])
+    _require(all(descriptor.get(k) == spec[v] for k,v in
+        [('resource_id','id'), ('build','build'), ('provider','provider')]),
+        'Native replay source identity differs')
+    artifact = descriptor.get('artifact', {})
+    _require(artifact.get('method') == 'source'
+        and artifact.get('manifest_sha256') == offline['manifest_sha256']
+        and isinstance(artifact.get('sha256'), str) and SHA.fullmatch(artifact['sha256'])
+        and type(artifact.get('bytes')) is int and artifact['bytes'] > 0,
+        'Native replay source artifact identity is incomplete')
+    command = descriptor.get('command_template')
+    _require(isinstance(command, list) and command[:6] ==
+        ['python3', '-B', 'run.py', 'prepare', '--descriptor', 'replay.json']
+        and all(isinstance(arg,str) and arg and '\0' not in arg for arg in command),
+        'Native replay command does not address its declared entry point')
+    headers = {r['path']:r for r in members}
+    recipe_files, source_files = {}, {}
+    inventory_paths = set()
+    for row in offline['files']:
+        name = row['path']
+        _require(name not in inventory_paths, 'Duplicate native replay source inventory member')
+        inventory_paths.add(name)
+        if name in {'recipe', 'sources'}:
+            _require(row.get('kind') == 'directory', 'Invalid source root inventory entry')
+        elif name.startswith('recipe/'):
+            _relative(name)
+            _require(row.get('kind') == 'file', 'Unsupported replay authored directory or link')
+            recipe_files[name] = row
+        elif name.startswith('sources/'):
+            _require(row.get('kind') == 'file' and name == 'sources/' + row.get('sha256', ''),
+                'Invalid replay source-cache inventory entry')
+            source_files[name] = row
+        else:
+            raise ValueError('Native replay includes unsupported tool or payload inventory')
+    _require(set(contents) == set(recipe_files) | {'replay.json','source-manifest.json','run.py'},
+        'Native replay is missing or adds authored files outside its source template')
+    _require(all(r['type'] == '0' for r in members), 'Unsupported native replay archive member type')
+    for name, row in recipe_files.items():
+        _require(row.get('sha256') == hashlib.sha256(contents[name]).hexdigest()
+            and row.get('bytes') == len(contents[name]) and row.get('mode') == headers[name]['mode'],
+            'Native replay recipe differs from the expected source package: ' + name)
+    declared = {s['id']:s for s in spec['sources']}
+    _require(declared and len(declared) == len(spec['sources']), 'Missing or duplicate native replay source ID')
+    effective = dict(declared)
+    for lock in offline.get('resolved_sources', []):
+        original = declared.get(lock['id'])
+        _require(original is not None and all(value == lock.get(key) for key,value in original.items()
+            if not (key in {'sha256','bytes'} and value is None)), 'Native replay changes a fixed source declaration')
+        effective[lock['id']] = lock
+    _require(all(isinstance(s.get('sha256'),str) and SHA.fullmatch(s['sha256'])
+        and type(s.get('bytes')) is int and s['bytes'] >= 0 for s in effective.values()),
+        'Native replay source acquisition locks are incomplete')
+    references = offline.get('sources', [])
+    _require(len(references) == len(effective) and {r['id'] for r in references} == set(effective),
+        'Native replay source-cache references differ from source IDs')
+    for reference in references:
+        lock = effective[reference['id']]
+        path = 'sources/' + lock['sha256']
+        _require(reference.get('path') == path and path in source_files
+            and source_files[path]['sha256'] == lock['sha256']
+            and source_files[path]['bytes'] == lock['bytes'], 'Native replay source bytes lack a matching inventory lock')
+    _require(set(source_files) == {r['path'] for r in references}, 'Unreferenced native replay source inventory')
+    for name, data in contents.items():
+        if name.endswith('.py'):
+            ast.parse(data.decode('utf-8'), filename=name)
+    return descriptor, spec
+
+
 def _validate_contents(contents, members):
+    if 'replay.json' in contents:
+        return _validate_native_replay(contents, members)
     if 'online.json' not in contents:
         _require({'package.json', 'run.py'} <= set(contents), 'Authored online recipe lacks its package or entry point')
         spec = _validate_spec_shape(_json(contents['package.json']))
@@ -403,9 +499,9 @@ def _archive_format(path):
                 and total <= MAX_EXPANDED_BYTES, 'Online recipe exceeds metadata limits')
             if member.name in {'package.json', 'run.py'} and member.isfile():
                 authored.add(member.name)
-            if member.name in {'online.json', 'manifest.json'} and member.isfile():
+            if member.name in {'online.json', 'manifest.json', 'replay.json'} and member.isfile():
                 descriptor = _json(archive.extractfile(member).read(member.size + 1))
-                value = descriptor.get('kind') if member.name == 'online.json' else descriptor.get('format')
+                value = descriptor.get('format') if member.name == 'manifest.json' else descriptor.get('kind')
                 if value in FORMATS or value == 'compiler-playground-original-material-online-recipe-v1':
                     return value
     if authored == {'package.json', 'run.py'}:
