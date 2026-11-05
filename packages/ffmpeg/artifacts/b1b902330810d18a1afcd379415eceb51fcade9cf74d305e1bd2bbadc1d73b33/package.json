@@ -1,0 +1,159 @@
+{
+  "build": "1-static-read1-4d51f4e0",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "ffmpeg",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 17333895,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Media"
+      ],
+      "container_strategy": "Freeze configure flags, enabled codecs, NASM/YASM and any optional library closure in dev; run fixed commands and licensed media input bundles on target.",
+      "corpus_contract": {
+        "code": "Application and FATE test definitions included.",
+        "inputs": "External FATE/sample/media input packs must be separately admitted.",
+        "oracle": "FATE checks, frame hashes or declared quality/error metrics.",
+        "split_unit": "Codec/filter/application family across clips and configurations."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/FFmpeg/FFmpeg"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/ffmpeg.measurement.json",
+        "workspace-evidence/resources-v050/open-research/ffmpeg.refs.json"
+      ],
+      "extract": true,
+      "id": "ffmpeg",
+      "immutable_ref": "946fcce07b6dcd0331c8cc609192aeff5e1924f8",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "LGPL-2.1-or-later AND LicenseRef-Configuration-Dependent",
+      "mandatory": false,
+      "material_path": "corpora/ffmpeg",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Large real-world C application, codecs, filters, parsing and dispatch with end-to-end workloads.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Optional GPL/nonfree dependencies alter distribution rights; the open preset must exclude incompatible combinations.",
+        "FATE media samples and representative clips are external datasets and require their own hashes/size receipts.",
+        "Output validation must account for declared lossy codec semantics and thread determinism."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "0aa2b1de2a5698b20a23e93d539a9a8e82ca0117496c5bdf05d198805f42bb3b",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/FFmpeg/FFmpeg",
+        "https://codeload.github.com/FFmpeg/FFmpeg/tar.gz/946fcce07b6dcd0331c8cc609192aeff5e1924f8",
+        "https://github.com/FFmpeg/FFmpeg/commit/946fcce07b6dcd0331c8cc609192aeff5e1924f8"
+      ],
+      "source_logical_bytes": 90361647,
+      "source_url": "https://codeload.github.com/FFmpeg/FFmpeg/tar.gz/946fcce07b6dcd0331c8cc609192aeff5e1924f8",
+      "title": "FFmpeg media application workload",
+      "upstream": "https://github.com/FFmpeg/FFmpeg",
+      "version": "n9.0.2"
+    },
+    "catalog_sha256": "a15f7d029ec0c3e89d4f6ab71c4b77816697b39873b12d8787b6a7d6fcf934e5",
+    "historical_checks": [],
+    "static_material_read_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "original_artifact_sha256": "4d51f4e0df76e9c5ee3c6d3445509ee5b02881e1e1aae7d8db3155f51cd72d92",
+      "original_build": "1",
+      "original_manifest_sha256": "42585a96dfa2be9316a801cc63ebba382d33413f6887cb2ad8263490ce13b00c",
+      "payload_inventory_unchanged": true,
+      "read_check_executed": false,
+      "reader_ast_checked": true,
+      "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33",
+      "reader_definition_source_artifact_sha256": "b669fcf90909834d4c289cc17e290b4f830d36bb0ce0becb0012cadbbb4b0000",
+      "source_locks_unchanged": true
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 17333895,
+      "extract": true,
+      "id": "ffmpeg",
+      "material_path": "corpora/ffmpeg",
+      "sha256": "0aa2b1de2a5698b20a23e93d539a9a8e82ca0117496c5bdf05d198805f42bb3b",
+      "strip_root": true,
+      "url": "https://codeload.github.com/FFmpeg/FFmpeg/tar.gz/946fcce07b6dcd0331c8cc609192aeff5e1924f8"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/FFmpeg/FFmpeg"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/corpora/ffmpeg",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "A complete installed-file, mode and symlink read/integrity check is declared. This metadata revision did not run that check or execute upstream programs."
+    ],
+    "summary": "Large real-world C application, codecs, filters, parsing and dispatch with end-to-end workloads."
+  },
+  "version": "n9.0.2"
+}

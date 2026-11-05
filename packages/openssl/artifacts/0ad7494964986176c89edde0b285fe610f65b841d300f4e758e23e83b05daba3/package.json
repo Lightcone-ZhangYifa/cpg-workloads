@@ -1,0 +1,162 @@
+{
+  "build": "2-static-read1-50dd87d5",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "openssl",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 55429548,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Cryptography"
+      ],
+      "container_strategy": "Build default and explicitly C-only diagnostic variants in dev; freeze provider/configuration and hardware dispatch before target runs.",
+      "corpus_contract": {
+        "code": "Library, tools and regression tests included.",
+        "inputs": "Known-answer tests plus deterministic message-size distributions.",
+        "oracle": "Known-answer tests and independent references where available.",
+        "split_unit": "Algorithm and implementation lineage across sizes and providers."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/openssl/openssl"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/openssl.measurement.json",
+        "workspace-evidence/resources-v050/open-research/openssl.refs.json"
+      ],
+      "extract": true,
+      "id": "openssl",
+      "immutable_ref": "af1775b60dfa141a4ad762585052cabeb9f37e9e",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "corpora/openssl",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Production C control-flow, arithmetic and cryptographic primitive workload coverage.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Assembly acceleration can obscure compiler effects; report assembly-enabled and no-asm strata separately.",
+        "Performance alone does not establish constant-time behavior or cryptographic certification."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "219c0a389f3c76e58f2d9e2b216101887f94747e669bb79c43225d7b6ac1253a",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/openssl/openssl",
+        "https://codeload.github.com/openssl/openssl/tar.gz/af1775b60dfa141a4ad762585052cabeb9f37e9e",
+        "https://github.com/openssl/openssl/commit/af1775b60dfa141a4ad762585052cabeb9f37e9e"
+      ],
+      "source_logical_bytes": 135651861,
+      "source_url": "https://codeload.github.com/openssl/openssl/tar.gz/af1775b60dfa141a4ad762585052cabeb9f37e9e",
+      "title": "OpenSSL cryptographic workload",
+      "upstream": "https://github.com/openssl/openssl",
+      "version": "openssl-4.0.3"
+    },
+    "catalog_sha256": "fa534d155b5d1a807546a91c27bbb0157af0492c67b847aa2cef796d7de164ca",
+    "historical_checks": [],
+    "static_material_read_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "original_artifact_sha256": "50dd87d5d98a4f3594c43700a2668138c919a3bc5433634a336e365b36abc608",
+      "original_build": "2",
+      "original_manifest_sha256": "25ae042534822e6eb1fa83961aed8997764deaa476d00287fb1c1bcb04fbc588",
+      "payload_inventory_unchanged": true,
+      "read_check_executed": false,
+      "reader_ast_checked": true,
+      "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33",
+      "reader_definition_source_artifact_sha256": "b669fcf90909834d4c289cc17e290b4f830d36bb0ce0becb0012cadbbb4b0000",
+      "source_locks_unchanged": true
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "qualified": false,
+    "source_dependencies": [],
+    "system_packages": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 55429548,
+      "extract": true,
+      "id": "openssl",
+      "material_path": "corpora/openssl",
+      "sha256": "219c0a389f3c76e58f2d9e2b216101887f94747e669bb79c43225d7b6ac1253a",
+      "strip_root": true,
+      "url": "https://codeload.github.com/openssl/openssl/tar.gz/af1775b60dfa141a4ad762585052cabeb9f37e9e"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/openssl/openssl"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete original source",
+        "path": "{prefix}",
+        "purpose": "Original immutable archive members, tests, fixtures, documentation and license."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "A complete installed-file, mode and symlink read/integrity check is declared. This metadata revision did not run that check or execute upstream programs."
+    ],
+    "summary": "Production C control-flow, arithmetic and cryptographic primitive workload coverage."
+  },
+  "version": "openssl-4.0.3"
+}

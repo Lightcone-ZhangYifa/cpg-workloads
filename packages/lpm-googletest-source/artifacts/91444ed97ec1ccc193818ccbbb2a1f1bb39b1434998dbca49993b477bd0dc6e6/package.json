@@ -1,0 +1,159 @@
+{
+  "build": "2-static-read1-3b578881",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "lpm-googletest-source",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 873681,
+      "build_peak_bytes": null,
+      "category": [
+        "Correctness",
+        "Structured fuzzing dependencies"
+      ],
+      "container_strategy": "Materialize an immutable source tree; the parent mutator recipe copies it into a writable isolated build tree and preserves notices. This is not an independently installed system library.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "state": "immutable-local-build-dependency-source",
+        "target_exports": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/google/googletest"
+      ],
+      "evidence_files": [
+        "workspace-evidence/community-v070/resource-audit/lpm-dependencies/git-refs.json",
+        "workspace-evidence/community-v070/resource-audit/lpm-dependencies/archive-measurements.json",
+        "workspace-evidence/community-v070/resource-audit/lpm-dependencies/http-headers/lpm-googletest-source.json"
+      ],
+      "extract": true,
+      "id": "lpm-googletest-source",
+      "immutable_ref": "e39786088138f2749d64e9e90e0f9902daa77c40",
+      "installed_allocated_bytes": null,
+      "installed_bytes": null,
+      "kind": "source_supplement",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "sources/lpm-googletest-source",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Provide the exact version selected by libprotobuf-mutator v1.5 for its tests or instrumented examples, avoiding implicit ExternalProject network acquisition.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The parent mutator's full-feature CMake build has not run in a complete prepared system dependency environment."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "babf242cebeb22fefb5541a728c94ee5bd3aafe58dfd8ad8a1988a74fc5e5ce0",
+      "size_basis": "Complete measured HTTPS archive and regular-file logical source size; external dependencies and build outputs excluded.",
+      "size_evidence": "workspace-evidence/community-v070/resource-audit/lpm-dependencies/archive-measurements.json",
+      "source_evidence": [
+        "https://github.com/google/googletest",
+        "https://github.com/google/googletest/commit/e39786088138f2749d64e9e90e0f9902daa77c40",
+        "https://codeload.github.com/google/googletest/tar.gz/e39786088138f2749d64e9e90e0f9902daa77c40"
+      ],
+      "source_logical_bytes": 4014895,
+      "source_url": "https://codeload.github.com/google/googletest/tar.gz/e39786088138f2749d64e9e90e0f9902daa77c40",
+      "title": "google/googletest source for libprotobuf-mutator tests and examples",
+      "upstream": "https://github.com/google/googletest",
+      "version": "1.15.0"
+    },
+    "catalog_sha256": "76ceed6a6ecbb9328b3029895c266cc15460d959a194bfd25bdea78618b9b4a4",
+    "historical_checks": [],
+    "static_material_read_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "original_artifact_sha256": "3b578881e07d1ebe2d4b8171426b451eb7423cb741263a36811948837d0d9777",
+      "original_build": "2",
+      "original_manifest_sha256": "94e9ba412b768cc68dd9e90f69abd5530c28a0aa86b0316cb092b0c3e2a299e2",
+      "payload_inventory_unchanged": true,
+      "read_check_executed": false,
+      "reader_ast_checked": true,
+      "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33",
+      "reader_definition_source_artifact_sha256": "b669fcf90909834d4c289cc17e290b4f830d36bb0ce0becb0012cadbbb4b0000",
+      "source_locks_unchanged": true
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "qualified": false,
+    "state": "immutable-local-build-dependency-source",
+    "target_exports": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 873681,
+      "extract": true,
+      "id": "lpm-googletest-source",
+      "material_path": "sources/lpm-googletest-source",
+      "sha256": "babf242cebeb22fefb5541a728c94ee5bd3aafe58dfd8ad8a1988a74fc5e5ce0",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/googletest/tar.gz/e39786088138f2749d64e9e90e0f9902daa77c40"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/google/googletest"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/lpm-googletest-source",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers.",
+      "A complete installed-file, mode and symlink read/integrity check is declared. This metadata revision did not run that check or execute upstream programs."
+    ],
+    "summary": "Provide the exact version selected by libprotobuf-mutator v1.5 for its tests or instrumented examples, avoiding implicit ExternalProject network acquisition."
+  },
+  "version": "1.15.0"
+}
