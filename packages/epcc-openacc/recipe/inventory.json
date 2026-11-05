@@ -1,0 +1,340 @@
+{
+  "commit": "3f91c5bb2cba810572f237ce0e62e09b3d364082",
+  "kernels": [
+    {
+      "exclusion_reason": "Device-transfer/invocation timing or overhead microbenchmark not qualified on a host-only device",
+      "function": "contig_htod",
+      "included_in_host_profile": false,
+      "kernel": "ContigH2D"
+    },
+    {
+      "exclusion_reason": "Device-transfer/invocation timing or overhead microbenchmark not qualified on a host-only device",
+      "function": "contig_dtoh",
+      "included_in_host_profile": false,
+      "kernel": "ContigD2H"
+    },
+    {
+      "exclusion_reason": "Upstream README explicitly identifies non-contiguous sliced transfers as outside the standard",
+      "function": "sliced_dtoh",
+      "included_in_host_profile": false,
+      "kernel": "SlicedD2H"
+    },
+    {
+      "exclusion_reason": "Upstream README explicitly identifies non-contiguous sliced transfers as outside the standard",
+      "function": "sliced_htod",
+      "included_in_host_profile": false,
+      "kernel": "SlicedH2D"
+    },
+    {
+      "exclusion_reason": "Device-transfer/invocation timing or overhead microbenchmark not qualified on a host-only device",
+      "function": "kernels_if",
+      "included_in_host_profile": false,
+      "kernel": "Kernels_If"
+    },
+    {
+      "exclusion_reason": "Device-transfer/invocation timing or overhead microbenchmark not qualified on a host-only device",
+      "function": "parallel_if",
+      "included_in_host_profile": false,
+      "kernel": "Parallel_If"
+    },
+    {
+      "exclusion_reason": "Unchanged upstream array-section private/firstprivate syntax fails GNU 13.3 compilation",
+      "function": "parallel_private",
+      "included_in_host_profile": false,
+      "kernel": "Parallel_private"
+    },
+    {
+      "exclusion_reason": "Unchanged upstream array-section private/firstprivate syntax fails GNU 13.3 compilation",
+      "function": "parallel_firstprivate",
+      "included_in_host_profile": false,
+      "kernel": "Parallel_1stprivate"
+    },
+    {
+      "exclusion_reason": "Device-transfer/invocation timing or overhead microbenchmark not qualified on a host-only device",
+      "function": "kernels_combined",
+      "included_in_host_profile": false,
+      "kernel": "Kernels_combined"
+    },
+    {
+      "exclusion_reason": "Device-transfer/invocation timing or overhead microbenchmark not qualified on a host-only device",
+      "function": "parallel_combined",
+      "included_in_host_profile": false,
+      "kernel": "Parallel_combined"
+    },
+    {
+      "exclusion_reason": "Device-transfer/invocation timing or overhead microbenchmark not qualified on a host-only device",
+      "function": "update",
+      "included_in_host_profile": false,
+      "kernel": "Update_Host"
+    },
+    {
+      "exclusion_reason": "Device-transfer/invocation timing or overhead microbenchmark not qualified on a host-only device",
+      "function": "kernels_invoc",
+      "included_in_host_profile": false,
+      "kernel": "Kernels_Invocation"
+    },
+    {
+      "exclusion_reason": "Device-transfer/invocation timing or overhead microbenchmark not qualified on a host-only device",
+      "function": "parallel_invoc",
+      "included_in_host_profile": false,
+      "kernel": "Parallel_Invocation"
+    },
+    {
+      "exclusion_reason": "Device-transfer/invocation timing or overhead microbenchmark not qualified on a host-only device",
+      "function": "parallel_reduction",
+      "included_in_host_profile": false,
+      "kernel": "Parallel_Reduction"
+    },
+    {
+      "exclusion_reason": "Device-transfer/invocation timing or overhead microbenchmark not qualified on a host-only device",
+      "function": "kernels_reduction",
+      "included_in_host_profile": false,
+      "kernel": "Kernels_Reduction"
+    },
+    {
+      "function": "twomm",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "2MM",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "function": "threemm",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "3MM",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "function": "atax",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "ATAX",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "function": "bicg",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "BICG",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "function": "mvt",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "MVT",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "function": "syrk",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "SYRK",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "function": "covariance",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "COV",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "function": "correlation",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "COR",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "function": "syr2k",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "SYR2K",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "function": "gesummv",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "GESUMMV",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "function": "gemm",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "GEMM",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "function": "twodconv",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "2DCONV",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "function": "threedconv",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "3DCONV",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "function": "stencil",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_bytes": {
+          "maximum": 16777216,
+          "minimum": 65536
+        },
+        "seed": "uint32"
+      },
+      "kernel": "27S",
+      "validation": "Unchanged upstream compares accelerator path against its serial reference"
+    },
+    {
+      "exclusion_reason": "Hard-coded 2000 x 2000 x 400 workload has no datasize control or numerical oracle; observed bounded run timed out at 30s",
+      "function": "le_main",
+      "included_in_host_profile": false,
+      "kernel": "LE2D"
+    },
+    {
+      "function": "himeno_main",
+      "included_in_host_profile": true,
+      "input": {
+        "datasize_parameter_ignored_by_upstream": true,
+        "fixed_dimensions": [
+          129,
+          65,
+          65
+        ],
+        "iterations": 3
+      },
+      "kernel": "HIMENO",
+      "validation": "Execution and finite timer only; no numerical oracle"
+    }
+  ],
+  "notice": "upstream/NOTICE",
+  "output": {
+    "error_sentinels": {
+      "-10000": "allocation failure",
+      "-11000": "upstream reference mismatch"
+    },
+    "format": "JSON",
+    "unit": "seconds"
+  },
+  "performance_qualified": false,
+  "qualified_profile_count": 15,
+  "resource": "epcc-openacc",
+  "source_files": [
+    "27stencil.c",
+    "27stencil.h",
+    "LICENSE",
+    "NOTICE",
+    "README",
+    "common.c",
+    "common.h",
+    "himeno.c",
+    "himeno.h",
+    "le_core.c",
+    "le_core.h",
+    "level0.c",
+    "level0.h",
+    "level1.c",
+    "level1.h",
+    "main.c",
+    "main.h",
+    "makefile",
+    "plot.py"
+  ],
+  "supported_profile": {
+    "compiler": "GNU 13",
+    "device": "host",
+    "gpu": false,
+    "observed_version": "13.3.0",
+    "openacc_macro": 201711,
+    "openacc_version": "2.6"
+  },
+  "upstream_kernel_count": 31
+}

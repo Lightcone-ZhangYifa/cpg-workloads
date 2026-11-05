@@ -1,0 +1,178 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/share/openacc-vv/cpg_openacc.py",
+        "openacc-vv",
+        "check",
+        "--prefix",
+        "{prefix}",
+        "--work-root",
+        "{build}/functional-evidence"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "host-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "openacc-vv",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 572114,
+      "category": [
+        "Compiler development",
+        "OpenACC host profiles"
+      ],
+      "deployment": {
+        "adapter": "commands",
+        "commands": [
+          [
+            "python3",
+            "{recipe}/install.py",
+            "--resource",
+            "openacc-vv",
+            "--source",
+            "{source}",
+            "--prefix",
+            "{prefix}",
+            "--build",
+            "{build}"
+          ]
+        ],
+        "required_host_commands": [
+          "python3"
+        ],
+        "required_installed_paths": [
+          "{prefix}/share/openacc-vv/upstream-files.json",
+          "{prefix}/share/openacc-vv/inventory.json"
+        ],
+        "required_runtime_commands": [
+          "python3",
+          "gcc",
+          "g++"
+        ],
+        "runtime_environment": {
+          "ACC_DEVICE_TYPE": "host",
+          "PYTHONDONTWRITEBYTECODE": "1"
+        }
+      },
+      "extract": true,
+      "id": "openacc-vv",
+      "immutable_ref": "48d8b854280bfbd0294fea79668fdf2dd9386305",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause AND MIT AND LicenseRef-Bundled-Notices",
+      "material_path": "sources/openacc-vv",
+      "purpose": "Pinned original OpenACC resource and bounded GNU 13 host adapter; no GPU or compiler-wide conformance claim",
+      "qualification_gaps": [
+        "No new execution under this artifact identity.",
+        "Host profile only; no GPU, performance, Dataset or compiler-wide conformance qualification."
+      ],
+      "redistributable": true,
+      "sha256": "13953b271e9574aab19e274ba0bd0aaa098dd6d7295122b34a4f787bfc62f8e0",
+      "source_url": "https://codeload.github.com/OpenACCUserGroup/OpenACCV-V/tar.gz/48d8b854280bfbd0294fea79668fdf2dd9386305",
+      "strip_archive_root": true,
+      "title": "OpenACC Validation and Verification",
+      "upstream": "https://github.com/OpenACCUserGroup/OpenACCV-V",
+      "version": "48d8b854280bfbd0294fea79668fdf2dd9386305"
+    },
+    "catalog_sha256": "af8dcf419bbaa5eeb70f8806e9dc154bace80fbef4bc82b211266a50addfb67e",
+    "license": "BSD-3-Clause; bundled third-party viewer notices preserved",
+    "publication_policy": {
+      "build_check": "not_run",
+      "functional": "not_run",
+      "review_policy": "static-trust-v1"
+    },
+    "qualification_scope": "Bounded host adapter supplied by a trusted delivery; execution under this new artifact identity is not run.",
+    "upstream_commit": "48d8b854280bfbd0294fea79668fdf2dd9386305"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "{recipe}/install.py",
+        "--resource",
+        "openacc-vv",
+        "--source",
+        "{source}",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ]
+    ],
+    "required_host_commands": [
+      "python3"
+    ],
+    "required_installed_paths": [
+      "{prefix}/share/openacc-vv/upstream-files.json",
+      "{prefix}/share/openacc-vv/inventory.json"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc",
+      "g++"
+    ],
+    "runtime_environment": {
+      "ACC_DEVICE_TYPE": "host",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 572114,
+      "extract": true,
+      "id": "openacc-vv",
+      "material_path": "sources/openacc-vv",
+      "sha256": "13953b271e9574aab19e274ba0bd0aaa098dd6d7295122b34a4f787bfc62f8e0",
+      "strip_root": true,
+      "url": "https://codeload.github.com/OpenACCUserGroup/OpenACCV-V/tar.gz/48d8b854280bfbd0294fea79668fdf2dd9386305"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "{prefix}/share/openacc-vv/upstream/README.md"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/share/openacc-vv/cpg_openacc.py openacc-vv check --prefix {prefix} --work /tmp/fresh-openacc-work",
+        "description": "Run bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "original source",
+        "path": "{prefix}/share/openacc-vv/upstream",
+        "purpose": "Immutable upstream inputs"
+      }
+    ],
+    "notes": [
+      "Source and binary are separate package types for the same pinned software and neutral build.",
+      "The delivered host profile uses GNU 13/OpenACC 2.6; this artifact was not installed or executed during publication.",
+      "Use a fresh writable work directory disjoint from the installation prefix.",
+      "The binary package retains existing prepared software; no compiler was rerun to create this publication."
+    ],
+    "summary": "Pinned original OpenACC resource and bounded GNU 13 host adapter; no GPU or compiler-wide conformance claim"
+  },
+  "version": "48d8b854280bfbd0294fea79668fdf2dd9386305"
+}
