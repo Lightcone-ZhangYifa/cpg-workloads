@@ -1,0 +1,162 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libgcc-s1",
+      "apt.libstdc++6",
+      "apt.libtbbbind-2-5",
+      "apt.libtbbmalloc2"
+    ]
+  },
+  "id": "apt.libtbb12",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libstdc++6",
+        "apt.libtbbbind-2-5",
+        "apt.libtbbmalloc2"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 106374,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libtbb12"
+      ],
+      "id": "apt.libtbb12",
+      "immutable_ref": "sha256:78e2c79f5749fc5c55b32f9745e07d5c3480be574fd4d64bb0325cbec4206b06",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 277,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libtbb12_2021.11.0-2ubuntu2_amd64.deb",
+      "package_name": "libtbb12",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "parallelism library for C++ - runtime files",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "target"
+      ],
+      "sha256": "78e2c79f5749fc5c55b32f9745e07d5c3480be574fd4d64bb0325cbec4206b06",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/o/onetbb/libtbb12_2021.11.0-2ubuntu2_amd64.deb",
+      "title": "libtbb12",
+      "upstream": "https://www.threadingbuildingblocks.org/",
+      "version": "2021.11.0-2ubuntu2"
+    },
+    "catalog_sha256": "df9fea9438fa2044253741612e381768f2316951e2706e632a8c1003452a98c0"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libtbb12",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 106374,
+      "extract": false,
+      "id": "apt.libtbb12",
+      "material_path": "apt/libtbb12_2021.11.0-2ubuntu2_amd64.deb",
+      "sha256": "78e2c79f5749fc5c55b32f9745e07d5c3480be574fd4d64bb0325cbec4206b06",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/o/onetbb/libtbb12_2021.11.0-2ubuntu2_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libtbb12"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libtbb12",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libtbb12",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libtbb12.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libtbb12 (= 2021.11.0-2ubuntu2). parallelism library for C++ - runtime files"
+  },
+  "version": "2021.11.0-2ubuntu2"
+}

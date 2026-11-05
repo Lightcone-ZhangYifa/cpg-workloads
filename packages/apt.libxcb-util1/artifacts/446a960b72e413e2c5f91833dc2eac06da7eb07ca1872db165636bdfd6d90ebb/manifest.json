@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "3f44da9a0b51a2adc66452f06ea91b943c1bf8892c82440584b931ae70c145cc",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libxcb1"
+      ]
+    },
+    "id": "apt.libxcb-util1",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libxcb1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 10678,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libxcb-util1"
+        ],
+        "id": "apt.libxcb-util1",
+        "immutable_ref": "sha256:b6ff05729519514bddcbcd460f8be7e55c986daa5a97ecdc612b2815614194ab",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 47,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libxcb-util1_0.4.0-1build3_amd64.deb",
+        "package_name": "libxcb-util1",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "utility libraries for X C Binding -- atom, aux and event",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "b6ff05729519514bddcbcd460f8be7e55c986daa5a97ecdc612b2815614194ab",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/x/xcb-util/libxcb-util1_0.4.0-1build3_amd64.deb",
+        "title": "libxcb-util1",
+        "upstream": "http://xcb.freedesktop.org",
+        "version": "0.4.0-1build3"
+      },
+      "catalog_sha256": "b7073a053243edfd1186777ce6293300d76c76d800df046a227ed4de05adab63"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libxcb-util1",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 10678,
+        "extract": false,
+        "id": "apt.libxcb-util1",
+        "material_path": "apt/libxcb-util1_0.4.0-1build3_amd64.deb",
+        "sha256": "b6ff05729519514bddcbcd460f8be7e55c986daa5a97ecdc612b2815614194ab",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/x/xcb-util/libxcb-util1_0.4.0-1build3_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libxcb-util1"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libxcb-util1",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libxcb-util1",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libxcb-util1.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libxcb-util1 (= 0.4.0-1build3). utility libraries for X C Binding -- atom, aux and event"
+    },
+    "version": "0.4.0-1build3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "e465ab65d72c98ccf59eaf1f99af09928ee20834ba463e6be3314ca2b64b6fa3",
+    "dependencies_sha256": "df4bb2d090d3b56dab1642808baeabc6a8229cf848ba2f1eccbf10490faa7d75",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "68ff3b6d52a55e8374e7f31320ffa80c12d5fbeba973f823517499a4c9e6f917",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "d77fa7a2d56c72bb55d35deb6eb3b36feaa8fff4c92521d4126d56ccec5c7c87"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

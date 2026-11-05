@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "44e5defcd80632346c0628c8837305e5f4bb47698f3cd1116431a8256c42505c",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libprotobuf-lite32t64",
+        "apt.libprotobuf32t64",
+        "apt.zlib1g-dev"
+      ]
+    },
+    "id": "apt.libprotobuf-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libprotobuf-lite32t64",
+          "apt.libprotobuf32t64",
+          "apt.zlib1g-dev"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 1413370,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libprotobuf-dev"
+        ],
+        "id": "apt.libprotobuf-dev",
+        "immutable_ref": "sha256:acc0ec3dee7e496451656170e0210c56efd49ffcff243df8ce9893aa55f44e24",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 11996,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libprotobuf-dev_3.21.12-8.2ubuntu0.4_amd64.deb",
+        "package_name": "libprotobuf-dev",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "protocol buffers C++ library (development files) and proto files",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "acc0ec3dee7e496451656170e0210c56efd49ffcff243df8ce9893aa55f44e24",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/p/protobuf/libprotobuf-dev_3.21.12-8.2ubuntu0.4_amd64.deb",
+        "title": "libprotobuf-dev",
+        "upstream": "https://github.com/google/protobuf/",
+        "version": "3.21.12-8.2ubuntu0.4"
+      },
+      "catalog_sha256": "8f8bf2cc9329383c3d0da678f3ec872905e2f3aaefdbdbdc0d2d8f1df8ef6ed8"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libprotobuf-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1413370,
+        "extract": false,
+        "id": "apt.libprotobuf-dev",
+        "material_path": "apt/libprotobuf-dev_3.21.12-8.2ubuntu0.4_amd64.deb",
+        "sha256": "acc0ec3dee7e496451656170e0210c56efd49ffcff243df8ce9893aa55f44e24",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/protobuf/libprotobuf-dev_3.21.12-8.2ubuntu0.4_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libprotobuf-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libprotobuf-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libprotobuf-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libprotobuf-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libprotobuf-dev (= 3.21.12-8.2ubuntu0.4). protocol buffers C++ library (development files) and proto files"
+    },
+    "version": "3.21.12-8.2ubuntu0.4"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "48e7aa2de9339d1e38c1bf8760b55c32941db2c85ef1f758c681d8bee85e1bde",
+    "dependencies_sha256": "a226651494af916032aab1bc859c0f7bbb645c89a389e029188af3d5553e9311",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "6b28b17deee99251ed2a2aecfc41558a10f61be4bd81baf152fdd3437f4c8d62",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "64a1653244c4c57ea939c9308fe40b3dc176532c2c0c69b07f920907f63d353c"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

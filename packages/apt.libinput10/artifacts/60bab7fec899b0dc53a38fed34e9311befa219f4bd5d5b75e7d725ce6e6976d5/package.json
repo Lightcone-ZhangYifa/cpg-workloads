@@ -1,0 +1,163 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libevdev2",
+      "apt.libinput-bin",
+      "apt.libmtdev1t64",
+      "apt.libudev1",
+      "apt.libwacom9"
+    ]
+  },
+  "id": "apt.libinput10",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libevdev2",
+        "apt.libinput-bin",
+        "apt.libmtdev1t64",
+        "apt.libudev1",
+        "apt.libwacom9"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 133474,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libinput10"
+      ],
+      "id": "apt.libinput10",
+      "immutable_ref": "sha256:dd76b865f149d0b072d21a532539effefdce7983feb232b25e2adf354207237b",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 371,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libinput10_1.25.0-1ubuntu3.7_amd64.deb",
+      "package_name": "libinput10",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "input device management and event handling library - shared library",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "dd76b865f149d0b072d21a532539effefdce7983feb232b25e2adf354207237b",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libi/libinput/libinput10_1.25.0-1ubuntu3.7_amd64.deb",
+      "title": "libinput10",
+      "upstream": "https://www.freedesktop.org/wiki/Software/libinput/",
+      "version": "1.25.0-1ubuntu3.7"
+    },
+    "catalog_sha256": "8533cb4477f7383c0ebad0ff3a2b17724ed2d7bf91a0144b33d047319306bd44"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libinput10",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 133474,
+      "extract": false,
+      "id": "apt.libinput10",
+      "material_path": "apt/libinput10_1.25.0-1ubuntu3.7_amd64.deb",
+      "sha256": "dd76b865f149d0b072d21a532539effefdce7983feb232b25e2adf354207237b",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libi/libinput/libinput10_1.25.0-1ubuntu3.7_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libinput10"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libinput10",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libinput10",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libinput10.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libinput10 (= 1.25.0-1ubuntu3.7). input device management and event handling library - shared library"
+  },
+  "version": "1.25.0-1ubuntu3.7"
+}

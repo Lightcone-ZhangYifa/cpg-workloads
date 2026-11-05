@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "2ebeec6ffd3a2d15411a691280439bff35e3be3883f0579c6b57d58d02d529e8",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6-dev",
+        "apt.libsqlite3-0"
+      ]
+    },
+    "id": "apt.libsqlite3-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6-dev",
+          "apt.libsqlite3-0"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 910716,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libsqlite3-dev"
+        ],
+        "id": "apt.libsqlite3-dev",
+        "immutable_ref": "sha256:61e688e7ced1c6f7c0b66721e46fd996f891489654dbf382daa98e17ee3ae192",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 3323,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libsqlite3-dev_3.45.1-1ubuntu2.8_amd64.deb",
+        "package_name": "libsqlite3-dev",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "SQLite 3 development files",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "61e688e7ced1c6f7c0b66721e46fd996f891489654dbf382daa98e17ee3ae192",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/s/sqlite3/libsqlite3-dev_3.45.1-1ubuntu2.8_amd64.deb",
+        "title": "libsqlite3-dev",
+        "upstream": "https://www.sqlite.org/",
+        "version": "3.45.1-1ubuntu2.8"
+      },
+      "catalog_sha256": "6da26e1089f42d5c96eff4b082c577a0421560a1449bb2edf6f54923507b22ef"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libsqlite3-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 910716,
+        "extract": false,
+        "id": "apt.libsqlite3-dev",
+        "material_path": "apt/libsqlite3-dev_3.45.1-1ubuntu2.8_amd64.deb",
+        "sha256": "61e688e7ced1c6f7c0b66721e46fd996f891489654dbf382daa98e17ee3ae192",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/sqlite3/libsqlite3-dev_3.45.1-1ubuntu2.8_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libsqlite3-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libsqlite3-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libsqlite3-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libsqlite3-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libsqlite3-dev (= 3.45.1-1ubuntu2.8). SQLite 3 development files"
+    },
+    "version": "3.45.1-1ubuntu2.8"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "159b2709a7f898b5a01e3560d94102bd9054e24887f46824d3526daff0d30150",
+    "dependencies_sha256": "b570aafacf1ae93d88b59ab1bdc65d7794fabe56323c1c3405ec75fef6a5bd81",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "ee0d765d10b48584b141790145676682052908b9a4e2bc8bdf79d3a6c5e01bee",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "001a2945d80113a8d4a211a238381c844831da0f4bc8b9e4ca1998f911ffdb08"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

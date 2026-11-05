@@ -1,0 +1,186 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "c2ef4f1ad83be8e4ab3f64e4b39d0cecd42c5a8afd94d54d86c9c7c29335f71b",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libdaxctl1",
+        "apt.libkmod2",
+        "apt.libudev1",
+        "apt.libuuid1"
+      ]
+    },
+    "id": "apt.libndctl6",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libdaxctl1",
+          "apt.libkmod2",
+          "apt.libudev1",
+          "apt.libuuid1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 62750,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libndctl6"
+        ],
+        "id": "apt.libndctl6",
+        "immutable_ref": "sha256:4eab53588a8fa9e3192635e118c2d91bc069cde46a4a3785c77a0bb1ae001d02",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 202,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libndctl6_77-2ubuntu2_amd64.deb",
+        "package_name": "libndctl6",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Utility library for managing the libnvdimm subsystem",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "4eab53588a8fa9e3192635e118c2d91bc069cde46a4a3785c77a0bb1ae001d02",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/n/ndctl/libndctl6_77-2ubuntu2_amd64.deb",
+        "title": "libndctl6",
+        "upstream": "https://github.com/pmem/ndctl",
+        "version": "77-2ubuntu2"
+      },
+      "catalog_sha256": "d51d9ddc594efa4efbf681e14bbae91b660d2fd91a6adf36370d0aa30870dab1"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libndctl6",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 62750,
+        "extract": false,
+        "id": "apt.libndctl6",
+        "material_path": "apt/libndctl6_77-2ubuntu2_amd64.deb",
+        "sha256": "4eab53588a8fa9e3192635e118c2d91bc069cde46a4a3785c77a0bb1ae001d02",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/n/ndctl/libndctl6_77-2ubuntu2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libndctl6"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libndctl6",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libndctl6",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libndctl6.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libndctl6 (= 77-2ubuntu2). Utility library for managing the libnvdimm subsystem"
+    },
+    "version": "77-2ubuntu2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "e0dbd5299860722180748efc523d46bab87212b485a6dd61874353d214d2ebbb",
+    "dependencies_sha256": "e27d098fc04d43a7c364b34e90db66942f6711cdda4c63b5d3d4184cd65dc275",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "32764fef23036069f07bde12aabab3ced99af73ad5493fa9ba8e260fb2611ae2",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "f72063f86c705a71053d0609df7292c032ceec6559f46982cd5e53284d96ee9a"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

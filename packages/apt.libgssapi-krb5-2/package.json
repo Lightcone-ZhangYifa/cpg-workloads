@@ -1,0 +1,163 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libcom-err2",
+      "apt.libk5crypto3",
+      "apt.libkrb5-3",
+      "apt.libkrb5support0"
+    ]
+  },
+  "id": "apt.libgssapi-krb5-2",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libcom-err2",
+        "apt.libk5crypto3",
+        "apt.libkrb5-3",
+        "apt.libkrb5support0"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 142830,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libgssapi-krb5-2"
+      ],
+      "id": "apt.libgssapi-krb5-2",
+      "immutable_ref": "sha256:0d4a0187bcdbbe3e6a10bfa574100087d12052d0d0ef28614fd6210021c587b2",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 426,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libgssapi-krb5-2_1.20.1-6ubuntu2.10_amd64.deb",
+      "package_name": "libgssapi-krb5-2",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "MIT Kerberos runtime libraries - krb5 GSS-API Mechanism",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "0d4a0187bcdbbe3e6a10bfa574100087d12052d0d0ef28614fd6210021c587b2",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/k/krb5/libgssapi-krb5-2_1.20.1-6ubuntu2.10_amd64.deb",
+      "title": "libgssapi-krb5-2",
+      "upstream": "https://web.mit.edu/kerberos/",
+      "version": "1.20.1-6ubuntu2.10"
+    },
+    "catalog_sha256": "d21ce865468844c07a65b91df29cbedd3e712ad453254e41d60ad1498ec8b6b6"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libgssapi-krb5-2",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 142830,
+      "extract": false,
+      "id": "apt.libgssapi-krb5-2",
+      "material_path": "apt/libgssapi-krb5-2_1.20.1-6ubuntu2.10_amd64.deb",
+      "sha256": "0d4a0187bcdbbe3e6a10bfa574100087d12052d0d0ef28614fd6210021c587b2",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/k/krb5/libgssapi-krb5-2_1.20.1-6ubuntu2.10_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libgssapi-krb5-2"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libgssapi-krb5-2",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libgssapi-krb5-2",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libgssapi-krb5-2.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libgssapi-krb5-2 (= 1.20.1-6ubuntu2.10). MIT Kerberos runtime libraries - krb5 GSS-API Mechanism"
+  },
+  "version": "1.20.1-6ubuntu2.10"
+}

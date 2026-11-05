@@ -1,0 +1,153 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6"
+    ]
+  },
+  "id": "apt.libxshmfence1",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 4764,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libxshmfence1"
+      ],
+      "id": "apt.libxshmfence1",
+      "immutable_ref": "sha256:bc6de4bfaf9050a8ba83d4bcfb114131b081084a7972c03417f8523d52b5c742",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 30,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libxshmfence1_1.3-1build5_amd64.deb",
+      "package_name": "libxshmfence1",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "X shared memory fences - shared library",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "bc6de4bfaf9050a8ba83d4bcfb114131b081084a7972c03417f8523d52b5c742",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxshmfence/libxshmfence1_1.3-1build5_amd64.deb",
+      "title": "libxshmfence1",
+      "upstream": "https://packages.ubuntu.com/noble/libxshmfence1",
+      "version": "1.3-1build5"
+    },
+    "catalog_sha256": "0a49249882f5c74c57b85e4e0c4350998f6dada3bc6fb405eb53efe6d066b9f7"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libxshmfence1",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 4764,
+      "extract": false,
+      "id": "apt.libxshmfence1",
+      "material_path": "apt/libxshmfence1_1.3-1build5_amd64.deb",
+      "sha256": "bc6de4bfaf9050a8ba83d4bcfb114131b081084a7972c03417f8523d52b5c742",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxshmfence/libxshmfence1_1.3-1build5_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libxshmfence1"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libxshmfence1",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libxshmfence1",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libxshmfence1.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libxshmfence1 (= 1.3-1build5). X shared memory fences - shared library"
+  },
+  "version": "1.3-1build5"
+}

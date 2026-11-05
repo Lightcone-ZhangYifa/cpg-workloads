@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "491e39dd8283ecc0eaa4ca70dc3699ab34f1ad26087da1402d3d16d070bc4154",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libsexplib0-ocaml",
+        "apt.libstdlib-ocaml",
+        "apt.ocaml-base"
+      ]
+    },
+    "id": "apt.libppx-import-ocaml",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libsexplib0-ocaml",
+          "apt.libstdlib-ocaml",
+          "apt.ocaml-base"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 66674,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libppx-import-ocaml"
+        ],
+        "id": "apt.libppx-import-ocaml",
+        "immutable_ref": "sha256:7f2b285074967536a6a52e7c71d6aa9068b377fa497747c3ca7ec7d33f5af570",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 202,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libppx-import-ocaml_1.10.0-3build2_amd64.deb",
+        "package_name": "libppx-import-ocaml",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "OCaml extension to import declarations (runtime)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "7f2b285074967536a6a52e7c71d6aa9068b377fa497747c3ca7ec7d33f5af570",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/ppx-import/libppx-import-ocaml_1.10.0-3build2_amd64.deb",
+        "title": "libppx-import-ocaml",
+        "upstream": "https://github.com/ocaml-ppx/ppx_import",
+        "version": "1.10.0-3build2"
+      },
+      "catalog_sha256": "54ca041c55d85b63a780b6dc0a8ee65308602f557fdb9894e80e8df3651f993d"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libppx-import-ocaml",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 66674,
+        "extract": false,
+        "id": "apt.libppx-import-ocaml",
+        "material_path": "apt/libppx-import-ocaml_1.10.0-3build2_amd64.deb",
+        "sha256": "7f2b285074967536a6a52e7c71d6aa9068b377fa497747c3ca7ec7d33f5af570",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/ppx-import/libppx-import-ocaml_1.10.0-3build2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libppx-import-ocaml"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libppx-import-ocaml",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libppx-import-ocaml",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libppx-import-ocaml.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libppx-import-ocaml (= 1.10.0-3build2). OCaml extension to import declarations (runtime)"
+    },
+    "version": "1.10.0-3build2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "d21a8a57e3c2fdfc5a79a3f0db5937742f872cddd991d2fc7d32dff68c3bbf01",
+    "dependencies_sha256": "3ac702584f47b9c76266edcefe21b5b70433bc2bc921986175e6e34a4f3ebe32",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "5b8ab71efca05d08233c06e5415c0d565d0afbef6c9fd6d8b1569fa4d811ded5",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "78b1120e318ba2ce4a305ca0e0fbbea3cc34cdac2324342c5cbc0ec80cdf7f6e"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

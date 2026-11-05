@@ -1,0 +1,153 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6"
+    ]
+  },
+  "id": "apt.libsctp1",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 9146,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libsctp1"
+      ],
+      "id": "apt.libsctp1",
+      "immutable_ref": "sha256:744b9178739db560cc7eb8da41ac58798443b4ec9227bc3ccea66d8b527f69b9",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 36,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libsctp1_1.0.19+dfsg-2build1_amd64.deb",
+      "package_name": "libsctp1",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "user-space access to Linux kernel SCTP - shared library",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "744b9178739db560cc7eb8da41ac58798443b4ec9227bc3ccea66d8b527f69b9",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/l/lksctp-tools/libsctp1_1.0.19+dfsg-2build1_amd64.deb",
+      "title": "libsctp1",
+      "upstream": "http://lksctp.sf.net/",
+      "version": "1.0.19+dfsg-2build1"
+    },
+    "catalog_sha256": "d8397f976822af3b4b312166f806a696975e5a1799c3ea029fd66f60331a47c4"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libsctp1",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 9146,
+      "extract": false,
+      "id": "apt.libsctp1",
+      "material_path": "apt/libsctp1_1.0.19+dfsg-2build1_amd64.deb",
+      "sha256": "744b9178739db560cc7eb8da41ac58798443b4ec9227bc3ccea66d8b527f69b9",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/lksctp-tools/libsctp1_1.0.19+dfsg-2build1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libsctp1"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libsctp1",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libsctp1",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libsctp1.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libsctp1 (= 1.0.19+dfsg-2build1). user-space access to Linux kernel SCTP - shared library"
+  },
+  "version": "1.0.19+dfsg-2build1"
+}

@@ -1,0 +1,153 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6"
+    ]
+  },
+  "id": "apt.libpcsclite1",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 21432,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libpcsclite1"
+      ],
+      "id": "apt.libpcsclite1",
+      "immutable_ref": "sha256:703bacc9204a7ecc24486ac8c96d15d0b9e2c91c385388e132ad4fd8f56f035a",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 61,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libpcsclite1_2.0.3-1build1_amd64.deb",
+      "package_name": "libpcsclite1",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Middleware to access a smart card using PC/SC (library)",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "703bacc9204a7ecc24486ac8c96d15d0b9e2c91c385388e132ad4fd8f56f035a",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pcsc-lite/libpcsclite1_2.0.3-1build1_amd64.deb",
+      "title": "libpcsclite1",
+      "upstream": "https://pcsclite.apdu.fr/",
+      "version": "2.0.3-1build1"
+    },
+    "catalog_sha256": "2694e4e8029f8d4b899043ef237bc8c6936e382979b823567e509297ddc161c9"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libpcsclite1",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 21432,
+      "extract": false,
+      "id": "apt.libpcsclite1",
+      "material_path": "apt/libpcsclite1_2.0.3-1build1_amd64.deb",
+      "sha256": "703bacc9204a7ecc24486ac8c96d15d0b9e2c91c385388e132ad4fd8f56f035a",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pcsc-lite/libpcsclite1_2.0.3-1build1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libpcsclite1"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libpcsclite1",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libpcsclite1",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libpcsclite1.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libpcsclite1 (= 2.0.3-1build1). Middleware to access a smart card using PC/SC (library)"
+  },
+  "version": "2.0.3-1build1"
+}

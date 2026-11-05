@@ -1,0 +1,183 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ee146291a5e84dcf4cb8db2ab297c065c5a7b8fbeeb53173783838a0f83c1ff6",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libhwloc15",
+        "apt.libltdl-dev",
+        "apt.libnuma-dev"
+      ]
+    },
+    "id": "apt.libhwloc-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libhwloc15",
+          "apt.libltdl-dev",
+          "apt.libnuma-dev"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 267592,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libhwloc-dev"
+        ],
+        "id": "apt.libhwloc-dev",
+        "immutable_ref": "sha256:896791d90e996c00091a88cd349738d954cf0077e82458f992cd5dc810221d5e",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 1186,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libhwloc-dev_2.10.0-1build1_amd64.deb",
+        "package_name": "libhwloc-dev",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Hierarchical view of the machine - static libs and headers",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "896791d90e996c00091a88cd349738d954cf0077e82458f992cd5dc810221d5e",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/h/hwloc/libhwloc-dev_2.10.0-1build1_amd64.deb",
+        "title": "libhwloc-dev",
+        "upstream": "https://www.open-mpi.org/projects/hwloc/",
+        "version": "2.10.0-1build1"
+      },
+      "catalog_sha256": "0fefb2391756eecc86da2a5ff0d5857d6f00e2e8b7c08faf401fffb030091dc8"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libhwloc-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 267592,
+        "extract": false,
+        "id": "apt.libhwloc-dev",
+        "material_path": "apt/libhwloc-dev_2.10.0-1build1_amd64.deb",
+        "sha256": "896791d90e996c00091a88cd349738d954cf0077e82458f992cd5dc810221d5e",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/h/hwloc/libhwloc-dev_2.10.0-1build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libhwloc-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libhwloc-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libhwloc-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libhwloc-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libhwloc-dev (= 2.10.0-1build1). Hierarchical view of the machine - static libs and headers"
+    },
+    "version": "2.10.0-1build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "c3c69dd6e7d673293fe26ff296a63a74c0fc5afa58ed50869bd5311598d57c20",
+    "dependencies_sha256": "9c25868c9823a534805a3208ffc31ecefc8c14d975bef6d3ed94ded2fe553716",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "343cdc4c74a65e17270270e0ca1801e28c03ab137aa7f962ee29c6eb5d39160e",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "7818de8f7a9b0a1561bd0942e908a69b77cec33c998e4f1a1c503268797ba1ee"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

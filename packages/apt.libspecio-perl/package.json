@@ -1,0 +1,167 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libdevel-stacktrace-perl",
+      "apt.libeval-closure-perl",
+      "apt.libmodule-runtime-perl",
+      "apt.libmro-compat-perl",
+      "apt.librole-tiny-perl",
+      "apt.libsub-quote-perl",
+      "apt.libxstring-perl",
+      "apt.perl"
+    ]
+  },
+  "id": "apt.libspecio-perl",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libdevel-stacktrace-perl",
+        "apt.libeval-closure-perl",
+        "apt.libmodule-runtime-perl",
+        "apt.libmro-compat-perl",
+        "apt.librole-tiny-perl",
+        "apt.libsub-quote-perl",
+        "apt.libxstring-perl",
+        "apt.perl"
+      ],
+      "architecture": "all",
+      "archive_bytes": 137456,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libspecio-perl"
+      ],
+      "id": "apt.libspecio-perl",
+      "immutable_ref": "sha256:d3969eac23e703e44292ae9bf1edb537e82e16d0247dcc9b0f6ce96ab864a06f",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 410,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libspecio-perl_0.48-1_all.deb",
+      "package_name": "libspecio-perl",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Perl module providing type constraints and coercions",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "d3969eac23e703e44292ae9bf1edb537e82e16d0247dcc9b0f6ce96ab864a06f",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/libs/libspecio-perl/libspecio-perl_0.48-1_all.deb",
+      "title": "libspecio-perl",
+      "upstream": "https://metacpan.org/release/Specio",
+      "version": "0.48-1"
+    },
+    "catalog_sha256": "dbc66b8f7daa6050a4b257db244f1d4f5c51937cf915ea8ad0d6d7fdc61f2637"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libspecio-perl",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 137456,
+      "extract": false,
+      "id": "apt.libspecio-perl",
+      "material_path": "apt/libspecio-perl_0.48-1_all.deb",
+      "sha256": "d3969eac23e703e44292ae9bf1edb537e82e16d0247dcc9b0f6ce96ab864a06f",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/libs/libspecio-perl/libspecio-perl_0.48-1_all.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libspecio-perl"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libspecio-perl",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libspecio-perl",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libspecio-perl.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libspecio-perl (= 0.48-1). Perl module providing type constraints and coercions"
+  },
+  "version": "0.48-1"
+}

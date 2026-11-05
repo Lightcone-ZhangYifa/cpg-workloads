@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "6b736c7391befe3639525a7bc9fbdbb94637c6186209a9919afa133b04494001",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libcdt5",
+        "apt.libcgraph6"
+      ]
+    },
+    "id": "apt.libgvpr2",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libcdt5",
+          "apt.libcgraph6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 186968,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libgvpr2"
+        ],
+        "id": "apt.libgvpr2",
+        "immutable_ref": "sha256:1a560080462b80ab56e0fe09af2abd52974a256e25b4f384b9be5872c1073c82",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 511,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libgvpr2_2.42.2-9ubuntu0.1_amd64.deb",
+        "package_name": "libgvpr2",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "rich set of graph drawing tools - gvpr library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "1a560080462b80ab56e0fe09af2abd52974a256e25b4f384b9be5872c1073c82",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/graphviz/libgvpr2_2.42.2-9ubuntu0.1_amd64.deb",
+        "title": "libgvpr2",
+        "upstream": "https://www.graphviz.org/",
+        "version": "2.42.2-9ubuntu0.1"
+      },
+      "catalog_sha256": "25ff070f677e07092f00ca5b20406130c3cd3e6d156f1cd380d2cc75efa8c9e5"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libgvpr2",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 186968,
+        "extract": false,
+        "id": "apt.libgvpr2",
+        "material_path": "apt/libgvpr2_2.42.2-9ubuntu0.1_amd64.deb",
+        "sha256": "1a560080462b80ab56e0fe09af2abd52974a256e25b4f384b9be5872c1073c82",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/graphviz/libgvpr2_2.42.2-9ubuntu0.1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libgvpr2"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libgvpr2",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libgvpr2",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libgvpr2.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libgvpr2 (= 2.42.2-9ubuntu0.1). rich set of graph drawing tools - gvpr library"
+    },
+    "version": "2.42.2-9ubuntu0.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "9ebfedf4898c2ce3721963f55e0d922df449b9d109035d7a37e362b87027f937",
+    "dependencies_sha256": "42937028b56b9d8ebd6e5d2704f23efeacbc6793781ba04b940316a04a5345f5",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "745a0876b84e6fb44e631d5821862c76454d9b15f51aed57cc435356ae02564c",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "7f628242ecf277901eede56fd0c9ebc27659c4b3953c45fa8175119e2b9f48fb"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

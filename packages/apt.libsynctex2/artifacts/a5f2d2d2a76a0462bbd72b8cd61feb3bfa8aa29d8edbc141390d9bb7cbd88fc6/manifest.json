@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "f3be8eb83ae2d6c0e2173a7c3da6cb14f005a75a19b190e06cc9d561e02ff817",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.zlib1g"
+      ]
+    },
+    "id": "apt.libsynctex2",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.zlib1g"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 59582,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libsynctex2"
+        ],
+        "id": "apt.libsynctex2",
+        "immutable_ref": "sha256:055c408e2cbc6533438767df6d470dee88a232cf85c72a3802c67e231e6cfb69",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 175,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libsynctex2_2023.20230311.66589-9build3_amd64.deb",
+        "package_name": "libsynctex2",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "TeX Live: SyncTeX parser library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "055c408e2cbc6533438767df6d470dee88a232cf85c72a3802c67e231e6cfb69",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/t/texlive-bin/libsynctex2_2023.20230311.66589-9build3_amd64.deb",
+        "title": "libsynctex2",
+        "upstream": "https://www.tug.org/texlive/",
+        "version": "2023.20230311.66589-9build3"
+      },
+      "catalog_sha256": "829fb64b18fc48562d2b990a021828a1f00cecf36c695f83a434485930283553"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libsynctex2",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 59582,
+        "extract": false,
+        "id": "apt.libsynctex2",
+        "material_path": "apt/libsynctex2_2023.20230311.66589-9build3_amd64.deb",
+        "sha256": "055c408e2cbc6533438767df6d470dee88a232cf85c72a3802c67e231e6cfb69",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/texlive-bin/libsynctex2_2023.20230311.66589-9build3_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libsynctex2"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libsynctex2",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libsynctex2",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libsynctex2.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libsynctex2 (= 2023.20230311.66589-9build3). TeX Live: SyncTeX parser library"
+    },
+    "version": "2023.20230311.66589-9build3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "5ce3076822b6a4f3d60f55eecba614c6b0269ffefe860a7a42d2cb72b3c2c336",
+    "dependencies_sha256": "480baf9ac5f4ae30456f2b44f3d78c1db370901e6a32decd451a5fbb7e048106",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "2cdab7ad49dea76d8b3df2a2b485e06406a5a37eea341fb2a3c18f77ff018d3d",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "925e90ff868fc37db4cd329805a44f200f78da4b17836d4942b2066300a54bf8"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

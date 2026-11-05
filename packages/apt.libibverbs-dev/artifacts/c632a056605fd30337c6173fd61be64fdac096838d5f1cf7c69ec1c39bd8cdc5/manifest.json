@@ -1,0 +1,184 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "afff00518e7d741cbf2de9363c4587a76bd552f50a4e11607e1b17f9f528e0da",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.ibverbs-providers",
+        "apt.libibverbs1",
+        "apt.libnl-3-dev",
+        "apt.libnl-route-3-dev"
+      ]
+    },
+    "id": "apt.libibverbs-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.ibverbs-providers",
+          "apt.libibverbs1",
+          "apt.libnl-3-dev",
+          "apt.libnl-route-3-dev"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 685732,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libibverbs-dev"
+        ],
+        "id": "apt.libibverbs-dev",
+        "immutable_ref": "sha256:fb409dc756c1697a83683e43a3ca78cb9eabbc24605391808252b8d8bedf54fc",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 2402,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libibverbs-dev_50.0-2ubuntu0.2_amd64.deb",
+        "package_name": "libibverbs-dev",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Development files for the libibverbs library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "fb409dc756c1697a83683e43a3ca78cb9eabbc24605391808252b8d8bedf54fc",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/r/rdma-core/libibverbs-dev_50.0-2ubuntu0.2_amd64.deb",
+        "title": "libibverbs-dev",
+        "upstream": "https://github.com/linux-rdma/rdma-core",
+        "version": "50.0-2ubuntu0.2"
+      },
+      "catalog_sha256": "22f1ba35db694568f90cfb70fada8cb44de544ca7fa91959e5b423abea783790"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libibverbs-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 685732,
+        "extract": false,
+        "id": "apt.libibverbs-dev",
+        "material_path": "apt/libibverbs-dev_50.0-2ubuntu0.2_amd64.deb",
+        "sha256": "fb409dc756c1697a83683e43a3ca78cb9eabbc24605391808252b8d8bedf54fc",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/r/rdma-core/libibverbs-dev_50.0-2ubuntu0.2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libibverbs-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libibverbs-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libibverbs-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libibverbs-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libibverbs-dev (= 50.0-2ubuntu0.2). Development files for the libibverbs library"
+    },
+    "version": "50.0-2ubuntu0.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "5d533255d1e2de65a00ae5ca7d8bfe07c2967adc40f65b597763d94ce3272e99",
+    "dependencies_sha256": "466f964921f78512941632aae74e002916ff1ed59ebc6e28c6432689b8c1696d",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "8da205391ac328f8fa8304cde6cbc3d9726e5481e132eb3e6b0f355a7f1e94d5",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "f977faec5e2f086b6b3176734c398e1584496a3f2cf77d5cd3e3803c6223eb67"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

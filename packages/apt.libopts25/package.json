@@ -1,0 +1,145 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6"
+    ]
+  },
+  "id": "apt.libopts25",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 64980,
+      "category": [
+        "Community development",
+        "Resolved system dependencies"
+      ],
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built"
+      },
+      "id": "apt.libopts25",
+      "immutable_ref": "sha256:e7348119f5b1a24e9ce5c46f4f1775a7d774265bae6c54e1c4b7dd23b19bdb3a",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 163,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libopts25_5.18.16-5build1_amd64.deb",
+      "package_name": "libopts25",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "automated option processing library based on autogen",
+      "qualification_gaps": [
+        "Perform role-specific installation and first-use checks in the selected dev image."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "e7348119f5b1a24e9ce5c46f4f1775a7d774265bae6c54e1c4b7dd23b19bdb3a",
+      "size_basis": "Exact signed captured Packages metadata; actual APT resolver with all existing catalog versions fixed; no deb or OCI installation measurement.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://gcc.gnu.org/install/prerequisites.html"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/a/autogen/libopts25_5.18.16-5build1_amd64.deb",
+      "title": "libopts25",
+      "version": "1:5.18.16-5build1"
+    },
+    "catalog_sha256": "ce01829ee41ad1d20041b2992b92e294ee43cf1301f6cf7428881e0fc98a2a2c"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libopts25",
+    "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 64980,
+      "extract": false,
+      "id": "apt.libopts25",
+      "material_path": "apt/libopts25_5.18.16-5build1_amd64.deb",
+      "sha256": "e7348119f5b1a24e9ce5c46f4f1775a7d774265bae6c54e1c4b7dd23b19bdb3a",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/a/autogen/libopts25_5.18.16-5build1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [
+      {
+        "command": "dpkg-query -W libopts25",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libopts25",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libopts25.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libopts25 (= 1:5.18.16-5build1). automated option processing library based on autogen"
+  },
+  "version": "1:5.18.16-5build1"
+}

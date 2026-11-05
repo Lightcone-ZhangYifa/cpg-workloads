@@ -1,0 +1,167 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libedit2",
+      "apt.libffi8",
+      "apt.libgcc-s1",
+      "apt.libstdc++6",
+      "apt.libxml2",
+      "apt.libzstd1",
+      "apt.zlib1g"
+    ]
+  },
+  "id": "apt.libllvm20",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libedit2",
+        "apt.libffi8",
+        "apt.libgcc-s1",
+        "apt.libstdc++6",
+        "apt.libxml2",
+        "apt.libzstd1",
+        "apt.zlib1g"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 30574382,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libllvm20"
+      ],
+      "id": "apt.libllvm20",
+      "immutable_ref": "sha256:f018e71c72c7a4742fb1aff9dc98b45586f42e6ea464d4918af7e3772b7f0658",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 140245,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libllvm20_20.1.2-0ubuntu1~24.04.3_amd64.deb",
+      "package_name": "libllvm20",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Modular compiler and toolchain technologies, runtime library",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "f018e71c72c7a4742fb1aff9dc98b45586f42e6ea464d4918af7e3772b7f0658",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-20/libllvm20_20.1.2-0ubuntu1~24.04.3_amd64.deb",
+      "title": "libllvm20",
+      "upstream": "https://www.llvm.org/",
+      "version": "1:20.1.2-0ubuntu1~24.04.3"
+    },
+    "catalog_sha256": "66d22bbe524b819d20f5ec1f4d92c23eddf11d1b74f38875ade42de0a3b5ab86"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libllvm20",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 30574382,
+      "extract": false,
+      "id": "apt.libllvm20",
+      "material_path": "apt/libllvm20_20.1.2-0ubuntu1~24.04.3_amd64.deb",
+      "sha256": "f018e71c72c7a4742fb1aff9dc98b45586f42e6ea464d4918af7e3772b7f0658",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-20/libllvm20_20.1.2-0ubuntu1~24.04.3_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libllvm20"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libllvm20",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libllvm20",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libllvm20.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libllvm20 (= 1:20.1.2-0ubuntu1~24.04.3). Modular compiler and toolchain technologies, runtime library"
+  },
+  "version": "1:20.1.2-0ubuntu1~24.04.3"
+}

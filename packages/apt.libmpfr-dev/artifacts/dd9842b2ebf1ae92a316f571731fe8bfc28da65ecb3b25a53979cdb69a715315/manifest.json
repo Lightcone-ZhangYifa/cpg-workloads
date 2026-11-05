@@ -1,0 +1,181 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "d6cbd89b306117306146b0cdc140b8a8e4741fd1813d95f3d4c5cca79517c369",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libgmp-dev",
+        "apt.libmpfr6"
+      ]
+    },
+    "id": "apt.libmpfr-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libgmp-dev",
+          "apt.libmpfr6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 287642,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libmpfr-dev"
+        ],
+        "id": "apt.libmpfr-dev",
+        "immutable_ref": "sha256:362fcdeb7dff545af83e65a3a972519185efd4a231c23e13d519cf97a5c8e3e4",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 1320,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libmpfr-dev_4.2.1-1build1.1_amd64.deb",
+        "package_name": "libmpfr-dev",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "multiple precision floating-point computation developers tools",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "362fcdeb7dff545af83e65a3a972519185efd4a231c23e13d519cf97a5c8e3e4",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/m/mpfr4/libmpfr-dev_4.2.1-1build1.1_amd64.deb",
+        "title": "libmpfr-dev",
+        "upstream": "https://www.mpfr.org/",
+        "version": "4.2.1-1build1.1"
+      },
+      "catalog_sha256": "012df592c10f83090c4c9581d2d17ad779f16853ebd973efd673281f57b814bb"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libmpfr-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 287642,
+        "extract": false,
+        "id": "apt.libmpfr-dev",
+        "material_path": "apt/libmpfr-dev_4.2.1-1build1.1_amd64.deb",
+        "sha256": "362fcdeb7dff545af83e65a3a972519185efd4a231c23e13d519cf97a5c8e3e4",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/m/mpfr4/libmpfr-dev_4.2.1-1build1.1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libmpfr-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libmpfr-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libmpfr-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libmpfr-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libmpfr-dev (= 4.2.1-1build1.1). multiple precision floating-point computation developers tools"
+    },
+    "version": "4.2.1-1build1.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "acfab52a304cf58c877706f054b1f2f1e031e55d1b714b7b38f3abb540c0e3b6",
+    "dependencies_sha256": "81b2d82c75f12ada86d253549f3f0427bbe85e7430a58708d2447fb1aeb8a0e4",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "485596a0032f3b2eb45c2b13c4cdbec6232e15247111939b6362aa63da2cc8ed",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "4048111b121fd285d735a1fe77cb2583cbbe8b08b3e8974b512c749bde85d33a"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

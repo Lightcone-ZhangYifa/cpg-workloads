@@ -1,0 +1,186 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "b396461eb7b923c3576ca5721c9d20b747baf8ea13153cb42aba84c6914fc9d4",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libsource-highlight-common",
+        "apt.libstdc++6"
+      ]
+    },
+    "id": "apt.libsource-highlight4t64",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libgcc-s1",
+          "apt.libsource-highlight-common",
+          "apt.libstdc++6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 257514,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libsource-highlight4t64"
+        ],
+        "id": "apt.libsource-highlight4t64",
+        "immutable_ref": "sha256:e0ef35d9b76669f22c2ad4ab3b9141ac46d3662823c5bbea248c21db53879470",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 745,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libsource-highlight4t64_3.1.9-4.3build1_amd64.deb",
+        "package_name": "libsource-highlight4t64",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "source highlighting library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "e0ef35d9b76669f22c2ad4ab3b9141ac46d3662823c5bbea248c21db53879470",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/s/source-highlight/libsource-highlight4t64_3.1.9-4.3build1_amd64.deb",
+        "title": "libsource-highlight4t64",
+        "upstream": "http://www.gnu.org/software/src-highlite/",
+        "version": "3.1.9-4.3build1"
+      },
+      "catalog_sha256": "56fe7ff26be5d0e9417fd3fd6515b01ce029d887ae4939d07915d9073d009dd6"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libsource-highlight4t64",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 257514,
+        "extract": false,
+        "id": "apt.libsource-highlight4t64",
+        "material_path": "apt/libsource-highlight4t64_3.1.9-4.3build1_amd64.deb",
+        "sha256": "e0ef35d9b76669f22c2ad4ab3b9141ac46d3662823c5bbea248c21db53879470",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/source-highlight/libsource-highlight4t64_3.1.9-4.3build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libsource-highlight4t64"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libsource-highlight4t64",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libsource-highlight4t64",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libsource-highlight4t64.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libsource-highlight4t64 (= 3.1.9-4.3build1). source highlighting library"
+    },
+    "version": "3.1.9-4.3build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "28e9bcd908bf5882bfa3b8abdcf3b8d1dc7aafbb71a8ae912293f3e028988e25",
+    "dependencies_sha256": "8dfaf868f87026b704a47ed81cbd71cc71475831269f796cd86fc27e1975c940",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "92e378d6474119e4e660181676d86ea8e8ed593f1dda03fcc5aaccd04d038eac",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "17020c1b38c62d9438d6061b0ffc64d07a81c5da78ee66b22cb5983ee8166454"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

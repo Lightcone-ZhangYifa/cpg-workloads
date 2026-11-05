@@ -1,0 +1,184 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "5934712b6eecdc30e2047886e6142f4de6c0dd55b4e951f627b8037ef7a8cf8a",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.perl",
+        "apt.perl-base",
+        "apt.zlib1g"
+      ]
+    },
+    "id": "apt.libperlio-gzip-perl",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.perl",
+          "apt.perl-base",
+          "apt.zlib1g"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 14594,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libperlio-gzip-perl"
+        ],
+        "id": "apt.libperlio-gzip-perl",
+        "immutable_ref": "sha256:24421f72e9353ca5ef96940c79862f4943cc0a410fd1c0d4491eeaea09dc0595",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 51,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libperlio-gzip-perl_0.20-1build4_amd64.deb",
+        "package_name": "libperlio-gzip-perl",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "module providing a PerlIO layer to gzip/gunzip",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "24421f72e9353ca5ef96940c79862f4943cc0a410fd1c0d4491eeaea09dc0595",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libp/libperlio-gzip-perl/libperlio-gzip-perl_0.20-1build4_amd64.deb",
+        "title": "libperlio-gzip-perl",
+        "upstream": "https://metacpan.org/release/PerlIO-gzip",
+        "version": "0.20-1build4"
+      },
+      "catalog_sha256": "6d978c8e5fc39b98fb449fc3e0eafc526366cc3502bcd106f2768a6716e20b8f"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libperlio-gzip-perl",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 14594,
+        "extract": false,
+        "id": "apt.libperlio-gzip-perl",
+        "material_path": "apt/libperlio-gzip-perl_0.20-1build4_amd64.deb",
+        "sha256": "24421f72e9353ca5ef96940c79862f4943cc0a410fd1c0d4491eeaea09dc0595",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libp/libperlio-gzip-perl/libperlio-gzip-perl_0.20-1build4_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libperlio-gzip-perl"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libperlio-gzip-perl",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libperlio-gzip-perl",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libperlio-gzip-perl.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libperlio-gzip-perl (= 0.20-1build4). module providing a PerlIO layer to gzip/gunzip"
+    },
+    "version": "0.20-1build4"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "1e9ee29aecbc48631b593595934572c650e5bb007f26d4e71c21dbb28eec388a",
+    "dependencies_sha256": "f8e7a6829e61a89998b4c35e5845b51541fa181371b0ef7de97a6fa03ee4c68f",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "f45f9d6589199685863a972d1c5db68ecda4093e8e9a7d0de5267d657fa3f110",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "f088e6a5e2580304ac4ca29736014fc1a31cf350510bdd9a3c75e75fe6d8fe5a"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

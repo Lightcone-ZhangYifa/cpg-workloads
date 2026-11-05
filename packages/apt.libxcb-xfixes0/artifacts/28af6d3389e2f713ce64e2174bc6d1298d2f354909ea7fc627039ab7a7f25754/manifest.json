@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "d38989e60601f962651e7f1ed07539353243fb99262f058d1540369ed5bd04b6",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libxcb1"
+      ]
+    },
+    "id": "apt.libxcb-xfixes0",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libxcb1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 10190,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libxcb-xfixes0"
+        ],
+        "id": "apt.libxcb-xfixes0",
+        "immutable_ref": "sha256:0b2ab64af92a71e3d1a35e3c819880ee28d04bfac81360df68ae8d8e9663ebd2",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 55,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libxcb-xfixes0_1.15-1ubuntu2_amd64.deb",
+        "package_name": "libxcb-xfixes0",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "X C Binding, xfixes extension",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "0b2ab64af92a71e3d1a35e3c819880ee28d04bfac81360df68ae8d8e9663ebd2",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxcb/libxcb-xfixes0_1.15-1ubuntu2_amd64.deb",
+        "title": "libxcb-xfixes0",
+        "upstream": "https://xcb.freedesktop.org",
+        "version": "1.15-1ubuntu2"
+      },
+      "catalog_sha256": "f3faa2ba535b3d6c3d497976d4b0a7c9c830a7d89559a9c7d005274d50b4c5b3"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libxcb-xfixes0",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 10190,
+        "extract": false,
+        "id": "apt.libxcb-xfixes0",
+        "material_path": "apt/libxcb-xfixes0_1.15-1ubuntu2_amd64.deb",
+        "sha256": "0b2ab64af92a71e3d1a35e3c819880ee28d04bfac81360df68ae8d8e9663ebd2",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxcb/libxcb-xfixes0_1.15-1ubuntu2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libxcb-xfixes0"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libxcb-xfixes0",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libxcb-xfixes0",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libxcb-xfixes0.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libxcb-xfixes0 (= 1.15-1ubuntu2). X C Binding, xfixes extension"
+    },
+    "version": "1.15-1ubuntu2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "fd3d9480fbfdd1f81c631b2a11ce014d0c7ce93158eec744b6c0b22dde366564",
+    "dependencies_sha256": "df4bb2d090d3b56dab1642808baeabc6a8229cf848ba2f1eccbf10490faa7d75",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "99cf04e59d3ac41eca4ac885849533510647b111f894efc6a7b08e6ba9579cfe",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "87ceba69b9c978d26dce14e5be5975b1806ded33643543cf8b527a65c97d670e"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

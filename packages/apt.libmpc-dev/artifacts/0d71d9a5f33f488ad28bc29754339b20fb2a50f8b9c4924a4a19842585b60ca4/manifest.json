@@ -1,0 +1,183 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "bd502f5bc9e0e7c88b7375853e99dcae66098125e89be904c93554f3a380207a",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libgmp-dev",
+        "apt.libmpc3",
+        "apt.libmpfr-dev"
+      ]
+    },
+    "id": "apt.libmpc-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libgmp-dev",
+          "apt.libmpc3",
+          "apt.libmpfr-dev"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 70182,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libmpc-dev"
+        ],
+        "id": "apt.libmpc-dev",
+        "immutable_ref": "sha256:42a911f2771637dc830f08c0e3b79d20107fa07498af2b49dc44821de94a209e",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 336,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libmpc-dev_1.3.1-1build1.1_amd64.deb",
+        "package_name": "libmpc-dev",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "multiple precision complex floating-point library development package",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "42a911f2771637dc830f08c0e3b79d20107fa07498af2b49dc44821de94a209e",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/m/mpclib3/libmpc-dev_1.3.1-1build1.1_amd64.deb",
+        "title": "libmpc-dev",
+        "upstream": "http://www.multiprecision.org/mpc/",
+        "version": "1.3.1-1build1.1"
+      },
+      "catalog_sha256": "db141c02911cafcb0727f91636e29397e1c3fad34021b6fdd6ca43620f92cb4a"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libmpc-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 70182,
+        "extract": false,
+        "id": "apt.libmpc-dev",
+        "material_path": "apt/libmpc-dev_1.3.1-1build1.1_amd64.deb",
+        "sha256": "42a911f2771637dc830f08c0e3b79d20107fa07498af2b49dc44821de94a209e",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/m/mpclib3/libmpc-dev_1.3.1-1build1.1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libmpc-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libmpc-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libmpc-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libmpc-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libmpc-dev (= 1.3.1-1build1.1). multiple precision complex floating-point library development package"
+    },
+    "version": "1.3.1-1build1.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "58b0a06776fa347bd22f172370d3522e6a8c9a68cb931f73c723cbae691d0ce9",
+    "dependencies_sha256": "40e1024dc50b72942973ddfa94e693276bdeb2064ebff956f6cd6ebb8639e7f4",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "a87d0f3274ce3729f4dc5e0eb49e2cf6759901935032a0354986bc4e4459912d",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "2034dc4d72cae1c74b20d53abb39fdbcfc4ceba746984642fd530e0c7148896a"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,178 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "008fa41c2a6de156b9019c94d9d76a7899b558af1df9bbb6b39fc5c7cfbf7e77",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6"
+      ]
+    },
+    "id": "apt.libnspr4",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 117398,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libnspr4"
+        ],
+        "id": "apt.libnspr4",
+        "immutable_ref": "sha256:e579e72d091f6c7a13f5a756c31065b15aae5b81840d61b069355aa2283c07b4",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 309,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libnspr4_4.35-1.1build1_amd64.deb",
+        "package_name": "libnspr4",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "NetScape Portable Runtime Library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "e579e72d091f6c7a13f5a756c31065b15aae5b81840d61b069355aa2283c07b4",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/n/nspr/libnspr4_4.35-1.1build1_amd64.deb",
+        "title": "libnspr4",
+        "upstream": "http://www.mozilla.org/projects/nspr/",
+        "version": "2:4.35-1.1build1"
+      },
+      "catalog_sha256": "214ce07a6dbc17d9efbe1aa054fcc82438df5f2e0bf1f97bb2aba8101b6242c7"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libnspr4",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 117398,
+        "extract": false,
+        "id": "apt.libnspr4",
+        "material_path": "apt/libnspr4_4.35-1.1build1_amd64.deb",
+        "sha256": "e579e72d091f6c7a13f5a756c31065b15aae5b81840d61b069355aa2283c07b4",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/n/nspr/libnspr4_4.35-1.1build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libnspr4"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libnspr4",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libnspr4",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libnspr4.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libnspr4 (= 2:4.35-1.1build1). NetScape Portable Runtime Library"
+    },
+    "version": "2:4.35-1.1build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "7114276ce66480189fd47b7d9d7e59cd0c47698953f57d6d0f1e1cf51b4e693a",
+    "dependencies_sha256": "e6500e4e5e944fbdcb2f43c99ead4cf5965b7614b33deb860ba9cdce7a582712",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "ea59e23ca06899bd9228265eb40cf42cf5d7493300d1321b8833735af0a04ccf",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "9831182b8031cde675263c3f6b42d491158ed33b193d9cf3980c66cdfd803f15"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

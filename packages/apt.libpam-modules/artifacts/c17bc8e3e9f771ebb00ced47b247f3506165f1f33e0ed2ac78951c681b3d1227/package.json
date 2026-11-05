@@ -1,0 +1,169 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.debconf",
+      "apt.libaudit1",
+      "apt.libc6",
+      "apt.libcrypt1",
+      "apt.libdb5.3t64",
+      "apt.libpam-modules-bin",
+      "apt.libpam0g",
+      "apt.libselinux1",
+      "apt.libsystemd0"
+    ]
+  },
+  "id": "apt.libpam-modules",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.debconf",
+        "apt.libaudit1",
+        "apt.libc6",
+        "apt.libcrypt1",
+        "apt.libdb5.3t64",
+        "apt.libpam-modules-bin",
+        "apt.libpam0g",
+        "apt.libselinux1",
+        "apt.libsystemd0"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 286418,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libpam-modules"
+      ],
+      "id": "apt.libpam-modules",
+      "immutable_ref": "sha256:c8e86ef52e3a743dc67d90f4c6654f7f529deafa6a523fe9076e809785aeea18",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 1155,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libpam-modules_1.5.3-5ubuntu5.7_amd64.deb",
+      "package_name": "libpam-modules",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Pluggable Authentication Modules for PAM",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "c8e86ef52e3a743dc67d90f4c6654f7f529deafa6a523fe9076e809785aeea18",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pam/libpam-modules_1.5.3-5ubuntu5.7_amd64.deb",
+      "title": "libpam-modules",
+      "upstream": "http://www.linux-pam.org/",
+      "version": "1.5.3-5ubuntu5.7"
+    },
+    "catalog_sha256": "9569d7f43550c129bdbec35d6d1388ec3b82ea799aa971bca940d7baa0f4cac1"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libpam-modules",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 286418,
+      "extract": false,
+      "id": "apt.libpam-modules",
+      "material_path": "apt/libpam-modules_1.5.3-5ubuntu5.7_amd64.deb",
+      "sha256": "c8e86ef52e3a743dc67d90f4c6654f7f529deafa6a523fe9076e809785aeea18",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pam/libpam-modules_1.5.3-5ubuntu5.7_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libpam-modules"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libpam-modules",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libpam-modules",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libpam-modules.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libpam-modules (= 1.5.3-5ubuntu5.7). Pluggable Authentication Modules for PAM"
+  },
+  "version": "1.5.3-5ubuntu5.7"
+}

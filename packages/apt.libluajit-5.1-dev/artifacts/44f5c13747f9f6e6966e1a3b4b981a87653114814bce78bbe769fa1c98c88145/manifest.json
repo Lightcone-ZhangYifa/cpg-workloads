@@ -1,0 +1,178 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "bda31ccb9e08b983c54aa6b2c7f4ea582b93325611d3496526855a980331f402",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libluajit-5.1-2"
+      ]
+    },
+    "id": "apt.libluajit-5.1-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libluajit-5.1-2"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 293160,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libluajit-5.1-dev"
+        ],
+        "id": "apt.libluajit-5.1-dev",
+        "immutable_ref": "sha256:ef46b0ec8984a6cc00120e156d5670a3f2aff448ec31dc17222c14f0a2248aaf",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 783,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libluajit-5.1-dev_2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1_amd64.deb",
+        "package_name": "libluajit-5.1-dev",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Just in time compiler for Lua - development files",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "ef46b0ec8984a6cc00120e156d5670a3f2aff448ec31dc17222c14f0a2248aaf",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/luajit/libluajit-5.1-dev_2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1_amd64.deb",
+        "title": "libluajit-5.1-dev",
+        "upstream": "https://luajit.org",
+        "version": "2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1"
+      },
+      "catalog_sha256": "763f89394ce8a8056e6d08c33d6a9b14ee541ca236b0d63c073d6dbfa797f4ba"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libluajit-5.1-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 293160,
+        "extract": false,
+        "id": "apt.libluajit-5.1-dev",
+        "material_path": "apt/libluajit-5.1-dev_2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1_amd64.deb",
+        "sha256": "ef46b0ec8984a6cc00120e156d5670a3f2aff448ec31dc17222c14f0a2248aaf",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/luajit/libluajit-5.1-dev_2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libluajit-5.1-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libluajit-5.1-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libluajit-5.1-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libluajit-5.1-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libluajit-5.1-dev (= 2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1). Just in time compiler for Lua - development files"
+    },
+    "version": "2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "6aa869e04589d6d17f408aa7b6c73510c32e83d805f59c90cb0c9cc83b1a24a5",
+    "dependencies_sha256": "fa05d7bbe587b82cff62252d3356125b0a4511111c181b382cb9300494a2993b",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "d0c8bbf1ec0b5d3787dbd4bbc54c40128bbf44b7c06396cfa3ae6b59283656d6",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "6b9e7f4d0ded7470800c32c96e0cd222ffa2ecd1543fc83c8b85fb710d4f5e4b"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "1fd692d541ffd1eaa5fd01f312d078bcffa18c0e98ff33679344c6ad841750c6",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6"
+      ]
+    },
+    "id": "apt.liblzma5",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 127704,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/liblzma5"
+        ],
+        "id": "apt.liblzma5",
+        "immutable_ref": "sha256:5bcf5da2339331e21d3f42a831e82c61c54c6b2f29804010e8d59abd0ae52167",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 379,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/liblzma5_5.6.1+really5.4.5-1ubuntu0.4_amd64.deb",
+        "package_name": "liblzma5",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "XZ-format compression library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "5bcf5da2339331e21d3f42a831e82c61c54c6b2f29804010e8d59abd0ae52167",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/x/xz-utils/liblzma5_5.6.1+really5.4.5-1ubuntu0.4_amd64.deb",
+        "title": "liblzma5",
+        "upstream": "https://tukaani.org/xz/",
+        "version": "5.6.1+really5.4.5-1ubuntu0.4"
+      },
+      "catalog_sha256": "3972400046c468a5b84a8221e85bba5f17a6740d3935d97dbe6fe90c7b856a6a"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "liblzma5",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 127704,
+        "extract": false,
+        "id": "apt.liblzma5",
+        "material_path": "apt/liblzma5_5.6.1+really5.4.5-1ubuntu0.4_amd64.deb",
+        "sha256": "5bcf5da2339331e21d3f42a831e82c61c54c6b2f29804010e8d59abd0ae52167",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/x/xz-utils/liblzma5_5.6.1+really5.4.5-1ubuntu0.4_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/liblzma5"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W liblzma5",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L liblzma5",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/liblzma5.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for liblzma5 (= 5.6.1+really5.4.5-1ubuntu0.4). XZ-format compression library"
+    },
+    "version": "5.6.1+really5.4.5-1ubuntu0.4"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "18d811e5ca9c2826f38dea60da1f1480c3ae29e16a5b219bc8bdecc4d25980a5",
+    "dependencies_sha256": "e6500e4e5e944fbdcb2f43c99ead4cf5965b7614b33deb860ba9cdce7a582712",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "120b472893d4ff70ea212e94b2e058194e7fa01ee32a143ea6d35f6aaed1fb18",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "2ed51207fd29f25ab6a505a858e70193cc28af0a720f31d7db047bc24615bd00"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,186 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "d7234c9edf0c188d06cbb6eb4ccb459dbbb24336508d159f5b48448083a9871b",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libexpat1",
+        "apt.libpython3.12-stdlib",
+        "apt.zlib1g"
+      ]
+    },
+    "id": "apt.libpython3.12t64",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libexpat1",
+          "apt.libpython3.12-stdlib",
+          "apt.zlib1g"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 2348034,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libpython3.12t64"
+        ],
+        "id": "apt.libpython3.12t64",
+        "immutable_ref": "sha256:0d29f4763eb95b8a4283a4aca3ef1d9658629c618be1778def41bdc31be12b46",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 8923,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libpython3.12t64_3.12.3-1ubuntu0.17_amd64.deb",
+        "package_name": "libpython3.12t64",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Shared Python runtime library (version 3.12)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "0d29f4763eb95b8a4283a4aca3ef1d9658629c618be1778def41bdc31be12b46",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/p/python3.12/libpython3.12t64_3.12.3-1ubuntu0.17_amd64.deb",
+        "title": "libpython3.12t64",
+        "upstream": "https://packages.ubuntu.com/noble/libpython3.12t64",
+        "version": "3.12.3-1ubuntu0.17"
+      },
+      "catalog_sha256": "a39c691cf64aa1946cd2266250edc4a8047cf803e40c74dfefe2cffafa38db68"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libpython3.12t64",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 2348034,
+        "extract": false,
+        "id": "apt.libpython3.12t64",
+        "material_path": "apt/libpython3.12t64_3.12.3-1ubuntu0.17_amd64.deb",
+        "sha256": "0d29f4763eb95b8a4283a4aca3ef1d9658629c618be1778def41bdc31be12b46",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/python3.12/libpython3.12t64_3.12.3-1ubuntu0.17_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libpython3.12t64"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libpython3.12t64",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libpython3.12t64",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libpython3.12t64.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libpython3.12t64 (= 3.12.3-1ubuntu0.17). Shared Python runtime library (version 3.12)"
+    },
+    "version": "3.12.3-1ubuntu0.17"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "f44d4c6cef95ec332386a19c5c9eadffd4e0d6ca728f21c4b46e39841a75cb7f",
+    "dependencies_sha256": "cb7f8ce722c9396fa13bc1a38bfa4780abc1163f1a40526a9ca5a1068adffa37",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "e9e296240a18c417a2c82f62a82023a47cee2c5457152c7b6df4662f11f28a3a",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "933e858261c858fb436de86f05e6e0bc399197d12e61722620bd419de8a7fd9a"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

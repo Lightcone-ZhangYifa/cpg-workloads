@@ -1,0 +1,186 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "1ceea877ad048be544b3a6257ac46f86583610eaa1fe2154c67fa8fad666a3dc",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libicu74",
+        "apt.liblzma5",
+        "apt.zlib1g"
+      ]
+    },
+    "id": "apt.libxml2",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libicu74",
+          "apt.liblzma5",
+          "apt.zlib1g"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 763592,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libxml2"
+        ],
+        "id": "apt.libxml2",
+        "immutable_ref": "sha256:c5a065f85c1e6f605741e365e40cad71c3ceb0e85e2791400bd35b8896e12ad1",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 2080,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libxml2_2.9.14+dfsg-1.3ubuntu3.10_amd64.deb",
+        "package_name": "libxml2",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "GNOME XML library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "c5a065f85c1e6f605741e365e40cad71c3ceb0e85e2791400bd35b8896e12ad1",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxml2/libxml2_2.9.14+dfsg-1.3ubuntu3.10_amd64.deb",
+        "title": "libxml2",
+        "upstream": "http://xmlsoft.org",
+        "version": "2.9.14+dfsg-1.3ubuntu3.10"
+      },
+      "catalog_sha256": "fbe48b7e2094393e4955564c47836a9fed7e5c39a9a6a92978c7f5f7d3d4dba5"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libxml2",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 763592,
+        "extract": false,
+        "id": "apt.libxml2",
+        "material_path": "apt/libxml2_2.9.14+dfsg-1.3ubuntu3.10_amd64.deb",
+        "sha256": "c5a065f85c1e6f605741e365e40cad71c3ceb0e85e2791400bd35b8896e12ad1",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxml2/libxml2_2.9.14+dfsg-1.3ubuntu3.10_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libxml2"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libxml2",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libxml2",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libxml2.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libxml2 (= 2.9.14+dfsg-1.3ubuntu3.10). GNOME XML library"
+    },
+    "version": "2.9.14+dfsg-1.3ubuntu3.10"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "1c14a582e15f5f0f7349db99e738af77053b86210c9557daf3165ac2a515429d",
+    "dependencies_sha256": "dac41e762076593c945267ca13f2046d54bad4b8167200bbc2f5a2e1707f5182",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "1d329887ef45dc1139f5bdce3a6f0b468c85c8865b598b0ae04a1933066d2043",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "3b7a4b47ec83adca08d5728bc6cf1ad7c97c8a7fe4bd567a8b4d18aee2851c06"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

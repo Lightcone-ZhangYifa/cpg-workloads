@@ -1,0 +1,169 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libbz2-1.0",
+      "apt.libc6",
+      "apt.libcrypt1",
+      "apt.libdb5.3t64",
+      "apt.libgdbm-compat4t64",
+      "apt.libgdbm6t64",
+      "apt.perl-modules-5.38",
+      "apt.zlib1g"
+    ]
+  },
+  "id": "apt.libperl5.38t64",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libbz2-1.0",
+        "apt.libc6",
+        "apt.libcrypt1",
+        "apt.libdb5.3t64",
+        "apt.libgdbm-compat4t64",
+        "apt.libgdbm6t64",
+        "apt.perl-modules-5.38",
+        "apt.zlib1g"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 4863614,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libperl5.38t64"
+      ],
+      "id": "apt.libperl5.38t64",
+      "immutable_ref": "sha256:e9e5ac9a657e0cacf5f0de977c1573c696ee74515d5136c4e9a0ce9467d32ae7",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 29341,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libperl5.38t64_5.38.2-3.2ubuntu0.6_amd64.deb",
+      "package_name": "libperl5.38t64",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "shared Perl library",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "e9e5ac9a657e0cacf5f0de977c1573c696ee74515d5136c4e9a0ce9467d32ae7",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/p/perl/libperl5.38t64_5.38.2-3.2ubuntu0.6_amd64.deb",
+      "title": "libperl5.38t64",
+      "upstream": "http://dev.perl.org/perl5/",
+      "version": "5.38.2-3.2ubuntu0.6"
+    },
+    "catalog_sha256": "bb8466debb164c41507939081fa594796476a1768050f376378df598f8f4455a"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libperl5.38t64",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 4863614,
+      "extract": false,
+      "id": "apt.libperl5.38t64",
+      "material_path": "apt/libperl5.38t64_5.38.2-3.2ubuntu0.6_amd64.deb",
+      "sha256": "e9e5ac9a657e0cacf5f0de977c1573c696ee74515d5136c4e9a0ce9467d32ae7",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/perl/libperl5.38t64_5.38.2-3.2ubuntu0.6_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libperl5.38t64"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libperl5.38t64",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libperl5.38t64",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libperl5.38t64.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libperl5.38t64 (= 5.38.2-3.2ubuntu0.6). shared Perl library"
+  },
+  "version": "5.38.2-3.2ubuntu0.6"
+}

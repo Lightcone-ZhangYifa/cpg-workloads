@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "31fd1db544c5eb39977fcd7a0358e4f85341539e562487db68ec43902537f463",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libkrb5support0"
+      ]
+    },
+    "id": "apt.libk5crypto3",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libkrb5support0"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 81944,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libk5crypto3"
+        ],
+        "id": "apt.libk5crypto3",
+        "immutable_ref": "sha256:273f7cc95a68d927d7f71c3e78b7717a16a8d86e646a206bae7bf797150ae9db",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 258,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libk5crypto3_1.20.1-6ubuntu2.10_amd64.deb",
+        "package_name": "libk5crypto3",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "MIT Kerberos runtime libraries - Crypto Library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "273f7cc95a68d927d7f71c3e78b7717a16a8d86e646a206bae7bf797150ae9db",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/k/krb5/libk5crypto3_1.20.1-6ubuntu2.10_amd64.deb",
+        "title": "libk5crypto3",
+        "upstream": "https://web.mit.edu/kerberos/",
+        "version": "1.20.1-6ubuntu2.10"
+      },
+      "catalog_sha256": "c9b734341201413f56cf9d79d31a7c7faba777c3607556e24382c75b2b861cb9"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libk5crypto3",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 81944,
+        "extract": false,
+        "id": "apt.libk5crypto3",
+        "material_path": "apt/libk5crypto3_1.20.1-6ubuntu2.10_amd64.deb",
+        "sha256": "273f7cc95a68d927d7f71c3e78b7717a16a8d86e646a206bae7bf797150ae9db",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/k/krb5/libk5crypto3_1.20.1-6ubuntu2.10_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libk5crypto3"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libk5crypto3",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libk5crypto3",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libk5crypto3.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libk5crypto3 (= 1.20.1-6ubuntu2.10). MIT Kerberos runtime libraries - Crypto Library"
+    },
+    "version": "1.20.1-6ubuntu2.10"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "7fde1fbaf2ac13468255d01cfdee279592e21060b242f279d01aca1a5076f353",
+    "dependencies_sha256": "aa51b654320ea989b267e0fdb392628a46999ccb82b45c9ebc90f2b3c9bee835",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "d0a09ff79c20a0108d1196dac9ec1ed172b3676150fe109880352659960a7293",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "aa7b692dad5ea5ea5d652e42bd6020bafad0c5d6dca44ad5915c7bf0f25db442"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

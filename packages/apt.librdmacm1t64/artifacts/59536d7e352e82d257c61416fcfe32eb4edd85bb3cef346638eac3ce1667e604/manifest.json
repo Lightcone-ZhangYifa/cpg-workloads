@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "eb2c3dbfd7d2648cf5954f268dec07f3896e301539a1b9906947dd7e810e2570",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libibverbs1",
+        "apt.libnl-3-200"
+      ]
+    },
+    "id": "apt.librdmacm1t64",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libibverbs1",
+          "apt.libnl-3-200"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 70698,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/librdmacm1t64"
+        ],
+        "id": "apt.librdmacm1t64",
+        "immutable_ref": "sha256:7b7cc2fa16564bf301751b43d05d16f0846288b080d9a25a92a691d0df33fc68",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 208,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/librdmacm1t64_50.0-2ubuntu0.2_amd64.deb",
+        "package_name": "librdmacm1t64",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Library for managing RDMA connections",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "7b7cc2fa16564bf301751b43d05d16f0846288b080d9a25a92a691d0df33fc68",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/r/rdma-core/librdmacm1t64_50.0-2ubuntu0.2_amd64.deb",
+        "title": "librdmacm1t64",
+        "upstream": "https://github.com/linux-rdma/rdma-core",
+        "version": "50.0-2ubuntu0.2"
+      },
+      "catalog_sha256": "11ae6962c3ec365f120868588cf47c74623b4c2b4c17f038ec4583af366e9c31"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "librdmacm1t64",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 70698,
+        "extract": false,
+        "id": "apt.librdmacm1t64",
+        "material_path": "apt/librdmacm1t64_50.0-2ubuntu0.2_amd64.deb",
+        "sha256": "7b7cc2fa16564bf301751b43d05d16f0846288b080d9a25a92a691d0df33fc68",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/r/rdma-core/librdmacm1t64_50.0-2ubuntu0.2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/librdmacm1t64"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W librdmacm1t64",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L librdmacm1t64",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/librdmacm1t64.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for librdmacm1t64 (= 50.0-2ubuntu0.2). Library for managing RDMA connections"
+    },
+    "version": "50.0-2ubuntu0.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "55f489a4c5262981a0236083a56c30f965eec83ad9e32587a70ed6eb0c76b156",
+    "dependencies_sha256": "8631ba2c010b6b3febac4f236b1d2de1daee85fb566de7fa7d717358bb204612",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "79d82efe6e3ee7c15e0855307514fe2589bba7a04ae95b4ee337af48ee6f9c12",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "96838e81cbd59d4601f8d5a6ab987fe4d6971b5ba11da8cfdfd0eb610ebb9404"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "8ff7968a0c81dc5136e3f65d033a9cccf8286b586c069eae1bdb0f6b6efa8ae8",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libstdc++6"
+      ]
+    },
+    "id": "apt.liblerc4",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libgcc-s1",
+          "apt.libstdc++6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 179378,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/liblerc4"
+        ],
+        "id": "apt.liblerc4",
+        "immutable_ref": "sha256:f1b9dbfa28c56564f6b544f3757f5f3f4d549ce9962f39e897812c23b0a5d0e7",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 568,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/liblerc4_4.0.0+ds-4ubuntu2_amd64.deb",
+        "package_name": "liblerc4",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Limited Error Raster Compression library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "f1b9dbfa28c56564f6b544f3757f5f3f4d549ce9962f39e897812c23b0a5d0e7",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/l/lerc/liblerc4_4.0.0+ds-4ubuntu2_amd64.deb",
+        "title": "liblerc4",
+        "upstream": "https://github.com/Esri/lerc",
+        "version": "4.0.0+ds-4ubuntu2"
+      },
+      "catalog_sha256": "a7a92f9b083f3fae49dcceda8bd15c6d9138c25103624e9d903ff63d46eb056b"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "liblerc4",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 179378,
+        "extract": false,
+        "id": "apt.liblerc4",
+        "material_path": "apt/liblerc4_4.0.0+ds-4ubuntu2_amd64.deb",
+        "sha256": "f1b9dbfa28c56564f6b544f3757f5f3f4d549ce9962f39e897812c23b0a5d0e7",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/lerc/liblerc4_4.0.0+ds-4ubuntu2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/liblerc4"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W liblerc4",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L liblerc4",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/liblerc4.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for liblerc4 (= 4.0.0+ds-4ubuntu2). Limited Error Raster Compression library"
+    },
+    "version": "4.0.0+ds-4ubuntu2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "69e9e7aa60d77ae828bba01d25d0c1bfce8001fb2475e40d46ec76a539089509",
+    "dependencies_sha256": "e8c7fef34bc992e765e6fab24ddf2e8d01b7007f703a86b6311c3321a259c38d",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "e175316858b91dc4eeb5bc1b9f171e5664a8e4c55799af0f1fb9634bb1a91876",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "26449b5e6866212935db117017f73803885f797f07ab3cc0154ec3c3ffa23010"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

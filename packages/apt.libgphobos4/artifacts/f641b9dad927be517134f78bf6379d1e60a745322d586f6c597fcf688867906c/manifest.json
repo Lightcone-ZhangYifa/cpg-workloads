@@ -1,0 +1,176 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "d637a3853c05aa38a486a5b6c879d5c8a9ef9d8bfc5910ea2d0de43ff79edcec",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.gcc-13-base",
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.zlib1g"
+      ]
+    },
+    "id": "apt.libgphobos4",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.gcc-13-base",
+          "apt.libc6",
+          "apt.libgcc-s1",
+          "apt.zlib1g"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 1882160,
+        "category": [
+          "Community development",
+          "Resolved system dependencies"
+        ],
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built"
+        },
+        "id": "apt.libgphobos4",
+        "immutable_ref": "sha256:db4d5df59fc6abe82fcab17256cc02a159c1042be45f2173420f7e10e60eff3e",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 11418,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libgphobos4_13.3.0-6ubuntu2~24.04.1_amd64.deb",
+        "package_name": "libgphobos4",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Phobos D standard library (runtime library)",
+        "qualification_gaps": [
+          "Perform role-specific installation and first-use checks in the selected dev image."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "db4d5df59fc6abe82fcab17256cc02a159c1042be45f2173420f7e10e60eff3e",
+        "size_basis": "Exact signed captured Packages metadata; actual APT resolver with all existing catalog versions fixed; no deb or OCI installation measurement.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://gcc.gnu.org/install/prerequisites.html"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/gcc-13/libgphobos4_13.3.0-6ubuntu2~24.04.1_amd64.deb",
+        "title": "libgphobos4",
+        "version": "13.3.0-6ubuntu2~24.04.1"
+      },
+      "catalog_sha256": "dd3527996452208519fb29df5e8293f994a259c1cdb252ed4aa2ece2022d9309"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libgphobos4",
+      "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1882160,
+        "extract": false,
+        "id": "apt.libgphobos4",
+        "material_path": "apt/libgphobos4_13.3.0-6ubuntu2~24.04.1_amd64.deb",
+        "sha256": "db4d5df59fc6abe82fcab17256cc02a159c1042be45f2173420f7e10e60eff3e",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/gcc-13/libgphobos4_13.3.0-6ubuntu2~24.04.1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [
+        {
+          "command": "dpkg-query -W libgphobos4",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libgphobos4",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libgphobos4.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libgphobos4 (= 13.3.0-6ubuntu2~24.04.1). Phobos D standard library (runtime library)"
+    },
+    "version": "13.3.0-6ubuntu2~24.04.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "d172ff34eba4466c72c58aef43fcb957eac0bedb7c8340985197f4c8f3e73317",
+    "dependencies_sha256": "b481097a4e02320f2d17ea40f4f22475ecb07e77aab1e22f711155132f085190",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "12f1def04abe38461733c9d86a82bc53a56b6214629f583b2ddd0abe52459aa4",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "a8f3654501082df51a2e252b4986550d041cb96ce7f09e2f420acbbf3f3411e7"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

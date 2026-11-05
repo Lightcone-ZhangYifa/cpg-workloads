@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ee4d3e30c4092ea80866bbb85a108f14555287c4a2e429c0ae0a11132ef4e3c8",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libice6",
+        "apt.libuuid1"
+      ]
+    },
+    "id": "apt.libsm6",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libice6",
+          "apt.libuuid1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 15684,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libsm6"
+        ],
+        "id": "apt.libsm6",
+        "immutable_ref": "sha256:1d27ebc381b499075a28c504be4d7d424c63b6866354736ac7f8d25813860cdf",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 53,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libsm6_1.2.3-1build3_amd64.deb",
+        "package_name": "libsm6",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "X11 Session Management library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "1d27ebc381b499075a28c504be4d7d424c63b6866354736ac7f8d25813860cdf",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libs/libsm/libsm6_1.2.3-1build3_amd64.deb",
+        "title": "libsm6",
+        "upstream": "https://www.x.org",
+        "version": "2:1.2.3-1build3"
+      },
+      "catalog_sha256": "f6c359dcd9533357ecb505c81019b0609c0c2c7d07f5eff1b73167152c19044a"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libsm6",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 15684,
+        "extract": false,
+        "id": "apt.libsm6",
+        "material_path": "apt/libsm6_1.2.3-1build3_amd64.deb",
+        "sha256": "1d27ebc381b499075a28c504be4d7d424c63b6866354736ac7f8d25813860cdf",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libs/libsm/libsm6_1.2.3-1build3_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libsm6"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libsm6",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libsm6",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libsm6.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libsm6 (= 2:1.2.3-1build3). X11 Session Management library"
+    },
+    "version": "2:1.2.3-1build3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "10a416d19ec5946e99284c8a111fcce5bb45904594f045e7391d70d92c80835f",
+    "dependencies_sha256": "67089d8f8d6b592d4dabdeda51c763548406f8e65cffa48a4814ceec9a349243",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "2eaa459a0982c4e96bf495aec1028e257c8150042cca257ea7ec7c8901b19a40",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "aec39841626fbd42977c315f7926d5168e6b750b78e4aed6598f2d704d0cc127"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "5da0019e616bbfc2d25d2e815aaf35a6a7e9766991b0ff5edbf5cdec7c3e5f07",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libglvnd0"
+      ]
+    },
+    "id": "apt.libopengl0",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libglvnd0"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 32780,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libopengl0"
+        ],
+        "id": "apt.libopengl0",
+        "immutable_ref": "sha256:da36bd4d30c13b40b697fa8b72cc09d309ff36a5bd9750341ef78492bf3f3966",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 219,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libopengl0_1.7.0-1build1_amd64.deb",
+        "package_name": "libopengl0",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Vendor neutral GL dispatch library -- OpenGL support",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "da36bd4d30c13b40b697fa8b72cc09d309ff36a5bd9750341ef78492bf3f3966",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libglvnd/libopengl0_1.7.0-1build1_amd64.deb",
+        "title": "libopengl0",
+        "upstream": "https://gitlab.freedesktop.org/glvnd/libglvnd",
+        "version": "1.7.0-1build1"
+      },
+      "catalog_sha256": "86cac2fe1d74f001927f89209cd41fbc07a0cee143c4074061c0a172b8fbfba7"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libopengl0",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 32780,
+        "extract": false,
+        "id": "apt.libopengl0",
+        "material_path": "apt/libopengl0_1.7.0-1build1_amd64.deb",
+        "sha256": "da36bd4d30c13b40b697fa8b72cc09d309ff36a5bd9750341ef78492bf3f3966",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libglvnd/libopengl0_1.7.0-1build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libopengl0"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libopengl0",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libopengl0",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libopengl0.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libopengl0 (= 1.7.0-1build1). Vendor neutral GL dispatch library -- OpenGL support"
+    },
+    "version": "1.7.0-1build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "8f4dbc01d2b15e88ff9709e6aa37fa54304e9fa1e253d38467d98647c30480be",
+    "dependencies_sha256": "f22a798e101554ff2e2dc9a9eab96f5f1595df0f4c730f5378daf12f282986cf",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "be6db06ef2dde12280a9ec5177790e6dc9cc39d1c000e3e68be222075334b548",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "6e35a9abb3bf510d2ac4e70a14453a4af2aa90e9e104387e6f075d237e15cb12"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

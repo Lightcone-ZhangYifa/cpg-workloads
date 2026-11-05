@@ -1,0 +1,184 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "8c2e62a194a7af0c2de2e7758257820c898b030c67138f51be2ae0d09af44e82",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libblkid-dev",
+        "apt.libc6-dev",
+        "apt.libmount1",
+        "apt.libselinux1-dev"
+      ]
+    },
+    "id": "apt.libmount-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libblkid-dev",
+          "apt.libc6-dev",
+          "apt.libmount1",
+          "apt.libselinux1-dev"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 14894,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libmount-dev"
+        ],
+        "id": "apt.libmount-dev",
+        "immutable_ref": "sha256:87b7ed1fedfa79aedfb3772c539db2047857c4b0a3cf663161a657a752a3ca2e",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 88,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libmount-dev_2.39.3-9ubuntu6.6_amd64.deb",
+        "package_name": "libmount-dev",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "device mounting library - headers",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "87b7ed1fedfa79aedfb3772c539db2047857c4b0a3cf663161a657a752a3ca2e",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/u/util-linux/libmount-dev_2.39.3-9ubuntu6.6_amd64.deb",
+        "title": "libmount-dev",
+        "upstream": "https://www.kernel.org/pub/linux/utils/util-linux/",
+        "version": "2.39.3-9ubuntu6.6"
+      },
+      "catalog_sha256": "4871d2ddbc15e4aaf0d32907275be174f217ebb0efa4c6c18f392f43a1006ef3"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libmount-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 14894,
+        "extract": false,
+        "id": "apt.libmount-dev",
+        "material_path": "apt/libmount-dev_2.39.3-9ubuntu6.6_amd64.deb",
+        "sha256": "87b7ed1fedfa79aedfb3772c539db2047857c4b0a3cf663161a657a752a3ca2e",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/u/util-linux/libmount-dev_2.39.3-9ubuntu6.6_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libmount-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libmount-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libmount-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libmount-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libmount-dev (= 2.39.3-9ubuntu6.6). device mounting library - headers"
+    },
+    "version": "2.39.3-9ubuntu6.6"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "9cdc5213642f2d51c99c11a0fbbad41a6fc8c9158c8800a6b5bcc21cfbcaf44f",
+    "dependencies_sha256": "22b95f4d630b037d63dc482ee6043f2d3a2096048cce211393131b933f2e32a2",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "8f0fc7a928f336fb838a742bee156420cbd00f238115a1558d6ae1ccb3061d9c",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "019cfe2b714aa5ae1def4550b65688c2ad832db20e29043d73877e11f760e44d"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

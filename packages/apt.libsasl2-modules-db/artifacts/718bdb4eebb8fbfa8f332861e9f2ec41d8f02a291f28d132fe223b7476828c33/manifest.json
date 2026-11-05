@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "47ee2ecacb566dfbe91160a37c73d50c8962b74ccdfa13c32ee105b396fffd77",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libdb5.3t64"
+      ]
+    },
+    "id": "apt.libsasl2-modules-db",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libdb5.3t64"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 20354,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libsasl2-modules-db"
+        ],
+        "id": "apt.libsasl2-modules-db",
+        "immutable_ref": "sha256:1f13548b1774cd9c70c50b8c3267204a101334a4d2f979338896ba5a4c6f81b8",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 75,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libsasl2-modules-db_2.1.28+dfsg1-5ubuntu3.1_amd64.deb",
+        "package_name": "libsasl2-modules-db",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Cyrus SASL - pluggable authentication modules (DB)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "1f13548b1774cd9c70c50b8c3267204a101334a4d2f979338896ba5a4c6f81b8",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/c/cyrus-sasl2/libsasl2-modules-db_2.1.28+dfsg1-5ubuntu3.1_amd64.deb",
+        "title": "libsasl2-modules-db",
+        "upstream": "https://www.cyrusimap.org/sasl/",
+        "version": "2.1.28+dfsg1-5ubuntu3.1"
+      },
+      "catalog_sha256": "7700935f5c9b30e204e12015fce933fe8cebbbe7c8d1d7c8265fb6568e53f16c"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libsasl2-modules-db",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 20354,
+        "extract": false,
+        "id": "apt.libsasl2-modules-db",
+        "material_path": "apt/libsasl2-modules-db_2.1.28+dfsg1-5ubuntu3.1_amd64.deb",
+        "sha256": "1f13548b1774cd9c70c50b8c3267204a101334a4d2f979338896ba5a4c6f81b8",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/c/cyrus-sasl2/libsasl2-modules-db_2.1.28+dfsg1-5ubuntu3.1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libsasl2-modules-db"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libsasl2-modules-db",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libsasl2-modules-db",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libsasl2-modules-db.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libsasl2-modules-db (= 2.1.28+dfsg1-5ubuntu3.1). Cyrus SASL - pluggable authentication modules (DB)"
+    },
+    "version": "2.1.28+dfsg1-5ubuntu3.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "cc18aa1b3dec3665e6eaa860eac560289ea92707f78c9435a2f60c317e10ba1d",
+    "dependencies_sha256": "bdcf4c411530f811310cfb0d0cf2ea118d5d9a6c4671a6e35be09c2caabb8ddf",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "83a0237902c76f05516b257b947606b345846e642c61a3f52c1ffe89e8f16f25",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "898e1cab1798068cfe29bd46c7a91b4653ec7739b65fc41ffd501f4dda5b4f12"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

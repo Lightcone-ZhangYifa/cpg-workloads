@@ -1,0 +1,153 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libpmem1"
+    ]
+  },
+  "id": "apt.libpmem-dev",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libpmem1"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 97860,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libpmem-dev"
+      ],
+      "id": "apt.libpmem-dev",
+      "immutable_ref": "sha256:f710b78cc1ca3650e312d92c1a32f77597e727a4d042061485f8e6485aed4195",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 483,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libpmem-dev_1.13.1-1.1ubuntu2_amd64.deb",
+      "package_name": "libpmem-dev",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Persistent Memory low level support library, v1 headers",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "f710b78cc1ca3650e312d92c1a32f77597e727a4d042061485f8e6485aed4195",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pmdk/libpmem-dev_1.13.1-1.1ubuntu2_amd64.deb",
+      "title": "libpmem-dev",
+      "upstream": "https://pmem.io/pmdk/",
+      "version": "1.13.1-1.1ubuntu2"
+    },
+    "catalog_sha256": "3a78df9eb453bc230686c238782d6cb3cce1b6f4bf6ea4de6dd8c842c5cef481"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libpmem-dev",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 97860,
+      "extract": false,
+      "id": "apt.libpmem-dev",
+      "material_path": "apt/libpmem-dev_1.13.1-1.1ubuntu2_amd64.deb",
+      "sha256": "f710b78cc1ca3650e312d92c1a32f77597e727a4d042061485f8e6485aed4195",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pmdk/libpmem-dev_1.13.1-1.1ubuntu2_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libpmem-dev"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libpmem-dev",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libpmem-dev",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libpmem-dev.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libpmem-dev (= 1.13.1-1.1ubuntu2). Persistent Memory low level support library, v1 headers"
+  },
+  "version": "1.13.1-1.1ubuntu2"
+}

@@ -1,0 +1,164 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libxml-namespacesupport-perl",
+      "apt.libxml-sax-perl",
+      "apt.libxml2",
+      "apt.perl",
+      "apt.perl-base"
+    ]
+  },
+  "id": "apt.libxml-libxml-perl",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libxml-namespacesupport-perl",
+        "apt.libxml-sax-perl",
+        "apt.libxml2",
+        "apt.perl",
+        "apt.perl-base"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 303984,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libxml-libxml-perl"
+      ],
+      "id": "apt.libxml-libxml-perl",
+      "immutable_ref": "sha256:9fb537ee60e15fd709b3315fcf963ce501d11894938e0e732108a410042bbba6",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 965,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libxml-libxml-perl_2.0207+dfsg+really+2.0134-1build4_amd64.deb",
+      "package_name": "libxml-libxml-perl",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Perl interface to the libxml2 library",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "9fb537ee60e15fd709b3315fcf963ce501d11894938e0e732108a410042bbba6",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxml-libxml-perl/libxml-libxml-perl_2.0207+dfsg+really+2.0134-1build4_amd64.deb",
+      "title": "libxml-libxml-perl",
+      "upstream": "https://metacpan.org/release/XML-LibXML",
+      "version": "2.0207+dfsg+really+2.0134-1build4"
+    },
+    "catalog_sha256": "cc253e6a55cfcd96b760e4e5c59e804e1970a5644b761889e7d8f595b5df0a47"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libxml-libxml-perl",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 303984,
+      "extract": false,
+      "id": "apt.libxml-libxml-perl",
+      "material_path": "apt/libxml-libxml-perl_2.0207+dfsg+really+2.0134-1build4_amd64.deb",
+      "sha256": "9fb537ee60e15fd709b3315fcf963ce501d11894938e0e732108a410042bbba6",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxml-libxml-perl/libxml-libxml-perl_2.0207+dfsg+really+2.0134-1build4_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libxml-libxml-perl"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libxml-libxml-perl",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libxml-libxml-perl",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libxml-libxml-perl.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libxml-libxml-perl (= 2.0207+dfsg+really+2.0134-1build4). Perl interface to the libxml2 library"
+  },
+  "version": "2.0207+dfsg+really+2.0134-1build4"
+}

@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ca5b7c339d5e6774032cdf58d542e43602e98ad6d4e7eaa966f9389e64c45d5f",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libpfm4"
+      ]
+    },
+    "id": "apt.libpapi7.1t64",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libpfm4"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 478720,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libpapi7.1t64"
+        ],
+        "id": "apt.libpapi7.1t64",
+        "immutable_ref": "sha256:62b49773332f9e3f04bffb67b42c12d21982062423f1b1984fe7085caf9d60bf",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 1049,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libpapi7.1t64_7.1.0-5build1_amd64.deb",
+        "package_name": "libpapi7.1t64",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "PAPI runtime (shared libraries)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "62b49773332f9e3f04bffb67b42c12d21982062423f1b1984fe7085caf9d60bf",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/papi/libpapi7.1t64_7.1.0-5build1_amd64.deb",
+        "title": "libpapi7.1t64",
+        "upstream": "https://icl.utk.edu/papi/",
+        "version": "7.1.0-5build1"
+      },
+      "catalog_sha256": "865e82c767ae6e4d63cc3498d00a12384eaa52d308c8d4524b4ad12ef0eae9c9"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libpapi7.1t64",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 478720,
+        "extract": false,
+        "id": "apt.libpapi7.1t64",
+        "material_path": "apt/libpapi7.1t64_7.1.0-5build1_amd64.deb",
+        "sha256": "62b49773332f9e3f04bffb67b42c12d21982062423f1b1984fe7085caf9d60bf",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/papi/libpapi7.1t64_7.1.0-5build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libpapi7.1t64"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libpapi7.1t64",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libpapi7.1t64",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libpapi7.1t64.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libpapi7.1t64 (= 7.1.0-5build1). PAPI runtime (shared libraries)"
+    },
+    "version": "7.1.0-5build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "8fd264c40231d770d10ff1e3f5df30c877b1f614553369a02bd086b48d6caed6",
+    "dependencies_sha256": "0c2bf0d7968d397fcb1a2cf72e6e1cac8d8113a9482856da616cd816265fb149",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "f805da013e438e6520fc882cd168bb575b5cc43a621a17cc88abd5aaa2cdd880",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "3eae4e05ff999d47a948104718c0e2d032297918ababa4ed1411f2965c6df4a9"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

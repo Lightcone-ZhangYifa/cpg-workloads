@@ -1,0 +1,157 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libx11-6",
+      "apt.libxext6"
+    ]
+  },
+  "id": "apt.libxnvctrl0",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libx11-6",
+        "apt.libxext6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 12696,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libxnvctrl0"
+      ],
+      "id": "apt.libxnvctrl0",
+      "immutable_ref": "sha256:7947ecbae8e3b5a2b83a1a1cd620d939b47c3ea282b0d1eda12b907994bae56d",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 57,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libxnvctrl0_510.47.03-0ubuntu4.24.04.1_amd64.deb",
+      "package_name": "libxnvctrl0",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "NV-CONTROL X extension (runtime library)",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "7947ecbae8e3b5a2b83a1a1cd620d939b47c3ea282b0d1eda12b907994bae56d",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/n/nvidia-settings/libxnvctrl0_510.47.03-0ubuntu4.24.04.1_amd64.deb",
+      "title": "libxnvctrl0",
+      "upstream": "https://packages.ubuntu.com/noble/libxnvctrl0",
+      "version": "510.47.03-0ubuntu4.24.04.1"
+    },
+    "catalog_sha256": "07da7dec6c329001110f7abefe5381c8ef009164721a46bc1a4d3aa4d806717d"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libxnvctrl0",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 12696,
+      "extract": false,
+      "id": "apt.libxnvctrl0",
+      "material_path": "apt/libxnvctrl0_510.47.03-0ubuntu4.24.04.1_amd64.deb",
+      "sha256": "7947ecbae8e3b5a2b83a1a1cd620d939b47c3ea282b0d1eda12b907994bae56d",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/n/nvidia-settings/libxnvctrl0_510.47.03-0ubuntu4.24.04.1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libxnvctrl0"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libxnvctrl0",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libxnvctrl0",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libxnvctrl0.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libxnvctrl0 (= 510.47.03-0ubuntu4.24.04.1). NV-CONTROL X extension (runtime library)"
+  },
+  "version": "510.47.03-0ubuntu4.24.04.1"
+}

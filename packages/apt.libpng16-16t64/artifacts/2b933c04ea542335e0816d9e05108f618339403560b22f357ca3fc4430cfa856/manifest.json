@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "4e0c6c3fdb48fbce2665354ddab994e5e628f74a008b5058cb9c0ea9ec5271c3",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.zlib1g"
+      ]
+    },
+    "id": "apt.libpng16-16t64",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.zlib1g"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 188998,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libpng16-16t64"
+        ],
+        "id": "apt.libpng16-16t64",
+        "immutable_ref": "sha256:863d6abb089b2820ceba98e6b18f06eaacc55f9b05827001e7b4021a9a7b246c",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 331,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libpng16-16t64_1.6.43-5ubuntu0.7_amd64.deb",
+        "package_name": "libpng16-16t64",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "PNG library - runtime (version 1.6)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "863d6abb089b2820ceba98e6b18f06eaacc55f9b05827001e7b4021a9a7b246c",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libp/libpng1.6/libpng16-16t64_1.6.43-5ubuntu0.7_amd64.deb",
+        "title": "libpng16-16t64",
+        "upstream": "http://libpng.org/pub/png/libpng.html",
+        "version": "1.6.43-5ubuntu0.7"
+      },
+      "catalog_sha256": "ae802a206fd26844e2c7f8286de4e8bf8b645e23ac65b51feb8e31f578bfff37"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libpng16-16t64",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 188998,
+        "extract": false,
+        "id": "apt.libpng16-16t64",
+        "material_path": "apt/libpng16-16t64_1.6.43-5ubuntu0.7_amd64.deb",
+        "sha256": "863d6abb089b2820ceba98e6b18f06eaacc55f9b05827001e7b4021a9a7b246c",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libp/libpng1.6/libpng16-16t64_1.6.43-5ubuntu0.7_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libpng16-16t64"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libpng16-16t64",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libpng16-16t64",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libpng16-16t64.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libpng16-16t64 (= 1.6.43-5ubuntu0.7). PNG library - runtime (version 1.6)"
+    },
+    "version": "1.6.43-5ubuntu0.7"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "2e8ececee763e4e068e6a5528d15cbc84ba0dc748bb5d389e73c8b921b42c180",
+    "dependencies_sha256": "480baf9ac5f4ae30456f2b44f3d78c1db370901e6a32decd451a5fbb7e048106",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "8531753e988d5a2872cdefe758e9b1ec8947e2b8e9c1b217ba33fa33694dd2e2",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "da5ac8fc95cdb9bf358d70ee0bdac2204264ded14a9c35d7c54b0f5c27e25173"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

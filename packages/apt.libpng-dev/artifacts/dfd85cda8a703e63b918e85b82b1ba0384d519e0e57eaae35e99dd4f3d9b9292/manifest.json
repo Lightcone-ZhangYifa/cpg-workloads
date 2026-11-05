@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "fb0dfe9d7da706cd9f5a758e2d634db0a84c4505da5be7259de3ec20ef686934",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libpng16-16t64",
+        "apt.zlib1g-dev"
+      ]
+    },
+    "id": "apt.libpng-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libpng16-16t64",
+          "apt.zlib1g-dev"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 264970,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libpng-dev"
+        ],
+        "id": "apt.libpng-dev",
+        "immutable_ref": "sha256:db0d4bc0054ae0061524d009f75bd4409b10f596274f3a9aa07d5e3212812263",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 759,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libpng-dev_1.6.43-5ubuntu0.7_amd64.deb",
+        "package_name": "libpng-dev",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "PNG library - development (version 1.6)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "db0d4bc0054ae0061524d009f75bd4409b10f596274f3a9aa07d5e3212812263",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libp/libpng1.6/libpng-dev_1.6.43-5ubuntu0.7_amd64.deb",
+        "title": "libpng-dev",
+        "upstream": "http://libpng.org/pub/png/libpng.html",
+        "version": "1.6.43-5ubuntu0.7"
+      },
+      "catalog_sha256": "8446d857af38e0677ae56493dc941c2ae7d2ceea2d9bab138294f9b13549dcdb"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libpng-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 264970,
+        "extract": false,
+        "id": "apt.libpng-dev",
+        "material_path": "apt/libpng-dev_1.6.43-5ubuntu0.7_amd64.deb",
+        "sha256": "db0d4bc0054ae0061524d009f75bd4409b10f596274f3a9aa07d5e3212812263",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libp/libpng1.6/libpng-dev_1.6.43-5ubuntu0.7_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libpng-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libpng-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libpng-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libpng-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libpng-dev (= 1.6.43-5ubuntu0.7). PNG library - development (version 1.6)"
+    },
+    "version": "1.6.43-5ubuntu0.7"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "a62881093e6b95c88d8947e6e5dea5a30ae01cebe51a4520b40182951a3b40fa",
+    "dependencies_sha256": "bb89b01369a8ab77a5b205cd3f767ac7c67abc8735d912c77bd419ec609aef4d",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "cd36d3d80b8bc099c162829fc4ec3c628aa11bf2c725fd23631da98cc9808af0",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "514ad1ab4a18409c584b953a0d0b3b387398ad21b2b78a846333613215cff340"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

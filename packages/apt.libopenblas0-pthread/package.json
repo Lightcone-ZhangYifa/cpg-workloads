@@ -1,0 +1,156 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libgfortran5"
+    ]
+  },
+  "id": "apt.libopenblas0-pthread",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libgfortran5"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 7183128,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libopenblas0-pthread"
+      ],
+      "id": "apt.libopenblas0-pthread",
+      "immutable_ref": "sha256:7dc3b4384c02aecb87eb8b70fa26c5843a08af242f4638aa4b36922bdc4f5b04",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 43798,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libopenblas0-pthread_0.3.26+ds-1ubuntu0.1_amd64.deb",
+      "package_name": "libopenblas0-pthread",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Optimized BLAS (linear algebra) library (shared lib, pthread)",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "target"
+      ],
+      "sha256": "7dc3b4384c02aecb87eb8b70fa26c5843a08af242f4638aa4b36922bdc4f5b04",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/o/openblas/libopenblas0-pthread_0.3.26+ds-1ubuntu0.1_amd64.deb",
+      "title": "libopenblas0-pthread",
+      "upstream": "https://www.openblas.net/",
+      "version": "0.3.26+ds-1ubuntu0.1"
+    },
+    "catalog_sha256": "52dfdc0bf63f97fbe6f5f81e89ffa9564caaf4b41305cc5cbef3d6b620978338"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libopenblas0-pthread",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 7183128,
+      "extract": false,
+      "id": "apt.libopenblas0-pthread",
+      "material_path": "apt/libopenblas0-pthread_0.3.26+ds-1ubuntu0.1_amd64.deb",
+      "sha256": "7dc3b4384c02aecb87eb8b70fa26c5843a08af242f4638aa4b36922bdc4f5b04",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/o/openblas/libopenblas0-pthread_0.3.26+ds-1ubuntu0.1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libopenblas0-pthread"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libopenblas0-pthread",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libopenblas0-pthread",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libopenblas0-pthread.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libopenblas0-pthread (= 0.3.26+ds-1ubuntu0.1). Optimized BLAS (linear algebra) library (shared lib, pthread)"
+  },
+  "version": "0.3.26+ds-1ubuntu0.1"
+}

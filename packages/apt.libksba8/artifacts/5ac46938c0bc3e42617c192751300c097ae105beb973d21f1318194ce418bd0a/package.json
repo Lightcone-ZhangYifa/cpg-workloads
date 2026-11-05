@@ -1,0 +1,147 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libgpg-error0"
+    ]
+  },
+  "id": "apt.libksba8",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libgpg-error0"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 121958,
+      "category": [
+        "Community development",
+        "Resolved system dependencies"
+      ],
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built"
+      },
+      "id": "apt.libksba8",
+      "immutable_ref": "sha256:7b0e1f2c2c5ee7b3ed1c1558c6338c6cdd77d27280020abc3e1f3159cf564106",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 303,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libksba8_1.6.6-1build1_amd64.deb",
+      "package_name": "libksba8",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "X.509 and CMS support library",
+      "qualification_gaps": [
+        "Perform role-specific installation and first-use checks in the selected dev image."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "7b0e1f2c2c5ee7b3ed1c1558c6338c6cdd77d27280020abc3e1f3159cf564106",
+      "size_basis": "Exact signed captured Packages metadata; actual APT resolver with all existing catalog versions fixed; no deb or OCI installation measurement.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://gcc.gnu.org/install/prerequisites.html"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libk/libksba/libksba8_1.6.6-1build1_amd64.deb",
+      "title": "libksba8",
+      "version": "1.6.6-1build1"
+    },
+    "catalog_sha256": "cdf10e409c350e0e5289819a91c6984f27bd8708f4a0616192faae56b83970bc"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libksba8",
+    "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 121958,
+      "extract": false,
+      "id": "apt.libksba8",
+      "material_path": "apt/libksba8_1.6.6-1build1_amd64.deb",
+      "sha256": "7b0e1f2c2c5ee7b3ed1c1558c6338c6cdd77d27280020abc3e1f3159cf564106",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libk/libksba/libksba8_1.6.6-1build1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [
+      {
+        "command": "dpkg-query -W libksba8",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libksba8",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libksba8.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libksba8 (= 1.6.6-1build1). X.509 and CMS support library"
+  },
+  "version": "1.6.6-1build1"
+}

@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "6f348460dfb64506c0fe82cfa87badf230491e7d4541118fb54bdef126259c66",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libkpathsea6"
+      ]
+    },
+    "id": "apt.libptexenc1",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libkpathsea6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 40380,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libptexenc1"
+        ],
+        "id": "apt.libptexenc1",
+        "immutable_ref": "sha256:0cd4246088e08de8b6eb22fed5e77f65910abd54313e88c7b1e36d6ef1775b76",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 108,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libptexenc1_2023.20230311.66589-9build3_amd64.deb",
+        "package_name": "libptexenc1",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "TeX Live: pTeX encoding library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "0cd4246088e08de8b6eb22fed5e77f65910abd54313e88c7b1e36d6ef1775b76",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/t/texlive-bin/libptexenc1_2023.20230311.66589-9build3_amd64.deb",
+        "title": "libptexenc1",
+        "upstream": "https://www.tug.org/texlive/",
+        "version": "2023.20230311.66589-9build3"
+      },
+      "catalog_sha256": "6ff216f172156d71d61f6fc67915b2db576b287d9af6820f04e0e45c91c91fa8"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libptexenc1",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 40380,
+        "extract": false,
+        "id": "apt.libptexenc1",
+        "material_path": "apt/libptexenc1_2023.20230311.66589-9build3_amd64.deb",
+        "sha256": "0cd4246088e08de8b6eb22fed5e77f65910abd54313e88c7b1e36d6ef1775b76",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/texlive-bin/libptexenc1_2023.20230311.66589-9build3_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libptexenc1"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libptexenc1",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libptexenc1",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libptexenc1.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libptexenc1 (= 2023.20230311.66589-9build3). TeX Live: pTeX encoding library"
+    },
+    "version": "2023.20230311.66589-9build3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "cd0567f3e0e01b94cf3f624de0d8d45229910252b449ee4dc59ecb81a3452879",
+    "dependencies_sha256": "14daef4503cacbc63af37af6fd0fbea3177fc5adc41bf663b7ea0ee06670d793",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "cf77658a282b53734820595ab15bd11186ca3e90e2a1c629d8aa891e445d2318",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "49a8477675d97d575fecb30ea20bfb7238811b3d496ca0706139f062f1e51fa0"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

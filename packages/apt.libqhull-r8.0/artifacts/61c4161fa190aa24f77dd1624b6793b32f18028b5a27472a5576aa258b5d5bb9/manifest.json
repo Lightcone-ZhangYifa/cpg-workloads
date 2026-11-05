@@ -1,0 +1,178 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "2c9fa506aa64823cda832a1e9f06597efcca66557b8b69445b76e7f9c3216147",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6"
+      ]
+    },
+    "id": "apt.libqhull-r8.0",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 192772,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libqhull-r8.0"
+        ],
+        "id": "apt.libqhull-r8.0",
+        "immutable_ref": "sha256:5b569643ef0cf284ccd7b81cd1bcbce820dd33deb02b1edede5287fd24c53bec",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 528,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libqhull-r8.0_2020.2-6build1_amd64.deb",
+        "package_name": "libqhull-r8.0",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "calculate convex hulls and related structures (reentrant shared library)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "5b569643ef0cf284ccd7b81cd1bcbce820dd33deb02b1edede5287fd24c53bec",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/q/qhull/libqhull-r8.0_2020.2-6build1_amd64.deb",
+        "title": "libqhull-r8.0",
+        "upstream": "https://www.qhull.org",
+        "version": "2020.2-6build1"
+      },
+      "catalog_sha256": "12b18b8cfe0763232e4e67b8fef1e55edbc496a5c78289c62ffd08f1227276e6"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libqhull-r8.0",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 192772,
+        "extract": false,
+        "id": "apt.libqhull-r8.0",
+        "material_path": "apt/libqhull-r8.0_2020.2-6build1_amd64.deb",
+        "sha256": "5b569643ef0cf284ccd7b81cd1bcbce820dd33deb02b1edede5287fd24c53bec",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/q/qhull/libqhull-r8.0_2020.2-6build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libqhull-r8.0"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libqhull-r8.0",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libqhull-r8.0",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libqhull-r8.0.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libqhull-r8.0 (= 2020.2-6build1). calculate convex hulls and related structures (reentrant shared library)"
+    },
+    "version": "2020.2-6build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "116409ca5f0a647bf245f93aeffda1fe86e197a5a1fc3ca7b7e4f3bbe6012be6",
+    "dependencies_sha256": "e6500e4e5e944fbdcb2f43c99ead4cf5965b7614b33deb860ba9cdce7a582712",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "4cbf08bdd5530caba5f247152544d8fa26107ceb8dd8e28246cc3a0139a54100",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "baeae808423dd48c287e04b9e44ab3da6bbb25450e907446e965ef2bdcf983cb"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

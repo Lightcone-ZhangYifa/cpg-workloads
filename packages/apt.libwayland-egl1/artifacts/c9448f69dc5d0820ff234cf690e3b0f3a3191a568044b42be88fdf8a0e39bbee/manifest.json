@@ -1,0 +1,178 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "11e6f8256b3f0c852ec8e067ddb408f98f20d80c3d592f865ccf491dae98bc0b",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6"
+      ]
+    },
+    "id": "apt.libwayland-egl1",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 5628,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libwayland-egl1"
+        ],
+        "id": "apt.libwayland-egl1",
+        "immutable_ref": "sha256:76cd17d2776428e0a0551b8f8fd954eeb3d39ca8ed2f88a38a5e4ce3ce3b2f16",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 31,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libwayland-egl1_1.22.0-2.1build1_amd64.deb",
+        "package_name": "libwayland-egl1",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "wayland compositor infrastructure - EGL library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "76cd17d2776428e0a0551b8f8fd954eeb3d39ca8ed2f88a38a5e4ce3ce3b2f16",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/w/wayland/libwayland-egl1_1.22.0-2.1build1_amd64.deb",
+        "title": "libwayland-egl1",
+        "upstream": "https://wayland.freedesktop.org/",
+        "version": "1.22.0-2.1build1"
+      },
+      "catalog_sha256": "6a24b1c5e98e93aef64a46d89abb4e70e5b2de8a69701f41bc47adb57f02cac7"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libwayland-egl1",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 5628,
+        "extract": false,
+        "id": "apt.libwayland-egl1",
+        "material_path": "apt/libwayland-egl1_1.22.0-2.1build1_amd64.deb",
+        "sha256": "76cd17d2776428e0a0551b8f8fd954eeb3d39ca8ed2f88a38a5e4ce3ce3b2f16",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/w/wayland/libwayland-egl1_1.22.0-2.1build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libwayland-egl1"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libwayland-egl1",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libwayland-egl1",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libwayland-egl1.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libwayland-egl1 (= 1.22.0-2.1build1). wayland compositor infrastructure - EGL library"
+    },
+    "version": "1.22.0-2.1build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "6f3c2724a0db81256f81e4d443037340cc1e547551ffd07c915de42aa76e1504",
+    "dependencies_sha256": "e6500e4e5e944fbdcb2f43c99ead4cf5965b7614b33deb860ba9cdce7a582712",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "a0e82f7e6fc097d48cebc880f897b71692673e9bf7400e92c8b36e9d2bd82a8c",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "9298fe3fb25e8d83213a003c1a2d8d7968802e3b6ea991e3a4ad7d82ca6b9de6"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

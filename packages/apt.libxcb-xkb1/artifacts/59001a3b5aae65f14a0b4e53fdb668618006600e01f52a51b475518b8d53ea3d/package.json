@@ -1,0 +1,155 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libxcb1"
+    ]
+  },
+  "id": "apt.libxcb-xkb1",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libxcb1"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 32302,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libxcb-xkb1"
+      ],
+      "id": "apt.libxcb-xkb1",
+      "immutable_ref": "sha256:53bc0a58834c981fa8ce5c3ab6195387e5c8a417039d82cc7a8b49724fa53228",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 151,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libxcb-xkb1_1.15-1ubuntu2_amd64.deb",
+      "package_name": "libxcb-xkb1",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "X C Binding, XKEYBOARD extension",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "53bc0a58834c981fa8ce5c3ab6195387e5c8a417039d82cc7a8b49724fa53228",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxcb/libxcb-xkb1_1.15-1ubuntu2_amd64.deb",
+      "title": "libxcb-xkb1",
+      "upstream": "https://xcb.freedesktop.org",
+      "version": "1.15-1ubuntu2"
+    },
+    "catalog_sha256": "cea8127ec0659973a6c3df48ec3c4b7b52c87f4147696190617115e15177483d"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libxcb-xkb1",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 32302,
+      "extract": false,
+      "id": "apt.libxcb-xkb1",
+      "material_path": "apt/libxcb-xkb1_1.15-1ubuntu2_amd64.deb",
+      "sha256": "53bc0a58834c981fa8ce5c3ab6195387e5c8a417039d82cc7a8b49724fa53228",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxcb/libxcb-xkb1_1.15-1ubuntu2_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libxcb-xkb1"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libxcb-xkb1",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libxcb-xkb1",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libxcb-xkb1.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libxcb-xkb1 (= 1.15-1ubuntu2). X C Binding, XKEYBOARD extension"
+  },
+  "version": "1.15-1ubuntu2"
+}

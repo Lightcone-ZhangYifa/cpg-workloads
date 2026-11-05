@@ -1,0 +1,184 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "321e5be224ace56e1accd82f7952491cfd22849705e65637040a9ad222f84236",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libidn2-0",
+        "apt.libunistring5"
+      ]
+    },
+    "id": "apt.libpsl5t64",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libidn2-0",
+          "apt.libunistring5"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 57072,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libpsl5t64"
+        ],
+        "id": "apt.libpsl5t64",
+        "immutable_ref": "sha256:a6c85d1303ae90b6a3209d73c4f047f82c27cdc963c48adfd95dd7abca64f039",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 99,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libpsl5t64_0.21.2-1.1build1_amd64.deb",
+        "package_name": "libpsl5t64",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Library for Public Suffix List (shared libraries)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "a6c85d1303ae90b6a3209d73c4f047f82c27cdc963c48adfd95dd7abca64f039",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libp/libpsl/libpsl5t64_0.21.2-1.1build1_amd64.deb",
+        "title": "libpsl5t64",
+        "upstream": "https://github.com/rockdaboot/libpsl",
+        "version": "0.21.2-1.1build1"
+      },
+      "catalog_sha256": "13cf8c116fb76f0594c75d03830ada7ba46e9e9776637a960854f8c6f0a9e602"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libpsl5t64",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 57072,
+        "extract": false,
+        "id": "apt.libpsl5t64",
+        "material_path": "apt/libpsl5t64_0.21.2-1.1build1_amd64.deb",
+        "sha256": "a6c85d1303ae90b6a3209d73c4f047f82c27cdc963c48adfd95dd7abca64f039",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libp/libpsl/libpsl5t64_0.21.2-1.1build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libpsl5t64"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libpsl5t64",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libpsl5t64",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libpsl5t64.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libpsl5t64 (= 0.21.2-1.1build1). Library for Public Suffix List (shared libraries)"
+    },
+    "version": "0.21.2-1.1build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "3155ad32c2a7a1d6567229cb0e7bec6ded3fd53b30d5031f00c525e1d86e3f13",
+    "dependencies_sha256": "fda41850e2a1e0285941cee327aabbf6191141c76a8b6679cdf57fabac800553",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "6ca8f06b129bfd05ec06673f541bec711f5bac1cd2844e6fa13bb96f87c09f11",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "5d975049a27d54f18edc7dc103cf3dd3a0bf8527507a005b6f7809c11e5f2de0"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

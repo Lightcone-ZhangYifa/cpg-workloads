@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "de958cca731f82f7b85c48c3e0a853a4413e853be75148ff14d9cb8389487b83",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libx11-6"
+      ]
+    },
+    "id": "apt.libxpm4",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libx11-6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 36684,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libxpm4"
+        ],
+        "id": "apt.libxpm4",
+        "immutable_ref": "sha256:e14b1581dc675ded6519132f5fccb31b39d534117399d3153082e353b6fe2704",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 92,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libxpm4_3.5.17-1ubuntu0.24.04.2_amd64.deb",
+        "package_name": "libxpm4",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "X11 pixmap library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "e14b1581dc675ded6519132f5fccb31b39d534117399d3153082e353b6fe2704",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxpm/libxpm4_3.5.17-1ubuntu0.24.04.2_amd64.deb",
+        "title": "libxpm4",
+        "upstream": "https://www.x.org",
+        "version": "1:3.5.17-1ubuntu0.24.04.2"
+      },
+      "catalog_sha256": "a6357c05f3f23319c58435d73c2ea10957f09f765e7e2bc47b7c2402b072f1b3"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libxpm4",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 36684,
+        "extract": false,
+        "id": "apt.libxpm4",
+        "material_path": "apt/libxpm4_3.5.17-1ubuntu0.24.04.2_amd64.deb",
+        "sha256": "e14b1581dc675ded6519132f5fccb31b39d534117399d3153082e353b6fe2704",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxpm/libxpm4_3.5.17-1ubuntu0.24.04.2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libxpm4"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libxpm4",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libxpm4",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libxpm4.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libxpm4 (= 1:3.5.17-1ubuntu0.24.04.2). X11 pixmap library"
+    },
+    "version": "1:3.5.17-1ubuntu0.24.04.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "848b1bd278f93a56a449c3b14e08b58de97a118c3c2608d4c4d3a36984ab31d8",
+    "dependencies_sha256": "cdaff3822a5fd49f927f95be49593d8b4225ad555b66ffc69c70c4d8e394b3d1",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "c4b098a78fdb03b048e59ccf0bf8554799a86219f3fe20505e4e4e08e84c6920",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "7da472a3a0381b0beb16483016eddeff1a0d86e7e307c32af5fdc6598e8f18d3"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

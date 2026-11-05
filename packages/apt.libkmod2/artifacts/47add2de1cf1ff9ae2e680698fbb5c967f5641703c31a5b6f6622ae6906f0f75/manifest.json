@@ -1,0 +1,184 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "346d9ea4a301a2e52115505a817a4682c785de9bfd15bee421c99aa41992b95b",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.liblzma5",
+        "apt.libssl3t64",
+        "apt.libzstd1"
+      ]
+    },
+    "id": "apt.libkmod2",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.liblzma5",
+          "apt.libssl3t64",
+          "apt.libzstd1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 51830,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libkmod2"
+        ],
+        "id": "apt.libkmod2",
+        "immutable_ref": "sha256:a9cbdc424bc0a5c8af3d6445488a48de76df5ff4d76b7dab8aaf88f712358bbc",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 144,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libkmod2_31+20240202-2ubuntu7.2_amd64.deb",
+        "package_name": "libkmod2",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "libkmod shared library",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "a9cbdc424bc0a5c8af3d6445488a48de76df5ff4d76b7dab8aaf88f712358bbc",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/k/kmod/libkmod2_31+20240202-2ubuntu7.2_amd64.deb",
+        "title": "libkmod2",
+        "upstream": "https://packages.ubuntu.com/noble/libkmod2",
+        "version": "31+20240202-2ubuntu7.2"
+      },
+      "catalog_sha256": "2393165c1d16cb989a0f9e355194491b1412d42af8facf39d3d889ad8304a91d"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libkmod2",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 51830,
+        "extract": false,
+        "id": "apt.libkmod2",
+        "material_path": "apt/libkmod2_31+20240202-2ubuntu7.2_amd64.deb",
+        "sha256": "a9cbdc424bc0a5c8af3d6445488a48de76df5ff4d76b7dab8aaf88f712358bbc",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/k/kmod/libkmod2_31+20240202-2ubuntu7.2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libkmod2"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libkmod2",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libkmod2",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libkmod2.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libkmod2 (= 31+20240202-2ubuntu7.2). libkmod shared library"
+    },
+    "version": "31+20240202-2ubuntu7.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "ef775d5f416bce385b5b53ca3659337d51795e649ba2b467abcf77008c31a245",
+    "dependencies_sha256": "d040cc2c0040bc17c44338da804e087108b8927ce99b9cd95673793e92303db6",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "e6a0cc8e20e352782e4dde794c5bc31740561614f72ee6b80b2d85d4eb16ecdc",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "860c4383f08d8678dce6b3ead52f993846537b661e98d678b72f8c32b124bbde"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,170 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libedit2",
+      "apt.libffi8",
+      "apt.libgcc-s1",
+      "apt.libstdc++6",
+      "apt.libtinfo6",
+      "apt.libxml2",
+      "apt.libzstd1",
+      "apt.zlib1g"
+    ]
+  },
+  "id": "apt.libllvm17t64",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libedit2",
+        "apt.libffi8",
+        "apt.libgcc-s1",
+        "apt.libstdc++6",
+        "apt.libtinfo6",
+        "apt.libxml2",
+        "apt.libzstd1",
+        "apt.zlib1g"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 26162724,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libllvm17t64"
+      ],
+      "id": "apt.libllvm17t64",
+      "immutable_ref": "sha256:1863b5459ca4a6691f5e039e76157f074ee08b48176267642ee4dfea065f5db4",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 120829,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/libllvm17t64_17.0.6-9ubuntu1_amd64.deb",
+      "package_name": "libllvm17t64",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Modular compiler and toolchain technologies, runtime library",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "1863b5459ca4a6691f5e039e76157f074ee08b48176267642ee4dfea065f5db4",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-17/libllvm17t64_17.0.6-9ubuntu1_amd64.deb",
+      "title": "libllvm17t64",
+      "upstream": "https://www.llvm.org/",
+      "version": "1:17.0.6-9ubuntu1"
+    },
+    "catalog_sha256": "cf5c8b8e434aa45033f83682ce3bb16087c52f49f32dc827f5f24575d500f831"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "libllvm17t64",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 26162724,
+      "extract": false,
+      "id": "apt.libllvm17t64",
+      "material_path": "apt/libllvm17t64_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "1863b5459ca4a6691f5e039e76157f074ee08b48176267642ee4dfea065f5db4",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-17/libllvm17t64_17.0.6-9ubuntu1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/libllvm17t64"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W libllvm17t64",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L libllvm17t64",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/libllvm17t64.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for libllvm17t64 (= 1:17.0.6-9ubuntu1). Modular compiler and toolchain technologies, runtime library"
+  },
+  "version": "1:17.0.6-9ubuntu1"
+}
