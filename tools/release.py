@@ -256,6 +256,8 @@ def material_archives(record, manifest):
 
 
 def verify_material(record, manifest, template):
+    from authored_inputs import verify_authored_inputs
+    external_inputs = verify_authored_inputs(record, manifest, template)
     archives = material_archives(record, manifest)
     payload_files = {row["path"] for row in manifest["files"]
                      if row["kind"] == "file" and row["path"].startswith("payload/")}
@@ -270,7 +272,7 @@ def verify_material(record, manifest, template):
     if len(names) != len(set(names)) or "manifest.json" in names:
         raise ValueError("Duplicate or reserved material member")
     for row in manifest["files"]:
-        if row["path"] not in archives:
+        if row["path"] not in archives and row["path"] not in external_inputs:
             material_member(template, row, binaries)
     return binaries
 
@@ -732,8 +734,8 @@ def rebuild(record, output, cache, *, network=False):
         raise ValueError("Unqualified artifact: " + "; ".join(problems))
     verify_evidence(record, template)
     binaries = verify_material(record, manifest, template) if method == "material" else {}
-    sources = {name: source_file(source, cache, network=network)
-               for name, source in external_inputs.items()}
+    from authored_inputs import acquire_authored_inputs
+    sources = acquire_authored_inputs(record, manifest, template, cache, network=network)
     if method == "material":
         for name, source in material_archives(record, manifest).items():
             sources[name] = source_file(source, cache, network=network)
