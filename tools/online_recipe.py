@@ -137,9 +137,14 @@ def _validate_native_replay(contents, members):
     _require({'replay.json', 'source-manifest.json', 'run.py'} <= set(contents),
         'Native replay lacks descriptor, source template, or controller')
     descriptor = _json(contents['replay.json'])
+    early_controller = ('embedded_resource_archive_bytes' not in descriptor
+        and descriptor.get('controller', {}).get('sha256') ==
+            '6cf2227ce275a7262ce978924cbd4259fe26677a9cba2d8763e0ebd0bbe0471c'
+        and descriptor.get('raw_input_transport') ==
+            'Acquire exact declared source/tools bytes through existing acquire_file; no raw resource payload is embedded in this controller.')
     _require(descriptor.get('schema_version') == 1
         and descriptor.get('kind') == 'cpg_exact_native_source_replay'
-        and descriptor.get('embedded_resource_archive_bytes') == 0,
+        and (descriptor.get('embedded_resource_archive_bytes') == 0 or early_controller),
         'Unsupported native source replay contract')
     controller = descriptor.get('controller', {})
     _require(controller.get('path') == 'run.py'
@@ -158,22 +163,25 @@ def _validate_native_replay(contents, members):
     _require(_digest(offline['files']) == offline.get('inventory_sha256'),
         'Native replay source inventory fingerprint differs')
     spec = _validate_spec_shape(offline['package'])
-    _require(all(descriptor.get(k) == spec[v] for k,v in
-        [('resource_id','id'), ('build','build'), ('provider','provider')]),
+    identity_fields = [('resource_id','id')] if early_controller else [
+        ('resource_id','id'), ('build','build'), ('provider','provider')]
+    _require(all(descriptor.get(k) == spec[v] for k,v in identity_fields),
         'Native replay source identity differs')
     artifact = descriptor.get('artifact', {})
-    _require(artifact.get('method') == 'source'
-        and artifact.get('manifest_sha256') == offline['manifest_sha256']
+    _require((early_controller or (artifact.get('method') == 'source'
+        and artifact.get('manifest_sha256') == offline['manifest_sha256']))
         and isinstance(artifact.get('sha256'), str) and SHA.fullmatch(artifact['sha256'])
         and type(artifact.get('bytes')) is int and artifact['bytes'] > 0,
         'Native replay source artifact identity is incomplete')
     command = descriptor.get('command_template')
-    _require(isinstance(command, list) and command[:6] ==
-        ['python3', '-B', 'run.py', 'prepare', '--descriptor', 'replay.json']
-        and all(isinstance(arg,str) and arg and '\0' not in arg for arg in command),
+    _require((early_controller and controller.get('bytes') == len(contents['run.py'])
+        and source_descriptor.get('bytes') == len(contents['source-manifest.json']))
+        or (isinstance(command, list) and command[:6] ==
+            ['python3', '-B', 'run.py', 'prepare', '--descriptor', 'replay.json']
+            and all(isinstance(arg,str) and arg and '\0' not in arg for arg in command)),
         'Native replay command does not address its declared entry point')
     headers = {r['path']:r for r in members}
-    recipe_files, source_files = {}, {}
+    recipe_files, source_files, tool_files = {}, {}, {}
     inventory_paths = set()
     for row in offline['files']:
         name = row['path']
@@ -189,6 +197,10 @@ def _validate_native_replay(contents, members):
             _require(row.get('kind') == 'file' and name == 'sources/' + row.get('sha256', ''),
                 'Invalid replay source-cache inventory entry')
             source_files[name] = row
+        elif early_controller and (name == 'tools' or name.startswith('tools/')):
+            _relative(name)
+            _require(row.get('kind') in {'file','directory'}, 'Unsupported native replay tool inventory')
+            tool_files[name] = row
         else:
             raise ValueError('Native replay includes unsupported tool or payload inventory')
     _require(set(contents) == set(recipe_files) | {'replay.json','source-manifest.json','run.py'},
@@ -198,6 +210,34 @@ def _validate_native_replay(contents, members):
         _require(row.get('sha256') == hashlib.sha256(contents[name]).hexdigest()
             and row.get('bytes') == len(contents[name]) and row.get('mode') == headers[name]['mode'],
             'Native replay recipe differs from the expected source package: ' + name)
+    if tool_files:
+        declared_tools = descriptor.get('source_tools_lock', {})
+        tools_name = spec['recipe'].get('artifact_only_source_tools_lock')
+        _require(isinstance(tools_name, str) and '/' not in tools_name and tools_name.endswith('.json'),
+            'Native replay lacks its original supplemental-input lock name')
+        name = 'recipe/' + tools_name
+        _require(name in contents and declared_tools.get('path') == name
+            and declared_tools.get('sha256') == hashlib.sha256(contents[name]).hexdigest(),
+            'Native replay supplemental-input descriptor differs')
+        locks = _json(contents[name])
+        _require(locks.get('schema_version') == 1 and locks.get('resource_id') == spec['id'],
+            'Native replay supplemental-input identity differs')
+        expected_tools = {'tools': {'path':'tools', 'kind':'directory', 'mode':locks.get('tools_root_mode')}}
+        for row in locks.get('directories', []):
+            path = 'tools/' + _relative(row['path']).as_posix()
+            _require(path not in expected_tools and row.get('kind') == 'directory',
+                'Invalid native replay supplemental directory')
+            expected_tools[path] = {'path':path, 'kind':'directory', 'mode':row['mode']}
+        for row in locks.get('artifacts', []):
+            path = 'tools/' + _relative(row['path']).as_posix()
+            _require(path not in expected_tools and row.get('kind') == 'file'
+                and isinstance(row.get('sha256'),str) and SHA.fullmatch(row['sha256'])
+                and type(row.get('bytes')) is int and row['bytes'] >= 0
+                and isinstance(row.get('url'),str) and row['url'].startswith('https://'),
+                'Native replay supplemental acquisition lock is incomplete')
+            expected_tools[path] = {k:row[k] for k in ['kind','mode','sha256','bytes']}
+            expected_tools[path]['path'] = path
+        _require(expected_tools == tool_files, 'Native replay supplemental locks differ from the full original inventory')
     declared = {s['id']:s for s in spec['sources']}
     _require(declared and len(declared) == len(spec['sources']), 'Missing or duplicate native replay source ID')
     effective = dict(declared)
@@ -223,6 +263,82 @@ def _validate_native_replay(contents, members):
         if name.endswith('.py'):
             ast.parse(data.decode('utf-8'), filename=name)
     return descriptor, spec
+
+
+def _explicit_closure_locks(descriptor, spec, contents):
+    """Read the delivered pinned archive/Gitlink/LFS acquisition contract."""
+    _require('recipe/source-closure.json' in contents, 'Missing explicit source closure')
+    closure = _json(contents['recipe/source-closure.json'])
+    _require(closure.get('format') == 'cpg-exact-static-closure-v1'
+        and closure.get('resource_id') == spec['id'], 'Explicit source closure identity differs')
+    preserved = closure.get('preserved_definition_fields', {})
+    _require(set(preserved) == {'id','version','provider','target','dependencies','sources','metadata.catalog'},
+        'Explicit closure does not preserve the original definition fields')
+    for key, value in preserved.items():
+        actual = spec['metadata']['catalog'] if key == 'metadata.catalog' else spec[key]
+        _require(actual == value, 'Explicit closure changes original definition: ' + key)
+    locks = closure.get('inputs', [])
+    _require(locks == descriptor.get('resolved_acquisition_locks') and locks,
+        'Online acquisition locks differ from their authored source closure')
+    by_id = {r['id']:r for r in locks}
+    _require(len(by_id) == len(locks), 'Duplicate explicit source-closure input')
+    trees = {}
+    for lock in locks:
+        _require(isinstance(lock.get('sha256'),str) and SHA.fullmatch(lock['sha256'])
+            and type(lock.get('bytes')) is int and lock['bytes'] >= 0
+            and isinstance(lock.get('url'),str) and lock['url'].startswith('https://'),
+            'Explicit acquisition byte lock is incomplete')
+        placement = lock.get('placement')
+        _require(placement == '.' or isinstance(placement,str), 'Missing explicit input placement')
+        if placement != '.':
+            _relative(placement)
+        if lock.get('kind') == 'archive':
+            name = 'recipe/' + _relative(lock['git_tree_evidence']).as_posix()
+            _require(name in contents and hashlib.sha256(contents[name]).hexdigest()
+                == lock.get('git_tree_evidence_sha256'), 'Explicit source tree evidence changed')
+            tree = _json(contents[name]); commit = lock['url'].rsplit('/',1)[-1]
+            _require(tree.get('truncated') is False and tree.get('sha') == commit
+                and re.fullmatch('[0-9a-f]{40}',commit), 'Explicit source tree pin is incomplete')
+            rows = tree.get('tree', []); trees[lock['id']] = {x['path']:x for x in rows}
+            _require(len(trees[lock['id']]) == len(rows), 'Duplicate explicit source tree path')
+        elif lock.get('kind') == 'lfs':
+            pointer = lock.get('original_pointer')
+            _require(pointer == 'version https://git-lfs.github.com/spec/v1\noid sha256:'
+                + lock['sha256'] + '\nsize ' + str(lock['bytes']) + '\n',
+                'Explicit LFS object differs from its original pointer')
+        else:
+            raise ValueError('Unsupported explicit acquisition kind')
+    declared = {s['id']:s for s in spec['sources']}
+    for sid, source in declared.items():
+        lock = by_id.get(sid)
+        _require(lock is not None and lock.get('kind') == 'archive'
+            and lock['url'] == source['url']
+            and all(source.get(k) in (None,lock[k]) for k in ('sha256','bytes')),
+            'Explicit source closure changes a fixed original source lock')
+    linked = set()
+    for link in closure.get('gitlinks', []):
+        parent, child = by_id.get(link['parent_input']), by_id.get(link['archive_input'])
+        _relative(link['path'])
+        _require(parent is not None and child is not None
+            and trees[parent['id']].get(link['path'], {}).get('type') == 'commit'
+            and trees[parent['id']][link['path']]['sha'] == link['commit'],
+            'Explicit Gitlink differs from the pinned parent tree')
+        repo = link['repository_url'].removesuffix('.git').removeprefix('https://github.com/')
+        placement = link['path'] if parent['placement'] == '.' else parent['placement'] + '/' + link['path']
+        _require(child['url'] == 'https://codeload.github.com/' + repo + '/tar.gz/' + link['commit']
+            and child['placement'] == placement, 'Explicit Gitlink archive or placement differs')
+        linked.add(child['id'])
+    _require({r['id'] for r in locks if r['kind']=='archive'} == set(declared) | linked,
+        'Explicit closure contains an unrelated archive input')
+    for lock in locks:
+        if lock['kind'] != 'lfs':
+            continue
+        pointer = lock['original_pointer'].encode()
+        oid = hashlib.sha1(b'blob ' + str(len(pointer)).encode() + b'\0' + pointer).hexdigest()
+        _require(any(trees[sid].get(lock['placement'], {}).get('sha') == oid
+            for sid in declared), 'LFS pointer is not in the pinned original source tree')
+    return [{**source, 'sha256':by_id[sid]['sha256'], 'bytes':by_id[sid]['bytes']}
+        for sid, source in declared.items()]
 
 
 def _validate_contents(contents, members):
@@ -257,7 +373,9 @@ def _validate_contents(contents, members):
         and (descriptor.get('embedded_payload_bytes') == 0 or frozen_inventory),
         'Unsupported modern online recipe contract')
     if frozen_inventory:
-        _require({'package.json','run.py','recipe/prepare.py','recipe/acquisition-locks.json'} <= set(contents),
+        _require({'package.json','run.py','recipe/prepare.py'} <= set(contents)
+            and ('recipe/acquisition-locks.json' in contents or
+                {'recipe/source-subtree-locks.json','recipe/source-closure-audit.json'} <= set(contents)),
             'Frozen online recipe lacks its declared preparer or acquisition locks')
     # Both delivered contracts are standalone preparation scripts. Earlier
     # material recipes name recipe/prepare.py explicitly instead of run.py;
@@ -331,6 +449,14 @@ def _validate_contents(contents, members):
             'Recipe directory has no authored contents')
         directories[name] = row
     actual_directories = {name:row for name,row in headers.items() if row['type'] == '5'}
+    if (not declared_directories and 'recipe_directories' not in descriptor
+            and descriptor.get('layout') == 'cpg-explicit-static-closure-v1'):
+        # These original descriptors enumerate files; ordinary TAR directories
+        # are structural parents of those exact, hash-bound authored files.
+        parents = {p.as_posix() for name in contents for p in PurePosixPath(name).parents
+            if p != PurePosixPath('.')}
+        _require(set(actual_directories) <= parents, 'Unexpected empty authored directory')
+        directories = {name:{'path':name,'kind':'directory','mode':0o755} for name in actual_directories}
     _require(set(directories) == set(actual_directories), 'Authored directory inventory differs')
     for name, row in actual_directories.items():
         _require(row['bytes'] == 0 and row['mode'] == directories[name]['mode'],
@@ -341,7 +467,20 @@ def _validate_contents(contents, members):
     effective = {s['id']: s for s in original}
     _require(len(effective) == len(original), 'Duplicate source declaration')
     resolved_locks = list(descriptor.get('resolved_acquisition_locks', []))
-    if frozen_inventory:
+    if descriptor.get('layout') == 'cpg-explicit-static-closure-v1':
+        resolved_locks = _explicit_closure_locks(descriptor, spec, contents)
+    subtree_inventory = frozen_inventory and 'recipe/source-subtree-locks.json' in contents
+    if subtree_inventory:
+        from subtree_material import reviewed_subtree_material
+        with tempfile.TemporaryDirectory(prefix='cpg-online-subtree-review-') as temporary:
+            temporary = Path(temporary)
+            for name in ('recipe/source-subtree-locks.json','recipe/source-closure-audit.json'):
+                target = temporary / name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(contents[name])
+            _require(reviewed_subtree_material(offline, temporary) is not None,
+                'Online subtree acquisition lacks the exact declared original file locks')
+    if frozen_inventory and not subtree_inventory:
         acquisition = _json(contents['recipe/acquisition-locks.json'])
         _require(acquisition.get('schema_version') == 1 and acquisition.get('resource_id') == spec['id']
             and acquisition.get('original_sources') == original,
@@ -368,7 +507,7 @@ def _validate_contents(contents, members):
         _require(base is not None and all(value == lock.get(key) for key, value in base.items()
             if not (key in {'sha256', 'bytes'} and value is None)), 'Acquisition extension changes a fixed source field')
         effective[lock['id']] = lock
-    _require(all(isinstance(s.get('sha256'), str) and SHA.fullmatch(s['sha256'])
+    _require(subtree_inventory or all(isinstance(s.get('sha256'), str) and SHA.fullmatch(s['sha256'])
         and type(s.get('bytes')) is int and s['bytes'] >= 0 for s in effective.values()),
         'Effective acquisition byte locks are incomplete')
     for name, data in contents.items():
@@ -420,6 +559,8 @@ def _import_modern_recipe(path, root, origin=None):
         findings.append('incomplete_license_metadata')
     if catalog.get('license_class') != 'open' or catalog.get('redistributable') is False:
         warnings.append('Referenced upstream material requires a separate redistribution review; this asset contains only authored preparation code and metadata, with zero embedded upstream payload bytes')
+    if 'recipe/source-subtree-locks.json' in contents:
+        warnings.append('Acquisition is locked to the expressly declared Git subtree and original root license; the whole-monorepo archive identity remains unresolved and is not claimed.')
     record = {'id':spec['id'], 'version':spec['version'], 'build':'recipe-v1-' + checksum[:12],
         'target':spec['target'], 'provider':spec['provider'], 'method':'online-recipe',
         'sha256':checksum, 'bytes':size, 'template':destination.relative_to(root).as_posix(),
