@@ -334,6 +334,7 @@ def main():
             current = scratch / ("batch-" + str(number))
             current.mkdir()
             import_and_publish(path, item, current)
+            shutil.rmtree(current)
     git("push", "origin", "--delete", branch)
     print(json.dumps({"deleted_transport_branch": branch}), flush=True)
 
