@@ -8,6 +8,7 @@ import gzip
 import hashlib
 import io
 import json
+import re
 from pathlib import Path, PurePosixPath
 import shutil
 import sys
@@ -32,11 +33,26 @@ def _relative(value):
     return p
 
 
+def output_identity_mode(revision):
+    """Only an explicit reviewed-manifest mode may omit the final archive lock."""
+    mode = revision.get('output_identity', 'exact')
+    _require(mode in ('exact', 'derive-from-reviewed-manifest'), 'Unknown revision output identity mode')
+    if mode == 'derive-from-reviewed-manifest':
+        original_manifest = revision.get('original_artifact', {}).get('manifest_sha256')
+        _require(isinstance(original_manifest, str) and re.fullmatch(r'[0-9a-f]{64}', original_manifest),
+            'Derived output requires the exact original manifest fingerprint')
+        corrected = revision.get('corrected', {})
+        _require(corrected.get('sha256') is None and corrected.get('bytes') is None,
+            'Derived output must not pretend to have a precomputed archive identity')
+    return mode
+
+
 def repack(original, template, revision, output):
     """Use verified original payload plus exact reviewed authored files and notices."""
     from compiler_playground.packages import pack, verify_package
     from compiler_playground.packages.spec import digest, validate_spec
 
+    derived = output_identity_mode(revision) == 'derive-from-reviewed-manifest'
     original, template, output = Path(original), Path(template), Path(output)
     _require(original.is_file() and not original.is_symlink(), 'Missing ordinary original archive')
     _require(_sha(original) == revision['original_artifact']['sha256']
@@ -44,6 +60,8 @@ def repack(original, template, revision, output):
     manifest = json.loads((template / 'manifest.json').read_text())
     _require(digest({k:v for k,v in manifest.items() if k != 'manifest_sha256'}) == manifest['manifest_sha256']
         == revision['corrected']['manifest_sha256'], 'Reviewed manifest changed')
+    if derived:
+        _require(digest(manifest['files']) == manifest['inventory_sha256'], 'Reviewed inventory fingerprint changed')
     spec = validate_spec(manifest['package'])
     _require(json.loads((template / 'package.json').read_text()) == spec, 'Reviewed package definition changed')
     _require(not output.exists() and not output.is_symlink(), 'Output already exists')
@@ -142,10 +160,13 @@ def repack(original, template, revision, output):
             prefix=manifest['prefix_policy']['prefix'], relocatable=manifest['prefix_policy']['kind'] == 'relocatable',
             provenance=manifest['provenance'], resolved_dependencies=manifest['resolved_dependencies'],
             resolved_sources=manifest.get('resolved_sources'))
-        if result['sha256'] != revision['corrected']['sha256'] or result['bytes'] != revision['corrected']['bytes']:
+        if not derived and (result['sha256'] != revision['corrected']['sha256'] or result['bytes'] != revision['corrected']['bytes']):
             output.unlink(missing_ok=True)
             raise ValueError('Static repack differs from the reviewed corrected artifact identity')
-        verify_package(output, expected_sha256=result['sha256'], expected_bytes=result['bytes'])
+        verified = verify_package(output, expected_sha256=result['sha256'], expected_bytes=result['bytes'])
+        if derived and verified['manifest'] != manifest:
+            output.unlink(missing_ok=True)
+            raise ValueError('Derived archive manifest differs from the complete reviewed manifest')
     return output
 
 

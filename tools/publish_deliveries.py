@@ -243,12 +243,23 @@ def prepared_members(archive, item, scratch):
         revision = release.load_json(revision_path)
         if any(revision["original_artifact"].get(key) != member[key] for key in ("sha256", "bytes")):
             raise ValueError("Metadata revision names a different original artifact")
-        from repack_static_revision import repack
+        from repack_static_revision import output_identity_mode, repack
         corrected = revision["corrected"]
-        result = scratch / (corrected["sha256"] + ".revision")
+        derived = output_identity_mode(revision) == "derive-from-reviewed-manifest"
+        token = corrected["manifest_sha256"] if derived else corrected["sha256"]
+        if not isinstance(token, str) or release.CHECKSUM.fullmatch(token) is None:
+            raise ValueError("Reviewed revision lacks a safe complete identity")
+        result = scratch / (token + ".revision")
         repack(path, release.ROOT / import_archives.safe_relative(corrected["template"]), revision, result)
-        revised = {**member, **{key: corrected[key] for key in ("sha256", "bytes")},
+        actual = ({"sha256": import_archives.sha256(result), "bytes": result.stat().st_size}
+                  if derived else {key: corrected[key] for key in ("sha256", "bytes")})
+        if not 0 < actual["bytes"] < 2 * 1024 ** 3:
+            result.unlink(missing_ok=True)
+            raise ValueError("Revised artifact is outside GitHub's individual-asset limit")
+        revised = {**member, **actual,
                    "original_artifact": revision["original_artifact"]}
+        if derived:
+            revised["reviewed_manifest_sha256"] = corrected["manifest_sha256"]
         try:
             yield result, revised
         finally:
