@@ -177,6 +177,7 @@ def static_review(record, manifest, template):
     """
     # Imported at call time so import_archives can use this module's common gate.
     from import_archives import safe_relative, source_locks_complete
+    from subtree_material import reviewed_subtree_material
 
     errors = common_qualification_errors(record, manifest)
     warnings = []
@@ -222,6 +223,12 @@ def static_review(record, manifest, template):
         warnings.append("Delivered binary has complete payload hashes and commit-pinned HTTPS sources, "
                         "but its historical definition omits source archive byte locks. Source rebuilding "
                         "is not newly established by this static review.")
+    elif (subtree_scope := reviewed_subtree_material(manifest, template)):
+        checks["source_locks"] = "complete_declared_git_subtree_and_original_root_license"
+        checks["declared_material_scope"] = subtree_scope
+        warnings.append("Only the originally declared Git subtree and original root license "
+                        "are covered by immutable per-file locks. The whole-monorepo archive "
+                        "hash and byte size remain unresolved; source rebuilding is not qualified.")
     elif _exact_git_tree_material(record, manifest):
         checks["source_locks"] = "reviewed_exact_git_tree_with_locked_delivered_inventory"
         warnings.append("Delivered material is bound to its reviewed source commit, exact Git tree, "
@@ -257,6 +264,18 @@ def static_review(record, manifest, template):
     for text in _strings([recipe, declarations]):
         for match in _REFERENCE.finditer(text):
             references.add(match.group(1) + (match.group(2) or ""))
+    # The CPG consumer copies verified payloads for binary/material methods.
+    # These two historical source-hook fields are never run for those methods.
+    # Missing tools referenced by active checks/runtime metadata remain errors.
+    source_hook_only = set()
+    if method in {"binary", "material"}:
+        active_recipe = {key: value for key, value in recipe.items()
+                         if key not in {"commands", "additional_install_commands"}}
+        active_references = set()
+        for text in _strings([active_recipe, declarations]):
+            for match in _REFERENCE.finditer(text):
+                active_references.add(match.group(1) + (match.group(2) or ""))
+        source_hook_only = references - active_references
     for relative in sorted(references):
         try:
             # Shell recipes may copy a directory's contents with "{recipe}/.".
@@ -269,6 +288,16 @@ def static_review(record, manifest, template):
                 raise ValueError("Template directory reference is not a directory: " + relative)
             if relative in external_inputs:
                 checks["referenced_template_paths"].append(relative)
+                continue
+            if (not path.exists() and path.resolve().is_relative_to(root)
+                    and relative in source_hook_only
+                    and (relative == "tools" or relative.startswith("tools/"))
+                    and not any(row["path"] == relative or row["path"].startswith(relative + "/")
+                                for row in manifest["files"])):
+                checks.setdefault("inactive_source_tool_references", []).append(relative)
+                warnings.append("Historical source-build tool is not included in this "
+                                + method + " payload artifact: " + relative
+                                + ". Its build hook is not executed by this artifact method.")
                 continue
             if not path.resolve().is_relative_to(root) or not path.exists():
                 raise ValueError("Missing or escaping template reference: " + relative)
