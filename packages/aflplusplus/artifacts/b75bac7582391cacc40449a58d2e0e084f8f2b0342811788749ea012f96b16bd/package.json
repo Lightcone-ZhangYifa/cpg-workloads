@@ -1,0 +1,207 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_core_dumb_fuzz.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "host-real-fuzz-800-executions",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "gcc"
+      ],
+      "requires_paths": [
+        "{prefix}/bin/afl-fuzz"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 60
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "aflplusplus",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 3463566,
+      "archive_scope": "Root repository only; recursive Git submodule payloads are excluded.",
+      "category": [
+        "Correctness",
+        "Generators and fuzzers"
+      ],
+      "container_strategy": "Build instrumentation and all explicitly selected native/binary fuzzing modes during preparation. Distinguish source/compiler fuzzing in dev from optional target-executed native harnesses.",
+      "dependencies": [
+        "apt.clang",
+        "apt.libcapstone-dev",
+        "apt.libglib2.0-dev",
+        "apt.libpixman-1-dev",
+        "apt.lld",
+        "apt.llvm-dev",
+        "apt.make",
+        "apt.ninja-build",
+        "apt.python3-dev"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "build_argv": [
+          "make",
+          "-j{jobs}",
+          "distrib"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{source}/afl-fuzz",
+          "-h"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "make",
+          "clang",
+          "llvm-dev",
+          "lld",
+          "libglib2.0-dev",
+          "libpixman-1-dev",
+          "python3-dev",
+          "ninja-build",
+          "libcapstone-dev"
+        ],
+        "working_directory": "{source}"
+      },
+      "documentation": [
+        "https://github.com/AFLplusplus/AFLplusplus"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/aflplusplus.measurement.json",
+        "workspace-evidence/resources-v050/open-research/aflplusplus.refs.json"
+      ],
+      "extract": true,
+      "id": "aflplusplus",
+      "immutable_ref": "dbaf11913c1b2702dee5b4d3dcfffd52f1defe50",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "AGPL-3.0-or-later AND Apache-2.0 AND GPL-3.0-or-later AND Apache-2.0 WITH LLVM-exception",
+      "mandatory": false,
+      "material_path": "sources/aflplusplus",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Fuzz compiler parsers, optimizers and native harnesses with coverage instrumentation, dictionaries and persistent-mode adapters.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The root archive excludes multiple Git submodules; make distrib may fetch FRIDA, QEMU, Unicorn and other dependencies.",
+        "Full-feature deployment requires per-mode source locks and smoke tests; a working afl-fuzz binary proves only that executable.",
+        "Version 5.03c has mixed AGPL/Apache/GPL licensing; retain per-file notices and distribution obligations."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "d5f4f72c830526654bebbc637f6164a93c22d7309ce8ba73979abadc42ce5974",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/AFLplusplus/AFLplusplus",
+        "https://codeload.github.com/AFLplusplus/AFLplusplus/tar.gz/dbaf11913c1b2702dee5b4d3dcfffd52f1defe50",
+        "https://github.com/AFLplusplus/AFLplusplus/commit/dbaf11913c1b2702dee5b4d3dcfffd52f1defe50"
+      ],
+      "source_logical_bytes": 12834877,
+      "source_url": "https://codeload.github.com/AFLplusplus/AFLplusplus/tar.gz/dbaf11913c1b2702dee5b4d3dcfffd52f1defe50",
+      "title": "AFL++ coverage-guided fuzzing",
+      "upstream": "https://github.com/AFLplusplus/AFLplusplus",
+      "version": "v5.03c"
+    },
+    "catalog_sha256": "62a030a66888ab27de6193807bf9dda27405bce16d690384e6b116a5b5659560"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "build_argv": [],
+    "install_argv": [
+      "python3",
+      "{recipe}/build_core_from_exact_source.py",
+      "--source",
+      "{source}",
+      "--prefix",
+      "{prefix}",
+      "--jobs",
+      "{jobs}"
+    ],
+    "qualified": false,
+    "smoke_argv": [
+      "{source}/afl-fuzz",
+      "-h"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "make",
+      "clang",
+      "llvm-dev",
+      "lld",
+      "libglib2.0-dev",
+      "libpixman-1-dev",
+      "python3-dev",
+      "ninja-build",
+      "libcapstone-dev"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3463566,
+      "extract": true,
+      "id": "aflplusplus",
+      "material_path": "sources/aflplusplus",
+      "sha256": "d5f4f72c830526654bebbc637f6164a93c22d7309ce8ba73979abadc42ce5974",
+      "strip_root": true,
+      "url": "https://codeload.github.com/AFLplusplus/AFLplusplus/tar.gz/dbaf11913c1b2702dee5b4d3dcfffd52f1defe50"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "debian",
+    "distribution_version": "13",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/AFLplusplus/AFLplusplus"
+    ],
+    "examples": [
+      {
+        "command": "'{source}/afl-fuzz' -h",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/aflplusplus",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Fuzz compiler parsers, optimizers and native harnesses with coverage instrumentation, dictionaries and persistent-mode adapters."
+  },
+  "version": "v5.03c"
+}
