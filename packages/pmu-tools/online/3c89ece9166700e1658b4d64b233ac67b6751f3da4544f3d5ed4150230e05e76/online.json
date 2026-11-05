@@ -1,0 +1,247 @@
+{
+  "additional_acquisition_locks": [],
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "executed_framework_version": "0.21.3",
+    "native_execution": false,
+    "scope": {
+      "availability_check_runs": 5,
+      "dataset_content_complete": false,
+      "direct_functional_coverage_increment": 0,
+      "expected_negative_checks": 1,
+      "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+      "material_installations": 2,
+      "material_representation": "complete_unpacked_main_archive",
+      "methods": [
+        "material"
+      ],
+      "native_programs_executed": 0,
+      "oci_deployment": "not_run",
+      "official_benchmark": "not_run",
+      "physical_target": "not_run",
+      "qualification": "complete_static_material_availability",
+      "source_closure": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+      "source_tree_deployment": true,
+      "system_package_transactions": "not_run",
+      "unfetched_submodule_declarations": 0,
+      "unresolved_upstream_links": []
+    },
+    "summary": "resource-integrations/v0210/r05/static-materials/material-jobs/pmu-tools/summary.json"
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 1275752,
+    "historical_path": "resource-integrations/v0210/r05/static-materials/material-jobs/pmu-tools/artifacts/pmu-tools-b2.material.cpgpkg.tar.gz",
+    "manifest_sha256": "7bdc0817f72f1513f248c16d8bc0858d3f85e44c1c38b1c721a1d7d88d237c3d",
+    "method": "material",
+    "sha256": "fec09069ef8bca56222ba4cddb642788186ed95faa54db9225fa9e2ba2014d00"
+  },
+  "original_catalog": {
+    "archive_bytes": 1262965,
+    "build_peak_bytes": null,
+    "category": [
+      "Profiling",
+      "Top-down analysis"
+    ],
+    "container_strategy": "Copy the complete Python script tree; preseed the Intel event cache from the pinned local perfmon tree. Persist PERFMONDIR=file://..., CACHEDIR and MAPFILE bindings in the launch environment.",
+    "dependencies": [
+      "apt.linux-tools-common",
+      "apt.linux-tools-generic",
+      "apt.python3",
+      "apt.python3-matplotlib",
+      "apt.python3-numpy",
+      "intel-perfmon"
+    ],
+    "deployment": {
+      "adapter": "copy",
+      "additional_install_commands": [
+        [
+          "/usr/bin/python3",
+          "{tools}/seed-pmu-cache.py",
+          "--pmu-tools",
+          "{prefix}",
+          "--perfmon",
+          "{dependencies.intel-perfmon.prefix}",
+          "--output",
+          "{prefix}/event-cache",
+          "--all",
+          "--expected-script-sha256",
+          "98784cf09f89037833847e9b3f685da3f8fba50508cc01acc2d715606de4e236"
+        ]
+      ],
+      "apt_dependencies": {
+        "dev": [
+          "python3",
+          "python3-numpy",
+          "python3-matplotlib"
+        ],
+        "target": [
+          "python3",
+          "linux-tools-common",
+          "linux-tools-generic"
+        ]
+      },
+      "build_argv": [],
+      "build_role": "dev",
+      "configure_argv": [],
+      "install_argv": [
+        "cp",
+        "-a",
+        "{source}/.",
+        "{prefix}/"
+      ],
+      "install_roles": [
+        "dev",
+        "target"
+      ],
+      "probe_requires_host": [
+        "Intel CPU model and stepping",
+        "perf_event_open",
+        "resolved local event cache"
+      ],
+      "runtime_environment": {
+        "CACHEDIR": "{prefix}/event-cache",
+        "MAPFILE": "{prefix}/event-cache/mapfile.csv",
+        "PERFMONDIR": "file://{dependencies.intel-perfmon.prefix}"
+      },
+      "smoke_argv": [
+        "python3",
+        "{prefix}/toplev.py",
+        "--help"
+      ],
+      "state": "recipe-described-not-executed",
+      "target_exports": [
+        {
+          "destination": "opt/research/selected/pmu-tools",
+          "kind": "tree",
+          "required": true,
+          "role": "profiler",
+          "source": "{prefix}"
+        }
+      ],
+      "target_smoke_commands": [
+        [
+          "env",
+          "PERFMONDIR=file://{dependencies.intel-perfmon.prefix}",
+          "CACHEDIR={prefix}/event-cache",
+          "MAPFILE={prefix}/event-cache/mapfile.csv",
+          "/usr/bin/python3",
+          "{prefix}/toplev.py",
+          "--help"
+        ]
+      ]
+    },
+    "documentation": "https://github.com/andikleen/pmu-tools/blob/2568760ffc9394ddaa7a71f0c39930e780cf2dca/README.md",
+    "extract": true,
+    "id": "pmu-tools",
+    "immutable_ref": "2568760ffc9394ddaa7a71f0c39930e780cf2dca",
+    "installed_bytes": null,
+    "kind": "url",
+    "legacy_source_id": "pmu-tools",
+    "license_class": "open",
+    "license_id": "GPL-2.0-only AND BSD-3-Clause",
+    "mandatory": false,
+    "material_path": "sources/pmu-tools",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Analyze Intel top-down bottlenecks, precise event selection, uncore data and sampling profiles.",
+    "qualification_gaps": [
+      "A physical target CPU, kernel, PMU and container launch profile must pass feature-specific collection probes; an installed executable is not full runtime qualification.",
+      "A copied script tree with an empty event cache is not ready.",
+      "Model-specific toplev formulas and perf PMU event aliases require a first-use collection probe."
+    ],
+    "redistributable": true,
+    "roles": [
+      "dev",
+      "target"
+    ],
+    "sha256": "0e84257f202f2e21ba678b917f2b98dbbe38a60644923935940ca452816e48f6",
+    "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+    "size_evidence": "workspace-evidence/resources-v050/platform-research/archive-measurements.json",
+    "source_evidence": [
+      "https://github.com/andikleen/pmu-tools",
+      "https://github.com/andikleen/pmu-tools/blob/2568760ffc9394ddaa7a71f0c39930e780cf2dca/README.md",
+      "https://codeload.github.com/andikleen/pmu-tools/tar.gz/2568760ffc9394ddaa7a71f0c39930e780cf2dca"
+    ],
+    "source_url": "https://codeload.github.com/andikleen/pmu-tools/tar.gz/2568760ffc9394ddaa7a71f0c39930e780cf2dca",
+    "title": "pmu-tools and toplev",
+    "upstream": "https://github.com/andikleen/pmu-tools",
+    "version": "commit-2568760ffc93"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 1262965,
+      "extract": true,
+      "id": "pmu-tools",
+      "material_path": "sources/pmu-tools",
+      "sha256": "0e84257f202f2e21ba678b917f2b98dbbe38a60644923935940ca452816e48f6",
+      "strip_root": true,
+      "url": "https://codeload.github.com/andikleen/pmu-tools/tar.gz/2568760ffc9394ddaa7a71f0c39930e780cf2dca"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 67136,
+      "path": "offline-manifest.json",
+      "sha256": "c12749fce7e0dc15641be19b31c722ed12ae9b396785dc28ac25b8c238c54abd"
+    },
+    {
+      "bytes": 2291,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 1374,
+      "path": "recipe/content-scope.json",
+      "sha256": "0e5be2618c7a743380cc7f0c378fc97a40d720a88571dde13479874f7ae82bab"
+    },
+    {
+      "bytes": 3037,
+      "path": "recipe/input-audit.json",
+      "sha256": "a1fe002e25735a83803f9a758ea392fb14e357e8322cc5cc59314dbc2abb5dfb"
+    },
+    {
+      "bytes": 50977,
+      "path": "recipe/material-manifest.json",
+      "sha256": "ed85f4c1aadd7bb117c3a6bed5c3564e42b18b5ae9c7ce209900845ea8021341"
+    },
+    {
+      "bytes": 17366,
+      "path": "run.py",
+      "sha256": "7c2fdcaaf763a09500ae36190e9d22649a5ccaf0f39ca500cc153b89e59abdee"
+    }
+  ],
+  "release": "0.21.4",
+  "resolved_acquisition_locks": [
+    {
+      "bytes": 1262965,
+      "extract": true,
+      "id": "pmu-tools",
+      "material_path": "sources/pmu-tools",
+      "sha256": "0e84257f202f2e21ba678b917f2b98dbbe38a60644923935940ca452816e48f6",
+      "strip_root": true,
+      "url": "https://codeload.github.com/andikleen/pmu-tools/tar.gz/2568760ffc9394ddaa7a71f0c39930e780cf2dca"
+    }
+  ],
+  "resource_id": "pmu-tools",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1,
+  "source_lock_extension_audit_sha256": "a1fe002e25735a83803f9a758ea392fb14e357e8322cc5cc59314dbc2abb5dfb",
+  "source_lock_policy": "Original null SHA/bytes remain in the canonical source record; only the explicit audited acquisition lock resolves them, all originally fixed fields unchanged",
+  "source_tree_deployment": true,
+  "unresolved_upstream_links": []
+}

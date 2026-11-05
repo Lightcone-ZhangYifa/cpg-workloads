@@ -1,0 +1,245 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "propeller-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "propeller",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 3429327,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Optimization search",
+        "Profile-guided optimization"
+      ],
+      "container_strategy": "Use target-collected profile and exact binary metadata, run profile generation and relinking in dev, then transfer the final optimized executable to target.",
+      "dependencies": [
+        "apt.clang",
+        "apt.cmake",
+        "apt.libdw-dev",
+        "apt.libelf-dev",
+        "apt.libprotobuf-dev",
+        "apt.ninja-build",
+        "apt.protobuf-compiler"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{build}/propeller/generate_propeller_profiles",
+          "--help"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "clang",
+          "libelf-dev",
+          "libdw-dev",
+          "libprotobuf-dev",
+          "protobuf-compiler"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/google/llvm-propeller"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/propeller.measurement.json",
+        "workspace-evidence/resources-v050/open-research/propeller.refs.json"
+      ],
+      "extract": true,
+      "id": "propeller",
+      "immutable_ref": "ddfb8b7cbdb87b0cbacff5ed993adb09a6999174",
+      "kind": "source_archive",
+      "legacy_source_id": "propeller",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "sources/propeller",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Generate compiler/linker profiles for basic-block and function layout optimization of large applications.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "CMake/Bazel dependency closure and compatible LLVM/LLD features must be frozen rather than running the README's unpinned LLVM installer.",
+        "Basic-block section, build-ID, profile and final linked binary provenance must be retained.",
+        "Post-link layout gains require a separate train profile and held-out runtime evaluation."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "b3b2db416f69acaa744218798eb8b5828854eed18da56fdd06766a2eb9b79dcb",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/google/llvm-propeller",
+        "https://codeload.github.com/google/llvm-propeller/tar.gz/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174",
+        "https://github.com/google/llvm-propeller/commit/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174"
+      ],
+      "source_logical_bytes": 78096128,
+      "source_url": "https://codeload.github.com/google/llvm-propeller/tar.gz/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174",
+      "title": "LLVM Propeller profile-guided layout",
+      "upstream": "https://github.com/google/llvm-propeller",
+      "version": "commit-ddfb8b7cbdb8"
+    },
+    "catalog_sha256": "62781e7fdb1a5b64a3a9d2cecdbd12f8a5ae3663535721f23f258887119b90f2"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 3429327,
+      "extract": true,
+      "id": "propeller",
+      "material_path": "sources/propeller",
+      "sha256": "b3b2db416f69acaa744218798eb8b5828854eed18da56fdd06766a2eb9b79dcb",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/llvm-propeller/tar.gz/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174"
+    },
+    "adapter": "corpus",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release"
+    ],
+    "content_scope_audit_sha256": "c071e48c6c6cde0c4dfa9c022d72278ba05ab4237dbaa317cd2fa2df215fc646",
+    "dataset_content_complete": false,
+    "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+    "material_profile_dependency_mapping": {
+      "build": "Original native/tool build dependencies preserved but not executed by material installation",
+      "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+      "system": "Only apt.python3 is used for all-file material verification"
+    },
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.clang",
+        "apt.cmake",
+        "apt.libdw-dev",
+        "apt.libelf-dev",
+        "apt.libprotobuf-dev",
+        "apt.ninja-build",
+        "apt.protobuf-compiler"
+      ]
+    },
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.bazelrc"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "smoke_argv": [
+      "{build}/propeller/generate_propeller_profiles",
+      "--help"
+    ],
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "clang",
+      "libelf-dev",
+      "libdw-dev",
+      "libprotobuf-dev",
+      "protobuf-compiler"
+    ],
+    "unfetched_submodule_declarations": 0,
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3429327,
+      "extract": true,
+      "id": "propeller",
+      "material_path": "sources/propeller",
+      "sha256": "b3b2db416f69acaa744218798eb8b5828854eed18da56fdd06766a2eb9b79dcb",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/llvm-propeller/tar.gz/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/google/llvm-propeller"
+    ],
+    "examples": [
+      {
+        "command": "'{build}/propeller/generate_propeller_profiles' --help",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+    ],
+    "summary": "Generate compiler/linker profiles for basic-block and function layout optimization of large applications."
+  },
+  "version": "commit-ddfb8b7cbdb8"
+}

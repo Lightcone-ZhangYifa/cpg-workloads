@@ -1,0 +1,219 @@
+{
+  "additional_acquisition_locks": [],
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "executed_framework_version": "0.21.3",
+    "native_execution": false,
+    "scope": {
+      "availability_check_runs": 5,
+      "dataset_content_complete": false,
+      "direct_functional_coverage_increment": 0,
+      "expected_negative_checks": 1,
+      "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+      "material_installations": 2,
+      "material_representation": "complete_unpacked_main_archive",
+      "methods": [
+        "material"
+      ],
+      "native_programs_executed": 0,
+      "oci_deployment": "not_run",
+      "official_benchmark": "not_run",
+      "physical_target": "not_run",
+      "qualification": "complete_static_material_availability",
+      "source_closure": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+      "source_tree_deployment": true,
+      "system_package_transactions": "not_run",
+      "unfetched_submodule_declarations": 0,
+      "unresolved_upstream_links": []
+    },
+    "summary": "resource-integrations/v0210/r05/static-materials/material-jobs/alive2/summary.json"
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 1360064,
+    "historical_path": "resource-integrations/v0210/r05/static-materials/material-jobs/alive2/artifacts/alive2-b2.material.cpgpkg.tar.gz",
+    "manifest_sha256": "462d717cda1c200515dd1f835ebd778d81c6cc250e9605de389b3dde3373be69",
+    "method": "material",
+    "sha256": "16e37eb1dfa536a8006cdfdc00c56ab35165dc4146a58d031e12b250c17ab8f3"
+  },
+  "original_catalog": {
+    "archive_bytes": 1180224,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Correctness",
+      "Translation validation"
+    ],
+    "container_strategy": "Use an isolated dev-only validator installation with the pinned verifier LLVM; store proof obligations and validator command lines beside each compiler checkpoint.",
+    "dependencies": [
+      "apt.cmake",
+      "apt.libhiredis-dev",
+      "apt.ninja-build",
+      "apt.re2c",
+      "llvm-verifier-source",
+      "z3"
+    ],
+    "deployment": {
+      "adapter": "reference",
+      "build_argv": [
+        "cmake",
+        "--build",
+        "{build}",
+        "--parallel",
+        "{jobs}"
+      ],
+      "configure_argv": [
+        "cmake",
+        "-S",
+        "{source}",
+        "-B",
+        "{build}",
+        "-G",
+        "Ninja",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_TV=ON",
+        "-DLLVM_DIR={dependency_prefix:llvm-verifier-source}/lib/cmake/llvm",
+        "-DZ3_INCLUDE_DIR={dependency_prefix:z3}/include",
+        "-DZ3_LIBRARIES={dependency_prefix:z3}/lib/libz3.so"
+      ],
+      "qualified": false,
+      "smoke_argv": [
+        "{build}/alive-tv",
+        "--help"
+      ],
+      "source_dependencies": [
+        "z3",
+        "llvm-verifier-source"
+      ],
+      "system_packages": [
+        "cmake",
+        "ninja-build",
+        "re2c",
+        "libhiredis-dev"
+      ],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://github.com/AliveToolkit/alive2"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/alive2.measurement.json",
+      "workspace-evidence/resources-v050/open-research/alive2.refs.json"
+    ],
+    "extract": true,
+    "id": "alive2",
+    "immutable_ref": "c9af7dbb503878554aefafddba5889ccab237503",
+    "kind": "source_archive",
+    "legacy_source_id": "alive2",
+    "license_class": "open",
+    "license_id": "MIT",
+    "mandatory": false,
+    "material_path": "sources/alive2",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Check refinement of LLVM IR transformations and retain proof, counterexample, timeout and unsupported outcomes separately.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "Latest Alive2 targets LLVM main; compatibility with the primary LLVM 23 compiler is not implied.",
+      "Loop bounds, unsupported semantics and solver timeouts prevent whole-compiler correctness claims.",
+      "The tuple needs known-valid and known-invalid smoke controls; --help is not a semantic qualification."
+    ],
+    "redistributable": true,
+    "roles": [
+      "dev",
+      "host"
+    ],
+    "sha256": "479045c04df1269a0aad5002e1842dbcdc89a9abab6cebd6c0670f3f0cfdf275",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://github.com/AliveToolkit/alive2",
+      "https://codeload.github.com/AliveToolkit/alive2/tar.gz/c9af7dbb503878554aefafddba5889ccab237503",
+      "https://github.com/AliveToolkit/alive2/commit/c9af7dbb503878554aefafddba5889ccab237503"
+    ],
+    "source_logical_bytes": 2789204,
+    "source_url": "https://codeload.github.com/AliveToolkit/alive2/tar.gz/c9af7dbb503878554aefafddba5889ccab237503",
+    "title": "Alive2 translation validator",
+    "upstream": "https://github.com/AliveToolkit/alive2",
+    "version": "commit-c9af7dbb5038"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 1180224,
+      "extract": true,
+      "id": "alive2",
+      "material_path": "sources/alive2",
+      "sha256": "479045c04df1269a0aad5002e1842dbcdc89a9abab6cebd6c0670f3f0cfdf275",
+      "strip_root": true,
+      "url": "https://codeload.github.com/AliveToolkit/alive2/tar.gz/c9af7dbb503878554aefafddba5889ccab237503"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 433299,
+      "path": "offline-manifest.json",
+      "sha256": "9a96335d52db95a303bae8113bc41fd7e01eb851724f7ff26f8587f30f079a7b"
+    },
+    {
+      "bytes": 2291,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 1332,
+      "path": "recipe/content-scope.json",
+      "sha256": "856212f23d705628f296f9ff14f996cffc1f6668c7fd94f07aa44579e1903c27"
+    },
+    {
+      "bytes": 2981,
+      "path": "recipe/input-audit.json",
+      "sha256": "94f64e293f788fc165256f04daeb8f2bf0f1943a048d745b10864acbb312d643"
+    },
+    {
+      "bytes": 405729,
+      "path": "recipe/material-manifest.json",
+      "sha256": "fd5747e890571b1b03c364697f1c58b4d48ad6507e4c88754b2bf925ab048f03"
+    },
+    {
+      "bytes": 17366,
+      "path": "run.py",
+      "sha256": "7c2fdcaaf763a09500ae36190e9d22649a5ccaf0f39ca500cc153b89e59abdee"
+    }
+  ],
+  "release": "0.21.4",
+  "resolved_acquisition_locks": [
+    {
+      "bytes": 1180224,
+      "extract": true,
+      "id": "alive2",
+      "material_path": "sources/alive2",
+      "sha256": "479045c04df1269a0aad5002e1842dbcdc89a9abab6cebd6c0670f3f0cfdf275",
+      "strip_root": true,
+      "url": "https://codeload.github.com/AliveToolkit/alive2/tar.gz/c9af7dbb503878554aefafddba5889ccab237503"
+    }
+  ],
+  "resource_id": "alive2",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1,
+  "source_lock_extension_audit_sha256": "94f64e293f788fc165256f04daeb8f2bf0f1943a048d745b10864acbb312d643",
+  "source_lock_policy": "Original null SHA/bytes remain in the canonical source record; only the explicit audited acquisition lock resolves them, all originally fixed fields unchanged",
+  "source_tree_deployment": true,
+  "unresolved_upstream_links": []
+}

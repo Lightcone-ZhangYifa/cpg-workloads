@@ -1,0 +1,202 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "egg-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "egg",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 123592,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Optimization search",
+        "Equality saturation"
+      ],
+      "container_strategy": "Freeze the Rust toolchain, cargo vendor closure and integration crate; keep compiler semantic checks independent of rewrite enumeration.",
+      "dependencies": [
+        "apt.cargo",
+        "apt.rustc"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "build_argv": [
+          "cargo",
+          "test",
+          "--locked",
+          "--offline"
+        ],
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [
+          "cargo",
+          "rustc"
+        ],
+        "working_directory": "{source}"
+      },
+      "documentation": [
+        "https://github.com/egraphs-good/egg"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/egg.measurement.json",
+        "workspace-evidence/resources-v050/open-research/egg.refs.json"
+      ],
+      "extract": true,
+      "id": "egg",
+      "immutable_ref": "fb6167957beb5dd7c784121459e08ebd1ccb1a00",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/egg",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Prototype rewrite exploration, e-graph analyses and cost-based extraction for compiler optimization research.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "A sound rewrite set and a target-calibrated cost model must be supplied; equality saturation does not establish C/LLVM semantics on its own.",
+        "Cargo registry closure and exact Rust toolchain are not included in the source archive."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "24887675df6286af7a584f7a6da3f13d474cda09d25efd8caddc8fd7d43aba3b",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/egraphs-good/egg",
+        "https://codeload.github.com/egraphs-good/egg/tar.gz/fb6167957beb5dd7c784121459e08ebd1ccb1a00",
+        "https://github.com/egraphs-good/egg/commit/fb6167957beb5dd7c784121459e08ebd1ccb1a00"
+      ],
+      "source_logical_bytes": 434170,
+      "source_url": "https://codeload.github.com/egraphs-good/egg/tar.gz/fb6167957beb5dd7c784121459e08ebd1ccb1a00",
+      "title": "egg equality-saturation library",
+      "upstream": "https://github.com/egraphs-good/egg",
+      "version": "v0.11.0"
+    },
+    "catalog_sha256": "a6f685640bc7cf129340cfed3db186e565b9ad119b775f319194b54e883f0080"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 123592,
+      "extract": true,
+      "id": "egg",
+      "material_path": "sources/egg",
+      "sha256": "24887675df6286af7a584f7a6da3f13d474cda09d25efd8caddc8fd7d43aba3b",
+      "strip_root": true,
+      "url": "https://codeload.github.com/egraphs-good/egg/tar.gz/fb6167957beb5dd7c784121459e08ebd1ccb1a00"
+    },
+    "adapter": "corpus",
+    "build_argv": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline"
+    ],
+    "content_scope_audit_sha256": "8a77a19905869ee33ec689e66ebeee5e600a3ceb05df170e05b25808089b2a11",
+    "dataset_content_complete": false,
+    "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+    "material_profile_dependency_mapping": {
+      "build": "Original native/tool build dependencies preserved but not executed by material installation",
+      "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+      "system": "Only apt.python3 is used for all-file material verification"
+    },
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.cargo",
+        "apt.rustc"
+      ]
+    },
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.github/workflows/build.yml"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+    "source_dependencies": [],
+    "system_packages": [
+      "cargo",
+      "rustc"
+    ],
+    "unfetched_submodule_declarations": 0,
+    "working_directory": "{source}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 123592,
+      "extract": true,
+      "id": "egg",
+      "material_path": "sources/egg",
+      "sha256": "24887675df6286af7a584f7a6da3f13d474cda09d25efd8caddc8fd7d43aba3b",
+      "strip_root": true,
+      "url": "https://codeload.github.com/egraphs-good/egg/tar.gz/fb6167957beb5dd7c784121459e08ebd1ccb1a00"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/egraphs-good/egg"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+    ],
+    "summary": "Prototype rewrite exploration, e-graph analyses and cost-based extraction for compiler optimization research."
+  },
+  "version": "v0.11.0"
+}

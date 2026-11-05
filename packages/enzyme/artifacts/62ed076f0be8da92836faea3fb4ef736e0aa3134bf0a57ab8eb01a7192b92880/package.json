@@ -1,0 +1,251 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "enzyme-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "enzyme",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 2304479,
+      "archive_scope": "Git export archive excludes LICENSE, Readme.md, tests, enzyme/benchmarks and LLVM fork directories according to .gitattributes.",
+      "category": [
+        "Compilers",
+        "Compiler extensions"
+      ],
+      "container_strategy": "Build the enzyme subdirectory against an explicitly supported LLVM/Clang tuple in dev, and validate generated derivative programs before target runtime measurement.",
+      "dependencies": [
+        "apt.clang",
+        "apt.cmake",
+        "apt.libclang-dev",
+        "apt.llvm-dev",
+        "apt.ninja-build",
+        "enzyme.supplement.license",
+        "enzyme.supplement.readme.md"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}/enzyme",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DLLVM_DIR={compatible_llvm_prefix}/lib/cmake/llvm"
+        ],
+        "qualified": false,
+        "requires_full_git_checkout": true,
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "clang",
+          "llvm-dev",
+          "libclang-dev"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://enzyme.mit.edu/Installation/",
+        "https://enzyme.mit.edu/getting_started/UsingEnzyme/"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/enzyme.measurement.json",
+        "workspace-evidence/resources-v050/open-research/enzyme.refs.json",
+        "workspace-evidence/resources-v050/open-research/enzyme.supplemental-artifacts.json"
+      ],
+      "extract": true,
+      "id": "enzyme",
+      "immutable_ref": "06da3b77d8ceaa9e260c7147a2e6bedf27b6d377",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception",
+      "mandatory": false,
+      "material_path": "sources/enzyme",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Advanced LLVM/MLIR pass integration and optimization of automatically differentiated scientific programs.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The fixed GitHub source archive follows export-ignore rules that omit LICENSE, Readme.md, tests and enzyme/benchmarks; a full pinned checkout or supplemental acquisition is required for complete materials.",
+        "LLVM/Clang/Flang/LLD plugin ABI compatibility must be tested for each requested frontend.",
+        "Differentiation semantics and derivative oracles are separate from unchanged-source compiler correctness."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "7bb0d5c812968248bf27b1e926fc0bd5978f217c060cbe2845b6177de9678593",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/EnzymeAD/Enzyme",
+        "https://codeload.github.com/EnzymeAD/Enzyme/tar.gz/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377",
+        "https://github.com/EnzymeAD/Enzyme/commit/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377"
+      ],
+      "source_logical_bytes": 15374955,
+      "source_url": "https://codeload.github.com/EnzymeAD/Enzyme/tar.gz/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377",
+      "supplemental_artifacts": [
+        {
+          "archive_bytes": 13205,
+          "name": "LICENSE",
+          "observed_at_unix": 1792601726.5338755,
+          "sha256": "f2db94d30c9657f2556732f3e80973d49fc4d093eede0a54ffda88152296f695",
+          "url": "https://raw.githubusercontent.com/EnzymeAD/Enzyme/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377/LICENSE"
+        },
+        {
+          "archive_bytes": 4068,
+          "name": "Readme.md",
+          "observed_at_unix": 1792601726.7048113,
+          "sha256": "ffe6a680cd5be92c521c20d752caca6dcb7d598646fcae35a91499703b8225b3",
+          "url": "https://raw.githubusercontent.com/EnzymeAD/Enzyme/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377/Readme.md"
+        }
+      ],
+      "title": "Enzyme LLVM and MLIR differentiation",
+      "upstream": "https://github.com/EnzymeAD/Enzyme",
+      "version": "v0.0.303"
+    },
+    "catalog_sha256": "b878f9507555afa2f936f1abb254a18e885024820816f09324b63c0781fb795c"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 2304479,
+      "extract": true,
+      "id": "enzyme",
+      "material_path": "sources/enzyme",
+      "sha256": "7bb0d5c812968248bf27b1e926fc0bd5978f217c060cbe2845b6177de9678593",
+      "strip_root": true,
+      "url": "https://codeload.github.com/EnzymeAD/Enzyme/tar.gz/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377"
+    },
+    "adapter": "corpus",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}/enzyme",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DLLVM_DIR={compatible_llvm_prefix}/lib/cmake/llvm"
+    ],
+    "content_scope_audit_sha256": "8faea08bceffed957a2a377467fb73c290a808fc5c9580182975775888722bad",
+    "dataset_content_complete": false,
+    "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+    "material_profile_dependency_mapping": {
+      "build": "Original native/tool build dependencies preserved but not executed by material installation",
+      "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+      "system": "Only apt.python3 is used for all-file material verification"
+    },
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [
+        "enzyme.supplement.license",
+        "enzyme.supplement.readme.md"
+      ],
+      "system": [
+        "apt.clang",
+        "apt.cmake",
+        "apt.libclang-dev",
+        "apt.llvm-dev",
+        "apt.ninja-build"
+      ]
+    },
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.devcontainer/devcontainer.json"
+    ],
+    "requires_full_git_checkout": true,
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "clang",
+      "llvm-dev",
+      "libclang-dev"
+    ],
+    "unfetched_submodule_declarations": 0,
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2304479,
+      "extract": true,
+      "id": "enzyme",
+      "material_path": "sources/enzyme",
+      "sha256": "7bb0d5c812968248bf27b1e926fc0bd5978f217c060cbe2845b6177de9678593",
+      "strip_root": true,
+      "url": "https://codeload.github.com/EnzymeAD/Enzyme/tar.gz/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://enzyme.mit.edu/Installation/",
+      "https://enzyme.mit.edu/getting_started/UsingEnzyme/"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+    ],
+    "summary": "Advanced LLVM/MLIR pass integration and optimization of automatically differentiated scientific programs."
+  },
+  "version": "v0.0.303"
+}

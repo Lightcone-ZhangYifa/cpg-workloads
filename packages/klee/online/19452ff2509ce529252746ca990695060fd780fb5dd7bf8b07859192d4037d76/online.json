@@ -1,0 +1,219 @@
+{
+  "additional_acquisition_locks": [],
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "executed_framework_version": "0.21.3",
+    "native_execution": false,
+    "scope": {
+      "availability_check_runs": 5,
+      "dataset_content_complete": false,
+      "direct_functional_coverage_increment": 0,
+      "expected_negative_checks": 1,
+      "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+      "material_installations": 2,
+      "material_representation": "complete_unpacked_main_archive",
+      "methods": [
+        "material"
+      ],
+      "native_programs_executed": 0,
+      "oci_deployment": "not_run",
+      "official_benchmark": "not_run",
+      "physical_target": "not_run",
+      "qualification": "complete_static_material_availability",
+      "source_closure": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+      "source_tree_deployment": true,
+      "system_package_transactions": "not_run",
+      "unfetched_submodule_declarations": 0,
+      "unresolved_upstream_links": []
+    },
+    "summary": "resource-integrations/v0210/r05/static-materials/material-jobs/klee/summary.json"
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 1139070,
+    "historical_path": "resource-integrations/v0210/r05/static-materials/material-jobs/klee/artifacts/klee-b2.material.cpgpkg.tar.gz",
+    "manifest_sha256": "99a71fa5d3c189a0020be5ed8fd8a09cb9381692de5aefdf1e9249754417fb95",
+    "method": "material",
+    "sha256": "2cbcbf80a443d8b1c335a7a0a3db936bf4d82afb0fb24c2b0137adf0f1ead935"
+  },
+  "original_catalog": {
+    "archive_bytes": 1066344,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Correctness",
+      "Program verification"
+    ],
+    "container_strategy": "Isolate the LLVM 18 toolchain, matching bitcode libraries, KLEE-uClibc and C++ support from LLVM 23. Run KLEE in dev and replay generated tests on the target binary.",
+    "dependencies": [
+      "apt.clang-18",
+      "apt.libsqlite3-dev",
+      "apt.libtcmalloc-minimal4t64",
+      "apt.llvm-18-dev",
+      "apt.llvm-18-tools",
+      "apt.zlib1g-dev",
+      "klee-uclibc",
+      "stp",
+      "z3"
+    ],
+    "deployment": {
+      "adapter": "reference",
+      "configure_argv": [
+        "cmake",
+        "-S",
+        "{source}",
+        "-B",
+        "{build}",
+        "-G",
+        "Ninja",
+        "-DLLVM_DIR=/usr/lib/llvm-18/lib/cmake/llvm",
+        "-DENABLE_SOLVER_Z3=ON",
+        "-DENABLE_SOLVER_STP=ON",
+        "-DENABLE_POSIX_RUNTIME=ON",
+        "-DKLEE_UCLIBC_PATH={dependency_source:klee-uclibc}"
+      ],
+      "qualified": false,
+      "smoke_argv": [
+        "{build}/bin/klee",
+        "--version"
+      ],
+      "source_dependencies": [
+        "stp",
+        "z3",
+        "klee-uclibc"
+      ],
+      "system_packages": [
+        "llvm-18-dev",
+        "clang-18",
+        "llvm-18-tools",
+        "libsqlite3-dev",
+        "zlib1g-dev",
+        "libtcmalloc-minimal4t64"
+      ],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://github.com/klee/klee/releases/tag/v3.3",
+      "https://klee-se.org/releases/docs/v3.3/"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/klee.measurement.json",
+      "workspace-evidence/resources-v050/open-research/klee.refs.json"
+    ],
+    "extract": true,
+    "id": "klee",
+    "immutable_ref": "74f49f1d243f0e1692a00ac688a7b805b37c5646",
+    "kind": "source_archive",
+    "legacy_source_id": "klee",
+    "license_class": "open",
+    "license_id": "NCSA",
+    "mandatory": false,
+    "material_path": "sources/klee",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Generate path-covering inputs and counterexamples for bounded C/C++ components using LLVM bitcode.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "KLEE 3.3 recommends LLVM 18 and supports LLVM 17-19; latest primary LLVM must not be silently substituted.",
+      "C++ exceptions/POSIX behavior require the corresponding klee-libc++ and runtime closure, not just the core executable.",
+      "Search incompleteness, external calls and path limits remain explicit outcomes."
+    ],
+    "redistributable": true,
+    "roles": [
+      "dev",
+      "host"
+    ],
+    "sha256": "28e8656db6132b3aac88514c8831611bed088f78c923d330d854f91fee43d2a8",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://github.com/klee/klee",
+      "https://codeload.github.com/klee/klee/tar.gz/74f49f1d243f0e1692a00ac688a7b805b37c5646",
+      "https://github.com/klee/klee/commit/74f49f1d243f0e1692a00ac688a7b805b37c5646"
+    ],
+    "source_logical_bytes": 18769369,
+    "source_url": "https://codeload.github.com/klee/klee/tar.gz/74f49f1d243f0e1692a00ac688a7b805b37c5646",
+    "title": "KLEE symbolic execution",
+    "upstream": "https://github.com/klee/klee",
+    "version": "v3.3"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 1066344,
+      "extract": true,
+      "id": "klee",
+      "material_path": "sources/klee",
+      "sha256": "28e8656db6132b3aac88514c8831611bed088f78c923d330d854f91fee43d2a8",
+      "strip_root": true,
+      "url": "https://codeload.github.com/klee/klee/tar.gz/74f49f1d243f0e1692a00ac688a7b805b37c5646"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 229940,
+      "path": "offline-manifest.json",
+      "sha256": "d17090b5088ef808ebe4be54a3faa7b294f89da7d79fc7207f0956a6acaeb9e9"
+    },
+    {
+      "bytes": 2291,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 1405,
+      "path": "recipe/content-scope.json",
+      "sha256": "002ef042121f9099aaa8c57e18bac48bbf9eca97aa80ccd3cc933537e3317f30"
+    },
+    {
+      "bytes": 2922,
+      "path": "recipe/input-audit.json",
+      "sha256": "9f20268eced5257b7da5ad3b3e6e24dfdf1dcc869412948316c081ea918fdfce"
+    },
+    {
+      "bytes": 209407,
+      "path": "recipe/material-manifest.json",
+      "sha256": "b611008692e97a65904b5c994e4e357ca6f1be6e57685d6c7316d139085943fc"
+    },
+    {
+      "bytes": 17366,
+      "path": "run.py",
+      "sha256": "7c2fdcaaf763a09500ae36190e9d22649a5ccaf0f39ca500cc153b89e59abdee"
+    }
+  ],
+  "release": "0.21.4",
+  "resolved_acquisition_locks": [
+    {
+      "bytes": 1066344,
+      "extract": true,
+      "id": "klee",
+      "material_path": "sources/klee",
+      "sha256": "28e8656db6132b3aac88514c8831611bed088f78c923d330d854f91fee43d2a8",
+      "strip_root": true,
+      "url": "https://codeload.github.com/klee/klee/tar.gz/74f49f1d243f0e1692a00ac688a7b805b37c5646"
+    }
+  ],
+  "resource_id": "klee",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1,
+  "source_lock_extension_audit_sha256": "9f20268eced5257b7da5ad3b3e6e24dfdf1dcc869412948316c081ea918fdfce",
+  "source_lock_policy": "Original null SHA/bytes remain in the canonical source record; only the explicit audited acquisition lock resolves them, all originally fixed fields unchanged",
+  "source_tree_deployment": true,
+  "unresolved_upstream_links": []
+}

@@ -1,0 +1,322 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 213,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README",
+      "sha256": "6879b1e40c61bc53f1bb0c7abcee051541c1632897ea60f8dcd1696570cae902"
+    },
+    {
+      "bytes": 11433,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/generate.py",
+      "sha256": "3754922a068e29884f4a6496220d474868786e63487b05de9dad068a41f7fa7d"
+    },
+    {
+      "bytes": 1201,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/pre.py",
+      "sha256": "e84c5944cddab3d5e0296c64ad6c7c54e3e2bd17fc49693c1b960edc5e3cde40"
+    },
+    {
+      "bytes": 1285,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/prepare.py",
+      "sha256": "e339610694314e6370dc269ce0970efac001baaffd1a322614580526111d8706"
+    },
+    {
+      "bytes": 1690,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/preprocess.py",
+      "sha256": "0c03c731ab7515930fbf161d87a944a92a96a7b0653737ca46f3770b0ea073b3"
+    },
+    {
+      "bytes": 148,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/process_model.py",
+      "sha256": "116e0e2b9341446c64824d19dabbfa15653ff0e28d2bcb22d50be7a728564cb6"
+    },
+    {
+      "bytes": 132,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/run.sh",
+      "sha256": "a7ce86c1f35ba6772a12c9f605deb0bceb639e9f89feee46e52b9c6d54bc9f70"
+    },
+    {
+      "bytes": 4273,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/train.py",
+      "sha256": "1d8db29558e0ef136e7911645df397b1a864634cb7f521c44725a7b94cdc7e44"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2291,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 1220,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/content-scope.json",
+      "sha256": "612723b8fdc8f979cd5eafd531bf73fe007cdc28e773589a841e731fc190530b"
+    },
+    {
+      "bytes": 3240,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/input-audit.json",
+      "sha256": "125d767c2bb7c1e9444fc2093371fcfe989397295862fff02b3cda9fe4616ab9"
+    },
+    {
+      "bytes": 2136,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "510cb4156b181765b04d514e10ce0b3eb3410dd0959b6bea796bf549c58fed46"
+    }
+  ],
+  "inventory_sha256": "f76951ac0b00a171367b3dcdc77196dc7515daa57b20d6dec178bb9d67caa273",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "9727ab236c0b370a2873641e454251da830c1bdb53a8a9205aa44f68adf63491",
+  "method": "material",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-manifest.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "dataset-ref.deepfuzz-complete-materials",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.python3"
+      ]
+    },
+    "id": "dataset-ref.deepfuzz",
+    "metadata": {
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": null,
+        "build_peak_bytes": null,
+        "category": [
+          "Dataset research",
+          "Generators and correctness"
+        ],
+        "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+        "dataset_card_id": "deepfuzz",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "requires_controller_only_storage": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "target_exports": [],
+          "visibility_policy": "developer_selected_complete_materials",
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/s3team/DeepFuzz"
+        ],
+        "evidence_files": [
+          "workspace-evidence/datasets-v090/generators/cards.json"
+        ],
+        "extract": true,
+        "id": "dataset-ref.deepfuzz",
+        "immutable_ref": "6079bef655b471b82c70e51024d3d4824092f396",
+        "installed_bytes": null,
+        "kind": "source_archive",
+        "license_class": "open",
+        "license_id": "NOASSERTION",
+        "mandatory": false,
+        "material_path": "dataset-research/deepfuzz",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Historical research comparison; freeze any legally reusable generated corpus separately.",
+        "qualification": {
+          "archive_measured": false,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+          "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+          "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+          "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+          "Historical neural generator stack and no standard top-level license found.",
+          "No local model deployment; do not auto-install historical training dependencies."
+        ],
+        "redistributable": "license-and-component-review-required",
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+        "source_evidence": [
+          "https://github.com/s3team/DeepFuzz"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/s3team/DeepFuzz/tar.gz/6079bef655b471b82c70e51024d3d4824092f396",
+        "title": "DeepFuzz research material",
+        "upstream": "https://github.com/s3team/DeepFuzz",
+        "version": "HEAD observed 2026-10-23"
+      },
+      "catalog_sha256": "bd29de03164e50714c310263131b0396c61dfe2458526ef02cbcf907126f03f3"
+    },
+    "provider": "material",
+    "recipe": {
+      "acquisition_lock": {
+        "bytes": 4762,
+        "extract": true,
+        "id": "dataset-ref.deepfuzz",
+        "material_path": "dataset-research/deepfuzz",
+        "sha256": "1b051cf91e31f15a5415a7e377a6f8047f920fa9a9939fa71baed181babb5f25",
+        "strip_root": true,
+        "url": "https://codeload.github.com/s3team/DeepFuzz/tar.gz/6079bef655b471b82c70e51024d3d4824092f396"
+      },
+      "adapter": "corpus",
+      "content_scope_audit_sha256": "612723b8fdc8f979cd5eafd531bf73fe007cdc28e773589a841e731fc190530b",
+      "dataset_content_complete": false,
+      "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+      "material_profile_dependency_mapping": {
+        "build": "Original native/tool build dependencies preserved but not executed by material installation",
+        "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+        "system": "Only apt.python3 is used for all-file material verification"
+      },
+      "material_profile_original_dependencies": {
+        "build": [],
+        "run": [],
+        "system": []
+      },
+      "qualification_scope": "complete_declared_repository_material_only",
+      "qualified": true,
+      "required_installed_paths": [
+        "{prefix}/README"
+      ],
+      "requires_controller_only_storage": false,
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+      "source_dependencies": [],
+      "system_packages": [],
+      "target_exports": [],
+      "unfetched_submodule_declarations": 0,
+      "visibility_policy": "developer_selected_complete_materials",
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": null,
+        "extract": true,
+        "id": "dataset-ref.deepfuzz",
+        "material_path": "dataset-research/deepfuzz",
+        "sha256": null,
+        "strip_root": true,
+        "url": "https://codeload.github.com/s3team/DeepFuzz/tar.gz/6079bef655b471b82c70e51024d3d4824092f396"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/s3team/DeepFuzz"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Complete declared main-archive materials",
+          "path": "{prefix}",
+          "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+        }
+      ],
+      "notes": [
+        "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+        "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+        "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+        "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+        "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+        "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+      ],
+      "summary": "Historical research comparison; freeze any legally reusable generated corpus separately."
+    },
+    "version": "HEAD observed 2026-10-23"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "corpus_programs_executed": 0,
+    "existing_fixed_source_fields_preserved": true,
+    "original_definition_sha256": "249ff9674f0c4cdd130161423e14adf8be88a903e82e25c5a54642778e3c70f2",
+    "project_version": "0.21.3",
+    "qualification_scope": "complete_static_material_availability",
+    "release_version": "0.21.4",
+    "round": "r05",
+    "source_archive": {
+      "bytes": 4762,
+      "extract": true,
+      "id": "dataset-ref.deepfuzz",
+      "material_path": "dataset-research/deepfuzz",
+      "sha256": "1b051cf91e31f15a5415a7e377a6f8047f920fa9a9939fa71baed181babb5f25",
+      "strip_root": true,
+      "url": "https://codeload.github.com/s3team/DeepFuzz/tar.gz/6079bef655b471b82c70e51024d3d4824092f396"
+    },
+    "source_lock_extension_audit": "125d767c2bb7c1e9444fc2093371fcfe989397295862fff02b3cda9fe4616ab9",
+    "upstream_files": {
+      "entries": 8,
+      "files": 8,
+      "logical_bytes": 20375,
+      "symlinks": 0
+    }
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

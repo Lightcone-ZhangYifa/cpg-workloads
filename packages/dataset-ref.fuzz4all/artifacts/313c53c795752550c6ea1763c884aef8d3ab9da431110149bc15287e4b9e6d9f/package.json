@@ -1,0 +1,189 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "dataset-ref.fuzz4all-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "dataset-ref.fuzz4all",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Dataset research",
+        "Generators and correctness"
+      ],
+      "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+      "dataset_card_id": "fuzz4all",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "requires_controller_only_storage": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "target_exports": [],
+        "visibility_policy": "developer_selected_complete_materials",
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/fuzz4all/fuzz4all"
+      ],
+      "evidence_files": [
+        "workspace-evidence/datasets-v090/generators/cards.json"
+      ],
+      "extract": true,
+      "id": "dataset-ref.fuzz4all",
+      "immutable_ref": "0bf42fe037c8761bdde61e1c37a0946e8103fba1",
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "CC-BY-4.0",
+      "mandatory": false,
+      "material_path": "dataset-research/fuzz4all",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Research reference for prompt-driven generation and a future explicitly adapted cloud-only ablation.",
+      "qualification": {
+        "archive_measured": false,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+        "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+        "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+        "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+        "The stock workflow uses a local model and therefore conflicts with this project deployment policy.",
+        "Cloud adaptation or supplied frozen corpora require explicit separate validation and model-cost accounting."
+      ],
+      "redistributable": "license-and-component-review-required",
+      "roles": [
+        "host"
+      ],
+      "sha256": null,
+      "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+      "source_evidence": [
+        "https://github.com/fuzz4all/fuzz4all",
+        "https://arxiv.org/abs/2308.04748"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/fuzz4all/fuzz4all/tar.gz/0bf42fe037c8761bdde61e1c37a0946e8103fba1",
+      "title": "Fuzz4All research material",
+      "upstream": "https://github.com/fuzz4all/fuzz4all",
+      "version": "HEAD observed 2026-10-23"
+    },
+    "catalog_sha256": "012f8ae7c90ac5e8345155ac86fd9d1afc2ffebf1cb5aa1f1f32d67d46494781"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 10541738,
+      "extract": true,
+      "id": "dataset-ref.fuzz4all",
+      "material_path": "dataset-research/fuzz4all",
+      "sha256": "4523f7dbe67f8b306192e8180745630a7d1ad19488f006eb91b2438efde8bb98",
+      "strip_root": true,
+      "url": "https://codeload.github.com/fuzz4all/fuzz4all/tar.gz/0bf42fe037c8761bdde61e1c37a0946e8103fba1"
+    },
+    "adapter": "corpus",
+    "content_scope_audit_sha256": "4e841339ef55ba5282b2d8987e351fff6865a858e0264052f72be6db924c3dbb",
+    "dataset_content_complete": false,
+    "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+    "material_profile_dependency_mapping": {
+      "build": "Original native/tool build dependencies preserved but not executed by material installation",
+      "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+      "system": "Only apt.python3 is used for all-file material verification"
+    },
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.gitignore"
+    ],
+    "requires_controller_only_storage": false,
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+    "source_dependencies": [],
+    "system_packages": [],
+    "target_exports": [],
+    "unfetched_submodule_declarations": 0,
+    "visibility_policy": "developer_selected_complete_materials",
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": true,
+      "id": "dataset-ref.fuzz4all",
+      "material_path": "dataset-research/fuzz4all",
+      "sha256": null,
+      "strip_root": true,
+      "url": "https://codeload.github.com/fuzz4all/fuzz4all/tar.gz/0bf42fe037c8761bdde61e1c37a0946e8103fba1"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/fuzz4all/fuzz4all"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+    ],
+    "summary": "Research reference for prompt-driven generation and a future explicitly adapted cloud-only ablation."
+  },
+  "version": "HEAD observed 2026-10-23"
+}

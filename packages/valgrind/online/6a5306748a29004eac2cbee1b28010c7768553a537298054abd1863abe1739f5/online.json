@@ -1,0 +1,177 @@
+{
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "execution_application_version": "0.21.3",
+    "note": "Source/binary functional qualification is separate from online material transport and reconstruction; supplemental immutable binary logs are recorded separately.",
+    "status": "passed",
+    "summary": {
+      "bytes": 107418,
+      "path": "resource-integrations/v0210/r05/valgrind/evidence/attempt4/summary.json",
+      "sha256": "9389d3738a384f4359b64751c9d64a4d9748b4e2cd2298d29973f773b8ed89bd"
+    }
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 24135463,
+    "historical_path": "resource-integrations/v0210/r05/valgrind/evidence/attempt4/artifacts/valgrind.material.cpgpkg.tar.gz",
+    "manifest_sha256": "dac50a6ec09c053e90417ebd69541419abe5fd83779cc3b4c3dcf074a6747f04",
+    "method": "material",
+    "sha256": "d2e0a67cd575effce2d9371387b315d17533d302022946353c6243a85d809a2f"
+  },
+  "original_catalog": {
+    "archive_bytes": 17372682,
+    "build_peak_bytes": null,
+    "category": [
+      "Correctness",
+      "Runtime diagnostics"
+    ],
+    "container_strategy": "Build stable source on dev and deploy tools plus exact debug-symbol closure to target. Retain distribution Valgrind as an independent fallback prefix if required.",
+    "dependencies": [
+      "apt.build-essential",
+      "apt.libc6-dbg",
+      "apt.libc6-dev"
+    ],
+    "deployment": {
+      "adapter": "make",
+      "apt_dependencies": {
+        "dev": [
+          "build-essential",
+          "libc6-dev"
+        ],
+        "target": [
+          "libc6-dbg"
+        ]
+      },
+      "build_argv": [
+        "make",
+        "-C",
+        "{build}",
+        "-j{jobs}"
+      ],
+      "build_role": "dev",
+      "configure_argv": [
+        "{source}/configure",
+        "--prefix={prefix}"
+      ],
+      "configure_cwd": "{build}",
+      "install_argv": [
+        "make",
+        "-C",
+        "{build}",
+        "install"
+      ],
+      "install_roles": [
+        "dev",
+        "target"
+      ],
+      "probe_requires_host": [],
+      "smoke_argv": [
+        "{prefix}/bin/valgrind",
+        "--tool=memcheck",
+        "--error-exitcode=97",
+        "/bin/true"
+      ],
+      "state": "recipe-described-not-executed",
+      "target_exports": [
+        {
+          "destination": "opt/research/selected/valgrind",
+          "kind": "tree",
+          "required": true,
+          "role": "profiler",
+          "source": "{prefix}"
+        }
+      ],
+      "target_smoke_commands": [
+        [
+          "{prefix}/bin/valgrind",
+          "--tool=memcheck",
+          "--error-exitcode=97",
+          "/bin/true"
+        ]
+      ],
+      "upstream_test_commands": [
+        [
+          "make",
+          "-C",
+          "{build}",
+          "regtest"
+        ]
+      ]
+    },
+    "documentation": "https://valgrind.org/docs/manual/index.html",
+    "extract": true,
+    "id": "valgrind",
+    "immutable_ref": "sha256:5d589152eb8071c02feab8ce6ab719e431a1fbc3e2b1700f5432632a8b9264dc",
+    "installed_bytes": null,
+    "kind": "url",
+    "license_class": "open",
+    "license_id": "GPL-2.0-or-later",
+    "mandatory": false,
+    "material_path": "sources/valgrind",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Run Memcheck, Helgrind, DRD, Massif, Cachegrind and Callgrind as independent diagnostics, never as native timing evidence.",
+    "qualification_gaps": [
+      "New x86 ISA support is finite; unsupported instructions must be classified, not misreported as compiler failures.",
+      "Instrumentation overhead means Valgrind timings are not native performance measurements."
+    ],
+    "redistributable": true,
+    "roles": [
+      "dev",
+      "target"
+    ],
+    "sha256": "5d589152eb8071c02feab8ce6ab719e431a1fbc3e2b1700f5432632a8b9264dc",
+    "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+    "size_evidence": "workspace-evidence/resources-v050/platform-research/archive-measurements.json",
+    "source_evidence": [
+      "https://valgrind.org/downloads/current.html",
+      "https://valgrind.org/docs/manual/index.html",
+      "https://sourceware.org/pub/valgrind/valgrind-3.27.1.tar.bz2"
+    ],
+    "source_url": "https://sourceware.org/pub/valgrind/valgrind-3.27.1.tar.bz2",
+    "title": "Valgrind instrumentation suite",
+    "upstream": "https://valgrind.org/downloads/current.html",
+    "version": "3.27.1"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 17372682,
+      "extract": true,
+      "id": "valgrind",
+      "material_path": "sources/valgrind",
+      "sha256": "5d589152eb8071c02feab8ce6ab719e431a1fbc3e2b1700f5432632a8b9264dc",
+      "strip_root": true,
+      "url": "https://sourceware.org/pub/valgrind/valgrind-3.27.1.tar.bz2"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 1513967,
+      "path": "offline-manifest.json",
+      "sha256": "f4e9c0b8655e639b5a68534521c7c19c6353f9225281c89d99719f238eefa1ac"
+    },
+    {
+      "bytes": 14564,
+      "path": "run.py",
+      "sha256": "add585b71fa4edd771461c2672b20d628aaceaba7a41d5a806e46f7879b6a639"
+    }
+  ],
+  "release": "0.21.4",
+  "resource_id": "valgrind",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1
+}

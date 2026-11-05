@@ -1,0 +1,261 @@
+{
+  "additional_acquisition_locks": [],
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "executed_framework_version": "0.21.3",
+    "native_execution": false,
+    "scope": {
+      "availability_check_runs": 5,
+      "dataset_content_complete": false,
+      "direct_functional_coverage_increment": 0,
+      "expected_negative_checks": 1,
+      "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+      "material_installations": 2,
+      "material_representation": "complete_unpacked_main_archive",
+      "methods": [
+        "material"
+      ],
+      "native_programs_executed": 0,
+      "oci_deployment": "not_run",
+      "official_benchmark": "not_run",
+      "physical_target": "not_run",
+      "qualification": "complete_static_material_availability",
+      "source_closure": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+      "source_tree_deployment": true,
+      "system_package_transactions": "not_run",
+      "unfetched_submodule_declarations": 0,
+      "unresolved_upstream_links": []
+    },
+    "summary": "resource-integrations/v0210/r05/static-materials/material-jobs/osaca/summary.json"
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 5323087,
+    "historical_path": "resource-integrations/v0210/r05/static-materials/material-jobs/osaca/artifacts/osaca-b2.material.cpgpkg.tar.gz",
+    "manifest_sha256": "47351549cc99470586f95f1250c9ba82fa24e2b1d5deda36657b24017e17999d",
+    "method": "material",
+    "sha256": "0a7bdb7c9fda9334218338b1af1e345236b102156027742d7424f8383e29217d"
+  },
+  "original_catalog": {
+    "alternative_stable_release": {
+      "archive_bytes": 5401075,
+      "commit": "6abea6249aa76869241627746efd0a8dcb9974b7",
+      "default_selected": false,
+      "sha256": "16050be7f1e7f3f5008945b48468734bbadd652b6f23f5a4d4cfaf8a20f04ccd",
+      "source_url": "https://codeload.github.com/RRZE-HPC/OSACA/tar.gz/6abea6249aa76869241627746efd0a8dcb9974b7",
+      "version": "0.7.1"
+    },
+    "archive_bytes": 5456099,
+    "build_peak_bytes": null,
+    "category": [
+      "Optimization research",
+      "Instruction models"
+    ],
+    "container_strategy": "Copy the pinned Python source/model tree and precompute its local model caches with the locked system Python dependencies. Run with an explicit PYTHONPATH and selected target architecture.",
+    "dependencies": [
+      "apt.graphviz",
+      "apt.libgraphviz-dev",
+      "apt.python3",
+      "apt.python3-networkx",
+      "apt.python3-pydot",
+      "apt.python3-pyparsing",
+      "apt.python3-ruamel.yaml",
+      "apt.python3-setuptools"
+    ],
+    "deployment": {
+      "adapter": "copy",
+      "additional_install_commands": [
+        [
+          "env",
+          "-C",
+          "{prefix}/osaca/data",
+          "PYTHONPATH={prefix}",
+          "/usr/bin/python3",
+          "_build_cache.py"
+        ]
+      ],
+      "additional_smoke_commands": [
+        [
+          "env",
+          "PYTHONPATH={prefix}",
+          "/usr/bin/python3",
+          "-c",
+          "from osaca.semantics.hw_model import MachineModel; MachineModel(arch=\"SPR\"); MachineModel(arch=\"ZEN5\"); MachineModel(arch=\"GNR\")"
+        ]
+      ],
+      "apt_dependencies": {
+        "dev": [
+          "python3",
+          "python3-networkx",
+          "python3-pyparsing",
+          "python3-ruamel.yaml",
+          "python3-pydot",
+          "python3-setuptools",
+          "graphviz",
+          "libgraphviz-dev"
+        ],
+        "target": []
+      },
+      "build_argv": [],
+      "build_qualified": false,
+      "build_role": "dev",
+      "configure_argv": [],
+      "install_argv": [
+        "cp",
+        "-a",
+        "{source}/.",
+        "{prefix}/"
+      ],
+      "install_roles": [
+        "dev"
+      ],
+      "model_scope": "Supported x86 model names are explicit; the default architecture must not be used implicitly.",
+      "probe_requires_host": [],
+      "smoke_argv": [
+        "env",
+        "PYTHONPATH={prefix}",
+        "/usr/bin/python3",
+        "-m",
+        "osaca",
+        "--version"
+      ],
+      "state": "recipe-described-not-executed"
+    },
+    "documentation": "https://github.com/RRZE-HPC/OSACA/blob/5d67ec8dae26c1f9d2725ab76d342e7c374e2da4/README.rst",
+    "extract": true,
+    "id": "osaca",
+    "immutable_ref": "5d67ec8dae26c1f9d2725ab76d342e7c374e2da4",
+    "installed_bytes": null,
+    "kind": "url",
+    "license_class": "open",
+    "license_id": "AGPL-3.0-only",
+    "mandatory": false,
+    "material_path": "sources/osaca",
+    "model_x86_names": [
+      "SNB",
+      "IVB",
+      "HSW",
+      "BDW",
+      "SKX",
+      "CSX",
+      "ICL",
+      "ICX",
+      "SPR",
+      "GNR",
+      "ZEN1",
+      "ZEN2",
+      "ZEN3",
+      "ZEN4",
+      "ZEN5"
+    ],
+    "optional_capabilities": [
+      {
+        "affects_core_analysis": false,
+        "name": "automatic-marker-insertion",
+        "resource_id": "kerncraft",
+        "status": "blocked-unresolved-Python-closure"
+      }
+    ],
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Analyze assembly-loop throughput, port pressure, critical paths and loop-carried dependencies using a fixed architecture-model snapshot.",
+    "qualification_gaps": [
+      "This is a fixed source snapshot, not a new released OSACA version. Its embedded version remains 0.7.1; commit identity distinguishes it.",
+      "The 0.7.1 release lacks Granite Rapids and Zen 5 model files; the selected 2026-10-13 snapshot includes them. Presence is not proof of calibrated accuracy on the actual host.",
+      "Predicted cycles, ideal port scheduling and cache-hit assumptions are diagnostic models, not native speed measurements. Do not enable --ignore-unknown for authoritative model coverage.",
+      "Automatic marker insertion requires the separately admitted Kerncraft optional capability; a missing dependency must not be silently advertised as available."
+    ],
+    "redistributable": true,
+    "roles": [
+      "dev"
+    ],
+    "sha256": "c346b5e4f2c58f10c4a0bf0aad103dfe3a1787c73db2a64de30292f461d59dc3",
+    "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+    "size_evidence": "workspace-evidence/resources-v050/platform-research/instruction-model-measurements.json",
+    "source_evidence": [
+      "https://github.com/RRZE-HPC/OSACA",
+      "https://github.com/RRZE-HPC/OSACA/blob/5d67ec8dae26c1f9d2725ab76d342e7c374e2da4/README.rst"
+    ],
+    "source_snapshot_date": "2026-10-13",
+    "source_url": "https://codeload.github.com/RRZE-HPC/OSACA/tar.gz/5d67ec8dae26c1f9d2725ab76d342e7c374e2da4",
+    "title": "OSACA instruction throughput and dependency analysis",
+    "upstream": "https://github.com/RRZE-HPC/OSACA",
+    "version": "0.7.1+git.5d67ec8dae26"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 5456099,
+      "extract": true,
+      "id": "osaca",
+      "material_path": "sources/osaca",
+      "sha256": "c346b5e4f2c58f10c4a0bf0aad103dfe3a1787c73db2a64de30292f461d59dc3",
+      "strip_root": true,
+      "url": "https://codeload.github.com/RRZE-HPC/OSACA/tar.gz/5d67ec8dae26c1f9d2725ab76d342e7c374e2da4"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 89295,
+      "path": "offline-manifest.json",
+      "sha256": "ddb9caa2bc81ecb093567b0a7f582753e0c52e680d6d259e4fb6e05941bad02e"
+    },
+    {
+      "bytes": 2291,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 1419,
+      "path": "recipe/content-scope.json",
+      "sha256": "ef407941723fbdd8832bca3550cfc76d03fb72c6385ff059289f5ae7dc88b581"
+    },
+    {
+      "bytes": 2961,
+      "path": "recipe/input-audit.json",
+      "sha256": "a5b2a80e7a9d23eab9287daf115c6990186d9be98537674f32c3abe4037e7a40"
+    },
+    {
+      "bytes": 71670,
+      "path": "recipe/material-manifest.json",
+      "sha256": "410b913a5777b0498b69346e004e2ab944b7326cfad99cf1c967ad7f84be7b49"
+    },
+    {
+      "bytes": 17366,
+      "path": "run.py",
+      "sha256": "7c2fdcaaf763a09500ae36190e9d22649a5ccaf0f39ca500cc153b89e59abdee"
+    }
+  ],
+  "release": "0.21.4",
+  "resolved_acquisition_locks": [
+    {
+      "bytes": 5456099,
+      "extract": true,
+      "id": "osaca",
+      "material_path": "sources/osaca",
+      "sha256": "c346b5e4f2c58f10c4a0bf0aad103dfe3a1787c73db2a64de30292f461d59dc3",
+      "strip_root": true,
+      "url": "https://codeload.github.com/RRZE-HPC/OSACA/tar.gz/5d67ec8dae26c1f9d2725ab76d342e7c374e2da4"
+    }
+  ],
+  "resource_id": "osaca",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1,
+  "source_lock_extension_audit_sha256": "a5b2a80e7a9d23eab9287daf115c6990186d9be98537674f32c3abe4037e7a40",
+  "source_lock_policy": "Original null SHA/bytes remain in the canonical source record; only the explicit audited acquisition lock resolves them, all originally fixed fields unchanged",
+  "source_tree_deployment": true,
+  "unresolved_upstream_links": []
+}

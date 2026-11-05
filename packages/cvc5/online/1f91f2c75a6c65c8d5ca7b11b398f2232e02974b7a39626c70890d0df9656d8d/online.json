@@ -1,0 +1,207 @@
+{
+  "additional_acquisition_locks": [],
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "executed_framework_version": "0.21.3",
+    "native_execution": false,
+    "scope": {
+      "availability_check_runs": 5,
+      "dataset_content_complete": false,
+      "direct_functional_coverage_increment": 0,
+      "expected_negative_checks": 1,
+      "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+      "material_installations": 2,
+      "material_representation": "complete_unpacked_main_archive",
+      "methods": [
+        "material"
+      ],
+      "native_programs_executed": 0,
+      "oci_deployment": "not_run",
+      "official_benchmark": "not_run",
+      "physical_target": "not_run",
+      "qualification": "complete_static_material_availability",
+      "source_closure": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+      "source_tree_deployment": true,
+      "system_package_transactions": "not_run",
+      "unfetched_submodule_declarations": 0,
+      "unresolved_upstream_links": []
+    },
+    "summary": "resource-integrations/v0210/r05/static-materials/material-jobs/cvc5/summary.json"
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 9457322,
+    "historical_path": "resource-integrations/v0210/r05/static-materials/material-jobs/cvc5/artifacts/cvc5-b2.material.cpgpkg.tar.gz",
+    "manifest_sha256": "c73030b31627bcc02ba37981e2163e314628abe5da32f58e60bcbc238e03b983",
+    "method": "material",
+    "sha256": "5900cb021a379f4279614af954adf7f1c87f51dd436d6c7ca22dc5786e97bb9c"
+  },
+  "original_catalog": {
+    "archive_bytes": 8993642,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Correctness",
+      "SMT solvers"
+    ],
+    "container_strategy": "Use a separate dev prefix with an explicit feature/license profile. Prefetch CaDiCaL, SymFPU and any optional algebra/proof dependencies before building; preserve cvc5 --show-config.",
+    "dependencies": [
+      "apt.cmake",
+      "apt.libcln-dev",
+      "apt.libedit-dev",
+      "apt.libgmp-dev",
+      "apt.ninja-build",
+      "apt.python3"
+    ],
+    "deployment": {
+      "adapter": "reference",
+      "build_argv": [
+        "cmake",
+        "--build",
+        "{build}",
+        "--parallel",
+        "{jobs}"
+      ],
+      "configure_argv": [
+        "{source}/configure.sh",
+        "production",
+        "--prefix={prefix}"
+      ],
+      "qualified": false,
+      "smoke_argv": [
+        "{prefix}/bin/cvc5",
+        "--show-config"
+      ],
+      "source_dependencies": [],
+      "system_packages": [
+        "cmake",
+        "ninja-build",
+        "libgmp-dev",
+        "libcln-dev",
+        "libedit-dev",
+        "python3"
+      ],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://github.com/cvc5/cvc5/blob/cvc5-1.4.2/INSTALL.rst"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/cvc5.measurement.json",
+      "workspace-evidence/resources-v050/open-research/cvc5.refs.json"
+    ],
+    "extract": true,
+    "id": "cvc5",
+    "immutable_ref": "282d5e0c84baf49c780704c532f87ba66d8b513d",
+    "kind": "source_archive",
+    "license_class": "open",
+    "license_id": "BSD-3-Clause",
+    "mandatory": false,
+    "material_path": "sources/cvc5",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Independent SMT oracle, SyGuS synthesis and solver cross-checking for optimization proofs.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "Upstream --auto-download would perform build-time network work; its dependency closure must be mirrored and locked during preparation.",
+      "Optional GPL dependency choices change the effective license profile and need manifest disclosure."
+    ],
+    "redistributable": true,
+    "roles": [
+      "dev",
+      "host"
+    ],
+    "sha256": "75fcb9288da2fa75db576d1cd464529cb3e89aad66b077ac65f3164a04195433",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://github.com/cvc5/cvc5",
+      "https://codeload.github.com/cvc5/cvc5/tar.gz/282d5e0c84baf49c780704c532f87ba66d8b513d",
+      "https://github.com/cvc5/cvc5/commit/282d5e0c84baf49c780704c532f87ba66d8b513d"
+    ],
+    "source_logical_bytes": 68311641,
+    "source_url": "https://codeload.github.com/cvc5/cvc5/tar.gz/282d5e0c84baf49c780704c532f87ba66d8b513d",
+    "title": "cvc5 SMT and synthesis solver",
+    "upstream": "https://github.com/cvc5/cvc5",
+    "version": "cvc5-1.4.2"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 8993642,
+      "extract": true,
+      "id": "cvc5",
+      "material_path": "sources/cvc5",
+      "sha256": "75fcb9288da2fa75db576d1cd464529cb3e89aad66b077ac65f3164a04195433",
+      "strip_root": true,
+      "url": "https://codeload.github.com/cvc5/cvc5/tar.gz/282d5e0c84baf49c780704c532f87ba66d8b513d"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 1737084,
+      "path": "offline-manifest.json",
+      "sha256": "455dd1364c65fe94e037f8908f093a28c6c8be19c56970a63de5be59b81ec6a9"
+    },
+    {
+      "bytes": 2291,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 1330,
+      "path": "recipe/content-scope.json",
+      "sha256": "197ac7bc9c1da7476214647321616fe0edeab814bb3993aca4c62efe54515a0e"
+    },
+    {
+      "bytes": 2930,
+      "path": "recipe/input-audit.json",
+      "sha256": "cdc0afbe8feeb255a5c034ab10086e98c7780b96ade4a57d9b8aa5b385e84635"
+    },
+    {
+      "bytes": 1664707,
+      "path": "recipe/material-manifest.json",
+      "sha256": "8785ad653460873af2820db888d967e00257c5a9f4635a5de78950b8592feae1"
+    },
+    {
+      "bytes": 17366,
+      "path": "run.py",
+      "sha256": "7c2fdcaaf763a09500ae36190e9d22649a5ccaf0f39ca500cc153b89e59abdee"
+    }
+  ],
+  "release": "0.21.4",
+  "resolved_acquisition_locks": [
+    {
+      "bytes": 8993642,
+      "extract": true,
+      "id": "cvc5",
+      "material_path": "sources/cvc5",
+      "sha256": "75fcb9288da2fa75db576d1cd464529cb3e89aad66b077ac65f3164a04195433",
+      "strip_root": true,
+      "url": "https://codeload.github.com/cvc5/cvc5/tar.gz/282d5e0c84baf49c780704c532f87ba66d8b513d"
+    }
+  ],
+  "resource_id": "cvc5",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1,
+  "source_lock_extension_audit_sha256": "cdc0afbe8feeb255a5c034ab10086e98c7780b96ade4a57d9b8aa5b385e84635",
+  "source_lock_policy": "Original null SHA/bytes remain in the canonical source record; only the explicit audited acquisition lock resolves them, all originally fixed fields unchanged",
+  "source_tree_deployment": true,
+  "unresolved_upstream_links": []
+}
