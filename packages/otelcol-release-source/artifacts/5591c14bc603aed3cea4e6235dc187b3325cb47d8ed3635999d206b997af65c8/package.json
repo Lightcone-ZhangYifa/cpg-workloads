@@ -1,0 +1,131 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_material.py",
+        "--prefix",
+        "{prefix}",
+        "--material-path",
+        "sources/otelcol-releases-0.163.1.tar.gz",
+        "--sha",
+        "1fe4777ebd82f19498e41471b06e646708f5ae80c4380e136a4b06cfc15dc884",
+        "--bytes",
+        "171270",
+        "--files",
+        "[]",
+        "--count",
+        "207"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "host-static-complete-cpg-material",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "requires_paths": [
+        "{prefix}/sources/otelcol-releases-0.163.1.tar.gz"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "otelcol-release-source",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 171270,
+      "bundled_path": null,
+      "category": [
+        "Agent and observability",
+        "Collector and policy"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "copy",
+        "handled_by": "controller-bootstrap",
+        "state": "downloaded-and-hashed"
+      },
+      "documentation": [],
+      "extract": false,
+      "id": "otelcol-release-source",
+      "immutable_ref": "sha256:1fe4777ebd82f19498e41471b06e646708f5ae80c4380e136a4b06cfc15dc884",
+      "installed_bytes": null,
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "sources/otelcol-releases-0.163.1.tar.gz",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Versioned observability or container policy initialization artifact.",
+      "qualification_gaps": [],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "1fe4777ebd82f19498e41471b06e646708f5ae80c4380e136a4b06cfc15dc884",
+      "size_basis": "Complete payload GET with measured bytes and SHA256",
+      "source_evidence": [
+        "https://github.com/open-telemetry/opentelemetry-collector-releases/archive/refs/tags/v0.163.1.tar.gz"
+      ],
+      "source_logical_bytes": 1823604,
+      "source_url": "https://github.com/open-telemetry/opentelemetry-collector-releases/archive/refs/tags/v0.163.1.tar.gz",
+      "title": "otelcol-release-source",
+      "upstream": "https://github.com/open-telemetry/opentelemetry-collector-releases/archive/refs/tags/v0.163.1.tar.gz",
+      "version": "0.163.1"
+    },
+    "catalog_sha256": "04385ed2f6d0f5027d9f5b9f19f66dd5923c277ee83e1bc4958936696a998cac"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "handled_by": "controller-bootstrap",
+    "state": "downloaded-and-hashed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 171270,
+      "extract": false,
+      "id": "otelcol-release-source",
+      "material_path": "sources/otelcol-releases-0.163.1.tar.gz",
+      "sha256": "1fe4777ebd82f19498e41471b06e646708f5ae80c4380e136a4b06cfc15dc884",
+      "strip_root": true,
+      "url": "https://github.com/open-telemetry/opentelemetry-collector-releases/archive/refs/tags/v0.163.1.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "debian",
+    "distribution_version": "13",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/otelcol-releases-0.163.1.tar.gz",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Versioned observability or container policy initialization artifact."
+  },
+  "version": "0.163.1"
+}
