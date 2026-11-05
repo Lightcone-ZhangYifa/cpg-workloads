@@ -259,7 +259,14 @@ def static_review(record, manifest, template):
             references.add(match.group(1) + (match.group(2) or ""))
     for relative in sorted(references):
         try:
-            path = template / safe_relative(relative)
+            # Shell recipes may copy a directory's contents with "{recipe}/.".
+            # Normalize only that terminal spelling for a metadata reference;
+            # archive member names still use the strict, unchanged validator.
+            directory_contents = relative.endswith("/.")
+            canonical = relative[:-2] if directory_contents else relative
+            path = template / safe_relative(canonical)
+            if directory_contents and not path.is_dir():
+                raise ValueError("Template directory reference is not a directory: " + relative)
             if relative in external_inputs:
                 checks["referenced_template_paths"].append(relative)
                 continue
