@@ -1,0 +1,288 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 1332,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSE.CPG",
+      "sha256": "4be75debbad4867ac22fb46af58d053c1e0492bc3053606291c6f69948147a4d"
+    },
+    {
+      "bytes": 1572,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.md",
+      "sha256": "912470410d1b591af55817b496074f440dbf61df776c9400be0a2589db6b801f"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/indexes"
+    },
+    {
+      "bytes": 49305,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/indexes/entries.jsonl",
+      "sha256": "23b5d7b8ac522bbea7b4d2bf4fd45e9216c08700e37b634107af350eca9931e5"
+    },
+    {
+      "bytes": 231,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/indexes/summary.json",
+      "sha256": "3002864cafc81af39ec132258f6ecb927da986f975212a9eedeb4e6f37aa7094"
+    },
+    {
+      "bytes": 1828,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/inventory.json",
+      "sha256": "b3c42f7e641219d5bad7440970d8b7b2ea80abc2935cac5cbdfad25e2e9accc9"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/materials"
+    },
+    {
+      "bytes": 15141,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/materials/LICENSE.TXT",
+      "sha256": "8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/materials/llvm"
+    },
+    {
+      "bytes": 15141,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/materials/llvm/LICENSE.TXT",
+      "sha256": "8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/materials/llvm/docs"
+    },
+    {
+      "bytes": 18968,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/materials/llvm/docs/TestSuiteGuide.md",
+      "sha256": "0c45316accbe149d30a4e7affeb15cd41bbe4e65f4b8bd1b7300b4da63db9e83"
+    },
+    {
+      "bytes": 13932,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/reference_reader.py",
+      "sha256": "a7d1bf142f17ca0313445980eb4253a957a06716939a6716db7ef085cd7f6c20"
+    },
+    {
+      "bytes": 629,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/resource.json",
+      "sha256": "621e690fc5583867bc2ee58e57d22262eae1e0ee91116e963346601135f2bbd4"
+    },
+    {
+      "bytes": 1996,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/source-lock.json",
+      "sha256": "4b9fb6d191c04474b708ca0b0a4884bde7b417293be35ba178e229afc70be8a5"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 5806,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "279264826fc79320d8e81b22f9ac9e86125047903994980e29eb8900277d96af"
+    },
+    {
+      "bytes": 757,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/qualification.json",
+      "sha256": "fad58d4a48548800f8e9d0b8f03da1b698e09b3a87f76f3ca3367d01b821849b"
+    }
+  ],
+  "inventory_sha256": "ce582f5a97360c736eb2dfe3c84f672e6eba26a9c557ab8ed27aa2e72d663a5c",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "98e2eae0c32a1a1a087659313b9de0aa356074aeb6573ac231709637e8e25073",
+  "method": "material",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--contract",
+          "{recipe}/qualification.json",
+          "--kind",
+          "availability"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "reference-availability",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      },
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--contract",
+          "{recipe}/qualification.json",
+          "--kind",
+          "functional"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "reference-functional",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "reference.doc.llvm-testsuite",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 18968,
+        "category": [
+          "Reference materials",
+          "LLVM test-suite documentation"
+        ],
+        "extract": false,
+        "id": "reference.doc.llvm-testsuite",
+        "kind": "reference_documentation",
+        "license_class": "open",
+        "license_id": "Apache-2.0 WITH LLVM-exception AND MIT",
+        "material_path": "materials/llvm/docs/TestSuiteGuide.md",
+        "redistributable": true,
+        "reference_asset_id": "reference.doc.llvm-testsuite",
+        "resource_counting_role": "reference_subasset_not_new_upstream_family",
+        "sha256": "0c45316accbe149d30a4e7affeb15cd41bbe4e65f4b8bd1b7300b4da63db9e83",
+        "source_url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/llvm/docs/TestSuiteGuide.md",
+        "strip_archive_root": false,
+        "title": "LLVM test-suite",
+        "upstream": "https://github.com/llvm/llvm-project",
+        "version": "20.1.8"
+      },
+      "catalog_sha256": "36a89c00d978ffa148285ca868f9dd193bdddbd53f5bfbebfae5fa3c006b8404",
+      "entity_kind": "reference_asset",
+      "historical_entity_qualification_changes": 0,
+      "new_upstream_family_count": 0,
+      "software": "LLVM test-suite documentation",
+      "source_lock_sha256": "4b9fb6d191c04474b708ca0b0a4884bde7b417293be35ba178e229afc70be8a5",
+      "upstream_commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261"
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "copy",
+      "qualification_scope": "Independent installed reference reader; no upstream compiler, benchmark, model or dataset admission.",
+      "required_installed_paths": [
+        "{prefix}/reference_reader.py",
+        "{prefix}/resource.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 18968,
+        "extract": false,
+        "id": "reference.doc.llvm-testsuite",
+        "material_path": "materials/llvm/docs/TestSuiteGuide.md",
+        "sha256": "0c45316accbe149d30a4e7affeb15cd41bbe4e65f4b8bd1b7300b4da63db9e83",
+        "strip_root": false,
+        "url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/llvm/docs/TestSuiteGuide.md"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://llvm.org/docs/TestSuiteGuide.html"
+      ],
+      "examples": [
+        {
+          "command": "python3 -B {prefix}/reference_reader.py list",
+          "description": "Show this resource identity."
+        },
+        {
+          "command": "python3 -B {prefix}/reference_reader.py search --asset reference.doc.llvm-testsuite -- TEST_SUITE_BENCHMARKING_ONLY",
+          "description": "Search the selected reference resource."
+        }
+      ],
+      "locations": [
+        {
+          "label": "LLVM test-suite",
+          "path": "{prefix}",
+          "purpose": "Read the selected immutable source closure and its local indexes."
+        }
+      ],
+      "notes": [
+        "This artifact contains one reference resource. It does not install the upstream software.",
+        "Declared checks can assess the local reader; this newly split identity has not been installed or functionally rerun.",
+        "The original reference entity and upstream software qualifications remain distinct."
+      ],
+      "summary": "LLVM test-suite — independently installable reference.doc.llvm-testsuite material at 20.1.8."
+    },
+    "version": "20.1.8"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "qualification_scope": "independent local reference reader",
+    "reader_sha256": "a7d1bf142f17ca0313445980eb4253a957a06716939a6716db7ef085cd7f6c20",
+    "resource_id": "reference.doc.llvm-testsuite",
+    "source_lock_sha256": "4b9fb6d191c04474b708ca0b0a4884bde7b417293be35ba178e229afc70be8a5",
+    "upstream_commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261",
+    "upstream_version": "20.1.8"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

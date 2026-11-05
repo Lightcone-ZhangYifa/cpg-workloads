@@ -1,0 +1,144 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--contract",
+        "{recipe}/qualification.json",
+        "--kind",
+        "availability"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "reference-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--contract",
+        "{recipe}/qualification.json",
+        "--kind",
+        "functional"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "reference-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "reference.doc.openmp-opt",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 477,
+      "category": [
+        "Reference materials",
+        "LLVM OpenMP"
+      ],
+      "extract": false,
+      "id": "reference.doc.openmp-opt",
+      "kind": "reference_documentation",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception AND MIT",
+      "material_path": "materials/openmp/docs/optimizations/Overview.rst",
+      "redistributable": true,
+      "reference_asset_id": "reference.doc.openmp-opt",
+      "resource_counting_role": "reference_subasset_not_new_upstream_family",
+      "sha256": "eafe834e03651b8043078bff2cfb0cbd00cc1547babf4485ff028bc6129fd157",
+      "source_url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/openmp/docs/optimizations/Overview.rst",
+      "strip_archive_root": false,
+      "title": "LLVM OpenMP-Aware Optimizations",
+      "upstream": "https://github.com/llvm/llvm-project",
+      "version": "20.1.8"
+    },
+    "catalog_sha256": "10e5314206960c48245babf8f060e318662a6556d67cc1f8c2a4d91958304f4d",
+    "entity_kind": "reference_asset",
+    "historical_entity_qualification_changes": 0,
+    "new_upstream_family_count": 0,
+    "software": "LLVM OpenMP",
+    "source_lock_sha256": "b4d7f1ab80f875d023e5d415431ce46044bd2081169df21cc92e0f9a53b595f8",
+    "upstream_commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "qualification_scope": "Independent installed reference reader; no upstream compiler, benchmark, model or dataset admission.",
+    "required_installed_paths": [
+      "{prefix}/reference_reader.py",
+      "{prefix}/resource.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 477,
+      "extract": false,
+      "id": "reference.doc.openmp-opt",
+      "material_path": "materials/openmp/docs/optimizations/Overview.rst",
+      "sha256": "eafe834e03651b8043078bff2cfb0cbd00cc1547babf4485ff028bc6129fd157",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/openmp/docs/optimizations/Overview.rst"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://openmp.llvm.org/optimizations/Overview.html"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/reference_reader.py list",
+        "description": "Show this resource identity."
+      },
+      {
+        "command": "python3 -B {prefix}/reference_reader.py search --asset reference.doc.openmp-opt -- globalization",
+        "description": "Search the selected reference resource."
+      }
+    ],
+    "locations": [
+      {
+        "label": "LLVM OpenMP-Aware Optimizations",
+        "path": "{prefix}",
+        "purpose": "Read the selected immutable source closure and its local indexes."
+      }
+    ],
+    "notes": [
+      "This artifact contains one reference resource. It does not install the upstream software.",
+      "Declared checks can assess the local reader; this newly split identity has not been installed or functionally rerun.",
+      "The original reference entity and upstream software qualifications remain distinct."
+    ],
+    "summary": "LLVM OpenMP-Aware Optimizations — independently installable reference.doc.openmp-opt material at 20.1.8."
+  },
+  "version": "20.1.8"
+}

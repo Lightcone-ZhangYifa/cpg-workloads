@@ -1,0 +1,310 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 1332,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSE.CPG",
+      "sha256": "4be75debbad4867ac22fb46af58d053c1e0492bc3053606291c6f69948147a4d"
+    },
+    {
+      "bytes": 1624,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.md",
+      "sha256": "ad4ae85356d9a28d2ad377badf282e619394117cf16f00a48c78f382c461d82a"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/indexes"
+    },
+    {
+      "bytes": 169174,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/indexes/entries.jsonl",
+      "sha256": "27bb265d71e9593fb8ae5f6dc1e68a7df25a33b6a05e8b9494ee2c5a1d627964"
+    },
+    {
+      "bytes": 248,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/indexes/summary.json",
+      "sha256": "4d34764d86a48f938294904f819d3051ecd52c18f290e94da08abc1682dbea3c"
+    },
+    {
+      "bytes": 2046,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/inventory.json",
+      "sha256": "6bb7d8c4e71b77c4e3fe5a88bcc2d6227d5373202eccd1f6ed0b15b233ff869b"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/materials"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/materials/llvm"
+    },
+    {
+      "bytes": 15141,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/materials/llvm/LICENSE.TXT",
+      "sha256": "8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/materials/llvm/docs"
+    },
+    {
+      "bytes": 30596,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/materials/llvm/docs/AliasAnalysis.rst",
+      "sha256": "155904f52cbcd608be03f93a320da0d58e026843d053a0677444fe8223cfd678"
+    },
+    {
+      "bytes": 21978,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/materials/llvm/docs/NewPassManager.rst",
+      "sha256": "0f9caff1a8ba4319ced37dc34de14af805a015f666447612bfdee155259977fd"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/materials/llvm/include"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/materials/llvm/include/llvm"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/materials/llvm/include/llvm/Analysis"
+    },
+    {
+      "bytes": 41719,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/materials/llvm/include/llvm/Analysis/AliasAnalysis.h",
+      "sha256": "76b13725e9182ae8dd6cf8a3861a0890c4c82affe5952a611b6429453b362dcf"
+    },
+    {
+      "bytes": 13932,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/reference_reader.py",
+      "sha256": "a7d1bf142f17ca0313445980eb4253a957a06716939a6716db7ef085cd7f6c20"
+    },
+    {
+      "bytes": 651,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/resource.json",
+      "sha256": "7111dce2e592b4b2cf92917d2ccb7206f31cf3ff887e0bedeb195d1071f6ac18"
+    },
+    {
+      "bytes": 2644,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/source-lock.json",
+      "sha256": "d026617ea4667f5c75104e3034db9161ac88f14ff0407d3f32176f7b9175f087"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 5806,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "279264826fc79320d8e81b22f9ac9e86125047903994980e29eb8900277d96af"
+    },
+    {
+      "bytes": 792,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/qualification.json",
+      "sha256": "79d962dde767269bd39c56f34e845fa6d378605187d696ce38aee111c10a473d"
+    }
+  ],
+  "inventory_sha256": "f2daf385570abdc01f758e87486031b0a675ef69f324db04870025bb39f22d67",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "b32e79e36d8626014dd5b9f618006854661343914c093db6fb0372095b6a03b5",
+  "method": "material",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--contract",
+          "{recipe}/qualification.json",
+          "--kind",
+          "availability"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "reference-availability",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      },
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--contract",
+          "{recipe}/qualification.json",
+          "--kind",
+          "functional"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "reference-functional",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "reference.doc.llvm-aa",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 30596,
+        "category": [
+          "Reference materials",
+          "LLVM"
+        ],
+        "extract": false,
+        "id": "reference.doc.llvm-aa",
+        "kind": "reference_documentation",
+        "license_class": "open",
+        "license_id": "Apache-2.0 WITH LLVM-exception AND MIT",
+        "material_path": "materials/llvm/docs/AliasAnalysis.rst",
+        "redistributable": true,
+        "reference_asset_id": "reference.doc.llvm-aa",
+        "resource_counting_role": "reference_subasset_not_new_upstream_family",
+        "sha256": "155904f52cbcd608be03f93a320da0d58e026843d053a0677444fe8223cfd678",
+        "source_url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/llvm/docs/AliasAnalysis.rst",
+        "strip_archive_root": false,
+        "title": "LLVM Alias Analysis",
+        "upstream": "https://github.com/llvm/llvm-project",
+        "version": "20.1.8"
+      },
+      "catalog_sha256": "53dee6d0ddb5b2812e7be13bdd4b9fbcbcc2359b0e5b7a41fc2eb8fd31ae9602",
+      "entity_kind": "reference_asset",
+      "historical_entity_qualification_changes": 0,
+      "new_upstream_family_count": 0,
+      "software": "LLVM",
+      "source_lock_sha256": "d026617ea4667f5c75104e3034db9161ac88f14ff0407d3f32176f7b9175f087",
+      "upstream_commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261"
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "copy",
+      "qualification_scope": "Independent installed reference reader; no upstream compiler, benchmark, model or dataset admission.",
+      "required_installed_paths": [
+        "{prefix}/reference_reader.py",
+        "{prefix}/resource.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 30596,
+        "extract": false,
+        "id": "reference.doc.llvm-aa",
+        "material_path": "materials/llvm/docs/AliasAnalysis.rst",
+        "sha256": "155904f52cbcd608be03f93a320da0d58e026843d053a0677444fe8223cfd678",
+        "strip_root": false,
+        "url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/llvm/docs/AliasAnalysis.rst"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://llvm.org/docs/AliasAnalysis.html"
+      ],
+      "examples": [
+        {
+          "command": "python3 -B {prefix}/reference_reader.py list",
+          "description": "Show this resource identity."
+        },
+        {
+          "command": "python3 -B {prefix}/reference_reader.py search --asset reference.doc.llvm-aa -- MayAlias",
+          "description": "Search the selected original reference resource."
+        }
+      ],
+      "locations": [
+        {
+          "label": "LLVM Alias Analysis",
+          "path": "{prefix}",
+          "purpose": "Read this immutable source closure and its local indexes."
+        }
+      ],
+      "notes": [
+        "This artifact contains one reference resource. It does not install the upstream software.",
+        "Declared checks can assess the local reader; this newly split identity has not been installed or functionally rerun.",
+        "The original reference entity and upstream software qualifications remain distinct."
+      ],
+      "summary": "LLVM Alias Analysis — independently installable reference.doc.llvm-aa material at 20.1.8."
+    },
+    "version": "20.1.8"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "qualification_scope": "independent local reference reader",
+    "reader_sha256": "a7d1bf142f17ca0313445980eb4253a957a06716939a6716db7ef085cd7f6c20",
+    "resource_id": "reference.doc.llvm-aa",
+    "source_lock_sha256": "d026617ea4667f5c75104e3034db9161ac88f14ff0407d3f32176f7b9175f087",
+    "upstream_commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261",
+    "upstream_version": "20.1.8"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

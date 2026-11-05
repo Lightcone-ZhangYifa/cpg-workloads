@@ -1,0 +1,281 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 1332,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSE.CPG",
+      "sha256": "4be75debbad4867ac22fb46af58d053c1e0492bc3053606291c6f69948147a4d"
+    },
+    {
+      "bytes": 1541,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.md",
+      "sha256": "65a2b765d8395ca51cbf7d4d391ebeb50328d30266e510d73980a15315f7f94d"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/indexes"
+    },
+    {
+      "bytes": 40055,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/indexes/entries.jsonl",
+      "sha256": "f6f1d43b2feb12fec3c1982859d7e98f80a1f277d44fa2b681ab96f5a322eb0a"
+    },
+    {
+      "bytes": 223,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/indexes/summary.json",
+      "sha256": "6dfddfba9f3451d411ebf6f7c362b55ebcc9d59b4879472754f36b85bc5622d4"
+    },
+    {
+      "bytes": 1640,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/inventory.json",
+      "sha256": "2e9b7b239a8a3b8fa2deb3aebd536b4aed48eb9b11ebedb6ef6dabd4295a1ad8"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/materials"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/materials/clang"
+    },
+    {
+      "bytes": 15140,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/materials/clang/LICENSE.TXT",
+      "sha256": "ebcd9bbf783a73d05c53ba4d586b8d5813dcdf3bbec50265860ccc885e606f47"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/materials/clang/docs"
+    },
+    {
+      "bytes": 9413,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/materials/clang/docs/ThinLTO.rst",
+      "sha256": "39c5148bcab79010ba77d51800d8a4eb8ba59d282a6f8a819fa0b0cdb8005a47"
+    },
+    {
+      "bytes": 13932,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/reference_reader.py",
+      "sha256": "a7d1bf142f17ca0313445980eb4253a957a06716939a6716db7ef085cd7f6c20"
+    },
+    {
+      "bytes": 564,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/resource.json",
+      "sha256": "b3e03cfc32a707041fe4d0900c98ac88cc04ef3aa4f517503ad0c407178c2f3a"
+    },
+    {
+      "bytes": 1385,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/source-lock.json",
+      "sha256": "c84f2a0902d064fb8ab10b3d5e24eea3da343222a67e6e6126306386ab6ce1ca"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 5806,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "279264826fc79320d8e81b22f9ac9e86125047903994980e29eb8900277d96af"
+    },
+    {
+      "bytes": 707,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/qualification.json",
+      "sha256": "b8aeada5fda2a49b5be42a593c308d41685f0811342f5e52862140509be069b4"
+    }
+  ],
+  "inventory_sha256": "784e490d1283fe0178da5a25f09ccd30083d6da4e5deb423e8d8bea899a5156f",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "13806b5f92de06ba4ddb2aec58462cdd2fd83d6f91f9b4ec2ddae3fda4f56d27",
+  "method": "material",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--contract",
+          "{recipe}/qualification.json",
+          "--kind",
+          "availability"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "reference-availability",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      },
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--contract",
+          "{recipe}/qualification.json",
+          "--kind",
+          "functional"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "reference-functional",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "reference.doc.thinlto",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 9413,
+        "category": [
+          "Reference materials",
+          "Clang"
+        ],
+        "extract": false,
+        "id": "reference.doc.thinlto",
+        "kind": "reference_documentation",
+        "license_class": "open",
+        "license_id": "Apache-2.0 WITH LLVM-exception AND MIT",
+        "material_path": "materials/clang/docs/ThinLTO.rst",
+        "redistributable": true,
+        "reference_asset_id": "reference.doc.thinlto",
+        "resource_counting_role": "reference_subasset_not_new_upstream_family",
+        "sha256": "39c5148bcab79010ba77d51800d8a4eb8ba59d282a6f8a819fa0b0cdb8005a47",
+        "source_url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/clang/docs/ThinLTO.rst",
+        "strip_archive_root": false,
+        "title": "Clang ThinLTO",
+        "upstream": "https://github.com/llvm/llvm-project",
+        "version": "20.1.8"
+      },
+      "catalog_sha256": "5cf15b9837c12334976bdce1e00e1785bf62aa30f44eae1ceeeec644621a0903",
+      "entity_kind": "reference_asset",
+      "historical_entity_qualification_changes": 0,
+      "new_upstream_family_count": 0,
+      "software": "Clang",
+      "source_lock_sha256": "c84f2a0902d064fb8ab10b3d5e24eea3da343222a67e6e6126306386ab6ce1ca",
+      "upstream_commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261"
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "copy",
+      "qualification_scope": "Independent installed reference reader; no upstream compiler, benchmark, model or dataset admission.",
+      "required_installed_paths": [
+        "{prefix}/reference_reader.py",
+        "{prefix}/resource.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 9413,
+        "extract": false,
+        "id": "reference.doc.thinlto",
+        "material_path": "materials/clang/docs/ThinLTO.rst",
+        "sha256": "39c5148bcab79010ba77d51800d8a4eb8ba59d282a6f8a819fa0b0cdb8005a47",
+        "strip_root": false,
+        "url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/clang/docs/ThinLTO.rst"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://clang.llvm.org/docs/ThinLTO.html"
+      ],
+      "examples": [
+        {
+          "command": "python3 -B {prefix}/reference_reader.py list",
+          "description": "Show this resource identity."
+        },
+        {
+          "command": "python3 -B {prefix}/reference_reader.py search --asset reference.doc.thinlto -- -flto=thin",
+          "description": "Search the selected original reference resource."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Clang ThinLTO",
+          "path": "{prefix}",
+          "purpose": "Read this immutable source closure and its local indexes."
+        }
+      ],
+      "notes": [
+        "This artifact contains one reference resource. It does not install the upstream software.",
+        "Declared checks can assess the local reader; this newly split identity has not been installed or functionally rerun.",
+        "The original reference entity and upstream software qualifications remain distinct."
+      ],
+      "summary": "Clang ThinLTO — independently installable reference.doc.thinlto material at 20.1.8."
+    },
+    "version": "20.1.8"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "qualification_scope": "independent local reference reader",
+    "reader_sha256": "a7d1bf142f17ca0313445980eb4253a957a06716939a6716db7ef085cd7f6c20",
+    "resource_id": "reference.doc.thinlto",
+    "source_lock_sha256": "c84f2a0902d064fb8ab10b3d5e24eea3da343222a67e6e6126306386ab6ce1ca",
+    "upstream_commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261",
+    "upstream_version": "20.1.8"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

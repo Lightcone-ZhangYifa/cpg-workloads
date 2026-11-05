@@ -8,8 +8,9 @@ import re
 import sys
 from urllib.parse import urlparse
 
-from import_archives import qualification_errors, safe_relative
-from release import ROOT, artifact_name, digest, load_manifest, published_rows, sha256, verify_evidence
+from import_archives import safe_relative
+from release import (ROOT, artifact_name, digest, load_json, load_manifest, publication_errors,
+                     published_rows, sha256, verify_evidence, verify_material)
 
 
 def validate(root=ROOT):
@@ -44,7 +45,7 @@ def validate(root=ROOT):
     records = {}
     for path in sorted((root / "catalog/artifacts").glob("*.json")):
         try:
-            row = json.loads(path.read_text())
+            row = load_json(path)
             if row["sha256"] != path.stem or not re.fullmatch(r"[0-9a-f]{64}", path.stem):
                 raise ValueError("Artifact record path differs from checksum")
             template = root / safe_relative(row["template"])
@@ -70,10 +71,12 @@ def validate(root=ROOT):
                                 or sha256(source) != member["sha256"]):
                             raise ValueError("Authored template member identity mismatch: " + member["path"])
                 if row["release_eligible"]:
-                    problems = qualification_errors(row, manifest)
+                    problems = publication_errors(row, manifest)
                     if problems:
                         raise ValueError("; ".join(problems))
                     verify_evidence(row, template)
+                    if row["method"] == "material":
+                        verify_material(row, manifest, template)
             records[row["sha256"]] = row
         except (OSError, ValueError, KeyError, TypeError) as error:
             errors.append(f"{path.relative_to(root)}: {error}")

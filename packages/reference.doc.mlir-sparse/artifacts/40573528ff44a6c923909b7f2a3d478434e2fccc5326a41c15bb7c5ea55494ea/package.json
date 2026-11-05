@@ -1,0 +1,144 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--contract",
+        "{recipe}/qualification.json",
+        "--kind",
+        "availability"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "reference-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--contract",
+        "{recipe}/qualification.json",
+        "--kind",
+        "functional"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "reference-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "reference.doc.mlir-sparse",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 75963,
+      "category": [
+        "Reference materials",
+        "MLIR"
+      ],
+      "extract": false,
+      "id": "reference.doc.mlir-sparse",
+      "kind": "reference_documentation",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception AND MIT",
+      "material_path": "materials/mlir/include/mlir/Dialect/SparseTensor/IR/SparseTensorOps.td",
+      "redistributable": true,
+      "reference_asset_id": "reference.doc.mlir-sparse",
+      "resource_counting_role": "reference_subasset_not_new_upstream_family",
+      "sha256": "4be00630afad25c40fc0f6835d18ae814cfae58cb65679866bb01a9576b45172",
+      "source_url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/mlir/include/mlir/Dialect/SparseTensor/IR/SparseTensorOps.td",
+      "strip_archive_root": false,
+      "title": "MLIR Sparse Tensor Dialect",
+      "upstream": "https://github.com/llvm/llvm-project",
+      "version": "20.1.8"
+    },
+    "catalog_sha256": "8fad1c0b45e83fa8e150b6b9518448f52438b7925c44e740cee406efb7054e33",
+    "entity_kind": "reference_asset",
+    "historical_entity_qualification_changes": 0,
+    "new_upstream_family_count": 0,
+    "software": "MLIR",
+    "source_lock_sha256": "9e9a77a2a38ead2cba9d6095e543bd6a889810cd93de892914e28c6e8e186b0f",
+    "upstream_commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "qualification_scope": "Independent installed reference reader; no upstream compiler, benchmark, model or dataset admission.",
+    "required_installed_paths": [
+      "{prefix}/reference_reader.py",
+      "{prefix}/resource.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 75963,
+      "extract": false,
+      "id": "reference.doc.mlir-sparse",
+      "material_path": "materials/mlir/include/mlir/Dialect/SparseTensor/IR/SparseTensorOps.td",
+      "sha256": "4be00630afad25c40fc0f6835d18ae814cfae58cb65679866bb01a9576b45172",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/mlir/include/mlir/Dialect/SparseTensor/IR/SparseTensorOps.td"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://mlir.llvm.org/docs/Dialects/SparseTensorOps/"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/reference_reader.py list",
+        "description": "Show this resource identity."
+      },
+      {
+        "command": "python3 -B {prefix}/reference_reader.py search --asset reference.doc.mlir-sparse -- sparse_tensor.convert",
+        "description": "Search the selected reference resource."
+      }
+    ],
+    "locations": [
+      {
+        "label": "MLIR Sparse Tensor Dialect",
+        "path": "{prefix}",
+        "purpose": "Read the selected immutable source closure and its local indexes."
+      }
+    ],
+    "notes": [
+      "This artifact contains one reference resource. It does not install the upstream software.",
+      "Declared checks can assess the local reader; this newly split identity has not been installed or functionally rerun.",
+      "The original reference entity and upstream software qualifications remain distinct."
+    ],
+    "summary": "MLIR Sparse Tensor Dialect — independently installable reference.doc.mlir-sparse material at 20.1.8."
+  },
+  "version": "20.1.8"
+}

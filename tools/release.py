@@ -15,14 +15,16 @@ import os
 from pathlib import Path, PurePosixPath
 import re
 import shutil
+import stat
 import subprocess
 import tarfile
 import tempfile
-from urllib.parse import urlparse, quote
+from urllib.parse import urlencode, urlparse
 from urllib.request import urlopen
+import zlib
 
 from import_archives import (artifact_name, qualification_errors, qualification_logs,
-                             safe_relative, sha256, write_json)
+                             safe_relative, sha256, source_locks_complete, write_json)
 
 REPOSITORY = "Lightcone-ZhangYifa/cpg-workloads"
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,11 +51,25 @@ def validate_tag(tag):
     return tag
 
 
+def load_json(path):
+    path = Path(path)
+    if not path.is_file() or any(item.is_symlink() for item in (path, *path.parents)):
+        raise ValueError("JSON inputs must be ordinary files: " + str(path))
+    def unique(pairs):
+        value = {}
+        for key, item in pairs:
+            if key in value:
+                raise ValueError("Duplicate JSON key: " + key)
+            value[key] = item
+        return value
+    return json.loads(path.read_text(), object_pairs_hook=unique)
+
+
 def load_manifest(template):
     if (template.is_symlink() or (template / "manifest.json").is_symlink()
             or any(parent.is_symlink() for parent in template.parents)):
         raise ValueError("Template manifests must be ordinary source files")
-    manifest = json.loads((template / "manifest.json").read_text())
+    manifest = load_json(template / "manifest.json")
     claimed = manifest.pop("manifest_sha256")
     if digest(manifest) != claimed:
         raise ValueError("Template manifest fingerprint mismatch")
@@ -65,22 +81,163 @@ def load_manifest(template):
     return manifest
 
 
+def publication_errors(record, manifest):
+    """Keep execution evidence honest; permit an explicit trusted static review."""
+    if record.get("qualification_mode") != "trusted_delivery_static_review":
+        return qualification_errors(record, manifest)
+    spec, errors = manifest["package"], []
+    for field in ("id", "version", "build", "target"):
+        if record.get(field) != spec[field]:
+            errors.append("Artifact identity differs from its template: " + field)
+    if record.get("method") != manifest["method"] or record.get("manifest_sha256") != manifest["manifest_sha256"]:
+        errors.append("Artifact manifest identity differs")
+    if (not isinstance(record.get("sha256"), str) or CHECKSUM.fullmatch(record["sha256"]) is None
+            or type(record.get("bytes")) is not int or record["bytes"] <= 0):
+        errors.append("Artifact byte identity is incomplete")
+    if record.get("structure") != "passed" or record.get("metadata_missing") != []:
+        errors.append("Static review requires complete metadata and package structure")
+    if record.get("source_locks_complete") is not True or not source_locks_complete(manifest):
+        errors.append("Effective source locks are incomplete or changed fixed fields")
+    catalog = spec["metadata"].get("catalog", {})
+    if (catalog.get("license_class") != "open" or not catalog.get("license_id")
+            or catalog.get("redistributable") is False):
+        errors.append("Public redistribution is not established by the original license metadata")
+    review = record.get("static_review", {})
+    if (not isinstance(review, dict) or review.get("status") != "passed"
+            or review.get("basis") != "trusted_delivery"
+            or review.get("artifact_sha256") != record.get("sha256")
+            or review.get("manifest_sha256") != manifest["manifest_sha256"]
+            or not isinstance(review.get("checks"), dict)
+            or any(review["checks"].get(key) != "passed" for key in ("identity", "source_locks", "license"))):
+        errors.append("Trusted delivery lacks an identity-bound static review")
+    if record.get("build_check") != "not_run" or record.get("functional") != "not_run":
+        errors.append("Static trust must not claim unexecuted build or functional checks")
+    return errors
+
+
+def documentation_binaries(record, manifest):
+    """Accept only independently reviewed PNG entries bound to the frozen package."""
+    review = record.get("documentation_payload_review")
+    if review is None:
+        if record.get("text_payload_review", {}).get("status") != "passed":
+            raise ValueError("Material publication requires a reviewed documentation payload")
+        return {}
+    files = {row["path"]: row for row in manifest["files"] if row["kind"] == "file"}
+    if (not isinstance(review, dict) or review.get("status") != "passed"
+            or review.get("source_type") != "pinned_upstream_documentation"
+            or type(review.get("file_count")) is not int
+            or review["file_count"] != sum(name.startswith("payload/") for name in files)
+            or not isinstance(review.get("binary_files"), list)):
+        raise ValueError("Invalid reviewed documentation payload")
+    approved = {}
+    for item in review["binary_files"]:
+        if not isinstance(item, dict):
+            raise ValueError("Invalid reviewed PNG entry")
+        name = safe_relative(item.get("path")).as_posix()
+        source = safe_relative(item.get("source_path")).as_posix()
+        row = files.get(name)
+        if (name in approved or not name.startswith("payload/") or not name.endswith(".png")
+                or not source.endswith(".png") or item.get("media_type") != "image/png"
+                or row is None or type(row.get("mode")) is not int or row["mode"] & 0o111
+                or type(item.get("bytes")) is not int or item["bytes"] <= 0
+                or item["bytes"] != row.get("bytes") or item.get("sha256") != row.get("sha256")
+                or not isinstance(item.get("sha256"), str) or CHECKSUM.fullmatch(item["sha256"]) is None
+                or any(not isinstance(item.get(key), str) or COMMIT.fullmatch(item[key]) is None
+                       for key in ("source_commit", "git_blob"))):
+            raise ValueError("Reviewed PNG differs from its immutable manifest or source identity")
+        approved[name] = item
+    return approved
+
+
+def verify_png(data):
+    """Check PNG signature, chunk boundaries/CRCs and complete image framing."""
+    if not data.startswith(b"\x89PNG\r\n\x1a\n"):
+        raise ValueError("Reviewed binary is not a PNG")
+    offset, seen_header, image_bytes = 8, False, 0
+    while offset + 12 <= len(data):
+        length = int.from_bytes(data[offset:offset + 4], "big")
+        kind, end = data[offset + 4:offset + 8], offset + 12 + length
+        if end > len(data) or not re.fullmatch(rb"[A-Za-z]{4}", kind):
+            raise ValueError("Invalid PNG chunk boundary")
+        payload = data[offset + 8:end - 4]
+        if zlib.crc32(kind + payload) & 0xffffffff != int.from_bytes(data[end - 4:end], "big"):
+            raise ValueError("PNG chunk checksum differs")
+        if not seen_header and kind != b"IHDR":
+            raise ValueError("PNG must start with IHDR")
+        if kind == b"IHDR":
+            if (seen_header or length != 13 or not int.from_bytes(payload[:4], "big")
+                    or not int.from_bytes(payload[4:8], "big") or payload[10:12] != b"\0\0"
+                    or payload[12] not in (0, 1)):
+                raise ValueError("Invalid PNG image header")
+            seen_header = True
+        elif kind == b"IDAT":
+            image_bytes += length
+        elif kind == b"IEND":
+            if length or not image_bytes or end != len(data):
+                raise ValueError("Invalid PNG ending or trailing data")
+            return
+        offset = end
+    raise ValueError("PNG has no complete IEND")
+
+
+def material_member(template, row, binaries):
+    relative = safe_relative(row["path"])
+    path = template / relative
+    if (relative.parts[0] not in {"recipe", "tools", "payload"}
+            or type(row.get("mode")) is not int or not 0 <= row["mode"] <= 0o777
+            or any(item.is_symlink() for item in (path, *path.parents))):
+        raise ValueError("Invalid ordinary material member: " + row["path"])
+    if row["kind"] == "directory":
+        if not path.is_dir():
+            raise ValueError("Missing material directory: " + row["path"])
+        return None
+    if row["kind"] != "file" or not path.is_file() or not stat.S_ISREG(path.stat().st_mode):
+        raise ValueError("Material members must be ordinary files or directories")
+    data = path.read_bytes()
+    if len(data) != row["bytes"] or hashlib.sha256(data).hexdigest() != row["sha256"]:
+        raise ValueError("Material member differs from its frozen inventory: " + row["path"])
+    if row["path"] in binaries:
+        if path.stat().st_mode & 0o111:
+            raise ValueError("Reviewed PNG master has executable permissions")
+        verify_png(data)
+        blob = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+        if blob != binaries[row["path"]]["git_blob"]:
+            raise ValueError("Reviewed PNG differs from its source Git blob")
+    else:
+        data.decode("utf-8")
+        if b"\0" in data:
+            raise ValueError("Unlisted binary content in material member: " + row["path"])
+    return data
+
+
+def verify_material(record, manifest, template):
+    binaries = documentation_binaries(record, manifest)
+    names = [row["path"] for row in manifest["files"]]
+    if len(names) != len(set(names)) or "manifest.json" in names:
+        raise ValueError("Duplicate or reserved material member")
+    for row in manifest["files"]:
+        material_member(template, row, binaries)
+    return binaries
+
+
 def checked_record(checksum):
     if not isinstance(checksum, str) or CHECKSUM.fullmatch(checksum) is None:
         raise ValueError("Invalid artifact checksum")
     path = ROOT / "catalog/artifacts" / (checksum + ".json")
     if path.is_symlink():
         raise ValueError("Artifact records must be ordinary source files")
-    record = json.loads(path.read_text())
+    record = load_json(path)
     manifest = load_manifest(ROOT / safe_relative(record["template"]))
     if record.get("sha256") != checksum:
         raise ValueError("Artifact catalog identity mismatch")
     if record.get("release_eligible") is not True:
         raise ValueError("Unqualified artifact cannot enter a Release")
-    problems = qualification_errors(record, manifest)
+    problems = publication_errors(record, manifest)
     if problems:
         raise ValueError("; ".join(problems))
     verify_evidence(record, ROOT / safe_relative(record["template"]))
+    if manifest["method"] == "material":
+        verify_material(record, manifest, ROOT / safe_relative(record["template"]))
     if record.get("asset_name") != artifact_name(manifest["package"], manifest["method"], checksum):
         raise ValueError("Noncanonical artifact filename")
     return record
@@ -148,7 +305,7 @@ def published_rows(receipts=None):
         paths = sorted((ROOT / "catalog/releases").glob("*.json"))
         if any(path.is_symlink() for path in paths):
             raise ValueError("Publication receipts must be ordinary source files")
-        receipts = ((path.stem, json.loads(path.read_text())) for path in paths)
+        receipts = ((path.stem, load_json(path)) for path in paths)
     for tag, value in receipts:
         check_publication_receipt(value, tag)
         info = value["release"]
@@ -157,7 +314,7 @@ def published_rows(receipts=None):
             key = identity(row)
             previous = rows.get(key)
             if previous is not None:
-                # Equal bytes can appear in an older batch; retain the first URL.
+                # Equal bytes can appear in an older release; retain the first URL.
                 if {k: v for k, v in previous.items() if k != "download_url"} != {
                         k: v for k, v in row.items() if k != "download_url"}:
                     raise ValueError("Conflicting published bytes or metadata under one package identity")
@@ -212,12 +369,13 @@ def rebuild(record, output, cache, *, network=False):
     template = ROOT / safe_relative(record["template"])
     manifest = load_manifest(template)
     spec, method = manifest["package"], manifest["method"]
-    if method not in {"wrapper", "source"}:
+    if method not in {"wrapper", "source", "material"}:
         raise ValueError("This template needs its separately reviewed payload reproducer")
-    problems = qualification_errors(record, manifest)
+    problems = publication_errors(record, manifest)
     if record.get("release_eligible") is not True or problems:
         raise ValueError("Unqualified artifact: " + "; ".join(problems))
     verify_evidence(record, template)
+    binaries = verify_material(record, manifest, template) if method == "material" else {}
     sources = {}
     if method == "source":
         locks = manifest.get("resolved_sources", spec["sources"])
@@ -246,7 +404,8 @@ def rebuild(record, output, cache, *, network=False):
                 archive.addfile(info, io.BytesIO(payload))
                 for row in rows:
                     relative = safe_relative(row["path"])
-                    if relative.parts[0] not in {"recipe", "tools", "sources"}:
+                    allowed_roots = {"recipe", "tools", "payload"} if method == "material" else {"recipe", "tools", "sources"}
+                    if relative.parts[0] not in allowed_roots:
                         raise ValueError("Source/wrapper templates must not carry an installed payload")
                     info = tarfile.TarInfo(row["path"])
                     info.mode, info.mtime = row["mode"], 0
@@ -254,12 +413,19 @@ def rebuild(record, output, cache, *, network=False):
                         info.type = tarfile.DIRTYPE
                         archive.addfile(info)
                     elif row["kind"] == "symlink":
+                        if method == "material":
+                            raise ValueError("Material members must not be symlinks")
                         link = PurePosixPath(row["target"])
                         if link.is_absolute() or ".." in link.parts:
                             raise ValueError("Recipe links need a separately reviewed reproducer")
                         info.type, info.linkname = tarfile.SYMTYPE, row["target"]
                         archive.addfile(info)
                     elif row["kind"] == "file":
+                        if method == "material":
+                            data = material_member(template, row, binaries)
+                            info.size = len(data)
+                            archive.addfile(info, io.BytesIO(data))
+                            continue
                         source = sources.get(row["path"], template / relative)
                         if source.is_symlink() or source.stat().st_size != row["bytes"] or sha256(source) != row["sha256"]:
                             raise ValueError("Template member differs from its original inventory: " + row["path"])
@@ -291,20 +457,23 @@ def repository_row(record, tag):
         build_only = set(spec["dependencies"]["build"]) - set(
             spec["dependencies"]["run"] + spec["dependencies"]["system"])
         dependencies = [row for row in dependencies if row["id"] not in build_only]
+    qualification = {key: record[key] for key in ("structure", "build_check", "functional")}
+    if record.get("qualification_mode") == "trusted_delivery_static_review":
+        qualification.update(qualification_mode=record["qualification_mode"], static_review=record["static_review"])
     return {**{key: spec[key] for key in ("id", "version", "build", "target")},
             "method": manifest["method"], "sha256": record["sha256"], "bytes": record["bytes"],
             "manifest_sha256": manifest["manifest_sha256"], "dependencies": dependencies,
             "path": "packages/sha256/" + record["sha256"] + ".cpgpkg.tar.gz",
             "download_url": f"https://github.com/{REPOSITORY}/releases/download/{tag}/{record['asset_name']}",
-            "qualification": {key: record[key] for key in ("structure", "build_check", "functional")},
+            "qualification": qualification,
             "template": record["template"]}
 
 
-def plan_batches(prefix, batch_size):
+def plan_software(prefix, batch_size):
     if not re.fullmatch(r"[a-z0-9][a-z0-9._-]*", prefix) or not 1 <= batch_size <= 950:
         raise ValueError("Invalid release prefix or batch size")
     published, _ = published_rows()
-    planned, existing = set(), []
+    planned = set()
     selected = {key: row["sha256"] for key, row in published.items()}
     for path in sorted((ROOT / "release-plans").glob("*.json")):
         value = load_plan(path.stem)
@@ -315,13 +484,9 @@ def plan_batches(prefix, batch_size):
             if key in selected and selected[key] != checksum:
                 raise ValueError("Different planned bytes share an immutable package identity; increment build")
             selected[key] = checksum
-        if path.stem.startswith(prefix + "-"):
-            suffix = path.stem[len(prefix) + 1:]
-            if suffix.isdigit():
-                existing.append(int(suffix))
     records = [json.loads(path.read_text()) for path in sorted((ROOT / "catalog/artifacts").glob("*.json"))]
     records = sorted((checked_record(row["sha256"]) for row in records
-                      if row.get("release_eligible") and row["method"] in {"wrapper", "source"}
+                      if row.get("release_eligible") and row["method"] in {"wrapper", "source", "material"}
                       and row["sha256"] not in planned
                       and not (identity(row) in published and published[identity(row)]["sha256"] == row["sha256"])),
                      key=lambda row: (row["id"], row["version"], row["build"], row["method"], row["sha256"]))
@@ -330,16 +495,21 @@ def plan_batches(prefix, batch_size):
         if key in selected and selected[key] != record["sha256"]:
             raise ValueError("Different artifact bytes share an immutable package identity; increment build")
         selected[key] = record["sha256"]
-    first_number = max(existing, default=0) + 1
-    for offset in range(0, len(records), batch_size):
-        tag = f"{prefix}-{first_number + offset // batch_size:03d}"
+    groups = {}
+    for row in records:
+        groups.setdefault((row["id"], row["version"], row["build"]), []).append(row)
+    for software, artifacts in groups.items():
+        if len(artifacts) > batch_size:
+            raise ValueError("Software release exceeds the selected asset limit")
+        tag = validate_tag(prefix + "-" + "-".join(re.sub(r"[^a-z0-9._-]+", "-", str(item).lower())
+                                                 for item in software))
         plan = {"schema_version": 1, "kind": "cpg_workload_release_plan", "tag": tag,
-                "repository": REPOSITORY, "artifacts": [row["sha256"] for row in records[offset:offset + batch_size]]}
+                "repository": REPOSITORY, "artifacts": [row["sha256"] for row in artifacts]}
         path = ROOT / "release-plans" / (tag + ".json")
         if path.exists() and json.loads(path.read_text()) != plan:
             raise FileExistsError("An existing release plan is immutable")
         write_json(path, plan)
-    print(json.dumps({"eligible": len(records), "plans": (len(records) + batch_size - 1) // batch_size}))
+    print(json.dumps({"eligible": len(records), "plans": len(groups)}))
 
 
 def load_plan(tag):
@@ -347,7 +517,7 @@ def load_plan(tag):
     path = ROOT / "release-plans" / (tag + ".json")
     if path.is_symlink():
         raise ValueError("Publication plans must be ordinary source files")
-    plan = json.loads(path.read_text())
+    plan = load_json(path)
     artifacts = plan.get("artifacts")
     if (plan.get("schema_version") != 1 or plan.get("kind") != "cpg_workload_release_plan"
             or plan.get("tag") != tag or plan.get("repository") != REPOSITORY
@@ -381,7 +551,8 @@ def build_plan(tag, output, *, network, source_commit=None):
         rows.append(repository_row(record, tag))
     manifest = {"schema_version": 1, "kind": "compiler_playground_package_repository", "packages": rows,
                 "release": {"tag": tag, "repository": REPOSITORY,
-                            "source_commit": source_commit or os.environ.get("GITHUB_SHA"), "scope": "historical workload deliveries"}}
+                            "source_commit": source_commit or os.environ.get("GITHUB_SHA"),
+                            "scope": "historical workload deliveries"}}
     write_json(output / "manifest.json", manifest)
     assets.append(output / "manifest.json")
     (output / "SHA256SUMS").write_text("".join(f"{sha256(path)}  {path.name}\n" for path in sorted(assets)))
@@ -389,8 +560,9 @@ def build_plan(tag, output, *, network, source_commit=None):
     return plan, manifest, assets
 
 
-def gh(*arguments, json_output=False, check=True):
-    result = subprocess.run(["gh", *arguments], text=True, capture_output=True, check=False)
+def gh(*arguments, json_output=False, check=True, input_data=None):
+    result = subprocess.run(["gh", *arguments], text=True, capture_output=True, check=False,
+                            input=None if input_data is None else json.dumps(input_data, allow_nan=False))
     if check and result.returncode:
         raise RuntimeError("GitHub operation failed: " + result.stderr.strip())
     if not check and result.returncode:
@@ -398,6 +570,34 @@ def gh(*arguments, json_output=False, check=True):
             return None
         raise RuntimeError("GitHub lookup failed: " + result.stderr.strip())
     return json.loads(result.stdout) if json_output else result.stdout
+
+
+def release_for(tag):
+    # Drafts need not resolve through releases/tags. Find one unique object,
+    # then use only its numeric ID for all mutations and subsequent reads.
+    pages = gh("api", "--paginate", "--slurp", f"repos/{REPOSITORY}/releases?per_page=100", json_output=True)
+    matches = [row for page in pages for row in page if row.get("tag_name") == tag]
+    if len(matches) > 1:
+        raise ValueError("Multiple releases use the requested tag")
+    return matches[0] if matches else None
+
+
+def upload_endpoint(release):
+    identifier = release.get("id")
+    if type(identifier) is not int or identifier <= 0:
+        raise ValueError("Release API did not return a numeric ID")
+    expected = f"https://uploads.github.com/repos/{REPOSITORY}/releases/{identifier}/assets"
+    if release.get("upload_url") not in (expected, expected + "{?name,label}"):
+        raise ValueError("Release upload URL differs from the canonical repository and ID")
+    return expected
+
+
+def verify_release(release, tag, commit, *, release_id=None):
+    if (release.get("tag_name") != tag or release.get("target_commitish") != commit
+            or type(release.get("draft")) is not bool
+            or release_id is not None and release.get("id") != release_id):
+        raise ValueError("Release API identity or source commit differs")
+    upload_endpoint(release)
 
 
 def release_assets(release_id):
@@ -436,7 +636,26 @@ def verify_release_commit(tag, commit, *, missing=False):
 
 
 def verify_publication_source(commit, main, tag):
-    """Allow queued batches when main advanced only outside this frozen build."""
+    """Allow queued software releases when main has not changed their inputs."""
+    plan_path = "release-plans/" + tag + ".json"
+    plan = load_plan(tag)
+    # The plan, catalog and templates pin artifact bytes. A publisher or CI fix
+    # may resume the same immutable data from a newer committed checkout.
+    paths = [plan_path]
+    records = []
+    for checksum in plan["artifacts"]:
+        record = checked_record(checksum)
+        records.append(record)
+        paths.extend(("catalog/artifacts/" + checksum + ".json", record["template"]))
+    head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, check=True,
+                          capture_output=True, text=True).stdout.strip()
+    dirty = subprocess.run(["git", "status", "--porcelain", "--untracked-files=all", "--",
+                            "tools", ".github", "tests/test_release_pipeline.py", *paths],
+                           cwd=ROOT, check=True, capture_output=True, text=True).stdout
+    if head != os.environ.get("GITHUB_SHA", commit) or dirty:
+        raise ValueError("Publication requires the exact committed source and unchanged publication inputs")
+    if subprocess.run(["git", "diff", "--quiet", commit, "HEAD", "--", *paths], cwd=ROOT).returncode:
+        raise ValueError("Current checkout differs from the Release's frozen publication data")
     if main == commit:
         return
     subprocess.run(["git", "fetch", "--no-tags", "origin", "main"], cwd=ROOT, check=True,
@@ -444,20 +663,10 @@ def verify_publication_source(commit, main, tag):
     ancestor = subprocess.run(["git", "merge-base", "--is-ancestor", commit, "FETCH_HEAD"], cwd=ROOT)
     if ancestor.returncode:
         raise ValueError("Publication source must belong to the current main history")
-    plan_path = "release-plans/" + tag + ".json"
-    plan = load_plan(tag)
-    # Publication data is frozen by this exact plan, catalog records and templates.
-    # Unrelated CI or publisher changes on main do not change the artifact bytes.
-    paths = [plan_path]
-    records = []
-    for checksum in plan["artifacts"]:
-        record = checked_record(checksum)
-        records.append(record)
-        paths.extend(("catalog/artifacts/" + checksum + ".json", record["template"]))
     unchanged = subprocess.run(["git", "diff", "--quiet", commit, "FETCH_HEAD", "--", *paths], cwd=ROOT)
     if unchanged.returncode:
         raise ValueError("Publication inputs changed on main; request publication from the current commit")
-    # Queued batches may follow another batch's index commit. Inspect that new
+    # Queued releases may follow another software's index commit. Inspect that new
     # immutable index as well, without checking out or overwriting either tree.
     names = subprocess.run(["git", "ls-tree", "-r", "--name-only", "FETCH_HEAD", "--", "catalog/releases"],
                            cwd=ROOT, check=True, capture_output=True, text=True).stdout.splitlines()
@@ -480,41 +689,35 @@ def publish(tag, output):
     repository, ref, commit = (os.environ.get(name, "") for name in ("GITHUB_REPOSITORY", "GITHUB_REF_NAME", "GITHUB_SHA"))
     if repository != REPOSITORY or ref != "publish/" + tag or COMMIT.fullmatch(commit) is None:
         raise ValueError("Publication requires an explicit publish/<tag> push in the canonical repository")
-    existing = gh("api", f"repos/{REPOSITORY}/releases/tags/{tag}", json_output=True, check=False)
-    if existing is None:
-        # GitHub does not resolve an unpublished draft through the tag endpoint.
-        pages = gh("api", "--paginate", "--slurp",
-                   f"repos/{REPOSITORY}/releases?per_page=100", json_output=True)
-        matches = [row for page in pages for row in page if row.get("tag_name") == tag]
-        if len(matches) > 1:
-            raise ValueError("Multiple releases use the requested tag")
-        existing = matches[0] if matches else None
-    # Resume an existing draft against its original frozen source commit. The
-    # uploaded manifest and checksums remain byte-identical after a publisher fix.
+    existing = release_for(tag)
     if existing is not None:
         commit = existing.get("target_commitish", "")
-        if COMMIT.fullmatch(commit) is None:
+        if not isinstance(commit, str) or COMMIT.fullmatch(commit) is None:
             raise ValueError("Existing Release does not pin an exact source commit")
+        verify_release(existing, tag, commit)
     main = gh("api", f"repos/{REPOSITORY}/git/ref/heads/main", json_output=True)["object"]["sha"]
     verify_publication_source(commit, main, tag)
     plan, manifest, assets = build_plan(tag, output, network=True, source_commit=commit)
+    output = Path(output)
     notes = output / "release-notes.md"
     notes.write_text(f"# {tag}\n\nReproduces {len(plan['artifacts'])} audited CPG artifacts from unpacked source templates.\n\n"
                      "Every published asset matches the previously verified complete SHA-256 and byte size. "
                      "APT wrappers are metadata-only and carry an explicit functional-test exemption. "
-                     "Each artifact records its review scope; a static review does not claim a new build or functional run.\n\n"
+                     "Each artifact records its review scope; a static review does not claim a new build or functional run. "
+                     "Trusted deliveries retain build_check=not_run and functional=not_run.\n\n"
                      "Use the pinned manifest with Compiler Playground's existing package manager. "
                      "This release does not claim unexecuted hardware or official benchmark qualification.\n")
     verify_release_commit(tag, commit, missing=True)
     if existing is None:
-        existing = gh("api", "--method", "POST", f"repos/{REPOSITORY}/releases",
-                      "-f", "tag_name=" + tag, "-f", "target_commitish=" + commit,
-                      "-f", "name=" + tag, "-f", "body=" + notes.read_text(),
-                      "-F", "draft=true", "-f", "make_latest=false", json_output=True)
-    elif existing.get("target_commitish") != commit:
-        raise ValueError("Existing release has a different source commit")
-    if existing.get("tag_name") != tag:
-        raise ValueError("Release API returned a different tag")
+        existing = gh("api", "--method", "POST", f"repos/{REPOSITORY}/releases", "--input", "-",
+                      json_output=True, input_data={"tag_name": tag, "target_commitish": commit,
+                                                   "name": tag, "body": notes.read_text(),
+                                                   "draft": True, "make_latest": "false"})
+    verify_release(existing, tag, commit)
+    release_id = existing["id"]
+    endpoint = f"repos/{REPOSITORY}/releases/{release_id}"
+    existing = gh("api", endpoint, json_output=True)
+    verify_release(existing, tag, commit, release_id=release_id)
     # Draft tags need not exist until publication. Existing public tags must match.
     if not existing["draft"]:
         verify_release_commit(tag, commit)
@@ -524,11 +727,13 @@ def publish(tag, output):
         raise ValueError("Release asset filenames collide")
     verify_assets(by_name, expected, complete=not existing["draft"])
     missing = [path for path in assets if path.name not in by_name]
-    upload_url = f"https://uploads.github.com/repos/{REPOSITORY}/releases/{existing['id']}/assets"
+    upload_url = upload_endpoint(existing)
     for number, path in enumerate(missing, 1):
-        uploaded_asset = gh("api", "--method", "POST", upload_url + "?name=" + quote(path.name, safe=""),
+        uploaded_asset = gh("api", "--method", "POST", upload_url + "?" + urlencode({"name": path.name}),
                             "-H", "Content-Type: application/octet-stream", "--input", str(path),
                             json_output=True)
+        if uploaded_asset.get("name") != path.name:
+            raise ValueError("Upload response returned a different asset name")
         verify_assets({path.name: uploaded_asset}, {path.name: expected[path.name]}, complete=True)
         if number % 25 == 0 or number == len(missing):
             print(json.dumps({"tag": tag, "uploaded": number, "total": len(missing)}), flush=True)
@@ -540,9 +745,13 @@ def publish(tag, output):
         main = gh("api", f"repos/{REPOSITORY}/git/ref/heads/main", json_output=True)["object"]["sha"]
         verify_publication_source(commit, main, tag)
         verify_release_commit(tag, commit, missing=True)
-        gh("api", "--method", "PATCH", f"repos/{REPOSITORY}/releases/{existing['id']}",
-           "-F", "draft=false", "-f", "make_latest=false", json_output=True)
-    uploaded = gh("api", f"repos/{REPOSITORY}/releases/{existing['id']}", json_output=True)
+        latest = gh("api", endpoint, json_output=True)
+        verify_release(latest, tag, commit, release_id=release_id)
+        if latest["draft"]:
+            gh("api", "--method", "PATCH", endpoint, "--input", "-", json_output=True,
+               input_data={"draft": False, "make_latest": "false"})
+    uploaded = gh("api", endpoint, json_output=True)
+    verify_release(uploaded, tag, commit, release_id=release_id)
     if uploaded["id"] != existing["id"] or uploaded.get("draft") is not False or not uploaded.get("published_at"):
         raise ValueError("Release has not been confirmed public")
     verify_release_commit(tag, commit)
@@ -557,13 +766,17 @@ def publish(tag, output):
 
 def merge_manifest():
     rows, releases = published_rows()
-    value = {"schema_version": 1, "kind": "compiler_playground_package_repository",
+    previous = load_json(ROOT / "manifest.json")
+    if any(identity(row) not in rows for row in previous.get("packages", [])):
+        raise ValueError("Refusing to remove an existing package without a matching publication receipt")
+    value = {**previous, "schema_version": 1, "kind": "compiler_playground_package_repository",
              "repository": "https://github.com/" + REPOSITORY,
              "packages": sorted(rows.values(), key=lambda row: (row["id"], row["version"], row["build"], row["method"], row["sha256"])),
-             "releases": releases, "online_recipes": [],
-             "policy": {"git": "Unpacked definitions, build recipes, tests, provenance and manifests only",
+             "releases": releases, "online_recipes": previous.get("online_recipes", []),
+             "policy": {**previous.get("policy", {}),
+                        "git": "Unpacked definitions, build recipes, tests, provenance and manifests only",
                         "release": "Verified immutable artifacts; no silent fallback to untested variants",
-                        "historical_resource_denominator": 1862, "scope": "historical workload delivery migration"}}
+                        "historical_resource_denominator": 1862, "scope": "individual software package publication"}}
     write_json(ROOT / "manifest.json", value)
     return value
 
@@ -584,7 +797,7 @@ def main():
     sub.add_parser("manifest")
     args = parser.parse_args()
     if args.command == "plan":
-        plan_batches(args.prefix, args.batch_size)
+        plan_software(args.prefix, args.batch_size)
     elif args.command == "build":
         plan, manifest, assets = build_plan(args.tag, args.output, network=args.network)
         print(json.dumps({"tag": args.tag, "packages": len(plan["artifacts"]), "assets": len(assets)}))
@@ -597,4 +810,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

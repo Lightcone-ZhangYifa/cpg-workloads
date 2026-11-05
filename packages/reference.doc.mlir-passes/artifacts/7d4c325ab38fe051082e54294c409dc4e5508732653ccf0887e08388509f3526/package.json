@@ -1,0 +1,144 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--contract",
+        "{recipe}/qualification.json",
+        "--kind",
+        "availability"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "reference-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--contract",
+        "{recipe}/qualification.json",
+        "--kind",
+        "functional"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "reference-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "reference.doc.mlir-passes",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1776,
+      "category": [
+        "Reference materials",
+        "MLIR"
+      ],
+      "extract": false,
+      "id": "reference.doc.mlir-passes",
+      "kind": "reference_documentation",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception AND MIT",
+      "material_path": "materials/mlir/docs/Passes.md",
+      "redistributable": true,
+      "reference_asset_id": "reference.doc.mlir-passes",
+      "resource_counting_role": "reference_subasset_not_new_upstream_family",
+      "sha256": "5660f6aa2791c79f1e0c2c46e27d62c6a887f3a66a59b164218d4a686e4ecafa",
+      "source_url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/mlir/docs/Passes.md",
+      "strip_archive_root": false,
+      "title": "MLIR Pass Contracts",
+      "upstream": "https://github.com/llvm/llvm-project",
+      "version": "20.1.8"
+    },
+    "catalog_sha256": "3380a36eb9ba228a8d8817cbac65d2f93e9bf7a6e7111acb196ac5907fd42a5a",
+    "entity_kind": "reference_asset",
+    "historical_entity_qualification_changes": 0,
+    "new_upstream_family_count": 0,
+    "software": "MLIR",
+    "source_lock_sha256": "97fb9de95d0315b5a0cb9a837d4877702d878ec895744c1cd7cf6847b403016a",
+    "upstream_commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "qualification_scope": "Independent installed reference reader; no upstream compiler, benchmark, model or dataset admission.",
+    "required_installed_paths": [
+      "{prefix}/reference_reader.py",
+      "{prefix}/resource.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1776,
+      "extract": false,
+      "id": "reference.doc.mlir-passes",
+      "material_path": "materials/mlir/docs/Passes.md",
+      "sha256": "5660f6aa2791c79f1e0c2c46e27d62c6a887f3a66a59b164218d4a686e4ecafa",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/mlir/docs/Passes.md"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://mlir.llvm.org/docs/Passes/"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/reference_reader.py list",
+        "description": "Show this resource identity."
+      },
+      {
+        "command": "python3 -B {prefix}/reference_reader.py search --asset reference.doc.mlir-passes -- one-shot-bufferize",
+        "description": "Search the selected original reference resource."
+      }
+    ],
+    "locations": [
+      {
+        "label": "MLIR Pass Contracts",
+        "path": "{prefix}",
+        "purpose": "Read this immutable source closure and its local indexes."
+      }
+    ],
+    "notes": [
+      "This artifact contains one reference resource. It does not install the upstream software.",
+      "Declared checks can assess the local reader; this newly split identity has not been installed or functionally rerun.",
+      "The original reference entity and upstream software qualifications remain distinct."
+    ],
+    "summary": "MLIR Pass Contracts — independently installable reference.doc.mlir-passes material at 20.1.8."
+  },
+  "version": "20.1.8"
+}

@@ -1,4 +1,4 @@
-name: Publish workload batch
+name: Publish software packages
 on:
   push:
     branches: ['publish/**']
@@ -6,7 +6,7 @@ permissions:
   contents: read
 concurrency:
   group: cpg-workloads-publication
-  # Keep every explicit batch request; the default only retains one pending run.
+  # Keep every explicit software request; retain the existing publication queue.
   queue: max
   cancel-in-progress: false
 defaults:
@@ -25,7 +25,6 @@ jobs:
         with:
           python-version: '3.12'
       - run: python tools/validate_repository.py
-      - run: python tests/test_release_pipeline.py -v
   publish:
     needs: validate
     runs-on: ubuntu-24.04

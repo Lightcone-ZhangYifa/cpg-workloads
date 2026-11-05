@@ -1,0 +1,144 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--contract",
+        "{recipe}/qualification.json",
+        "--kind",
+        "availability"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "reference-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--contract",
+        "{recipe}/qualification.json",
+        "--kind",
+        "functional"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "reference-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "reference.doc.llvm-memoryssa",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 20399,
+      "category": [
+        "Reference materials",
+        "LLVM"
+      ],
+      "extract": false,
+      "id": "reference.doc.llvm-memoryssa",
+      "kind": "reference_documentation",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception AND MIT",
+      "material_path": "materials/llvm/docs/MemorySSA.rst",
+      "redistributable": true,
+      "reference_asset_id": "reference.doc.llvm-memoryssa",
+      "resource_counting_role": "reference_subasset_not_new_upstream_family",
+      "sha256": "40cb34b66fc1df02b748fb5e42aa3ab4167298100af52788979aa77e11c68c43",
+      "source_url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/llvm/docs/MemorySSA.rst",
+      "strip_archive_root": false,
+      "title": "LLVM MemorySSA",
+      "upstream": "https://github.com/llvm/llvm-project",
+      "version": "20.1.8"
+    },
+    "catalog_sha256": "3cfc210c83d959626f69a03f2bf370dfba2c74df6f55d01d4ed46bfb56dc56d8",
+    "entity_kind": "reference_asset",
+    "historical_entity_qualification_changes": 0,
+    "new_upstream_family_count": 0,
+    "software": "LLVM",
+    "source_lock_sha256": "8ba6556233f96b25a9941ad2adbade4d96b2b313149c0db61c1f4c41508e836a",
+    "upstream_commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "qualification_scope": "Independent installed reference reader; no upstream compiler, benchmark, model or dataset admission.",
+    "required_installed_paths": [
+      "{prefix}/reference_reader.py",
+      "{prefix}/resource.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 20399,
+      "extract": false,
+      "id": "reference.doc.llvm-memoryssa",
+      "material_path": "materials/llvm/docs/MemorySSA.rst",
+      "sha256": "40cb34b66fc1df02b748fb5e42aa3ab4167298100af52788979aa77e11c68c43",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/llvm/docs/MemorySSA.rst"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://llvm.org/docs/MemorySSA.html"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/reference_reader.py list",
+        "description": "Show this resource identity."
+      },
+      {
+        "command": "python3 -B {prefix}/reference_reader.py search --asset reference.doc.llvm-memoryssa -- MemoryPhi",
+        "description": "Search the selected original reference resource."
+      }
+    ],
+    "locations": [
+      {
+        "label": "LLVM MemorySSA",
+        "path": "{prefix}",
+        "purpose": "Read this immutable source closure and its local indexes."
+      }
+    ],
+    "notes": [
+      "This artifact contains one reference resource. It does not install the upstream software.",
+      "Declared checks can assess the local reader; this newly split identity has not been installed or functionally rerun.",
+      "The original reference entity and upstream software qualifications remain distinct."
+    ],
+    "summary": "LLVM MemorySSA — independently installable reference.doc.llvm-memoryssa material at 20.1.8."
+  },
+  "version": "20.1.8"
+}

@@ -1,0 +1,144 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--contract",
+        "{recipe}/qualification.json",
+        "--kind",
+        "availability"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "reference-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--contract",
+        "{recipe}/qualification.json",
+        "--kind",
+        "functional"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "reference-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "reference.doc.mlir-buffer",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 22938,
+      "category": [
+        "Reference materials",
+        "MLIR"
+      ],
+      "extract": false,
+      "id": "reference.doc.mlir-buffer",
+      "kind": "reference_documentation",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception AND MIT",
+      "material_path": "materials/mlir/docs/Bufferization.md",
+      "redistributable": true,
+      "reference_asset_id": "reference.doc.mlir-buffer",
+      "resource_counting_role": "reference_subasset_not_new_upstream_family",
+      "sha256": "c0c921c3f7d5bc59901285d1582388ed53157b0ef46cb6cc0d78be08af6c9395",
+      "source_url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/mlir/docs/Bufferization.md",
+      "strip_archive_root": false,
+      "title": "MLIR Bufferization",
+      "upstream": "https://github.com/llvm/llvm-project",
+      "version": "20.1.8"
+    },
+    "catalog_sha256": "bf58f062f02659eab7e6e1922801ea20e45ac0d1708948da68bf3fb8882ac14c",
+    "entity_kind": "reference_asset",
+    "historical_entity_qualification_changes": 0,
+    "new_upstream_family_count": 0,
+    "software": "MLIR",
+    "source_lock_sha256": "e3715442d29d0dc033b99689a642e46aa169defbc512c04f050de480665075f8",
+    "upstream_commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "qualification_scope": "Independent installed reference reader; no upstream compiler, benchmark, model or dataset admission.",
+    "required_installed_paths": [
+      "{prefix}/reference_reader.py",
+      "{prefix}/resource.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 22938,
+      "extract": false,
+      "id": "reference.doc.mlir-buffer",
+      "material_path": "materials/mlir/docs/Bufferization.md",
+      "sha256": "c0c921c3f7d5bc59901285d1582388ed53157b0ef46cb6cc0d78be08af6c9395",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/llvm/llvm-project/87f0227cb60147a26a1eeb4fb06e3b505e9c7261/mlir/docs/Bufferization.md"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://mlir.llvm.org/docs/Bufferization/"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/reference_reader.py list",
+        "description": "Show this resource identity."
+      },
+      {
+        "command": "python3 -B {prefix}/reference_reader.py search --asset reference.doc.mlir-buffer -- BufferizableOpInterface",
+        "description": "Search the selected original reference resource."
+      }
+    ],
+    "locations": [
+      {
+        "label": "MLIR Bufferization",
+        "path": "{prefix}",
+        "purpose": "Read this immutable source closure and its local indexes."
+      }
+    ],
+    "notes": [
+      "This artifact contains one reference resource. It does not install the upstream software.",
+      "Declared checks can assess the local reader; this newly split identity has not been installed or functionally rerun.",
+      "The original reference entity and upstream software qualifications remain distinct."
+    ],
+    "summary": "MLIR Bufferization — independently installable reference.doc.mlir-buffer material at 20.1.8."
+  },
+  "version": "20.1.8"
+}
