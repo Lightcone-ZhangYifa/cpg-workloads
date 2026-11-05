@@ -1,0 +1,257 @@
+{
+  "build": "1-static-check1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exact-private-distribution",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-installed-operations",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.dataset-import.h11",
+      "py.dataset-import.truststore"
+    ],
+    "system": []
+  },
+  "id": "py.dataset-import.httpcore2",
+  "metadata": {
+    "catalog": {
+      "activated_extras": [],
+      "archive_bytes": 85070,
+      "category": [
+        "Python packages",
+        "Dataset import environment"
+      ],
+      "container_strategy": "Install the complete dataset-import wheel group with --no-index --require-hashes into its independent CPython 3.12 environment. Import compiler_playground from the matching project source or install its local wheel explicitly.",
+      "dependencies": [
+        "py.dataset-import.h11",
+        "py.dataset-import.truststore"
+      ],
+      "dependency_marker_environment": {
+        "extra": "",
+        "implementation_name": "cpython",
+        "implementation_version": "3.12.14",
+        "os_name": "posix",
+        "platform_machine": "x86_64",
+        "platform_python_implementation": "CPython",
+        "platform_release": "",
+        "platform_system": "Linux",
+        "platform_version": "",
+        "python_full_version": "3.12.14",
+        "python_version": "3.12",
+        "sys_platform": "linux"
+      },
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "dataset-import",
+        "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed"
+      },
+      "documentation": [
+        "https://pypi.org/pypi/httpcore2/2.16.0/json"
+      ],
+      "id": "py.dataset-import.httpcore2",
+      "immutable_ref": "sha256:5c4358319f2602d984ad93182c9fee5160f22e9da7babdda870a5e7c4e2dc34f",
+      "installed_allocated_bytes": 794624,
+      "installed_bytes": 663772,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "wheels/dataset-import/httpcore2-2.16.0-py3-none-any.whl",
+      "package_name": "httpcore2",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure.",
+      "qualification_gaps": [
+        "Local backend smoke is not a full OCI build or admission of arbitrary corpus semantics.",
+        "The core package needs no third-party dependency. Use this environment only for explicit data preparation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "host",
+        "dev"
+      ],
+      "sha256": "5c4358319f2602d984ad93182c9fee5160f22e9da7babdda870a5e7c4e2dc34f",
+      "size_basis": "Actual wheel payload bytes verified against official PyPI. Installed logical/allocated bytes measured from distribution RECORD files in the isolated local CPython 3.12 venv; interpreter and system libraries excluded.",
+      "source_evidence": [
+        "https://pypi.org/pypi/httpcore2/2.16.0/json",
+        "workspace-evidence/datasets-v090/python-capsule/manifest.json",
+        "workspace-evidence/datasets-v090/python-capsule/local-source-probe.json"
+      ],
+      "source_logical_bytes": 307028,
+      "source_url": "https://files.pythonhosted.org/packages/af/c2/ce417c397afa5181f0e3c6ff01a4d01639414e1adef08730d97571297151/httpcore2-2.16.0-py3-none-any.whl",
+      "title": "httpcore2 (dataset-import)",
+      "upstream": "https://pypi.org/pypi/httpcore2/2.16.0/json",
+      "version": "2.16.0"
+    },
+    "catalog_sha256": "fb3c623b02225ed8978098bc97f3722f8518bafefcebed9a3314f5c98424898a",
+    "historical_checks": [],
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "check_definition_source_artifact_sha256": "bf0e4d5a765c266bf4d5df8cdc2686aba442133ba20f2d327070492ddefa48d3",
+      "check_definition_source_manifest_sha256": "b8c6268eba5eb7293f007c6571f6fc735da35fd5eac2ce064ddbe3fc0f8c99f9",
+      "dependency_lock_source_artifact_sha256": "bf0e4d5a765c266bf4d5df8cdc2686aba442133ba20f2d327070492ddefa48d3",
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_check_and_dependency_revision",
+      "original_artifact_sha256": "b20695da70b2095264a4dc5755f075b6c3074d46db1eab3eb0ae8e8390e04d8e",
+      "original_build": "1",
+      "original_manifest_sha256": "d27a7782d037739f2fa99817492680bffa438074747538486c2055b48ad2e59d",
+      "original_official_wheel_identity_preserved": true,
+      "original_profile": "v02110",
+      "original_resolved_dependencies": [],
+      "resolved_dependency_replacements": [],
+      "reused_authored_files": [
+        {
+          "bytes": 228,
+          "mode": 420,
+          "path": "recipe/check.py",
+          "sha256": "40b54f631d955aa35f83f02c18706a0921fa0afb43346fa121b5db4fc4615756"
+        },
+        {
+          "bytes": 1928,
+          "mode": 420,
+          "path": "recipe/http_fixture.py",
+          "sha256": "1c0dacf844a806bc2f183108ff4c8791fdb68f2b613be48b321c1d252b7c5201"
+        },
+        {
+          "bytes": 28947,
+          "mode": 420,
+          "path": "recipe/probes_02.py",
+          "sha256": "a24cbd31e1a5492806777c74917cc8b8141aa6981f93721e9027d70c26befead"
+        },
+        {
+          "bytes": 23704,
+          "mode": 420,
+          "path": "recipe/profile_probes.py",
+          "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+        }
+      ]
+    }
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "dataset-import",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "httpcore2",
+    "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 85070,
+      "extract": false,
+      "id": "py.dataset-import.httpcore2",
+      "material_path": "wheels/dataset-import/httpcore2-2.16.0-py3-none-any.whl",
+      "sha256": "5c4358319f2602d984ad93182c9fee5160f22e9da7babdda870a5e7c4e2dc34f",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/af/c2/ce417c397afa5181f0e3c6ff01a4d01639414e1adef08730d97571297151/httpcore2-2.16.0-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+    ],
+    "documentation": [
+      "https://pypi.org/pypi/httpcore2/2.16.0/json"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect package metadata in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/dataset-import/httpcore2-2.16.0-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper."
+    ],
+    "summary": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure."
+  },
+  "version": "2.16.0"
+}

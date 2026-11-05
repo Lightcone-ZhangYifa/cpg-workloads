@@ -1,0 +1,232 @@
+{
+  "build": "1-static-check1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exact-private-distribution",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-installed-operations",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.opentelemetry-api",
+      "py.typing-extensions"
+    ],
+    "system": []
+  },
+  "id": "py.opentelemetry-semantic-conventions",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 206279,
+      "category": [
+        "Python packages",
+        "Core research environment"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.opentelemetry-api",
+        "py.typing-extensions"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/opentelemetry-semantic-conventions/"
+      ],
+      "id": "py.opentelemetry-semantic-conventions",
+      "immutable_ref": "sha256:d4cddeb4315490b35213f55e2bdc9ac54bb1e4d318927475bed62b35545e581b",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "wheels/opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl",
+      "package_name": "opentelemetry-semantic-conventions",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "d4cddeb4315490b35213f55e2bdc9ac54bb1e4d318927475bed62b35545e581b",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/opentelemetry-semantic-conventions/0.66b1/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/bc/14/67f8aa798857f8cf686f515bf93d9bb877ce952ddc8efae0fa25b45ce0d6/opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl",
+      "title": "opentelemetry-semantic-conventions",
+      "upstream": "https://pypi.org/project/opentelemetry-semantic-conventions/0.66b1/",
+      "version": "0.66b1"
+    },
+    "catalog_sha256": "e728498c0aee231ba0024f7117580971e7b34bfde085c2f4cc96f65c482cbcb0",
+    "historical_checks": [],
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "check_definition_source_artifact_sha256": "c3f1e282629ba7862939b8faf2b6dedc4f172130e23ea81d66b72bc5322b5812",
+      "check_definition_source_manifest_sha256": "0c05940d93b4f305b7f7d1ff594274158404646880ccfc7674342169ba14d279",
+      "dependency_lock_source_artifact_sha256": "c3f1e282629ba7862939b8faf2b6dedc4f172130e23ea81d66b72bc5322b5812",
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_check_and_dependency_revision",
+      "original_artifact_sha256": "c6483134ce42ac56ead7a7b1166b61b474f2a5f95b5b7216d69560c4bc3ed2f5",
+      "original_build": "1",
+      "original_manifest_sha256": "d12276143e989d5d199ce965a3d88800eeda66dbd1e5e612be72d29541a075d8",
+      "original_official_wheel_identity_preserved": true,
+      "original_profile": "v02110",
+      "original_resolved_dependencies": [],
+      "resolved_dependency_replacements": [],
+      "reused_authored_files": [
+        {
+          "bytes": 275,
+          "mode": 420,
+          "path": "recipe/check.py",
+          "sha256": "a63b388b16b78524f1f85d34a30f56c6e52fd03f4777f5baecd3889e55168ce4"
+        },
+        {
+          "bytes": 28947,
+          "mode": 420,
+          "path": "recipe/probes_02.py",
+          "sha256": "a24cbd31e1a5492806777c74917cc8b8141aa6981f93721e9027d70c26befead"
+        },
+        {
+          "bytes": 23704,
+          "mode": 420,
+          "path": "recipe/profile_probes.py",
+          "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+        }
+      ]
+    }
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "opentelemetry-semantic-conventions",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 206279,
+      "extract": false,
+      "id": "py.opentelemetry-semantic-conventions",
+      "material_path": "wheels/opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl",
+      "sha256": "d4cddeb4315490b35213f55e2bdc9ac54bb1e4d318927475bed62b35545e581b",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/bc/14/67f8aa798857f8cf686f515bf93d9bb877ce952ddc8efae0fa25b45ce0d6/opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+    ],
+    "documentation": [
+      "https://pypi.org/project/opentelemetry-semantic-conventions/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect package metadata in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper."
+    ],
+    "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+  },
+  "version": "0.66b1"
+}

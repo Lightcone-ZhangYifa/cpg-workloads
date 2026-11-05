@@ -1,0 +1,269 @@
+{
+  "build": "2-static-deps1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exact-private-distribution",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-installed-operations",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.mlir.cffi"
+    ],
+    "system": []
+  },
+  "id": "py.mlir.cryptography",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 4752576,
+      "category": [
+        "Python packages",
+        "MLIR binding environment"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.mlir.cffi"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "mlir",
+        "state": "resolved-independent-LLVM-binding-capsule; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://mlir.llvm.org/docs/Bindings/Python/"
+      ],
+      "id": "py.mlir.cryptography",
+      "immutable_ref": "sha256:9dab55f57c74c3cad24c323bacbbd04be4705ba6eb0d92e920b1fc4837ed5079",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "Apache-2.0 OR BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "wheels/mlir/cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl",
+      "package_name": "cryptography",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Exact Python dependency for the MLIR bindings from the locked LLVM source, isolated from analysis package constraints.",
+      "qualification_gaps": [],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "9dab55f57c74c3cad24c323bacbbd04be4705ba6eb0d92e920b1fc4837ed5079",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/cryptography/50.0.2/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/d3/69/2c833a049475e0a3444e94c7d0aca0aa51d166374a449b09e92ac98138de/cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl",
+      "title": "cryptography (MLIR Python capsule)",
+      "version": "50.0.2"
+    },
+    "catalog_sha256": "c8af01291e9b494e371df1b4ea0c331932543a03dadc6e3c5394dc7d5d6db8b9",
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_dependency_revision",
+      "original_artifact_sha256": "b43b0d0db3c08d8aa6dc03a1c4034ca18da978a1604fd579367cee72a78356b2",
+      "original_build": "2",
+      "original_manifest_sha256": "04a7534dc05bc39d4380f1f6175c6a48a2938b425991114dc7262f399291b7e4",
+      "original_official_wheel_identity_preserved": true,
+      "original_profile": "v02110",
+      "original_resolved_dependencies": [
+        {
+          "build": "20261029-exact-wheel-offline-isolation-1",
+          "id": "py.mlir.pycparser",
+          "method": "wrapper",
+          "sha256": "87ebe884c9ed4e24636ddaa1be50cbc0a2c6d9812e17bcce561c8f0245de3eb7",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "3.11"
+        },
+        {
+          "build": "1",
+          "id": "py.mlir.cffi",
+          "method": "wrapper",
+          "sha256": "0b5893f5d52b4d0a711476af9e10796c43e434206e040ea905747a235b9c5e48",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2.1.1"
+        }
+      ],
+      "resolved_dependency_replacements": [
+        {
+          "original": {
+            "build": "1",
+            "id": "py.mlir.cffi",
+            "method": "wrapper",
+            "sha256": "0b5893f5d52b4d0a711476af9e10796c43e434206e040ea905747a235b9c5e48",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "2.1.1"
+          },
+          "revised": {
+            "build": "1-static-check1",
+            "id": "py.mlir.cffi",
+            "method": "wrapper",
+            "sha256": "dd2be2f999b0ed42957c96f283b056d0401adba77acf3e2d774ce5d90b27d934",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "2.1.1"
+          }
+        }
+      ]
+    }
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "mlir",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "--no-cache-dir",
+        "--disable-pip-version-check",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "cryptography",
+    "state": "resolved-independent-LLVM-binding-capsule; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "--disable-pip-version-check",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 4752576,
+      "extract": false,
+      "id": "py.mlir.cryptography",
+      "material_path": "wheels/mlir/cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl",
+      "sha256": "9dab55f57c74c3cad24c323bacbbd04be4705ba6eb0d92e920b1fc4837ed5079",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/d3/69/2c833a049475e0a3444e94c7d0aca0aa51d166374a449b09e92ac98138de/cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+    ],
+    "documentation": [
+      "https://mlir.llvm.org/docs/Bindings/Python/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect package metadata in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/mlir/cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+      "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+      "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+      "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+    ],
+    "summary": "Exact Python dependency for the MLIR bindings from the locked LLVM source, isolated from analysis package constraints."
+  },
+  "version": "50.0.2"
+}

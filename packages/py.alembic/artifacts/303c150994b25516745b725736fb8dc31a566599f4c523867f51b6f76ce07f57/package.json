@@ -1,0 +1,302 @@
+{
+  "build": "2-static-deps1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exact-private-distribution",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-installed-operations",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.mako",
+      "py.sqlalchemy",
+      "py.typing-extensions"
+    ],
+    "system": []
+  },
+  "id": "py.alembic",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 268719,
+      "category": [
+        "Python packages",
+        "Core research environment"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.mako",
+        "py.sqlalchemy",
+        "py.typing-extensions"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/alembic/"
+      ],
+      "id": "py.alembic",
+      "immutable_ref": "sha256:77eb101048d95f982c0353e9233404889dcd7a6fc244c107836c0e2fc9cf7d9d",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "wheels/alembic-1.20.0-py3-none-any.whl",
+      "package_name": "alembic",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "77eb101048d95f982c0353e9233404889dcd7a6fc244c107836c0e2fc9cf7d9d",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/alembic/1.20.0/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/3f/27/78a89b55b0904d222183164e079b4ca56208e94eff1d35ad1f1ad5be9b06/alembic-1.20.0-py3-none-any.whl",
+      "title": "alembic",
+      "upstream": "https://pypi.org/project/alembic/1.20.0/",
+      "version": "1.20.0"
+    },
+    "catalog_sha256": "3908cf16d11582727b6af2de0321e45109e1555e33e5d17241ec47ea7d873e5d",
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_dependency_revision",
+      "original_artifact_sha256": "2631d432ced7c064f4c968ba9738f0bbe5b3b50630380ee50e153b7314e67d0c",
+      "original_build": "2",
+      "original_manifest_sha256": "7d0a0dde6ae545f03ad4927f246fb185b8e9187327ac1df05e4990491f051a89",
+      "original_official_wheel_identity_preserved": true,
+      "original_profile": "v02110",
+      "original_resolved_dependencies": [
+        {
+          "build": "2",
+          "id": "py.markupsafe",
+          "method": "wrapper",
+          "sha256": "ef0662b9c7c6f153dbafa764470eff21a8525d46ee74b4f35aa6411cb79e556e",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "3.0.4"
+        },
+        {
+          "build": "1",
+          "id": "py.mako",
+          "method": "wrapper",
+          "sha256": "6c6840153e1c0d721d564a2dbf36992218eaad5ce7c8e0998a3cc387f5efd7ba",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "1.4.3"
+        },
+        {
+          "build": "2",
+          "id": "py.typing-extensions",
+          "method": "wrapper",
+          "sha256": "90199a66864541f4289f52209fcf7a23846d7470771de151b015692302560695",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "4.16.0"
+        },
+        {
+          "build": "2",
+          "id": "py.sqlalchemy",
+          "method": "wrapper",
+          "sha256": "37aed6599b8167b565a0e0c3fb1b332c5d9bfe19ebfcab49f7128e28ed407ae8",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2.1.5"
+        }
+      ],
+      "resolved_dependency_replacements": [
+        {
+          "original": {
+            "build": "1",
+            "id": "py.mako",
+            "method": "wrapper",
+            "sha256": "6c6840153e1c0d721d564a2dbf36992218eaad5ce7c8e0998a3cc387f5efd7ba",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "1.4.3"
+          },
+          "revised": {
+            "build": "1-static-check1",
+            "id": "py.mako",
+            "method": "wrapper",
+            "sha256": "19fdff1398b5ddf43f8c4fc74f181cfc60ea7ea2984b4b7a1032d3ba23da024b",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "1.4.3"
+          }
+        }
+      ]
+    }
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "--no-cache-dir",
+        "--disable-pip-version-check",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "alembic",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "--disable-pip-version-check",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 268719,
+      "extract": false,
+      "id": "py.alembic",
+      "material_path": "wheels/alembic-1.20.0-py3-none-any.whl",
+      "sha256": "77eb101048d95f982c0353e9233404889dcd7a6fc244c107836c0e2fc9cf7d9d",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/3f/27/78a89b55b0904d222183164e079b4ca56208e94eff1d35ad1f1ad5be9b06/alembic-1.20.0-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+    ],
+    "documentation": [
+      "https://pypi.org/project/alembic/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect package metadata in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/alembic-1.20.0-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+      "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+      "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+      "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+    ],
+    "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+  },
+  "version": "1.20.0"
+}

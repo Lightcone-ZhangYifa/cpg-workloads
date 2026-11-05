@@ -1,0 +1,325 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 234,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "13d28e9408f7b47b595b1a6a5ab0d471c135e27332b1c5bc8ad41286452a6e9d"
+    },
+    {
+      "bytes": 28947,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_02.py",
+      "sha256": "a24cbd31e1a5492806777c74917cc8b8141aa6981f93721e9027d70c26befead"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "8f56280508eb05ee89976abc76ecb8f0e2c15bc27fb13622d55fff4267aa5def",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "2984747fa43deb09dabb5a408b1501730faf559d54893f0ba3e013ad0ddad0c3",
+  "method": "wrapper",
+  "package": {
+    "build": "1-static-check1",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.filelock"
+      ],
+      "system": []
+    },
+    "id": "py.python-discovery",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 39385,
+        "category": [
+          "Python packages",
+          "Optional search and analysis"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.filelock"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/python-discovery/"
+        ],
+        "id": "py.python-discovery",
+        "immutable_ref": "sha256:530179cc51a1816d512b15635b3dc931295ae12efb183783ad31190a5d425d2b",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "LicenseRef-Python-distribution-notices",
+        "mandatory": false,
+        "material_path": "wheels/python_discovery-1.6.4-py3-none-any.whl",
+        "package_name": "python-discovery",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "530179cc51a1816d512b15635b3dc931295ae12efb183783ad31190a5d425d2b",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/python-discovery/1.6.4/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/60/91/1aa70d3dfcab0dbcf88a2cbc3bce7f7c69562287a90216e617eaa4937e25/python_discovery-1.6.4-py3-none-any.whl",
+        "title": "python-discovery",
+        "upstream": "https://pypi.org/project/python-discovery/1.6.4/",
+        "version": "1.6.4"
+      },
+      "catalog_sha256": "5e4de9cd24e90d1eaea3998e7a23dd06b0223cd782c79e3839f87281f59db76e",
+      "historical_checks": [],
+      "static_wrapper_revision": {
+        "build_executed": false,
+        "check_definition_source_artifact_sha256": "834e763421becb7dab1372e97fa50b7ab2a24b92d9763e184dbba03da04c8532",
+        "check_definition_source_manifest_sha256": "d7d53f7bb3e58e807473a63e128e584a3e9b4c869f67614d94009ac1239d8ecf",
+        "dependency_lock_source_artifact_sha256": "834e763421becb7dab1372e97fa50b7ab2a24b92d9763e184dbba03da04c8532",
+        "functional_tests_executed": false,
+        "kind": "static_wrapper_check_and_dependency_revision",
+        "original_artifact_sha256": "4ae4609c1795978257f3382405f0a325c057e9f29e0a84fb8a6968a23b3b443b",
+        "original_build": "1",
+        "original_manifest_sha256": "fbeb37a97e41fcc6b4c46808bf0d28c855d17e6f924da4b95a5c47b6ae3ab9af",
+        "original_official_wheel_identity_preserved": true,
+        "original_profile": "v02110",
+        "original_resolved_dependencies": [],
+        "resolved_dependency_replacements": [],
+        "reused_authored_files": [
+          {
+            "bytes": 234,
+            "mode": 420,
+            "path": "recipe/check.py",
+            "sha256": "13d28e9408f7b47b595b1a6a5ab0d471c135e27332b1c5bc8ad41286452a6e9d"
+          },
+          {
+            "bytes": 28947,
+            "mode": 420,
+            "path": "recipe/probes_02.py",
+            "sha256": "a24cbd31e1a5492806777c74917cc8b8141aa6981f93721e9027d70c26befead"
+          },
+          {
+            "bytes": 23704,
+            "mode": 420,
+            "path": "recipe/profile_probes.py",
+            "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+          }
+        ]
+      }
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "python-discovery",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 39385,
+        "extract": false,
+        "id": "py.python-discovery",
+        "material_path": "wheels/python_discovery-1.6.4-py3-none-any.whl",
+        "sha256": "530179cc51a1816d512b15635b3dc931295ae12efb183783ad31190a5d425d2b",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/60/91/1aa70d3dfcab0dbcf88a2cbc3bce7f7c69562287a90216e617eaa4937e25/python_discovery-1.6.4-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/project/python-discovery/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/python_discovery-1.6.4-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper."
+      ],
+      "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+    },
+    "version": "1.6.4"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.9",
+    "release": "0.21.10",
+    "scope": "Exact frozen original baseline definition and recipe supporting selected Python targets; no new dependency functional qualification.",
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "check_definition_source_artifact_sha256": "834e763421becb7dab1372e97fa50b7ab2a24b92d9763e184dbba03da04c8532",
+      "check_definition_source_manifest_sha256": "d7d53f7bb3e58e807473a63e128e584a3e9b4c869f67614d94009ac1239d8ecf",
+      "dependency_lock_source_artifact_sha256": "834e763421becb7dab1372e97fa50b7ab2a24b92d9763e184dbba03da04c8532",
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_check_and_dependency_revision",
+      "original_artifact_sha256": "4ae4609c1795978257f3382405f0a325c057e9f29e0a84fb8a6968a23b3b443b",
+      "original_build": "1",
+      "original_manifest_sha256": "fbeb37a97e41fcc6b4c46808bf0d28c855d17e6f924da4b95a5c47b6ae3ab9af",
+      "original_official_wheel_identity_preserved": true,
+      "original_profile": "v02110",
+      "original_resolved_dependencies": [],
+      "resolved_dependency_replacements": [],
+      "reused_authored_files": [
+        {
+          "bytes": 234,
+          "mode": 420,
+          "path": "recipe/check.py",
+          "sha256": "13d28e9408f7b47b595b1a6a5ab0d471c135e27332b1c5bc8ad41286452a6e9d"
+        },
+        {
+          "bytes": 28947,
+          "mode": 420,
+          "path": "recipe/probes_02.py",
+          "sha256": "a24cbd31e1a5492806777c74917cc8b8141aa6981f93721e9027d70c26befead"
+        },
+        {
+          "bytes": 23704,
+          "mode": 420,
+          "path": "recipe/profile_probes.py",
+          "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+        }
+      ]
+    },
+    "support_only": true
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.filelock",
+      "method": "wrapper",
+      "sha256": "d5c8d08293fc864d2eff975db1971ebd701f61d4ca589f94511949650440d570",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.2.4"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}
