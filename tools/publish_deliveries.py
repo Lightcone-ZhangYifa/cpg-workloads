@@ -40,6 +40,10 @@ def checked_copy(stream, target, row):
 
 def members(archive, rows, scratch):
     """Yield only explicitly planned regular files, with no tree extraction."""
+    for row in rows:
+        if (not isinstance(row.get("sha256"), str) or release.CHECKSUM.fullmatch(row["sha256"]) is None
+                or type(row.get("bytes")) is not int or not 0 < row["bytes"] < 2 * 1024 ** 3):
+            raise ValueError("A requested artifact lacks a valid complete SHA-256/size lock")
     names = [row.get("member") for row in rows]
     if len(names) != len(set(names)):
         raise ValueError("Duplicate requested archive member")
@@ -132,9 +136,9 @@ def commit_files(paths, message):
                         for field in ("qualification", "previous_attempts", "failure", "reproduced_sha256"):
                             if field in previous:
                                 incoming[field] = previous[field]
-                        if previous.get("build_check") == "passed":
-                            incoming["build_check"] = previous["build_check"]
-                            incoming["functional"] = previous["functional"]
+                        for field in ("build_check", "functional"):
+                            if field in previous:
+                                incoming[field] = previous[field]
                         raw = (json.dumps(incoming, sort_keys=True, ensure_ascii=False, indent=2) + "\n").encode()
                         (release.ROOT / path).write_bytes(raw)
                     elif not path.startswith("catalog/imports/"):
@@ -213,7 +217,7 @@ def import_and_publish(archive, item, scratch):
         (receipt["online_recipes"] if record["method"] == "online-recipe" else receipt["packages"]).append(summary)
         if record["release_eligible"]:
             release.checked_record(checksum)
-            shutil.copyfile(path, assets / checksum)
+            os.link(path, assets / checksum)
             admitted.append(checksum)
         else:
             receipt["errors"].append({"sha256": checksum, "errors": record.get("qualification_errors", [])})

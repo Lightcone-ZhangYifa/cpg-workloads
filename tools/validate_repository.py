@@ -10,7 +10,7 @@ from urllib.parse import urlparse
 
 from import_archives import safe_relative
 from release import (ROOT, artifact_name, digest, load_json, load_manifest, publication_errors,
-                     published_rows, sha256, verify_evidence, verify_material)
+                     published_rows, published_recipes, row_asset_name, sha256, verify_evidence, verify_material)
 
 
 def validate(root=ROOT):
@@ -77,6 +77,14 @@ def validate(root=ROOT):
                     verify_evidence(row, template)
                     if row["method"] == "material" and row.get("review_policy") != "static-trust-v1":
                         verify_material(row, manifest, template)
+            else:
+                from online_recipe import verify_template
+                verify_template(template, row)
+                if row.get("asset_name") != row_asset_name(row):
+                    raise ValueError("Noncanonical online recipe filename")
+                if row["release_eligible"] and (row.get("review_policy") != "static-trust-v1"
+                        or row.get("static_review", {}).get("status") != "passed"):
+                    raise ValueError("Online recipe lacks an explicit static review")
             records[row["sha256"]] = row
         except (OSError, ValueError, KeyError, TypeError) as error:
             errors.append(f"{path.relative_to(root)}: {error}")
@@ -114,6 +122,8 @@ def validate(root=ROOT):
         errors.append("Root manifest does not exactly preserve every verified publication")
     if manifest.get("releases", []) != releases:
         errors.append("Root manifest release summaries differ from verified receipts")
+    if manifest.get("online_recipes", []) != published_recipes():
+        errors.append("Root online recipes differ from verified publication receipts")
     identities = set()
     for row in manifest.get("packages", []):
         key = digest({name: row[name] for name in ("id", "version", "build", "method", "target")})

@@ -230,6 +230,16 @@ def checked_record(checksum):
     if path.is_symlink():
         raise ValueError("Artifact records must be ordinary source files")
     record = load_json(path)
+    if record.get("method") == "online-recipe":
+        from online_recipe import verify_template
+        if (record.get("sha256") != checksum or record.get("release_eligible") is not True
+                or record.get("review_policy") != "static-trust-v1"
+                or record.get("static_review", {}).get("status") != "passed"):
+            raise ValueError("Online recipe lacks a successful explicit static review")
+        verify_template(ROOT / safe_relative(record["template"]), record)
+        if record.get("asset_name") != row_asset_name(record):
+            raise ValueError("Noncanonical online recipe filename")
+        return record
     manifest = load_manifest(ROOT / safe_relative(record["template"]))
     if record.get("sha256") != checksum:
         raise ValueError("Artifact catalog identity mismatch")
@@ -259,6 +269,17 @@ def verify_evidence(record, template):
             raise ValueError("Retained execution evidence differs from the manager receipt")
 
 
+def row_asset_name(row):
+    method = row["method"]
+    name = artifact_name(row, "online" if method == "online-recipe" else method, row["sha256"])
+    return name.replace(".cpgpkg.tar.gz", ".cpgrecipe.tar.gz") if method == "online-recipe" else name
+
+
+def row_mirror_path(row):
+    prefix, suffix = ("recipes", ".cpgrecipe.tar.gz") if row["method"] == "online-recipe" else ("packages", ".cpgpkg.tar.gz")
+    return prefix + "/sha256/" + row["sha256"] + suffix
+
+
 def check_publication_receipt(value, tag):
     """Bind an index receipt to the exact manifest and assets verified remotely."""
     validate_tag(tag)
@@ -271,22 +292,25 @@ def check_publication_receipt(value, tag):
             or type(info.get("release_id")) is not int or info["release_id"] <= 0
             or not isinstance(info.get("published_at"), str) or not info["published_at"]):
         raise ValueError("Unverified or mismatched publication receipt: " + tag)
-    packages, assets = value.get("packages"), info.get("verified_assets")
-    if not isinstance(packages, list) or not 1 <= len(packages) <= 950 or not isinstance(assets, dict):
+    packages, recipes, assets = value.get("packages"), value.get("online_recipes", []), info.get("verified_assets")
+    if (not isinstance(packages, list) or not isinstance(recipes, list)
+            or not 1 <= len(packages) + len(recipes) <= 950 or not isinstance(assets, dict)):
         raise ValueError("A publication receipt needs its package rows and verified assets")
     names, identities = set(), set()
-    for row in packages:
+    for row in packages + recipes:
+        if (row["method"] == "online-recipe") != (row in recipes):
+            raise ValueError("Recipe and package rows must use their respective manifest lists")
         checksum, size = row.get("sha256"), row.get("bytes")
         if (not isinstance(checksum, str) or CHECKSUM.fullmatch(checksum) is None
                 or type(size) is not int or size <= 0):
             raise ValueError("Published package hash or size is invalid")
-        name = artifact_name(row, row["method"], checksum)
+        name = row_asset_name(row)
         key = identity(row)
         if name in names or key in identities:
             raise ValueError("Duplicate package identity in publication receipt")
         names.add(name)
         identities.add(key)
-        if (row.get("path") != "packages/sha256/" + checksum + ".cpgpkg.tar.gz"
+        if (row.get("path") != row_mirror_path(row)
                 or row.get("download_url") != f"https://github.com/{REPOSITORY}/releases/download/{tag}/{name}"
                 or assets.get(name) != {"sha256": checksum, "bytes": size}):
             raise ValueError("Published row differs from its verified Release asset")
@@ -370,6 +394,25 @@ def source_file(source, cache, *, network):
 
 def rebuild(record, output, cache, *, network=False):
     template = ROOT / safe_relative(record["template"])
+    if record["method"] == "online-recipe":
+        checked_record(record["sha256"])
+        output.mkdir(parents=True, exist_ok=True)
+        destination = output / record["asset_name"]
+        delivered = os.environ.get("CPG_DELIVERED_ARTIFACTS")
+        if delivered:
+            source = Path(delivered) / record["sha256"]
+            if (source.is_symlink() or not source.is_file() or source.stat().st_size != record["bytes"]
+                    or sha256(source) != record["sha256"]):
+                raise ValueError("Delivered online recipe differs from its complete byte lock")
+            if destination.exists() or destination.is_symlink():
+                if (destination.is_symlink() or destination.stat().st_size != record["bytes"]
+                        or sha256(destination) != record["sha256"]):
+                    raise ValueError("Refusing to overwrite different recipe bytes")
+            else:
+                os.link(source, destination)
+            return destination
+        from online_recipe import repack
+        return repack(template, record, destination)
     manifest = load_manifest(template)
     spec, method = manifest["package"], manifest["method"]
     delivered = os.environ.get("CPG_DELIVERED_ARTIFACTS")
@@ -389,7 +432,7 @@ def rebuild(record, output, cache, *, network=False):
                     or sha256(destination) != record["sha256"]):
                 raise ValueError("Refusing to overwrite different release bytes")
         else:
-            shutil.copyfile(source, destination)
+            os.link(source, destination)
         return destination
     if method not in {"wrapper", "source", "material"}:
         raise ValueError("This template needs its separately reviewed payload reproducer")
@@ -472,6 +515,14 @@ def rebuild(record, output, cache, *, network=False):
 
 
 def repository_row(record, tag):
+    if record["method"] == "online-recipe":
+        row = {key: record[key] for key in ("id", "version", "build", "target", "method", "sha256", "bytes")}
+        row.update(kind="online_recipe", template=record["template"],
+                   path=row_mirror_path(row),
+                   download_url=f"https://github.com/{REPOSITORY}/releases/download/{tag}/{record['asset_name']}",
+                   qualification={key: record[key] for key in ("structure", "build_check", "functional")},
+                   review_policy=record["review_policy"], static_review=record["static_review"])
+        return row
     manifest = load_manifest(ROOT / safe_relative(record["template"]))
     spec = manifest["package"]
     dependencies = manifest["resolved_dependencies"]
@@ -558,7 +609,7 @@ def build_plan(tag, output, *, network, source_commit=None):
     if output.resolve().is_relative_to(ROOT.resolve()) or output.is_symlink():
         raise ValueError("Build output must be an ordinary directory outside the source checkout")
     plan = load_plan(tag)
-    rows, assets = [], []
+    rows, recipes, assets = [], [], []
     published, _ = published_rows()
     identities = {key: row["sha256"] for key, row in published.items()}
     records = [checked_record(checksum) for checksum in plan["artifacts"]]
@@ -572,11 +623,12 @@ def build_plan(tag, output, *, network, source_commit=None):
     for record in records:
         destination = rebuild(record, output, output / ".source-cache", network=network)
         assets.append(destination)
-        rows.append(repository_row(record, tag))
+        (recipes if record["method"] == "online-recipe" else rows).append(repository_row(record, tag))
     manifest = {"schema_version": 1, "kind": "compiler_playground_package_repository", "packages": rows,
                 "release": {"tag": tag, "repository": REPOSITORY,
-                            "source_commit": source_commit or os.environ.get("GITHUB_SHA"),
-                            "scope": "historical workload deliveries"}}
+                            "source_commit": source_commit or os.environ.get("GITHUB_SHA"), "scope": "historical workload deliveries"}}
+    if recipes:
+        manifest["online_recipes"] = recipes
     write_json(output / "manifest.json", manifest)
     assets.append(output / "manifest.json")
     (output / "SHA256SUMS").write_text("".join(f"{sha256(path)}  {path.name}\n" for path in sorted(assets)))
@@ -794,6 +846,20 @@ def publish(tag, output, *, source_commit=None):
     print(json.dumps({"tag": tag, "packages": len(manifest["packages"]), "url": uploaded["html_url"]}))
 
 
+def published_recipes():
+    rows = {}
+    for path in sorted((ROOT / "catalog/releases").glob("*.json")):
+        value = load_json(path)
+        check_publication_receipt(value, path.stem)
+        for row in value.get("online_recipes", []):
+            previous = rows.get(identity(row))
+            if previous is not None and {k: v for k, v in previous.items() if k != "download_url"} != {
+                    k: v for k, v in row.items() if k != "download_url"}:
+                raise ValueError("Conflicting published online recipe identity")
+            rows.setdefault(identity(row), row)
+    return sorted(rows.values(), key=lambda row: (row["id"], row["version"], row["build"], row["sha256"]))
+
+
 def merge_manifest():
     rows, releases = published_rows()
     previous = load_json(ROOT / "manifest.json")
@@ -802,7 +868,7 @@ def merge_manifest():
     value = {**previous, "schema_version": 1, "kind": "compiler_playground_package_repository",
              "repository": "https://github.com/" + REPOSITORY,
              "packages": sorted(rows.values(), key=lambda row: (row["id"], row["version"], row["build"], row["method"], row["sha256"])),
-             "releases": releases, "online_recipes": previous.get("online_recipes", []),
+             "releases": releases, "online_recipes": published_recipes(),
              "policy": {**previous.get("policy", {}),
                         "git": "Unpacked definitions, build recipes, tests, provenance and manifests only",
                         "release": "Verified immutable artifacts; no silent fallback to untested variants",
