@@ -1,0 +1,241 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 5863,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "93a6728a1ace1b1b2ab25d1046c8a2e3c46f8387bc2d4423fb062f3ed62840b7"
+    }
+  ],
+  "inventory_sha256": "89fedc116ad0c5ac5185a0b18d5e23b69bfde3d42cf5db3f8ceeb3ff7b46bd23",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "47651641fc8e4d0bd82ca2c45d6a0d32e02d66dcd332380ebf5738a6ebb523b9",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "distribution-version",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 15
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "child-process-resource-observation",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.psutil",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 155560,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://github.com/giampaolo/psutil"
+        ],
+        "id": "py.psutil",
+        "immutable_ref": "sha256:076a2d2f923fd4821644f5ba89f059523da90dc9014e85f8e45a5774ca5bc6f9",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "LicenseRef-Python-distribution-notices",
+        "mandatory": false,
+        "material_path": "wheels/psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl",
+        "package_name": "psutil",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "076a2d2f923fd4821644f5ba89f059523da90dc9014e85f8e45a5774ca5bc6f9",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/psutil/7.2.2/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/b5/70/5d8df3b09e25bce090399cf48e452d25c935ab72dad19406c77f4e828045/psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl",
+        "title": "psutil",
+        "upstream": "https://pypi.org/project/psutil/7.2.2/",
+        "version": "7.2.2"
+      },
+      "catalog_sha256": "d99c94ebf4c058f7968fda99d8c0a417ab19dbc7797911d81a1775aeec3ba9a4"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "psutil",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 155560,
+        "extract": false,
+        "id": "py.psutil",
+        "material_path": "wheels/psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "076a2d2f923fd4821644f5ba89f059523da90dc9014e85f8e45a5774ca5bc6f9",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/b5/70/5d8df3b09e25bce090399cf48e452d25c935ab72dad19406c77f4e828045/psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Use {prefix}/bin/python explicitly; this avoids importing a different ambient installation."
+      ],
+      "documentation": [
+        "https://psutil.io/",
+        "https://github.com/giampaolo/psutil"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -c \"import psutil; p=psutil.Process(); print(p.memory_info()); print(p.cpu_times())\"",
+          "description": "Inspect the current process memory in bytes and cumulative CPU seconds."
+        },
+        {
+          "command": "{prefix}/bin/python -c \"import psutil; print([p.info for p in psutil.process_iter(['pid', 'name', 'memory_info'], ad_value=None)])\"",
+          "description": "List process identifiers, names and memory without failing on process races or denied fields."
+        },
+        {
+          "command": "{prefix}/bin/python -c \"import psutil; print(psutil.virtual_memory()); print(psutil.Process().cpu_affinity())\"",
+          "description": "Observe system-visible memory and the CPUs allowed for this process."
+        },
+        {
+          "command": "cpg packages check py.psutil --prefix {prefix} --kind functional",
+          "description": "Run the declared operation checks in this environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Selected Python interpreter",
+          "path": "{prefix}/bin/python",
+          "purpose": "Interpreter that owns the exact installed distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Query cpg packages paths py.psutil --files for actual manager-recorded files."
+        },
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        }
+      ],
+      "notes": [
+        "The functional check launches, observes and reaps its own real child; it checks CPU/memory/open-file observations and exit status 7. It does not require root.",
+        "Process information can disappear or be denied: handle psutil.NoSuchProcess, AccessDenied and TimeoutExpired in application code.",
+        "System totals are observations exposed by the host/kernel and may differ from a container cgroup quota. CPU percentage needs an interval or two observations; the first nonblocking reading is not an established utilization measurement.",
+        "Sensors, privileged foreign-process inspection, every supported operating system and physical hardware counters are outside this qualification.",
+        "A payload-free wrapper forwards installation/removal to pip. Wheel bytes and wrapper bytes have separate exact identities; removing the distribution preserves its Python environment."
+      ],
+      "summary": "Inspect process trees, CPU time, resident memory, open files, filesystem capacity and system resource availability from the selected Python environment."
+    },
+    "version": "7.2.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.10",
+    "release": "0.21.11",
+    "scope": "Exact frozen formal baseline definition and recipe supporting selected Python targets; zero dependency functional qualification.",
+    "support_only": true
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

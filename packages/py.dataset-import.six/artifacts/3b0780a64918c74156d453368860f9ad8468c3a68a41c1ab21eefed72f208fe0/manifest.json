@@ -1,0 +1,241 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1143,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "91a75ea3fe7eb78a09f71fe9422006d7ed911addb58093987e2fba0fdd496586"
+    }
+  ],
+  "inventory_sha256": "507b90739c6aa0111bb66f0ec3c0d1512a2ca625d8c984825de19e7437a902ad",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ef069c56e809cdffcd3dc9d833788d99b1cfc6a5c05a0624829887572f61ef28",
+  "method": "wrapper",
+  "package": {
+    "build": "20261029-exact-wheel-offline-isolation-1",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--module",
+          "six",
+          "--dist",
+          "six",
+          "--version",
+          "1.17.0"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-wheel-local-import-and-semantic-probe",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 30
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.dataset-import.six",
+    "metadata": {
+      "catalog": {
+        "activated_extras": [],
+        "archive_bytes": 11050,
+        "category": [
+          "Python packages",
+          "Dataset import environment"
+        ],
+        "container_strategy": "Install the complete dataset-import wheel group with --no-index --require-hashes into its independent CPython 3.12 environment. Import compiler_playground from the matching project source or install its local wheel explicitly.",
+        "dependencies": [],
+        "dependency_marker_environment": {
+          "extra": "",
+          "implementation_name": "cpython",
+          "implementation_version": "3.12.14",
+          "os_name": "posix",
+          "platform_machine": "x86_64",
+          "platform_python_implementation": "CPython",
+          "platform_release": "",
+          "platform_system": "Linux",
+          "platform_version": "",
+          "python_full_version": "3.12.14",
+          "python_version": "3.12",
+          "sys_platform": "linux"
+        },
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "dataset-import",
+          "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed"
+        },
+        "documentation": [
+          "https://pypi.org/pypi/six/1.17.0/json"
+        ],
+        "id": "py.dataset-import.six",
+        "immutable_ref": "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274",
+        "installed_allocated_bytes": 106496,
+        "installed_bytes": 79542,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "material_path": "wheels/dataset-import/six-1.17.0-py2.py3-none-any.whl",
+        "package_name": "six",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure.",
+        "qualification_gaps": [
+          "Local backend smoke is not a full OCI build or admission of arbitrary corpus semantics.",
+          "The core package needs no third-party dependency. Use this environment only for explicit data preparation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "host",
+          "dev"
+        ],
+        "sha256": "4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274",
+        "size_basis": "Actual wheel payload bytes verified against official PyPI. Installed logical/allocated bytes measured from distribution RECORD files in the isolated local CPython 3.12 venv; interpreter and system libraries excluded.",
+        "source_evidence": [
+          "https://pypi.org/pypi/six/1.17.0/json",
+          "workspace-evidence/datasets-v090/python-capsule/manifest.json",
+          "workspace-evidence/datasets-v090/python-capsule/local-source-probe.json"
+        ],
+        "source_logical_bytes": 37975,
+        "source_url": "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl",
+        "title": "six (dataset-import)",
+        "upstream": "https://pypi.org/pypi/six/1.17.0/json",
+        "version": "1.17.0"
+      },
+      "catalog_sha256": "dfc1a7bc685516bb9a53c667b1b4fa0f7ec8581cc50721dc45f274a2142b777a",
+      "cpg_qualification": {
+        "native_machine_code_compiled": false,
+        "offline_wheel_no_index": true,
+        "original_artifact_bytes": 11050,
+        "original_artifact_exact_sha256": "4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274",
+        "original_catalog_unchanged": true,
+        "original_package_version_unchanged": true,
+        "original_provider": "python",
+        "scope": "Debian 13 Python 3.13 host-only",
+        "source_compile_performed": false,
+        "target_ubuntu24_untested": true
+      }
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "dataset-import",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "six",
+      "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 11050,
+        "extract": false,
+        "id": "py.dataset-import.six",
+        "material_path": "wheels/dataset-import/six-1.17.0-py2.py3-none-any.whl",
+        "sha256": "4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/pypi/six/1.17.0/json"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/dataset-import/six-1.17.0-py2.py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "Local isolated CPG pip wrapper installs the exact original wheel with --no-index --no-deps; functional import and small semantic smoke are separately checked; Ubuntu 24.04, OCI, hardware and official benchmark remain untested."
+      ],
+      "summary": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure."
+    },
+    "version": "1.17.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.10",
+    "release": "0.21.11",
+    "scope": "Exact frozen formal baseline definition and recipe supporting selected Python targets; zero dependency functional qualification.",
+    "support_only": true
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

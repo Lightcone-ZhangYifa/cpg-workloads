@@ -1,0 +1,278 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 219,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "8348233aa84e9d60845f699c1b7c78e6396f2044b9d36dfab296ceddbcadfdf4"
+    },
+    {
+      "bytes": 13541,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_03.py",
+      "sha256": "e3d8c97af1f8f77bfbd68d0805b1bc4b01b7f98d53d584419b672bafe250c7f0"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "42f529e876c9b96203f6df9afac8f00a938627406a9ab693c21bcf96ac0c6c11",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "1d1247b0fd8e3fc1ff8b79c21ba8334fbe8a7d020bf9db633c20dde5af5e61f5",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.dataset-import.anyio",
+        "py.dataset-import.httpcore2",
+        "py.dataset-import.idna",
+        "py.dataset-import.truststore",
+        "py.dataset-import.typing-extensions"
+      ],
+      "system": []
+    },
+    "id": "py.dataset-import.httpx2",
+    "metadata": {
+      "catalog": {
+        "activated_extras": [],
+        "archive_bytes": 97880,
+        "category": [
+          "Python packages",
+          "Dataset import environment"
+        ],
+        "container_strategy": "Install the complete dataset-import wheel group with --no-index --require-hashes into its independent CPython 3.12 environment. Import compiler_playground from the matching project source or install its local wheel explicitly.",
+        "dependencies": [
+          "py.dataset-import.anyio",
+          "py.dataset-import.httpcore2",
+          "py.dataset-import.idna",
+          "py.dataset-import.truststore",
+          "py.dataset-import.typing-extensions"
+        ],
+        "dependency_marker_environment": {
+          "extra": "",
+          "implementation_name": "cpython",
+          "implementation_version": "3.12.14",
+          "os_name": "posix",
+          "platform_machine": "x86_64",
+          "platform_python_implementation": "CPython",
+          "platform_release": "",
+          "platform_system": "Linux",
+          "platform_version": "",
+          "python_full_version": "3.12.14",
+          "python_version": "3.12",
+          "sys_platform": "linux"
+        },
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "dataset-import",
+          "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed"
+        },
+        "documentation": [
+          "https://pypi.org/pypi/httpx2/2.16.0/json"
+        ],
+        "id": "py.dataset-import.httpx2",
+        "immutable_ref": "sha256:fd2c5d7909e8d86fe92d53020c310ca0e4e431b838c207c5754b9bbf0308d49a",
+        "installed_allocated_bytes": 1052672,
+        "installed_bytes": 896048,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "BSD-3-Clause",
+        "mandatory": false,
+        "material_path": "wheels/dataset-import/httpx2-2.16.0-py3-none-any.whl",
+        "package_name": "httpx2",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure.",
+        "qualification_gaps": [
+          "Local backend smoke is not a full OCI build or admission of arbitrary corpus semantics.",
+          "The core package needs no third-party dependency. Use this environment only for explicit data preparation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "host",
+          "dev"
+        ],
+        "sha256": "fd2c5d7909e8d86fe92d53020c310ca0e4e431b838c207c5754b9bbf0308d49a",
+        "size_basis": "Actual wheel payload bytes verified against official PyPI. Installed logical/allocated bytes measured from distribution RECORD files in the isolated local CPython 3.12 venv; interpreter and system libraries excluded.",
+        "source_evidence": [
+          "https://pypi.org/pypi/httpx2/2.16.0/json",
+          "workspace-evidence/datasets-v090/python-capsule/manifest.json",
+          "workspace-evidence/datasets-v090/python-capsule/local-source-probe.json"
+        ],
+        "source_logical_bytes": 412425,
+        "source_url": "https://files.pythonhosted.org/packages/7b/3d/2e4bc4fd1ef9770871669adb348d612a6e4786b303a23f9935b81c48dd60/httpx2-2.16.0-py3-none-any.whl",
+        "title": "httpx2 (dataset-import)",
+        "upstream": "https://pypi.org/pypi/httpx2/2.16.0/json",
+        "version": "2.16.0"
+      },
+      "catalog_sha256": "2422f2a8fa200735f1ba281dd4d6bb7cd864242169209024146aa3aa97986a0b"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "dataset-import",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "httpx2",
+      "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 97880,
+        "extract": false,
+        "id": "py.dataset-import.httpx2",
+        "material_path": "wheels/dataset-import/httpx2-2.16.0-py3-none-any.whl",
+        "sha256": "fd2c5d7909e8d86fe92d53020c310ca0e4e431b838c207c5754b9bbf0308d49a",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/7b/3d/2e4bc4fd1ef9770871669adb348d612a6e4786b303a23f9935b81c48dd60/httpx2-2.16.0-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/pypi/httpx2/2.16.0/json"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/dataset-import/httpx2-2.16.0-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+        "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+        "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+      ],
+      "summary": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure."
+    },
+    "version": "2.16.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.10",
+    "release": "0.21.11",
+    "scope": "Exact frozen formal baseline definition and recipe supporting selected Python targets; zero dependency functional qualification.",
+    "support_only": true
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

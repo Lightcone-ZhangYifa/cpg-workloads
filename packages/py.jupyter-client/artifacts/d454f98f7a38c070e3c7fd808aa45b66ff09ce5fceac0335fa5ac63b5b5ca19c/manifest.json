@@ -1,0 +1,367 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 235,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "f40222f4e3e51578f5dc56a5aa39985a5ae05f5e7e4311138e11268e5d8afac7"
+    },
+    {
+      "bytes": 12281,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_v02111_02.py",
+      "sha256": "75aeae9776950397c36412517bea7e8c71ae35fef922054d0df8780283fd00fb"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "4bba954d319ed99029e9d46c43d553c31e6c9d52586514d63af8258466845880",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "2cf1625b7bec66c129d557edc5ed1194d5c7e74c3f47f2e4eacb02260fefca16",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.jupyter-core",
+        "py.python-dateutil",
+        "py.pyzmq",
+        "py.tornado",
+        "py.traitlets",
+        "py.typing-extensions"
+      ],
+      "system": []
+    },
+    "id": "py.jupyter-client",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 110184,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.jupyter-core",
+          "py.python-dateutil",
+          "py.pyzmq",
+          "py.tornado",
+          "py.traitlets",
+          "py.typing-extensions"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/jupyter_client/"
+        ],
+        "id": "py.jupyter-client",
+        "immutable_ref": "sha256:5f73f24f22fa25192cfff6b23c051932a2473a797b05734aff495b392103e14e",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "LicenseRef-Python-distribution-notices",
+        "mandatory": false,
+        "material_path": "wheels/jupyter_client-8.10.0-py3-none-any.whl",
+        "package_name": "jupyter-client",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "5f73f24f22fa25192cfff6b23c051932a2473a797b05734aff495b392103e14e",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/jupyter_client/8.10.0/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/0f/88/7c548de1f6c2ade7c931a3282da73f9274fa6a1531091be682f89c85efb9/jupyter_client-8.10.0-py3-none-any.whl",
+        "title": "jupyter_client",
+        "upstream": "https://pypi.org/project/jupyter_client/8.10.0/",
+        "version": "8.10.0"
+      },
+      "catalog_sha256": "48331251328dbce6e536b645a032de698ced19d0332d13779eb0d8f2521d5678"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "jupyter-client",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 110184,
+        "extract": false,
+        "id": "py.jupyter-client",
+        "material_path": "wheels/jupyter_client-8.10.0-py3-none-any.whl",
+        "sha256": "5f73f24f22fa25192cfff6b23c051932a2473a797b05734aff495b392103e14e",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/0f/88/7c548de1f6c2ade7c931a3282da73f9274fa6a1531091be682f89c85efb9/jupyter_client-8.10.0-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/project/jupyter_client/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/jupyter_client-8.10.0-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+        "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+        "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+      ],
+      "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+    },
+    "version": "8.10.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.10",
+    "original_input_sha256": "5f73f24f22fa25192cfff6b23c051932a2473a797b05734aff495b392103e14e",
+    "recipe_scope": "Exact original fixed Python closure and explicitly frozen local API probes; independent actual qualification required.",
+    "release": "0.21.11",
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.platformdirs",
+      "method": "wrapper",
+      "sha256": "288cef01aec494c7c4345046acbf5899319cfa361506063c00550b7629d4d4a5",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.13.5"
+    },
+    {
+      "build": "2",
+      "id": "py.traitlets",
+      "method": "wrapper",
+      "sha256": "a49aa2167b332800856297858962e629ecc04cb761e9e02ddbe2ba2835918cb7",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "5.16.1"
+    },
+    {
+      "build": "2",
+      "id": "py.jupyter-core",
+      "method": "wrapper",
+      "sha256": "b8047b7cdb448ba483adc8f5b805360189fcea2153e92ab834b081da63d7eb71",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "5.9.1"
+    },
+    {
+      "build": "2",
+      "id": "py.six",
+      "method": "wrapper",
+      "sha256": "968330bd46df8c41e72d9fa8108937e031b73245551ae9b1f2056bc021ac99be",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.17.0"
+    },
+    {
+      "build": "2",
+      "id": "py.python-dateutil",
+      "method": "wrapper",
+      "sha256": "04dff4a262697c13e2d94924db7e13418c01181df300c4dc23fd9f23ed746bf9",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.9.0.post0"
+    },
+    {
+      "build": "2",
+      "id": "py.pyzmq",
+      "method": "wrapper",
+      "sha256": "1fa1f7c3c837c781a56ac3972494fa8f97ec269e85003057c74a3141870ee9fb",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "27.2.0"
+    },
+    {
+      "build": "2",
+      "id": "py.tornado",
+      "method": "wrapper",
+      "sha256": "926116da359ea9c8befada627585b817ab06e6e1b617e3a5bb38b7ea5f4c432d",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "6.6"
+    },
+    {
+      "build": "2",
+      "id": "py.typing-extensions",
+      "method": "wrapper",
+      "sha256": "442640639736fe41dd87afc2da8c607bece7584dba0238ebcc1a3688fd5652a3",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.16.0"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

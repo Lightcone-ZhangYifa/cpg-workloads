@@ -1,0 +1,395 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 211,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "169f3b02aaff9e2659a3d1fd8ee0351cb42c1b874bfe7c9371204705d13ea386"
+    },
+    {
+      "bytes": 12281,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_v02111_02.py",
+      "sha256": "75aeae9776950397c36412517bea7e8c71ae35fef922054d0df8780283fd00fb"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "dc53fbb2673df196beef591555dc3178247333bb1d5dfc74747a613b471e4597",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "7bf20f831d786795e05d09be37b4d76f75ed872131e58b1bf2957758f533778b",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.alembic",
+        "py.colorlog",
+        "py.numpy",
+        "py.packaging",
+        "py.pyyaml",
+        "py.sqlalchemy",
+        "py.tqdm"
+      ],
+      "system": []
+    },
+    "id": "py.optuna",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 442352,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.alembic",
+          "py.colorlog",
+          "py.numpy",
+          "py.packaging",
+          "py.pyyaml",
+          "py.sqlalchemy",
+          "py.tqdm"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/optuna/"
+        ],
+        "id": "py.optuna",
+        "immutable_ref": "sha256:5fff892ae6baf4948c810c5b8635ec67e08efb0709b41cb73b14e30391d44720",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "LicenseRef-Python-distribution-notices",
+        "mandatory": false,
+        "material_path": "wheels/optuna-5.0.0-py3-none-any.whl",
+        "package_name": "optuna",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "5fff892ae6baf4948c810c5b8635ec67e08efb0709b41cb73b14e30391d44720",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/optuna/5.0.0/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/90/e5/7c5e8cdda8c9f0cd8aca0a376dee9cff6b8c30692cf614960d9e80f59689/optuna-5.0.0-py3-none-any.whl",
+        "title": "optuna",
+        "upstream": "https://pypi.org/project/optuna/5.0.0/",
+        "version": "5.0.0"
+      },
+      "catalog_sha256": "bb47ccb4f3023d853d1d89f4a0da62060d4d025a434f0bf2bb06131c6a162a46"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "optuna",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 442352,
+        "extract": false,
+        "id": "py.optuna",
+        "material_path": "wheels/optuna-5.0.0-py3-none-any.whl",
+        "sha256": "5fff892ae6baf4948c810c5b8635ec67e08efb0709b41cb73b14e30391d44720",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/90/e5/7c5e8cdda8c9f0cd8aca0a376dee9cff6b8c30692cf614960d9e80f59689/optuna-5.0.0-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/project/optuna/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/optuna-5.0.0-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+        "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+        "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+      ],
+      "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+    },
+    "version": "5.0.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.10",
+    "original_input_sha256": "5fff892ae6baf4948c810c5b8635ec67e08efb0709b41cb73b14e30391d44720",
+    "recipe_scope": "Exact original fixed Python closure and explicitly frozen local API probes; independent actual qualification required.",
+    "release": "0.21.11",
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.markupsafe",
+      "method": "wrapper",
+      "sha256": "210a226c0a17b020c953758a4cc5c18f564ee3a0c932e221a15d784f640f0f07",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.0.4"
+    },
+    {
+      "build": "2",
+      "id": "py.mako",
+      "method": "wrapper",
+      "sha256": "ca413e6b3f21372c6483d677ca5360978beef9c26f9563101ad96b5d8a5615b0",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.4.3"
+    },
+    {
+      "build": "2",
+      "id": "py.typing-extensions",
+      "method": "wrapper",
+      "sha256": "442640639736fe41dd87afc2da8c607bece7584dba0238ebcc1a3688fd5652a3",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.16.0"
+    },
+    {
+      "build": "2",
+      "id": "py.sqlalchemy",
+      "method": "wrapper",
+      "sha256": "e188bc00f67191865c20c0b73aa092fb747608039fca18387964c43c323a722f",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.1.5"
+    },
+    {
+      "build": "2",
+      "id": "py.alembic",
+      "method": "wrapper",
+      "sha256": "66a26e20dc2c5fa225fd6c516b1d50a41ffb04f879e57d40f47523697b0b94cc",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.20.0"
+    },
+    {
+      "build": "2",
+      "id": "py.colorlog",
+      "method": "wrapper",
+      "sha256": "6c488e8b980308ec7b11da1317d34e0468cc634d8064af14374932e3f4440a48",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "6.12.0"
+    },
+    {
+      "build": "2",
+      "id": "py.numpy",
+      "method": "wrapper",
+      "sha256": "336c113ef339ff174159969978329b5f2a233946db46de91caa6a39c825d30dd",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.5.4"
+    },
+    {
+      "build": "2",
+      "id": "py.packaging",
+      "method": "wrapper",
+      "sha256": "45b55fb90ca2b1747819b90000711ffc049ccaff6ef141988a5d0feca81a5ec6",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "26.3"
+    },
+    {
+      "build": "2",
+      "id": "py.pyyaml",
+      "method": "wrapper",
+      "sha256": "d5aa4ff2b78c9350b2a35597794c54dc7fee77d2192e0362c841c3248a10e2cb",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "6.0.3"
+    },
+    {
+      "build": "2",
+      "id": "py.tqdm",
+      "method": "wrapper",
+      "sha256": "19595a0055fbfc5c941162671f165c7ad8c3c3c67a8a552d84039cfdef2b2838",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.70.1"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

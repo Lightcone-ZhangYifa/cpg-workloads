@@ -1,0 +1,16 @@
+name: clang-format check
+
+on:
+  workflow_call:
+
+permissions: read-all
+
+jobs:
+  clang-formatting-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+    - name: Run clang-format style check.
+      uses: DoozyX/clang-format-lint-action@bcb4eb2cb0d707ee4f3e5cc3b456eb075f12cf73 # v0.20
+      with:
+        clangFormatVersion: 16
