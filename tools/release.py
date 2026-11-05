@@ -484,6 +484,7 @@ def checked_record(checksum):
     if path.is_symlink():
         raise ValueError("Artifact records must be ordinary source files")
     record = load_json(path)
+    dependency_variant(record)  # Validate every explicit role, including online records.
     if record.get("method") == "online-recipe":
         from online_recipe import verify_template
         if (record.get("sha256") != checksum or record.get("release_eligible") is not True
@@ -504,6 +505,7 @@ def checked_record(checksum):
         raise ValueError("; ".join(problems))
     verify_evidence(record, ROOT / safe_relative(record["template"]))
     checked_variant_origin(record)
+    checked_historical_origin(record)
     if manifest["method"] == "material" and record.get("review_policy") != "static-trust-v1":
         verify_material(record, manifest, ROOT / safe_relative(record["template"]))
     elif manifest["method"] == "binary" and record.get("review_policy") != "static-trust-v1":
@@ -539,14 +541,21 @@ def row_mirror_path(row):
 
 def dependency_variant(row):
     role = row.get("index_role", "canonical")
-    if role not in {"canonical", "dependency-variant"}:
+    if role not in {"canonical", "dependency-variant", "historical-snapshot"}:
         raise ValueError("Unknown package index role")
-    if role == "dependency-variant" and row["method"] == "online-recipe":
-        raise ValueError("Online preparation recipes are separate from package dependency profiles")
+    if role != "canonical" and row["method"] == "online-recipe":
+        raise ValueError("Online preparation recipes cannot become package variants or historical snapshots")
     return role == "dependency-variant"
 
 
+def historical_snapshot(row):
+    dependency_variant(row)  # Reject unknown roles and online-recipe role changes.
+    return row.get("index_role", "canonical") == "historical-snapshot"
+
+
 def publication_key(row):
+    if historical_snapshot(row):
+        return identity(row) + ":historical:" + row["sha256"]
     return identity(row) + (":" + row["sha256"] if dependency_variant(row) else "")
 
 
@@ -565,6 +574,56 @@ def checked_variant_origin(record):
         raise ValueError("Dependency variant lost its original profile membership")
 
 
+def check_historical_descriptor(descriptor, row):
+    """Bind an archival download to original bytes, without claiming dependency usability."""
+    fields = ("id", "version", "build", "method", "target", "sha256", "bytes", "manifest_sha256")
+    if (not historical_snapshot(row) or row["method"] not in {"wrapper", "source", "material", "binary"}
+            or row.get("dependency_profiles") or not isinstance(descriptor, dict)
+            or descriptor.get("schema_version") != 1 or descriptor.get("kind") != "cpg_historical_snapshot"
+            or descriptor.get("selection") != "explicit_sha256_only"
+            or descriptor.get("dependency_profile_qualified") is not False):
+        raise ValueError("Invalid explicit historical snapshot descriptor")
+    artifact = descriptor.get("artifact")
+    if not isinstance(artifact, dict) or artifact != {key: row[key] for key in fields}:
+        raise ValueError("Historical snapshot differs from the original artifact or manifest")
+    if (not isinstance(artifact["sha256"], str) or CHECKSUM.fullmatch(artifact["sha256"]) is None
+            or not isinstance(artifact["manifest_sha256"], str)
+            or CHECKSUM.fullmatch(artifact["manifest_sha256"]) is None
+            or type(artifact["bytes"]) is not int or artifact["bytes"] <= 0):
+        raise ValueError("Historical snapshot has an invalid artifact lock")
+    origin = descriptor.get("origin")
+    if (not isinstance(origin, dict) or set(origin) != {"archive", "sha256", "bytes", "member"}
+            or not isinstance(origin["sha256"], str) or CHECKSUM.fullmatch(origin["sha256"]) is None
+            or type(origin["bytes"]) is not int or origin["bytes"] <= 0
+            or not isinstance(origin["archive"], str) or not isinstance(origin["member"], str)):
+        raise ValueError("Historical snapshot needs a complete original archive/member lock")
+    if len(safe_relative(origin["archive"]).parts) != 1:
+        raise ValueError("Historical archive identity must be a file name")
+    safe_relative(origin["member"])
+    # This is a newly computed technical binding, not an asserted old dependency profile.
+    if descriptor.get("context") != {
+            "kind": "original-delivery-member", "sha256": digest({"artifact": artifact, "origin": origin})}:
+        raise ValueError("Historical snapshot lost its original-delivery technical binding")
+    return descriptor
+
+
+def checked_historical_origin(record):
+    if not historical_snapshot(record):
+        return None
+    checksum = record["sha256"]
+    if not isinstance(checksum, str) or CHECKSUM.fullmatch(checksum) is None:
+        raise ValueError("Invalid historical snapshot checksum")
+    descriptor = load_json(ROOT / "catalog/historical-snapshots" / (checksum + ".json"))
+    check_historical_descriptor(descriptor, record)
+    origins = record.get("origins")
+    origin = descriptor["origin"]
+    if not isinstance(origins, list) or not any(
+            isinstance(item, dict) and all(item.get(key) == value for key, value in origin.items())
+            for item in origins):
+        raise ValueError("Historical snapshot is not bound to a recorded original delivery member")
+    return descriptor
+
+
 def check_publication_receipt(value, tag):
     """Bind an index receipt to the exact manifest and assets verified remotely."""
     validate_tag(tag)
@@ -578,14 +637,23 @@ def check_publication_receipt(value, tag):
             or not isinstance(info.get("published_at"), str) or not info["published_at"]):
         raise ValueError("Unverified or mismatched publication receipt: " + tag)
     packages, recipes, variants = value.get("packages"), value.get("online_recipes", []), value.get("dependency_variants", [])
+    historical = value.get("historical_snapshots", [])
     assets = info.get("verified_assets")
     if (not isinstance(packages, list) or not isinstance(recipes, list) or not isinstance(variants, list)
-            or not 1 <= len(packages) + len(recipes) + len(variants) <= 950 or not isinstance(assets, dict)):
+            or not isinstance(historical, list)
+            or not 1 <= len(packages) + len(recipes) + len(variants) + len(historical) <= 950
+            or not isinstance(assets, dict)):
         raise ValueError("A publication receipt needs its package rows and verified assets")
+    if historical and (packages or recipes or variants):
+        raise ValueError("Historical snapshots require a separate, exclusively historical receipt")
     names, identities = set(), set()
-    for row in packages + recipes + variants:
+    for row in packages + recipes + variants + historical:
         if dependency_variant(row) != (row in variants):
             raise ValueError("Dependency variants must remain outside the canonical package list")
+        if historical_snapshot(row) != (row in historical):
+            raise ValueError("Historical snapshots must remain in their separate archival download list")
+        if historical_snapshot(row):
+            check_historical_descriptor(row.get("historical_snapshot"), row)
         if (row["method"] == "online-recipe") != (row in recipes):
             raise ValueError("Recipe and package rows must use their respective manifest lists")
         checksum, size = row.get("sha256"), row.get("bytes")
@@ -623,6 +691,8 @@ def published_rows(receipts=None):
         receipts = ((path.stem, load_json(path)) for path in paths)
     for tag, value in receipts:
         check_publication_receipt(value, tag)
+        if value.get("historical_snapshots"):
+            raise ValueError("Historical receipts belong only in catalog/historical-releases")
         info = value["release"]
         releases.append(info)
         for row in value["packages"]:
@@ -847,6 +917,9 @@ def repository_row(record, tag):
     if dependency_variant(record):
         row["index_role"] = "dependency-variant"
         row["dependency_profiles"] = record["dependency_profiles"]
+    if historical_snapshot(record):
+        row["index_role"] = "historical-snapshot"
+        row["historical_snapshot"] = checked_historical_origin(record)
     return row
 
 
@@ -855,7 +928,7 @@ def plan_software(prefix, batch_size):
         raise ValueError("Invalid release prefix or batch size")
     published, _ = published_rows()
     published = {publication_key(row): row
-                 for row in [*published.values(), *published_variants()]}
+                 for row in [*published.values(), *published_variants(), *published_historical_snapshots()]}
     planned = set()
     selected = {key: row["sha256"] for key, row in published.items()}
     for path in sorted((ROOT / "release-plans").glob("*.json")):
@@ -880,12 +953,13 @@ def plan_software(prefix, batch_size):
         selected[key] = record["sha256"]
     groups = {}
     for row in records:
-        groups.setdefault((row["id"], row["version"], row["build"]), []).append(row)
-    for software, artifacts in groups.items():
+        groups.setdefault((row["id"], row["version"], row["build"], historical_snapshot(row)), []).append(row)
+    for group, artifacts in groups.items():
+        software, archival = group[:3], group[3]
         if len(artifacts) > batch_size:
             raise ValueError("Software release exceeds the selected asset limit")
-        tag = validate_tag(prefix + "-" + "-".join(re.sub(r"[^a-z0-9._-]+", "-", str(item).lower())
-                                                 for item in software))
+        tag = validate_tag(prefix + ("-historical-" if archival else "-") +
+                           "-".join(re.sub(r"[^a-z0-9._-]+", "-", str(item).lower()) for item in software))
         plan = {"schema_version": 1, "kind": "cpg_workload_release_plan", "tag": tag,
                 "repository": REPOSITORY, "artifacts": [row["sha256"] for row in artifacts]}
         path = ROOT / "release-plans" / (tag + ".json")
@@ -917,12 +991,14 @@ def build_plan(tag, output, *, network, source_commit=None):
     if output.resolve().is_relative_to(ROOT.resolve()) or output.is_symlink():
         raise ValueError("Build output must be an ordinary directory outside the source checkout")
     plan = load_plan(tag)
-    rows, recipes, variants, assets = [], [], [], []
+    rows, recipes, variants, historical, assets = [], [], [], [], []
     published, _ = published_rows()
     identities = {key: row["sha256"] for key, row in published.items()}
     records = [checked_record(checksum) for checksum in plan["artifacts"]]
+    if any(historical_snapshot(record) for record in records) and not all(historical_snapshot(record) for record in records):
+        raise ValueError("Historical snapshots require their own publication plan")
     for record in records:
-        if dependency_variant(record):
+        if dependency_variant(record) or historical_snapshot(record):
             continue
         key = identity(record)
         if key in identities and identities[key] != record["sha256"]:
@@ -933,7 +1009,9 @@ def build_plan(tag, output, *, network, source_commit=None):
     for record in records:
         destination = rebuild(record, output, output / ".source-cache", network=network)
         assets.append(destination)
-        destination_rows = recipes if record["method"] == "online-recipe" else variants if dependency_variant(record) else rows
+        destination_rows = (recipes if record["method"] == "online-recipe" else
+                            variants if dependency_variant(record) else
+                            historical if historical_snapshot(record) else rows)
         destination_rows.append(repository_row(record, tag))
     manifest = {"schema_version": 1, "kind": "compiler_playground_package_repository", "packages": rows,
                 "release": {"tag": tag, "repository": REPOSITORY,
@@ -943,6 +1021,8 @@ def build_plan(tag, output, *, network, source_commit=None):
         manifest["online_recipes"] = recipes
     if variants:
         manifest["dependency_variants"] = variants
+    if historical:
+        manifest["historical_snapshots"] = historical
     write_json(output / "manifest.json", manifest)
     assets.append(output / "manifest.json")
     (output / "SHA256SUMS").write_text("".join(f"{sha256(path)}  {path.name}\n" for path in sorted(assets)))
@@ -1037,6 +1117,8 @@ def verify_publication_source(commit, main, tag, *, checkout_commit=None):
         record = checked_record(checksum)
         records.append(record)
         paths.extend(("catalog/artifacts/" + checksum + ".json", record["template"]))
+        if historical_snapshot(record):
+            paths.append("catalog/historical-snapshots/" + checksum + ".json")
     if any(dependency_variant(record) for record in records):
         paths.append("catalog/dependency-variants.json")
     head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, check=True,
@@ -1071,7 +1153,7 @@ def verify_publication_source(commit, main, tag, *, checkout_commit=None):
         receipts.append((PurePosixPath(name).stem, json.loads(raw)))
     published, _ = published_rows(receipts)
     for record in records:
-        if dependency_variant(record):
+        if dependency_variant(record) or historical_snapshot(record):
             continue
         previous = published.get(identity(record))
         if previous is not None and previous["sha256"] != record["sha256"]:
@@ -1106,7 +1188,10 @@ def publish(tag, output, *, source_commit=None):
                      "Each artifact records its review scope; a static review does not claim a new build or functional run. "
                      "Trusted deliveries retain build_check=not_run and functional=not_run.\n\n"
                      "Use the pinned manifest with Compiler Playground's existing package manager. "
-                     "This release does not claim unexecuted hardware or official benchmark qualification.\n")
+                     "This release does not claim unexecuted hardware or official benchmark qualification.\n"
+                     + ("\nHistorical snapshots preserve original delivery bytes and are selected only by SHA-256. "
+                        "They do not join the canonical package index or establish a usable dependency profile.\n"
+                        if manifest.get("historical_snapshots") else ""))
     verify_release_commit(tag, commit, missing=True)
     if existing is None:
         existing = gh("api", "--method", "POST", f"repos/{REPOSITORY}/releases", "--input", "-",
@@ -1192,8 +1277,27 @@ def published_variants():
     return sorted(rows.values(), key=lambda row: (row["id"], row["version"], row["build"], row["method"], row["sha256"]))
 
 
+def published_historical_snapshots(*, with_releases=False):
+    rows, releases = {}, []
+    for path in sorted((ROOT / "catalog/historical-releases").glob("*.json")):
+        value = load_json(path)
+        check_publication_receipt(value, path.stem)
+        if not value.get("historical_snapshots"):
+            raise ValueError("Historical receipt directory requires exclusively historical snapshots")
+        releases.append(value["release"])
+        for row in value["historical_snapshots"]:
+            previous = rows.get(row["sha256"])
+            if previous is not None and {k: v for k, v in previous.items() if k != "download_url"} != {
+                    k: v for k, v in row.items() if k != "download_url"}:
+                raise ValueError("Conflicting published historical snapshot metadata")
+            rows.setdefault(row["sha256"], row)
+    ordered = sorted(rows.values(), key=lambda row: (row["id"], row["version"], row["build"], row["method"], row["sha256"]))
+    return (ordered, releases) if with_releases else ordered
+
+
 def merge_manifest():
     rows, releases = published_rows()
+    historical, historical_releases = published_historical_snapshots(with_releases=True)
     previous = load_json(ROOT / "manifest.json")
     if any(identity(row) not in rows for row in previous.get("packages", [])):
         raise ValueError("Refusing to remove an existing package without a matching publication receipt")
@@ -1202,10 +1306,14 @@ def merge_manifest():
              "packages": sorted(rows.values(), key=lambda row: (row["id"], row["version"], row["build"], row["method"], row["sha256"])),
              "releases": releases, "online_recipes": published_recipes(),
              "dependency_variants": published_variants(),
+             "historical_snapshots": historical, "historical_releases": historical_releases,
              "policy": {**previous.get("policy", {}),
                         "git": "Unpacked definitions, build recipes, tests, provenance and manifests only",
                         "release": "Verified immutable artifacts; no silent fallback to untested variants",
                         "historical_resource_denominator": 1862, "scope": "individual software package publication"}}
+    value["policy"]["historical_selection"] = (
+        "Historical snapshots are separately listed original deliveries selected by exact SHA-256. "
+        "They are excluded from canonical identity resolution and dependency profile availability.")
     if (ROOT / "catalog/dependency-profiles/index.json").is_file():
         from dependency_profiles import build_profiles
         value["dependency_profiles"] = build_profiles(
@@ -1247,4 +1355,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

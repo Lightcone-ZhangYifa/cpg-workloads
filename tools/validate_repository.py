@@ -10,7 +10,8 @@ from urllib.parse import urlparse
 
 from import_archives import safe_relative
 from release import (publication_key, ROOT, artifact_name, digest, load_json, load_manifest, publication_errors,
-                     published_rows, published_recipes, published_variants, checked_variant_origin, row_asset_name, sha256,
+                     published_rows, published_recipes, published_variants, published_historical_snapshots,
+                     checked_variant_origin, checked_historical_origin, dependency_variant, row_asset_name, sha256,
                      verify_binary, verify_evidence, verify_material)
 
 
@@ -47,6 +48,7 @@ def validate(root=ROOT):
     for path in sorted((root / "catalog/artifacts").glob("*.json")):
         try:
             row = load_json(path)
+            dependency_variant(row)  # Reject unknown roles and invalid online role assignments.
             if row["sha256"] != path.stem or not re.fullmatch(r"[0-9a-f]{64}", path.stem):
                 raise ValueError("Artifact record path differs from checksum")
             template = root / safe_relative(row["template"])
@@ -91,6 +93,7 @@ def validate(root=ROOT):
                 if row["release_eligible"] and (row.get("review_policy") != "static-trust-v1"
                         or row.get("static_review", {}).get("status") != "passed"):
                     raise ValueError("Online recipe lacks an explicit static review")
+            checked_historical_origin(row)
             records[row["sha256"]] = row
         except (OSError, ValueError, KeyError, TypeError) as error:
             errors.append(f"{path.relative_to(root)}: {error}")
@@ -139,6 +142,11 @@ def validate(root=ROOT):
     variants = published_variants()
     if manifest.get("dependency_variants", []) != variants:
         errors.append("Root dependency variants differ from verified publication receipts")
+    historical, historical_releases = published_historical_snapshots(with_releases=True)
+    if manifest.get("historical_snapshots", []) != historical:
+        errors.append("Root historical snapshots differ from verified publication receipts")
+    if manifest.get("historical_releases", []) != historical_releases:
+        errors.append("Root historical release summaries differ from verified historical receipts")
     if "dependency_profiles" in manifest:
         from dependency_profiles import build_profiles
         import tempfile
@@ -172,6 +180,7 @@ def validate(root=ROOT):
             errors.append("Build or package output is inside the source tree: " + str(path.relative_to(root)))
     return {"status": "passed" if not errors else "failed", "definitions": len(definitions),
             "audited_artifacts": len(records), "published_packages": len(manifest.get("packages", [])),
+            "published_historical_snapshots": len(manifest.get("historical_snapshots", [])),
             "errors": errors}
 
 
@@ -183,4 +192,3 @@ def main():
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

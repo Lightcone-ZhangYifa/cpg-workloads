@@ -134,7 +134,8 @@ def merge_import_receipt(previous, incoming):
 def commit_files(paths, message):
     """Cache immutable blobs, then apply a small FF transaction to current main."""
     paths = sorted(set(paths))
-    allowed = ("packages/", "catalog/artifacts/", "catalog/imports/", "release-plans/")
+    allowed = ("packages/", "catalog/artifacts/", "catalog/imports/",
+               "catalog/historical-snapshots/", "release-plans/")
     prepared = {}
     for path in paths:
         import_archives.safe_relative(path)
@@ -268,12 +269,17 @@ def prepared_members(archive, item, scratch):
 
 def index_publication(output, tag):
     receipt = (output / "publication.json").read_bytes()
+    value = json.loads(receipt)
+    historical = bool(value.get("historical_snapshots"))
+    if historical and any(value.get(key) for key in ("packages", "online_recipes", "dependency_variants")):
+        raise ValueError("Historical snapshots require their own publication receipt")
+    receipt_directory = "catalog/historical-releases" if historical else "catalog/releases"
     git("config", "user.name", "github-actions[bot]")
     git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com")
     for _ in range(5):
         git("fetch", "--no-tags", "origin", "main")
         git("reset", "--hard", "FETCH_HEAD")
-        path = release.ROOT / "catalog/releases" / (tag + ".json")
+        path = release.ROOT / receipt_directory / (tag + ".json")
         if path.exists() and path.read_bytes() != receipt:
             raise ValueError("A different publication receipt already exists")
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -290,6 +296,9 @@ def index_publication(output, tag):
 
 def import_and_publish(archive, item, scratch):
     tag = release.validate_tag(item["tag"])
+    historical_requests = [bool(member.get("historical_snapshot")) for member in item["members"]]
+    if any(historical_requests) and not all(historical_requests):
+        raise ValueError("Historical deliveries must use a separate publication input")
     receipt = {"schema_version": 1, "archive": item["file_name"],
                "sha256": item["sha256"], "bytes": item["bytes"], "review_policy": "static-trust-v1",
                "packages": [], "online_recipes": [], "errors": [], "status": "inspected"}
@@ -299,7 +308,8 @@ def import_and_publish(archive, item, scratch):
     extracted.mkdir()
     files, admitted = [], []
     existing_rows, _ = release.published_rows()
-    existing_hashes = {row["sha256"] for row in [*existing_rows.values(), *release.published_variants(), *release.published_recipes()]}
+    existing_hashes = {row["sha256"] for row in [*existing_rows.values(), *release.published_variants(),
+                                               *release.published_recipes(), *release.published_historical_snapshots()]}
     for number, (path, member) in enumerate(prepared_members(archive, item, extracted), 1):
         origin = {"archive": item["file_name"], "sha256": item["sha256"], "bytes": item["bytes"],
                   "member": member.get("member")}
@@ -331,6 +341,23 @@ def import_and_publish(archive, item, scratch):
             record["index_role"] = "canonical" if member["canonical_primary_index"] else "dependency-variant"
             record["origin_profile"] = member.get("origin_role", {})
             record["dependency_profiles"] = member.get("original_dependency_profiles", [])
+        historical_lock = member.get("historical_snapshot")
+        if historical_lock is not None:
+            expected_path = "catalog/historical-snapshots/" + checksum + ".json"
+            if (not isinstance(historical_lock, dict) or set(historical_lock) != {"path", "sha256"}
+                    or historical_lock["path"] != expected_path or "canonical_primary_index" in member
+                    or record.get("method") == "online-recipe"):
+                raise ValueError("Invalid explicit historical snapshot request")
+            descriptor_path = release.ROOT / expected_path
+            if (descriptor_path.is_symlink() or not descriptor_path.is_file()
+                    or import_archives.sha256(descriptor_path) != historical_lock["sha256"]):
+                raise ValueError("Historical source descriptor differs from its frozen identity")
+            descriptor = release.load_json(descriptor_path)
+            if descriptor["origin"] != origin:
+                raise ValueError("Historical snapshot differs from the actual original delivery")
+            record["index_role"] = "historical-snapshot"
+            release.checked_historical_origin(record)
+            files.append(expected_path)
         record_path = "catalog/artifacts/" + checksum + ".json"
         import_archives.write_json(release.ROOT / record_path, record)
         files.append(record_path)
@@ -352,7 +379,7 @@ def import_and_publish(archive, item, scratch):
     from publication_candidates import partition_publication_candidates
     partition = partition_publication_candidates(
         [release.checked_record(sha) for sha in admitted], existing_rows,
-        release.identity, release.dependency_variant)
+        release.identity, lambda row: release.dependency_variant(row) or release.historical_snapshot(row))
     pending = {row["sha256"]: row for row in partition["collisions"]}
     admitted = partition["admitted_sha256s"]
     for row in partition["collisions"]:
