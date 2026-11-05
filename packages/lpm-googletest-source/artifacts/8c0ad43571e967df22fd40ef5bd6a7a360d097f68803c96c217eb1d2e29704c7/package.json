@@ -1,0 +1,223 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--case",
+        "upstream"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "lpm-googletest-source-upstream",
+      "kind": "functional",
+      "requires_commands": [
+        "/usr/bin/python3",
+        "/usr/bin/g++"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--case",
+        "api"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "lpm-googletest-source-api",
+      "kind": "functional",
+      "requires_commands": [
+        "/usr/bin/python3",
+        "/usr/bin/g++"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "apt.cmake",
+      "apt.ninja-build"
+    ],
+    "run": [],
+    "system": [
+      "apt.g++",
+      "apt.python3"
+    ]
+  },
+  "id": "lpm-googletest-source",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 873681,
+      "build_peak_bytes": null,
+      "category": [
+        "Correctness",
+        "Structured fuzzing dependencies"
+      ],
+      "container_strategy": "Materialize an immutable source tree; the parent mutator recipe copies it into a writable isolated build tree and preserves notices. This is not an independently installed system library.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "state": "immutable-local-build-dependency-source",
+        "target_exports": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/google/googletest"
+      ],
+      "evidence_files": [
+        "workspace-evidence/community-v070/resource-audit/lpm-dependencies/git-refs.json",
+        "workspace-evidence/community-v070/resource-audit/lpm-dependencies/archive-measurements.json",
+        "workspace-evidence/community-v070/resource-audit/lpm-dependencies/http-headers/lpm-googletest-source.json"
+      ],
+      "extract": true,
+      "id": "lpm-googletest-source",
+      "immutable_ref": "e39786088138f2749d64e9e90e0f9902daa77c40",
+      "installed_allocated_bytes": null,
+      "installed_bytes": null,
+      "kind": "source_supplement",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "sources/lpm-googletest-source",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Provide the exact version selected by libprotobuf-mutator v1.5 for its tests or instrumented examples, avoiding implicit ExternalProject network acquisition.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The parent mutator's full-feature CMake build has not run in a complete prepared system dependency environment."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "babf242cebeb22fefb5541a728c94ee5bd3aafe58dfd8ad8a1988a74fc5e5ce0",
+      "size_basis": "Complete measured HTTPS archive and regular-file logical source size; external dependencies and build outputs excluded.",
+      "size_evidence": "workspace-evidence/community-v070/resource-audit/lpm-dependencies/archive-measurements.json",
+      "source_evidence": [
+        "https://github.com/google/googletest",
+        "https://github.com/google/googletest/commit/e39786088138f2749d64e9e90e0f9902daa77c40",
+        "https://codeload.github.com/google/googletest/tar.gz/e39786088138f2749d64e9e90e0f9902daa77c40"
+      ],
+      "source_logical_bytes": 4014895,
+      "source_url": "https://codeload.github.com/google/googletest/tar.gz/e39786088138f2749d64e9e90e0f9902daa77c40",
+      "title": "google/googletest source for libprotobuf-mutator tests and examples",
+      "upstream": "https://github.com/google/googletest",
+      "version": "1.15.0"
+    },
+    "catalog_sha256": "76ceed6a6ecbb9328b3029895c266cc15460d959a194bfd25bdea78618b9b4a4"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "cmake",
+    "commands": [
+      [
+        "/usr/bin/python3",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "qualified": false,
+    "required_installed_paths": [
+      "{prefix}/lib/libgmock.a",
+      "{prefix}/lib/libgmock.so",
+      "{prefix}/lib/libgtest.a",
+      "{prefix}/lib/libgtest.so",
+      "{prefix}/share/compiler-playground/lpm-googletest-source/profile.json"
+    ],
+    "state": "immutable-local-build-dependency-source",
+    "target_exports": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 873681,
+      "extract": true,
+      "id": "lpm-googletest-source",
+      "material_path": "sources/lpm-googletest-source",
+      "sha256": "babf242cebeb22fefb5541a728c94ee5bd3aafe58dfd8ad8a1988a74fc5e5ce0",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/googletest/tar.gz/e39786088138f2749d64e9e90e0f9902daa77c40"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/google/googletest"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages check lpm-googletest-source --kind functional",
+        "description": "Run installed functional checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Public headers",
+        "path": "{prefix}/include",
+        "purpose": "Headers for the selected configuration."
+      },
+      {
+        "label": "Shared and static libraries",
+        "path": "{prefix}/lib",
+        "purpose": "Independently installed libraries and CMake/pkg-config metadata."
+      },
+      {
+        "label": "Original source",
+        "path": "{prefix}/share/lpm-googletest-source/source",
+        "purpose": "Complete unchanged source, licenses, original tests and fixtures."
+      },
+      {
+        "label": "Qualification profile",
+        "path": "{prefix}/share/compiler-playground/lpm-googletest-source/profile.json",
+        "purpose": "Exact configured and executed scope."
+      }
+    ],
+    "notes": [
+      "Source and binary profiles retain the original material profile.",
+      "Binary relocation is qualified only on the stated Ubuntu 24.04 x86_64 ABI.",
+      "Full installed functional checks compile fresh consumers and require the C/C++ toolchain.",
+      "non-Linux test runners",
+      "all alternative compiler and linkage configurations",
+      "performance qualification",
+      "cross-platform or cross-ABI deployment"
+    ],
+    "summary": "Build and independently validate the locked lpm-googletest-source libraries; original source remains available."
+  },
+  "version": "1.15.0"
+}
