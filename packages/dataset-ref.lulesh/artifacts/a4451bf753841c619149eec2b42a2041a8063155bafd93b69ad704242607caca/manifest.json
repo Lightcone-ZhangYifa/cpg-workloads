@@ -1,0 +1,455 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 1519,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/CMakeLists.txt",
+      "sha256": "012d566cdf6fb3109009d46898ec8616f0af34fe8db4f70255a116d45b67e958"
+    },
+    {
+      "bytes": 1658,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/Makefile",
+      "sha256": "021aba3d6c539ce0bf663a90888b7bdb13e2b94d3038f6e756b8bfbe1dc7d8b7"
+    },
+    {
+      "bytes": 3547,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README",
+      "sha256": "4ca7c221ba1da2a0415885e62ad3250bc2eb544baa96b699cd70845d01f5274a"
+    },
+    {
+      "bytes": 22,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/TODO",
+      "sha256": "d6897b67a069034ab2c39d48f3fc1c0ac8b9d35c6d75a1a5608a25af46f3c744"
+    },
+    {
+      "bytes": 68884,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/lulesh-comm.cc",
+      "sha256": "14cd9aaf2980d040924f4d4c37fa812ca85f915cc414c5cd7fbe8a825f86789c"
+    },
+    {
+      "bytes": 20548,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/lulesh-init.cc",
+      "sha256": "2e46940d7d7a1a4b4c1d083d4f9890d7878929adf1c08537cba273666ba8a703"
+    },
+    {
+      "bytes": 7816,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/lulesh-util.cc",
+      "sha256": "9264389a0d9d1cda8624f8ca0297e1350e95477119e49c78fae6dcb4720a0bd4"
+    },
+    {
+      "bytes": 11767,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/lulesh-viz.cc",
+      "sha256": "ef9912af4c631ab02cf9a9968eeffb957dd32530d4aca3e23d0f06f0eedb5fde"
+    },
+    {
+      "bytes": 91247,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/lulesh.cc",
+      "sha256": "dc606a45173169811bd465b0191a07fe97bddb464ea8281c7b0d279623f12bd4"
+    },
+    {
+      "bytes": 20147,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/lulesh.h",
+      "sha256": "f9337958de48e15e47c32d993cbfde00521b4af6ea08fc62b4c631adc71471cf"
+    },
+    {
+      "bytes": 18993,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/lulesh_tuple.h",
+      "sha256": "102741a63a59c6f99238ce9ac1afbf0cc52392d622bae4a01d43db4e8928fa9f"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2291,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 2974,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/input-audit.json",
+      "sha256": "cbc085d50ed047cf5511a6a33290fea1e6cc4edb65a0d27ef0d2eb1220f9bacb"
+    },
+    {
+      "bytes": 2687,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "2c0cd9784cf0b02b4dfcd7b7c85ebc3dedc4aa496872a9b44c4d4fd01c36ccd4"
+    }
+  ],
+  "inventory_sha256": "4b8b99ffc9f7cd41389b01911387b1997a6321dcec11f0d4b81c85ea6df885d6",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "9c35f85eb421c60fc6b09d671b665099699dd7f40c36ce6e51581cd3aed4ea15",
+  "method": "material",
+  "package": {
+    "build": "2-static-license1-0c6d5fbf",
+    "checks": [
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-manifest.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "dataset-ref.lulesh-complete-materials",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.python3"
+      ]
+    },
+    "id": "dataset-ref.lulesh",
+    "metadata": {
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": null,
+        "build_peak_bytes": null,
+        "category": [
+          "Dataset research",
+          "Benchmarks and inputs"
+        ],
+        "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+        "dataset_card_id": "lulesh",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "requires_controller_only_storage": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "target_exports": [],
+          "visibility_policy": "developer_selected_complete_materials",
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/LLNL/LULESH"
+        ],
+        "evidence_files": [
+          "workspace-evidence/datasets-v090/benchmarks/cards.json"
+        ],
+        "extract": true,
+        "id": "dataset-ref.lulesh",
+        "immutable_ref": "3e01c40b3281aadb7f996525cdd4a3354f6d3801",
+        "installed_bytes": null,
+        "kind": "dataset",
+        "license_class": "open",
+        "license_id": "LicenseRef-LLNL-BSD",
+        "mandatory": false,
+        "material_path": "dataset-research/lulesh",
+        "presets": [
+          "all"
+        ],
+        "purpose": "Later-stage scientific training or whole-family transfer testing; freeze numerical, input and execution contracts.",
+        "qualification": {
+          "archive_measured": false,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+          "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+          "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+          "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+          "Serial, MPI-only, OpenMP-only and hybrid builds are supported upstream.",
+          "Energy/conservation and symmetry checks need a frozen numerical contract."
+        ],
+        "redistributable": true,
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+        "source_evidence": [
+          "https://raw.githubusercontent.com/LLNL/LULESH/3e01c40b3281aadb7f996525cdd4a3354f6d3801/README"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/LLNL/LULESH/tar.gz/3e01c40b3281aadb7f996525cdd4a3354f6d3801",
+        "title": "LULESH research material",
+        "upstream": "https://github.com/LLNL/LULESH",
+        "version": "HEAD observed at retrieval; use the full recorded commit"
+      },
+      "catalog_sha256": "b94e6aaeea38c8a4fb61cfcf3767220b22adb8a54dd887cf2ddfc87780f96746",
+      "historical_catalog_before_static_license_revision": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": null,
+        "build_peak_bytes": null,
+        "category": [
+          "Dataset research",
+          "Benchmarks and inputs"
+        ],
+        "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+        "dataset_card_id": "lulesh",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "requires_controller_only_storage": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "target_exports": [],
+          "visibility_policy": "developer_selected_complete_materials",
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/LLNL/LULESH"
+        ],
+        "evidence_files": [
+          "workspace-evidence/datasets-v090/benchmarks/cards.json"
+        ],
+        "extract": true,
+        "id": "dataset-ref.lulesh",
+        "immutable_ref": "3e01c40b3281aadb7f996525cdd4a3354f6d3801",
+        "installed_bytes": null,
+        "kind": "dataset",
+        "license_class": "review-required",
+        "license_id": "LicenseRef-LLNL-Per-File",
+        "mandatory": false,
+        "material_path": "dataset-research/lulesh",
+        "presets": [
+          "all"
+        ],
+        "purpose": "Later-stage scientific training or whole-family transfer testing; freeze numerical, input and execution contracts.",
+        "qualification": {
+          "archive_measured": false,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+          "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+          "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+          "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+          "Serial, MPI-only, OpenMP-only and hybrid builds are supported upstream.",
+          "Energy/conservation and symmetry checks need a frozen numerical contract."
+        ],
+        "redistributable": "license-and-component-review-required",
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+        "source_evidence": [
+          "https://raw.githubusercontent.com/LLNL/LULESH/3e01c40b3281aadb7f996525cdd4a3354f6d3801/README"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/LLNL/LULESH/tar.gz/3e01c40b3281aadb7f996525cdd4a3354f6d3801",
+        "title": "LULESH research material",
+        "upstream": "https://github.com/LLNL/LULESH",
+        "version": "HEAD observed at retrieval; use the full recorded commit"
+      },
+      "static_license_metadata_revision": {
+        "added_authored_notices": [],
+        "build_executed": false,
+        "exact_original_notice_evidence": [
+          {
+            "bytes": 3547,
+            "path": "payload/README",
+            "sha256": "4ca7c221ba1da2a0415885e62ad3250bc2eb544baa96b699cd70845d01f5274a",
+            "source_url": "https://raw.githubusercontent.com/LLNL/LULESH/3e01c40b3281aadb7f996525cdd4a3354f6d3801/README"
+          },
+          {
+            "bytes": 7816,
+            "path": "payload/lulesh-util.cc",
+            "sha256": "9264389a0d9d1cda8624f8ca0297e1350e95477119e49c78fae6dcb4720a0bd4",
+            "source_url": "https://raw.githubusercontent.com/LLNL/LULESH/3e01c40b3281aadb7f996525cdd4a3354f6d3801/lulesh-util.cc"
+          },
+          {
+            "bytes": 91247,
+            "path": "payload/lulesh.cc",
+            "sha256": "dc606a45173169811bd465b0191a07fe97bddb464ea8281c7b0d279623f12bd4",
+            "source_url": "https://raw.githubusercontent.com/LLNL/LULESH/3e01c40b3281aadb7f996525cdd4a3354f6d3801/lulesh.cc"
+          }
+        ],
+        "functional_tests_executed": false,
+        "original_artifact_sha256": "0c6d5fbf590dbd513c429327dad120ffb29ca19533acd49b03571d83bade64da",
+        "original_build": "2",
+        "original_catalog_sha256": "aaa51cb591307aa6b72b08e8736809721297ade4bb859237ba936a5caac7a50b",
+        "original_manifest_sha256": "c6a20fd22ade53dac9e37b56bc2cbe0a6c0ef049bf70ed38d6eb15a83da10adb",
+        "original_payload_sources_notices_checks_unchanged": true,
+        "scope": "Complete LLNL source/binary redistribution notice appears in unchanged payload/lulesh.cc; preserve its copyright, conditions and disclaimer. No new binary qualification claim."
+      }
+    },
+    "provider": "material",
+    "recipe": {
+      "acquisition_lock": {
+        "bytes": 43522,
+        "extract": true,
+        "id": "dataset-ref.lulesh",
+        "material_path": "dataset-research/lulesh",
+        "sha256": "d568979b5b580e855b0f2fe2e7eb6793dd7bb72bdc65f758a2f15d8fd966e517",
+        "strip_root": true,
+        "url": "https://codeload.github.com/LLNL/LULESH/tar.gz/3e01c40b3281aadb7f996525cdd4a3354f6d3801"
+      },
+      "adapter": "corpus",
+      "qualification_scope": "complete_static_material_availability_only",
+      "qualified": true,
+      "required_installed_paths": [
+        "{prefix}/CMakeLists.txt"
+      ],
+      "requires_controller_only_storage": false,
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "source_closure_scope": "complete_declared_main_archive; no_gitmodules_or_lfs_pointers_observed; native_dependency_closure_not_qualified",
+      "source_dependencies": [],
+      "system_packages": [],
+      "target_exports": [],
+      "unfetched_submodule_declarations": 0,
+      "visibility_policy": "developer_selected_complete_materials",
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": null,
+        "extract": true,
+        "id": "dataset-ref.lulesh",
+        "material_path": "dataset-research/lulesh",
+        "sha256": null,
+        "strip_root": true,
+        "url": "https://codeload.github.com/LLNL/LULESH/tar.gz/3e01c40b3281aadb7f996525cdd4a3354f6d3801"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/LLNL/LULESH"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Complete declared main-archive materials",
+          "path": "{prefix}",
+          "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+        }
+      ],
+      "notes": [
+        "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+        "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+        "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+        "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+        "No .gitmodules or Git LFS pointers were observed in this exact archive; native build dependencies are not qualified by this material check.",
+        "License metadata follows exact original notices. Original payload, source locks, checks and notices are retained; no build or workload check was executed.",
+        "Complete LLNL source/binary redistribution notice appears in unchanged payload/lulesh.cc; preserve its copyright, conditions and disclaimer. No new binary qualification claim."
+      ],
+      "summary": "Later-stage scientific training or whole-family transfer testing; freeze numerical, input and execution contracts."
+    },
+    "version": "HEAD observed at retrieval; use the full recorded commit"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "corpus_programs_executed": 0,
+    "existing_fixed_source_fields_preserved": true,
+    "original_definition_sha256": "3015b100b3fd8b777c7b2724d7d85afa133a0d239942136fecc82e925d5d39c1",
+    "project_version": "0.21.1",
+    "qualification_scope": "complete_static_material_availability",
+    "release_version": "0.21.2",
+    "round": "r03",
+    "source_archive": {
+      "bytes": 43522,
+      "extract": true,
+      "id": "dataset-ref.lulesh",
+      "material_path": "dataset-research/lulesh",
+      "sha256": "d568979b5b580e855b0f2fe2e7eb6793dd7bb72bdc65f758a2f15d8fd966e517",
+      "strip_root": true,
+      "url": "https://codeload.github.com/LLNL/LULESH/tar.gz/3e01c40b3281aadb7f996525cdd4a3354f6d3801"
+    },
+    "source_lock_extension_audit": "cbc085d50ed047cf5511a6a33290fea1e6cc4edb65a0d27ef0d2eb1220f9bacb",
+    "static_license_metadata_revision": {
+      "added_authored_notices": [],
+      "build_executed": false,
+      "exact_original_notice_evidence": [
+        {
+          "bytes": 3547,
+          "path": "payload/README",
+          "sha256": "4ca7c221ba1da2a0415885e62ad3250bc2eb544baa96b699cd70845d01f5274a",
+          "source_url": "https://raw.githubusercontent.com/LLNL/LULESH/3e01c40b3281aadb7f996525cdd4a3354f6d3801/README"
+        },
+        {
+          "bytes": 7816,
+          "path": "payload/lulesh-util.cc",
+          "sha256": "9264389a0d9d1cda8624f8ca0297e1350e95477119e49c78fae6dcb4720a0bd4",
+          "source_url": "https://raw.githubusercontent.com/LLNL/LULESH/3e01c40b3281aadb7f996525cdd4a3354f6d3801/lulesh-util.cc"
+        },
+        {
+          "bytes": 91247,
+          "path": "payload/lulesh.cc",
+          "sha256": "dc606a45173169811bd465b0191a07fe97bddb464ea8281c7b0d279623f12bd4",
+          "source_url": "https://raw.githubusercontent.com/LLNL/LULESH/3e01c40b3281aadb7f996525cdd4a3354f6d3801/lulesh.cc"
+        }
+      ],
+      "functional_tests_executed": false,
+      "original_artifact_sha256": "0c6d5fbf590dbd513c429327dad120ffb29ca19533acd49b03571d83bade64da",
+      "original_build": "2",
+      "original_catalog_sha256": "aaa51cb591307aa6b72b08e8736809721297ade4bb859237ba936a5caac7a50b",
+      "original_manifest_sha256": "c6a20fd22ade53dac9e37b56bc2cbe0a6c0ef049bf70ed38d6eb15a83da10adb",
+      "original_payload_sources_notices_checks_unchanged": true,
+      "scope": "Complete LLNL source/binary redistribution notice appears in unchanged payload/lulesh.cc; preserve its copyright, conditions and disclaimer. No new binary qualification claim."
+    },
+    "upstream_files": {
+      "entries": 11,
+      "files": 11,
+      "logical_bytes": 246148,
+      "symlinks": 0
+    }
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
