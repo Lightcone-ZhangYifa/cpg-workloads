@@ -1,0 +1,331 @@
+{
+  "build": "r12-native-cpu-20261029-1-metadata1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--resource",
+        "epcc-openmp",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "dataset-ref.epcc-openmp-native-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "dataset-ref.epcc-openmp",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Dataset research",
+        "Benchmarks and inputs"
+      ],
+      "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+      "dataset_card_id": "epcc-openmp",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "requires_controller_only_storage": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "target_exports": [],
+        "visibility_policy": "developer_selected_complete_materials",
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/EPCCed/epcc-openmp-microbenchmarks"
+      ],
+      "evidence_files": [
+        "workspace-evidence/datasets-v090/benchmarks/cards.json"
+      ],
+      "extract": true,
+      "id": "dataset-ref.epcc-openmp",
+      "immutable_ref": "94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a",
+      "installed_bytes": null,
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "dataset-research/epcc-openmp",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Runtime/affinity diagnostic axis and OpenMP capability checks, separately reported from application speed.",
+      "qualification": {
+        "archive_measured": false,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+        "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+        "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+        "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+        "The repository includes classic v3.1 and v4.0; pin one exact directory/revision.",
+        "GPU target-offload subdirectory is outside the current host study.",
+        "Synchronization/runtime overhead is not the same as optimized application execution."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": null,
+      "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+      "source_evidence": [
+        "https://raw.githubusercontent.com/EPCCed/epcc-openmp-microbenchmarks/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a/README.md"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/EPCCed/epcc-openmp-microbenchmarks/tar.gz/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a",
+      "title": "EPCC OpenMP microbenchmarks research material",
+      "upstream": "https://github.com/EPCCed/epcc-openmp-microbenchmarks",
+      "version": "HEAD observed at retrieval; use the full recorded commit"
+    },
+    "catalog_sha256": "aeb94f50fc1592c37734b7019c4179886e9faf71b77ed4f0cd15dd648d0d4ef3",
+    "license_review": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "kind": "static_license_metadata_correction",
+      "license_evidence": [
+        {
+          "bytes": 11362,
+          "member": "sources/d206b68fae382c2eb25a6fed3bf75eb7a3ed200ec38d8c3fa8a4a0bf5f445083!epcc-openmp-microbenchmarks-94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a/openmpbench_C_v31/Licence.txt",
+          "sha256": "a79d4b31ba3a4cb7d26d0288b1aaaefc50e3075e252714a61f300e7bbb459d47"
+        },
+        {
+          "bytes": 11362,
+          "member": "sources/d206b68fae382c2eb25a6fed3bf75eb7a3ed200ec38d8c3fa8a4a0bf5f445083!epcc-openmp-microbenchmarks-94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a/openmpbench_C_v40/Licence.txt",
+          "sha256": "a79d4b31ba3a4cb7d26d0288b1aaaefc50e3075e252714a61f300e7bbb459d47"
+        }
+      ],
+      "original_artifact_sha256": "2b49aa817428395a8c6345d3f91a3970d370ccdea00f43ceab223563caa2b021",
+      "original_manifest_sha256": "3d100fe422264f593be15cd11917ef255a24dcf1fa952b80c9e427c12c51bacd",
+      "payload_bytes_and_modes_preserved": true,
+      "scope": "The complete Apache-2.0 license explicitly permits source/object redistribution subject to its retained notice conditions. Both v31 and v40 delivered licenses match the pinned upstream text byte-for-byte.",
+      "source_commit": "94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a",
+      "source_urls": [
+        "https://github.com/EPCCed/epcc-openmp-microbenchmarks/blob/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a/openmpbench_C_v31/Licence.txt",
+        "https://github.com/EPCCed/epcc-openmp-microbenchmarks/blob/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a/openmpbench_C_v40/Licence.txt"
+      ]
+    },
+    "native_candidate": {
+      "excluded_unqualified_subdirs": [
+        "openmpbench_C_v40",
+        "openmpbench_C_target"
+      ],
+      "full_immutable_ref": "94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a",
+      "host_dependency_override": {
+        "reason": "Debian host reference profile cannot impersonate Ubuntu 24.04 apt.python3 lock; system has tested python3/gcc/make executable commands.",
+        "system": []
+      },
+      "original_definition_sha256": "ce85b639133652a3af541e026edf393c7a32366493cb25e14e277d69b9277efa",
+      "original_dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.python3"
+        ]
+      },
+      "original_provider": "material",
+      "original_target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "original_upstream_url": "https://codeload.github.com/EPCCed/epcc-openmp-microbenchmarks/tar.gz/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a",
+      "qualification_scope": "Selected EPCC 3.1 CPU OpenMP host profile; official benchmark methodology, v4 and GPU, Ubuntu target, OCI untested.",
+      "selected_compilable_subdir": "openmpbench_C_v31",
+      "status": "isolated_host_profile_not_canonical_release",
+      "upstream_source_input_sha256": "d206b68fae382c2eb25a6fed3bf75eb7a3ed200ec38d8c3fa8a4a0bf5f445083",
+      "v40_negative_evidence": "Real GCC14 link of v40 syncbench blocked on omp_init_lock_with_hint; preserve actual failed log."
+    },
+    "original_catalog_before_license_review": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Dataset research",
+        "Benchmarks and inputs"
+      ],
+      "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+      "dataset_card_id": "epcc-openmp",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "requires_controller_only_storage": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "target_exports": [],
+        "visibility_policy": "developer_selected_complete_materials",
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/EPCCed/epcc-openmp-microbenchmarks"
+      ],
+      "evidence_files": [
+        "workspace-evidence/datasets-v090/benchmarks/cards.json"
+      ],
+      "extract": true,
+      "id": "dataset-ref.epcc-openmp",
+      "immutable_ref": "94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a",
+      "installed_bytes": null,
+      "kind": "dataset",
+      "license_class": "review-required",
+      "license_id": "LicenseRef-EPCC-Per-Version",
+      "mandatory": false,
+      "material_path": "dataset-research/epcc-openmp",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Runtime/affinity diagnostic axis and OpenMP capability checks, separately reported from application speed.",
+      "qualification": {
+        "archive_measured": false,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+        "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+        "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+        "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+        "The repository includes classic v3.1 and v4.0; pin one exact directory/revision.",
+        "GPU target-offload subdirectory is outside the current host study.",
+        "Synchronization/runtime overhead is not the same as optimized application execution."
+      ],
+      "redistributable": "license-and-component-review-required",
+      "roles": [
+        "host"
+      ],
+      "sha256": null,
+      "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+      "source_evidence": [
+        "https://raw.githubusercontent.com/EPCCed/epcc-openmp-microbenchmarks/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a/README.md"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/EPCCed/epcc-openmp-microbenchmarks/tar.gz/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a",
+      "title": "EPCC OpenMP microbenchmarks research material",
+      "upstream": "https://github.com/EPCCed/epcc-openmp-microbenchmarks",
+      "version": "HEAD observed at retrieval; use the full recorded commit"
+    }
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-B",
+        "{recipe}/build.py",
+        "--resource",
+        "epcc-openmp",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "host_requirements_policy": "Actual OS/arch, commands, ELF/runtime and original exact APT system dependency; no distribution equality gate.",
+    "qualification_scope": "Original C_v31 syncbench, schedbench and taskbench; two CPU threads; bounded functional runs.",
+    "required_host_commands": [
+      "python3",
+      "gcc",
+      "make"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/syncbench",
+      "{prefix}/bin/schedbench",
+      "{prefix}/bin/taskbench",
+      "{prefix}/bin/epcc-openmp",
+      "{prefix}/share/licenses/epcc-openmp",
+      "{prefix}/share/compiler-playground/epcc-openmp-native-profile.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_policy": "Original prepared source unchanged; complete independent ordinary-file build copy.",
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": true,
+      "id": "dataset-ref.epcc-openmp",
+      "material_path": "dataset-research/epcc-openmp",
+      "sha256": null,
+      "strip_root": true,
+      "url": "https://codeload.github.com/EPCCed/epcc-openmp-microbenchmarks/tar.gz/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://codeload.github.com/EPCCed/epcc-openmp-microbenchmarks/tar.gz/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Native executable directory",
+        "path": "{prefix}/bin",
+        "purpose": "Original C_v31 syncbench, schedbench and taskbench; two CPU threads; bounded functional runs."
+      },
+      {
+        "label": "Original notices",
+        "path": "{prefix}/share/licenses/epcc-openmp",
+        "purpose": "Every license/notice file from the fixed archive."
+      },
+      {
+        "label": "Actual build identity",
+        "path": "{prefix}/share/compiler-playground/epcc-openmp-native-profile.json",
+        "purpose": "Observed toolchain identity, original revision and installed executable digests."
+      }
+    ],
+    "notes": [
+      "Complete original archive is retained in the source package; the binary installs declared executables, notices, profile and selected original runtime decks.",
+      "Original sources, metadata.catalog and exact apt.python3 dependency remain unchanged.",
+      "The source recipe builds an independent complete copy; original prepared source files are checked before and after compilation.",
+      "Original C_v31 syncbench, schedbench and taskbench; two CPU threads; bounded functional runs.",
+      "Host native functionality does not qualify official benchmark scores, other profiles, accelerators, OCI or physical PMU hardware.",
+      "Binary installation checks actual ELF/runtime requirements; no universal Linux or CPU compatibility claim.",
+      "C_v40 and target offload remain preserved original sources, outside this native profile."
+    ],
+    "summary": "Pinned epcc-openmp native CPU profile with explicit source and binary artifacts."
+  },
+  "version": "HEAD observed at retrieval; use the full recorded commit"
+}
