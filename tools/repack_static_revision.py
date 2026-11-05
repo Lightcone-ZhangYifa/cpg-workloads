@@ -60,6 +60,9 @@ def repack(original, template, revision, output):
             old = json.load(archive.extractfile('manifest.json'))
             _require(digest({k:v for k,v in old.items() if k != 'manifest_sha256'}) == old['manifest_sha256'],
                 'Original manifest fingerprint differs')
+            if revision['original_artifact'].get('manifest_sha256') is not None:
+                _require(old['manifest_sha256'] == revision['original_artifact']['manifest_sha256'],
+                    'Original manifest differs from the reviewed revision lock')
             for key in ('id', 'version', 'provider', 'target', 'dependencies', 'sources'):
                 _require(old['package'][key] == spec[key], 'Revision changes original package identity/lock: ' + key)
             for key in ('method', 'prefix_policy', 'resolved_dependencies', 'resolved_sources', 'sources'):

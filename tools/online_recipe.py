@@ -248,8 +248,17 @@ def _validate_contents(contents, members):
     _require({'online.json', 'offline-manifest.json'} <= set(contents),
         'Modern recipe lacks its descriptor or offline manifest')
     descriptor = _json(contents['online.json'])
-    _require(descriptor.get('kind') in FORMATS and descriptor.get('embedded_payload_bytes') == 0,
+    frozen_inventory = ('embedded_payload_bytes' not in descriptor
+        and descriptor.get('source_specific_preparer') == 'recipe/prepare.py'
+        and descriptor.get('new_installation_engine') is False
+        and descriptor.get('entry_point') ==
+            'run.py prepare --cache CACHE --output NEW_OUTPUT [--framework-path PROJECT] [--no-network]')
+    _require(descriptor.get('kind') in FORMATS
+        and (descriptor.get('embedded_payload_bytes') == 0 or frozen_inventory),
         'Unsupported modern online recipe contract')
+    if frozen_inventory:
+        _require({'package.json','run.py','recipe/prepare.py','recipe/acquisition-locks.json'} <= set(contents),
+            'Frozen online recipe lacks its declared preparer or acquisition locks')
     # Both delivered contracts are standalone preparation scripts. Earlier
     # material recipes name recipe/prepare.py explicitly instead of run.py;
     # their README and script use the same public acquire_file/pack APIs.
@@ -280,7 +289,7 @@ def _validate_contents(contents, members):
     if 'manifest_sha256' in artifact:
         _require(artifact['manifest_sha256'] == offline['manifest_sha256'],
             'Declared offline manifest identity differs')
-    if entry_path != 'run.py':
+    if entry_path != 'run.py' or frozen_inventory:
         _require('package.json' in contents and _json(contents['package.json']) == spec,
             'Declared preparation script package differs from the offline package')
     _require(_digest(offline['files']) == offline.get('inventory_sha256'), 'Offline inventory fingerprint differs')
@@ -291,10 +300,13 @@ def _validate_contents(contents, members):
         'Missing expected offline artifact identity')
     rows = descriptor.get('recipe_files')
     _require(isinstance(rows, list), 'Missing authored recipe inventory')
-    expected = {}
+    expected, mixed_directories = {}, []
     for row in rows:
         name = _relative(row['path']).as_posix()
         _require(name != 'online.json' and name not in expected, 'Duplicate authored recipe inventory path')
+        if frozen_inventory and row.get('kind') == 'directory':
+            mixed_directories.append(row)
+            continue
         _require(isinstance(row.get('sha256'), str) and SHA.fullmatch(row['sha256'])
             and type(row.get('bytes')) is int and row['bytes'] >= 0, 'Incomplete authored file identity')
         expected[name] = row
@@ -308,6 +320,7 @@ def _validate_contents(contents, members):
             _require(headers[name]['mode'] == row['mode'], 'Authored recipe file mode differs: ' + name)
     declared_directories = descriptor.get('recipe_directories', [])
     _require(isinstance(declared_directories, list), 'Invalid recipe directory declarations')
+    declared_directories = declared_directories + mixed_directories
     directories = {}
     for row in declared_directories:
         name = _relative(row['path']).as_posix()
@@ -327,7 +340,30 @@ def _validate_contents(contents, members):
     _require(original == spec['sources'], 'Online source declarations differ from the offline package')
     effective = {s['id']: s for s in original}
     _require(len(effective) == len(original), 'Duplicate source declaration')
-    for lock in descriptor.get('resolved_acquisition_locks', []):
+    resolved_locks = list(descriptor.get('resolved_acquisition_locks', []))
+    if frozen_inventory:
+        acquisition = _json(contents['recipe/acquisition-locks.json'])
+        _require(acquisition.get('schema_version') == 1 and acquisition.get('resource_id') == spec['id']
+            and acquisition.get('original_sources') == original,
+            'Frozen acquisition supplements change original source declarations')
+        main = acquisition.get('resolved_main_source')
+        _require(isinstance(main,dict) and main.get('id') in effective,
+            'Frozen acquisition has no locked original main source')
+        resolved_locks.append(main)
+        for group in ('additional_acquisition_locks','lfs_objects'):
+            extra = acquisition.get(group, [])
+            _require(isinstance(extra,list), 'Frozen supplemental acquisition inventory is invalid')
+            for lock in extra:
+                _require(isinstance(lock,dict) and isinstance(lock.get('sha256'),str)
+                    and SHA.fullmatch(lock['sha256']) and type(lock.get('bytes')) is int and lock['bytes'] >= 0
+                    and isinstance(lock.get('url'),str) and lock['url'].startswith('https://'),
+                    'Frozen supplemental acquisition byte identity is incomplete')
+                if group == 'lfs_objects':
+                    _relative(lock['path'])
+                    _require(isinstance(lock.get('pointer'),str) and isinstance(lock.get('pointer_sha256'),str)
+                        and hashlib.sha256(lock['pointer'].encode()).hexdigest() == lock['pointer_sha256'],
+                        'Frozen LFS pointer identity is incomplete')
+    for lock in resolved_locks:
         base = effective.get(lock['id'])
         _require(base is not None and all(value == lock.get(key) for key, value in base.items()
             if not (key in {'sha256', 'bytes'} and value is None)), 'Acquisition extension changes a fixed source field')
@@ -441,8 +477,13 @@ def _verify_modern_template(template, record):
         _require(p.is_file() and relative in expected, 'Undeclared online recipe file')
         row = expected[relative]
         data = p.read_bytes()
+        # Git retains only the executable bit. Keep the exact original TAR mode
+        # in archive_members, while accepting its ordinary Git checkout mode
+        # for this authored source file; repacking restores the original mode.
+        permitted_source_modes = {row['mode'], 0o755 if row['mode'] & 0o111 else 0o644}
         _require(len(data) == row['bytes'] and hashlib.sha256(data).hexdigest() == row['sha256']
-            and p.stat().st_mode & 0o7777 == row['mode'], 'Retained online recipe identity differs: ' + relative)
+            and p.stat().st_mode & 0o7777 in permitted_source_modes,
+            'Retained online recipe identity differs: ' + relative)
         contents[relative] = data
     _require(set(contents) == set(expected), 'Retained online recipe files are missing')
     _require(seen_directories == set(directories), 'Retained authored directories are missing')

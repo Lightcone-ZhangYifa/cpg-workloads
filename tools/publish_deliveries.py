@@ -241,7 +241,7 @@ def prepared_members(archive, item, scratch):
                 or import_archives.sha256(revision_path) != revision_lock["sha256"]):
             raise ValueError("Reviewed metadata revision differs from its frozen identity")
         revision = release.load_json(revision_path)
-        if revision["original_artifact"] != {"sha256": member["sha256"], "bytes": member["bytes"]}:
+        if any(revision["original_artifact"].get(key) != member[key] for key in ("sha256", "bytes")):
             raise ValueError("Metadata revision names a different original artifact")
         from repack_static_revision import repack
         corrected = revision["corrected"]
