@@ -1,0 +1,406 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 402896,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/csibe-flex-repro",
+      "sha256": "262a115e52c394371b4e7c22ad86dfe98672e27c7d35af9a52cb782bf74a4b72"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/licenses"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/licenses/dataset-ref.csibe"
+    },
+    {
+      "bytes": 1491,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/licenses/dataset-ref.csibe/CSiBE-License.txt",
+      "sha256": "55c003d2a72bdc8e3d97f53c3af581ca53c22e123d9129faf4297b69687b1c8f"
+    },
+    {
+      "bytes": 1855,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/licenses/dataset-ref.csibe/Flex-2.6.0-COPYING",
+      "sha256": "97fd685958d93be7f8dab939bb8161dbd6afb0718c63bfc337c24321aea44273"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 3318,
+      "kind": "file",
+      "mode": 493,
+      "path": "recipe/check_csibe_native.py",
+      "sha256": "d34e44427cfeac4a523cfe77b3d93b0ef0dc3cd35cd39e9e9531134af9b9c052"
+    }
+  ],
+  "inventory_sha256": "1484703289740587b6235b47cf323ee71c6ba67ded729595f221c25853569d4a",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "8ee25fc0a9d1d6f04fd4b6d3a649fc034d5f1eea92c4e91641c344ad57b34da0",
+  "method": "binary",
+  "package": {
+    "build": "csibe-host-flex-prefixmapped-1-static-check1",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/csibe-flex-repro",
+          "--version"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "flex-native-version",
+        "kind": "version",
+        "stdout_regex": "2\\.6\\.0",
+        "timeout_seconds": 15
+      },
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check_csibe_native.py",
+          "--prefix",
+          "{prefix}",
+          "--flex",
+          "csibe-flex-repro"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "native-subset-functional",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 50
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "dataset-ref.csibe",
+    "metadata": {
+      "candidate_scope": {
+        "build_is_source_reproducible_with_prefix_map": true,
+        "cpg_package_built_from_compiled_binary_new_SHA": true,
+        "full_material_qualified": false,
+        "git_submodules_missing": [
+          "src/CMSIS",
+          "src/servo"
+        ],
+        "noncanonical_host_only": true,
+        "official_Benchmark_qualified": false,
+        "original_resource_id": "dataset-ref.csibe",
+        "original_source_archive_sha256": "58834a51b52354e33c7d886a1bb3efc74b30a867c6d85d5c91c6ab3284809319",
+        "original_target_in_catalog": {
+          "arch": "x86_64",
+          "distribution": "ubuntu",
+          "distribution_version": "24.04",
+          "os": "linux"
+        },
+        "same_resource_other_bzip2_flex_variant_not_repacked": true,
+        "separate_build_variant_not_incremental_resource_id": true,
+        "target_Ubuntu_24_04_qualified": false
+      },
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": null,
+        "build_peak_bytes": null,
+        "category": [
+          "Dataset research",
+          "Benchmarks and inputs"
+        ],
+        "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+        "dataset_card_id": "csibe",
+        "delivery_scope": "selected_host_native_subset_only; no whole corpus, official benchmark, or Ubuntu target qualification",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "requires_controller_only_storage": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "target_exports": [],
+          "visibility_policy": "developer_selected_complete_materials",
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/szeged/csibe"
+        ],
+        "evidence_files": [
+          "workspace-evidence/datasets-v090/benchmarks/cards.json"
+        ],
+        "extract": true,
+        "id": "dataset-ref.csibe",
+        "immutable_ref": "652f2340ff472505e11d896e72f9ce259c5f4382",
+        "installed_bytes": null,
+        "kind": "dataset",
+        "license_class": "open",
+        "license_id": "BSD-3-Clause AND LicenseRef-Flex-2.6.0",
+        "mandatory": false,
+        "material_path": "dataset-research/csibe",
+        "presets": [
+          "all"
+        ],
+        "purpose": "Selected host-native CSiBE tools only; no complete corpus or official benchmark qualification is claimed.",
+        "qualification": {
+          "archive_measured": false,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+          "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+          "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+          "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+          "Primary objective is generated code size, while this study's objective is execution speed.",
+          "Compile-time and code-size improvements are diagnostics, not substitutes for runtime gains.",
+          "Source submodules and application ancestry must be pinned and grouped separately."
+        ],
+        "redistributable": true,
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+        "source_evidence": [
+          "https://raw.githubusercontent.com/szeged/csibe/652f2340ff472505e11d896e72f9ce259c5f4382/README.md",
+          "https://raw.githubusercontent.com/szeged/csibe/652f2340ff472505e11d896e72f9ce259c5f4382/License.txt",
+          "https://www.inf.u-szeged.hu/~ferenc/publication/bfg04/"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/szeged/csibe/tar.gz/652f2340ff472505e11d896e72f9ce259c5f4382",
+        "title": "CSiBE research material",
+        "upstream": "https://github.com/szeged/csibe",
+        "version": "652f2340ff472505e11d896e72f9ce259c5f4382"
+      },
+      "catalog_sha256": "88dc03f4e855d925f2503fb2bf94cd90382799f394108f0851c6a6d3bde2c11e",
+      "original_catalog_sha256_unchanged": "3e82d7893d315c144bed2e6a9ada96e89d07cc32b737c250c838b8e0bb96e3c4",
+      "original_catalog_unchanged": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": null,
+        "build_peak_bytes": null,
+        "category": [
+          "Dataset research",
+          "Benchmarks and inputs"
+        ],
+        "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+        "dataset_card_id": "csibe",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "requires_controller_only_storage": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "target_exports": [],
+          "visibility_policy": "developer_selected_complete_materials",
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/szeged/csibe"
+        ],
+        "evidence_files": [
+          "workspace-evidence/datasets-v090/benchmarks/cards.json"
+        ],
+        "extract": true,
+        "id": "dataset-ref.csibe",
+        "immutable_ref": "652f2340ff472505e11d896e72f9ce259c5f4382",
+        "installed_bytes": null,
+        "kind": "dataset",
+        "license_class": "review-required",
+        "license_id": "BSD-3-Clause AND LicenseRef-Per-Source-Project",
+        "mandatory": false,
+        "material_path": "dataset-research/csibe",
+        "presets": [
+          "all"
+        ],
+        "purpose": "Compile-only/code-size regression coverage and historical GCC methodology reference; admit runnable cases individually.",
+        "qualification": {
+          "archive_measured": false,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+          "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+          "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+          "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+          "Primary objective is generated code size, while this study's objective is execution speed.",
+          "Compile-time and code-size improvements are diagnostics, not substitutes for runtime gains.",
+          "Source submodules and application ancestry must be pinned and grouped separately."
+        ],
+        "redistributable": "license-and-component-review-required",
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+        "source_evidence": [
+          "https://raw.githubusercontent.com/szeged/csibe/652f2340ff472505e11d896e72f9ce259c5f4382/README.md",
+          "https://raw.githubusercontent.com/szeged/csibe/652f2340ff472505e11d896e72f9ce259c5f4382/License.txt",
+          "https://www.inf.u-szeged.hu/~ferenc/publication/bfg04/"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/szeged/csibe/tar.gz/652f2340ff472505e11d896e72f9ce259c5f4382",
+        "title": "CSiBE research material",
+        "upstream": "https://github.com/szeged/csibe",
+        "version": "HEAD observed at retrieval; use the full recorded commit"
+      },
+      "static_check_definition_revision": {
+        "added_license_notices": [
+          {
+            "bytes": 1491,
+            "file": "CSiBE-License.txt",
+            "path": "payload/share/licenses/dataset-ref.csibe/CSiBE-License.txt",
+            "redistribution": "Explicit source and binary permission with notices/conditions; exact corresponding delivered component only.",
+            "sha256": "55c003d2a72bdc8e3d97f53c3af581ca53c22e123d9129faf4297b69687b1c8f",
+            "source_commit": "652f2340ff472505e11d896e72f9ce259c5f4382",
+            "source_url": "https://raw.githubusercontent.com/szeged/csibe/652f2340ff472505e11d896e72f9ce259c5f4382/License.txt"
+          },
+          {
+            "bytes": 1855,
+            "file": "Flex-2.6.0-COPYING",
+            "path": "payload/share/licenses/dataset-ref.csibe/Flex-2.6.0-COPYING",
+            "redistribution": "Explicit source and binary permission with notices/conditions; exact corresponding delivered component only.",
+            "sha256": "97fd685958d93be7f8dab939bb8161dbd6afb0718c63bfc337c24321aea44273",
+            "source_commit": "652f2340ff472505e11d896e72f9ce259c5f4382",
+            "source_url": "https://raw.githubusercontent.com/szeged/csibe/652f2340ff472505e11d896e72f9ce259c5f4382/src/flex-2.6.0/COPYING"
+          }
+        ],
+        "build_executed": false,
+        "check_script_sha256": "d34e44427cfeac4a523cfe77b3d93b0ef0dc3cd35cd39e9e9531134af9b9c052",
+        "functional_tests_executed": false,
+        "new_build": "csibe-host-flex-prefixmapped-1-static-check1",
+        "original_sha256": "925542dde18f7c996e20ffddf8e494cbd972b624e77339a27c5e5ab9cb24e406",
+        "preexisting_payload_bytes_and_modes_preserved": true,
+        "scope": "selected_host_native_subset_only; no whole corpus, official benchmark, or Ubuntu target qualification"
+      }
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "reference",
+      "qualified": false,
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "requires_controller_only_storage": false,
+      "source_dependencies": [],
+      "system_packages": [],
+      "target_exports": [],
+      "visibility_policy": "developer_selected_complete_materials",
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": null,
+        "extract": true,
+        "id": "dataset-ref.csibe",
+        "material_path": "dataset-research/csibe",
+        "sha256": null,
+        "strip_root": true,
+        "url": "https://codeload.github.com/szeged/csibe/tar.gz/652f2340ff472505e11d896e72f9ce259c5f4382"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "debian",
+      "distribution_version": "13",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/szeged/csibe"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Independent host-only reproducible native flex",
+          "path": "{prefix}/bin/csibe-flex-repro",
+          "purpose": "Newly compiled native source profile, not full CSiBE"
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers.",
+        "Only one new normalized flex native binary; old bzip2 binary is not repeated or packed here."
+      ],
+      "summary": "Compile-only/code-size regression coverage and historical GCC methodology reference; admit runnable cases individually."
+    },
+    "version": "652f2340ff472505e11d896e72f9ce259c5f4382"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "actual_binary_sha256": "262a115e52c394371b4e7c22ad86dfe98672e27c7d35af9a52cb782bf74a4b72",
+    "inherited_source_sha256": "58834a51b52354e33c7d886a1bb3efc74b30a867c6d85d5c91c6ab3284809319",
+    "kind": "reproducible_native_source_binary_optional_variant",
+    "no_old_prebuilt_binary_payload": true,
+    "original_source_commit": "652f2340ff472505e11d896e72f9ce259c5f4382",
+    "original_source_library_id": "libfile_9daef655e0b08191bac1bcb86e9de31d",
+    "source_reproducible_compile_prefix_map": "-ffile-prefix-map=<actual-original-root>=/cpg/source",
+    "static_check_definition_revision": {
+      "added_license_notices": [
+        {
+          "bytes": 1491,
+          "file": "CSiBE-License.txt",
+          "path": "payload/share/licenses/dataset-ref.csibe/CSiBE-License.txt",
+          "redistribution": "Explicit source and binary permission with notices/conditions; exact corresponding delivered component only.",
+          "sha256": "55c003d2a72bdc8e3d97f53c3af581ca53c22e123d9129faf4297b69687b1c8f",
+          "source_commit": "652f2340ff472505e11d896e72f9ce259c5f4382",
+          "source_url": "https://raw.githubusercontent.com/szeged/csibe/652f2340ff472505e11d896e72f9ce259c5f4382/License.txt"
+        },
+        {
+          "bytes": 1855,
+          "file": "Flex-2.6.0-COPYING",
+          "path": "payload/share/licenses/dataset-ref.csibe/Flex-2.6.0-COPYING",
+          "redistribution": "Explicit source and binary permission with notices/conditions; exact corresponding delivered component only.",
+          "sha256": "97fd685958d93be7f8dab939bb8161dbd6afb0718c63bfc337c24321aea44273",
+          "source_commit": "652f2340ff472505e11d896e72f9ce259c5f4382",
+          "source_url": "https://raw.githubusercontent.com/szeged/csibe/652f2340ff472505e11d896e72f9ce259c5f4382/src/flex-2.6.0/COPYING"
+        }
+      ],
+      "build_executed": false,
+      "check_script_sha256": "d34e44427cfeac4a523cfe77b3d93b0ef0dc3cd35cd39e9e9531134af9b9c052",
+      "functional_tests_executed": false,
+      "new_build": "csibe-host-flex-prefixmapped-1-static-check1",
+      "original_sha256": "925542dde18f7c996e20ffddf8e494cbd972b624e77339a27c5e5ab9cb24e406",
+      "preexisting_payload_bytes_and_modes_preserved": true,
+      "scope": "selected_host_native_subset_only; no whole corpus, official benchmark, or Ubuntu target qualification"
+    }
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

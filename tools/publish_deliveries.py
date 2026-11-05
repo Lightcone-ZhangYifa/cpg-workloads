@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import stat
 import subprocess
@@ -156,6 +157,35 @@ def commit_files(paths, message):
     raise RuntimeError("main advanced repeatedly; the frozen source files remain recoverable")
 
 
+def prepared_members(archive, item, scratch):
+    """Optionally apply an exact reviewed metadata revision without executing it."""
+    for path, member in members(archive, item["members"], scratch):
+        revision_lock = member.get("revision")
+        if revision_lock is None:
+            yield path, member
+            continue
+        relative = import_archives.safe_relative(revision_lock["path"])
+        if relative.parts[:2] != ("catalog", "revisions"):
+            raise ValueError("A metadata revision must name its reviewed source record")
+        revision_path = release.ROOT / relative
+        if (revision_path.is_symlink() or not revision_path.is_file()
+                or import_archives.sha256(revision_path) != revision_lock["sha256"]):
+            raise ValueError("Reviewed metadata revision differs from its frozen identity")
+        revision = release.load_json(revision_path)
+        if revision["original_artifact"] != {"sha256": member["sha256"], "bytes": member["bytes"]}:
+            raise ValueError("Metadata revision names a different original artifact")
+        from repack_static_revision import repack
+        corrected = revision["corrected"]
+        result = scratch / (corrected["sha256"] + ".revision")
+        repack(path, release.ROOT / import_archives.safe_relative(corrected["template"]), revision, result)
+        revised = {**member, **{key: corrected[key] for key in ("sha256", "bytes")},
+                   "original_artifact": revision["original_artifact"]}
+        try:
+            yield result, revised
+        finally:
+            result.unlink(missing_ok=True)
+
+
 def index_publication(output, tag):
     receipt = (output / "publication.json").read_bytes()
     git("config", "user.name", "github-actions[bot]")
@@ -190,9 +220,11 @@ def import_and_publish(archive, item, scratch):
     files, admitted = [], []
     existing_rows, _ = release.published_rows()
     existing_hashes = {row["sha256"] for row in existing_rows.values()}
-    for number, (path, member) in enumerate(members(archive, item["members"], extracted), 1):
+    for number, (path, member) in enumerate(prepared_members(archive, item, extracted), 1):
         origin = {"archive": item["file_name"], "sha256": item["sha256"], "bytes": item["bytes"],
                   "member": member.get("member")}
+        if member.get("revision"):
+            origin.update(metadata_revision=member["revision"], original_artifact=member["original_artifact"])
         checksum = member["sha256"]
         if checksum in existing_hashes:
             receipt["packages"].append({"sha256": checksum, "status": "already_published"})
@@ -271,6 +303,17 @@ def main():
     git("fetch", "--no-tags", "origin", "main")
     if git("merge-base", "--is-ancestor", request["source_commit"], "FETCH_HEAD", check=False).returncode:
         raise ValueError("Transfer's source commit is not in canonical main history")
+    for completed in request.get("completed_transports", []):
+        name, expected = completed["branch"], completed["sha"]
+        if (not re.fullmatch(r"transport/secure-[a-z0-9._-]+", name) or name == branch
+                or release.COMMIT.fullmatch(expected) is None):
+            raise ValueError("Invalid completed-transport cleanup request")
+        actual = git("ls-remote", "origin", "refs/heads/" + name).stdout.decode().strip()
+        if actual:
+            if actual.split()[0] != expected:
+                raise ValueError("Completed transport changed; preserve its branch")
+            git("push", "origin", "--delete", name)
+            print(json.dumps({"deleted_completed_transport": name}), flush=True)
     with tempfile.TemporaryDirectory(prefix="cpg-delivery-", dir=os.environ["RUNNER_TEMP"]) as folder:
         scratch = Path(folder)
         # A private repository reader arrives inside the authenticated CMS body.

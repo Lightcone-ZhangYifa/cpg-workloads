@@ -1,0 +1,431 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 22488,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/afl-network-client",
+      "sha256": "20c9dc05d8dc216cf930bda53dc859ad8080cc7b7bb17220cd68bf742cb40ba7"
+    },
+    {
+      "bytes": 157400,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/afl-network-server",
+      "sha256": "9844ff00a6c407678de7af3e47a572bdbf521bfe20c67c49a3c6f9e071997c00"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/lib"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/lib/afl"
+    },
+    {
+      "bytes": 46216,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/lib/afl/libdislocator.so",
+      "sha256": "d1a37e8b49af7ea744f45a536f40efbdb588edf820af828ab392c51118b9e2ba"
+    },
+    {
+      "bytes": 103776,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/lib/afl/libtokencap.so",
+      "sha256": "4a73d14a90ae3560897a02011ed5db406c37faee1bda42cde57af2f0cdf49963"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/doc"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/doc/afl"
+    },
+    {
+      "bytes": 34523,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/doc/afl/LICENSE",
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    {
+      "bytes": 11357,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/doc/afl/LICENSE.Apache-2.0",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "bytes": 10874,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/doc/afl/LICENSE.COMMERCIAL",
+      "sha256": "011bbda7f599c41b0e1c23a5d64165ff3a31acb72ed8f5b8651ee8fcec4e858b"
+    },
+    {
+      "bytes": 4060,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/doc/afl/LICENSING.md",
+      "sha256": "e701681b1dbc8ae5265bb02923283f2b2af85c8e819e879ec4ce85b417bf874a"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2779,
+      "kind": "file",
+      "mode": 493,
+      "path": "recipe/check_afl_extension.py",
+      "sha256": "8304c2ebc0c8823227412c7d555005534c4aab7cfc30160b2d02c34d4e834008"
+    }
+  ],
+  "inventory_sha256": "3eb0f13e1ddc8c3594c259327b4a1281e7881f7e73aec6f5127a1a2f452aee0f",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "6a63cee19cb751015d5effbe1fe8811523948aed773ba180a2a89af67ca46666",
+  "method": "binary",
+  "package": {
+    "build": "host-native-extension-only-debian13-20261031-static-check1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check_afl_extension.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "libdislocator-guard-page-functional",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 25
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "aflplusplus",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 3463566,
+        "archive_scope": "Root repository only; recursive Git submodule payloads are excluded.",
+        "category": [
+          "Correctness",
+          "Generators and fuzzers"
+        ],
+        "container_strategy": "Build instrumentation and all explicitly selected native/binary fuzzing modes during preparation. Distinguish source/compiler fuzzing in dev from optional target-executed native harnesses.",
+        "dependencies": [
+          "apt.clang",
+          "apt.libcapstone-dev",
+          "apt.libglib2.0-dev",
+          "apt.libpixman-1-dev",
+          "apt.lld",
+          "apt.llvm-dev",
+          "apt.make",
+          "apt.ninja-build",
+          "apt.python3-dev"
+        ],
+        "deployment": {
+          "adapter": "reference",
+          "build_argv": [
+            "make",
+            "-j{jobs}",
+            "distrib"
+          ],
+          "qualified": false,
+          "smoke_argv": [
+            "{source}/afl-fuzz",
+            "-h"
+          ],
+          "source_dependencies": [],
+          "system_packages": [
+            "make",
+            "clang",
+            "llvm-dev",
+            "lld",
+            "libglib2.0-dev",
+            "libpixman-1-dev",
+            "python3-dev",
+            "ninja-build",
+            "libcapstone-dev"
+          ],
+          "working_directory": "{source}"
+        },
+        "documentation": [
+          "https://github.com/AFLplusplus/AFLplusplus"
+        ],
+        "evidence_files": [
+          "workspace-evidence/resources-v050/open-research/aflplusplus.measurement.json",
+          "workspace-evidence/resources-v050/open-research/aflplusplus.refs.json"
+        ],
+        "extract": true,
+        "id": "aflplusplus",
+        "immutable_ref": "dbaf11913c1b2702dee5b4d3dcfffd52f1defe50",
+        "kind": "source_archive",
+        "license_class": "open",
+        "license_id": "AGPL-3.0-or-later AND Apache-2.0 AND GPL-3.0-or-later AND Apache-2.0 WITH LLVM-exception",
+        "mandatory": false,
+        "material_path": "sources/aflplusplus",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Fuzz compiler parsers, optimizers and native harnesses with coverage instrumentation, dictionaries and persistent-mode adapters.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "The root archive excludes multiple Git submodules; make distrib may fetch FRIDA, QEMU, Unicorn and other dependencies.",
+          "Full-feature deployment requires per-mode source locks and smoke tests; a working afl-fuzz binary proves only that executable.",
+          "Version 5.03c has mixed AGPL/Apache/GPL licensing; retain per-file notices and distribution obligations."
+        ],
+        "redistributable": true,
+        "roles": [
+          "dev",
+          "host"
+        ],
+        "sha256": "d5f4f72c830526654bebbc637f6164a93c22d7309ce8ba73979abadc42ce5974",
+        "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+        "source_evidence": [
+          "https://github.com/AFLplusplus/AFLplusplus",
+          "https://codeload.github.com/AFLplusplus/AFLplusplus/tar.gz/dbaf11913c1b2702dee5b4d3dcfffd52f1defe50",
+          "https://github.com/AFLplusplus/AFLplusplus/commit/dbaf11913c1b2702dee5b4d3dcfffd52f1defe50"
+        ],
+        "source_logical_bytes": 12834877,
+        "source_url": "https://codeload.github.com/AFLplusplus/AFLplusplus/tar.gz/dbaf11913c1b2702dee5b4d3dcfffd52f1defe50",
+        "title": "AFL++ coverage-guided fuzzing",
+        "upstream": "https://github.com/AFLplusplus/AFLplusplus",
+        "version": "v5.03c"
+      },
+      "catalog_sha256": "62a030a66888ab27de6193807bf9dda27405bce16d690384e6b116a5b5659560",
+      "extension_integration_requirements": {
+        "dependency_scope": "libdislocator check only; network integration closure incomplete",
+        "historical_dependency_evidence": [
+          {
+            "kind": "external_previously_delivered_resource_package",
+            "resource_id": "aflplusplus",
+            "scope": "runtime fuzzer integration harness",
+            "sha256": "a1161bbc4f36dfae3f1b3fe0a91795597af3ff6862c7963c1ada6af2f3a1b87a"
+          },
+          {
+            "host_observed": true,
+            "kind": "system",
+            "name": "libdeflate.so.0",
+            "scope": "network client/server"
+          }
+        ],
+        "historical_results_reexecuted": false,
+        "original_required_paths": [
+          "{prefix}/bin/afl-fuzz",
+          "{prefix}/bin/afl-showmap",
+          "{prefix}/share/cpg-smoke/test-instr"
+        ],
+        "scope": "Extension-only host library check; network clients still need separately supplied AFL++ core/instrumented target. Do not declare a self-dependency aflplusplus->aflplusplus or claim those absent core files are supplied. Retain historical core requirements under metadata.extension_integration_requirements. No LLVM/QEMU/FRIDA/Ubuntu/full-mode qualification added.",
+        "separate_core_required_for_network_tools": true
+      },
+      "historical_checks": [
+        {
+          "dependencies": [
+            "previously delivered AFL++ core",
+            "previously saved instrumented smoke target"
+          ],
+          "evidence": "qa/afl-network-source-smoke.json",
+          "id": "afl-network-loopback-instrumented",
+          "kind": "functional",
+          "status": "verified_host_only"
+        },
+        {
+          "evidence": "qa/extension-independent-postinstall.json",
+          "id": "libtokencap-dictionary",
+          "kind": "functional",
+          "status": "verified_host_only"
+        },
+        {
+          "evidence": "qa/extension-independent-postinstall.json",
+          "id": "libdislocator-preload",
+          "kind": "functional",
+          "status": "verified_host_only"
+        }
+      ],
+      "qualification_scope": {
+        "host_runtime": "Debian GNU/Linux 13 x86_64",
+        "original_definition_sha256": "e270357f230fb06c01ddc55d0cafb168ad4993f3ad9b1e17595513c5c5213dd2",
+        "original_sources_complete": true,
+        "profile": "AFL++ classic fuzz/showmap native core; no clang or GCC instrumentation compiler, QEMU/Unicorn/Nyx/FRIDA, Ubuntu24, OCI, PMU",
+        "type": "noncanonical-host-only-partial",
+        "unqualified_in_original_catalog": true
+      },
+      "static_check_definition_revision": {
+        "build_executed": false,
+        "dependency_evidence_reclassification": [
+          {
+            "kind": "external_previously_delivered_resource_package",
+            "resource_id": "aflplusplus",
+            "scope": "runtime fuzzer integration harness",
+            "sha256": "a1161bbc4f36dfae3f1b3fe0a91795597af3ff6862c7963c1ada6af2f3a1b87a"
+          },
+          {
+            "host_observed": true,
+            "kind": "system",
+            "name": "libdeflate.so.0",
+            "scope": "network client/server"
+          }
+        ],
+        "functional_tests_executed": false,
+        "new_build": "host-native-extension-only-debian13-20261031-static-check1",
+        "original_archive_member": "objects/13f73119d0a5b5b5b29d7c2eaff16667dc265fe438ca34954e801dac9a5f75a5",
+        "original_archive_sha256": "7312e9f1f46dbb82ddfa21af84cff853f526debb375f2e91cc96b015db405964",
+        "original_sha256": "13f73119d0a5b5b5b29d7c2eaff16667dc265fe438ca34954e801dac9a5f75a5",
+        "payload_bytes_and_modes_preserved": true,
+        "scope": "Extension-only host library check; network clients still need separately supplied AFL++ core/instrumented target. Do not declare a self-dependency aflplusplus->aflplusplus or claim those absent core files are supplied. Retain historical core requirements under metadata.extension_integration_requirements. No LLVM/QEMU/FRIDA/Ubuntu/full-mode qualification added.",
+        "script_sha256": "8304c2ebc0c8823227412c7d555005534c4aab7cfc30160b2d02c34d4e834008",
+        "upstream_guard_behavior_source": "https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/dbaf11913c1b2702dee5b4d3dcfffd52f1defe50/utils/libdislocator/libdislocator.so.c"
+      }
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "reference",
+      "required_installed_paths": [
+        "{prefix}/bin/afl-network-client",
+        "{prefix}/bin/afl-network-server",
+        "{prefix}/lib/afl/libdislocator.so",
+        "{prefix}/lib/afl/libtokencap.so"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 3463566,
+        "extract": true,
+        "id": "aflplusplus",
+        "material_path": "sources/aflplusplus",
+        "sha256": "d5f4f72c830526654bebbc637f6164a93c22d7309ce8ba73979abadc42ce5974",
+        "strip_root": true,
+        "url": "https://codeload.github.com/AFLplusplus/AFLplusplus/tar.gz/dbaf11913c1b2702dee5b4d3dcfffd52f1defe50"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/AFLplusplus/AFLplusplus"
+      ],
+      "examples": [
+        {
+          "command": "'{source}/afl-fuzz' -h",
+          "description": "Run the recorded availability check."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/sources/aflplusplus",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers.",
+        "This extension-only package preserves the original network tools but does not supply the AFL++ core or libdeflate.so.0. Network integration requires the separately delivered core artifact identified in extension_integration_requirements and that runtime library; the standalone check covers libdislocator only. Network dependency closure and integration were not established by this migration."
+      ],
+      "summary": "Fuzz compiler parsers, optimizers and native harnesses with coverage instrumentation, dictionaries and persistent-mode adapters."
+    },
+    "version": "v5.03c"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "historical_core_artifact_SHA_not_reissued": "a1161bbc4f36dfae3f1b3fe0a91795597af3ff6862c7963c1ada6af2f3a1b87a",
+    "historical_source_volume": "compiler-playground-v0.21.4-resource-supplement-001.zip",
+    "historical_source_volume_library_file_id": "libfile_5c6876b63c18819192a453288e99ea09",
+    "network_build_command": "make -C utils/afl_network_proxy",
+    "original_baseline_version": "v5.03c",
+    "original_catalog_metadata_sha256": "62a030a66888ab27de6193807bf9dda27405bce16d690384e6b116a5b5659560",
+    "original_source_bytes": 3463566,
+    "original_source_sha256": "d5f4f72c830526654bebbc637f6164a93c22d7309ce8ba73979abadc42ce5974",
+    "original_source_url": "https://codeload.github.com/AFLplusplus/AFLplusplus/tar.gz/dbaf11913c1b2702dee5b4d3dcfffd52f1defe50",
+    "scope": "4 actual source-built host auxiliaries, Debian GNU/Linux 13 x86_64",
+    "source_build_command": "make -f GNUmakefile binary-only -j8",
+    "source_git_commit": "dbaf11913c1b2702dee5b4d3dcfffd52f1defe50",
+    "static_check_definition_revision": {
+      "build_executed": false,
+      "dependency_evidence_reclassification": [
+        {
+          "kind": "external_previously_delivered_resource_package",
+          "resource_id": "aflplusplus",
+          "scope": "runtime fuzzer integration harness",
+          "sha256": "a1161bbc4f36dfae3f1b3fe0a91795597af3ff6862c7963c1ada6af2f3a1b87a"
+        },
+        {
+          "host_observed": true,
+          "kind": "system",
+          "name": "libdeflate.so.0",
+          "scope": "network client/server"
+        }
+      ],
+      "functional_tests_executed": false,
+      "new_build": "host-native-extension-only-debian13-20261031-static-check1",
+      "original_archive_member": "objects/13f73119d0a5b5b5b29d7c2eaff16667dc265fe438ca34954e801dac9a5f75a5",
+      "original_archive_sha256": "7312e9f1f46dbb82ddfa21af84cff853f526debb375f2e91cc96b015db405964",
+      "original_sha256": "13f73119d0a5b5b5b29d7c2eaff16667dc265fe438ca34954e801dac9a5f75a5",
+      "payload_bytes_and_modes_preserved": true,
+      "scope": "Extension-only host library check; network clients still need separately supplied AFL++ core/instrumented target. Do not declare a self-dependency aflplusplus->aflplusplus or claim those absent core files are supplied. Retain historical core requirements under metadata.extension_integration_requirements. No LLVM/QEMU/FRIDA/Ubuntu/full-mode qualification added.",
+      "script_sha256": "8304c2ebc0c8823227412c7d555005534c4aab7cfc30160b2d02c34d4e834008",
+      "upstream_guard_behavior_source": "https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/dbaf11913c1b2702dee5b4d3dcfffd52f1defe50/utils/libdislocator/libdislocator.so.c"
+    },
+    "unqualified": [
+      "Ubuntu 24.04 target execution",
+      "Full AFL++ source distribution closure",
+      "Frida",
+      "QEMU",
+      "Unicorn",
+      "LLVM compiler instrumentation mode",
+      "physical hardware / OCI",
+      "official benchmark"
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
