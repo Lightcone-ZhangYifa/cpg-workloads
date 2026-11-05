@@ -1,0 +1,203 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/supplements"
+    },
+    {
+      "bytes": 4068,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/supplements/enzyme.supplement.readme.md",
+      "sha256": "ffe6a680cd5be92c521c20d752caca6dcb7d598646fcae35a91499703b8225b3"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2291,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 1474,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/input-audit.json",
+      "sha256": "f6c67a3ea9113d7cd775c53f448cee91db247840137ea9defcc178b132ef50d5"
+    },
+    {
+      "bytes": 1026,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "9a7e39e4e977c4e43df4b0ca3c74ad2f17fef7405de2596123b0a2ff6ce81255"
+    },
+    {
+      "bytes": 3019,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/prepare.py",
+      "sha256": "86b6c0e824b2159e2970b84a95c24e85b3ae388f57aa77c3a98b292dc762008c"
+    }
+  ],
+  "inventory_sha256": "ecdd2dbc0369da7b37a8b2bd952719de71275c4685ceef0f3661df4f3d2e0427",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "3efb9ab298a9661ce51553c5e5252dbc805a21d30f0fd271400ff11b88044dc4",
+  "method": "material",
+  "package": {
+    "build": "recovery-static-material-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-manifest.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "enzyme.supplement.readme.md-complete-material",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 60
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "enzyme.supplement.readme.md",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 4068,
+        "category": [
+          "Compilers",
+          "Compiler extensions",
+          "Pinned source closure"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "supplement"
+        },
+        "extract": false,
+        "id": "enzyme.supplement.readme.md",
+        "immutable_ref": "sha256:ffe6a680cd5be92c521c20d752caca6dcb7d598646fcae35a91499703b8225b3",
+        "installed_bytes": null,
+        "kind": "source_supplement",
+        "license_class": "open",
+        "license_id": "Apache-2.0 WITH LLVM-exception",
+        "mandatory": false,
+        "material_path": "supplements/enzyme.supplement.readme.md",
+        "presets": [],
+        "qualification_gaps": [],
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "ffe6a680cd5be92c521c20d752caca6dcb7d598646fcae35a91499703b8225b3",
+        "size_basis": "Measured exact immutable supplemental artifact",
+        "source_evidence": [
+          "https://raw.githubusercontent.com/EnzymeAD/Enzyme/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377/Readme.md"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://raw.githubusercontent.com/EnzymeAD/Enzyme/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377/Readme.md",
+        "strip_archive_root": true,
+        "supplement_to": "sources/enzyme/Readme.md",
+        "title": "Enzyme LLVM and MLIR differentiation / Readme.md",
+        "version": "v0.0.303"
+      },
+      "catalog_sha256": "b3d93e3f47d6be6108b16abfd07acda33578e0a0c20e55d6bbed5d50492c6e93"
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "corpus",
+      "qualification_scope": "complete_original_single_file_static_material_only",
+      "qualified": true,
+      "required_installed_paths": [
+        "{prefix}/supplements/enzyme.supplement.readme.md"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "source_closure_scope": "one complete declared original file; no archive or submodule closure is applicable"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 4068,
+        "extract": false,
+        "id": "enzyme.supplement.readme.md",
+        "material_path": "supplements/enzyme.supplement.readme.md",
+        "sha256": "ffe6a680cd5be92c521c20d752caca6dcb7d598646fcae35a91499703b8225b3",
+        "strip_root": true,
+        "url": "https://raw.githubusercontent.com/EnzymeAD/Enzyme/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377/Readme.md"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Complete original upstream file",
+          "path": "{prefix}/supplements/enzyme.supplement.readme.md",
+          "purpose": "Independent exact original static material, verified by full byte count, SHA-256 and file inventory."
+        }
+      ],
+      "notes": [
+        "The complete originally declared file is preserved at its exact URL, revision, SHA-256 and byte count; canonical source and catalog fields are unchanged.",
+        "This static-material qualification does not build Enzyme, deploy a Docker seccomp policy, run a container or grant executable/hardware/benchmark qualification.",
+        "Use recipe/prepare.py with the public CPG acquisition cache and material pack API for online or explicitly offline reconstruction. HTTPS fetching has not been retested in this recovery round.",
+        "Installed paths are independent ordinary copies. Availability checks validate all material members; package lifecycle and corruption isolation have separate receipts."
+      ],
+      "summary": "Enzyme LLVM and MLIR differentiation / Readme.md"
+    },
+    "version": "v0.0.303"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "native_execution": false,
+    "oci_execution": false,
+    "original_source_lock": {
+      "bytes": 4068,
+      "extract": false,
+      "id": "enzyme.supplement.readme.md",
+      "material_path": "supplements/enzyme.supplement.readme.md",
+      "sha256": "ffe6a680cd5be92c521c20d752caca6dcb7d598646fcae35a91499703b8225b3",
+      "strip_root": true,
+      "url": "https://raw.githubusercontent.com/EnzymeAD/Enzyme/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377/Readme.md"
+    },
+    "qualification_scope": "complete_original_single_file_static_material_only"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
