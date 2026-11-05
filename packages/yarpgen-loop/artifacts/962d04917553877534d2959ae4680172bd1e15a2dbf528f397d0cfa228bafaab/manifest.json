@@ -1,0 +1,370 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 5105,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "36f419ce7e69d2c255da4027354b33b5a48e28c87009d47d106afb608d048fe7"
+    },
+    {
+      "bytes": 9905,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "9a4f68d03ecaf3696547713e397e534bcf7b58239a6711892402c672936a0024"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 1392719,
+      "kind": "file",
+      "mode": 384,
+      "path": "sources/0712452267453b2147675111e2da76fb3b3642adf8834ce3bdbd03ce36dcbd8c",
+      "sha256": "0712452267453b2147675111e2da76fb3b3642adf8834ce3bdbd03ce36dcbd8c"
+    }
+  ],
+  "inventory_sha256": "a2a0d751f38de73a24e026d98bf1e482dbb13b6fa3ea2947fa9f719203fe8c57",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "a140c985f4440a62b9bb1265e8a98e884bef1cc9272553cd83418b703a51dc31",
+  "method": "source",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/yarpgen",
+          "--help"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "declared-001",
+        "kind": "availability",
+        "timeout_seconds": 120
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--resource",
+          "yarpgen-loop",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "seeded-programs"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "seeded-programs",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "gcc",
+          "g++"
+        ],
+        "requires_paths": [
+          "{prefix}/bin/yarpgen"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 1200
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--resource",
+          "yarpgen-loop",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "upstream-tests"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "upstream-tests",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "gcc",
+          "g++"
+        ],
+        "requires_paths": [
+          "{prefix}/bin/yarpgen"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 1200
+      }
+    ],
+    "dependencies": {
+      "build": [
+        "apt.cmake",
+        "apt.ninja-build"
+      ],
+      "run": [],
+      "system": [
+        "apt.g++",
+        "apt.python3"
+      ]
+    },
+    "id": "yarpgen-loop",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 1392719,
+        "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+        "category": [
+          "Correctness",
+          "Generators and fuzzers"
+        ],
+        "container_strategy": "Keep the loop-focused generator separate from the v1 scalar generator and preserve generation options and oracle compiler identities.",
+        "dependencies": [
+          "apt.cmake",
+          "apt.g++",
+          "apt.ninja-build",
+          "apt.python3"
+        ],
+        "deployment": {
+          "adapter": "cmake",
+          "build_argv": [
+            "cmake",
+            "--build",
+            "{build}",
+            "--parallel",
+            "{jobs}"
+          ],
+          "configure_argv": [
+            "cmake",
+            "-S",
+            "{source}",
+            "-B",
+            "{build}",
+            "-G",
+            "Ninja",
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DCMAKE_INSTALL_PREFIX={prefix}"
+          ],
+          "install_argv": [
+            "install",
+            "-Dm755",
+            "{build}/yarpgen",
+            "{prefix}/bin/yarpgen"
+          ],
+          "qualified": false,
+          "smoke_argv": [
+            "{prefix}/bin/yarpgen",
+            "--help"
+          ],
+          "source_dependencies": [],
+          "system_packages": [
+            "cmake",
+            "ninja-build",
+            "g++",
+            "python3"
+          ],
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/intel/yarpgen"
+        ],
+        "evidence_files": [
+          "workspace-evidence/resources-v050/open-research/yarpgen-loop.measurement.json",
+          "workspace-evidence/resources-v050/open-research/yarpgen-loop.refs.json"
+        ],
+        "extract": true,
+        "id": "yarpgen-loop",
+        "immutable_ref": "1adb290f453505838f3aa33dc571f292b0c1810f",
+        "kind": "source_archive",
+        "legacy_source_id": "yarpgen-loop",
+        "license_class": "open",
+        "license_id": "Apache-2.0",
+        "mandatory": false,
+        "material_path": "sources/yarpgen-loop",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Generate C/C++ loop optimization tests with reproducible seeds and independent compiler differential oracles.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Driver configuration and generated-test execution are separate from a successful generator build."
+        ],
+        "redistributable": true,
+        "roles": [
+          "dev",
+          "host"
+        ],
+        "sha256": "0712452267453b2147675111e2da76fb3b3642adf8834ce3bdbd03ce36dcbd8c",
+        "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+        "source_evidence": [
+          "https://github.com/intel/yarpgen",
+          "https://codeload.github.com/intel/yarpgen/tar.gz/1adb290f453505838f3aa33dc571f292b0c1810f",
+          "https://github.com/intel/yarpgen/commit/1adb290f453505838f3aa33dc571f292b0c1810f"
+        ],
+        "source_logical_bytes": 2131839,
+        "source_url": "https://codeload.github.com/intel/yarpgen/tar.gz/1adb290f453505838f3aa33dc571f292b0c1810f",
+        "title": "YARPGen loop-focused generator",
+        "upstream": "https://github.com/intel/yarpgen",
+        "version": "commit-1adb290f4535"
+      },
+      "catalog_sha256": "c56708a7fb2b276b86b5111d4eee772e1def35774a3a08605e9860e1d4797aee"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "cmake",
+      "build_argv": [],
+      "commands": [
+        [
+          "python3",
+          "{recipe}/build.py",
+          "--resource",
+          "yarpgen-loop",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "configure_argv": [],
+      "install_argv": [],
+      "qualified": false,
+      "required_installed_paths": [
+        "{prefix}/bin/yarpgen",
+        "{prefix}/share/yarpgen-loop/source/README.md"
+      ],
+      "smoke_argv": [
+        "{prefix}/bin/yarpgen",
+        "--help"
+      ],
+      "source_dependencies": [],
+      "system_packages": [
+        "cmake",
+        "ninja-build",
+        "g++",
+        "python3"
+      ],
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1392719,
+        "extract": true,
+        "id": "yarpgen-loop",
+        "material_path": "sources/yarpgen-loop",
+        "sha256": "0712452267453b2147675111e2da76fb3b3642adf8834ce3bdbd03ce36dcbd8c",
+        "strip_root": true,
+        "url": "https://codeload.github.com/intel/yarpgen/tar.gz/1adb290f453505838f3aa33dc571f292b0c1810f"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/intel/yarpgen"
+      ],
+      "examples": [
+        {
+          "command": "'{prefix}/bin/yarpgen' --help",
+          "description": "Run the recorded availability check."
+        },
+        {
+          "command": "'{prefix}/bin/yarpgen' --seed=42 --std=c++",
+          "description": "Run in a fresh working directory; generates driver.cpp, func.cpp and init.h."
+        },
+        {
+          "command": "g++ -std=c++14 -O2 driver.cpp func.cpp -o case && ./case",
+          "description": "Compile and run a generated test, then compare its checksum with your independently chosen compiler configurations."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/sources/yarpgen-loop",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Installation prefix",
+          "path": "{prefix}",
+          "purpose": "The selected version's independently installed files."
+        },
+        {
+          "label": "Complete original upstream material",
+          "path": "{prefix}/share/yarpgen-loop/source",
+          "purpose": "Unmodified complete locked source, tests, scripts, licenses and original documentation."
+        },
+        {
+          "label": "Installed package checks",
+          "path": "{prefix}/share/compiler-playground/yarpgen-loop",
+          "purpose": "Transported functional checks and precise build profile."
+        }
+      ],
+      "notes": [
+        "The complete original catalog, source lock and original source material are retained. The archive commit, rather than a potentially stale upstream version string, identifies this resource.",
+        "Generate into a fresh directory and retain the seed, generator identity, options, compiler flags and output. Seed reproducibility is qualified for the selected binary on this declared platform.",
+        "Package checks compare the same GCC compiler at O0 and O2. This is useful differential agreement, not an independent reference compiler or a proof that every random program is correct.",
+        "Native source and binary profiles are exercised on Ubuntu 24.04 x86_64; no OCI, other ABI/OS, full compiler campaign or official benchmark score is claimed.",
+        "CMake/Ninja are build-only dependencies. Exact private tool bindings are supported by the maintainer replay without modifying APT/dpkg.",
+        "Assertions are enabled. All upstream source files remain unmodified in share/yarpgen-loop/source; the build uses an independent copy.",
+        "The scalar and loop branches are separately pinned resources. They install into separate package prefixes even though both expose bin/yarpgen.",
+        "Git discovery is disabled for archive builds. Build metadata uses SOURCE_DATE_EPOCH=0; the exact upstream commit is recorded by the resource definition.",
+        "The original run_gen.py campaign scripts and test configurations remain available in the source directory. Campaign orchestration and optional SDE, ISPC, SYCL or MSVC are not exercised by this package qualification.",
+        "All four pinned standalone upstream executables (type_test, data_test, expr_test, gen_test) are built with assertions enabled and run after every installation. Upstream tests that choose random seeds retain their raw output; they are not advertised as fixed-seed tests."
+      ],
+      "summary": "Generate C/C++ loop optimization tests with reproducible seeds and independent compiler differential oracles."
+    },
+    "version": "commit-1adb290f4535"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "6a568ac3bf752c8f06385039704d70ec6e7ac5fb8738407c7cbccca0a1bfb14e",
+    "profile": "Complete source recipe and installed functional checks",
+    "source_locks": [
+      {
+        "bytes": 1392719,
+        "extract": true,
+        "id": "yarpgen-loop",
+        "material_path": "sources/yarpgen-loop",
+        "sha256": "0712452267453b2147675111e2da76fb3b3642adf8834ce3bdbd03ce36dcbd8c",
+        "strip_root": true,
+        "url": "https://codeload.github.com/intel/yarpgen/tar.gz/1adb290f453505838f3aa33dc571f292b0c1810f"
+      }
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "yarpgen-loop",
+      "path": "sources/0712452267453b2147675111e2da76fb3b3642adf8834ce3bdbd03ce36dcbd8c"
+    }
+  ]
+}
