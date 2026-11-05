@@ -276,7 +276,7 @@ def index_publication(output, tag):
     receipt_directory = "catalog/historical-releases" if historical else "catalog/releases"
     git("config", "user.name", "github-actions[bot]")
     git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com")
-    for _ in range(5):
+    for attempt in range(20):
         git("fetch", "--no-tags", "origin", "main")
         git("reset", "--hard", "FETCH_HEAD")
         path = release.ROOT / receipt_directory / (tag + ".json")
@@ -291,6 +291,8 @@ def index_publication(output, tag):
         git("commit", "-m", "Index statically reviewed delivery " + tag)
         if git("push", "origin", "HEAD:refs/heads/main", check=False).returncode == 0:
             return git("rev-parse", "HEAD").stdout.decode().strip()
+        # Re-read and regenerate shared indexes after every competing writer.
+        time.sleep(min(0.2 * (attempt + 1), 2.0) + random.uniform(0.05, 0.4))
     raise RuntimeError("Publication succeeded but its index needs an FF retry")
 
 
