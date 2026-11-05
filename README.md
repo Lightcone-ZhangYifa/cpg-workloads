@@ -13,7 +13,7 @@ Git stores unpacked package definitions, build recipes, functional checks, sourc
 | `packages/<id>/package.json` | Current package definition; original IDs and exact upstream locks are retained. |
 | `packages/<id>/recipe/` | Authored build and functional-check sources. |
 | `packages/<id>/artifacts/<sha256>/` | Unpacked source template for one previously delivered package: manifest, definition, and recipe/tool sources. Installed payloads are excluded. |
-| `packages/<id>/online/<sha256>/` | Unpacked historical online material recipe, including its original `online.json` contract. |
+| `packages/<id>/online/<sha256>/` | Unpacked historical online material recipe, including its preserved entry-point and acquisition contract. |
 | `catalog/artifacts/` | Per-artifact structure, metadata, rebuild, and functional-check results. |
 | `catalog/imports/` | One audit receipt per inspected delivery archive; failures and excluded members remain visible. |
 | `catalog/releases/` | Verified canonical, dependency-variant, and online publication receipts used to generate the root manifest. |
@@ -76,6 +76,13 @@ Large input archives, upstream build trees, installed prefixes, `.cpgpkg`/`.cpgr
 files, and compiler outputs do not belong in Git. Migration uses one outer archive
 and one inner package at a time. Temporary data can be removed after its necessary
 source template and audit record are preserved and its release status is known.
+
+A template's `authored-inputs.json` records external recipe inputs that remain in the
+finished package but are omitted from Git. Each entry binds the original manifest
+member to its HTTPS source, SHA-256, and byte size. Packaging restores only those
+explicitly locked inputs; missing authored code is not treated as an external input.
+Metadata revisions can preserve the exact original input bytes while changing only
+the reviewed definition or check sources.
 
 ## Artifact naming
 
