@@ -1,0 +1,157 @@
+{
+  "build": "1-static-check1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "xxhash-material-integrity",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "xxhash",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 1167704,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Hashing"
+      ],
+      "container_strategy": "Build fixed algorithm/dispatch variants in dev; run result-checked length and alignment strata on target.",
+      "corpus_contract": {
+        "code": "Library, CLI and sanity tests included.",
+        "inputs": "Seeded deterministic byte buffers and fixed representative files.",
+        "oracle": "Published/upstream hash test vectors and independent reference outputs.",
+        "split_unit": "Hash algorithm family, not each buffer length."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/Cyan4973/xxHash"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/xxhash.measurement.json",
+        "workspace-evidence/resources-v050/open-research/xxhash.refs.json"
+      ],
+      "extract": true,
+      "id": "xxhash",
+      "immutable_ref": "c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "BSD-2-Clause AND GPL-2.0-or-later",
+      "mandatory": false,
+      "material_path": "corpora/xxhash",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Fast integer and SIMD hashing over input lengths, alignments and distributions.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Tiny cases require batching and overhead calibration; expose both throughput and latency strata without double counting them."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "ed9fa05b338a5b308eca0c25e93fe4ba8e3adfaa6f94bedf1f39b0a0d1010751",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/Cyan4973/xxHash",
+        "https://codeload.github.com/Cyan4973/xxHash/tar.gz/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0",
+        "https://github.com/Cyan4973/xxHash/commit/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0"
+      ],
+      "source_logical_bytes": 5511342,
+      "source_url": "https://codeload.github.com/Cyan4973/xxHash/tar.gz/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0",
+      "title": "xxHash hashing workload",
+      "upstream": "https://github.com/Cyan4973/xxHash",
+      "version": "v0.8.4"
+    },
+    "catalog_sha256": "eafaf8b274f877b63b6275df90db7ce0587673ab288d58867769c4b2fd9d80d4",
+    "static_check_definition_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "kind": "static_material_read_check_definition",
+      "material_inventory_sha256": "8d1eb6f70590414b61957bd917541b6e3fdf3de1ae632e8011b1fccd4df9cf8a",
+      "original_artifact_sha256": "9fb2fbf761b7e1d1e497ada334f9d510c7fcd498006ccd086fcc3ee58740a433",
+      "original_manifest_sha256": "5ba0c222bfbb1373c21065e88cd8bffcbcbe9fa29d49783136185fee3a71b6ac",
+      "payload_bytes_and_modes_preserved": true,
+      "scope": "Check definition reuses a delivered material reader; AST parsed only. Material bytes and paths are matched to the original frozen manifest.",
+      "script_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "qualified": false,
+    "source_dependencies": [],
+    "system_packages": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1167704,
+      "extract": true,
+      "id": "xxhash",
+      "material_path": "corpora/xxhash",
+      "sha256": "ed9fa05b338a5b308eca0c25e93fe4ba8e3adfaa6f94bedf1f39b0a0d1010751",
+      "strip_root": true,
+      "url": "https://codeload.github.com/Cyan4973/xxHash/tar.gz/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/Cyan4973/xxHash"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{prefix}",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Fast integer and SIMD hashing over input lengths, alignments and distributions."
+  },
+  "version": "v0.8.4"
+}

@@ -1,0 +1,340 @@
+{
+  "build": "r11-debian13-native-lzbench-1-license-notice1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "dataset-ref.lzbench-host-roundtrip",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "dataset-ref.lzbench",
+  "metadata": {
+    "additional_platform_profile": {
+      "build_warnings": "Upstream make can emit a preexisting tempnam warning; maintain original stderr and no hidden warning policy",
+      "canonical_target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "hardware_qualified": false,
+      "host_bound": true,
+      "license_review_required_for_redistribution": true,
+      "oci_qualified": false,
+      "official_benchmark_qualification": false,
+      "original_definition_sha256": "e0ab697209883991c23c7fb9e6a577a5cb0418698ab87e634e71ec6661093559",
+      "original_dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.python3"
+        ]
+      },
+      "original_material_sha256": "8ebaa82c1eea738853cf62e9e5b6d0faba5b387bbc2239a4a054957c18a60843",
+      "original_provider": "material",
+      "original_target_promotion": false,
+      "profile": "debian13-x86_64-host-native-r11",
+      "source_resolution_policy": "Exactly original source URL/extract/path; only original null SHA and bytes filled in artifact.resolved_sources",
+      "unsupported_optional_codecs": {
+        "cargo": "Rust compiler unavailable",
+        "zig": "Zig compiler unavailable"
+      }
+    },
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Dataset research",
+        "Benchmarks and inputs"
+      ],
+      "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+      "dataset_card_id": "lzbench",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "requires_controller_only_storage": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "target_exports": [],
+        "visibility_policy": "developer_selected_complete_materials",
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/inikep/lzbench"
+      ],
+      "evidence_files": [
+        "workspace-evidence/datasets-v090/benchmarks/cards.json"
+      ],
+      "extract": true,
+      "id": "dataset-ref.lzbench",
+      "immutable_ref": "2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9",
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "(GPL-2.0-only OR GPL-3.0-only) AND CDDL-1.0 AND LicenseRef-Per-Codec",
+      "mandatory": false,
+      "material_path": "dataset-research/lzbench",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Unified in-memory compression evaluation frontend; weight unique algorithms, not each repeated copy.",
+      "qualification": {
+        "archive_measured": false,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+        "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+        "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+        "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+        "Embedded copies duplicate standalone zstd/LZ4/zlib/Brotli families.",
+        "Codec versions and parameters must be independently pinned.",
+        "In-memory timing still needs complete round-trip validation."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": null,
+      "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+      "source_evidence": [
+        "https://raw.githubusercontent.com/inikep/lzbench/2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9/README.md",
+        "https://raw.githubusercontent.com/inikep/lzbench/2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9/LICENSE"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/inikep/lzbench/tar.gz/2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9",
+      "title": "lzbench research material",
+      "upstream": "https://github.com/inikep/lzbench",
+      "version": "HEAD observed at retrieval; use the full recorded commit"
+    },
+    "catalog_sha256": "f503816e348143dd23e039d3fa2551396f84d924831258b5f19e14a734e89781",
+    "license_review": {
+      "added_authored_notice_files": [
+        {
+          "bytes": 18924,
+          "path": "recipe/licenses/usr/src/OPENSOLARIS.LICENSE",
+          "sha256": "1ffb70c33c4f79f04e947facc5c7851f289609256aacb47fc115f700427d9520"
+        },
+        {
+          "bytes": 789,
+          "path": "recipe/licenses/SOURCE-LICENSE-NOTICE.md",
+          "sha256": "173e8d54ccbeca31e5c893112b621075795e2c53ad647577914823ae27f45607"
+        },
+        {
+          "bytes": 664,
+          "path": "recipe/licenses/notice-source.json",
+          "sha256": "d6b1f57c927c4ca513694e27336056426a25783c95999d2581183fbf00f56820"
+        }
+      ],
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "kind": "source_only_license_notice_completion",
+      "license_id": "(GPL-2.0-only OR GPL-3.0-only) AND CDDL-1.0 AND LicenseRef-Per-Codec",
+      "linked_binary_redistribution": "not_established",
+      "notice_source": {
+        "bytes": 18924,
+        "component_source_commit": "2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9",
+        "component_source_path": "lz/lzjb/lzjb2010.c",
+        "component_source_sha256": "22435981b85f4339086de1af888dba6eab59b6140370a8d4849d7274cee53310",
+        "git_blob": "da23621dc843ef762a04d3e9937be4ef485adc9d",
+        "license_version": "CDDL-1.0",
+        "sha256": "1ffb70c33c4f79f04e947facc5c7851f289609256aacb47fc115f700427d9520",
+        "source_commit": "cbf5bfd0563daa9bd1e66ff129333add3c9ca2ea",
+        "source_repository": "illumos/illumos-gate",
+        "source_url": "https://raw.githubusercontent.com/illumos/illumos-gate/cbf5bfd0563daa9bd1e66ff129333add3c9ca2ea/usr/src/OPENSOLARIS.LICENSE"
+      },
+      "original_artifact_sha256": "859d57620d4c0082e91c1e5537e05fdf75d8e687b71130bfc9a734fd3e28ea3d",
+      "original_manifest_sha256": "cfae0e8a09f2ed57d41b85d550de58c90882a0276f18684b53d40b84a276d19c",
+      "original_source_archive_bytes_preserved": true,
+      "original_source_archive_sha256": "1a89a5d5a07af2f5a809a0d37585c4258de173e8b0b261b0c9883741e8e01a6f",
+      "scope": "Unchanged per-file upstream source material plus retained complete component license notices; no conclusion about a combined linked binary."
+    },
+    "original_catalog_before_license_review": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Dataset research",
+        "Benchmarks and inputs"
+      ],
+      "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+      "dataset_card_id": "lzbench",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "requires_controller_only_storage": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "target_exports": [],
+        "visibility_policy": "developer_selected_complete_materials",
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/inikep/lzbench"
+      ],
+      "evidence_files": [
+        "workspace-evidence/datasets-v090/benchmarks/cards.json"
+      ],
+      "extract": true,
+      "id": "dataset-ref.lzbench",
+      "immutable_ref": "2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9",
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "review-required",
+      "license_id": "GPL-2.0-only AND LicenseRef-Per-Codec",
+      "mandatory": false,
+      "material_path": "dataset-research/lzbench",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Unified in-memory compression evaluation frontend; weight unique algorithms, not each repeated copy.",
+      "qualification": {
+        "archive_measured": false,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+        "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+        "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+        "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+        "Embedded copies duplicate standalone zstd/LZ4/zlib/Brotli families.",
+        "Codec versions and parameters must be independently pinned.",
+        "In-memory timing still needs complete round-trip validation."
+      ],
+      "redistributable": "license-and-component-review-required",
+      "roles": [
+        "host"
+      ],
+      "sha256": null,
+      "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+      "source_evidence": [
+        "https://raw.githubusercontent.com/inikep/lzbench/2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9/README.md",
+        "https://raw.githubusercontent.com/inikep/lzbench/2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9/LICENSE"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/inikep/lzbench/tar.gz/2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9",
+      "title": "lzbench research material",
+      "upstream": "https://github.com/inikep/lzbench",
+      "version": "HEAD observed at retrieval; use the full recorded commit"
+    }
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-B",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "qualification_scope": "host_debian13_native_C_CPP_with_optional_Rust_Zig_disabled_and_exact_source",
+    "required_host_commands": [
+      "python3",
+      "make",
+      "gcc",
+      "g++"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/lzbench",
+      "{prefix}/share/compiler-playground/lzbench-native-profile.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": true,
+      "id": "dataset-ref.lzbench",
+      "material_path": "dataset-research/lzbench",
+      "sha256": null,
+      "strip_root": true,
+      "url": "https://codeload.github.com/inikep/lzbench/tar.gz/2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "debian",
+    "distribution_version": "13",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/inikep/lzbench"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/lzbench -ezlib,1/lz4 -t0,0 -i1,1 /path/to/input",
+        "description": "Bounded lzbench testing"
+      }
+    ],
+    "locations": [
+      {
+        "label": "lzbench executable",
+        "path": "{prefix}/bin/lzbench",
+        "purpose": "Compression/decompression command-line workload"
+      },
+      {
+        "label": "Original license notices",
+        "path": "{prefix}/share/licenses/lzbench",
+        "purpose": "Review component-specific redistribution conditions"
+      },
+      {
+        "label": "Native build profile",
+        "path": "{prefix}/share/compiler-playground/lzbench-native-profile.json",
+        "purpose": "Document optional codec and source-identity scope"
+      }
+    ],
+    "notes": [
+      "Original Ubuntu 24.04 target and archival material package remain unchanged; this is a second observed Debian 13 host profile.",
+      "Upstream default build requires optional Rust and Zig toolchains for some codecs; unavailable codecs are explicitly excluded by upstream capability detection.",
+      "The source artifact contains every original source archive byte; the installed binary contains executable and original license notices.",
+      "Functional verification runs real compression and checks upstream full-byte decompression comparison.",
+      "Official Benchmark, OCI, physical hardware and original Ubuntu target are not qualified.",
+      "GPL-2.0-only AND LicenseRef-Per-Codec licensing requires component review before external redistribution.",
+      "The unchanged complete source archive is accompanied by the missing CDDL-1.0 notice in recipe/licenses/usr/src/OPENSOLARIS.LICENSE. Per-file source terms are retained; this source delivery does not qualify redistribution of a combined linked binary."
+    ],
+    "summary": "Full available C/C++ upstream lzbench host executable at immutable source revision; original catalog retained."
+  },
+  "version": "HEAD observed at retrieval; use the full recorded commit"
+}

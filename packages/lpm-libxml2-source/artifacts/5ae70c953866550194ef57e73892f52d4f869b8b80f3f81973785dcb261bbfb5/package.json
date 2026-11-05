@@ -1,0 +1,155 @@
+{
+  "build": "2-static-check1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "lpm-libxml2-source-material-integrity",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "lpm-libxml2-source",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 3721410,
+      "build_peak_bytes": null,
+      "category": [
+        "Correctness",
+        "Structured fuzzing dependencies"
+      ],
+      "container_strategy": "Materialize an immutable source tree; the parent mutator recipe copies it into a writable isolated build tree and preserves notices. This is not an independently installed system library.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "state": "immutable-local-build-dependency-source",
+        "target_exports": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/GNOME/libxml2"
+      ],
+      "evidence_files": [
+        "workspace-evidence/community-v070/resource-audit/lpm-dependencies/git-refs.json",
+        "workspace-evidence/community-v070/resource-audit/lpm-dependencies/archive-measurements.json",
+        "workspace-evidence/community-v070/resource-audit/lpm-dependencies/http-headers/lpm-libxml2-source.json"
+      ],
+      "extract": true,
+      "id": "lpm-libxml2-source",
+      "immutable_ref": "66453240c94b5cbd3e9ae9b32016fdafb13cdf18",
+      "installed_allocated_bytes": null,
+      "installed_bytes": null,
+      "kind": "source_supplement",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/lpm-libxml2-source",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Provide the exact version selected by libprotobuf-mutator v1.5 for its tests or instrumented examples, avoiding implicit ExternalProject network acquisition.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The parent mutator's full-feature CMake build has not run in a complete prepared system dependency environment."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "ff97736d8669526c29565669a8e932425bdef3c891d3957ddafb1d16715665a8",
+      "size_basis": "Complete measured HTTPS archive and regular-file logical source size; external dependencies and build outputs excluded.",
+      "size_evidence": "workspace-evidence/community-v070/resource-audit/lpm-dependencies/archive-measurements.json",
+      "source_evidence": [
+        "https://github.com/GNOME/libxml2",
+        "https://github.com/GNOME/libxml2/commit/66453240c94b5cbd3e9ae9b32016fdafb13cdf18",
+        "https://codeload.github.com/GNOME/libxml2/tar.gz/66453240c94b5cbd3e9ae9b32016fdafb13cdf18"
+      ],
+      "source_logical_bytes": 27093417,
+      "source_url": "https://codeload.github.com/GNOME/libxml2/tar.gz/66453240c94b5cbd3e9ae9b32016fdafb13cdf18",
+      "title": "GNOME/libxml2 source for libprotobuf-mutator tests and examples",
+      "upstream": "https://github.com/GNOME/libxml2",
+      "version": "2.13.6"
+    },
+    "catalog_sha256": "0018cfc6ef41b0b04fa257247caf6061cf36f35e985f4f690c4fcd5c11df91eb",
+    "static_check_definition_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "kind": "static_material_read_check_definition",
+      "material_inventory_sha256": "fb3c02bebc8f47fa9716350a31c9f1d2d3705024db7d0eaeeaee70f93a5b55aa",
+      "original_artifact_sha256": "bf344a8bc01125363cbca6ad1306460422e40c794d9736ae691648e152559f12",
+      "original_manifest_sha256": "ed2ec5488428f294fb7efc67d294107a2963c94fb7ffb892b23471721423f00d",
+      "payload_bytes_and_modes_preserved": true,
+      "scope": "Check definition reuses a delivered material reader; AST parsed only. Material bytes and paths are matched to the original frozen manifest.",
+      "script_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "qualified": false,
+    "state": "immutable-local-build-dependency-source",
+    "target_exports": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3721410,
+      "extract": true,
+      "id": "lpm-libxml2-source",
+      "material_path": "sources/lpm-libxml2-source",
+      "sha256": "ff97736d8669526c29565669a8e932425bdef3c891d3957ddafb1d16715665a8",
+      "strip_root": true,
+      "url": "https://codeload.github.com/GNOME/libxml2/tar.gz/66453240c94b5cbd3e9ae9b32016fdafb13cdf18"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/GNOME/libxml2"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{prefix}",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Provide the exact version selected by libprotobuf-mutator v1.5 for its tests or instrumented examples, avoiding implicit ExternalProject network acquisition."
+  },
+  "version": "2.13.6"
+}

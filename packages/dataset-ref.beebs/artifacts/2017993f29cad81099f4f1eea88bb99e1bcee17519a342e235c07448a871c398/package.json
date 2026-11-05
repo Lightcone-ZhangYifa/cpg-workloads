@@ -1,0 +1,289 @@
+{
+  "build": "2-metadata1",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "dataset-ref.beebs-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "dataset-ref.beebs",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 1451668,
+      "build_peak_bytes": null,
+      "category": [
+        "Dataset research",
+        "Benchmarks and inputs"
+      ],
+      "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+      "dataset_card_id": "beebs",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "requires_controller_only_storage": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "target_exports": [],
+        "visibility_policy": "developer_selected_complete_materials",
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/embecosm/beebs"
+      ],
+      "evidence_files": [
+        "workspace-evidence/datasets-v090/benchmarks/cards.json"
+      ],
+      "explicit_dataset_preparation": {
+        "controller_only": false,
+        "default_purpose": "compile_only",
+        "file_aliases": [
+          [
+            "beebs-63847f95a58254894d947eef34f0fb02506fa462/README",
+            "README.md"
+          ]
+        ],
+        "provider": "beebs_source",
+        "source_lock_id": "beebs"
+      },
+      "extract": true,
+      "id": "dataset-ref.beebs",
+      "immutable_ref": "63847f95a58254894d947eef34f0fb02506fa462",
+      "installed_bytes": null,
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "GPL-3.0-only AND LicenseRef-Per-Program",
+      "mandatory": false,
+      "material_path": "dataset-research/beebs",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Complementary portable C control-flow and integer training after overlap pruning.",
+      "qualification": {
+        "archive_measured": false,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+        "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+        "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+        "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+        "Embedded-origin workloads are often too short without a live-work wrapper.",
+        "Energy-oriented selection is not representative of all host applications.",
+        "Embench and other suites reuse BEEBS ancestry."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "18b2158626adc05dee50c23b7c5f0040da7a6240901c03b5701d1561eb5c119e",
+      "size_basis": "Actual complete pinned source archive bytes and ordinary-file logical sizes; upstream README symlink recorded separately. Named adapter currently covers 12 reviewed programs. Full source is available for developer-selected environments; no OCI or performance qualification.",
+      "source_evidence": [
+        "https://raw.githubusercontent.com/embecosm/beebs/63847f95a58254894d947eef34f0fb02506fa462/README.md",
+        "https://raw.githubusercontent.com/embecosm/beebs/63847f95a58254894d947eef34f0fb02506fa462/COPYING",
+        "workspace-evidence/datasets-v0100/native-suites/acquisition.json",
+        "workspace-evidence/datasets-v0100/acquisition-release/sources/beebs/acquisition.json"
+      ],
+      "source_logical_bytes": 6587673,
+      "source_url": "https://codeload.github.com/mageec/beebs/tar.gz/63847f95a58254894d947eef34f0fb02506fa462",
+      "title": "BEEBS research material",
+      "upstream": "https://github.com/embecosm/beebs",
+      "version": "commit-63847f95a582"
+    },
+    "catalog_sha256": "2c7df45bbb2342a2b0295901ffdf24117415046aa9c3087e69287d9bb29f643d",
+    "license_review": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "kind": "static_license_metadata_correction",
+      "license_evidence": [
+        {
+          "bytes": 35147,
+          "path": "payload/COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "bytes": 3470,
+          "path": "payload/README.md",
+          "sha256": "667d99a7174a9081104b1c3881d501e0e69cf09338095514b36bf0ff54f836ec"
+        },
+        {
+          "bytes": 14966,
+          "path": "payload/src/nettle-des/descore.README",
+          "sha256": "5e10d0df85ea90dfeae1d8f7f8d045cc192913949cda1d085bd327b840ef0254"
+        }
+      ],
+      "license_id": "GPL-3.0-only AND LicenseRef-Per-Program",
+      "original_artifact_sha256": "cd52533fb09739647237a3a3df4bb33defe8491667d05d3493a5743073f79d44",
+      "original_manifest_sha256": "0b1c029b4df673341d67a7b6cf8fc94aa6de9127ca0e6de6d9ddd191101f5d59",
+      "payload_bytes_and_modes_preserved": true,
+      "scope": "The pinned upstream README explicitly licenses the provided benchmark versions under GPL version 3; preserve the complete source, COPYING, and per-program terms. This is a source-material distribution, not a newly qualified linked binary."
+    },
+    "original_catalog_before_license_review": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 1451668,
+      "build_peak_bytes": null,
+      "category": [
+        "Dataset research",
+        "Benchmarks and inputs"
+      ],
+      "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+      "dataset_card_id": "beebs",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "requires_controller_only_storage": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "target_exports": [],
+        "visibility_policy": "developer_selected_complete_materials",
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/embecosm/beebs"
+      ],
+      "evidence_files": [
+        "workspace-evidence/datasets-v090/benchmarks/cards.json"
+      ],
+      "explicit_dataset_preparation": {
+        "controller_only": false,
+        "default_purpose": "compile_only",
+        "file_aliases": [
+          [
+            "beebs-63847f95a58254894d947eef34f0fb02506fa462/README",
+            "README.md"
+          ]
+        ],
+        "provider": "beebs_source",
+        "source_lock_id": "beebs"
+      },
+      "extract": true,
+      "id": "dataset-ref.beebs",
+      "immutable_ref": "63847f95a58254894d947eef34f0fb02506fa462",
+      "installed_bytes": null,
+      "kind": "dataset",
+      "license_class": "review-required",
+      "license_id": "GPL-3.0-or-later AND LicenseRef-Per-Program",
+      "mandatory": false,
+      "material_path": "dataset-research/beebs",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Complementary portable C control-flow and integer training after overlap pruning.",
+      "qualification": {
+        "archive_measured": false,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+        "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+        "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+        "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+        "Embedded-origin workloads are often too short without a live-work wrapper.",
+        "Energy-oriented selection is not representative of all host applications.",
+        "Embench and other suites reuse BEEBS ancestry."
+      ],
+      "redistributable": "license-and-component-review-required",
+      "roles": [
+        "host"
+      ],
+      "sha256": "18b2158626adc05dee50c23b7c5f0040da7a6240901c03b5701d1561eb5c119e",
+      "size_basis": "Actual complete pinned source archive bytes and ordinary-file logical sizes; upstream README symlink recorded separately. Named adapter currently covers 12 reviewed programs. Full source is available for developer-selected environments; no OCI or performance qualification.",
+      "source_evidence": [
+        "https://raw.githubusercontent.com/embecosm/beebs/63847f95a58254894d947eef34f0fb02506fa462/README.md",
+        "https://raw.githubusercontent.com/embecosm/beebs/63847f95a58254894d947eef34f0fb02506fa462/COPYING",
+        "workspace-evidence/datasets-v0100/native-suites/acquisition.json",
+        "workspace-evidence/datasets-v0100/acquisition-release/sources/beebs/acquisition.json"
+      ],
+      "source_logical_bytes": 6587673,
+      "source_url": "https://codeload.github.com/mageec/beebs/tar.gz/63847f95a58254894d947eef34f0fb02506fa462",
+      "title": "BEEBS research material",
+      "upstream": "https://github.com/embecosm/beebs",
+      "version": "commit-63847f95a582"
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "qualification_scope": "complete_static_material_availability_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.gitignore"
+    ],
+    "requires_controller_only_storage": false,
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_dependencies": [],
+    "system_packages": [],
+    "target_exports": [],
+    "visibility_policy": "developer_selected_complete_materials",
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1451668,
+      "extract": true,
+      "id": "dataset-ref.beebs",
+      "material_path": "dataset-research/beebs",
+      "sha256": "18b2158626adc05dee50c23b7c5f0040da7a6240901c03b5701d1561eb5c119e",
+      "strip_root": true,
+      "url": "https://codeload.github.com/mageec/beebs/tar.gz/63847f95a58254894d947eef34f0fb02506fa462"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/embecosm/beebs"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete original source and data tree",
+        "path": "{prefix}",
+        "purpose": "Independent full upstream materials, notices, references, tests, inputs and answers."
+      }
+    ],
+    "notes": [
+      "This material artifact preserves every file of the exact original archive. Installation copies materials independently and performs a full content check.",
+      "Availability checks do not compile corpus programs, validate numerical output, run an official benchmark protocol or grant an OCI/physical-target qualification.",
+      "Dataset load/prepare and sample operations are separately recorded under resource-integrations/v0210/r02/static-data/evidence. The original upstream lock and metadata.catalog remain unchanged."
+    ],
+    "summary": "Complementary portable C control-flow and integer training after overlap pruning."
+  },
+  "version": "commit-63847f95a582"
+}
