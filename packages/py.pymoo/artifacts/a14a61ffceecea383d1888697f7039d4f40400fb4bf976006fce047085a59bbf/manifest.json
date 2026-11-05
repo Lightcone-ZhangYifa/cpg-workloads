@@ -1,0 +1,611 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 512,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "dd125d64b4435a3ae23c6643b9deba2f7dd66e6bbfd0b46484c1f5b959f806a3"
+    },
+    {
+      "bytes": 2252,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/consumption_guard.py",
+      "sha256": "4c46a3d1c37a1e23cbeaa49f28f33f20a152c9634f80685fb30330140eca7e7a"
+    },
+    {
+      "bytes": 73648,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/functional-consumption-lock.json",
+      "sha256": "1b123a10d460fc892aa77b7367eedd5fb0b6b6e821fac0d12d0cf9ad210e1d94"
+    },
+    {
+      "bytes": 9718,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_v02113.py",
+      "sha256": "3c4a407ca20c10d262f666668e9d044e67d945c51135b7ea75653604fd33f549"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "62dcdc9ea54da4d72d5d30aeaec2b9317ff45d04fb6c745ec7bcae1a3b09f02d",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "e9eed75b01c941860f38a6d1c38b281d604f4f8dd84e8c03a96be5f7a3fd7d3e",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-installed-version",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.alive-progress",
+        "py.autograd",
+        "py.cma",
+        "py.deprecated",
+        "py.matplotlib",
+        "py.moocore",
+        "py.numpy",
+        "py.scipy"
+      ],
+      "system": []
+    },
+    "id": "py.pymoo",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 5233825,
+        "category": [
+          "Python packages",
+          "Optional search and analysis"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.alive-progress",
+          "py.autograd",
+          "py.cma",
+          "py.deprecated",
+          "py.matplotlib",
+          "py.moocore",
+          "py.numpy",
+          "py.scipy"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/pymoo/"
+        ],
+        "id": "py.pymoo",
+        "immutable_ref": "sha256:9fd4569f0c577bacb9cb48c6817b53044b00a6b2afe52021a18e21478ea6670a",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "Apache-2.0",
+        "mandatory": false,
+        "material_path": "wheels/pymoo-0.6.2-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+        "package_name": "pymoo",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "9fd4569f0c577bacb9cb48c6817b53044b00a6b2afe52021a18e21478ea6670a",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/pymoo/0.6.2/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/7e/18/719e5558e5d7459396ce48c9ce97b34683523d75f2b871ca288ec0cc5c8c/pymoo-0.6.2-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+        "title": "pymoo",
+        "upstream": "https://pypi.org/project/pymoo/0.6.2/",
+        "version": "0.6.2"
+      },
+      "catalog_sha256": "aee213bb729c7715b72d732e696e76e43f445d656b2a96662c4f842f348f06e5"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "functional_consumption": {
+        "canonical_dependencies_unchanged": true,
+        "consumer_roots": [],
+        "contract": "functional-consumption-lock.json",
+        "post_target": [],
+        "pre_target": [
+          "py.about-time",
+          "py.graphemeu",
+          "py.alive-progress",
+          "py.numpy",
+          "py.autograd",
+          "py.pycparser",
+          "py.cffi",
+          "py.cma",
+          "py.contourpy",
+          "py.cycler",
+          "py.wrapt",
+          "py.deprecated",
+          "py.fonttools",
+          "py.kiwisolver",
+          "py.packaging",
+          "py.pillow",
+          "py.pyparsing",
+          "py.six",
+          "py.python-dateutil",
+          "py.matplotlib",
+          "py.platformdirs",
+          "py.moocore",
+          "py.scipy"
+        ],
+        "profile_kind": "original-dependency-closure-only",
+        "uninstall_order": "Remove reverse consumers before the target; remove remaining original and supporting dependencies last."
+      },
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "pymoo",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 5233825,
+        "extract": false,
+        "id": "py.pymoo",
+        "material_path": "wheels/pymoo-0.6.2-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "9fd4569f0c577bacb9cb48c6817b53044b00a6b2afe52021a18e21478ea6670a",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/7e/18/719e5558e5d7459396ce48c9ce97b34683523d75f2b871ca288ec0cc5c8c/pymoo-0.6.2-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/project/pymoo/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/pymoo-0.6.2-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "0.21.13: exact original wheels plus explicitly locked functional consumer roots; canonical discovery dependencies are unchanged. Qualification requires independent full-closure A/B lifecycle evidence. Support-only consumers add no qualification."
+      ],
+      "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+    },
+    "version": "0.6.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "formal_baseline": "0.21.12",
+    "functional_consumption_lock_sha256": "1b123a10d460fc892aa77b7367eedd5fb0b6b6e821fac0d12d0cf9ad210e1d94",
+    "original_input_sha256": "9fd4569f0c577bacb9cb48c6817b53044b00a6b2afe52021a18e21478ea6670a",
+    "recipe_scope": "Original wheel and full declared consumption closure; real independent lifecycle required.",
+    "release": "0.21.13",
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.about-time",
+      "method": "wrapper",
+      "sha256": "321b9cf74edc7caec8eee35fa5cf6eae08bb0e4912f19e23d09c1f8e328a6e32",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.2.1"
+    },
+    {
+      "build": "2",
+      "id": "py.graphemeu",
+      "method": "wrapper",
+      "sha256": "676c6698f7aab5c0563ec67d4c653e1b73a65d76a974205d2e49490af979ecd2",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.7.2"
+    },
+    {
+      "build": "2",
+      "id": "py.alive-progress",
+      "method": "wrapper",
+      "sha256": "b23f6b9edc7572cbaf3508c7cf7305186714dbe7252def3cb12e0d29e2af8144",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.3.0"
+    },
+    {
+      "build": "2",
+      "id": "py.numpy",
+      "method": "wrapper",
+      "sha256": "2283e7208b6e0a2a64dd028e00e5e276b1607e4b709346594712f3f2542ec498",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.5.4"
+    },
+    {
+      "build": "2",
+      "id": "py.autograd",
+      "method": "wrapper",
+      "sha256": "c15bb2f697211a62174b0703ce07612afe9d92374edb62aaefc8e3e15ff71954",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.9.1"
+    },
+    {
+      "build": "2",
+      "id": "py.pycparser",
+      "method": "wrapper",
+      "sha256": "65f4fb304b3e42943d8bcfd2a4b291622ea78345f25d37cf93aec7dceaad6cfc",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.11"
+    },
+    {
+      "build": "2",
+      "id": "py.cffi",
+      "method": "wrapper",
+      "sha256": "9109884c9c2f2c26e62e275217a8cfa177c229f6064ab0f24dff47ec05b7bb7b",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.1.1"
+    },
+    {
+      "build": "2",
+      "id": "py.cma",
+      "method": "wrapper",
+      "sha256": "039d783a4cb7f4011a32639dc5b91b7007b0d0884c9fcead5220c9b0b8347575",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.5.0"
+    },
+    {
+      "build": "2",
+      "id": "py.contourpy",
+      "method": "wrapper",
+      "sha256": "9cdaf21d4192f9eb24a14020c69396a69a6838a7ab090ea0b8bc8fb6a48a170d",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.4.0"
+    },
+    {
+      "build": "2",
+      "id": "py.cycler",
+      "method": "wrapper",
+      "sha256": "ea58a1a031c8ab0f4d84648587986f33d67e45bbf879f36a4dc98b599d7961ae",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.12.1"
+    },
+    {
+      "build": "2",
+      "id": "py.wrapt",
+      "method": "wrapper",
+      "sha256": "f4ffc5ed9d07804b41ecb4522282ab4a1e8d4bef90f0b23842181788792f9317",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.5.1"
+    },
+    {
+      "build": "2",
+      "id": "py.deprecated",
+      "method": "wrapper",
+      "sha256": "2592e6a27bc84317d00775241e3973486d5b8542eeada9722298d110aac1de7c",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.0.0"
+    },
+    {
+      "build": "2",
+      "id": "py.fonttools",
+      "method": "wrapper",
+      "sha256": "ec3a2bf507f64ac39b5babe336ad78c106c2ead5daadaef322452bd623ece1f6",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.67.0"
+    },
+    {
+      "build": "2",
+      "id": "py.kiwisolver",
+      "method": "wrapper",
+      "sha256": "eb08a3cc8666d2c1329bade699ea34935c8d2a149d94200fc82a9add5370bef7",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.5.1"
+    },
+    {
+      "build": "2",
+      "id": "py.packaging",
+      "method": "wrapper",
+      "sha256": "e3381e49a1db6456d97d0bfcdfa4190c5f39d8d8d52f9e476c426149da8a2510",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "26.3"
+    },
+    {
+      "build": "2",
+      "id": "py.pillow",
+      "method": "wrapper",
+      "sha256": "99350c572a98c68cef73cc855ff3e3e8d21fdf624e9241c32e430494cb1d2376",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "13.0.0"
+    },
+    {
+      "build": "2",
+      "id": "py.pyparsing",
+      "method": "wrapper",
+      "sha256": "33fc3aafe9acf875b2c10bf79ccdc539ebdbb20f23f91e4a1274edc2fdd9ac20",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.3.3"
+    },
+    {
+      "build": "2",
+      "id": "py.six",
+      "method": "wrapper",
+      "sha256": "097c07be9303bcbb1bee91cebfc8f38d712560e10d003d6a72a5729590704207",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.17.0"
+    },
+    {
+      "build": "2",
+      "id": "py.python-dateutil",
+      "method": "wrapper",
+      "sha256": "f541ca676cedbaf42ba0947f24c19263199f486e9b9efe719f1f7ae4d5438bf2",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.9.0.post0"
+    },
+    {
+      "build": "2",
+      "id": "py.matplotlib",
+      "method": "wrapper",
+      "sha256": "099b55fefbb5d456862ca2859863c8a8a8840e5ea7ad74d941cf7e3ca50bb034",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.11.2"
+    },
+    {
+      "build": "2",
+      "id": "py.platformdirs",
+      "method": "wrapper",
+      "sha256": "6652da9e7a2b9b4414cd003d6c10dfe44fbdb9244ad791db2fbe1990254c3a00",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.13.5"
+    },
+    {
+      "build": "2",
+      "id": "py.moocore",
+      "method": "wrapper",
+      "sha256": "8881e8e2743ac68da5ca115ce0dae5ea70a673b3e212cfcba53e110897b8e48a",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.3.2"
+    },
+    {
+      "build": "2",
+      "id": "py.scipy",
+      "method": "wrapper",
+      "sha256": "aed931ffba0d9c68f24ac2635708f04155ce220eb44d5153e9bcab7b366198b9",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.18.1"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

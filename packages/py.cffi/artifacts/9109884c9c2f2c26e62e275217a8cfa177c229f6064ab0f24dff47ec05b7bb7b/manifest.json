@@ -1,0 +1,258 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1366,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "7c2168fb830ee852d07e161eeb64ece115cd141526ee4b74f4a3bfa3b4598220"
+    },
+    {
+      "bytes": 3269,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_support.py",
+      "sha256": "244d7d0104542c7e3c897765453a47389ba54c0a047d050559c1f1d4f072f1a8"
+    }
+  ],
+  "inventory_sha256": "7a8141300273221b0d3fbf4c2fdacc08f1e9e7c9f67e8d344df2a89bfed70956",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "7d6b679d0c26a80b048f51c9a27a37c118b6d6e5ef5c3d4431210ebce1fb108d",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "distribution-identity",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "installed-api-contract",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.pycparser"
+      ],
+      "system": []
+    },
+    "id": "py.cffi",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 221822,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.pycparser"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/cffi/"
+        ],
+        "id": "py.cffi",
+        "immutable_ref": "sha256:c1453022f490d2459a11819d83ad1d586e9ff65a12ac3e705ffebd46d3685dcf",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "MIT-0",
+        "mandatory": false,
+        "material_path": "wheels/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "package_name": "cffi",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "c1453022f490d2459a11819d83ad1d586e9ff65a12ac3e705ffebd46d3685dcf",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/cffi/2.1.1/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/b1/db/dceb9dd5b231e1da801793f8acc9f3c52a7e1afe40bb1aae37e02b0faad5/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "title": "cffi",
+        "upstream": "https://pypi.org/project/cffi/2.1.1/",
+        "version": "2.1.1"
+      },
+      "catalog_sha256": "66a44bb448feac81fb4d44c429a7b9eca842ea91a5ea8648c4e8bb886471832e"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "cffi",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 221822,
+        "extract": false,
+        "id": "py.cffi",
+        "material_path": "wheels/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "sha256": "c1453022f490d2459a11819d83ad1d586e9ff65a12ac3e705ffebd46d3685dcf",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/b1/db/dceb9dd5b231e1da801793f8acc9f3c52a7e1afe40bb1aae37e02b0faad5/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Use {prefix}/bin/python explicitly. The selected environment owns the exact distribution and its declared dependencies."
+      ],
+      "documentation": [
+        "https://cffi.readthedocs.io/en/stable/",
+        "https://pypi.org/project/cffi/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -c 'from cffi import FFI; ffi=FFI(); ffi.cdef('\"'\"'size_t strlen(const char *);'\"'\"'); print(ffi.dlopen(None).strlen(b'\"'\"'compiler'\"'\"'))'",
+          "description": "Call the current process's C library through an explicit declaration."
+        },
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Read the installed distribution identity in the selected environment."
+        },
+        {
+          "command": "cpg packages check py.cffi --prefix {prefix} --kind functional",
+          "description": "Run the package-specific API, data and failure-contract checks."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "The functional check uses the selected installed module, requires the exact distribution version, and checks actual results. It does not download data or contact external services.",
+        "This is a bounded application-level qualification, not the entire upstream test suite or every optional backend. Read the package recipe for each exercised operation.",
+        "The wrapper delegates installation and removal to pip. Its archive does not contain the locked wheel or its dependency closure; those have separate source identities.",
+        "metadata.catalog preserves the original discovery and resolver evidence. Current execution results are recorded separately by the package manager."
+      ],
+      "summary": "C declarations, native buffers, callbacks and ABI calls from Python."
+    },
+    "version": "2.1.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "formal_baseline": "0.21.12",
+    "phase": "pre_target",
+    "qualifications": 0,
+    "release": "0.21.13",
+    "role": "exact-original-functional-consumption-support-only",
+    "target": "py.pymoo"
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.pycparser",
+      "method": "wrapper",
+      "sha256": "65f4fb304b3e42943d8bcfd2a4b291622ea78345f25d37cf93aec7dceaad6cfc",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.11"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

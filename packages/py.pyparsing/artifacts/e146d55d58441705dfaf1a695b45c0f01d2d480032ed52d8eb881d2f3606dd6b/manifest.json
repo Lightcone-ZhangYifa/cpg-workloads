@@ -1,0 +1,240 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2261,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "92642884d2cb8ee111c4d25439ebed33ed32ecd0e9941a1b9c508a90a682d136"
+    },
+    {
+      "bytes": 3269,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_support.py",
+      "sha256": "244d7d0104542c7e3c897765453a47389ba54c0a047d050559c1f1d4f072f1a8"
+    }
+  ],
+  "inventory_sha256": "bf836af4587cf44bbf1a36fee06c5369a63e1637ec3e4adf8035bd337248e3d4",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "89591a293bff0f2527ac785b43809e3ba5b4b2fe7fb9412bd822ea9e385cfc63",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "distribution-identity",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "installed-api-contract",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.pyparsing",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 126420,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/pyparsing/"
+        ],
+        "id": "py.pyparsing",
+        "immutable_ref": "sha256:ece8c00a69cf01b45d0b1dedabb469c90d8caf996d4fda40f147627a122849a4",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "material_path": "wheels/pyparsing-3.3.3-py3-none-any.whl",
+        "package_name": "pyparsing",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "ece8c00a69cf01b45d0b1dedabb469c90d8caf996d4fda40f147627a122849a4",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/pyparsing/3.3.3/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/38/bb/d215ee7c73b61497b28a5503f9f53523f294fcc936762b7caf90e0c1c2b5/pyparsing-3.3.3-py3-none-any.whl",
+        "title": "pyparsing",
+        "upstream": "https://pypi.org/project/pyparsing/3.3.3/",
+        "version": "3.3.3"
+      },
+      "catalog_sha256": "71da9720b5334d85aaff581e20cd3f437c08673a2fd69f23747d8dade25dd05b"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "pyparsing",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 126420,
+        "extract": false,
+        "id": "py.pyparsing",
+        "material_path": "wheels/pyparsing-3.3.3-py3-none-any.whl",
+        "sha256": "ece8c00a69cf01b45d0b1dedabb469c90d8caf996d4fda40f147627a122849a4",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/38/bb/d215ee7c73b61497b28a5503f9f53523f294fcc936762b7caf90e0c1c2b5/pyparsing-3.3.3-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Invoke {prefix}/bin/python explicitly; this environment owns the distribution and its fixed dependency closure."
+      ],
+      "documentation": [
+        "https://pyparsing-docs.readthedocs.io/en/latest/",
+        "https://pypi.org/project/pyparsing/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -c 'from pyparsing import Word,nums; print(Word(nums).parse_string('\"'\"'123'\"'\"',parse_all=True).as_list())'",
+          "description": "Use the selected installed resource."
+        },
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect the exact installed distribution."
+        },
+        {
+          "command": "cpg packages check py.pyparsing --prefix {prefix} --kind functional",
+          "description": "Run the bounded package-specific functional checks."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/pyparsing-3.3.3-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "The check requires the exact distribution and an imported module inside the selected environment, then checks actual operations and error cases.",
+        "Qualification is bounded to the recipe's stated local cases, not every upstream test or optional backend. No remote service or data download is performed.",
+        "The wrapper contains metadata, hooks and checks; its locked wheel and dependency closure remain separately identified inputs.",
+        "The original metadata.catalog facts and source locks are retained. Execution evidence is recorded separately."
+      ],
+      "summary": "Composable grammars, parse actions, precedence and named fields."
+    },
+    "version": "3.3.3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "formal_baseline": "0.21.12",
+    "phase": "pre_target",
+    "qualifications": 0,
+    "release": "0.21.13",
+    "role": "exact-original-functional-consumption-support-only",
+    "target": "py.matplotlib-inline"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

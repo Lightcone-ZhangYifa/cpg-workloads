@@ -1,0 +1,465 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 629,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "8824aa0317cd926d81f8da413331917a261708dfee72efb8587ec1f4a05df209"
+    },
+    {
+      "bytes": 13783,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_v02111_03.py",
+      "sha256": "1a7be5dfbce29e742e9451f93ec913befb83bc82265d093d479ded85eccdbe77"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "5e13f0c26fc1124520d6ad35a203350f16667d4a65220894ca0fdc38bf1eb0d7",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "7afddeedf6f83ecec4952ad331de1230bf953ad0bd010c73533909e66cfe5568",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.ipython-pygments-lexers",
+        "py.jedi",
+        "py.matplotlib-inline",
+        "py.pexpect",
+        "py.prompt-toolkit",
+        "py.psutil",
+        "py.pygments",
+        "py.stack-data",
+        "py.traitlets"
+      ],
+      "system": []
+    },
+    "id": "py.ipython",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 639038,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.ipython-pygments-lexers",
+          "py.jedi",
+          "py.matplotlib-inline",
+          "py.pexpect",
+          "py.prompt-toolkit",
+          "py.psutil",
+          "py.pygments",
+          "py.stack-data",
+          "py.traitlets"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/ipython/"
+        ],
+        "id": "py.ipython",
+        "immutable_ref": "sha256:6d1645743cfd1a07eb695d85aa2b5fa66721f8cbae9431d4049f7084bbf06509",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "BSD-3-Clause",
+        "mandatory": false,
+        "material_path": "wheels/ipython-9.17.1-py3-none-any.whl",
+        "package_name": "ipython",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "6d1645743cfd1a07eb695d85aa2b5fa66721f8cbae9431d4049f7084bbf06509",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/ipython/9.17.1/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/2d/1e/65b59cf518c106aa755e7f7da3099027738687a862ec785060702a481320/ipython-9.17.1-py3-none-any.whl",
+        "title": "ipython",
+        "upstream": "https://pypi.org/project/ipython/9.17.1/",
+        "version": "9.17.1"
+      },
+      "catalog_sha256": "12d6be1748414b828e8bc05deaee739e8c70ce19c8104d6f08c6175a992a4654"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "ipython",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 639038,
+        "extract": false,
+        "id": "py.ipython",
+        "material_path": "wheels/ipython-9.17.1-py3-none-any.whl",
+        "sha256": "6d1645743cfd1a07eb695d85aa2b5fa66721f8cbae9431d4049f7084bbf06509",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/2d/1e/65b59cf518c106aa755e7f7da3099027738687a862ec785060702a481320/ipython-9.17.1-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/project/ipython/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/ipython-9.17.1-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+        "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+        "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+      ],
+      "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+    },
+    "version": "9.17.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "formal_baseline": "0.21.12",
+    "phase": "post_target",
+    "qualifications": 0,
+    "release": "0.21.13",
+    "role": "exact-original-functional-consumption-support-only",
+    "target": "py.matplotlib-inline"
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.asttokens",
+      "method": "wrapper",
+      "sha256": "a02a356cd4ea8cf9d51481c51b2cbca9440fdbcf59b19718a3fd287a35d4f6f3",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.0.2"
+    },
+    {
+      "build": "2",
+      "id": "py.executing",
+      "method": "wrapper",
+      "sha256": "42877a7a6bd717e43d0dbf95c585aaf3aa76ccfa1603f8af7e009b0f8c878713",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.3.0"
+    },
+    {
+      "build": "2",
+      "id": "py.pygments",
+      "method": "wrapper",
+      "sha256": "e6b78cf5ae8496677731c1abb137764d4afe08dc9e4e680b800d8087bad49de6",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.21.0"
+    },
+    {
+      "build": "2",
+      "id": "py.ipython-pygments-lexers",
+      "method": "wrapper",
+      "sha256": "79a38a06689fcbfc48205fb532adc432c51cd4d7879e72089eff107f4ec2520f",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.1.1"
+    },
+    {
+      "build": "2",
+      "id": "py.parso",
+      "method": "wrapper",
+      "sha256": "70d1157feaf8560b826b84636f2303968c3ba1fba26c27be936fbc857f9139f3",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.8.7"
+    },
+    {
+      "build": "2",
+      "id": "py.jedi",
+      "method": "wrapper",
+      "sha256": "4f19ba22781847c82270208a2cc394d1f1816c0f311c96a69db7c39eb55f47d7",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.20.1"
+    },
+    {
+      "build": "2",
+      "id": "py.traitlets",
+      "method": "wrapper",
+      "sha256": "efc68ad2102fde475c22e228290fdbb5b2a4fd7ff3edab2c760cda30ea704f16",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "5.16.1"
+    },
+    {
+      "build": "2",
+      "id": "py.matplotlib-inline",
+      "method": "wrapper",
+      "sha256": "eab67d64f1179c6b9617129dd80de0786ad383e35534b7ced572f0689f148c0a",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.2.2"
+    },
+    {
+      "build": "2",
+      "id": "py.ptyprocess",
+      "method": "wrapper",
+      "sha256": "c3be44a5b754556323b99dd69a21e975dbb62effd78de7a5902e7097d68ff911",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.7.0"
+    },
+    {
+      "build": "2",
+      "id": "py.pexpect",
+      "method": "wrapper",
+      "sha256": "7d78c76ae24efd4de75d90459a27be989f314a2ea77d142663b115714ed20437",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.9.0"
+    },
+    {
+      "build": "2",
+      "id": "py.wcwidth",
+      "method": "wrapper",
+      "sha256": "9f15e9d44c0d26996cfc539f2a4ce1a40af75f870b8853c80c6dfd34baf07968",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.9.3"
+    },
+    {
+      "build": "2",
+      "id": "py.prompt-toolkit",
+      "method": "wrapper",
+      "sha256": "43e1680d6aa43f1a52c5f6377ca07840b658d5910a93182de5665c1e97d604b9",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.0.53"
+    },
+    {
+      "build": "2",
+      "id": "py.psutil",
+      "method": "wrapper",
+      "sha256": "90505eb4e69aa7e990513f52a6cfc73735343dd2527556701930b97f954d714f",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "7.2.2"
+    },
+    {
+      "build": "2",
+      "id": "py.pure-eval",
+      "method": "wrapper",
+      "sha256": "7433349d52a8a802a0b1be71745158a0402f5a892b0b046f9ebee45937df8116",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.2.4"
+    },
+    {
+      "build": "2",
+      "id": "py.stack-data",
+      "method": "wrapper",
+      "sha256": "af2522bb814d469105a1aec4ba1ba596583a3e45d6f6be11c28b07d17b140667",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.6.3"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

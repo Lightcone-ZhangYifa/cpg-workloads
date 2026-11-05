@@ -1,0 +1,311 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/archives"
+    },
+    {
+      "bytes": 12808109,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/archives/original-source.tar.gz",
+      "sha256": "adb775402b4fc527189d91be8c8ac6a54ad83525865de3de40f8441c8bc2dcee"
+    },
+    {
+      "bytes": 613,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/source-set.json",
+      "sha256": "76226c5994764f56a38ea38e72e307591b4bf6b24ae134d94c3067b8d82dfd45"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1136,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/acquisition-locks.json",
+      "sha256": "7c6128c7e2b5bf93556f372596ba1daa9fa7aba424f26c628519d50145d75aff"
+    },
+    {
+      "bytes": 2566,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "30be0d56e4a26b43419e946896a6f551934dac8b76e9bff932ba24129d57b8f1"
+    },
+    {
+      "bytes": 1608,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/git-commit.json",
+      "sha256": "20b0f6b8ca5d8d7953f7dbe4ab4b92b6c5c91b21430c51a63f3352ab9ec3dd7f"
+    },
+    {
+      "bytes": 1519,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "7330f13928204a1c9a4c84d8a451257f79b862fd5a89de00c1c6c859830f067a"
+    },
+    {
+      "bytes": 2700773,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/original-git-blobs-001.json",
+      "sha256": "b8e3baa2539b2832319640a4c7cfb8b988a88302b5803f66e9b425370d3e0f53"
+    },
+    {
+      "bytes": 668874,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/original-git-blobs-002.json",
+      "sha256": "39585bbdc85585552126d2d4d4d5a3f543f77568a1660868da5e4ba0ffdad3e7"
+    },
+    {
+      "bytes": 4564,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/prepare.py",
+      "sha256": "7625c4984481b1dd27e507e27aa66f061bc50e9500fa4a350b97b33a2c1ada7a"
+    },
+    {
+      "bytes": 34042,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/source-closure-audit.json",
+      "sha256": "467a7973d8ab14b5e46974f94dd956130ebba2f1d9f12066bf0a3d174f7f2cce"
+    }
+  ],
+  "inventory_sha256": "e2d1d18c1754bc3f4ef4935c12122ad0862114978a21a710190539b6f89e58bc",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "80da3765c64a170cbde1e42b6034e024fd7a7d3715e0374b75d9db2b867edb1a",
+  "method": "material",
+  "package": {
+    "build": "v02113-reviewed-complete-archive-material-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-manifest.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "dataset-ref.xnnpack-complete-archive-material",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "dataset-ref.xnnpack",
+    "metadata": {
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": null,
+        "build_peak_bytes": null,
+        "category": [
+          "Dataset research",
+          "Benchmarks and inputs"
+        ],
+        "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+        "dataset_card_id": "xnnpack",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "requires_controller_only_storage": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "target_exports": [],
+          "visibility_policy": "developer_selected_complete_materials",
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/google/XNNPACK"
+        ],
+        "evidence_files": [
+          "workspace-evidence/datasets-v090/benchmarks/cards.json"
+        ],
+        "extract": true,
+        "id": "dataset-ref.xnnpack",
+        "immutable_ref": "26186f85939753b9a509734b193aad2bcb17518f",
+        "installed_bytes": null,
+        "kind": "dataset",
+        "license_class": "open",
+        "license_id": "BSD-3-Clause",
+        "mandatory": false,
+        "material_path": "dataset-research/xnnpack",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Real-application training or transfer testing with fixed inputs, output checks and explicit compiler-controlled code attribution.",
+        "qualification": {
+          "archive_measured": false,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+          "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+          "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+          "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+          "Intrinsics and assembly dominate many kernels.",
+          "A source archive alone may omit fetched build dependencies.",
+          "Keep scalar, auto-vectorized and explicit-SIMD paths separately attributable."
+        ],
+        "redistributable": "license-and-component-review-required",
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+        "source_evidence": [
+          "https://raw.githubusercontent.com/google/XNNPACK/26186f85939753b9a509734b193aad2bcb17518f/README.md",
+          "https://raw.githubusercontent.com/google/XNNPACK/26186f85939753b9a509734b193aad2bcb17518f/LICENSE"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/google/XNNPACK/tar.gz/26186f85939753b9a509734b193aad2bcb17518f",
+        "title": "XNNPACK research material",
+        "upstream": "https://github.com/google/XNNPACK",
+        "version": "HEAD observed at retrieval; use the full recorded commit"
+      },
+      "catalog_sha256": "b32910d92bb3b72f739ab104aa77c4b18600b38e5f1686877dd01e1f63dcbf11",
+      "current_material_evidence": {
+        "canonical_sources_and_catalog_unchanged": true,
+        "execution_category": "archive_set_complete_original_git_tree",
+        "original_dependencies_unchanged": true,
+        "original_symbolic_links": 1,
+        "source_closure_audit_sha256": "467a7973d8ab14b5e46974f94dd956130ebba2f1d9f12066bf0a3d174f7f2cce",
+        "source_file_count": 12631,
+        "source_tree_deployment": false
+      }
+    },
+    "provider": "material",
+    "recipe": {
+      "acquisition_lock": {
+        "bytes": 12808109,
+        "extract": true,
+        "id": "dataset-ref.xnnpack",
+        "material_path": "dataset-research/xnnpack",
+        "sha256": "adb775402b4fc527189d91be8c8ac6a54ad83525865de3de40f8441c8bc2dcee",
+        "strip_root": true,
+        "url": "https://codeload.github.com/google/XNNPACK/tar.gz/26186f85939753b9a509734b193aad2bcb17518f"
+      },
+      "adapter": "corpus",
+      "material_layout": "original_complete_archive_set",
+      "native_execution_qualified": false,
+      "qualification_scope": "complete_original_fixed_git_archive_set_material_only; every original blob, tree, symbolic link, source, test, input and notice preserved; not an expanded source-tree deployment, executable, Dataset API, native build, semantic oracle, official Benchmark, OCI or hardware qualification",
+      "qualified": true,
+      "required_installed_paths": [
+        "{prefix}/archives/original-source.tar.gz",
+        "{prefix}/source-set.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "requires_controller_only_storage": false,
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "source_closure_audit_sha256": "467a7973d8ab14b5e46974f94dd956130ebba2f1d9f12066bf0a3d174f7f2cce",
+      "source_closure_complete": true,
+      "source_closure_scope": "complete_exact_original_git_archive_set",
+      "source_dependencies": [],
+      "source_tree_deployment": false,
+      "submodule_closure_complete": true,
+      "system_packages": [],
+      "target_exports": [],
+      "visibility_policy": "developer_selected_complete_materials",
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": null,
+        "extract": true,
+        "id": "dataset-ref.xnnpack",
+        "material_path": "dataset-research/xnnpack",
+        "sha256": null,
+        "strip_root": true,
+        "url": "https://codeload.github.com/google/XNNPACK/tar.gz/26186f85939753b9a509734b193aad2bcb17518f"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/google/XNNPACK"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Complete exact original source archive",
+          "path": "{prefix}/archives/original-source.tar.gz",
+          "purpose": "All original source bytes, paths, links, tests and notices; material is an archive, not an expanded installed source tree."
+        }
+      ],
+      "notes": [
+        "The original complete archive is copied independently into each environment; no original file or link is omitted or rewritten.",
+        "Every original Git blob and tree is recomputed and the original pinned commit root must match.",
+        "The installed material preserves the archive. It does not claim an expanded working tree, runtime, Dataset interface, native build or official benchmark score.",
+        "Original id, version, provider, target, sources, dependencies, catalog facts and license notices remain unchanged.",
+        "Original licenses are retained; static acquisition does not add any permissions."
+      ],
+      "summary": "Real-application training or transfer testing with fixed inputs, output checks and explicit compiler-controlled code attribution."
+    },
+    "version": "HEAD observed at retrieval; use the full recorded commit"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "dataset_api_qualified": false,
+    "exact_git_tree_sha1": "ed36effdddca554d18bb83354668e81b359d53fe",
+    "execution_category": "archive_set_complete_original_git_tree",
+    "native_execution_qualified": false,
+    "original_source_lock": {
+      "bytes": 12808109,
+      "extract": true,
+      "id": "dataset-ref.xnnpack",
+      "material_path": "dataset-research/xnnpack",
+      "sha256": "adb775402b4fc527189d91be8c8ac6a54ad83525865de3de40f8441c8bc2dcee",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/XNNPACK/tar.gz/26186f85939753b9a509734b193aad2bcb17518f"
+    },
+    "original_sources_unchanged": true,
+    "qualification_scope": "complete_original_fixed_git_archive_set_material_only; every original blob, tree, symbolic link, source, test, input and notice preserved; not an expanded source-tree deployment, executable, Dataset API, native build, semantic oracle, official Benchmark, OCI or hardware qualification",
+    "source_tree_deployment": false
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
