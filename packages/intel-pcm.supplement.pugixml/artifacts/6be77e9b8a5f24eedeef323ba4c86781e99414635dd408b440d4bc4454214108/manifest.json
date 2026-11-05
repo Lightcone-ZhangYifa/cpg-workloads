@@ -1,0 +1,302 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 8274,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "81baa8af334298ae960ce14382fc4f97ab5288c1ecab1da132c5602a2937b2df"
+    },
+    {
+      "bytes": 4322,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "f57eee5b1f737fb40458101b58358f714eccf6b33be40df4e79cc99610652e90"
+    },
+    {
+      "bytes": 1376,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/config.json",
+      "sha256": "99485ef76f839df1257eeeb51305c1a9a62c4129f57914e18af8ab32742bfa0d"
+    },
+    {
+      "bytes": 4764,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/consumer.cpp",
+      "sha256": "322cf08a132dd618fa3cea75fd23d026e8dcd844fb13d9dbd2bf04091a0f989c"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 583144,
+      "kind": "file",
+      "mode": 384,
+      "path": "sources/51c102d4187fac99daa38af281b0772c5e6c586f65004cdc63f8f2e011a21492",
+      "sha256": "51c102d4187fac99daa38af281b0772c5e6c586f65004cdc63f8f2e011a21492"
+    }
+  ],
+  "inventory_sha256": "79cc9fee32f9f0ef2fc62b3ef084d1e9ee3769d09a0839bc12a0975fc83571c5",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "8e8c8e8cad59b5bfa2b0e63680319198b32e028d5993580810a7798c9915874f",
+  "method": "source",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "shared"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "pugixml-shared",
+        "kind": "functional",
+        "requires_commands": [
+          "/usr/bin/python3",
+          "/usr/bin/g++"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 300
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "static"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "pugixml-static",
+        "kind": "functional",
+        "requires_commands": [
+          "/usr/bin/python3",
+          "/usr/bin/g++"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 300
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "cli"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "pugixml-cli",
+        "kind": "functional",
+        "requires_commands": [
+          "/usr/bin/python3",
+          "/usr/bin/g++"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 300
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.g++",
+        "apt.make",
+        "apt.python3"
+      ]
+    },
+    "id": "intel-pcm.supplement.pugixml",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 583144,
+        "category": [
+          "Profiling",
+          "PMU collectors",
+          "Pinned source closure"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "supplement"
+        },
+        "extract": true,
+        "id": "intel-pcm.supplement.pugixml",
+        "immutable_ref": "sha256:51c102d4187fac99daa38af281b0772c5e6c586f65004cdc63f8f2e011a21492",
+        "installed_bytes": null,
+        "kind": "source_supplement",
+        "license_class": "open",
+        "license_id": "BSD-3-Clause",
+        "mandatory": false,
+        "material_path": "supplements/intel-pcm.supplement.pugixml",
+        "presets": [],
+        "qualification_gaps": [],
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "51c102d4187fac99daa38af281b0772c5e6c586f65004cdc63f8f2e011a21492",
+        "size_basis": "Measured exact immutable supplemental artifact",
+        "source_evidence": [
+          "https://codeload.github.com/zeux/pugixml/tar.gz/ee86beb30e4973f5feffe3ce63bfa4fbadf72f38"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/zeux/pugixml/tar.gz/ee86beb30e4973f5feffe3ce63bfa4fbadf72f38",
+        "strip_archive_root": true,
+        "supplement_to": "sources/intel-pcm/src/pugixml",
+        "title": "Intel Performance Counter Monitor / src/pugixml",
+        "version": "202604"
+      },
+      "catalog_sha256": "74d07faf41356d132e8b52cd141d177095d1e9eaa3186f78b2a64605fca07122"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "make",
+      "commands": [
+        [
+          "/usr/bin/python3",
+          "{recipe}/build.py",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "qualified": false,
+      "required_installed_paths": [
+        "{prefix}/include/pugixml.hpp",
+        "{prefix}/include/pugiconfig.hpp",
+        "{prefix}/lib/libpugixml.so",
+        "{prefix}/lib/libpugixml.a",
+        "{prefix}/bin/pugixml-cpg-probe",
+        "{prefix}/share/compiler-playground/intel-pcm.supplement.pugixml/profile.json"
+      ],
+      "source_dependencies": [],
+      "system_packages": [
+        "g++",
+        "make",
+        "python3"
+      ],
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 583144,
+        "extract": true,
+        "id": "intel-pcm.supplement.pugixml",
+        "material_path": "supplements/intel-pcm.supplement.pugixml",
+        "sha256": "51c102d4187fac99daa38af281b0772c5e6c586f65004cdc63f8f2e011a21492",
+        "strip_root": true,
+        "url": "https://codeload.github.com/zeux/pugixml/tar.gz/ee86beb30e4973f5feffe3ce63bfa4fbadf72f38"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://pugixml.org/"
+      ],
+      "examples": [
+        {
+          "command": "'{prefix}/bin/pugixml-cpg-probe' --self-test",
+          "description": "Run installed XML, XPath, serialization and malformed-input checks."
+        }
+      ],
+      "locations": [
+        {
+          "label": "C++ headers",
+          "path": "{prefix}/include",
+          "purpose": "pugixml.hpp and pugiconfig.hpp standard UTF-8/XPath/STL/exception profile"
+        },
+        {
+          "label": "Static and shared libraries",
+          "path": "{prefix}/lib",
+          "purpose": "Explicit-prefix C++ linking with observed host ABI"
+        },
+        {
+          "label": "Original materials",
+          "path": "{prefix}/share/intel-pcm.supplement.pugixml/source",
+          "purpose": "Complete unchanged original source, tests, inputs, documentation and license"
+        },
+        {
+          "label": "Project probe",
+          "path": "{prefix}/bin/pugixml-cpg-probe",
+          "purpose": "Project qualification CLI; not an upstream command"
+        }
+      ],
+      "notes": [
+        "Actual source header reports pugixml 1.15 / 1150; the original catalog version 202604 and all catalog facts remain unchanged.",
+        "Only a declared build-copy test harness printf observation patch is applied; original retained sources and library implementation remain unchanged.",
+        "Complete upstream Makefile standard-profile tests run with assertions; runtime names and allocator-throw repeats are separately counted.",
+        "Shared/static/probe relocation is checked in independent prefixes with the source prefix unavailable.",
+        "Optional PUGIXML_COMPACT, WCHAR, no-XPath, no-STL or no-exception compile-time profiles",
+        "Fuzzing, sanitizer/coverage matrices and alternate compilers/architectures",
+        "Full transitive pinned APT closure installation; direct named compiler/make/python packages and actual tool/runtime identities are observed",
+        "Intel PCM hardware/PMU operation; this is an independently built XML-library profile of the existing pinned source supplement",
+        "Official benchmark/performance scores, OCI and cross-ABI deployment"
+      ],
+      "summary": "Build the pinned pugixml 1.15 standard C++17 library, within the unchanged 202604 source-supplement identity."
+    },
+    "version": "202604"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "60e3e69d87b13b4a3728fc48e46218a0b4f9dd1214d9e074be395eecdd655d44",
+    "profile": "Complete source recipe and installed functional checks",
+    "source_locks": [
+      {
+        "bytes": 583144,
+        "extract": true,
+        "id": "intel-pcm.supplement.pugixml",
+        "material_path": "supplements/intel-pcm.supplement.pugixml",
+        "sha256": "51c102d4187fac99daa38af281b0772c5e6c586f65004cdc63f8f2e011a21492",
+        "strip_root": true,
+        "url": "https://codeload.github.com/zeux/pugixml/tar.gz/ee86beb30e4973f5feffe3ce63bfa4fbadf72f38"
+      }
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "intel-pcm.supplement.pugixml",
+      "path": "sources/51c102d4187fac99daa38af281b0772c5e6c586f65004cdc63f8f2e011a21492"
+    }
+  ]
+}
