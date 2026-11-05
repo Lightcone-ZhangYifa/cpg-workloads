@@ -1,0 +1,190 @@
+{
+  "build": "v02112-reviewed-declared-mbpp-subtree-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "dataset-ref.mbpp-complete-declared-subtree",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 60
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "dataset-ref.mbpp",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Dataset research",
+        "Code and IR corpora"
+      ],
+      "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+      "dataset_card_id": "mbpp",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "requires_controller_only_storage": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "target_exports": [],
+        "visibility_policy": "developer_selected_complete_materials",
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/google-research/google-research"
+      ],
+      "evidence_files": [
+        "workspace-evidence/datasets-v090/corpora/cards.json"
+      ],
+      "extract": true,
+      "id": "dataset-ref.mbpp",
+      "immutable_ref": "57183fd52c2d857aeef16d1fad15efe55aa61220",
+      "installed_bytes": null,
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "CC-BY-4.0 AND Apache-2.0",
+      "mandatory": false,
+      "material_path": "dataset-research/mbpp",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Agent correctness/control tasks; retain original and sanitized task identities.",
+      "qualification": {
+        "archive_measured": false,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+        "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+        "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+        "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+        "Python execution primarily exercises its interpreter and libraries; it is not a direct native C/C++ compiler-speed benchmark.",
+        "Finite tests provide observational evidence, not a general semantic equivalence proof.",
+        "Use the MBPP subdirectory only; cloning the entire Google Research monorepo is not required."
+      ],
+      "redistributable": "license-and-component-review-required",
+      "roles": [
+        "host"
+      ],
+      "sha256": null,
+      "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+      "source_evidence": [
+        "https://github.com/google-research/google-research",
+        "https://huggingface.co/datasets/google-research-datasets/mbpp"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/google-research/google-research/tar.gz/57183fd52c2d857aeef16d1fad15efe55aa61220",
+      "title": "Mostly Basic Python Problems research material",
+      "upstream": "https://github.com/google-research/google-research",
+      "version": "HEAD observed on 2026-10-23"
+    },
+    "catalog_sha256": "330ada8b6e704ed3d48178579455c1454c9291893ae681b4789bf009744144b8",
+    "current_material_evidence": {
+      "canonical_sources_and_catalog_unchanged": true,
+      "complete_declared_subtree_sha1": "b7911c71f0b9e153d79c8d50b2a18b2fb21c58e6",
+      "dataset_qualification_increment": 0,
+      "execution_category": "declared_mbpp_subtree_material_only",
+      "monorepo_not_acquired": true,
+      "native_execution": "not_run",
+      "original_dependencies_unchanged": true,
+      "source_closure_audit_sha256": "a41e2163f4fd5285abed064c7097fafc6130556b04f2b2481981ddc435915c7f",
+      "source_file_count": 4
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "dataset_qualification_increment": 0,
+    "execution_category": "declared_mbpp_subtree_material_only",
+    "material_layout": "complete_exact_declared_mbpp_subtree_plus_original_root_license",
+    "monorepo_not_acquired": true,
+    "native_execution_qualified": false,
+    "original_declared_scope": "Use the MBPP subdirectory only; cloning the entire Google Research monorepo is not required.",
+    "qualification_scope": "complete_original_declared_MBPP_subtree_three_files_plus_original_root_LICENSE; monorepo_not_acquired; no_task_execution_Dataset_increment_or_official_Benchmark_qualification",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/mbpp/README.md",
+      "{prefix}/mbpp/mbpp.jsonl",
+      "{prefix}/mbpp/sanitized-mbpp.json",
+      "{prefix}/LICENSE"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "requires_controller_only_storage": false,
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_audit_sha256": "a41e2163f4fd5285abed064c7097fafc6130556b04f2b2481981ddc435915c7f",
+    "source_commit": "57183fd52c2d857aeef16d1fad15efe55aa61220",
+    "source_dependencies": [],
+    "subtree_git_tree_sha1": "b7911c71f0b9e153d79c8d50b2a18b2fb21c58e6",
+    "system_packages": [],
+    "target_exports": [],
+    "visibility_policy": "developer_selected_complete_materials",
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": true,
+      "id": "dataset-ref.mbpp",
+      "material_path": "dataset-research/mbpp",
+      "sha256": null,
+      "strip_root": true,
+      "url": "https://codeload.github.com/google-research/google-research/tar.gz/57183fd52c2d857aeef16d1fad15efe55aa61220"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/google-research/google-research"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete original MBPP subtree and root license",
+        "path": "{prefix}",
+        "purpose": "The original resource explicitly permits MBPP-only acquisition: all three fixed subtree files and original repository root LICENSE, with exact Git blob and subtree identity."
+      }
+    ],
+    "notes": [
+      "The original catalog explicitly says: Use the MBPP subdirectory only; cloning the entire Google Research monorepo is not required.",
+      "The canonical discovery source still names the full Google Research archive and retains its original null SHA/size; that whole archive was not acquired or qualified. Explicit subtree locks retain the original fixed revision.",
+      "All three original MBPP files and original root LICENSE are independent ordinary copies; complete subtree SHA-1 and every Git blob/SHA-256/byte count/mode are checked on installation.",
+      "This adds resource material availability only. The formal 0.21.11 MBPP Dataset interface already exists and receives no additional Dataset count; no Python task execution, semantic oracle, native compiler, official score, OCI or hardware qualification is granted.",
+      "Original licensing, references, data, answers and supplied tests remain preserved; no payload fields are filtered or rewritten."
+    ],
+    "summary": "Agent correctness/control tasks; retain original and sanitized task identities."
+  },
+  "version": "HEAD observed on 2026-10-23"
+}

@@ -1,0 +1,310 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 11358,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/mbpp"
+    },
+    {
+      "bytes": 1422,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/mbpp/README.md",
+      "sha256": "02d63a4ffdad806c3c87b5ea2aa91e946f6eec0c2869643b09831650883f41be"
+    },
+    {
+      "bytes": 563743,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/mbpp/mbpp.jsonl",
+      "sha256": "ccf64ceae9c5403bf50a044cb6d505bfd2a2963ee58338ba268fd65beab92a9f"
+    },
+    {
+      "bytes": 255053,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/mbpp/sanitized-mbpp.json",
+      "sha256": "ca95deaa9a01ef0a6f439f88bcf0dd3db3563d22f22aad6cae04ebb9a8d8c8e9"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2589,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "f327cb3195a74c6fb54eff7a54331eab08a641bf03957ff231b0273d48ed1a00"
+    },
+    {
+      "bytes": 3420,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "53766537f8b229f06fd250b124489700d1c85d681a57ca9bd70ca031388ebcff"
+    },
+    {
+      "bytes": 4155,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/prepare.py",
+      "sha256": "8c8e09884c5b231d9783275c5b4e62af0271081cf6ef4e2ecfeabf759e90573b"
+    },
+    {
+      "bytes": 3623,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/source-closure-audit.json",
+      "sha256": "a41e2163f4fd5285abed064c7097fafc6130556b04f2b2481981ddc435915c7f"
+    },
+    {
+      "bytes": 8269,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/source-subtree-locks.json",
+      "sha256": "60e06d23b71a5f8d582937cb2cb1d00623dad5b3d1d8bc267d018f5cb8ab21df"
+    },
+    {
+      "bytes": 3208,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/source_material.py",
+      "sha256": "9b916e22eddb14883a3b7789e1dd4d8c37aeb53b3e6b48134d6830b7ea55bf99"
+    }
+  ],
+  "inventory_sha256": "858c659a7a0360848f4840d48410346601cb7ad7f555efc6b0f7b911f5bf50bb",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "a66e4e5847dddf85ccafdda72f77a3811612dc2b1d5f9acc4eb43800adf67b6f",
+  "method": "material",
+  "package": {
+    "build": "v02112-reviewed-declared-mbpp-subtree-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-manifest.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "dataset-ref.mbpp-complete-declared-subtree",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 60
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "dataset-ref.mbpp",
+    "metadata": {
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": null,
+        "build_peak_bytes": null,
+        "category": [
+          "Dataset research",
+          "Code and IR corpora"
+        ],
+        "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+        "dataset_card_id": "mbpp",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "requires_controller_only_storage": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "target_exports": [],
+          "visibility_policy": "developer_selected_complete_materials",
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/google-research/google-research"
+        ],
+        "evidence_files": [
+          "workspace-evidence/datasets-v090/corpora/cards.json"
+        ],
+        "extract": true,
+        "id": "dataset-ref.mbpp",
+        "immutable_ref": "57183fd52c2d857aeef16d1fad15efe55aa61220",
+        "installed_bytes": null,
+        "kind": "dataset",
+        "license_class": "open",
+        "license_id": "CC-BY-4.0 AND Apache-2.0",
+        "mandatory": false,
+        "material_path": "dataset-research/mbpp",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Agent correctness/control tasks; retain original and sanitized task identities.",
+        "qualification": {
+          "archive_measured": false,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+          "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+          "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+          "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+          "Python execution primarily exercises its interpreter and libraries; it is not a direct native C/C++ compiler-speed benchmark.",
+          "Finite tests provide observational evidence, not a general semantic equivalence proof.",
+          "Use the MBPP subdirectory only; cloning the entire Google Research monorepo is not required."
+        ],
+        "redistributable": "license-and-component-review-required",
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+        "source_evidence": [
+          "https://github.com/google-research/google-research",
+          "https://huggingface.co/datasets/google-research-datasets/mbpp"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/google-research/google-research/tar.gz/57183fd52c2d857aeef16d1fad15efe55aa61220",
+        "title": "Mostly Basic Python Problems research material",
+        "upstream": "https://github.com/google-research/google-research",
+        "version": "HEAD observed on 2026-10-23"
+      },
+      "catalog_sha256": "330ada8b6e704ed3d48178579455c1454c9291893ae681b4789bf009744144b8",
+      "current_material_evidence": {
+        "canonical_sources_and_catalog_unchanged": true,
+        "complete_declared_subtree_sha1": "b7911c71f0b9e153d79c8d50b2a18b2fb21c58e6",
+        "dataset_qualification_increment": 0,
+        "execution_category": "declared_mbpp_subtree_material_only",
+        "monorepo_not_acquired": true,
+        "native_execution": "not_run",
+        "original_dependencies_unchanged": true,
+        "source_closure_audit_sha256": "a41e2163f4fd5285abed064c7097fafc6130556b04f2b2481981ddc435915c7f",
+        "source_file_count": 4
+      }
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "corpus",
+      "dataset_qualification_increment": 0,
+      "execution_category": "declared_mbpp_subtree_material_only",
+      "material_layout": "complete_exact_declared_mbpp_subtree_plus_original_root_license",
+      "monorepo_not_acquired": true,
+      "native_execution_qualified": false,
+      "original_declared_scope": "Use the MBPP subdirectory only; cloning the entire Google Research monorepo is not required.",
+      "qualification_scope": "complete_original_declared_MBPP_subtree_three_files_plus_original_root_LICENSE; monorepo_not_acquired; no_task_execution_Dataset_increment_or_official_Benchmark_qualification",
+      "qualified": true,
+      "required_installed_paths": [
+        "{prefix}/mbpp/README.md",
+        "{prefix}/mbpp/mbpp.jsonl",
+        "{prefix}/mbpp/sanitized-mbpp.json",
+        "{prefix}/LICENSE"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "requires_controller_only_storage": false,
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "source_closure_audit_sha256": "a41e2163f4fd5285abed064c7097fafc6130556b04f2b2481981ddc435915c7f",
+      "source_commit": "57183fd52c2d857aeef16d1fad15efe55aa61220",
+      "source_dependencies": [],
+      "subtree_git_tree_sha1": "b7911c71f0b9e153d79c8d50b2a18b2fb21c58e6",
+      "system_packages": [],
+      "target_exports": [],
+      "visibility_policy": "developer_selected_complete_materials",
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": null,
+        "extract": true,
+        "id": "dataset-ref.mbpp",
+        "material_path": "dataset-research/mbpp",
+        "sha256": null,
+        "strip_root": true,
+        "url": "https://codeload.github.com/google-research/google-research/tar.gz/57183fd52c2d857aeef16d1fad15efe55aa61220"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/google-research/google-research"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Complete original MBPP subtree and root license",
+          "path": "{prefix}",
+          "purpose": "The original resource explicitly permits MBPP-only acquisition: all three fixed subtree files and original repository root LICENSE, with exact Git blob and subtree identity."
+        }
+      ],
+      "notes": [
+        "The original catalog explicitly says: Use the MBPP subdirectory only; cloning the entire Google Research monorepo is not required.",
+        "The canonical discovery source still names the full Google Research archive and retains its original null SHA/size; that whole archive was not acquired or qualified. Explicit subtree locks retain the original fixed revision.",
+        "All three original MBPP files and original root LICENSE are independent ordinary copies; complete subtree SHA-1 and every Git blob/SHA-256/byte count/mode are checked on installation.",
+        "This adds resource material availability only. The formal 0.21.11 MBPP Dataset interface already exists and receives no additional Dataset count; no Python task execution, semantic oracle, native compiler, official score, OCI or hardware qualification is granted.",
+        "Original licensing, references, data, answers and supplied tests remain preserved; no payload fields are filtered or rewritten."
+      ],
+      "summary": "Agent correctness/control tasks; retain original and sanitized task identities."
+    },
+    "version": "HEAD observed on 2026-10-23"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "dataset_qualification_increment": 0,
+    "execution_category": "declared_mbpp_subtree_material_only",
+    "mbpp_subtree_git_sha1": "b7911c71f0b9e153d79c8d50b2a18b2fb21c58e6",
+    "monorepo_not_acquired": true,
+    "native_execution_qualified": false,
+    "original_source_locks": [
+      {
+        "bytes": null,
+        "extract": true,
+        "id": "dataset-ref.mbpp",
+        "material_path": "dataset-research/mbpp",
+        "sha256": null,
+        "strip_root": true,
+        "url": "https://codeload.github.com/google-research/google-research/tar.gz/57183fd52c2d857aeef16d1fad15efe55aa61220"
+      }
+    ],
+    "source_commit": "57183fd52c2d857aeef16d1fad15efe55aa61220",
+    "source_subtree_locks_sha256": "60e06d23b71a5f8d582937cb2cb1d00623dad5b3d1d8bc267d018f5cb8ab21df"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
