@@ -1,0 +1,230 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--case",
+        "api"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "openssl-api",
+      "kind": "functional",
+      "requires_commands": [
+        "/usr/bin/python3",
+        "/usr/bin/gcc"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--case",
+        "cli"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "openssl-cli",
+      "kind": "functional",
+      "requires_commands": [
+        "/usr/bin/python3",
+        "/usr/bin/gcc"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "apt.perl"
+    ],
+    "run": [],
+    "system": [
+      "apt.gcc",
+      "apt.make",
+      "apt.python3"
+    ]
+  },
+  "id": "openssl",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 55429548,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Cryptography"
+      ],
+      "container_strategy": "Build default and explicitly C-only diagnostic variants in dev; freeze provider/configuration and hardware dispatch before target runs.",
+      "corpus_contract": {
+        "code": "Library, tools and regression tests included.",
+        "inputs": "Known-answer tests plus deterministic message-size distributions.",
+        "oracle": "Known-answer tests and independent references where available.",
+        "split_unit": "Algorithm and implementation lineage across sizes and providers."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/openssl/openssl"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/openssl.measurement.json",
+        "workspace-evidence/resources-v050/open-research/openssl.refs.json"
+      ],
+      "extract": true,
+      "id": "openssl",
+      "immutable_ref": "af1775b60dfa141a4ad762585052cabeb9f37e9e",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "corpora/openssl",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Production C control-flow, arithmetic and cryptographic primitive workload coverage.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Assembly acceleration can obscure compiler effects; report assembly-enabled and no-asm strata separately.",
+        "Performance alone does not establish constant-time behavior or cryptographic certification."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "219c0a389f3c76e58f2d9e2b216101887f94747e669bb79c43225d7b6ac1253a",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/openssl/openssl",
+        "https://codeload.github.com/openssl/openssl/tar.gz/af1775b60dfa141a4ad762585052cabeb9f37e9e",
+        "https://github.com/openssl/openssl/commit/af1775b60dfa141a4ad762585052cabeb9f37e9e"
+      ],
+      "source_logical_bytes": 135651861,
+      "source_url": "https://codeload.github.com/openssl/openssl/tar.gz/af1775b60dfa141a4ad762585052cabeb9f37e9e",
+      "title": "OpenSSL cryptographic workload",
+      "upstream": "https://github.com/openssl/openssl",
+      "version": "openssl-4.0.3"
+    },
+    "catalog_sha256": "fa534d155b5d1a807546a91c27bbb0157af0492c67b847aa2cef796d7de164ca"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "make",
+    "commands": [
+      [
+        "/usr/bin/python3",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "qualified": false,
+    "required_installed_paths": [
+      "{prefix}/bin/openssl",
+      "{prefix}/lib/libcrypto.so",
+      "{prefix}/lib/libssl.so",
+      "{prefix}/lib/libcrypto.a",
+      "{prefix}/lib/libssl.a",
+      "{prefix}/lib/ossl-modules/legacy.so",
+      "{prefix}/share/compiler-playground/openssl/profile.json"
+    ],
+    "source_dependencies": [],
+    "system_packages": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 55429548,
+      "extract": true,
+      "id": "openssl",
+      "material_path": "corpora/openssl",
+      "sha256": "219c0a389f3c76e58f2d9e2b216101887f94747e669bb79c43225d7b6ac1253a",
+      "strip_root": true,
+      "url": "https://codeload.github.com/openssl/openssl/tar.gz/af1775b60dfa141a4ad762585052cabeb9f37e9e"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/openssl/openssl"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages check openssl --kind functional",
+        "description": "Run native CLI and fresh C API functional checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Native CLI",
+        "path": "{prefix}/bin/openssl",
+        "purpose": "Source-built ELF command line, qualified with no Perl on PATH."
+      },
+      {
+        "label": "Libraries and headers",
+        "path": "{prefix}/lib",
+        "purpose": "Shared/static libssl and libcrypto, default/legacy provider module, with include/openssl headers."
+      },
+      {
+        "label": "Original source",
+        "path": "{prefix}/share/openssl/source",
+        "purpose": "Complete unchanged original material including all tests and known-answer fixtures."
+      },
+      {
+        "label": "Qualification profile",
+        "path": "{prefix}/share/compiler-playground/openssl/profile.json",
+        "purpose": "Exact configured and executed scope, upstream counts and private Perl audit."
+      }
+    ],
+    "notes": [
+      "Perl is an explicit build-only path binding from fixed original deb bytes; this is not an APT installation or qualification of its full package dependency closure.",
+      "No-asm is an explicit C-oriented workload profile. It does not establish cryptographic certification.",
+      "The API and native CLI checks run with no Perl on PATH; optional installed Perl utilities are outside this profile.",
+      "Binary relocation is verified only on the stated Ubuntu 24.04 x86_64 ABI.",
+      "Complete upstream test suite, networking/TLS handshake matrix, FIPS validation or constant-time certification",
+      "Assembly-enabled builds and performance benchmarks",
+      "Optional c_rehash Perl utility; the qualified installed interface is the native ELF CLI and C API",
+      "Cross-platform or cross-ABI deployment"
+    ],
+    "summary": "Build the original OpenSSL 4.0.3 cryptographic workload as a no-assembly shared/static C library and native CLI profile."
+  },
+  "version": "openssl-4.0.3"
+}
