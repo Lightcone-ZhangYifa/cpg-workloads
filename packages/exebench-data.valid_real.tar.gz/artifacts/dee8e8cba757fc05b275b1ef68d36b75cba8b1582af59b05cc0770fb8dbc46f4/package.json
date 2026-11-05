@@ -1,0 +1,173 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exebench-data.valid_real.tar.gz-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "exebench-data.valid_real.tar.gz",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 13382934,
+      "category": [
+        "Workloads",
+        "Executable function corpora",
+        "ExeBench v1.01 corpus archives"
+      ],
+      "container_strategy": "Acquire each explicit artifact during preparation into controller-owned material storage. Inspect the pinned loader instead of executing mutable remote dataset scripts; create family-disjoint train-only views before mounting dev.",
+      "corpus_contract": {
+        "code": "Real/synthetic dependency reconstruction around extracted C functions.",
+        "inputs": "Input-output pairs for only executable subsets; task subsets must remain distinct.",
+        "oracle": "Finite author-generated IO pairs plus independent validation before speed measurement.",
+        "split_unit": "Original source repository and deduplicated function lineage, including descendants in Angha and application corpora."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false
+      },
+      "documentation": [
+        "https://huggingface.co/datasets/jordiae/exebench/blob/093085f8558cfd53de8e2c8f4ccc7b9e73dc22ae/README.md"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/exebench-tree.body",
+        "workspace-evidence/resources-v050/open-research/exebench-metadata.body"
+      ],
+      "extract": false,
+      "id": "exebench-data.valid_real.tar.gz",
+      "immutable_ref": "093085f8558cfd53de8e2c8f4ccc7b9e73dc22ae",
+      "kind": "dataset_archive",
+      "license_class": "review-required",
+      "license_id": "MIT AND LicenseRef-Per-Source-Repository",
+      "mandatory": false,
+      "material_path": "corpora/exebench-data/valid_real.tar.gz",
+      "presets": [],
+      "purpose": "Source functions with provenance, dependencies and input-output pairs for scalable executable-function studies.",
+      "qualification": {
+        "archive_measured": false,
+        "build_qualified": false,
+        "target_qualified": false,
+        "upstream_declared_bytes": true,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The ten archives contain different task subsets; noncompilable and compilable-only samples are not runtime-performance cases.",
+        "Per-record execution, defined-behavior checks, finite IO coverage and source provenance need admission.",
+        "Upstream public splits do not establish absence of agent pretraining contamination or project-family leakage.",
+        "Logical expanded bytes, extraction peak and admitted-data derivative sizes need local measurement."
+      ],
+      "redistributable": false,
+      "redistribution_status": "Authors license their contributions under MIT; extracted functions retain original repository licenses and require per-record review.",
+      "roles": [
+        "host"
+      ],
+      "sha256": "c06049a4e17193958cb9b67129cfbcf028fb12b1b24133333b174bcbc1cad3a7",
+      "size_basis": "Exact sum of ten archive sizes declared by the author-hosted immutable Hugging Face Git-LFS tree; SHA256 is provided separately for every archive. Payloads were not downloaded in this audit. Nested zstd logical size remains unmeasured.",
+      "source_evidence": [
+        "https://huggingface.co/api/datasets/jordiae/exebench/tree/093085f8558cfd53de8e2c8f4ccc7b9e73dc22ae?recursive=true&expand=true",
+        "https://huggingface.co/datasets/jordiae/exebench/blob/093085f8558cfd53de8e2c8f4ccc7b9e73dc22ae/README.md"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://huggingface.co/datasets/jordiae/exebench/resolve/093085f8558cfd53de8e2c8f4ccc7b9e73dc22ae/valid_real.tar.gz",
+      "title": "valid_real.tar.gz",
+      "upstream": "https://huggingface.co/datasets/jordiae/exebench",
+      "version": "1.01"
+    },
+    "catalog_sha256": "d21ffceab426d4238f783cba48b7cc6bdd377bce91b461ecdcaa61b0c3cc4717"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 13382934,
+      "extract": false,
+      "id": "exebench-data.valid_real.tar.gz",
+      "material_path": "corpora/exebench-data/valid_real.tar.gz",
+      "sha256": "c06049a4e17193958cb9b67129cfbcf028fb12b1b24133333b174bcbc1cad3a7",
+      "strip_root": true,
+      "url": "https://huggingface.co/datasets/jordiae/exebench/resolve/093085f8558cfd53de8e2c8f4ccc7b9e73dc22ae/valid_real.tar.gz"
+    },
+    "adapter": "corpus",
+    "content_scope_audit_sha256": "7fe37200d31c23dee30b3878e646b7fe7d882c30b0bbbb5085e0f6eb8e5ddbf6",
+    "dataset_content_complete": false,
+    "external_data_requirements": "Only this complete fixed archive file is qualified. The remaining original ExeBench corpus archives, per-record parsing/provenance/IO contracts, a Dataset interface and execution are separate requirements.",
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "material_representation": "original_locked_file_container",
+    "qualification_scope": "complete_declared_opaque_dataset_archive_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/corpora/exebench-data/valid_real.tar.gz"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_scope": "complete_original_declared_opaque_dataset_archive_file",
+    "source_tree_deployment": false,
+    "unfetched_submodule_declarations": 0
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 13382934,
+      "extract": false,
+      "id": "exebench-data.valid_real.tar.gz",
+      "material_path": "corpora/exebench-data/valid_real.tar.gz",
+      "sha256": "c06049a4e17193958cb9b67129cfbcf028fb12b1b24133333b174bcbc1cad3a7",
+      "strip_root": true,
+      "url": "https://huggingface.co/datasets/jordiae/exebench/resolve/093085f8558cfd53de8e2c8f4ccc7b9e73dc22ae/valid_real.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://huggingface.co/datasets/jordiae/exebench/blob/093085f8558cfd53de8e2c8f4ccc7b9e73dc22ae/README.md"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Exact original dataset archive",
+        "path": "{prefix}/corpora/exebench-data/valid_real.tar.gz",
+        "purpose": "Complete immutable original archive bytes retained without extraction."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The original extract=false contract is preserved. File SHA, size, mode and independent installation lifecycle are verified; source functions or IO samples are not executed.",
+      "Only this complete fixed archive file is qualified. The remaining original ExeBench corpus archives, per-record parsing/provenance/IO contracts, a Dataset interface and execution are separate requirements.",
+      "Original MIT/per-source license metadata and notices remain unchanged inside the archive; availability does not grant new redistribution clearance."
+    ],
+    "summary": "Source functions with provenance, dependencies and input-output pairs for scalable executable-function studies."
+  },
+  "version": "1.01"
+}

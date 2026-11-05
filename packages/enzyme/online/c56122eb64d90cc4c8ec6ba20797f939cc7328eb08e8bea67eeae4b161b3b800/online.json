@@ -1,0 +1,222 @@
+{
+  "additional_acquisition_locks": [],
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "executed_framework_version": "0.21.3",
+    "native_execution": false,
+    "scope": {
+      "availability_check_runs": 5,
+      "dataset_content_complete": false,
+      "direct_functional_coverage_increment": 0,
+      "expected_negative_checks": 1,
+      "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+      "material_installations": 2,
+      "material_representation": "complete_unpacked_main_archive",
+      "methods": [
+        "material"
+      ],
+      "native_programs_executed": 0,
+      "oci_deployment": "not_run",
+      "official_benchmark": "not_run",
+      "physical_target": "not_run",
+      "qualification": "complete_static_material_availability",
+      "source_closure": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+      "source_tree_deployment": true,
+      "system_package_transactions": "not_run",
+      "unfetched_submodule_declarations": 0,
+      "unresolved_upstream_links": []
+    },
+    "summary": "resource-integrations/v0210/r05/static-materials/material-jobs/enzyme/summary.json"
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 2475454,
+    "historical_path": "resource-integrations/v0210/r05/static-materials/material-jobs/enzyme/artifacts/enzyme-b2.material.cpgpkg.tar.gz",
+    "manifest_sha256": "3a63192641a3282f34eff8f267f0e7778c04a83ccc693263f5035bf698c95e5c",
+    "method": "material",
+    "sha256": "62ed076f0be8da92836faea3fb4ef736e0aa3134bf0a57ab8eb01a7192b92880"
+  },
+  "original_catalog": {
+    "archive_bytes": 2304479,
+    "archive_scope": "Git export archive excludes LICENSE, Readme.md, tests, enzyme/benchmarks and LLVM fork directories according to .gitattributes.",
+    "category": [
+      "Compilers",
+      "Compiler extensions"
+    ],
+    "container_strategy": "Build the enzyme subdirectory against an explicitly supported LLVM/Clang tuple in dev, and validate generated derivative programs before target runtime measurement.",
+    "dependencies": [
+      "apt.clang",
+      "apt.cmake",
+      "apt.libclang-dev",
+      "apt.llvm-dev",
+      "apt.ninja-build",
+      "enzyme.supplement.license",
+      "enzyme.supplement.readme.md"
+    ],
+    "deployment": {
+      "adapter": "reference",
+      "configure_argv": [
+        "cmake",
+        "-S",
+        "{source}/enzyme",
+        "-B",
+        "{build}",
+        "-G",
+        "Ninja",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DLLVM_DIR={compatible_llvm_prefix}/lib/cmake/llvm"
+      ],
+      "qualified": false,
+      "requires_full_git_checkout": true,
+      "source_dependencies": [],
+      "system_packages": [
+        "cmake",
+        "ninja-build",
+        "clang",
+        "llvm-dev",
+        "libclang-dev"
+      ],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://enzyme.mit.edu/Installation/",
+      "https://enzyme.mit.edu/getting_started/UsingEnzyme/"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/enzyme.measurement.json",
+      "workspace-evidence/resources-v050/open-research/enzyme.refs.json",
+      "workspace-evidence/resources-v050/open-research/enzyme.supplemental-artifacts.json"
+    ],
+    "extract": true,
+    "id": "enzyme",
+    "immutable_ref": "06da3b77d8ceaa9e260c7147a2e6bedf27b6d377",
+    "kind": "source_archive",
+    "license_class": "open",
+    "license_id": "Apache-2.0 WITH LLVM-exception",
+    "mandatory": false,
+    "material_path": "sources/enzyme",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Advanced LLVM/MLIR pass integration and optimization of automatically differentiated scientific programs.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "The fixed GitHub source archive follows export-ignore rules that omit LICENSE, Readme.md, tests and enzyme/benchmarks; a full pinned checkout or supplemental acquisition is required for complete materials.",
+      "LLVM/Clang/Flang/LLD plugin ABI compatibility must be tested for each requested frontend.",
+      "Differentiation semantics and derivative oracles are separate from unchanged-source compiler correctness."
+    ],
+    "redistributable": true,
+    "roles": [
+      "dev",
+      "host"
+    ],
+    "sha256": "7bb0d5c812968248bf27b1e926fc0bd5978f217c060cbe2845b6177de9678593",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://github.com/EnzymeAD/Enzyme",
+      "https://codeload.github.com/EnzymeAD/Enzyme/tar.gz/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377",
+      "https://github.com/EnzymeAD/Enzyme/commit/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377"
+    ],
+    "source_logical_bytes": 15374955,
+    "source_url": "https://codeload.github.com/EnzymeAD/Enzyme/tar.gz/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377",
+    "supplemental_artifacts": [
+      {
+        "archive_bytes": 13205,
+        "name": "LICENSE",
+        "observed_at_unix": 1792601726.5338755,
+        "sha256": "f2db94d30c9657f2556732f3e80973d49fc4d093eede0a54ffda88152296f695",
+        "url": "https://raw.githubusercontent.com/EnzymeAD/Enzyme/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377/LICENSE"
+      },
+      {
+        "archive_bytes": 4068,
+        "name": "Readme.md",
+        "observed_at_unix": 1792601726.7048113,
+        "sha256": "ffe6a680cd5be92c521c20d752caca6dcb7d598646fcae35a91499703b8225b3",
+        "url": "https://raw.githubusercontent.com/EnzymeAD/Enzyme/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377/Readme.md"
+      }
+    ],
+    "title": "Enzyme LLVM and MLIR differentiation",
+    "upstream": "https://github.com/EnzymeAD/Enzyme",
+    "version": "v0.0.303"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 2304479,
+      "extract": true,
+      "id": "enzyme",
+      "material_path": "sources/enzyme",
+      "sha256": "7bb0d5c812968248bf27b1e926fc0bd5978f217c060cbe2845b6177de9678593",
+      "strip_root": true,
+      "url": "https://codeload.github.com/EnzymeAD/Enzyme/tar.gz/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 483280,
+      "path": "offline-manifest.json",
+      "sha256": "18a2d37beccef3cebc0dbf0562ea8df41a738794f665339c201a54236ed5e265"
+    },
+    {
+      "bytes": 2291,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 1383,
+      "path": "recipe/content-scope.json",
+      "sha256": "8faea08bceffed957a2a377467fb73c290a808fc5c9580182975775888722bad"
+    },
+    {
+      "bytes": 2992,
+      "path": "recipe/input-audit.json",
+      "sha256": "af1f3cc1b440d5d3430df96b959f09b322b244793a44b7268419879f50e87845"
+    },
+    {
+      "bytes": 454213,
+      "path": "recipe/material-manifest.json",
+      "sha256": "931409fdbc29c03139a1b6a99d54a8b44c73dac0c0f31638587456c974844e04"
+    },
+    {
+      "bytes": 17366,
+      "path": "run.py",
+      "sha256": "7c2fdcaaf763a09500ae36190e9d22649a5ccaf0f39ca500cc153b89e59abdee"
+    }
+  ],
+  "release": "0.21.4",
+  "resolved_acquisition_locks": [
+    {
+      "bytes": 2304479,
+      "extract": true,
+      "id": "enzyme",
+      "material_path": "sources/enzyme",
+      "sha256": "7bb0d5c812968248bf27b1e926fc0bd5978f217c060cbe2845b6177de9678593",
+      "strip_root": true,
+      "url": "https://codeload.github.com/EnzymeAD/Enzyme/tar.gz/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377"
+    }
+  ],
+  "resource_id": "enzyme",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1,
+  "source_lock_extension_audit_sha256": "af1f3cc1b440d5d3430df96b959f09b322b244793a44b7268419879f50e87845",
+  "source_lock_policy": "Original null SHA/bytes remain in the canonical source record; only the explicit audited acquisition lock resolves them, all originally fixed fields unchanged",
+  "source_tree_deployment": true,
+  "unresolved_upstream_links": []
+}

@@ -1,0 +1,209 @@
+{
+  "additional_acquisition_locks": [],
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "executed_framework_version": "0.21.3",
+    "native_execution": false,
+    "scope": {
+      "availability_check_runs": 5,
+      "dataset_content_complete": false,
+      "direct_functional_coverage_increment": 0,
+      "expected_negative_checks": 1,
+      "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+      "material_installations": 2,
+      "material_representation": "complete_unpacked_main_archive",
+      "methods": [
+        "material"
+      ],
+      "native_programs_executed": 0,
+      "oci_deployment": "not_run",
+      "official_benchmark": "not_run",
+      "physical_target": "not_run",
+      "qualification": "complete_static_material_availability",
+      "source_closure": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+      "source_tree_deployment": true,
+      "system_package_transactions": "not_run",
+      "unfetched_submodule_declarations": 0,
+      "unresolved_upstream_links": []
+    },
+    "summary": "resource-integrations/v0210/r05/static-materials/material-jobs/propeller/summary.json"
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 3089537,
+    "historical_path": "resource-integrations/v0210/r05/static-materials/material-jobs/propeller/artifacts/propeller-b2.material.cpgpkg.tar.gz",
+    "manifest_sha256": "60b538d4003f4358a3255caedf488d7b8a6fe2ec9fb901c674299f1341db9bce",
+    "method": "material",
+    "sha256": "6adccb42f731f1d2359b4df0e8189441cf7dfc590f660bc0daa5adb8fad963ca"
+  },
+  "original_catalog": {
+    "archive_bytes": 3429327,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Optimization search",
+      "Profile-guided optimization"
+    ],
+    "container_strategy": "Use target-collected profile and exact binary metadata, run profile generation and relinking in dev, then transfer the final optimized executable to target.",
+    "dependencies": [
+      "apt.clang",
+      "apt.cmake",
+      "apt.libdw-dev",
+      "apt.libelf-dev",
+      "apt.libprotobuf-dev",
+      "apt.ninja-build",
+      "apt.protobuf-compiler"
+    ],
+    "deployment": {
+      "adapter": "reference",
+      "configure_argv": [
+        "cmake",
+        "-S",
+        "{source}",
+        "-B",
+        "{build}",
+        "-G",
+        "Ninja",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      "qualified": false,
+      "smoke_argv": [
+        "{build}/propeller/generate_propeller_profiles",
+        "--help"
+      ],
+      "source_dependencies": [],
+      "system_packages": [
+        "cmake",
+        "ninja-build",
+        "clang",
+        "libelf-dev",
+        "libdw-dev",
+        "libprotobuf-dev",
+        "protobuf-compiler"
+      ],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://github.com/google/llvm-propeller"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/propeller.measurement.json",
+      "workspace-evidence/resources-v050/open-research/propeller.refs.json"
+    ],
+    "extract": true,
+    "id": "propeller",
+    "immutable_ref": "ddfb8b7cbdb87b0cbacff5ed993adb09a6999174",
+    "kind": "source_archive",
+    "legacy_source_id": "propeller",
+    "license_class": "open",
+    "license_id": "Apache-2.0",
+    "mandatory": false,
+    "material_path": "sources/propeller",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Generate compiler/linker profiles for basic-block and function layout optimization of large applications.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "CMake/Bazel dependency closure and compatible LLVM/LLD features must be frozen rather than running the README's unpinned LLVM installer.",
+      "Basic-block section, build-ID, profile and final linked binary provenance must be retained.",
+      "Post-link layout gains require a separate train profile and held-out runtime evaluation."
+    ],
+    "redistributable": true,
+    "roles": [
+      "dev",
+      "host"
+    ],
+    "sha256": "b3b2db416f69acaa744218798eb8b5828854eed18da56fdd06766a2eb9b79dcb",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://github.com/google/llvm-propeller",
+      "https://codeload.github.com/google/llvm-propeller/tar.gz/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174",
+      "https://github.com/google/llvm-propeller/commit/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174"
+    ],
+    "source_logical_bytes": 78096128,
+    "source_url": "https://codeload.github.com/google/llvm-propeller/tar.gz/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174",
+    "title": "LLVM Propeller profile-guided layout",
+    "upstream": "https://github.com/google/llvm-propeller",
+    "version": "commit-ddfb8b7cbdb8"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 3429327,
+      "extract": true,
+      "id": "propeller",
+      "material_path": "sources/propeller",
+      "sha256": "b3b2db416f69acaa744218798eb8b5828854eed18da56fdd06766a2eb9b79dcb",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/llvm-propeller/tar.gz/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 74795,
+      "path": "offline-manifest.json",
+      "sha256": "6413c340ca644492e6e697b0eba336ab1a820fad828b28637e9d8a4c5af4380c"
+    },
+    {
+      "bytes": 2291,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 1372,
+      "path": "recipe/content-scope.json",
+      "sha256": "c071e48c6c6cde0c4dfa9c022d72278ba05ab4237dbaa317cd2fa2df215fc646"
+    },
+    {
+      "bytes": 3026,
+      "path": "recipe/input-audit.json",
+      "sha256": "37bccac5105f1ea5d0973e476e80e4ba11e2705140b262f1706bb03b6fcfd16c"
+    },
+    {
+      "bytes": 60886,
+      "path": "recipe/material-manifest.json",
+      "sha256": "58d708bfd7fba48a73d3b3f74106f715af163d402508ee114d7a2b26e2d9103f"
+    },
+    {
+      "bytes": 17366,
+      "path": "run.py",
+      "sha256": "7c2fdcaaf763a09500ae36190e9d22649a5ccaf0f39ca500cc153b89e59abdee"
+    }
+  ],
+  "release": "0.21.4",
+  "resolved_acquisition_locks": [
+    {
+      "bytes": 3429327,
+      "extract": true,
+      "id": "propeller",
+      "material_path": "sources/propeller",
+      "sha256": "b3b2db416f69acaa744218798eb8b5828854eed18da56fdd06766a2eb9b79dcb",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/llvm-propeller/tar.gz/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174"
+    }
+  ],
+  "resource_id": "propeller",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1,
+  "source_lock_extension_audit_sha256": "37bccac5105f1ea5d0973e476e80e4ba11e2705140b262f1706bb03b6fcfd16c",
+  "source_lock_policy": "Original null SHA/bytes remain in the canonical source record; only the explicit audited acquisition lock resolves them, all originally fixed fields unchanged",
+  "source_tree_deployment": true,
+  "unresolved_upstream_links": []
+}

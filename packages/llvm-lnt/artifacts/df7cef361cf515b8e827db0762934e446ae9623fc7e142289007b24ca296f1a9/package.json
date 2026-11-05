@@ -1,0 +1,194 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "llvm-lnt-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "llvm-lnt",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [],
+      "archive_bytes": 3272029,
+      "build_peak_bytes": null,
+      "category": [
+        "Measurement",
+        "Compiler regression analysis"
+      ],
+      "conflicts": [],
+      "container_strategy": "Preserve exact source and notices in immutable prepared materials. A reference adapter does not install or start this resource.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "source_dependencies": [],
+        "state": "immutable-source-reference; executable-deployment-not-qualified",
+        "system_packages": [],
+        "target_exports": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/llvm/llvm-lnt"
+      ],
+      "evidence_files": [
+        "workspace-evidence/community-v070/resource-audit/git-refs.json",
+        "workspace-evidence/community-v070/resource-audit/archive-measurements.json",
+        "workspace-evidence/community-v070/resource-audit/http-headers/llvm-lnt.json"
+      ],
+      "extract": true,
+      "id": "llvm-lnt",
+      "immutable_ref": "b1ba006721ef967916310c11f8045347ab7a2a79",
+      "installed_allocated_bytes": null,
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception",
+      "mandatory": false,
+      "material_path": "sources/llvm-lnt",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Reference LLVM test-suite producers, result schemas, historical comparisons and regression analysis. An isolated optional consumer must import the project's immutable measurements rather than introduce an independent scheduler.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Source qualification does not demonstrate build, container, runtime service or dependency closure readiness.",
+        "Historical llvm-opt-benchmark ID refers to an older LNT pin, not the dtcxzyw LLVM IR corpus. The root integration will correct that ID with a hash-guarded compatibility alias; historical manifests retain original identities.",
+        "Use a separate llvm-lnt Python environment: upstream requires SQLAlchemy==1.3.24 while the main research environment has SQLAlchemy 2.x.",
+        "Freeze runtime and build dependencies, including setuptools-scm. An exact GitHub archive lacks git metadata; set an explicit verified SCM package version during wheel preparation.",
+        "A source-only reference cannot substitute for the LNT CLI or a tested database/web deployment."
+      ],
+      "redistributable": true,
+      "related_existing_resource_ids": [
+        "llvm-opt-benchmark"
+      ],
+      "roles": [
+        "dev"
+      ],
+      "sha256": "3fa4f9965e0b65a65aeff660ade38a2686e37775a2c5f26feea2b8220a7b8f22",
+      "size_basis": "Complete HTTPS payload measured locally; source logical bytes sum regular archive members and exclude filesystem allocation, external dependencies and build trees.",
+      "size_evidence": "workspace-evidence/community-v070/resource-audit/archive-measurements.json",
+      "source_evidence": [
+        "https://github.com/llvm/llvm-lnt",
+        "https://github.com/llvm/llvm-lnt/commit/b1ba006721ef967916310c11f8045347ab7a2a79",
+        "https://codeload.github.com/llvm/llvm-lnt/tar.gz/b1ba006721ef967916310c11f8045347ab7a2a79"
+      ],
+      "source_logical_bytes": 12505787,
+      "source_url": "https://codeload.github.com/llvm/llvm-lnt/tar.gz/b1ba006721ef967916310c11f8045347ab7a2a79",
+      "title": "LLVM LNT performance result analysis",
+      "upstream": "https://github.com/llvm/llvm-lnt",
+      "version": "0.4.19"
+    },
+    "catalog_sha256": "986820484aad5913e4037c425e2b858fbceaccf13523dccf789cda71878fc072"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 3272029,
+      "extract": true,
+      "id": "llvm-lnt",
+      "material_path": "sources/llvm-lnt",
+      "sha256": "3fa4f9965e0b65a65aeff660ade38a2686e37775a2c5f26feea2b8220a7b8f22",
+      "strip_root": true,
+      "url": "https://codeload.github.com/llvm/llvm-lnt/tar.gz/b1ba006721ef967916310c11f8045347ab7a2a79"
+    },
+    "adapter": "corpus",
+    "content_scope_audit_sha256": "2a8807f04a40ad1c7ac06f5f53df20e01d90e6e846289e139eaf1a02a91b8025",
+    "dataset_content_complete": false,
+    "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+    "material_profile_dependency_mapping": {
+      "build": "Original native/tool build dependencies preserved but not executed by material installation",
+      "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+      "system": "Only apt.python3 is used for all-file material verification"
+    },
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.github/workflows/build-and-publish-package.yaml"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+    "source_dependencies": [],
+    "state": "immutable-source-reference; executable-deployment-not-qualified",
+    "system_packages": [],
+    "target_exports": [],
+    "unfetched_submodule_declarations": 0,
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3272029,
+      "extract": true,
+      "id": "llvm-lnt",
+      "material_path": "sources/llvm-lnt",
+      "sha256": "3fa4f9965e0b65a65aeff660ade38a2686e37775a2c5f26feea2b8220a7b8f22",
+      "strip_root": true,
+      "url": "https://codeload.github.com/llvm/llvm-lnt/tar.gz/b1ba006721ef967916310c11f8045347ab7a2a79"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/llvm/llvm-lnt"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+    ],
+    "summary": "Reference LLVM test-suite producers, result schemas, historical comparisons and regression analysis. An isolated optional consumer must import the project's immutable measurements rather than introduce an independent scheduler."
+  },
+  "version": "0.4.19"
+}

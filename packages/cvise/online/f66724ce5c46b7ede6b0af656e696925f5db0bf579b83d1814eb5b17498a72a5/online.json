@@ -1,0 +1,214 @@
+{
+  "additional_acquisition_locks": [],
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "executed_framework_version": "0.21.3",
+    "native_execution": false,
+    "scope": {
+      "availability_check_runs": 5,
+      "dataset_content_complete": false,
+      "direct_functional_coverage_increment": 0,
+      "expected_negative_checks": 1,
+      "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+      "material_installations": 2,
+      "material_representation": "complete_unpacked_main_archive",
+      "methods": [
+        "material"
+      ],
+      "native_programs_executed": 0,
+      "oci_deployment": "not_run",
+      "official_benchmark": "not_run",
+      "physical_target": "not_run",
+      "qualification": "complete_static_material_availability",
+      "source_closure": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+      "source_tree_deployment": true,
+      "system_package_transactions": "not_run",
+      "unfetched_submodule_declarations": 0,
+      "unresolved_upstream_links": []
+    },
+    "summary": "resource-integrations/v0210/r05/static-materials/material-jobs/cvise/summary.json"
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 341008,
+    "historical_path": "resource-integrations/v0210/r05/static-materials/material-jobs/cvise/artifacts/cvise-b2.material.cpgpkg.tar.gz",
+    "manifest_sha256": "30bc85ff75258bd7d73111ec743ffe3e5e6dd3ddc85c5551b4339dc53f97ddaf",
+    "method": "material",
+    "sha256": "99b77fb85c67a42d5cae123a0e55f91158431d0a0e6b429bbcce0f13d54a0440"
+  },
+  "original_catalog": {
+    "archive_bytes": 274726,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Correctness",
+      "Failure reduction"
+    ],
+    "container_strategy": "Install the Python driver with its matching clang_delta helper and compatible LLVM libraries in dev.",
+    "dependencies": [
+      "apt.clang",
+      "apt.cmake",
+      "apt.flex",
+      "apt.libclang-dev",
+      "apt.llvm-dev",
+      "apt.ninja-build",
+      "apt.python3",
+      "apt.python3-chardet",
+      "apt.python3-psutil"
+    ],
+    "deployment": {
+      "adapter": "reference",
+      "configure_argv": [
+        "cmake",
+        "-S",
+        "{source}",
+        "-B",
+        "{build}",
+        "-G",
+        "Ninja",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_INSTALL_PREFIX={prefix}"
+      ],
+      "qualified": false,
+      "smoke_argv": [
+        "{prefix}/bin/cvise",
+        "--version"
+      ],
+      "source_dependencies": [],
+      "system_packages": [
+        "cmake",
+        "ninja-build",
+        "clang",
+        "llvm-dev",
+        "libclang-dev",
+        "flex",
+        "python3",
+        "python3-psutil",
+        "python3-chardet"
+      ],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://github.com/marxin/cvise"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/cvise.measurement.json",
+      "workspace-evidence/resources-v050/open-research/cvise.refs.json"
+    ],
+    "extract": true,
+    "id": "cvise",
+    "immutable_ref": "2d0889e738e4d6c7720cc56fcdce7de153bbd1b8",
+    "kind": "source_archive",
+    "legacy_source_id": "cvise",
+    "license_class": "open",
+    "license_id": "NCSA",
+    "mandatory": false,
+    "material_path": "sources/cvise",
+    "presets": [
+      "core",
+      "open",
+      "all"
+    ],
+    "purpose": "Minimize C/C++ compiler failures with a deterministic interestingness predicate.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "Upstream is seeking maintainers; release version does not guarantee LLVM 23 API compatibility.",
+      "Configure and test against an explicitly chosen LLVM development package; do not link against whichever LLVM is first in PATH."
+    ],
+    "redistributable": true,
+    "roles": [
+      "dev",
+      "host"
+    ],
+    "sha256": "8665b643b622558585bf7f6fa0e7dc55f182ab6e02d525ecc5f217721f739624",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://github.com/marxin/cvise",
+      "https://codeload.github.com/marxin/cvise/tar.gz/2d0889e738e4d6c7720cc56fcdce7de153bbd1b8",
+      "https://github.com/marxin/cvise/commit/2d0889e738e4d6c7720cc56fcdce7de153bbd1b8"
+    ],
+    "source_logical_bytes": 1424440,
+    "source_url": "https://codeload.github.com/marxin/cvise/tar.gz/2d0889e738e4d6c7720cc56fcdce7de153bbd1b8",
+    "title": "C-Vise source reducer",
+    "upstream": "https://github.com/marxin/cvise",
+    "version": "v2.12.0"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 274726,
+      "extract": true,
+      "id": "cvise",
+      "material_path": "sources/cvise",
+      "sha256": "8665b643b622558585bf7f6fa0e7dc55f182ab6e02d525ecc5f217721f739624",
+      "strip_root": true,
+      "url": "https://codeload.github.com/marxin/cvise/tar.gz/2d0889e738e4d6c7720cc56fcdce7de153bbd1b8"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 162639,
+      "path": "offline-manifest.json",
+      "sha256": "0cc5af8c797dd10763db0eb0b6980a07565aced4d89b3eabe5c1272298abe875"
+    },
+    {
+      "bytes": 2291,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 1401,
+      "path": "recipe/content-scope.json",
+      "sha256": "714e345dfc2e554e83a219ec6f8531c4439474a8d8fc8be11bd89ed43eb2b6e2"
+    },
+    {
+      "bytes": 2939,
+      "path": "recipe/input-audit.json",
+      "sha256": "3a673592b143e981f3b154110704c66f7f05cb0f783f8f58705c1056617a3fac"
+    },
+    {
+      "bytes": 145724,
+      "path": "recipe/material-manifest.json",
+      "sha256": "23c7da2010b63db7a2dc4c1d458aad25fffd026cd23396879336351e5303be5f"
+    },
+    {
+      "bytes": 17366,
+      "path": "run.py",
+      "sha256": "7c2fdcaaf763a09500ae36190e9d22649a5ccaf0f39ca500cc153b89e59abdee"
+    }
+  ],
+  "release": "0.21.4",
+  "resolved_acquisition_locks": [
+    {
+      "bytes": 274726,
+      "extract": true,
+      "id": "cvise",
+      "material_path": "sources/cvise",
+      "sha256": "8665b643b622558585bf7f6fa0e7dc55f182ab6e02d525ecc5f217721f739624",
+      "strip_root": true,
+      "url": "https://codeload.github.com/marxin/cvise/tar.gz/2d0889e738e4d6c7720cc56fcdce7de153bbd1b8"
+    }
+  ],
+  "resource_id": "cvise",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1,
+  "source_lock_extension_audit_sha256": "3a673592b143e981f3b154110704c66f7f05cb0f783f8f58705c1056617a3fac",
+  "source_lock_policy": "Original null SHA/bytes remain in the canonical source record; only the explicit audited acquisition lock resolves them, all originally fixed fields unchanged",
+  "source_tree_deployment": true,
+  "unresolved_upstream_links": []
+}

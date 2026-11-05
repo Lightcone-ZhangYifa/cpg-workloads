@@ -1,0 +1,329 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "pmu-tools-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "pmu-tools",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1262965,
+      "build_peak_bytes": null,
+      "category": [
+        "Profiling",
+        "Top-down analysis"
+      ],
+      "container_strategy": "Copy the complete Python script tree; preseed the Intel event cache from the pinned local perfmon tree. Persist PERFMONDIR=file://..., CACHEDIR and MAPFILE bindings in the launch environment.",
+      "dependencies": [
+        "apt.linux-tools-common",
+        "apt.linux-tools-generic",
+        "apt.python3",
+        "apt.python3-matplotlib",
+        "apt.python3-numpy",
+        "intel-perfmon"
+      ],
+      "deployment": {
+        "adapter": "copy",
+        "additional_install_commands": [
+          [
+            "/usr/bin/python3",
+            "{tools}/seed-pmu-cache.py",
+            "--pmu-tools",
+            "{prefix}",
+            "--perfmon",
+            "{dependencies.intel-perfmon.prefix}",
+            "--output",
+            "{prefix}/event-cache",
+            "--all",
+            "--expected-script-sha256",
+            "98784cf09f89037833847e9b3f685da3f8fba50508cc01acc2d715606de4e236"
+          ]
+        ],
+        "apt_dependencies": {
+          "dev": [
+            "python3",
+            "python3-numpy",
+            "python3-matplotlib"
+          ],
+          "target": [
+            "python3",
+            "linux-tools-common",
+            "linux-tools-generic"
+          ]
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "install_argv": [
+          "cp",
+          "-a",
+          "{source}/.",
+          "{prefix}/"
+        ],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "probe_requires_host": [
+          "Intel CPU model and stepping",
+          "perf_event_open",
+          "resolved local event cache"
+        ],
+        "runtime_environment": {
+          "CACHEDIR": "{prefix}/event-cache",
+          "MAPFILE": "{prefix}/event-cache/mapfile.csv",
+          "PERFMONDIR": "file://{dependencies.intel-perfmon.prefix}"
+        },
+        "smoke_argv": [
+          "python3",
+          "{prefix}/toplev.py",
+          "--help"
+        ],
+        "state": "recipe-described-not-executed",
+        "target_exports": [
+          {
+            "destination": "opt/research/selected/pmu-tools",
+            "kind": "tree",
+            "required": true,
+            "role": "profiler",
+            "source": "{prefix}"
+          }
+        ],
+        "target_smoke_commands": [
+          [
+            "env",
+            "PERFMONDIR=file://{dependencies.intel-perfmon.prefix}",
+            "CACHEDIR={prefix}/event-cache",
+            "MAPFILE={prefix}/event-cache/mapfile.csv",
+            "/usr/bin/python3",
+            "{prefix}/toplev.py",
+            "--help"
+          ]
+        ]
+      },
+      "documentation": "https://github.com/andikleen/pmu-tools/blob/2568760ffc9394ddaa7a71f0c39930e780cf2dca/README.md",
+      "extract": true,
+      "id": "pmu-tools",
+      "immutable_ref": "2568760ffc9394ddaa7a71f0c39930e780cf2dca",
+      "installed_bytes": null,
+      "kind": "url",
+      "legacy_source_id": "pmu-tools",
+      "license_class": "open",
+      "license_id": "GPL-2.0-only AND BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "sources/pmu-tools",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Analyze Intel top-down bottlenecks, precise event selection, uncore data and sampling profiles.",
+      "qualification_gaps": [
+        "A physical target CPU, kernel, PMU and container launch profile must pass feature-specific collection probes; an installed executable is not full runtime qualification.",
+        "A copied script tree with an empty event cache is not ready.",
+        "Model-specific toplev formulas and perf PMU event aliases require a first-use collection probe."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "0e84257f202f2e21ba678b917f2b98dbbe38a60644923935940ca452816e48f6",
+      "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+      "size_evidence": "workspace-evidence/resources-v050/platform-research/archive-measurements.json",
+      "source_evidence": [
+        "https://github.com/andikleen/pmu-tools",
+        "https://github.com/andikleen/pmu-tools/blob/2568760ffc9394ddaa7a71f0c39930e780cf2dca/README.md",
+        "https://codeload.github.com/andikleen/pmu-tools/tar.gz/2568760ffc9394ddaa7a71f0c39930e780cf2dca"
+      ],
+      "source_url": "https://codeload.github.com/andikleen/pmu-tools/tar.gz/2568760ffc9394ddaa7a71f0c39930e780cf2dca",
+      "title": "pmu-tools and toplev",
+      "upstream": "https://github.com/andikleen/pmu-tools",
+      "version": "commit-2568760ffc93"
+    },
+    "catalog_sha256": "034538f1dd01a56fe912aa27de701cc91dfd43270e6ec03eb8eb240a4833cdc4"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 1262965,
+      "extract": true,
+      "id": "pmu-tools",
+      "material_path": "sources/pmu-tools",
+      "sha256": "0e84257f202f2e21ba678b917f2b98dbbe38a60644923935940ca452816e48f6",
+      "strip_root": true,
+      "url": "https://codeload.github.com/andikleen/pmu-tools/tar.gz/2568760ffc9394ddaa7a71f0c39930e780cf2dca"
+    },
+    "adapter": "corpus",
+    "additional_install_commands": [
+      [
+        "/usr/bin/python3",
+        "{tools}/seed-pmu-cache.py",
+        "--pmu-tools",
+        "{prefix}",
+        "--perfmon",
+        "{dependencies.intel-perfmon.prefix}",
+        "--output",
+        "{prefix}/event-cache",
+        "--all",
+        "--expected-script-sha256",
+        "98784cf09f89037833847e9b3f685da3f8fba50508cc01acc2d715606de4e236"
+      ]
+    ],
+    "apt_dependencies": {
+      "dev": [
+        "python3",
+        "python3-numpy",
+        "python3-matplotlib"
+      ],
+      "target": [
+        "python3",
+        "linux-tools-common",
+        "linux-tools-generic"
+      ]
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "content_scope_audit_sha256": "0e5be2618c7a743380cc7f0c378fc97a40d720a88571dde13479874f7ae82bab",
+    "dataset_content_complete": false,
+    "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+    "install_argv": [
+      "cp",
+      "-a",
+      "{source}/.",
+      "{prefix}/"
+    ],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "material_profile_dependency_mapping": {
+      "build": "Original native/tool build dependencies preserved but not executed by material installation",
+      "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+      "system": "Only apt.python3 is used for all-file material verification"
+    },
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [
+        "intel-perfmon"
+      ],
+      "system": [
+        "apt.linux-tools-common",
+        "apt.linux-tools-generic",
+        "apt.python3",
+        "apt.python3-matplotlib",
+        "apt.python3-numpy"
+      ]
+    },
+    "probe_requires_host": [
+      "Intel CPU model and stepping",
+      "perf_event_open",
+      "resolved local event cache"
+    ],
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.github/workflows/codeql-analysis.yml"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "smoke_argv": [
+      "python3",
+      "{prefix}/toplev.py",
+      "--help"
+    ],
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+    "state": "recipe-described-not-executed",
+    "target_exports": [
+      {
+        "destination": "opt/research/selected/pmu-tools",
+        "kind": "tree",
+        "required": true,
+        "role": "profiler",
+        "source": "{prefix}"
+      }
+    ],
+    "target_smoke_commands": [
+      [
+        "env",
+        "PERFMONDIR=file://{dependencies.intel-perfmon.prefix}",
+        "CACHEDIR={prefix}/event-cache",
+        "MAPFILE={prefix}/event-cache/mapfile.csv",
+        "/usr/bin/python3",
+        "{prefix}/toplev.py",
+        "--help"
+      ]
+    ],
+    "unfetched_submodule_declarations": 0
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1262965,
+      "extract": true,
+      "id": "pmu-tools",
+      "material_path": "sources/pmu-tools",
+      "sha256": "0e84257f202f2e21ba678b917f2b98dbbe38a60644923935940ca452816e48f6",
+      "strip_root": true,
+      "url": "https://codeload.github.com/andikleen/pmu-tools/tar.gz/2568760ffc9394ddaa7a71f0c39930e780cf2dca"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/andikleen/pmu-tools/blob/2568760ffc9394ddaa7a71f0c39930e780cf2dca/README.md"
+    ],
+    "examples": [
+      {
+        "command": "python3 '{prefix}/toplev.py' --help",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+    ],
+    "summary": "Analyze Intel top-down bottlenecks, precise event selection, uncore data and sampling profiles."
+  },
+  "version": "commit-2568760ffc93"
+}

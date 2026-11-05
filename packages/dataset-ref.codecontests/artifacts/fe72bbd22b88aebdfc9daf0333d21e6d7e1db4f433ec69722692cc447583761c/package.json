@@ -1,0 +1,189 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "dataset-ref.codecontests-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "dataset-ref.codecontests",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Dataset research",
+        "Code and IR corpora"
+      ],
+      "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+      "dataset_card_id": "codecontests",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "requires_controller_only_storage": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "target_exports": [],
+        "visibility_policy": "developer_selected_complete_materials",
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/google-deepmind/code_contests"
+      ],
+      "evidence_files": [
+        "workspace-evidence/datasets-v090/corpora/cards.json"
+      ],
+      "extract": true,
+      "id": "dataset-ref.codecontests",
+      "immutable_ref": "fa7a4f8139aab08362503f3344778eb86901709a",
+      "installed_bytes": null,
+      "kind": "dataset",
+      "license_class": "review-required",
+      "license_id": "Apache-2.0 AND LicenseRef-Original-Submissions",
+      "mandatory": false,
+      "material_path": "dataset-research/codecontests",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Select native accepted submissions and retain public/private/generated test provenance.",
+      "qualification": {
+        "archive_measured": false,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+        "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+        "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+        "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+        "Use the published problem identity across every solution, language and generated input.",
+        "Incorrect solutions are valuable negative controls but must not be silently admitted as equivalent programs.",
+        "Finite tests provide observational evidence, not a general semantic equivalence proof."
+      ],
+      "redistributable": "license-and-component-review-required",
+      "roles": [
+        "host"
+      ],
+      "sha256": null,
+      "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+      "source_evidence": [
+        "https://github.com/google-deepmind/code_contests",
+        "https://github.com/google-deepmind/code_contests/blob/main/README.md"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/google-deepmind/code_contests/tar.gz/fa7a4f8139aab08362503f3344778eb86901709a",
+      "title": "DeepMind CodeContests research material",
+      "upstream": "https://github.com/google-deepmind/code_contests",
+      "version": "HEAD observed on 2026-10-23"
+    },
+    "catalog_sha256": "93b65cf3fa7fbac8f5ff5a4f25c9685b8d0500bf04e5d295adaa51a5fde6d82e"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 35696,
+      "extract": true,
+      "id": "dataset-ref.codecontests",
+      "material_path": "dataset-research/codecontests",
+      "sha256": "ab4646939c18ae31619e1ef7eb1be1e7d4a48d6327bc234b3feaea2924d86994",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google-deepmind/code_contests/tar.gz/fa7a4f8139aab08362503f3344778eb86901709a"
+    },
+    "adapter": "corpus",
+    "content_scope_audit_sha256": "8441d1439fc3bc4a5c5cea9392dafce8512caf50b112a065202eed08f9bb4a26",
+    "dataset_content_complete": false,
+    "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+    "material_profile_dependency_mapping": {
+      "build": "Original native/tool build dependencies preserved but not executed by material installation",
+      "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+      "system": "Only apt.python3 is used for all-file material verification"
+    },
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.bazelrc"
+    ],
+    "requires_controller_only_storage": false,
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+    "source_dependencies": [],
+    "system_packages": [],
+    "target_exports": [],
+    "unfetched_submodule_declarations": 0,
+    "visibility_policy": "developer_selected_complete_materials",
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": true,
+      "id": "dataset-ref.codecontests",
+      "material_path": "dataset-research/codecontests",
+      "sha256": null,
+      "strip_root": true,
+      "url": "https://codeload.github.com/google-deepmind/code_contests/tar.gz/fa7a4f8139aab08362503f3344778eb86901709a"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/google-deepmind/code_contests"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+    ],
+    "summary": "Select native accepted submissions and retain public/private/generated test provenance."
+  },
+  "version": "HEAD observed on 2026-10-23"
+}
