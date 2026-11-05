@@ -1,0 +1,102 @@
+{
+  "phase": "initial_review_before_requested_hardening",
+  "reviewed_reader_sha256": "31871cd2bf99a42f3adda4c22a5e69e50c1dc0589581e39872015ec34ecb9126",
+  "reviewed_manifest_sha256": "7a3c24d62d7f3a733c90d6a22874da06d34249719e415c052bd2b5abcc3f21c6",
+  "checks": [
+    {
+      "name": "103_source_files_sha_bytes_git_blob_and_version_binding",
+      "status": "passed",
+      "details": 103
+    },
+    {
+      "name": "eight_assets_license_and_separate_mlgo_version",
+      "status": "passed",
+      "details": [
+        [
+          "reference.doc.thinlto",
+          "20.1.8"
+        ],
+        [
+          "reference.doc.clang-user",
+          "20.1.8"
+        ],
+        [
+          "reference.doc.llvm-aa",
+          "20.1.8"
+        ],
+        [
+          "reference.doc.llvm-memoryssa",
+          "20.1.8"
+        ],
+        [
+          "reference.doc.llvm-mlgo",
+          "21.1.8"
+        ],
+        [
+          "reference.doc.llvm-loop",
+          "20.1.8"
+        ],
+        [
+          "reference.doc.mlir-buffer",
+          "20.1.8"
+        ],
+        [
+          "reference.doc.mlir-passes",
+          "20.1.8"
+        ]
+      ]
+    },
+    {
+      "name": "all_index_locators_resolve",
+      "status": "passed",
+      "details": {
+        "sections.jsonl": 319,
+        "symbols.jsonl": 5143,
+        "pass-definitions.jsonl": 239
+      }
+    },
+    {
+      "name": "all_30_generated_pass_documents_and_recursive_includes_resolve",
+      "status": "passed",
+      "details": {
+        "generated_documents": 30,
+        "literal_include_edges": 61
+      }
+    },
+    {
+      "name": "baseline_reader_verify",
+      "status": "passed",
+      "details": {
+        "ok": true,
+        "qualification": "reference_material_only",
+        "assets": 8,
+        "files": 114,
+        "source_files": 103,
+        "source_bytes": 1402838,
+        "pins": {
+          "20.1.8": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261",
+          "21.1.8": "2078da43e25a4623cab2d0d60decddf709aaea28"
+        }
+      }
+    }
+  ],
+  "issues": [
+    {
+      "name": "consistent_manifest_and_source_lock_rewrite",
+      "observed_accepted": true,
+      "resolution": "Add external expected manifest hash in API/CLI; CPG installed receipt is already a separate anchor."
+    },
+    {
+      "name": "root_symlink",
+      "observed_accepted": true,
+      "resolution": "Reject lexical root/ancestor symlinks before resolve."
+    },
+    {
+      "name": "source_hardlink",
+      "observed_accepted": true,
+      "resolution": "Require ordinary files with st_nlink=1 for independent mutable source/install copies."
+    }
+  ],
+  "source_tree_modified": false,
+  "mutation_probes_scope": "independent copies under worker011 evidence; original worker010 only read"
+}

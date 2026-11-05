@@ -1,0 +1,393 @@
+--- a/cpg/package-index.json
++++ b/cpg/package-index.json
+@@ -1,13 +1,13 @@
+ {
+   "artifacts": [
+     {
+-      "build": "worker-011-v001",
+-      "bytes": 285416,
++      "build": "worker-011-v002",
++      "bytes": 287072,
+       "id": "reference-pack.worker-011",
+-      "manifest_sha256": "7604ee9d1aad11d33901facd247eeaf102fc8a47ce4e95187cb8f9a14bfb6732",
++      "manifest_sha256": "7dce33d0f14b035b4d5325193e6427d333ff4cb848387ee5ef99aca84ec4a443",
+       "method": "material",
+-      "path": "cpg/artifacts/reference-pack.worker-011.material.cpgpkg.tar.gz",
+-      "sha256": "b33c0ea4fb1d480d5d30ad9847fad5c84bd7f2b8a47415ffa458e72837289174",
++      "path": "cpg/artifacts/reference-pack.worker-011.worker-011-v002.material.cpgpkg.tar.gz",
++      "sha256": "050720b9f7b9095d878996dc014f7ab68f411fe1f0be3e9695a19cad04c40b38",
+       "status": "created",
+       "version": "2026.11.01.1"
+     }
+--- a/cpg/package.json
++++ b/cpg/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "build": "worker-011-v001",
++  "build": "worker-011-v002",
+   "checks": [
+     {
+       "argv": [
+@@ -15,6 +15,21 @@
+       "expected_returncode": 0,
+       "id": "material-integrity-and-local-index",
+       "kind": "availability",
++      "stdout_regex": "\"status\": \"passed\"",
++      "timeout_seconds": 120
++    },
++    {
++      "argv": [
++        "python3",
++        "-B",
++        "{recipe}/check_retrieval.py",
++        "--prefix",
++        "{prefix}"
++      ],
++      "cwd": "{prefix}",
++      "expected_returncode": 0,
++      "id": "reference-reader-search-and-read",
++      "kind": "functional",
+       "stdout_regex": "\"status\": \"passed\"",
+       "timeout_seconds": 120
+     }
+@@ -84,7 +99,7 @@
+   "provider": "material",
+   "recipe": {
+     "adapter": "copy",
+-    "qualification_scope": "versioned reference materials; no LLVM/MLIR functionality or benchmark qualification",
++    "qualification_scope": "Reference material integrity and local reference-reader retrieval only; no LLVM/MLIR execution or benchmark qualification.",
+     "required_installed_paths": [
+       "{prefix}/reference_library.py",
+       "{prefix}/assets.json"
+@@ -121,6 +136,22 @@
+       {
+         "command": "python3 -B {prefix}/reference_library.py list",
+         "description": "List the separately counted reference assets"
++      },
++      {
++        "command": "python3 -B {prefix}/reference_library.py search globalization --asset reference.doc.openmp-opt --limit 4",
++        "description": "Search the pinned source text for reference.doc.openmp-opt"
++      },
++      {
++        "command": "python3 -B {prefix}/reference_library.py search Hotness --asset reference.doc.llvm-remarks --limit 4",
++        "description": "Search the pinned source text for reference.doc.llvm-remarks"
++      },
++      {
++        "command": "python3 -B {prefix}/reference_library.py search TEST_SUITE_BENCHMARKING_ONLY --asset reference.doc.llvm-testsuite --limit 4",
++        "description": "Search the pinned source text for reference.doc.llvm-testsuite"
++      },
++      {
++        "command": "python3 -B {prefix}/reference_library.py search sparse_tensor.convert --asset reference.doc.mlir-sparse --limit 4",
++        "description": "Search the pinned source text for reference.doc.mlir-sparse"
+       }
+     ],
+     "locations": [
+@@ -132,10 +163,10 @@
+     ],
+     "notes": [
+       "Distribution fields record the validation host; they are not an installation allowlist.",
+-      "Only reference-material availability is qualified. LLVM/MLIR execution, official benchmarks, OCI and hardware remain untested.",
++      "Material integrity and local reference-reader search/read are qualified separately. LLVM/MLIR execution, official benchmarks, OCI and hardware remain untested; historical entity qualifications are unchanged.",
+       "This package groups reference subassets and does not add an upstream resource family."
+     ],
+-    "summary": "Four pinned OpenMP, optimization-remarks, test-suite and sparse-tensor reference assets."
++    "summary": "Pinned offline reference reader for reference.doc.openmp-opt, reference.doc.llvm-remarks, reference.doc.llvm-testsuite, reference.doc.mlir-sparse."
+   },
+   "version": "2026.11.01.1"
+ }
+--- a/cpg/registry.json
++++ b/cpg/registry.json
+@@ -4,11 +4,11 @@
+     "plan_id": "cpg-resource-research-20261101-v1",
+     "role": "worker extension; original catalog remains unchanged"
+   },
+-  "catalog_sha256": "7716ac833b6e7513dacab0abddebdbac889bc890ccd41d66b19a7c0f50cfcfb7",
++  "catalog_sha256": "9f63eb58f6d5d23346de2c448a3f5f9a848304b26dca562faa5ca4131a1f15a2",
+   "kind": "compiler_playground_package_catalog",
+   "packages": [
+     {
+-      "build": "worker-011-v001",
++      "build": "worker-011-v002",
+       "checks": [
+         {
+           "argv": [
+@@ -24,6 +24,21 @@
+           "expected_returncode": 0,
+           "id": "material-integrity-and-local-index",
+           "kind": "availability",
++          "stdout_regex": "\"status\": \"passed\"",
++          "timeout_seconds": 120
++        },
++        {
++          "argv": [
++            "python3",
++            "-B",
++            "{recipe}/check_retrieval.py",
++            "--prefix",
++            "{prefix}"
++          ],
++          "cwd": "{prefix}",
++          "expected_returncode": 0,
++          "id": "reference-reader-search-and-read",
++          "kind": "functional",
+           "stdout_regex": "\"status\": \"passed\"",
+           "timeout_seconds": 120
+         }
+@@ -93,7 +108,7 @@
+       "provider": "material",
+       "recipe": {
+         "adapter": "copy",
+-        "qualification_scope": "versioned reference materials; no LLVM/MLIR functionality or benchmark qualification",
++        "qualification_scope": "Reference material integrity and local reference-reader retrieval only; no LLVM/MLIR execution or benchmark qualification.",
+         "required_installed_paths": [
+           "{prefix}/reference_library.py",
+           "{prefix}/assets.json"
+@@ -130,6 +145,22 @@
+           {
+             "command": "python3 -B {prefix}/reference_library.py list",
+             "description": "List the separately counted reference assets"
++          },
++          {
++            "command": "python3 -B {prefix}/reference_library.py search globalization --asset reference.doc.openmp-opt --limit 4",
++            "description": "Search the pinned source text for reference.doc.openmp-opt"
++          },
++          {
++            "command": "python3 -B {prefix}/reference_library.py search Hotness --asset reference.doc.llvm-remarks --limit 4",
++            "description": "Search the pinned source text for reference.doc.llvm-remarks"
++          },
++          {
++            "command": "python3 -B {prefix}/reference_library.py search TEST_SUITE_BENCHMARKING_ONLY --asset reference.doc.llvm-testsuite --limit 4",
++            "description": "Search the pinned source text for reference.doc.llvm-testsuite"
++          },
++          {
++            "command": "python3 -B {prefix}/reference_library.py search sparse_tensor.convert --asset reference.doc.mlir-sparse --limit 4",
++            "description": "Search the pinned source text for reference.doc.mlir-sparse"
+           }
+         ],
+         "locations": [
+@@ -141,10 +172,10 @@
+         ],
+         "notes": [
+           "Distribution fields record the validation host; they are not an installation allowlist.",
+-          "Only reference-material availability is qualified. LLVM/MLIR execution, official benchmarks, OCI and hardware remain untested.",
++          "Material integrity and local reference-reader search/read are qualified separately. LLVM/MLIR execution, official benchmarks, OCI and hardware remain untested; historical entity qualifications are unchanged.",
+           "This package groups reference subassets and does not add an upstream resource family."
+         ],
+-        "summary": "Four pinned OpenMP, optimization-remarks, test-suite and sparse-tensor reference assets."
++        "summary": "Pinned offline reference reader for reference.doc.openmp-opt, reference.doc.llvm-remarks, reference.doc.llvm-testsuite, reference.doc.mlir-sparse."
+       },
+       "version": "2026.11.01.1"
+     }
+--- /dev/null
++++ b/cpg/recipe/check_retrieval.py
+@@ -0,0 +1,104 @@
++"""Exercise the installed reference reader against fixed upstream text.
++
++This qualifies local reference retrieval, not LLVM/MLIR execution, benchmark
++results, or the historical qualifications of the four reference entities.
++"""
++from __future__ import annotations
++
++import argparse
++import hashlib
++import importlib.util
++import json
++from pathlib import Path
++import sys
++
++INVENTORY_SHA256 = "979134ffdffc1cae9b48b8b72b2db036465f47ad23f653307a9f47fdfa04dac4"
++COMMIT = "87f0227cb60147a26a1eeb4fb06e3b505e9c7261"
++CASES = (
++    {"asset": "reference.doc.openmp-opt", "query": "globalization",
++     "path": "openmp/docs/optimizations/OpenMPOpt.rst", "line": 39,
++     "text": "Globalization",
++     "sha256": "52751bb177913a8a6199be7813dce1c8e96de888e12006daf45e5e06c80a6ec1"},
++    {"asset": "reference.doc.llvm-remarks", "query": "Hotness",
++     "path": "llvm/docs/Remarks.rst", "line": 125,
++     "text": "    .. option:: -pass-remarks-with-hotness",
++     "sha256": "a066d7cee458f3a247428216efee5239d912c5231155e1353f4f472e280dfe42"},
++    {"asset": "reference.doc.llvm-testsuite", "query": "TEST_SUITE_BENCHMARKING_ONLY",
++     "path": "llvm/docs/TestSuiteGuide.md", "line": 149,
++     "text": "performance measurements. Setting the `TEST_SUITE_BENCHMARKING_ONLY` CMake",
++     "sha256": "0c45316accbe149d30a4e7affeb15cd41bbe4e65f4b8bd1b7300b4da63db9e83"},
++    {"asset": "reference.doc.mlir-sparse", "query": "sparse_tensor.convert",
++     "path": "mlir/include/mlir/Dialect/SparseTensor/IR/SparseTensorOps.td", "line": 187,
++     "text": "    %0 = sparse_tensor.convert %a : tensor<32x32xf32> to tensor<32x32xf32, #CSR>",
++     "sha256": "4be00630afad25c40fc0f6835d18ae814cfae58cb65679866bb01a9576b45172"},
++)
++
++
++def require(condition: bool, message: str) -> None:
++    if not condition:
++        raise ValueError(message)
++
++
++def check_retrieval(library, prefix: Path) -> dict:
++    material = library.verify()
++    require(material["status"] == "passed" and material["commit"] == COMMIT,
++            "Reader material identity differs from the fixed source commit")
++    require(material["inventory_sha256"] == INVENTORY_SHA256,
++            "Reader inventory differs from the externally bound recipe")
++    observed = []
++    for case in CASES:
++        source = prefix / "materials" / "upstream" / case["path"]
++        raw = source.read_bytes()
++        require(hashlib.sha256(raw).hexdigest() == case["sha256"],
++                "Fixed upstream source digest differs: " + case["path"])
++        require(raw.decode("utf-8").splitlines()[case["line"] - 1] == case["text"],
++                "Fixed upstream source line differs: " + case["path"])
++        hits = library.search(case["query"], asset_id=case["asset"], limit=8)
++        matches = [hit for hit in hits
++                   if hit["upstream_path"] == case["path"] and hit["line"] == case["line"]]
++        require(len(matches) == 1, "Search did not locate the expected original line: " + case["asset"])
++        hit = matches[0]
++        require(hit["asset_ids"] == [case["asset"]], "Search attributed the line to the wrong asset")
++        require(hit["text"] == case["text"] and hit["source_sha256"] == case["sha256"],
++                "Search content or source identity differs")
++        expected_url = f"https://github.com/llvm/llvm-project/blob/{COMMIT}/{case['path']}#L{case['line']}"
++        require(hit["source_url"] == expected_url, "Search returned a mutable or incorrect source locator")
++        excerpt = library.read(hit["upstream_path"], line=hit["line"], count=1)
++        require(excerpt == {
++            "upstream_path": case["path"], "line": case["line"], "end_line": case["line"],
++            "lines": [{"line": case["line"], "text": case["text"]}],
++            "source_sha256": case["sha256"],
++        }, "Read did not reproduce the exact source line and identity")
++        observed.append({"asset": case["asset"], "query": case["query"],
++                         "matching_hit": hit, "read_result": excerpt})
++    require(library.search("CPG_WORKER011_QUERY_MUST_NOT_EXIST_6ffca7c4") == [],
++            "An absent query unexpectedly returned a match")
++    try:
++        library.read("../LICENSE")
++    except ValueError:
++        pass
++    else:
++        raise ValueError("The reader accepted traversal outside its source set")
++    return {"status": "passed", "scope": "installed reference-reader functionality only",
++            "assets_exercised": len(observed), "cases": observed,
++            "absent_query_rejected": True, "path_traversal_rejected": True,
++            "upstream_tool_executions": 0, "upstream_functional_qualification": None,
++            "official_benchmark": None, "dataset_verified": None}
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("--prefix", type=Path, required=True)
++    args = parser.parse_args()
++    sys.dont_write_bytecode = True
++    prefix = args.prefix.absolute()
++    spec = importlib.util.spec_from_file_location("worker011_installed_reference", prefix / "reference_library.py")
++    module = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(module)
++    library = module.ReferenceLibrary(prefix, expected_inventory_sha256=INVENTORY_SHA256)
++    print(json.dumps(check_retrieval(library, prefix), sort_keys=True))
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+--- /dev/null
++++ b/tests/test_check_retrieval.py
+@@ -0,0 +1,91 @@
++"""Check the functional gate with real pinned text and incorrect reader results."""
++from __future__ import annotations
++
++import importlib.util
++from pathlib import Path
++import sys
++import unittest
++from unittest import mock
++
++sys.dont_write_bytecode = True
++ROOT = Path(__file__).resolve().parents[1]
++
++
++def load(name, path):
++    spec = importlib.util.spec_from_file_location(name, path)
++    module = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(module)
++    return module
++
++
++checker = load("worker011_retrieval_check", ROOT / "cpg/recipe/check_retrieval.py")
++reader = load("worker011_payload_reader", ROOT / "payload/reference_library.py")
++
++
++class RetrievalQualification(unittest.TestCase):
++    def setUp(self):
++        self.prefix = ROOT / "payload"
++        self.library = reader.ReferenceLibrary(
++            self.prefix, expected_inventory_sha256=checker.INVENTORY_SHA256)
++
++    def test_four_real_assets_search_and_read(self):
++        result = checker.check_retrieval(self.library, self.prefix)
++        self.assertEqual(result["status"], "passed")
++        self.assertEqual(result["assets_exercised"], 4)
++        self.assertEqual(result["upstream_tool_executions"], 0)
++        self.assertIsNone(result["upstream_functional_qualification"])
++
++    def test_missing_search_evidence_fails(self):
++        with mock.patch.object(self.library, "search", return_value=[]):
++            with self.assertRaises(ValueError):
++                checker.check_retrieval(self.library, self.prefix)
++
++    def test_nonempty_but_incorrect_search_results_fail(self):
++        real_search = self.library.search
++        changes = (
++            {"asset_ids": ["reference.doc.llvm-remarks"]},
++            {"upstream_path": "incorrect/path"},
++            {"line": 1},
++            {"text": "incorrect source text"},
++            {"source_sha256": "0" * 64},
++            {"source_url": "https://github.com/llvm/llvm-project/blob/main/incorrect"},
++        )
++        for change in changes:
++            with self.subTest(change=change):
++                def altered(query, **kwargs):
++                    hits = real_search(query, **kwargs)
++                    if hits:
++                        hits[0].update(change)
++                    return hits
++                with mock.patch.object(self.library, "search", side_effect=altered):
++                    with self.assertRaises(ValueError):
++                        checker.check_retrieval(self.library, self.prefix)
++
++    def test_nonempty_but_incorrect_read_result_fails(self):
++        with mock.patch.object(self.library, "read", return_value={"lines": ["wrong"]}):
++            with self.assertRaises(ValueError):
++                checker.check_retrieval(self.library, self.prefix)
++
++    def test_false_match_for_absent_query_fails(self):
++        real_search = self.library.search
++        def false_positive(query, **kwargs):
++            if query.startswith("CPG_WORKER011_QUERY_MUST_NOT_EXIST_"):
++                return [{"unexpected": True}]
++            return real_search(query, **kwargs)
++        with mock.patch.object(self.library, "search", side_effect=false_positive):
++            with self.assertRaises(ValueError):
++                checker.check_retrieval(self.library, self.prefix)
++
++    def test_accepted_path_traversal_fails(self):
++        real_read = self.library.read
++        def permissive(path, **kwargs):
++            if path == "../LICENSE":
++                return {"unexpected": True}
++            return real_read(path, **kwargs)
++        with mock.patch.object(self.library, "read", side_effect=permissive):
++            with self.assertRaises(ValueError):
++                checker.check_retrieval(self.library, self.prefix)
++
++
++if __name__ == "__main__":
++    unittest.main(verbosity=2)
+--- /dev/null
++++ b/cpg/packaging-provenance.json
+@@ -0,0 +1,9 @@
++{
++  "inventory_sha256": "979134ffdffc1cae9b48b8b72b2db036465f47ad23f653307a9f47fdfa04dac4",
++  "migration": "github-workloads-20261105",
++  "original_artifact_sha256": "b33c0ea4fb1d480d5d30ad9847fad5c84bd7f2b8a47415ffa458e72837289174",
++  "qualification_scope": "Local reference-reader search/read only; historical LLVM/MLIR entity qualifications remain unchanged.",
++  "revision_reason": "Add an independent installed-reader functional check and query-visible reference entity IDs.",
++  "upstream_commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261",
++  "worker_id": "worker 011"
++}

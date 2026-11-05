@@ -1,0 +1,141 @@
+{
+  "build": "worker-011-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--contract",
+        "{recipe}/payload-contract.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "material-integrity-and-local-index",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "reference-pack.worker-011",
+  "metadata": {
+    "catalog": {
+      "category": [
+        "Reference materials",
+        "Compiler development"
+      ],
+      "documentation": [
+        "https://openmp.llvm.org/optimizations/Overview.html",
+        "https://llvm.org/docs/Remarks.html",
+        "https://llvm.org/docs/TestSuiteGuide.html",
+        "https://mlir.llvm.org/docs/Dialects/SparseTensorOps/"
+      ],
+      "id": "reference-pack.worker-011",
+      "kind": "group",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception AND MIT",
+      "purpose": "Four pinned OpenMP, optimization-remarks, test-suite and sparse-tensor reference assets.",
+      "reference_asset_ids": [
+        "reference.doc.openmp-opt",
+        "reference.doc.llvm-remarks",
+        "reference.doc.llvm-testsuite",
+        "reference.doc.mlir-sparse"
+      ],
+      "resource_counting_role": "reference_subassets_not_new_upstream_family",
+      "title": "CPG worker 011 reference material bundle",
+      "upstream": "https://github.com/llvm/llvm-project",
+      "version": "2026.11.01.1"
+    },
+    "catalog_sha256": "1270dbb38a580f6d7f3030322d03564bf5a5eaa3f59b8a2764de8a551c4e69d4",
+    "new_upstream_family_count": 0,
+    "old_resource_increment": 0,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "reference_versions": [
+      {
+        "commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261",
+        "entity_id": "reference.doc.openmp-opt",
+        "version": "20.1.8"
+      },
+      {
+        "commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261",
+        "entity_id": "reference.doc.llvm-remarks",
+        "version": "20.1.8"
+      },
+      {
+        "commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261",
+        "entity_id": "reference.doc.llvm-testsuite",
+        "version": "20.1.8"
+      },
+      {
+        "commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261",
+        "entity_id": "reference.doc.mlir-sparse",
+        "version": "20.1.8"
+      }
+    ],
+    "worker_id": "worker 011"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "qualification_scope": "versioned reference materials; no LLVM/MLIR functionality or benchmark qualification",
+    "required_installed_paths": [
+      "{prefix}/reference_library.py",
+      "{prefix}/assets.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://openmp.llvm.org/optimizations/Overview.html",
+      "https://llvm.org/docs/Remarks.html",
+      "https://llvm.org/docs/TestSuiteGuide.html",
+      "https://mlir.llvm.org/docs/Dialects/SparseTensorOps/"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/reference_library.py verify",
+        "description": "Verify all reference-material bytes"
+      },
+      {
+        "command": "python3 -B {prefix}/reference_library.py list",
+        "description": "List the separately counted reference assets"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Reference material and local index",
+        "path": "{prefix}",
+        "purpose": "Read fixed upstream text by exact path/line and search chapters or symbols."
+      }
+    ],
+    "notes": [
+      "Distribution fields record the validation host; they are not an installation allowlist.",
+      "Only reference-material availability is qualified. LLVM/MLIR execution, official benchmarks, OCI and hardware remain untested.",
+      "This package groups reference subassets and does not add an upstream resource family."
+    ],
+    "summary": "Four pinned OpenMP, optimization-remarks, test-suite and sparse-tensor reference assets."
+  },
+  "version": "2026.11.01.1"
+}

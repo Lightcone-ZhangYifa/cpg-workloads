@@ -75,3 +75,32 @@ Retain unpacked package definitions, recipes, tests, documentation, and provenan
 in Git. Finished packages belong in Releases. Preserve original identifiers and
 historical records; the number of archives or migrated worker groups is a
 migration-progress measure, not additional resource coverage.
+
+## Publish a qualified text-material worker package
+
+A reviewed text-material artifact keeps its complete frozen manifest, authored
+recipe and ordinary UTF-8 payload files under its content-addressed package
+template. CPG creates the package and runs its installation and functional checks.
+The worker transport only replays that frozen archive format, and refuses any
+result whose complete SHA-256 or size differs from the CPG-tested artifact. It
+does not create new package semantics, install software or qualify upstream tools.
+
+Store explicit artifact checksums in `release-plans/workers/<tag>.json`. The
+worker release tag must start with `worker-`. Rehearse the exact replay with:
+
+```sh
+python3 tools/publish_workers.py build <tag> --output /absolute/new/output
+```
+
+After the group has been reviewed, committed and pushed to `main`, an explicit
+push of that commit to `publish-workers/<tag>` requests its Release. The worker
+workflow uses the same `cpg-workloads-publication` concurrency group as the
+pre-worker publisher; queued requests are retained rather than canceled.
+
+The publisher rejects changed source inputs, incomplete functional evidence,
+conflicting identities, a reused tag at another commit, unexpected remote assets
+and any digest or byte-size mismatch. It uploads a draft first, verifies the
+complete asset set, then publishes and records a verified receipt. The receipt
+commit regenerates package rows from all compatible publication receipts while
+preserving unrelated root-manifest fields. A failed non-fast-forward push is
+retried from the new `main` without force-pushing.

@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "review_type": "independent_static_and_negative_copy_validation",
+  "worker": "worker 010",
+  "reviewed_manifest_sha256": "8190a5e4000428c7497e79d714cf28b783bddfd7cc884e253e0e613849740a1a",
+  "reviewed_reader_sha256": "330a7a2d1c75c864a5a29488dc8b92b9607232f1c8a06903084401b993d13ef4",
+  "checks": [
+    {
+      "name": "external_anchor_and_unanchored_mode_explicit",
+      "status": "passed",
+      "details": "8190a5e4000428c7497e79d714cf28b783bddfd7cc884e253e0e613849740a1a"
+    },
+    {
+      "name": "joint_source_lock_manifest_rewrite_rejected_with_external_anchor",
+      "status": "passed",
+      "details": "Payload manifest does not match the externally supplied SHA-256"
+    },
+    {
+      "name": "root_symlink_rejected",
+      "status": "passed",
+      "details": "Catalog root and its ancestors must not be symbolic links"
+    },
+    {
+      "name": "ancestor_symlink_rejected",
+      "status": "passed",
+      "details": "Catalog root and its ancestors must not be symbolic links"
+    },
+    {
+      "name": "hardlinked_source_rejected",
+      "status": "passed",
+      "details": "Material must be an independent regular file: ThinLTO.rst"
+    },
+    {
+      "name": "hardlinked_manifest_rejected",
+      "status": "passed",
+      "details": "Material must be an independent regular file: payload-manifest.json"
+    },
+    {
+      "name": "invalid_path_../source-lock.json",
+      "status": "passed",
+      "details": "Invalid catalog-relative path"
+    },
+    {
+      "name": "invalid_path_/etc/passwd",
+      "status": "passed",
+      "details": "Invalid catalog-relative path"
+    },
+    {
+      "name": "invalid_path_materials/../../x",
+      "status": "passed",
+      "details": "Invalid catalog-relative path"
+    },
+    {
+      "name": "invalid_path_a\\b",
+      "status": "passed",
+      "details": "Invalid catalog-relative path"
+    }
+  ],
+  "resolved_initial_findings": 3,
+  "remaining_blocking_findings": 0,
+  "source_tree_modified": false,
+  "boundary": "A caller without an external manifest identity gets an explicit internal-consistency result; CPG has its independently verified installed receipt."
+}
