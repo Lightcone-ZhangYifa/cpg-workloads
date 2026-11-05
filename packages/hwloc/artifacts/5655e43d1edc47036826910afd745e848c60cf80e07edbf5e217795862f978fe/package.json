@@ -1,0 +1,574 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/lstopo-no-graphics",
+        "--version"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "version",
+      "kind": "version",
+      "requires_paths": [
+        "{prefix}/bin/lstopo-no-graphics"
+      ],
+      "stdout_regex": "2\\.14\\.0",
+      "timeout_seconds": 10
+    },
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "topology-roundtrip-and-api",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "requires_paths": [
+        "{prefix}/bin/lstopo-no-graphics",
+        "{prefix}/bin/hwloc-api-check"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "apt.build-essential"
+    ],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "hwloc",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 6250543,
+      "build_peak_bytes": null,
+      "category": [
+        "Platform",
+        "Topology"
+      ],
+      "checks": [
+        {
+          "argv": [
+            "{prefix}/bin/lstopo-no-graphics",
+            "--version"
+          ],
+          "cwd": "{prefix}",
+          "expected_returncode": 0,
+          "id": "version",
+          "kind": "version",
+          "requires_paths": [
+            "{prefix}/bin/lstopo-no-graphics"
+          ],
+          "stdout_regex": "2\\.14\\.0",
+          "timeout_seconds": 10
+        },
+        {
+          "argv": [
+            "python3",
+            "{recipe}/check.py",
+            "--prefix",
+            "{prefix}"
+          ],
+          "cwd": "{prefix}",
+          "expected_returncode": 0,
+          "id": "topology-roundtrip-and-api",
+          "kind": "functional",
+          "requires_commands": [
+            "python3"
+          ],
+          "requires_paths": [
+            "{prefix}/bin/lstopo-no-graphics",
+            "{prefix}/bin/hwloc-api-check"
+          ],
+          "stdout_regex": "\"status\": \"passed\"",
+          "timeout_seconds": 120
+        }
+      ],
+      "container_strategy": "Build from the verified official release archive in an independent directory; install into a resource-local prefix, retain source/license, and use command-local runtime libraries. Keep existing system packages and versions separate.",
+      "dependencies": [
+        "apt.build-essential",
+        "apt.python3"
+      ],
+      "deployment": {
+        "adapter": "make",
+        "additional_install_commands": [
+          [
+            "cc",
+            "-O2",
+            "-I{prefix}/include",
+            "{recipe}/api-check.c",
+            "-L{prefix}/lib",
+            "-Wl,-rpath,{prefix}/lib",
+            "-lhwloc",
+            "-o",
+            "{prefix}/bin/hwloc-api-check"
+          ],
+          [
+            "python3",
+            "{recipe}/finalize.py",
+            "--prefix",
+            "{prefix}"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "644",
+            "{source}/COPYING",
+            "{prefix}/share/doc/hwloc/COPYING"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "644",
+            "{source}/README",
+            "{prefix}/share/doc/hwloc/README"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "644",
+            "{recipe}/api-check.c",
+            "{prefix}/share/doc/hwloc/api-check.c"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "644",
+            "{recipe}/check.py",
+            "{prefix}/share/compiler-playground/check.py"
+          ]
+        ],
+        "apt_dependencies": {
+          "dev": [
+            "build-essential",
+            "python3"
+          ],
+          "target": [
+            "python3"
+          ]
+        },
+        "build_argv": [
+          "make",
+          "-C",
+          "{build}",
+          "-j{jobs}"
+        ],
+        "build_role": "dev",
+        "configure_argv": [
+          "{source}/configure",
+          "--prefix={prefix}",
+          "--enable-shared",
+          "--enable-static",
+          "CFLAGS=-O2 -g",
+          "--disable-cairo",
+          "--disable-libxml2",
+          "--disable-pci",
+          "--disable-libudev",
+          "--disable-opencl",
+          "--disable-cuda",
+          "--disable-nvml",
+          "--disable-rsmi",
+          "--disable-levelzero",
+          "--disable-gl"
+        ],
+        "configure_cwd": "{build}",
+        "install_argv": [
+          "make",
+          "-C",
+          "{build}",
+          "install"
+        ],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "prepare_commands": [
+          [
+            "mkdir",
+            "-p",
+            "{build}"
+          ]
+        ],
+        "probe_requires_host": [],
+        "required_installed_paths": [
+          "{prefix}/bin/lstopo-no-graphics",
+          "{prefix}/bin/hwloc-api-check",
+          "{prefix}/lib/libhwloc.so",
+          "{prefix}/include/hwloc.h",
+          "{prefix}/share/doc/hwloc/COPYING",
+          "{prefix}/share/compiler-playground/check.py"
+        ],
+        "smoke_argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "state": "native-source-build-and-functional-checks-passed; container-not-executed",
+        "target_exports": [
+          {
+            "destination": "opt/research/selected/hwloc",
+            "kind": "tree",
+            "required": true,
+            "role": "runtime",
+            "source": "{prefix}"
+          }
+        ],
+        "target_smoke_commands": [
+          [
+            "python3",
+            "{prefix}/share/compiler-playground/check.py",
+            "--prefix",
+            "{prefix}"
+          ]
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://www.open-mpi.org/software/hwloc/v2.14/",
+        "https://www.open-mpi.org/projects/hwloc/doc/v2.14.0/"
+      ],
+      "evidence_files": [
+        "../workspace-evidence/completion-v0160/hardware/hwloc-build-receipt.json",
+        "../workspace-evidence/completion-v0160/hardware/hwloc-api-build.json",
+        "../workspace-evidence/completion-v0160/hardware/hwloc-functional-receipt.json"
+      ],
+      "extract": true,
+      "id": "hwloc",
+      "immutable_ref": "sha256:c4e473493cd5e75898bc72a8cbcd3cc722bfb271c9c8b9b4071fd21567835531",
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause AND ISC AND MIT",
+      "mandatory": false,
+      "material_path": "sources/hwloc",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "The hwloc 2.14 stable CPU/NUMA/cache/LinuxIO core profile, with XML replay and C API; independent of APT hwloc.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": true,
+        "container_qualified": false,
+        "native_recipe_smoke_qualified": true,
+        "published_sha256_matched": true,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Native Linux x86_64 source build and bounded functional checks passed on the recorded host. Exact APT-image deployment and physical target qualification remain separate."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "c4e473493cd5e75898bc72a8cbcd3cc722bfb271c9c8b9b4071fd21567835531",
+      "size_basis": "Complete official release archive measured locally and matched to the published SHA-256; logical source bytes sum regular TAR members.",
+      "size_evidence": "../workspace-evidence/completion-v0160/hardware/archive-receipts.json",
+      "source_evidence": [
+        "https://www.open-mpi.org/software/hwloc/v2.14/",
+        "https://www.open-mpi.org/projects/hwloc/doc/v2.14.0/",
+        "https://download.open-mpi.org/release/hwloc/v2.14/hwloc-2.14.0.tar.gz"
+      ],
+      "source_logical_bytes": 19648901,
+      "source_url": "https://download.open-mpi.org/release/hwloc/v2.14/hwloc-2.14.0.tar.gz",
+      "title": "hwloc 2.14 core topology tools",
+      "upstream": "https://www.open-mpi.org/software/hwloc/v2.14/",
+      "usage": {
+        "activation": [
+          "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+        ],
+        "documentation": [
+          "https://www.open-mpi.org/software/hwloc/v2.14/",
+          "https://www.open-mpi.org/projects/hwloc/doc/v2.14.0/"
+        ],
+        "examples": [
+          {
+            "command": "{prefix}/bin/lstopo-no-graphics",
+            "description": "Inspect CPU, cache and NUMA topology"
+          },
+          {
+            "command": "{prefix}/bin/lstopo-no-graphics --of xml /tmp/topology.xml",
+            "description": "Export topology for later inspection"
+          },
+          {
+            "command": "{prefix}/bin/lstopo-no-graphics --input /tmp/topology.xml --input-format xml",
+            "description": "Inspect a captured topology"
+          },
+          {
+            "command": "{prefix}/bin/hwloc-info --support",
+            "description": "Inspect binding API support without changing binding"
+          }
+        ],
+        "locations": [
+          {
+            "label": "Commands",
+            "path": "{prefix}/bin",
+            "purpose": "Version-selected command-line tools; use these absolute paths"
+          },
+          {
+            "label": "Libraries and headers",
+            "path": "{prefix}",
+            "purpose": "C API, static/shared libraries and pkg-config metadata"
+          },
+          {
+            "label": "Original source",
+            "path": "{source}",
+            "purpose": "Complete upstream source and test inputs"
+          },
+          {
+            "label": "License and source usage",
+            "path": "{prefix}/share/doc/hwloc",
+            "purpose": "Upstream license, README and the installed API-check source"
+          }
+        ],
+        "notes": [
+          "This explicitly named core profile includes Linux CPU/NUMA/cache discovery, LinuxIO, synthetic topologies and the built-in XML backend. GUI/Cairo, PCI/libpciaccess, libudev, GPU/OpenCL/CUDA/NVML/RSMI/LevelZero/GL plugins and libxml2 are disabled.",
+          "Existing APT hwloc 2.10.0 remains available at its system path with its own build features. This package does not remove or replace it.",
+          "Discovery support and allowed CPU sets describe the process-visible container namespace. A successful XML/API check does not prove that a later CPU or memory binding request is allowed.",
+          "No deployment check changes parent affinity, memory policy, kernel parameters, governors or device permissions.",
+          "Each installed ELF tool uses a package-local launcher to load its own shared library. The launcher does not alter the parent environment.",
+          "A prebuilt package must record architecture, libc, compiler and build profile. Native build evidence is not an OCI image or arbitrary-platform qualification.",
+          "pkg-config metadata uses its containing prefix; legacy libtool .la files retain build-prefix metadata and are not advertised as relocatable link inputs."
+        ],
+        "summary": "The hwloc 2.14 stable CPU/NUMA/cache/LinuxIO core profile, with XML replay and C API; independent of APT hwloc."
+      },
+      "version": "2.14.0"
+    },
+    "catalog_sha256": "ba8da55a47dca093af4cb8d7810d4985c7c8ae460aefa88c64fb23f975e8eb32"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "make",
+    "additional_install_commands": [
+      [
+        "cc",
+        "-O2",
+        "-I{prefix}/include",
+        "{recipe}/api-check.c",
+        "-L{prefix}/lib",
+        "-Wl,-rpath,{prefix}/lib",
+        "-lhwloc",
+        "-o",
+        "{prefix}/bin/hwloc-api-check"
+      ],
+      [
+        "python3",
+        "{recipe}/finalize.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{source}/COPYING",
+        "{prefix}/share/doc/hwloc/COPYING"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{source}/README",
+        "{prefix}/share/doc/hwloc/README"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{recipe}/api-check.c",
+        "{prefix}/share/doc/hwloc/api-check.c"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{recipe}/check.py",
+        "{prefix}/share/compiler-playground/check.py"
+      ]
+    ],
+    "apt_dependencies": {
+      "dev": [
+        "build-essential",
+        "python3"
+      ],
+      "target": [
+        "python3"
+      ]
+    },
+    "build_argv": [
+      "make",
+      "-C",
+      "{build}",
+      "-j{jobs}"
+    ],
+    "build_role": "dev",
+    "configure_argv": [
+      "{source}/configure",
+      "--prefix={prefix}",
+      "--enable-shared",
+      "--enable-static",
+      "CFLAGS=-O2 -g",
+      "--disable-cairo",
+      "--disable-libxml2",
+      "--disable-pci",
+      "--disable-libudev",
+      "--disable-opencl",
+      "--disable-cuda",
+      "--disable-nvml",
+      "--disable-rsmi",
+      "--disable-levelzero",
+      "--disable-gl"
+    ],
+    "configure_cwd": "{build}",
+    "install_argv": [
+      "make",
+      "-C",
+      "{build}",
+      "install"
+    ],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "prepare_commands": [
+      [
+        "mkdir",
+        "-p",
+        "{build}"
+      ]
+    ],
+    "probe_requires_host": [],
+    "required_installed_paths": [
+      "{prefix}/bin/lstopo-no-graphics",
+      "{prefix}/bin/hwloc-api-check",
+      "{prefix}/lib/libhwloc.so",
+      "{prefix}/include/hwloc.h",
+      "{prefix}/share/doc/hwloc/COPYING",
+      "{prefix}/share/compiler-playground/check.py"
+    ],
+    "smoke_argv": [
+      "python3",
+      "{recipe}/check.py",
+      "--prefix",
+      "{prefix}"
+    ],
+    "state": "native-source-build-and-functional-checks-passed; container-not-executed",
+    "target_exports": [
+      {
+        "destination": "opt/research/selected/hwloc",
+        "kind": "tree",
+        "required": true,
+        "role": "runtime",
+        "source": "{prefix}"
+      }
+    ],
+    "target_smoke_commands": [
+      [
+        "python3",
+        "{prefix}/share/compiler-playground/check.py",
+        "--prefix",
+        "{prefix}"
+      ]
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 6250543,
+      "extract": true,
+      "id": "hwloc",
+      "material_path": "sources/hwloc",
+      "sha256": "c4e473493cd5e75898bc72a8cbcd3cc722bfb271c9c8b9b4071fd21567835531",
+      "strip_root": true,
+      "url": "https://download.open-mpi.org/release/hwloc/v2.14/hwloc-2.14.0.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+    ],
+    "documentation": [
+      "https://www.open-mpi.org/software/hwloc/v2.14/",
+      "https://www.open-mpi.org/projects/hwloc/doc/v2.14.0/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/lstopo-no-graphics",
+        "description": "Inspect CPU, cache and NUMA topology"
+      },
+      {
+        "command": "{prefix}/bin/lstopo-no-graphics --of xml /tmp/topology.xml",
+        "description": "Export topology for later inspection"
+      },
+      {
+        "command": "{prefix}/bin/lstopo-no-graphics --input /tmp/topology.xml --input-format xml",
+        "description": "Inspect a captured topology"
+      },
+      {
+        "command": "{prefix}/bin/hwloc-info --support",
+        "description": "Inspect binding API support without changing binding"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Commands",
+        "path": "{prefix}/bin",
+        "purpose": "Version-selected command-line tools; use these absolute paths"
+      },
+      {
+        "label": "Libraries and headers",
+        "path": "{prefix}",
+        "purpose": "C API, static/shared libraries and pkg-config metadata"
+      },
+      {
+        "label": "Original source",
+        "path": "{assets}/sources/hwloc",
+        "purpose": "Complete upstream source expanded only by a source installation. Binary installations retain the source lock and can acquire the separately published source package."
+      },
+      {
+        "label": "License and source usage",
+        "path": "{prefix}/share/doc/hwloc",
+        "purpose": "Upstream license, README and the installed API-check source"
+      }
+    ],
+    "notes": [
+      "This explicitly named core profile includes Linux CPU/NUMA/cache discovery, LinuxIO, synthetic topologies and the built-in XML backend. GUI/Cairo, PCI/libpciaccess, libudev, GPU/OpenCL/CUDA/NVML/RSMI/LevelZero/GL plugins and libxml2 are disabled.",
+      "Existing APT hwloc 2.10.0 remains available at its system path with its own build features. This package does not remove or replace it.",
+      "Discovery support and allowed CPU sets describe the process-visible container namespace. A successful XML/API check does not prove that a later CPU or memory binding request is allowed.",
+      "No deployment check changes parent affinity, memory policy, kernel parameters, governors or device permissions.",
+      "Each installed ELF tool uses a package-local launcher to load its own shared library. The launcher does not alter the parent environment.",
+      "A prebuilt package must record architecture, libc, compiler and build profile. Native build evidence is not an OCI image or arbitrary-platform qualification.",
+      "pkg-config metadata uses its containing prefix; legacy libtool .la files retain build-prefix metadata and are not advertised as relocatable link inputs."
+    ],
+    "summary": "The hwloc 2.14 stable CPU/NUMA/cache/LinuxIO core profile, with XML replay and C API; independent of APT hwloc."
+  },
+  "version": "2.14.0"
+}
