@@ -1,0 +1,170 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "cbench-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "cbench",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 6732360,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Archival application corpora"
+      ],
+      "container_strategy": "Stage the source as research material; freeze or reimplement the legacy CK adapter without allowing runtime repository pulls.",
+      "corpus_contract": {
+        "code": "Legacy program snapshots and CK metadata.",
+        "inputs": "Separate ctuning dataset repositories and optional large input packs.",
+        "oracle": "Per-program reference output contract; validate adapter fidelity.",
+        "split_unit": "Original application family across cBench, MiBench and other overlapping corpora."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/ctuning/ctuning-programs"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/cbench.measurement.json",
+        "workspace-evidence/resources-v050/open-research/cbench.refs.json"
+      ],
+      "extract": true,
+      "id": "cbench",
+      "immutable_ref": "5fb023fdf70c0c5022b8e9a5b333838cb3fddfb1",
+      "kind": "dataset",
+      "license_class": "review-required",
+      "license_id": "LicenseRef-Per-Application",
+      "mandatory": false,
+      "material_path": "corpora/cbench",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Prior-work phase-ordering and iterative-compilation reference programs and adapters.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The source repository does not contain the full CK framework or associated input dataset repositories.",
+        "Legacy source/input licenses, ABI assumptions and benchmark-family overlaps require explicit admission."
+      ],
+      "redistributable": false,
+      "redistribution_status": "Not approved for redistribution before per-component provenance and license review; public availability alone is insufficient.",
+      "roles": [
+        "host"
+      ],
+      "sha256": "32fe705346bd2621707681ca1185e2c3a8fa0c580ea4093de03a1215f42af1f1",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/ctuning/ctuning-programs",
+        "https://codeload.github.com/ctuning/ctuning-programs/tar.gz/5fb023fdf70c0c5022b8e9a5b333838cb3fddfb1",
+        "https://github.com/ctuning/ctuning-programs/commit/5fb023fdf70c0c5022b8e9a5b333838cb3fddfb1"
+      ],
+      "source_logical_bytes": 26597022,
+      "source_url": "https://codeload.github.com/ctuning/ctuning-programs/tar.gz/5fb023fdf70c0c5022b8e9a5b333838cb3fddfb1",
+      "title": "cTuning and cBench legacy programs",
+      "upstream": "https://github.com/ctuning/ctuning-programs",
+      "version": "20170429"
+    },
+    "catalog_sha256": "ae3061a2fc631cb2671a148756aa148d6d3b2ae0a64ce850f9485d4d0e0fe60f"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 6732360,
+      "extract": true,
+      "id": "cbench",
+      "material_path": "corpora/cbench",
+      "sha256": "32fe705346bd2621707681ca1185e2c3a8fa0c580ea4093de03a1215f42af1f1",
+      "strip_root": true,
+      "url": "https://codeload.github.com/ctuning/ctuning-programs/tar.gz/5fb023fdf70c0c5022b8e9a5b333838cb3fddfb1"
+    },
+    "adapter": "corpus",
+    "qualification_scope": "complete_static_material_availability_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.ckr.json"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_scope": "complete_declared_main_archive; no_gitmodules_or_lfs_pointers_observed; native_dependency_closure_not_qualified",
+    "source_dependencies": [],
+    "system_packages": [],
+    "unfetched_submodule_declarations": 0,
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 6732360,
+      "extract": true,
+      "id": "cbench",
+      "material_path": "corpora/cbench",
+      "sha256": "32fe705346bd2621707681ca1185e2c3a8fa0c580ea4093de03a1215f42af1f1",
+      "strip_root": true,
+      "url": "https://codeload.github.com/ctuning/ctuning-programs/tar.gz/5fb023fdf70c0c5022b8e9a5b333838cb3fddfb1"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/ctuning/ctuning-programs"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "No .gitmodules or Git LFS pointers were observed in this exact archive; native build dependencies are not qualified by this material check."
+    ],
+    "summary": "Prior-work phase-ordering and iterative-compilation reference programs and adapters."
+  },
+  "version": "20170429"
+}

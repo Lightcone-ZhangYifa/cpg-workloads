@@ -1,0 +1,266 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "klee-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "klee",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1066344,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Correctness",
+        "Program verification"
+      ],
+      "container_strategy": "Isolate the LLVM 18 toolchain, matching bitcode libraries, KLEE-uClibc and C++ support from LLVM 23. Run KLEE in dev and replay generated tests on the target binary.",
+      "dependencies": [
+        "apt.clang-18",
+        "apt.libsqlite3-dev",
+        "apt.libtcmalloc-minimal4t64",
+        "apt.llvm-18-dev",
+        "apt.llvm-18-tools",
+        "apt.zlib1g-dev",
+        "klee-uclibc",
+        "stp",
+        "z3"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DLLVM_DIR=/usr/lib/llvm-18/lib/cmake/llvm",
+          "-DENABLE_SOLVER_Z3=ON",
+          "-DENABLE_SOLVER_STP=ON",
+          "-DENABLE_POSIX_RUNTIME=ON",
+          "-DKLEE_UCLIBC_PATH={dependency_source:klee-uclibc}"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{build}/bin/klee",
+          "--version"
+        ],
+        "source_dependencies": [
+          "stp",
+          "z3",
+          "klee-uclibc"
+        ],
+        "system_packages": [
+          "llvm-18-dev",
+          "clang-18",
+          "llvm-18-tools",
+          "libsqlite3-dev",
+          "zlib1g-dev",
+          "libtcmalloc-minimal4t64"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/klee/klee/releases/tag/v3.3",
+        "https://klee-se.org/releases/docs/v3.3/"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/klee.measurement.json",
+        "workspace-evidence/resources-v050/open-research/klee.refs.json"
+      ],
+      "extract": true,
+      "id": "klee",
+      "immutable_ref": "74f49f1d243f0e1692a00ac688a7b805b37c5646",
+      "kind": "source_archive",
+      "legacy_source_id": "klee",
+      "license_class": "open",
+      "license_id": "NCSA",
+      "mandatory": false,
+      "material_path": "sources/klee",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Generate path-covering inputs and counterexamples for bounded C/C++ components using LLVM bitcode.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "KLEE 3.3 recommends LLVM 18 and supports LLVM 17-19; latest primary LLVM must not be silently substituted.",
+        "C++ exceptions/POSIX behavior require the corresponding klee-libc++ and runtime closure, not just the core executable.",
+        "Search incompleteness, external calls and path limits remain explicit outcomes."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "28e8656db6132b3aac88514c8831611bed088f78c923d330d854f91fee43d2a8",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/klee/klee",
+        "https://codeload.github.com/klee/klee/tar.gz/74f49f1d243f0e1692a00ac688a7b805b37c5646",
+        "https://github.com/klee/klee/commit/74f49f1d243f0e1692a00ac688a7b805b37c5646"
+      ],
+      "source_logical_bytes": 18769369,
+      "source_url": "https://codeload.github.com/klee/klee/tar.gz/74f49f1d243f0e1692a00ac688a7b805b37c5646",
+      "title": "KLEE symbolic execution",
+      "upstream": "https://github.com/klee/klee",
+      "version": "v3.3"
+    },
+    "catalog_sha256": "95c8afa262bfeba5e20089a5d402a0c04c59ed69aff301b2687002295d5ca41b"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 1066344,
+      "extract": true,
+      "id": "klee",
+      "material_path": "sources/klee",
+      "sha256": "28e8656db6132b3aac88514c8831611bed088f78c923d330d854f91fee43d2a8",
+      "strip_root": true,
+      "url": "https://codeload.github.com/klee/klee/tar.gz/74f49f1d243f0e1692a00ac688a7b805b37c5646"
+    },
+    "adapter": "corpus",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DLLVM_DIR=/usr/lib/llvm-18/lib/cmake/llvm",
+      "-DENABLE_SOLVER_Z3=ON",
+      "-DENABLE_SOLVER_STP=ON",
+      "-DENABLE_POSIX_RUNTIME=ON",
+      "-DKLEE_UCLIBC_PATH={dependency_source:klee-uclibc}"
+    ],
+    "content_scope_audit_sha256": "002ef042121f9099aaa8c57e18bac48bbf9eca97aa80ccd3cc933537e3317f30",
+    "dataset_content_complete": false,
+    "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+    "material_profile_dependency_mapping": {
+      "build": "Original native/tool build dependencies preserved but not executed by material installation",
+      "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+      "system": "Only apt.python3 is used for all-file material verification"
+    },
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [
+        "klee-uclibc",
+        "stp",
+        "z3"
+      ],
+      "system": [
+        "apt.clang-18",
+        "apt.libsqlite3-dev",
+        "apt.libtcmalloc-minimal4t64",
+        "apt.llvm-18-dev",
+        "apt.llvm-18-tools",
+        "apt.zlib1g-dev"
+      ]
+    },
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.clang-format"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "smoke_argv": [
+      "{build}/bin/klee",
+      "--version"
+    ],
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+    "source_dependencies": [
+      "stp",
+      "z3",
+      "klee-uclibc"
+    ],
+    "system_packages": [
+      "llvm-18-dev",
+      "clang-18",
+      "llvm-18-tools",
+      "libsqlite3-dev",
+      "zlib1g-dev",
+      "libtcmalloc-minimal4t64"
+    ],
+    "unfetched_submodule_declarations": 0,
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1066344,
+      "extract": true,
+      "id": "klee",
+      "material_path": "sources/klee",
+      "sha256": "28e8656db6132b3aac88514c8831611bed088f78c923d330d854f91fee43d2a8",
+      "strip_root": true,
+      "url": "https://codeload.github.com/klee/klee/tar.gz/74f49f1d243f0e1692a00ac688a7b805b37c5646"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/klee/klee/releases/tag/v3.3",
+      "https://klee-se.org/releases/docs/v3.3/"
+    ],
+    "examples": [
+      {
+        "command": "'{build}/bin/klee' --version",
+        "description": "Run the recorded version check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+    ],
+    "summary": "Generate path-covering inputs and counterexamples for bounded C/C++ components using LLVM bitcode."
+  },
+  "version": "v3.3"
+}
