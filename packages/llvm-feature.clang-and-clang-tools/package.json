@@ -1,6 +1,57 @@
 {
-  "build": "1",
-  "checks": [],
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-I",
+        "{recipe}/cpg_check.py",
+        "--prefix",
+        "{prefix}",
+        "--llvm-root",
+        "{dependencies.llvm-release.prefix}",
+        "--output-base",
+        "{build}/clang-runs",
+        "--mode",
+        "integrity"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "clang-payload-integrity",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 60
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-I",
+        "{recipe}/cpg_check.py",
+        "--prefix",
+        "{prefix}",
+        "--llvm-root",
+        "{dependencies.llvm-release.prefix}",
+        "--output-base",
+        "{build}/clang-runs",
+        "--mode",
+        "functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "clang-clang-capabilities",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
   "dependencies": {
     "build": [],
     "run": [
@@ -10,6 +61,19 @@
   },
   "id": "llvm-feature.clang-and-clang-tools",
   "metadata": {
+    "capabilities": {
+      "assessment_record_ids": [
+        "review.engineering.clang-source-tooling",
+        "review.engineering.clangd",
+        "review.engineering.clangir"
+      ],
+      "baseline_cir_status": "unavailable_in_this_binary_build",
+      "baseline_pin": "7a941dfb2877a0b8cf30323fefa85ad019e0b0f5",
+      "external_binding_contract": "Explicit llvm-release dependency role and CPG_CLANG_CIR_ROOT; recipe verifies locked SDK files.",
+      "original_resource_count_delta": 0,
+      "scope": "Capability fixtures and offline runners; no duplicated LLVM toolchain payload",
+      "supplemental_cir_pin": "ccc56cc44dedcf13c553508e198ddc8ec1aaff95"
+    },
     "catalog": {
       "archive_bytes": null,
       "category": [
@@ -48,11 +112,19 @@
       "title": "Clang and Clang tools",
       "version": "llvmorg-23.1.4"
     },
-    "catalog_sha256": "d176f73bc6d6a04dd5e9c38167afd78181d1dfad5e866ec7abd8176a99eb9d8c"
+    "catalog_sha256": "d176f73bc6d6a04dd5e9c38167afd78181d1dfad5e866ec7abd8176a99eb9d8c",
+    "publication_policy": {
+      "build_check": "not_run",
+      "functional": "not_run",
+      "qualification_mode": "trusted_delivery_static_review"
+    }
   },
   "provider": "component",
   "recipe": {
     "adapter": "component",
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
     "source_resource": "llvm-release"
   },
   "schema_version": 1,
@@ -66,12 +138,25 @@
   "usage": {
     "activation": [],
     "documentation": [],
-    "examples": [],
-    "locations": [],
-    "notes": [
-      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    "examples": [
+      {
+        "command": "CPG_CLANG_CIR_ROOT=/prepared/clangir-sdk cpg packages check llvm-feature.clang-and-clang-tools --prefix {prefix} --kind functional",
+        "description": "Run declared checks with explicitly prepared SDK inputs."
+      }
     ],
-    "summary": "Capability built from the shared locked LLVM source; full build and first-use evidence remain required."
+    "locations": [
+      {
+        "label": "Clang capability materials",
+        "path": "{prefix}",
+        "purpose": "Python API, C++ semantic transformer, fixtures and immutable input locks"
+      }
+    ],
+    "notes": [
+      "Current artifact publication uses trusted delivery static review; build, installation and functional checks were not run for this hash.",
+      "CIR belongs only to the separately pinned supplemental compiler. The original LLVM catalog and source pin are unchanged.",
+      "The Clang SDK subset may be supplied as an explicit byte-locked llvm-release dependency role binding; it is not the complete LLVM distribution."
+    ],
+    "summary": "Clang semantic rewriting, clangd navigation, and an explicitly pinned supplemental CIR pipeline; source fixtures and Python API."
   },
   "version": "llvmorg-23.1.4"
 }
