@@ -1,0 +1,205 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "id": "event-enumeration",
+      "kind": "functional",
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "events"
+      ],
+      "cwd": "{prefix}",
+      "timeout_seconds": 60,
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "requires_commands": [
+        "python3",
+        "perf"
+      ]
+    },
+    {
+      "id": "positive-cycles-and-instructions",
+      "kind": "hardware",
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "counters"
+      ],
+      "cwd": "{prefix}",
+      "timeout_seconds": 45,
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "requires_commands": [
+        "python3",
+        "perf"
+      ],
+      "blocked_returncodes": [
+        77
+      ]
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.linux-tools-common",
+      "apt.linux-tools-generic"
+    ]
+  },
+  "id": "linux-perf",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Profiling",
+        "Kernel tools"
+      ],
+      "container_strategy": "Resolve the frozen signed Ubuntu package-index capture before image build; its actual source and timestamp are recorded in the APT lock. Install only role-appropriate packages; kernel modules, firmware and boot configuration stay on the host.",
+      "dependencies": [
+        "apt.linux-tools-common",
+        "apt.linux-tools-generic"
+      ],
+      "deployment": {
+        "adapter": "apt",
+        "apt_dependencies": {
+          "dev": [
+            "linux-tools-common",
+            "linux-tools-generic"
+          ],
+          "target": [
+            "linux-tools-common",
+            "linux-tools-generic"
+          ]
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "host_only_packages": [],
+        "install_argv": [],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "probe_requires_host": [],
+        "smoke_argv": [
+          "perf",
+          "--version"
+        ],
+        "state": "signed-apt-lock-required",
+        "target_no_compiler": true
+      },
+      "documentation": "https://docs.kernel.org/admin-guide/perf-security.html",
+      "id": "linux-perf",
+      "immutable_ref": "catalog-defined",
+      "installed_bytes": null,
+      "kind": "group",
+      "license_class": "open",
+      "license_id": "LicenseRef-ResolvedUbuntuPackageLicenses",
+      "mandatory": false,
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Use perf stat/record/report/mem/c2c/sched with the exact running host kernel and CPU PMUs.",
+      "qualification_gaps": [
+        "This logical group has no standalone payload. Its exact versions, SHA256 and byte counts come from selected architecture-specific records in the signed APT lock.",
+        "Kernel-matched tools and physical host features are a separate target qualification."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": null,
+      "size_basis": "Resolve each architecture-specific APT archive with Size/SHA256 from the captured, signature-verified official Packages index; deduplicate the complete dependency closure.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/",
+        "https://docs.kernel.org/admin-guide/perf-security.html"
+      ],
+      "source_url": null,
+      "title": "Linux perf and kernel tools",
+      "upstream": "https://archive.ubuntu.com/ubuntu/",
+      "version": "catalog-bound-2026-10-21"
+    },
+    "catalog_sha256": "52ba1a057709a2e8c6f0e22e44afe375cb90834f1ed51642560e019d04ec35fa"
+  },
+  "provider": "meta",
+  "recipe": {
+    "adapter": "apt",
+    "apt_dependencies": {
+      "dev": [
+        "linux-tools-common",
+        "linux-tools-generic"
+      ],
+      "target": [
+        "linux-tools-common",
+        "linux-tools-generic"
+      ]
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "host_only_packages": [],
+    "install_argv": [],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "probe_requires_host": [],
+    "smoke_argv": [
+      "perf",
+      "--version"
+    ],
+    "state": "signed-apt-lock-required",
+    "target_no_compiler": true
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "summary": "Use the kernel-facing perf collector with explicit event, permission and CPU capability checks.",
+    "locations": [
+      {
+        "label": "perf launcher",
+        "path": "/usr/bin/perf",
+        "purpose": "APT launcher; may resolve to a kernel-specific executable"
+      },
+      {
+        "label": "Kernel tool installations",
+        "path": "/usr/lib/linux-tools",
+        "purpose": "Kernel-version-specific tool directories when supplied by APT"
+      }
+    ],
+    "activation": [
+      "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+    ],
+    "examples": [
+      {
+        "description": "Enumerate available event names",
+        "command": "perf list --raw-dump"
+      },
+      {
+        "description": "Inspect kernel perf policy",
+        "command": "cat /proc/sys/kernel/perf_event_paranoid"
+      }
+    ],
+    "notes": [
+      "A version or event-list check does not prove counter access. The optional hardware check requires positive cycles and instructions from one bounded child workload.",
+      "Known permission/device/unsupported-PMU outcomes return 77 and remain blocked, never passed. Unexpected errors or malformed/nonpositive counts fail.",
+      "The package never changes perf_event_paranoid, grants capabilities, loads modules or enables privileged containers.",
+      "CAP_PERFMON, the host kernel, PMU virtualization and the container launch profile determine available collection scopes; qualify the exact target."
+    ],
+    "documentation": [
+      "https://docs.kernel.org/admin-guide/perf-security.html",
+      "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/perf"
+    ]
+  },
+  "version": "catalog-bound-2026-10-21"
+}

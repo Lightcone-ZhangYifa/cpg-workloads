@@ -1,0 +1,145 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "dataset-ref.coremark",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 405671,
+      "archive_scope": "Complete pinned upstream archive, including source, ports, documentation and notices; no external toolchain or runtime libraries.",
+      "build_peak_bytes": null,
+      "category": [
+        "Dataset research",
+        "Benchmarks and inputs"
+      ],
+      "container_strategy": "Prepare the fixed source archive during initialization. Dataset conversion is local and compile-only; native benchmark build runs in dev and target consumes prebuilt runtime materials. No OCI or physical-target qualification is inferred.",
+      "corpus_contract": {
+        "code": "Complete upstream C sources, Linux/POSIX and other ports, documentation and notices.",
+        "inputs": "Original runtime seed values and automatic iteration policy; custom training inputs are separate experiment configuration.",
+        "oracle": "Upstream CRC validation is retained for the official Benchmark role; independent semantic qualification is separate.",
+        "split_unit": "Ordinary complete-driver program record; the researcher selects the dataset split policy."
+      },
+      "dataset_card_id": "coremark",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "requires_controller_only_storage": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "target_exports": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/eembc/coremark"
+      ],
+      "evidence_files": [
+        "workspace-evidence/polymorphism-v0120/benchmarks/evidence-summary.json",
+        "workspace-evidence/polymorphism-v0120/benchmarks/runs/coremark-001/run/result.json"
+      ],
+      "explicit_dataset_preparation": {
+        "default_purpose": "compile_only",
+        "provider": "coremark_source",
+        "role_selection": "researcher_declared",
+        "source_lock_id": "coremark"
+      },
+      "extract": true,
+      "id": "dataset-ref.coremark",
+      "immutable_ref": "1f483d5b8316753a742cbf5590caf5bd0a4e4777",
+      "installed_bytes": null,
+      "kind": "dataset",
+      "license_class": "review-required",
+      "license_id": "Apache-2.0 AND LicenseRef-EEMBC-Acceptable-Use",
+      "mandatory": false,
+      "material_path": "dataset-research/coremark",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Compact complete C workload usable as an ordinary training program or independently through the original CoreMark measurement protocol.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The source archive and native local protocol probe are verified; complete container installation and admitted SSH runtime adapter are not qualified.",
+        "A shared-host native result does not establish isolated target performance or industrial compiler correctness.",
+        "Source files carry Apache-2.0 notices; LICENSE.md separately contains the CoreMark trademark acceptable-use agreement. No certification or trademark qualification is claimed.",
+        "Compile-only Dataset conversion supplies no independent execution oracle. Ordinary training use is allowed by the API; experiment roles and source visibility are researcher-declared.",
+        "The official measurement profile requires both standard seed runs, original CRC checks and at least ten measured seconds per run. PGO requires separately reviewed upstream profile seeds."
+      ],
+      "redistributable": "license-and-component-review-required",
+      "roles": [
+        "host"
+      ],
+      "sha256": "4067e7f260218df13f2875d8f821a8ff32a84153c6e0759d7c89f96c0a8bf987",
+      "size_basis": "Actual acquired archive byte count and SHA-256; source_logical_bytes sums all 108 ordinary archive files, excluding filesystem block allocation and external dependencies.",
+      "source_evidence": [
+        "https://raw.githubusercontent.com/eembc/coremark/1f483d5b8316753a742cbf5590caf5bd0a4e4777/README.md",
+        "https://raw.githubusercontent.com/eembc/coremark/1f483d5b8316753a742cbf5590caf5bd0a4e4777/LICENSE.md",
+        "workspace-evidence/polymorphism-v0120/benchmarks/sources/coremark-source-lock.json",
+        "workspace-evidence/polymorphism-v0120/benchmarks/evidence-summary.json"
+      ],
+      "source_logical_bytes": 1006467,
+      "source_url": "https://codeload.github.com/eembc/coremark/tar.gz/1f483d5b8316753a742cbf5590caf5bd0a4e4777",
+      "title": "CoreMark research material",
+      "upstream": "https://github.com/eembc/coremark",
+      "version": "commit-1f483d5b8316"
+    },
+    "catalog_sha256": "32731aa9510469894c4d9af3ff28d63b2d39ba8cb7dab044823057d9ade74b65"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "qualified": false,
+    "requires_controller_only_storage": false,
+    "source_dependencies": [],
+    "system_packages": [],
+    "target_exports": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 405671,
+      "extract": true,
+      "id": "dataset-ref.coremark",
+      "material_path": "dataset-research/coremark",
+      "sha256": "4067e7f260218df13f2875d8f821a8ff32a84153c6e0759d7c89f96c0a8bf987",
+      "strip_root": true,
+      "url": "https://codeload.github.com/eembc/coremark/tar.gz/1f483d5b8316753a742cbf5590caf5bd0a4e4777"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/eembc/coremark"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/dataset-research/coremark",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Compact complete C workload usable as an ordinary training program or independently through the original CoreMark measurement protocol."
+  },
+  "version": "commit-1f483d5b8316"
+}

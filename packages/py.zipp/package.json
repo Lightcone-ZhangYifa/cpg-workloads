@@ -1,0 +1,192 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "id": "distribution-identity",
+      "kind": "version",
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "timeout_seconds": 180,
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ]
+    },
+    {
+      "id": "installed-api-contract",
+      "kind": "functional",
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "timeout_seconds": 180,
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ]
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "py.zipp",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 10582,
+      "category": [
+        "Python packages",
+        "Optional search and analysis"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/zipp/"
+      ],
+      "id": "py.zipp",
+      "immutable_ref": "sha256:8979f52d874162f485ff2981e3891f3a3317b7a3dd43ff1e1775b9304f307a9c",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "wheels/zipp-4.1.1-py3-none-any.whl",
+      "package_name": "zipp",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "8979f52d874162f485ff2981e3891f3a3317b7a3dd43ff1e1775b9304f307a9c",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/zipp/4.1.1/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/b5/98/df615823cd9419131ce19fba00de53a663794369e198aade064a244b385d/zipp-4.1.1-py3-none-any.whl",
+      "title": "zipp",
+      "upstream": "https://pypi.org/project/zipp/4.1.1/",
+      "version": "4.1.1"
+    },
+    "catalog_sha256": "12f48652178232a0b0b0e1b91f0f1ab81e5cb5478d0fe650b9e8d747d963677d"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "zipp",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 10582,
+      "extract": false,
+      "id": "py.zipp",
+      "material_path": "wheels/zipp-4.1.1-py3-none-any.whl",
+      "sha256": "8979f52d874162f485ff2981e3891f3a3317b7a3dd43ff1e1775b9304f307a9c",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/b5/98/df615823cd9419131ce19fba00de53a663794369e198aade064a244b385d/zipp-4.1.1-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Invoke {prefix}/bin/python explicitly; the selected environment owns this distribution and its fixed dependency closure."
+    ],
+    "documentation": [
+      "https://pypi.org/project/zipp/"
+    ],
+    "examples": [
+      {
+        "description": "Inspect the installed distribution identity.",
+        "command": "{prefix}/bin/python -m pip show {package_name}"
+      },
+      {
+        "description": "Run the package-specific API and failure-contract checks.",
+        "command": "cpg packages check py.zipp --prefix {prefix} --kind functional"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/zipp-4.1.1-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "The check requires the exact distribution version and an imported module inside the selected environment.",
+      "Qualification covers the stated local API cases, not the full upstream suite or all optional backends.",
+      "The wrapper contains metadata, hooks and checks; the locked wheel and its dependency closure are separate exact inputs.",
+      "Original metadata.catalog facts and canonical source locks are retained; actual execution evidence is recorded separately."
+    ],
+    "summary": "Read a real ZIP through pathlib-style traversal and missing-file errors."
+  },
+  "version": "4.1.1"
+}

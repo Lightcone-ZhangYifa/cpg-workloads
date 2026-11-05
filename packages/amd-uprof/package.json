@@ -1,0 +1,180 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "amd-uprof",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Profiling",
+        "Vendor analyzers"
+      ],
+      "container_strategy": "Use the unified selection manifest and a private local vendor overlay. Never publish payloads without component-specific redistribution clearance; no automatic license acceptance.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "vendor-local",
+        "admission_driver": "tools/vendor.py",
+        "apt_dependencies": {
+          "dev": [],
+          "target": []
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "executable_qualified": false,
+        "install_argv": [],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "installation_requires_reviewed_receipt": true,
+        "probe_requires_host": [],
+        "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+        "reference_invocation_only": true,
+        "reference_invocations": [
+          [
+            "{prefix}/bin/AMDuProfCLI",
+            "collect",
+            "--config",
+            "tbp",
+            "-o",
+            "{results}",
+            "--",
+            "{workload}"
+          ]
+        ],
+        "reference_invocations_require_review": true,
+        "smoke_argv": [],
+        "state": "local-license-payload-required",
+        "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+      },
+      "documentation": "https://docs.amd.com/r/en-US/57368-uProf-user-guide/2.5.-Container-Support?contentId=TpCXHW_DydXX3qTJhvg3aQ",
+      "extract": false,
+      "id": "amd-uprof",
+      "immutable_ref": "vendor-release:5.3.521",
+      "installed_bytes": null,
+      "kind": "vendor-local",
+      "license_class": "restricted",
+      "license_id": "LicenseRef-amd-uprof",
+      "mandatory": false,
+      "material_path": "vendor-media/amd-uprof",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Collect AMD CPU hotspots, IBS, memory/cache, threading and system metrics.",
+      "qualification_gaps": [
+        "A licensed local payload, exact delivered build identity, SHA-256, accepted license receipt and reviewed silent installation recipe are required.",
+        "The selected resource remains blocked until installation and real component probes succeed.",
+        "A physical target CPU, kernel, PMU and container launch profile must pass feature-specific collection probes; an installed executable is not full runtime qualification.",
+        "Official uProf 5.3 in-container collection requires SYS_ADMIN. IBS, OS tracing, power and EPYC-only PCM features have additional CPU/kernel/driver conditions.",
+        "DEB/RPM installation may run AMDuProfSetup.sh; do not let image builds configure the physical host. Prefer reviewed tar installation plus a separate host step."
+      ],
+      "redistributable": false,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": null,
+      "size_basis": "Exact installer size is unresolved; an authorized local import must record complete byte count and SHA-256.",
+      "source_evidence": [
+        "https://www.amd.com/en/developer/uprof.html",
+        "https://docs.amd.com/r/en-US/57368-uProf-user-guide/2.5.-Container-Support?contentId=TpCXHW_DydXX3qTJhvg3aQ",
+        "https://www.amd.com/en/developer/uprof/uprof-eula/uprof-5-3-eula.html?filename=AMDuProf_Linux_x64_5.3.521.tar.bz2"
+      ],
+      "source_url": "https://www.amd.com/en/developer/uprof/uprof-eula/uprof-5-3-eula.html?filename=AMDuProf_Linux_x64_5.3.521.tar.bz2",
+      "supplier_md5": "45437d8bc0b4276a0b78e28d21de23cb",
+      "title": "AMD uProf",
+      "upstream": "https://www.amd.com/en/developer/uprof.html",
+      "version": "5.3.521"
+    },
+    "catalog_sha256": "9a66bdb2e87775d7686f49e05675fb1da2e252946aff2f5478a320b9f81a87b6"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "vendor-local",
+    "admission_driver": "tools/vendor.py",
+    "apt_dependencies": {
+      "dev": [],
+      "target": []
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "executable_qualified": false,
+    "install_argv": [],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "installation_requires_reviewed_receipt": true,
+    "probe_requires_host": [],
+    "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+    "reference_invocation_only": true,
+    "reference_invocations": [
+      [
+        "{prefix}/bin/AMDuProfCLI",
+        "collect",
+        "--config",
+        "tbp",
+        "-o",
+        "{results}",
+        "--",
+        "{workload}"
+      ]
+    ],
+    "reference_invocations_require_review": true,
+    "smoke_argv": [],
+    "state": "local-license-payload-required",
+    "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": false,
+      "id": "amd-uprof",
+      "material_path": "vendor-media/amd-uprof",
+      "sha256": null,
+      "strip_root": true,
+      "url": "https://www.amd.com/en/developer/uprof/uprof-eula/uprof-5-3-eula.html?filename=AMDuProf_Linux_x64_5.3.521.tar.bz2"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://docs.amd.com/r/en-US/57368-uProf-user-guide/2.5.-Container-Support?contentId=TpCXHW_DydXX3qTJhvg3aQ"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/vendor-media/amd-uprof",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Collect AMD CPU hotspots, IBS, memory/cache, threading and system metrics."
+  },
+  "version": "5.3.521"
+}

@@ -1,0 +1,134 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "llvm-release"
+    ],
+    "system": []
+  },
+  "id": "ml-compiler-opt",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 527649,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Optimization search",
+        "Learned compiler policies"
+      ],
+      "container_strategy": "Use a dedicated Python/TensorFlow environment, compatible LLVM build and predownloaded corpus. Compiler policy models are separate from the cloud Codex agent; no local LLM is deployed.",
+      "dependencies": [
+        "llvm-release"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "source_dependencies": [
+          "llvm-release"
+        ],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://llvm.org/docs/MLGO.html",
+        "https://github.com/google/ml-compiler-opt"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/ml-compiler-opt.measurement.json",
+        "workspace-evidence/resources-v050/open-research/ml-compiler-opt.refs.json"
+      ],
+      "extract": true,
+      "id": "ml-compiler-opt",
+      "immutable_ref": "e677c4f8443e53b6658667ba15a13e193c335876",
+      "kind": "source_archive",
+      "legacy_source_id": "ml-compiler-opt",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "sources/ml-compiler-opt",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Study and train supported compiler heuristics using LLVM MLGO infrastructure and separately frozen training corpora.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Release compatibility, TensorFlow/AOT/interactive runner closure and task-specific reward integration are not implied by cloning this repository.",
+        "Inlining-for-size examples must not be relabeled as runtime-speed optimization results."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "6919daaad2681605e2bd4588eaf02e2276d8558ed5ddd4ea95eb6a67cd49a883",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/google/ml-compiler-opt",
+        "https://codeload.github.com/google/ml-compiler-opt/tar.gz/e677c4f8443e53b6658667ba15a13e193c335876",
+        "https://github.com/google/ml-compiler-opt/commit/e677c4f8443e53b6658667ba15a13e193c335876"
+      ],
+      "source_logical_bytes": 1878991,
+      "source_url": "https://codeload.github.com/google/ml-compiler-opt/tar.gz/e677c4f8443e53b6658667ba15a13e193c335876",
+      "title": "LLVM MLGO training infrastructure",
+      "upstream": "https://github.com/google/ml-compiler-opt",
+      "version": "commit-e677c4f8443e"
+    },
+    "catalog_sha256": "7526b02069aa89a19db47f6dc7b041b4ee9ee1759f2d549689b7913e424d42db"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "qualified": false,
+    "source_dependencies": [
+      "llvm-release"
+    ],
+    "system_packages": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 527649,
+      "extract": true,
+      "id": "ml-compiler-opt",
+      "material_path": "sources/ml-compiler-opt",
+      "sha256": "6919daaad2681605e2bd4588eaf02e2276d8558ed5ddd4ea95eb6a67cd49a883",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/ml-compiler-opt/tar.gz/e677c4f8443e53b6658667ba15a13e193c335876"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://llvm.org/docs/MLGO.html",
+      "https://github.com/google/ml-compiler-opt"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/ml-compiler-opt",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Study and train supported compiler heuristics using LLVM MLGO infrastructure and separately frozen training corpora."
+  },
+  "version": "commit-e677c4f8443e"
+}

@@ -1,0 +1,221 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/yarpgen",
+        "--help"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.cmake",
+      "apt.g++",
+      "apt.ninja-build",
+      "apt.python3"
+    ]
+  },
+  "id": "yarpgen-scalar",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 110484,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Correctness",
+        "Generators and fuzzers"
+      ],
+      "container_strategy": "Use a distinct installation path and resource identity from the loop generator to prevent executable shadowing.",
+      "dependencies": [
+        "apt.cmake",
+        "apt.g++",
+        "apt.ninja-build",
+        "apt.python3"
+      ],
+      "deployment": {
+        "adapter": "cmake",
+        "build_argv": [
+          "cmake",
+          "--build",
+          "{build}",
+          "--parallel",
+          "{jobs}"
+        ],
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_INSTALL_PREFIX={prefix}"
+        ],
+        "install_argv": [
+          "install",
+          "-Dm755",
+          "{build}/yarpgen",
+          "{prefix}/bin/yarpgen"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{prefix}/bin/yarpgen",
+          "--help"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "g++",
+          "python3"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/intel/yarpgen"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/yarpgen-scalar.measurement.json",
+        "workspace-evidence/resources-v050/open-research/yarpgen-loop.refs.json"
+      ],
+      "extract": true,
+      "id": "yarpgen-scalar",
+      "immutable_ref": "30072f7779b68a6efab72bc1f56b4f76a2706e03",
+      "kind": "source_archive",
+      "legacy_source_id": "yarpgen-scalar",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "sources/yarpgen-scalar",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Retain complementary scalar stress tests from the independently pinned v1 branch.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The v1 branch is represented by an immutable commit, not a promise of active maintenance."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "669771a9fe1e991731c0c640256d4ccf5417cd9601858755e68eb00a4f3eb4a7",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/intel/yarpgen",
+        "https://codeload.github.com/intel/yarpgen/tar.gz/30072f7779b68a6efab72bc1f56b4f76a2706e03",
+        "https://github.com/intel/yarpgen/commit/30072f7779b68a6efab72bc1f56b4f76a2706e03"
+      ],
+      "source_logical_bytes": 612482,
+      "source_url": "https://codeload.github.com/intel/yarpgen/tar.gz/30072f7779b68a6efab72bc1f56b4f76a2706e03",
+      "title": "YARPGen scalar generator",
+      "upstream": "https://github.com/intel/yarpgen",
+      "version": "v1-commit-30072f7779b6"
+    },
+    "catalog_sha256": "061a0dd3e53dbfefd12ba7f5d628b9a4f28ea24a92c0c7c041a07798500e31bf"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "cmake",
+    "build_argv": [
+      "cmake",
+      "--build",
+      "{build}",
+      "--parallel",
+      "{jobs}"
+    ],
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_INSTALL_PREFIX={prefix}"
+    ],
+    "install_argv": [
+      "install",
+      "-Dm755",
+      "{build}/yarpgen",
+      "{prefix}/bin/yarpgen"
+    ],
+    "qualified": false,
+    "smoke_argv": [
+      "{prefix}/bin/yarpgen",
+      "--help"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "g++",
+      "python3"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 110484,
+      "extract": true,
+      "id": "yarpgen-scalar",
+      "material_path": "sources/yarpgen-scalar",
+      "sha256": "669771a9fe1e991731c0c640256d4ccf5417cd9601858755e68eb00a4f3eb4a7",
+      "strip_root": true,
+      "url": "https://codeload.github.com/intel/yarpgen/tar.gz/30072f7779b68a6efab72bc1f56b4f76a2706e03"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/intel/yarpgen"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/yarpgen' --help",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/yarpgen-scalar",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Retain complementary scalar stress tests from the independently pinned v1 branch."
+  },
+  "version": "v1-commit-30072f7779b6"
+}

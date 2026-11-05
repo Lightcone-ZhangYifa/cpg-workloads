@@ -1,0 +1,234 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "cpuid",
+        "-1"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "functional",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.cpuid",
+      "apt.dmidecode",
+      "apt.libcap2-bin",
+      "apt.linux-tools-common",
+      "apt.linux-tools-generic",
+      "apt.lm-sensors",
+      "apt.msr-tools",
+      "apt.pciutils",
+      "apt.rasdaemon",
+      "apt.rt-tests",
+      "apt.stress-ng",
+      "apt.sysstat",
+      "apt.trace-cmd"
+    ]
+  },
+  "id": "host-diagnostics",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Platform",
+        "Host diagnostics"
+      ],
+      "container_strategy": "Resolve the frozen signed Ubuntu package-index capture before image build; its actual source and timestamp are recorded in the APT lock. Install only role-appropriate packages; kernel modules, firmware and boot configuration stay on the host.",
+      "dependencies": [
+        "apt.cpuid",
+        "apt.dmidecode",
+        "apt.libcap2-bin",
+        "apt.linux-tools-common",
+        "apt.linux-tools-generic",
+        "apt.lm-sensors",
+        "apt.msr-tools",
+        "apt.pciutils",
+        "apt.rasdaemon",
+        "apt.rt-tests",
+        "apt.stress-ng",
+        "apt.sysstat",
+        "apt.trace-cmd"
+      ],
+      "deployment": {
+        "adapter": "apt",
+        "apt_dependencies": {
+          "dev": [
+            "linux-tools-common",
+            "linux-tools-generic",
+            "msr-tools",
+            "cpuid",
+            "dmidecode",
+            "lm-sensors",
+            "sysstat",
+            "trace-cmd",
+            "rt-tests",
+            "stress-ng",
+            "rasdaemon",
+            "pciutils",
+            "libcap2-bin"
+          ],
+          "target": [
+            "linux-tools-common",
+            "linux-tools-generic",
+            "msr-tools",
+            "cpuid",
+            "dmidecode",
+            "lm-sensors",
+            "sysstat",
+            "trace-cmd",
+            "rt-tests",
+            "stress-ng",
+            "rasdaemon",
+            "pciutils",
+            "libcap2-bin"
+          ]
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "host_only_packages": [
+          "msr-tools",
+          "dmidecode",
+          "lm-sensors",
+          "rasdaemon"
+        ],
+        "install_argv": [],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "probe_requires_host": [],
+        "smoke_argv": [
+          "cpuid",
+          "-1"
+        ],
+        "state": "signed-apt-lock-required",
+        "target_no_compiler": true
+      },
+      "documentation": "https://packages.ubuntu.com/noble/",
+      "id": "host-diagnostics",
+      "immutable_ref": "catalog-defined",
+      "installed_bytes": null,
+      "kind": "group",
+      "license_class": "open",
+      "license_id": "LicenseRef-ResolvedUbuntuPackageLicenses",
+      "mandatory": false,
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Qualify topology, CPU frequency, thermals, error telemetry and scheduling jitter before campaigns.",
+      "qualification_gaps": [
+        "This logical group has no standalone payload. Its exact versions, SHA256 and byte counts come from selected architecture-specific records in the signed APT lock.",
+        "Kernel-matched tools and physical host features are a separate target qualification."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": null,
+      "size_basis": "Resolve each architecture-specific APT archive with Size/SHA256 from the captured, signature-verified official Packages index; deduplicate the complete dependency closure.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/",
+        "https://packages.ubuntu.com/noble/"
+      ],
+      "source_url": null,
+      "title": "Host hardware and scheduling diagnostics",
+      "upstream": "https://archive.ubuntu.com/ubuntu/",
+      "version": "catalog-bound-2026-10-21"
+    },
+    "catalog_sha256": "e5473bf7a5a80fa8fdca1eb9faa5bacd56104d05eb1e57050bd3355a648305b1"
+  },
+  "provider": "meta",
+  "recipe": {
+    "adapter": "apt",
+    "apt_dependencies": {
+      "dev": [
+        "linux-tools-common",
+        "linux-tools-generic",
+        "msr-tools",
+        "cpuid",
+        "dmidecode",
+        "lm-sensors",
+        "sysstat",
+        "trace-cmd",
+        "rt-tests",
+        "stress-ng",
+        "rasdaemon",
+        "pciutils",
+        "libcap2-bin"
+      ],
+      "target": [
+        "linux-tools-common",
+        "linux-tools-generic",
+        "msr-tools",
+        "cpuid",
+        "dmidecode",
+        "lm-sensors",
+        "sysstat",
+        "trace-cmd",
+        "rt-tests",
+        "stress-ng",
+        "rasdaemon",
+        "pciutils",
+        "libcap2-bin"
+      ]
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "host_only_packages": [
+      "msr-tools",
+      "dmidecode",
+      "lm-sensors",
+      "rasdaemon"
+    ],
+    "install_argv": [],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "probe_requires_host": [],
+    "smoke_argv": [
+      "cpuid",
+      "-1"
+    ],
+    "state": "signed-apt-lock-required",
+    "target_no_compiler": true
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/"
+    ],
+    "examples": [
+      {
+        "command": "cpuid -1",
+        "description": "Run the recorded functional check."
+      }
+    ],
+    "locations": [],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Qualify topology, CPU frequency, thermals, error telemetry and scheduling jitter before campaigns."
+  },
+  "version": "catalog-bound-2026-10-21"
+}

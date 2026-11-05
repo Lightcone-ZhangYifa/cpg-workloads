@@ -1,0 +1,195 @@
+{
+  "build": "v02110-native-retained-definition-3",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "intel-pcm.supplement.simdjson-native-library-semantics",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "intel-pcm.supplement.simdjson",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 2721585,
+      "category": [
+        "Profiling",
+        "PMU collectors",
+        "Pinned source closure"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "supplement"
+      },
+      "extract": true,
+      "id": "intel-pcm.supplement.simdjson",
+      "immutable_ref": "sha256:6e995e9bc23dff6d1e0d4428d2d1626d4a6e8f63a939d9a1da46a8d181aa93c5",
+      "installed_bytes": null,
+      "kind": "source_supplement",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "supplements/intel-pcm.supplement.simdjson",
+      "presets": [],
+      "qualification_gaps": [],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "6e995e9bc23dff6d1e0d4428d2d1626d4a6e8f63a939d9a1da46a8d181aa93c5",
+      "size_basis": "Measured exact immutable supplemental artifact",
+      "source_evidence": [
+        "https://codeload.github.com/simdjson/simdjson/tar.gz/0c0ce1bd48baa0677dc7c0945ea7cd1e8b52b297"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/simdjson/simdjson/tar.gz/0c0ce1bd48baa0677dc7c0945ea7cd1e8b52b297",
+      "strip_archive_root": true,
+      "supplement_to": "sources/intel-pcm/src/simdjson",
+      "title": "Intel Performance Counter Monitor / src/simdjson",
+      "version": "202604"
+    },
+    "catalog_sha256": "1b7ede272cae32b0f5a4028e993d02a17b794de6f4d4d31894a761e07ce642a6",
+    "current_material_evidence": {
+      "canonical_sources_and_catalog_unchanged": true,
+      "live_origin": "not_run",
+      "native_execution": "not_run",
+      "original_dependencies_unchanged": true,
+      "source_file_count": 607,
+      "source_logical_bytes": 12621223
+    },
+    "v02110_native_profile": {
+      "canonical_sources_and_catalog_unchanged": true,
+      "original_definition_sha256": "526741d42ced3942596cb5013ef076db1e7996f2f0ebeea21de078f23a5287bc",
+      "original_dependencies": {
+        "build": [],
+        "run": [],
+        "system": []
+      },
+      "original_provider": "material",
+      "original_target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "prior_full_material_qualification_retained": true,
+      "profile_scope": "Static/shared library plus semantic consumers and explicitly listed upstream tests",
+      "unperformed": [
+        "Official performance benchmark",
+        "OCI qualification",
+        "Hardware measurement",
+        "Complete optional developer-mode CTest and its additional downloaded datasets and benchmark dependencies"
+      ]
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-B",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "qualification_scope": "linux-x86_64-explicit-native-library-profile-no-distribution-name-gate",
+    "required_host_commands": [
+      "python3",
+      "gcc",
+      "g++",
+      "cmake",
+      "ctest",
+      "ninja"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/cpg-native-check",
+      "{prefix}/bin/cpg-native-check-shared"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2721585,
+      "extract": true,
+      "id": "intel-pcm.supplement.simdjson",
+      "material_path": "supplements/intel-pcm.supplement.simdjson",
+      "sha256": "6e995e9bc23dff6d1e0d4428d2d1626d4a6e8f63a939d9a1da46a8d181aa93c5",
+      "strip_root": true,
+      "url": "https://codeload.github.com/simdjson/simdjson/tar.gz/0c0ce1bd48baa0677dc7c0945ea7cd1e8b52b297"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Native semantic checks",
+        "path": "{prefix}/bin",
+        "purpose": "Installed static/shared executables, runnable without source build state."
+      },
+      {
+        "label": "Libraries",
+        "path": "{prefix}/lib",
+        "purpose": "Static and shared libraries and relocatable development metadata."
+      },
+      {
+        "label": "Complete original source",
+        "path": "{prefix}/share/intel-pcm.supplement.simdjson/source",
+        "purpose": "Every original source file, notice, test and document retained unmodified."
+      }
+    ],
+    "notes": [
+      "The canonical target and all three dependency sets are retained exactly; the selected original resource has no package dependencies.",
+      "Source builds require the explicitly declared host C/C++ compiler, CMake, Ninja, CTest and Python commands. Their actual versions and executable identities are recorded.",
+      "Precompiled installation uses the actual OS/architecture, loader and runtime checks. Distribution names are provenance and are not an installation gate.",
+      "No ambient LD_ variables, host package transactions, source trimming or cross-prefix hard links are used.",
+      "Only installed pkg-config prefix metadata is made relative. Every such edit records before/after hashes; original source remains unchanged.",
+      "The complete original material qualification remains separate from this bounded native functional profile.",
+      "Official performance benchmark",
+      "OCI qualification",
+      "Hardware measurement",
+      "Complete optional developer-mode CTest and its additional downloaded datasets and benchmark dependencies",
+      "The original recipe/prepare.py and recipe/material-manifest.json are retained as historical material-profile files. The native profile executes only its declared build.py and check.py commands; no current native preparation qualification is inferred for that old material entry."
+    ],
+    "summary": "Independent static/shared native library profile of intel-pcm.supplement.simdjson at its exact original locked revision."
+  },
+  "version": "202604"
+}

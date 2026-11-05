@@ -1,0 +1,204 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exact-installed-version",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-installed-operations",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.gcc-contrib.gitdb"
+    ],
+    "system": []
+  },
+  "id": "py.gcc-contrib.gitpython",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 231548,
+      "category": [
+        "Python packages",
+        "GCC contribution environment"
+      ],
+      "container_strategy": "Install with the gcc-contrib requirements.lock into a dedicated CPython 3.12 venv from the prepared wheel directory using --no-index --require-hashes.",
+      "dependencies": [
+        "py.gcc-contrib.gitdb"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "gcc-contrib",
+        "state": "official-artifact-hashes-verified; isolated-offline-runtime-smoke-passed; container-not-executed"
+      },
+      "documentation": [
+        "https://pypi.org/pypi/gitpython/3.2.1/json"
+      ],
+      "id": "py.gcc-contrib.gitpython",
+      "immutable_ref": "sha256:d66b0832aa8755c1a84892937282df0befb16c97e5a64aeebd68be9c5e323f53",
+      "installed_bytes": 1597786,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "wheels/gcc-contrib/gitpython-3.2.1-py3-none-any.whl",
+      "package_name": "gitpython",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Isolated GCC contribution-tool runtime and its exact dependency closure for patch parsing, local Git analysis, schema validation, HTTP clients, and Python checks.",
+      "qualification_gaps": [
+        "No Docker or Podman container was started in this acquisition task.",
+        "Complete GCC contrib workflow acceptance remains separate from dependency-capsule qualification."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "d66b0832aa8755c1a84892937282df0befb16c97e5a64aeebd68be9c5e323f53",
+      "size_basis": "Actual downloaded wheel bytes matched to official PyPI; installed logical bytes measured from distribution RECORD files after offline smoke on CPython 3.12 Linux x86_64.",
+      "source_evidence": [
+        "https://pypi.org/pypi/gitpython/3.2.1/json",
+        "workspace-evidence/community-v070/python-capsule/qualification.json",
+        "workspace-evidence/community-v070/python-capsule/manifest.json"
+      ],
+      "source_logical_bytes": 785753,
+      "source_url": "https://files.pythonhosted.org/packages/6b/50/2a923c4dc02522ff9567f07c67ed1deca6d5fa9474f4708168b8088dfa37/gitpython-3.2.1-py3-none-any.whl",
+      "title": "gitpython",
+      "upstream": "https://pypi.org/project/gitpython/3.2.1/",
+      "version": "3.2.1"
+    },
+    "catalog_sha256": "3948afcfe3190f08c64b205d215294b45c9f2e59b98a0ee16c065f8602e4f3dc"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "gcc-contrib",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "--no-cache-dir",
+        "--disable-pip-version-check",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "gitpython",
+    "state": "official-artifact-hashes-verified; isolated-offline-runtime-smoke-passed; container-not-executed",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "--disable-pip-version-check",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 231548,
+      "extract": false,
+      "id": "py.gcc-contrib.gitpython",
+      "material_path": "wheels/gcc-contrib/gitpython-3.2.1-py3-none-any.whl",
+      "sha256": "d66b0832aa8755c1a84892937282df0befb16c97e5a64aeebd68be9c5e323f53",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/6b/50/2a923c4dc02522ff9567f07c67ed1deca6d5fa9474f4708168b8088dfa37/gitpython-3.2.1-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+    ],
+    "documentation": [
+      "https://pypi.org/pypi/gitpython/3.2.1/json"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect package metadata in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/gcc-contrib/gitpython-3.2.1-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+      "0.21.12 candidate: fixed original wheel and declared dependency closure; qualification requires the saved two-prefix PackageManager receipt. No source-build, remote-service, OCI, or official benchmark claim."
+    ],
+    "summary": "Isolated GCC contribution-tool runtime and its exact dependency closure for patch parsing, local Git analysis, schema validation, HTTP clients, and Python checks."
+  },
+  "version": "3.2.1"
+}

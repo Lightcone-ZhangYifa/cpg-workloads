@@ -1,0 +1,247 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "id": "simdjson-upstream",
+      "kind": "functional",
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--case",
+        "upstream"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600,
+      "requires_commands": [
+        "python3",
+        "g++"
+      ],
+      "requires_paths": [
+        "{prefix}/lib/libsimdjson_static.a",
+        "{prefix}/include/simdjson.h"
+      ]
+    },
+    {
+      "id": "simdjson-api",
+      "kind": "functional",
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--case",
+        "api"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600,
+      "requires_commands": [
+        "python3",
+        "g++"
+      ],
+      "requires_paths": [
+        "{prefix}/lib/libsimdjson_static.a",
+        "{prefix}/include/simdjson.h"
+      ]
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "apt.cmake",
+      "apt.ninja-build"
+    ],
+    "run": [],
+    "system": [
+      "apt.g++",
+      "apt.python3"
+    ]
+  },
+  "id": "simdjson",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 8818934,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Parsing"
+      ],
+      "container_strategy": "Build library/tests and benchmark adapters in dev with a fixed dispatch policy and frozen JSON inputs; run parsing result checks on target.",
+      "corpus_contract": {
+        "code": "Library and test/benchmark drivers included.",
+        "inputs": "Included tests plus separately admitted representative JSON data.",
+        "oracle": "Parsed structure/content checks against an independent implementation.",
+        "split_unit": "Parser application family, with input corpora kept as separate generalization axes."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/simdjson/simdjson"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/simdjson.measurement.json",
+        "workspace-evidence/resources-v050/open-research/simdjson.refs.json"
+      ],
+      "extract": true,
+      "id": "simdjson",
+      "immutable_ref": "9c003534b1be3bc4f1322bfa7a770a7ffbf247d9",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "Apache-2.0 OR MIT",
+      "mandatory": false,
+      "material_path": "corpora/simdjson",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Modern C++ parsing, dispatch, branch behavior and SIMD workload coverage.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "External benchmark JSON corpora need independent input locks and license review.",
+        "CPU dispatch and hand-written SIMD may dominate results; disclose whether dispatch is fixed or runtime-selected."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "3d753ab15ce01a094066fff4c80719d1f03090c7ef140bec758dc3c0282c2a9f",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/simdjson/simdjson",
+        "https://codeload.github.com/simdjson/simdjson/tar.gz/9c003534b1be3bc4f1322bfa7a770a7ffbf247d9",
+        "https://github.com/simdjson/simdjson/commit/9c003534b1be3bc4f1322bfa7a770a7ffbf247d9"
+      ],
+      "source_logical_bytes": 38323872,
+      "source_url": "https://codeload.github.com/simdjson/simdjson/tar.gz/9c003534b1be3bc4f1322bfa7a770a7ffbf247d9",
+      "title": "simdjson parsing workload",
+      "upstream": "https://github.com/simdjson/simdjson",
+      "version": "v5.0.5"
+    },
+    "catalog_sha256": "5c1fb9afa9d4d47628ae7c9c5c2d4259e549b4c50a680ba773b12a05ee5e63aa"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "cmake",
+    "qualified": false,
+    "commands": [
+      [
+        "python3",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "g++"
+    ],
+    "working_directory": "{build}",
+    "required_installed_paths": [
+      "{prefix}/lib/libsimdjson.so",
+      "{prefix}/lib/libsimdjson_static.a",
+      "{prefix}/include/simdjson.h",
+      "{prefix}/share/simdjson/source/LICENSE"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 8818934,
+      "extract": true,
+      "id": "simdjson",
+      "material_path": "corpora/simdjson",
+      "sha256": "3d753ab15ce01a094066fff4c80719d1f03090c7ef140bec758dc3c0282c2a9f",
+      "strip_root": true,
+      "url": "https://codeload.github.com/simdjson/simdjson/tar.gz/9c003534b1be3bc4f1322bfa7a770a7ffbf247d9"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "summary": "C++ JSON DOM and On-Demand parsing with shared/static libraries, runtime SIMD dispatch and complete source.",
+    "activation": [
+      "Query cpg packages paths simdjson and use explicit include/library paths or the installed CMake config.",
+      "Optional PKG_CONFIG_PATH=<prefix>/lib/pkgconfig enables metadata discovery; no global linker-cache changes are required."
+    ],
+    "documentation": [
+      "https://github.com/simdjson/simdjson"
+    ],
+    "locations": [
+      {
+        "label": "Public headers",
+        "path": "{prefix}/include",
+        "purpose": "simdjson.h and original modular C++ APIs."
+      },
+      {
+        "label": "Libraries and build metadata",
+        "path": "{prefix}/lib",
+        "purpose": "libsimdjson.so, libsimdjson_static.a and CMake/pkg-config metadata."
+      },
+      {
+        "label": "Upstream self-contained tests",
+        "path": "{prefix}/libexec/simdjson",
+        "purpose": "Nine unchanged upstream regression executables."
+      },
+      {
+        "label": "Complete original source",
+        "path": "{prefix}/share/simdjson/source",
+        "purpose": "All original library, developer tests, bundled JSON inputs, tools and documentation."
+      }
+    ],
+    "examples": [
+      {
+        "command": "g++ -std=c++17 -I'{prefix}/include' app.cpp '{prefix}/lib/libsimdjson_static.a' -pthread -o app",
+        "description": "Build a static C++ consumer."
+      },
+      {
+        "command": "cmake -S . -B build -DCMAKE_PREFIX_PATH='{prefix}'",
+        "description": "Discover the simdjson CMake package and its exported target."
+      },
+      {
+        "command": "python3 '{recipe}/check.py' --prefix '{prefix}' --case api",
+        "description": "Compare actual DOM results against Python json for each runtime-supported implementation and test the On-Demand API."
+      }
+    ],
+    "notes": [
+      "Runtime dispatch is preserved. The installed consumer records each implementation actually supported and exercised on the current CPU; timings are not compiler Benchmark scores.",
+      "Developer-mode CMake in this pinned release downloads CPM and external data unconditionally. This offline profile builds the library and nine original self-contained test executables; the full external-data developer matrix is not claimed.",
+      "Both shared and static consumers are rebuilt against every qualified installation prefix. Malformed JSON and nonexistent dispatch implementations must fail.",
+      "The original material profile, source archive, metadata.catalog and all original developer/tool sources remain available.",
+      "The API probe is C++17. Optional C++26 static reflection and external competitive parsing benchmarks are not qualified."
+    ]
+  },
+  "version": "v5.0.5"
+}

@@ -1,0 +1,167 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "amd-aocl",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Runtime libraries",
+        "Vendor libraries"
+      ],
+      "container_strategy": "Use the unified selection manifest and a private local vendor overlay. Never publish payloads without component-specific redistribution clearance; no automatic license acceptance.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "vendor-local",
+        "admission_driver": "tools/vendor.py",
+        "apt_dependencies": {
+          "dev": [],
+          "target": []
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "executable_qualified": false,
+        "install_argv": [],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "installation_requires_reviewed_receipt": true,
+        "probe_requires_host": [],
+        "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+        "reference_invocation_only": true,
+        "reference_invocations": [
+          [
+            "bash",
+            "{source}/install.sh",
+            "--help"
+          ]
+        ],
+        "reference_invocations_require_review": true,
+        "smoke_argv": [],
+        "state": "local-license-payload-required",
+        "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+      },
+      "documentation": "https://www.amd.com/en/developer/aocl.html",
+      "extract": false,
+      "id": "amd-aocl",
+      "immutable_ref": "sha256:0f2454444b2c6f1adda84b4cd0c41eb9ce910a24d9dacbdc3a339d0b628f3b7a",
+      "installed_bytes": null,
+      "kind": "vendor-local",
+      "license_class": "restricted",
+      "license_id": "LicenseRef-amd-aocl",
+      "mandatory": false,
+      "material_path": "vendor-media/amd-aocl",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Provide a separately controlled AMD CPU-library substitution treatment with component-specific notices.",
+      "qualification_gaps": [
+        "A licensed local payload, exact delivered build identity, SHA-256, accepted license receipt and reviewed silent installation recipe are required.",
+        "The selected resource remains blocked until installation and real component probes succeed.",
+        "Selected binary flavor is GCC 14.2.1; AOCC 5.2-compiled bundle is a distinct artifact, not interchangeable bytes.",
+        "Open AOCL components can be source-built under their actual individual licenses; the master binary bundle must not be declared wholly proprietary or wholly open without review."
+      ],
+      "redistributable": false,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "0f2454444b2c6f1adda84b4cd0c41eb9ce910a24d9dacbdc3a339d0b628f3b7a",
+      "size_basis": "Exact installer size is unresolved; an authorized local import must record complete byte count and SHA-256.",
+      "source_evidence": [
+        "https://www.amd.com/en/developer/aocl.html",
+        "https://www.amd.com/en/developer/aocl/eula/aocl-5-3-eula.html?filename=aocl-linux-gcc-5.3.0.tar.gz"
+      ],
+      "source_url": "https://www.amd.com/en/developer/aocl/eula/aocl-5-3-eula.html?filename=aocl-linux-gcc-5.3.0.tar.gz",
+      "title": "AMD Optimizing CPU Libraries binary bundle",
+      "upstream": "https://www.amd.com/en/developer/aocl.html",
+      "version": "5.3.0"
+    },
+    "catalog_sha256": "63d6d69de930dad5ffec81543357693cd2ba75fa5c7b19a210f00316aa974374"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "vendor-local",
+    "admission_driver": "tools/vendor.py",
+    "apt_dependencies": {
+      "dev": [],
+      "target": []
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "executable_qualified": false,
+    "install_argv": [],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "installation_requires_reviewed_receipt": true,
+    "probe_requires_host": [],
+    "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+    "reference_invocation_only": true,
+    "reference_invocations": [
+      [
+        "bash",
+        "{source}/install.sh",
+        "--help"
+      ]
+    ],
+    "reference_invocations_require_review": true,
+    "smoke_argv": [],
+    "state": "local-license-payload-required",
+    "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": false,
+      "id": "amd-aocl",
+      "material_path": "vendor-media/amd-aocl",
+      "sha256": "0f2454444b2c6f1adda84b4cd0c41eb9ce910a24d9dacbdc3a339d0b628f3b7a",
+      "strip_root": true,
+      "url": "https://www.amd.com/en/developer/aocl/eula/aocl-5-3-eula.html?filename=aocl-linux-gcc-5.3.0.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.amd.com/en/developer/aocl.html"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/vendor-media/amd-aocl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Provide a separately controlled AMD CPU-library substitution treatment with component-specific notices."
+  },
+  "version": "5.3.0"
+}

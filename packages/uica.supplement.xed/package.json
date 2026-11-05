@@ -1,0 +1,156 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "xed-native-cli-c-api-xml",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.g++",
+      "apt.python3"
+    ]
+  },
+  "id": "uica.supplement.xed",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1286967,
+      "category": [
+        "Optimization research",
+        "Instruction models",
+        "Pinned source closure"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "supplement"
+      },
+      "extract": true,
+      "id": "uica.supplement.xed",
+      "immutable_ref": "sha256:b610897d541cf808cfbf53c5a9abe384e7ca2cac25939e994a737d3bcfa00c35",
+      "installed_bytes": null,
+      "kind": "source_supplement",
+      "license_class": "open",
+      "license_id": "AGPL-3.0-only AND Apache-2.0",
+      "mandatory": false,
+      "material_path": "supplements/uica.supplement.xed",
+      "presets": [],
+      "qualification_gaps": [],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "b610897d541cf808cfbf53c5a9abe384e7ca2cac25939e994a737d3bcfa00c35",
+      "size_basis": "Measured exact immutable supplemental artifact",
+      "source_evidence": [
+        "https://codeload.github.com/andreas-abel/XED-to-XML/tar.gz/c71679ee893ae91db677056d542f305fcc433cb1"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/andreas-abel/XED-to-XML/tar.gz/c71679ee893ae91db677056d542f305fcc433cb1",
+      "strip_archive_root": true,
+      "supplement_to": "sources/uica/XED-to-XML",
+      "title": "uiCA basic-block pipeline simulator / XED-to-XML",
+      "version": "commit-6ebeeab0f870"
+    },
+    "catalog_sha256": "0f3be77cfdc79eb07fd822eb3539d27f714196565ff181ec48a1dd9eb01c20de"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "/usr/bin/python3",
+        "-B",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "dependency_scope": "The two direct package identities and observed host compiler/Python executables are recorded; transitive catalog APT toolchain closure is not claimed.",
+    "qualification_scope": "xed-native-decoder-encoder-generated-isa-xml; no uica simulator or measured uops data",
+    "required_installed_paths": [
+      "{prefix}/bin/xed",
+      "{prefix}/bin/xed-ex3",
+      "{prefix}/lib/libxed.a",
+      "{prefix}/share/uica.supplement.xed/source/README.md",
+      "{prefix}/share/uica.supplement.xed/instructions.xml",
+      "{prefix}/share/compiler-playground/uica.supplement.xed/profile.json"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1286967,
+      "extract": true,
+      "id": "uica.supplement.xed",
+      "material_path": "supplements/uica.supplement.xed",
+      "sha256": "b610897d541cf808cfbf53c5a9abe384e7ca2cac25939e994a737d3bcfa00c35",
+      "strip_root": true,
+      "url": "https://codeload.github.com/andreas-abel/XED-to-XML/tar.gz/c71679ee893ae91db677056d542f305fcc433cb1"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/andreas-abel/XED-to-XML/tree/c71679ee893ae91db677056d542f305fcc433cb1"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/xed' -64 -d 4889d8",
+        "description": "Decode MOV RAX,RBX using the installed native decoder."
+      },
+      {
+        "command": "'{prefix}/bin/xed-ex3' -64 ADD/64 RAX RBX",
+        "description": "Encode a 64-bit ADD request."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Native tools",
+        "path": "{prefix}/bin",
+        "purpose": "Independent prefix containing compiled XED command-line tools."
+      },
+      {
+        "label": "Original source and inputs",
+        "path": "{prefix}/share/uica.supplement.xed",
+        "purpose": "Unchanged original source, exact build supplement inputs and generated ISA XML."
+      }
+    ],
+    "notes": [
+      "Generated ISA XML is derived from the locked XED tables, not uops.info measurement data.",
+      "The uiCA simulator and Python extension ABI are outside this profile.",
+      "Fixed Debian packaging modules are build-only precompiled inputs; they are not described as our source-built components."
+    ],
+    "summary": "Build, install and use the fixed XED-to-XML native decoder, encoder, C API and generated ISA XML."
+  },
+  "version": "commit-6ebeeab0f870"
+}

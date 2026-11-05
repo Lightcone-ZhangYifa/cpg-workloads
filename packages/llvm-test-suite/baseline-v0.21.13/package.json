@@ -1,0 +1,131 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "llvm-test-suite",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 172751524,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Compiler suites"
+      ],
+      "container_strategy": "Store the complete suite in controller-owned material storage, derive family-disjoint train/validation/test views, compile in dev and run admitted binary/input/oracle bundles in target.",
+      "corpus_contract": {
+        "code": "Included for the built-in suite; external suites need separate resources.",
+        "inputs": "Mixed included and externally provided inputs.",
+        "oracle": "Per-program reference output or suite-specific validation; each adapter needs qualification.",
+        "split_unit": "Upstream application family including all forks, versions, input sizes and translated variants."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://llvm.org/docs/TestSuiteGuide.html"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/llvm-test-suite.measurement.json",
+        "workspace-evidence/resources-v050/open-research/llvm-test-suite.refs.json"
+      ],
+      "extract": false,
+      "id": "llvm-test-suite",
+      "immutable_ref": "2919e55176a572ee085cb46b291c47b7092c363e",
+      "kind": "dataset",
+      "legacy_source_id": "llvm-test-suite",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception AND LicenseRef-Per-Benchmark",
+      "mandatory": false,
+      "material_path": "sources/test-suite-23.1.4.src.tar.xz",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Broad C/C++/Fortran runtime workloads, regression cases and CTMark compile-time diagnostics.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "External suites and inputs are not included merely because the CMake adapter exists.",
+        "Each benchmark requires a license, liveness check, input set, oracle and runtime contract.",
+        "CTMark is a compile-time diagnostic; do not double-count those same program families in the runtime aggregate."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "f3c8d4da44ccfb0d95a8f2b7cc4c88a8327e446243679a0d496b0ff91c61f562",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/llvm/llvm-test-suite",
+        "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz",
+        "https://github.com/llvm/llvm-test-suite/commit/2919e55176a572ee085cb46b291c47b7092c363e"
+      ],
+      "source_logical_bytes": 2116579658,
+      "source_url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz",
+      "title": "LLVM test-suite and CTMark",
+      "upstream": "https://github.com/llvm/llvm-test-suite",
+      "version": "llvmorg-23.1.4"
+    },
+    "catalog_sha256": "3e1aaeb0fff8a29fb4a93d4bbbdbe8de012e43b11ad2f92c06ec03c0c781d39b"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "qualified": false,
+    "source_dependencies": [],
+    "system_packages": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 172751524,
+      "extract": false,
+      "id": "llvm-test-suite",
+      "material_path": "sources/test-suite-23.1.4.src.tar.xz",
+      "sha256": "f3c8d4da44ccfb0d95a8f2b7cc4c88a8327e446243679a0d496b0ff91c61f562",
+      "strip_root": true,
+      "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://llvm.org/docs/TestSuiteGuide.html"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/test-suite-23.1.4.src.tar.xz",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Broad C/C++/Fortran runtime workloads, regression cases and CTMark compile-time diagnostics."
+  },
+  "version": "llvmorg-23.1.4"
+}

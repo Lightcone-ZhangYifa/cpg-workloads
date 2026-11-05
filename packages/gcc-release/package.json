@@ -1,0 +1,250 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/gcc",
+        "--version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "version",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.bison",
+      "apt.build-essential",
+      "apt.dejagnu",
+      "apt.expect",
+      "apt.flex",
+      "apt.libgmp-dev",
+      "apt.libisl-dev",
+      "apt.libmpc-dev",
+      "apt.libmpfr-dev",
+      "apt.libzstd-dev",
+      "apt.tcl-dev",
+      "apt.texinfo",
+      "apt.zlib1g-dev"
+    ]
+  },
+  "id": "gcc-release",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 107200820,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Compilers",
+        "Reference toolchains"
+      ],
+      "container_strategy": "Build out of tree in dev with bootstrapping and DejaGNU tests. Prepare prerequisites from the apt lock instead of invoking contrib/download_prerequisites. Ship libstdc++, libgcc, libgfortran and libgomp only when target artifacts need them.",
+      "dependencies": [
+        "apt.bison",
+        "apt.build-essential",
+        "apt.dejagnu",
+        "apt.expect",
+        "apt.flex",
+        "apt.libgmp-dev",
+        "apt.libisl-dev",
+        "apt.libmpc-dev",
+        "apt.libmpfr-dev",
+        "apt.libzstd-dev",
+        "apt.tcl-dev",
+        "apt.texinfo",
+        "apt.zlib1g-dev"
+      ],
+      "deployment": {
+        "adapter": "make",
+        "build_argv": [
+          "make",
+          "-j{jobs}",
+          "bootstrap"
+        ],
+        "configure_argv": [
+          "{source}/configure",
+          "--prefix={prefix}",
+          "--enable-languages=c,c++,fortran",
+          "--disable-multilib",
+          "--enable-checking=release",
+          "--enable-plugin"
+        ],
+        "handled_by": "core-build-scripts",
+        "install_argv": [
+          "make",
+          "install"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{prefix}/bin/gcc",
+          "--version"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "build-essential",
+          "libgmp-dev",
+          "libmpfr-dev",
+          "libmpc-dev",
+          "libisl-dev",
+          "flex",
+          "bison",
+          "texinfo",
+          "dejagnu",
+          "expect",
+          "tcl-dev",
+          "zlib1g-dev",
+          "libzstd-dev"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://gcc.gnu.org/releases.html",
+        "https://gcc.gnu.org/install/",
+        "https://gcc.gnu.org/onlinedocs/"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/gcc-release.measurement.json",
+        "workspace-evidence/resources-v050/open-research/gcc-release.refs.json"
+      ],
+      "extract": false,
+      "id": "gcc-release",
+      "immutable_ref": "78d4ac73dd391005b895a6148cd9831e28e1208b",
+      "kind": "source_archive",
+      "legacy_source_id": "gcc-release",
+      "license_class": "open",
+      "license_id": "GPL-3.0-or-later AND LicenseRef-Per-Component",
+      "mandatory": false,
+      "material_path": "sources/gcc-16.2.0.tar.xz",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Independent native compiler baseline, differential correctness oracle, GCC optimization exploration, gcov and LTO/plugin development.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Bootstrap, regression testing, release signature validation and actual installed/build-peak sizes are pending.",
+        "The release tarball includes components with different license exceptions; preserve per-file notices."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "e6738e29597f733270731aa90600f37ffdc045079dfc27ec7e8192cc81085c3e",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/gcc-mirror/gcc",
+        "https://ftp.gnu.org/gnu/gcc/gcc-16.2.0/gcc-16.2.0.tar.xz",
+        "https://github.com/gcc-mirror/gcc/commit/78d4ac73dd391005b895a6148cd9831e28e1208b"
+      ],
+      "source_logical_bytes": 907315540,
+      "source_url": "https://ftp.gnu.org/gnu/gcc/gcc-16.2.0/gcc-16.2.0.tar.xz",
+      "title": "GCC C, C++ and Fortran",
+      "upstream": "https://github.com/gcc-mirror/gcc",
+      "version": "releases/gcc-16.2.0"
+    },
+    "catalog_sha256": "c18afa5efe8c84a212453e7b5892c2b4399dbf15b5220bb7badaa2eedb155b17"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "make",
+    "build_argv": [
+      "make",
+      "-j{jobs}",
+      "bootstrap"
+    ],
+    "configure_argv": [
+      "{source}/configure",
+      "--prefix={prefix}",
+      "--enable-languages=c,c++,fortran",
+      "--disable-multilib",
+      "--enable-checking=release",
+      "--enable-plugin"
+    ],
+    "handled_by": "core-build-scripts",
+    "install_argv": [
+      "make",
+      "install"
+    ],
+    "qualified": false,
+    "smoke_argv": [
+      "{prefix}/bin/gcc",
+      "--version"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "build-essential",
+      "libgmp-dev",
+      "libmpfr-dev",
+      "libmpc-dev",
+      "libisl-dev",
+      "flex",
+      "bison",
+      "texinfo",
+      "dejagnu",
+      "expect",
+      "tcl-dev",
+      "zlib1g-dev",
+      "libzstd-dev"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 107200820,
+      "extract": false,
+      "id": "gcc-release",
+      "material_path": "sources/gcc-16.2.0.tar.xz",
+      "sha256": "e6738e29597f733270731aa90600f37ffdc045079dfc27ec7e8192cc81085c3e",
+      "strip_root": true,
+      "url": "https://ftp.gnu.org/gnu/gcc/gcc-16.2.0/gcc-16.2.0.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://gcc.gnu.org/releases.html",
+      "https://gcc.gnu.org/install/",
+      "https://gcc.gnu.org/onlinedocs/"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/gcc' --version",
+        "description": "Run the recorded version check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/gcc-16.2.0.tar.xz",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Independent native compiler baseline, differential correctness oracle, GCC optimization exploration, gcov and LTO/plugin development."
+  },
+  "version": "releases/gcc-16.2.0"
+}

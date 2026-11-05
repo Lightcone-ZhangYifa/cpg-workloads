@@ -1,0 +1,161 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "nvidia-hpc-sdk",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 6927405256,
+      "build_peak_bytes": null,
+      "category": [
+        "Toolchains",
+        "Vendor compilers"
+      ],
+      "container_strategy": "Use the unified selection manifest and a private local vendor overlay. Never publish payloads without component-specific redistribution clearance; no automatic license acceptance.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "vendor-local",
+        "admission_driver": "tools/vendor.py",
+        "apt_dependencies": {
+          "dev": [],
+          "target": []
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "executable_qualified": false,
+        "install_argv": [],
+        "install_roles": [
+          "dev"
+        ],
+        "installation_requires_reviewed_receipt": true,
+        "probe_requires_host": [],
+        "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+        "reference_invocation_only": true,
+        "reference_invocations": [
+          [
+            "{prefix}/Linux_x86_64/26.9/compilers/bin/nvc",
+            "-V"
+          ]
+        ],
+        "reference_invocations_require_review": true,
+        "smoke_argv": [],
+        "state": "local-license-payload-required"
+      },
+      "documentation": "https://docs.nvidia.com/hpc-sdk/installation-guide/index.html",
+      "extract": false,
+      "id": "nvidia-hpc-sdk",
+      "immutable_ref": "vendor-release:26.9",
+      "installed_bytes": null,
+      "kind": "vendor-local",
+      "license_class": "restricted",
+      "license_id": "LicenseRef-nvidia-hpc-sdk",
+      "mandatory": false,
+      "material_path": "vendor-media/nvidia-hpc-sdk",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Provide nvc, nvc++ and nvfortran as independent CPU-only reference compilers.",
+      "qualification_gaps": [
+        "A licensed local payload, exact delivered build identity, SHA-256, accepted license receipt and reviewed silent installation recipe are required.",
+        "The selected resource remains blocked until installation and real component probes succeed.",
+        "The supplier archive includes CUDA components. CPU-only deployment must inventory needed compiler/runtime files rather than require GPU drivers or GPU workload packages.",
+        "Redistribution of the full SDK is not assumed; allowed runtime redistributables are component-specific."
+      ],
+      "redistributable": false,
+      "roles": [
+        "dev"
+      ],
+      "sha256": null,
+      "size_basis": "Official fixed installer HTTP Content-Length; complete local payload SHA-256 remains required.",
+      "source_evidence": [
+        "https://developer.nvidia.com/hpc-sdk/releases",
+        "https://docs.nvidia.com/hpc-sdk/installation-guide/index.html",
+        "https://developer.download.nvidia.com/hpc-sdk/26.9/nvhpc_2026_269_Linux_x86_64_cuda_13.3.tar.gz"
+      ],
+      "source_url": "https://developer.download.nvidia.com/hpc-sdk/26.9/nvhpc_2026_269_Linux_x86_64_cuda_13.3.tar.gz",
+      "title": "NVIDIA HPC SDK CPU compilers",
+      "upstream": "https://developer.nvidia.com/hpc-sdk/releases",
+      "version": "26.9"
+    },
+    "catalog_sha256": "2480b20ab84b08704c7c8d7e0aefe949cbe9968fa7deaf3221a2d8493c96708e"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "vendor-local",
+    "admission_driver": "tools/vendor.py",
+    "apt_dependencies": {
+      "dev": [],
+      "target": []
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "executable_qualified": false,
+    "install_argv": [],
+    "install_roles": [
+      "dev"
+    ],
+    "installation_requires_reviewed_receipt": true,
+    "probe_requires_host": [],
+    "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+    "reference_invocation_only": true,
+    "reference_invocations": [
+      [
+        "{prefix}/Linux_x86_64/26.9/compilers/bin/nvc",
+        "-V"
+      ]
+    ],
+    "reference_invocations_require_review": true,
+    "smoke_argv": [],
+    "state": "local-license-payload-required"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 6927405256,
+      "extract": false,
+      "id": "nvidia-hpc-sdk",
+      "material_path": "vendor-media/nvidia-hpc-sdk",
+      "sha256": null,
+      "strip_root": true,
+      "url": "https://developer.download.nvidia.com/hpc-sdk/26.9/nvhpc_2026_269_Linux_x86_64_cuda_13.3.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://docs.nvidia.com/hpc-sdk/installation-guide/index.html"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/vendor-media/nvidia-hpc-sdk",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Provide nvc, nvc++ and nvfortran as independent CPU-only reference compilers."
+  },
+  "version": "26.9"
+}

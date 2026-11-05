@@ -1,0 +1,355 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{tools}/native-resource-smoke.py",
+        "cproc",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "functional",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "qbe"
+    ],
+    "run": [
+      "qbe"
+    ],
+    "system": [
+      "apt.binutils",
+      "apt.build-essential",
+      "apt.libc6-dev",
+      "apt.make",
+      "apt.python3"
+    ]
+  },
+  "id": "cproc",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 97661,
+      "build_peak_bytes": null,
+      "category": [
+        "Compilers",
+        "Compact research backends"
+      ],
+      "container_strategy": "Build only in dev with an absolute selected-QBE path, exact assembler/linker/preprocessor closure and an isolated prefix. Target receives linked artifacts and declared runtime libraries only.",
+      "dependencies": [
+        "qbe",
+        "apt.build-essential",
+        "apt.make",
+        "apt.python3",
+        "apt.binutils",
+        "apt.libc6-dev"
+      ],
+      "deployment": {
+        "adapter": "make",
+        "additional_install_commands": [
+          [
+            "install",
+            "-D",
+            "-m",
+            "644",
+            "{source}/LICENSE",
+            "{prefix}/share/cproc/LICENSE"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "644",
+            "{source}/README.md",
+            "{prefix}/share/cproc/README.md"
+          ]
+        ],
+        "apt_dependencies": {
+          "dev": [
+            "build-essential",
+            "make",
+            "python3",
+            "binutils",
+            "libc6-dev"
+          ]
+        },
+        "build_argv": [
+          "make",
+          "-C",
+          "{build}",
+          "-j{jobs}"
+        ],
+        "build_role": "dev",
+        "configure_argv": [
+          "{build}/configure",
+          "--prefix={prefix}",
+          "--target=x86_64-linux-gnu",
+          "--with-qbe={dependencies.qbe.prefix}/bin/qbe",
+          "--with-cpp=/usr/bin/cpp",
+          "--with-as=/usr/bin/as",
+          "--with-ld=/usr/bin/ld",
+          "CFLAGS=-O2 -g -std=c99"
+        ],
+        "install_argv": [
+          "make",
+          "-C",
+          "{build}",
+          "install"
+        ],
+        "install_roles": [
+          "dev"
+        ],
+        "prepare_commands": [
+          [
+            "cp",
+            "-a",
+            "{source}/.",
+            "{build}"
+          ]
+        ],
+        "probe_requires_host": [],
+        "required_installed_paths": [
+          "{prefix}/bin/cproc",
+          "{prefix}/bin/cproc-qbe",
+          "{prefix}/share/man/man1/cproc.1"
+        ],
+        "smoke_argv": [
+          "python3",
+          "{tools}/native-resource-smoke.py",
+          "cproc",
+          "--prefix",
+          "{prefix}"
+        ],
+        "state": "native-recipe-build-install-smoke-passed; container-not-executed",
+        "submodule_closure_complete": true,
+        "target_exports": [],
+        "target_smoke_commands": [],
+        "upstream_test_commands": [
+          [
+            "make",
+            "-C",
+            "{build}",
+            "check"
+          ],
+          [
+            "make",
+            "-C",
+            "{build}",
+            "bootstrap"
+          ]
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/michaelforney/cproc/blob/d1c53ddf56571573a7025324c8dd5c6d547a4d1f/README.md"
+      ],
+      "evidence_files": [
+        "workspace-evidence/native-optimization-resources/archive-measurements.json",
+        "workspace-evidence/native-optimization-resources/native-recipe-probe/receipts/cproc.json"
+      ],
+      "extract": true,
+      "id": "cproc",
+      "immutable_ref": "d1c53ddf56571573a7025324c8dd5c6d547a4d1f",
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "ISC",
+      "mandatory": false,
+      "material_path": "sources/cproc",
+      "native_probe": {
+        "allocated_installed_bytes": 565248,
+        "catalog_sha256_at_probe": "a6bfa8e0d5a040a238c30e712234b73a25584038ca9184afff2b439478405691",
+        "logical_installed_bytes": 530825,
+        "logical_retained_build_tree_bytes": 1869015,
+        "receipt": "workspace-evidence/native-optimization-resources/native-recipe-probe/receipts/cproc.json",
+        "scope": "This native dev build only; not a container size prediction or transient peak measurement."
+      },
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Feed real C programs into QBE, retain emitted IL, separate frontend legality from backend optimization, and enable C-to-native/bootstrap experiments.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": true,
+        "container_qualified": false,
+        "native_recipe_smoke_qualified": true,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Pinned author-maintained GitHub mirror is an admitted transport; canonical project is on SourceHut.",
+        "Language support is incomplete: inspect this pinned README for volatile, atomics, long double, PIC and preprocessor limitations before admitting datasets.",
+        "The configure step discovers host GCC startup files; cross-architecture builds require an explicit future sysroot/ABI adapter.",
+        "A complete bootstrap and C corpus suite are independent gates beyond the installation smoke."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "f323095c7d02d7084ce7765d508796009539d1dfa547e23e63d7ec75ee9fb22f",
+      "size_basis": "Complete HTTPS payload measured locally; source logical bytes sum regular archive members, excluding allocation, build trees and external dependencies.",
+      "size_evidence": "workspace-evidence/native-optimization-resources/archive-measurements.json",
+      "source_evidence": [
+        "https://sr.ht/~mcf/cproc/",
+        "https://github.com/michaelforney/cproc",
+        "https://codeload.github.com/michaelforney/cproc/tar.gz/d1c53ddf56571573a7025324c8dd5c6d547a4d1f"
+      ],
+      "source_logical_bytes": 320157,
+      "source_url": "https://codeload.github.com/michaelforney/cproc/tar.gz/d1c53ddf56571573a7025324c8dd5c6d547a4d1f",
+      "title": "cproc C frontend for QBE",
+      "upstream": "https://git.sr.ht/~mcf/cproc",
+      "version": "commit-d1c53ddf5657"
+    },
+    "catalog_sha256": "3c1897f572b97793c17ef00c9221b85e6e0a2be40bd96c60d4ed166964116adc"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "make",
+    "additional_install_commands": [
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{source}/LICENSE",
+        "{prefix}/share/cproc/LICENSE"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{source}/README.md",
+        "{prefix}/share/cproc/README.md"
+      ]
+    ],
+    "apt_dependencies": {
+      "dev": [
+        "build-essential",
+        "make",
+        "python3",
+        "binutils",
+        "libc6-dev"
+      ]
+    },
+    "build_argv": [
+      "make",
+      "-C",
+      "{build}",
+      "-j{jobs}"
+    ],
+    "build_role": "dev",
+    "configure_argv": [
+      "{build}/configure",
+      "--prefix={prefix}",
+      "--target=x86_64-linux-gnu",
+      "--with-qbe={dependencies.qbe.prefix}/bin/qbe",
+      "--with-cpp=/usr/bin/cpp",
+      "--with-as=/usr/bin/as",
+      "--with-ld=/usr/bin/ld",
+      "CFLAGS=-O2 -g -std=c99"
+    ],
+    "install_argv": [
+      "make",
+      "-C",
+      "{build}",
+      "install"
+    ],
+    "install_roles": [
+      "dev"
+    ],
+    "prepare_commands": [
+      [
+        "cp",
+        "-a",
+        "{source}/.",
+        "{build}"
+      ]
+    ],
+    "probe_requires_host": [],
+    "required_installed_paths": [
+      "{prefix}/bin/cproc",
+      "{prefix}/bin/cproc-qbe",
+      "{prefix}/share/man/man1/cproc.1"
+    ],
+    "smoke_argv": [
+      "python3",
+      "{tools}/native-resource-smoke.py",
+      "cproc",
+      "--prefix",
+      "{prefix}"
+    ],
+    "state": "native-recipe-build-install-smoke-passed; container-not-executed",
+    "submodule_closure_complete": true,
+    "target_exports": [],
+    "target_smoke_commands": [],
+    "upstream_test_commands": [
+      [
+        "make",
+        "-C",
+        "{build}",
+        "check"
+      ],
+      [
+        "make",
+        "-C",
+        "{build}",
+        "bootstrap"
+      ]
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 97661,
+      "extract": true,
+      "id": "cproc",
+      "material_path": "sources/cproc",
+      "sha256": "f323095c7d02d7084ce7765d508796009539d1dfa547e23e63d7ec75ee9fb22f",
+      "strip_root": true,
+      "url": "https://codeload.github.com/michaelforney/cproc/tar.gz/d1c53ddf56571573a7025324c8dd5c6d547a4d1f"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/michaelforney/cproc/blob/d1c53ddf56571573a7025324c8dd5c6d547a4d1f/README.md"
+    ],
+    "examples": [
+      {
+        "command": "python3 '{tools}/native-resource-smoke.py' cproc --prefix '{prefix}'",
+        "description": "Run the recorded functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/cproc",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Feed real C programs into QBE, retain emitted IL, separate frontend legality from backend optimization, and enable C-to-native/bootstrap experiments."
+  },
+  "version": "commit-d1c53ddf5657"
+}

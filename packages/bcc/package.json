@@ -1,0 +1,379 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "env",
+        "PYTHONPATH={prefix}/lib/python3.12/site-packages",
+        "LD_LIBRARY_PATH={prefix}/lib",
+        "/usr/bin/python3",
+        "{prefix}/share/bcc/tools/execsnoop",
+        "--help"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.bison",
+      "apt.build-essential",
+      "apt.clang-18",
+      "apt.cmake",
+      "apt.flex",
+      "apt.libbpf-dev",
+      "apt.libbpf1",
+      "apt.libclang-18-dev",
+      "apt.libclang-cpp18",
+      "apt.libedit-dev",
+      "apt.libelf-dev",
+      "apt.libelf1t64",
+      "apt.libfl-dev",
+      "apt.libllvm18",
+      "apt.libluajit-5.1-2",
+      "apt.libluajit-5.1-dev",
+      "apt.llvm-18-dev",
+      "apt.ninja-build",
+      "apt.pkg-config",
+      "apt.python3",
+      "apt.python3-dev",
+      "apt.python3-setuptools"
+    ]
+  },
+  "id": "bcc",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 9702483,
+      "build_peak_bytes": null,
+      "category": [
+        "Profiling",
+        "Tracing and instrumentation"
+      ],
+      "container_strategy": "Prestage the exact release payload and complete the documented dependencies before research. Host collectors or a feature-specific target launch profile preserve full collection functionality.",
+      "dependencies": [
+        "apt.bison",
+        "apt.build-essential",
+        "apt.clang-18",
+        "apt.cmake",
+        "apt.flex",
+        "apt.libbpf-dev",
+        "apt.libbpf1",
+        "apt.libclang-18-dev",
+        "apt.libclang-cpp18",
+        "apt.libedit-dev",
+        "apt.libelf-dev",
+        "apt.libelf1t64",
+        "apt.libfl-dev",
+        "apt.libllvm18",
+        "apt.libluajit-5.1-2",
+        "apt.libluajit-5.1-dev",
+        "apt.llvm-18-dev",
+        "apt.ninja-build",
+        "apt.pkg-config",
+        "apt.python3",
+        "apt.python3-dev",
+        "apt.python3-setuptools"
+      ],
+      "deployment": {
+        "adapter": "cmake",
+        "apt_dependencies": {
+          "dev": [
+            "build-essential",
+            "cmake",
+            "ninja-build",
+            "pkg-config",
+            "libelf-dev",
+            "libbpf-dev",
+            "llvm-18-dev",
+            "libclang-18-dev",
+            "clang-18",
+            "bison",
+            "flex",
+            "libfl-dev",
+            "python3-dev",
+            "libluajit-5.1-dev",
+            "libedit-dev",
+            "python3-setuptools"
+          ],
+          "target": [
+            "python3",
+            "libbpf1",
+            "libelf1t64",
+            "libllvm18",
+            "libclang-cpp18",
+            "libluajit-5.1-2"
+          ]
+        },
+        "build_argv": [
+          "cmake",
+          "--build",
+          "{build}",
+          "--parallel",
+          "{jobs}"
+        ],
+        "build_role": "dev",
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}/bcc",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+          "-DCMAKE_INSTALL_PREFIX={prefix}",
+          "-DPYTHON_CMD=/usr/bin/python3",
+          "-DPYTHON_PREFIX={prefix}",
+          "-DPY_SKIP_DEB_LAYOUT=ON",
+          "-DPYTHON_FLAGS=--single-version-externally-managed",
+          "-DCMAKE_INSTALL_LIBDIR=lib",
+          "-DENABLE_LLVM_SHARED=ON"
+        ],
+        "install_argv": [
+          "cmake",
+          "--install",
+          "{build}"
+        ],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "probe_requires_host": [
+          "kernel headers or BTF",
+          "BPF and perf access"
+        ],
+        "requires_recursive_submodules": true,
+        "runtime_environment": {
+          "LD_LIBRARY_PATH": "{prefix}/lib",
+          "PYTHONPATH": "{prefix}/lib/python3.12/site-packages"
+        },
+        "smoke_argv": [
+          "env",
+          "PYTHONPATH={prefix}/lib/python3.12/site-packages",
+          "LD_LIBRARY_PATH={prefix}/lib",
+          "/usr/bin/python3",
+          "{prefix}/share/bcc/tools/execsnoop",
+          "--help"
+        ],
+        "source_layout_evidence": "workspace-evidence/resources-v050/platform-research/bcc-layout-and-submodules.json",
+        "state": "recipe-described-not-executed",
+        "submodule_closure_complete": true,
+        "target_exports": [
+          {
+            "destination": "opt/research/selected/bcc",
+            "kind": "tree",
+            "required": true,
+            "role": "profiler",
+            "source": "{prefix}"
+          }
+        ],
+        "target_smoke_commands": [
+          [
+            "env",
+            "PYTHONPATH={prefix}/lib/python3.12/site-packages",
+            "LD_LIBRARY_PATH={prefix}/lib",
+            "/usr/bin/python3",
+            "{prefix}/share/bcc/tools/execsnoop",
+            "--help"
+          ]
+        ]
+      },
+      "documentation": "https://github.com/iovisor/bcc/blob/v0.37.0/INSTALL.md",
+      "extract": true,
+      "id": "bcc",
+      "immutable_ref": "sha256:7734b780202b22dff335780b506b56833ec6cf7435e03b1346d5bf644b4e1f95",
+      "installed_bytes": null,
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "sources/bcc",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Provide the established BPF analysis tool collection for scheduler, off-CPU, I/O and latency investigations.",
+      "qualification_gaps": [
+        "A physical target CPU, kernel, PMU and container launch profile must pass feature-specific collection probes; an installed executable is not full runtime qualification.",
+        "The reference deployment commands are not an executed container qualification.",
+        "The source tar includes a bcc wrapper directory and fixed submodule content. This recipe qualifies the classic BCC CMake/Python/Lua tools; the distinct libbpf-tools CO-RE collection needs its own native/Rust dependency closure and feature probes before it is advertised."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "7734b780202b22dff335780b506b56833ec6cf7435e03b1346d5bf644b4e1f95",
+      "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+      "size_evidence": "workspace-evidence/resources-v050/platform-research/submodule-archive-measurements.json",
+      "source_evidence": [
+        "https://github.com/iovisor/bcc/releases/tag/v0.37.0",
+        "https://github.com/iovisor/bcc/blob/v0.37.0/INSTALL.md"
+      ],
+      "source_url": "https://github.com/iovisor/bcc/releases/download/v0.37.0/bcc-src-with-submodule-0.37.0.tar.gz",
+      "title": "BCC tracing tools",
+      "upstream": "https://github.com/iovisor/bcc/releases/tag/v0.37.0",
+      "version": "0.37.0"
+    },
+    "catalog_sha256": "4a2ef58466200c6bdd0c29d2a2b9949cb1fd8c8c4b770a044434ddf01a97fce8"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "cmake",
+    "apt_dependencies": {
+      "dev": [
+        "build-essential",
+        "cmake",
+        "ninja-build",
+        "pkg-config",
+        "libelf-dev",
+        "libbpf-dev",
+        "llvm-18-dev",
+        "libclang-18-dev",
+        "clang-18",
+        "bison",
+        "flex",
+        "libfl-dev",
+        "python3-dev",
+        "libluajit-5.1-dev",
+        "libedit-dev",
+        "python3-setuptools"
+      ],
+      "target": [
+        "python3",
+        "libbpf1",
+        "libelf1t64",
+        "libllvm18",
+        "libclang-cpp18",
+        "libluajit-5.1-2"
+      ]
+    },
+    "build_argv": [
+      "cmake",
+      "--build",
+      "{build}",
+      "--parallel",
+      "{jobs}"
+    ],
+    "build_role": "dev",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}/bcc",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+      "-DCMAKE_INSTALL_PREFIX={prefix}",
+      "-DPYTHON_CMD=/usr/bin/python3",
+      "-DPYTHON_PREFIX={prefix}",
+      "-DPY_SKIP_DEB_LAYOUT=ON",
+      "-DPYTHON_FLAGS=--single-version-externally-managed",
+      "-DCMAKE_INSTALL_LIBDIR=lib",
+      "-DENABLE_LLVM_SHARED=ON"
+    ],
+    "install_argv": [
+      "cmake",
+      "--install",
+      "{build}"
+    ],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "probe_requires_host": [
+      "kernel headers or BTF",
+      "BPF and perf access"
+    ],
+    "requires_recursive_submodules": true,
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib",
+      "PYTHONPATH": "{prefix}/lib/python3.12/site-packages"
+    },
+    "smoke_argv": [
+      "env",
+      "PYTHONPATH={prefix}/lib/python3.12/site-packages",
+      "LD_LIBRARY_PATH={prefix}/lib",
+      "/usr/bin/python3",
+      "{prefix}/share/bcc/tools/execsnoop",
+      "--help"
+    ],
+    "source_layout_evidence": "workspace-evidence/resources-v050/platform-research/bcc-layout-and-submodules.json",
+    "state": "recipe-described-not-executed",
+    "submodule_closure_complete": true,
+    "target_exports": [
+      {
+        "destination": "opt/research/selected/bcc",
+        "kind": "tree",
+        "required": true,
+        "role": "profiler",
+        "source": "{prefix}"
+      }
+    ],
+    "target_smoke_commands": [
+      [
+        "env",
+        "PYTHONPATH={prefix}/lib/python3.12/site-packages",
+        "LD_LIBRARY_PATH={prefix}/lib",
+        "/usr/bin/python3",
+        "{prefix}/share/bcc/tools/execsnoop",
+        "--help"
+      ]
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 9702483,
+      "extract": true,
+      "id": "bcc",
+      "material_path": "sources/bcc",
+      "sha256": "7734b780202b22dff335780b506b56833ec6cf7435e03b1346d5bf644b4e1f95",
+      "strip_root": true,
+      "url": "https://github.com/iovisor/bcc/releases/download/v0.37.0/bcc-src-with-submodule-0.37.0.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/iovisor/bcc/blob/v0.37.0/INSTALL.md"
+    ],
+    "examples": [
+      {
+        "command": "env 'PYTHONPATH={prefix}/lib/python3.12/site-packages' 'LD_LIBRARY_PATH={prefix}/lib' /usr/bin/python3 '{prefix}/share/bcc/tools/execsnoop' --help",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/bcc",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "Some capabilities require host conditions: kernel headers or BTF; BPF and perf access.",
+      "Target-specific checks are retained in recipe.target_smoke_commands and must run in the declared target context."
+    ],
+    "summary": "Provide the established BPF analysis tool collection for scheduler, off-CPU, I/O and latency investigations."
+  },
+  "version": "0.37.0"
+}

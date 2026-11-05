@@ -1,0 +1,227 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{tools}/testlib-resource.py",
+        "smoke",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "functional",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.g++",
+      "apt.python3"
+    ]
+  },
+  "id": "testlib",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 124110,
+      "category": [
+        "Data generation and correctness",
+        "Competitive programming"
+      ],
+      "container_strategy": "Preserve the entire source, examples, tests and notices; export include/testlib.h in an independent dev prefix. Build native checker, validator and deterministic-generator smoke examples during initialization. Transfer only admitted prebuilt executables to target.",
+      "dependencies": [
+        "apt.g++",
+        "apt.python3"
+      ],
+      "deployment": {
+        "adapter": "commands",
+        "apt_dependencies": {
+          "dev": [
+            "g++",
+            "python3"
+          ]
+        },
+        "commands": [
+          [
+            "python3",
+            "{tools}/testlib-resource.py",
+            "install",
+            "--source",
+            "{source}",
+            "--prefix",
+            "{prefix}"
+          ]
+        ],
+        "required_installed_paths": [
+          "{prefix}/include/testlib.h",
+          "{prefix}/LICENSE",
+          "{prefix}/share/testlib/source/tests/run.sh",
+          "{prefix}/share/testlib/source/generators/igen.cpp",
+          "{prefix}/share/testlib/source/validators/ival.cpp",
+          "{prefix}/share/testlib/source/checkers/icmp.cpp"
+        ],
+        "smoke_argv": [
+          "python3",
+          "{tools}/testlib-resource.py",
+          "smoke",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}"
+        ],
+        "state": "complete-source-and-local-selected-recipe-smoke-passed; OCI-unqualified"
+      },
+      "documentation": [
+        "https://github.com/MikeMirzayanov/testlib",
+        "https://github.com/MikeMirzayanov/testlib/blob/1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd/tests/README.md"
+      ],
+      "extract": true,
+      "id": "testlib",
+      "immutable_ref": "1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd",
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/testlib",
+      "native_probe": {
+        "installed_size": {
+          "allocated_bytes": 3076096,
+          "allocated_scope": "Unique-inode st_blocks * 512 attribution; shared reflink extents are not deduplicated.",
+          "directory_count": 187,
+          "file_size_inventory_sha256": "4ee0c436af264ded4aface5f57747bb7d6da071ff6412a7634834a8b67172fc8",
+          "logical_file_bytes": 757850,
+          "regular_file_count": 523,
+          "root": "/workspace/scratch/b5a92fe24c26/workspace-evidence/datasets-v0100/testlib-resource/recipe-probe-final/prefix/testlib",
+          "root_directory_included": true,
+          "schema_version": 1,
+          "scope": "One quiescent filesystem tree including its root, no symlink traversal, hardlinks counted once; no OCI sharing or transient peak inferred.",
+          "special_paths": [],
+          "stable_during_scan": true,
+          "symlink_count": 0
+        },
+        "qualification_scope": "Only the recorded commands and required files; complete feature, corpus and physical target qualification remain separate.",
+        "receipt": "workspace-evidence/datasets-v0100/testlib-resource/recipe-probe-final/receipts/testlib.json",
+        "status": "installed-and-declared-smokes-passed"
+      },
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Prepare problem-specific input generators, validators and output checkers used by CodeContests+ and admitted contest corpora.",
+      "qualification_gaps": [
+        "The declared example smoke does not qualify the full upstream compiler/standard matrix or every corpus problem.",
+        "Actual OCI and physical-target qualification remains independent."
+      ],
+      "redistributable": "retain-copyright-and-license",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "e6b5de6c4b1e06985f841a253e5988ad0848ec87193e54218202290b56b8e199",
+      "size_basis": "Actual complete source archive, all 521 upstream files and their summed logical bytes. Installed bytes are a separate native receipt, not an OCI layer estimate.",
+      "source_evidence": [
+        "workspace-evidence/datasets-v0100/testlib-resource/acquisition.json"
+      ],
+      "source_logical_bytes": 550300,
+      "source_url": "https://codeload.github.com/MikeMirzayanov/testlib/tar.gz/1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd",
+      "strip_archive_root": true,
+      "title": "testlib C++ checkers, validators and generators",
+      "upstream": "https://github.com/MikeMirzayanov/testlib",
+      "version": "git:1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd"
+    },
+    "catalog_sha256": "9495fc6624951d1057c742dafcef7f817af08a37532436eadd6007710ad7c313"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "apt_dependencies": {
+      "dev": [
+        "g++",
+        "python3"
+      ]
+    },
+    "commands": [
+      [
+        "python3",
+        "{tools}/testlib-resource.py",
+        "install",
+        "--source",
+        "{source}",
+        "--prefix",
+        "{prefix}"
+      ]
+    ],
+    "required_installed_paths": [
+      "{prefix}/include/testlib.h",
+      "{prefix}/LICENSE",
+      "{prefix}/share/testlib/source/tests/run.sh",
+      "{prefix}/share/testlib/source/generators/igen.cpp",
+      "{prefix}/share/testlib/source/validators/ival.cpp",
+      "{prefix}/share/testlib/source/checkers/icmp.cpp"
+    ],
+    "smoke_argv": [
+      "python3",
+      "{tools}/testlib-resource.py",
+      "smoke",
+      "--prefix",
+      "{prefix}",
+      "--build",
+      "{build}"
+    ],
+    "state": "complete-source-and-local-selected-recipe-smoke-passed; OCI-unqualified"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 124110,
+      "extract": true,
+      "id": "testlib",
+      "material_path": "sources/testlib",
+      "sha256": "e6b5de6c4b1e06985f841a253e5988ad0848ec87193e54218202290b56b8e199",
+      "strip_root": true,
+      "url": "https://codeload.github.com/MikeMirzayanov/testlib/tar.gz/1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/MikeMirzayanov/testlib",
+      "https://github.com/MikeMirzayanov/testlib/blob/1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd/tests/README.md"
+    ],
+    "examples": [
+      {
+        "command": "python3 '{tools}/testlib-resource.py' smoke --prefix '{prefix}' --build '{build}'",
+        "description": "Run the recorded functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/testlib",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Prepare problem-specific input generators, validators and output checkers used by CodeContests+ and admitted contest corpora."
+  },
+  "version": "git:1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd"
+}

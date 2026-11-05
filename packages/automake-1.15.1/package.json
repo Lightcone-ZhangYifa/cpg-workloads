@@ -1,0 +1,234 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--autoconf-prefix",
+        "{dependencies.autoconf-2.69.prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "autotools-private-runtime-and-real-generated-project",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 360
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "autoconf-2.69"
+    ],
+    "run": [
+      "autoconf-2.69"
+    ],
+    "system": [
+      "apt.build-essential",
+      "apt.make",
+      "apt.python3"
+    ]
+  },
+  "id": "automake-1.15.1",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1509496,
+      "build_peak_bytes": null,
+      "category": [
+        "Community development",
+        "GCC regeneration tools"
+      ],
+      "dependencies": [
+        "apt.make",
+        "apt.m4",
+        "apt.perl",
+        "apt.build-essential",
+        "autoconf-2.69"
+      ],
+      "deployment": {
+        "adapter": "make",
+        "additional_install_commands": [
+          [
+            "mkdir",
+            "-p",
+            "{prefix}/share/automake-1.15.1/source"
+          ],
+          [
+            "cp",
+            "-a",
+            "{source}/.",
+            "{prefix}/share/automake-1.15.1/source/"
+          ]
+        ],
+        "build_argv": [
+          "env",
+          "PATH={dependencies.autoconf-2.69.prefix}/bin:/usr/bin:/bin",
+          "make",
+          "-j{jobs}"
+        ],
+        "configure_argv": [
+          "env",
+          "PATH={dependencies.autoconf-2.69.prefix}/bin:/usr/bin:/bin",
+          "{source}/configure",
+          "--prefix={prefix}"
+        ],
+        "install_argv": [
+          "env",
+          "PATH={dependencies.autoconf-2.69.prefix}/bin:/usr/bin:/bin",
+          "make",
+          "install"
+        ],
+        "required_installed_paths": [
+          "{prefix}/bin/automake",
+          "{prefix}/share/automake-1.15.1/source/COPYING"
+        ],
+        "runtime_environment": {
+          "PATH": "{dependencies.autoconf-2.69.prefix}/bin:/usr/bin:/bin"
+        },
+        "smoke_argv": [
+          "{prefix}/bin/automake",
+          "--version"
+        ],
+        "state": "native-selected-recipe-and-minimal-project-generation-passed; OCI-not-qualified",
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://gcc.gnu.org/install/prerequisites.html"
+      ],
+      "extract": true,
+      "id": "automake-1.15.1",
+      "immutable_ref": "sha256:af6ba39142220687c500f79b4aa2f181d9b24e4f8d8ec497cea4ba26c64bedaf",
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_evidence_files": [
+        "automake-1.15.1/lib/COPYING",
+        "automake-1.15.1/COPYING"
+      ],
+      "license_id": "GPL-3.0-or-later AND LicenseRef-GNU-generation-exceptions-and-manual-terms",
+      "mandatory": false,
+      "material_path": "sources/automake-1.15.1",
+      "native_probe": {
+        "installed_logical_bytes": 10664143,
+        "receipt": "workspace-evidence/community-v070/gcc-regeneration/native-probe/summary.json"
+      },
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Regenerate GCC build-system files using the exact upstream-required historical version without replacing the distro tools.",
+      "qualification": {
+        "container_qualified": false,
+        "full_gcc_regeneration_qualified": false,
+        "minimal_generation_qualified": true,
+        "native_build_install_smoke_qualified": true
+      },
+      "qualification_gaps": [
+        "Use this version only for GCC paths that require it; do not globally shadow other projects' Autotools.",
+        "Installation and generation probes do not qualify every GCC regeneration target or an OCI image."
+      ],
+      "redistributable": "Preserve COPYING files, generated-file exceptions, manuals and source obligations.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "af6ba39142220687c500f79b4aa2f181d9b24e4f8d8ec497cea4ba26c64bedaf",
+      "size_basis": "Measured official HTTPS archive body and SHA256; logical bytes sum regular archive entries. GPG publisher verification and OCI installation are separate.",
+      "source_evidence": [
+        "https://ftp.gnu.org/gnu/automake/automake-1.15.1.tar.xz",
+        "https://gcc.gnu.org/install/prerequisites.html"
+      ],
+      "source_logical_bytes": 8510086,
+      "source_url": "https://ftp.gnu.org/gnu/automake/automake-1.15.1.tar.xz",
+      "title": "Automake 1.15.1 for GCC regeneration",
+      "upstream": "https://www.gnu.org/software/automake/",
+      "version": "1.15.1"
+    },
+    "catalog_sha256": "6c79a167c011b0ef3fef3144acb97ea3aa03a43a2add2d11a86c862b29fb5eb9"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "/usr/bin/python3",
+        "-B",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}",
+        "--autoconf-prefix",
+        "{dependencies.autoconf-2.69.prefix}"
+      ]
+    ],
+    "dependency_refinement": "Original exact perl and m4 system definitions and their complete 22-DEB catalog closure are retained as private recipe inputs. The generated tools execute the private loader, interpreter, modules and m4. Host APT state is unchanged. The original catalog dependency facts remain unchanged.",
+    "qualification_scope": "Source-generated GNU Autotools scripts with exact private runtime; no claim of native machine-code compilation or complete GCC regeneration.",
+    "required_installed_paths": [
+      "{prefix}/bin/automake",
+      "{prefix}/share/automake-1.15.1/source/COPYING",
+      "{prefix}/share/compiler-playground/automake-1.15.1/profile.json"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1509496,
+      "extract": true,
+      "id": "automake-1.15.1",
+      "material_path": "sources/automake-1.15.1",
+      "sha256": "af6ba39142220687c500f79b4aa2f181d9b24e4f8d8ec497cea4ba26c64bedaf",
+      "strip_root": true,
+      "url": "https://ftp.gnu.org/gnu/automake/automake-1.15.1.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "export CPG_AUTOCONF_PREFIX=\"{dependencies.autoconf-2.69.prefix}\""
+    ],
+    "documentation": [
+      "https://gcc.gnu.org/install/prerequisites.html"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/automake' --version",
+        "description": "Run the recorded version check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/automake-1.15.1",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Source and binary profiles are genuine configure/make/install products of the original GNU release. They are generated/interpreted tools, not native machine-code builds.",
+      "Perl and m4 execute only the exact private closure. The host package database is not modified.",
+      "Original source files, all complete original dependency DEBs, licenses and an explicit runtime projection record are retained. Two original non-runtime dangling links are retained inside their DEBs but not expanded in the runtime tree.",
+      "Set CPG_AUTOCONF_PREFIX to the independently managed, exact autoconf-2.69 dependency prefix before invoking these tools directly; package-manager checks pass the resolved dependency explicitly."
+    ],
+    "summary": "Regenerate GCC build-system files using the exact upstream-required historical version without replacing the distro tools."
+  },
+  "version": "1.15.1"
+}

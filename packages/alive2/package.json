@@ -1,0 +1,266 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "alive2-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "alive2",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1180224,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Correctness",
+        "Translation validation"
+      ],
+      "container_strategy": "Use an isolated dev-only validator installation with the pinned verifier LLVM; store proof obligations and validator command lines beside each compiler checkpoint.",
+      "dependencies": [
+        "apt.cmake",
+        "apt.libhiredis-dev",
+        "apt.ninja-build",
+        "apt.re2c",
+        "llvm-verifier-source",
+        "z3"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "build_argv": [
+          "cmake",
+          "--build",
+          "{build}",
+          "--parallel",
+          "{jobs}"
+        ],
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DBUILD_TV=ON",
+          "-DLLVM_DIR={dependency_prefix:llvm-verifier-source}/lib/cmake/llvm",
+          "-DZ3_INCLUDE_DIR={dependency_prefix:z3}/include",
+          "-DZ3_LIBRARIES={dependency_prefix:z3}/lib/libz3.so"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{build}/alive-tv",
+          "--help"
+        ],
+        "source_dependencies": [
+          "z3",
+          "llvm-verifier-source"
+        ],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "re2c",
+          "libhiredis-dev"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/AliveToolkit/alive2"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/alive2.measurement.json",
+        "workspace-evidence/resources-v050/open-research/alive2.refs.json"
+      ],
+      "extract": true,
+      "id": "alive2",
+      "immutable_ref": "c9af7dbb503878554aefafddba5889ccab237503",
+      "kind": "source_archive",
+      "legacy_source_id": "alive2",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/alive2",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Check refinement of LLVM IR transformations and retain proof, counterexample, timeout and unsupported outcomes separately.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Latest Alive2 targets LLVM main; compatibility with the primary LLVM 23 compiler is not implied.",
+        "Loop bounds, unsupported semantics and solver timeouts prevent whole-compiler correctness claims.",
+        "The tuple needs known-valid and known-invalid smoke controls; --help is not a semantic qualification."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "479045c04df1269a0aad5002e1842dbcdc89a9abab6cebd6c0670f3f0cfdf275",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/AliveToolkit/alive2",
+        "https://codeload.github.com/AliveToolkit/alive2/tar.gz/c9af7dbb503878554aefafddba5889ccab237503",
+        "https://github.com/AliveToolkit/alive2/commit/c9af7dbb503878554aefafddba5889ccab237503"
+      ],
+      "source_logical_bytes": 2789204,
+      "source_url": "https://codeload.github.com/AliveToolkit/alive2/tar.gz/c9af7dbb503878554aefafddba5889ccab237503",
+      "title": "Alive2 translation validator",
+      "upstream": "https://github.com/AliveToolkit/alive2",
+      "version": "commit-c9af7dbb5038"
+    },
+    "catalog_sha256": "311ff0230b6c57c84df60cfa8058cc7cc372c30519cf8aacee87c78a8e5e3f23"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 1180224,
+      "extract": true,
+      "id": "alive2",
+      "material_path": "sources/alive2",
+      "sha256": "479045c04df1269a0aad5002e1842dbcdc89a9abab6cebd6c0670f3f0cfdf275",
+      "strip_root": true,
+      "url": "https://codeload.github.com/AliveToolkit/alive2/tar.gz/c9af7dbb503878554aefafddba5889ccab237503"
+    },
+    "adapter": "corpus",
+    "build_argv": [
+      "cmake",
+      "--build",
+      "{build}",
+      "--parallel",
+      "{jobs}"
+    ],
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DBUILD_TV=ON",
+      "-DLLVM_DIR={dependency_prefix:llvm-verifier-source}/lib/cmake/llvm",
+      "-DZ3_INCLUDE_DIR={dependency_prefix:z3}/include",
+      "-DZ3_LIBRARIES={dependency_prefix:z3}/lib/libz3.so"
+    ],
+    "content_scope_audit_sha256": "856212f23d705628f296f9ff14f996cffc1f6668c7fd94f07aa44579e1903c27",
+    "dataset_content_complete": false,
+    "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+    "material_profile_dependency_mapping": {
+      "build": "Original native/tool build dependencies preserved but not executed by material installation",
+      "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+      "system": "Only apt.python3 is used for all-file material verification"
+    },
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [
+        "llvm-verifier-source",
+        "z3"
+      ],
+      "system": [
+        "apt.cmake",
+        "apt.libhiredis-dev",
+        "apt.ninja-build",
+        "apt.re2c"
+      ]
+    },
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.clang-format"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "smoke_argv": [
+      "{build}/alive-tv",
+      "--help"
+    ],
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+    "source_dependencies": [
+      "z3",
+      "llvm-verifier-source"
+    ],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "re2c",
+      "libhiredis-dev"
+    ],
+    "unfetched_submodule_declarations": 0,
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1180224,
+      "extract": true,
+      "id": "alive2",
+      "material_path": "sources/alive2",
+      "sha256": "479045c04df1269a0aad5002e1842dbcdc89a9abab6cebd6c0670f3f0cfdf275",
+      "strip_root": true,
+      "url": "https://codeload.github.com/AliveToolkit/alive2/tar.gz/c9af7dbb503878554aefafddba5889ccab237503"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/AliveToolkit/alive2"
+    ],
+    "examples": [
+      {
+        "command": "'{build}/alive-tv' --help",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+    ],
+    "summary": "Check refinement of LLVM IR transformations and retain proof, counterexample, timeout and unsupported outcomes separately."
+  },
+  "version": "commit-c9af7dbb5038"
+}

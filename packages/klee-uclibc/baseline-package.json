@@ -1,0 +1,158 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.clang-18",
+      "apt.llvm-18-dev",
+      "apt.make"
+    ]
+  },
+  "id": "klee-uclibc",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 2938422,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Correctness",
+        "Symbolic runtimes"
+      ],
+      "container_strategy": "Build with the same Clang/LLVM major as KLEE and keep bitcode outside the target native runtime path.",
+      "dependencies": [
+        "apt.clang-18",
+        "apt.llvm-18-dev",
+        "apt.make"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "build_argv": [
+          "make",
+          "-j{jobs}"
+        ],
+        "configure_argv": [
+          "{source}/configure",
+          "--make-llvm-lib",
+          "--with-llvm-config=/usr/bin/llvm-config-18",
+          "--with-cc=/usr/bin/clang-18"
+        ],
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [
+          "clang-18",
+          "llvm-18-dev",
+          "make"
+        ],
+        "working_directory": "{source}"
+      },
+      "documentation": [
+        "https://github.com/klee/klee-uclibc"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/klee-uclibc.measurement.json",
+        "workspace-evidence/resources-v050/open-research/klee-uclibc.refs.json"
+      ],
+      "extract": true,
+      "id": "klee-uclibc",
+      "immutable_ref": "955d502cc1f0688e82348304b053ad787056c754",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "LGPL-2.1-or-later",
+      "mandatory": false,
+      "material_path": "sources/klee-uclibc",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Supply modeled libc bitcode for KLEE POSIX and C execution.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "A release tag is pinned, but compatibility with KLEE 3.3 and LLVM 18 must be checked through POSIX regression tests."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "f48a4112467ddbf706f4c8c9812cd4da93f5ef2d045e8b60da5d672212b0cfff",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/klee/klee-uclibc",
+        "https://codeload.github.com/klee/klee-uclibc/tar.gz/955d502cc1f0688e82348304b053ad787056c754",
+        "https://github.com/klee/klee-uclibc/commit/955d502cc1f0688e82348304b053ad787056c754"
+      ],
+      "source_logical_bytes": 13060277,
+      "source_url": "https://codeload.github.com/klee/klee-uclibc/tar.gz/955d502cc1f0688e82348304b053ad787056c754",
+      "title": "KLEE-uClibc bitcode runtime",
+      "upstream": "https://github.com/klee/klee-uclibc",
+      "version": "klee_uclibc_v1.4"
+    },
+    "catalog_sha256": "b7f24eb9d1be86ae0500048085b9783ccf17185a67ddd7eeeb202de53ad94d4c"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "build_argv": [
+      "make",
+      "-j{jobs}"
+    ],
+    "configure_argv": [
+      "{source}/configure",
+      "--make-llvm-lib",
+      "--with-llvm-config=/usr/bin/llvm-config-18",
+      "--with-cc=/usr/bin/clang-18"
+    ],
+    "qualified": false,
+    "source_dependencies": [],
+    "system_packages": [
+      "clang-18",
+      "llvm-18-dev",
+      "make"
+    ],
+    "working_directory": "{source}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2938422,
+      "extract": true,
+      "id": "klee-uclibc",
+      "material_path": "sources/klee-uclibc",
+      "sha256": "f48a4112467ddbf706f4c8c9812cd4da93f5ef2d045e8b60da5d672212b0cfff",
+      "strip_root": true,
+      "url": "https://codeload.github.com/klee/klee-uclibc/tar.gz/955d502cc1f0688e82348304b053ad787056c754"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/klee/klee-uclibc"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/klee-uclibc",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Supply modeled libc bitcode for KLEE POSIX and C execution."
+  },
+  "version": "klee_uclibc_v1.4"
+}

@@ -1,0 +1,170 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "java",
+        "-jar",
+        "{prefix}/perses_deploy.jar",
+        "--help"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.openjdk-17-jdk",
+      "apt.unzip",
+      "apt.zip"
+    ]
+  },
+  "id": "perses",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 289594951,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Correctness",
+        "Failure reduction"
+      ],
+      "container_strategy": "Use a pinned JDK and Bazel dependency cache; install the built reducer JAR and grammar assets in dev.",
+      "dependencies": [
+        "apt.openjdk-17-jdk",
+        "apt.unzip",
+        "apt.zip"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "smoke_argv": [
+          "java",
+          "-jar",
+          "{prefix}/perses_deploy.jar",
+          "--help"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "openjdk-17-jdk",
+          "zip",
+          "unzip"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/uw-pluverse/perses"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/perses.measurement.json",
+        "workspace-evidence/resources-v050/open-research/perses.refs.json"
+      ],
+      "extract": true,
+      "id": "perses",
+      "immutable_ref": "f51b6c5d764b03f0e1b20557b817e13b7f52a0c1",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "GPL-3.0-or-later",
+      "mandatory": false,
+      "material_path": "sources/perses",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Grammar-aware reduction for structured compiler failure inputs beyond plain C/C++ token deletion.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Bazel external repositories and Maven artifacts must be mirrored and checksummed before build.",
+        "The measured root archive includes substantial regression material; expose only allowed development material under the split policy."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "05a647d1a9eb88ee6e2bf5d72e411045bf72d290c87c2fee60eac7743694c0e7",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/uw-pluverse/perses",
+        "https://codeload.github.com/uw-pluverse/perses/tar.gz/f51b6c5d764b03f0e1b20557b817e13b7f52a0c1",
+        "https://github.com/uw-pluverse/perses/commit/f51b6c5d764b03f0e1b20557b817e13b7f52a0c1"
+      ],
+      "source_logical_bytes": 1021441589,
+      "source_url": "https://codeload.github.com/uw-pluverse/perses/tar.gz/f51b6c5d764b03f0e1b20557b817e13b7f52a0c1",
+      "title": "Perses syntax-guided reducer",
+      "upstream": "https://github.com/uw-pluverse/perses",
+      "version": "v2.7"
+    },
+    "catalog_sha256": "b0dd3f9371f4bf8fdc309c9d4cf7f393129fe5960bab0de5154b41f2b375663d"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "qualified": false,
+    "smoke_argv": [
+      "java",
+      "-jar",
+      "{prefix}/perses_deploy.jar",
+      "--help"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "openjdk-17-jdk",
+      "zip",
+      "unzip"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 289594951,
+      "extract": true,
+      "id": "perses",
+      "material_path": "sources/perses",
+      "sha256": "05a647d1a9eb88ee6e2bf5d72e411045bf72d290c87c2fee60eac7743694c0e7",
+      "strip_root": true,
+      "url": "https://codeload.github.com/uw-pluverse/perses/tar.gz/f51b6c5d764b03f0e1b20557b817e13b7f52a0c1"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/uw-pluverse/perses"
+    ],
+    "examples": [
+      {
+        "command": "java -jar '{prefix}/perses_deploy.jar' --help",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/perses",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Grammar-aware reduction for structured compiler failure inputs beyond plain C/C++ token deletion."
+  },
+  "version": "v2.7"
+}

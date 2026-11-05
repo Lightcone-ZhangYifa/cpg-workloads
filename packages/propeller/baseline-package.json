@@ -1,0 +1,202 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{build}/propeller/generate_propeller_profiles",
+        "--help"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.clang",
+      "apt.cmake",
+      "apt.libdw-dev",
+      "apt.libelf-dev",
+      "apt.libprotobuf-dev",
+      "apt.ninja-build",
+      "apt.protobuf-compiler"
+    ]
+  },
+  "id": "propeller",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 3429327,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Optimization search",
+        "Profile-guided optimization"
+      ],
+      "container_strategy": "Use target-collected profile and exact binary metadata, run profile generation and relinking in dev, then transfer the final optimized executable to target.",
+      "dependencies": [
+        "apt.clang",
+        "apt.cmake",
+        "apt.libdw-dev",
+        "apt.libelf-dev",
+        "apt.libprotobuf-dev",
+        "apt.ninja-build",
+        "apt.protobuf-compiler"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{build}/propeller/generate_propeller_profiles",
+          "--help"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "clang",
+          "libelf-dev",
+          "libdw-dev",
+          "libprotobuf-dev",
+          "protobuf-compiler"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/google/llvm-propeller"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/propeller.measurement.json",
+        "workspace-evidence/resources-v050/open-research/propeller.refs.json"
+      ],
+      "extract": true,
+      "id": "propeller",
+      "immutable_ref": "ddfb8b7cbdb87b0cbacff5ed993adb09a6999174",
+      "kind": "source_archive",
+      "legacy_source_id": "propeller",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "sources/propeller",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Generate compiler/linker profiles for basic-block and function layout optimization of large applications.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "CMake/Bazel dependency closure and compatible LLVM/LLD features must be frozen rather than running the README's unpinned LLVM installer.",
+        "Basic-block section, build-ID, profile and final linked binary provenance must be retained.",
+        "Post-link layout gains require a separate train profile and held-out runtime evaluation."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "b3b2db416f69acaa744218798eb8b5828854eed18da56fdd06766a2eb9b79dcb",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/google/llvm-propeller",
+        "https://codeload.github.com/google/llvm-propeller/tar.gz/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174",
+        "https://github.com/google/llvm-propeller/commit/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174"
+      ],
+      "source_logical_bytes": 78096128,
+      "source_url": "https://codeload.github.com/google/llvm-propeller/tar.gz/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174",
+      "title": "LLVM Propeller profile-guided layout",
+      "upstream": "https://github.com/google/llvm-propeller",
+      "version": "commit-ddfb8b7cbdb8"
+    },
+    "catalog_sha256": "62781e7fdb1a5b64a3a9d2cecdbd12f8a5ae3663535721f23f258887119b90f2"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release"
+    ],
+    "qualified": false,
+    "smoke_argv": [
+      "{build}/propeller/generate_propeller_profiles",
+      "--help"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "clang",
+      "libelf-dev",
+      "libdw-dev",
+      "libprotobuf-dev",
+      "protobuf-compiler"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3429327,
+      "extract": true,
+      "id": "propeller",
+      "material_path": "sources/propeller",
+      "sha256": "b3b2db416f69acaa744218798eb8b5828854eed18da56fdd06766a2eb9b79dcb",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/llvm-propeller/tar.gz/ddfb8b7cbdb87b0cbacff5ed993adb09a6999174"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/google/llvm-propeller"
+    ],
+    "examples": [
+      {
+        "command": "'{build}/propeller/generate_propeller_profiles' --help",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/propeller",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Generate compiler/linker profiles for basic-block and function layout optimization of large applications."
+  },
+  "version": "commit-ddfb8b7cbdb8"
+}

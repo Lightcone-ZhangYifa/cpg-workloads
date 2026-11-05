@@ -1,0 +1,190 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-c",
+        "import xml.etree.ElementTree as E,sys; root=E.parse(sys.argv[1]).getroot(); assert root.tag == \"root\"",
+        "{prefix}/instructions.xml"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "functional",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "uops-info-instructions",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 142716664,
+      "build_peak_bytes": null,
+      "category": [
+        "Optimization research",
+        "Instruction data"
+      ],
+      "container_strategy": "Import the exact measured XML under a reviewed data-use receipt. The upstream current URL is mutable; hash mismatch requires explicit new admission. Do not include the XML or derived instruction modules in a public image without a confirmed redistribution basis.",
+      "dependencies": [
+        "apt.python3"
+      ],
+      "deployment": {
+        "adapter": "copy",
+        "apt_dependencies": {
+          "dev": [
+            "python3"
+          ],
+          "target": []
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "data_license_admission_required": true,
+        "extract": false,
+        "install_argv": [
+          "install",
+          "-m",
+          "644",
+          "{payload}",
+          "{prefix}/instructions.xml"
+        ],
+        "install_roles": [
+          "dev"
+        ],
+        "probe_requires_host": [],
+        "smoke_argv": [
+          "/usr/bin/python3",
+          "-c",
+          "import xml.etree.ElementTree as E,sys; root=E.parse(sys.argv[1]).getroot(); assert root.tag == \"root\"",
+          "{prefix}/instructions.xml"
+        ],
+        "state": "local-data-license-receipt-required"
+      },
+      "documentation": "https://uops.info/background.html",
+      "extract": false,
+      "filename": "instructions.xml",
+      "id": "uops-info-instructions",
+      "immutable_ref": "sha256:e5e702caaf04c4fc1f75192a9bbe4d8554b3e174f7933a14d124cc33ca677ab3",
+      "installed_bytes": null,
+      "kind": "vendor-local",
+      "license_class": "restricted",
+      "license_evidence_status": "No explicit redistribution grant located; requires review.",
+      "license_id": "NOASSERTION",
+      "mandatory": false,
+      "material_path": "payloads/uops-info-instructions",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Provide instruction latency, throughput, port usage and operand data as a fixed local input to uiCA and model validation.",
+      "qualification_gaps": [
+        "No explicit data redistribution license was located in the reviewed primary site documentation. Public download availability is not an open-license grant.",
+        "Data mixes microbenchmark measurements and IACA-derived results; retain their provenance and requested CPU model.",
+        "Instruction data does not define a missing uiCA pipeline model and does not replace actual-host measurements."
+      ],
+      "redistributable": false,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "e5e702caaf04c4fc1f75192a9bbe4d8554b3e174f7933a14d124cc33ca677ab3",
+      "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+      "size_evidence": "workspace-evidence/resources-v050/platform-research/instruction-model-measurements.json",
+      "source_evidence": [
+        "https://uops.info/xml.html",
+        "https://uops.info/background.html"
+      ],
+      "source_url": "https://uops.info/instructions.xml",
+      "supplier_last_modified": "Sun, 29 Mar 2026 17:28:39 GMT",
+      "title": "uops.info instruction measurement XML",
+      "upstream": "https://uops.info/xml.html",
+      "version": "2026-03-29"
+    },
+    "catalog_sha256": "940ab9180b2a70688cf0c01d66571b7f09331ce5180b881cca57d9cf5e4ba743"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "apt_dependencies": {
+      "dev": [
+        "python3"
+      ],
+      "target": []
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "data_license_admission_required": true,
+    "extract": false,
+    "install_argv": [
+      "install",
+      "-m",
+      "644",
+      "{payload}",
+      "{prefix}/instructions.xml"
+    ],
+    "install_roles": [
+      "dev"
+    ],
+    "probe_requires_host": [],
+    "smoke_argv": [
+      "/usr/bin/python3",
+      "-c",
+      "import xml.etree.ElementTree as E,sys; root=E.parse(sys.argv[1]).getroot(); assert root.tag == \"root\"",
+      "{prefix}/instructions.xml"
+    ],
+    "state": "local-data-license-receipt-required"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 142716664,
+      "extract": false,
+      "id": "uops-info-instructions",
+      "material_path": "payloads/uops-info-instructions",
+      "sha256": "e5e702caaf04c4fc1f75192a9bbe4d8554b3e174f7933a14d124cc33ca677ab3",
+      "strip_root": true,
+      "url": "https://uops.info/instructions.xml"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://uops.info/background.html"
+    ],
+    "examples": [
+      {
+        "command": "/usr/bin/python3 -c 'import xml.etree.ElementTree as E,sys; root=E.parse(sys.argv[1]).getroot(); assert root.tag == \"root\"' '{prefix}/instructions.xml'",
+        "description": "Run the recorded functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/payloads/uops-info-instructions",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Provide instruction latency, throughput, port usage and operand data as a fixed local input to uiCA and model validation."
+  },
+  "version": "2026-03-29"
+}

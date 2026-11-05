@@ -1,0 +1,135 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "llvm-release",
+      "py.opt-viewer.pyyaml",
+      "py.opt-viewer.pygments"
+    ],
+    "system": [
+      "apt.binutils"
+    ]
+  },
+  "id": "llvm-feature.optimization-remarks",
+  "metadata": {
+    "catalog": {
+      "agent_usage_notes": [
+        "Run all three scripts with the opt-viewer venv interpreter; do not mix their companion modules across LLVM revisions.",
+        "Use source directory mapping for source-linked HTML and keep c++filt available.",
+        "The observed opt-stats count is unique records with DebugLoc; raw duplicate and locationless records are excluded.",
+        "opt-diff can emit no output file for identical input; its absence then is a valid empty diff, not automatically an infrastructure failure.",
+        "Optional guppy heap profiling is not provided by this core capsule."
+      ],
+      "archive_bytes": null,
+      "category": [
+        "Community development",
+        "LLVM source capabilities"
+      ],
+      "dependencies": [
+        "llvm-release",
+        "py.opt-viewer.pyyaml",
+        "py.opt-viewer.pygments",
+        "apt.binutils"
+      ],
+      "deployment": {
+        "adapter": "virtual",
+        "state": "parent-source-capability; per-build-discovery-and-workflow-qualification-required"
+      },
+      "documentation": [
+        "https://llvm.org/docs/Remarks.html"
+      ],
+      "evidence_files": [
+        "workspace-evidence/community-v070/opt-viewer-capsule/source-files.json",
+        "workspace-evidence/community-v070/opt-viewer-capsule/qualification.json"
+      ],
+      "id": "llvm-feature.optimization-remarks",
+      "immutable_ref": "parent-resource:llvm-release",
+      "installed_bytes": null,
+      "kind": "virtual",
+      "license_class": "open",
+      "license_id": "Parent-source-license-terms",
+      "mandatory": false,
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Capture optimization-record YAML and analyze missed/successful transformations with the built-in viewer, stats, diff and remark tools.",
+      "qualification": {
+        "container_qualified": false,
+        "core_synthetic_fixture_qualified": true,
+        "optional_guppy_heap_profiling_qualified": false,
+        "real_compiler_record_integration_qualified": false,
+        "scope": "Offline core functionality passed for unmodified pinned upstream tools on labeled synthetic fixtures; container and real compiler-record integration remain unqualified."
+      },
+      "qualification_gaps": [
+        "Use cpg-upstream tools to discover paths in the actual checkout/build; source availability alone is not execution qualification."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": null,
+      "size_basis": "Already contained in the selected parent source/build; no duplicated payload budget.",
+      "source_evidence": [
+        "https://llvm.org/docs/Remarks.html"
+      ],
+      "source_logical_bytes": null,
+      "source_paths": [
+        "llvm/tools/opt-viewer",
+        "llvm/tools/llvm-remarkutil",
+        "llvm/tools/llvm-opt-report"
+      ],
+      "title": "LLVM optimization remarks and opt-viewer",
+      "verified_component": {
+        "additional_source_archive_bytes": 0,
+        "component_files": [
+          "opt-diff.py",
+          "opt-stats.py",
+          "opt-viewer.py",
+          "optpmap.py",
+          "optrecord.py",
+          "style.css"
+        ],
+        "existing_source": "llvm-release",
+        "install_location": "${CMAKE_INSTALL_DATADIR}/opt-viewer",
+        "install_target": "install-opt-viewer",
+        "installed_component": "opt-viewer",
+        "python_environment": "opt-viewer",
+        "roles": [
+          "dev"
+        ],
+        "source_commit": "7a941dfb2877a0b8cf30323fefa85ad019e0b0f5"
+      },
+      "version": "Parent source identity"
+    },
+    "catalog_sha256": "507dbf1ae511f63cbfe929e6f8caf88da8440887c5959939bc617ea6ded8be0a"
+  },
+  "provider": "meta",
+  "recipe": {
+    "adapter": "virtual",
+    "state": "parent-source-capability; per-build-discovery-and-workflow-qualification-required"
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://llvm.org/docs/Remarks.html"
+    ],
+    "examples": [],
+    "locations": [],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Capture optimization-record YAML and analyze missed/successful transformations with the built-in viewer, stats, diff and remark tools."
+  },
+  "version": "Parent source identity"
+}

@@ -1,0 +1,254 @@
+{
+  "build": "3",
+  "checks": [
+    {
+      "id": "openblas-shared",
+      "kind": "functional",
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--case",
+        "shared"
+      ],
+      "cwd": "{prefix}",
+      "requires_commands": [
+        "/usr/bin/python3",
+        "/usr/bin/gcc"
+      ],
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 300
+    },
+    {
+      "id": "openblas-static",
+      "kind": "functional",
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--case",
+        "static"
+      ],
+      "cwd": "{prefix}",
+      "requires_commands": [
+        "/usr/bin/python3",
+        "/usr/bin/gcc"
+      ],
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 300
+    },
+    {
+      "id": "openblas-cli",
+      "kind": "functional",
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--case",
+        "cli"
+      ],
+      "cwd": "{prefix}",
+      "requires_commands": [
+        "/usr/bin/python3",
+        "/usr/bin/gcc"
+      ],
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.gcc",
+      "apt.make",
+      "apt.python3"
+    ]
+  },
+  "id": "openblas",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 25363263,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "SIMD and numerics"
+      ],
+      "container_strategy": "Build a declared target and threading configuration in dev; preserve Fortran and OpenMP runtime closure in target.",
+      "corpus_contract": {
+        "code": "BLAS/LAPACK implementation and tests included.",
+        "inputs": "Frozen numerical matrices and operation parameters.",
+        "oracle": "LAPACK/BLAS residual checks and independent references.",
+        "split_unit": "Numerical algorithm family across data shapes."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/OpenMathLib/OpenBLAS"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/openblas.measurement.json",
+        "workspace-evidence/resources-v050/open-research/openblas.refs.json"
+      ],
+      "extract": true,
+      "id": "openblas",
+      "immutable_ref": "e0166008be8e466242aa76b2ff75ce3f0fbf574a",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "corpora/openblas",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Fortran/C numerical routines, LAPACK, dense kernels and runtime dispatch coverage.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Dynamic architecture selection, handwritten assembly and BLAS worker counts must be explicitly controlled.",
+        "Numerical tests and problem-conditioning policy are required before interpreting speedups."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "b35b87e3580efc61a664248f143172fd998116c109fee790cd372480c64492a2",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/OpenMathLib/OpenBLAS",
+        "https://codeload.github.com/OpenMathLib/OpenBLAS/tar.gz/e0166008be8e466242aa76b2ff75ce3f0fbf574a",
+        "https://github.com/OpenMathLib/OpenBLAS/commit/e0166008be8e466242aa76b2ff75ce3f0fbf574a"
+      ],
+      "source_logical_bytes": 184435567,
+      "source_url": "https://codeload.github.com/OpenMathLib/OpenBLAS/tar.gz/e0166008be8e466242aa76b2ff75ce3f0fbf574a",
+      "title": "OpenBLAS numerical library workload",
+      "upstream": "https://github.com/OpenMathLib/OpenBLAS",
+      "version": "v0.3.34"
+    },
+    "catalog_sha256": "d908071da69062dead3747a78688599d009411004a221a31c0b081cf0cb1e84f"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "make",
+    "qualified": false,
+    "commands": [
+      [
+        "/usr/bin/python3",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "working_directory": "{build}",
+    "source_dependencies": [],
+    "system_packages": [
+      "gcc",
+      "make",
+      "python3"
+    ],
+    "required_installed_paths": [
+      "{prefix}/include/cblas.h",
+      "{prefix}/lib/libopenblas.so",
+      "{prefix}/lib/libopenblas.a",
+      "{prefix}/bin/openblas-cpg-probe",
+      "{prefix}/share/compiler-playground/openblas/profile.json"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 25363263,
+      "extract": true,
+      "id": "openblas",
+      "material_path": "corpora/openblas",
+      "sha256": "b35b87e3580efc61a664248f143172fd998116c109fee790cd372480c64492a2",
+      "strip_root": true,
+      "url": "https://codeload.github.com/OpenMathLib/OpenBLAS/tar.gz/e0166008be8e466242aa76b2ff75ce3f0fbf574a"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "summary": "Build the fixed single-worker NEHALEM LP64 OpenBLAS/CBLAS library and retain complete upstream materials.",
+    "documentation": [
+      "https://github.com/OpenMathLib/OpenBLAS"
+    ],
+    "locations": [
+      {
+        "label": "C BLAS headers",
+        "path": "{prefix}/include",
+        "purpose": "Public CBLAS and configuration headers."
+      },
+      {
+        "label": "Shared and static libraries",
+        "path": "{prefix}/lib",
+        "purpose": "Link the selected independent prefix explicitly."
+      },
+      {
+        "label": "Original materials",
+        "path": "{prefix}/share/openblas/source",
+        "purpose": "Complete unmodified upstream tree, including LAPACK sources, tests, inputs, references and license."
+      },
+      {
+        "label": "Qualification probe",
+        "path": "{prefix}/bin/openblas-cpg-probe",
+        "purpose": "Project-built diagnostic CLI; not an upstream OpenBLAS command."
+      }
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/openblas-cpg-probe' --self-test",
+        "description": "Run the installed numerical and error-handler checks."
+      }
+    ],
+    "notes": [
+      "NEHALEM fixed kernels; LP64; sequential with locking; all four real/complex BLAS and CBLAS types; no LAPACK/LAPACKE, Fortran compiler or OpenMP runtime",
+      "Runtime relocation is tested with explicit-prefix include/library paths and the project probe RPATH on the observed Ubuntu 24.04 x86_64 ABI.",
+      "Generated upstream CMake/pkg-config default prefix metadata is retained but not part of the relocation qualification.",
+      "Full pinned APT dependency-closure deployment is not claimed; declared gcc/make/python packages and actual runtime library identities are checked.",
+      "LAPACK/LAPACKE execution and Fortran compiler builds",
+      "Dynamic architecture dispatch, CPUs without NEHALEM ISA features, ILP64 and multithreaded/OpenMP configurations",
+      "Full upstream matrix including other architectures and optional numerical types",
+      "General CMake/pkg-config metadata relocation",
+      "Official performance scores, hardware counters, OCI and cross-platform/ABI deployment",
+      "Pinned upstream CBLAS complex level-2 error-exit tests route gerc to geru via a 10-character comparison; these two missing upstream branches are reported separately. The installed project consumer independently verifies invalid-lda rejection in both cgerc and zgerc."
+    ]
+  },
+  "version": "v0.3.34"
+}

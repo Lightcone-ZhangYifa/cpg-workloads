@@ -1,0 +1,125 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "hmmer",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 11925745,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Scientific applications"
+      ],
+      "container_strategy": "Build HMMER with the matching Easel source in dev, freeze CPU implementation and execute versioned model/sequence datasets on target.",
+      "corpus_contract": {
+        "code": "HMMER source; matching Easel closure is required.",
+        "inputs": "Versioned HMM models and sequence databases with separate licenses.",
+        "oracle": "Search score/hit validation using an independent frozen reference and declared tolerances.",
+        "split_unit": "Application family; biological dataset families are a separate axis."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/EddyRivasLab/hmmer"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/hmmer.measurement.json",
+        "workspace-evidence/resources-v050/open-research/hmmer.refs.json"
+      ],
+      "extract": true,
+      "id": "hmmer",
+      "immutable_ref": "9acd8b6758a0ca5d21db6d167e0277484341929b",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "corpora/hmmer",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Representative scientific application with dynamic programming, vectorization and biological sequence search.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Git snapshots may omit the Easel dependency included by release workflows; lock it explicitly.",
+        "Biological database/model version, input distribution and scientific result tolerance must be declared."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "0f25b2dd974dd4b74b985879e6f83878f3870ed40e83ab24fe37cb08d7c77061",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/EddyRivasLab/hmmer",
+        "https://codeload.github.com/EddyRivasLab/hmmer/tar.gz/9acd8b6758a0ca5d21db6d167e0277484341929b",
+        "https://github.com/EddyRivasLab/hmmer/commit/9acd8b6758a0ca5d21db6d167e0277484341929b"
+      ],
+      "source_logical_bytes": 18755986,
+      "source_url": "https://codeload.github.com/EddyRivasLab/hmmer/tar.gz/9acd8b6758a0ca5d21db6d167e0277484341929b",
+      "title": "HMMER sequence-analysis workload",
+      "upstream": "https://github.com/EddyRivasLab/hmmer",
+      "version": "hmmer-3.4"
+    },
+    "catalog_sha256": "43f5658ea2c76b0a6e9ec13616488d567c33ab999f9a5947ff84695def1fcc5c"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 11925745,
+      "extract": true,
+      "id": "hmmer",
+      "material_path": "corpora/hmmer",
+      "sha256": "0f25b2dd974dd4b74b985879e6f83878f3870ed40e83ab24fe37cb08d7c77061",
+      "strip_root": true,
+      "url": "https://codeload.github.com/EddyRivasLab/hmmer/tar.gz/9acd8b6758a0ca5d21db6d167e0277484341929b"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/EddyRivasLab/hmmer"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/corpora/hmmer",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Representative scientific application with dynamic programming, vectorization and biological sequence search."
+  },
+  "version": "hmmer-3.4"
+}

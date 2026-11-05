@@ -1,0 +1,182 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "intel-oneapi",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 2235065401,
+      "build_peak_bytes": null,
+      "category": [
+        "Toolchains",
+        "Vendor bundles"
+      ],
+      "container_strategy": "Use the unified selection manifest and a private local vendor overlay. Never publish payloads without component-specific redistribution clearance; no automatic license acceptance.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "vendor-local",
+        "admission_driver": "tools/vendor.py",
+        "apt_dependencies": {
+          "dev": [],
+          "target": []
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "executable_qualified": false,
+        "install_argv": [],
+        "install_roles": [
+          "dev"
+        ],
+        "installation_requires_reviewed_receipt": true,
+        "probe_requires_host": [],
+        "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+        "reference_invocation_only": true,
+        "reference_invocations": [
+          [
+            "sh",
+            "{payload}",
+            "-a",
+            "--silent",
+            "--cli",
+            "--eula",
+            "accept",
+            "--install-dir",
+            "{prefix}"
+          ]
+        ],
+        "reference_invocations_require_review": true,
+        "smoke_argv": [],
+        "state": "local-license-payload-required"
+      },
+      "documentation": "https://www.intel.com/content/www/us/en/developer/tools/oneapi/oneapi-toolkit-download.html?distributions=webdownload&operatingsystem=linux&options=offline",
+      "extract": false,
+      "id": "intel-oneapi",
+      "immutable_ref": "vendor-release:2026.1.1.33",
+      "installed_bytes": null,
+      "kind": "vendor-local",
+      "license_class": "restricted",
+      "license_id": "LicenseRef-intel-oneapi",
+      "mandatory": false,
+      "material_path": "payloads/intel-oneapi",
+      "presets": [
+        "all"
+      ],
+      "provides_components": [
+        "icx",
+        "icpx",
+        "ifx",
+        "vtune",
+        "CPU vendor libraries"
+      ],
+      "purpose": "CPU compiler, Fortran compiler, vendor numerical runtimes and VTune reference environment.",
+      "qualification_gaps": [
+        "A licensed local payload, exact delivered build identity, SHA-256, accepted license receipt and reviewed silent installation recipe are required.",
+        "The selected resource remains blocked until installation and real component probes succeed.",
+        "oneDAL requires a separate payload; Advisor and Inspector are not included in the current toolkit.",
+        "Do not copy the full compiler-containing toolkit to the target runtime image. Component inventories must prevent duplicate standalone installs.",
+        "Bundled component versions must be read from the actual toolkit inventory; the selected standalone VTune or oneMKL version is not assumed to match."
+      ],
+      "redistributable": false,
+      "roles": [
+        "dev"
+      ],
+      "sha256": null,
+      "size_basis": "Official fixed installer HTTP Content-Length; complete local payload and SHA-256 not yet measured.",
+      "source_evidence": [
+        "https://www.intel.com/content/www/us/en/developer/tools/oneapi/oneapi-toolkit-download.html?distributions=webdownload&operatingsystem=linux&options=offline",
+        "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/5996e26b-f48a-42b1-8db0-b002ad0bd8d7/intel-oneapi-toolkit-2026.1.1.33_offline.sh"
+      ],
+      "source_url": "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/5996e26b-f48a-42b1-8db0-b002ad0bd8d7/intel-oneapi-toolkit-2026.1.1.33_offline.sh",
+      "title": "Intel oneAPI Toolkit",
+      "upstream": "https://www.intel.com/content/www/us/en/developer/tools/oneapi/oneapi-toolkit-download.html?distributions=webdownload&operatingsystem=linux&options=offline",
+      "version": "2026.1.1.33"
+    },
+    "catalog_sha256": "1ff3a806777285dcbf5641d2dba00142e0fdd8b362dd6bd8a6b3f3f68618f44d"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "vendor-local",
+    "admission_driver": "tools/vendor.py",
+    "apt_dependencies": {
+      "dev": [],
+      "target": []
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "executable_qualified": false,
+    "install_argv": [],
+    "install_roles": [
+      "dev"
+    ],
+    "installation_requires_reviewed_receipt": true,
+    "probe_requires_host": [],
+    "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+    "reference_invocation_only": true,
+    "reference_invocations": [
+      [
+        "sh",
+        "{payload}",
+        "-a",
+        "--silent",
+        "--cli",
+        "--eula",
+        "accept",
+        "--install-dir",
+        "{prefix}"
+      ]
+    ],
+    "reference_invocations_require_review": true,
+    "smoke_argv": [],
+    "state": "local-license-payload-required"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2235065401,
+      "extract": false,
+      "id": "intel-oneapi",
+      "material_path": "payloads/intel-oneapi",
+      "sha256": null,
+      "strip_root": true,
+      "url": "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/5996e26b-f48a-42b1-8db0-b002ad0bd8d7/intel-oneapi-toolkit-2026.1.1.33_offline.sh"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.intel.com/content/www/us/en/developer/tools/oneapi/oneapi-toolkit-download.html?distributions=webdownload&operatingsystem=linux&options=offline"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/payloads/intel-oneapi",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "CPU compiler, Fortran compiler, vendor numerical runtimes and VTune reference environment."
+  },
+  "version": "2026.1.1.33"
+}

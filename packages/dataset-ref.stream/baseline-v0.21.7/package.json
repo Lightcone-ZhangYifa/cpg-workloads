@@ -1,0 +1,175 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "dataset-ref.stream-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "dataset-ref.stream",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Dataset research",
+        "Benchmarks and inputs"
+      ],
+      "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+      "dataset_card_id": "stream",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "requires_controller_only_storage": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "target_exports": [],
+        "visibility_policy": "developer_selected_complete_materials",
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/jeffhammond/STREAM"
+      ],
+      "evidence_files": [
+        "workspace-evidence/datasets-v090/benchmarks/cards.json"
+      ],
+      "extract": true,
+      "id": "dataset-ref.stream",
+      "immutable_ref": "6703f7504a38a8da96b353cadafa64d3c2d7a2d3",
+      "installed_bytes": null,
+      "kind": "dataset",
+      "license_class": "review-required",
+      "license_id": "LicenseRef-STREAM",
+      "mandatory": false,
+      "material_path": "dataset-research/stream",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Calibrate target memory behavior and detect noise; not the principal training objective.",
+      "qualification": {
+        "archive_measured": false,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+        "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+        "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+        "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+        "Four memory kernels have very low semantic diversity.",
+        "Fit arrays and cache policy to the declared bandwidth regime.",
+        "Do not confuse achievable memory ceiling with optimizer success."
+      ],
+      "redistributable": "license-and-component-review-required",
+      "roles": [
+        "host"
+      ],
+      "sha256": null,
+      "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+      "source_evidence": [
+        "https://raw.githubusercontent.com/jeffhammond/STREAM/6703f7504a38a8da96b353cadafa64d3c2d7a2d3/README",
+        "https://raw.githubusercontent.com/jeffhammond/STREAM/6703f7504a38a8da96b353cadafa64d3c2d7a2d3/LICENSE.txt"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/jeffhammond/STREAM/tar.gz/6703f7504a38a8da96b353cadafa64d3c2d7a2d3",
+      "title": "STREAM research material",
+      "upstream": "https://github.com/jeffhammond/STREAM",
+      "version": "HEAD observed at retrieval; use the full recorded commit"
+    },
+    "catalog_sha256": "8e415a7b8577fbcac8e8f3ee478405f4c9ded6c5839aa3634c5448829c168674"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 13921,
+      "extract": true,
+      "id": "dataset-ref.stream",
+      "material_path": "dataset-research/stream",
+      "sha256": "977651ffb22de4f5a2fc8a0d8d647b84f3f007c0a77bbdc36ce583872b203f67",
+      "strip_root": true,
+      "url": "https://codeload.github.com/jeffhammond/STREAM/tar.gz/6703f7504a38a8da96b353cadafa64d3c2d7a2d3"
+    },
+    "adapter": "corpus",
+    "qualification_scope": "complete_static_material_availability_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.gitignore"
+    ],
+    "requires_controller_only_storage": false,
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_scope": "complete_declared_main_archive; no_gitmodules_or_lfs_pointers_observed; native_dependency_closure_not_qualified",
+    "source_dependencies": [],
+    "system_packages": [],
+    "target_exports": [],
+    "unfetched_submodule_declarations": 0,
+    "visibility_policy": "developer_selected_complete_materials",
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": true,
+      "id": "dataset-ref.stream",
+      "material_path": "dataset-research/stream",
+      "sha256": null,
+      "strip_root": true,
+      "url": "https://codeload.github.com/jeffhammond/STREAM/tar.gz/6703f7504a38a8da96b353cadafa64d3c2d7a2d3"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/jeffhammond/STREAM"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "No .gitmodules or Git LFS pointers were observed in this exact archive; native build dependencies are not qualified by this material check."
+    ],
+    "summary": "Calibrate target memory behavior and detect noise; not the principal training objective."
+  },
+  "version": "HEAD observed at retrieval; use the full recorded commit"
+}

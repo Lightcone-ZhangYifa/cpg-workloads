@@ -1,0 +1,243 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "cvc5-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "cvc5",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 8993642,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Correctness",
+        "SMT solvers"
+      ],
+      "container_strategy": "Use a separate dev prefix with an explicit feature/license profile. Prefetch CaDiCaL, SymFPU and any optional algebra/proof dependencies before building; preserve cvc5 --show-config.",
+      "dependencies": [
+        "apt.cmake",
+        "apt.libcln-dev",
+        "apt.libedit-dev",
+        "apt.libgmp-dev",
+        "apt.ninja-build",
+        "apt.python3"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "build_argv": [
+          "cmake",
+          "--build",
+          "{build}",
+          "--parallel",
+          "{jobs}"
+        ],
+        "configure_argv": [
+          "{source}/configure.sh",
+          "production",
+          "--prefix={prefix}"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{prefix}/bin/cvc5",
+          "--show-config"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "libgmp-dev",
+          "libcln-dev",
+          "libedit-dev",
+          "python3"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/cvc5/cvc5/blob/cvc5-1.4.2/INSTALL.rst"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/cvc5.measurement.json",
+        "workspace-evidence/resources-v050/open-research/cvc5.refs.json"
+      ],
+      "extract": true,
+      "id": "cvc5",
+      "immutable_ref": "282d5e0c84baf49c780704c532f87ba66d8b513d",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "sources/cvc5",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Independent SMT oracle, SyGuS synthesis and solver cross-checking for optimization proofs.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Upstream --auto-download would perform build-time network work; its dependency closure must be mirrored and locked during preparation.",
+        "Optional GPL dependency choices change the effective license profile and need manifest disclosure."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "75fcb9288da2fa75db576d1cd464529cb3e89aad66b077ac65f3164a04195433",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/cvc5/cvc5",
+        "https://codeload.github.com/cvc5/cvc5/tar.gz/282d5e0c84baf49c780704c532f87ba66d8b513d",
+        "https://github.com/cvc5/cvc5/commit/282d5e0c84baf49c780704c532f87ba66d8b513d"
+      ],
+      "source_logical_bytes": 68311641,
+      "source_url": "https://codeload.github.com/cvc5/cvc5/tar.gz/282d5e0c84baf49c780704c532f87ba66d8b513d",
+      "title": "cvc5 SMT and synthesis solver",
+      "upstream": "https://github.com/cvc5/cvc5",
+      "version": "cvc5-1.4.2"
+    },
+    "catalog_sha256": "ad7eca99a2a05c11f07d1a8a884627534554a77e44b1422e2a8be0707a109088"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 8993642,
+      "extract": true,
+      "id": "cvc5",
+      "material_path": "sources/cvc5",
+      "sha256": "75fcb9288da2fa75db576d1cd464529cb3e89aad66b077ac65f3164a04195433",
+      "strip_root": true,
+      "url": "https://codeload.github.com/cvc5/cvc5/tar.gz/282d5e0c84baf49c780704c532f87ba66d8b513d"
+    },
+    "adapter": "corpus",
+    "build_argv": [
+      "cmake",
+      "--build",
+      "{build}",
+      "--parallel",
+      "{jobs}"
+    ],
+    "configure_argv": [
+      "{source}/configure.sh",
+      "production",
+      "--prefix={prefix}"
+    ],
+    "content_scope_audit_sha256": "197ac7bc9c1da7476214647321616fe0edeab814bb3993aca4c62efe54515a0e",
+    "dataset_content_complete": false,
+    "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+    "material_profile_dependency_mapping": {
+      "build": "Original native/tool build dependencies preserved but not executed by material installation",
+      "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+      "system": "Only apt.python3 is used for all-file material verification"
+    },
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.cmake",
+        "apt.libcln-dev",
+        "apt.libedit-dev",
+        "apt.libgmp-dev",
+        "apt.ninja-build",
+        "apt.python3"
+      ]
+    },
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.clang-format"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "smoke_argv": [
+      "{prefix}/bin/cvc5",
+      "--show-config"
+    ],
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "libgmp-dev",
+      "libcln-dev",
+      "libedit-dev",
+      "python3"
+    ],
+    "unfetched_submodule_declarations": 0,
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 8993642,
+      "extract": true,
+      "id": "cvc5",
+      "material_path": "sources/cvc5",
+      "sha256": "75fcb9288da2fa75db576d1cd464529cb3e89aad66b077ac65f3164a04195433",
+      "strip_root": true,
+      "url": "https://codeload.github.com/cvc5/cvc5/tar.gz/282d5e0c84baf49c780704c532f87ba66d8b513d"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/cvc5/cvc5/blob/cvc5-1.4.2/INSTALL.rst"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/cvc5' --show-config",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+    ],
+    "summary": "Independent SMT oracle, SyGuS synthesis and solver cross-checking for optimization proofs."
+  },
+  "version": "cvc5-1.4.2"
+}

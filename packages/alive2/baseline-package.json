@@ -1,0 +1,223 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{build}/alive-tv",
+        "--help"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "llvm-verifier-source",
+      "z3"
+    ],
+    "system": [
+      "apt.cmake",
+      "apt.libhiredis-dev",
+      "apt.ninja-build",
+      "apt.re2c"
+    ]
+  },
+  "id": "alive2",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1180224,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Correctness",
+        "Translation validation"
+      ],
+      "container_strategy": "Use an isolated dev-only validator installation with the pinned verifier LLVM; store proof obligations and validator command lines beside each compiler checkpoint.",
+      "dependencies": [
+        "apt.cmake",
+        "apt.libhiredis-dev",
+        "apt.ninja-build",
+        "apt.re2c",
+        "llvm-verifier-source",
+        "z3"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "build_argv": [
+          "cmake",
+          "--build",
+          "{build}",
+          "--parallel",
+          "{jobs}"
+        ],
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DBUILD_TV=ON",
+          "-DLLVM_DIR={dependency_prefix:llvm-verifier-source}/lib/cmake/llvm",
+          "-DZ3_INCLUDE_DIR={dependency_prefix:z3}/include",
+          "-DZ3_LIBRARIES={dependency_prefix:z3}/lib/libz3.so"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{build}/alive-tv",
+          "--help"
+        ],
+        "source_dependencies": [
+          "z3",
+          "llvm-verifier-source"
+        ],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "re2c",
+          "libhiredis-dev"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/AliveToolkit/alive2"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/alive2.measurement.json",
+        "workspace-evidence/resources-v050/open-research/alive2.refs.json"
+      ],
+      "extract": true,
+      "id": "alive2",
+      "immutable_ref": "c9af7dbb503878554aefafddba5889ccab237503",
+      "kind": "source_archive",
+      "legacy_source_id": "alive2",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/alive2",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Check refinement of LLVM IR transformations and retain proof, counterexample, timeout and unsupported outcomes separately.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Latest Alive2 targets LLVM main; compatibility with the primary LLVM 23 compiler is not implied.",
+        "Loop bounds, unsupported semantics and solver timeouts prevent whole-compiler correctness claims.",
+        "The tuple needs known-valid and known-invalid smoke controls; --help is not a semantic qualification."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "479045c04df1269a0aad5002e1842dbcdc89a9abab6cebd6c0670f3f0cfdf275",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/AliveToolkit/alive2",
+        "https://codeload.github.com/AliveToolkit/alive2/tar.gz/c9af7dbb503878554aefafddba5889ccab237503",
+        "https://github.com/AliveToolkit/alive2/commit/c9af7dbb503878554aefafddba5889ccab237503"
+      ],
+      "source_logical_bytes": 2789204,
+      "source_url": "https://codeload.github.com/AliveToolkit/alive2/tar.gz/c9af7dbb503878554aefafddba5889ccab237503",
+      "title": "Alive2 translation validator",
+      "upstream": "https://github.com/AliveToolkit/alive2",
+      "version": "commit-c9af7dbb5038"
+    },
+    "catalog_sha256": "311ff0230b6c57c84df60cfa8058cc7cc372c30519cf8aacee87c78a8e5e3f23"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "build_argv": [
+      "cmake",
+      "--build",
+      "{build}",
+      "--parallel",
+      "{jobs}"
+    ],
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DBUILD_TV=ON",
+      "-DLLVM_DIR={dependency_prefix:llvm-verifier-source}/lib/cmake/llvm",
+      "-DZ3_INCLUDE_DIR={dependency_prefix:z3}/include",
+      "-DZ3_LIBRARIES={dependency_prefix:z3}/lib/libz3.so"
+    ],
+    "qualified": false,
+    "smoke_argv": [
+      "{build}/alive-tv",
+      "--help"
+    ],
+    "source_dependencies": [
+      "z3",
+      "llvm-verifier-source"
+    ],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "re2c",
+      "libhiredis-dev"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1180224,
+      "extract": true,
+      "id": "alive2",
+      "material_path": "sources/alive2",
+      "sha256": "479045c04df1269a0aad5002e1842dbcdc89a9abab6cebd6c0670f3f0cfdf275",
+      "strip_root": true,
+      "url": "https://codeload.github.com/AliveToolkit/alive2/tar.gz/c9af7dbb503878554aefafddba5889ccab237503"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/AliveToolkit/alive2"
+    ],
+    "examples": [
+      {
+        "command": "'{build}/alive-tv' --help",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/alive2",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Check refinement of LLVM IR transformations and retain proof, counterexample, timeout and unsupported outcomes separately."
+  },
+  "version": "commit-c9af7dbb5038"
+}

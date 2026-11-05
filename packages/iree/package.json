@@ -1,0 +1,197 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{build}/tools/iree-compile",
+        "--version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "version",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.clang",
+      "apt.cmake",
+      "apt.lld",
+      "apt.ninja-build",
+      "apt.python3-dev"
+    ]
+  },
+  "id": "iree",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 14457833,
+      "archive_scope": "Root repository only; recursive Git submodule payloads are excluded.",
+      "category": [
+        "Compilers",
+        "Domain-specific CPU compilers"
+      ],
+      "container_strategy": "Build iree-compile and the exact bundled LLVM/MLIR closure in dev; package precompiled VMFB/modules and CPU local-sync/local-task runtime tools for target execution.",
+      "dependencies": [
+        "apt.clang",
+        "apt.cmake",
+        "apt.lld",
+        "apt.ninja-build",
+        "apt.python3-dev"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DIREE_TARGET_BACKEND_LLVM_CPU=ON"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{build}/tools/iree-compile",
+          "--version"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "clang",
+          "python3-dev",
+          "lld"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://iree.dev/building-from-source/getting-started/",
+        "https://iree.dev/guides/deployment-configurations/cpu/"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/iree.measurement.json",
+        "workspace-evidence/resources-v050/open-research/iree.refs.json"
+      ],
+      "extract": true,
+      "id": "iree",
+      "immutable_ref": "89ece87b89852100c0a4ac3d515e14842d090967",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception",
+      "mandatory": false,
+      "material_path": "sources/iree",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "MLIR lowering, CPU tensor code generation, executable packaging and separated compiler/runtime deployment research.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The source archive excludes required Git submodules; IREE's bundled LLVM/MLIR commit is not interchangeable with the playground compiler snapshot.",
+        "Use explicit target triple/CPU/features when dev and target differ; the host default would describe the dev machine.",
+        "CPU runtime loaders and benchmark tools require their own target smoke tests."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "a79d6d63bad382bf8f35da00009d2acae6ecdfe086d174e15b10d5ff9e85548f",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/iree-org/iree",
+        "https://codeload.github.com/iree-org/iree/tar.gz/89ece87b89852100c0a4ac3d515e14842d090967",
+        "https://github.com/iree-org/iree/commit/89ece87b89852100c0a4ac3d515e14842d090967"
+      ],
+      "source_logical_bytes": 74867065,
+      "source_url": "https://codeload.github.com/iree-org/iree/tar.gz/89ece87b89852100c0a4ac3d515e14842d090967",
+      "title": "IREE MLIR CPU compilation and runtime",
+      "upstream": "https://github.com/iree-org/iree",
+      "version": "v3.13.0"
+    },
+    "catalog_sha256": "8061c99c02cd7af22866c00b3cdb98ed346fc11dce4bdc4e68efe7e1cca5af56"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DIREE_TARGET_BACKEND_LLVM_CPU=ON"
+    ],
+    "qualified": false,
+    "smoke_argv": [
+      "{build}/tools/iree-compile",
+      "--version"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "clang",
+      "python3-dev",
+      "lld"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 14457833,
+      "extract": true,
+      "id": "iree",
+      "material_path": "sources/iree",
+      "sha256": "a79d6d63bad382bf8f35da00009d2acae6ecdfe086d174e15b10d5ff9e85548f",
+      "strip_root": true,
+      "url": "https://codeload.github.com/iree-org/iree/tar.gz/89ece87b89852100c0a4ac3d515e14842d090967"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://iree.dev/building-from-source/getting-started/",
+      "https://iree.dev/guides/deployment-configurations/cpu/"
+    ],
+    "examples": [
+      {
+        "command": "'{build}/tools/iree-compile' --version",
+        "description": "Run the recorded version check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/iree",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "MLIR lowering, CPU tensor code generation, executable packaging and separated compiler/runtime deployment research."
+  },
+  "version": "v3.13.0"
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "upstream_commit": "0cdc710315cfee9035e22ef4363ca479270d1934",
+  "patches": [
+    {
+      "path": "CMakeLists.txt",
+      "before": "set(GIT_HASH \"$Format:%h$\")",
+      "after": "set(GIT_HASH \"0cdc710\")",
+      "original_sha256": "cfd4dcc6f5f8040f1d91ecb020bf93b369058ccdf2263269fcdb52c8afb92daa",
+      "patched_sha256": "c173e1c6064bb6989e5b2660eeb1a71235f8ec9e95eaa64aaf644089b41a9459",
+      "purpose": "Bind archive build version to the exact locked commit, never an enclosing Git checkout."
+    },
+    {
+      "path": "runtime/volatile_runtime.c",
+      "before": "DEFINE_VOLATILE_FUNCTIONS(uint32_t)",
+      "after": "DEFINE_VOLATILE_FUNCTIONS(uint32_t)\nDEFINE_VOLATILE_FUNCTIONS(int64_t)\nDEFINE_VOLATILE_FUNCTIONS(uint64_t)",
+      "original_sha256": "d50812361d60aa538778ee7d3f1a3ab1aa93ef5c190e6712e3123089c68a13e6",
+      "patched_sha256": "0a812683f793f8767fa53f175b8bfdad173021d05546e69fe4c595cfa3001b04",
+      "purpose": "Implement the signed/unsigned 64-bit volatile wrappers already declared by the pinned header."
+    }
+  ]
+}

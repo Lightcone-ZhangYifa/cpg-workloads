@@ -1,0 +1,179 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "compiler-gym-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "compiler-gym",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 9302951,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Optimization search",
+        "Archival environments"
+      ],
+      "container_strategy": "Keep the archived project and its historical LLVM/Python dependencies isolated from the main package environment.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/facebookresearch/CompilerGym"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/compiler-gym.measurement.json",
+        "workspace-evidence/resources-v050/open-research/compiler-gym.refs.json"
+      ],
+      "extract": true,
+      "id": "compiler-gym",
+      "immutable_ref": "64bdd6cd39967d3d2fe5e6c72deb15e830b838bb",
+      "kind": "source_archive",
+      "legacy_source_id": "compiler-gym",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/compiler-gym",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Reference environment APIs, action/observation design, phase-ordering studies and legacy benchmark adapters.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Upstream was archived on 2026-05-27; historical prebuilt services and datasets may require separate mirrors.",
+        "It is not a drop-in maintained environment for LLVM 23 or a replacement for the project's runtime measurement protocol."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "60e233ebc9955a613689ec696012173919a9a09ac308601ca5f3203fed3eb5e8",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/facebookresearch/CompilerGym",
+        "https://codeload.github.com/facebookresearch/CompilerGym/tar.gz/64bdd6cd39967d3d2fe5e6c72deb15e830b838bb",
+        "https://github.com/facebookresearch/CompilerGym/commit/64bdd6cd39967d3d2fe5e6c72deb15e830b838bb"
+      ],
+      "source_logical_bytes": 15058329,
+      "source_url": "https://codeload.github.com/facebookresearch/CompilerGym/tar.gz/64bdd6cd39967d3d2fe5e6c72deb15e830b838bb",
+      "title": "CompilerGym archival environments",
+      "upstream": "https://github.com/facebookresearch/CompilerGym",
+      "version": "v0.2.5"
+    },
+    "catalog_sha256": "6fbb28ed7f830627001398d5b331cacca4f175865e735325415876c0243cd08c"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 9302951,
+      "extract": true,
+      "id": "compiler-gym",
+      "material_path": "sources/compiler-gym",
+      "sha256": "60e233ebc9955a613689ec696012173919a9a09ac308601ca5f3203fed3eb5e8",
+      "strip_root": true,
+      "url": "https://codeload.github.com/facebookresearch/CompilerGym/tar.gz/64bdd6cd39967d3d2fe5e6c72deb15e830b838bb"
+    },
+    "adapter": "corpus",
+    "content_scope_audit_sha256": "6a679e598342d1d67fc8a9c0c968637d257d57720f01a62dae208fc516ab6e6f",
+    "dataset_content_complete": false,
+    "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+    "material_profile_dependency_mapping": {
+      "build": "Original native/tool build dependencies preserved but not executed by material installation",
+      "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+      "system": "Only apt.python3 is used for all-file material verification"
+    },
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.bazelrc"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+    "source_dependencies": [],
+    "system_packages": [],
+    "unfetched_submodule_declarations": 0,
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 9302951,
+      "extract": true,
+      "id": "compiler-gym",
+      "material_path": "sources/compiler-gym",
+      "sha256": "60e233ebc9955a613689ec696012173919a9a09ac308601ca5f3203fed3eb5e8",
+      "strip_root": true,
+      "url": "https://codeload.github.com/facebookresearch/CompilerGym/tar.gz/64bdd6cd39967d3d2fe5e6c72deb15e830b838bb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/facebookresearch/CompilerGym"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+    ],
+    "summary": "Reference environment APIs, action/observation design, phase-ordering studies and legacy benchmark adapters."
+  },
+  "version": "v0.2.5"
+}

@@ -1,0 +1,204 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "ffmpeg-media-roundtrip-and-static-api",
+      "kind": "functional",
+      "requires_commands": [
+        "/usr/bin/python3",
+        "/usr/bin/cc"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.g++",
+      "apt.make",
+      "apt.python3"
+    ]
+  },
+  "id": "ffmpeg",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 17333895,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Media"
+      ],
+      "container_strategy": "Freeze configure flags, enabled codecs, NASM/YASM and any optional library closure in dev; run fixed commands and licensed media input bundles on target.",
+      "corpus_contract": {
+        "code": "Application and FATE test definitions included.",
+        "inputs": "External FATE/sample/media input packs must be separately admitted.",
+        "oracle": "FATE checks, frame hashes or declared quality/error metrics.",
+        "split_unit": "Codec/filter/application family across clips and configurations."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/FFmpeg/FFmpeg"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/ffmpeg.measurement.json",
+        "workspace-evidence/resources-v050/open-research/ffmpeg.refs.json"
+      ],
+      "extract": true,
+      "id": "ffmpeg",
+      "immutable_ref": "946fcce07b6dcd0331c8cc609192aeff5e1924f8",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "LGPL-2.1-or-later AND LicenseRef-Configuration-Dependent",
+      "mandatory": false,
+      "material_path": "corpora/ffmpeg",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Large real-world C application, codecs, filters, parsing and dispatch with end-to-end workloads.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Optional GPL/nonfree dependencies alter distribution rights; the open preset must exclude incompatible combinations.",
+        "FATE media samples and representative clips are external datasets and require their own hashes/size receipts.",
+        "Output validation must account for declared lossy codec semantics and thread determinism."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "0aa2b1de2a5698b20a23e93d539a9a8e82ca0117496c5bdf05d198805f42bb3b",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/FFmpeg/FFmpeg",
+        "https://codeload.github.com/FFmpeg/FFmpeg/tar.gz/946fcce07b6dcd0331c8cc609192aeff5e1924f8",
+        "https://github.com/FFmpeg/FFmpeg/commit/946fcce07b6dcd0331c8cc609192aeff5e1924f8"
+      ],
+      "source_logical_bytes": 90361647,
+      "source_url": "https://codeload.github.com/FFmpeg/FFmpeg/tar.gz/946fcce07b6dcd0331c8cc609192aeff5e1924f8",
+      "title": "FFmpeg media application workload",
+      "upstream": "https://github.com/FFmpeg/FFmpeg",
+      "version": "n9.0.2"
+    },
+    "catalog_sha256": "a15f7d029ec0c3e89d4f6ab71c4b77816697b39873b12d8787b6a7d6fcf934e5"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "make",
+    "commands": [
+      [
+        "/usr/bin/python3",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "qualification_scope": "portable-native-media-core",
+    "required_installed_paths": [
+      "{prefix}/bin/ffmpeg",
+      "{prefix}/bin/ffprobe",
+      "{prefix}/lib/libavutil.a",
+      "{prefix}/share/ffmpeg/source/COPYING.LGPLv2.1",
+      "{prefix}/share/compiler-playground/ffmpeg/profile.json"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 17333895,
+      "extract": true,
+      "id": "ffmpeg",
+      "material_path": "corpora/ffmpeg",
+      "sha256": "0aa2b1de2a5698b20a23e93d539a9a8e82ca0117496c5bdf05d198805f42bb3b",
+      "strip_root": true,
+      "url": "https://codeload.github.com/FFmpeg/FFmpeg/tar.gz/946fcce07b6dcd0331c8cc609192aeff5e1924f8"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/FFmpeg/FFmpeg"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/ffprobe -show_streams -of json input.mkv",
+        "description": "Probe a media file"
+      },
+      {
+        "command": "cpg packages check ffmpeg --kind functional",
+        "description": "Run installed media and C API checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Native tools",
+        "path": "{prefix}/bin",
+        "purpose": "FFmpeg and FFprobe for the explicitly selected codec/container profile."
+      },
+      {
+        "label": "Libraries and headers",
+        "path": "{prefix}/lib",
+        "purpose": "Static libraries plus prefix-relative pkg-config metadata."
+      },
+      {
+        "label": "Unchanged original source",
+        "path": "{prefix}/share/ffmpeg/source",
+        "purpose": "Complete original snapshot, licenses, tests and documentation."
+      },
+      {
+        "label": "Exact selected configuration and upstream evidence",
+        "path": "{prefix}/share/compiler-playground/ffmpeg",
+        "purpose": "Build configuration and actual FATE execution reports."
+      }
+    ],
+    "notes": [
+      "disabled codecs, muxers, demuxers and protocols",
+      "external codec libraries",
+      "x86 assembly acceleration",
+      "hardware acceleration and device input/output",
+      "external FATE sample corpus",
+      "performance benchmarks",
+      "OCI or other platforms/ABIs"
+    ],
+    "summary": "Build and use the portable native media core from the original FFmpeg source snapshot."
+  },
+  "version": "n9.0.2"
+}

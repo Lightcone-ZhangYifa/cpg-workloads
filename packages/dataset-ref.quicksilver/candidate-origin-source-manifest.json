@@ -1,0 +1,302 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 5041,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "858ade16ae8629e287ae8d683c015ccdd000c144df843238497ebd450644a4b4"
+    },
+    {
+      "bytes": 2682,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "3a4ca3d4d310405663c780434d0b955d9c22ef62122b7b82d7e2d26ee07ad383"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 133290,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/47b61b3441c6f8c334be3ebe7198232f6b07aa5ea5bbb9ec6cece4bed1e18a03",
+      "sha256": "47b61b3441c6f8c334be3ebe7198232f6b07aa5ea5bbb9ec6cece4bed1e18a03"
+    }
+  ],
+  "inventory_sha256": "b45b662451629a5c85edd5ef575d97cb23f3ea8ea3d7860a3dd871bb303a01b4",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "4694dfcf5d998db760cdbb5de2a34992dc92c129a68e6c3a4fb52c9ccc4f5661",
+  "method": "source",
+  "package": {
+    "build": "quicksilver-debian13-cpu-serial-gcc14-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "dataset-ref.quicksilver-host-serial-two-decks",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "dataset-ref.quicksilver",
+    "metadata": {
+      "additional_platform_profile": {
+        "build_compatibility": "Upstream missing <cstdint> in headers, GCC14 workaround CPPFLAGS=-include cstdint; no original source patch",
+        "canonical_target": {
+          "arch": "x86_64",
+          "distribution": "ubuntu",
+          "distribution_version": "24.04",
+          "os": "linux"
+        },
+        "canonical_ubuntu24_execution_qualified": false,
+        "dataset_interface_qualification": "separate_reviewed_source_view",
+        "dependency_generation": "makedepend unavailable: empty .depend created only in build-copy",
+        "hardware_qualified": false,
+        "host_bound": true,
+        "license_review_required_for_redistribution": true,
+        "native_functional_smoke_cases": [
+          "Examples/AllAbsorb/allAbsorb.inp",
+          "Examples/AllEscape/allEscape.inp"
+        ],
+        "oci_qualified": false,
+        "official_benchmark_qualification": false,
+        "original_definition_sha256": "3afd8ad7180ef21192f660b5c2000cf08511f7bb772d75e9cca725591f3b789f",
+        "original_dependencies": {
+          "build": [],
+          "run": [],
+          "system": [
+            "apt.python3"
+          ]
+        },
+        "original_material_sha256": "ebadf85eb72037fd12148890672e6bb59b1280fcb95fe5d45caa3c1a42590f9b",
+        "original_provider": "material",
+        "profile": "debian13-x86_64-gcc14-cpu-serial-host-only",
+        "source_resolution_policy": "Exact canonical source URL and commit; original null sha/bytes filled only in resolved_sources"
+      },
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": null,
+        "build_peak_bytes": null,
+        "category": [
+          "Dataset research",
+          "Benchmarks and inputs"
+        ],
+        "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+        "dataset_card_id": "quicksilver",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "requires_controller_only_storage": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "target_exports": [],
+          "visibility_policy": "developer_selected_complete_materials",
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/LLNL/Quicksilver"
+        ],
+        "evidence_files": [
+          "workspace-evidence/datasets-v090/benchmarks/cards.json"
+        ],
+        "extract": true,
+        "id": "dataset-ref.quicksilver",
+        "immutable_ref": "eb68bb8d6fc53de1f65011d4e79ff2ed0dd60f3b",
+        "installed_bytes": null,
+        "kind": "dataset",
+        "license_class": "review-required",
+        "license_id": "LicenseRef-LLNL-BSD",
+        "mandatory": false,
+        "material_path": "dataset-research/quicksilver",
+        "presets": [
+          "all"
+        ],
+        "purpose": "Later-stage scientific training or whole-family transfer testing; freeze numerical, input and execution contracts.",
+        "qualification": {
+          "archive_measured": false,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+          "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+          "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+          "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+          "Stochastic behavior requires reproducible seed and statistical/physical checks.",
+          "CPU and accelerator implementations should be separately admitted."
+        ],
+        "redistributable": "license-and-component-review-required",
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+        "source_evidence": [
+          "https://raw.githubusercontent.com/LLNL/Quicksilver/eb68bb8d6fc53de1f65011d4e79ff2ed0dd60f3b/README.md",
+          "https://raw.githubusercontent.com/LLNL/Quicksilver/eb68bb8d6fc53de1f65011d4e79ff2ed0dd60f3b/LICENSE.md"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/LLNL/Quicksilver/tar.gz/eb68bb8d6fc53de1f65011d4e79ff2ed0dd60f3b",
+        "title": "Quicksilver research material",
+        "upstream": "https://github.com/LLNL/Quicksilver",
+        "version": "HEAD observed at retrieval; use the full recorded commit"
+      },
+      "catalog_sha256": "e8519d3b80ad326973255230b1872a72b39d8df4735ff7f2d22d9e12f5897202"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "-B",
+          "{recipe}/build.py",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "qualification_scope": "Actual Debian13 x86_64 GCC14 CPU-serial C++11 native build, two original full decks, without MPI/OpenMP/GPU.",
+      "required_host_commands": [
+        "python3",
+        "make",
+        "gcc",
+        "g++"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/qs",
+        "{prefix}/share/licenses/quicksilver/LICENSE.md",
+        "{prefix}/share/compiler-playground/quicksilver-native-profile.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": null,
+        "extract": true,
+        "id": "dataset-ref.quicksilver",
+        "material_path": "dataset-research/quicksilver",
+        "sha256": null,
+        "strip_root": true,
+        "url": "https://codeload.github.com/LLNL/Quicksilver/tar.gz/eb68bb8d6fc53de1f65011d4e79ff2ed0dd60f3b"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "debian",
+      "distribution_version": "13",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/LLNL/Quicksilver"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/qs -i {prefix}/share/quicksilver/Examples/AllAbsorb/allAbsorb.inp",
+          "description": "Run an upstream full absorption deck"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Quicksilver executable",
+          "path": "{prefix}/bin/qs",
+          "purpose": "Single-process CPU simulation"
+        },
+        {
+          "label": "Two upstream example decks",
+          "path": "{prefix}/share/quicksilver/Examples",
+          "purpose": "Required independent functional verification"
+        },
+        {
+          "label": "Upstream license",
+          "path": "{prefix}/share/licenses/quicksilver/LICENSE.md",
+          "purpose": "Preserve original LLNL copyright and DOE additional notice"
+        },
+        {
+          "label": "Host build metadata",
+          "path": "{prefix}/share/compiler-playground/quicksilver-native-profile.json",
+          "purpose": "Exact source identity and target limitations"
+        }
+      ],
+      "notes": [
+        "Original Ubuntu24 catalog unchanged; additional Debian13 x86_64 GCC14 host profile only.",
+        "GCC14 needs -include cstdint with this pinned original; no upstream files edited.",
+        "No MPI/OpenMP/GPU runtime validation; functional two-deck smoke is not a physics oracle or official Benchmark.",
+        "Redistribution must respect LLNL additional BSD/DOE notice; no license clearance is inferred.",
+        "All original 159 source files and original input examples are retained in source archive."
+      ],
+      "summary": "Quicksilver host CPU serial Monte Carlo application from exact original 159 files; native two-deck functionality checked separately."
+    },
+    "version": "HEAD observed at retrieval; use the full recorded commit"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "original_material_artifact": "ebadf85eb72037fd12148890672e6bb59b1280fcb95fe5d45caa3c1a42590f9b",
+    "profile": "Debian13 GCC14 x86_64 CPU-serial host only",
+    "project_version": "0.21.7-inherited-core",
+    "round": "disjoint-20261029T0335Z",
+    "source_archive_sha256": "47b61b3441c6f8c334be3ebe7198232f6b07aa5ea5bbb9ec6cece4bed1e18a03",
+    "upstream_missing_cstdint_failure": "initial actual GCC14 build failed; preserved logs and corrected in compiler flags, no upstream modification"
+  },
+  "resolved_dependencies": [],
+  "resolved_sources": [
+    {
+      "bytes": 133290,
+      "extract": true,
+      "id": "dataset-ref.quicksilver",
+      "material_path": "dataset-research/quicksilver",
+      "sha256": "47b61b3441c6f8c334be3ebe7198232f6b07aa5ea5bbb9ec6cece4bed1e18a03",
+      "strip_root": true,
+      "url": "https://codeload.github.com/LLNL/Quicksilver/tar.gz/eb68bb8d6fc53de1f65011d4e79ff2ed0dd60f3b"
+    }
+  ],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "dataset-ref.quicksilver",
+      "path": "sources/47b61b3441c6f8c334be3ebe7198232f6b07aa5ea5bbb9ec6cece4bed1e18a03"
+    }
+  ]
+}
