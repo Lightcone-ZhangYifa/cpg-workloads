@@ -1,0 +1,292 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/sources"
+    },
+    {
+      "bytes": 172751524,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/sources/test-suite-23.1.4.src.tar.xz",
+      "sha256": "f3c8d4da44ccfb0d95a8f2b7cc4c88a8327e446243679a0d496b0ff91c61f562"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1199,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/acquisition-locks.json",
+      "sha256": "4f90b56eefee57d08640a4e2c48d0b0285bf8708d949a5e2363ff69693d8222d"
+    },
+    {
+      "bytes": 6835112,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/archive-members.json",
+      "sha256": "5f745c4433f8c2ddc5eb944f5c087517f9aecc736e1bd8754763c879f3f07e45"
+    },
+    {
+      "bytes": 2566,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "30be0d56e4a26b43419e946896a6f551934dac8b76e9bff932ba24129d57b8f1"
+    },
+    {
+      "bytes": 1372,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "ddc38576bebea5db0018989d9daf760f2bbcb867383272f079ce48976a763b30"
+    },
+    {
+      "bytes": 680126,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/original-license-notices.json",
+      "sha256": "28f9ac3037721f75f0ce4f396c31b893d52546abc22b66c952f2b4b301034ebb"
+    },
+    {
+      "bytes": 4158,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/prepare.py",
+      "sha256": "316ab5b4ee089af239ad20790c68c1f83fcd61a648cce454335f6b8aeb4e56a3"
+    },
+    {
+      "bytes": 5599,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/source-closure-audit.json",
+      "sha256": "07766b86d3d57eada5c14f91058e083d6fd0c3f720b3f2a7514790546d49ed23"
+    }
+  ],
+  "inventory_sha256": "7fbaa45b28f62a817629674c15a7d823077d4e85e970af4e1ec60c4276a259e5",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "1b7a58d2d81f868abee57f18b9229cf82c7d229f50834a748661e8f26f06a4aa",
+  "method": "material",
+  "package": {
+    "build": "v02114-reviewed-declared-archive-material-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-manifest.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "llvm-test-suite-complete-declared-archive",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 90
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "llvm-test-suite",
+    "metadata": {
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": 172751524,
+        "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+        "category": [
+          "Workloads",
+          "Compiler suites"
+        ],
+        "container_strategy": "Store the complete suite in controller-owned material storage, derive family-disjoint train/validation/test views, compile in dev and run admitted binary/input/oracle bundles in target.",
+        "corpus_contract": {
+          "code": "Included for the built-in suite; external suites need separate resources.",
+          "inputs": "Mixed included and externally provided inputs.",
+          "oracle": "Per-program reference output or suite-specific validation; each adapter needs qualification.",
+          "split_unit": "Upstream application family including all forks, versions, input sizes and translated variants."
+        },
+        "dependencies": [],
+        "deployment": {
+          "adapter": "corpus",
+          "qualified": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://llvm.org/docs/TestSuiteGuide.html"
+        ],
+        "evidence_files": [
+          "workspace-evidence/resources-v050/open-research/llvm-test-suite.measurement.json",
+          "workspace-evidence/resources-v050/open-research/llvm-test-suite.refs.json"
+        ],
+        "extract": false,
+        "id": "llvm-test-suite",
+        "immutable_ref": "2919e55176a572ee085cb46b291c47b7092c363e",
+        "kind": "dataset",
+        "legacy_source_id": "llvm-test-suite",
+        "license_class": "open",
+        "license_id": "Apache-2.0 WITH LLVM-exception AND LicenseRef-Per-Benchmark",
+        "mandatory": false,
+        "material_path": "sources/test-suite-23.1.4.src.tar.xz",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Broad C/C++/Fortran runtime workloads, regression cases and CTMark compile-time diagnostics.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "External suites and inputs are not included merely because the CMake adapter exists.",
+          "Each benchmark requires a license, liveness check, input set, oracle and runtime contract.",
+          "CTMark is a compile-time diagnostic; do not double-count those same program families in the runtime aggregate."
+        ],
+        "redistributable": true,
+        "roles": [
+          "host"
+        ],
+        "sha256": "f3c8d4da44ccfb0d95a8f2b7cc4c88a8327e446243679a0d496b0ff91c61f562",
+        "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+        "source_evidence": [
+          "https://github.com/llvm/llvm-test-suite",
+          "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz",
+          "https://github.com/llvm/llvm-test-suite/commit/2919e55176a572ee085cb46b291c47b7092c363e"
+        ],
+        "source_logical_bytes": 2116579658,
+        "source_url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz",
+        "title": "LLVM test-suite and CTMark",
+        "upstream": "https://github.com/llvm/llvm-test-suite",
+        "version": "llvmorg-23.1.4"
+      },
+      "catalog_sha256": "3e1aaeb0fff8a29fb4a93d4bbbdbe8de012e43b11ad2f92c06ec03c0c781d39b",
+      "current_material_evidence": {
+        "archive_member_count": 27657,
+        "canonical_sources_and_catalog_unchanged": true,
+        "generator_execution": "not_run",
+        "native_execution": "not_run",
+        "original_dependencies_unchanged": true,
+        "source_closure_audit_sha256": "07766b86d3d57eada5c14f91058e083d6fd0c3f720b3f2a7514790546d49ed23",
+        "source_file_count": 26828
+      }
+    },
+    "provider": "material",
+    "recipe": {
+      "acquisition_lock": {
+        "bytes": 172751524,
+        "extract": false,
+        "id": "llvm-test-suite",
+        "material_path": "sources/test-suite-23.1.4.src.tar.xz",
+        "sha256": "f3c8d4da44ccfb0d95a8f2b7cc4c88a8327e446243679a0d496b0ff91c61f562",
+        "strip_root": true,
+        "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz"
+      },
+      "adapter": "corpus",
+      "expanded_source_tree_qualified": false,
+      "external_suites_acquired": false,
+      "generator_execution_qualified": false,
+      "material_layout": "preserved_exact_original_archive",
+      "native_execution_qualified": false,
+      "qualification_scope": "complete_original_declared_archive_material_only; the entire fixed 172751524-byte LLVM test-suite release archive is retained at its original material_path; all archive members, original link records, source, inputs, references and per-benchmark license notices are preserved unchanged; external suites and separately distributed inputs are excluded by the original catalog; no expanded tree, source build, program execution, Dataset API, semantic oracle, official Benchmark, OCI or hardware qualification",
+      "qualified": true,
+      "required_installed_paths": [
+        "{prefix}/sources/test-suite-23.1.4.src.tar.xz"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "source_closure_audit_sha256": "07766b86d3d57eada5c14f91058e083d6fd0c3f720b3f2a7514790546d49ed23",
+      "source_closure_complete": true,
+      "source_closure_scope": "complete_original_declared_archive_only",
+      "source_dependencies": [],
+      "system_packages": [],
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 172751524,
+        "extract": false,
+        "id": "llvm-test-suite",
+        "material_path": "sources/test-suite-23.1.4.src.tar.xz",
+        "sha256": "f3c8d4da44ccfb0d95a8f2b7cc4c88a8327e446243679a0d496b0ff91c61f562",
+        "strip_root": true,
+        "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://llvm.org/docs/TestSuiteGuide.html"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Complete original release archive",
+          "path": "{prefix}/sources/test-suite-23.1.4.src.tar.xz",
+          "purpose": "Independent ordinary copy of the complete original locked archive, preserving all original notices and link records."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "Only the original selected release archive is acquired; external suites and separately distributed inputs remain unacquired.",
+        "No build, program execution, semantic oracle or official Benchmark qualification is granted by this material profile."
+      ],
+      "summary": "Broad C/C++/Fortran runtime workloads, regression cases and CTMark compile-time diagnostics."
+    },
+    "version": "llvmorg-23.1.4"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "dataset_api_qualified": false,
+    "execution_category": "complete_original_declared_archive_material_only",
+    "expanded_source_tree_qualified": false,
+    "external_suites_acquired": false,
+    "native_execution_qualified": false,
+    "original_source_lock": {
+      "bytes": 172751524,
+      "extract": false,
+      "id": "llvm-test-suite",
+      "material_path": "sources/test-suite-23.1.4.src.tar.xz",
+      "sha256": "f3c8d4da44ccfb0d95a8f2b7cc4c88a8327e446243679a0d496b0ff91c61f562",
+      "strip_root": true,
+      "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz"
+    },
+    "original_sources_unchanged": true,
+    "qualification_scope": "complete_original_declared_archive_material_only; the entire fixed 172751524-byte LLVM test-suite release archive is retained at its original material_path; all archive members, original link records, source, inputs, references and per-benchmark license notices are preserved unchanged; external suites and separately distributed inputs are excluded by the original catalog; no expanded tree, source build, program execution, Dataset API, semantic oracle, official Benchmark, OCI or hardware qualification"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
