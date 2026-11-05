@@ -256,8 +256,14 @@ def material_archives(record, manifest):
 
 
 def verify_material(record, manifest, template):
-    binaries = documentation_binaries(record, manifest)
     archives = material_archives(record, manifest)
+    payload_files = {row["path"] for row in manifest["files"]
+                     if row["kind"] == "file" and row["path"].startswith("payload/")}
+    # An original-archive material has no documentation payload. Its complete
+    # payload is bound above to exact upstream locks; authored files remain text.
+    archive_only = bool(archives) and payload_files == set(archives)
+    binaries = ({} if archive_only and "documentation_payload_review" not in record
+                else documentation_binaries(record, manifest))
     if set(archives) & set(binaries):
         raise ValueError("Material member has conflicting payload reviews")
     names = [row["path"] for row in manifest["files"]]
