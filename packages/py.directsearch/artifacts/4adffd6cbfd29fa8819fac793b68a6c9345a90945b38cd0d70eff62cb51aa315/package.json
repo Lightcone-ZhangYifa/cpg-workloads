@@ -1,0 +1,237 @@
+{
+  "build": "1-static-check1-7670e7e3",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exact-private-distribution",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-installed-operations",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.numpy",
+      "py.scipy",
+      "py.setuptools"
+    ],
+    "system": []
+  },
+  "id": "py.directsearch",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 48722,
+      "category": [
+        "Python packages",
+        "Optional search and analysis"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.numpy",
+        "py.scipy",
+        "py.setuptools"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/directsearch/"
+      ],
+      "id": "py.directsearch",
+      "immutable_ref": "sha256:f4a4c1537381ff087d55786864b66027cc6cd1c0d0d1e19206a87b076d2a0f95",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "LicenseRef-Python-distribution-notices",
+      "mandatory": false,
+      "material_path": "wheels/directsearch-1.1-py3-none-any.whl",
+      "package_name": "directsearch",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "f4a4c1537381ff087d55786864b66027cc6cd1c0d0d1e19206a87b076d2a0f95",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/directsearch/1.1/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/f3/eb/0e01499696b245783b98e76f1f81e96bd46b932b3626330e3c7169750954/directsearch-1.1-py3-none-any.whl",
+      "title": "directsearch",
+      "upstream": "https://pypi.org/project/directsearch/1.1/",
+      "version": "1.1"
+    },
+    "catalog_sha256": "9408cc141df3aa4bcc0ad2b0dd548fdb160e54b2f1e148be099ea53e6c57cd64",
+    "historical_checks": [],
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "check_definition_source_artifact_sha256": "3f67444751bb194f9ca92e3cd2e280ff773fd451d42d6bf468f1bdd759ec3951",
+      "check_definition_source_manifest_sha256": "8c639e030b837ab5d14ade924189a330c00c57f4fdc617ee9d664676057682ec",
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_check_and_dependency_revision",
+      "original_artifact_sha256": "7670e7e3db3fcfaa8bdb85422ddb4136c5265336530a2629b157362ef7b33ce6",
+      "original_build": "1",
+      "original_manifest_sha256": "259877e6798fd7a47ef2b25d901911ab0d1a01fbea02fd48b1149d441ed02b16",
+      "original_official_wheel_identity_preserved": true,
+      "original_profiles": [
+        "v02111"
+      ],
+      "original_resolved_dependencies": [],
+      "resolved_dependency_replacements": [],
+      "reused_authored_files": [
+        {
+          "bytes": 229,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/check.py",
+          "sha256": "63ad7c2d98b5d6cf9ae8d4ca526638e7f9d951d97a3bc096d971f8a23f4714de"
+        },
+        {
+          "bytes": 12281,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/probes_v02111_02.py",
+          "sha256": "75aeae9776950397c36412517bea7e8c71ae35fef922054d0df8780283fd00fb"
+        },
+        {
+          "bytes": 23704,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/profile_probes.py",
+          "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+        }
+      ]
+    }
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "directsearch",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 48722,
+      "extract": false,
+      "id": "py.directsearch",
+      "material_path": "wheels/directsearch-1.1-py3-none-any.whl",
+      "sha256": "f4a4c1537381ff087d55786864b66027cc6cd1c0d0d1e19206a87b076d2a0f95",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/f3/eb/0e01499696b245783b98e76f1f81e96bd46b932b3626330e3c7169750954/directsearch-1.1-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+    ],
+    "documentation": [
+      "https://pypi.org/project/directsearch/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect package metadata in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/directsearch-1.1-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper."
+    ],
+    "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+  },
+  "version": "1.1"
+}
