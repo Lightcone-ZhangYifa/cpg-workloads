@@ -347,6 +347,22 @@ def import_and_publish(archive, item, scratch):
         if number % 25 == 0:
             print(json.dumps({"delivery": item["id"], "statically_reviewed": number,
                               "admitted": len(admitted)}), flush=True)
+    # Preserve every statically reviewed master while keeping ambiguous originals
+    # outside canonical discovery. The final publisher retains its immutable guard.
+    from publication_candidates import partition_publication_candidates
+    partition = partition_publication_candidates(
+        [release.checked_record(sha) for sha in admitted], existing_rows,
+        release.identity, release.dependency_variant)
+    pending = {row["sha256"]: row for row in partition["collisions"]}
+    admitted = partition["admitted_sha256s"]
+    for row in partition["collisions"]:
+        receipt["errors"].append({**row, "errors": [
+            "Original artifact shares an immutable identity with different bytes; "
+            "its historical context needs explicit classification"]})
+        (assets / row["sha256"]).unlink()
+    for summary in receipt["packages"] + receipt["online_recipes"]:
+        if summary["sha256"] in pending:
+            summary["publication_status"] = "pending_identity_classification"
     if receipt["errors"]:
         receipt["status"] = "inspected_with_corrections_needed"
     receipt_path = "catalog/imports/" + item["sha256"] + ".json"
