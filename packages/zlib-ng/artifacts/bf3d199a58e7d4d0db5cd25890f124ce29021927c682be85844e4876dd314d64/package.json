@@ -1,0 +1,161 @@
+{
+  "build": "1-static-read1-656290ca",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "zlib-ng",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 2450038,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Compression"
+      ],
+      "container_strategy": "Build tests/benchmarks in dev, pin native dispatch/compatibility mode, and preserve the exact binary dependency closure on target.",
+      "corpus_contract": {
+        "code": "Library and tests included.",
+        "inputs": "Frozen compression input corpus and level choices.",
+        "oracle": "Byte-exact decompress comparison and independent zlib reference.",
+        "split_unit": "zlib-derived implementation family, including forks."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/zlib-ng/zlib-ng"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/zlib-ng.measurement.json",
+        "workspace-evidence/resources-v050/open-research/zlib-ng.refs.json"
+      ],
+      "extract": true,
+      "id": "zlib-ng",
+      "immutable_ref": "12731092979c6d07f42da27da673a9f6c7b13586",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "Zlib",
+      "mandatory": false,
+      "material_path": "corpora/zlib-ng",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "C compression code, optimized primitives and ISA dispatch under an alternative implementation.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "ISA dispatch and assembly contribution must be reported; avoid interpreting library implementation selection as compiler-only improvement."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "a0d2a5d122c84b56a793a1553a9c3327fb2eb7469bf7a86b79e3c7be5d92e8d6",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/zlib-ng/zlib-ng",
+        "https://codeload.github.com/zlib-ng/zlib-ng/tar.gz/12731092979c6d07f42da27da673a9f6c7b13586",
+        "https://github.com/zlib-ng/zlib-ng/commit/12731092979c6d07f42da27da673a9f6c7b13586"
+      ],
+      "source_logical_bytes": 7375350,
+      "source_url": "https://codeload.github.com/zlib-ng/zlib-ng/tar.gz/12731092979c6d07f42da27da673a9f6c7b13586",
+      "title": "zlib-ng compression workload",
+      "upstream": "https://github.com/zlib-ng/zlib-ng",
+      "version": "2.3.3"
+    },
+    "catalog_sha256": "795e12e6f359a8f36119b9c153628d230ac8a42890baf2bccb245d3130e7e710",
+    "historical_checks": [],
+    "static_material_read_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "original_artifact_sha256": "656290caa69b04fd5d7c1eabc9928097d4531568b24c38e897b849153cfa7b87",
+      "original_build": "1",
+      "original_manifest_sha256": "978400b8ecfba4da0ccbadb7f3dedeb7861c777f9d44d055ba3a3c6f723229cd",
+      "payload_inventory_unchanged": true,
+      "read_check_executed": false,
+      "reader_ast_checked": true,
+      "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33",
+      "reader_definition_source_artifact_sha256": "b669fcf90909834d4c289cc17e290b4f830d36bb0ce0becb0012cadbbb4b0000",
+      "source_locks_unchanged": true
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "qualified": false,
+    "source_dependencies": [],
+    "system_packages": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2450038,
+      "extract": true,
+      "id": "zlib-ng",
+      "material_path": "corpora/zlib-ng",
+      "sha256": "a0d2a5d122c84b56a793a1553a9c3327fb2eb7469bf7a86b79e3c7be5d92e8d6",
+      "strip_root": true,
+      "url": "https://codeload.github.com/zlib-ng/zlib-ng/tar.gz/12731092979c6d07f42da27da673a9f6c7b13586"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/zlib-ng/zlib-ng"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/corpora/zlib-ng",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "A complete installed-file, mode and symlink read/integrity check is declared. This metadata revision did not run that check or execute upstream programs."
+    ],
+    "summary": "C compression code, optimized primitives and ISA dispatch under an alternative implementation."
+  },
+  "version": "2.3.3"
+}

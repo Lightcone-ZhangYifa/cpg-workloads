@@ -1,0 +1,159 @@
+{
+  "build": "2-static-read1-661675e4",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "lpm-libexpat-source",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 8419611,
+      "build_peak_bytes": null,
+      "category": [
+        "Correctness",
+        "Structured fuzzing dependencies"
+      ],
+      "container_strategy": "Materialize an immutable source tree; the parent mutator recipe copies it into a writable isolated build tree and preserves notices. This is not an independently installed system library.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "state": "immutable-local-build-dependency-source",
+        "target_exports": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/libexpat/libexpat"
+      ],
+      "evidence_files": [
+        "workspace-evidence/community-v070/resource-audit/lpm-dependencies/git-refs.json",
+        "workspace-evidence/community-v070/resource-audit/lpm-dependencies/archive-measurements.json",
+        "workspace-evidence/community-v070/resource-audit/lpm-dependencies/http-headers/lpm-libexpat-source.json"
+      ],
+      "extract": true,
+      "id": "lpm-libexpat-source",
+      "immutable_ref": "2691aff4304a6d7e053199c205620136481b9dd1",
+      "installed_allocated_bytes": null,
+      "installed_bytes": null,
+      "kind": "source_supplement",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/lpm-libexpat-source",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Provide the exact version selected by libprotobuf-mutator v1.5 for its tests or instrumented examples, avoiding implicit ExternalProject network acquisition.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The parent mutator's full-feature CMake build has not run in a complete prepared system dependency environment."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "9315a380ee2fc7fa18416c29d58ea36f4514a98bf65759e4d1bf0f1fe4f1d305",
+      "size_basis": "Complete measured HTTPS archive and regular-file logical source size; external dependencies and build outputs excluded.",
+      "size_evidence": "workspace-evidence/community-v070/resource-audit/lpm-dependencies/archive-measurements.json",
+      "source_evidence": [
+        "https://github.com/libexpat/libexpat",
+        "https://github.com/libexpat/libexpat/commit/2691aff4304a6d7e053199c205620136481b9dd1",
+        "https://codeload.github.com/libexpat/libexpat/tar.gz/2691aff4304a6d7e053199c205620136481b9dd1"
+      ],
+      "source_logical_bytes": 135972659,
+      "source_url": "https://codeload.github.com/libexpat/libexpat/tar.gz/2691aff4304a6d7e053199c205620136481b9dd1",
+      "title": "libexpat/libexpat source for libprotobuf-mutator tests and examples",
+      "upstream": "https://github.com/libexpat/libexpat",
+      "version": "R_2_6_4"
+    },
+    "catalog_sha256": "ecf5a1f1b3c352feeb75b1d15818763db2fb8a700a58d9e637e8b3f270f1788f",
+    "historical_checks": [],
+    "static_material_read_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "original_artifact_sha256": "661675e4f6236eb84c1ec776a4d05f45e282da9adaff33bebfb777b0565ee312",
+      "original_build": "2",
+      "original_manifest_sha256": "e5b13bb3ee88a96ceb9cc0b5a6851094e53a7609ff2154aa1d66db10edd6037a",
+      "payload_inventory_unchanged": true,
+      "read_check_executed": false,
+      "reader_ast_checked": true,
+      "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33",
+      "reader_definition_source_artifact_sha256": "b669fcf90909834d4c289cc17e290b4f830d36bb0ce0becb0012cadbbb4b0000",
+      "source_locks_unchanged": true
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "qualified": false,
+    "state": "immutable-local-build-dependency-source",
+    "target_exports": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 8419611,
+      "extract": true,
+      "id": "lpm-libexpat-source",
+      "material_path": "sources/lpm-libexpat-source",
+      "sha256": "9315a380ee2fc7fa18416c29d58ea36f4514a98bf65759e4d1bf0f1fe4f1d305",
+      "strip_root": true,
+      "url": "https://codeload.github.com/libexpat/libexpat/tar.gz/2691aff4304a6d7e053199c205620136481b9dd1"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/libexpat/libexpat"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/lpm-libexpat-source",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers.",
+      "A complete installed-file, mode and symlink read/integrity check is declared. This metadata revision did not run that check or execute upstream programs."
+    ],
+    "summary": "Provide the exact version selected by libprotobuf-mutator v1.5 for its tests or instrumented examples, avoiding implicit ExternalProject network acquisition."
+  },
+  "version": "R_2_6_4"
+}

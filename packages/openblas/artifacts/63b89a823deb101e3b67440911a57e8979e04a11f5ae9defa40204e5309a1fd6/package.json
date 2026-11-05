@@ -1,0 +1,160 @@
+{
+  "build": "3-static-read1-5326c2ae",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "openblas",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 25363263,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "SIMD and numerics"
+      ],
+      "container_strategy": "Build a declared target and threading configuration in dev; preserve Fortran and OpenMP runtime closure in target.",
+      "corpus_contract": {
+        "code": "BLAS/LAPACK implementation and tests included.",
+        "inputs": "Frozen numerical matrices and operation parameters.",
+        "oracle": "LAPACK/BLAS residual checks and independent references.",
+        "split_unit": "Numerical algorithm family across data shapes."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/OpenMathLib/OpenBLAS"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/openblas.measurement.json",
+        "workspace-evidence/resources-v050/open-research/openblas.refs.json"
+      ],
+      "extract": true,
+      "id": "openblas",
+      "immutable_ref": "e0166008be8e466242aa76b2ff75ce3f0fbf574a",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "corpora/openblas",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Fortran/C numerical routines, LAPACK, dense kernels and runtime dispatch coverage.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Dynamic architecture selection, handwritten assembly and BLAS worker counts must be explicitly controlled.",
+        "Numerical tests and problem-conditioning policy are required before interpreting speedups."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "b35b87e3580efc61a664248f143172fd998116c109fee790cd372480c64492a2",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/OpenMathLib/OpenBLAS",
+        "https://codeload.github.com/OpenMathLib/OpenBLAS/tar.gz/e0166008be8e466242aa76b2ff75ce3f0fbf574a",
+        "https://github.com/OpenMathLib/OpenBLAS/commit/e0166008be8e466242aa76b2ff75ce3f0fbf574a"
+      ],
+      "source_logical_bytes": 184435567,
+      "source_url": "https://codeload.github.com/OpenMathLib/OpenBLAS/tar.gz/e0166008be8e466242aa76b2ff75ce3f0fbf574a",
+      "title": "OpenBLAS numerical library workload",
+      "upstream": "https://github.com/OpenMathLib/OpenBLAS",
+      "version": "v0.3.34"
+    },
+    "catalog_sha256": "d908071da69062dead3747a78688599d009411004a221a31c0b081cf0cb1e84f",
+    "historical_checks": [],
+    "static_material_read_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "original_artifact_sha256": "5326c2ae4b18a08fe2b82f74706a7240beda3852d7d5cfac5a9c972c297d95ec",
+      "original_build": "3",
+      "original_manifest_sha256": "ad713799ff725daac91503bc1c3a637d40636b49e9410d26ecff36ea3780c31a",
+      "payload_inventory_unchanged": true,
+      "read_check_executed": false,
+      "reader_ast_checked": true,
+      "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33",
+      "reader_definition_source_artifact_sha256": "b669fcf90909834d4c289cc17e290b4f830d36bb0ce0becb0012cadbbb4b0000",
+      "source_locks_unchanged": true
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "qualified": false,
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 25363263,
+      "extract": true,
+      "id": "openblas",
+      "material_path": "corpora/openblas",
+      "sha256": "b35b87e3580efc61a664248f143172fd998116c109fee790cd372480c64492a2",
+      "strip_root": true,
+      "url": "https://codeload.github.com/OpenMathLib/OpenBLAS/tar.gz/e0166008be8e466242aa76b2ff75ce3f0fbf574a"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/OpenMathLib/OpenBLAS"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete original source",
+        "path": "{prefix}",
+        "purpose": "Complete unchanged original members, tests, inputs, references and license."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "A complete installed-file, mode and symlink read/integrity check is declared. This metadata revision did not run that check or execute upstream programs."
+    ],
+    "summary": "Fortran/C numerical routines, LAPACK, dense kernels and runtime dispatch coverage."
+  },
+  "version": "v0.3.34"
+}
