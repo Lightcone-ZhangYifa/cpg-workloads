@@ -1,0 +1,41 @@
+{
+  "name": "brotli",
+  "resource_id": "dataset-ref.brotli",
+  "source": {
+    "bytes": 682146,
+    "extract": true,
+    "id": "dataset-ref.brotli",
+    "material_path": "dataset-research/brotli",
+    "sha256": "347a89614fdd147fd47ab1035dac67d50faf0a071fd26ca49dcf1ee513851125",
+    "strip_root": true,
+    "url": "https://codeload.github.com/google/brotli/tar.gz/2e2bcf17ae7115d84ef6588d9a3651cc987d73e7"
+  },
+  "target": {
+    "os": "linux",
+    "arch": "x86_64",
+    "distribution": "debian",
+    "distribution_version": "13"
+  },
+  "original_target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "original_definition_sha256": "1066757f28de7759f1c0e7e1e39ca3151c3f67ac2a29ff53fe87c23718235581",
+  "cmake_flags": [
+    "-DBUILD_TESTING=ON"
+  ],
+  "consumer_link": [
+    "-lbrotlienc",
+    "-lbrotlidec",
+    "-lbrotlicommon",
+    "-lm"
+  ],
+  "expected_shared_libraries": [
+    "libbrotlienc.so",
+    "libbrotlidec.so",
+    "libbrotlicommon.so"
+  ],
+  "scope": "explicit additional-platform native profile; original Ubuntu qualification unchanged"
+}
