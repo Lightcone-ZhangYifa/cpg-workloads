@@ -7,17 +7,6 @@
   "functional_checks_declared": 1,
   "id": "dataset-ref.quicksilver",
   "manifest_sha256": "dc96c6ac043cac74d44de9145ffb81fe6b5ae7d7f5d6fa9e84c61ac5eeec0bb4",
-  "metadata_correction": {
-    "build_executed": false,
-    "functional_tests_executed": false,
-    "kind": "static_license_metadata_correction",
-    "license_bytes": 3168,
-    "license_id": "LicenseRef-LLNL-BSD",
-    "license_sha256": "d070bda21a21d5c8b73a26262ce065cdeaa4a54d775762220965387d8736fcd7",
-    "original_artifact_sha256": "29877443755ae7b962c0a5d4ffb43e1b870a8ac5305e862de36cb079cd12630b",
-    "scope": "Original source and binary redistribution permitted with retained copyright, conditions, disclaimers and no endorsement. LLNL/DOE notices preserved verbatim.",
-    "source_and_binary_license_identical": true
-  },
   "metadata_missing": [],
   "method": "binary",
   "origins": [
@@ -31,6 +20,20 @@
       "bytes": 132210,
       "relation": "license_metadata_corrected_repack_no_payload_change",
       "sha256": "29877443755ae7b962c0a5d4ffb43e1b870a8ac5305e862de36cb079cd12630b"
+    },
+    {
+      "archive": "dataset-ref.quicksilver.debian13.binary.cpgpkg.tar.gz",
+      "bytes": 132210,
+      "member": null,
+      "metadata_revision": {
+        "path": "catalog/revisions/7e66e8158a730d8fb83e825a46e29fa5bb89ecd0354238d415c32b781249f35f.json",
+        "sha256": "61d4ff69770b6386c7889c24f0bb494530afb41e5c5fd0d6dd8021387b328143"
+      },
+      "original_artifact": {
+        "bytes": 132210,
+        "sha256": "29877443755ae7b962c0a5d4ffb43e1b870a8ac5305e862de36cb079cd12630b"
+      },
+      "sha256": "29877443755ae7b962c0a5d4ffb43e1b870a8ac5305e862de36cb079cd12630b"
     }
   ],
   "provider": "binary",
@@ -40,20 +43,21 @@
   "sha256": "7e66e8158a730d8fb83e825a46e29fa5bb89ecd0354238d415c32b781249f35f",
   "source_locks_complete": false,
   "static_review": {
-    "build_executed": false,
-    "checks": [
-      "archive_schema_and_member_integrity",
-      "unpacked_authored_template_preserved",
-      "normalized_asset_filename",
-      "original_package_identity_and_metadata",
-      "source_lock_fields_or_preserved_binary_references",
-      "declared_check_appropriate_to_package_method"
-    ],
-    "findings": [],
-    "functional_tests_executed": false,
+    "checks": {
+      "check_declarations": "functional",
+      "python_files_parsed": 2,
+      "referenced_template_paths": [
+        "recipe/build.py",
+        "recipe/check.py"
+      ],
+      "runtime_execution": "not_performed",
+      "source_locks": "commit_pinned_with_locked_delivered_inventory"
+    },
+    "errors": [],
+    "policy": "static-trust-v1",
     "status": "passed",
     "warnings": [
-      "binary_preserves_original_source_references_without_source_archive_locks; payload_integrity_verified"
+      "Delivered binary has complete payload hashes and commit-pinned HTTPS sources, but its historical definition omits source archive byte locks. Source rebuilding is not newly established by this static review."
     ]
   },
   "structure": "passed",
