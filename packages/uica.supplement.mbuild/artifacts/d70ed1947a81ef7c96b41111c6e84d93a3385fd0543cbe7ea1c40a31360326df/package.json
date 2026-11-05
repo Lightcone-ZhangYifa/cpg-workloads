@@ -1,0 +1,139 @@
+{
+  "build": "20261029-mbuild-interpreted-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--recipe",
+        "{recipe}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "mbuild-import-and-original-c-compiler-smoke",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "uica.supplement.mbuild",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 81598,
+      "category": [
+        "Optimization research",
+        "Instruction models",
+        "Pinned source closure"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "supplement"
+      },
+      "extract": true,
+      "id": "uica.supplement.mbuild",
+      "immutable_ref": "sha256:5af6b3f0394df1332dd2f09d842719bd2ece1037c09cd042f18e417dddf1e54e",
+      "installed_bytes": null,
+      "kind": "source_supplement",
+      "license_class": "open",
+      "license_id": "AGPL-3.0-only AND Apache-2.0",
+      "mandatory": false,
+      "material_path": "supplements/uica.supplement.mbuild",
+      "presets": [],
+      "qualification_gaps": [],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "5af6b3f0394df1332dd2f09d842719bd2ece1037c09cd042f18e417dddf1e54e",
+      "size_basis": "Measured exact immutable supplemental artifact",
+      "source_evidence": [
+        "https://codeload.github.com/intelxed/mbuild/tar.gz/09b6654be0c52bf1df44e88c88b411a67b624cbd"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/intelxed/mbuild/tar.gz/09b6654be0c52bf1df44e88c88b411a67b624cbd",
+      "strip_archive_root": true,
+      "supplement_to": "sources/uica/mbuild",
+      "title": "uiCA basic-block pipeline simulator / mbuild",
+      "version": "commit-6ebeeab0f870"
+    },
+    "catalog_sha256": "90418dde34acd419a49bf95d7da124b9800e2fc4513b2ae8edc9ec967924c297",
+    "cpg_qualification": {
+      "license": "Apache-2.0 (original LICENSE preserved)",
+      "original_metadata_catalog_unchanged": true,
+      "original_upstream_commit": "09b6654be0c52bf1df44e88c88b411a67b624cbd",
+      "scope": "Debian 13 x86_64 host qualification only, canonical Ubuntu 24.04 profile NOT run",
+      "source_sha256": "5af6b3f0394df1332dd2f09d842719bd2ece1037c09cd042f18e417dddf1e54e"
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "setup_py_build_py",
+    "install_argv": [
+      "python3",
+      "-B",
+      "setup.py",
+      "build_py",
+      "--build-lib",
+      "{prefix}"
+    ],
+    "install_cwd": "{source}",
+    "required_host_commands": [
+      "python3"
+    ],
+    "required_installed_paths": [
+      "{prefix}/mbuild/__init__.py"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 81598,
+      "extract": true,
+      "id": "uica.supplement.mbuild",
+      "material_path": "supplements/uica.supplement.mbuild",
+      "sha256": "5af6b3f0394df1332dd2f09d842719bd2ece1037c09cd042f18e417dddf1e54e",
+      "strip_root": true,
+      "url": "https://codeload.github.com/intelxed/mbuild/tar.gz/09b6654be0c52bf1df44e88c88b411a67b624cbd"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/supplements/uica.supplement.mbuild",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "Exact original upstream commit 09b6654be0c52bf1df44e88c88b411a67b624cbd and original catalog version commit-6ebeeab0f870 are preserved despite mismatch.",
+      "Interpreted Python source deployment uses setup.py build_py and an actual original C fixture compiled through the resulting mbuild; not native machine-code compilation of the library itself."
+    ],
+    "summary": "uiCA basic-block pipeline simulator / mbuild"
+  },
+  "version": "commit-6ebeeab0f870"
+}
