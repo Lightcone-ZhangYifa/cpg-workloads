@@ -1,0 +1,161 @@
+{
+  "build": "2-static-read1-25bcf38a",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "blis",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 15765479,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "SIMD and numerics"
+      ],
+      "container_strategy": "Build a declared target configuration in dev; keep generic C and tuned assembly paths as separate strata and freeze threading.",
+      "corpus_contract": {
+        "code": "Library and tests included.",
+        "inputs": "Seeded matrices with frozen shapes, strides and layouts.",
+        "oracle": "Residual/error checks against an independent BLAS/reference implementation.",
+        "split_unit": "Operation/kernel family across shapes and implementations."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/flame/blis"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/blis.measurement.json",
+        "workspace-evidence/resources-v050/open-research/blis.refs.json"
+      ],
+      "extract": true,
+      "id": "blis",
+      "immutable_ref": "caf0db6be1202d9c83c79b51e75eceb96aa8b556",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "corpora/blis",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Dense linear algebra, blocking, packing, compiler/assembly interaction and threading diagnostics.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Hand-tuned microkernels and algorithmic blocking choices must not be attributed entirely to compiler optimization."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "065c34df94da95c23a3a857461e6a1387af709abfeba0af86b1dfb6cdc617f65",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/flame/blis",
+        "https://codeload.github.com/flame/blis/tar.gz/caf0db6be1202d9c83c79b51e75eceb96aa8b556",
+        "https://github.com/flame/blis/commit/caf0db6be1202d9c83c79b51e75eceb96aa8b556"
+      ],
+      "source_logical_bytes": 37151724,
+      "source_url": "https://codeload.github.com/flame/blis/tar.gz/caf0db6be1202d9c83c79b51e75eceb96aa8b556",
+      "title": "BLIS linear algebra workload",
+      "upstream": "https://github.com/flame/blis",
+      "version": "2.1"
+    },
+    "catalog_sha256": "759056b163bb3b201788b5dd75557caa38a046e73bb6541ea5265402deb14117",
+    "historical_checks": [],
+    "static_material_read_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "original_artifact_sha256": "25bcf38aa3f6e1ea68dfaa7d1d462bed6dac4c336896a3ccc8cd7a02a099358b",
+      "original_build": "2",
+      "original_manifest_sha256": "6b98cc03d217987943b9137cc81842cffe3300b6cd05ce9bd2192c212a94ce76",
+      "payload_inventory_unchanged": true,
+      "read_check_executed": false,
+      "reader_ast_checked": true,
+      "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33",
+      "reader_definition_source_artifact_sha256": "b669fcf90909834d4c289cc17e290b4f830d36bb0ce0becb0012cadbbb4b0000",
+      "source_locks_unchanged": true
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "qualified": false,
+    "source_dependencies": [],
+    "system_packages": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 15765479,
+      "extract": true,
+      "id": "blis",
+      "material_path": "corpora/blis",
+      "sha256": "065c34df94da95c23a3a857461e6a1387af709abfeba0af86b1dfb6cdc617f65",
+      "strip_root": true,
+      "url": "https://codeload.github.com/flame/blis/tar.gz/caf0db6be1202d9c83c79b51e75eceb96aa8b556"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/flame/blis"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete raw source",
+        "path": "{prefix}",
+        "purpose": "Independent complete original source with all configuration families, tests, kernels and documentation."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "A complete installed-file, mode and symlink read/integrity check is declared. This metadata revision did not run that check or execute upstream programs."
+    ],
+    "summary": "Dense linear algebra, blocking, packing, compiler/assembly interaction and threading diagnostics."
+  },
+  "version": "2.1"
+}
