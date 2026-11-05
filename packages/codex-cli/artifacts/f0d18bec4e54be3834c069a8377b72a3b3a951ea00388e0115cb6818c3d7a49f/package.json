@@ -1,0 +1,154 @@
+{
+  "build": "1-static-functional1-250cd34c",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check_codex_schema.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "offline-protocol-schema-export",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 90
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "codex-cli",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 162055867,
+      "category": [
+        "Agent and observability",
+        "Cloud agent controller"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "copy",
+        "state": "actual-native-version-probed; cloud-account-not-qualified"
+      },
+      "documentation": [
+        "https://developers.openai.com/codex/cli"
+      ],
+      "extract": true,
+      "id": "codex-cli",
+      "immutable_ref": "sha256:30efc97738b975940d78b59a9bea115fa34040b732807d54ec35ae6b7528de94",
+      "installed_bytes": null,
+      "kind": "native_bundle",
+      "license_class": "open",
+      "license_id": "Apache-2.0 AND LicenseRef-Bundled-Component-Notices",
+      "mandatory": true,
+      "material_path": "controller/codex-package",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Cloud Codex control with its code-mode companion, sandbox helper, ripgrep and packaged notices. No model weights. Identical native bundle across all three arms.",
+      "qualification_gaps": [
+        "Account/model access and cloud agent integration must pass in the actual deployment.",
+        "A standalone copied ELF is insufficient for the code-mode companion; retain the native bundle layout."
+      ],
+      "redistributable": "retain-native-distribution-notices",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "30efc97738b975940d78b59a9bea115fa34040b732807d54ec35ae6b7528de94",
+      "size_basis": "Complete npm tarball downloaded; npm SHA512 integrity and local SHA256 verified.",
+      "source_evidence": [
+        "https://registry.npmjs.org/@openai/codex/0.163.0-linux-x64"
+      ],
+      "source_logical_bytes": 429938138,
+      "source_url": "https://registry.npmjs.org/@openai/codex/-/codex-0.163.0-linux-x64.tgz",
+      "title": "OpenAI Codex CLI and native companions",
+      "upstream": "https://github.com/openai/codex",
+      "version": "0.163.0"
+    },
+    "catalog_sha256": "29352bf922a867b2cd0dd9777456edd46fee5efb705de0f50b1068be88dc3ca6",
+    "historical_checks_before_static_definition_revision": [],
+    "static_check_definition_revision": {
+      "build_executed": false,
+      "check_definition_executed": false,
+      "check_definition_sha256": "adba13f0d0ce890464cad08abc08f9e454be74e18b2be3fc68b3b7c4d4481d42",
+      "exact_version_interface_evidence": {
+        "basis": "Static exact-version source confirms generate-json-schema --out exports bundled JSON without starting an agent/model request. Original binary/source artifact locks remain unchanged.",
+        "cli": {
+          "git_blob": "9d540c3124ee692250d345719d122aa1884ba12f",
+          "path": "codex-rs/cli/src/main.rs"
+        },
+        "client_request_schema": {
+          "git_blob": "4e9211b36a4128bce7c000a84679788e99e743cf",
+          "path": "codex-rs/app-server-protocol/schema/json/ClientRequest.json"
+        },
+        "commit": "83086188ae0614bd882818ff1aa23f3194962012",
+        "execution_performed": false,
+        "export": {
+          "git_blob": "51af299a4620a5be7c7d4b1d524ad9acfc7f06b3",
+          "path": "codex-rs/app-server-protocol/src/precomputed_exports.rs"
+        },
+        "tag": "rust-v0.163.0",
+        "upstream_repository": "openai/codex"
+      },
+      "original_artifact_sha256": "250cd34c8d85aacd45ea6bf1d68027a12c1931b27a37effe56ab315bcb62a613",
+      "original_build": "1",
+      "original_manifest_sha256": "b85c40f76ef15204a47ec129d203b84752705f26c014052659bb24dfb8550ff5",
+      "original_payload_and_source_rows_unchanged": true,
+      "scope": "Offline native app-server protocol JSON-schema export, real generated method/type references and invalid output-directory rejection. No account, model call, agent or code-mode-host execution."
+    }
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "state": "actual-native-version-probed; cloud-account-not-qualified"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 162055867,
+      "extract": true,
+      "id": "codex-cli",
+      "material_path": "controller/codex-package",
+      "sha256": "30efc97738b975940d78b59a9bea115fa34040b732807d54ec35ae6b7528de94",
+      "strip_root": true,
+      "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.163.0-linux-x64.tgz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://developers.openai.com/codex/cli"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete native bundle",
+        "path": "{prefix}/vendor/x86_64-unknown-linux-musl",
+        "purpose": "Original Codex executable, companions, resource libraries and notices are retained together."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A functional definition exercises offline protocol-schema export and its output error path. It has only been statically reviewed; cloud/account/model access, agent use and companion features remain unqualified."
+    ],
+    "summary": "Cloud Codex control with its code-mode companion, sandbox helper, ripgrep and packaged notices. No model weights. Identical native bundle across all three arms."
+  },
+  "version": "0.163.0"
+}
