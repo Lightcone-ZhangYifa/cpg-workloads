@@ -25,16 +25,17 @@
     }
   ],
   "provider": "material",
-  "qualification_errors": [
-    "Missing or escaping template reference: tools"
-  ],
-  "release_eligible": false,
+  "qualification_errors": [],
+  "release_eligible": true,
   "review_policy": "static-trust-v1",
   "sha256": "10732ff85f303604c971396d162537ebe7046fd2d68a1595b6f3d33bb2af0308",
   "source_locks_complete": false,
   "static_review": {
     "checks": {
       "check_declarations": "functional",
+      "inactive_source_tool_references": [
+        "tools"
+      ],
       "python_files_parsed": 5,
       "referenced_template_paths": [
         "recipe/build.py",
@@ -43,13 +44,12 @@
       "runtime_execution": "not_performed",
       "source_locks": "commit_pinned_with_locked_delivered_inventory"
     },
-    "errors": [
-      "Missing or escaping template reference: tools"
-    ],
+    "errors": [],
     "policy": "static-trust-v1",
-    "status": "failed",
+    "status": "passed",
     "warnings": [
-      "Delivered binary has complete payload hashes and commit-pinned HTTPS sources, but its historical definition omits source archive byte locks. Source rebuilding is not newly established by this static review."
+      "Delivered binary has complete payload hashes and commit-pinned HTTPS sources, but its historical definition omits source archive byte locks. Source rebuilding is not newly established by this static review.",
+      "Historical source-build tool is not included in this binary payload artifact: tools. Its build hook is not executed by this artifact method."
     ]
   },
   "structure": "passed",
