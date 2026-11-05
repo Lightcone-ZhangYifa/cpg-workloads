@@ -1,0 +1,161 @@
+{
+  "build": "1-static-read1-50545e30",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-availability",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "sqlite",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 14899528,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Databases"
+      ],
+      "container_strategy": "Use the complete canonical source tree to retain open tests and speedtest infrastructure. Build in dev and run deterministic SQL/database bundles in target.",
+      "corpus_contract": {
+        "code": "Canonical full source tree, open tests and extensions.",
+        "inputs": "Frozen SQL/schema/data generator seeds and optional prebuilt databases.",
+        "oracle": "Exact query result comparison and open integrity/regression checks.",
+        "split_unit": "Application family; query/data families can support an explicitly separate input-generalization study."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://www.sqlite.org/"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/sqlite.measurement.json"
+      ],
+      "extract": true,
+      "id": "sqlite",
+      "immutable_ref": "sha256:387e7f6cad4797b17848c07d453dc6606917bb356a6cfe5a3abafd38c240c71b",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "LicenseRef-SQLite-Public-Domain",
+      "mandatory": false,
+      "material_path": "corpora/sqlite",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "End-to-end SQL interpreter, B-tree, memory, branch and storage-independent compiler workload coverage.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The proprietary TH3 suite is not part of the public source archive.",
+        "Declare in-memory versus filesystem tests and separate SQLite result validation from filesystem noise.",
+        "Versioned SQL scripts, schema/data generators, PRAGMA settings and database bytes require independent locks."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "387e7f6cad4797b17848c07d453dc6606917bb356a6cfe5a3abafd38c240c71b",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://www.sqlite.org/",
+        "https://www.sqlite.org/2026/sqlite-src-3540100.zip"
+      ],
+      "source_logical_bytes": 113150111,
+      "source_url": "https://www.sqlite.org/2026/sqlite-src-3540100.zip",
+      "title": "SQLite canonical source and tests",
+      "upstream": "https://www.sqlite.org/",
+      "version": "3.54.1"
+    },
+    "catalog_sha256": "663373378007a90b25a4cdf5a150b936b640e236f88404e94a0861d1404e8889",
+    "historical_checks": [],
+    "static_material_read_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "original_artifact_sha256": "50545e30d5765980bc813d803e6f6bfcdd7349733a44709907d4011b5fa2e49a",
+      "original_build": "1",
+      "original_manifest_sha256": "a72edf22901f15fa9aca11d526a9eca2deb1f72394d470a8b4a254c24ac025eb",
+      "payload_inventory_unchanged": true,
+      "read_check_executed": false,
+      "reader_ast_checked": true,
+      "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33",
+      "reader_definition_source_artifact_sha256": "b669fcf90909834d4c289cc17e290b4f830d36bb0ce0becb0012cadbbb4b0000",
+      "source_locks_unchanged": true
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "qualified": false,
+    "source_dependencies": [],
+    "system_packages": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 14899528,
+      "extract": true,
+      "id": "sqlite",
+      "material_path": "corpora/sqlite",
+      "sha256": "387e7f6cad4797b17848c07d453dc6606917bb356a6cfe5a3abafd38c240c71b",
+      "strip_root": true,
+      "url": "https://www.sqlite.org/2026/sqlite-src-3540100.zip"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.sqlite.org/"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/corpora/sqlite",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "A complete installed-file, mode and symlink read/integrity check is declared. This metadata revision did not run that check or execute upstream programs."
+    ],
+    "summary": "End-to-end SQL interpreter, B-tree, memory, branch and storage-independent compiler workload coverage."
+  },
+  "version": "3.54.1"
+}
