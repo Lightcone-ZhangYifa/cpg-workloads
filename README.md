@@ -16,7 +16,10 @@ Git stores unpacked package definitions, build recipes, functional checks, sourc
 | `packages/<id>/online/<sha256>/` | Unpacked historical online material recipe, including its original `online.json` contract. |
 | `catalog/artifacts/` | Per-artifact structure, metadata, rebuild, and functional-check results. |
 | `catalog/imports/` | One audit receipt per inspected delivery archive; failures and excluded members remain visible. |
-| `catalog/releases/` | Verified publication receipts used to generate the root manifest. |
+| `catalog/releases/` | Verified canonical, dependency-variant, and online publication receipts used to generate the root manifest. |
+| `catalog/historical-snapshots/` | Exact original artifact, manifest, and delivery-member bindings for historical alternatives. |
+| `catalog/historical-releases/` | Verified historical publication receipts; these populate the separate root historical download index. |
+| `catalog/revisions/` | Reviewed metadata and check-definition changes, with original and target manifest identities. |
 | `release-plans/` | Explicit immutable lists of artifacts to publish together. |
 | `resource-integrations/` | Historical maintainer drivers and evidence, retained with their original scope. |
 | `tools/`, `tests/` | Repository validation and publication infrastructure, plus resource-specific tests. |
@@ -40,23 +43,32 @@ source, pin the exact `manifest.json` byte size and SHA-256 from a trusted relea
 Each package row keeps its local content-addressed mirror path and a separate HTTPS
 Release download URL. Both the archive and every declared member are verified.
 
-An `online.cpgrecipe.tar.gz` is an online preparation recipe, **not** a fifth package
-installation method. Its `run.py prepare` produces the locked offline material package;
-`--no-network` requires the already verified raw cache. Read the included README.
+An `.cpgrecipe.tar.gz` contains an online preparation recipe. Read its included README
+for the preserved entry point, acquisition locks, and offline artifact it prepares.
+These recipes are indexed separately from CPG installation packages.
 
 ## Qualification rules
+
+Every artifact records its qualification route. Execution-qualified artifacts retain
+their original build and functional evidence. The explicit `static-trust-v1` migration
+route checks structure, metadata, redistribution terms, source locks, and check
+definitions without running a workload. It preserves earlier evidence and records
+that no new build or functional run occurred.
 
 1. Inspect each delivered package with the CPG archive verifier, including paths,
    inventory, hashes, modes, source locks, and dependency identities.
 2. Preserve the complete original definition, recipe, test code, license metadata,
    source identity, and failure evidence in its source template.
-3. Build/install in a fresh independent directory. Non-APT artifacts need an actual
-   functional test; availability or a version string does not establish functionality.
+3. Software packages other than APT wrappers need a meaningful functional-check
+   definition. Material packages need a read or integrity-check definition. An
+   execution-qualified result additionally requires the corresponding observed run;
+   the static migration route only inspects these definitions.
 4. APT wrappers are the sole functional-test exemption requested for this migration.
    Their payload-free packages are still validated and rebuilt to the exact original
    SHA-256. This does not claim an APT installation or execution.
-5. Admit only passed artifacts to a Release plan. Missing prerequisites, missing
-   functional tests, interrupted builds, and unobserved hardware remain explicit.
+5. Admit only artifacts that satisfy their recorded qualification route. Missing
+   definitions, unresolved redistribution terms, interrupted historical builds,
+   and unobserved execution or hardware remain explicit.
 6. Verify the uploaded asset set, SHA-256, and sizes before adding its publication
    receipt to `manifest.json`. Never overwrite a published identity with different bytes.
 
@@ -83,7 +95,7 @@ there is space for the manifest, checksums, and publication metadata.
 # Inspect one delivery; use a dedicated scratch directory outside this checkout.
 python tools/import_archives.py /path/to/delivery.zip \
   --framework /path/to/compiler-playground --scratch /path/to/scratch \
-  --attempt-build
+  --static-trust
 
 # Check repository invariants and the publication regression tests.
 python tools/validate_repository.py
@@ -126,3 +138,18 @@ Artifacts marked `review_policy: static-trust-v1` were reviewed for structure, m
 Historical Python environments sometimes use different archives with the same software/version/build/method/target. Their original context and full hashes are retained in `catalog/dependency-profiles/`; build numbers and dependency pins are not rewritten. Published alternatives appear in the root `dependency_variants` list, separate from canonical software discovery.
 
 For a package with frozen dependencies, select its ready manifest under `profiles/`. Each generated manifest contains one complete, unambiguous original context or package-specific dependency closure. The root `dependency_profiles` summary reports missing hashes until all required artifacts are public; an incomplete profile is never presented as installable. Online preparation recipes remain in `online_recipes` and are not CPG installation packages.
+
+### Historical artifact snapshots
+
+The root `historical_snapshots` list exposes verified public downloads for original
+deliveries whose full software identity also occurs with different bytes. Each row
+retains the original ID, version, build, target, manifest hash, and complete archive
+hash. Select these artifacts by their full SHA-256. Their source descriptors bind
+the exact original archive and member; published receipts live separately in
+`catalog/historical-releases/`.
+
+Historical snapshots do not participate in canonical identity resolution or in
+generated ready dependency profiles. A preserved archive-member context does not
+establish a complete dependency environment. Source descriptors become downloadable
+index entries only after their actual Release assets and publication receipts have
+been verified.
