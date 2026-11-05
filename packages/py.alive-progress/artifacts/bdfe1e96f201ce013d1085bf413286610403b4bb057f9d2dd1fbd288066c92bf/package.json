@@ -1,0 +1,356 @@
+{
+  "build": "1-static-check1-2df58fdf",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exact-installed-version",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-installed-operations",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.about-time",
+      "py.graphemeu"
+    ],
+    "system": []
+  },
+  "id": "py.alive-progress",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 78403,
+      "category": [
+        "Python packages",
+        "Optional search and analysis"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.about-time",
+        "py.graphemeu"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://github.com/rsalmei/alive-progress"
+      ],
+      "id": "py.alive-progress",
+      "immutable_ref": "sha256:63dd33bb94cde15ad9e5b666dbba8fedf71b72a4935d6fb9a92931e69402c9ff",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "LicenseRef-Python-distribution-notices",
+      "mandatory": false,
+      "material_path": "wheels/alive_progress-3.3.0-py3-none-any.whl",
+      "package_name": "alive-progress",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "63dd33bb94cde15ad9e5b666dbba8fedf71b72a4935d6fb9a92931e69402c9ff",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/alive-progress/3.3.0/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/26/85/ec72f6c885703d18f3b09769645e950e14c7d0cc0a0e35d94127983f666f/alive_progress-3.3.0-py3-none-any.whl",
+      "title": "alive-progress",
+      "upstream": "https://pypi.org/project/alive-progress/3.3.0/",
+      "version": "3.3.0"
+    },
+    "catalog_sha256": "fbf884941d6c30ed5a745371f65836977a41ef2e5f2268e4460a1f586d6a9165",
+    "historical_checks": [],
+    "historical_recipe_before_static_check_revision": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "alive-progress",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "check_definition_source_artifact_sha256": "b23f6b9edc7572cbaf3508c7cf7305186714dbe7252def3cb12e0d29e2af8144",
+      "check_definition_source_manifest_sha256": "5a89042f206b01f606a40584e1550891c476d93a03b7e452542c460924b82570",
+      "check_prerequisites": "Prepare the exact retained functional-consumption lock, including pre_target and post_target phases. Leaf-only installation does not automatically prepare reverse consumers.",
+      "functional_consumption_support_qualified_by_this_revision": false,
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_check_and_dependency_revision",
+      "original_artifact_sha256": "2df58fdfc43bcb9108feba9e0f5f0636e545951cd5aabadbdb93dbc776e95108",
+      "original_build": "1",
+      "original_manifest_sha256": "3394aa6c804372f6ce4a9c8c95e26c0e7b11ac0fb4d39b289feda2c06c173dda",
+      "original_official_wheel_identity_preserved": true,
+      "original_profiles": [
+        "v02112"
+      ],
+      "original_resolved_dependencies": [
+        {
+          "build": "2",
+          "id": "py.about-time",
+          "method": "wrapper",
+          "sha256": "d6c3e029493af142138c2ae247e2c6684b757c575e1eb9aa48cbe100ad872011",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "4.2.1"
+        },
+        {
+          "build": "2",
+          "id": "py.graphemeu",
+          "method": "wrapper",
+          "sha256": "5fd79c3c83c538bf401197532213ca608a3e02daa1fc9d5580c460b16cc1cddd",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.7.2"
+        }
+      ],
+      "resolved_dependency_replacements": [],
+      "reused_authored_files": [
+        {
+          "bytes": 7038,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/alive-wheel-files.json",
+          "sha256": "c4e44dfb4ef19224e98694d023abfbb5754d42b24ec9741b215c17fc99d75bc5"
+        },
+        {
+          "bytes": 12983,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/alive_private_prefix.py",
+          "sha256": "7bfa0dff1c8d8893b2dd626c99011a6ee26a29d4a2fa470b8505fc981478ce07"
+        },
+        {
+          "bytes": 539,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/check.py",
+          "sha256": "97e5d0741a744b671b6d682180ff78fe1e938281c419327c27986b3b47bbe82d"
+        },
+        {
+          "bytes": 2252,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/consumption_guard.py",
+          "sha256": "4c46a3d1c37a1e23cbeaa49f28f33f20a152c9634f80685fb30330140eca7e7a"
+        },
+        {
+          "bytes": 9450,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/functional-consumption-lock.json",
+          "sha256": "38c573e13afa2982e54d76c7b82043bf7ad4cc0cb76df24c738a0c4def91079b"
+        },
+        {
+          "bytes": 9718,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/probes_v02113.py",
+          "sha256": "3c4a407ca20c10d262f666668e9d044e67d945c51135b7ea75653604fd33f549"
+        },
+        {
+          "bytes": 23704,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/profile_probes.py",
+          "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+        }
+      ]
+    }
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "functional_consumption": {
+      "canonical_dependencies_unchanged": true,
+      "consumer_roots": [],
+      "contract": "functional-consumption-lock.json",
+      "post_target": [],
+      "pre_target": [
+        "py.about-time",
+        "py.graphemeu"
+      ],
+      "profile_kind": "original-dependency-closure-only",
+      "uninstall_order": "Remove reverse consumers before the target; remove remaining original and supporting dependencies last."
+    },
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/alive_private_prefix.py",
+        "install",
+        "--prefix",
+        "{prefix}",
+        "--source",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "alive-progress",
+    "private_wheel_layout": {
+      "helper": "alive_private_prefix.py",
+      "helper_sha256": "7bfa0dff1c8d8893b2dd626c99011a6ee26a29d4a2fa470b8505fc981478ce07",
+      "original_wheel_member_lock": "alive-wheel-files.json",
+      "original_wheel_member_lock_sha256": "c4e44dfb4ef19224e98694d023abfbb5754d42b24ec9741b215c17fc99d75bc5",
+      "original_wheel_modified": false,
+      "relative_private_prefix": ".cpg-wheel-layouts/alive-progress-3.3.0",
+      "resource_id": "py.alive-progress",
+      "scope": "Original pip --prefix inside the same isolated venv; preserve both original LICENSE files and full RECORD ownership.",
+      "source_sha256": "63dd33bb94cde15ad9e5b666dbba8fedf71b72a4935d6fb9a92931e69402c9ff"
+    },
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/alive_private_prefix.py",
+        "remove",
+        "--prefix",
+        "{prefix}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 78403,
+      "extract": false,
+      "id": "py.alive-progress",
+      "material_path": "wheels/alive_progress-3.3.0-py3-none-any.whl",
+      "sha256": "63dd33bb94cde15ad9e5b666dbba8fedf71b72a4935d6fb9a92931e69402c9ff",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/26/85/ec72f6c885703d18f3b09769645e950e14c7d0cc0a0e35d94127983f666f/alive_progress-3.3.0-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+    ],
+    "documentation": [
+      "https://github.com/rsalmei/alive-progress"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect package metadata in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/alive_progress-3.3.0-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper."
+    ],
+    "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+  },
+  "version": "3.3.0"
+}

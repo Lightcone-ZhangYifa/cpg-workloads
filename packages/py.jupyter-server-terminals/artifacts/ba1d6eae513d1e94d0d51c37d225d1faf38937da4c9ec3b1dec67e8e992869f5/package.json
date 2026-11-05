@@ -1,0 +1,543 @@
+{
+  "build": "1-static-check1-f33b1fbb",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exact-installed-version",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-installed-operations",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.terminado"
+    ],
+    "system": []
+  },
+  "id": "py.jupyter-server-terminals",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 13704,
+      "category": [
+        "Python packages",
+        "Core research environment"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.terminado"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/jupyter_server_terminals/"
+      ],
+      "id": "py.jupyter-server-terminals",
+      "immutable_ref": "sha256:55be353fc74a80bc7f3b20e6be50a55a61cd525626f578dcb66a5708e2007d14",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "LicenseRef-Python-distribution-notices",
+      "mandatory": false,
+      "material_path": "wheels/jupyter_server_terminals-0.5.4-py3-none-any.whl",
+      "package_name": "jupyter-server-terminals",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "55be353fc74a80bc7f3b20e6be50a55a61cd525626f578dcb66a5708e2007d14",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/jupyter_server_terminals/0.5.4/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/d1/2d/6674563f71c6320841fc300911a55143925112a72a883e2ca71fba4c618d/jupyter_server_terminals-0.5.4-py3-none-any.whl",
+      "title": "jupyter_server_terminals",
+      "upstream": "https://pypi.org/project/jupyter_server_terminals/0.5.4/",
+      "version": "0.5.4"
+    },
+    "catalog_sha256": "aae7880ecc7bbd935e271d55fd59c09a7ca6216baaee5d3217c330d100726af4",
+    "historical_checks": [],
+    "historical_recipe_before_static_check_revision": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "jupyter-server-terminals",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "check_definition_source_artifact_sha256": "8dcfb3e1ccf007bf22ad8c5213f82b9c69601c0e450d0922782f223b4db4c9e7",
+      "check_definition_source_manifest_sha256": "1a679aa281e7704a6414dabfd9c832eca187e5e546e6eb05a0755540eae0e510",
+      "check_prerequisites": "Prepare the exact retained functional-consumption lock, including pre_target and post_target phases. Leaf-only installation does not automatically prepare reverse consumers.",
+      "functional_consumption_support_qualified_by_this_revision": false,
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_check_and_dependency_revision",
+      "original_artifact_sha256": "f33b1fbbed83b05f9e62b5349c0a92ce017ca9877dedf3d10c471a5b1653200e",
+      "original_build": "1",
+      "original_manifest_sha256": "5551a2a949f57a2c6ac83b72a9645b9cf5fc86c77a0905630cd8c432a933a6ad",
+      "original_official_wheel_identity_preserved": true,
+      "original_profiles": [
+        "v02112"
+      ],
+      "original_resolved_dependencies": [
+        {
+          "build": "2",
+          "id": "py.ptyprocess",
+          "method": "wrapper",
+          "sha256": "ee587db1f0fb28322c730f46f8e98f313e5ef27c360471899feea4ebd6244946",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.7.0"
+        },
+        {
+          "build": "2",
+          "id": "py.tornado",
+          "method": "wrapper",
+          "sha256": "07ed0c1fc0ca01d22fd310ebfe222417c991f62cd72bb068c08755235b1858b5",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "6.6"
+        },
+        {
+          "build": "2",
+          "id": "py.terminado",
+          "method": "wrapper",
+          "sha256": "bd003061f639f2a4a4862623eaeab32a2d04354f9714b2d9ab15af86d04a2a5b",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.18.1"
+        }
+      ],
+      "resolved_dependency_replacements": [
+        {
+          "original": {
+            "build": "1",
+            "id": "py.soupsieve",
+            "method": "wrapper",
+            "sha256": "21033e59911c8d527aff1cba23bc9903f367d1a16a221ad833ba3ad59ad3710b",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "3.0.3"
+          },
+          "revised": {
+            "build": "1-static-check1-21033e59",
+            "id": "py.soupsieve",
+            "method": "wrapper",
+            "sha256": "35d35f279babe30c6ed561273b526cc4ccb93e88c993cfdb61b854ce8ca73141",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "3.0.3"
+          }
+        },
+        {
+          "original": {
+            "build": "2",
+            "id": "py.beautifulsoup4",
+            "method": "wrapper",
+            "sha256": "757c318c9c611901756ba22d3e2e653b9e1954150c1e8941856e5a566ad590a8",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "4.15.0"
+          },
+          "revised": {
+            "build": "2-static-deps1-757c318c",
+            "id": "py.beautifulsoup4",
+            "method": "wrapper",
+            "sha256": "58790c310af9809b7488ea0568b5fb58911edea6b0f19d855d598cc1c0cd722e",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "4.15.0"
+          }
+        },
+        {
+          "original": {
+            "build": "1",
+            "id": "py.jupyterlab-pygments",
+            "method": "wrapper",
+            "sha256": "622b440a52561f14973ab33160cb69747c492db0b88f2974cfc68cffbb581982",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "0.3.0"
+          },
+          "revised": {
+            "build": "1-static-check1-622b440a",
+            "id": "py.jupyterlab-pygments",
+            "method": "wrapper",
+            "sha256": "f6563a5601d0fc8d22ab0d0998e4a1688411575501526b74eddd1644af86e005",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "0.3.0"
+          }
+        },
+        {
+          "original": {
+            "build": "1",
+            "id": "py.nbclient",
+            "method": "wrapper",
+            "sha256": "3dc4257173007bb4c77192b4f1f47e05de850e193afc22fae2ccb0f59444202d",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "0.11.0"
+          },
+          "revised": {
+            "build": "1-static-check1-3dc42571",
+            "id": "py.nbclient",
+            "method": "wrapper",
+            "sha256": "109e723ab39af1243a4464c119f195ae74210c6cbcf88ca56b6620fc8d061664",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "0.11.0"
+          }
+        },
+        {
+          "original": {
+            "build": "2",
+            "id": "py.nbconvert",
+            "method": "wrapper",
+            "sha256": "332f9b5cc7dda320c176b9ae69a72dd554094b138432dceacd6330c1cc0b1980",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "7.17.2"
+          },
+          "revised": {
+            "build": "2-static-deps1-332f9b5c",
+            "id": "py.nbconvert",
+            "method": "wrapper",
+            "sha256": "b730a4e16b9b351470c84cded580cd7dc90aada8190cbc9e9988cb58f8816591",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "7.17.2"
+          }
+        }
+      ],
+      "reused_authored_files": [
+        {
+          "bytes": 569,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/check.py",
+          "sha256": "28e87db76153bf111fff8b490949f7648d83a511c54cc432d6d6c3af7001a647"
+        },
+        {
+          "bytes": 2252,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/consumption_guard.py",
+          "sha256": "4c46a3d1c37a1e23cbeaa49f28f33f20a152c9634f80685fb30330140eca7e7a"
+        },
+        {
+          "bytes": 177218,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/functional-consumption-lock.json",
+          "sha256": "deb541751e533111d5126607d75dd4f9424d502da7dad70362f00a4a0837b6ba"
+        },
+        {
+          "bytes": 7727,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/probes_v02113.py",
+          "sha256": "0d8912e43776ca3c362bb81f72699e8d7c233b26a137d2579e64b328bd0c0388"
+        },
+        {
+          "bytes": 23704,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/profile_probes.py",
+          "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+        }
+      ]
+    }
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "functional_consumption": {
+      "canonical_dependencies_unchanged": true,
+      "consumer_roots": [
+        "py.jupyter-server"
+      ],
+      "contract": "functional-consumption-lock.json",
+      "post_target": [
+        "py.jupyter-server"
+      ],
+      "pre_target": [
+        "py.idna",
+        "py.typing-extensions",
+        "py.anyio",
+        "py.pycparser",
+        "py.cffi",
+        "py.argon2-cffi-bindings",
+        "py.argon2-cffi",
+        "py.six",
+        "py.python-dateutil",
+        "py.tzdata",
+        "py.arrow",
+        "py.attrs",
+        "py.soupsieve",
+        "py.beautifulsoup4",
+        "py.webencodings",
+        "py.tinycss2",
+        "py.bleach",
+        "py.defusedxml",
+        "py.fastjsonschema",
+        "py.fqdn",
+        "py.isoduration",
+        "py.markupsafe",
+        "py.jinja2",
+        "py.jsonpointer",
+        "py.rpds-py",
+        "py.referencing",
+        "py.jsonschema-specifications",
+        "py.rfc3339-validator",
+        "py.rfc3986-validator",
+        "py.lark",
+        "py.rfc3987-syntax",
+        "py.uri-template",
+        "py.webcolors",
+        "py.jsonschema",
+        "py.platformdirs",
+        "py.traitlets",
+        "py.jupyter-core",
+        "py.pyzmq",
+        "py.tornado",
+        "py.jupyter-client",
+        "py.packaging",
+        "py.python-json-logger",
+        "py.pyyaml",
+        "py.jupyter-events",
+        "py.ptyprocess",
+        "py.terminado",
+        "py.jupyterlab-pygments",
+        "py.mistune",
+        "py.nbformat",
+        "py.nbclient",
+        "py.pandocfilters",
+        "py.pygments",
+        "py.nbconvert",
+        "py.prometheus-client",
+        "py.send2trash",
+        "py.websocket-client"
+      ],
+      "uninstall_order": "Remove reverse consumers before the target; remove remaining original and supporting dependencies last."
+    },
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "--no-cache-dir",
+        "--disable-pip-version-check",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "jupyter-server-terminals",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "--disable-pip-version-check",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 13704,
+      "extract": false,
+      "id": "py.jupyter-server-terminals",
+      "material_path": "wheels/jupyter_server_terminals-0.5.4-py3-none-any.whl",
+      "sha256": "55be353fc74a80bc7f3b20e6be50a55a61cd525626f578dcb66a5708e2007d14",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/d1/2d/6674563f71c6320841fc300911a55143925112a72a883e2ca71fba4c618d/jupyter_server_terminals-0.5.4-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+    ],
+    "documentation": [
+      "https://pypi.org/project/jupyter_server_terminals/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect package metadata in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/jupyter_server_terminals-0.5.4-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper."
+    ],
+    "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+  },
+  "version": "0.5.4"
+}

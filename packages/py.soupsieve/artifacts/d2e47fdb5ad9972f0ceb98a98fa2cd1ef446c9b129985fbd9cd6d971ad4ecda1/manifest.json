@@ -1,0 +1,435 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 524,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "21386ede5967dc4d0ab2d1336ceb3b166380bc1b900e1ded4a1866348f1125db"
+    },
+    {
+      "bytes": 2252,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/consumption_guard.py",
+      "sha256": "4c46a3d1c37a1e23cbeaa49f28f33f20a152c9634f80685fb30330140eca7e7a"
+    },
+    {
+      "bytes": 9493,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/functional-consumption-lock.json",
+      "sha256": "2ff73ea0ca7dfc4e8e56305c147318bb1f8fadd207bfeb2b42de6781c019bfc2"
+    },
+    {
+      "bytes": 7159,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_v02113.py",
+      "sha256": "eda418120742a654f729a60268ebd87c0fd1e8fa066aa8a7983d8be73f6648ea"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "79982eb3dbc12d658c5bc1b371b6c74a9cba5855238c2f202fc4193f1f1d41ad",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ca8b1d030bde1461b79a94366b52968324e349a9efa529957bb0af30c6d6aaa9",
+  "method": "wrapper",
+  "package": {
+    "build": "1-static-check1-2f0727ec",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-installed-version",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.soupsieve",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 41705,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/soupsieve/"
+        ],
+        "id": "py.soupsieve",
+        "immutable_ref": "sha256:fa30e3ba4809cb81ce1f3209f2fbe3e779fc445f0439bc147a0d7c4601743f21",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "material_path": "wheels/soupsieve-3.0.3-py3-none-any.whl",
+        "package_name": "soupsieve",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "fa30e3ba4809cb81ce1f3209f2fbe3e779fc445f0439bc147a0d7c4601743f21",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/soupsieve/3.0.3/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/49/ca/f639c80449997b88aba7bc9705d25dd76cc0844f45f187862fd8f8bb18fa/soupsieve-3.0.3-py3-none-any.whl",
+        "title": "soupsieve",
+        "upstream": "https://pypi.org/project/soupsieve/3.0.3/",
+        "version": "3.0.3"
+      },
+      "catalog_sha256": "70c51a707c0b88c5033bd8348ab00e4ab99568fdac4e43375872484a2e92ed46",
+      "historical_checks": [],
+      "historical_recipe_before_static_check_revision": {
+        "adapter": "wheel",
+        "environment": "research",
+        "install_commands": [
+          [
+            "{prefix}/bin/python",
+            "-m",
+            "pip",
+            "install",
+            "{package_name}=={version}"
+          ]
+        ],
+        "install_from_cache_commands": [
+          [
+            "{prefix}/bin/python",
+            "-m",
+            "pip",
+            "install",
+            "{source}"
+          ]
+        ],
+        "manager": "pip",
+        "package_name": "soupsieve",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+        "uninstall_commands": [
+          [
+            "{prefix}/bin/python",
+            "-m",
+            "pip",
+            "uninstall",
+            "--yes",
+            "{package_name}"
+          ]
+        ],
+        "wrapper": true
+      },
+      "static_wrapper_revision": {
+        "build_executed": false,
+        "check_definition_source_artifact_sha256": "38e2bced8eaab7546bb1d91107344f0848b121152369e8d9f5df851b3501d9de",
+        "check_definition_source_manifest_sha256": "72fec65519e5c75702d9376d4bf2a6853716b26efd5257821de2c77bfa8bfd51",
+        "check_prerequisites": "Prepare the exact retained functional-consumption lock, including pre_target and post_target phases. Leaf-only installation does not automatically prepare reverse consumers.",
+        "functional_consumption_support_qualified_by_this_revision": false,
+        "functional_tests_executed": false,
+        "kind": "static_wrapper_check_and_dependency_revision",
+        "original_artifact_sha256": "2f0727ecedac0c693d1149b389725ebf9e025481a7729de834d40f4a7e64e61c",
+        "original_build": "1",
+        "original_manifest_sha256": "731ef3d1791dbcb8b5913ca497810c0ea4677c75b6119cd710defb9322c2b2be",
+        "original_official_wheel_identity_preserved": true,
+        "original_profiles": [
+          "v02113.py.jupyter-server-terminals"
+        ],
+        "original_resolved_dependencies": [],
+        "resolved_dependency_replacements": [],
+        "reused_authored_files": [
+          {
+            "bytes": 524,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/check.py",
+            "sha256": "21386ede5967dc4d0ab2d1336ceb3b166380bc1b900e1ded4a1866348f1125db"
+          },
+          {
+            "bytes": 2252,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/consumption_guard.py",
+            "sha256": "4c46a3d1c37a1e23cbeaa49f28f33f20a152c9634f80685fb30330140eca7e7a"
+          },
+          {
+            "bytes": 9493,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/functional-consumption-lock.json",
+            "sha256": "2ff73ea0ca7dfc4e8e56305c147318bb1f8fadd207bfeb2b42de6781c019bfc2"
+          },
+          {
+            "bytes": 7159,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/probes_v02113.py",
+            "sha256": "eda418120742a654f729a60268ebd87c0fd1e8fa066aa8a7983d8be73f6648ea"
+          },
+          {
+            "bytes": 23704,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/profile_probes.py",
+            "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+          }
+        ]
+      }
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "functional_consumption": {
+        "canonical_dependencies_unchanged": true,
+        "consumer_roots": [
+          "py.beautifulsoup4"
+        ],
+        "contract": "functional-consumption-lock.json",
+        "post_target": [
+          "py.beautifulsoup4"
+        ],
+        "pre_target": [
+          "py.typing-extensions"
+        ],
+        "uninstall_order": "Remove reverse consumers before the target; remove remaining original and supporting dependencies last."
+      },
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "soupsieve",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 41705,
+        "extract": false,
+        "id": "py.soupsieve",
+        "material_path": "wheels/soupsieve-3.0.3-py3-none-any.whl",
+        "sha256": "fa30e3ba4809cb81ce1f3209f2fbe3e779fc445f0439bc147a0d7c4601743f21",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/49/ca/f639c80449997b88aba7bc9705d25dd76cc0844f45f187862fd8f8bb18fa/soupsieve-3.0.3-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/project/soupsieve/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/soupsieve-3.0.3-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper."
+      ],
+      "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+    },
+    "version": "3.0.3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "formal_baseline": "0.21.12",
+    "phase": "pre_target",
+    "qualifications": 0,
+    "release": "0.21.13",
+    "role": "exact-original-functional-consumption-support-only",
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "check_definition_source_artifact_sha256": "38e2bced8eaab7546bb1d91107344f0848b121152369e8d9f5df851b3501d9de",
+      "check_definition_source_manifest_sha256": "72fec65519e5c75702d9376d4bf2a6853716b26efd5257821de2c77bfa8bfd51",
+      "check_prerequisites": "Prepare the exact retained functional-consumption lock, including pre_target and post_target phases. Leaf-only installation does not automatically prepare reverse consumers.",
+      "functional_consumption_support_qualified_by_this_revision": false,
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_check_and_dependency_revision",
+      "original_artifact_sha256": "2f0727ecedac0c693d1149b389725ebf9e025481a7729de834d40f4a7e64e61c",
+      "original_build": "1",
+      "original_manifest_sha256": "731ef3d1791dbcb8b5913ca497810c0ea4677c75b6119cd710defb9322c2b2be",
+      "original_official_wheel_identity_preserved": true,
+      "original_profiles": [
+        "v02113.py.jupyter-server-terminals"
+      ],
+      "original_resolved_dependencies": [],
+      "resolved_dependency_replacements": [],
+      "reused_authored_files": [
+        {
+          "bytes": 524,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/check.py",
+          "sha256": "21386ede5967dc4d0ab2d1336ceb3b166380bc1b900e1ded4a1866348f1125db"
+        },
+        {
+          "bytes": 2252,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/consumption_guard.py",
+          "sha256": "4c46a3d1c37a1e23cbeaa49f28f33f20a152c9634f80685fb30330140eca7e7a"
+        },
+        {
+          "bytes": 9493,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/functional-consumption-lock.json",
+          "sha256": "2ff73ea0ca7dfc4e8e56305c147318bb1f8fadd207bfeb2b42de6781c019bfc2"
+        },
+        {
+          "bytes": 7159,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/probes_v02113.py",
+          "sha256": "eda418120742a654f729a60268ebd87c0fd1e8fa066aa8a7983d8be73f6648ea"
+        },
+        {
+          "bytes": 23704,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/profile_probes.py",
+          "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+        }
+      ]
+    },
+    "target": "py.jupyter-server-terminals"
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.typing-extensions",
+      "method": "wrapper",
+      "sha256": "c6244862f2f2bb9f06383cb24cae71cb9c835036f69b75f6912c349a0d20089d",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.16.0"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

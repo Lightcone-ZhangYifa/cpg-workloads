@@ -1,0 +1,431 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 554,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "4b9b21dfea318620bd79ba4b360ee698972f8802871b4ee0f098c40186c80d6f"
+    },
+    {
+      "bytes": 2252,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/consumption_guard.py",
+      "sha256": "4c46a3d1c37a1e23cbeaa49f28f33f20a152c9634f80685fb30330140eca7e7a"
+    },
+    {
+      "bytes": 6427,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/functional-consumption-lock.json",
+      "sha256": "23f6152732db2848e3a2dfe60e923e1b2d3d6404356ccb8428ca5db631059129"
+    },
+    {
+      "bytes": 5475,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_v02113.py",
+      "sha256": "108c949c4ebd69e256e079164033cecfedb75f0fe5129f26588ae0dd5c600212"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "329a117d86a1438014a6383b43f0b45f3f11930750386294c4599ade185c535a",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "4c624f790f2ff45d7738cd843d37fef5355d538d1a3ab334cfe789b0a3aaa131",
+  "method": "wrapper",
+  "package": {
+    "build": "1-static-check1-622b440a",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-installed-version",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.jupyterlab-pygments",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 15884,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/jupyterlab_pygments/"
+        ],
+        "id": "py.jupyterlab-pygments",
+        "immutable_ref": "sha256:841a89020971da1d8693f1a99997aefc5dc424bb1b251fd6322462a1b8842780",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "LicenseRef-Python-distribution-notices",
+        "mandatory": false,
+        "material_path": "wheels/jupyterlab_pygments-0.3.0-py3-none-any.whl",
+        "package_name": "jupyterlab-pygments",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "841a89020971da1d8693f1a99997aefc5dc424bb1b251fd6322462a1b8842780",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/jupyterlab_pygments/0.3.0/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/b1/dd/ead9d8ea85bf202d90cc513b533f9c363121c7792674f78e0d8a854b63b4/jupyterlab_pygments-0.3.0-py3-none-any.whl",
+        "title": "jupyterlab_pygments",
+        "upstream": "https://pypi.org/project/jupyterlab_pygments/0.3.0/",
+        "version": "0.3.0"
+      },
+      "catalog_sha256": "5e2848ec8f7c221f89afc99aafa8b340f8177eb49808de0867660c3a6abf956e",
+      "historical_checks": [],
+      "historical_recipe_before_static_check_revision": {
+        "adapter": "wheel",
+        "environment": "research",
+        "install_commands": [
+          [
+            "{prefix}/bin/python",
+            "-m",
+            "pip",
+            "install",
+            "{package_name}=={version}"
+          ]
+        ],
+        "install_from_cache_commands": [
+          [
+            "{prefix}/bin/python",
+            "-m",
+            "pip",
+            "install",
+            "{source}"
+          ]
+        ],
+        "manager": "pip",
+        "package_name": "jupyterlab-pygments",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+        "uninstall_commands": [
+          [
+            "{prefix}/bin/python",
+            "-m",
+            "pip",
+            "uninstall",
+            "--yes",
+            "{package_name}"
+          ]
+        ],
+        "wrapper": true
+      },
+      "static_wrapper_revision": {
+        "build_executed": false,
+        "check_definition_source_artifact_sha256": "45075431f7ed273d7733b8e7a2d97bc699e7fb29669a74f213765b634bed06cb",
+        "check_definition_source_manifest_sha256": "c715cbc4792954f954ceac2c8b46b783ded80ccd2a9dbca9bdf4beb4144f835f",
+        "check_prerequisites": "Prepare the exact retained functional-consumption lock, including pre_target and post_target phases. Leaf-only installation does not automatically prepare reverse consumers.",
+        "functional_consumption_support_qualified_by_this_revision": false,
+        "functional_tests_executed": false,
+        "kind": "static_wrapper_check_and_dependency_revision",
+        "original_artifact_sha256": "622b440a52561f14973ab33160cb69747c492db0b88f2974cfc68cffbb581982",
+        "original_build": "1",
+        "original_manifest_sha256": "2cb255cba00fe3c97803adf8546ab00fa3a39b75788d1f4c7ec8faa2206ffab8",
+        "original_official_wheel_identity_preserved": true,
+        "original_profiles": [
+          "v02112"
+        ],
+        "original_resolved_dependencies": [],
+        "resolved_dependency_replacements": [],
+        "reused_authored_files": [
+          {
+            "bytes": 554,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/check.py",
+            "sha256": "4b9b21dfea318620bd79ba4b360ee698972f8802871b4ee0f098c40186c80d6f"
+          },
+          {
+            "bytes": 2252,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/consumption_guard.py",
+            "sha256": "4c46a3d1c37a1e23cbeaa49f28f33f20a152c9634f80685fb30330140eca7e7a"
+          },
+          {
+            "bytes": 6427,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/functional-consumption-lock.json",
+            "sha256": "23f6152732db2848e3a2dfe60e923e1b2d3d6404356ccb8428ca5db631059129"
+          },
+          {
+            "bytes": 5475,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/probes_v02113.py",
+            "sha256": "108c949c4ebd69e256e079164033cecfedb75f0fe5129f26588ae0dd5c600212"
+          },
+          {
+            "bytes": 23704,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/profile_probes.py",
+            "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+          }
+        ]
+      }
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "functional_consumption": {
+        "canonical_dependencies_unchanged": true,
+        "consumer_roots": [
+          "py.pygments"
+        ],
+        "contract": "functional-consumption-lock.json",
+        "post_target": [],
+        "pre_target": [
+          "py.pygments"
+        ],
+        "uninstall_order": "Remove reverse consumers before the target; remove remaining original and supporting dependencies last."
+      },
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "jupyterlab-pygments",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 15884,
+        "extract": false,
+        "id": "py.jupyterlab-pygments",
+        "material_path": "wheels/jupyterlab_pygments-0.3.0-py3-none-any.whl",
+        "sha256": "841a89020971da1d8693f1a99997aefc5dc424bb1b251fd6322462a1b8842780",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/b1/dd/ead9d8ea85bf202d90cc513b533f9c363121c7792674f78e0d8a854b63b4/jupyterlab_pygments-0.3.0-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/project/jupyterlab_pygments/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/jupyterlab_pygments-0.3.0-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper."
+      ],
+      "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+    },
+    "version": "0.3.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.11",
+    "qualifications": 0,
+    "release": "0.21.12",
+    "role": "frozen-exact-original-dependency-only",
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "check_definition_source_artifact_sha256": "45075431f7ed273d7733b8e7a2d97bc699e7fb29669a74f213765b634bed06cb",
+      "check_definition_source_manifest_sha256": "c715cbc4792954f954ceac2c8b46b783ded80ccd2a9dbca9bdf4beb4144f835f",
+      "check_prerequisites": "Prepare the exact retained functional-consumption lock, including pre_target and post_target phases. Leaf-only installation does not automatically prepare reverse consumers.",
+      "functional_consumption_support_qualified_by_this_revision": false,
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_check_and_dependency_revision",
+      "original_artifact_sha256": "622b440a52561f14973ab33160cb69747c492db0b88f2974cfc68cffbb581982",
+      "original_build": "1",
+      "original_manifest_sha256": "2cb255cba00fe3c97803adf8546ab00fa3a39b75788d1f4c7ec8faa2206ffab8",
+      "original_official_wheel_identity_preserved": true,
+      "original_profiles": [
+        "v02112"
+      ],
+      "original_resolved_dependencies": [],
+      "resolved_dependency_replacements": [],
+      "reused_authored_files": [
+        {
+          "bytes": 554,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/check.py",
+          "sha256": "4b9b21dfea318620bd79ba4b360ee698972f8802871b4ee0f098c40186c80d6f"
+        },
+        {
+          "bytes": 2252,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/consumption_guard.py",
+          "sha256": "4c46a3d1c37a1e23cbeaa49f28f33f20a152c9634f80685fb30330140eca7e7a"
+        },
+        {
+          "bytes": 6427,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/functional-consumption-lock.json",
+          "sha256": "23f6152732db2848e3a2dfe60e923e1b2d3d6404356ccb8428ca5db631059129"
+        },
+        {
+          "bytes": 5475,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/probes_v02113.py",
+          "sha256": "108c949c4ebd69e256e079164033cecfedb75f0fe5129f26588ae0dd5c600212"
+        },
+        {
+          "bytes": 23704,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/profile_probes.py",
+          "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+        }
+      ]
+    }
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.pygments",
+      "method": "wrapper",
+      "sha256": "c5a809ea2478e1f6099acbbc6d7309ffbfe0f6216ffb3a4030c12f16deeca8e7",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.21.0"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

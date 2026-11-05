@@ -1,0 +1,1255 @@
+{
+  "build": "2-static-deps1-2a88b46d",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exact-installed-version",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-installed-operations",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.babel",
+      "py.jinja2",
+      "py.json5",
+      "py.jsonschema",
+      "py.jupyter-server",
+      "py.packaging",
+      "py.requests"
+    ],
+    "system": []
+  },
+  "id": "py.jupyterlab-server",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 60197,
+      "category": [
+        "Python packages",
+        "Core research environment"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.babel",
+        "py.jinja2",
+        "py.json5",
+        "py.jsonschema",
+        "py.jupyter-server",
+        "py.packaging",
+        "py.requests"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/jupyterlab_server/"
+      ],
+      "id": "py.jupyterlab-server",
+      "immutable_ref": "sha256:4bd36c7c11d872e15cefa4951e12380a47e6901687165332dd50a007cb367ad9",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "LicenseRef-Python-distribution-notices",
+      "mandatory": false,
+      "material_path": "wheels/jupyterlab_server-2.28.1-py3-none-any.whl",
+      "package_name": "jupyterlab-server",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "4bd36c7c11d872e15cefa4951e12380a47e6901687165332dd50a007cb367ad9",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/jupyterlab_server/2.28.1/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/23/d3/996332fe24f3c2458b9c353b998570dfa2631763e9a8674ba3f94c0877d0/jupyterlab_server-2.28.1-py3-none-any.whl",
+      "title": "jupyterlab_server",
+      "upstream": "https://pypi.org/project/jupyterlab_server/2.28.1/",
+      "version": "2.28.1"
+    },
+    "catalog_sha256": "b48d1a227158bb50bd862f3386b8675489cccca11c9ea308d4add3ffe946a164",
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_dependency_revision",
+      "original_artifact_sha256": "2a88b46dec417d338236eac9677ad3a870f0e029f90a1b9927c1915bd3c9a6d6",
+      "original_build": "2",
+      "original_manifest_sha256": "20e139d3ec93d99bd55de292aba3ca1594cb355b1879d770e516060319e51502",
+      "original_official_wheel_identity_preserved": true,
+      "original_resolved_dependencies": [
+        {
+          "build": "2",
+          "id": "py.idna",
+          "method": "wrapper",
+          "sha256": "864490d50c350a6dcbfb10c9b7010336acd6637d7da0524caf252e3100fcea42",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "3.20"
+        },
+        {
+          "build": "2",
+          "id": "py.typing-extensions",
+          "method": "wrapper",
+          "sha256": "7d94b449524e1cd18fb9b263b0a4f14ae55614719af94ab8a8e93276f46ca31f",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "4.16.0"
+        },
+        {
+          "build": "2",
+          "id": "py.anyio",
+          "method": "wrapper",
+          "sha256": "3735ffb9a57210210064125c6729ebdad66f3fb0fe39651470e2d8fe13d32ea0",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "4.15.1"
+        },
+        {
+          "build": "2",
+          "id": "py.pycparser",
+          "method": "wrapper",
+          "sha256": "1b84fd6d544b9bd921b2a36fe5f0dd3bae847fed561e19bf6c807b448887a329",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "3.11"
+        },
+        {
+          "build": "2",
+          "id": "py.cffi",
+          "method": "wrapper",
+          "sha256": "ed48c961078e0e78abb42b469472abc2c4ec9dc016b8ba8247a14f1eca8b64e4",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2.1.1"
+        },
+        {
+          "build": "2",
+          "id": "py.argon2-cffi-bindings",
+          "method": "wrapper",
+          "sha256": "980a6ab70a0911727230ef6cccbe2fadb0b5a8707fcedb20867b0e97412e1f20",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "26.1.0"
+        },
+        {
+          "build": "2",
+          "id": "py.argon2-cffi",
+          "method": "wrapper",
+          "sha256": "e530228d8dd298b804401ebb43c3a3b4e5fe8d8d56d2ae925dbdf8f482e4e497",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "25.1.0"
+        },
+        {
+          "build": "2",
+          "id": "py.six",
+          "method": "wrapper",
+          "sha256": "ebab8df0d7173abcf740d32257450d433837d30dd2d10416cb987da535d5d384",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "1.17.0"
+        },
+        {
+          "build": "2",
+          "id": "py.python-dateutil",
+          "method": "wrapper",
+          "sha256": "aeda17dfe491cce32ad45d7e03af459ee71a5315fdcea929c6bb9baced2c4179",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2.9.0.post0"
+        },
+        {
+          "build": "20261029-isolated-exact-wheel-host-qualification-1",
+          "id": "py.tzdata",
+          "method": "wrapper",
+          "sha256": "a163b9ab1a95381e5b78e78ffb3a40663c9e30ba1403ab00b1bf22434dacddf9",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2026.5"
+        },
+        {
+          "build": "2",
+          "id": "py.arrow",
+          "method": "wrapper",
+          "sha256": "33e52a792b648754949e6a95a01e77684bf58f78ce7abcbf0b80c381359a02f1",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "1.4.0"
+        },
+        {
+          "build": "2",
+          "id": "py.attrs",
+          "method": "wrapper",
+          "sha256": "c98b3e7a89f0bf9d219e84f20276dbe09be189ab8594f0d2254f45edbede04f1",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "26.1.0"
+        },
+        {
+          "build": "2",
+          "id": "py.babel",
+          "method": "wrapper",
+          "sha256": "5dd78c7af7379b76bbfc5df13bedba475ef67de0267d7580369e6ea2bdeee43e",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2.18.0"
+        },
+        {
+          "build": "1",
+          "id": "py.soupsieve",
+          "method": "wrapper",
+          "sha256": "21033e59911c8d527aff1cba23bc9903f367d1a16a221ad833ba3ad59ad3710b",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "3.0.3"
+        },
+        {
+          "build": "2",
+          "id": "py.beautifulsoup4",
+          "method": "wrapper",
+          "sha256": "757c318c9c611901756ba22d3e2e653b9e1954150c1e8941856e5a566ad590a8",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "4.15.0"
+        },
+        {
+          "build": "2",
+          "id": "py.webencodings",
+          "method": "wrapper",
+          "sha256": "450c8c095cdb2ce878e6150b3b927d27959b65dd5504d36baaace9a0cb8cfc53",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.6.1"
+        },
+        {
+          "build": "2",
+          "id": "py.tinycss2",
+          "method": "wrapper",
+          "sha256": "f20806ee1c1da2b43b4cb29b180b146116ee989dc430cda82438f10f012ad423",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "1.5.1"
+        },
+        {
+          "build": "2",
+          "id": "py.bleach",
+          "method": "wrapper",
+          "sha256": "a00d078d3c191b12b48d050cb9670a1e27985c26d6a4a79b2e7f6b8da6d07df4",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "6.4.0"
+        },
+        {
+          "build": "2",
+          "id": "py.certifi",
+          "method": "wrapper",
+          "sha256": "26fa3c38dd383ac2937513be83b1d445695a0a6f56c1ef2e9a3295aba5bc2233",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2026.10.19"
+        },
+        {
+          "build": "2",
+          "id": "py.charset-normalizer",
+          "method": "wrapper",
+          "sha256": "e57e980ec041c6b7791aa055c834a7845c2673832a6fb1be466b62549ed33c32",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "3.5.2"
+        },
+        {
+          "build": "2",
+          "id": "py.defusedxml",
+          "method": "wrapper",
+          "sha256": "4e6e58f826cd20049d96c4569728a2e2c9076ccbca0d07670df4f4902560738d",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.7.1"
+        },
+        {
+          "build": "2",
+          "id": "py.fastjsonschema",
+          "method": "wrapper",
+          "sha256": "aa6a98898ce20786590240a3d5cdb7a97d3e46f8197b804a181481c136a13c09",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2.22.2"
+        },
+        {
+          "build": "2",
+          "id": "py.fqdn",
+          "method": "wrapper",
+          "sha256": "8478ba7070a814f62658aadfa578af3cc5a82f58c350f51a7e8a13e89721ccc6",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "1.6.0"
+        },
+        {
+          "build": "2",
+          "id": "py.isoduration",
+          "method": "wrapper",
+          "sha256": "67a6c5c919ec960208762df4184096c2270fe043a9f2cae7f057ddf32670dc2f",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "20.11.0"
+        },
+        {
+          "build": "2",
+          "id": "py.markupsafe",
+          "method": "wrapper",
+          "sha256": "38294a6132ccad6034341cb0d492dd1c1e77b90d0aea87ce4e421ef1fd31c0d8",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "3.0.4"
+        },
+        {
+          "build": "2",
+          "id": "py.jinja2",
+          "method": "wrapper",
+          "sha256": "1cfe0f498a51fde2f99703241776b60cd11ff8299bcbd7558933c87c6b667a05",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "3.1.6"
+        },
+        {
+          "build": "2",
+          "id": "py.json5",
+          "method": "wrapper",
+          "sha256": "d8a78c4b1297cab86eed3b00959f212ab5d492d8e28a4c968103965defbf61d2",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.17.3"
+        },
+        {
+          "build": "2",
+          "id": "py.jsonpointer",
+          "method": "wrapper",
+          "sha256": "732de48a5d754ad5ef17f68810e895170ee5284fdb2d41489fb468c81a96f08e",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "3.4"
+        },
+        {
+          "build": "2",
+          "id": "py.rpds-py",
+          "method": "wrapper",
+          "sha256": "738a67cf10c26843af8dcad87ae826307f966e9471bda59061bef69c55327cd8",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2026.9.1"
+        },
+        {
+          "build": "2",
+          "id": "py.referencing",
+          "method": "wrapper",
+          "sha256": "e42262ae1600a5cee56a658912b15038fe591852086ef9cc9095418242f64ba4",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.37.0"
+        },
+        {
+          "build": "2",
+          "id": "py.jsonschema-specifications",
+          "method": "wrapper",
+          "sha256": "0fcad1fc69db7f77205693812db027aed9d63cb5499a3852df1947668f6dc844",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2025.9.1"
+        },
+        {
+          "build": "2",
+          "id": "py.rfc3339-validator",
+          "method": "wrapper",
+          "sha256": "7e65aa931e787178c61adb8cad3dd5009a3c7d48f1a65e5993e6dcfcb6f1655a",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.1.4"
+        },
+        {
+          "build": "2",
+          "id": "py.rfc3986-validator",
+          "method": "wrapper",
+          "sha256": "ffe049879106f8500983d1ec0ca8775f6756c864bf80adc38297179ecb97718e",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.1.1"
+        },
+        {
+          "build": "2",
+          "id": "py.lark",
+          "method": "wrapper",
+          "sha256": "8f2dde2822535520e808d4d4e8545a30b87c666c178ba0e5c35b3fb0d0886505",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "1.3.1"
+        },
+        {
+          "build": "2",
+          "id": "py.rfc3987-syntax",
+          "method": "wrapper",
+          "sha256": "a02361defd073bc41733a99e1b922642a8869210384375249891a707993cf000",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "1.1.0"
+        },
+        {
+          "build": "20261029-isolated-exact-wheel-host-qualification-1",
+          "id": "py.uri-template",
+          "method": "wrapper",
+          "sha256": "c215829f2b1af883f405f7dc04c85ec1997ebf616b2f62f7e264707ec0014fba",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "1.3.0"
+        },
+        {
+          "build": "2",
+          "id": "py.webcolors",
+          "method": "wrapper",
+          "sha256": "9bcbdf6897e55109e486b9b5ff8072f61d5ef3830c265554a8cbc08d12509e01",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "25.10.0"
+        },
+        {
+          "build": "2",
+          "id": "py.jsonschema",
+          "method": "wrapper",
+          "sha256": "00af834a1a7e433303a555a4992bbcc861ffd1869fc7ea6d72ff1a6ebbb22814",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "4.26.0"
+        },
+        {
+          "build": "2",
+          "id": "py.platformdirs",
+          "method": "wrapper",
+          "sha256": "032a62a5e202bf9b4bb203b299fbe7d66fc9ec5b440e20ba27ce3c135e4fcb2d",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "4.13.5"
+        },
+        {
+          "build": "2",
+          "id": "py.traitlets",
+          "method": "wrapper",
+          "sha256": "b6ed10b2e9899bbeaee1ec46942845a30a34c7d6fe2a8a1310c8fc7a44687c6e",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "5.16.1"
+        },
+        {
+          "build": "2",
+          "id": "py.jupyter-core",
+          "method": "wrapper",
+          "sha256": "da242b4111a2a7e2d56488e04fbfbc5063bf2645f68fa09b6ad3c0acd77ef0ea",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "5.9.1"
+        },
+        {
+          "build": "2",
+          "id": "py.pyzmq",
+          "method": "wrapper",
+          "sha256": "917200b2964b89025692285928d864f379537d536a91b754c4ea0dc58a3bfa7a",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "27.2.0"
+        },
+        {
+          "build": "2",
+          "id": "py.tornado",
+          "method": "wrapper",
+          "sha256": "07ed0c1fc0ca01d22fd310ebfe222417c991f62cd72bb068c08755235b1858b5",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "6.6"
+        },
+        {
+          "build": "2",
+          "id": "py.jupyter-client",
+          "method": "wrapper",
+          "sha256": "451ffd1bb26f393203b4a592701648ab5860c4dee60ff8e6dab073aa543387c7",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "8.10.0"
+        },
+        {
+          "build": "2",
+          "id": "py.packaging",
+          "method": "wrapper",
+          "sha256": "ce1bb5f9e11c085c1e78978d222703bbe4027141f150c07b3d25d93dd4d116b7",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "26.3"
+        },
+        {
+          "build": "2",
+          "id": "py.python-json-logger",
+          "method": "wrapper",
+          "sha256": "383c42a2889a5cdcd8d6c884c479e4476840559a40bade118fe5e3a8e08cb231",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "4.2.0"
+        },
+        {
+          "build": "2",
+          "id": "py.pyyaml",
+          "method": "wrapper",
+          "sha256": "200e349617f93d1174d124cd8679d6499f9b939ac28c0306e60a0af6fcb74918",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "6.0.3"
+        },
+        {
+          "build": "2",
+          "id": "py.jupyter-events",
+          "method": "wrapper",
+          "sha256": "97d22c746664c5c4dc2c1c760b107095b15619e8cf3df20b394c1bc2abcc5f86",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.12.1"
+        },
+        {
+          "build": "2",
+          "id": "py.ptyprocess",
+          "method": "wrapper",
+          "sha256": "ee587db1f0fb28322c730f46f8e98f313e5ef27c360471899feea4ebd6244946",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.7.0"
+        },
+        {
+          "build": "2",
+          "id": "py.terminado",
+          "method": "wrapper",
+          "sha256": "bd003061f639f2a4a4862623eaeab32a2d04354f9714b2d9ab15af86d04a2a5b",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.18.1"
+        },
+        {
+          "build": "1",
+          "id": "py.jupyter-server-terminals",
+          "method": "wrapper",
+          "sha256": "f33b1fbbed83b05f9e62b5349c0a92ce017ca9877dedf3d10c471a5b1653200e",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.5.4"
+        },
+        {
+          "build": "1",
+          "id": "py.jupyterlab-pygments",
+          "method": "wrapper",
+          "sha256": "622b440a52561f14973ab33160cb69747c492db0b88f2974cfc68cffbb581982",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.3.0"
+        },
+        {
+          "build": "2",
+          "id": "py.mistune",
+          "method": "wrapper",
+          "sha256": "30f071f3ea3cca942a5025462292830c5e165c4f5dde5a2237bbcadab424cdc3",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "3.4.0"
+        },
+        {
+          "build": "2",
+          "id": "py.nbformat",
+          "method": "wrapper",
+          "sha256": "e8e6d71d6ef521d180b954a65c26ece2b01b9883f09e0de0e41ed736b9909bcd",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "5.11.1"
+        },
+        {
+          "build": "1",
+          "id": "py.nbclient",
+          "method": "wrapper",
+          "sha256": "3dc4257173007bb4c77192b4f1f47e05de850e193afc22fae2ccb0f59444202d",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.11.0"
+        },
+        {
+          "build": "2",
+          "id": "py.pandocfilters",
+          "method": "wrapper",
+          "sha256": "068ee6afa42a56e943d85eafbfb2846b41accbd364ce43fc1abd13313b9398ed",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "1.5.1"
+        },
+        {
+          "build": "2",
+          "id": "py.pygments",
+          "method": "wrapper",
+          "sha256": "c5a809ea2478e1f6099acbbc6d7309ffbfe0f6216ffb3a4030c12f16deeca8e7",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2.21.0"
+        },
+        {
+          "build": "2",
+          "id": "py.nbconvert",
+          "method": "wrapper",
+          "sha256": "332f9b5cc7dda320c176b9ae69a72dd554094b138432dceacd6330c1cc0b1980",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "7.17.2"
+        },
+        {
+          "build": "2",
+          "id": "py.prometheus-client",
+          "method": "wrapper",
+          "sha256": "4764a6d35eded1f7750c3539bd05283845f42a34b770f9704840668b55afd82d",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.26.0"
+        },
+        {
+          "build": "2",
+          "id": "py.send2trash",
+          "method": "wrapper",
+          "sha256": "85e82ab572558d5f49771c97c0a5b2b9c751d3d833b38801fdc74a46aaa46cbf",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2.1.0"
+        },
+        {
+          "build": "2",
+          "id": "py.websocket-client",
+          "method": "wrapper",
+          "sha256": "066e40fb908ec40a736be6ce63d61e2b4e25a8060820af40d16a2e3095acb376",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "1.9.2"
+        },
+        {
+          "build": "2",
+          "id": "py.jupyter-server",
+          "method": "wrapper",
+          "sha256": "a2652ce17ffe65e21ac9f88eabb1293cbfb480718fa09dd6d48227a0a76a7151",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2.21.1"
+        },
+        {
+          "build": "2",
+          "id": "py.urllib3",
+          "method": "wrapper",
+          "sha256": "acfbb2a643b020e6bd475777687600ee181980f0465b62f2539dfb1c2c2b0647",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2.8.0"
+        },
+        {
+          "build": "2",
+          "id": "py.requests",
+          "method": "wrapper",
+          "sha256": "0e59765d0225b9d291beb4c7f09053591fef7441f9e800c0dab8540cd60e0e43",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2.34.2"
+        }
+      ],
+      "resolved_dependency_replacements": [
+        {
+          "original": {
+            "build": "1",
+            "id": "py.soupsieve",
+            "method": "wrapper",
+            "sha256": "21033e59911c8d527aff1cba23bc9903f367d1a16a221ad833ba3ad59ad3710b",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "3.0.3"
+          },
+          "revised": {
+            "build": "1-static-check1-21033e59",
+            "id": "py.soupsieve",
+            "method": "wrapper",
+            "sha256": "35d35f279babe30c6ed561273b526cc4ccb93e88c993cfdb61b854ce8ca73141",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "3.0.3"
+          }
+        },
+        {
+          "original": {
+            "build": "2",
+            "id": "py.beautifulsoup4",
+            "method": "wrapper",
+            "sha256": "757c318c9c611901756ba22d3e2e653b9e1954150c1e8941856e5a566ad590a8",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "4.15.0"
+          },
+          "revised": {
+            "build": "2-static-deps1-757c318c",
+            "id": "py.beautifulsoup4",
+            "method": "wrapper",
+            "sha256": "58790c310af9809b7488ea0568b5fb58911edea6b0f19d855d598cc1c0cd722e",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "4.15.0"
+          }
+        },
+        {
+          "original": {
+            "build": "1",
+            "id": "py.jupyter-server-terminals",
+            "method": "wrapper",
+            "sha256": "f33b1fbbed83b05f9e62b5349c0a92ce017ca9877dedf3d10c471a5b1653200e",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "0.5.4"
+          },
+          "revised": {
+            "build": "1-static-check1-f33b1fbb",
+            "id": "py.jupyter-server-terminals",
+            "method": "wrapper",
+            "sha256": "ba1d6eae513d1e94d0d51c37d225d1faf38937da4c9ec3b1dec67e8e992869f5",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "0.5.4"
+          }
+        },
+        {
+          "original": {
+            "build": "1",
+            "id": "py.jupyterlab-pygments",
+            "method": "wrapper",
+            "sha256": "622b440a52561f14973ab33160cb69747c492db0b88f2974cfc68cffbb581982",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "0.3.0"
+          },
+          "revised": {
+            "build": "1-static-check1-622b440a",
+            "id": "py.jupyterlab-pygments",
+            "method": "wrapper",
+            "sha256": "f6563a5601d0fc8d22ab0d0998e4a1688411575501526b74eddd1644af86e005",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "0.3.0"
+          }
+        },
+        {
+          "original": {
+            "build": "1",
+            "id": "py.nbclient",
+            "method": "wrapper",
+            "sha256": "3dc4257173007bb4c77192b4f1f47e05de850e193afc22fae2ccb0f59444202d",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "0.11.0"
+          },
+          "revised": {
+            "build": "1-static-check1-3dc42571",
+            "id": "py.nbclient",
+            "method": "wrapper",
+            "sha256": "109e723ab39af1243a4464c119f195ae74210c6cbcf88ca56b6620fc8d061664",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "0.11.0"
+          }
+        },
+        {
+          "original": {
+            "build": "2",
+            "id": "py.nbconvert",
+            "method": "wrapper",
+            "sha256": "332f9b5cc7dda320c176b9ae69a72dd554094b138432dceacd6330c1cc0b1980",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "7.17.2"
+          },
+          "revised": {
+            "build": "2-static-deps1-332f9b5c",
+            "id": "py.nbconvert",
+            "method": "wrapper",
+            "sha256": "b730a4e16b9b351470c84cded580cd7dc90aada8190cbc9e9988cb58f8816591",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "7.17.2"
+          }
+        },
+        {
+          "original": {
+            "build": "2",
+            "id": "py.jupyter-server",
+            "method": "wrapper",
+            "sha256": "a2652ce17ffe65e21ac9f88eabb1293cbfb480718fa09dd6d48227a0a76a7151",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "2.21.1"
+          },
+          "revised": {
+            "build": "2-static-deps1-a2652ce1",
+            "id": "py.jupyter-server",
+            "method": "wrapper",
+            "sha256": "47e7cb4f94d28ae6b2a15af81b6bb00a1d9f04240780c94bab42949a6b0a7a0d",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "2.21.1"
+          }
+        }
+      ]
+    }
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "--no-cache-dir",
+        "--disable-pip-version-check",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "jupyterlab-server",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "--disable-pip-version-check",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 60197,
+      "extract": false,
+      "id": "py.jupyterlab-server",
+      "material_path": "wheels/jupyterlab_server-2.28.1-py3-none-any.whl",
+      "sha256": "4bd36c7c11d872e15cefa4951e12380a47e6901687165332dd50a007cb367ad9",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/23/d3/996332fe24f3c2458b9c353b998570dfa2631763e9a8674ba3f94c0877d0/jupyterlab_server-2.28.1-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+    ],
+    "documentation": [
+      "https://pypi.org/project/jupyterlab_server/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect package metadata in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/jupyterlab_server-2.28.1-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+      "0.21.12 candidate: fixed original wheel and declared dependency closure; qualification requires the saved two-prefix PackageManager receipt. No source-build, remote-service, OCI, or official benchmark claim."
+    ],
+    "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+  },
+  "version": "2.28.1"
+}
