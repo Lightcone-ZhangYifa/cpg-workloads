@@ -1,0 +1,128 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "zstd",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 2453329,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Compression"
+      ],
+      "container_strategy": "Build tests and representative compression levels in dev; run fixed input and dictionary bundles with round-trip checks on target.",
+      "corpus_contract": {
+        "code": "Library, CLI and tests included.",
+        "inputs": "Separately admitted text, binaries and structured corpora.",
+        "oracle": "Lossless round-trip byte comparison plus upstream tests.",
+        "split_unit": "Compression implementation family; dictionaries trained on train inputs only."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/facebook/zstd"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/zstd.measurement.json",
+        "workspace-evidence/resources-v050/open-research/zstd.refs.json"
+      ],
+      "extract": true,
+      "id": "zstd",
+      "immutable_ref": "f8745da6ff1ad1e7bab384bd1f9d742439278e99",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause OR GPL-2.0-only",
+      "mandatory": false,
+      "material_path": "corpora/zstd",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Compression/decompression loops, dictionary operations and large production C code coverage.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The source tree does not define a representative study corpus; input licenses and dictionaries must be separately frozen."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "4b0bd1f0cfb25e61b9103c35f27395530ff5b4c0d2513a00fd745849e85ea52c",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/facebook/zstd",
+        "https://codeload.github.com/facebook/zstd/tar.gz/f8745da6ff1ad1e7bab384bd1f9d742439278e99",
+        "https://github.com/facebook/zstd/commit/f8745da6ff1ad1e7bab384bd1f9d742439278e99"
+      ],
+      "source_logical_bytes": 8354806,
+      "source_url": "https://codeload.github.com/facebook/zstd/tar.gz/f8745da6ff1ad1e7bab384bd1f9d742439278e99",
+      "title": "Zstandard compression workload",
+      "upstream": "https://github.com/facebook/zstd",
+      "version": "v1.5.7"
+    },
+    "catalog_sha256": "871bc9f10954c98cd76e2f4f307a8f4833b269ea138d586cd16c1849fc73257e"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "qualified": false,
+    "source_dependencies": [],
+    "system_packages": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2453329,
+      "extract": true,
+      "id": "zstd",
+      "material_path": "corpora/zstd",
+      "sha256": "4b0bd1f0cfb25e61b9103c35f27395530ff5b4c0d2513a00fd745849e85ea52c",
+      "strip_root": true,
+      "url": "https://codeload.github.com/facebook/zstd/tar.gz/f8745da6ff1ad1e7bab384bd1f9d742439278e99"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/facebook/zstd"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/corpora/zstd",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Compression/decompression loops, dictionary operations and large production C code coverage."
+  },
+  "version": "v1.5.7"
+}

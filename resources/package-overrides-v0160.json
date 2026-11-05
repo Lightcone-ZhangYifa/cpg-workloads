@@ -1,0 +1,556 @@
+{
+  "apt.util-linux": {
+    "checks": [
+      {
+        "id": "lscpu-json",
+        "kind": "functional",
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "inventory"
+        ],
+        "cwd": "{prefix}",
+        "timeout_seconds": 60,
+        "expected_returncode": 0,
+        "stdout_regex": "\"status\": \"passed\"",
+        "requires_commands": [
+          "python3",
+          "lscpu"
+        ]
+      },
+      {
+        "id": "taskset-child-affinity",
+        "kind": "functional",
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "affinity"
+        ],
+        "cwd": "{prefix}",
+        "timeout_seconds": 60,
+        "expected_returncode": 0,
+        "stdout_regex": "\"status\": \"passed\"",
+        "requires_commands": [
+          "python3",
+          "taskset"
+        ]
+      }
+    ],
+    "usage": {
+      "summary": "Read CPU/cache topology and set affinity for explicitly selected child commands.",
+      "locations": [
+        {
+          "label": "CPU inventory",
+          "path": "/usr/bin/lscpu",
+          "purpose": "System util-linux CPU information"
+        },
+        {
+          "label": "Affinity control",
+          "path": "/usr/bin/taskset",
+          "purpose": "Run a child within the process-allowed CPU set"
+        }
+      ],
+      "activation": [
+        "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+      ],
+      "examples": [
+        {
+          "description": "Machine-readable CPU inventory",
+          "command": "lscpu --json"
+        },
+        {
+          "description": "Inspect the current shell CPU affinity",
+          "command": "taskset -pc $$"
+        }
+      ],
+      "notes": [
+        "The functional affinity check pins only a disposable child to one already allowed CPU and verifies the parent affinity is unchanged.",
+        "Visible CPU count and allowed affinity can differ inside containers; record both."
+      ],
+      "documentation": [
+        "https://www.kernel.org/pub/linux/utils/util-linux/",
+        "https://man7.org/linux/man-pages/man1/lscpu.1.html",
+        "https://man7.org/linux/man-pages/man1/taskset.1.html"
+      ]
+    }
+  },
+  "apt.cpuid": {
+    "checks": [
+      {
+        "id": "decoded-cpu-identity",
+        "kind": "functional",
+        "argv": [
+          "python3",
+          "{recipe}/check.py"
+        ],
+        "cwd": "{prefix}",
+        "timeout_seconds": 60,
+        "expected_returncode": 0,
+        "stdout_regex": "\"status\": \"passed\"",
+        "requires_commands": [
+          "python3",
+          "cpuid"
+        ]
+      }
+    ],
+    "usage": {
+      "summary": "Decode x86 CPUID leaves using the separately packaged cpuid utility.",
+      "locations": [
+        {
+          "label": "CPU decoder",
+          "path": "/usr/bin/cpuid",
+          "purpose": "APT cpuid executable"
+        }
+      ],
+      "activation": [
+        "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+      ],
+      "examples": [
+        {
+          "description": "Decode the current CPU only",
+          "command": "cpuid -1"
+        },
+        {
+          "description": "Dump raw CPUID registers",
+          "command": "cpuid -1 -r"
+        }
+      ],
+      "notes": [
+        "This is the cpuid utility, not the libcpuid library/cpuid_tool package.",
+        "CPUID reflects the virtual CPU when a hypervisor filters or emulates leaves; it is not a PMU access check."
+      ],
+      "documentation": [
+        "https://www.etallen.com/cpuid.html"
+      ]
+    }
+  },
+  "numa-topology": {
+    "checks": [
+      {
+        "id": "hwloc-live-xml",
+        "kind": "functional",
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "xml"
+        ],
+        "cwd": "{prefix}",
+        "timeout_seconds": 60,
+        "expected_returncode": 0,
+        "stdout_regex": "\"status\": \"passed\"",
+        "requires_commands": [
+          "python3",
+          "lstopo-no-graphics"
+        ]
+      },
+      {
+        "id": "numactl-node-memory",
+        "kind": "functional",
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "numa"
+        ],
+        "cwd": "{prefix}",
+        "timeout_seconds": 60,
+        "expected_returncode": 0,
+        "stdout_regex": "\"status\": \"passed\"",
+        "requires_commands": [
+          "python3",
+          "numactl"
+        ]
+      }
+    ],
+    "usage": {
+      "summary": "The existing system hwloc and numactl group for CPU/NUMA locality and binding.",
+      "locations": [
+        {
+          "label": "System topology tools",
+          "path": "/usr/bin",
+          "purpose": "lstopo-no-graphics and numactl from the signed APT package lock"
+        }
+      ],
+      "activation": [
+        "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+      ],
+      "examples": [
+        {
+          "description": "Read NUMA node and memory inventory",
+          "command": "numactl --hardware"
+        },
+        {
+          "description": "Capture system hwloc topology",
+          "command": "lstopo-no-graphics --of xml /tmp/system-topology.xml"
+        }
+      ],
+      "notes": [
+        "Read-only topology checks do not establish permission for set_mempolicy, mbind or page migration.",
+        "The independent hwloc core package has an explicit prefix and can coexist with these system tools."
+      ],
+      "documentation": [
+        "https://github.com/numactl/numactl",
+        "https://www.open-mpi.org/projects/hwloc/"
+      ]
+    }
+  },
+  "libpfm4": {
+    "checks": [
+      {
+        "id": "named-event-encoding",
+        "kind": "functional",
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "timeout_seconds": 60,
+        "expected_returncode": 0,
+        "stdout_regex": "\"status\": \"passed\"",
+        "requires_commands": [
+          "python3"
+        ],
+        "requires_paths": [
+          "{prefix}/bin/showevtinfo"
+        ]
+      }
+    ],
+    "usage": {
+      "summary": "Resolve named PMU events into event encodings without opening performance counters.",
+      "locations": [
+        {
+          "label": "Event encoder",
+          "path": "{prefix}/bin/showevtinfo",
+          "purpose": "Installed event enumeration and encoding utility"
+        },
+        {
+          "label": "C API",
+          "path": "{prefix}/include/perfmon",
+          "purpose": "libpfm4 public headers"
+        },
+        {
+          "label": "Library",
+          "path": "{prefix}/lib",
+          "purpose": "Source-built libpfm4 runtime"
+        }
+      ],
+      "activation": [
+        "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+      ],
+      "examples": [
+        {
+          "description": "List encoded named events",
+          "command": "{prefix}/bin/showevtinfo -E"
+        },
+        {
+          "description": "Inspect event definitions",
+          "command": "{prefix}/bin/showevtinfo"
+        }
+      ],
+      "notes": [
+        "Event encoding succeeds independently of perf_event permission. Positive counter collection is a separate hardware check.",
+        "The stable 4.13.0 event database may not identify a newer CPU; do not equate generic event support with model-specific coverage."
+      ],
+      "documentation": [
+        "https://perfmon2.sourceforge.net/",
+        "https://perfmon2.sourceforge.net/manv4/libpfm.html"
+      ]
+    }
+  },
+  "papi": {
+    "checks": [
+      {
+        "id": "component-enumeration",
+        "kind": "functional",
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "timeout_seconds": 60,
+        "expected_returncode": 0,
+        "stdout_regex": "\"status\": \"passed\"",
+        "requires_commands": [
+          "python3"
+        ],
+        "requires_paths": [
+          "{prefix}/bin/papi_component_avail"
+        ]
+      }
+    ],
+    "usage": {
+      "summary": "Inspect PAPI components and use the C API for explicitly instrumented counter collection.",
+      "locations": [
+        {
+          "label": "Component query",
+          "path": "{prefix}/bin/papi_component_avail",
+          "purpose": "Enumerate initialized and disabled components"
+        },
+        {
+          "label": "Native event query",
+          "path": "{prefix}/bin/papi_native_avail",
+          "purpose": "List native events supported by the current component view"
+        },
+        {
+          "label": "C API",
+          "path": "{prefix}/include",
+          "purpose": "PAPI headers and public API"
+        }
+      ],
+      "activation": [
+        "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+      ],
+      "examples": [
+        {
+          "description": "Read component availability and disabled reasons",
+          "command": "{prefix}/bin/papi_component_avail"
+        },
+        {
+          "description": "Inspect native event availability",
+          "command": "{prefix}/bin/papi_native_avail"
+        }
+      ],
+      "notes": [
+        "The deployment check validates component enumeration and preserves disabled reasons; it does not claim a requested event can be measured.",
+        "The source-built 7.2.0 prefix and APT papi-tools 7.1.0 are separate versions; select an explicit command/library pair."
+      ],
+      "documentation": [
+        "https://icl.utk.edu/papi/"
+      ]
+    }
+  },
+  "likwid": {
+    "checks": [
+      {
+        "id": "decoded-topology",
+        "kind": "functional",
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "timeout_seconds": 60,
+        "expected_returncode": 0,
+        "stdout_regex": "\"status\": \"passed\"",
+        "requires_commands": [
+          "python3"
+        ],
+        "requires_paths": [
+          "{prefix}/bin/likwid-topology"
+        ]
+      }
+    ],
+    "usage": {
+      "summary": "Inspect CPU topology and use LIKWID affinity, counters and microbenchmarks when explicitly requested.",
+      "locations": [
+        {
+          "label": "LIKWID tools",
+          "path": "{prefix}/bin",
+          "purpose": "Version-specific topology, affinity, perfctr and benchmark commands"
+        },
+        {
+          "label": "Metric groups",
+          "path": "{prefix}/share/likwid",
+          "purpose": "Architecture-specific performance groups and reference data"
+        }
+      ],
+      "activation": [
+        "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+      ],
+      "examples": [
+        {
+          "description": "Inspect CPU and cache topology",
+          "command": "{prefix}/bin/likwid-topology"
+        },
+        {
+          "description": "Inspect available benchmark kernels",
+          "command": "{prefix}/bin/likwid-bench -a"
+        },
+        {
+          "description": "List counter groups for this CPU",
+          "command": "{prefix}/bin/likwid-perfctr -a"
+        }
+      ],
+      "notes": [
+        "The source recipe selects the accessdaemon backend; usable counters require a separately reviewed host daemon/MSR/PCI arrangement. No daemon is enabled by the check.",
+        "The topology check is non-privileged. Benchmark kernels and counter collection are separate, explicit operations.",
+        "Source-built LIKWID 5.5.2 and APT LIKWID 5.2.2 can coexist via their distinct command paths."
+      ],
+      "documentation": [
+        "https://github.com/RRZE-HPC/likwid",
+        "https://github.com/RRZE-HPC/likwid/wiki"
+      ]
+    }
+  },
+  "intel-perfmon": {
+    "checks": [
+      {
+        "id": "all-mapfile-json-tables",
+        "kind": "functional",
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "tables",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "timeout_seconds": 120,
+        "expected_returncode": 0,
+        "stdout_regex": "\"status\": \"passed\"",
+        "requires_commands": [
+          "python3"
+        ],
+        "requires_paths": [
+          "{prefix}/mapfile.csv"
+        ]
+      },
+      {
+        "id": "visible-cpu-map",
+        "kind": "hardware",
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "cpu-match",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "timeout_seconds": 30,
+        "expected_returncode": 0,
+        "stdout_regex": "\"status\": \"passed\"",
+        "requires_commands": [
+          "python3"
+        ],
+        "requires_paths": [
+          "{prefix}/mapfile.csv",
+          "/proc/cpuinfo"
+        ],
+        "blocked_returncodes": [
+          77
+        ]
+      }
+    ],
+    "usage": {
+      "summary": "Pinned Intel CPU event definitions for local event lookup and pmu-tools cache preparation.",
+      "locations": [
+        {
+          "label": "CPU model map",
+          "path": "{prefix}/mapfile.csv",
+          "purpose": "Map CPU model/stepping identifiers to event JSON files"
+        },
+        {
+          "label": "Event tables",
+          "path": "{prefix}",
+          "purpose": "Complete pinned upstream event and metric definitions"
+        }
+      ],
+      "activation": [
+        "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+      ],
+      "examples": [
+        {
+          "description": "Inspect CPU model mappings",
+          "command": "head -n 12 {prefix}/mapfile.csv"
+        },
+        {
+          "description": "Inspect one documented CPU event table",
+          "command": "python3 -m json.tool {prefix}/SKX/events/skylakex_core.json"
+        }
+      ],
+      "notes": [
+        "The functional check verifies every mapfile-referenced table and parses its JSON. The hardware check separately reports whether the visible CPU has a map entry.",
+        "An AMD CPU produces a blocked Intel-map capability result; this does not mean that the Intel data package failed to install.",
+        "CPU model match is not counter qualification. Match stepping and hybrid PMU type before collecting events.",
+        "The existing seed-pmu-cache tool can prepare pmu-tools lookup from these local tables without a runtime download."
+      ],
+      "documentation": [
+        "https://github.com/intel/perfmon"
+      ]
+    }
+  },
+  "linux-perf": {
+    "checks": [
+      {
+        "id": "event-enumeration",
+        "kind": "functional",
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "events"
+        ],
+        "cwd": "{prefix}",
+        "timeout_seconds": 60,
+        "expected_returncode": 0,
+        "stdout_regex": "\"status\": \"passed\"",
+        "requires_commands": [
+          "python3",
+          "perf"
+        ]
+      },
+      {
+        "id": "positive-cycles-and-instructions",
+        "kind": "hardware",
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "counters"
+        ],
+        "cwd": "{prefix}",
+        "timeout_seconds": 45,
+        "expected_returncode": 0,
+        "stdout_regex": "\"status\": \"passed\"",
+        "requires_commands": [
+          "python3",
+          "perf"
+        ],
+        "blocked_returncodes": [
+          77
+        ]
+      }
+    ],
+    "usage": {
+      "summary": "Use the kernel-facing perf collector with explicit event, permission and CPU capability checks.",
+      "locations": [
+        {
+          "label": "perf launcher",
+          "path": "/usr/bin/perf",
+          "purpose": "APT launcher; may resolve to a kernel-specific executable"
+        },
+        {
+          "label": "Kernel tool installations",
+          "path": "/usr/lib/linux-tools",
+          "purpose": "Kernel-version-specific tool directories when supplied by APT"
+        }
+      ],
+      "activation": [
+        "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+      ],
+      "examples": [
+        {
+          "description": "Enumerate available event names",
+          "command": "perf list --raw-dump"
+        },
+        {
+          "description": "Inspect kernel perf policy",
+          "command": "cat /proc/sys/kernel/perf_event_paranoid"
+        }
+      ],
+      "notes": [
+        "A version or event-list check does not prove counter access. The optional hardware check requires positive cycles and instructions from one bounded child workload.",
+        "Known permission/device/unsupported-PMU outcomes return 77 and remain blocked, never passed. Unexpected errors or malformed/nonpositive counts fail.",
+        "The package never changes perf_event_paranoid, grants capabilities, loads modules or enables privileged containers.",
+        "CAP_PERFMON, the host kernel, PMU virtualization and the container launch profile determine available collection scopes; qualify the exact target."
+      ],
+      "documentation": [
+        "https://docs.kernel.org/admin-guide/perf-security.html",
+        "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/perf"
+      ]
+    }
+  }
+}

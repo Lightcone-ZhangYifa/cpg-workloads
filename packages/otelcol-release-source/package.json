@@ -1,0 +1,150 @@
+{
+  "build": "v0218-reviewed-static-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{tools}/check_material.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "otelcol-release-source-locked-complete-material",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 60
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "otelcol-release-source",
+  "metadata": {
+    "additional_material_profile": {
+      "canonical_catalog_unchanged": true,
+      "canonical_source_locks_unchanged": true,
+      "declared_upstream": "https://github.com/open-telemetry/opentelemetry-collector-releases/archive/refs/tags/v0.163.1.tar.gz",
+      "online_recipe_test": "Local HTTP mirror completed; upstream remote fetch not attempted",
+      "original_definition_sha256": "8ab65c7bd1493c3ee99f170f816ba0760b5190386877d24846f2254d43bff2b4",
+      "original_target_promotion": false,
+      "qualification_scope": "Original complete static release-source tar.gz, no collector executable",
+      "source_lock_sha256": "1fe4777ebd82f19498e41471b06e646708f5ae80c4380e136a4b06cfc15dc884",
+      "source_members_verified": 207
+    },
+    "catalog": {
+      "archive_bytes": 171270,
+      "bundled_path": null,
+      "category": [
+        "Agent and observability",
+        "Collector and policy"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "copy",
+        "handled_by": "controller-bootstrap",
+        "state": "downloaded-and-hashed"
+      },
+      "documentation": [],
+      "extract": false,
+      "id": "otelcol-release-source",
+      "immutable_ref": "sha256:1fe4777ebd82f19498e41471b06e646708f5ae80c4380e136a4b06cfc15dc884",
+      "installed_bytes": null,
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "sources/otelcol-releases-0.163.1.tar.gz",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Versioned observability or container policy initialization artifact.",
+      "qualification_gaps": [],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "1fe4777ebd82f19498e41471b06e646708f5ae80c4380e136a4b06cfc15dc884",
+      "size_basis": "Complete payload GET with measured bytes and SHA256",
+      "source_evidence": [
+        "https://github.com/open-telemetry/opentelemetry-collector-releases/archive/refs/tags/v0.163.1.tar.gz"
+      ],
+      "source_logical_bytes": 1823604,
+      "source_url": "https://github.com/open-telemetry/opentelemetry-collector-releases/archive/refs/tags/v0.163.1.tar.gz",
+      "title": "otelcol-release-source",
+      "upstream": "https://github.com/open-telemetry/opentelemetry-collector-releases/archive/refs/tags/v0.163.1.tar.gz",
+      "version": "0.163.1"
+    },
+    "catalog_sha256": "04385ed2f6d0f5027d9f5b9f19f66dd5923c277ee83e1bc4958936696a998cac",
+    "current_material_evidence": {
+      "source_file_count": 177,
+      "source_logical_bytes": 1823604,
+      "canonical_sources_and_catalog_unchanged": true,
+      "original_dependencies_unchanged": true,
+      "native_execution": "not_run",
+      "live_origin": "not_run",
+      "mapfile_referenced_files": 0
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "handled_by": "controller-bootstrap",
+    "required_installed_paths": [
+      "{prefix}/sources/otelcol-releases-0.163.1.tar.gz"
+    ],
+    "state": "downloaded-and-hashed",
+    "material_layout": "locked_original_file",
+    "qualification_scope": "complete_original_archive_static_material_no_native_or_hardware_qualification",
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "qualified": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 171270,
+      "extract": false,
+      "id": "otelcol-release-source",
+      "material_path": "sources/otelcol-releases-0.163.1.tar.gz",
+      "sha256": "1fe4777ebd82f19498e41471b06e646708f5ae80c4380e136a4b06cfc15dc884",
+      "strip_root": true,
+      "url": "https://github.com/open-telemetry/opentelemetry-collector-releases/archive/refs/tags/v0.163.1.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "summary": "Complete immutable original source archive for otelcol-release-source.",
+    "locations": [
+      {
+        "label": "Verified original source archive",
+        "path": "{prefix}/sources/otelcol-releases-0.163.1.tar.gz",
+        "purpose": "All original archive members, notices and source files; Go dependencies and a built collector are outside this material profile."
+      }
+    ],
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "notes": [
+      "This profile verifies and copies the complete fixed original archive. It does not build or execute the Collector.",
+      "Explicit recipe/prepare.py reproduces this exact offline artifact from a verified cache or the original source URL. Live-origin HTTPS was not exercised in this round."
+    ]
+  },
+  "version": "0.163.1"
+}

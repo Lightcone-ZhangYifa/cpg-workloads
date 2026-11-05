@@ -1,0 +1,22 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -48,7 +48,7 @@
+ # `git archive' inserts the abbreviated hash of the archive's commit into this
+ # file.  (See the `.gitattributes' file.)
+ #
+-set(GIT_HASH "$Format:%h$")
++set(GIT_HASH "0cdc710")
+ if(GIT_HASH MATCHES "^\\$")
+   ## METHOD 2: The source tree is a git repository.
+   get_git_head_revision(GIT_REFSPEC GIT_HASH)
+--- a/runtime/volatile_runtime.c
++++ b/runtime/volatile_runtime.c
+@@ -54,6 +54,8 @@
+ DEFINE_VOLATILE_FUNCTIONS(uint8_t)
+ DEFINE_VOLATILE_FUNCTIONS(uint16_t)
+ DEFINE_VOLATILE_FUNCTIONS(uint32_t)
++DEFINE_VOLATILE_FUNCTIONS(int64_t)
++DEFINE_VOLATILE_FUNCTIONS(uint64_t)
+ 
+ /*****************************************************************************/
+ 

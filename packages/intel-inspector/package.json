@@ -1,0 +1,162 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "intel-inspector",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Correctness",
+        "Legacy vendor analyzers"
+      ],
+      "container_strategy": "Only admit an existing complete lawful installation with an exact receipt; no promise of a fresh public download or continuing support.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "vendor-local",
+        "admission_driver": "tools/vendor.py",
+        "apt_dependencies": {
+          "dev": [],
+          "target": []
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "executable_qualified": false,
+        "install_argv": [],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "installation_requires_reviewed_receipt": true,
+        "probe_requires_host": [],
+        "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+        "reference_invocations": [
+          [
+            "{prefix}/bin64/inspxe-cl",
+            "--version"
+          ]
+        ],
+        "reference_invocations_require_review": true,
+        "smoke_argv": [],
+        "state": "legacy-local-payload-required",
+        "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+      },
+      "documentation": "https://www.intel.com/content/www/us/en/docs/inspector/user-guide-linux/2024-1/overview.html",
+      "extract": false,
+      "id": "intel-inspector",
+      "immutable_ref": "vendor-release:2024.1",
+      "installed_bytes": null,
+      "kind": "vendor-local",
+      "license_class": "restricted",
+      "license_id": "LicenseRef-Intel-Inspector",
+      "lifecycle": "legacy-not-default",
+      "mandatory": false,
+      "material_path": "vendor-media/intel-inspector",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Permit lawful existing Inspector installations as a historical diagnostic treatment while modern sanitizer and race-detection workflows remain primary.",
+      "qualification_gaps": [
+        "Inspector was removed from the HPC Toolkit; official documentation announces discontinuation in 2025 or later. It is absent from the current standalone component index.",
+        "Exact delivered build, payload bytes, SHA-256, license entitlement and host feature probes are unresolved."
+      ],
+      "redistributable": false,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": null,
+      "size_basis": "Exact archive size is unresolved; admission must measure the complete selected payload.",
+      "source_evidence": [
+        "https://www.intel.com/content/www/us/en/docs/inspector/get-started-guide/2024-1/overview.html",
+        "https://www.intel.com/content/www/us/en/docs/inspector/user-guide-linux/2024-1/overview.html"
+      ],
+      "source_url": null,
+      "title": "Intel Inspector legacy reference",
+      "upstream": "https://www.intel.com/content/www/us/en/docs/inspector/get-started-guide/2024-1/overview.html",
+      "version": "2024.1"
+    },
+    "catalog_sha256": "4884ca944d8451d226a46599494442cfddacf9b7f817b92e87e18ece3362a340"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "vendor-local",
+    "admission_driver": "tools/vendor.py",
+    "apt_dependencies": {
+      "dev": [],
+      "target": []
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "executable_qualified": false,
+    "install_argv": [],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "installation_requires_reviewed_receipt": true,
+    "probe_requires_host": [],
+    "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+    "reference_invocations": [
+      [
+        "{prefix}/bin64/inspxe-cl",
+        "--version"
+      ]
+    ],
+    "reference_invocations_require_review": true,
+    "smoke_argv": [],
+    "state": "legacy-local-payload-required",
+    "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": false,
+      "id": "intel-inspector",
+      "material_path": "vendor-media/intel-inspector",
+      "sha256": null,
+      "strip_root": true,
+      "url": null
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.intel.com/content/www/us/en/docs/inspector/user-guide-linux/2024-1/overview.html"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/vendor-media/intel-inspector",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Permit lawful existing Inspector installations as a historical diagnostic treatment while modern sanitizer and race-detection workflows remain primary."
+  },
+  "version": "2024.1"
+}

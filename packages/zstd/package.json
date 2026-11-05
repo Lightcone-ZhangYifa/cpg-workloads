@@ -1,0 +1,257 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "zstd-version",
+      "kind": "version",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 30
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "zstd-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "apt.build-essential",
+      "apt.file"
+    ],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "zstd",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 2453329,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Compression"
+      ],
+      "container_strategy": "Build tests and representative compression levels in dev; run fixed input and dictionary bundles with round-trip checks on target.",
+      "corpus_contract": {
+        "code": "Library, CLI and tests included.",
+        "inputs": "Separately admitted text, binaries and structured corpora.",
+        "oracle": "Lossless round-trip byte comparison plus upstream tests.",
+        "split_unit": "Compression implementation family; dictionaries trained on train inputs only."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/facebook/zstd"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/zstd.measurement.json",
+        "workspace-evidence/resources-v050/open-research/zstd.refs.json"
+      ],
+      "extract": true,
+      "id": "zstd",
+      "immutable_ref": "f8745da6ff1ad1e7bab384bd1f9d742439278e99",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause OR GPL-2.0-only",
+      "mandatory": false,
+      "material_path": "corpora/zstd",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Compression/decompression loops, dictionary operations and large production C code coverage.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The source tree does not define a representative study corpus; input licenses and dictionaries must be separately frozen."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "4b0bd1f0cfb25e61b9103c35f27395530ff5b4c0d2513a00fd745849e85ea52c",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/facebook/zstd",
+        "https://codeload.github.com/facebook/zstd/tar.gz/f8745da6ff1ad1e7bab384bd1f9d742439278e99",
+        "https://github.com/facebook/zstd/commit/f8745da6ff1ad1e7bab384bd1f9d742439278e99"
+      ],
+      "source_logical_bytes": 8354806,
+      "source_url": "https://codeload.github.com/facebook/zstd/tar.gz/f8745da6ff1ad1e7bab384bd1f9d742439278e99",
+      "title": "Zstandard compression workload",
+      "upstream": "https://github.com/facebook/zstd",
+      "version": "v1.5.7"
+    },
+    "catalog_sha256": "871bc9f10954c98cd76e2f4f307a8f4833b269ea138d586cd16c1849fc73257e"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "make",
+    "install_argv": [
+      "/usr/bin/python3",
+      "{recipe}/build.py",
+      "--source",
+      "{source}",
+      "--build",
+      "{build}",
+      "--prefix",
+      "{prefix}",
+      "--jobs",
+      "{jobs}"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/zstd",
+      "{prefix}/bin/zstdcat",
+      "{prefix}/bin/unzstd",
+      "{prefix}/bin/cpg-zstd-api-probe",
+      "{prefix}/lib/libzstd.so.1.5.7",
+      "{prefix}/lib/libzstd.a",
+      "{prefix}/include/zstd.h",
+      "{prefix}/include/zdict.h",
+      "{prefix}/include/zstd_errors.h",
+      "{prefix}/lib/pkgconfig/libzstd.pc",
+      "{prefix}/share/man/man1/zstd.1",
+      "{prefix}/share/compiler-playground/zstd/COPYING"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2453329,
+      "extract": true,
+      "id": "zstd",
+      "material_path": "corpora/zstd",
+      "sha256": "4b0bd1f0cfb25e61b9103c35f27395530ff5b4c0d2513a00fd745849e85ea52c",
+      "strip_root": true,
+      "url": "https://codeload.github.com/facebook/zstd/tar.gz/f8745da6ff1ad1e7bab384bd1f9d742439278e99"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Query cpg packages paths zstd and select the intended prefix; do not accidentally use a different host zstd.",
+      "Optionally add <prefix>/bin to PATH and <prefix>/lib/pkgconfig to PKG_CONFIG_PATH. Bundled API probes locate the selected library via relative RUNPATH."
+    ],
+    "documentation": [
+      "https://github.com/facebook/zstd/tree/f8745da6ff1ad1e7bab384bd1f9d742439278e99",
+      "https://github.com/facebook/zstd/blob/f8745da6ff1ad1e7bab384bd1f9d742439278e99/README.md",
+      "https://github.com/facebook/zstd/blob/f8745da6ff1ad1e7bab384bd1f9d742439278e99/tests/Makefile",
+      "https://github.com/facebook/zstd/blob/f8745da6ff1ad1e7bab384bd1f9d742439278e99/programs/README.md"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages info zstd --json; cpg packages paths zstd; cpg packages check zstd --prefix <prefix>",
+        "description": "Discover the selected installation and run checks"
+      },
+      {
+        "command": "<prefix>/bin/zstd -T2 -3 --check input.bin -o input.zst; <prefix>/bin/zstd -t input.zst; <prefix>/bin/zstd -d input.zst -o restored.bin",
+        "description": "Compress, test and restore a native frame"
+      },
+      {
+        "command": "<prefix>/bin/zstd --train samples/* -o corpus.dict; <prefix>/bin/zstd -D corpus.dict sample.bin -o sample.zst; <prefix>/bin/zstd -d -D corpus.dict sample.zst -o restored.bin",
+        "description": "Train and use a content dictionary"
+      },
+      {
+        "command": "cpg packages pack packages/zstd/package.json --definition --method source --source zstd=/path/to/locked-archive --recipe packages/zstd/recipe --output zstd.source.cpgpkg.tar.gz",
+        "description": "Pack the source/build view"
+      },
+      {
+        "command": "cpg packages pack packages/zstd/material-profile.json --definition --method material --payload /path/to/verified-unpacked-source --output zstd.material.cpgpkg.tar.gz",
+        "description": "Pack the same resource as complete original material"
+      },
+      {
+        "command": "cpg packages pack packages/zstd/package.json --definition --method binary --payload <checked-prefix> --recipe packages/zstd/recipe --relocatable --output zstd.binary.cpgpkg.tar.gz",
+        "description": "Pack a checked installation for same-target independent prefixes"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Compression commands",
+        "path": "{prefix}/bin",
+        "purpose": "zstd, zstdcat, unzstd and upstream helper scripts; cpg-zstd-api-probe exercises the selected shared library."
+      },
+      {
+        "label": "C development headers",
+        "path": "{prefix}/include",
+        "purpose": "zstd.h, zdict.h and zstd_errors.h."
+      },
+      {
+        "label": "Static and shared libraries",
+        "path": "{prefix}/lib",
+        "purpose": "libzstd.a and libzstd.so.1.5.7, with relative SONAME links."
+      },
+      {
+        "label": "pkg-config metadata",
+        "path": "{prefix}/lib/pkgconfig/libzstd.pc",
+        "purpose": "Relocatable pcfiledir-relative metadata for developer-controlled linking."
+      },
+      {
+        "label": "Checks, upstream regressions, usage and licenses",
+        "path": "{prefix}/share/compiler-playground/zstd",
+        "purpose": "Original decoder golden/error frames, upstream README/TESTING/LICENSE/COPYING, check.py and C API source."
+      },
+      {
+        "label": "Complete source for a source install",
+        "path": "{assets}/corpora/zstd",
+        "purpose": "Complete original source, tests, foreign codec integration sources, examples and references; not created by binary-only installation."
+      },
+      {
+        "label": "Raw material profile",
+        "path": "{prefix}",
+        "purpose": "With material-profile.json this is the full unbuilt upstream tree, not a CLI installation."
+      }
+    ],
+    "notes": [
+      "package.json provides a source/binary native-Zstd profile; material-profile.json is the unchanged original same-ID definition and provides every original source/test/reference file. Both use the existing pack --definition entry point; no resource ID was added.",
+      "Supported profile: Ubuntu 24.04 x86_64, -O2 -g0 without -march=native, upstream multithreaded CLI/shared library, single-threaded static library, and default legacy decoder settings. HAVE_ZLIB=0, HAVE_LZMA=0 and HAVE_LZ4=0 deliberately disable optional foreign-format CLI codecs, avoiding auto-linking to undeclared host libraries. Complete upstream code for those optional integrations remains in the material/source views.",
+      "Exact declared prerequisites are apt.build-essential=12.10ubuntu1, apt.file=1:5.45-3build1 for source build/tests, and apt.python3=3.12.3-0ubuntu2.1 for checks. Base Ubuntu POSIX tools and their actual versions are build-environment observations, not a claim that the entire APT closure was installed here.",
+      "Source builds run official make check, which intentionally excludes upstream long-data tests. Installed functional checks exercise the package-local C API, streaming with two workers, native CLI round trips, checksums, dictionary training/use, corrupt frames and original upstream golden decoder cases.",
+      "The material view performs no executable checks and reports not_run; full byte inventory still must verify. Historical metadata.catalog qualification flags are retained unchanged.",
+      "Relocation is limited to independently checked prefixes on the same declared Linux/Ubuntu/x86_64 target. Full fuzz/sanitizer matrix, all architectures, OCI images and benchmark performance remain separate qualification tasks. Binary-only installs do not imply the raw-source assets path exists.",
+      "The upstream static archive is installed with its default single-threaded configuration; the runtime C API functional probe links the selected shared library. Static-library-specific multithread support is not claimed."
+    ],
+    "summary": "Zstandard v1.5.7: native Zstd CLI, multithreaded compression, dictionaries and checked shared C library and static development archive; original complete source/test material remains available under the same ID."
+  },
+  "version": "v1.5.7"
+}

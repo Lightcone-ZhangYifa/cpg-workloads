@@ -1,0 +1,226 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "creduce-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "creduce",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 725257,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Correctness",
+        "Failure reduction"
+      ],
+      "container_strategy": "Keep this older reducer in a separate prefix from C-Vise and qualify the required Clang API version.",
+      "dependencies": [
+        "apt.autoconf",
+        "apt.automake",
+        "apt.flex",
+        "apt.libexporter-lite-perl",
+        "apt.libfile-which-perl",
+        "apt.libregexp-common-perl",
+        "apt.libtool",
+        "apt.perl"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "smoke_argv": [
+          "{prefix}/bin/creduce",
+          "--version"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "autoconf",
+          "automake",
+          "libtool",
+          "flex",
+          "perl",
+          "libexporter-lite-perl",
+          "libfile-which-perl",
+          "libregexp-common-perl"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/csmith-project/creduce"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/creduce.measurement.json",
+        "workspace-evidence/resources-v050/open-research/creduce.refs.json"
+      ],
+      "extract": true,
+      "id": "creduce",
+      "immutable_ref": "fb91843c547794f165e5764a003166191e6c6643",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "NCSA",
+      "mandatory": false,
+      "material_path": "sources/creduce",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Provide a complementary reduction implementation and legacy failure-reproduction reference.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The old release is an archival compatibility resource; current LLVM integration requires explicit validation."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "8659c81f7de9d2110ff3a29ac25a1aa84f638924ad9cde50d88729cd3a6ba03e",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/csmith-project/creduce",
+        "https://codeload.github.com/csmith-project/creduce/tar.gz/fb91843c547794f165e5764a003166191e6c6643",
+        "https://github.com/csmith-project/creduce/commit/fb91843c547794f165e5764a003166191e6c6643"
+      ],
+      "source_logical_bytes": 3549432,
+      "source_url": "https://codeload.github.com/csmith-project/creduce/tar.gz/fb91843c547794f165e5764a003166191e6c6643",
+      "title": "C-Reduce reference reducer",
+      "upstream": "https://github.com/csmith-project/creduce",
+      "version": "creduce-2.10.0"
+    },
+    "catalog_sha256": "00e498e86fd295ee4693fa85771d2447cd959199efcd3d652e44e8a5a570110b"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 725257,
+      "extract": true,
+      "id": "creduce",
+      "material_path": "sources/creduce",
+      "sha256": "8659c81f7de9d2110ff3a29ac25a1aa84f638924ad9cde50d88729cd3a6ba03e",
+      "strip_root": true,
+      "url": "https://codeload.github.com/csmith-project/creduce/tar.gz/fb91843c547794f165e5764a003166191e6c6643"
+    },
+    "adapter": "corpus",
+    "content_scope_audit_sha256": "bd496e43fcc057a0a3360d439daef8986384a9e5310fd44710af1866c4cbe1ad",
+    "dataset_content_complete": false,
+    "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+    "material_profile_dependency_mapping": {
+      "build": "Original native/tool build dependencies preserved but not executed by material installation",
+      "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+      "system": "Only apt.python3 is used for all-file material verification"
+    },
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.autoconf",
+        "apt.automake",
+        "apt.flex",
+        "apt.libexporter-lite-perl",
+        "apt.libfile-which-perl",
+        "apt.libregexp-common-perl",
+        "apt.libtool",
+        "apt.perl"
+      ]
+    },
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.gitattributes"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "smoke_argv": [
+      "{prefix}/bin/creduce",
+      "--version"
+    ],
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+    "source_dependencies": [],
+    "system_packages": [
+      "autoconf",
+      "automake",
+      "libtool",
+      "flex",
+      "perl",
+      "libexporter-lite-perl",
+      "libfile-which-perl",
+      "libregexp-common-perl"
+    ],
+    "unfetched_submodule_declarations": 0,
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 725257,
+      "extract": true,
+      "id": "creduce",
+      "material_path": "sources/creduce",
+      "sha256": "8659c81f7de9d2110ff3a29ac25a1aa84f638924ad9cde50d88729cd3a6ba03e",
+      "strip_root": true,
+      "url": "https://codeload.github.com/csmith-project/creduce/tar.gz/fb91843c547794f165e5764a003166191e6c6643"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/csmith-project/creduce"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/creduce' --version",
+        "description": "Run the recorded version check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+    ],
+    "summary": "Provide a complementary reduction implementation and legacy failure-reproduction reference."
+  },
+  "version": "creduce-2.10.0"
+}

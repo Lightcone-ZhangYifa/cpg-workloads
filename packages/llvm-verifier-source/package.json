@@ -1,0 +1,209 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/opt",
+        "--version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "version",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "llvm-verifier-source",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 321902668,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Correctness",
+        "Translation validation"
+      ],
+      "container_strategy": "Build in a separate dev prefix with RTTI, exceptions and assertions; record compiler commit, LLVM commit, Z3 version and validator binary hashes as one qualification tuple.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "cmake",
+        "build_argv": [
+          "cmake",
+          "--build",
+          "{build}",
+          "--parallel",
+          "{jobs}"
+        ],
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}/llvm",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_INSTALL_PREFIX={prefix}",
+          "-DLLVM_TARGETS_TO_BUILD=X86",
+          "-DLLVM_ENABLE_PROJECTS=clang",
+          "-DLLVM_ENABLE_RTTI=ON",
+          "-DLLVM_ENABLE_EH=ON",
+          "-DLLVM_ENABLE_ASSERTIONS=ON",
+          "-DBUILD_SHARED_LIBS=ON"
+        ],
+        "install_argv": [
+          "cmake",
+          "--install",
+          "{build}"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{prefix}/bin/opt",
+          "--version"
+        ],
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/AliveToolkit/alive2#building-and-running-translation-validation"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/llvm-verifier-source.measurement.json",
+        "workspace-evidence/resources-v050/open-research/llvm-release.refs.json"
+      ],
+      "extract": true,
+      "id": "llvm-verifier-source",
+      "immutable_ref": "59cdc9a5e41fe5cb098983228b59c8ea26a44e1e",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception",
+      "mandatory": false,
+      "material_path": "sources/llvm-verifier-source",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Independent LLVM development snapshot for the exact Alive2 translation-validation tuple; not a replacement for the frozen production compiler baseline.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "A contemporaneous immutable LLVM/Alive2 pair is pinned, but API compatibility and positive/negative translation-validation controls must pass before admission."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "97a0cc388935e331d41cbbd77c6d05d6adc8d78107fb06c3e63f11c12afc1b56",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/llvm/llvm-project",
+        "https://codeload.github.com/llvm/llvm-project/tar.gz/59cdc9a5e41fe5cb098983228b59c8ea26a44e1e",
+        "https://github.com/llvm/llvm-project/commit/59cdc9a5e41fe5cb098983228b59c8ea26a44e1e"
+      ],
+      "source_logical_bytes": 2401570488,
+      "source_url": "https://codeload.github.com/llvm/llvm-project/tar.gz/59cdc9a5e41fe5cb098983228b59c8ea26a44e1e",
+      "title": "LLVM snapshot for Alive2",
+      "upstream": "https://github.com/llvm/llvm-project",
+      "version": "commit-59cdc9a5e41f"
+    },
+    "catalog_sha256": "b8bcb389ccd4b47479bfc82dcf8fbbb2f66cde6e90f8ba758edf4db91ac190ce"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "cmake",
+    "build_argv": [
+      "cmake",
+      "--build",
+      "{build}",
+      "--parallel",
+      "{jobs}"
+    ],
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}/llvm",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_INSTALL_PREFIX={prefix}",
+      "-DLLVM_TARGETS_TO_BUILD=X86",
+      "-DLLVM_ENABLE_PROJECTS=clang",
+      "-DLLVM_ENABLE_RTTI=ON",
+      "-DLLVM_ENABLE_EH=ON",
+      "-DLLVM_ENABLE_ASSERTIONS=ON",
+      "-DBUILD_SHARED_LIBS=ON"
+    ],
+    "install_argv": [
+      "cmake",
+      "--install",
+      "{build}"
+    ],
+    "qualified": false,
+    "smoke_argv": [
+      "{prefix}/bin/opt",
+      "--version"
+    ],
+    "source_dependencies": [],
+    "system_packages": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 321902668,
+      "extract": true,
+      "id": "llvm-verifier-source",
+      "material_path": "sources/llvm-verifier-source",
+      "sha256": "97a0cc388935e331d41cbbd77c6d05d6adc8d78107fb06c3e63f11c12afc1b56",
+      "strip_root": true,
+      "url": "https://codeload.github.com/llvm/llvm-project/tar.gz/59cdc9a5e41fe5cb098983228b59c8ea26a44e1e"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/AliveToolkit/alive2#building-and-running-translation-validation"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/opt' --version",
+        "description": "Run the recorded version check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/llvm-verifier-source",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Independent LLVM development snapshot for the exact Alive2 translation-validation tuple; not a replacement for the frozen production compiler baseline."
+  },
+  "version": "commit-59cdc9a5e41f"
+}

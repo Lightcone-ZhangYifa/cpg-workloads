@@ -1,0 +1,306 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "env",
+        "PYTHONPATH={prefix}",
+        "/usr/bin/python3",
+        "-m",
+        "osaca",
+        "--version"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "version",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "env",
+        "PYTHONPATH={prefix}",
+        "/usr/bin/python3",
+        "-c",
+        "from osaca.semantics.hw_model import MachineModel; MachineModel(arch=\"SPR\"); MachineModel(arch=\"ZEN5\"); MachineModel(arch=\"GNR\")"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "declared-002",
+      "kind": "functional",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.graphviz",
+      "apt.libgraphviz-dev",
+      "apt.python3",
+      "apt.python3-networkx",
+      "apt.python3-pydot",
+      "apt.python3-pyparsing",
+      "apt.python3-ruamel.yaml",
+      "apt.python3-setuptools"
+    ]
+  },
+  "id": "osaca",
+  "metadata": {
+    "catalog": {
+      "alternative_stable_release": {
+        "archive_bytes": 5401075,
+        "commit": "6abea6249aa76869241627746efd0a8dcb9974b7",
+        "default_selected": false,
+        "sha256": "16050be7f1e7f3f5008945b48468734bbadd652b6f23f5a4d4cfaf8a20f04ccd",
+        "source_url": "https://codeload.github.com/RRZE-HPC/OSACA/tar.gz/6abea6249aa76869241627746efd0a8dcb9974b7",
+        "version": "0.7.1"
+      },
+      "archive_bytes": 5456099,
+      "build_peak_bytes": null,
+      "category": [
+        "Optimization research",
+        "Instruction models"
+      ],
+      "container_strategy": "Copy the pinned Python source/model tree and precompute its local model caches with the locked system Python dependencies. Run with an explicit PYTHONPATH and selected target architecture.",
+      "dependencies": [
+        "apt.graphviz",
+        "apt.libgraphviz-dev",
+        "apt.python3",
+        "apt.python3-networkx",
+        "apt.python3-pydot",
+        "apt.python3-pyparsing",
+        "apt.python3-ruamel.yaml",
+        "apt.python3-setuptools"
+      ],
+      "deployment": {
+        "adapter": "copy",
+        "additional_install_commands": [
+          [
+            "env",
+            "-C",
+            "{prefix}/osaca/data",
+            "PYTHONPATH={prefix}",
+            "/usr/bin/python3",
+            "_build_cache.py"
+          ]
+        ],
+        "additional_smoke_commands": [
+          [
+            "env",
+            "PYTHONPATH={prefix}",
+            "/usr/bin/python3",
+            "-c",
+            "from osaca.semantics.hw_model import MachineModel; MachineModel(arch=\"SPR\"); MachineModel(arch=\"ZEN5\"); MachineModel(arch=\"GNR\")"
+          ]
+        ],
+        "apt_dependencies": {
+          "dev": [
+            "python3",
+            "python3-networkx",
+            "python3-pyparsing",
+            "python3-ruamel.yaml",
+            "python3-pydot",
+            "python3-setuptools",
+            "graphviz",
+            "libgraphviz-dev"
+          ],
+          "target": []
+        },
+        "build_argv": [],
+        "build_qualified": false,
+        "build_role": "dev",
+        "configure_argv": [],
+        "install_argv": [
+          "cp",
+          "-a",
+          "{source}/.",
+          "{prefix}/"
+        ],
+        "install_roles": [
+          "dev"
+        ],
+        "model_scope": "Supported x86 model names are explicit; the default architecture must not be used implicitly.",
+        "probe_requires_host": [],
+        "smoke_argv": [
+          "env",
+          "PYTHONPATH={prefix}",
+          "/usr/bin/python3",
+          "-m",
+          "osaca",
+          "--version"
+        ],
+        "state": "recipe-described-not-executed"
+      },
+      "documentation": "https://github.com/RRZE-HPC/OSACA/blob/5d67ec8dae26c1f9d2725ab76d342e7c374e2da4/README.rst",
+      "extract": true,
+      "id": "osaca",
+      "immutable_ref": "5d67ec8dae26c1f9d2725ab76d342e7c374e2da4",
+      "installed_bytes": null,
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "AGPL-3.0-only",
+      "mandatory": false,
+      "material_path": "sources/osaca",
+      "model_x86_names": [
+        "SNB",
+        "IVB",
+        "HSW",
+        "BDW",
+        "SKX",
+        "CSX",
+        "ICL",
+        "ICX",
+        "SPR",
+        "GNR",
+        "ZEN1",
+        "ZEN2",
+        "ZEN3",
+        "ZEN4",
+        "ZEN5"
+      ],
+      "optional_capabilities": [
+        {
+          "affects_core_analysis": false,
+          "name": "automatic-marker-insertion",
+          "resource_id": "kerncraft",
+          "status": "blocked-unresolved-Python-closure"
+        }
+      ],
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Analyze assembly-loop throughput, port pressure, critical paths and loop-carried dependencies using a fixed architecture-model snapshot.",
+      "qualification_gaps": [
+        "This is a fixed source snapshot, not a new released OSACA version. Its embedded version remains 0.7.1; commit identity distinguishes it.",
+        "The 0.7.1 release lacks Granite Rapids and Zen 5 model files; the selected 2026-10-13 snapshot includes them. Presence is not proof of calibrated accuracy on the actual host.",
+        "Predicted cycles, ideal port scheduling and cache-hit assumptions are diagnostic models, not native speed measurements. Do not enable --ignore-unknown for authoritative model coverage.",
+        "Automatic marker insertion requires the separately admitted Kerncraft optional capability; a missing dependency must not be silently advertised as available."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "c346b5e4f2c58f10c4a0bf0aad103dfe3a1787c73db2a64de30292f461d59dc3",
+      "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+      "size_evidence": "workspace-evidence/resources-v050/platform-research/instruction-model-measurements.json",
+      "source_evidence": [
+        "https://github.com/RRZE-HPC/OSACA",
+        "https://github.com/RRZE-HPC/OSACA/blob/5d67ec8dae26c1f9d2725ab76d342e7c374e2da4/README.rst"
+      ],
+      "source_snapshot_date": "2026-10-13",
+      "source_url": "https://codeload.github.com/RRZE-HPC/OSACA/tar.gz/5d67ec8dae26c1f9d2725ab76d342e7c374e2da4",
+      "title": "OSACA instruction throughput and dependency analysis",
+      "upstream": "https://github.com/RRZE-HPC/OSACA",
+      "version": "0.7.1+git.5d67ec8dae26"
+    },
+    "catalog_sha256": "4e0d04d5c7f14f3116b09f1f89d25d521881d0eca387943b057f186917b6568f"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "additional_install_commands": [
+      [
+        "env",
+        "-C",
+        "{prefix}/osaca/data",
+        "PYTHONPATH={prefix}",
+        "/usr/bin/python3",
+        "_build_cache.py"
+      ]
+    ],
+    "additional_smoke_commands": [
+      [
+        "env",
+        "PYTHONPATH={prefix}",
+        "/usr/bin/python3",
+        "-c",
+        "from osaca.semantics.hw_model import MachineModel; MachineModel(arch=\"SPR\"); MachineModel(arch=\"ZEN5\"); MachineModel(arch=\"GNR\")"
+      ]
+    ],
+    "apt_dependencies": {
+      "dev": [
+        "python3",
+        "python3-networkx",
+        "python3-pyparsing",
+        "python3-ruamel.yaml",
+        "python3-pydot",
+        "python3-setuptools",
+        "graphviz",
+        "libgraphviz-dev"
+      ],
+      "target": []
+    },
+    "build_argv": [],
+    "build_qualified": false,
+    "build_role": "dev",
+    "configure_argv": [],
+    "install_argv": [
+      "cp",
+      "-a",
+      "{source}/.",
+      "{prefix}/"
+    ],
+    "install_roles": [
+      "dev"
+    ],
+    "model_scope": "Supported x86 model names are explicit; the default architecture must not be used implicitly.",
+    "probe_requires_host": [],
+    "smoke_argv": [
+      "env",
+      "PYTHONPATH={prefix}",
+      "/usr/bin/python3",
+      "-m",
+      "osaca",
+      "--version"
+    ],
+    "state": "recipe-described-not-executed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 5456099,
+      "extract": true,
+      "id": "osaca",
+      "material_path": "sources/osaca",
+      "sha256": "c346b5e4f2c58f10c4a0bf0aad103dfe3a1787c73db2a64de30292f461d59dc3",
+      "strip_root": true,
+      "url": "https://codeload.github.com/RRZE-HPC/OSACA/tar.gz/5d67ec8dae26c1f9d2725ab76d342e7c374e2da4"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/RRZE-HPC/OSACA/blob/5d67ec8dae26c1f9d2725ab76d342e7c374e2da4/README.rst"
+    ],
+    "examples": [
+      {
+        "command": "env 'PYTHONPATH={prefix}' /usr/bin/python3 -m osaca --version",
+        "description": "Run the recorded version check."
+      },
+      {
+        "command": "env 'PYTHONPATH={prefix}' /usr/bin/python3 -c 'from osaca.semantics.hw_model import MachineModel; MachineModel(arch=\"SPR\"); MachineModel(arch=\"ZEN5\"); MachineModel(arch=\"GNR\")'",
+        "description": "Run the recorded functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/osaca",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Analyze assembly-loop throughput, port pressure, critical paths and loop-carried dependencies using a fixed architecture-model snapshot."
+  },
+  "version": "0.7.1+git.5d67ec8dae26"
+}

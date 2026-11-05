@@ -1,0 +1,176 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.cmake",
+      "apt.g++",
+      "apt.libzstd-dev",
+      "apt.llvm-dev",
+      "apt.ninja-build",
+      "apt.python3-dev"
+    ]
+  },
+  "id": "tvm",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 7026490,
+      "archive_scope": "Root repository only; recursive Git submodule payloads are excluded.",
+      "category": [
+        "Compilers",
+        "Domain-specific CPU compilers"
+      ],
+      "container_strategy": "Build the CPU LLVM backend and Python APIs in a dedicated dev environment; export precompiled modules and only the required TVM runtime to target. Use deterministic synthetic tensor inputs without downloading model weights.",
+      "dependencies": [
+        "apt.cmake",
+        "apt.g++",
+        "apt.libzstd-dev",
+        "apt.llvm-dev",
+        "apt.ninja-build",
+        "apt.python3-dev"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DUSE_LLVM={compatible_llvm_prefix}/bin/llvm-config"
+        ],
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "g++",
+          "python3-dev",
+          "llvm-dev",
+          "libzstd-dev"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://tvm.apache.org/docs/install/from_source.html",
+        "https://tvm.apache.org/docs/arch/index.html"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/tvm.measurement.json",
+        "workspace-evidence/resources-v050/open-research/tvm.refs.json"
+      ],
+      "extract": true,
+      "id": "tvm",
+      "immutable_ref": "4d0ac168c78c1e20bf05a6ec5926760bb1c52b05",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "sources/tvm",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "TensorIR, compiler scheduling and MetaSchedule-style search research for CPU tensor kernels and explicitly admitted graphs.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The root archive excludes recursive dependencies, including FFI/runtime components and optional code generators; freeze the selected closure.",
+        "LLVM, Python, framework importer and runtime serialization compatibility need joint qualification.",
+        "Tensor scheduling experiments are a separate workload domain, not automatic evidence of general C/C++ compiler quality."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "b4a1bec13393de2a448dec5e3bea1863c66f7468a4e098887deaf66967b7f098",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/apache/tvm",
+        "https://codeload.github.com/apache/tvm/tar.gz/4d0ac168c78c1e20bf05a6ec5926760bb1c52b05",
+        "https://github.com/apache/tvm/commit/4d0ac168c78c1e20bf05a6ec5926760bb1c52b05"
+      ],
+      "source_logical_bytes": 40051462,
+      "source_url": "https://codeload.github.com/apache/tvm/tar.gz/4d0ac168c78c1e20bf05a6ec5926760bb1c52b05",
+      "title": "Apache TVM CPU tensor compilation",
+      "upstream": "https://github.com/apache/tvm",
+      "version": "v0.27.0"
+    },
+    "catalog_sha256": "4ad26b65bc85f902ac19ab281507856b20178aee1d14f9bfaac5c64b51fd3bd7"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DUSE_LLVM={compatible_llvm_prefix}/bin/llvm-config"
+    ],
+    "qualified": false,
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "g++",
+      "python3-dev",
+      "llvm-dev",
+      "libzstd-dev"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 7026490,
+      "extract": true,
+      "id": "tvm",
+      "material_path": "sources/tvm",
+      "sha256": "b4a1bec13393de2a448dec5e3bea1863c66f7468a4e098887deaf66967b7f098",
+      "strip_root": true,
+      "url": "https://codeload.github.com/apache/tvm/tar.gz/4d0ac168c78c1e20bf05a6ec5926760bb1c52b05"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://tvm.apache.org/docs/install/from_source.html",
+      "https://tvm.apache.org/docs/arch/index.html"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/tvm",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "TensorIR, compiler scheduling and MetaSchedule-style search research for CPU tensor kernels and explicitly admitted graphs."
+  },
+  "version": "v0.27.0"
+}

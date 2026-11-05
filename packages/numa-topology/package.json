@@ -1,0 +1,209 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "id": "hwloc-live-xml",
+      "kind": "functional",
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "xml"
+      ],
+      "cwd": "{prefix}",
+      "timeout_seconds": 60,
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "requires_commands": [
+        "python3",
+        "lstopo-no-graphics"
+      ]
+    },
+    {
+      "id": "numactl-node-memory",
+      "kind": "functional",
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "numa"
+      ],
+      "cwd": "{prefix}",
+      "timeout_seconds": 60,
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "requires_commands": [
+        "python3",
+        "numactl"
+      ]
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.hwloc",
+      "apt.libhwloc15",
+      "apt.libnuma1",
+      "apt.numactl"
+    ]
+  },
+  "id": "numa-topology",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Platform",
+        "Topology"
+      ],
+      "container_strategy": "Resolve the frozen signed Ubuntu package-index capture before image build; its actual source and timestamp are recorded in the APT lock. Install only role-appropriate packages; kernel modules, firmware and boot configuration stay on the host.",
+      "dependencies": [
+        "apt.hwloc",
+        "apt.libhwloc15",
+        "apt.libnuma1",
+        "apt.numactl"
+      ],
+      "deployment": {
+        "adapter": "apt",
+        "apt_dependencies": {
+          "dev": [
+            "hwloc",
+            "numactl",
+            "libnuma1",
+            "libhwloc15"
+          ],
+          "target": [
+            "hwloc",
+            "numactl",
+            "libnuma1",
+            "libhwloc15"
+          ]
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "host_only_packages": [],
+        "install_argv": [],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "probe_requires_host": [],
+        "smoke_argv": [
+          "lstopo-no-graphics",
+          "--of",
+          "xml"
+        ],
+        "state": "signed-apt-lock-required",
+        "target_no_compiler": true
+      },
+      "documentation": "https://packages.ubuntu.com/noble/",
+      "id": "numa-topology",
+      "immutable_ref": "catalog-defined",
+      "installed_bytes": null,
+      "kind": "group",
+      "license_class": "open",
+      "license_id": "LicenseRef-ResolvedUbuntuPackageLicenses",
+      "mandatory": false,
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Bind execution and memory to declared CPUs and NUMA nodes and capture topology.",
+      "qualification_gaps": [
+        "This logical group has no standalone payload. Its exact versions, SHA256 and byte counts come from selected architecture-specific records in the signed APT lock.",
+        "Kernel-matched tools and physical host features are a separate target qualification."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": null,
+      "size_basis": "Resolve each architecture-specific APT archive with Size/SHA256 from the captured, signature-verified official Packages index; deduplicate the complete dependency closure.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/",
+        "https://packages.ubuntu.com/noble/"
+      ],
+      "source_url": null,
+      "title": "NUMA and CPU topology tools",
+      "upstream": "https://archive.ubuntu.com/ubuntu/",
+      "version": "catalog-bound-2026-10-21"
+    },
+    "catalog_sha256": "2f7095351e6e4a36c75d1706736d23e82dca7f8283a93de55ed1c597b727de1f"
+  },
+  "provider": "meta",
+  "recipe": {
+    "adapter": "apt",
+    "apt_dependencies": {
+      "dev": [
+        "hwloc",
+        "numactl",
+        "libnuma1",
+        "libhwloc15"
+      ],
+      "target": [
+        "hwloc",
+        "numactl",
+        "libnuma1",
+        "libhwloc15"
+      ]
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "host_only_packages": [],
+    "install_argv": [],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "probe_requires_host": [],
+    "smoke_argv": [
+      "lstopo-no-graphics",
+      "--of",
+      "xml"
+    ],
+    "state": "signed-apt-lock-required",
+    "target_no_compiler": true
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "summary": "The existing system hwloc and numactl group for CPU/NUMA locality and binding.",
+    "locations": [
+      {
+        "label": "System topology tools",
+        "path": "/usr/bin",
+        "purpose": "lstopo-no-graphics and numactl from the signed APT package lock"
+      }
+    ],
+    "activation": [
+      "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+    ],
+    "examples": [
+      {
+        "description": "Read NUMA node and memory inventory",
+        "command": "numactl --hardware"
+      },
+      {
+        "description": "Capture system hwloc topology",
+        "command": "lstopo-no-graphics --of xml /tmp/system-topology.xml"
+      }
+    ],
+    "notes": [
+      "Read-only topology checks do not establish permission for set_mempolicy, mbind or page migration.",
+      "The independent hwloc core package has an explicit prefix and can coexist with these system tools."
+    ],
+    "documentation": [
+      "https://github.com/numactl/numactl",
+      "https://www.open-mpi.org/projects/hwloc/"
+    ]
+  },
+  "version": "catalog-bound-2026-10-21"
+}

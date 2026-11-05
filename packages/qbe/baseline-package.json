@@ -1,0 +1,309 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{tools}/native-resource-smoke.py",
+        "qbe",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "functional",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.build-essential",
+      "apt.make",
+      "apt.python3"
+    ]
+  },
+  "id": "qbe",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 281332,
+      "build_peak_bytes": null,
+      "category": [
+        "Compilers",
+        "Compact research backends"
+      ],
+      "container_strategy": "Copy immutable source to a fresh dev build tree; compile and install QBE plus its IL documentation and tests. Target receives generated programs only.",
+      "dependencies": [
+        "apt.build-essential",
+        "apt.make",
+        "apt.python3"
+      ],
+      "deployment": {
+        "adapter": "make",
+        "additional_install_commands": [
+          [
+            "mkdir",
+            "-p",
+            "{prefix}/share/qbe"
+          ],
+          [
+            "cp",
+            "-a",
+            "{source}/doc",
+            "{source}/test",
+            "{source}/LICENSE",
+            "{prefix}/share/qbe/"
+          ]
+        ],
+        "apt_dependencies": {
+          "dev": [
+            "build-essential",
+            "make",
+            "python3"
+          ]
+        },
+        "build_argv": [
+          "make",
+          "-C",
+          "{build}",
+          "-j{jobs}",
+          "CC=cc",
+          "CFLAGS=-O2 -g -std=c99 -Wall -Wextra -Wpedantic"
+        ],
+        "build_role": "dev",
+        "install_argv": [
+          "make",
+          "-C",
+          "{build}",
+          "PREFIX={prefix}",
+          "install"
+        ],
+        "install_roles": [
+          "dev"
+        ],
+        "prepare_commands": [
+          [
+            "cp",
+            "-a",
+            "{source}/.",
+            "{build}"
+          ]
+        ],
+        "probe_requires_host": [],
+        "required_installed_paths": [
+          "{prefix}/bin/qbe",
+          "{prefix}/share/qbe/doc/il.txt",
+          "{prefix}/share/qbe/LICENSE"
+        ],
+        "smoke_argv": [
+          "python3",
+          "{tools}/native-resource-smoke.py",
+          "qbe",
+          "--prefix",
+          "{prefix}"
+        ],
+        "state": "native-recipe-build-install-smoke-passed; container-not-executed",
+        "submodule_closure_complete": true,
+        "target_exports": [],
+        "target_smoke_commands": [],
+        "upstream_test_commands": [
+          [
+            "make",
+            "-C",
+            "{build}",
+            "check"
+          ]
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://c9x.me/compile/doc/il.html",
+        "https://c9x.me/compile/releases.html"
+      ],
+      "evidence_files": [
+        "workspace-evidence/native-optimization-resources/archive-measurements.json",
+        "workspace-evidence/native-optimization-resources/native-recipe-probe/receipts/qbe.json"
+      ],
+      "extract": true,
+      "id": "qbe",
+      "immutable_ref": "c0818978acec60ebb6167fade60fb7012cbf20ca",
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/qbe",
+      "native_probe": {
+        "allocated_installed_bytes": 2547712,
+        "catalog_sha256_at_probe": "a6bfa8e0d5a040a238c30e712234b73a25584038ca9184afff2b439478405691",
+        "logical_installed_bytes": 2252860,
+        "logical_retained_build_tree_bytes": 4816810,
+        "receipt": "workspace-evidence/native-optimization-resources/native-recipe-probe/receipts/qbe.json",
+        "scope": "This native dev build only; not a container size prediction or transient peak measurement."
+      },
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "A small complete SSA backend for real pass implementation, assembly inspection, differential testing and rapid native optimization experiments; not a replacement for industrial compiler qualification.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": true,
+        "container_qualified": false,
+        "native_recipe_smoke_qualified": true,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The selected installation recipe and physical target remain unqualified until their own receipts exist.",
+        "QBE IR, pass pipeline and debugging flags differ from LLVM; LLVM NewPM/Alive2 tools cannot directly validate QBE IR."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "d587905d620dc5e1d2bfa7c2cc642b9b837aa89a3188c6e37b53d756cf66e320",
+      "size_basis": "Complete HTTPS payload measured locally; source logical bytes sum regular archive members, excluding allocation, build trees and external dependencies.",
+      "size_evidence": "workspace-evidence/native-optimization-resources/archive-measurements.json",
+      "source_evidence": [
+        "https://c9x.me/compile/releases.html",
+        "https://c9x.me/compile/release/qbe-1.3.tar.xz"
+      ],
+      "source_logical_bytes": 1699422,
+      "source_url": "https://c9x.me/compile/release/qbe-1.3.tar.xz",
+      "title": "QBE compact optimizing compiler backend",
+      "upstream": "https://c9x.me/compile/",
+      "version": "1.3"
+    },
+    "catalog_sha256": "24a42123a2dfb88fa9382d70b3dfe2a204f1eb911df74fbf8d94f07843247121"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "make",
+    "additional_install_commands": [
+      [
+        "mkdir",
+        "-p",
+        "{prefix}/share/qbe"
+      ],
+      [
+        "cp",
+        "-a",
+        "{source}/doc",
+        "{source}/test",
+        "{source}/LICENSE",
+        "{prefix}/share/qbe/"
+      ]
+    ],
+    "apt_dependencies": {
+      "dev": [
+        "build-essential",
+        "make",
+        "python3"
+      ]
+    },
+    "build_argv": [
+      "make",
+      "-C",
+      "{build}",
+      "-j{jobs}",
+      "CC=cc",
+      "CFLAGS=-O2 -g -std=c99 -Wall -Wextra -Wpedantic"
+    ],
+    "build_role": "dev",
+    "install_argv": [
+      "make",
+      "-C",
+      "{build}",
+      "PREFIX={prefix}",
+      "install"
+    ],
+    "install_roles": [
+      "dev"
+    ],
+    "prepare_commands": [
+      [
+        "cp",
+        "-a",
+        "{source}/.",
+        "{build}"
+      ]
+    ],
+    "probe_requires_host": [],
+    "required_installed_paths": [
+      "{prefix}/bin/qbe",
+      "{prefix}/share/qbe/doc/il.txt",
+      "{prefix}/share/qbe/LICENSE"
+    ],
+    "smoke_argv": [
+      "python3",
+      "{tools}/native-resource-smoke.py",
+      "qbe",
+      "--prefix",
+      "{prefix}"
+    ],
+    "state": "native-recipe-build-install-smoke-passed; container-not-executed",
+    "submodule_closure_complete": true,
+    "target_exports": [],
+    "target_smoke_commands": [],
+    "upstream_test_commands": [
+      [
+        "make",
+        "-C",
+        "{build}",
+        "check"
+      ]
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 281332,
+      "extract": true,
+      "id": "qbe",
+      "material_path": "sources/qbe",
+      "sha256": "d587905d620dc5e1d2bfa7c2cc642b9b837aa89a3188c6e37b53d756cf66e320",
+      "strip_root": true,
+      "url": "https://c9x.me/compile/release/qbe-1.3.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://c9x.me/compile/doc/il.html",
+      "https://c9x.me/compile/releases.html"
+    ],
+    "examples": [
+      {
+        "command": "python3 '{tools}/native-resource-smoke.py' qbe --prefix '{prefix}'",
+        "description": "Run the recorded functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/qbe",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "A small complete SSA backend for real pass implementation, assembly inspection, differential testing and rapid native optimization experiments; not a replacement for industrial compiler qualification."
+  },
+  "version": "1.3"
+}

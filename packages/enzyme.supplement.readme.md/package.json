@@ -1,0 +1,124 @@
+{
+  "build": "recovery-static-material-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "enzyme.supplement.readme.md-complete-material",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 60
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "enzyme.supplement.readme.md",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 4068,
+      "category": [
+        "Compilers",
+        "Compiler extensions",
+        "Pinned source closure"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "supplement"
+      },
+      "extract": false,
+      "id": "enzyme.supplement.readme.md",
+      "immutable_ref": "sha256:ffe6a680cd5be92c521c20d752caca6dcb7d598646fcae35a91499703b8225b3",
+      "installed_bytes": null,
+      "kind": "source_supplement",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception",
+      "mandatory": false,
+      "material_path": "supplements/enzyme.supplement.readme.md",
+      "presets": [],
+      "qualification_gaps": [],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "ffe6a680cd5be92c521c20d752caca6dcb7d598646fcae35a91499703b8225b3",
+      "size_basis": "Measured exact immutable supplemental artifact",
+      "source_evidence": [
+        "https://raw.githubusercontent.com/EnzymeAD/Enzyme/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377/Readme.md"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://raw.githubusercontent.com/EnzymeAD/Enzyme/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377/Readme.md",
+      "strip_archive_root": true,
+      "supplement_to": "sources/enzyme/Readme.md",
+      "title": "Enzyme LLVM and MLIR differentiation / Readme.md",
+      "version": "v0.0.303"
+    },
+    "catalog_sha256": "b3d93e3f47d6be6108b16abfd07acda33578e0a0c20e55d6bbed5d50492c6e93"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "qualification_scope": "complete_original_single_file_static_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/supplements/enzyme.supplement.readme.md"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_scope": "one complete declared original file; no archive or submodule closure is applicable"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 4068,
+      "extract": false,
+      "id": "enzyme.supplement.readme.md",
+      "material_path": "supplements/enzyme.supplement.readme.md",
+      "sha256": "ffe6a680cd5be92c521c20d752caca6dcb7d598646fcae35a91499703b8225b3",
+      "strip_root": true,
+      "url": "https://raw.githubusercontent.com/EnzymeAD/Enzyme/06da3b77d8ceaa9e260c7147a2e6bedf27b6d377/Readme.md"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete original upstream file",
+        "path": "{prefix}/supplements/enzyme.supplement.readme.md",
+        "purpose": "Independent exact original static material, verified by full byte count, SHA-256 and file inventory."
+      }
+    ],
+    "notes": [
+      "The complete originally declared file is preserved at its exact URL, revision, SHA-256 and byte count; canonical source and catalog fields are unchanged.",
+      "This static-material qualification does not build Enzyme, deploy a Docker seccomp policy, run a container or grant executable/hardware/benchmark qualification.",
+      "Use recipe/prepare.py with the public CPG acquisition cache and material pack API for online or explicitly offline reconstruction. HTTPS fetching has not been retested in this recovery round.",
+      "Installed paths are independent ordinary copies. Availability checks validate all material members; package lifecycle and corruption isolation have separate receipts."
+    ],
+    "summary": "Enzyme LLVM and MLIR differentiation / Readme.md"
+  },
+  "version": "v0.0.303"
+}

@@ -1,0 +1,159 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "amd-aocc",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Toolchains",
+        "Vendor compilers"
+      ],
+      "container_strategy": "Use the unified selection manifest and a private local vendor overlay. Never publish payloads without component-specific redistribution clearance; no automatic license acceptance.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "vendor-local",
+        "admission_driver": "tools/vendor.py",
+        "apt_dependencies": {
+          "dev": [],
+          "target": []
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "executable_qualified": false,
+        "install_argv": [],
+        "install_roles": [
+          "dev"
+        ],
+        "installation_requires_reviewed_receipt": true,
+        "probe_requires_host": [],
+        "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+        "reference_invocation_only": true,
+        "reference_invocations": [
+          [
+            "{prefix}/bin/clang",
+            "--version"
+          ]
+        ],
+        "reference_invocations_require_review": true,
+        "smoke_argv": [],
+        "state": "local-license-payload-required"
+      },
+      "documentation": "https://www.amd.com/en/developer/aocc.html",
+      "extract": false,
+      "id": "amd-aocc",
+      "immutable_ref": "sha256:f98af7e2ae8801dd4ba443520653acb739536a86c2a1caf096310c3cfd554ca0",
+      "installed_bytes": null,
+      "kind": "vendor-local",
+      "license_class": "restricted",
+      "license_id": "LicenseRef-amd-aocc",
+      "mandatory": false,
+      "material_path": "vendor-media/amd-aocc",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Provide an independent vendor compiler baseline for AMD Zen hosts.",
+      "qualification_gaps": [
+        "A licensed local payload, exact delivered build identity, SHA-256, accepted license receipt and reviewed silent installation recipe are required.",
+        "The selected resource remains blocked until installation and real component probes succeed.",
+        "The public AOCC 6.0 text is an announcement, not the selected downloadable release. Preserve the GNU linker/sysroot and supplied Fortran/runtime ABI."
+      ],
+      "redistributable": false,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "f98af7e2ae8801dd4ba443520653acb739536a86c2a1caf096310c3cfd554ca0",
+      "size_basis": "Exact installer size is unresolved; an authorized local import must record complete byte count and SHA-256.",
+      "source_evidence": [
+        "https://www.amd.com/en/developer/aocc.html",
+        "https://www.amd.com/en/developer/aocc/eula/aocc-5-2-eula.html?filename=aocc-compiler-5.2.0.tar"
+      ],
+      "source_url": "https://www.amd.com/en/developer/aocc/eula/aocc-5-2-eula.html?filename=aocc-compiler-5.2.0.tar",
+      "title": "AMD Optimizing C/C++ and Fortran Compilers",
+      "upstream": "https://www.amd.com/en/developer/aocc.html",
+      "version": "5.2.0"
+    },
+    "catalog_sha256": "a82f49a096df95a9719950bbf896cdf96ccdc5cff19f8fb6b832b30d4f39de93"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "vendor-local",
+    "admission_driver": "tools/vendor.py",
+    "apt_dependencies": {
+      "dev": [],
+      "target": []
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "executable_qualified": false,
+    "install_argv": [],
+    "install_roles": [
+      "dev"
+    ],
+    "installation_requires_reviewed_receipt": true,
+    "probe_requires_host": [],
+    "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+    "reference_invocation_only": true,
+    "reference_invocations": [
+      [
+        "{prefix}/bin/clang",
+        "--version"
+      ]
+    ],
+    "reference_invocations_require_review": true,
+    "smoke_argv": [],
+    "state": "local-license-payload-required"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": false,
+      "id": "amd-aocc",
+      "material_path": "vendor-media/amd-aocc",
+      "sha256": "f98af7e2ae8801dd4ba443520653acb739536a86c2a1caf096310c3cfd554ca0",
+      "strip_root": true,
+      "url": "https://www.amd.com/en/developer/aocc/eula/aocc-5-2-eula.html?filename=aocc-compiler-5.2.0.tar"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.amd.com/en/developer/aocc.html"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/vendor-media/amd-aocc",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Provide an independent vendor compiler baseline for AMD Zen hosts."
+  },
+  "version": "5.2.0"
+}

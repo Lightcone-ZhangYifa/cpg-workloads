@@ -1,0 +1,201 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "id": "distribution-identity",
+      "kind": "version",
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "timeout_seconds": 180,
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ]
+    },
+    {
+      "id": "installed-api-contract",
+      "kind": "functional",
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "timeout_seconds": 180,
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ]
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.mpmath"
+    ],
+    "system": []
+  },
+  "id": "py.sympy",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 6299353,
+      "category": [
+        "Python packages",
+        "Optional search and analysis"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.mpmath"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://sympy.org"
+      ],
+      "id": "py.sympy",
+      "immutable_ref": "sha256:e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "LicenseRef-Python-distribution-notices",
+      "mandatory": false,
+      "material_path": "wheels/sympy-1.14.0-py3-none-any.whl",
+      "package_name": "sympy",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/sympy/1.14.0/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/a2/09/77d55d46fd61b4a135c444fc97158ef34a095e5681d0a6c10b75bf356191/sympy-1.14.0-py3-none-any.whl",
+      "title": "sympy",
+      "upstream": "https://pypi.org/project/sympy/1.14.0/",
+      "version": "1.14.0"
+    },
+    "catalog_sha256": "b59b757be49879ec9005b66de14975accbec7ad01e02c1fcb4fd16bcfd1d1526"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "sympy",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 6299353,
+      "extract": false,
+      "id": "py.sympy",
+      "material_path": "wheels/sympy-1.14.0-py3-none-any.whl",
+      "sha256": "e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/a2/09/77d55d46fd61b4a135c444fc97158ef34a095e5681d0a6c10b75bf356191/sympy-1.14.0-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use {prefix}/bin/python explicitly. The selected environment owns the exact distribution and its declared dependencies."
+    ],
+    "documentation": [
+      "https://docs.sympy.org/latest/",
+      "https://sympy.org"
+    ],
+    "examples": [
+      {
+        "description": "Compute an exact symbolic derivative.",
+        "command": "{prefix}/bin/python -c 'import sympy as s; x=s.Symbol('\"'\"'x'\"'\"'); print(s.diff(x**3+2*x,x))'"
+      },
+      {
+        "description": "Read the installed distribution identity in the selected environment.",
+        "command": "{prefix}/bin/python -m pip show {package_name}"
+      },
+      {
+        "description": "Run the package-specific API, data and failure-contract checks.",
+        "command": "cpg packages check py.sympy --prefix {prefix} --kind functional"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/sympy-1.14.0-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "The functional check uses the selected installed module, requires the exact distribution version, and checks actual results. It does not download data or contact external services.",
+      "This is a bounded application-level qualification, not the entire upstream test suite or every optional backend. Read the package recipe for each exercised operation.",
+      "The wrapper delegates installation and removal to pip. Its archive does not contain the locked wheel or its dependency closure; those have separate source identities.",
+      "metadata.catalog preserves the original discovery and resolver evidence. Current execution results are recorded separately by the package manager."
+    ],
+    "summary": "Exact symbolic differentiation, simplification, equations and matrix algebra."
+  },
+  "version": "1.14.0"
+}

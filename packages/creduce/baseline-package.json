@@ -1,0 +1,183 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/creduce",
+        "--version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "version",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.autoconf",
+      "apt.automake",
+      "apt.flex",
+      "apt.libexporter-lite-perl",
+      "apt.libfile-which-perl",
+      "apt.libregexp-common-perl",
+      "apt.libtool",
+      "apt.perl"
+    ]
+  },
+  "id": "creduce",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 725257,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Correctness",
+        "Failure reduction"
+      ],
+      "container_strategy": "Keep this older reducer in a separate prefix from C-Vise and qualify the required Clang API version.",
+      "dependencies": [
+        "apt.autoconf",
+        "apt.automake",
+        "apt.flex",
+        "apt.libexporter-lite-perl",
+        "apt.libfile-which-perl",
+        "apt.libregexp-common-perl",
+        "apt.libtool",
+        "apt.perl"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "smoke_argv": [
+          "{prefix}/bin/creduce",
+          "--version"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "autoconf",
+          "automake",
+          "libtool",
+          "flex",
+          "perl",
+          "libexporter-lite-perl",
+          "libfile-which-perl",
+          "libregexp-common-perl"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/csmith-project/creduce"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/creduce.measurement.json",
+        "workspace-evidence/resources-v050/open-research/creduce.refs.json"
+      ],
+      "extract": true,
+      "id": "creduce",
+      "immutable_ref": "fb91843c547794f165e5764a003166191e6c6643",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "NCSA",
+      "mandatory": false,
+      "material_path": "sources/creduce",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Provide a complementary reduction implementation and legacy failure-reproduction reference.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The old release is an archival compatibility resource; current LLVM integration requires explicit validation."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "8659c81f7de9d2110ff3a29ac25a1aa84f638924ad9cde50d88729cd3a6ba03e",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/csmith-project/creduce",
+        "https://codeload.github.com/csmith-project/creduce/tar.gz/fb91843c547794f165e5764a003166191e6c6643",
+        "https://github.com/csmith-project/creduce/commit/fb91843c547794f165e5764a003166191e6c6643"
+      ],
+      "source_logical_bytes": 3549432,
+      "source_url": "https://codeload.github.com/csmith-project/creduce/tar.gz/fb91843c547794f165e5764a003166191e6c6643",
+      "title": "C-Reduce reference reducer",
+      "upstream": "https://github.com/csmith-project/creduce",
+      "version": "creduce-2.10.0"
+    },
+    "catalog_sha256": "00e498e86fd295ee4693fa85771d2447cd959199efcd3d652e44e8a5a570110b"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "qualified": false,
+    "smoke_argv": [
+      "{prefix}/bin/creduce",
+      "--version"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "autoconf",
+      "automake",
+      "libtool",
+      "flex",
+      "perl",
+      "libexporter-lite-perl",
+      "libfile-which-perl",
+      "libregexp-common-perl"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 725257,
+      "extract": true,
+      "id": "creduce",
+      "material_path": "sources/creduce",
+      "sha256": "8659c81f7de9d2110ff3a29ac25a1aa84f638924ad9cde50d88729cd3a6ba03e",
+      "strip_root": true,
+      "url": "https://codeload.github.com/csmith-project/creduce/tar.gz/fb91843c547794f165e5764a003166191e6c6643"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/csmith-project/creduce"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/creduce' --version",
+        "description": "Run the recorded version check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/creduce",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Provide a complementary reduction implementation and legacy failure-reproduction reference."
+  },
+  "version": "creduce-2.10.0"
+}

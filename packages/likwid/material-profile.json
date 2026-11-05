@@ -1,0 +1,211 @@
+{
+  "build": "3",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "likwid",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 2989555,
+      "build_peak_bytes": null,
+      "category": [
+        "Profiling",
+        "PMU collectors"
+      ],
+      "container_strategy": "Build CPU tools and the access daemon in dev; deploy target tools plus a separately reviewed host access-daemon profile. Keep perf_event and MSR/PCI access modes available. Do not install setuid helpers implicitly.",
+      "dependencies": [
+        "apt.build-essential",
+        "apt.perl"
+      ],
+      "deployment": {
+        "adapter": "make",
+        "apt_dependencies": {
+          "dev": [
+            "build-essential",
+            "perl"
+          ],
+          "target": []
+        },
+        "build_argv": [
+          "make",
+          "-C",
+          "{build}",
+          "-j{jobs}",
+          "PREFIX={prefix}",
+          "COMPILER=GCC",
+          "ACCESSMODE=accessdaemon",
+          "BUILDDAEMON=true",
+          "BUILD_SYSFEATURES=true",
+          "NVIDIA_INTERFACE=false",
+          "ROCM_INTERFACE=false"
+        ],
+        "build_role": "dev",
+        "configure_argv": [],
+        "host_install_review": [
+          "likwid-accessD",
+          "msr module",
+          "PCI device access"
+        ],
+        "install_argv": [
+          "make",
+          "-C",
+          "{build}",
+          "PREFIX={prefix}",
+          "COMPILER=GCC",
+          "ACCESSMODE=accessdaemon",
+          "BUILDDAEMON=true",
+          "BUILD_SYSFEATURES=true",
+          "NVIDIA_INTERFACE=false",
+          "ROCM_INTERFACE=false",
+          "install"
+        ],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "prepare_commands": [
+          [
+            "cp",
+            "-a",
+            "{source}/.",
+            "{build}"
+          ]
+        ],
+        "probe_requires_host": [
+          "likwid-perfctr core event group",
+          "uncore access mode"
+        ],
+        "smoke_argv": [
+          "{prefix}/bin/likwid-topology"
+        ],
+        "state": "recipe-described-not-executed",
+        "target_exports": [
+          {
+            "destination": "opt/research/selected/likwid",
+            "kind": "tree",
+            "required": true,
+            "role": "profiler",
+            "source": "{prefix}"
+          }
+        ],
+        "target_smoke_commands": [
+          [
+            "{prefix}/bin/likwid-topology"
+          ]
+        ]
+      },
+      "documentation": "https://github.com/RRZE-HPC/likwid/wiki/Build",
+      "extract": true,
+      "id": "likwid",
+      "immutable_ref": "22abb561ca709ea867562f3801dcaff676a30f1a",
+      "installed_bytes": null,
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "GPL-3.0-or-later",
+      "mandatory": false,
+      "material_path": "sources/likwid",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Measure CPU topology, affinity, hardware counters, region markers and memory bandwidth with architecture-specific metric groups.",
+      "qualification_gaps": [
+        "A physical target CPU, kernel, PMU and container launch profile must pass feature-specific collection probes; an installed executable is not full runtime qualification.",
+        "Full uncore access may require host MSR/PCI access or access daemon; perf_event mode alone is not equivalent.",
+        "No frequency-setting tool may change a formal timing machine during a campaign."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "786c6757243f4ccb2785b4c1856d06092f4dafdf92df357bc17d140ed750ae24",
+      "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+      "size_evidence": "workspace-evidence/resources-v050/platform-research/archive-measurements.json",
+      "source_evidence": [
+        "https://github.com/RRZE-HPC/likwid/releases/tag/v5.5.2",
+        "https://github.com/RRZE-HPC/likwid/wiki/Build",
+        "https://codeload.github.com/RRZE-HPC/likwid/tar.gz/22abb561ca709ea867562f3801dcaff676a30f1a"
+      ],
+      "source_url": "https://codeload.github.com/RRZE-HPC/likwid/tar.gz/22abb561ca709ea867562f3801dcaff676a30f1a",
+      "title": "LIKWID CPU profiling toolkit",
+      "upstream": "https://github.com/RRZE-HPC/likwid/releases/tag/v5.5.2",
+      "version": "5.5.2"
+    },
+    "catalog_sha256": "537b1156bb8831cd5a8457f25c7e8c9bfdc5410463a413e79f28dc467284e1ef"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "material"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2989555,
+      "extract": true,
+      "id": "likwid",
+      "material_path": "sources/likwid",
+      "sha256": "786c6757243f4ccb2785b4c1856d06092f4dafdf92df357bc17d140ed750ae24",
+      "strip_root": true,
+      "url": "https://codeload.github.com/RRZE-HPC/likwid/tar.gz/22abb561ca709ea867562f3801dcaff676a30f1a"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+    ],
+    "documentation": [
+      "https://github.com/RRZE-HPC/likwid",
+      "https://github.com/RRZE-HPC/likwid/wiki"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/likwid-topology",
+        "description": "Inspect CPU and cache topology"
+      },
+      {
+        "command": "{prefix}/bin/likwid-bench -a",
+        "description": "Inspect available benchmark kernels"
+      },
+      {
+        "command": "{prefix}/bin/likwid-perfctr -a",
+        "description": "List counter groups for this CPU"
+      }
+    ],
+    "locations": [
+      {
+        "label": "LIKWID tools",
+        "path": "{prefix}/bin",
+        "purpose": "Version-specific topology, affinity, perfctr and benchmark commands"
+      },
+      {
+        "label": "Metric groups",
+        "path": "{prefix}/share/likwid",
+        "purpose": "Architecture-specific performance groups and reference data"
+      },
+      {
+        "label": "Installed API examples and checks",
+        "path": "{prefix}/share/compiler-playground/likwid",
+        "purpose": "Read-only API client source and the resource check entry point; runtime reports keep hardware limitations explicit."
+      }
+    ],
+    "notes": [
+      "The source recipe selects the accessdaemon backend; usable counters require a separately reviewed host daemon/MSR/PCI arrangement. No daemon is enabled by the check.",
+      "The topology check is non-privileged. Benchmark kernels and counter collection are separate, explicit operations.",
+      "Source-built LIKWID 5.5.2 and APT LIKWID 5.2.2 can coexist via their distinct command paths.",
+      "The complete binary profile uses its declared fixed prefix. Build for the final container path; another path is rejected. Original full source and original profile remain in the workspace baseline.",
+      "The access and frequency helpers are included as ordinary 0755 executables. No host ownership/setuid activation, service startup, MSR module loading or device-policy change is performed. A host administrator may configure the documented upstream access mode explicitly."
+    ],
+    "summary": "Inspect CPU topology and use LIKWID affinity, counters and microbenchmarks when explicitly requested."
+  },
+  "version": "5.5.2"
+}

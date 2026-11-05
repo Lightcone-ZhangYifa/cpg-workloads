@@ -1,0 +1,574 @@
+{
+  "configuration": {
+    "build_linux_no_bfd": false,
+    "build_ossfuzz_static": false,
+    "compiler": "/usr/bin/gcc",
+    "hardware_perf_modes": "not_qualified",
+    "linux_intel_pt_optional_library": "not_enabled",
+    "optimization": "-O2 -mtune=generic -funroll-loops"
+  },
+  "host_direct_dependency_scope": [
+    "apt.g++",
+    "apt.make",
+    "apt.python3"
+  ],
+  "original_dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.binutils-dev",
+      "apt.g++",
+      "apt.libblocksruntime-dev",
+      "apt.liblzma-dev",
+      "apt.libunwind-dev",
+      "apt.make"
+    ]
+  },
+  "original_material_representation": "exact-archive-with-member-inventory; no source extraction into installed payload",
+  "original_source_lock": {
+    "bytes": 65269741,
+    "extract": true,
+    "id": "honggfuzz",
+    "material_path": "sources/honggfuzz",
+    "sha256": "3a37ff1dbdd31977a2990e74a3f63c77220fb9e077690e548f64e13d0cccc5ad",
+    "strip_root": true,
+    "url": "https://codeload.github.com/google/honggfuzz/tar.gz/83a8415a372d84dcc69ac1e2c2f152190bcf76d1"
+  },
+  "private_direct_dependencies": [
+    "apt.binutils-dev",
+    "apt.libblocksruntime-dev",
+    "apt.liblzma-dev",
+    "apt.libunwind-dev"
+  ],
+  "recipe_inputs": [
+    {
+      "architecture": "amd64",
+      "bytes": 18154,
+      "definition_sha256": "013fbb1b1e0eb051deeda0c59a0bda5afdb45e3b7643a379a8830ed882cbc9cb",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.binutils-common",
+          "apt.binutils-x86-64-linux-gnu",
+          "apt.libbinutils"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/binutils_2.42-4ubuntu2.10_amd64.deb",
+      "id": "apt.binutils",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/binutils_2.42-4ubuntu2.10_amd64.deb",
+      "package_name": "binutils",
+      "sha256": "b3b5a84181a38fd191820b2cdcc1a3eeb1cd6333ad472f2092f96e81047e9c74",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils_2.42-4ubuntu2.10_amd64.deb",
+      "version": "2.42-4ubuntu2.10"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 240286,
+      "definition_sha256": "ef1a0ce77157f7c9144cb765580803e495307b6f002853958cb99e815185b345",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": []
+      },
+      "extract": false,
+      "filename": "vendor/binutils-common_2.42-4ubuntu2.10_amd64.deb",
+      "id": "apt.binutils-common",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/binutils-common_2.42-4ubuntu2.10_amd64.deb",
+      "package_name": "binutils-common",
+      "sha256": "d136073f5e2153f3df11c1d08d66727b9466b28ff483f50085f14bbe3464b5ee",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils-common_2.42-4ubuntu2.10_amd64.deb",
+      "version": "2.42-4ubuntu2.10"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 11529670,
+      "definition_sha256": "bcb00c8e8e1557abab3a899dd230d3dbe9c3b4f4cdda579c9a62bc2c739dd149",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.binutils",
+          "apt.libbinutils",
+          "apt.libctf-nobfd0",
+          "apt.libctf0",
+          "apt.libsframe1"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/binutils-dev_2.42-4ubuntu2.10_amd64.deb",
+      "id": "apt.binutils-dev",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/binutils-dev_2.42-4ubuntu2.10_amd64.deb",
+      "package_name": "binutils-dev",
+      "sha256": "250968ef31125accdcabf639c07b202e0326652fb218cc7d5e77164c09abdec6",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils-dev_2.42-4ubuntu2.10_amd64.deb",
+      "version": "2.42-4ubuntu2.10"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 2462744,
+      "definition_sha256": "4eb7a8b9e4de35e07eff1544c2e32190f4005e01501e3514a868972de0b79111",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.binutils-common",
+          "apt.libbinutils",
+          "apt.libc6",
+          "apt.libctf-nobfd0",
+          "apt.libctf0",
+          "apt.libgcc-s1",
+          "apt.libgprofng0",
+          "apt.libjansson4",
+          "apt.libsframe1",
+          "apt.libstdc++6",
+          "apt.libzstd1",
+          "apt.zlib1g"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/binutils-x86-64-linux-gnu_2.42-4ubuntu2.10_amd64.deb",
+      "id": "apt.binutils-x86-64-linux-gnu",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/binutils-x86-64-linux-gnu_2.42-4ubuntu2.10_amd64.deb",
+      "package_name": "binutils-x86-64-linux-gnu",
+      "sha256": "1e510a15f30208d39edcd840e48f26a77bbca7c417805eeccb1e3f7de198ef29",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils-x86-64-linux-gnu_2.42-4ubuntu2.10_amd64.deb",
+      "version": "2.42-4ubuntu2.10"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 51014,
+      "definition_sha256": "b6dac068886f21a4815424faeea73027f0ef1d4d6856df2f8fd5c46fb52f6139",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": []
+      },
+      "extract": false,
+      "filename": "vendor/gcc-14-base_14.2.0-4ubuntu2~24.04.1_amd64.deb",
+      "id": "apt.gcc-14-base",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/gcc-14-base_14.2.0-4ubuntu2~24.04.1_amd64.deb",
+      "package_name": "gcc-14-base",
+      "sha256": "b95c172411a7fdae70307cf33a9f5320ba5e056b556454543dd5b679d5ce1c4f",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gcc-14/gcc-14-base_14.2.0-4ubuntu2~24.04.1_amd64.deb",
+      "version": "14.2.0-4ubuntu2~24.04.1"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 576834,
+      "definition_sha256": "6f61ea8b6f12bd3647e13a19ee76fe0d36aef379160baf8de6b51829b1b7513a",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.binutils-common",
+          "apt.libc6",
+          "apt.libsframe1",
+          "apt.libzstd1",
+          "apt.zlib1g"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libbinutils_2.42-4ubuntu2.10_amd64.deb",
+      "id": "apt.libbinutils",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libbinutils_2.42-4ubuntu2.10_amd64.deb",
+      "package_name": "libbinutils",
+      "sha256": "064dce00ce94e1fc2d33779cb0071088f4c8aac79e85345f2e78a020f7d14699",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/libbinutils_2.42-4ubuntu2.10_amd64.deb",
+      "version": "2.42-4ubuntu2.10"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 7606,
+      "definition_sha256": "d7efe09800bc3c393c711a0bfc4761700614251c402ee1985a6dd492345dabb1",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.libblocksruntime0"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libblocksruntime-dev_0.4.1-1.1build1_amd64.deb",
+      "id": "apt.libblocksruntime-dev",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libblocksruntime-dev_0.4.1-1.1build1_amd64.deb",
+      "package_name": "libblocksruntime-dev",
+      "sha256": "487088c7e001777d4eb35b8c900836fcc2f5fe00cb68f33b3fc46626b4bc5e31",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/libb/libblocksruntime/libblocksruntime-dev_0.4.1-1.1build1_amd64.deb",
+      "version": "0.4.1-1.1build1"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 7026,
+      "definition_sha256": "c990e53c8b557c3ccb5955017546aca3f2ca875350e6acb1f7b7d12521094cde",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.libc6"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libblocksruntime0_0.4.1-1.1build1_amd64.deb",
+      "id": "apt.libblocksruntime0",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libblocksruntime0_0.4.1-1.1build1_amd64.deb",
+      "package_name": "libblocksruntime0",
+      "sha256": "099d4793be77a8e23dd9947d3e85b0ece2bf275546d690129b7f8427d8361791",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/libb/libblocksruntime/libblocksruntime0_0.4.1-1.1build1_amd64.deb",
+      "version": "0.4.1-1.1build1"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 3264314,
+      "definition_sha256": "90f3bceeda9dd29b60b2c4d62c5d0e0ecf0f0c476e013fe47662fcc315f36d0f",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.libgcc-s1"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libc6_2.39-0ubuntu8.9_amd64.deb",
+      "id": "apt.libc6",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libc6_2.39-0ubuntu8.9_amd64.deb",
+      "package_name": "libc6",
+      "sha256": "ff5557d99b51f761c4b7c92368b9cc45565eda17df9bf9eb4b134d09825008be",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6_2.39-0ubuntu8.9_amd64.deb",
+      "version": "2.39-0ubuntu8.9"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 98012,
+      "definition_sha256": "eaa26f95b0be00a7da0961f0c804ec7fe43014d5394f18b2bfb635e4987192fa",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.libc6",
+          "apt.zlib1g"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libctf-nobfd0_2.42-4ubuntu2.10_amd64.deb",
+      "id": "apt.libctf-nobfd0",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libctf-nobfd0_2.42-4ubuntu2.10_amd64.deb",
+      "package_name": "libctf-nobfd0",
+      "sha256": "da352eb7fa6c4369d2a6c1e5e680f574eda2e38576563326b18d9e47e61c4078",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/libctf-nobfd0_2.42-4ubuntu2.10_amd64.deb",
+      "version": "2.42-4ubuntu2.10"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 94474,
+      "definition_sha256": "e4d7d35b039a495514535156309325e1f20ad337a64b9710fdb13942c444bfed",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.libbinutils",
+          "apt.libc6",
+          "apt.zlib1g"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libctf0_2.42-4ubuntu2.10_amd64.deb",
+      "id": "apt.libctf0",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libctf0_2.42-4ubuntu2.10_amd64.deb",
+      "package_name": "libctf0",
+      "sha256": "7ec86d697c3668503c85f308a6832f092075b5880ad002f22185264da0bd4645",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/libctf0_2.42-4ubuntu2.10_amd64.deb",
+      "version": "2.42-4ubuntu2.10"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 78392,
+      "definition_sha256": "eee11abb941df3f3b48eac51edf271bd3f73e7ffd01823c8d05c99922319ab33",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.gcc-14-base",
+          "apt.libc6"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libgcc-s1_14.2.0-4ubuntu2~24.04.1_amd64.deb",
+      "id": "apt.libgcc-s1",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libgcc-s1_14.2.0-4ubuntu2~24.04.1_amd64.deb",
+      "package_name": "libgcc-s1",
+      "sha256": "aa7fadbe33b78bcf99885318040601c550c208929565b179891d9a3cc2aa68cd",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gcc-14/libgcc-s1_14.2.0-4ubuntu2~24.04.1_amd64.deb",
+      "version": "14.2.0-4ubuntu2~24.04.1"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 848684,
+      "definition_sha256": "ea9c2adc2f11722d9068aea1d2ce0df0c9b21d635fb3ba4cc962e5d38ae3d2e9",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.libbinutils",
+          "apt.libc6",
+          "apt.libgcc-s1",
+          "apt.libstdc++6",
+          "apt.zlib1g"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libgprofng0_2.42-4ubuntu2.10_amd64.deb",
+      "id": "apt.libgprofng0",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libgprofng0_2.42-4ubuntu2.10_amd64.deb",
+      "package_name": "libgprofng0",
+      "sha256": "1b7e3c2fc162e8358ca6e5a3fffdb4d0d632f790630323215841bb36a63c0ab8",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/libgprofng0_2.42-4ubuntu2.10_amd64.deb",
+      "version": "2.42-4ubuntu2.10"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 32830,
+      "definition_sha256": "b4ea2dd32973ef6b6c02ea4eec115d3a8d46852f14cdcad48131e4b279b7a469",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.libc6"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libjansson4_2.14-2build2_amd64.deb",
+      "id": "apt.libjansson4",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libjansson4_2.14-2build2_amd64.deb",
+      "package_name": "libjansson4",
+      "sha256": "0cf79113f5d193ce9af2be2ff4b2c3b30dd4e55a0b6c47f7d28f6c849ff3aa60",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/j/jansson/libjansson4_2.14-2build2_amd64.deb",
+      "version": "2.14-2build2"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 176184,
+      "definition_sha256": "bb0bc931e5337b4af3d34dbf1677ac347c3e905c875ad36f4585b74ab1d5e932",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.liblzma5"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/liblzma-dev_5.6.1+really5.4.5-1ubuntu0.4_amd64.deb",
+      "id": "apt.liblzma-dev",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/liblzma-dev_5.6.1+really5.4.5-1ubuntu0.4_amd64.deb",
+      "package_name": "liblzma-dev",
+      "sha256": "a6af1ee2bd2d5c532465734f474d03d8e08977c881f10898eda0c88b70ff2e5d",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/x/xz-utils/liblzma-dev_5.6.1+really5.4.5-1ubuntu0.4_amd64.deb",
+      "version": "5.6.1+really5.4.5-1ubuntu0.4"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 127704,
+      "definition_sha256": "120b472893d4ff70ea212e94b2e058194e7fa01ee32a143ea6d35f6aaed1fb18",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.libc6"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/liblzma5_5.6.1+really5.4.5-1ubuntu0.4_amd64.deb",
+      "id": "apt.liblzma5",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/liblzma5_5.6.1+really5.4.5-1ubuntu0.4_amd64.deb",
+      "package_name": "liblzma5",
+      "sha256": "5bcf5da2339331e21d3f42a831e82c61c54c6b2f29804010e8d59abd0ae52167",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/x/xz-utils/liblzma5_5.6.1+really5.4.5-1ubuntu0.4_amd64.deb",
+      "version": "5.6.1+really5.4.5-1ubuntu0.4"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 15724,
+      "definition_sha256": "0623e4fcc9fb589942143f55fc40e553197a53b4ef7c4a43f172940580390abe",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.libc6"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libsframe1_2.42-4ubuntu2.10_amd64.deb",
+      "id": "apt.libsframe1",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libsframe1_2.42-4ubuntu2.10_amd64.deb",
+      "package_name": "libsframe1",
+      "sha256": "72093fb456864db55f1352bfa5e952a94f7abaff64e71dff1fbf001db1984564",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/libsframe1_2.42-4ubuntu2.10_amd64.deb",
+      "version": "2.42-4ubuntu2.10"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 792064,
+      "definition_sha256": "bb2c0c11d5bd707fb49c2446a6d5abd71eb7027cd5b000f2e651d4d3dfc94331",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.gcc-14-base",
+          "apt.libc6",
+          "apt.libgcc-s1"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libstdc++6_14.2.0-4ubuntu2~24.04.1_amd64.deb",
+      "id": "apt.libstdc++6",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libstdc++6_14.2.0-4ubuntu2~24.04.1_amd64.deb",
+      "package_name": "libstdc++6",
+      "sha256": "a51f8de7829211db961a31f02158058ad1a95f92ac6d0a5dff6350e2821c54c0",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gcc-14/libstdc++6_14.2.0-4ubuntu2~24.04.1_amd64.deb",
+      "version": "14.2.0-4ubuntu2~24.04.1"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 1906072,
+      "definition_sha256": "66e345978cc11a73fa106e189dac0fd0e283787e4b5990fd2618f3c77bf66b19",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.liblzma-dev",
+          "apt.libunwind8"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libunwind-dev_1.6.2-3build1.1_amd64.deb",
+      "id": "apt.libunwind-dev",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libunwind-dev_1.6.2-3build1.1_amd64.deb",
+      "package_name": "libunwind-dev",
+      "sha256": "ede507c1da4f00f439fffd5e4dd08bda541331385fc949d6b67008a804649e8d",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libu/libunwind/libunwind-dev_1.6.2-3build1.1_amd64.deb",
+      "version": "1.6.2-3build1.1"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 55254,
+      "definition_sha256": "df68a8530900d600e552466e7d4c6a8627d0642ff1e38fda53889f0117eed473",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.libc6",
+          "apt.liblzma5"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libunwind8_1.6.2-3build1.1_amd64.deb",
+      "id": "apt.libunwind8",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libunwind8_1.6.2-3build1.1_amd64.deb",
+      "package_name": "libunwind8",
+      "sha256": "825cb8724bb6b3389587e30c03ab3381f56a2422cafe3b1945f37e055c65e942",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libu/libunwind/libunwind8_1.6.2-3build1.1_amd64.deb",
+      "version": "1.6.2-3build1.1"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 299472,
+      "definition_sha256": "d9cb4027a8b3febfc7f1b1fe5017998ab06aa89c925727184820d0c08026f18e",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.libc6"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/libzstd1_1.5.5+dfsg2-2build1.1_amd64.deb",
+      "id": "apt.libzstd1",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/libzstd1_1.5.5+dfsg2-2build1.1_amd64.deb",
+      "package_name": "libzstd1",
+      "sha256": "dfcf25061e07aad7efd3f4f880ba5ad4d4d09ebe7fc8cc77ab6b8a161d6d4727",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libz/libzstd/libzstd1_1.5.5+dfsg2-2build1.1_amd64.deb",
+      "version": "1.5.5+dfsg2-2build1.1"
+    },
+    {
+      "architecture": "amd64",
+      "bytes": 62988,
+      "definition_sha256": "a1c6d3343a29a2752873446767710350d57f9d4bed8a33612443951fafc0a950",
+      "dependencies": {
+        "build": [],
+        "run": [],
+        "system": [
+          "apt.libc6"
+        ]
+      },
+      "extract": false,
+      "filename": "vendor/zlib1g_1.3.dfsg-3.1ubuntu2.2_amd64.deb",
+      "id": "apt.zlib1g",
+      "kind": "precompiled_private_dependency",
+      "material_path": "apt/zlib1g_1.3.dfsg-3.1ubuntu2.2_amd64.deb",
+      "package_name": "zlib1g",
+      "sha256": "84b9cf5752b29c9f92c27cd4c4ba9bbcc70b5ccf9b1b515421a28ae23212e273",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/z/zlib/zlib1g_1.3.dfsg-3.1ubuntu2.2_amd64.deb",
+      "version": "1:1.3.dfsg-3.1ubuntu2.2"
+    }
+  ],
+  "schema_version": 1,
+  "source_patch": {
+    "after": "    const char* private_include = getenv(\"CPG_HFUZZ_INCLUDE\");\n    if (private_include && private_include[0]) {\n        snprintf(path, sizeof(path), \"-I%s\", private_include);\n    } else {\n        snprintf(path, sizeof(path), \"-I%s/includes/\", HF_XSTR(_HFUZZ_INC_PATH));\n    }",
+    "after_sha256": "fe9def8890ca2193017c24b608fee3bd720948948d4b12eb300ed32c3b8bf06d",
+    "before": "    snprintf(path, sizeof(path), \"-I%s/includes/\", HF_XSTR(_HFUZZ_INC_PATH));",
+    "before_sha256": "c788a5ef05d8edc7fe81b65840b38338c70e4cabd3311c7745d5cca8f3a454c9",
+    "path": "hfuzz_cc/hfuzz-cc.c",
+    "purpose": "Allow installed compiler entry points to use their own prefix headers after relocation; the launcher always sets CPG_HFUZZ_INCLUDE."
+  },
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "upstream_commit": "83a8415a372d84dcc69ac1e2c2f152190bcf76d1"
+}

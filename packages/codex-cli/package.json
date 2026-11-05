@@ -1,0 +1,191 @@
+{
+  "build": "v02114-reviewed-native-bundle-local-cli-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/bundle-manifest.json",
+        "--output-contract",
+        "{recipe}/local-output-contract.json",
+        "--integrity-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "codex-cli-complete-original-bundle",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 90
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/bundle-manifest.json",
+        "--output-contract",
+        "{recipe}/local-output-contract.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "codex-cli-local-offline-functions",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "codex-cli",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 162055867,
+      "category": [
+        "Agent and observability",
+        "Cloud agent controller"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "copy",
+        "state": "actual-native-version-probed; cloud-account-not-qualified"
+      },
+      "documentation": [
+        "https://developers.openai.com/codex/cli"
+      ],
+      "extract": true,
+      "id": "codex-cli",
+      "immutable_ref": "sha256:30efc97738b975940d78b59a9bea115fa34040b732807d54ec35ae6b7528de94",
+      "installed_bytes": null,
+      "kind": "native_bundle",
+      "license_class": "open",
+      "license_id": "Apache-2.0 AND LicenseRef-Bundled-Component-Notices",
+      "mandatory": true,
+      "material_path": "controller/codex-package",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Cloud Codex control with its code-mode companion, sandbox helper, ripgrep and packaged notices. No model weights. Identical native bundle across all three arms.",
+      "qualification_gaps": [
+        "Account/model access and cloud agent integration must pass in the actual deployment.",
+        "A standalone copied ELF is insufficient for the code-mode companion; retain the native bundle layout."
+      ],
+      "redistributable": "retain-native-distribution-notices",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "30efc97738b975940d78b59a9bea115fa34040b732807d54ec35ae6b7528de94",
+      "size_basis": "Complete npm tarball downloaded; npm SHA512 integrity and local SHA256 verified.",
+      "source_evidence": [
+        "https://registry.npmjs.org/@openai/codex/0.163.0-linux-x64"
+      ],
+      "source_logical_bytes": 429938138,
+      "source_url": "https://registry.npmjs.org/@openai/codex/-/codex-0.163.0-linux-x64.tgz",
+      "title": "OpenAI Codex CLI and native companions",
+      "upstream": "https://github.com/openai/codex",
+      "version": "0.163.0"
+    },
+    "catalog_sha256": "29352bf922a867b2cd0dd9777456edd46fee5efb705de0f50b1068be88dc3ca6",
+    "current_native_evidence": {
+      "cloud_account_qualified": false,
+      "native_source_compiled": false,
+      "original_bundle_file_count": 45,
+      "original_bundle_logical_bytes": 429938138,
+      "remote_agent_tasks_executed": false,
+      "scope": "local_offline_cli_only",
+      "source_identity_audit_sha256": "953c5f93050f5e13a9fbf41863c4bc893b121e5928a8fdfdc158cd4c7377648b"
+    }
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "cloud_account_qualified": false,
+    "code_mode_or_voice_qualified": false,
+    "local_cli_qualified": true,
+    "native_source_compilation_qualified": false,
+    "original_bundle_complete": true,
+    "qualification_scope": "upstream_precompiled_native_bundle_local_cli_only; all 45 original native bundle files and notices retained; actual shell completion generation and Bash syntax, feature-table parsing, protocol JSON Schema generation and parsing, bundled ripgrep fixture search, and invalid-argument rejection; no native source compilation, login, account/model access, remote agent task, code-mode/voice execution, app-server transport, OCI, hardware or official Benchmark qualification",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/vendor/x86_64-unknown-linux-musl/bin/codex",
+      "{prefix}/vendor/x86_64-unknown-linux-musl/bin/codex-code-mode-host",
+      "{prefix}/vendor/x86_64-unknown-linux-musl/codex-path/rg"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "bash"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C.UTF-8",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_identity_audit_sha256": "953c5f93050f5e13a9fbf41863c4bc893b121e5928a8fdfdc158cd4c7377648b",
+    "state": "actual-native-version-probed; cloud-account-not-qualified"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 162055867,
+      "extract": true,
+      "id": "codex-cli",
+      "material_path": "controller/codex-package",
+      "sha256": "30efc97738b975940d78b59a9bea115fa34040b732807d54ec35ae6b7528de94",
+      "strip_root": true,
+      "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.163.0-linux-x64.tgz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://developers.openai.com/codex/cli"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/vendor/x86_64-unknown-linux-musl/bin/codex completion bash",
+        "description": "Generate Bash shell completions locally"
+      },
+      {
+        "command": "{prefix}/vendor/x86_64-unknown-linux-musl/bin/codex features list",
+        "description": "Inspect feature flags without changing configuration"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Complete original native bundle",
+        "path": "{prefix}",
+        "purpose": "Retain the entire native layout including code-mode companion, sandbox helper, ripgrep, voice assets and component notices."
+      },
+      {
+        "label": "Native Codex CLI",
+        "path": "{prefix}/vendor/x86_64-unknown-linux-musl/bin/codex",
+        "purpose": "Qualified local completion/schema generation and command parsing; cloud account and remote agent work require separate deployment admission."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "Upstream precompiled native distribution; not compiled from source in this qualification.",
+      "All native companions and notices remain present; local CLI checks do not establish code-mode, voice, cloud, or account functionality."
+    ],
+    "summary": "Cloud Codex control with its code-mode companion, sandbox helper, ripgrep and packaged notices. No model weights. Identical native bundle across all three arms."
+  },
+  "version": "0.163.0"
+}

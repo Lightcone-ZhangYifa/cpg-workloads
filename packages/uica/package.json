@@ -1,0 +1,328 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{prefix}/uiCA.py",
+        "-h"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "uops-info-instructions",
+      "uica.supplement.xed",
+      "uica.supplement.mbuild"
+    ],
+    "run": [
+      "uops-info-instructions",
+      "uica.supplement.xed",
+      "uica.supplement.mbuild"
+    ],
+    "system": [
+      "apt.build-essential",
+      "apt.graphviz",
+      "apt.python3",
+      "apt.python3-dev",
+      "apt.python3-plotly",
+      "apt.python3-pydot",
+      "apt.python3-setuptools"
+    ]
+  },
+  "id": "uica",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 52433,
+      "build_peak_bytes": null,
+      "category": [
+        "Optimization research",
+        "Instruction models"
+      ],
+      "container_strategy": "Assemble both exact Git submodules, build the XED Python module locally, copy it into the source prefix and convert only the admitted local XML. Do not run upstream setup.sh because it performs Git updates and downloads a mutable XML.",
+      "dependencies": [
+        "apt.build-essential",
+        "apt.graphviz",
+        "apt.python3",
+        "apt.python3-dev",
+        "apt.python3-plotly",
+        "apt.python3-pydot",
+        "apt.python3-setuptools",
+        "uops-info-instructions",
+        "uica.supplement.xed",
+        "uica.supplement.mbuild"
+      ],
+      "deployment": {
+        "adapter": "commands",
+        "additional_install_commands": [
+          [
+            "/usr/bin/python3",
+            "-c",
+            "from pathlib import Path; import shutil,sys; files=list(Path(sys.argv[1]).glob(\"xed.*\")); assert files; [shutil.copy2(path,sys.argv[2]) for path in files]",
+            "{build}/XED-to-XML",
+            "{prefix}"
+          ],
+          [
+            "env",
+            "-C",
+            "{prefix}",
+            "/usr/bin/python3",
+            "{prefix}/convertXML.py",
+            "{dependencies.uops-info-instructions.prefix}/instructions.xml"
+          ]
+        ],
+        "apt_dependencies": {
+          "dev": [
+            "build-essential",
+            "python3",
+            "python3-dev",
+            "python3-setuptools",
+            "python3-plotly",
+            "python3-pydot",
+            "graphviz"
+          ],
+          "target": []
+        },
+        "build_argv": [
+          "env",
+          "-C",
+          "{build}/XED-to-XML",
+          "/usr/bin/python3",
+          "mfile.py",
+          "--opt=2",
+          "--no-encoder",
+          "pymodule"
+        ],
+        "build_qualified": false,
+        "build_role": "dev",
+        "configure_argv": [],
+        "install_argv": [
+          "cp",
+          "-a",
+          "{source}/.",
+          "{prefix}/"
+        ],
+        "install_roles": [
+          "dev"
+        ],
+        "prepare_commands": [
+          [
+            "cp",
+            "-a",
+            "{source}/.",
+            "{build}"
+          ]
+        ],
+        "probe_requires_host": [],
+        "requires_recursive_submodules": true,
+        "smoke_argv": [
+          "/usr/bin/python3",
+          "{prefix}/uiCA.py",
+          "-h"
+        ],
+        "state": "recipe-described-not-executed",
+        "submodule_closure_complete": true,
+        "supplemental_payloads_complete": true
+      },
+      "documentation": "https://github.com/andreas-abel/uiCA/blob/6ebeeab0f8705cae4b17a9362f9c65ef91f5cc44/README.md",
+      "extract": true,
+      "id": "uica",
+      "immutable_ref": "6ebeeab0f8705cae4b17a9362f9c65ef91f5cc44",
+      "installed_bytes": null,
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "AGPL-3.0-only AND Apache-2.0",
+      "mandatory": false,
+      "material_path": "sources/uica",
+      "model_x86_names": [
+        "SNB",
+        "IVB",
+        "HSW",
+        "BDW",
+        "SKL",
+        "SKX",
+        "KBL",
+        "CFL",
+        "CLX",
+        "ICL",
+        "TGL",
+        "RKL"
+      ],
+      "presets": [
+        "all"
+      ],
+      "purpose": "Predict basic-block throughput and inspect dependencies, front-end behavior and instruction scheduling for explicitly supported Intel microarchitectures.",
+      "qualification_gaps": [
+        "The simulator assumes cache hits and only models its declared Intel microarchitectures; unsupported modern Intel or AMD CPUs must remain unsupported.",
+        "The native Python extension is ABI-specific and must be built with the admitted container Python headers.",
+        "The code is open, but its complete deployment depends on separately admitted instruction data with unresolved redistribution terms.",
+        "XML conversion has been tested locally; the native module and full simulator have not been built in the delivery environment."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "9d07d1927da3d8dc5fa246db043621dfc12bc7a1117f714a9c2077e1423ae188",
+      "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+      "size_evidence": "workspace-evidence/resources-v050/platform-research/instruction-model-measurements.json",
+      "source_evidence": [
+        "https://github.com/andreas-abel/uiCA",
+        "https://github.com/andreas-abel/uiCA/blob/6ebeeab0f8705cae4b17a9362f9c65ef91f5cc44/README.md"
+      ],
+      "source_url": "https://codeload.github.com/andreas-abel/uiCA/tar.gz/6ebeeab0f8705cae4b17a9362f9c65ef91f5cc44",
+      "supplemental_artifacts": [
+        {
+          "archive_bytes": 1286967,
+          "extract": true,
+          "mount_path": "XED-to-XML",
+          "name": "xed",
+          "sha256": "b610897d541cf808cfbf53c5a9abe384e7ca2cac25939e994a737d3bcfa00c35",
+          "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+          "source_evidence": "https://codeload.github.com/andreas-abel/XED-to-XML/tar.gz/c71679ee893ae91db677056d542f305fcc433cb1",
+          "source_url": "https://codeload.github.com/andreas-abel/XED-to-XML/tar.gz/c71679ee893ae91db677056d542f305fcc433cb1",
+          "strip_archive_root": true
+        },
+        {
+          "archive_bytes": 81598,
+          "extract": true,
+          "mount_path": "mbuild",
+          "name": "mbuild",
+          "sha256": "5af6b3f0394df1332dd2f09d842719bd2ece1037c09cd042f18e417dddf1e54e",
+          "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+          "source_evidence": "https://codeload.github.com/intelxed/mbuild/tar.gz/09b6654be0c52bf1df44e88c88b411a67b624cbd",
+          "source_url": "https://codeload.github.com/intelxed/mbuild/tar.gz/09b6654be0c52bf1df44e88c88b411a67b624cbd",
+          "strip_archive_root": true
+        }
+      ],
+      "title": "uiCA basic-block pipeline simulator",
+      "upstream": "https://github.com/andreas-abel/uiCA",
+      "version": "commit-6ebeeab0f870"
+    },
+    "catalog_sha256": "97461dfade9942ccef06559426bbcf42c583f313c84274ae787085404c13d642"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "additional_install_commands": [
+      [
+        "/usr/bin/python3",
+        "-c",
+        "from pathlib import Path; import shutil,sys; files=list(Path(sys.argv[1]).glob(\"xed.*\")); assert files; [shutil.copy2(path,sys.argv[2]) for path in files]",
+        "{build}/XED-to-XML",
+        "{prefix}"
+      ],
+      [
+        "env",
+        "-C",
+        "{prefix}",
+        "/usr/bin/python3",
+        "{prefix}/convertXML.py",
+        "{dependencies.uops-info-instructions.prefix}/instructions.xml"
+      ]
+    ],
+    "apt_dependencies": {
+      "dev": [
+        "build-essential",
+        "python3",
+        "python3-dev",
+        "python3-setuptools",
+        "python3-plotly",
+        "python3-pydot",
+        "graphviz"
+      ],
+      "target": []
+    },
+    "build_argv": [
+      "env",
+      "-C",
+      "{build}/XED-to-XML",
+      "/usr/bin/python3",
+      "mfile.py",
+      "--opt=2",
+      "--no-encoder",
+      "pymodule"
+    ],
+    "build_qualified": false,
+    "build_role": "dev",
+    "configure_argv": [],
+    "install_argv": [
+      "cp",
+      "-a",
+      "{source}/.",
+      "{prefix}/"
+    ],
+    "install_roles": [
+      "dev"
+    ],
+    "prepare_commands": [
+      [
+        "cp",
+        "-a",
+        "{source}/.",
+        "{build}"
+      ]
+    ],
+    "probe_requires_host": [],
+    "requires_recursive_submodules": true,
+    "smoke_argv": [
+      "/usr/bin/python3",
+      "{prefix}/uiCA.py",
+      "-h"
+    ],
+    "state": "recipe-described-not-executed",
+    "submodule_closure_complete": true,
+    "supplemental_payloads_complete": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 52433,
+      "extract": true,
+      "id": "uica",
+      "material_path": "sources/uica",
+      "sha256": "9d07d1927da3d8dc5fa246db043621dfc12bc7a1117f714a9c2077e1423ae188",
+      "strip_root": true,
+      "url": "https://codeload.github.com/andreas-abel/uiCA/tar.gz/6ebeeab0f8705cae4b17a9362f9c65ef91f5cc44"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/andreas-abel/uiCA/blob/6ebeeab0f8705cae4b17a9362f9c65ef91f5cc44/README.md"
+    ],
+    "examples": [
+      {
+        "command": "/usr/bin/python3 '{prefix}/uiCA.py' -h",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/uica",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Predict basic-block throughput and inspect dependencies, front-end behavior and instruction scheduling for explicitly supported Intel microarchitectures."
+  },
+  "version": "commit-6ebeeab0f870"
+}

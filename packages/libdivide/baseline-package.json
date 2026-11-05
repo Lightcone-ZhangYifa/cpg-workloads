@@ -1,0 +1,578 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{tools}/native-resource-smoke.py",
+        "libdivide",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "functional",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.build-essential",
+      "apt.cmake",
+      "apt.ninja-build",
+      "apt.python3"
+    ]
+  },
+  "id": "libdivide",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1292169,
+      "build_peak_bytes": null,
+      "category": [
+        "Optimization",
+        "Exact arithmetic references"
+      ],
+      "container_strategy": "Build complete upstream test/benchmark targets in dev, install all public constant-division headers and generated parameter headers, preserve full source/docs/license, and keep binaries in a resource-local prefix.",
+      "dependencies": [
+        "apt.build-essential",
+        "apt.cmake",
+        "apt.ninja-build",
+        "apt.python3"
+      ],
+      "deployment": {
+        "adapter": "cmake",
+        "additional_install_commands": [
+          [
+            "install",
+            "-D",
+            "-m",
+            "644",
+            "{source}/constant_fast_div.h",
+            "{prefix}/include/constant_fast_div.h"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "644",
+            "{source}/constant_fast_div.hpp",
+            "{prefix}/include/constant_fast_div.hpp"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "644",
+            "{source}/s16_ldparams.h",
+            "{prefix}/include/s16_ldparams.h"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "644",
+            "{source}/s16_ldparams.hpp",
+            "{prefix}/include/s16_ldparams.hpp"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "644",
+            "{source}/u16_ldparams.h",
+            "{prefix}/include/u16_ldparams.h"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "644",
+            "{source}/u16_ldparams.hpp",
+            "{prefix}/include/u16_ldparams.hpp"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "755",
+            "{build}/tester",
+            "{prefix}/bin/tester"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "755",
+            "{build}/test_c99",
+            "{prefix}/bin/test_c99"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "755",
+            "{build}/test_divlu",
+            "{prefix}/bin/test_divlu"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "755",
+            "{build}/benchmark_divlu",
+            "{prefix}/bin/benchmark_divlu"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "755",
+            "{build}/fast_div_generator",
+            "{prefix}/bin/fast_div_generator"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "755",
+            "{build}/benchmark",
+            "{prefix}/bin/benchmark"
+          ],
+          [
+            "install",
+            "-D",
+            "-m",
+            "755",
+            "{build}/benchmark_branchfree",
+            "{prefix}/bin/benchmark_branchfree"
+          ],
+          [
+            "mkdir",
+            "-p",
+            "{prefix}/share/libdivide/source"
+          ],
+          [
+            "cp",
+            "-a",
+            "{source}/.",
+            "{prefix}/share/libdivide/source/"
+          ]
+        ],
+        "apt_dependencies": {
+          "dev": [
+            "build-essential",
+            "cmake",
+            "ninja-build",
+            "python3"
+          ]
+        },
+        "build_argv": [
+          "cmake",
+          "--build",
+          "{build}",
+          "--parallel",
+          "{jobs}"
+        ],
+        "build_role": "dev",
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_INSTALL_PREFIX={prefix}",
+          "-DLIBDIVIDE_BUILD_TESTS=ON",
+          "-DLIBDIVIDE_ENABLE_SANITIZERS=OFF"
+        ],
+        "install_argv": [
+          "cmake",
+          "--install",
+          "{build}"
+        ],
+        "install_roles": [
+          "dev"
+        ],
+        "probe_requires_host": [],
+        "required_installed_paths": [
+          "{prefix}/include/libdivide.h",
+          "{prefix}/include/constant_fast_div.h",
+          "{prefix}/include/constant_fast_div.hpp",
+          "{prefix}/include/s16_ldparams.h",
+          "{prefix}/include/s16_ldparams.hpp",
+          "{prefix}/include/u16_ldparams.h",
+          "{prefix}/include/u16_ldparams.hpp",
+          "{prefix}/bin/tester",
+          "{prefix}/bin/test_c99",
+          "{prefix}/bin/test_divlu",
+          "{prefix}/bin/benchmark_divlu",
+          "{prefix}/bin/fast_div_generator",
+          "{prefix}/bin/benchmark",
+          "{prefix}/bin/benchmark_branchfree",
+          "{prefix}/share/libdivide/source/LICENSE.txt"
+        ],
+        "smoke_argv": [
+          "python3",
+          "{tools}/native-resource-smoke.py",
+          "libdivide",
+          "--prefix",
+          "{prefix}"
+        ],
+        "state": "native-cmake-recipe-and-upstream-tests-passed; container-not-executed",
+        "submodule_closure_complete": true,
+        "target_exports": [],
+        "target_smoke_commands": [],
+        "upstream_test_commands": [
+          [
+            "ctest",
+            "--test-dir",
+            "{build}",
+            "--output-on-failure",
+            "-R",
+            "^(tester|test_c99|test_divlu)$"
+          ]
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/ridiculousfish/libdivide/blob/ea0fb1ad79a116cd561595c930bcaf33147b3e6c/README.md",
+        "https://libdivide.com/"
+      ],
+      "evidence_files": [
+        "workspace-evidence/native-optimization-resources/archive-measurements.json",
+        "workspace-evidence/native-optimization-resources/native-recipe-probe/libdivide-header-smoke.stdout.json",
+        "workspace-evidence/native-optimization-resources/libdivide-native-recipe-probe/summary.json",
+        "workspace-evidence/native-optimization-resources/libdivide-native-recipe-probe/fixture-tools.json"
+      ],
+      "extract": true,
+      "id": "libdivide",
+      "immutable_ref": "ea0fb1ad79a116cd561595c930bcaf33147b3e6c",
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "Zlib OR BSL-1.0",
+      "mandatory": false,
+      "material_path": "sources/libdivide",
+      "native_probe": {
+        "actual_fixture_tools": [
+          {
+            "executable_sha256": "0fe8acae3467692e6b43e9fff396c9be4016a980efcb4f3c967cd9f4a6049301",
+            "version_stdout": "cmake version 3.28.4\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+            "wheel_sha256": "bc06b483cb2bcaf78184e66ac7fd0f3bbe4ed9a690369b1e4897b19568d566dd"
+          },
+          {
+            "executable_sha256": "68f6c375c4234305bff9790aa232815b38924390cbb6ad4987ea0f94ad2bc410",
+            "version_stdout": "1.11.1.git.kitware.jobserver-1\n",
+            "wheel_sha256": "84502ec98f02a037a169c4b0d5d86075eaf6afc55e1879003d6cab51ced2ea4b"
+          }
+        ],
+        "allocated_installed_bytes": 36118528,
+        "catalog_sha256_at_probe": "0625ce01d814f528712a943fd7360140f9a78c0120ea6178520244a7aff95f12",
+        "logical_installed_bytes": 35843242,
+        "logical_retained_build_tree_bytes": 1463002,
+        "receipt": "workspace-evidence/native-optimization-resources/libdivide-native-recipe-probe/summary.json",
+        "scope": "This native dev build with local CMake 3.28.4/Ninja wheel fixtures; not the catalog APT installation, OCI size or transient peak.",
+        "simd_paths_tested": [
+          "SSE2",
+          "AVX2",
+          "AVX512"
+        ],
+        "upstream_tests": [
+          "tester",
+          "test_c99",
+          "test_divlu"
+        ]
+      },
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Independent production integer-division algorithms, branchfull/branchfree and scalar/SIMD references, parameter generators, tests and benchmarks for compiler transformations; library substitution is not compiler speedup evidence.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": true,
+        "catalog_apt_environment_qualified": false,
+        "container_qualified": false,
+        "native_header_smoke_qualified": true,
+        "native_recipe_smoke_qualified": true,
+        "native_upstream_tests_passed": true,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Full selected recipe, strict smoke and three upstream correctness tests passed natively with recorded local fixture tools. OCI/APT-environment execution, sanitizer profiles and physical-target qualification remain pending.",
+        "Upstream test_c99 prints Division fail diagnostics without returning failure; use the added strict fail-closed smoke and inspect upstream test output.",
+        "Upstream benchmark/test builds may use the dev CPU ISA; they are dev-only references, not transferable target timing artifacts.",
+        "Optional libFuzzer targets require the separately selected Clang/libFuzzer toolchain and an explicit LIBDIVIDE_BUILD_FUZZERS=ON build profile."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "6aa730b24dabb10c350d74363f94fcb0f750fe6fde65355278410aeb5bacd7fe",
+      "size_basis": "Complete HTTPS payload measured locally; source logical bytes sum regular archive members, excluding allocation, build trees and external dependencies.",
+      "size_evidence": "workspace-evidence/native-optimization-resources/archive-measurements.json",
+      "source_evidence": [
+        "https://github.com/ridiculousfish/libdivide/releases/tag/v5.4.0",
+        "https://codeload.github.com/ridiculousfish/libdivide/tar.gz/ea0fb1ad79a116cd561595c930bcaf33147b3e6c"
+      ],
+      "source_logical_bytes": 17793806,
+      "source_url": "https://codeload.github.com/ridiculousfish/libdivide/tar.gz/ea0fb1ad79a116cd561595c930bcaf33147b3e6c",
+      "title": "libdivide exact integer division reference",
+      "upstream": "https://github.com/ridiculousfish/libdivide",
+      "version": "5.4.0"
+    },
+    "catalog_sha256": "e96ac45f376dd438123ce30b8c333a038f5f7ed3231235d4892669ae7a5eaf2d"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "cmake",
+    "additional_install_commands": [
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{source}/constant_fast_div.h",
+        "{prefix}/include/constant_fast_div.h"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{source}/constant_fast_div.hpp",
+        "{prefix}/include/constant_fast_div.hpp"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{source}/s16_ldparams.h",
+        "{prefix}/include/s16_ldparams.h"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{source}/s16_ldparams.hpp",
+        "{prefix}/include/s16_ldparams.hpp"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{source}/u16_ldparams.h",
+        "{prefix}/include/u16_ldparams.h"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "644",
+        "{source}/u16_ldparams.hpp",
+        "{prefix}/include/u16_ldparams.hpp"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "755",
+        "{build}/tester",
+        "{prefix}/bin/tester"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "755",
+        "{build}/test_c99",
+        "{prefix}/bin/test_c99"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "755",
+        "{build}/test_divlu",
+        "{prefix}/bin/test_divlu"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "755",
+        "{build}/benchmark_divlu",
+        "{prefix}/bin/benchmark_divlu"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "755",
+        "{build}/fast_div_generator",
+        "{prefix}/bin/fast_div_generator"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "755",
+        "{build}/benchmark",
+        "{prefix}/bin/benchmark"
+      ],
+      [
+        "install",
+        "-D",
+        "-m",
+        "755",
+        "{build}/benchmark_branchfree",
+        "{prefix}/bin/benchmark_branchfree"
+      ],
+      [
+        "mkdir",
+        "-p",
+        "{prefix}/share/libdivide/source"
+      ],
+      [
+        "cp",
+        "-a",
+        "{source}/.",
+        "{prefix}/share/libdivide/source/"
+      ]
+    ],
+    "apt_dependencies": {
+      "dev": [
+        "build-essential",
+        "cmake",
+        "ninja-build",
+        "python3"
+      ]
+    },
+    "build_argv": [
+      "cmake",
+      "--build",
+      "{build}",
+      "--parallel",
+      "{jobs}"
+    ],
+    "build_role": "dev",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_INSTALL_PREFIX={prefix}",
+      "-DLIBDIVIDE_BUILD_TESTS=ON",
+      "-DLIBDIVIDE_ENABLE_SANITIZERS=OFF"
+    ],
+    "install_argv": [
+      "cmake",
+      "--install",
+      "{build}"
+    ],
+    "install_roles": [
+      "dev"
+    ],
+    "probe_requires_host": [],
+    "required_installed_paths": [
+      "{prefix}/include/libdivide.h",
+      "{prefix}/include/constant_fast_div.h",
+      "{prefix}/include/constant_fast_div.hpp",
+      "{prefix}/include/s16_ldparams.h",
+      "{prefix}/include/s16_ldparams.hpp",
+      "{prefix}/include/u16_ldparams.h",
+      "{prefix}/include/u16_ldparams.hpp",
+      "{prefix}/bin/tester",
+      "{prefix}/bin/test_c99",
+      "{prefix}/bin/test_divlu",
+      "{prefix}/bin/benchmark_divlu",
+      "{prefix}/bin/fast_div_generator",
+      "{prefix}/bin/benchmark",
+      "{prefix}/bin/benchmark_branchfree",
+      "{prefix}/share/libdivide/source/LICENSE.txt"
+    ],
+    "smoke_argv": [
+      "python3",
+      "{tools}/native-resource-smoke.py",
+      "libdivide",
+      "--prefix",
+      "{prefix}"
+    ],
+    "state": "native-cmake-recipe-and-upstream-tests-passed; container-not-executed",
+    "submodule_closure_complete": true,
+    "target_exports": [],
+    "target_smoke_commands": [],
+    "upstream_test_commands": [
+      [
+        "ctest",
+        "--test-dir",
+        "{build}",
+        "--output-on-failure",
+        "-R",
+        "^(tester|test_c99|test_divlu)$"
+      ]
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1292169,
+      "extract": true,
+      "id": "libdivide",
+      "material_path": "sources/libdivide",
+      "sha256": "6aa730b24dabb10c350d74363f94fcb0f750fe6fde65355278410aeb5bacd7fe",
+      "strip_root": true,
+      "url": "https://codeload.github.com/ridiculousfish/libdivide/tar.gz/ea0fb1ad79a116cd561595c930bcaf33147b3e6c"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/ridiculousfish/libdivide/blob/ea0fb1ad79a116cd561595c930bcaf33147b3e6c/README.md",
+      "https://libdivide.com/"
+    ],
+    "examples": [
+      {
+        "command": "python3 '{tools}/native-resource-smoke.py' libdivide --prefix '{prefix}'",
+        "description": "Run the recorded functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/libdivide",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Independent production integer-division algorithms, branchfull/branchfree and scalar/SIMD references, parameter generators, tests and benchmarks for compiler transformations; library substitution is not compiler speedup evidence."
+  },
+  "version": "5.4.0"
+}

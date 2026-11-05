@@ -1,0 +1,648 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/libfuzzer_example",
+        "-runs=10",
+        "-seed=1"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "functional",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "{prefix}/bin/expat_example",
+        "-runs=10",
+        "-seed=1"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-002",
+      "kind": "functional",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "{prefix}/bin/libxml2_example",
+        "-runs=10",
+        "-seed=1"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-003",
+      "kind": "functional",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "lpm-googletest-source",
+      "lpm-libexpat-source",
+      "lpm-libxml2-source"
+    ],
+    "run": [
+      "lpm-googletest-source",
+      "lpm-libexpat-source",
+      "lpm-libxml2-source"
+    ],
+    "system": [
+      "apt.autoconf",
+      "apt.automake",
+      "apt.build-essential",
+      "apt.clang-18",
+      "apt.cmake",
+      "apt.libclang-rt-18-dev",
+      "apt.liblzma-dev",
+      "apt.libprotobuf-dev",
+      "apt.libtool",
+      "apt.ninja-build",
+      "apt.pkg-config",
+      "apt.protobuf-compiler",
+      "apt.python3",
+      "apt.python3-dev",
+      "apt.zlib1g-dev"
+    ]
+  },
+  "id": "libprotobuf-mutator",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [],
+      "archive_bytes": 42835,
+      "build_peak_bytes": null,
+      "category": [
+        "Correctness",
+        "Structured fuzzing"
+      ],
+      "conflicts": [],
+      "container_strategy": "Prepare a hash-guarded writable source copy and all three pinned external sources; build both mutator libraries, all upstream tests and all instrumented libFuzzer/XML examples with system Protobuf and Clang. No automatic source fetching is retained.",
+      "dependencies": [
+        "apt.build-essential",
+        "apt.cmake",
+        "apt.ninja-build",
+        "apt.clang-18",
+        "apt.libclang-rt-18-dev",
+        "apt.libprotobuf-dev",
+        "apt.protobuf-compiler",
+        "apt.liblzma-dev",
+        "apt.zlib1g-dev",
+        "apt.autoconf",
+        "apt.automake",
+        "apt.libtool",
+        "apt.pkg-config",
+        "apt.python3",
+        "apt.python3-dev",
+        "lpm-googletest-source",
+        "lpm-libexpat-source",
+        "lpm-libxml2-source"
+      ],
+      "deployment": {
+        "adapter": "cmake",
+        "additional_install_commands": [
+          [
+            "mkdir",
+            "-p",
+            "{prefix}/bin",
+            "{prefix}/share/libprotobuf-mutator/source",
+            "{prefix}/share/libprotobuf-mutator/notices"
+          ],
+          [
+            "cp",
+            "-a",
+            "{source}/.",
+            "{prefix}/share/libprotobuf-mutator/source/"
+          ],
+          [
+            "cp",
+            "{build}/dependencies/googletest/LICENSE",
+            "{prefix}/share/libprotobuf-mutator/notices/googletest-LICENSE"
+          ],
+          [
+            "cp",
+            "{build}/dependencies/expat/expat/COPYING",
+            "{prefix}/share/libprotobuf-mutator/notices/expat-COPYING"
+          ],
+          [
+            "cp",
+            "{build}/dependencies/libxml2/Copyright",
+            "{prefix}/share/libprotobuf-mutator/notices/libxml2-Copyright"
+          ],
+          [
+            "install",
+            "-m",
+            "755",
+            "{build}/cmake/src/mutator_test",
+            "{prefix}/bin/mutator_test"
+          ],
+          [
+            "install",
+            "-m",
+            "755",
+            "{build}/cmake/src/libfuzzer/libfuzzer_test",
+            "{prefix}/bin/libfuzzer_test"
+          ],
+          [
+            "install",
+            "-m",
+            "755",
+            "{build}/cmake/examples/xml/xml_converter",
+            "{prefix}/bin/xml_converter"
+          ],
+          [
+            "install",
+            "-m",
+            "755",
+            "{build}/cmake/examples/libfuzzer/libfuzzer_example",
+            "{prefix}/bin/libfuzzer_example"
+          ],
+          [
+            "install",
+            "-m",
+            "755",
+            "{build}/cmake/examples/libfuzzer/libfuzzer_bin_example",
+            "{prefix}/bin/libfuzzer_bin_example"
+          ],
+          [
+            "install",
+            "-m",
+            "755",
+            "{build}/cmake/examples/libfuzzer/libfuzzer_example_test",
+            "{prefix}/bin/libfuzzer_example_test"
+          ],
+          [
+            "install",
+            "-m",
+            "755",
+            "{build}/cmake/examples/expat/expat_example",
+            "{prefix}/bin/expat_example"
+          ],
+          [
+            "install",
+            "-m",
+            "755",
+            "{build}/cmake/examples/expat/expat_example_test",
+            "{prefix}/bin/expat_example_test"
+          ],
+          [
+            "install",
+            "-m",
+            "755",
+            "{build}/cmake/examples/libxml2/libxml2_example",
+            "{prefix}/bin/libxml2_example"
+          ],
+          [
+            "install",
+            "-m",
+            "755",
+            "{build}/cmake/examples/libxml2/libxml2_example_test",
+            "{prefix}/bin/libxml2_example_test"
+          ]
+        ],
+        "additional_smoke_commands": [
+          [
+            "{prefix}/bin/expat_example",
+            "-runs=10",
+            "-seed=1"
+          ],
+          [
+            "{prefix}/bin/libxml2_example",
+            "-runs=10",
+            "-seed=1"
+          ]
+        ],
+        "apt_dependencies": {
+          "dev": [
+            "build-essential",
+            "cmake",
+            "ninja-build",
+            "clang-18",
+            "libclang-rt-18-dev",
+            "libprotobuf-dev",
+            "protobuf-compiler",
+            "liblzma-dev",
+            "zlib1g-dev",
+            "autoconf",
+            "automake",
+            "libtool",
+            "pkg-config",
+            "python3",
+            "python3-dev"
+          ]
+        },
+        "build_argv": [
+          "cmake",
+          "--build",
+          "{build}/cmake",
+          "--target",
+          "all",
+          "xml_converter",
+          "check",
+          "--parallel",
+          "{jobs}"
+        ],
+        "build_role": "dev",
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{build}/source",
+          "-B",
+          "{build}/cmake",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+          "-DCMAKE_INSTALL_PREFIX={prefix}",
+          "-DCMAKE_C_COMPILER=clang-18",
+          "-DCMAKE_CXX_COMPILER=clang++-18",
+          "-DLIB_PROTO_MUTATOR_TESTING=ON",
+          "-DLIB_PROTO_MUTATOR_EXAMPLES=ON",
+          "-DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=OFF",
+          "-DLIB_PROTO_MUTATOR_EXAMPLES_USE_LATEST=OFF",
+          "-DLIB_PROTO_MUTATOR_CTEST_JOBS={jobs}",
+          "-DLPM_LOCAL_GOOGLETEST_SOURCE={build}/dependencies/googletest",
+          "-DLPM_LOCAL_EXPAT_SOURCE={build}/dependencies/expat",
+          "-DLPM_LOCAL_LIBXML2_SOURCE={build}/dependencies/libxml2"
+        ],
+        "install_argv": [
+          "cmake",
+          "--install",
+          "{build}/cmake"
+        ],
+        "install_roles": [
+          "dev"
+        ],
+        "prepare_commands": [
+          [
+            "python3",
+            "{tools}/prepare-lpm-local-sources.py",
+            "--source",
+            "{source}",
+            "--build",
+            "{build}",
+            "--googletest-source",
+            "{dependency_source:lpm-googletest-source}",
+            "--expat-source",
+            "{dependency_source:lpm-libexpat-source}",
+            "--libxml2-source",
+            "{dependency_source:lpm-libxml2-source}"
+          ]
+        ],
+        "probe_requires_host": [],
+        "required_installed_paths": [
+          "{prefix}/lib/libprotobuf-mutator.a",
+          "{prefix}/lib/libprotobuf-mutator-libfuzzer.a",
+          "{prefix}/include/libprotobuf-mutator/src/mutator.h",
+          "{prefix}/bin/mutator_test",
+          "{prefix}/bin/libfuzzer_test",
+          "{prefix}/bin/xml_converter",
+          "{prefix}/bin/libfuzzer_example",
+          "{prefix}/bin/libfuzzer_bin_example",
+          "{prefix}/bin/libfuzzer_example_test",
+          "{prefix}/bin/expat_example",
+          "{prefix}/bin/expat_example_test",
+          "{prefix}/bin/libxml2_example",
+          "{prefix}/bin/libxml2_example_test"
+        ],
+        "smoke_argv": [
+          "{prefix}/bin/libfuzzer_example",
+          "-runs=10",
+          "-seed=1"
+        ],
+        "state": "local-source-preparation-tested; full-feature-build-test-install-recipe-unexecuted",
+        "submodule_closure_complete": true,
+        "target_exports": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/google/libprotobuf-mutator"
+      ],
+      "evidence_files": [
+        "workspace-evidence/community-v070/resource-audit/git-refs.json",
+        "workspace-evidence/community-v070/resource-audit/archive-measurements.json",
+        "workspace-evidence/community-v070/resource-audit/http-headers/libprotobuf-mutator.json",
+        "workspace-evidence/community-v070/resource-audit/lpm-local-preparation-probe/local-source-preparation.json"
+      ],
+      "extract": true,
+      "id": "libprotobuf-mutator",
+      "immutable_ref": "dc4ced337a9fb4047e2dc727268fbac55ca82f73",
+      "installed_allocated_bytes": null,
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "sources/libprotobuf-mutator",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Mutate protocol-buffer structured inputs for compiler fuzzers and libFuzzer harnesses. Preserve seeds and reproducers; valid syntax alone does not establish language semantics or absence of undefined behavior.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Local-source preparation was actually executed and recorded. The CMake compile/test/install recipe remains unexecuted because this audit host lacks the required installed Clang, Protobuf and GoogleTest environment.",
+        "GoogleTest v1.15.0 is prepared separately to match upstream exactly; catalog apt.googletest is 1.14.0 and is not silently substituted.",
+        "A full feature build must retain TESTING=ON and EXAMPLES=ON, and execute the check target. Disabling tests or examples is not equivalent qualification.",
+        "The fixture example versions match upstream v1.5 and are isolated fuzz subjects, not intended as replacements for system XML libraries.",
+        "Root integration must copy prepare_lpm_local_sources.py to tools/prepare-lpm-local-sources.py and retain its hash in the recipe provenance before use."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "b23951cafc31ae8e02a4a2e67b04d401d6130e6ca8353022aaaebe27f8ab4117",
+      "size_basis": "Complete HTTPS payload measured locally; source logical bytes sum regular archive members and exclude filesystem allocation, external dependencies and build trees.",
+      "size_evidence": "workspace-evidence/community-v070/resource-audit/archive-measurements.json",
+      "source_evidence": [
+        "https://github.com/google/libprotobuf-mutator",
+        "https://github.com/google/libprotobuf-mutator/commit/dc4ced337a9fb4047e2dc727268fbac55ca82f73",
+        "https://codeload.github.com/google/libprotobuf-mutator/tar.gz/dc4ced337a9fb4047e2dc727268fbac55ca82f73"
+      ],
+      "source_logical_bytes": 198905,
+      "source_url": "https://codeload.github.com/google/libprotobuf-mutator/tar.gz/dc4ced337a9fb4047e2dc727268fbac55ca82f73",
+      "title": "libprotobuf-mutator structured fuzzing library",
+      "upstream": "https://github.com/google/libprotobuf-mutator",
+      "version": "1.5"
+    },
+    "catalog_sha256": "b99ed678cbe829cea88d020b2e4a3c028b6646c0efb4a67421ed21db16ab9a89"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "cmake",
+    "additional_install_commands": [
+      [
+        "mkdir",
+        "-p",
+        "{prefix}/bin",
+        "{prefix}/share/libprotobuf-mutator/source",
+        "{prefix}/share/libprotobuf-mutator/notices"
+      ],
+      [
+        "cp",
+        "-a",
+        "{source}/.",
+        "{prefix}/share/libprotobuf-mutator/source/"
+      ],
+      [
+        "cp",
+        "{build}/dependencies/googletest/LICENSE",
+        "{prefix}/share/libprotobuf-mutator/notices/googletest-LICENSE"
+      ],
+      [
+        "cp",
+        "{build}/dependencies/expat/expat/COPYING",
+        "{prefix}/share/libprotobuf-mutator/notices/expat-COPYING"
+      ],
+      [
+        "cp",
+        "{build}/dependencies/libxml2/Copyright",
+        "{prefix}/share/libprotobuf-mutator/notices/libxml2-Copyright"
+      ],
+      [
+        "install",
+        "-m",
+        "755",
+        "{build}/cmake/src/mutator_test",
+        "{prefix}/bin/mutator_test"
+      ],
+      [
+        "install",
+        "-m",
+        "755",
+        "{build}/cmake/src/libfuzzer/libfuzzer_test",
+        "{prefix}/bin/libfuzzer_test"
+      ],
+      [
+        "install",
+        "-m",
+        "755",
+        "{build}/cmake/examples/xml/xml_converter",
+        "{prefix}/bin/xml_converter"
+      ],
+      [
+        "install",
+        "-m",
+        "755",
+        "{build}/cmake/examples/libfuzzer/libfuzzer_example",
+        "{prefix}/bin/libfuzzer_example"
+      ],
+      [
+        "install",
+        "-m",
+        "755",
+        "{build}/cmake/examples/libfuzzer/libfuzzer_bin_example",
+        "{prefix}/bin/libfuzzer_bin_example"
+      ],
+      [
+        "install",
+        "-m",
+        "755",
+        "{build}/cmake/examples/libfuzzer/libfuzzer_example_test",
+        "{prefix}/bin/libfuzzer_example_test"
+      ],
+      [
+        "install",
+        "-m",
+        "755",
+        "{build}/cmake/examples/expat/expat_example",
+        "{prefix}/bin/expat_example"
+      ],
+      [
+        "install",
+        "-m",
+        "755",
+        "{build}/cmake/examples/expat/expat_example_test",
+        "{prefix}/bin/expat_example_test"
+      ],
+      [
+        "install",
+        "-m",
+        "755",
+        "{build}/cmake/examples/libxml2/libxml2_example",
+        "{prefix}/bin/libxml2_example"
+      ],
+      [
+        "install",
+        "-m",
+        "755",
+        "{build}/cmake/examples/libxml2/libxml2_example_test",
+        "{prefix}/bin/libxml2_example_test"
+      ]
+    ],
+    "additional_smoke_commands": [
+      [
+        "{prefix}/bin/expat_example",
+        "-runs=10",
+        "-seed=1"
+      ],
+      [
+        "{prefix}/bin/libxml2_example",
+        "-runs=10",
+        "-seed=1"
+      ]
+    ],
+    "apt_dependencies": {
+      "dev": [
+        "build-essential",
+        "cmake",
+        "ninja-build",
+        "clang-18",
+        "libclang-rt-18-dev",
+        "libprotobuf-dev",
+        "protobuf-compiler",
+        "liblzma-dev",
+        "zlib1g-dev",
+        "autoconf",
+        "automake",
+        "libtool",
+        "pkg-config",
+        "python3",
+        "python3-dev"
+      ]
+    },
+    "build_argv": [
+      "cmake",
+      "--build",
+      "{build}/cmake",
+      "--target",
+      "all",
+      "xml_converter",
+      "check",
+      "--parallel",
+      "{jobs}"
+    ],
+    "build_role": "dev",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{build}/source",
+      "-B",
+      "{build}/cmake",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+      "-DCMAKE_INSTALL_PREFIX={prefix}",
+      "-DCMAKE_C_COMPILER=clang-18",
+      "-DCMAKE_CXX_COMPILER=clang++-18",
+      "-DLIB_PROTO_MUTATOR_TESTING=ON",
+      "-DLIB_PROTO_MUTATOR_EXAMPLES=ON",
+      "-DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=OFF",
+      "-DLIB_PROTO_MUTATOR_EXAMPLES_USE_LATEST=OFF",
+      "-DLIB_PROTO_MUTATOR_CTEST_JOBS={jobs}",
+      "-DLPM_LOCAL_GOOGLETEST_SOURCE={build}/dependencies/googletest",
+      "-DLPM_LOCAL_EXPAT_SOURCE={build}/dependencies/expat",
+      "-DLPM_LOCAL_LIBXML2_SOURCE={build}/dependencies/libxml2"
+    ],
+    "install_argv": [
+      "cmake",
+      "--install",
+      "{build}/cmake"
+    ],
+    "install_roles": [
+      "dev"
+    ],
+    "prepare_commands": [
+      [
+        "python3",
+        "{tools}/prepare-lpm-local-sources.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--googletest-source",
+        "{dependency_source:lpm-googletest-source}",
+        "--expat-source",
+        "{dependency_source:lpm-libexpat-source}",
+        "--libxml2-source",
+        "{dependency_source:lpm-libxml2-source}"
+      ]
+    ],
+    "probe_requires_host": [],
+    "required_installed_paths": [
+      "{prefix}/lib/libprotobuf-mutator.a",
+      "{prefix}/lib/libprotobuf-mutator-libfuzzer.a",
+      "{prefix}/include/libprotobuf-mutator/src/mutator.h",
+      "{prefix}/bin/mutator_test",
+      "{prefix}/bin/libfuzzer_test",
+      "{prefix}/bin/xml_converter",
+      "{prefix}/bin/libfuzzer_example",
+      "{prefix}/bin/libfuzzer_bin_example",
+      "{prefix}/bin/libfuzzer_example_test",
+      "{prefix}/bin/expat_example",
+      "{prefix}/bin/expat_example_test",
+      "{prefix}/bin/libxml2_example",
+      "{prefix}/bin/libxml2_example_test"
+    ],
+    "smoke_argv": [
+      "{prefix}/bin/libfuzzer_example",
+      "-runs=10",
+      "-seed=1"
+    ],
+    "state": "local-source-preparation-tested; full-feature-build-test-install-recipe-unexecuted",
+    "submodule_closure_complete": true,
+    "target_exports": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 42835,
+      "extract": true,
+      "id": "libprotobuf-mutator",
+      "material_path": "sources/libprotobuf-mutator",
+      "sha256": "b23951cafc31ae8e02a4a2e67b04d401d6130e6ca8353022aaaebe27f8ab4117",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/libprotobuf-mutator/tar.gz/dc4ced337a9fb4047e2dc727268fbac55ca82f73"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/google/libprotobuf-mutator"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/libfuzzer_example' -runs=10 -seed=1",
+        "description": "Run the recorded functional check."
+      },
+      {
+        "command": "'{prefix}/bin/expat_example' -runs=10 -seed=1",
+        "description": "Run the recorded functional check."
+      },
+      {
+        "command": "'{prefix}/bin/libxml2_example' -runs=10 -seed=1",
+        "description": "Run the recorded functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/libprotobuf-mutator",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Mutate protocol-buffer structured inputs for compiler fuzzers and libFuzzer harnesses. Preserve seeds and reproducers; valid syntax alone does not establish language semantics or absence of undefined behavior."
+  },
+  "version": "1.5"
+}

@@ -1,0 +1,127 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "nas-npb",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 446013,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "HPC proxy applications"
+      ],
+      "container_strategy": "Build the OpenMP variants in dev with a frozen Fortran compiler/runtime; execute one-thread and explicitly declared multi-thread CPU strata on target.",
+      "corpus_contract": {
+        "code": "Official C/Fortran OpenMP and MPI sources.",
+        "inputs": "Standard classes and internally generated problems.",
+        "oracle": "Built-in verification under specified class and numeric contract.",
+        "split_unit": "Benchmark algorithm across classes, thread counts and programming models."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://www.nas.nasa.gov/software/npb.html"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/nas-npb.measurement.json"
+      ],
+      "extract": true,
+      "id": "nas-npb",
+      "immutable_ref": "sha256:1ae219398e02a0a79ad51b7460fcffbf7b5df83a69d5d3d3a9dc2d8acf523549",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "LicenseRef-NASA-NPB",
+      "mandatory": false,
+      "material_path": "corpora/nas-npb",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Fortran/C CFD-derived kernels and pseudo-applications with standardized problem classes and built-in verification.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "NPB 3.4.4 does not ship a serial source variant; the official README directs users to OpenMP or old 3.3.1 serial sources.",
+        "Large classes can require substantial RAM; record exact class, thread count, memory placement and numerical verification.",
+        "Confirm source-header permission notices when redistributing the corpus."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "1ae219398e02a0a79ad51b7460fcffbf7b5df83a69d5d3d3a9dc2d8acf523549",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://www.nas.nasa.gov/software/npb.html",
+        "https://www.nas.nasa.gov/assets/npb/NPB3.4.4.tar.gz"
+      ],
+      "source_logical_bytes": 2705411,
+      "source_url": "https://www.nas.nasa.gov/assets/npb/NPB3.4.4.tar.gz",
+      "title": "NAS Parallel Benchmarks",
+      "upstream": "https://www.nas.nasa.gov/software/npb.html",
+      "version": "3.4.4"
+    },
+    "catalog_sha256": "f8654e42a4d01751b6d365b4698abf4a5571104b5a4f8c38fc2d72e37da4aba3"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "qualified": false,
+    "source_dependencies": [],
+    "system_packages": [],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 446013,
+      "extract": true,
+      "id": "nas-npb",
+      "material_path": "corpora/nas-npb",
+      "sha256": "1ae219398e02a0a79ad51b7460fcffbf7b5df83a69d5d3d3a9dc2d8acf523549",
+      "strip_root": true,
+      "url": "https://www.nas.nasa.gov/assets/npb/NPB3.4.4.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.nas.nasa.gov/software/npb.html"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/corpora/nas-npb",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Fortran/C CFD-derived kernels and pseudo-applications with standardized problem classes and built-in verification."
+  },
+  "version": "3.4.4"
+}

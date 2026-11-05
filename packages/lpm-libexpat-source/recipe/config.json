@@ -1,0 +1,39 @@
+{
+  "id": "lpm-libexpat-source",
+  "version": "2.6.4",
+  "source_subdir": "expat",
+  "cmake_options": [
+    "-DEXPAT_BUILD_DOCS=OFF",
+    "-DEXPAT_BUILD_TOOLS=ON",
+    "-DEXPAT_BUILD_EXAMPLES=ON",
+    "-DEXPAT_BUILD_FUZZERS=OFF",
+    "-DEXPAT_DTD=ON",
+    "-DEXPAT_GE=ON",
+    "-DEXPAT_NS=ON",
+    "-DEXPAT_WITH_LIBBSD=OFF"
+  ],
+  "test_options": [
+    "EXPAT_BUILD_TESTS"
+  ],
+  "minimum_ctest_count": 2,
+  "installed_tests": [
+    "runtests",
+    "runtests_cxx"
+  ],
+  "consumer": "expat_api.c",
+  "libraries": [
+    "expat"
+  ],
+  "include_suffix": "",
+  "compiler": "gcc",
+  "standard": "c99",
+  "pkgconfig": "expat",
+  "cmake_package": "expat",
+  "cmake_target": "expat::expat",
+  "unperformed": [
+    "32-bit and wide-character Expat configurations",
+    "fuzzing campaigns",
+    "performance qualification",
+    "cross-platform or cross-ABI deployment"
+  ]
+}

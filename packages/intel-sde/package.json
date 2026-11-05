@@ -1,0 +1,168 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "intel-sde",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 38529716,
+      "build_peak_bytes": null,
+      "category": [
+        "Profiling",
+        "ISA diagnostics"
+      ],
+      "container_strategy": "Use the unified selection manifest and a private local vendor overlay. Never publish payloads without component-specific redistribution clearance; no automatic license acceptance.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "vendor-local",
+        "admission_driver": "tools/vendor.py",
+        "apt_dependencies": {
+          "dev": [],
+          "target": []
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "executable_qualified": false,
+        "install_argv": [],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "installation_requires_reviewed_receipt": true,
+        "probe_requires_host": [],
+        "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+        "reference_invocation_only": true,
+        "reference_invocations": [
+          [
+            "{prefix}/sde64",
+            "-mix",
+            "--",
+            "{workload}"
+          ]
+        ],
+        "reference_invocations_require_review": true,
+        "smoke_argv": [],
+        "state": "local-license-payload-required",
+        "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+      },
+      "documentation": "https://www.intel.com/content/www/us/en/developer/articles/tool/software-development-emulator.html",
+      "extract": false,
+      "id": "intel-sde",
+      "immutable_ref": "sha256:94e97d623fec54385686e1e7ba65ebc9941748c05ee451423948334892bf2b50",
+      "installed_bytes": null,
+      "kind": "vendor-local",
+      "license_class": "restricted",
+      "license_id": "LicenseRef-intel-sde",
+      "mandatory": false,
+      "material_path": "vendor-media/intel-sde",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Inspect instruction mix and ISA semantics; emulated timing is never native performance evidence.",
+      "qualification_gaps": [
+        "A licensed local payload, exact delivered build identity, SHA-256, accepted license receipt and reviewed silent installation recipe are required.",
+        "The selected resource remains blocked until installation and real component probes succeed.",
+        "Emulator and Pin restrictions must be tested against the host OS and target ISA."
+      ],
+      "redistributable": false,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "94e97d623fec54385686e1e7ba65ebc9941748c05ee451423948334892bf2b50",
+      "size_basis": "Official fixed file HTTP Content-Length and supplier SHA-256; complete local payload not yet acquired.",
+      "source_evidence": [
+        "https://www.intel.com/content/www/us/en/developer/articles/tool/software-development-emulator.html",
+        "https://downloadmirror.intel.com/924984/sde-external-10.13.1-2026-07-28-lin.tar.xz"
+      ],
+      "source_url": "https://downloadmirror.intel.com/924984/sde-external-10.13.1-2026-07-28-lin.tar.xz",
+      "title": "Intel Software Development Emulator",
+      "upstream": "https://www.intel.com/content/www/us/en/developer/articles/tool/software-development-emulator.html",
+      "version": "10.13.1-2026-07-28"
+    },
+    "catalog_sha256": "880acba2655f6ddb823d6a5675a165c0b779d9522587d9cf8e010d4c201c2dcb"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "vendor-local",
+    "admission_driver": "tools/vendor.py",
+    "apt_dependencies": {
+      "dev": [],
+      "target": []
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "executable_qualified": false,
+    "install_argv": [],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "installation_requires_reviewed_receipt": true,
+    "probe_requires_host": [],
+    "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+    "reference_invocation_only": true,
+    "reference_invocations": [
+      [
+        "{prefix}/sde64",
+        "-mix",
+        "--",
+        "{workload}"
+      ]
+    ],
+    "reference_invocations_require_review": true,
+    "smoke_argv": [],
+    "state": "local-license-payload-required",
+    "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 38529716,
+      "extract": false,
+      "id": "intel-sde",
+      "material_path": "vendor-media/intel-sde",
+      "sha256": "94e97d623fec54385686e1e7ba65ebc9941748c05ee451423948334892bf2b50",
+      "strip_root": true,
+      "url": "https://downloadmirror.intel.com/924984/sde-external-10.13.1-2026-07-28-lin.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.intel.com/content/www/us/en/developer/articles/tool/software-development-emulator.html"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/vendor-media/intel-sde",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Inspect instruction mix and ISA semantics; emulated timing is never native performance evidence."
+  },
+  "version": "10.13.1-2026-07-28"
+}

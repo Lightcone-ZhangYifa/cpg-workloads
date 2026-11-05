@@ -1,0 +1,160 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "nag-fortran",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Toolchains",
+        "Vendor compilers"
+      ],
+      "container_strategy": "Use the unified selection manifest and a private local vendor overlay. Never publish payloads without component-specific redistribution clearance; no automatic license acceptance.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "vendor-local",
+        "admission_driver": "tools/vendor.py",
+        "apt_dependencies": {
+          "dev": [],
+          "target": []
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "executable_qualified": false,
+        "install_argv": [],
+        "install_roles": [
+          "dev"
+        ],
+        "installation_requires_reviewed_receipt": true,
+        "probe_requires_host": [],
+        "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+        "reference_invocation_only": true,
+        "reference_invocations": [
+          [
+            "{prefix}/bin/nagfor",
+            "-V"
+          ]
+        ],
+        "reference_invocations_require_review": true,
+        "smoke_argv": [],
+        "state": "local-license-payload-required"
+      },
+      "documentation": "https://support.nag.com/nagware/np/r72_doc/relnotes.html",
+      "extract": false,
+      "id": "nag-fortran",
+      "immutable_ref": "vendor-release:7.2",
+      "installed_bytes": null,
+      "kind": "vendor-local",
+      "license_class": "restricted",
+      "license_id": "LicenseRef-nag-fortran",
+      "mandatory": false,
+      "material_path": "vendor-media/nag-fortran",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Provide independent Fortran semantic diagnostics and checked execution for Fortran work.",
+      "qualification_gaps": [
+        "A licensed local payload, exact delivered build identity, SHA-256, accepted license receipt and reviewed silent installation recipe are required.",
+        "The selected resource remains blocked until installation and real component probes succeed.",
+        "Release 7.2 alone is not a complete build identity; supplier build number and platform identifier are required at import.",
+        "The compiler uses a licensed runtime and GNU toolchain integration that must pass compile/link/run probes."
+      ],
+      "redistributable": false,
+      "roles": [
+        "dev"
+      ],
+      "sha256": null,
+      "size_basis": "Exact installer size is unresolved; an authorized local import must record complete byte count and SHA-256.",
+      "source_evidence": [
+        "https://nag.com/fortran-compiler/",
+        "https://support.nag.com/nagware/np/r72_doc/relnotes.html"
+      ],
+      "source_url": null,
+      "title": "NAG Fortran Compiler",
+      "upstream": "https://nag.com/fortran-compiler/",
+      "version": "7.2"
+    },
+    "catalog_sha256": "d6e6b5449f6d5c41c56ca21288dc9e61c95cf0f246ca526d1bd96b3b42018ec2"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "vendor-local",
+    "admission_driver": "tools/vendor.py",
+    "apt_dependencies": {
+      "dev": [],
+      "target": []
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "executable_qualified": false,
+    "install_argv": [],
+    "install_roles": [
+      "dev"
+    ],
+    "installation_requires_reviewed_receipt": true,
+    "probe_requires_host": [],
+    "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+    "reference_invocation_only": true,
+    "reference_invocations": [
+      [
+        "{prefix}/bin/nagfor",
+        "-V"
+      ]
+    ],
+    "reference_invocations_require_review": true,
+    "smoke_argv": [],
+    "state": "local-license-payload-required"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": false,
+      "id": "nag-fortran",
+      "material_path": "vendor-media/nag-fortran",
+      "sha256": null,
+      "strip_root": true,
+      "url": null
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://support.nag.com/nagware/np/r72_doc/relnotes.html"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/vendor-media/nag-fortran",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Provide independent Fortran semantic diagnostics and checked execution for Fortran work."
+  },
+  "version": "7.2"
+}

@@ -1,0 +1,212 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/cvise",
+        "--version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "version",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.clang",
+      "apt.cmake",
+      "apt.flex",
+      "apt.libclang-dev",
+      "apt.llvm-dev",
+      "apt.ninja-build",
+      "apt.python3",
+      "apt.python3-chardet",
+      "apt.python3-psutil"
+    ]
+  },
+  "id": "cvise",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 274726,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Correctness",
+        "Failure reduction"
+      ],
+      "container_strategy": "Install the Python driver with its matching clang_delta helper and compatible LLVM libraries in dev.",
+      "dependencies": [
+        "apt.clang",
+        "apt.cmake",
+        "apt.flex",
+        "apt.libclang-dev",
+        "apt.llvm-dev",
+        "apt.ninja-build",
+        "apt.python3",
+        "apt.python3-chardet",
+        "apt.python3-psutil"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_INSTALL_PREFIX={prefix}"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{prefix}/bin/cvise",
+          "--version"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "clang",
+          "llvm-dev",
+          "libclang-dev",
+          "flex",
+          "python3",
+          "python3-psutil",
+          "python3-chardet"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/marxin/cvise"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/cvise.measurement.json",
+        "workspace-evidence/resources-v050/open-research/cvise.refs.json"
+      ],
+      "extract": true,
+      "id": "cvise",
+      "immutable_ref": "2d0889e738e4d6c7720cc56fcdce7de153bbd1b8",
+      "kind": "source_archive",
+      "legacy_source_id": "cvise",
+      "license_class": "open",
+      "license_id": "NCSA",
+      "mandatory": false,
+      "material_path": "sources/cvise",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Minimize C/C++ compiler failures with a deterministic interestingness predicate.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Upstream is seeking maintainers; release version does not guarantee LLVM 23 API compatibility.",
+        "Configure and test against an explicitly chosen LLVM development package; do not link against whichever LLVM is first in PATH."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "8665b643b622558585bf7f6fa0e7dc55f182ab6e02d525ecc5f217721f739624",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/marxin/cvise",
+        "https://codeload.github.com/marxin/cvise/tar.gz/2d0889e738e4d6c7720cc56fcdce7de153bbd1b8",
+        "https://github.com/marxin/cvise/commit/2d0889e738e4d6c7720cc56fcdce7de153bbd1b8"
+      ],
+      "source_logical_bytes": 1424440,
+      "source_url": "https://codeload.github.com/marxin/cvise/tar.gz/2d0889e738e4d6c7720cc56fcdce7de153bbd1b8",
+      "title": "C-Vise source reducer",
+      "upstream": "https://github.com/marxin/cvise",
+      "version": "v2.12.0"
+    },
+    "catalog_sha256": "35711ae4a5ffbbe24bef791059af954c2cc3dfd4947f35808fe8c7aaf930f1e4"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_INSTALL_PREFIX={prefix}"
+    ],
+    "qualified": false,
+    "smoke_argv": [
+      "{prefix}/bin/cvise",
+      "--version"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "clang",
+      "llvm-dev",
+      "libclang-dev",
+      "flex",
+      "python3",
+      "python3-psutil",
+      "python3-chardet"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 274726,
+      "extract": true,
+      "id": "cvise",
+      "material_path": "sources/cvise",
+      "sha256": "8665b643b622558585bf7f6fa0e7dc55f182ab6e02d525ecc5f217721f739624",
+      "strip_root": true,
+      "url": "https://codeload.github.com/marxin/cvise/tar.gz/2d0889e738e4d6c7720cc56fcdce7de153bbd1b8"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/marxin/cvise"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/cvise' --version",
+        "description": "Run the recorded version check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/cvise",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Minimize C/C++ compiler failures with a deterministic interestingness predicate."
+  },
+  "version": "v2.12.0"
+}

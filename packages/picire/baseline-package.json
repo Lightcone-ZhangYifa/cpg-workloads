@@ -1,0 +1,249 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "id": "version",
+      "kind": "version",
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--expected-version",
+        "{version}",
+        "--case",
+        "version"
+      ],
+      "cwd": "{prefix}",
+      "timeout_seconds": 600,
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "requires_commands": [
+        "/usr/bin/python3",
+        "/bin/sh"
+      ],
+      "requires_paths": [
+        "{prefix}/runtime/bin/python",
+        "{prefix}/bin/picire",
+        "{prefix}/share/picire/profile.json"
+      ]
+    },
+    {
+      "id": "reduction",
+      "kind": "functional",
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--expected-version",
+        "{version}",
+        "--case",
+        "reduction"
+      ],
+      "cwd": "{prefix}",
+      "timeout_seconds": 600,
+      "expected_returncode": 0,
+      "stdout_regex": "\"status\": \"passed\"",
+      "requires_commands": [
+        "/usr/bin/python3",
+        "/bin/sh"
+      ],
+      "requires_paths": [
+        "{prefix}/runtime/bin/python",
+        "{prefix}/bin/picire",
+        "{prefix}/share/picire/profile.json"
+      ]
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "picire",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 23401,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Correctness",
+        "Failure reduction"
+      ],
+      "container_strategy": "Install in a dedicated locked Python environment; use time-bounded, deterministic predicates and retain minimized plus original artifacts.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "smoke_argv": [
+          "picire",
+          "--help"
+        ],
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/renatahodovan/picire"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/picire.measurement.json",
+        "workspace-evidence/resources-v050/open-research/picire.refs.json"
+      ],
+      "extract": true,
+      "id": "picire",
+      "immutable_ref": "e07644450c544b00cf32fe076dd997ffb06eb06c",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "sources/picire",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "General line/token delta reduction for IR, flags, pass sequences and reproducer inputs.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Python dependency closure is locked separately from this source snapshot."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "bf31d147aafaf91a600425df6043a617100d137f5630e8785ab78b57ebc1fca3",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/renatahodovan/picire",
+        "https://codeload.github.com/renatahodovan/picire/tar.gz/e07644450c544b00cf32fe076dd997ffb06eb06c",
+        "https://github.com/renatahodovan/picire/commit/e07644450c544b00cf32fe076dd997ffb06eb06c"
+      ],
+      "source_logical_bytes": 90343,
+      "source_url": "https://codeload.github.com/renatahodovan/picire/tar.gz/e07644450c544b00cf32fe076dd997ffb06eb06c",
+      "title": "Picire parallel delta debugger",
+      "upstream": "https://github.com/renatahodovan/picire",
+      "version": "21.8"
+    },
+    "catalog_sha256": "3d578d0eaed347d9d6e53060a55f68e93cd82249d88a7df87c962583d31525cc"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "/usr/bin/python3",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--assets",
+        "{assets}",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ]
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/picire",
+      "{prefix}/runtime/bin/python",
+      "{prefix}/share/picire/profile.json",
+      "{prefix}/share/picire/source/LICENSE.rst"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"
+    },
+    "binary_policy": "No relocatable virtualenv binary claim; rebuild the source-input artifact in the selected CPython 3.12 environment."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 23401,
+      "extract": true,
+      "id": "picire",
+      "material_path": "sources/picire",
+      "sha256": "bf31d147aafaf91a600425df6043a617100d137f5630e8785ab78b57ebc1fca3",
+      "strip_root": true,
+      "url": "https://codeload.github.com/renatahodovan/picire/tar.gz/e07644450c544b00cf32fe076dd997ffb06eb06c"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "summary": "Run the pinned Picire delta-debugging API and CLI in a private, fully offline CPython 3.12 environment.",
+    "activation": [],
+    "documentation": [
+      "https://github.com/renatahodovan/picire/tree/e07644450c544b00cf32fe076dd997ffb06eb06c"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/picire --version",
+        "description": "Report the independently installed Picire version."
+      },
+      {
+        "command": "{prefix}/bin/picire --test=./interesting.sh --input=case.c --out=reduced --atom=line",
+        "description": "Reduce with an explicit interestingness test; its exit status determines retained candidates."
+      },
+      {
+        "command": "{prefix}/runtime/bin/python -I -c \"import picire; print(picire.__version__)\"",
+        "description": "Use the API through this prefix own interpreter and installed distributions."
+      },
+      {
+        "command": "/usr/bin/python3 {prefix}/share/picire/check.py --prefix {prefix} --build /tmp/cpg-picire-tests --case upstream",
+        "description": "Run and reconcile all 176 original API/CLI tests; this full matrix is separate from the bounded installation checks."
+      }
+    ],
+    "locations": [
+      {
+        "label": "CLI launcher",
+        "path": "{prefix}/bin/picire",
+        "purpose": "Select this installation own interpreter without globally activating a virtual environment."
+      },
+      {
+        "label": "Independent Python environment",
+        "path": "{prefix}/runtime",
+        "purpose": "Pinned private runtime, build and upstream-test distributions."
+      },
+      {
+        "label": "Unmodified original source",
+        "path": "{prefix}/share/picire/source",
+        "purpose": "Every source, test, fixture and license from the original fixed archive."
+      },
+      {
+        "label": "Exact private inputs",
+        "path": "{prefix}/share/picire/wheels",
+        "purpose": "Locked wheel payloads retained for offline reinstallation."
+      },
+      {
+        "label": "Profile and compatibility patch",
+        "path": "{prefix}/share/picire/profile.json",
+        "purpose": "Interpreter, original source, installed wheel and patch identities."
+      }
+    ],
+    "notes": [
+      "The original source archive remains unchanged. Only a build copy replaces pkg_resources version lookup with importlib.metadata, with original and result SHA-256 checks.",
+      "The private dependency closure adds no resource IDs and changes no global Python environment or existing wheel pins.",
+      "Source installs create fresh venvs with copied interpreters and never invoke online pip or share installation trees.",
+      "The tested native scope is the unmodified upstream API/CLI matrix plus known-answer sequential/parallel reductions, one-minimality, invalid input and independent source-install removal.",
+      "Virtualenvs are rebuilt through the source-input artifact; no arbitrary-prefix binary relocatability or cross-platform qualification is claimed."
+    ]
+  },
+  "version": "21.8"
+}

@@ -1,0 +1,147 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.cargo",
+      "apt.rustc"
+    ]
+  },
+  "id": "egg",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 123592,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Optimization search",
+        "Equality saturation"
+      ],
+      "container_strategy": "Freeze the Rust toolchain, cargo vendor closure and integration crate; keep compiler semantic checks independent of rewrite enumeration.",
+      "dependencies": [
+        "apt.cargo",
+        "apt.rustc"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "build_argv": [
+          "cargo",
+          "test",
+          "--locked",
+          "--offline"
+        ],
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [
+          "cargo",
+          "rustc"
+        ],
+        "working_directory": "{source}"
+      },
+      "documentation": [
+        "https://github.com/egraphs-good/egg"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/egg.measurement.json",
+        "workspace-evidence/resources-v050/open-research/egg.refs.json"
+      ],
+      "extract": true,
+      "id": "egg",
+      "immutable_ref": "fb6167957beb5dd7c784121459e08ebd1ccb1a00",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/egg",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Prototype rewrite exploration, e-graph analyses and cost-based extraction for compiler optimization research.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "A sound rewrite set and a target-calibrated cost model must be supplied; equality saturation does not establish C/LLVM semantics on its own.",
+        "Cargo registry closure and exact Rust toolchain are not included in the source archive."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "24887675df6286af7a584f7a6da3f13d474cda09d25efd8caddc8fd7d43aba3b",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/egraphs-good/egg",
+        "https://codeload.github.com/egraphs-good/egg/tar.gz/fb6167957beb5dd7c784121459e08ebd1ccb1a00",
+        "https://github.com/egraphs-good/egg/commit/fb6167957beb5dd7c784121459e08ebd1ccb1a00"
+      ],
+      "source_logical_bytes": 434170,
+      "source_url": "https://codeload.github.com/egraphs-good/egg/tar.gz/fb6167957beb5dd7c784121459e08ebd1ccb1a00",
+      "title": "egg equality-saturation library",
+      "upstream": "https://github.com/egraphs-good/egg",
+      "version": "v0.11.0"
+    },
+    "catalog_sha256": "a6f685640bc7cf129340cfed3db186e565b9ad119b775f319194b54e883f0080"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "build_argv": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline"
+    ],
+    "qualified": false,
+    "source_dependencies": [],
+    "system_packages": [
+      "cargo",
+      "rustc"
+    ],
+    "working_directory": "{source}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 123592,
+      "extract": true,
+      "id": "egg",
+      "material_path": "sources/egg",
+      "sha256": "24887675df6286af7a584f7a6da3f13d474cda09d25efd8caddc8fd7d43aba3b",
+      "strip_root": true,
+      "url": "https://codeload.github.com/egraphs-good/egg/tar.gz/fb6167957beb5dd7c784121459e08ebd1ccb1a00"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/egraphs-good/egg"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/egg",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Prototype rewrite exploration, e-graph analyses and cost-based extraction for compiler optimization research."
+  },
+  "version": "v0.11.0"
+}

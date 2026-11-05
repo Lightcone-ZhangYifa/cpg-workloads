@@ -1,0 +1,9 @@
+from pathlib import Path
+import os,sys,tempfile
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from probes_v02113 import main
+if __name__ == "__main__":
+    with tempfile.TemporaryDirectory(prefix="cpg-private-settings-",dir=Path.cwd()) as private:
+        for key in ("MPLCONFIGDIR","IPYTHONDIR","JUPYTER_CONFIG_DIR","JUPYTER_RUNTIME_DIR","XDG_CACHE_HOME"):
+            value=Path(private)/key.lower();value.mkdir();os.environ[key]=str(value)
+        raise SystemExit(main('py.polars-runtime-32','polars-runtime-32','_polars_runtime_32._polars_runtime'))

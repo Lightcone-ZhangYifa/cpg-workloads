@@ -1,0 +1,219 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{build}/test/benchmark_test",
+        "--benchmark_list_tests=true"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.cmake",
+      "apt.g++",
+      "apt.ninja-build"
+    ]
+  },
+  "id": "google-benchmark",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 281469,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Measurement",
+        "Native harnesses"
+      ],
+      "container_strategy": "Build the library in dev with tests and a pinned GoogleTest dependency; link measured harnesses into target artifacts.",
+      "dependencies": [
+        "apt.cmake",
+        "apt.g++",
+        "apt.ninja-build"
+      ],
+      "deployment": {
+        "adapter": "cmake",
+        "build_argv": [
+          "cmake",
+          "--build",
+          "{build}",
+          "--parallel",
+          "{jobs}"
+        ],
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_INSTALL_PREFIX={prefix}",
+          "-DBENCHMARK_DOWNLOAD_DEPENDENCIES=OFF"
+        ],
+        "install_argv": [
+          "cmake",
+          "--install",
+          "{build}"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{build}/test/benchmark_test",
+          "--benchmark_list_tests=true"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "g++"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/google/benchmark/blob/main/docs/reducing_variance.md",
+        "https://github.com/google/benchmark/blob/main/docs/user_guide.md"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/google-benchmark.measurement.json",
+        "workspace-evidence/resources-v050/open-research/google-benchmark.refs.json"
+      ],
+      "extract": true,
+      "id": "google-benchmark",
+      "immutable_ref": "a6b4a9f00b36c19af9997d68a1cf6e0b5b3d032c",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "sources/google-benchmark",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Native microbenchmark fixtures with anti-elimination helpers, repetitions and structured result output.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Calibrate framework overhead and execution liveness for tiny kernels.",
+        "Automatic framework repetitions are not substitutes for randomized paired run blocks and host-state logging.",
+        "GoogleTest acquisition must happen during preparation instead of CMake download at build time."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "1e34f52437882bfe010f955580e77a19b4fb0a702ef678609b509a834296075c",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/google/benchmark",
+        "https://codeload.github.com/google/benchmark/tar.gz/a6b4a9f00b36c19af9997d68a1cf6e0b5b3d032c",
+        "https://github.com/google/benchmark/commit/a6b4a9f00b36c19af9997d68a1cf6e0b5b3d032c"
+      ],
+      "source_logical_bytes": 1173015,
+      "source_url": "https://codeload.github.com/google/benchmark/tar.gz/a6b4a9f00b36c19af9997d68a1cf6e0b5b3d032c",
+      "title": "Google Benchmark harness library",
+      "upstream": "https://github.com/google/benchmark",
+      "version": "v1.10.0"
+    },
+    "catalog_sha256": "20609ddcbda39d61b6d0ce715c59f0f065618465bd13f4e0389c5db6eb44abaf"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "cmake",
+    "build_argv": [
+      "cmake",
+      "--build",
+      "{build}",
+      "--parallel",
+      "{jobs}"
+    ],
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_INSTALL_PREFIX={prefix}",
+      "-DBENCHMARK_DOWNLOAD_DEPENDENCIES=OFF"
+    ],
+    "install_argv": [
+      "cmake",
+      "--install",
+      "{build}"
+    ],
+    "qualified": false,
+    "smoke_argv": [
+      "{build}/test/benchmark_test",
+      "--benchmark_list_tests=true"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "g++"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 281469,
+      "extract": true,
+      "id": "google-benchmark",
+      "material_path": "sources/google-benchmark",
+      "sha256": "1e34f52437882bfe010f955580e77a19b4fb0a702ef678609b509a834296075c",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/benchmark/tar.gz/a6b4a9f00b36c19af9997d68a1cf6e0b5b3d032c"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/google/benchmark/blob/main/docs/reducing_variance.md",
+      "https://github.com/google/benchmark/blob/main/docs/user_guide.md"
+    ],
+    "examples": [
+      {
+        "command": "'{build}/test/benchmark_test' --benchmark_list_tests=true",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/google-benchmark",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Native microbenchmark fixtures with anti-elimination helpers, repetitions and structured result output."
+  },
+  "version": "v1.10.0"
+}

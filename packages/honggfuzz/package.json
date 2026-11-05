@@ -1,0 +1,212 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "honggfuzz-native-local-fuzz-workflows",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.g++",
+      "apt.make",
+      "apt.python3"
+    ]
+  },
+  "id": "honggfuzz",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 65269741,
+      "archive_scope": "Root repository only; recursive Git submodule payloads are excluded.",
+      "category": [
+        "Correctness",
+        "Generators and fuzzers"
+      ],
+      "container_strategy": "Build the Linux x86 host mode in dev; target profiling or hardware coverage modes require separately admitted host capabilities.",
+      "dependencies": [
+        "apt.binutils-dev",
+        "apt.g++",
+        "apt.libblocksruntime-dev",
+        "apt.liblzma-dev",
+        "apt.libunwind-dev",
+        "apt.make"
+      ],
+      "deployment": {
+        "adapter": "make",
+        "build_argv": [
+          "make",
+          "-j{jobs}"
+        ],
+        "install_argv": [
+          "make",
+          "PREFIX={prefix}",
+          "install"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{prefix}/bin/honggfuzz",
+          "--help"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "make",
+          "g++",
+          "binutils-dev",
+          "libunwind-dev",
+          "libblocksruntime-dev",
+          "liblzma-dev"
+        ],
+        "working_directory": "{source}"
+      },
+      "documentation": [
+        "https://github.com/google/honggfuzz"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/honggfuzz.measurement.json",
+        "workspace-evidence/resources-v050/open-research/honggfuzz.refs.json"
+      ],
+      "extract": true,
+      "id": "honggfuzz",
+      "immutable_ref": "83a8415a372d84dcc69ac1e2c2f152190bcf76d1",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "sources/honggfuzz",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Complement AFL++ with sanitizer/coverage-guided compiler and native-program fuzzing.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Android submodules in the archive are not needed for the Linux host scope; optional hardware modes still need host qualification."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "3a37ff1dbdd31977a2990e74a3f63c77220fb9e077690e548f64e13d0cccc5ad",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/google/honggfuzz",
+        "https://codeload.github.com/google/honggfuzz/tar.gz/83a8415a372d84dcc69ac1e2c2f152190bcf76d1",
+        "https://github.com/google/honggfuzz/commit/83a8415a372d84dcc69ac1e2c2f152190bcf76d1"
+      ],
+      "source_logical_bytes": 146832300,
+      "source_url": "https://codeload.github.com/google/honggfuzz/tar.gz/83a8415a372d84dcc69ac1e2c2f152190bcf76d1",
+      "title": "Honggfuzz native fuzzing",
+      "upstream": "https://github.com/google/honggfuzz",
+      "version": "2.6"
+    },
+    "catalog_sha256": "cfe0dd88c635cb33c0557b5801cf965e5e6aecbd4bcdcf2e778a2af665978fef"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "/usr/bin/python3",
+        "-B",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "dependency_refinement": "Four exact original direct system dependencies and their entire 22-DEB closure are private fixed inputs. Original definitions and mapping are retained; no host apt transaction and no claim that unrelated catalog toolchain transitive locks match the host.",
+    "qualification_scope": "Linux x86_64 host fuzzing of locally compiled targets; software feedback and crash detection; no perf/PMU/Android/other-platform qualification.",
+    "required_installed_paths": [
+      "{prefix}/bin/honggfuzz",
+      "{prefix}/bin/hfuzz-gcc",
+      "{prefix}/lib/libhfuzz.a",
+      "{prefix}/libexec/honggfuzz",
+      "{prefix}/share/honggfuzz/COPYING",
+      "{prefix}/share/compiler-playground/honggfuzz/profile.json",
+      "{prefix}/share/honggfuzz/source/honggfuzz-source.tar.gz",
+      "{prefix}/share/honggfuzz/source/archive-members.json",
+      "{prefix}/share/honggfuzz/upstream-examples/badcode1.c"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 65269741,
+      "extract": true,
+      "id": "honggfuzz",
+      "material_path": "sources/honggfuzz",
+      "sha256": "3a37ff1dbdd31977a2990e74a3f63c77220fb9e077690e548f64e13d0cccc5ad",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/honggfuzz/tar.gz/83a8415a372d84dcc69ac1e2c2f152190bcf76d1"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/google/honggfuzz/tree/83a8415a372d84dcc69ac1e2c2f152190bcf76d1"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/hfuzz-gcc' target.c -o target",
+        "description": "Compile a local target using the independently installed instrumentation libraries."
+      },
+      {
+        "command": "'{prefix}/bin/honggfuzz' -v -n 1 -N 32 -i corpus -- ./target ___FILE___",
+        "description": "Run a bounded local fuzzing campaign; child ptrace must be allowed by the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Native tools",
+        "path": "{prefix}/bin",
+        "purpose": "Prefix-relative launchers for the actual compiled ELF tools."
+      },
+      {
+        "label": "Original source and fixed dependency inputs",
+        "path": "{prefix}/share/honggfuzz",
+        "purpose": "Complete unchanged original source archive with a member inventory, original Debian archives, private runtime, licenses and applied-patch evidence."
+      }
+    ],
+    "notes": [
+      "Original four missing direct system package identities are satisfied by the fixed private closure, not a nearby host version.",
+      "The runtime uses its own exact loader and shared libraries; the observed host compiler is used for target compilation.",
+      "Only GCC software instrumentation and local child tracing are qualified; hardware counters and Android submodules are outside this profile.",
+      "The source material is the unchanged original tar with a complete member inventory; its intentional links to build products remain inside the tar. It is not an expanded source tree."
+    ],
+    "summary": "Run the source-built Honggfuzz host fuzzer and compiler wrapper with the exact private Debian header/library closure."
+  },
+  "version": "2.6"
+}

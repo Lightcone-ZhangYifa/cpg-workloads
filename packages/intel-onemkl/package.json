@@ -1,0 +1,164 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "intel-onemkl",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Runtime libraries",
+        "Vendor libraries"
+      ],
+      "container_strategy": "Use the unified selection manifest and a private local vendor overlay. Never publish payloads without component-specific redistribution clearance; no automatic license acceptance.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "vendor-local",
+        "admission_driver": "tools/vendor.py",
+        "apt_dependencies": {
+          "dev": [],
+          "target": []
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "executable_qualified": false,
+        "install_argv": [],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "installation_requires_reviewed_receipt": true,
+        "probe_requires_host": [],
+        "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+        "reference_invocation_only": true,
+        "reference_invocations": [
+          [
+            "{prefix}/bin/mkl_link_tool",
+            "--help"
+          ]
+        ],
+        "reference_invocations_require_review": true,
+        "smoke_argv": [],
+        "state": "local-license-payload-required",
+        "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+      },
+      "documentation": "https://www.intel.com/content/www/us/en/developer/articles/tool/onemkl-license-faq.html",
+      "extract": false,
+      "id": "intel-onemkl",
+      "immutable_ref": "vendor-release:2026.1",
+      "installed_bytes": null,
+      "kind": "vendor-local",
+      "license_class": "restricted",
+      "license_id": "LicenseRef-intel-onemkl",
+      "mandatory": false,
+      "material_path": "vendor-media/intel-onemkl",
+      "possible_provider_requires_exact_component_receipt": "intel-oneapi",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Provide an independent highly tuned CPU numerical-library treatment, separated from compiler-only improvements.",
+      "qualification_gaps": [
+        "A licensed local payload, exact delivered build identity, SHA-256, accepted license receipt and reviewed silent installation recipe are required.",
+        "The selected resource remains blocked until installation and real component probes succeed.",
+        "The public open oneMath interface is not the Intel proprietary oneMKL implementation. Pin LP64/ILP64, threading layer, dispatch and complete runtime closure."
+      ],
+      "redistributable": false,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": null,
+      "size_basis": "Exact installer size is unresolved; an authorized local import must record complete byte count and SHA-256.",
+      "source_evidence": [
+        "https://www.intel.com/content/www/us/en/developer/articles/tool/onemkl-license-faq.html"
+      ],
+      "source_url": null,
+      "title": "Intel oneAPI Math Kernel Library",
+      "upstream": "https://www.intel.com/content/www/us/en/developer/articles/tool/onemkl-license-faq.html",
+      "version": "2026.1"
+    },
+    "catalog_sha256": "8402dda15e140a9e086dc7901ba1cb0e5804f7cdf721a6906c03767c12ca943f"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "vendor-local",
+    "admission_driver": "tools/vendor.py",
+    "apt_dependencies": {
+      "dev": [],
+      "target": []
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "executable_qualified": false,
+    "install_argv": [],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "installation_requires_reviewed_receipt": true,
+    "probe_requires_host": [],
+    "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+    "reference_invocation_only": true,
+    "reference_invocations": [
+      [
+        "{prefix}/bin/mkl_link_tool",
+        "--help"
+      ]
+    ],
+    "reference_invocations_require_review": true,
+    "smoke_argv": [],
+    "state": "local-license-payload-required",
+    "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": false,
+      "id": "intel-onemkl",
+      "material_path": "vendor-media/intel-onemkl",
+      "sha256": null,
+      "strip_root": true,
+      "url": null
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.intel.com/content/www/us/en/developer/articles/tool/onemkl-license-faq.html"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/vendor-media/intel-onemkl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Provide an independent highly tuned CPU numerical-library treatment, separated from compiler-only improvements."
+  },
+  "version": "2026.1"
+}

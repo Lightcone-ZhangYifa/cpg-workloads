@@ -1,0 +1,319 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/clang",
+        "--version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "version",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "python-mlir"
+    ],
+    "run": [
+      "python-mlir"
+    ],
+    "system": [
+      "apt.cmake",
+      "apt.g++",
+      "apt.libedit-dev",
+      "apt.libffi-dev",
+      "apt.libncurses-dev",
+      "apt.libpfm4-dev",
+      "apt.libxml2-dev",
+      "apt.libzstd-dev",
+      "apt.ninja-build",
+      "apt.python3-dev",
+      "apt.swig",
+      "apt.zlib1g-dev"
+    ]
+  },
+  "id": "llvm-release",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 179272572,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "capabilities": [
+        "clang",
+        "clang++",
+        "opt",
+        "llc",
+        "lli",
+        "llubi",
+        "lld",
+        "lldb",
+        "mlir-opt",
+        "flang",
+        "flang-rt",
+        "compiler-rt",
+        "libc++",
+        "libc++abi",
+        "libunwind",
+        "OpenMP",
+        "Polly",
+        "BOLT",
+        "llvm-profdata",
+        "llvm-profgen",
+        "llvm-cov",
+        "llvm-exegesis",
+        "llvm-mca",
+        "llvm-reduce",
+        "llvm-stress",
+        "llvm-diff",
+        "llvm-dis",
+        "llvm-objdump",
+        "llvm-dwarfdump",
+        "llvm-xray",
+        "llvm-ir2vec",
+        "FileCheck",
+        "lit",
+        "libFuzzer",
+        "ASan",
+        "UBSan",
+        "MSan",
+        "TSan"
+      ],
+      "category": [
+        "Compilers",
+        "Primary toolchains"
+      ],
+      "container_strategy": "Build separate release, assertion-enabled, sanitizer and profile-generation trees from the same verified source; install tools in dev and copy only declared runtime/profiling artifacts to target. Freeze target triple, CPU and features independently of the dev CPU.",
+      "dependencies": [
+        "apt.cmake",
+        "apt.g++",
+        "apt.libedit-dev",
+        "apt.libffi-dev",
+        "apt.libncurses-dev",
+        "apt.libpfm4-dev",
+        "apt.libxml2-dev",
+        "apt.libzstd-dev",
+        "apt.ninja-build",
+        "apt.python3-dev",
+        "apt.swig",
+        "apt.zlib1g-dev",
+        "python-mlir"
+      ],
+      "deployment": {
+        "adapter": "cmake",
+        "build_argv": [
+          "cmake",
+          "--build",
+          "{build}",
+          "--parallel",
+          "{jobs}"
+        ],
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}/llvm",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_INSTALL_PREFIX={prefix}",
+          "-DLLVM_TARGETS_TO_BUILD=X86",
+          "-DLLVM_ENABLE_PROJECTS=clang;clang-tools-extra;lld;lldb;mlir;flang;polly;bolt",
+          "-DLLVM_ENABLE_RUNTIMES=compiler-rt;libcxx;libcxxabi;libunwind;openmp;flang-rt",
+          "-DLLVM_ENABLE_ASSERTIONS=ON",
+          "-DLLVM_INCLUDE_TESTS=ON",
+          "-DLLVM_INSTALL_UTILS=ON"
+        ],
+        "handled_by": "core-build-scripts",
+        "install_argv": [
+          "cmake",
+          "--install",
+          "{build}"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{prefix}/bin/clang",
+          "--version"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "g++",
+          "python3-dev",
+          "zlib1g-dev",
+          "libzstd-dev",
+          "libxml2-dev",
+          "libedit-dev",
+          "libffi-dev",
+          "libpfm4-dev",
+          "swig",
+          "libncurses-dev"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://releases.llvm.org/23.1.0/docs/",
+        "https://llvm.org/docs/WritingAnLLVMNewPMPass.html",
+        "https://llvm.org/docs/NewPassManager.html",
+        "https://flang.llvm.org/docs/GettingStarted.html"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/llvm-release.measurement.json",
+        "workspace-evidence/resources-v050/open-research/llvm-release.refs.json"
+      ],
+      "extract": false,
+      "id": "llvm-release",
+      "immutable_ref": "7a941dfb2877a0b8cf30323fefa85ad019e0b0f5",
+      "kind": "source_archive",
+      "legacy_source_id": "llvm-release",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception",
+      "mandatory": false,
+      "material_path": "sources/llvm-project-23.1.4.src.tar.xz",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Primary compiler development source, host code generation, pass plugins, runtimes, compiler regression tests, profile tooling and optimization diagnostics.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "No full LLVM bootstrap or upstream check-all run was performed in this audit.",
+        "PMU-dependent llvm-exegesis requires separate target-host qualification.",
+        "MLGO inference/training dependencies and IR2Vec vocabularies require separate locked inputs; a tool binary alone does not supply them.",
+        "Runtime combinations, Flang-RT and C++ ABI closure must be tested with actual target binaries."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "819ecf7351f1a66f76b2d701d8942faaf5faeb324cb90c9d5b090de142434bb2",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/llvm/llvm-project",
+        "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/llvm-project-23.1.4.src.tar.xz",
+        "https://github.com/llvm/llvm-project/commit/7a941dfb2877a0b8cf30323fefa85ad019e0b0f5"
+      ],
+      "source_logical_bytes": 2246836861,
+      "source_url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/llvm-project-23.1.4.src.tar.xz",
+      "title": "LLVM, Clang, LLD, MLIR, Flang, Polly and BOLT",
+      "upstream": "https://github.com/llvm/llvm-project",
+      "version": "llvmorg-23.1.4"
+    },
+    "catalog_sha256": "246c7ec274e0325d5af3e02ad57b37eaeeb9c3f4904ec026618b9a72fae5eadf"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "cmake",
+    "build_argv": [
+      "cmake",
+      "--build",
+      "{build}",
+      "--parallel",
+      "{jobs}"
+    ],
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}/llvm",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_INSTALL_PREFIX={prefix}",
+      "-DLLVM_TARGETS_TO_BUILD=X86",
+      "-DLLVM_ENABLE_PROJECTS=clang;clang-tools-extra;lld;lldb;mlir;flang;polly;bolt",
+      "-DLLVM_ENABLE_RUNTIMES=compiler-rt;libcxx;libcxxabi;libunwind;openmp;flang-rt",
+      "-DLLVM_ENABLE_ASSERTIONS=ON",
+      "-DLLVM_INCLUDE_TESTS=ON",
+      "-DLLVM_INSTALL_UTILS=ON"
+    ],
+    "handled_by": "core-build-scripts",
+    "install_argv": [
+      "cmake",
+      "--install",
+      "{build}"
+    ],
+    "qualified": false,
+    "smoke_argv": [
+      "{prefix}/bin/clang",
+      "--version"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "g++",
+      "python3-dev",
+      "zlib1g-dev",
+      "libzstd-dev",
+      "libxml2-dev",
+      "libedit-dev",
+      "libffi-dev",
+      "libpfm4-dev",
+      "swig",
+      "libncurses-dev"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 179272572,
+      "extract": false,
+      "id": "llvm-release",
+      "material_path": "sources/llvm-project-23.1.4.src.tar.xz",
+      "sha256": "819ecf7351f1a66f76b2d701d8942faaf5faeb324cb90c9d5b090de142434bb2",
+      "strip_root": true,
+      "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/llvm-project-23.1.4.src.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://releases.llvm.org/23.1.0/docs/",
+      "https://llvm.org/docs/WritingAnLLVMNewPMPass.html",
+      "https://llvm.org/docs/NewPassManager.html",
+      "https://flang.llvm.org/docs/GettingStarted.html"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/clang' --version",
+        "description": "Run the recorded version check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/llvm-project-23.1.4.src.tar.xz",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Primary compiler development source, host code generation, pass plugins, runtimes, compiler regression tests, profile tooling and optimization diagnostics."
+  },
+  "version": "llvmorg-23.1.4"
+}

@@ -1,0 +1,27 @@
+{
+  "original": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.cmake",
+      "apt.g++",
+      "apt.ninja-build",
+      "apt.python3"
+    ]
+  },
+  "active": {
+    "build": [
+      "apt.cmake",
+      "apt.ninja-build"
+    ],
+    "run": [],
+    "system": [
+      "apt.g++",
+      "apt.python3"
+    ]
+  },
+  "reason": "CMake and Ninja run exclusively during compilation. Installed Z3 CLI/API checks need only the exact g++ and Python contracts; runtime libraries are recorded from actual dynamic linking. Explicit private build tool paths use pre-existing supported PackageManager bindings.",
+  "catalog_preserved": true,
+  "sources_preserved": true,
+  "original_definition": "baseline-package.json"
+}

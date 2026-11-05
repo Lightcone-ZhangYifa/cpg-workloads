@@ -1,0 +1,168 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "spec-cpu2026",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 8184393728,
+      "build_peak_bytes": null,
+      "category": [
+        "Datasets",
+        "Licensed workloads"
+      ],
+      "container_strategy": "Install licensed suite and compile only on dev. Stage prebuilt executables, required harness/data, reference outputs and runtimes on the target. Keep private test inputs inaccessible to the development agent.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "vendor-local",
+        "admission_driver": "tools/vendor.py",
+        "apt_dependencies": {
+          "dev": [],
+          "target": []
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "executable_qualified": false,
+        "install_argv": [],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "installation_requires_reviewed_receipt": true,
+        "probe_requires_host": [],
+        "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+        "reference_invocation_only": true,
+        "reference_invocations": [
+          [
+            "{prefix}/bin/runcpu",
+            "--version"
+          ]
+        ],
+        "reference_invocations_require_review": true,
+        "smoke_argv": [],
+        "state": "local-license-payload-required",
+        "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+      },
+      "documentation": "https://www.spec.org/cpu2026/docs/runrules.html",
+      "extract": false,
+      "filename": "cpu2026-1.0.1.iso",
+      "id": "spec-cpu2026",
+      "immutable_ref": "vendor-release:1.0.1",
+      "installed_bytes": null,
+      "kind": "vendor-local",
+      "license_class": "restricted",
+      "license_id": "LicenseRef-spec-cpu2026",
+      "mandatory": false,
+      "material_path": "vendor-media/spec-cpu2026",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Provide current real-world C/C++/Fortran CPU workloads with official input and output validation; keep train/validation/test ownership explicit.",
+      "qualification_gaps": [
+        "A licensed local payload, exact delivered build identity, SHA-256, accepted license receipt and reviewed silent installation recipe are required.",
+        "The selected resource remains blocked until installation and real component probes succeed.",
+        "Run-rule-compliant results and research estimates must be distinguished. Training/tuning on a test input invalidates a claimed held-out test.",
+        "No benchmark sources or licensed inputs belong in the public repository or public OCI image."
+      ],
+      "redistributable": false,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": null,
+      "size_basis": "Official SPEC download checksum table exact ISO byte count; licensed ISO and local SHA-256 are not included.",
+      "source_evidence": [
+        "https://www.spec.org/cpu2026/",
+        "https://www.spec.org/cpu2026/docs/runrules.html",
+        "https://www.spec.org/order/md5sums/"
+      ],
+      "source_url": null,
+      "supplier_md5": "7c84ff685345a042a8304380e60bf363",
+      "title": "SPEC CPU 2026",
+      "upstream": "https://www.spec.org/cpu2026/",
+      "version": "1.0.1"
+    },
+    "catalog_sha256": "700a3c2db75919eb4bab06026cba80e57b305d7e6dc9a653e375f5072ede4182"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "vendor-local",
+    "admission_driver": "tools/vendor.py",
+    "apt_dependencies": {
+      "dev": [],
+      "target": []
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "executable_qualified": false,
+    "install_argv": [],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "installation_requires_reviewed_receipt": true,
+    "probe_requires_host": [],
+    "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+    "reference_invocation_only": true,
+    "reference_invocations": [
+      [
+        "{prefix}/bin/runcpu",
+        "--version"
+      ]
+    ],
+    "reference_invocations_require_review": true,
+    "smoke_argv": [],
+    "state": "local-license-payload-required",
+    "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 8184393728,
+      "extract": false,
+      "id": "spec-cpu2026",
+      "material_path": "vendor-media/spec-cpu2026",
+      "sha256": null,
+      "strip_root": true,
+      "url": null
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.spec.org/cpu2026/docs/runrules.html"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/vendor-media/spec-cpu2026",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Provide current real-world C/C++/Fortran CPU workloads with official input and output validation; keep train/validation/test ownership explicit."
+  },
+  "version": "1.0.1"
+}

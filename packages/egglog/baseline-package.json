@@ -1,0 +1,174 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{source}/target/release/egglog",
+        "--help"
+      ],
+      "cwd": "{source}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.cargo",
+      "apt.rustc"
+    ]
+  },
+  "id": "egglog",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1167443,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Optimization search",
+        "Equality saturation"
+      ],
+      "container_strategy": "Use a separate locked Rust environment and retained example programs; vendor every Cargo dependency before experiments.",
+      "dependencies": [
+        "apt.cargo",
+        "apt.rustc"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "build_argv": [
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--offline"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{source}/target/release/egglog",
+          "--help"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "cargo",
+          "rustc"
+        ],
+        "working_directory": "{source}"
+      },
+      "documentation": [
+        "https://github.com/egraphs-good/egglog"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/egglog.measurement.json",
+        "workspace-evidence/resources-v050/open-research/egglog.refs.json"
+      ],
+      "extract": true,
+      "id": "egglog",
+      "immutable_ref": "8879605cafad303db25787406163a7e5bc845f5d",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/egglog",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Explore analyses and rewrites in an e-graph/Datalog framework with explicit extraction objectives.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Compiler-semantics proof obligations, cost models and integration must be implemented separately.",
+        "A source archive is not the compiled command-line tool or Python binding."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "99800fbd3f294b4702932dc41edda6c46fd4eb29ce5f5662f20afc1f819754e9",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/egraphs-good/egglog",
+        "https://codeload.github.com/egraphs-good/egglog/tar.gz/8879605cafad303db25787406163a7e5bc845f5d",
+        "https://github.com/egraphs-good/egglog/commit/8879605cafad303db25787406163a7e5bc845f5d"
+      ],
+      "source_logical_bytes": 8971381,
+      "source_url": "https://codeload.github.com/egraphs-good/egglog/tar.gz/8879605cafad303db25787406163a7e5bc845f5d",
+      "title": "egglog equality saturation and Datalog",
+      "upstream": "https://github.com/egraphs-good/egglog",
+      "version": "v3.0.0"
+    },
+    "catalog_sha256": "4d64c4ef1eb49497682c45579752cf5a56e327f5bbe38673c3799168af7b6c23"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "build_argv": [
+      "cargo",
+      "build",
+      "--release",
+      "--locked",
+      "--offline"
+    ],
+    "qualified": false,
+    "smoke_argv": [
+      "{source}/target/release/egglog",
+      "--help"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "cargo",
+      "rustc"
+    ],
+    "working_directory": "{source}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1167443,
+      "extract": true,
+      "id": "egglog",
+      "material_path": "sources/egglog",
+      "sha256": "99800fbd3f294b4702932dc41edda6c46fd4eb29ce5f5662f20afc1f819754e9",
+      "strip_root": true,
+      "url": "https://codeload.github.com/egraphs-good/egglog/tar.gz/8879605cafad303db25787406163a7e5bc845f5d"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/egraphs-good/egglog"
+    ],
+    "examples": [
+      {
+        "command": "'{source}/target/release/egglog' --help",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/egglog",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Explore analyses and rewrites in an e-graph/Datalog framework with explicit extraction objectives."
+  },
+  "version": "v3.0.0"
+}

@@ -1,0 +1,188 @@
+{
+  "build": "1",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "intel-vtune",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Profiling",
+        "Vendor analyzers"
+      ],
+      "container_strategy": "Use the unified selection manifest and a private local vendor overlay. Never publish payloads without component-specific redistribution clearance; no automatic license acceptance.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "vendor-local",
+        "admission_driver": "tools/vendor.py",
+        "apt_dependencies": {
+          "dev": [],
+          "target": []
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "executable_qualified": false,
+        "install_argv": [],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "installation_requires_reviewed_receipt": true,
+        "probe_requires_host": [],
+        "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+        "reference_invocation_only": true,
+        "reference_invocations": [
+          [
+            "{prefix}/bin64/vtune",
+            "-collect",
+            "hotspots",
+            "-knob",
+            "sampling-mode=hw",
+            "-result-dir",
+            "{results}",
+            "--",
+            "{workload}"
+          ]
+        ],
+        "reference_invocations_require_review": true,
+        "smoke_argv": [],
+        "state": "local-license-payload-required",
+        "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+      },
+      "documentation": "https://www.intel.com/content/www/us/en/docs/vtune-profiler/cookbook/2025-0/profiling-in-docker-container.html",
+      "extract": false,
+      "id": "intel-vtune",
+      "immutable_ref": "vendor-release:2026.2.0",
+      "installed_bytes": null,
+      "kind": "vendor-local",
+      "license_class": "restricted",
+      "license_id": "LicenseRef-intel-vtune",
+      "mandatory": false,
+      "material_path": "vendor-media/intel-vtune",
+      "oci_alternative": {
+        "compressed_image_bytes": 1082254238,
+        "digest": "sha256:3d11d90a2727299474bb35c45e0591780dc210e8c37b9dc0384f194aee77e21e",
+        "image": "intel/oneapi-vtune:2026.2.0-devel-ubuntu24.04",
+        "platform": "linux/amd64",
+        "size_basis": "Official Docker Hub tag platform metadata; not additive with an installer and not extracted filesystem size."
+      },
+      "possible_provider_requires_exact_component_receipt": "intel-oneapi",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Collect CPU hotspots, microarchitecture, memory-access and threading diagnostics and analyze them on dev.",
+      "qualification_gaps": [
+        "A licensed local payload, exact delivered build identity, SHA-256, accepted license receipt and reviewed silent installation recipe are required.",
+        "The selected resource remains blocked until installation and real component probes succeed.",
+        "A physical target CPU, kernel, PMU and container launch profile must pass feature-specific collection probes; an installed executable is not full runtime qualification.",
+        "Official container examples require SYS_ADMIN for hardware sampling and SYS_PTRACE for user-mode collection. A PERFMON-only launch is not assumed equivalent for every feature.",
+        "Driverless collection and sampling-driver collection have different feature matrices. Kernel-matched drivers belong on the host."
+      ],
+      "redistributable": false,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": null,
+      "size_basis": "Exact installer size is unresolved; an authorized local import must record complete byte count and SHA-256.",
+      "source_evidence": [
+        "https://www.intel.com/content/www/us/en/developer/tools/oneapi/vtune-profiler.html",
+        "https://www.intel.com/content/www/us/en/docs/vtune-profiler/cookbook/2025-0/profiling-in-docker-container.html"
+      ],
+      "source_url": null,
+      "title": "Intel VTune Profiler",
+      "upstream": "https://www.intel.com/content/www/us/en/developer/tools/oneapi/vtune-profiler.html",
+      "version": "2026.2.0"
+    },
+    "catalog_sha256": "d1f4f4e2ce43151cb853832025a5d54db883ab123de0e1688c6bcd7294cf00bb"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "vendor-local",
+    "admission_driver": "tools/vendor.py",
+    "apt_dependencies": {
+      "dev": [],
+      "target": []
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "executable_qualified": false,
+    "install_argv": [],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "installation_requires_reviewed_receipt": true,
+    "probe_requires_host": [],
+    "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+    "reference_invocation_only": true,
+    "reference_invocations": [
+      [
+        "{prefix}/bin64/vtune",
+        "-collect",
+        "hotspots",
+        "-knob",
+        "sampling-mode=hw",
+        "-result-dir",
+        "{results}",
+        "--",
+        "{workload}"
+      ]
+    ],
+    "reference_invocations_require_review": true,
+    "smoke_argv": [],
+    "state": "local-license-payload-required",
+    "target_exports_policy": "Explicit licensed component exports from the reviewed vendor receipt only; never copy a compiler toolkit or complete source/test corpus by default."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": false,
+      "id": "intel-vtune",
+      "material_path": "vendor-media/intel-vtune",
+      "sha256": null,
+      "strip_root": true,
+      "url": null
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.intel.com/content/www/us/en/docs/vtune-profiler/cookbook/2025-0/profiling-in-docker-container.html"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/vendor-media/intel-vtune",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Collect CPU hotspots, microarchitecture, memory-access and threading diagnostics and analyze them on dev."
+  },
+  "version": "2026.2.0"
+}

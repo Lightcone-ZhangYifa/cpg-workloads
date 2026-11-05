@@ -1,0 +1,210 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{build}/create_llvm_prof",
+        "--help"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.clang",
+      "apt.cmake",
+      "apt.libdw-dev",
+      "apt.libelf-dev",
+      "apt.libprotobuf-dev",
+      "apt.libzstd-dev",
+      "apt.ninja-build",
+      "apt.protobuf-compiler"
+    ]
+  },
+  "id": "autofdo",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 60476728,
+      "archive_scope": "Root repository only; recursive Git submodule payloads are excluded.",
+      "category": [
+        "Optimization search",
+        "Profile-guided optimization"
+      ],
+      "container_strategy": "Collect matching perf data and binary/build-ID artifacts on target, then generate profiles in dev using the pinned AutoFDO closure. Keep the GCC and LLVM profile formats distinct.",
+      "dependencies": [
+        "apt.clang",
+        "apt.cmake",
+        "apt.libdw-dev",
+        "apt.libelf-dev",
+        "apt.libprotobuf-dev",
+        "apt.libzstd-dev",
+        "apt.ninja-build",
+        "apt.protobuf-compiler"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DENABLE_TOOL=LLVM",
+          "-DCMAKE_BUILD_TYPE=Release"
+        ],
+        "qualified": false,
+        "requires_git_metadata": true,
+        "smoke_argv": [
+          "{build}/create_llvm_prof",
+          "--help"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "clang",
+          "libelf-dev",
+          "libdw-dev",
+          "libzstd-dev",
+          "libprotobuf-dev",
+          "protobuf-compiler"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/google/autofdo"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/autofdo.measurement.json",
+        "workspace-evidence/resources-v050/open-research/autofdo.refs.json"
+      ],
+      "extract": true,
+      "id": "autofdo",
+      "immutable_ref": "27837bfeb4e1d452e8df0cd336d1b632c4a5afae",
+      "kind": "source_archive",
+      "legacy_source_id": "autofdo",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "sources/autofdo",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Convert hardware sampling records into compiler-consumable optimization profiles and study sample-driven optimization.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The v0.30.1 CMake build verifies the exact third_party/llvm-project Git commit and requires a recursive source checkout; an arbitrary system LLVM or bare codeload extraction is not equivalent.",
+        "Abseil, protobuf, quipper and other selected dependencies require locked closure.",
+        "LBR/PMU availability, debug mappings, profile coverage and correct compiler consumption need end-to-end controls."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "919cfb47587fab77d8b9dd603e828a4fcce38bf850af855b192b1149882dccb6",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/google/autofdo",
+        "https://codeload.github.com/google/autofdo/tar.gz/27837bfeb4e1d452e8df0cd336d1b632c4a5afae",
+        "https://github.com/google/autofdo/commit/27837bfeb4e1d452e8df0cd336d1b632c4a5afae"
+      ],
+      "source_logical_bytes": 468031899,
+      "source_url": "https://codeload.github.com/google/autofdo/tar.gz/27837bfeb4e1d452e8df0cd336d1b632c4a5afae",
+      "title": "AutoFDO sample profile conversion",
+      "upstream": "https://github.com/google/autofdo",
+      "version": "v0.30.1"
+    },
+    "catalog_sha256": "2f92205fa2a953f91c0a3141c043f1be5bd6fff7d0c2385027fa9764d2b21d36"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DENABLE_TOOL=LLVM",
+      "-DCMAKE_BUILD_TYPE=Release"
+    ],
+    "qualified": false,
+    "requires_git_metadata": true,
+    "smoke_argv": [
+      "{build}/create_llvm_prof",
+      "--help"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "clang",
+      "libelf-dev",
+      "libdw-dev",
+      "libzstd-dev",
+      "libprotobuf-dev",
+      "protobuf-compiler"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 60476728,
+      "extract": true,
+      "id": "autofdo",
+      "material_path": "sources/autofdo",
+      "sha256": "919cfb47587fab77d8b9dd603e828a4fcce38bf850af855b192b1149882dccb6",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/autofdo/tar.gz/27837bfeb4e1d452e8df0cd336d1b632c4a5afae"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/google/autofdo"
+    ],
+    "examples": [
+      {
+        "command": "'{build}/create_llvm_prof' --help",
+        "description": "Run the recorded availability check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/autofdo",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Convert hardware sampling records into compiler-consumable optimization profiles and study sample-driven optimization."
+  },
+  "version": "v0.30.1"
+}

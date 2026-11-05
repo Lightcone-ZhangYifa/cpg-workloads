@@ -1,0 +1,175 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/stp",
+        "--version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-001",
+      "kind": "version",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.bison",
+      "apt.cmake",
+      "apt.flex",
+      "apt.libboost-program-options-dev",
+      "apt.libgmp-dev",
+      "apt.ninja-build"
+    ]
+  },
+  "id": "stp",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 3248305,
+      "archive_scope": "Root repository only; recursive Git submodule payloads are excluded.",
+      "category": [
+        "Correctness",
+        "SMT solvers"
+      ],
+      "container_strategy": "Build in dev with a pinned SAT solver and test the exact KLEE integration.",
+      "dependencies": [
+        "apt.bison",
+        "apt.cmake",
+        "apt.flex",
+        "apt.libboost-program-options-dev",
+        "apt.libgmp-dev",
+        "apt.ninja-build"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "smoke_argv": [
+          "{prefix}/bin/stp",
+          "--version"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "bison",
+          "flex",
+          "libboost-program-options-dev",
+          "libgmp-dev"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/stp/stp"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/stp.measurement.json",
+        "workspace-evidence/resources-v050/open-research/stp.refs.json"
+      ],
+      "extract": true,
+      "id": "stp",
+      "immutable_ref": "295953fc1f7424cc4822a02f5c7964e0aafbdf10",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/stp",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Alternative bit-vector and array solver for KLEE and superoptimization experiments.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "MiniSat/CryptoMiniSat or selected CaDiCaL closure is not contained in the root source archive."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "e74b71e26f1627f7ce27641a25bc6e91c30a25980c4335280fdb037cdce38810",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/stp/stp",
+        "https://codeload.github.com/stp/stp/tar.gz/295953fc1f7424cc4822a02f5c7964e0aafbdf10",
+        "https://github.com/stp/stp/commit/295953fc1f7424cc4822a02f5c7964e0aafbdf10"
+      ],
+      "source_logical_bytes": 8685523,
+      "source_url": "https://codeload.github.com/stp/stp/tar.gz/295953fc1f7424cc4822a02f5c7964e0aafbdf10",
+      "title": "STP bit-vector solver",
+      "upstream": "https://github.com/stp/stp",
+      "version": "2.4.1"
+    },
+    "catalog_sha256": "fb5e74dd969792fd8e22270f435fdb51996f7d6f59c37c904dfb18a040734292"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "qualified": false,
+    "smoke_argv": [
+      "{prefix}/bin/stp",
+      "--version"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "bison",
+      "flex",
+      "libboost-program-options-dev",
+      "libgmp-dev"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3248305,
+      "extract": true,
+      "id": "stp",
+      "material_path": "sources/stp",
+      "sha256": "e74b71e26f1627f7ce27641a25bc6e91c30a25980c4335280fdb037cdce38810",
+      "strip_root": true,
+      "url": "https://codeload.github.com/stp/stp/tar.gz/295953fc1f7424cc4822a02f5c7964e0aafbdf10"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/stp/stp"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/stp' --version",
+        "description": "Run the recorded version check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/stp",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "Alternative bit-vector and array solver for KLEE and superoptimization experiments."
+  },
+  "version": "2.4.1"
+}
