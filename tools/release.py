@@ -183,6 +183,17 @@ def verify_png(data):
     raise ValueError("PNG has no complete IEND")
 
 
+def gnu_info_text(data, path):
+    """Recognize makeinfo's exact textual index annotation without changing bytes."""
+    if (PurePosixPath(path).suffix != ".info" or not data.startswith(b"This is ")
+            or b"produced by\nmakeinfo version " not in data[:1024]
+            or re.search(rb"\x1f\nFile: [^\n]*Node: Top", data) is None
+            or not data.endswith(b"\x1f\nEnd Tag Table\n")):
+        return False
+    clean = data.replace(b"\x00\x08[index\x00\x08]", b"")
+    return b"\x00" not in clean and b"\x08" not in clean
+
+
 def material_member(template, row, binaries):
     relative = safe_relative(row["path"])
     path = template / relative
@@ -210,7 +221,7 @@ def material_member(template, row, binaries):
             raise ValueError("Reviewed PNG differs from its source Git blob")
     else:
         data.decode("utf-8")
-        if b"\0" in data:
+        if b"\0" in data and not gnu_info_text(data, row["path"]):
             raise ValueError("Unlisted binary content in material member: " + row["path"])
     return data
 
