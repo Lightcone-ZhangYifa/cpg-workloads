@@ -723,7 +723,7 @@ def rebuild(record, output, cache, *, network=False):
                         info.type = tarfile.DIRTYPE
                         archive.addfile(info)
                     elif row["kind"] == "symlink":
-                        if method == "material" and row["path"] not in sources:
+                        if method == "material":
                             raise ValueError("Material members must not be symlinks")
                         link = PurePosixPath(row["target"])
                         if method != "binary" and (link.is_absolute() or ".." in link.parts):
@@ -731,7 +731,7 @@ def rebuild(record, output, cache, *, network=False):
                         info.type, info.linkname = tarfile.SYMTYPE, row["target"]
                         archive.addfile(info)
                     elif row["kind"] == "file":
-                        if method == "material":
+                        if method == "material" and row["path"] not in sources:
                             data = material_member(template, row, binaries)
                             info.size = len(data)
                             archive.addfile(info, io.BytesIO(data))
