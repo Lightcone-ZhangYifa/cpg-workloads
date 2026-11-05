@@ -1,0 +1,226 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_material.py",
+        "--prefix",
+        "{prefix}",
+        "--material-path",
+        "sources/ispc",
+        "--sha",
+        "c482def79abbdb451a30d23f45269492e92d5f5e27497e6a7078fce761097c78",
+        "--bytes",
+        "20203942",
+        "--files",
+        "[\"CMakeLists.txt\", \"LICENSE.txt\", \"README.md\", \"src/main.cpp\"]",
+        "--count",
+        "3355"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "host-static-complete-cpg-material",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "requires_paths": [
+        "{prefix}/sources/ispc"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "ispc",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 20203942,
+      "archive_scope": "Root repository only; recursive Git submodule payloads are excluded.",
+      "category": [
+        "Compilers",
+        "Domain-specific CPU compilers"
+      ],
+      "container_strategy": "Build the selected x86 CPU compiler and runtime/example closure in dev against the tested LLVM tuple; pin target ISA and gang width. Run precompiled objects and C/C++ harnesses on target.",
+      "dependencies": [
+        "apt.bison",
+        "apt.cmake",
+        "apt.flex",
+        "apt.libtbb-dev",
+        "apt.m4",
+        "apt.ninja-build",
+        "apt.python3"
+      ],
+      "deployment": {
+        "adapter": "reference",
+        "configure_argv": [
+          "cmake",
+          "-S",
+          "{source}",
+          "-B",
+          "{build}",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_INSTALL_PREFIX={prefix}",
+          "-DX86_ENABLED=ON",
+          "-DARM_ENABLED=OFF",
+          "-DRISCV_ENABLED=OFF",
+          "-DWASM_ENABLED=OFF",
+          "-DXE_ENABLED=OFF"
+        ],
+        "qualified": false,
+        "smoke_argv": [
+          "{prefix}/bin/ispc",
+          "--version"
+        ],
+        "source_dependencies": [],
+        "system_packages": [
+          "cmake",
+          "ninja-build",
+          "flex",
+          "bison",
+          "python3",
+          "m4",
+          "libtbb-dev"
+        ],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://ispc.github.io/ispc.html",
+        "https://github.com/ispc/ispc/wiki/ISPC-Development-Guide"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/ispc.measurement.json",
+        "workspace-evidence/resources-v050/open-research/ispc.refs.json"
+      ],
+      "extract": true,
+      "id": "ispc",
+      "immutable_ref": "2b17b0ef24032610a56c6214d208e45880b5e5de",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "sources/ispc",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "SPMD vectorization, SIMD code-generation baselines and C/C++ interoperation experiments on the same x86 CPU.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The selected CMake requires LLVM 20 or later, but that minimum does not certify every later LLVM API combination.",
+        "Upstream superbuild/quick-start paths can download patched LLVM; cache and pin that exact closure before experiments.",
+        "SPMD source rewrites change the programming model and must be analyzed as a separate study from unchanged-source general-purpose compiler optimization."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "c482def79abbdb451a30d23f45269492e92d5f5e27497e6a7078fce761097c78",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/ispc/ispc",
+        "https://codeload.github.com/ispc/ispc/tar.gz/2b17b0ef24032610a56c6214d208e45880b5e5de",
+        "https://github.com/ispc/ispc/commit/2b17b0ef24032610a56c6214d208e45880b5e5de"
+      ],
+      "source_logical_bytes": 91268536,
+      "source_url": "https://codeload.github.com/ispc/ispc/tar.gz/2b17b0ef24032610a56c6214d208e45880b5e5de",
+      "title": "ISPC CPU SPMD compiler",
+      "upstream": "https://github.com/ispc/ispc",
+      "version": "v1.32.0"
+    },
+    "catalog_sha256": "3e8d37eaf5c6a9e3fff414fac3a041f85fdcebfa0381926a2ce7f6f2215b83aa"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "reference",
+    "configure_argv": [
+      "cmake",
+      "-S",
+      "{source}",
+      "-B",
+      "{build}",
+      "-G",
+      "Ninja",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_INSTALL_PREFIX={prefix}",
+      "-DX86_ENABLED=ON",
+      "-DARM_ENABLED=OFF",
+      "-DRISCV_ENABLED=OFF",
+      "-DWASM_ENABLED=OFF",
+      "-DXE_ENABLED=OFF"
+    ],
+    "qualified": false,
+    "smoke_argv": [
+      "{prefix}/bin/ispc",
+      "--version"
+    ],
+    "source_dependencies": [],
+    "system_packages": [
+      "cmake",
+      "ninja-build",
+      "flex",
+      "bison",
+      "python3",
+      "m4",
+      "libtbb-dev"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 20203942,
+      "extract": true,
+      "id": "ispc",
+      "material_path": "sources/ispc",
+      "sha256": "c482def79abbdb451a30d23f45269492e92d5f5e27497e6a7078fce761097c78",
+      "strip_root": true,
+      "url": "https://codeload.github.com/ispc/ispc/tar.gz/2b17b0ef24032610a56c6214d208e45880b5e5de"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "debian",
+    "distribution_version": "13",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://ispc.github.io/ispc.html",
+      "https://github.com/ispc/ispc/wiki/ISPC-Development-Guide"
+    ],
+    "examples": [
+      {
+        "command": "'{prefix}/bin/ispc' --version",
+        "description": "Run the recorded version check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/sources/ispc",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+    ],
+    "summary": "SPMD vectorization, SIMD code-generation baselines and C/C++ interoperation experiments on the same x86 CPU."
+  },
+  "version": "v1.32.0"
+}
