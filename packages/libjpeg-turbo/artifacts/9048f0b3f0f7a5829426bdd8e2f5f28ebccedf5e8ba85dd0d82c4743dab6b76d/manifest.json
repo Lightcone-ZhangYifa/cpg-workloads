@@ -1,0 +1,302 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1624,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/api.c",
+      "sha256": "fee095d6a2a857388a5825467bf29b3d79ae47f8e835192c894dd91e3c68eeb5"
+    },
+    {
+      "bytes": 6609,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "95bae5ddc603cb82781ef3f45c0081bd0cf8e810a7d2982bb89f3bcaf3f0f427"
+    },
+    {
+      "bytes": 4826,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "d457027618ed1c3205420dbf204559541e9b9726d2848e929a1346695b7036ff"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 2540379,
+      "kind": "file",
+      "mode": 384,
+      "path": "sources/45209a3f315ed6156dac8d7fa451b8be62d83f2daa5581cb6b94ee9f3f82cf6f",
+      "sha256": "45209a3f315ed6156dac8d7fa451b8be62d83f2daa5581cb6b94ee9f3f82cf6f"
+    }
+  ],
+  "inventory_sha256": "eb179ed28b6a25891221761fbc8da5fc2005055e6647dbf39b4d25dd6cd1b194",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "3fa46087dc1d71f74d237685c18f68f2c386c2fea79d69c38ae58cf371dc0e7b",
+  "method": "source",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "codec-cli-and-c-api",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "gcc"
+        ],
+        "requires_paths": [
+          "{prefix}/lib/libturbojpeg.a",
+          "{prefix}/bin/djpeg"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 300
+      }
+    ],
+    "dependencies": {
+      "build": [
+        "apt.cmake",
+        "apt.ninja-build"
+      ],
+      "run": [],
+      "system": [
+        "apt.g++",
+        "apt.python3"
+      ]
+    },
+    "id": "libjpeg-turbo",
+    "metadata": {
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": 2540379,
+        "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+        "category": [
+          "Workloads",
+          "Applications and libraries",
+          "Media"
+        ],
+        "container_strategy": "Build with pinned NASM and declared SIMD settings in dev; execute deterministic image bundles and validation on target.",
+        "corpus_contract": {
+          "code": "Codec and tests included.",
+          "inputs": "Included samples plus a separately licensed image corpus.",
+          "oracle": "Decode/encode conformance and declared numerical tolerances.",
+          "split_unit": "Codec family; input content families are a separate axis."
+        },
+        "dependencies": [],
+        "deployment": {
+          "adapter": "corpus",
+          "qualified": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/libjpeg-turbo/libjpeg-turbo"
+        ],
+        "evidence_files": [
+          "workspace-evidence/resources-v050/open-research/libjpeg-turbo.measurement.json",
+          "workspace-evidence/resources-v050/open-research/libjpeg-turbo.refs.json"
+        ],
+        "extract": true,
+        "id": "libjpeg-turbo",
+        "immutable_ref": "c85e6b905bf237038faa936dab160ebfc5da0344",
+        "kind": "dataset",
+        "license_class": "open",
+        "license_id": "IJG AND BSD-3-Clause",
+        "mandatory": false,
+        "material_path": "corpora/libjpeg-turbo",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Image codec loops, integer arithmetic, memory access and SIMD dispatch coverage.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "JPEG is lossy; correctness needs fixed codec settings and a defined decoded-image/quality contract.",
+          "Image corpus licenses and external reference decoders are separate resources."
+        ],
+        "redistributable": true,
+        "roles": [
+          "host"
+        ],
+        "sha256": "45209a3f315ed6156dac8d7fa451b8be62d83f2daa5581cb6b94ee9f3f82cf6f",
+        "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+        "source_evidence": [
+          "https://github.com/libjpeg-turbo/libjpeg-turbo",
+          "https://codeload.github.com/libjpeg-turbo/libjpeg-turbo/tar.gz/c85e6b905bf237038faa936dab160ebfc5da0344",
+          "https://github.com/libjpeg-turbo/libjpeg-turbo/commit/c85e6b905bf237038faa936dab160ebfc5da0344"
+        ],
+        "source_logical_bytes": 9246273,
+        "source_url": "https://codeload.github.com/libjpeg-turbo/libjpeg-turbo/tar.gz/c85e6b905bf237038faa936dab160ebfc5da0344",
+        "title": "libjpeg-turbo image codec workload",
+        "upstream": "https://github.com/libjpeg-turbo/libjpeg-turbo",
+        "version": "3.2.0"
+      },
+      "catalog_sha256": "05c43daada2f2c042fa0d944dcf6a296e465d931cf99c5fef075ddd295b9f2db"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "cmake",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/build.py",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "qualified": false,
+      "required_installed_paths": [
+        "{prefix}/lib/libjpeg.a",
+        "{prefix}/lib/libjpeg.so",
+        "{prefix}/lib/libturbojpeg.a",
+        "{prefix}/lib/libturbojpeg.so",
+        "{prefix}/include/turbojpeg.h",
+        "{prefix}/bin/cjpeg",
+        "{prefix}/bin/djpeg",
+        "{prefix}/bin/jpegtran",
+        "{prefix}/share/libjpeg-turbo/source/README.ijg"
+      ],
+      "source_dependencies": [],
+      "system_packages": [
+        "cmake",
+        "ninja-build",
+        "g++"
+      ],
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 2540379,
+        "extract": true,
+        "id": "libjpeg-turbo",
+        "material_path": "corpora/libjpeg-turbo",
+        "sha256": "45209a3f315ed6156dac8d7fa451b8be62d83f2daa5581cb6b94ee9f3f82cf6f",
+        "strip_root": true,
+        "url": "https://codeload.github.com/libjpeg-turbo/libjpeg-turbo/tar.gz/c85e6b905bf237038faa936dab160ebfc5da0344"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Query cpg packages paths libjpeg-turbo for the selected independent prefix. Optionally add its bin directory to PATH and lib/pkgconfig to PKG_CONFIG_PATH.",
+        "Programs use a relative runtime library search path; no global ldconfig or LD_PRELOAD is required."
+      ],
+      "documentation": [
+        "https://github.com/libjpeg-turbo/libjpeg-turbo"
+      ],
+      "examples": [
+        {
+          "command": "'{prefix}/bin/cjpeg' -quality 95 -outfile image.jpg image.ppm",
+          "description": "Encode a PPM image with explicit JPEG quality."
+        },
+        {
+          "command": "'{prefix}/bin/djpeg' -ppm -outfile image.ppm image.jpg",
+          "description": "Decode JPEG to PPM."
+        },
+        {
+          "command": "'{prefix}/bin/jpegtran' -rotate 90 -outfile rotated.jpg image.jpg",
+          "description": "Lossless JPEG transform, subject to the upstream MCU boundary rules."
+        },
+        {
+          "command": "gcc -I'{prefix}/include' app.c '{prefix}/lib/libturbojpeg.a' -lm -o app",
+          "description": "Link an application to the static TurboJPEG API."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Codec tools",
+          "path": "{prefix}/bin",
+          "purpose": "cjpeg, djpeg, jpegtran, tjbench, rdjpgcom and wrjpgcom."
+        },
+        {
+          "label": "Libraries and headers",
+          "path": "{prefix}/lib",
+          "purpose": "Shared and static libjpeg v6b and TurboJPEG libraries; headers are in ../include."
+        },
+        {
+          "label": "Complete original source",
+          "path": "{prefix}/share/libjpeg-turbo/source",
+          "purpose": "All original codec, SIMD, test image, JNA, documentation and bundled dependency sources."
+        },
+        {
+          "label": "Profile and upstream test results",
+          "path": "{prefix}/share/compiler-playground/libjpeg-turbo",
+          "purpose": "Declared feature profile, full CTest JUnit and build logs."
+        }
+      ],
+      "notes": [
+        "The profile explicitly disables NASM/Yasm SIMD because no pinned assembler exists in the current catalog. Complete original SIMD sources remain available; no SIMD performance qualification is claimed.",
+        "Shared and static libraries, TurboJPEG, CLI tools, arithmetic coding, bundled PNG/zlib and the complete upstream CTest matrix are built. Java/JNA and fuzz targets are not enabled.",
+        "JPEG is lossy. Installed probes use explicit color tolerance; lossless transforms are checked separately. These checks are not an official compiler Benchmark score.",
+        "The original raw-material profile remains in material-profile.json. Its full original source archive and metadata.catalog are unchanged.",
+        "pkg-config prefixes use ${pcfiledir}/../..; binary relocation is qualified only by the recorded independent prefixes and same target runtime ABI.",
+        "Upstream forces absolute ELF RUNPATHs. The recipe uses CMake file(RPATH_CHANGE) after installation to replace that exact field with $ORIGIN/../lib for tools and $ORIGIN for libraries, records readelf before/after, and checks independent binary prefixes. Original upstream source and codec instructions are unchanged."
+      ],
+      "summary": "JPEG codec, TurboJPEG C API, shared/static libraries, CLI tools and full original source. Explicit scalar profile."
+    },
+    "version": "3.2.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "62ff2cdd477ab52100f4c5160fe4ec311eff9f1b681f9928084f54f5f95115eb",
+    "profile": "Complete source recipe and installed functional checks",
+    "source_locks": [
+      {
+        "bytes": 2540379,
+        "extract": true,
+        "id": "libjpeg-turbo",
+        "material_path": "corpora/libjpeg-turbo",
+        "sha256": "45209a3f315ed6156dac8d7fa451b8be62d83f2daa5581cb6b94ee9f3f82cf6f",
+        "strip_root": true,
+        "url": "https://codeload.github.com/libjpeg-turbo/libjpeg-turbo/tar.gz/c85e6b905bf237038faa936dab160ebfc5da0344"
+      }
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "libjpeg-turbo",
+      "path": "sources/45209a3f315ed6156dac8d7fa451b8be62d83f2daa5581cb6b94ee9f3f82cf6f"
+    }
+  ]
+}

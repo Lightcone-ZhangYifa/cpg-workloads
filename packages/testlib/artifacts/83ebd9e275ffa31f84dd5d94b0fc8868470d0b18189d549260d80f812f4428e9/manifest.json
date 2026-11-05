@@ -1,0 +1,354 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1691,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "16e63ce88f390ba81e86a4450a14885902c025c08333e0b8967cc59f3bcb8fe4"
+    },
+    {
+      "bytes": 6900,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "a565162a9a882ec1c6a6150484763b9424beb38592ce90fd0763989ebcbebd77"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 124110,
+      "kind": "file",
+      "mode": 384,
+      "path": "sources/e6b5de6c4b1e06985f841a253e5988ad0848ec87193e54218202290b56b8e199",
+      "sha256": "e6b5de6c4b1e06985f841a253e5988ad0848ec87193e54218202290b56b8e199"
+    }
+  ],
+  "inventory_sha256": "54f241d90ae435b8c7b51f2e79cd7b19fac287acd52bae3891818baba98245c4",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "d1f5d57b3172037713f606de227b50dfbeb6acdaa1208ab2144405dac14a24e5",
+  "method": "source",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--case",
+          "interfaces-and-rejection"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "interfaces-and-rejection",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "g++",
+          "bash"
+        ],
+        "requires_paths": [
+          "{prefix}/include/testlib.h",
+          "{prefix}/share/testlib/source/tests/test-004_use-test.h/run.sh"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 300
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--case",
+          "upstream-native-regression"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "upstream-native-regression",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "g++",
+          "bash"
+        ],
+        "requires_paths": [
+          "{prefix}/include/testlib.h",
+          "{prefix}/share/testlib/source/tests/test-004_use-test.h/run.sh"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 300
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.g++",
+        "apt.python3"
+      ]
+    },
+    "id": "testlib",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 124110,
+        "category": [
+          "Data generation and correctness",
+          "Competitive programming"
+        ],
+        "container_strategy": "Preserve the entire source, examples, tests and notices; export include/testlib.h in an independent dev prefix. Build native checker, validator and deterministic-generator smoke examples during initialization. Transfer only admitted prebuilt executables to target.",
+        "dependencies": [
+          "apt.g++",
+          "apt.python3"
+        ],
+        "deployment": {
+          "adapter": "commands",
+          "apt_dependencies": {
+            "dev": [
+              "g++",
+              "python3"
+            ]
+          },
+          "commands": [
+            [
+              "python3",
+              "{tools}/testlib-resource.py",
+              "install",
+              "--source",
+              "{source}",
+              "--prefix",
+              "{prefix}"
+            ]
+          ],
+          "required_installed_paths": [
+            "{prefix}/include/testlib.h",
+            "{prefix}/LICENSE",
+            "{prefix}/share/testlib/source/tests/run.sh",
+            "{prefix}/share/testlib/source/generators/igen.cpp",
+            "{prefix}/share/testlib/source/validators/ival.cpp",
+            "{prefix}/share/testlib/source/checkers/icmp.cpp"
+          ],
+          "smoke_argv": [
+            "python3",
+            "{tools}/testlib-resource.py",
+            "smoke",
+            "--prefix",
+            "{prefix}",
+            "--build",
+            "{build}"
+          ],
+          "state": "complete-source-and-local-selected-recipe-smoke-passed; OCI-unqualified"
+        },
+        "documentation": [
+          "https://github.com/MikeMirzayanov/testlib",
+          "https://github.com/MikeMirzayanov/testlib/blob/1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd/tests/README.md"
+        ],
+        "extract": true,
+        "id": "testlib",
+        "immutable_ref": "1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd",
+        "installed_bytes": null,
+        "kind": "source_archive",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "material_path": "sources/testlib",
+        "native_probe": {
+          "installed_size": {
+            "allocated_bytes": 3076096,
+            "allocated_scope": "Unique-inode st_blocks * 512 attribution; shared reflink extents are not deduplicated.",
+            "directory_count": 187,
+            "file_size_inventory_sha256": "4ee0c436af264ded4aface5f57747bb7d6da071ff6412a7634834a8b67172fc8",
+            "logical_file_bytes": 757850,
+            "regular_file_count": 523,
+            "root": "/workspace/scratch/b5a92fe24c26/workspace-evidence/datasets-v0100/testlib-resource/recipe-probe-final/prefix/testlib",
+            "root_directory_included": true,
+            "schema_version": 1,
+            "scope": "One quiescent filesystem tree including its root, no symlink traversal, hardlinks counted once; no OCI sharing or transient peak inferred.",
+            "special_paths": [],
+            "stable_during_scan": true,
+            "symlink_count": 0
+          },
+          "qualification_scope": "Only the recorded commands and required files; complete feature, corpus and physical target qualification remain separate.",
+          "receipt": "workspace-evidence/datasets-v0100/testlib-resource/recipe-probe-final/receipts/testlib.json",
+          "status": "installed-and-declared-smokes-passed"
+        },
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Prepare problem-specific input generators, validators and output checkers used by CodeContests+ and admitted contest corpora.",
+        "qualification_gaps": [
+          "The declared example smoke does not qualify the full upstream compiler/standard matrix or every corpus problem.",
+          "Actual OCI and physical-target qualification remains independent."
+        ],
+        "redistributable": "retain-copyright-and-license",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "e6b5de6c4b1e06985f841a253e5988ad0848ec87193e54218202290b56b8e199",
+        "size_basis": "Actual complete source archive, all 521 upstream files and their summed logical bytes. Installed bytes are a separate native receipt, not an OCI layer estimate.",
+        "source_evidence": [
+          "workspace-evidence/datasets-v0100/testlib-resource/acquisition.json"
+        ],
+        "source_logical_bytes": 550300,
+        "source_url": "https://codeload.github.com/MikeMirzayanov/testlib/tar.gz/1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd",
+        "strip_archive_root": true,
+        "title": "testlib C++ checkers, validators and generators",
+        "upstream": "https://github.com/MikeMirzayanov/testlib",
+        "version": "git:1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd"
+      },
+      "catalog_sha256": "9495fc6624951d1057c742dafcef7f817af08a37532436eadd6007710ad7c313"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "apt_dependencies": {
+        "dev": [
+          "g++",
+          "python3"
+        ]
+      },
+      "commands": [
+        [
+          "python3",
+          "{recipe}/build.py",
+          "--source",
+          "{source}",
+          "--prefix",
+          "{prefix}"
+        ]
+      ],
+      "required_installed_paths": [
+        "{prefix}/include/testlib.h",
+        "{prefix}/LICENSE",
+        "{prefix}/share/testlib/source/tests/run.sh",
+        "{prefix}/share/testlib/source/generators/igen.cpp",
+        "{prefix}/share/testlib/source/validators/ival.cpp",
+        "{prefix}/share/testlib/source/checkers/icmp.cpp"
+      ],
+      "smoke_argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--case",
+        "interfaces-and-rejection"
+      ],
+      "state": "complete-source-and-local-selected-recipe-smoke-passed; OCI-unqualified"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 124110,
+        "extract": true,
+        "id": "testlib",
+        "material_path": "sources/testlib",
+        "sha256": "e6b5de6c4b1e06985f841a253e5988ad0848ec87193e54218202290b56b8e199",
+        "strip_root": true,
+        "url": "https://codeload.github.com/MikeMirzayanov/testlib/tar.gz/1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/MikeMirzayanov/testlib",
+        "https://github.com/MikeMirzayanov/testlib/blob/1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd/tests/README.md"
+      ],
+      "examples": [
+        {
+          "command": "'{prefix}/bin/testlib-igen' 17",
+          "description": "Generate one integer in [1, 1000000]; the same complete argument list gives the same deterministic seed."
+        },
+        {
+          "command": "printf '7\\n' | '{prefix}/bin/testlib-ival'",
+          "description": "Validate one integer in [1, 100], one end-of-line and end-of-file; malformed data must fail."
+        },
+        {
+          "command": "'{prefix}/bin/testlib-icmp' input.txt output.txt answer.txt",
+          "description": "Compare the contestant integer with the reference answer; output and reference are separate arguments."
+        },
+        {
+          "command": "g++ -std=c++17 -O2 -I'{prefix}/include' checker.cpp -o checker",
+          "description": "Compile a task-specific checker against this exact header."
+        },
+        {
+          "command": "python3 '{recipe}/check.py' --prefix '{prefix}' --case upstream-native-regression",
+          "description": "Run the unmodified native test-004 with its committed expected outputs and reference generation explicitly forbidden."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Public header",
+          "path": "{prefix}/include/testlib.h",
+          "purpose": "Include from C++ generators, validators, checkers and interactors."
+        },
+        {
+          "label": "Upstream executable examples",
+          "path": "{prefix}/bin",
+          "purpose": "testlib-igen, testlib-ival and testlib-icmp compiled from the locked unmodified examples."
+        },
+        {
+          "label": "Complete upstream source and tests",
+          "path": "{prefix}/share/testlib/source",
+          "purpose": "All generators, validators, checkers, interactors, expected test outputs and upstream test scripts."
+        },
+        {
+          "label": "Self-contained checks",
+          "path": "{prefix}/share/compiler-playground/testlib",
+          "purpose": "Repeat package checks without the build directory."
+        }
+      ],
+      "notes": [
+        "The new source/binary package builds three unmodified upstream examples. Legacy selector installations retain the same header/source layout; their checks compile temporary examples when no new package-profile marker exists.",
+        "The original metadata.catalog, source identity and selector/target contract are retained. This resource does not impose data exposure policy on developers.",
+        "Selected regression qualification is GCC C++17 on Ubuntu 24.04 x86_64. The full upstream multi-compiler, multi-standard and Java-assisted runner is available in the retained source and is not claimed as executed.",
+        "Checker/validator return codes are tested using valid input, out-of-range input, missing EOLN, wrong answer, malformed output and malformed reference. A passing package check is not a qualification of every downstream problem-specific checker."
+      ],
+      "summary": "Prepare problem-specific input generators, validators and output checkers used by CodeContests+ and admitted contest corpora."
+    },
+    "version": "git:1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "cea854d4c80ffc121f9067fb3a4474a45a886f1dfc9941f5cbb94974c07fe90d",
+    "profile": "Complete source recipe and installed functional checks",
+    "source_locks": [
+      {
+        "bytes": 124110,
+        "extract": true,
+        "id": "testlib",
+        "material_path": "sources/testlib",
+        "sha256": "e6b5de6c4b1e06985f841a253e5988ad0848ec87193e54218202290b56b8e199",
+        "strip_root": true,
+        "url": "https://codeload.github.com/MikeMirzayanov/testlib/tar.gz/1e4e8a24c79c6bad3becbdb5a332ffc352b7d5dd"
+      }
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "testlib",
+      "path": "sources/e6b5de6c4b1e06985f841a253e5988ad0848ec87193e54218202290b56b8e199"
+    }
+  ]
+}

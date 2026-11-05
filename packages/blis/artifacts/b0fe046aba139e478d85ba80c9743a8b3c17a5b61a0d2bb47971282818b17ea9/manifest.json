@@ -1,0 +1,320 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2561,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/api.c",
+      "sha256": "d9e3e7efeb06963796e63a4e88192291dda46c4c3e4bd4d39c159f5a735aa446"
+    },
+    {
+      "bytes": 5684,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "a5eb568eab2d05b64b6de1c950029a75dd281fe1926960b77182dc67f211e927"
+    },
+    {
+      "bytes": 4554,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "12702a36c1f2e73a6fa4107f54aaab12e608eff3e3c32b321b97fe7badeff3c4"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 15765479,
+      "kind": "file",
+      "mode": 384,
+      "path": "sources/065c34df94da95c23a3a857461e6a1387af709abfeba0af86b1dfb6cdc617f65",
+      "sha256": "065c34df94da95c23a3a857461e6a1387af709abfeba0af86b1dfb6cdc617f65"
+    }
+  ],
+  "inventory_sha256": "734c3c3bdfaa8fbd47816e756c8fbb3d37f287f7768b4d78814223a391dcdf06",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "661f56637f575a527482a55052458dcd44e8f18884dd147cd709bfb21356fa8a",
+  "method": "source",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "upstream"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "blis-upstream",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "gcc"
+        ],
+        "requires_paths": [
+          "{prefix}/lib/libblis.a",
+          "{prefix}/include/blis/blis.h"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 900
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "api"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "blis-api",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "gcc"
+        ],
+        "requires_paths": [
+          "{prefix}/lib/libblis.a",
+          "{prefix}/include/blis/blis.h"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 900
+      }
+    ],
+    "dependencies": {
+      "build": [
+        "apt.make"
+      ],
+      "run": [],
+      "system": [
+        "apt.g++",
+        "apt.python3"
+      ]
+    },
+    "id": "blis",
+    "metadata": {
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": 15765479,
+        "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+        "category": [
+          "Workloads",
+          "Applications and libraries",
+          "SIMD and numerics"
+        ],
+        "container_strategy": "Build a declared target configuration in dev; keep generic C and tuned assembly paths as separate strata and freeze threading.",
+        "corpus_contract": {
+          "code": "Library and tests included.",
+          "inputs": "Seeded matrices with frozen shapes, strides and layouts.",
+          "oracle": "Residual/error checks against an independent BLAS/reference implementation.",
+          "split_unit": "Operation/kernel family across shapes and implementations."
+        },
+        "dependencies": [],
+        "deployment": {
+          "adapter": "corpus",
+          "qualified": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/flame/blis"
+        ],
+        "evidence_files": [
+          "workspace-evidence/resources-v050/open-research/blis.measurement.json",
+          "workspace-evidence/resources-v050/open-research/blis.refs.json"
+        ],
+        "extract": true,
+        "id": "blis",
+        "immutable_ref": "caf0db6be1202d9c83c79b51e75eceb96aa8b556",
+        "kind": "dataset",
+        "license_class": "open",
+        "license_id": "BSD-3-Clause",
+        "mandatory": false,
+        "material_path": "corpora/blis",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Dense linear algebra, blocking, packing, compiler/assembly interaction and threading diagnostics.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Hand-tuned microkernels and algorithmic blocking choices must not be attributed entirely to compiler optimization."
+        ],
+        "redistributable": true,
+        "roles": [
+          "host"
+        ],
+        "sha256": "065c34df94da95c23a3a857461e6a1387af709abfeba0af86b1dfb6cdc617f65",
+        "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+        "source_evidence": [
+          "https://github.com/flame/blis",
+          "https://codeload.github.com/flame/blis/tar.gz/caf0db6be1202d9c83c79b51e75eceb96aa8b556",
+          "https://github.com/flame/blis/commit/caf0db6be1202d9c83c79b51e75eceb96aa8b556"
+        ],
+        "source_logical_bytes": 37151724,
+        "source_url": "https://codeload.github.com/flame/blis/tar.gz/caf0db6be1202d9c83c79b51e75eceb96aa8b556",
+        "title": "BLIS linear algebra workload",
+        "upstream": "https://github.com/flame/blis",
+        "version": "2.1"
+      },
+      "catalog_sha256": "759056b163bb3b201788b5dd75557caa38a046e73bb6541ea5265402deb14117"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "configure-make",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/build.py",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "qualified": false,
+      "required_installed_paths": [
+        "{prefix}/lib/libblis.so",
+        "{prefix}/lib/libblis.a",
+        "{prefix}/include/blis/blis.h",
+        "{prefix}/lib/pkgconfig/blis.pc",
+        "{prefix}/libexec/blis/test_libblis.x",
+        "{prefix}/share/blis/source/LICENSE"
+      ],
+      "source_dependencies": [],
+      "system_packages": [
+        "make",
+        "g++"
+      ],
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 15765479,
+        "extract": true,
+        "id": "blis",
+        "material_path": "corpora/blis",
+        "sha256": "065c34df94da95c23a3a857461e6a1387af709abfeba0af86b1dfb6cdc617f65",
+        "strip_root": true,
+        "url": "https://codeload.github.com/flame/blis/tar.gz/caf0db6be1202d9c83c79b51e75eceb96aa8b556"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Query cpg packages paths blis and use the selected include/blis and lib directories. Avoid mixing incompatible BLAS libraries in one link.",
+        "Set BLIS_NUM_THREADS explicitly for experiments, or call bli_thread_set_num_threads(); BLIS_THREAD_IMPL=pthreads selects this profile's parallel implementation.",
+        "Optional PKG_CONFIG_PATH=<prefix>/lib/pkgconfig enables pkg-config --cflags --libs blis."
+      ],
+      "documentation": [
+        "https://github.com/flame/blis"
+      ],
+      "examples": [
+        {
+          "command": "gcc -I'{prefix}/include/blis' app.c '{prefix}/lib/libblis.a' -pthread -lm -o app",
+          "description": "Link a BLIS/CBLAS application against the static library."
+        },
+        {
+          "command": "BLIS_NUM_THREADS=2 BLIS_THREAD_IMPL=pthreads ./app",
+          "description": "Explicitly choose two BLIS threads; execution scaling still needs measurement on your machine."
+        },
+        {
+          "command": "PKG_CONFIG_PATH='{prefix}/lib/pkgconfig' pkg-config --cflags --libs blis",
+          "description": "Resolve this independent installation's headers and shared library."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Public APIs",
+          "path": "{prefix}/include/blis",
+          "purpose": "BLIS native APIs and CBLAS declarations."
+        },
+        {
+          "label": "Shared/static libraries",
+          "path": "{prefix}/lib",
+          "purpose": "libblis.so, libblis.a and location-relative pkg-config metadata."
+        },
+        {
+          "label": "Original numerical tests",
+          "path": "{prefix}/libexec/blis",
+          "purpose": "Original test_libblis.x; package checks provide exact input files and a local library path."
+        },
+        {
+          "label": "Complete original source",
+          "path": "{prefix}/share/blis/source",
+          "purpose": "All original optimized architecture kernels, configuration families, input matrices, tests and documentation."
+        }
+      ],
+      "notes": [
+        "The qualified binary uses the generic C configuration, BLAS 32-bit integers, CBLAS enabled, pthreads plus single-thread runtime, and both shared/static libraries. Tuned architecture configurations remain in complete source but are not claimed as built by this profile.",
+        "The original fast BLIS numerical matrix and all twelve original BLAS test drivers run. Validation scripts are invoked directly because upstream make check ignores their error exit codes.",
+        "Fresh shared/static consumers compare 216 double GEMM shape/transpose/stride/thread-setting cases with a long-double scalar oracle, plus strided BLAS1 and native typed APIs. These are functionality checks, not performance scores.",
+        "BLIS_NUM_THREADS is controlled explicitly. OpenMP/HPX threading, full-size/mixed-domain/application-threaded upstream matrices and cross-platform qualification are not claimed.",
+        "The original material profile and source locks are preserved. Installed pkg-config paths are relative; upstream make metadata remains available with its original configured context."
+      ],
+      "summary": "BLIS generic portable C kernels, shared/static BLAS and CBLAS, native typed/object APIs and explicit pthread threading."
+    },
+    "version": "2.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "496ea1972276e27465aacf401adc7487d7cb62b01785c870dcd3c2e693c7962f",
+    "profile": "Complete source recipe and installed functional checks",
+    "source_locks": [
+      {
+        "bytes": 15765479,
+        "extract": true,
+        "id": "blis",
+        "material_path": "corpora/blis",
+        "sha256": "065c34df94da95c23a3a857461e6a1387af709abfeba0af86b1dfb6cdc617f65",
+        "strip_root": true,
+        "url": "https://codeload.github.com/flame/blis/tar.gz/caf0db6be1202d9c83c79b51e75eceb96aa8b556"
+      }
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "blis",
+      "path": "sources/065c34df94da95c23a3a857461e6a1387af709abfeba0af86b1dfb6cdc617f65"
+    }
+  ]
+}

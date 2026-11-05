@@ -1,0 +1,322 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2119,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/api.cpp",
+      "sha256": "0dc25a00d1a46991df4d0c5bc305cb8f97bcee2c23c0b66da79564fc35ef0b2e"
+    },
+    {
+      "bytes": 4149,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "7144a70656620f7a9e17b8f20c94817f3287fe1d29a34229c368222beb2d09e5"
+    },
+    {
+      "bytes": 5033,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "1f53cc0c209e3510fa51c30d9dff8c2f775edec38ccda9a9948a79656bd01b62"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 3692133,
+      "kind": "file",
+      "mode": 384,
+      "path": "sources/741d705781e0b3e406beda8f1f994fbae01321237ce8023a1ad90fbaf7940c25",
+      "sha256": "741d705781e0b3e406beda8f1f994fbae01321237ce8023a1ad90fbaf7940c25"
+    }
+  ],
+  "inventory_sha256": "e7a9936dd2544edb8c4e6a53e957991b1b8500b7ffac7279b16612609aad9d17",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "95833ccd714904435191232735fd8eaac6a234f7453fe9bc50c91fd489479e95",
+  "method": "source",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "upstream"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "highway-upstream",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "g++"
+        ],
+        "requires_paths": [
+          "{prefix}/lib/libhwy.a",
+          "{prefix}/include/hwy/highway.h"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 900
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "api"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "highway-api",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "g++"
+        ],
+        "requires_paths": [
+          "{prefix}/lib/libhwy.a",
+          "{prefix}/include/hwy/highway.h"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 900
+      }
+    ],
+    "dependencies": {
+      "build": [
+        "apt.cmake",
+        "apt.ninja-build"
+      ],
+      "run": [],
+      "system": [
+        "apt.g++",
+        "apt.python3"
+      ]
+    },
+    "id": "highway",
+    "metadata": {
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": 3692133,
+        "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+        "category": [
+          "Workloads",
+          "Applications and libraries",
+          "SIMD and numerics"
+        ],
+        "container_strategy": "Build tests and benchmarks for declared target variants in dev; freeze dispatch and validate outputs on target.",
+        "corpus_contract": {
+          "code": "SIMD library and algorithm/tests included.",
+          "inputs": "Parameterized deterministic arrays and distributions.",
+          "oracle": "Scalar reference and upstream tests with explicit numeric tolerance.",
+          "split_unit": "Algorithm family across ISA implementations."
+        },
+        "dependencies": [],
+        "deployment": {
+          "adapter": "corpus",
+          "qualified": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/google/highway"
+        ],
+        "evidence_files": [
+          "workspace-evidence/resources-v050/open-research/highway.measurement.json",
+          "workspace-evidence/resources-v050/open-research/highway.refs.json"
+        ],
+        "extract": true,
+        "id": "highway",
+        "immutable_ref": "2607d3b5b0113992fe84d3848859eae13b3b52c1",
+        "kind": "dataset",
+        "license_class": "open",
+        "license_id": "(Apache-2.0 OR BSD-3-Clause) AND CC0-1.0",
+        "mandatory": false,
+        "material_path": "corpora/highway",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Portable SIMD code generation and dispatch diagnostics spanning x86 vector widths.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "GoogleTest and any external benchmark closure must be locked; ISA variants of one algorithm are not independent corpus families."
+        ],
+        "redistributable": true,
+        "roles": [
+          "host"
+        ],
+        "sha256": "741d705781e0b3e406beda8f1f994fbae01321237ce8023a1ad90fbaf7940c25",
+        "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+        "source_evidence": [
+          "https://github.com/google/highway",
+          "https://codeload.github.com/google/highway/tar.gz/2607d3b5b0113992fe84d3848859eae13b3b52c1",
+          "https://github.com/google/highway/commit/2607d3b5b0113992fe84d3848859eae13b3b52c1"
+        ],
+        "source_logical_bytes": 9489471,
+        "source_url": "https://codeload.github.com/google/highway/tar.gz/2607d3b5b0113992fe84d3848859eae13b3b52c1",
+        "title": "Highway portable SIMD library",
+        "upstream": "https://github.com/google/highway",
+        "version": "1.4.0"
+      },
+      "catalog_sha256": "e27accd9a09a384e69b38b63c5ec84a7b89c07f100e9eedd5f081bcd9a0475b3"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "cmake",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/build.py",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "qualified": false,
+      "required_installed_paths": [
+        "{prefix}/lib/libhwy.so",
+        "{prefix}/lib/libhwy.a",
+        "{prefix}/lib/libhwy_contrib.so",
+        "{prefix}/lib/libhwy_contrib.a",
+        "{prefix}/include/hwy/highway.h",
+        "{prefix}/lib/cmake/hwy/hwy-config.cmake",
+        "{prefix}/share/highway/source/LICENSE"
+      ],
+      "source_dependencies": [],
+      "system_packages": [
+        "cmake",
+        "ninja-build",
+        "g++"
+      ],
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 3692133,
+        "extract": true,
+        "id": "highway",
+        "material_path": "corpora/highway",
+        "sha256": "741d705781e0b3e406beda8f1f994fbae01321237ce8023a1ad90fbaf7940c25",
+        "strip_root": true,
+        "url": "https://codeload.github.com/google/highway/tar.gz/2607d3b5b0113992fe84d3848859eae13b3b52c1"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Use cpg packages paths highway to locate your independent prefix. Include its include directory and link the selected shared or static library.",
+        "CMake find_package(hwy CONFIG REQUIRED) exposes the shared installed targets; static archives are also installed for explicit linking."
+      ],
+      "documentation": [
+        "https://github.com/google/highway"
+      ],
+      "examples": [
+        {
+          "command": "g++ -std=c++17 -I'{prefix}/include' app.cpp '{prefix}/lib/libhwy.a' -pthread -o app",
+          "description": "Link a standalone static Highway consumer."
+        },
+        {
+          "command": "cmake -S . -B build -DCMAKE_PREFIX_PATH='{prefix}'",
+          "description": "Use find_package(hwy CONFIG REQUIRED) and the hwy::hwy target."
+        },
+        {
+          "command": "python3 '{recipe}/check.py' --prefix '{prefix}' --case api",
+          "description": "Compile shared/static consumers and check exact arithmetic, unaligned accesses and guard regions for every supported generated target."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Public and contrib headers",
+          "path": "{prefix}/include/hwy",
+          "purpose": "Portable SIMD operations, target dispatch, data structures and contributed algorithms."
+        },
+        {
+          "label": "Libraries and CMake/pkg-config metadata",
+          "path": "{prefix}/lib",
+          "purpose": "Shared and static hwy, hwy_contrib and hwy_test libraries."
+        },
+        {
+          "label": "Upstream standalone test programs",
+          "path": "{prefix}/libexec/highway",
+          "purpose": "Fifteen exact upstream test executables with original assertions and runtime target selection."
+        },
+        {
+          "label": "Complete original source",
+          "path": "{prefix}/share/highway/source",
+          "purpose": "All original code, examples, full test matrix, target implementations and documentation."
+        }
+      ],
+      "notes": [
+        "The upstream HWY_TEST_STANDALONE mode avoids an implicit GoogleTest download. Fifteen selected upstream test executables must execute every listed case; the rest of the upstream test matrix remains available as source.",
+        "Both shared and static libraries and the contributed algorithms are provided. Static upstream test programs are independent of the original build directory.",
+        "Do not set a test override to an instruction set unsupported by your CPU. The installed probe enumerates actual supported generated targets before testing each dispatch path.",
+        "The profile retains runtime SIMD dispatch. Functional tests and test timings are not official compiler Benchmark scores or physical PMU qualification.",
+        "Original material profile and source locks are retained. The ordinary source is unmodified; installed pkg-config prefixes are made relative to their metadata directory."
+      ],
+      "summary": "Highway portable SIMD library with shared/static hwy, contrib and test-support libraries, runtime dispatch and complete source."
+    },
+    "version": "1.4.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "ed30479a86d3be7533000f510cee588d82ddfdce9f32d3c45beb5d8bb88bc9f4",
+    "profile": "Complete source recipe and installed functional checks",
+    "source_locks": [
+      {
+        "bytes": 3692133,
+        "extract": true,
+        "id": "highway",
+        "material_path": "corpora/highway",
+        "sha256": "741d705781e0b3e406beda8f1f994fbae01321237ce8023a1ad90fbaf7940c25",
+        "strip_root": true,
+        "url": "https://codeload.github.com/google/highway/tar.gz/2607d3b5b0113992fe84d3848859eae13b3b52c1"
+      }
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "highway",
+      "path": "sources/741d705781e0b3e406beda8f1f994fbae01321237ce8023a1ad90fbaf7940c25"
+    }
+  ]
+}
