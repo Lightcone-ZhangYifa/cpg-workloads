@@ -1,0 +1,628 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 521,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "8902863b7f796ef9177959420a4962f81bce4300e5e0cce5c68bcedba195f26b"
+    },
+    {
+      "bytes": 11436,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_v02112.py",
+      "sha256": "6f24a1c46148fdbbf65f20b714ad2c7a30f8eae981e886316f768064cc0afada"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    },
+    {
+      "bytes": 7499,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/tensorboard_wire.py",
+      "sha256": "0c0be0d67dd6fff81dca6477f1394fdb68a38eee50fbcb3efce526642ab015f4"
+    }
+  ],
+  "inventory_sha256": "2a131a2dc29c29689ac6a94036c6cb7b5196cd2f58c0b2f6a75949787bd90f1a",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "3543c94010fd30070c1d33c6ab70bf706fe068e093f6d2c343aa01ed1dd19dfd",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-installed-version",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.jupyter-client",
+        "py.jupyter-core",
+        "py.nbformat",
+        "py.traitlets"
+      ],
+      "system": []
+    },
+    "id": "py.nbclient",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 25288,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.jupyter-client",
+          "py.jupyter-core",
+          "py.nbformat",
+          "py.traitlets"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/nbclient/"
+        ],
+        "id": "py.nbclient",
+        "immutable_ref": "sha256:ef7fa0d59d6e1d41103933d8a445a18d5de860ca6b613b87b8574accdb3c2895",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "LicenseRef-Python-distribution-notices",
+        "mandatory": false,
+        "material_path": "wheels/nbclient-0.11.0-py3-none-any.whl",
+        "package_name": "nbclient",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "ef7fa0d59d6e1d41103933d8a445a18d5de860ca6b613b87b8574accdb3c2895",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/nbclient/0.11.0/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/36/c9/94d73e5a01c5b926c3fa2496e97d7a8dc28ed5a77c0b2ed712f1a62e6694/nbclient-0.11.0-py3-none-any.whl",
+        "title": "nbclient",
+        "upstream": "https://pypi.org/project/nbclient/0.11.0/",
+        "version": "0.11.0"
+      },
+      "catalog_sha256": "531d74a5a3898c68a91e78304b77254872694296a9b01f1e9c29cab4fbf1229b"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "nbclient",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 25288,
+        "extract": false,
+        "id": "py.nbclient",
+        "material_path": "wheels/nbclient-0.11.0-py3-none-any.whl",
+        "sha256": "ef7fa0d59d6e1d41103933d8a445a18d5de860ca6b613b87b8574accdb3c2895",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/36/c9/94d73e5a01c5b926c3fa2496e97d7a8dc28ed5a77c0b2ed712f1a62e6694/nbclient-0.11.0-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/project/nbclient/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/nbclient-0.11.0-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "0.21.12 candidate: fixed original wheel and declared dependency closure; qualification requires the saved two-prefix PackageManager receipt. No source-build, remote-service, OCI, or official benchmark claim."
+      ],
+      "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+    },
+    "version": "0.11.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.11",
+    "original_input_sha256": "ef7fa0d59d6e1d41103933d8a445a18d5de860ca6b613b87b8574accdb3c2895",
+    "recipe_scope": "Exact original dependency closure and bounded actual installed operations; independent execution required.",
+    "release": "0.21.12",
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.six",
+      "method": "wrapper",
+      "sha256": "ebab8df0d7173abcf740d32257450d433837d30dd2d10416cb987da535d5d384",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.17.0"
+    },
+    {
+      "build": "2",
+      "id": "py.python-dateutil",
+      "method": "wrapper",
+      "sha256": "aeda17dfe491cce32ad45d7e03af459ee71a5315fdcea929c6bb9baced2c4179",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.9.0.post0"
+    },
+    {
+      "build": "20261029-isolated-exact-wheel-host-qualification-1",
+      "id": "py.tzdata",
+      "method": "wrapper",
+      "sha256": "a163b9ab1a95381e5b78e78ffb3a40663c9e30ba1403ab00b1bf22434dacddf9",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2026.5"
+    },
+    {
+      "build": "2",
+      "id": "py.arrow",
+      "method": "wrapper",
+      "sha256": "33e52a792b648754949e6a95a01e77684bf58f78ce7abcbf0b80c381359a02f1",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.4.0"
+    },
+    {
+      "build": "2",
+      "id": "py.attrs",
+      "method": "wrapper",
+      "sha256": "c98b3e7a89f0bf9d219e84f20276dbe09be189ab8594f0d2254f45edbede04f1",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "26.1.0"
+    },
+    {
+      "build": "2",
+      "id": "py.fastjsonschema",
+      "method": "wrapper",
+      "sha256": "aa6a98898ce20786590240a3d5cdb7a97d3e46f8197b804a181481c136a13c09",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.22.2"
+    },
+    {
+      "build": "2",
+      "id": "py.fqdn",
+      "method": "wrapper",
+      "sha256": "8478ba7070a814f62658aadfa578af3cc5a82f58c350f51a7e8a13e89721ccc6",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.6.0"
+    },
+    {
+      "build": "2",
+      "id": "py.idna",
+      "method": "wrapper",
+      "sha256": "864490d50c350a6dcbfb10c9b7010336acd6637d7da0524caf252e3100fcea42",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.20"
+    },
+    {
+      "build": "2",
+      "id": "py.isoduration",
+      "method": "wrapper",
+      "sha256": "67a6c5c919ec960208762df4184096c2270fe043a9f2cae7f057ddf32670dc2f",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "20.11.0"
+    },
+    {
+      "build": "2",
+      "id": "py.jsonpointer",
+      "method": "wrapper",
+      "sha256": "732de48a5d754ad5ef17f68810e895170ee5284fdb2d41489fb468c81a96f08e",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.4"
+    },
+    {
+      "build": "2",
+      "id": "py.rpds-py",
+      "method": "wrapper",
+      "sha256": "738a67cf10c26843af8dcad87ae826307f966e9471bda59061bef69c55327cd8",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2026.9.1"
+    },
+    {
+      "build": "2",
+      "id": "py.typing-extensions",
+      "method": "wrapper",
+      "sha256": "7d94b449524e1cd18fb9b263b0a4f14ae55614719af94ab8a8e93276f46ca31f",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.16.0"
+    },
+    {
+      "build": "2",
+      "id": "py.referencing",
+      "method": "wrapper",
+      "sha256": "e42262ae1600a5cee56a658912b15038fe591852086ef9cc9095418242f64ba4",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.37.0"
+    },
+    {
+      "build": "2",
+      "id": "py.jsonschema-specifications",
+      "method": "wrapper",
+      "sha256": "0fcad1fc69db7f77205693812db027aed9d63cb5499a3852df1947668f6dc844",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2025.9.1"
+    },
+    {
+      "build": "2",
+      "id": "py.rfc3339-validator",
+      "method": "wrapper",
+      "sha256": "7e65aa931e787178c61adb8cad3dd5009a3c7d48f1a65e5993e6dcfcb6f1655a",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.1.4"
+    },
+    {
+      "build": "2",
+      "id": "py.rfc3986-validator",
+      "method": "wrapper",
+      "sha256": "ffe049879106f8500983d1ec0ca8775f6756c864bf80adc38297179ecb97718e",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.1.1"
+    },
+    {
+      "build": "2",
+      "id": "py.lark",
+      "method": "wrapper",
+      "sha256": "8f2dde2822535520e808d4d4e8545a30b87c666c178ba0e5c35b3fb0d0886505",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.3.1"
+    },
+    {
+      "build": "2",
+      "id": "py.rfc3987-syntax",
+      "method": "wrapper",
+      "sha256": "a02361defd073bc41733a99e1b922642a8869210384375249891a707993cf000",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "build": "20261029-isolated-exact-wheel-host-qualification-1",
+      "id": "py.uri-template",
+      "method": "wrapper",
+      "sha256": "c215829f2b1af883f405f7dc04c85ec1997ebf616b2f62f7e264707ec0014fba",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.3.0"
+    },
+    {
+      "build": "2",
+      "id": "py.webcolors",
+      "method": "wrapper",
+      "sha256": "9bcbdf6897e55109e486b9b5ff8072f61d5ef3830c265554a8cbc08d12509e01",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "25.10.0"
+    },
+    {
+      "build": "2",
+      "id": "py.jsonschema",
+      "method": "wrapper",
+      "sha256": "00af834a1a7e433303a555a4992bbcc861ffd1869fc7ea6d72ff1a6ebbb22814",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.26.0"
+    },
+    {
+      "build": "2",
+      "id": "py.platformdirs",
+      "method": "wrapper",
+      "sha256": "032a62a5e202bf9b4bb203b299fbe7d66fc9ec5b440e20ba27ce3c135e4fcb2d",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.13.5"
+    },
+    {
+      "build": "2",
+      "id": "py.traitlets",
+      "method": "wrapper",
+      "sha256": "b6ed10b2e9899bbeaee1ec46942845a30a34c7d6fe2a8a1310c8fc7a44687c6e",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "5.16.1"
+    },
+    {
+      "build": "2",
+      "id": "py.jupyter-core",
+      "method": "wrapper",
+      "sha256": "da242b4111a2a7e2d56488e04fbfbc5063bf2645f68fa09b6ad3c0acd77ef0ea",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "5.9.1"
+    },
+    {
+      "build": "2",
+      "id": "py.pyzmq",
+      "method": "wrapper",
+      "sha256": "917200b2964b89025692285928d864f379537d536a91b754c4ea0dc58a3bfa7a",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "27.2.0"
+    },
+    {
+      "build": "2",
+      "id": "py.tornado",
+      "method": "wrapper",
+      "sha256": "07ed0c1fc0ca01d22fd310ebfe222417c991f62cd72bb068c08755235b1858b5",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "6.6"
+    },
+    {
+      "build": "2",
+      "id": "py.jupyter-client",
+      "method": "wrapper",
+      "sha256": "451ffd1bb26f393203b4a592701648ab5860c4dee60ff8e6dab073aa543387c7",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "8.10.0"
+    },
+    {
+      "build": "2",
+      "id": "py.nbformat",
+      "method": "wrapper",
+      "sha256": "e8e6d71d6ef521d180b954a65c26ece2b01b9883f09e0de0e41ed736b9909bcd",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "5.11.1"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

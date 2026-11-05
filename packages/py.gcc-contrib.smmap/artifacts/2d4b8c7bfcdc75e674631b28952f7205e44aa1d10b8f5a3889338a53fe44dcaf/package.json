@@ -1,0 +1,168 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "{python}",
+        "-I",
+        "{recipe}/functional.py"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "api-runtime",
+      "kind": "functional",
+      "stdout_regex": "CPG_FUNCTIONAL_OK:",
+      "timeout_seconds": 60
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "py.gcc-contrib.smmap",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 24390,
+      "category": [
+        "Python packages",
+        "GCC contribution environment"
+      ],
+      "container_strategy": "Install with the gcc-contrib requirements.lock into a dedicated CPython 3.12 venv from the prepared wheel directory using --no-index --require-hashes.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "gcc-contrib",
+        "state": "official-artifact-hashes-verified; isolated-offline-runtime-smoke-passed; container-not-executed"
+      },
+      "documentation": [
+        "https://pypi.org/pypi/smmap/5.0.3/json"
+      ],
+      "id": "py.gcc-contrib.smmap",
+      "immutable_ref": "sha256:c106e05d5a61449cf6ba9a1e650227ecfb141590d2a98412103ff35d89fc7b2f",
+      "installed_bytes": 143021,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "wheels/gcc-contrib/smmap-5.0.3-py3-none-any.whl",
+      "package_name": "smmap",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Isolated GCC contribution-tool runtime and its exact dependency closure for patch parsing, local Git analysis, schema validation, HTTP clients, and Python checks.",
+      "qualification_gaps": [
+        "No Docker or Podman container was started in this acquisition task.",
+        "Complete GCC contrib workflow acceptance remains separate from dependency-capsule qualification."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "c106e05d5a61449cf6ba9a1e650227ecfb141590d2a98412103ff35d89fc7b2f",
+      "size_basis": "Actual downloaded wheel bytes matched to official PyPI; installed logical bytes measured from distribution RECORD files after offline smoke on CPython 3.12 Linux x86_64.",
+      "source_evidence": [
+        "https://pypi.org/pypi/smmap/5.0.3/json",
+        "workspace-evidence/community-v070/python-capsule/qualification.json",
+        "workspace-evidence/community-v070/python-capsule/manifest.json"
+      ],
+      "source_logical_bytes": 69425,
+      "source_url": "https://files.pythonhosted.org/packages/c1/d4/59e74daffcb57a07668852eeeb6035af9f32cbfd7a1d2511f17d2fe6a738/smmap-5.0.3-py3-none-any.whl",
+      "title": "smmap",
+      "upstream": "https://pypi.org/project/smmap/5.0.3/",
+      "version": "5.0.3"
+    },
+    "catalog_sha256": "9e03fa118b2f206df0b8938ecf42c890c4b3b097e69b7440ab97e491c657997e"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "gcc-contrib",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "smmap",
+    "state": "official-artifact-hashes-verified; isolated-offline-runtime-smoke-passed; container-not-executed",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 24390,
+      "extract": false,
+      "id": "py.gcc-contrib.smmap",
+      "material_path": "wheels/gcc-contrib/smmap-5.0.3-py3-none-any.whl",
+      "sha256": "c106e05d5a61449cf6ba9a1e650227ecfb141590d2a98412103ff35d89fc7b2f",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/c1/d4/59e74daffcb57a07668852eeeb6035af9f32cbfd7a1d2511f17d2fe6a738/smmap-5.0.3-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+    ],
+    "documentation": [
+      "https://pypi.org/pypi/smmap/5.0.3/json"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect package metadata in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/gcc-contrib/smmap-5.0.3-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper."
+    ],
+    "summary": "Isolated GCC contribution-tool runtime and its exact dependency closure for patch parsing, local Git analysis, schema validation, HTTP clients, and Python checks."
+  },
+  "version": "5.0.3"
+}
