@@ -1,0 +1,393 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 5105,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "36f419ce7e69d2c255da4027354b33b5a48e28c87009d47d106afb608d048fe7"
+    },
+    {
+      "bytes": 9905,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "9a4f68d03ecaf3696547713e397e534bcf7b58239a6711892402c672936a0024"
+    },
+    {
+      "bytes": 1077,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/csmith-build-fixes.json",
+      "sha256": "39adf238db2f4339b2d4cbaec09c7135fb7718cd1a80faa8e5ec0b0052eeb98e"
+    },
+    {
+      "bytes": 721,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/csmith-build-fixes.patch",
+      "sha256": "d67547fa6cbc360f47323abec7c17b8ea1b3cb61ab487866ba4011076d2cf9bb"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 330825,
+      "kind": "file",
+      "mode": 384,
+      "path": "sources/d4d34820a910e7ab8a5e5978cc4ccf1c7687f6bc4ed1e3731a7338e38e0ba9a5",
+      "sha256": "d4d34820a910e7ab8a5e5978cc4ccf1c7687f6bc4ed1e3731a7338e38e0ba9a5"
+    }
+  ],
+  "inventory_sha256": "ed269ea24a443c3954a398e35a5a84cf182e979d8a0210c0f5766eada1f31309",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "6c0cbf2ded029c697d42705484ffce6c9dc3de4906bd62abd749ec73a7b0ec22",
+  "method": "source",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/csmith",
+          "--version"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "declared-001",
+        "kind": "version",
+        "timeout_seconds": 120
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--resource",
+          "csmith",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "seeded-programs"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "seeded-programs",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "gcc",
+          "g++"
+        ],
+        "requires_paths": [
+          "{prefix}/bin/csmith"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 1200
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--resource",
+          "csmith",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "runtime-api"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "runtime-api",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "gcc",
+          "g++"
+        ],
+        "requires_paths": [
+          "{prefix}/bin/csmith"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 1200
+      }
+    ],
+    "dependencies": {
+      "build": [
+        "apt.cmake",
+        "apt.ninja-build",
+        "apt.m4"
+      ],
+      "run": [],
+      "system": [
+        "apt.g++",
+        "apt.python3"
+      ]
+    },
+    "id": "csmith",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 330825,
+        "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+        "category": [
+          "Correctness",
+          "Generators and fuzzers"
+        ],
+        "container_strategy": "Build the generator and its runtime headers in dev; transfer compiled generated programs, inputs and expected outputs to target.",
+        "dependencies": [
+          "apt.cmake",
+          "apt.g++",
+          "apt.m4",
+          "apt.ninja-build"
+        ],
+        "deployment": {
+          "adapter": "cmake",
+          "build_argv": [
+            "cmake",
+            "--build",
+            "{build}",
+            "--parallel",
+            "{jobs}"
+          ],
+          "configure_argv": [
+            "cmake",
+            "-S",
+            "{source}",
+            "-B",
+            "{build}",
+            "-G",
+            "Ninja",
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DCMAKE_INSTALL_PREFIX={prefix}"
+          ],
+          "install_argv": [
+            "cmake",
+            "--install",
+            "{build}"
+          ],
+          "qualified": false,
+          "smoke_argv": [
+            "{prefix}/bin/csmith",
+            "--version"
+          ],
+          "source_dependencies": [],
+          "system_packages": [
+            "cmake",
+            "ninja-build",
+            "g++",
+            "m4"
+          ],
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/csmith-project/csmith"
+        ],
+        "evidence_files": [
+          "workspace-evidence/resources-v050/open-research/csmith.measurement.json",
+          "workspace-evidence/resources-v050/open-research/csmith.refs.json"
+        ],
+        "extract": true,
+        "id": "csmith",
+        "immutable_ref": "0cdc710315cfee9035e22ef4363ca479270d1934",
+        "kind": "source_archive",
+        "legacy_source_id": "csmith",
+        "license_class": "open",
+        "license_id": "BSD-2-Clause",
+        "mandatory": false,
+        "material_path": "sources/csmith",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Seeded randomized C differential testing with independently compiled checksums and retained failing seeds.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Generated-program validity and defined-behavior assumptions still need sanitizer and differential checks.",
+          "Compiler timeouts, invalid generated tests and wrong-code findings must be counted separately."
+        ],
+        "redistributable": true,
+        "roles": [
+          "dev",
+          "host"
+        ],
+        "sha256": "d4d34820a910e7ab8a5e5978cc4ccf1c7687f6bc4ed1e3731a7338e38e0ba9a5",
+        "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+        "source_evidence": [
+          "https://github.com/csmith-project/csmith",
+          "https://codeload.github.com/csmith-project/csmith/tar.gz/0cdc710315cfee9035e22ef4363ca479270d1934",
+          "https://github.com/csmith-project/csmith/commit/0cdc710315cfee9035e22ef4363ca479270d1934"
+        ],
+        "source_logical_bytes": 1553524,
+        "source_url": "https://codeload.github.com/csmith-project/csmith/tar.gz/0cdc710315cfee9035e22ef4363ca479270d1934",
+        "title": "Csmith C program generator",
+        "upstream": "https://github.com/csmith-project/csmith",
+        "version": "commit-0cdc710315cf"
+      },
+      "catalog_sha256": "e2cf7c4515b14a0b2a26c93a4cfbef3c6313c8bfcee7c4015dc680162072b729"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "cmake",
+      "build_argv": [],
+      "commands": [
+        [
+          "python3",
+          "{recipe}/build.py",
+          "--resource",
+          "csmith",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "configure_argv": [],
+      "install_argv": [],
+      "qualified": false,
+      "required_installed_paths": [
+        "{prefix}/bin/csmith",
+        "{prefix}/share/csmith/source/README.md",
+        "{prefix}/include/csmith.h",
+        "{prefix}/lib/libcsmith.a",
+        "{prefix}/lib/libcsmith.so"
+      ],
+      "smoke_argv": [
+        "{prefix}/bin/csmith",
+        "--version"
+      ],
+      "source_dependencies": [],
+      "system_packages": [
+        "cmake",
+        "ninja-build",
+        "g++",
+        "m4"
+      ],
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 330825,
+        "extract": true,
+        "id": "csmith",
+        "material_path": "sources/csmith",
+        "sha256": "d4d34820a910e7ab8a5e5978cc4ccf1c7687f6bc4ed1e3731a7338e38e0ba9a5",
+        "strip_root": true,
+        "url": "https://codeload.github.com/csmith-project/csmith/tar.gz/0cdc710315cfee9035e22ef4363ca479270d1934"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/csmith-project/csmith"
+      ],
+      "examples": [
+        {
+          "command": "'{prefix}/bin/csmith' --version",
+          "description": "Run the recorded version check."
+        },
+        {
+          "command": "'{prefix}/bin/csmith' --seed 42 > case.c",
+          "description": "Generate a reproducible C test; preserve the command, binary identity and seed."
+        },
+        {
+          "command": "gcc -O2 -I'{prefix}/include' case.c -o case && ./case",
+          "description": "Compile and run using the installed Csmith runtime headers; compare checksums with your selected reference configurations."
+        },
+        {
+          "command": "'{prefix}/bin/csmith' --seed 42 --lang-cpp --cpp11 > case.cpp && g++ -std=c++17 -Wno-narrowing -O2 -I'{prefix}/include' case.cpp -o case && ./case",
+          "description": "Generate C++ and use the explicitly qualified GCC compatibility mode; the pinned generator may emit narrowing list initializers."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/sources/csmith",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Installation prefix",
+          "path": "{prefix}",
+          "purpose": "The selected version's independently installed files."
+        },
+        {
+          "label": "Complete original upstream material",
+          "path": "{prefix}/share/csmith/source",
+          "purpose": "Unmodified complete locked source, tests, scripts, licenses and original documentation."
+        },
+        {
+          "label": "Installed package checks",
+          "path": "{prefix}/share/compiler-playground/csmith",
+          "purpose": "Transported functional checks and precise build profile."
+        }
+      ],
+      "notes": [
+        "The complete original catalog, source lock and original source material are retained. The archive commit, rather than a potentially stale upstream version string, identifies this resource.",
+        "Generate into a fresh directory and retain the seed, generator identity, options, compiler flags and output. Seed reproducibility is qualified for the selected binary on this declared platform.",
+        "Package checks compare the same GCC compiler at O0 and O2. This is useful differential agreement, not an independent reference compiler or a proof that every random program is correct.",
+        "Native source and binary profiles are exercised on Ubuntu 24.04 x86_64; no OCI, other ABI/OS, full compiler campaign or official benchmark score is claimed.",
+        "CMake/Ninja/M4 are build-only dependencies. Exact private tool bindings are supported by the maintainer replay without modifying APT/dpkg.",
+        "Assertions are enabled. All upstream source files remain unmodified in share/csmith/source; the build uses an independent copy.",
+        "The checked CMake version-discovery expression in the build copy is replaced with the exact locked short commit 0cdc710, preventing an enclosing checkout from becoming the reported generator identity.",
+        "Both installed static and shared volatile-runtime libraries are exercised; the original distributed scripts are preserved as material and may require their own external compiler/reducer configuration.",
+        "C++ consumers must use C++17 or a compiler mode accepting standard hexadecimal floating-point literals in the installed safe-math header.",
+        "A checked build-copy patch adds the two int64_t/uint64_t volatile-runtime definitions already declared in the pinned header, using its existing upstream DEFINE_VOLATILE_FUNCTIONS macro. Both libraries are exercised across all eight integer types. The exact original runtime source stays untouched in share/csmith/source.",
+        "The pinned C++ generator emits narrowing list initializers for some seeds (observed at seed 7). The checked C++ profile explicitly uses GCC -std=c++17 -Wno-narrowing; strict ISO C++ conformance and all generated seeds are not claimed. Original strict-mode failures are retained in qualification evidence."
+      ],
+      "summary": "Seeded randomized C differential testing with independently compiled checksums and retained failing seeds."
+    },
+    "version": "commit-0cdc710315cf"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "05fe62e14e96616763bc103f1a03c5bd685e643f2b670d09d7c48c8109326acb",
+    "profile": "Complete source recipe and installed functional checks",
+    "source_locks": [
+      {
+        "bytes": 330825,
+        "extract": true,
+        "id": "csmith",
+        "material_path": "sources/csmith",
+        "sha256": "d4d34820a910e7ab8a5e5978cc4ccf1c7687f6bc4ed1e3731a7338e38e0ba9a5",
+        "strip_root": true,
+        "url": "https://codeload.github.com/csmith-project/csmith/tar.gz/0cdc710315cfee9035e22ef4363ca479270d1934"
+      }
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "csmith",
+      "path": "sources/d4d34820a910e7ab8a5e5978cc4ccf1c7687f6bc4ed1e3731a7338e38e0ba9a5"
+    }
+  ]
+}

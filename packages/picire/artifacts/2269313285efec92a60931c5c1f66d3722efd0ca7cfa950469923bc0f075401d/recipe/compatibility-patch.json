@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "reason": "Use the standard-library version metadata API because the existing pinned setuptools release no longer provides pkg_resources; delta-debugging logic and upstream tests are unchanged.",
+  "files": [
+    {
+      "path": "picire/cli.py",
+      "original_sha256": "89a121962d2b53abdc36fd1fe603ac6244490ba031525a101dd1f7888ed1bf93",
+      "result_sha256": "56f88329ada8ba1b33147da614babefe8ee67c9399407766171730f5b34c4a4e",
+      "replacements": [
+        {
+          "before": "import pkg_resources\n",
+          "after": "from importlib.metadata import version as distribution_version\n"
+        },
+        {
+          "before": "__version__ = pkg_resources.get_distribution(__package__).version",
+          "after": "__version__ = distribution_version(__package__)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,302 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 6846,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "c421d08d018678b95ad3215404ec3b4d926fdb0d25bcbe051d344dc9ea029247"
+    },
+    {
+      "bytes": 11424,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "8bdec71a65e0169d42c67b27a40efd8b3c7c92157b3d5e7c5d3fac9394684b88"
+    },
+    {
+      "bytes": 1125,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/config.json",
+      "sha256": "22092e97a6536feb93dafd2240123e15bade5287079fbde1ae855ec98d18cdcd"
+    },
+    {
+      "bytes": 3939,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/xml2_api.c",
+      "sha256": "75d756e182065995bde1a84269dbd277e487da1f1ac2ef743bc1c516aff55021"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 3721410,
+      "kind": "file",
+      "mode": 384,
+      "path": "sources/ff97736d8669526c29565669a8e932425bdef3c891d3957ddafb1d16715665a8",
+      "sha256": "ff97736d8669526c29565669a8e932425bdef3c891d3957ddafb1d16715665a8"
+    }
+  ],
+  "inventory_sha256": "3ac137186a46babddcdf03512c1ab72c40060bb4f2134ac1cabc77332ab13814",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "285ea322191948996305ba53fc6969b8d6891af4d982eb9ff2ad21b5a5794581",
+  "method": "source",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "upstream"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "lpm-libxml2-source-upstream",
+        "kind": "functional",
+        "requires_commands": [
+          "/usr/bin/python3",
+          "/usr/bin/gcc"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 900
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "api"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "lpm-libxml2-source-api",
+        "kind": "functional",
+        "requires_commands": [
+          "/usr/bin/python3",
+          "/usr/bin/gcc"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 900
+      }
+    ],
+    "dependencies": {
+      "build": [
+        "apt.cmake",
+        "apt.ninja-build"
+      ],
+      "run": [],
+      "system": [
+        "apt.g++",
+        "apt.python3"
+      ]
+    },
+    "id": "lpm-libxml2-source",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 3721410,
+        "build_peak_bytes": null,
+        "category": [
+          "Correctness",
+          "Structured fuzzing dependencies"
+        ],
+        "container_strategy": "Materialize an immutable source tree; the parent mutator recipe copies it into a writable isolated build tree and preserves notices. This is not an independently installed system library.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "state": "immutable-local-build-dependency-source",
+          "target_exports": [],
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/GNOME/libxml2"
+        ],
+        "evidence_files": [
+          "workspace-evidence/community-v070/resource-audit/lpm-dependencies/git-refs.json",
+          "workspace-evidence/community-v070/resource-audit/lpm-dependencies/archive-measurements.json",
+          "workspace-evidence/community-v070/resource-audit/lpm-dependencies/http-headers/lpm-libxml2-source.json"
+        ],
+        "extract": true,
+        "id": "lpm-libxml2-source",
+        "immutable_ref": "66453240c94b5cbd3e9ae9b32016fdafb13cdf18",
+        "installed_allocated_bytes": null,
+        "installed_bytes": null,
+        "kind": "source_supplement",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "material_path": "sources/lpm-libxml2-source",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Provide the exact version selected by libprotobuf-mutator v1.5 for its tests or instrumented examples, avoiding implicit ExternalProject network acquisition.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "The parent mutator's full-feature CMake build has not run in a complete prepared system dependency environment."
+        ],
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "ff97736d8669526c29565669a8e932425bdef3c891d3957ddafb1d16715665a8",
+        "size_basis": "Complete measured HTTPS archive and regular-file logical source size; external dependencies and build outputs excluded.",
+        "size_evidence": "workspace-evidence/community-v070/resource-audit/lpm-dependencies/archive-measurements.json",
+        "source_evidence": [
+          "https://github.com/GNOME/libxml2",
+          "https://github.com/GNOME/libxml2/commit/66453240c94b5cbd3e9ae9b32016fdafb13cdf18",
+          "https://codeload.github.com/GNOME/libxml2/tar.gz/66453240c94b5cbd3e9ae9b32016fdafb13cdf18"
+        ],
+        "source_logical_bytes": 27093417,
+        "source_url": "https://codeload.github.com/GNOME/libxml2/tar.gz/66453240c94b5cbd3e9ae9b32016fdafb13cdf18",
+        "title": "GNOME/libxml2 source for libprotobuf-mutator tests and examples",
+        "upstream": "https://github.com/GNOME/libxml2",
+        "version": "2.13.6"
+      },
+      "catalog_sha256": "0018cfc6ef41b0b04fa257247caf6061cf36f35e985f4f690c4fcd5c11df91eb"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "cmake",
+      "commands": [
+        [
+          "/usr/bin/python3",
+          "{recipe}/build.py",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "qualified": false,
+      "required_installed_paths": [
+        "{prefix}/lib/libxml2.a",
+        "{prefix}/lib/libxml2.so",
+        "{prefix}/share/compiler-playground/lpm-libxml2-source/profile.json"
+      ],
+      "state": "immutable-local-build-dependency-source",
+      "target_exports": [],
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 3721410,
+        "extract": true,
+        "id": "lpm-libxml2-source",
+        "material_path": "sources/lpm-libxml2-source",
+        "sha256": "ff97736d8669526c29565669a8e932425bdef3c891d3957ddafb1d16715665a8",
+        "strip_root": true,
+        "url": "https://codeload.github.com/GNOME/libxml2/tar.gz/66453240c94b5cbd3e9ae9b32016fdafb13cdf18"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/GNOME/libxml2"
+      ],
+      "examples": [
+        {
+          "command": "cpg packages check lpm-libxml2-source --kind functional",
+          "description": "Run installed functional checks"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Public headers",
+          "path": "{prefix}/include",
+          "purpose": "Headers for the selected configuration."
+        },
+        {
+          "label": "Shared and static libraries",
+          "path": "{prefix}/lib",
+          "purpose": "Independently installed libraries and CMake/pkg-config metadata."
+        },
+        {
+          "label": "Original source",
+          "path": "{prefix}/share/lpm-libxml2-source/source",
+          "purpose": "Complete unchanged source, licenses, original tests and fixtures."
+        },
+        {
+          "label": "Qualification profile",
+          "path": "{prefix}/share/compiler-playground/lpm-libxml2-source/profile.json",
+          "purpose": "Exact configured and executed scope."
+        }
+      ],
+      "notes": [
+        "Source and binary profiles retain the original material profile.",
+        "Binary relocation is qualified only on the stated Ubuntu 24.04 x86_64 ABI.",
+        "Full installed functional checks compile fresh consumers and require the C/C++ toolchain.",
+        "external XML conformance corpora absent from the locked source",
+        "Python, iconv, ICU, compressed-input and network protocol backends",
+        "fuzzing campaigns",
+        "performance qualification",
+        "cross-platform or cross-ABI deployment"
+      ],
+      "summary": "Build and independently validate the locked lpm-libxml2-source libraries; original source remains available."
+    },
+    "version": "2.13.6"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "aeb2f94dcd48e042005222d3f205dd25b7249e55e3a99bcb728f36b5e65cb148",
+    "profile": "Complete source recipe and installed functional checks",
+    "source_locks": [
+      {
+        "bytes": 3721410,
+        "extract": true,
+        "id": "lpm-libxml2-source",
+        "material_path": "sources/lpm-libxml2-source",
+        "sha256": "ff97736d8669526c29565669a8e932425bdef3c891d3957ddafb1d16715665a8",
+        "strip_root": true,
+        "url": "https://codeload.github.com/GNOME/libxml2/tar.gz/66453240c94b5cbd3e9ae9b32016fdafb13cdf18"
+      }
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "lpm-libxml2-source",
+      "path": "sources/ff97736d8669526c29565669a8e932425bdef3c891d3957ddafb1d16715665a8"
+    }
+  ]
+}

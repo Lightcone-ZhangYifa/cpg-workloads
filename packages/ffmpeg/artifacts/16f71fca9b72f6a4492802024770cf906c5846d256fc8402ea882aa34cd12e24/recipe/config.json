@@ -1,0 +1,33 @@
+{
+  "configure_options": [
+    "--disable-autodetect",
+    "--disable-x86asm",
+    "--disable-inline-asm",
+    "--disable-doc",
+    "--disable-debug",
+    "--disable-network",
+    "--disable-everything",
+    "--enable-ffmpeg",
+    "--enable-ffprobe",
+    "--enable-protocol=file,pipe",
+    "--enable-decoder=rawvideo,ffv1,pcm_s16le,pcm_f32le",
+    "--enable-encoder=rawvideo,ffv1,pcm_s16le,pcm_f32le",
+    "--enable-demuxer=rawvideo,wav,matroska",
+    "--enable-muxer=rawvideo,wav,matroska,framemd5,md5,null",
+    "--enable-filter=scale,format,aformat,aresample,anull,null",
+    "--cc=/usr/bin/cc",
+    "--cxx=/usr/bin/c++",
+    "--extra-cflags=-O2"
+  ],
+  "not_qualified": [
+    "disabled codecs, muxers, demuxers and protocols",
+    "external codec libraries",
+    "x86 assembly acceleration",
+    "hardware acceleration and device input/output",
+    "external FATE sample corpus",
+    "performance benchmarks",
+    "OCI or other platforms/ABIs"
+  ],
+  "profile": "portable-native-media-core",
+  "source_retention": "Every file from the original locked repository archive remains unchanged under share/ffmpeg/source."
+}

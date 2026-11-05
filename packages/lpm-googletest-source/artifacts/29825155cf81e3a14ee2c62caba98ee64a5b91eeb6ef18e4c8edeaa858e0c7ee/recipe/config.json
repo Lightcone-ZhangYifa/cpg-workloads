@@ -1,0 +1,39 @@
+{
+  "id": "lpm-googletest-source",
+  "version": "1.15.0",
+  "source_subdir": "",
+  "cmake_options": [
+    "-DBUILD_GMOCK=ON",
+    "-DINSTALL_GTEST=ON"
+  ],
+  "test_options": [
+    "gtest_build_tests",
+    "gmock_build_tests"
+  ],
+  "minimum_ctest_count": 40,
+  "installed_tests": [
+    "gtest_unittest",
+    "googletest-param-test-test",
+    "gmock-actions_test",
+    "gmock-matchers-containers_test",
+    "gmock-spec-builders_test",
+    "gmock_test"
+  ],
+  "consumer": "gtest_api.cpp",
+  "libraries": [
+    "gmock",
+    "gtest"
+  ],
+  "include_suffix": "",
+  "compiler": "g++",
+  "standard": "c++17",
+  "pkgconfig": "gmock",
+  "cmake_package": "GTest",
+  "cmake_target": "GTest::gmock",
+  "unperformed": [
+    "non-Linux test runners",
+    "all alternative compiler and linkage configurations",
+    "performance qualification",
+    "cross-platform or cross-ABI deployment"
+  ]
+}
