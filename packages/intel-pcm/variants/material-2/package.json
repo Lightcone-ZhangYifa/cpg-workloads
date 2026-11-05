@@ -1,0 +1,267 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "locked-static-materials",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "intel-pcm",
+  "metadata": {
+    "baseline_catalog_sha256": "b3b975cedf9c6324b08efec1c1b638beebeca84f614eabebf5428b75fb1153f3",
+    "baseline_definition_sha256": "5c46749f748d0a427465ac32c0a3d67245591989c190ee3863fb826001ea6065",
+    "catalog": {
+      "archive_bytes": 1266957,
+      "category": [
+        "Observability",
+        "Static reference materials"
+      ],
+      "dependencies": [],
+      "documentation": "https://github.com/intel/pcm",
+      "extract": false,
+      "id": "intel-pcm",
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause; bundled component notices retained",
+      "license_scope": "This independently distributed material; upstream products retain their own rights.",
+      "logical_resource_id": "intel-pcm",
+      "mandatory": false,
+      "material_path": "original-archives/intel-pcm.tar.gz",
+      "material_variant": true,
+      "policy_held": true,
+      "profile_kind": "complete-locked-source-materials",
+      "purpose": "沿原 intel-pcm 锁保存 202604 主归档及五个精确子模块，供 PMU 事件和平台指标静态研究。",
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "11a307e88477b4d808aaaa5d43ada326400e4a9558b734cb5a3e6e217bbddd3c",
+      "source_url": "https://codeload.github.com/intel/pcm/tar.gz/abb6bce87cc2ed23d6677541ebcfc47ca769d1ed",
+      "strip_archive_root": false,
+      "title": "Intel PCM 202604：PMU 语义和完整子模块材料",
+      "version": "202604"
+    },
+    "catalog_sha256": "c2b638a84621fa30b11cd7f5c21bfbec19036bb980d07abd16dd963aff043522",
+    "does_not_claim_tool_material_completeness": false,
+    "existing_software_master": {
+      "modified": false,
+      "repository_path": "packages/intel-pcm/package.json",
+      "sha256": "5c46749f748d0a427465ac32c0a3d67245591989c190ee3863fb826001ea6065"
+    },
+    "logical_resource_id": "intel-pcm",
+    "material_variant": true,
+    "original_qualification": {
+      "basis": "Inherited historical resource scope; not execution evidence for this artifact.",
+      "dataset": null,
+      "functional": false,
+      "material": true
+    },
+    "policy_held": true,
+    "profile_kind": "complete-locked-source-materials",
+    "publication_policy": {
+      "build_check": "not_run",
+      "formal_qualification_changed": false,
+      "functional": "not_run",
+      "review_policy": "static-trust-v1"
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "additional_acquisition_locks": [
+      {
+        "acquired_utc": "2026-11-02T05:42:32Z",
+        "bytes": 886892,
+        "complete_original_bytes": true,
+        "content_type": "application/x-gzip",
+        "expected_bytes": 886892,
+        "expected_sha256": "77c07aa8054c173671cdd02b11081cffc080debec08197cfd860cb0832f743b0",
+        "http_status": 200,
+        "id": "source-material-0",
+        "mount_path": "tests/googletest",
+        "name": "intel-pcm-googletest.tar.gz",
+        "parent": "intel-pcm",
+        "path": "original-archives/intel-pcm-googletest.tar.gz",
+        "role": "submodule",
+        "sha256": "77c07aa8054c173671cdd02b11081cffc080debec08197cfd860cb0832f743b0",
+        "status": "verified",
+        "url": "https://codeload.github.com/google/googletest/tar.gz/cd430b47a54841ec45d64d2377d7cabaf0eba610"
+      },
+      {
+        "acquired_utc": "2026-11-02T05:42:32Z",
+        "bytes": 1464222,
+        "complete_original_bytes": true,
+        "content_type": "application/x-gzip",
+        "expected_bytes": 1464222,
+        "expected_sha256": "8b50776cc4fb75e4585dc1611047d039a9117de01ca4e4298f8f29a11255e336",
+        "http_status": 200,
+        "id": "source-material-1",
+        "mount_path": "Intel-PMT",
+        "name": "intel-pcm-intel-pmt.tar.gz",
+        "parent": "intel-pcm",
+        "path": "original-archives/intel-pcm-intel-pmt.tar.gz",
+        "role": "submodule",
+        "sha256": "8b50776cc4fb75e4585dc1611047d039a9117de01ca4e4298f8f29a11255e336",
+        "status": "verified",
+        "url": "https://codeload.github.com/intel/Intel-PMT/tar.gz/8e57e182feeaa55427199356c0b4c77bf92db89f"
+      },
+      {
+        "acquired_utc": "2026-11-02T05:42:34Z",
+        "bytes": 2855903,
+        "complete_original_bytes": true,
+        "content_type": "application/x-gzip",
+        "expected_bytes": 2855903,
+        "expected_sha256": "c18fc8f850b5b910724225dbe4723fc430803cbdb1b1b6c58e6d0731efcb762e",
+        "http_status": 200,
+        "id": "source-material-2",
+        "mount_path": "perfmon",
+        "name": "intel-pcm-perfmon.tar.gz",
+        "parent": "intel-pcm",
+        "path": "original-archives/intel-pcm-perfmon.tar.gz",
+        "role": "submodule",
+        "sha256": "c18fc8f850b5b910724225dbe4723fc430803cbdb1b1b6c58e6d0731efcb762e",
+        "status": "verified",
+        "url": "https://codeload.github.com/intel/perfmon/tar.gz/48c0518ae223c49b6a698325167a4d8d40f56997"
+      },
+      {
+        "acquired_utc": "2026-11-02T05:42:31Z",
+        "bytes": 583144,
+        "complete_original_bytes": true,
+        "content_type": "application/x-gzip",
+        "expected_bytes": 583144,
+        "expected_sha256": "51c102d4187fac99daa38af281b0772c5e6c586f65004cdc63f8f2e011a21492",
+        "http_status": 200,
+        "id": "source-material-3",
+        "mount_path": "src/pugixml",
+        "name": "intel-pcm-pugixml.tar.gz",
+        "parent": "intel-pcm",
+        "path": "original-archives/intel-pcm-pugixml.tar.gz",
+        "role": "submodule",
+        "sha256": "51c102d4187fac99daa38af281b0772c5e6c586f65004cdc63f8f2e011a21492",
+        "status": "verified",
+        "url": "https://codeload.github.com/zeux/pugixml/tar.gz/ee86beb30e4973f5feffe3ce63bfa4fbadf72f38"
+      },
+      {
+        "acquired_utc": "2026-11-02T05:42:36Z",
+        "bytes": 2721585,
+        "complete_original_bytes": true,
+        "content_type": "application/x-gzip",
+        "expected_bytes": 2721585,
+        "expected_sha256": "6e995e9bc23dff6d1e0d4428d2d1626d4a6e8f63a939d9a1da46a8d181aa93c5",
+        "http_status": 200,
+        "id": "source-material-4",
+        "mount_path": "src/simdjson",
+        "name": "intel-pcm-simdjson.tar.gz",
+        "parent": "intel-pcm",
+        "path": "original-archives/intel-pcm-simdjson.tar.gz",
+        "role": "submodule",
+        "sha256": "6e995e9bc23dff6d1e0d4428d2d1626d4a6e8f63a939d9a1da46a8d181aa93c5",
+        "status": "verified",
+        "url": "https://codeload.github.com/simdjson/simdjson/tar.gz/0c0ce1bd48baa0677dc7c0945ea7cd1e8b52b297"
+      },
+      {
+        "acquired_utc": "2026-11-02T05:42:32Z",
+        "bytes": 1266957,
+        "complete_original_bytes": true,
+        "content_type": "application/x-gzip",
+        "expected_bytes": 1266957,
+        "expected_sha256": "11a307e88477b4d808aaaa5d43ada326400e4a9558b734cb5a3e6e217bbddd3c",
+        "http_status": 200,
+        "id": "source-material-5",
+        "name": "intel-pcm.tar.gz",
+        "parent": "intel-pcm",
+        "path": "original-archives/intel-pcm.tar.gz",
+        "role": "original-source",
+        "sha256": "11a307e88477b4d808aaaa5d43ada326400e4a9558b734cb5a3e6e217bbddd3c",
+        "status": "verified",
+        "url": "https://codeload.github.com/intel/pcm/tar.gz/abb6bce87cc2ed23d6677541ebcfc47ca769d1ed"
+      }
+    ],
+    "collection_enabled": false,
+    "profile_kind": "complete-locked-source-materials",
+    "required_installed_paths": [
+      "{prefix}/MATERIALS.md",
+      "{prefix}/material-index.json",
+      "{prefix}/source-lock.json",
+      "{prefix}/POLICY.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1266957,
+      "extract": false,
+      "id": "intel-pcm",
+      "material_path": "original-archives/intel-pcm.tar.gz",
+      "sha256": "11a307e88477b4d808aaaa5d43ada326400e4a9558b734cb5a3e6e217bbddd3c",
+      "strip_root": false,
+      "url": "https://codeload.github.com/intel/pcm/tar.gz/abb6bce87cc2ed23d6677541ebcfc47ca769d1ed"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/intel/pcm"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/inspect_material.py --list",
+        "description": "List static topics"
+      },
+      {
+        "command": "python3 {prefix}/inspect_material.py --search metadata --limit 10",
+        "description": "Search indexed materials"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reading guide",
+        "path": "{prefix}/MATERIALS.md",
+        "purpose": "Authored task-specific guide and limits."
+      },
+      {
+        "label": "Locked source archives",
+        "path": "{prefix}/source-lock.json",
+        "purpose": "Exact original byte identities and closure mapping."
+      }
+    ],
+    "notes": [
+      "System collection is policy-held. Static availability is not runtime or hardware qualification.",
+      "All original baseline identities and dependencies are unchanged.",
+      "Distribution metadata is descriptive; material content is not bound to one Linux distribution.",
+      "Current material publication uses static review only; no installation, reader, collector, topology, benchmark or hardware execution was performed."
+    ],
+    "summary": "沿原 intel-pcm 锁保存 202604 主归档及五个精确子模块，供 PMU 事件和平台指标静态研究。"
+  },
+  "version": "202604"
+}

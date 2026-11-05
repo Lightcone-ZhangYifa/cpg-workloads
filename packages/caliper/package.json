@@ -1,0 +1,169 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "locked-static-materials",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "caliper",
+  "metadata": {
+    "baseline_catalog_sha256": null,
+    "baseline_definition_sha256": null,
+    "catalog": {
+      "archive_bytes": 2096496,
+      "category": [
+        "Observability",
+        "Static reference materials"
+      ],
+      "dependencies": [],
+      "documentation": "https://software.llnl.gov/Caliper/",
+      "extract": false,
+      "id": "caliper",
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "license_scope": "This independently distributed material; upstream products retain their own rights.",
+      "logical_resource_id": "caliper",
+      "mandatory": false,
+      "material_path": "original-archives/caliper.tar.gz",
+      "material_variant": true,
+      "policy_held": true,
+      "profile_kind": "complete-locked-source-materials",
+      "purpose": "固定 Caliper 2.15.0 完整源码和官方文档，供标注 API、配置语义与记录格式阅读。",
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "a3b80c1f6d88c641f5a07dd0b8bc7fea250859a7e3ebca2fe209c99c6344c527",
+      "source_url": "https://codeload.github.com/LLNL/Caliper/tar.gz/c4efbd8b15186cb9854bbd57b99c569dd91867f8",
+      "strip_archive_root": false,
+      "title": "Caliper 2.15.0：标注接口、metadata 与数据格式",
+      "version": "2.15.0"
+    },
+    "catalog_sha256": "4ecbb0e6c4ee97b8587e87d608bb7819c386f3992c13cbb2faaccc8700589ada",
+    "does_not_claim_tool_material_completeness": false,
+    "logical_resource_id": "caliper",
+    "material_variant": true,
+    "original_qualification": {
+      "basis": "Inherited historical resource scope; not execution evidence for this artifact.",
+      "dataset": null,
+      "functional": null,
+      "material": true
+    },
+    "policy_held": true,
+    "profile_kind": "complete-locked-source-materials",
+    "publication_policy": {
+      "build_check": "not_run",
+      "formal_qualification_changed": false,
+      "functional": "not_run",
+      "review_policy": "static-trust-v1"
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "additional_acquisition_locks": [
+      {
+        "bytes": 2096496,
+        "complete_original_bytes": true,
+        "expected_sha256": null,
+        "id": "source-material-0",
+        "immutable_ref": "c4efbd8b15186cb9854bbd57b99c569dd91867f8",
+        "name": "caliper.tar.gz",
+        "parent": "caliper",
+        "path": "original-archives/caliper.tar.gz",
+        "role": "original-source",
+        "sha256": "a3b80c1f6d88c641f5a07dd0b8bc7fea250859a7e3ebca2fe209c99c6344c527",
+        "status": "observed",
+        "url": "https://codeload.github.com/LLNL/Caliper/tar.gz/c4efbd8b15186cb9854bbd57b99c569dd91867f8"
+      }
+    ],
+    "collection_enabled": false,
+    "profile_kind": "complete-locked-source-materials",
+    "required_installed_paths": [
+      "{prefix}/MATERIALS.md",
+      "{prefix}/material-index.json",
+      "{prefix}/source-lock.json",
+      "{prefix}/POLICY.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2096496,
+      "extract": false,
+      "id": "caliper",
+      "material_path": "original-archives/caliper.tar.gz",
+      "sha256": "a3b80c1f6d88c641f5a07dd0b8bc7fea250859a7e3ebca2fe209c99c6344c527",
+      "strip_root": false,
+      "url": "https://codeload.github.com/LLNL/Caliper/tar.gz/c4efbd8b15186cb9854bbd57b99c569dd91867f8"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://software.llnl.gov/Caliper/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/inspect_material.py --list",
+        "description": "List static topics"
+      },
+      {
+        "command": "python3 {prefix}/inspect_material.py --search metadata --limit 10",
+        "description": "Search indexed materials"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reading guide",
+        "path": "{prefix}/MATERIALS.md",
+        "purpose": "Authored task-specific guide and limits."
+      },
+      {
+        "label": "Locked source archives",
+        "path": "{prefix}/source-lock.json",
+        "purpose": "Exact original byte identities and closure mapping."
+      }
+    ],
+    "notes": [
+      "System collection is policy-held. Static availability is not runtime or hardware qualification.",
+      "All original baseline identities and dependencies are unchanged.",
+      "Distribution metadata is descriptive; material content is not bound to one Linux distribution.",
+      "Current material publication uses static review only; no installation, reader, collector, topology, benchmark or hardware execution was performed."
+    ],
+    "summary": "固定 Caliper 2.15.0 完整源码和官方文档，供标注 API、配置语义与记录格式阅读。"
+  },
+  "version": "2.15.0"
+}
