@@ -1,0 +1,226 @@
+{
+  "build": "v02110-reviewed-static-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "kerncraft-full-material-check",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "kerncraft",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 599649,
+      "build_peak_bytes": null,
+      "category": [
+        "Optimization research",
+        "Instruction models"
+      ],
+      "container_strategy": "Keep the exact source and dependency requirements available as an explicitly labeled reference. Executable admission additionally requires a fully locked Python/native dependency closure and actual marker/model probes.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "copy",
+        "apt_dependencies": {
+          "dev": [],
+          "target": []
+        },
+        "available_capabilities": [
+          "source-reference"
+        ],
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "executable_qualified": false,
+        "install_argv": [
+          "cp",
+          "-a",
+          "{source}/.",
+          "{prefix}/"
+        ],
+        "install_roles": [
+          "dev"
+        ],
+        "probe_requires_host": [],
+        "python_dependency_closure_complete": false,
+        "python_requirements": [
+          "ruamel.yaml>=0.15.37",
+          "sympy>=1.7.1",
+          "pycachesim>=0.2.3",
+          "numpy",
+          "requests",
+          "pycparser>=3.00",
+          "osaca>=0.7.0",
+          "psutil",
+          "compress_pickle",
+          "matplotlib; extra == \"plot\""
+        ],
+        "required_installed_paths": [
+          "{prefix}/kerncraft/kerncraft.py"
+        ],
+        "smoke_argv": [],
+        "state": "source-reference-only"
+      },
+      "documentation": "https://pypi.org/project/kerncraft/0.8.18/",
+      "extract": true,
+      "id": "kerncraft",
+      "immutable_ref": "sha256:350a6cc44a97f35f357b9a6ff6fc09b60252f79d1374cb22ad4cebfc191359f9",
+      "installed_bytes": null,
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "AGPL-3.0-only",
+      "mandatory": false,
+      "material_path": "sources/kerncraft",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Provide a pinned source reference for roofline and ECM-style loop modeling, machine descriptions and OSACA marker insertion integration.",
+      "qualification_gaps": [
+        "The Python closure has not been resolved in this audit, including pycachesim native build, pycparser>=3.00, SymPy, NumPy, ruamel.yaml, requests, psutil, compress_pickle and OSACA.",
+        "No Kerncraft CLI, OSACA automatic marker insertion or machine calibration capability is declared ready by source staging.",
+        "Machine descriptions must match the measured target; analytical roofline/ECM estimates are not native benchmark results."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "350a6cc44a97f35f357b9a6ff6fc09b60252f79d1374cb22ad4cebfc191359f9",
+      "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+      "size_evidence": "workspace-evidence/resources-v050/platform-research/instruction-model-measurements.json",
+      "source_evidence": [
+        "https://github.com/RRZE-HPC/kerncraft",
+        "https://pypi.org/project/kerncraft/0.8.18/"
+      ],
+      "source_url": "https://files.pythonhosted.org/packages/0d/39/045807ffe54eac8c3e103494c79964c71b14c1f2a2457c7705fb355299fa/kerncraft-0.8.18.tar.gz",
+      "title": "Kerncraft performance-model source reference",
+      "upstream": "https://github.com/RRZE-HPC/kerncraft",
+      "version": "0.8.18"
+    },
+    "catalog_sha256": "5b81db172067fcd8fedadac1df47857240d1ae3a58f9acb8f4583b920847a77f",
+    "current_material_evidence": {
+      "archive_notice_paths": [
+        "LICENSE"
+      ],
+      "archive_scope_limit": "This is exactly the pinned archive. No inferred external dependency, complete upstream dataset, generated file or embedded compressed record coverage.",
+      "canonical_sources_and_catalog_unchanged": true,
+      "installed_payload_file_count": 111,
+      "live_origin": "separately_verified_in_recovery/dataset-material-inputs.json",
+      "native_execution": "not_run",
+      "original_dependencies_unchanged": true,
+      "source_file_count": 111,
+      "source_logical_bytes": 2780287
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "apt_dependencies": {
+      "dev": [],
+      "target": []
+    },
+    "available_capabilities": [
+      "source-reference"
+    ],
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "executable_qualified": false,
+    "install_argv": [
+      "cp",
+      "-a",
+      "{source}/.",
+      "{prefix}/"
+    ],
+    "install_roles": [
+      "dev"
+    ],
+    "material_layout": "expanded_original_archive",
+    "native_execution_qualified": false,
+    "physical_pmu_qualified": false,
+    "probe_requires_host": [],
+    "python_dependency_closure_complete": false,
+    "python_requirements": [
+      "ruamel.yaml>=0.15.37",
+      "sympy>=1.7.1",
+      "pycachesim>=0.2.3",
+      "numpy",
+      "requests",
+      "pycparser>=3.00",
+      "osaca>=0.7.0",
+      "psutil",
+      "compress_pickle",
+      "matplotlib; extra == \"plot\""
+    ],
+    "qualification_scope": "complete_original_archive_static_material_no_native_or_hardware_qualification",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/kerncraft/kerncraft.py"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "smoke_argv": [],
+    "source_closure_scope": "complete_archive_member_inventory_no_gitmodules_or_lfs_observed",
+    "state": "source-reference-only"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 599649,
+      "extract": true,
+      "id": "kerncraft",
+      "material_path": "sources/kerncraft",
+      "sha256": "350a6cc44a97f35f357b9a6ff6fc09b60252f79d1374cb22ad4cebfc191359f9",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/0d/39/045807ffe54eac8c3e103494c79964c71b14c1f2a2457c7705fb355299fa/kerncraft-0.8.18.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://pypi.org/project/kerncraft/0.8.18/"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete pinned original material",
+        "path": "{prefix}",
+        "purpose": "111 exact original archive members; original notices retained where supplied. Expanded source material."
+      }
+    ],
+    "notes": [
+      "Complete fixed original archive material only; no compilation, analytical model execution, Dataset record completion, semantic oracle, native, OCI or official Benchmark qualification.",
+      "Run recipe/prepare.py using the fixed verified cache or preserved original URL. This round verifies both upstream exact acquisition and reproducible offline preparation; upstream acquisition receipts remain separately bound.",
+      "Original source locks, target, exact dependencies, version and catalog are unchanged. Each installed prefix is an independent ordinary copy."
+    ],
+    "summary": "Provide a pinned source reference for roofline and ECM-style loop modeling, machine descriptions and OSACA marker insertion integration."
+  },
+  "version": "0.8.18"
+}

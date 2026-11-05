@@ -1,0 +1,239 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 221,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "08c2c954966c7977ceb1f518468ef94f0e240597b7d42c642b1feb6b2e6edcaa"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "7a5ed9452e368bbfe974c268a54a0628829194aa3f789eca3e095e154baeecec",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "b7b052921f974f14b71ebac4a664a73664e590a4522b111cdce3876df3cc889e",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.asv-runner",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 51972,
+        "category": [
+          "Python packages",
+          "Optional search and analysis"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/asv_runner/"
+        ],
+        "id": "py.asv-runner",
+        "immutable_ref": "sha256:b4a4360abe63d64cd0ab4a28377b56ff4e2c13b6760bd0c8062feb4a6a5642fb",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "LicenseRef-Python-distribution-notices",
+        "mandatory": false,
+        "material_path": "wheels/asv_runner-0.3.2-py3-none-any.whl",
+        "package_name": "asv-runner",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "b4a4360abe63d64cd0ab4a28377b56ff4e2c13b6760bd0c8062feb4a6a5642fb",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/asv_runner/0.3.2/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/c7/3e/c0e42f311405c0f361979cf511e38cfa909c917fed781001fbae79f3770f/asv_runner-0.3.2-py3-none-any.whl",
+        "title": "asv_runner",
+        "upstream": "https://pypi.org/project/asv_runner/0.3.2/",
+        "version": "0.3.2"
+      },
+      "catalog_sha256": "26a34aaa011c01fd6a3fa67cb0771fbcaa5977beef5c58f5820902d450ac9a5e"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "asv-runner",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 51972,
+        "extract": false,
+        "id": "py.asv-runner",
+        "material_path": "wheels/asv_runner-0.3.2-py3-none-any.whl",
+        "sha256": "b4a4360abe63d64cd0ab4a28377b56ff4e2c13b6760bd0c8062feb4a6a5642fb",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/c7/3e/c0e42f311405c0f361979cf511e38cfa909c917fed781001fbae79f3770f/asv_runner-0.3.2-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/project/asv_runner/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/asv_runner-0.3.2-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+        "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+        "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+      ],
+      "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+    },
+    "version": "0.3.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "original_input_sha256": "b4a4360abe63d64cd0ab4a28377b56ff4e2c13b6760bd0c8062feb4a6a5642fb",
+    "recipe_scope": "Exact original fixed Python closure and bounded local API operations; separate engineering qualification evidence.",
+    "release": "0.21.10",
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

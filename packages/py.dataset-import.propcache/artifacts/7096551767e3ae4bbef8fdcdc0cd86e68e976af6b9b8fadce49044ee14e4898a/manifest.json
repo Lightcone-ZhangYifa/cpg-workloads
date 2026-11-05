@@ -1,0 +1,258 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 233,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "371fde09796cb48646fe26fc21a14d2702e882e77afc790c4a75c91f3f8c90d4"
+    },
+    {
+      "bytes": 16919,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "7be8cfbbe75c5eea7d482c23012368185a4c8f138f731ea7298422cffd3fb9fd"
+    }
+  ],
+  "inventory_sha256": "646db96711d614fb389b5419eea99983f5a47de685efd3a262544a1aa11b47f1",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ddbb4fcf9905721039491d888861eeb0191989f6050c50d2992f50b1f0eef143",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.dataset-import.propcache",
+    "metadata": {
+      "catalog": {
+        "activated_extras": [],
+        "archive_bytes": 250424,
+        "category": [
+          "Python packages",
+          "Dataset import environment"
+        ],
+        "container_strategy": "Install the complete dataset-import wheel group with --no-index --require-hashes into its independent CPython 3.12 environment. Import compiler_playground from the matching project source or install its local wheel explicitly.",
+        "dependencies": [],
+        "dependency_marker_environment": {
+          "extra": "",
+          "implementation_name": "cpython",
+          "implementation_version": "3.12.14",
+          "os_name": "posix",
+          "platform_machine": "x86_64",
+          "platform_python_implementation": "CPython",
+          "platform_release": "",
+          "platform_system": "Linux",
+          "platform_version": "",
+          "python_full_version": "3.12.14",
+          "python_version": "3.12",
+          "sys_platform": "linux"
+        },
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "dataset-import",
+          "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed"
+        },
+        "documentation": [
+          "https://pypi.org/pypi/propcache/0.5.4/json"
+        ],
+        "id": "py.dataset-import.propcache",
+        "immutable_ref": "sha256:2814ecd8e818f487bee4b0f921bc4d1c176cc5fc71ac0f072d0fa67eda4ac14b",
+        "installed_allocated_bytes": 937984,
+        "installed_bytes": 885418,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "Apache-2.0",
+        "mandatory": false,
+        "material_path": "wheels/dataset-import/propcache-0.5.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "package_name": "propcache",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure.",
+        "qualification_gaps": [
+          "Local backend smoke is not a full OCI build or admission of arbitrary corpus semantics.",
+          "The core package needs no third-party dependency. Use this environment only for explicit data preparation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "host",
+          "dev"
+        ],
+        "sha256": "2814ecd8e818f487bee4b0f921bc4d1c176cc5fc71ac0f072d0fa67eda4ac14b",
+        "size_basis": "Actual wheel payload bytes verified against official PyPI. Installed logical/allocated bytes measured from distribution RECORD files in the isolated local CPython 3.12 venv; interpreter and system libraries excluded.",
+        "source_evidence": [
+          "https://pypi.org/pypi/propcache/0.5.4/json",
+          "workspace-evidence/datasets-v090/python-capsule/manifest.json",
+          "workspace-evidence/datasets-v090/python-capsule/local-source-probe.json"
+        ],
+        "source_logical_bytes": 879215,
+        "source_url": "https://files.pythonhosted.org/packages/85/9f/83a07b6ec0e043c050cfdd35fb0cf1b7897b91d554d6eea293740309afe7/propcache-0.5.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "title": "propcache (dataset-import)",
+        "upstream": "https://pypi.org/pypi/propcache/0.5.4/json",
+        "version": "0.5.4"
+      },
+      "catalog_sha256": "79de0ae603392924551950398b8f16a571fb00fb33df7f74959f0a37e392aa13"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "dataset-import",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "propcache",
+      "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 250424,
+        "extract": false,
+        "id": "py.dataset-import.propcache",
+        "material_path": "wheels/dataset-import/propcache-0.5.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "2814ecd8e818f487bee4b0f921bc4d1c176cc5fc71ac0f072d0fa67eda4ac14b",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/85/9f/83a07b6ec0e043c050cfdd35fb0cf1b7897b91d554d6eea293740309afe7/propcache-0.5.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/pypi/propcache/0.5.4/json"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/dataset-import/propcache-0.5.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The recipe validates this original distribution in a private environment with exact offline wheel bytes.",
+        "Bounded API operations, negative cases and exact module location are checked. Actual qualification is recorded in the separate versioned evidence.",
+        "The wrapper remains payload-free; original wheel, original catalog, dependency arrays and environment grouping are unchanged."
+      ],
+      "summary": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure."
+    },
+    "version": "0.5.4"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.9",
+    "release": "0.21.10",
+    "scope": "Exact frozen original baseline definition and recipe supporting selected Python targets; no new dependency functional qualification.",
+    "support_only": true
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

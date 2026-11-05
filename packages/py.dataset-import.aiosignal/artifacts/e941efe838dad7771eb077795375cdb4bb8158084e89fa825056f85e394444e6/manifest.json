@@ -1,0 +1,292 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 233,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "409e3b9abd757b420995bdc1d87e6939b2aaa3a8f0c0b54aa9f9aa193ee1839f"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "883453e04e85194ae4f41a7c803542f152c3d273e89a6963371809e813730601",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "e1bf5045be641022cae74c15df92f52bde85766d243cb7f5ec6103201557aa26",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.dataset-import.frozenlist",
+        "py.dataset-import.typing-extensions"
+      ],
+      "system": []
+    },
+    "id": "py.dataset-import.aiosignal",
+    "metadata": {
+      "catalog": {
+        "activated_extras": [],
+        "archive_bytes": 7490,
+        "category": [
+          "Python packages",
+          "Dataset import environment"
+        ],
+        "container_strategy": "Install the complete dataset-import wheel group with --no-index --require-hashes into its independent CPython 3.12 environment. Import compiler_playground from the matching project source or install its local wheel explicitly.",
+        "dependencies": [
+          "py.dataset-import.frozenlist",
+          "py.dataset-import.typing-extensions"
+        ],
+        "dependency_marker_environment": {
+          "extra": "",
+          "implementation_name": "cpython",
+          "implementation_version": "3.12.14",
+          "os_name": "posix",
+          "platform_machine": "x86_64",
+          "platform_python_implementation": "CPython",
+          "platform_release": "",
+          "platform_system": "Linux",
+          "platform_version": "",
+          "python_full_version": "3.12.14",
+          "python_version": "3.12",
+          "sys_platform": "linux"
+        },
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "dataset-import",
+          "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed"
+        },
+        "documentation": [
+          "https://pypi.org/pypi/aiosignal/1.4.0/json"
+        ],
+        "id": "py.dataset-import.aiosignal",
+        "immutable_ref": "sha256:053243f8b92b990551949e63930a839ff0cf0b0ebbe0597b0f3fb19e1a0fe82e",
+        "installed_allocated_bytes": 40960,
+        "installed_bytes": 20122,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "Apache-2.0",
+        "mandatory": false,
+        "material_path": "wheels/dataset-import/aiosignal-1.4.0-py3-none-any.whl",
+        "package_name": "aiosignal",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure.",
+        "qualification_gaps": [
+          "Local backend smoke is not a full OCI build or admission of arbitrary corpus semantics.",
+          "The core package needs no third-party dependency. Use this environment only for explicit data preparation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "host",
+          "dev"
+        ],
+        "sha256": "053243f8b92b990551949e63930a839ff0cf0b0ebbe0597b0f3fb19e1a0fe82e",
+        "size_basis": "Actual wheel payload bytes verified against official PyPI. Installed logical/allocated bytes measured from distribution RECORD files in the isolated local CPython 3.12 venv; interpreter and system libraries excluded.",
+        "source_evidence": [
+          "https://pypi.org/pypi/aiosignal/1.4.0/json",
+          "workspace-evidence/datasets-v090/python-capsule/manifest.json",
+          "workspace-evidence/datasets-v090/python-capsule/local-source-probe.json"
+        ],
+        "source_logical_bytes": 17188,
+        "source_url": "https://files.pythonhosted.org/packages/fb/76/641ae371508676492379f16e2fa48f4e2c11741bd63c48be4b12a6b09cba/aiosignal-1.4.0-py3-none-any.whl",
+        "title": "aiosignal (dataset-import)",
+        "upstream": "https://pypi.org/pypi/aiosignal/1.4.0/json",
+        "version": "1.4.0"
+      },
+      "catalog_sha256": "a160ba6dcb9d499d9d184a91e5aa97724bdf7644c81500ad2324a2da84b60ae2"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "dataset-import",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "aiosignal",
+      "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 7490,
+        "extract": false,
+        "id": "py.dataset-import.aiosignal",
+        "material_path": "wheels/dataset-import/aiosignal-1.4.0-py3-none-any.whl",
+        "sha256": "053243f8b92b990551949e63930a839ff0cf0b0ebbe0597b0f3fb19e1a0fe82e",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/fb/76/641ae371508676492379f16e2fa48f4e2c11741bd63c48be4b12a6b09cba/aiosignal-1.4.0-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/pypi/aiosignal/1.4.0/json"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/dataset-import/aiosignal-1.4.0-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+        "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+        "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+      ],
+      "summary": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure."
+    },
+    "version": "1.4.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "original_input_sha256": "053243f8b92b990551949e63930a839ff0cf0b0ebbe0597b0f3fb19e1a0fe82e",
+    "recipe_scope": "Exact original fixed Python closure and bounded local API operations; separate engineering qualification evidence.",
+    "release": "0.21.10",
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.dataset-import.frozenlist",
+      "method": "wrapper",
+      "sha256": "d93e716e6fb5bd683208fba7fd32e9e7d3406d26a28c1d9f852f6f3cd7ff5230",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.8.0"
+    },
+    {
+      "build": "2",
+      "id": "py.dataset-import.typing-extensions",
+      "method": "wrapper",
+      "sha256": "8b4a9e4856f1ef45c142fd1beb7cabde02869ccc8d64907af17e6dc22ac281e1",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.16.0"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

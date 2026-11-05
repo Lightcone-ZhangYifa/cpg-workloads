@@ -1,0 +1,255 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1366,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "7c2168fb830ee852d07e161eeb64ece115cd141526ee4b74f4a3bfa3b4598220"
+    },
+    {
+      "bytes": 3263,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_support.py",
+      "sha256": "51601a27723523804a65c59ba8e152d4377a99b5b1d72849aa59d4cf6c30e51b"
+    }
+  ],
+  "inventory_sha256": "e962066e1e1eaafbf2bbe533ef7937594c3fb743e44909403082bf429f78c80a",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ac5e76bdfd67f82837b6f9257e3ca141f6dd00e9963879b64532f088a15a42f1",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.mlir.pycparser"
+      ],
+      "system": []
+    },
+    "id": "py.mlir.cffi",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 221822,
+        "category": [
+          "Python packages",
+          "MLIR binding environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.mlir.pycparser"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "mlir",
+          "state": "resolved-independent-LLVM-binding-capsule; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://mlir.llvm.org/docs/Bindings/Python/"
+        ],
+        "id": "py.mlir.cffi",
+        "immutable_ref": "sha256:c1453022f490d2459a11819d83ad1d586e9ff65a12ac3e705ffebd46d3685dcf",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "MIT-0",
+        "mandatory": false,
+        "material_path": "wheels/mlir/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "package_name": "cffi",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Exact Python dependency for the MLIR bindings from the locked LLVM source, isolated from analysis package constraints.",
+        "qualification_gaps": [],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "c1453022f490d2459a11819d83ad1d586e9ff65a12ac3e705ffebd46d3685dcf",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/cffi/2.1.1/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/b1/db/dceb9dd5b231e1da801793f8acc9f3c52a7e1afe40bb1aae37e02b0faad5/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "title": "cffi (MLIR Python capsule)",
+        "version": "2.1.1"
+      },
+      "catalog_sha256": "b15da19852e093947845bd9204e5a33dbe9a96a650265e1b43b66a4628090817"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "mlir",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "cffi",
+      "state": "resolved-independent-LLVM-binding-capsule; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 221822,
+        "extract": false,
+        "id": "py.mlir.cffi",
+        "material_path": "wheels/mlir/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "sha256": "c1453022f490d2459a11819d83ad1d586e9ff65a12ac3e705ffebd46d3685dcf",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/b1/db/dceb9dd5b231e1da801793f8acc9f3c52a7e1afe40bb1aae37e02b0faad5/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://mlir.llvm.org/docs/Bindings/Python/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/mlir/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+        "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+        "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+      ],
+      "summary": "Exact Python dependency for the MLIR bindings from the locked LLVM source, isolated from analysis package constraints."
+    },
+    "version": "2.1.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "original_input_sha256": "c1453022f490d2459a11819d83ad1d586e9ff65a12ac3e705ffebd46d3685dcf",
+    "recipe_scope": "Exact original fixed Python closure and bounded local API operations; separate engineering qualification evidence.",
+    "release": "0.21.10",
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [
+    {
+      "build": "20261029-exact-wheel-offline-isolation-1",
+      "id": "py.mlir.pycparser",
+      "method": "wrapper",
+      "sha256": "87ebe884c9ed4e24636ddaa1be50cbc0a2c6d9812e17bcce561c8f0245de3eb7",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.11"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

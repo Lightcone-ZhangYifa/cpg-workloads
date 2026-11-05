@@ -1,0 +1,245 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 3018,
+      "kind": "file",
+      "mode": 493,
+      "path": "recipe/check.py",
+      "sha256": "8fded6a577901fccb5747bb2fd9a45f31a25ba46a7e82233ecb18e3af5867255"
+    }
+  ],
+  "inventory_sha256": "2ef9f9763cfe947ae2d152cc4a5fdbef98d97d8f03c4ef058fbc70b482c735fb",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "a430dab8791a81dcfa6add99a2944217cdd884a24db7edd36c72f21ebd2bb8c3",
+  "method": "wrapper",
+  "package": {
+    "build": "20261029-isolated-exact-wheel-host-qualification-1",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--module",
+          "tzdata",
+          "--dist",
+          "tzdata",
+          "--version",
+          "2026.5"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "original-exact-wheel-real-semantic-check",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 30
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.dataset-import.tzdata",
+    "metadata": {
+      "catalog": {
+        "activated_extras": [],
+        "archive_bytes": 347996,
+        "category": [
+          "Python packages",
+          "Dataset import environment"
+        ],
+        "container_strategy": "Install the complete dataset-import wheel group with --no-index --require-hashes into its independent CPython 3.12 environment. Import compiler_playground from the matching project source or install its local wheel explicitly.",
+        "dependencies": [],
+        "dependency_marker_environment": {
+          "extra": "",
+          "implementation_name": "cpython",
+          "implementation_version": "3.12.14",
+          "os_name": "posix",
+          "platform_machine": "x86_64",
+          "platform_python_implementation": "CPython",
+          "platform_release": "",
+          "platform_system": "Linux",
+          "platform_version": "",
+          "python_full_version": "3.12.14",
+          "python_version": "3.12",
+          "sys_platform": "linux"
+        },
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "dataset-import",
+          "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed"
+        },
+        "documentation": [
+          "https://pypi.org/pypi/tzdata/2026.5/json"
+        ],
+        "id": "py.dataset-import.tzdata",
+        "immutable_ref": "sha256:b683bd1b6659ddcd810ff02ad09ba821d4bf1065072805063eb35c49617905ac",
+        "installed_allocated_bytes": 2818048,
+        "installed_bytes": 588798,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "Apache-2.0",
+        "mandatory": false,
+        "material_path": "wheels/dataset-import/tzdata-2026.5-py2.py3-none-any.whl",
+        "package_name": "tzdata",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure.",
+        "qualification_gaps": [
+          "Local backend smoke is not a full OCI build or admission of arbitrary corpus semantics.",
+          "The core package needs no third-party dependency. Use this environment only for explicit data preparation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "host",
+          "dev"
+        ],
+        "sha256": "b683bd1b6659ddcd810ff02ad09ba821d4bf1065072805063eb35c49617905ac",
+        "size_basis": "Actual wheel payload bytes verified against official PyPI. Installed logical/allocated bytes measured from distribution RECORD files in the isolated local CPython 3.12 venv; interpreter and system libraries excluded.",
+        "source_evidence": [
+          "https://pypi.org/pypi/tzdata/2026.5/json",
+          "workspace-evidence/datasets-v090/python-capsule/manifest.json",
+          "workspace-evidence/datasets-v090/python-capsule/local-source-probe.json"
+        ],
+        "source_logical_bytes": 581918,
+        "source_url": "https://files.pythonhosted.org/packages/94/21/1e5995a1c920cce14e4bffae20c665ec10e7ed03ab25e006cd741092b718/tzdata-2026.5-py2.py3-none-any.whl",
+        "title": "tzdata (dataset-import)",
+        "upstream": "https://pypi.org/pypi/tzdata/2026.5/json",
+        "version": "2026.5"
+      },
+      "catalog_sha256": "43a7206669f6c59b0804bcd3eac9b331ea2b6ff37a768d1ff993b4e99615f42b",
+      "cpg_qualification": {
+        "canonical_original_id": "py.dataset-import.tzdata",
+        "exact_offline_wheel_source": true,
+        "host_qualification": "Debian 13 amd64 / CPython 3.13; no emulated Ubuntu 24.04 target",
+        "native_machine_code_compiled": false,
+        "original_provider": "python",
+        "original_target_preserved": true,
+        "source_compile_performed": false,
+        "source_input_bytes": 347996,
+        "source_input_sha256": "b683bd1b6659ddcd810ff02ad09ba821d4bf1065072805063eb35c49617905ac",
+        "two_independent_prefixes": true,
+        "ubuntu24_oci_hardware_official_benchmark_not_run": true,
+        "upstream_binary_wheel_reused": true,
+        "validated_underlying_pip_not_a_native_source_build": true
+      }
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "dataset-import",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "tzdata",
+      "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 347996,
+        "extract": false,
+        "id": "py.dataset-import.tzdata",
+        "material_path": "wheels/dataset-import/tzdata-2026.5-py2.py3-none-any.whl",
+        "sha256": "b683bd1b6659ddcd810ff02ad09ba821d4bf1065072805063eb35c49617905ac",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/94/21/1e5995a1c920cce14e4bffae20c665ec10e7ed03ab25e006cd741092b718/tzdata-2026.5-py2.py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/pypi/tzdata/2026.5/json"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/dataset-import/tzdata-2026.5-py2.py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "Isolation-qualified host-only: same original official wheel SHA, CPython 3.13, 2 independent prefixes, offline pip install; Ubuntu 24.04, OCI, native source compilation and real hardware not tested."
+      ],
+      "summary": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure."
+    },
+    "version": "2026.5"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.9",
+    "release": "0.21.10",
+    "scope": "Exact frozen original baseline definition and recipe supporting selected Python targets; no new dependency functional qualification.",
+    "support_only": true
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

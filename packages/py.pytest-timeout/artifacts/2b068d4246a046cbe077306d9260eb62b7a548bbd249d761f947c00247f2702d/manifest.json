@@ -1,0 +1,317 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 228,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "3bdb74513d9d0d99b35ccf6ec7403221a38356cde5a29b3486a0e5d45ad31927"
+    },
+    {
+      "bytes": 28947,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_02.py",
+      "sha256": "a24cbd31e1a5492806777c74917cc8b8141aa6981f93721e9027d70c26befead"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "f436a87d488191f2d6ef45713b69ba9577fd0527decebad7f072ef4e180f9d1b",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "17d83337d292448b4ae0aad75ace9190841ac37368d0e8645aeea48de8e7367f",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.pytest"
+      ],
+      "system": []
+    },
+    "id": "py.pytest-timeout",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 14382,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.pytest"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://github.com/pytest-dev/pytest-timeout"
+        ],
+        "id": "py.pytest-timeout",
+        "immutable_ref": "sha256:c42667e5cdadb151aeb5b26d114aff6bdf5a907f176a007a30b940d3d865b5c2",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "LicenseRef-Python-distribution-notices",
+        "mandatory": false,
+        "material_path": "wheels/pytest_timeout-2.4.0-py3-none-any.whl",
+        "package_name": "pytest-timeout",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "c42667e5cdadb151aeb5b26d114aff6bdf5a907f176a007a30b940d3d865b5c2",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/pytest-timeout/2.4.0/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/fa/b6/3127540ecdf1464a00e5a01ee60a1b09175f6913f0644ac748494d9c4b21/pytest_timeout-2.4.0-py3-none-any.whl",
+        "title": "pytest-timeout",
+        "upstream": "https://pypi.org/project/pytest-timeout/2.4.0/",
+        "version": "2.4.0"
+      },
+      "catalog_sha256": "9ad1974a267010c10ca667e63c82ad7c0abcf170d24566b25d6b772a111cb522"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "pytest-timeout",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 14382,
+        "extract": false,
+        "id": "py.pytest-timeout",
+        "material_path": "wheels/pytest_timeout-2.4.0-py3-none-any.whl",
+        "sha256": "c42667e5cdadb151aeb5b26d114aff6bdf5a907f176a007a30b940d3d865b5c2",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/fa/b6/3127540ecdf1464a00e5a01ee60a1b09175f6913f0644ac748494d9c4b21/pytest_timeout-2.4.0-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://github.com/pytest-dev/pytest-timeout"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/pytest_timeout-2.4.0-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+        "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+        "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+      ],
+      "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+    },
+    "version": "2.4.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "original_input_sha256": "c42667e5cdadb151aeb5b26d114aff6bdf5a907f176a007a30b940d3d865b5c2",
+    "recipe_scope": "Exact original fixed Python closure and bounded local API operations; separate engineering qualification evidence.",
+    "release": "0.21.10",
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.iniconfig",
+      "method": "wrapper",
+      "sha256": "699a9a63092dbd3f95d0c2a720fddc9027625ce2fbb11a8d68ab530fa50abf93",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.3.1"
+    },
+    {
+      "build": "2",
+      "id": "py.packaging",
+      "method": "wrapper",
+      "sha256": "ec34c6d97e4d06ceb2bfd9215fdd04a60a3bb855b92e0775e8d24abfca9d1268",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "26.3"
+    },
+    {
+      "build": "2",
+      "id": "py.pluggy",
+      "method": "wrapper",
+      "sha256": "4363f78a101ce829a2a4fc95c3aa1e61a266a0bef8b4537aa22061fd62267a2f",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.7.0"
+    },
+    {
+      "build": "2",
+      "id": "py.pygments",
+      "method": "wrapper",
+      "sha256": "081f23f44f2aec2d884b540154106c76984d8d15b6f367c86a91a6154dcce483",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.21.0"
+    },
+    {
+      "build": "2",
+      "id": "py.pytest",
+      "method": "wrapper",
+      "sha256": "00a53d47ca7b42aae5d519b7177353f9f147be648d3bbe68aececeecee73d33e",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "9.1.1"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

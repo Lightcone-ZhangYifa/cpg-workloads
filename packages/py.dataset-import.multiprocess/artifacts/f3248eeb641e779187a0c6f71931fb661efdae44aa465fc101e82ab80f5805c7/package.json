@@ -1,0 +1,223 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exact-private-distribution",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-installed-operations",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.dataset-import.dill"
+    ],
+    "system": []
+  },
+  "id": "py.dataset-import.multiprocess",
+  "metadata": {
+    "catalog": {
+      "activated_extras": [],
+      "archive_bytes": 150281,
+      "category": [
+        "Python packages",
+        "Dataset import environment"
+      ],
+      "container_strategy": "Install the complete dataset-import wheel group with --no-index --require-hashes into its independent CPython 3.12 environment. Import compiler_playground from the matching project source or install its local wheel explicitly.",
+      "dependencies": [
+        "py.dataset-import.dill"
+      ],
+      "dependency_marker_environment": {
+        "extra": "",
+        "implementation_name": "cpython",
+        "implementation_version": "3.12.14",
+        "os_name": "posix",
+        "platform_machine": "x86_64",
+        "platform_python_implementation": "CPython",
+        "platform_release": "",
+        "platform_system": "Linux",
+        "platform_version": "",
+        "python_full_version": "3.12.14",
+        "python_version": "3.12",
+        "sys_platform": "linux"
+      },
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "dataset-import",
+        "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed"
+      },
+      "documentation": [
+        "https://pypi.org/pypi/multiprocess/0.70.19/json"
+      ],
+      "id": "py.dataset-import.multiprocess",
+      "immutable_ref": "sha256:3a56c0e85dd5025161bac5ce138dcac1e49174c7d8e74596537e729fd5c53c28",
+      "installed_allocated_bytes": 1597440,
+      "installed_bytes": 1354127,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "wheels/dataset-import/multiprocess-0.70.19-py312-none-any.whl",
+      "package_name": "multiprocess",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure.",
+      "qualification_gaps": [
+        "Local backend smoke is not a full OCI build or admission of arbitrary corpus semantics.",
+        "The core package needs no third-party dependency. Use this environment only for explicit data preparation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "host",
+        "dev"
+      ],
+      "sha256": "3a56c0e85dd5025161bac5ce138dcac1e49174c7d8e74596537e729fd5c53c28",
+      "size_basis": "Actual wheel payload bytes verified against official PyPI. Installed logical/allocated bytes measured from distribution RECORD files in the isolated local CPython 3.12 venv; interpreter and system libraries excluded.",
+      "source_evidence": [
+        "https://pypi.org/pypi/multiprocess/0.70.19/json",
+        "workspace-evidence/datasets-v090/python-capsule/manifest.json",
+        "workspace-evidence/datasets-v090/python-capsule/local-source-probe.json"
+      ],
+      "source_logical_bytes": 552273,
+      "source_url": "https://files.pythonhosted.org/packages/71/70/38998b950a97ea279e6bd657575d22d1a2047256caf707d9a10fbce4f065/multiprocess-0.70.19-py312-none-any.whl",
+      "title": "multiprocess (dataset-import)",
+      "upstream": "https://pypi.org/pypi/multiprocess/0.70.19/json",
+      "version": "0.70.19"
+    },
+    "catalog_sha256": "f31a6cfaa46fb3576697904496d24a84ff994317c83f36b9a0f3e9d8879c62e9"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "dataset-import",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "--no-cache-dir",
+        "--disable-pip-version-check",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "multiprocess",
+    "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-I",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "--disable-pip-version-check",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 150281,
+      "extract": false,
+      "id": "py.dataset-import.multiprocess",
+      "material_path": "wheels/dataset-import/multiprocess-0.70.19-py312-none-any.whl",
+      "sha256": "3a56c0e85dd5025161bac5ce138dcac1e49174c7d8e74596537e729fd5c53c28",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/71/70/38998b950a97ea279e6bd657575d22d1a2047256caf707d9a10fbce4f065/multiprocess-0.70.19-py312-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+    ],
+    "documentation": [
+      "https://pypi.org/pypi/multiprocess/0.70.19/json"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect package metadata in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/dataset-import/multiprocess-0.70.19-py312-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+      "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+      "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+      "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+    ],
+    "summary": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure."
+  },
+  "version": "0.70.19"
+}

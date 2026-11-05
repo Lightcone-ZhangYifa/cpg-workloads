@@ -1,0 +1,445 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 246,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "c2fe002ea2e3c4904b4ef320a1f763ba2bf6f62eb9c1f5e8e90da3bdc8b80c21"
+    },
+    {
+      "bytes": 13541,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_03.py",
+      "sha256": "e3d8c97af1f8f77bfbd68d0805b1bc4b01b7f98d53d584419b672bafe250c7f0"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "92750da9896fdf91462853dbc4ce52b869e2f86fe1cc549514dd9608754a3a76",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "71666175d1be815ab26baeed2a9959046944b0e02add44288955ef0c526a8ec2",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.gcc-contrib.ruamel-yaml",
+        "py.gcc-contrib.jsonschema",
+        "py.gcc-contrib.regress",
+        "py.gcc-contrib.requests",
+        "py.gcc-contrib.click"
+      ],
+      "system": []
+    },
+    "id": "py.gcc-contrib.check-jsonschema",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 427987,
+        "category": [
+          "Python packages",
+          "GCC contribution environment"
+        ],
+        "container_strategy": "Install with the gcc-contrib requirements.lock into a dedicated CPython 3.12 venv from the prepared wheel directory using --no-index --require-hashes.",
+        "dependencies": [
+          "py.gcc-contrib.ruamel-yaml",
+          "py.gcc-contrib.jsonschema",
+          "py.gcc-contrib.regress",
+          "py.gcc-contrib.requests",
+          "py.gcc-contrib.click"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "gcc-contrib",
+          "state": "official-artifact-hashes-verified; isolated-offline-runtime-smoke-passed; container-not-executed"
+        },
+        "documentation": [
+          "https://pypi.org/pypi/check-jsonschema/0.38.2/json"
+        ],
+        "id": "py.gcc-contrib.check-jsonschema",
+        "immutable_ref": "sha256:8edefe154b7117962f2e88318f315fc4bb9615827f932b37cb676a8d42a3a286",
+        "installed_bytes": 4040844,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "Apache-2.0 AND LicenseRef-bundled-schema-licenses",
+        "license_notes": "The application is Apache-2.0; bundled schema license files include additional licenses. Preserve the complete wheel notices; see license-inventory.json.",
+        "mandatory": false,
+        "material_path": "wheels/gcc-contrib/check_jsonschema-0.38.2-py3-none-any.whl",
+        "package_name": "check-jsonschema",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Isolated GCC contribution-tool runtime and its exact dependency closure for patch parsing, local Git analysis, schema validation, HTTP clients, and Python checks.",
+        "qualification_gaps": [
+          "No Docker or Podman container was started in this acquisition task.",
+          "Complete GCC contrib workflow acceptance remains separate from dependency-capsule qualification."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "8edefe154b7117962f2e88318f315fc4bb9615827f932b37cb676a8d42a3a286",
+        "size_basis": "Actual downloaded wheel bytes matched to official PyPI; installed logical bytes measured from distribution RECORD files after offline smoke on CPython 3.12 Linux x86_64.",
+        "source_evidence": [
+          "https://pypi.org/pypi/check-jsonschema/0.38.2/json",
+          "workspace-evidence/community-v070/python-capsule/qualification.json",
+          "workspace-evidence/community-v070/python-capsule/manifest.json"
+        ],
+        "source_logical_bytes": 3895553,
+        "source_url": "https://files.pythonhosted.org/packages/64/15/286e11f294c86616202f413df069dc6625c0085fc70d32b3e5e703236a17/check_jsonschema-0.38.2-py3-none-any.whl",
+        "title": "check-jsonschema",
+        "upstream": "https://pypi.org/project/check-jsonschema/0.38.2/",
+        "version": "0.38.2"
+      },
+      "catalog_sha256": "e6a0f7c5ca4fdf0eb5e5a959df9197c9a181c5def7900f3d3196d409637e7fb3"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "gcc-contrib",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "check-jsonschema",
+      "state": "official-artifact-hashes-verified; isolated-offline-runtime-smoke-passed; container-not-executed",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 427987,
+        "extract": false,
+        "id": "py.gcc-contrib.check-jsonschema",
+        "material_path": "wheels/gcc-contrib/check_jsonschema-0.38.2-py3-none-any.whl",
+        "sha256": "8edefe154b7117962f2e88318f315fc4bb9615827f932b37cb676a8d42a3a286",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/64/15/286e11f294c86616202f413df069dc6625c0085fc70d32b3e5e703236a17/check_jsonschema-0.38.2-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/pypi/check-jsonschema/0.38.2/json"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/gcc-contrib/check_jsonschema-0.38.2-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+        "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+        "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+      ],
+      "summary": "Isolated GCC contribution-tool runtime and its exact dependency closure for patch parsing, local Git analysis, schema validation, HTTP clients, and Python checks."
+    },
+    "version": "0.38.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "original_input_sha256": "8edefe154b7117962f2e88318f315fc4bb9615827f932b37cb676a8d42a3a286",
+    "recipe_scope": "Exact original fixed Python closure and bounded local API operations; separate engineering qualification evidence.",
+    "release": "0.21.10",
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [
+    {
+      "build": "20261029-isolated-exact-wheel-host-qualification-1",
+      "id": "py.gcc-contrib.attrs",
+      "method": "wrapper",
+      "sha256": "71de285dd1d45a59ac1418b85ad4c0d81e94eb8a0446e540529116ae5ba59678",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "26.1.0"
+    },
+    {
+      "build": "2",
+      "id": "py.gcc-contrib.certifi",
+      "method": "wrapper",
+      "sha256": "3a8bf5d6284ecd3bd70cb75ec77333db48bac912ea4dd9f389c8221ab958a56a",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2026.10.19"
+    },
+    {
+      "build": "2",
+      "id": "py.gcc-contrib.charset-normalizer",
+      "method": "wrapper",
+      "sha256": "0d3498f2403e6bbbd6330c106c79700a5e4250cfa86a36abd5de2944c26585f7",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.5.2"
+    },
+    {
+      "build": "2",
+      "id": "py.gcc-contrib.click",
+      "method": "wrapper",
+      "sha256": "062252be5f6f1e97340f1b52723e3ad7847b029fc1faf4957f5c7ed06fc89046",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "8.5.0"
+    },
+    {
+      "build": "2",
+      "id": "py.gcc-contrib.rpds-py",
+      "method": "wrapper",
+      "sha256": "e4e6dd37cd3c811a03bb20c984cc3f26878a60113683fb26f047fe7f7ce2b266",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2026.9.1"
+    },
+    {
+      "build": "2",
+      "id": "py.gcc-contrib.typing-extensions",
+      "method": "wrapper",
+      "sha256": "66dc260517529df20be9e6fc9f401671e68bd56fd4f7deb3121c6ab54e52ddaf",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.16.0"
+    },
+    {
+      "build": "1",
+      "id": "py.gcc-contrib.referencing",
+      "method": "wrapper",
+      "sha256": "eb8460d505f3d19f580382bcaa55d1226f4936191ee2c9bdc3f259e1c1849bbe",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.37.0"
+    },
+    {
+      "build": "1",
+      "id": "py.gcc-contrib.jsonschema-specifications",
+      "method": "wrapper",
+      "sha256": "b25ea83168cf16cbd47becb637849ef8ba49db520cea116773ff32044d3f94ce",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2025.9.1"
+    },
+    {
+      "build": "1",
+      "id": "py.gcc-contrib.jsonschema",
+      "method": "wrapper",
+      "sha256": "5bccdaa53c987c585401cdcec0371d62623016fa2bb53144e4dc2870e269a424",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.26.0"
+    },
+    {
+      "build": "2",
+      "id": "py.gcc-contrib.regress",
+      "method": "wrapper",
+      "sha256": "acd135456112f5726ac337c9876de6e59ed8ad26a2e5f68c159246e9adea4233",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2026.9.1"
+    },
+    {
+      "build": "20261029-isolated-exact-wheel-host-qualification-1",
+      "id": "py.gcc-contrib.idna",
+      "method": "wrapper",
+      "sha256": "8716ff269cd84b7873f604f83740c92bdea350c1a90f1f21a97708ecf12eaa26",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.20"
+    },
+    {
+      "build": "2",
+      "id": "py.gcc-contrib.urllib3",
+      "method": "wrapper",
+      "sha256": "154d1f4898dc1a841bff29926760b964205e195db9c6f686329efb4a85b30bac",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.8.0"
+    },
+    {
+      "build": "1",
+      "id": "py.gcc-contrib.requests",
+      "method": "wrapper",
+      "sha256": "0546425d44a7b775501859196da9e7bf0ee4525d774e1b9a1367cee24b438d4b",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.34.2"
+    },
+    {
+      "build": "2",
+      "id": "py.gcc-contrib.ruamel-yaml",
+      "method": "wrapper",
+      "sha256": "92728a7cc91cfeb9bfff77b378826b35e0aed14c83c351789c8e2aa6549ed099",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.19.1"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

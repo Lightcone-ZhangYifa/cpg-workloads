@@ -1,0 +1,280 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 201,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "6f0e609401cabeb27819b51fdb54a1414841053b86f01de3b86fee41066cbfa7"
+    },
+    {
+      "bytes": 28947,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_02.py",
+      "sha256": "a24cbd31e1a5492806777c74917cc8b8141aa6981f93721e9027d70c26befead"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "104b2bce5d32e955955a640b55caae5a3aef06c1efa32c1305e1d712e24c3993",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "a9c67b86477326099598441f70762fa5dbdcf03d21bf2a0b0f3e13ab9004dae7",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.packaging",
+        "py.pyproject-hooks"
+      ],
+      "system": []
+    },
+    "id": "py.build",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 31179,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.packaging",
+          "py.pyproject-hooks"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/build/"
+        ],
+        "id": "py.build",
+        "immutable_ref": "sha256:ecd351a4be9d35a9eaaba244a7687143c9c7d4aea6ac964e7e7ddab20cbcf4e7",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "material_path": "wheels/build-1.6.1-py3-none-any.whl",
+        "package_name": "build",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "ecd351a4be9d35a9eaaba244a7687143c9c7d4aea6ac964e7e7ddab20cbcf4e7",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/build/1.6.1/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/ad/9b/9fb3585dabcd73a1b2a6267f63f62649347c9e6d072c9fde365b105abb2c/build-1.6.1-py3-none-any.whl",
+        "title": "build",
+        "upstream": "https://pypi.org/project/build/1.6.1/",
+        "version": "1.6.1"
+      },
+      "catalog_sha256": "697bf41939db261f4f6c4accb3a90f8aaeb2e96e866e31f858b0e2a89200d04b"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "build",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 31179,
+        "extract": false,
+        "id": "py.build",
+        "material_path": "wheels/build-1.6.1-py3-none-any.whl",
+        "sha256": "ecd351a4be9d35a9eaaba244a7687143c9c7d4aea6ac964e7e7ddab20cbcf4e7",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/ad/9b/9fb3585dabcd73a1b2a6267f63f62649347c9e6d072c9fde365b105abb2c/build-1.6.1-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/project/build/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/build-1.6.1-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+        "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+        "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+      ],
+      "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+    },
+    "version": "1.6.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "original_input_sha256": "ecd351a4be9d35a9eaaba244a7687143c9c7d4aea6ac964e7e7ddab20cbcf4e7",
+    "recipe_scope": "Exact original fixed Python closure and bounded local API operations; separate engineering qualification evidence.",
+    "release": "0.21.10",
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.packaging",
+      "method": "wrapper",
+      "sha256": "ec34c6d97e4d06ceb2bfd9215fdd04a60a3bb855b92e0775e8d24abfca9d1268",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "26.3"
+    },
+    {
+      "build": "2",
+      "id": "py.pyproject-hooks",
+      "method": "wrapper",
+      "sha256": "6cd2bea9f7a10ab6f96727ab78cdfcdd0ab74b026d583306016f27ada0f1d30c",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.3.3"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}
