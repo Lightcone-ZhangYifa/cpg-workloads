@@ -20,6 +20,7 @@ Git stores unpacked package definitions, build recipes, functional checks, sourc
 | `catalog/historical-snapshots/` | Exact original artifact, manifest, and delivery-member bindings for historical alternatives. |
 | `catalog/historical-releases/` | Verified historical publication receipts; these populate the separate root historical download index. |
 | `catalog/revisions/` | Reviewed metadata and check-definition changes, with original and target manifest identities. |
+| `catalog/reviews/license-holds.json` | Unreleased original artifacts whose redistribution terms remain unresolved, with any separately qualified public alternatives. |
 | `release-plans/` | Explicit immutable lists of artifacts to publish together. |
 | `resource-integrations/` | Historical maintainer drivers and evidence, retained with their original scope. |
 | `tools/`, `tests/` | Repository validation and publication infrastructure, plus resource-specific tests. |
@@ -76,6 +77,12 @@ Large input archives, upstream build trees, installed prefixes, `.cpgpkg`/`.cpgr
 files, and compiler outputs do not belong in Git. Migration uses one outer archive
 and one inner package at a time. Temporary data can be removed after its necessary
 source template and audit record are preserved and its release status is known.
+
+Unresolved redistribution holds are listed in
+[`catalog/reviews/license-holds.json`](catalog/reviews/license-holds.json). Their
+source templates remain available, but a held artifact is not a published package.
+A listed alternative has its own exact identity and does not change the held
+artifact's qualification.
 
 A template's `authored-inputs.json` records external recipe inputs that remain in the
 finished package but are omitted from Git. Each entry binds the original manifest
