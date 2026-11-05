@@ -1,0 +1,197 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "distribution-identity",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "installed-api-contract",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "py.mpmath",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 536198,
+      "category": [
+        "Python packages",
+        "Optional search and analysis"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "http://mpmath.org/"
+      ],
+      "id": "py.mpmath",
+      "immutable_ref": "sha256:a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "LicenseRef-Python-distribution-notices",
+      "mandatory": false,
+      "material_path": "wheels/mpmath-1.3.0-py3-none-any.whl",
+      "package_name": "mpmath",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/mpmath/1.3.0/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl",
+      "title": "mpmath",
+      "upstream": "https://pypi.org/project/mpmath/1.3.0/",
+      "version": "1.3.0"
+    },
+    "catalog_sha256": "ed770f39f8c2cfabb5540813cdaeaf1211eedd6b6eff6a8c29c86f8f61f430af"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "mpmath",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 536198,
+      "extract": false,
+      "id": "py.mpmath",
+      "material_path": "wheels/mpmath-1.3.0-py3-none-any.whl",
+      "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Invoke {prefix}/bin/python explicitly; this environment owns the distribution and its fixed dependency closure."
+    ],
+    "documentation": [
+      "https://mpmath.org/doc/current/",
+      "http://mpmath.org/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -c 'import mpmath as mp; mp.mp.dps=50; print(mp.sqrt(2))'",
+        "description": "Use the selected installed resource."
+      },
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect the exact installed distribution."
+      },
+      {
+        "command": "cpg packages check py.mpmath --prefix {prefix} --kind functional",
+        "description": "Run the bounded package-specific functional checks."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/mpmath-1.3.0-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "The check requires the exact distribution and an imported module inside the selected environment, then checks actual operations and error cases.",
+      "Qualification is bounded to the recipe's stated local cases, not every upstream test or optional backend. No remote service or data download is performed.",
+      "The wrapper contains metadata, hooks and checks; its locked wheel and dependency closure remain separately identified inputs.",
+      "The original metadata.catalog facts and source locks are retained. Execution evidence is recorded separately."
+    ],
+    "summary": "Arbitrary-precision arithmetic, quadrature, roots and linear algebra."
+  },
+  "version": "1.3.0"
+}

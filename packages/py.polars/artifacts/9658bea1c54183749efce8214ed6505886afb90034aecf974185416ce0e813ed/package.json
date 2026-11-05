@@ -1,0 +1,201 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "distribution-identity",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "installed-api-contract",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.polars-runtime-32"
+    ],
+    "system": []
+  },
+  "id": "py.polars",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 876611,
+      "category": [
+        "Python packages",
+        "Optional search and analysis"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.polars-runtime-32"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/polars/"
+      ],
+      "id": "py.polars",
+      "immutable_ref": "sha256:35d62f3541b7a6d4c360a2e2f07fccc0c2bcbd33b0ea51c83a25417a47a3f3ad",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "LicenseRef-Python-distribution-notices",
+      "mandatory": false,
+      "material_path": "wheels/polars-2.0.0-py3-none-any.whl",
+      "package_name": "polars",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "35d62f3541b7a6d4c360a2e2f07fccc0c2bcbd33b0ea51c83a25417a47a3f3ad",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/polars/2.0.0/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/ac/09/cc33bbd5463749c116b62c204d88bed6c02a6cb901eac7adab0d38651b07/polars-2.0.0-py3-none-any.whl",
+      "title": "polars",
+      "upstream": "https://pypi.org/project/polars/2.0.0/",
+      "version": "2.0.0"
+    },
+    "catalog_sha256": "ea8db66f895db688657bfdab23750b4c7ca1448d9f578ae16127f85c5ea28c89"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "polars",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 876611,
+      "extract": false,
+      "id": "py.polars",
+      "material_path": "wheels/polars-2.0.0-py3-none-any.whl",
+      "sha256": "35d62f3541b7a6d4c360a2e2f07fccc0c2bcbd33b0ea51c83a25417a47a3f3ad",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/ac/09/cc33bbd5463749c116b62c204d88bed6c02a6cb901eac7adab0d38651b07/polars-2.0.0-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use {prefix}/bin/python explicitly. The selected environment owns the exact distribution and its declared dependencies."
+    ],
+    "documentation": [
+      "https://docs.pola.rs/",
+      "https://pypi.org/project/polars/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -c 'import polars as pl; print(pl.DataFrame({'\"'\"'group'\"'\"':['\"'\"'a'\"'\"','\"'\"'a'\"'\"','\"'\"'b'\"'\"'],'\"'\"'value'\"'\"':[2,7,5]}).lazy().group_by('\"'\"'group'\"'\"').agg(pl.col('\"'\"'value'\"'\"').sum()).sort('\"'\"'group'\"'\"').collect())'",
+        "description": "Execute a lazy grouped aggregation."
+      },
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Read the installed distribution identity in the selected environment."
+      },
+      {
+        "command": "cpg packages check py.polars --prefix {prefix} --kind functional",
+        "description": "Run the package-specific API, data and failure-contract checks."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/polars-2.0.0-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "The functional check uses the selected installed module, requires the exact distribution version, and checks actual results. It does not download data or contact external services.",
+      "This is a bounded application-level qualification, not the entire upstream test suite or every optional backend. Read the package recipe for each exercised operation.",
+      "The wrapper delegates installation and removal to pip. Its archive does not contain the locked wheel or its dependency closure; those have separate source identities.",
+      "metadata.catalog preserves the original discovery and resolver evidence. Current execution results are recorded separately by the package manager."
+    ],
+    "summary": "Eager and lazy columnar queries, typed data and local Parquet interchange."
+  },
+  "version": "2.0.0"
+}

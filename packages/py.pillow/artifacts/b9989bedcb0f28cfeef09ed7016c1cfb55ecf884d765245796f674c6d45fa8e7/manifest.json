@@ -1,0 +1,233 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2182,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "c8df4a74a55baadb701402c2535ebf64c605f021f5e08112ee874f3ebb677123"
+    },
+    {
+      "bytes": 3269,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_support.py",
+      "sha256": "244d7d0104542c7e3c897765453a47389ba54c0a047d050559c1f1d4f072f1a8"
+    }
+  ],
+  "inventory_sha256": "27eaae8a6a288a3f5e58c3dfd24d363bf83fc15e701c6bf39b6042f4faa116e3",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "b1adefcfc7bbee02aa31b12c00aec120bd79d3f40719f7bf8bf7ba5524d4b937",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "distribution-identity",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "installed-api-contract",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.pillow",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 7144542,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/pillow/"
+        ],
+        "id": "py.pillow",
+        "immutable_ref": "sha256:42d63be3af4f9b951b199b0a9d23365d37ab14687e6d77b74940432c8515c4ca",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "MIT-CMU",
+        "mandatory": false,
+        "material_path": "wheels/pillow-13.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+        "package_name": "pillow",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "42d63be3af4f9b951b199b0a9d23365d37ab14687e6d77b74940432c8515c4ca",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/pillow/13.0.0/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/e6/99/fdf65cc539e266ab93546c261bdf98411fe165c6e4e13f9dbf597097192b/pillow-13.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+        "title": "pillow",
+        "upstream": "https://pypi.org/project/pillow/13.0.0/",
+        "version": "13.0.0"
+      },
+      "catalog_sha256": "85b6c2c1a0f1eb9c36a2d4537974e554cff58e66b277561c14ff175d18ddf1f5"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "pillow",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 7144542,
+        "extract": false,
+        "id": "py.pillow",
+        "material_path": "wheels/pillow-13.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "42d63be3af4f9b951b199b0a9d23365d37ab14687e6d77b74940432c8515c4ca",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/e6/99/fdf65cc539e266ab93546c261bdf98411fe165c6e4e13f9dbf597097192b/pillow-13.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Invoke {prefix}/bin/python explicitly; this environment owns the distribution and its fixed dependency closure."
+      ],
+      "documentation": [
+        "https://pillow.readthedocs.io/en/stable/",
+        "https://pypi.org/project/pillow/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -c 'from PIL import Image; image=Image.new('\"'\"'RGB'\"'\"',(4,4),'\"'\"'red'\"'\"'); image.save('\"'\"'red.png'\"'\"'); print(image.getpixel((0,0)))'",
+          "description": "Use the selected installed resource."
+        },
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect the exact installed distribution."
+        },
+        {
+          "command": "cpg packages check py.pillow --prefix {prefix} --kind functional",
+          "description": "Run the bounded package-specific functional checks."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/pillow-13.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "The check requires the exact distribution and an imported module inside the selected environment, then checks actual operations and error cases.",
+        "Qualification is bounded to the recipe's stated local cases, not every upstream test or optional backend. No remote service or data download is performed.",
+        "The wrapper contains metadata, hooks and checks; its locked wheel and dependency closure remain separately identified inputs.",
+        "The original metadata.catalog facts and source locks are retained. Execution evidence is recorded separately."
+      ],
+      "summary": "Image pixels, selected PNG/JPEG codecs and deterministic transforms."
+    },
+    "version": "13.0.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

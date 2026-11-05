@@ -1,0 +1,208 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "distribution-identity",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "installed-api-contract",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.annotated-types",
+      "py.pydantic-core",
+      "py.typing-extensions",
+      "py.typing-inspection"
+    ],
+    "system": []
+  },
+  "id": "py.pydantic",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 488106,
+      "category": [
+        "Python packages",
+        "Core research environment"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.annotated-types",
+        "py.pydantic-core",
+        "py.typing-extensions",
+        "py.typing-inspection"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/pydantic/"
+      ],
+      "id": "py.pydantic",
+      "immutable_ref": "sha256:9195d967ec791692a04438115466764fb8b9a27b31f14a760437694f40d6b454",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "wheels/pydantic-2.14.1-py3-none-any.whl",
+      "package_name": "pydantic",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "9195d967ec791692a04438115466764fb8b9a27b31f14a760437694f40d6b454",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/pydantic/2.14.1/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/35/ea/a56b9fe5066f3537b7882f77e9c5dfb26d8c2eefdaed9b5fc73d57b4dc22/pydantic-2.14.1-py3-none-any.whl",
+      "title": "pydantic",
+      "upstream": "https://pypi.org/project/pydantic/2.14.1/",
+      "version": "2.14.1"
+    },
+    "catalog_sha256": "1c7f7b37b5c8f9cbaf13cf2fd6c601439e0a55ae099c4254a505a7ce6eab4f95"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "pydantic",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 488106,
+      "extract": false,
+      "id": "py.pydantic",
+      "material_path": "wheels/pydantic-2.14.1-py3-none-any.whl",
+      "sha256": "9195d967ec791692a04438115466764fb8b9a27b31f14a760437694f40d6b454",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/35/ea/a56b9fe5066f3537b7882f77e9c5dfb26d8c2eefdaed9b5fc73d57b4dc22/pydantic-2.14.1-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use {prefix}/bin/python explicitly. The selected environment owns the exact distribution and its declared dependencies."
+    ],
+    "documentation": [
+      "https://docs.pydantic.dev/latest/",
+      "https://pypi.org/project/pydantic/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -c 'from pydantic import TypeAdapter; print(TypeAdapter(list[int]).validate_python([1,2,3],strict=True))'",
+        "description": "Validate a strict list of integers."
+      },
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Read the installed distribution identity in the selected environment."
+      },
+      {
+        "command": "cpg packages check py.pydantic --prefix {prefix} --kind functional",
+        "description": "Run the package-specific API, data and failure-contract checks."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/pydantic-2.14.1-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "The functional check uses the selected installed module, requires the exact distribution version, and checks actual results. It does not download data or contact external services.",
+      "This is a bounded application-level qualification, not the entire upstream test suite or every optional backend. Read the package recipe for each exercised operation.",
+      "The wrapper delegates installation and removal to pip. Its archive does not contain the locked wheel or its dependency closure; those have separate source identities.",
+      "metadata.catalog preserves the original discovery and resolver evidence. Current execution results are recorded separately by the package manager."
+    ],
+    "summary": "Typed Python configuration validation, constraints and JSON serialization."
+  },
+  "version": "2.14.1"
+}

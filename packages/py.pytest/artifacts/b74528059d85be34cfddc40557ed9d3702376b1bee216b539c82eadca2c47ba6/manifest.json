@@ -1,0 +1,243 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1563,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "4d14957f765d2659192e1d5c585ef47d44cdd37c7a8dedbbfb33c9e420ee7870"
+    },
+    {
+      "bytes": 3269,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_support.py",
+      "sha256": "244d7d0104542c7e3c897765453a47389ba54c0a047d050559c1f1d4f072f1a8"
+    }
+  ],
+  "inventory_sha256": "b619aee6dcc4d27c2413b689ab18b68c86ec0a43776cfd0b01688f88a4df28ee",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "21320e2f79b9768bedbdc932ba25f608f0846ca127509754c6a5b23f3ea45e07",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "distribution-identity",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "installed-api-contract",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.iniconfig",
+        "py.packaging",
+        "py.pluggy",
+        "py.pygments"
+      ],
+      "system": []
+    },
+    "id": "py.pytest",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 386536,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.iniconfig",
+          "py.packaging",
+          "py.pluggy",
+          "py.pygments"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/pytest/"
+        ],
+        "id": "py.pytest",
+        "immutable_ref": "sha256:37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "material_path": "wheels/pytest-9.1.1-py3-none-any.whl",
+        "package_name": "pytest",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/pytest/9.1.1/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/24/25/1de2678b631f5a49215c6c96fff41ba892b0a34df68d6d80292b1b48aa7f/pytest-9.1.1-py3-none-any.whl",
+        "title": "pytest",
+        "upstream": "https://pypi.org/project/pytest/9.1.1/",
+        "version": "9.1.1"
+      },
+      "catalog_sha256": "6e8e85d8dba0a1ea3b150a7cadcf593ebd3d8e99d4f8766446b5ccf8355a6165"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "pytest",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 386536,
+        "extract": false,
+        "id": "py.pytest",
+        "material_path": "wheels/pytest-9.1.1-py3-none-any.whl",
+        "sha256": "37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/24/25/1de2678b631f5a49215c6c96fff41ba892b0a34df68d6d80292b1b48aa7f/pytest-9.1.1-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Use {prefix}/bin/python explicitly. The selected environment owns the exact distribution and its declared dependencies."
+      ],
+      "documentation": [
+        "https://docs.pytest.org/en/stable/",
+        "https://pypi.org/project/pytest/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pytest -q tests",
+          "description": "Run your local Python test directory."
+        },
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Read the installed distribution identity in the selected environment."
+        },
+        {
+          "command": "cpg packages check py.pytest --prefix {prefix} --kind functional",
+          "description": "Run the package-specific API, data and failure-contract checks."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/pytest-9.1.1-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "The functional check uses the selected installed module, requires the exact distribution version, and checks actual results. It does not download data or contact external services.",
+        "This is a bounded application-level qualification, not the entire upstream test suite or every optional backend. Read the package recipe for each exercised operation.",
+        "The wrapper delegates installation and removal to pip. Its archive does not contain the locked wheel or its dependency closure; those have separate source identities.",
+        "metadata.catalog preserves the original discovery and resolver evidence. Current execution results are recorded separately by the package manager."
+      ],
+      "summary": "Execute Python test suites and report collection, passing and failing tests."
+    },
+    "version": "9.1.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,221 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "distribution-version",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 15
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "official-runner-json-and-failure",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.psutil"
+    ],
+    "system": []
+  },
+  "id": "py.pyperf",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 144430,
+      "category": [
+        "Python packages",
+        "Optional search and analysis"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.psutil"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/pyperf/"
+      ],
+      "id": "py.pyperf",
+      "immutable_ref": "sha256:79196bc4a11e3c926dd4c6b14c80136c6b37f884fe913cbc57037f37636e9841",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "LicenseRef-Python-distribution-notices",
+      "mandatory": false,
+      "material_path": "wheels/pyperf-2.10.0-py3-none-any.whl",
+      "package_name": "pyperf",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "79196bc4a11e3c926dd4c6b14c80136c6b37f884fe913cbc57037f37636e9841",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/pyperf/2.10.0/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/91/26/f7bd5e37c254c2671f4dfff316d123eba13663bdfee941a01b09ab02d72d/pyperf-2.10.0-py3-none-any.whl",
+      "title": "pyperf",
+      "upstream": "https://pypi.org/project/pyperf/2.10.0/",
+      "version": "2.10.0"
+    },
+    "catalog_sha256": "bf4b3c3c037ab9fed9f18454982f1e5974f1eb2ad008134350bd31a9d7b3d372"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "pyperf",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 144430,
+      "extract": false,
+      "id": "py.pyperf",
+      "material_path": "wheels/pyperf-2.10.0-py3-none-any.whl",
+      "sha256": "79196bc4a11e3c926dd4c6b14c80136c6b37f884fe913cbc57037f37636e9841",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/91/26/f7bd5e37c254c2671f4dfff316d123eba13663bdfee941a01b09ab02d72d/pyperf-2.10.0-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use {prefix}/bin/python explicitly; this avoids importing a different ambient installation."
+    ],
+    "documentation": [
+      "https://pyperf.readthedocs.io/en/latest/runner.html",
+      "https://pyperf.readthedocs.io/en/latest/api.html",
+      "https://github.com/psf/pyperf"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pyperf timeit --output expression.json \"sum(range(10000))\"",
+        "description": "Measure a Python expression and retain the official JSON output."
+      },
+      {
+        "command": "{prefix}/bin/python -m pyperf command --output command.json -- ./program",
+        "description": "Measure an external command with official worker handling."
+      },
+      {
+        "command": "{prefix}/bin/python -m pyperf stats expression.json",
+        "description": "Read the raw sample counts, warmups, metadata and statistical summary."
+      },
+      {
+        "command": "{prefix}/bin/python -m pyperf compare_to baseline.json candidate.json",
+        "description": "Compare two retained runs with the official comparison command."
+      },
+      {
+        "command": "{prefix}/bin/python -c \"import pyperf; s=pyperf.BenchmarkSuite.load('expression.json'); print([(b.get_name(), b.get_values(), b.mean()) for b in s])\"",
+        "description": "Load the same result through the Python API."
+      },
+      {
+        "command": "cpg packages check py.pyperf --prefix {prefix} --kind functional",
+        "description": "Run the declared operation checks in this environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Selected Python interpreter",
+        "path": "{prefix}/bin/python",
+        "purpose": "Interpreter that owns the exact installed distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Query cpg packages paths py.pyperf --files for actual manager-recorded files."
+      },
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/pyperf-2.10.0-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      }
+    ],
+    "notes": [
+      "This exact resource requires the existing py.psutil resource in the same selected Python environment. Use the environment interpreter; no shell activation is needed.",
+      "The functional check uses the official Runner for two workers with three measured values each, validates raw samples and public statistics, round-trips JSON, and rejects a failing external command.",
+      "The small qualification workload checks the tool protocol; it does not establish statistically stable performance. Keep Runner defaults or explicitly choose an experimental sampling policy for research.",
+      "CPU affinity, isolation and optional system tuning are researcher decisions. No tuning or system-wide configuration change is needed for these examples or the functional check.",
+      "pyperf is a measurement helper. It does not replace an independent Benchmark adapter's official timer, correctness checks, inputs or aggregation.",
+      "A payload-free wrapper forwards installation/removal to pip. Wheel bytes and wrapper bytes have separate exact identities; removing the distribution preserves its Python environment."
+    ],
+    "summary": "Run Python functions or external commands with the official pyperf worker/calibration protocol, retain raw JSON, inspect metadata and compare distributions."
+  },
+  "version": "2.10.0"
+}

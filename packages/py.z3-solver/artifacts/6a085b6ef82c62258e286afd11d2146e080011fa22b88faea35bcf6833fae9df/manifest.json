@@ -1,0 +1,232 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1328,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "4310cce8dae0769f04809e5af0cff5270e5761986d6d0ee4e7e2c7ec1ae64942"
+    },
+    {
+      "bytes": 3269,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_support.py",
+      "sha256": "244d7d0104542c7e3c897765453a47389ba54c0a047d050559c1f1d4f072f1a8"
+    }
+  ],
+  "inventory_sha256": "5bd994183ddfe665ee104ea27035daa5459c7f55ad479295a72fbf61cc9da71c",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "cd56214eeb3c4a5a692c824c0d25682e201dd14ed629ecc6f0ae75ab1c520263",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "distribution-identity",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "installed-api-contract",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.z3-solver",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 36561071,
+        "category": [
+          "Python packages",
+          "Optional search and analysis"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://github.com/Z3Prover/z3"
+        ],
+        "id": "py.z3-solver",
+        "immutable_ref": "sha256:3e2e00bc80e776849d917daa194f33759ffa61d6528a859cfc4923ee3277a386",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "LicenseRef-Python-distribution-notices",
+        "mandatory": false,
+        "material_path": "wheels/z3_solver-5.3.1.0-py3-none-manylinux_2_27_x86_64.whl",
+        "package_name": "z3-solver",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "3e2e00bc80e776849d917daa194f33759ffa61d6528a859cfc4923ee3277a386",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/z3-solver/5.3.1.0/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/e9/ed/c327d486ef65228c367ef0f5c306abb3c805538c75db99600f68714ebb46/z3_solver-5.3.1.0-py3-none-manylinux_2_27_x86_64.whl",
+        "title": "z3-solver",
+        "upstream": "https://pypi.org/project/z3-solver/5.3.1.0/",
+        "version": "5.3.1.0"
+      },
+      "catalog_sha256": "8471129a728569a711a752b21686c0f058412c8f2602d22bdf7a83bbd40d8a31"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "z3-solver",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 36561071,
+        "extract": false,
+        "id": "py.z3-solver",
+        "material_path": "wheels/z3_solver-5.3.1.0-py3-none-manylinux_2_27_x86_64.whl",
+        "sha256": "3e2e00bc80e776849d917daa194f33759ffa61d6528a859cfc4923ee3277a386",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/e9/ed/c327d486ef65228c367ef0f5c306abb3c805538c75db99600f68714ebb46/z3_solver-5.3.1.0-py3-none-manylinux_2_27_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Use {prefix}/bin/python explicitly. The selected environment owns the exact distribution and its declared dependencies."
+      ],
+      "documentation": [
+        "https://z3prover.github.io/api/html/namespacez3py.html",
+        "https://github.com/Z3Prover/z3"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -c 'from z3 import Ints,Solver; x,y=Ints('\"'\"'x y'\"'\"'); solver=Solver(); solver.add(x+y==7,x-y==1); print(solver.check()); print(solver.model())'",
+          "description": "Solve a small integer constraint system."
+        },
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Read the installed distribution identity in the selected environment."
+        },
+        {
+          "command": "cpg packages check py.z3-solver --prefix {prefix} --kind functional",
+          "description": "Run the package-specific API, data and failure-contract checks."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/z3_solver-5.3.1.0-py3-none-manylinux_2_27_x86_64.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "The functional check uses the selected installed module, requires the exact distribution version, and checks actual results. It does not download data or contact external services.",
+        "This is a bounded application-level qualification, not the entire upstream test suite or every optional backend. Read the package recipe for each exercised operation.",
+        "The wrapper delegates installation and removal to pip. Its archive does not contain the locked wheel or its dependency closure; those have separate source identities.",
+        "metadata.catalog preserves the original discovery and resolver evidence. Current execution results are recorded separately by the package manager."
+      ],
+      "summary": "SMT satisfiability, model evaluation and bounded bit-vector reasoning."
+    },
+    "version": "5.3.1.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

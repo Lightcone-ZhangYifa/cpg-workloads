@@ -1,0 +1,237 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1976,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "10d2192d1fa399bdc79d22018ce617769b56905635ebdbc6f9027220afb43c64"
+    },
+    {
+      "bytes": 3269,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_support.py",
+      "sha256": "244d7d0104542c7e3c897765453a47389ba54c0a047d050559c1f1d4f072f1a8"
+    }
+  ],
+  "inventory_sha256": "182510d2c7665f9c5f32d409a5a57626eac1f2bde8daaa7672fdd562eedb133d",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "95ff89ec107bb82bd6a3e359e5d1140319b71ba6e89ac37494224840466e9508",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "distribution-identity",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "installed-api-contract",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.mdurl"
+      ],
+      "system": []
+    },
+    "id": "py.markdown-it-py",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 91687,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.mdurl"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/markdown-it-py/"
+        ],
+        "id": "py.markdown-it-py",
+        "immutable_ref": "sha256:9f7ebbcd14fe59494226453aed97c1070d83f8d24b6fc3a3bcf9a38092641c4a",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "LicenseRef-Python-distribution-notices",
+        "mandatory": false,
+        "material_path": "wheels/markdown_it_py-4.2.0-py3-none-any.whl",
+        "package_name": "markdown-it-py",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "9f7ebbcd14fe59494226453aed97c1070d83f8d24b6fc3a3bcf9a38092641c4a",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/markdown-it-py/4.2.0/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/b3/81/4da04ced5a082363ecfa159c010d200ecbd959ae410c10c0264a38cac0f5/markdown_it_py-4.2.0-py3-none-any.whl",
+        "title": "markdown-it-py",
+        "upstream": "https://pypi.org/project/markdown-it-py/4.2.0/",
+        "version": "4.2.0"
+      },
+      "catalog_sha256": "8d3b443c2b234ad1c65f8a4a431f4ff44c4b2bc15ab665781e98072a62dc3c6e"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "markdown-it-py",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 91687,
+        "extract": false,
+        "id": "py.markdown-it-py",
+        "material_path": "wheels/markdown_it_py-4.2.0-py3-none-any.whl",
+        "sha256": "9f7ebbcd14fe59494226453aed97c1070d83f8d24b6fc3a3bcf9a38092641c4a",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/b3/81/4da04ced5a082363ecfa159c010d200ecbd959ae410c10c0264a38cac0f5/markdown_it_py-4.2.0-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Invoke {prefix}/bin/python explicitly; this environment owns the distribution and its fixed dependency closure."
+      ],
+      "documentation": [
+        "https://markdown-it-py.readthedocs.io/en/latest/",
+        "https://pypi.org/project/markdown-it-py/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -c 'from markdown_it import MarkdownIt; print(MarkdownIt('\"'\"'commonmark'\"'\"',{'\"'\"'html'\"'\"':False}).render('\"'\"'# Compiler'\"'\"'))'",
+          "description": "Use the selected installed resource."
+        },
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect the exact installed distribution."
+        },
+        {
+          "command": "cpg packages check py.markdown-it-py --prefix {prefix} --kind functional",
+          "description": "Run the bounded package-specific functional checks."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/markdown_it_py-4.2.0-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "The check requires the exact distribution and an imported module inside the selected environment, then checks actual operations and error cases.",
+        "Qualification is bounded to the recipe's stated local cases, not every upstream test or optional backend. No remote service or data download is performed.",
+        "The wrapper contains metadata, hooks and checks; its locked wheel and dependency closure remain separately identified inputs.",
+        "The original metadata.catalog facts and source locks are retained. Execution evidence is recorded separately."
+      ],
+      "summary": "CommonMark tokens, code fences and controlled HTML rendering."
+    },
+    "version": "4.2.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

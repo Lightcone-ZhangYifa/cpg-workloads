@@ -1,0 +1,196 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "distribution-identity",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "installed-api-contract",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.wrapt"
+    ],
+    "system": []
+  },
+  "id": "py.deprecated",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 21912,
+      "category": [
+        "Python packages",
+        "Optional search and analysis"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.wrapt"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/Deprecated/"
+      ],
+      "id": "py.deprecated",
+      "immutable_ref": "sha256:58204cf4a7f6270d547af5c278ee7a6bb56045a4b3d8441a1cd11660f41b7939",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "wheels/deprecated-3.0.0-py3-none-any.whl",
+      "package_name": "deprecated",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "58204cf4a7f6270d547af5c278ee7a6bb56045a4b3d8441a1cd11660f41b7939",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/Deprecated/3.0.0/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/83/ae/676feae8e4644a6d7169951a97f61c56f416c73f67bf1761f2461d75cc81/deprecated-3.0.0-py3-none-any.whl",
+      "title": "Deprecated",
+      "upstream": "https://pypi.org/project/Deprecated/3.0.0/",
+      "version": "3.0.0"
+    },
+    "catalog_sha256": "507240f974d819270ec7fd528a29e6548cf077f2fcabe86c312f005b4c851106"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "deprecated",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 21912,
+      "extract": false,
+      "id": "py.deprecated",
+      "material_path": "wheels/deprecated-3.0.0-py3-none-any.whl",
+      "sha256": "58204cf4a7f6270d547af5c278ee7a6bb56045a4b3d8441a1cd11660f41b7939",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/83/ae/676feae8e4644a6d7169951a97f61c56f416c73f67bf1761f2461d75cc81/deprecated-3.0.0-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Invoke {prefix}/bin/python explicitly; this environment owns the distribution and its fixed dependency closure."
+    ],
+    "documentation": [
+      "https://pypi.org/project/Deprecated/"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages check py.deprecated --prefix {prefix} --kind functional",
+        "description": "Run the bounded installed resource API contract."
+      },
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect the selected installed distribution."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/deprecated-3.0.0-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "The check requires the exact distribution and an imported module inside the selected environment, then checks actual operations and error cases.",
+      "Qualification is bounded to the recipe's stated local cases, not every upstream test or optional backend. No remote service or data download is performed.",
+      "The wrapper contains metadata, hooks and checks; its locked wheel and dependency closure remain separately identified inputs.",
+      "The original metadata.catalog facts and source locks are retained. Execution evidence is recorded separately."
+    ],
+    "summary": "Exercise decorated functions/classes, warning text and warnings-as-errors."
+  },
+  "version": "3.0.0"
+}

@@ -1,0 +1,197 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "distribution-identity",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "installed-api-contract",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "py.lief",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 3674893,
+      "category": [
+        "Python packages",
+        "Optional search and analysis"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/lief/"
+      ],
+      "id": "py.lief",
+      "immutable_ref": "sha256:41ff868f5328fc8e5237a9e1f4718590e0ee9180c1422b3e4948b7116ba4517c",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "LicenseRef-Python-distribution-notices",
+      "mandatory": false,
+      "material_path": "wheels/lief-1.0.0-cp312-abi3-manylinux_2_28_x86_64.whl",
+      "package_name": "lief",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "41ff868f5328fc8e5237a9e1f4718590e0ee9180c1422b3e4948b7116ba4517c",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/lief/1.0.0/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/cd/d7/6e8135da80a63d8ee413f169eda8c331817bf6f1496fc5647722b105aa19/lief-1.0.0-cp312-abi3-manylinux_2_28_x86_64.whl",
+      "title": "lief",
+      "upstream": "https://pypi.org/project/lief/1.0.0/",
+      "version": "1.0.0"
+    },
+    "catalog_sha256": "9dfa920777e333142f0b2c0b07fced266b480a1830d020372cce70ed32ab1fef"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "lief",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3674893,
+      "extract": false,
+      "id": "py.lief",
+      "material_path": "wheels/lief-1.0.0-cp312-abi3-manylinux_2_28_x86_64.whl",
+      "sha256": "41ff868f5328fc8e5237a9e1f4718590e0ee9180c1422b3e4948b7116ba4517c",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/cd/d7/6e8135da80a63d8ee413f169eda8c331817bf6f1496fc5647722b105aa19/lief-1.0.0-cp312-abi3-manylinux_2_28_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Invoke {prefix}/bin/python explicitly; this environment owns the distribution and its fixed dependency closure."
+    ],
+    "documentation": [
+      "https://lief.re/doc/stable/",
+      "https://pypi.org/project/lief/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -c 'import lief,sys; binary=lief.parse(sys.executable); print(binary.header)'",
+        "description": "Use the selected installed resource."
+      },
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect the exact installed distribution."
+      },
+      {
+        "command": "cpg packages check py.lief --prefix {prefix} --kind functional",
+        "description": "Run the bounded package-specific functional checks."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/lief-1.0.0-cp312-abi3-manylinux_2_28_x86_64.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "The check requires the exact distribution and an imported module inside the selected environment, then checks actual operations and error cases.",
+      "Qualification is bounded to the recipe's stated local cases, not every upstream test or optional backend. No remote service or data download is performed.",
+      "The wrapper contains metadata, hooks and checks; its locked wheel and dependency closure remain separately identified inputs.",
+      "The original metadata.catalog facts and source locks are retained. Execution evidence is recorded separately."
+    ],
+    "summary": "Executable-format inspection and rewriting; bounded ELF64 execution checks."
+  },
+  "version": "1.0.0"
+}

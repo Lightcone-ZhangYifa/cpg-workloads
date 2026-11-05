@@ -1,0 +1,174 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "elf-symbols-dwarf-lines",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python",
+        "cc"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 90
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "py.pyelftools",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 201178,
+      "category": [
+        "Python packages",
+        "Optional search and analysis"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/pyelftools/"
+      ],
+      "id": "py.pyelftools",
+      "immutable_ref": "sha256:f215ad5f47d3f1373a21496a6c9e0707c622840d0622f23ff7ce08678b020036",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "LicenseRef-Python-distribution-notices",
+      "mandatory": false,
+      "material_path": "wheels/pyelftools-0.33-py3-none-any.whl",
+      "package_name": "pyelftools",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "f215ad5f47d3f1373a21496a6c9e0707c622840d0622f23ff7ce08678b020036",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/pyelftools/0.33/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/46/2a/f9697576603dae937727827505a6126a066affb227034e77e6f9068910da/pyelftools-0.33-py3-none-any.whl",
+      "title": "pyelftools",
+      "upstream": "https://pypi.org/project/pyelftools/0.33/",
+      "version": "0.33"
+    },
+    "catalog_sha256": "6c4505a645d365e45e6b2fab6033489f17a5940068d3f3f31d81ffce86ed3537"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "pyelftools",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 201178,
+      "extract": false,
+      "id": "py.pyelftools",
+      "material_path": "wheels/pyelftools-0.33-py3-none-any.whl",
+      "sha256": "f215ad5f47d3f1373a21496a6c9e0707c622840d0622f23ff7ce08678b020036",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/46/2a/f9697576603dae937727827505a6126a066affb227034e77e6f9068910da/pyelftools-0.33-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "No shell activation is required. Use the recorded Python environment interpreter explicitly."
+    ],
+    "documentation": [
+      "https://github.com/eliben/pyelftools",
+      "https://github.com/eliben/pyelftools/blob/main/doc/user-guide.md"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -c \"from elftools.elf.elffile import ELFFile; f=open('program','rb'); e=ELFFile(f); print(e['e_machine'], e.get_section_by_name('.text').data_size)\"",
+        "description": "Inspect an ELF machine type and code section size."
+      },
+      {
+        "command": "cpg packages check py.pyelftools --prefix {prefix} --kind functional",
+        "description": "Run the ELF, symbol and DWARF line-table qualification in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Python interpreter",
+        "path": "{prefix}/bin/python",
+        "purpose": "Interpreter owning this exact pyelftools distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use cpg packages paths py.pyelftools --files for the manager-recorded distribution files."
+      }
+    ],
+    "notes": [
+      "The functional check compiles and executes a small x86-64 C fixture, then verifies named symbols, DWARF function metadata and source line mapping; cc must be available.",
+      "The check also rejects a stripped fixture. It establishes these operations for the recorded compiler output, not every ELF/DWARF dialect.",
+      "Python virtual environments are independent copies. Removing this wrapper removes the distribution, not its containing environment."
+    ],
+    "summary": "Parse ELF headers, sections, symbols, relocations and DWARF debug/line information from Python; inspect compiler output without scraping text tools."
+  },
+  "version": "0.33"
+}
