@@ -1,0 +1,149 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "docker-seccomp-complete-material",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "docker-seccomp",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 17867,
+      "bundled_path": "resources/docker-default-seccomp.frozen.json",
+      "category": [
+        "Agent and observability",
+        "Collector and policy"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "copy",
+        "handled_by": "controller-bootstrap",
+        "state": "downloaded-and-hashed"
+      },
+      "documentation": [],
+      "extract": false,
+      "id": "docker-seccomp",
+      "immutable_ref": "sha256:6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6",
+      "installed_bytes": null,
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": true,
+      "material_path": "policy/docker-default-seccomp.json",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Versioned observability or container policy initialization artifact.",
+      "qualification_gaps": [],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6",
+      "size_basis": "Complete payload GET with measured bytes and SHA256",
+      "source_evidence": [
+        "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json"
+      ],
+      "source_logical_bytes": 17867,
+      "source_url": "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json",
+      "title": "docker-seccomp",
+      "upstream": "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json",
+      "version": "commit-4b8214fc4971"
+    },
+    "catalog_sha256": "dede99e316016ae288decae9572ff67a1a517d52a3aaba1465cf75b990224789"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bundled_path": "resources/docker-default-seccomp.frozen.json",
+      "bytes": 17867,
+      "extract": false,
+      "id": "docker-seccomp",
+      "material_path": "policy/docker-default-seccomp.json",
+      "sha256": "6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6",
+      "strip_root": true,
+      "url": "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json"
+    },
+    "adapter": "copy",
+    "handled_by": "controller-bootstrap",
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "native_execution_qualified": false,
+    "official_benchmark_qualified": false,
+    "qualification_scope": "complete_original_locked_single_policy_file_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/policy/docker-default-seccomp.json"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_tree_deployment": false,
+    "state": "downloaded-and-hashed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bundled_path": "resources/docker-default-seccomp.frozen.json",
+      "bytes": 17867,
+      "extract": false,
+      "id": "docker-seccomp",
+      "material_path": "policy/docker-default-seccomp.json",
+      "sha256": "6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6",
+      "strip_root": true,
+      "url": "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Original pinned Docker default seccomp policy",
+        "path": "{prefix}/policy/docker-default-seccomp.json",
+        "purpose": "Offline-verified original seccomp JSON for reproducible container policy and research; not a Docker daemon validation."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "Source lock, target, version, original catalog and historical failures are inherited without modification.",
+      "The source is one complete fixed 17,867-byte JSON file, not a repository archive. It is byte- and mode-verified after independent installation.",
+      "JSON syntax and schema-shape validation are not equivalent to live container daemon policy acceptance, OCI deployment or hardware execution."
+    ],
+    "summary": "Versioned observability or container policy initialization artifact."
+  },
+  "version": "commit-4b8214fc4971"
+}
