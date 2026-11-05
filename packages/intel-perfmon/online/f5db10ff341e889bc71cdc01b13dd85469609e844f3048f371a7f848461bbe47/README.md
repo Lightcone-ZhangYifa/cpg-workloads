@@ -1,0 +1,1 @@
+Candidate online recipe. Original HTTPS URL and SHA are preserved. Live-network fetching and Ubuntu target installation are NOT qualified. Use run.py prepare --cache CACHE --output OUT --framework-path PROJECT; add --no-network to use a verified raw cache. The raw input extract flag is preserved.

@@ -1,0 +1,202 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/policy"
+    },
+    {
+      "bytes": 17867,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/policy/docker-default-seccomp.json",
+      "sha256": "6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1502,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_material.py",
+      "sha256": "c3bee194aa9fb0f6e86d2b7e99c3759e04c22a5bcc3d7565ca1249876b8931f3"
+    },
+    {
+      "bytes": 2447,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/input-audit.json",
+      "sha256": "3830d1501dc7ed59f40463114ee374dfc13ef7170e8c34a7fec300c03ab1eb68"
+    },
+    {
+      "bytes": 849,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "ff907a012b1cacbd7dd35dd2fbc8b466ef89841fdc8648c4a154c11054442f6d"
+    }
+  ],
+  "inventory_sha256": "8797faa09b274d0b46f5fe967b3cb31de1ea363dc9bfa2d0104c45d78f35171b",
+  "kind": "compiler_playground_resource_package",
+  "method": "material",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "{recipe}/check_material.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-manifest.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "r06-complete-material-identity",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "docker-seccomp",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 17867,
+        "bundled_path": "resources/docker-default-seccomp.frozen.json",
+        "category": [
+          "Agent and observability",
+          "Collector and policy"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "copy",
+          "handled_by": "controller-bootstrap",
+          "state": "downloaded-and-hashed"
+        },
+        "documentation": [],
+        "extract": false,
+        "id": "docker-seccomp",
+        "immutable_ref": "sha256:6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6",
+        "installed_bytes": null,
+        "kind": "url",
+        "license_class": "open",
+        "license_id": "Apache-2.0",
+        "mandatory": true,
+        "material_path": "policy/docker-default-seccomp.json",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Versioned observability or container policy initialization artifact.",
+        "qualification_gaps": [],
+        "redistributable": true,
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6",
+        "size_basis": "Complete payload GET with measured bytes and SHA256",
+        "source_evidence": [
+          "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json"
+        ],
+        "source_logical_bytes": 17867,
+        "source_url": "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json",
+        "title": "docker-seccomp",
+        "upstream": "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json",
+        "version": "commit-4b8214fc4971"
+      },
+      "catalog_sha256": "dede99e316016ae288decae9572ff67a1a517d52a3aaba1465cf75b990224789"
+    },
+    "provider": "material",
+    "recipe": {
+      "acquisition_lock": {
+        "bundled_path": "resources/docker-default-seccomp.frozen.json",
+        "bytes": 17867,
+        "extract": false,
+        "id": "docker-seccomp",
+        "material_path": "policy/docker-default-seccomp.json",
+        "sha256": "6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6",
+        "strip_root": true,
+        "url": "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json"
+      },
+      "adapter": "copy",
+      "handled_by": "controller-bootstrap",
+      "original_recipe": {
+        "adapter": "copy",
+        "handled_by": "controller-bootstrap",
+        "state": "downloaded-and-hashed"
+      },
+      "qualification_scope": "complete_original_main_input_only",
+      "qualification_state": "candidate_requires_original_target_admission",
+      "state": "downloaded-and-hashed"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bundled_path": "resources/docker-default-seccomp.frozen.json",
+        "bytes": 17867,
+        "extract": false,
+        "id": "docker-seccomp",
+        "material_path": "policy/docker-default-seccomp.json",
+        "sha256": "6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6",
+        "strip_root": true,
+        "url": "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/policy/docker-default-seccomp.json",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution."
+      ],
+      "summary": "Versioned observability or container policy initialization artifact."
+    },
+    "version": "commit-4b8214fc4971"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "candidate_round": "0.21.5-r06",
+    "framework_version": "0.21.4",
+    "live_network_validated": false,
+    "original_source_identity_preserved": true,
+    "qualification": "prepared_and_byte_verified_not_installed_on_original_target",
+    "source_lock_extension_audit": "3830d1501dc7ed59f40463114ee374dfc13ef7170e8c34a7fec300c03ab1eb68"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [],
+  "manifest_sha256": "24d3b2f811f2c7ee04d59c6e510b26e680b21693eff1a124abf7eec2777a1e32"
+}

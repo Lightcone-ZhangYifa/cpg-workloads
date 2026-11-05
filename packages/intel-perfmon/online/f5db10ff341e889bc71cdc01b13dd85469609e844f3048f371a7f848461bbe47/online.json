@@ -1,0 +1,175 @@
+{
+  "additional_acquisition_locks": [],
+  "embedded_payload_bytes": 0,
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_original_main_archive",
+  "live_network_qualified": false,
+  "offline_artifact": {
+    "bytes": 2837741,
+    "historical_path": "resource-integrations/v0210/r06/materials/intel-perfmon/intel-perfmon.material.cpgpkg.tar.gz",
+    "manifest_sha256": "2e65821ea975cf1106d1983de67403a0ef41b33e888c487dbcc393ffaf5ba1ca",
+    "method": "material",
+    "sha256": "363afa34e4af10567a184b8db9214f28dfb9af47d5914d866cfbdd963e36a61a"
+  },
+  "original_catalog": {
+    "archive_bytes": 2925202,
+    "build_peak_bytes": null,
+    "category": [
+      "Profiling",
+      "Event data"
+    ],
+    "container_strategy": "Copy the immutable data tree into a read-only resource prefix and preseed pmu-tools caches using only local files.",
+    "dependencies": [
+      "apt.python3"
+    ],
+    "deployment": {
+      "adapter": "copy",
+      "apt_dependencies": {
+        "dev": [],
+        "target": [
+          "python3"
+        ]
+      },
+      "build_argv": [],
+      "build_role": "dev",
+      "configure_argv": [],
+      "install_argv": [
+        "cp",
+        "-a",
+        "{source}/.",
+        "{prefix}/"
+      ],
+      "install_roles": [
+        "dev",
+        "target"
+      ],
+      "probe_requires_host": [
+        "target CPU mapfile match"
+      ],
+      "smoke_argv": [
+        "python3",
+        "-m",
+        "json.tool",
+        "{prefix}/SKX/events/skylakex_core.json"
+      ],
+      "state": "data-reference-deployment",
+      "target_exports": [
+        {
+          "destination": "opt/research/selected/intel-perfmon",
+          "kind": "tree",
+          "required": true,
+          "role": "data",
+          "source": "{prefix}"
+        }
+      ],
+      "target_smoke_commands": [
+        [
+          "python3",
+          "-m",
+          "json.tool",
+          "{prefix}/SKX/events/skylakex_core.json"
+        ]
+      ]
+    },
+    "documentation": "https://github.com/intel/perfmon/blob/8da58930a226ab3eac72f309bd0fb1d5abfc6245/README.md",
+    "extract": true,
+    "id": "intel-perfmon",
+    "immutable_ref": "8da58930a226ab3eac72f309bd0fb1d5abfc6245",
+    "installed_bytes": null,
+    "kind": "url",
+    "legacy_source_id": "intel-perfmon",
+    "license_class": "open",
+    "license_id": "BSD-3-Clause",
+    "mandatory": false,
+    "material_path": "sources/intel-perfmon",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Provide versioned Intel CPU model mappings, event encodings and top-down metric definitions without first-use downloads.",
+    "qualification_gaps": [
+      "Model, stepping and hybrid PMU core type must match the target; raw names do not imply supported events."
+    ],
+    "redistributable": true,
+    "roles": [
+      "dev",
+      "target"
+    ],
+    "sha256": "acbec069dc9f8cbda2667018fef100fbef6b16273b6098f1fdc2b0b2c226dbd7",
+    "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+    "size_evidence": "workspace-evidence/resources-v050/platform-research/archive-measurements.json",
+    "source_evidence": [
+      "https://github.com/intel/perfmon",
+      "https://github.com/intel/perfmon/blob/8da58930a226ab3eac72f309bd0fb1d5abfc6245/README.md",
+      "https://codeload.github.com/intel/perfmon/tar.gz/8da58930a226ab3eac72f309bd0fb1d5abfc6245"
+    ],
+    "source_url": "https://codeload.github.com/intel/perfmon/tar.gz/8da58930a226ab3eac72f309bd0fb1d5abfc6245",
+    "title": "Intel PMU event and metric database",
+    "upstream": "https://github.com/intel/perfmon",
+    "version": "commit-8da58930a226"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 2925202,
+      "extract": true,
+      "id": "intel-perfmon",
+      "material_path": "sources/intel-perfmon",
+      "sha256": "acbec069dc9f8cbda2667018fef100fbef6b16273b6098f1fdc2b0b2c226dbd7",
+      "strip_root": true,
+      "url": "https://codeload.github.com/intel/perfmon/tar.gz/8da58930a226ab3eac72f309bd0fb1d5abfc6245"
+    }
+  ],
+  "recipe_files": [
+    {
+      "bytes": 298,
+      "path": "README.md",
+      "sha256": "3f1b65ff86641a09fe216d552a7307fa4ba7b20f81d79aff8feac90468073eba"
+    },
+    {
+      "bytes": 81578,
+      "path": "offline-manifest.json",
+      "sha256": "212705cf857e83c98d9de46918712ea0e1d55fd040f48c902f3f0f4a471d35c1"
+    },
+    {
+      "bytes": 3555,
+      "path": "recipe/check.py",
+      "sha256": "28d18b439b1ee9ba4dd12d79a8dc620800beac72a5b87532c8de18495fb4f501"
+    },
+    {
+      "bytes": 1502,
+      "path": "recipe/check_material.py",
+      "sha256": "c3bee194aa9fb0f6e86d2b7e99c3759e04c22a5bcc3d7565ca1249876b8931f3"
+    },
+    {
+      "bytes": 2034,
+      "path": "recipe/input-audit.json",
+      "sha256": "910529021712c3af225d3bc144d2ebd44acadeb3c4b46e2235fccd0792968f06"
+    },
+    {
+      "bytes": 66896,
+      "path": "recipe/material-manifest.json",
+      "sha256": "cf44efc36e4d1c2798bf84007d0ee3b89ed4421e6febc9bc83b8c1aad2e4c756"
+    },
+    {
+      "bytes": 18958,
+      "path": "run.py",
+      "sha256": "92cd0c49ccaafe5ca23bf0e6b513c59260c70d7d7685d0f929816d91f5e80c7b"
+    }
+  ],
+  "release": "0.21.5-candidate",
+  "resolved_acquisition_locks": [
+    {
+      "bytes": 2925202,
+      "extract": true,
+      "id": "intel-perfmon",
+      "material_path": "sources/intel-perfmon",
+      "sha256": "acbec069dc9f8cbda2667018fef100fbef6b16273b6098f1fdc2b0b2c226dbd7",
+      "strip_root": true,
+      "url": "https://codeload.github.com/intel/perfmon/tar.gz/8da58930a226ab3eac72f309bd0fb1d5abfc6245"
+    }
+  ],
+  "resource_id": "intel-perfmon",
+  "schema_version": 1,
+  "source_lock_extension_audit_sha256": "910529021712c3af225d3bc144d2ebd44acadeb3c4b46e2235fccd0792968f06",
+  "target_installation_qualified": false
+}

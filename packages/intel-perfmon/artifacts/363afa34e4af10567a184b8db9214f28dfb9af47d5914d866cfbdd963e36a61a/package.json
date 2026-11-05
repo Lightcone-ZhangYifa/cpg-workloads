@@ -1,0 +1,341 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "tables",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "all-mapfile-json-tables",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "requires_paths": [
+        "{prefix}/mapfile.csv"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "cpu-match",
+        "--prefix",
+        "{prefix}"
+      ],
+      "blocked_returncodes": [
+        77
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "visible-cpu-map",
+      "kind": "hardware",
+      "requires_commands": [
+        "python3"
+      ],
+      "requires_paths": [
+        "{prefix}/mapfile.csv",
+        "/proc/cpuinfo"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 30
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check_material.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "r06-complete-material-identity",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "intel-perfmon",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 2925202,
+      "build_peak_bytes": null,
+      "category": [
+        "Profiling",
+        "Event data"
+      ],
+      "container_strategy": "Copy the immutable data tree into a read-only resource prefix and preseed pmu-tools caches using only local files.",
+      "dependencies": [
+        "apt.python3"
+      ],
+      "deployment": {
+        "adapter": "copy",
+        "apt_dependencies": {
+          "dev": [],
+          "target": [
+            "python3"
+          ]
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "install_argv": [
+          "cp",
+          "-a",
+          "{source}/.",
+          "{prefix}/"
+        ],
+        "install_roles": [
+          "dev",
+          "target"
+        ],
+        "probe_requires_host": [
+          "target CPU mapfile match"
+        ],
+        "smoke_argv": [
+          "python3",
+          "-m",
+          "json.tool",
+          "{prefix}/SKX/events/skylakex_core.json"
+        ],
+        "state": "data-reference-deployment",
+        "target_exports": [
+          {
+            "destination": "opt/research/selected/intel-perfmon",
+            "kind": "tree",
+            "required": true,
+            "role": "data",
+            "source": "{prefix}"
+          }
+        ],
+        "target_smoke_commands": [
+          [
+            "python3",
+            "-m",
+            "json.tool",
+            "{prefix}/SKX/events/skylakex_core.json"
+          ]
+        ]
+      },
+      "documentation": "https://github.com/intel/perfmon/blob/8da58930a226ab3eac72f309bd0fb1d5abfc6245/README.md",
+      "extract": true,
+      "id": "intel-perfmon",
+      "immutable_ref": "8da58930a226ab3eac72f309bd0fb1d5abfc6245",
+      "installed_bytes": null,
+      "kind": "url",
+      "legacy_source_id": "intel-perfmon",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "sources/intel-perfmon",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Provide versioned Intel CPU model mappings, event encodings and top-down metric definitions without first-use downloads.",
+      "qualification_gaps": [
+        "Model, stepping and hybrid PMU core type must match the target; raw names do not imply supported events."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "acbec069dc9f8cbda2667018fef100fbef6b16273b6098f1fdc2b0b2c226dbd7",
+      "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+      "size_evidence": "workspace-evidence/resources-v050/platform-research/archive-measurements.json",
+      "source_evidence": [
+        "https://github.com/intel/perfmon",
+        "https://github.com/intel/perfmon/blob/8da58930a226ab3eac72f309bd0fb1d5abfc6245/README.md",
+        "https://codeload.github.com/intel/perfmon/tar.gz/8da58930a226ab3eac72f309bd0fb1d5abfc6245"
+      ],
+      "source_url": "https://codeload.github.com/intel/perfmon/tar.gz/8da58930a226ab3eac72f309bd0fb1d5abfc6245",
+      "title": "Intel PMU event and metric database",
+      "upstream": "https://github.com/intel/perfmon",
+      "version": "commit-8da58930a226"
+    },
+    "catalog_sha256": "e047311f4fdd720c74b7511a7a9ccded7ffd505cd4390c3c82385993b7e86968"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 2925202,
+      "extract": true,
+      "id": "intel-perfmon",
+      "material_path": "sources/intel-perfmon",
+      "sha256": "acbec069dc9f8cbda2667018fef100fbef6b16273b6098f1fdc2b0b2c226dbd7",
+      "strip_root": true,
+      "url": "https://codeload.github.com/intel/perfmon/tar.gz/8da58930a226ab3eac72f309bd0fb1d5abfc6245"
+    },
+    "adapter": "copy",
+    "apt_dependencies": {
+      "dev": [],
+      "target": [
+        "python3"
+      ]
+    },
+    "build_argv": [],
+    "build_role": "dev",
+    "configure_argv": [],
+    "install_argv": [
+      "cp",
+      "-a",
+      "{source}/.",
+      "{prefix}/"
+    ],
+    "install_roles": [
+      "dev",
+      "target"
+    ],
+    "original_recipe": {
+      "adapter": "copy",
+      "apt_dependencies": {
+        "dev": [],
+        "target": [
+          "python3"
+        ]
+      },
+      "build_argv": [],
+      "build_role": "dev",
+      "configure_argv": [],
+      "install_argv": [
+        "cp",
+        "-a",
+        "{source}/.",
+        "{prefix}/"
+      ],
+      "install_roles": [
+        "dev",
+        "target"
+      ],
+      "probe_requires_host": [
+        "target CPU mapfile match"
+      ],
+      "smoke_argv": [
+        "python3",
+        "-m",
+        "json.tool",
+        "{prefix}/SKX/events/skylakex_core.json"
+      ],
+      "state": "data-reference-deployment",
+      "target_exports": [
+        {
+          "destination": "opt/research/selected/intel-perfmon",
+          "kind": "tree",
+          "required": true,
+          "role": "data",
+          "source": "{prefix}"
+        }
+      ],
+      "target_smoke_commands": [
+        [
+          "python3",
+          "-m",
+          "json.tool",
+          "{prefix}/SKX/events/skylakex_core.json"
+        ]
+      ]
+    },
+    "probe_requires_host": [
+      "target CPU mapfile match"
+    ],
+    "qualification_scope": "complete_original_main_input_only",
+    "qualification_state": "candidate_requires_original_target_admission",
+    "smoke_argv": [
+      "python3",
+      "-m",
+      "json.tool",
+      "{prefix}/SKX/events/skylakex_core.json"
+    ],
+    "state": "data-reference-deployment",
+    "target_exports": [
+      {
+        "destination": "opt/research/selected/intel-perfmon",
+        "kind": "tree",
+        "required": true,
+        "role": "data",
+        "source": "{prefix}"
+      }
+    ],
+    "target_smoke_commands": [
+      [
+        "python3",
+        "-m",
+        "json.tool",
+        "{prefix}/SKX/events/skylakex_core.json"
+      ]
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2925202,
+      "extract": true,
+      "id": "intel-perfmon",
+      "material_path": "sources/intel-perfmon",
+      "sha256": "acbec069dc9f8cbda2667018fef100fbef6b16273b6098f1fdc2b0b2c226dbd7",
+      "strip_root": true,
+      "url": "https://codeload.github.com/intel/perfmon/tar.gz/8da58930a226ab3eac72f309bd0fb1d5abfc6245"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the resolved absolute command paths shown here. No system-wide PATH or alternatives changes are made."
+    ],
+    "documentation": [
+      "https://github.com/intel/perfmon"
+    ],
+    "examples": [
+      {
+        "command": "head -n 12 {prefix}/mapfile.csv",
+        "description": "Inspect CPU model mappings"
+      },
+      {
+        "command": "python3 -m json.tool {prefix}/SKX/events/skylakex_core.json",
+        "description": "Inspect one documented CPU event table"
+      }
+    ],
+    "locations": [
+      {
+        "label": "CPU model map",
+        "path": "{prefix}/mapfile.csv",
+        "purpose": "Map CPU model/stepping identifiers to event JSON files"
+      },
+      {
+        "label": "Event tables",
+        "path": "{prefix}",
+        "purpose": "Complete pinned upstream event and metric definitions"
+      }
+    ],
+    "notes": [
+      "The functional check verifies every mapfile-referenced table and parses its JSON. The hardware check separately reports whether the visible CPU has a map entry.",
+      "An AMD CPU produces a blocked Intel-map capability result; this does not mean that the Intel data package failed to install.",
+      "CPU model match is not counter qualification. Match stepping and hybrid PMU type before collecting events.",
+      "The existing seed-pmu-cache tool can prepare pmu-tools lookup from these local tables without a runtime download."
+    ],
+    "summary": "Pinned Intel CPU event definitions for local event lookup and pmu-tools cache preparation."
+  },
+  "version": "commit-8da58930a226"
+}
