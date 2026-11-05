@@ -1,0 +1,590 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 315,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "1b733b8503cabb06286f7ee21ec8540d47e50d99611a0ee3d2b7a3d60eea3af3"
+    },
+    {
+      "bytes": 13617,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_03.py",
+      "sha256": "8a5638b32b86d7bd7738f75208811027de5c058c3689e603c8faa978fab7290d"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "b232feeed59d5bc45f78d4a44952ad064797f82dffffe85c06aabf6b84306221",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "84b5c7e41228c61b9f2fdf9a9f3f7f81405430542fd467ba29aa7f4a95f1b934",
+  "method": "wrapper",
+  "package": {
+    "build": "1-static-check1-4101214f",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.googleapis-common-protos",
+        "py.opentelemetry-api",
+        "py.opentelemetry-exporter-http-transport",
+        "py.opentelemetry-exporter-otlp-common",
+        "py.opentelemetry-exporter-otlp-proto-common",
+        "py.opentelemetry-proto",
+        "py.opentelemetry-sdk",
+        "py.requests",
+        "py.typing-extensions"
+      ],
+      "system": []
+    },
+    "id": "py.opentelemetry-exporter-otlp-proto-http",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 22180,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.googleapis-common-protos",
+          "py.opentelemetry-api",
+          "py.opentelemetry-exporter-http-transport",
+          "py.opentelemetry-exporter-otlp-common",
+          "py.opentelemetry-exporter-otlp-proto-common",
+          "py.opentelemetry-proto",
+          "py.opentelemetry-sdk",
+          "py.requests",
+          "py.typing-extensions"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/opentelemetry-exporter-otlp-proto-http/"
+        ],
+        "id": "py.opentelemetry-exporter-otlp-proto-http",
+        "immutable_ref": "sha256:24a97cf3753c7fb52fad44a696e452ff371686339e2acf3309e2eda3d0230700",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "Apache-2.0",
+        "mandatory": false,
+        "material_path": "wheels/opentelemetry_exporter_otlp_proto_http-1.45.1-py3-none-any.whl",
+        "package_name": "opentelemetry-exporter-otlp-proto-http",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "24a97cf3753c7fb52fad44a696e452ff371686339e2acf3309e2eda3d0230700",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/opentelemetry-exporter-otlp-proto-http/1.45.1/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/aa/1f/517eaa0187ba106a9da97160ce2add3a371812681dc440930b267f714e42/opentelemetry_exporter_otlp_proto_http-1.45.1-py3-none-any.whl",
+        "title": "opentelemetry-exporter-otlp-proto-http",
+        "upstream": "https://pypi.org/project/opentelemetry-exporter-otlp-proto-http/1.45.1/",
+        "version": "1.45.1"
+      },
+      "catalog_sha256": "77ab035ac91cf01d8f2da216fff16a18e1f7a076960161de50dbaf9c450dfb21",
+      "historical_checks": [],
+      "static_wrapper_revision": {
+        "build_executed": false,
+        "check_definition_source_artifact_sha256": "846ab871c3f45ad3667b19aae57a563d9802222ceb9d893eb9660eb58f022990",
+        "check_definition_source_manifest_sha256": "a52229fb371770ff4db5adc4c2acba213b7b4641a7183e6ed292d5d4868ad226",
+        "functional_tests_executed": false,
+        "kind": "static_wrapper_check_and_dependency_revision",
+        "original_artifact_sha256": "4101214fbe7ce0eb4e58347b5fedda808e7b40465bc1a88ce0845cb464de9432",
+        "original_build": "1",
+        "original_manifest_sha256": "c1365996927ea0d0f3e253386b08b220d23e3e2ac54c2991d9b0b0673220ff16",
+        "original_official_wheel_identity_preserved": true,
+        "original_profiles": [
+          "v02111"
+        ],
+        "original_resolved_dependencies": [],
+        "resolved_dependency_replacements": [
+          {
+            "original": {
+              "build": "1",
+              "id": "py.opentelemetry-exporter-otlp-proto-common",
+              "method": "wrapper",
+              "sha256": "a5f9fa46aee401baa9fa62e12fad71cc67b9f38479c6747e2f93d1e3623d8afd",
+              "target": {
+                "arch": "x86_64",
+                "distribution": "ubuntu",
+                "distribution_version": "24.04",
+                "os": "linux"
+              },
+              "version": "1.45.1"
+            },
+            "revised": {
+              "build": "1-static-check1-a5f9fa46",
+              "id": "py.opentelemetry-exporter-otlp-proto-common",
+              "method": "wrapper",
+              "sha256": "b9ab1570078fc7f1193f99d778316312ddcc888eb315af1db6e30f5e41ac9c67",
+              "target": {
+                "arch": "x86_64",
+                "distribution": "ubuntu",
+                "distribution_version": "24.04",
+                "os": "linux"
+              },
+              "version": "1.45.1"
+            }
+          }
+        ],
+        "reused_authored_files": [
+          {
+            "bytes": 315,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/check.py",
+            "sha256": "1b733b8503cabb06286f7ee21ec8540d47e50d99611a0ee3d2b7a3d60eea3af3"
+          },
+          {
+            "bytes": 13617,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/probes_03.py",
+            "sha256": "8a5638b32b86d7bd7738f75208811027de5c058c3689e603c8faa978fab7290d"
+          },
+          {
+            "bytes": 23704,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/profile_probes.py",
+            "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+          }
+        ]
+      }
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "opentelemetry-exporter-otlp-proto-http",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 22180,
+        "extract": false,
+        "id": "py.opentelemetry-exporter-otlp-proto-http",
+        "material_path": "wheels/opentelemetry_exporter_otlp_proto_http-1.45.1-py3-none-any.whl",
+        "sha256": "24a97cf3753c7fb52fad44a696e452ff371686339e2acf3309e2eda3d0230700",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/aa/1f/517eaa0187ba106a9da97160ce2add3a371812681dc440930b267f714e42/opentelemetry_exporter_otlp_proto_http-1.45.1-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/project/opentelemetry-exporter-otlp-proto-http/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/opentelemetry_exporter_otlp_proto_http-1.45.1-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper."
+      ],
+      "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+    },
+    "version": "1.45.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.10",
+    "release": "0.21.11",
+    "scope": "Exact frozen formal baseline definition and recipe supporting selected Python targets; zero dependency functional qualification.",
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "check_definition_source_artifact_sha256": "846ab871c3f45ad3667b19aae57a563d9802222ceb9d893eb9660eb58f022990",
+      "check_definition_source_manifest_sha256": "a52229fb371770ff4db5adc4c2acba213b7b4641a7183e6ed292d5d4868ad226",
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_check_and_dependency_revision",
+      "original_artifact_sha256": "4101214fbe7ce0eb4e58347b5fedda808e7b40465bc1a88ce0845cb464de9432",
+      "original_build": "1",
+      "original_manifest_sha256": "c1365996927ea0d0f3e253386b08b220d23e3e2ac54c2991d9b0b0673220ff16",
+      "original_official_wheel_identity_preserved": true,
+      "original_profiles": [
+        "v02111"
+      ],
+      "original_resolved_dependencies": [],
+      "resolved_dependency_replacements": [
+        {
+          "original": {
+            "build": "1",
+            "id": "py.opentelemetry-exporter-otlp-proto-common",
+            "method": "wrapper",
+            "sha256": "a5f9fa46aee401baa9fa62e12fad71cc67b9f38479c6747e2f93d1e3623d8afd",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "1.45.1"
+          },
+          "revised": {
+            "build": "1-static-check1-a5f9fa46",
+            "id": "py.opentelemetry-exporter-otlp-proto-common",
+            "method": "wrapper",
+            "sha256": "b9ab1570078fc7f1193f99d778316312ddcc888eb315af1db6e30f5e41ac9c67",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "1.45.1"
+          }
+        }
+      ],
+      "reused_authored_files": [
+        {
+          "bytes": 315,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/check.py",
+          "sha256": "1b733b8503cabb06286f7ee21ec8540d47e50d99611a0ee3d2b7a3d60eea3af3"
+        },
+        {
+          "bytes": 13617,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/probes_03.py",
+          "sha256": "8a5638b32b86d7bd7738f75208811027de5c058c3689e603c8faa978fab7290d"
+        },
+        {
+          "bytes": 23704,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/profile_probes.py",
+          "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+        }
+      ]
+    },
+    "support_only": true
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.certifi",
+      "method": "wrapper",
+      "sha256": "62062b1aa9621065746973185b2352340c5f317ca980115fccfc3dbac301e139",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2026.10.19"
+    },
+    {
+      "build": "2",
+      "id": "py.charset-normalizer",
+      "method": "wrapper",
+      "sha256": "fd4ad11562d01726e6d3727e127ca09e9546d74773a6147d5389fd14296c5367",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.5.2"
+    },
+    {
+      "build": "2",
+      "id": "py.protobuf",
+      "method": "wrapper",
+      "sha256": "ca4acec681e2fa2879bd249f93ea509a736a2a66a23d87c9d206ac117ca96415",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "7.36.2"
+    },
+    {
+      "build": "2",
+      "id": "py.googleapis-common-protos",
+      "method": "wrapper",
+      "sha256": "ad3cdf5960a54358aa8714c07d2ea994f4a5471a1863dcbb58086f53e4fc6df5",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.75.5"
+    },
+    {
+      "build": "2",
+      "id": "py.idna",
+      "method": "wrapper",
+      "sha256": "7dc3dbe8e91125a5bc15bdda47d5383c20ffbc2eeaa64247ddd8475866a3ee46",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.20"
+    },
+    {
+      "build": "2",
+      "id": "py.typing-extensions",
+      "method": "wrapper",
+      "sha256": "442640639736fe41dd87afc2da8c607bece7584dba0238ebcc1a3688fd5652a3",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.16.0"
+    },
+    {
+      "build": "2",
+      "id": "py.opentelemetry-api",
+      "method": "wrapper",
+      "sha256": "4a7459d9738bea6700f1393c4a50b50196ccd668544dcfcd6968537492c9e800",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.45.1"
+    },
+    {
+      "build": "2",
+      "id": "py.urllib3",
+      "method": "wrapper",
+      "sha256": "a6a3c1ab06229820f10231a91fd5b9fbd7461de9e31ba60647977df594d247fe",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.8.0"
+    },
+    {
+      "build": "2",
+      "id": "py.requests",
+      "method": "wrapper",
+      "sha256": "43802a7f5f24de6b293064ee0680aa0a8c77dbcb2f8b5924b4308a794a4885cc",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.34.2"
+    },
+    {
+      "build": "2",
+      "id": "py.opentelemetry-exporter-http-transport",
+      "method": "wrapper",
+      "sha256": "b918e6a7495575c6f4b8c7cecd48c929bb7352c5f2eae707c945e57805628f5f",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.66b1"
+    },
+    {
+      "build": "2",
+      "id": "py.opentelemetry-semantic-conventions",
+      "method": "wrapper",
+      "sha256": "5258c2f38f808c21e413ee6b6655ea840e24fa5d7fe3e8ae8c4b65b2de1a3dca",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.66b1"
+    },
+    {
+      "build": "2",
+      "id": "py.opentelemetry-sdk",
+      "method": "wrapper",
+      "sha256": "f3083685f5afa67d2cdb781aca54f2df56dca8055d331d3aaf000531cc347332",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.45.1"
+    },
+    {
+      "build": "2",
+      "id": "py.opentelemetry-exporter-otlp-common",
+      "method": "wrapper",
+      "sha256": "47c826b4faee8e3873ef072a5d585bccc07334d08c7884229391bc2dd07a51dc",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.66b1"
+    },
+    {
+      "build": "2",
+      "id": "py.opentelemetry-proto",
+      "method": "wrapper",
+      "sha256": "714f637b90c183bcdd87c91b67b4f79997d5f4f0f9fdea5c2ed53c3c507fb343",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.45.1"
+    },
+    {
+      "build": "1-static-check1-a5f9fa46",
+      "id": "py.opentelemetry-exporter-otlp-proto-common",
+      "method": "wrapper",
+      "sha256": "b9ab1570078fc7f1193f99d778316312ddcc888eb315af1db6e30f5e41ac9c67",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.45.1"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

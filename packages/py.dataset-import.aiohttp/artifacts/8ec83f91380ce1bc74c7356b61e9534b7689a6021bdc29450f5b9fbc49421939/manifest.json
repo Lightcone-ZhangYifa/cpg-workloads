@@ -1,0 +1,471 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 229,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "a5717430f86ddf55de4ac7f3afad55bc08d0c369c57c710f7d623ea78c04ccd3"
+    },
+    {
+      "bytes": 12281,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_v02111_02.py",
+      "sha256": "75aeae9776950397c36412517bea7e8c71ae35fef922054d0df8780283fd00fb"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "2b4f53eb28345c2cb66bf9675505963457f6a80f12004bf3999d9c0c5e410796",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "dbc0aef9556faed5f5949afde53edd40ebd7903eaf6c09d74e39777a1b785b90",
+  "method": "wrapper",
+  "package": {
+    "build": "1-static-check1-3f00370c",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.dataset-import.aiohappyeyeballs",
+        "py.dataset-import.aiosignal",
+        "py.dataset-import.attrs",
+        "py.dataset-import.frozenlist",
+        "py.dataset-import.multidict",
+        "py.dataset-import.propcache",
+        "py.dataset-import.typing-extensions",
+        "py.dataset-import.yarl"
+      ],
+      "system": []
+    },
+    "id": "py.dataset-import.aiohttp",
+    "metadata": {
+      "catalog": {
+        "activated_extras": [],
+        "archive_bytes": 1919630,
+        "category": [
+          "Python packages",
+          "Dataset import environment"
+        ],
+        "container_strategy": "Install the complete dataset-import wheel group with --no-index --require-hashes into its independent CPython 3.12 environment. Import compiler_playground from the matching project source or install its local wheel explicitly.",
+        "dependencies": [
+          "py.dataset-import.aiohappyeyeballs",
+          "py.dataset-import.aiosignal",
+          "py.dataset-import.attrs",
+          "py.dataset-import.frozenlist",
+          "py.dataset-import.multidict",
+          "py.dataset-import.propcache",
+          "py.dataset-import.typing-extensions",
+          "py.dataset-import.yarl"
+        ],
+        "dependency_marker_environment": {
+          "extra": "",
+          "implementation_name": "cpython",
+          "implementation_version": "3.12.14",
+          "os_name": "posix",
+          "platform_machine": "x86_64",
+          "platform_python_implementation": "CPython",
+          "platform_release": "",
+          "platform_system": "Linux",
+          "platform_version": "",
+          "python_full_version": "3.12.14",
+          "python_version": "3.12",
+          "sys_platform": "linux"
+        },
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "dataset-import",
+          "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed"
+        },
+        "documentation": [
+          "https://pypi.org/pypi/aiohttp/3.14.5/json"
+        ],
+        "id": "py.dataset-import.aiohttp",
+        "immutable_ref": "sha256:20f085697d7e911f1f73c43ed03fafbed1e7121797e2eb5428efa80398060584",
+        "installed_allocated_bytes": 8622080,
+        "installed_bytes": 8313708,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "Apache-2.0 AND MIT",
+        "mandatory": false,
+        "material_path": "wheels/dataset-import/aiohttp-3.14.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "package_name": "aiohttp",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure.",
+        "qualification_gaps": [
+          "Local backend smoke is not a full OCI build or admission of arbitrary corpus semantics.",
+          "The core package needs no third-party dependency. Use this environment only for explicit data preparation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "host",
+          "dev"
+        ],
+        "sha256": "20f085697d7e911f1f73c43ed03fafbed1e7121797e2eb5428efa80398060584",
+        "size_basis": "Actual wheel payload bytes verified against official PyPI. Installed logical/allocated bytes measured from distribution RECORD files in the isolated local CPython 3.12 venv; interpreter and system libraries excluded.",
+        "source_evidence": [
+          "https://pypi.org/pypi/aiohttp/3.14.5/json",
+          "workspace-evidence/datasets-v090/python-capsule/manifest.json",
+          "workspace-evidence/datasets-v090/python-capsule/local-source-probe.json"
+        ],
+        "source_logical_bytes": 7113295,
+        "source_url": "https://files.pythonhosted.org/packages/da/e4/aa172eb534b7f02f1f8ff1c3213347eaf3cf218db91a727c6863c22f1035/aiohttp-3.14.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "title": "aiohttp (dataset-import)",
+        "upstream": "https://pypi.org/pypi/aiohttp/3.14.5/json",
+        "version": "3.14.5"
+      },
+      "catalog_sha256": "a85c7ae4d1493473427344f3aafcb5f9ba84ddc1549e54ae3e7dcc1bfcc1b4d7",
+      "historical_checks": [],
+      "static_wrapper_revision": {
+        "build_executed": false,
+        "check_definition_source_artifact_sha256": "0666e431353cbb1a5f5e93d9e4300dbfb876c300c67307be5166c12cdfda4321",
+        "check_definition_source_manifest_sha256": "3daeb00cd9b875380faaa9b416d8c22ae1371cbb0825a95f441baa0f4a836152",
+        "functional_tests_executed": false,
+        "kind": "static_wrapper_check_and_dependency_revision",
+        "original_artifact_sha256": "3f00370cc278d0528e71dc81534c22e14dfba699aff3459db3d6d2480f98ba3f",
+        "original_build": "1",
+        "original_manifest_sha256": "91247e1acf983544be4eab65fc75bf10e60e1758ec0ccde7586ec3082cb54e13",
+        "original_official_wheel_identity_preserved": true,
+        "original_profiles": [
+          "v02111"
+        ],
+        "original_resolved_dependencies": [],
+        "resolved_dependency_replacements": [],
+        "reused_authored_files": [
+          {
+            "bytes": 229,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/check.py",
+            "sha256": "a5717430f86ddf55de4ac7f3afad55bc08d0c369c57c710f7d623ea78c04ccd3"
+          },
+          {
+            "bytes": 12281,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/probes_v02111_02.py",
+            "sha256": "75aeae9776950397c36412517bea7e8c71ae35fef922054d0df8780283fd00fb"
+          },
+          {
+            "bytes": 23704,
+            "kind": "file",
+            "mode": 420,
+            "path": "recipe/profile_probes.py",
+            "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+          }
+        ]
+      }
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "dataset-import",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "aiohttp",
+      "state": "official-artifact-hashes-verified; offline-native-import-probe-passed; container-not-executed",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1919630,
+        "extract": false,
+        "id": "py.dataset-import.aiohttp",
+        "material_path": "wheels/dataset-import/aiohttp-3.14.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "20f085697d7e911f1f73c43ed03fafbed1e7121797e2eb5428efa80398060584",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/da/e4/aa172eb534b7f02f1f8ff1c3213347eaf3cf218db91a727c6863c22f1035/aiohttp-3.14.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/pypi/aiohttp/3.14.5/json"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/dataset-import/aiohttp-3.14.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper."
+      ],
+      "summary": "Prepare local Hugging Face and Parquet snapshots into frozen compiler datasets; optional isolated dependency closure."
+    },
+    "version": "3.14.5"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.10",
+    "release": "0.21.11",
+    "scope": "Exact frozen formal baseline definition and recipe supporting selected Python targets; zero dependency functional qualification.",
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "check_definition_source_artifact_sha256": "0666e431353cbb1a5f5e93d9e4300dbfb876c300c67307be5166c12cdfda4321",
+      "check_definition_source_manifest_sha256": "3daeb00cd9b875380faaa9b416d8c22ae1371cbb0825a95f441baa0f4a836152",
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_check_and_dependency_revision",
+      "original_artifact_sha256": "3f00370cc278d0528e71dc81534c22e14dfba699aff3459db3d6d2480f98ba3f",
+      "original_build": "1",
+      "original_manifest_sha256": "91247e1acf983544be4eab65fc75bf10e60e1758ec0ccde7586ec3082cb54e13",
+      "original_official_wheel_identity_preserved": true,
+      "original_profiles": [
+        "v02111"
+      ],
+      "original_resolved_dependencies": [],
+      "resolved_dependency_replacements": [],
+      "reused_authored_files": [
+        {
+          "bytes": 229,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/check.py",
+          "sha256": "a5717430f86ddf55de4ac7f3afad55bc08d0c369c57c710f7d623ea78c04ccd3"
+        },
+        {
+          "bytes": 12281,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/probes_v02111_02.py",
+          "sha256": "75aeae9776950397c36412517bea7e8c71ae35fef922054d0df8780283fd00fb"
+        },
+        {
+          "bytes": 23704,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/profile_probes.py",
+          "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+        }
+      ]
+    },
+    "support_only": true
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.dataset-import.aiohappyeyeballs",
+      "method": "wrapper",
+      "sha256": "e6f495bfbe73eefde6a79c7d9171e89f15dc31ff3399fee52e227c9327959634",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.7.1"
+    },
+    {
+      "build": "2",
+      "id": "py.dataset-import.frozenlist",
+      "method": "wrapper",
+      "sha256": "6343ad979992dd034092ae7a6687f9893952f593bf47db57f4d931678bfcf410",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.8.0"
+    },
+    {
+      "build": "2",
+      "id": "py.dataset-import.typing-extensions",
+      "method": "wrapper",
+      "sha256": "e9555f848edbcd37f0d2c7ba563de36b029761e40c4a8413e2acd3339dcae639",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.16.0"
+    },
+    {
+      "build": "2",
+      "id": "py.dataset-import.aiosignal",
+      "method": "wrapper",
+      "sha256": "7d55e6a1fc7dbc7cf52204a32452bfe81beea572aa1bab90260edf74ed6244d6",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.4.0"
+    },
+    {
+      "build": "20261029-isolated-exact-wheel-host-qualification-1",
+      "id": "py.dataset-import.attrs",
+      "method": "wrapper",
+      "sha256": "1893f40e9ca74971be968d273e86667e7e99693243cb363c051f86ba64672574",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "26.1.0"
+    },
+    {
+      "build": "2",
+      "id": "py.dataset-import.multidict",
+      "method": "wrapper",
+      "sha256": "2647293e5feedf549fd98e52f981f3a4a8572f4251a8b43f722c2c405355ad2b",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "7.1.0"
+    },
+    {
+      "build": "2",
+      "id": "py.dataset-import.propcache",
+      "method": "wrapper",
+      "sha256": "ac39a98fcc9864d6500342cc54a6e5096979399944f75a89137f43a5c679de31",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.5.4"
+    },
+    {
+      "build": "20261029-isolated-exact-wheel-host-qualification-1",
+      "id": "py.dataset-import.idna",
+      "method": "wrapper",
+      "sha256": "332878ac291f4614d69bfc7201c264be624315cfc1a4b58e372de5faae0052ae",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.20"
+    },
+    {
+      "build": "2",
+      "id": "py.dataset-import.yarl",
+      "method": "wrapper",
+      "sha256": "cb187fa392c17653190d9ecdcb266e49ef58fb84b6319442b1370c5b711f93db",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.25.1"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

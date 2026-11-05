@@ -1,0 +1,863 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 629,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "c0d52d6ff3a7b1cfbcaa48a8dc3242674f995c427d8905f8818e62a7b8baea55"
+    },
+    {
+      "bytes": 13783,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_v02111_03.py",
+      "sha256": "1a7be5dfbce29e742e9451f93ec913befb83bc82265d093d479ded85eccdbe77"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    }
+  ],
+  "inventory_sha256": "472774fe8012b2316a2d451a14246e5447e91407b2bf5ecb1f829d0675c16a69",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "423b8da02e38a49a3e0c533ec94c15a367fa5a36858844f6d6d2ce17e7b09ed4",
+  "method": "wrapper",
+  "package": {
+    "build": "2-static-deps1-482edee5",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-private-distribution",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.matplotlib",
+        "py.numpy",
+        "py.pandas"
+      ],
+      "system": []
+    },
+    "id": "py.seaborn",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 294914,
+        "category": [
+          "Python packages",
+          "Core research environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.matplotlib",
+          "py.numpy",
+          "py.pandas"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://pypi.org/project/seaborn/"
+        ],
+        "id": "py.seaborn",
+        "immutable_ref": "sha256:636f8336facf092165e27924f223d3c62ca560b1f2bb5dff7ab7fad265361987",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "LicenseRef-Python-distribution-notices",
+        "mandatory": false,
+        "material_path": "wheels/seaborn-0.13.2-py3-none-any.whl",
+        "package_name": "seaborn",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "636f8336facf092165e27924f223d3c62ca560b1f2bb5dff7ab7fad265361987",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/seaborn/0.13.2/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/83/11/00d3c3dfc25ad54e731d91449895a79e4bf2384dc3ac01809010ba88f6d5/seaborn-0.13.2-py3-none-any.whl",
+        "title": "seaborn",
+        "upstream": "https://pypi.org/project/seaborn/0.13.2/",
+        "version": "0.13.2"
+      },
+      "catalog_sha256": "00ae44145ea88b56af967cb2c83c9b963d5f9e4de50245a72094951a91e3f6e5",
+      "static_wrapper_revision": {
+        "build_executed": false,
+        "functional_tests_executed": false,
+        "kind": "static_wrapper_dependency_revision",
+        "original_artifact_sha256": "482edee520ff3df71b6246a301eb85d84a760cd38cc792c864fec914889f979a",
+        "original_build": "2",
+        "original_manifest_sha256": "b026a480592d20b8cbbec3dfa3221ffca0ebf410ebb62a53673285043a415055",
+        "original_official_wheel_identity_preserved": true,
+        "original_resolved_dependencies": [
+          {
+            "build": "2",
+            "id": "py.numpy",
+            "method": "wrapper",
+            "sha256": "336c113ef339ff174159969978329b5f2a233946db46de91caa6a39c825d30dd",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "2.5.4"
+          },
+          {
+            "build": "1",
+            "id": "py.contourpy",
+            "method": "wrapper",
+            "sha256": "32fa2b683e3aef79be23dee673e8e41456865ce55a3757bc73fac7f62ee86272",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "1.4.0"
+          },
+          {
+            "build": "2",
+            "id": "py.cycler",
+            "method": "wrapper",
+            "sha256": "559cba489aaa318a2f7b08863a83f75ca1357a2bbdb6c0f7d2f5b052c5c1456f",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "0.12.1"
+          },
+          {
+            "build": "2",
+            "id": "py.fonttools",
+            "method": "wrapper",
+            "sha256": "42e719e9651ace189064d2bd0969961af29b1545d5a6dc02dd7d1fd11c2fd352",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "4.67.0"
+          },
+          {
+            "build": "2",
+            "id": "py.kiwisolver",
+            "method": "wrapper",
+            "sha256": "7f3d82b1790cd686498f5c5b07a460da4e9598a89335b9bd123fd444a77d8219",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "1.5.1"
+          },
+          {
+            "build": "2",
+            "id": "py.packaging",
+            "method": "wrapper",
+            "sha256": "45b55fb90ca2b1747819b90000711ffc049ccaff6ef141988a5d0feca81a5ec6",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "26.3"
+          },
+          {
+            "build": "2",
+            "id": "py.pillow",
+            "method": "wrapper",
+            "sha256": "6d6c313b48970511ed1f5ab0f0e44a749adf66cb0b3555da88fe19570576a21e",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "13.0.0"
+          },
+          {
+            "build": "2",
+            "id": "py.pyparsing",
+            "method": "wrapper",
+            "sha256": "048c5f806e48464fa01abd6d8de44daf9e12b35436c47ccaa1d428641c359b81",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "3.3.3"
+          },
+          {
+            "build": "2",
+            "id": "py.six",
+            "method": "wrapper",
+            "sha256": "968330bd46df8c41e72d9fa8108937e031b73245551ae9b1f2056bc021ac99be",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "1.17.0"
+          },
+          {
+            "build": "2",
+            "id": "py.python-dateutil",
+            "method": "wrapper",
+            "sha256": "04dff4a262697c13e2d94924db7e13418c01181df300c4dc23fd9f23ed746bf9",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "2.9.0.post0"
+          },
+          {
+            "build": "1",
+            "id": "py.matplotlib",
+            "method": "wrapper",
+            "sha256": "730a949417ce2ba2d36b488f3db7b147c26904723eb840590fa833d37f2713e2",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "3.11.2"
+          },
+          {
+            "build": "2",
+            "id": "py.pandas",
+            "method": "wrapper",
+            "sha256": "85aef7cb517f37db2aa17d4816abb263ef05308ac0504904fbe93a5382c284ff",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "3.0.6"
+          }
+        ],
+        "resolved_dependency_replacements": [
+          {
+            "original": {
+              "build": "1",
+              "id": "py.contourpy",
+              "method": "wrapper",
+              "sha256": "32fa2b683e3aef79be23dee673e8e41456865ce55a3757bc73fac7f62ee86272",
+              "target": {
+                "arch": "x86_64",
+                "distribution": "ubuntu",
+                "distribution_version": "24.04",
+                "os": "linux"
+              },
+              "version": "1.4.0"
+            },
+            "revised": {
+              "build": "1-static-check1-32fa2b68",
+              "id": "py.contourpy",
+              "method": "wrapper",
+              "sha256": "1894553a15a98aa9fd827dc70be9e254f44bb332659809ca4a0408a3a6221dad",
+              "target": {
+                "arch": "x86_64",
+                "distribution": "ubuntu",
+                "distribution_version": "24.04",
+                "os": "linux"
+              },
+              "version": "1.4.0"
+            }
+          },
+          {
+            "original": {
+              "build": "1",
+              "id": "py.matplotlib",
+              "method": "wrapper",
+              "sha256": "730a949417ce2ba2d36b488f3db7b147c26904723eb840590fa833d37f2713e2",
+              "target": {
+                "arch": "x86_64",
+                "distribution": "ubuntu",
+                "distribution_version": "24.04",
+                "os": "linux"
+              },
+              "version": "3.11.2"
+            },
+            "revised": {
+              "build": "1-static-check1-730a9494",
+              "id": "py.matplotlib",
+              "method": "wrapper",
+              "sha256": "992392837bb83981614c81c8bf31e2ba9cb4868d66e346cc19eea501bbfd7e99",
+              "target": {
+                "arch": "x86_64",
+                "distribution": "ubuntu",
+                "distribution_version": "24.04",
+                "os": "linux"
+              },
+              "version": "3.11.2"
+            }
+          }
+        ]
+      }
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "seaborn",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 294914,
+        "extract": false,
+        "id": "py.seaborn",
+        "material_path": "wheels/seaborn-0.13.2-py3-none-any.whl",
+        "sha256": "636f8336facf092165e27924f223d3c62ca560b1f2bb5dff7ab7fad265361987",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/83/11/00d3c3dfc25ad54e731d91449895a79e4bf2384dc3ac01809010ba88f6d5/seaborn-0.13.2-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://pypi.org/project/seaborn/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/seaborn-0.13.2-py3-none-any.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "The exact original Python dependency closure is installed in two independent private environments with original offline wheel bytes.",
+        "Real local API operations, negative cases, complete installed RECORD hashes, raw provenance and both removals are audited separately.",
+        "Support dependency installation does not establish that dependency's functional qualification. Original source, target, dependency and catalog facts remain unchanged."
+      ],
+      "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+    },
+    "version": "0.13.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.10",
+    "original_input_sha256": "636f8336facf092165e27924f223d3c62ca560b1f2bb5dff7ab7fad265361987",
+    "recipe_scope": "Exact original fixed Python closure and explicitly frozen local API probes; independent actual qualification required.",
+    "release": "0.21.11",
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_dependency_revision",
+      "original_artifact_sha256": "482edee520ff3df71b6246a301eb85d84a760cd38cc792c864fec914889f979a",
+      "original_build": "2",
+      "original_manifest_sha256": "b026a480592d20b8cbbec3dfa3221ffca0ebf410ebb62a53673285043a415055",
+      "original_official_wheel_identity_preserved": true,
+      "original_resolved_dependencies": [
+        {
+          "build": "2",
+          "id": "py.numpy",
+          "method": "wrapper",
+          "sha256": "336c113ef339ff174159969978329b5f2a233946db46de91caa6a39c825d30dd",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2.5.4"
+        },
+        {
+          "build": "1",
+          "id": "py.contourpy",
+          "method": "wrapper",
+          "sha256": "32fa2b683e3aef79be23dee673e8e41456865ce55a3757bc73fac7f62ee86272",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "1.4.0"
+        },
+        {
+          "build": "2",
+          "id": "py.cycler",
+          "method": "wrapper",
+          "sha256": "559cba489aaa318a2f7b08863a83f75ca1357a2bbdb6c0f7d2f5b052c5c1456f",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "0.12.1"
+        },
+        {
+          "build": "2",
+          "id": "py.fonttools",
+          "method": "wrapper",
+          "sha256": "42e719e9651ace189064d2bd0969961af29b1545d5a6dc02dd7d1fd11c2fd352",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "4.67.0"
+        },
+        {
+          "build": "2",
+          "id": "py.kiwisolver",
+          "method": "wrapper",
+          "sha256": "7f3d82b1790cd686498f5c5b07a460da4e9598a89335b9bd123fd444a77d8219",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "1.5.1"
+        },
+        {
+          "build": "2",
+          "id": "py.packaging",
+          "method": "wrapper",
+          "sha256": "45b55fb90ca2b1747819b90000711ffc049ccaff6ef141988a5d0feca81a5ec6",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "26.3"
+        },
+        {
+          "build": "2",
+          "id": "py.pillow",
+          "method": "wrapper",
+          "sha256": "6d6c313b48970511ed1f5ab0f0e44a749adf66cb0b3555da88fe19570576a21e",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "13.0.0"
+        },
+        {
+          "build": "2",
+          "id": "py.pyparsing",
+          "method": "wrapper",
+          "sha256": "048c5f806e48464fa01abd6d8de44daf9e12b35436c47ccaa1d428641c359b81",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "3.3.3"
+        },
+        {
+          "build": "2",
+          "id": "py.six",
+          "method": "wrapper",
+          "sha256": "968330bd46df8c41e72d9fa8108937e031b73245551ae9b1f2056bc021ac99be",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "1.17.0"
+        },
+        {
+          "build": "2",
+          "id": "py.python-dateutil",
+          "method": "wrapper",
+          "sha256": "04dff4a262697c13e2d94924db7e13418c01181df300c4dc23fd9f23ed746bf9",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "2.9.0.post0"
+        },
+        {
+          "build": "1",
+          "id": "py.matplotlib",
+          "method": "wrapper",
+          "sha256": "730a949417ce2ba2d36b488f3db7b147c26904723eb840590fa833d37f2713e2",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "3.11.2"
+        },
+        {
+          "build": "2",
+          "id": "py.pandas",
+          "method": "wrapper",
+          "sha256": "85aef7cb517f37db2aa17d4816abb263ef05308ac0504904fbe93a5382c284ff",
+          "target": {
+            "arch": "x86_64",
+            "distribution": "ubuntu",
+            "distribution_version": "24.04",
+            "os": "linux"
+          },
+          "version": "3.0.6"
+        }
+      ],
+      "resolved_dependency_replacements": [
+        {
+          "original": {
+            "build": "1",
+            "id": "py.contourpy",
+            "method": "wrapper",
+            "sha256": "32fa2b683e3aef79be23dee673e8e41456865ce55a3757bc73fac7f62ee86272",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "1.4.0"
+          },
+          "revised": {
+            "build": "1-static-check1-32fa2b68",
+            "id": "py.contourpy",
+            "method": "wrapper",
+            "sha256": "1894553a15a98aa9fd827dc70be9e254f44bb332659809ca4a0408a3a6221dad",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "1.4.0"
+          }
+        },
+        {
+          "original": {
+            "build": "1",
+            "id": "py.matplotlib",
+            "method": "wrapper",
+            "sha256": "730a949417ce2ba2d36b488f3db7b147c26904723eb840590fa833d37f2713e2",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "3.11.2"
+          },
+          "revised": {
+            "build": "1-static-check1-730a9494",
+            "id": "py.matplotlib",
+            "method": "wrapper",
+            "sha256": "992392837bb83981614c81c8bf31e2ba9cb4868d66e346cc19eea501bbfd7e99",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "3.11.2"
+          }
+        }
+      ]
+    },
+    "upstream_source_build": false
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.numpy",
+      "method": "wrapper",
+      "sha256": "336c113ef339ff174159969978329b5f2a233946db46de91caa6a39c825d30dd",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.5.4"
+    },
+    {
+      "build": "1-static-check1-32fa2b68",
+      "id": "py.contourpy",
+      "method": "wrapper",
+      "sha256": "1894553a15a98aa9fd827dc70be9e254f44bb332659809ca4a0408a3a6221dad",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.4.0"
+    },
+    {
+      "build": "2",
+      "id": "py.cycler",
+      "method": "wrapper",
+      "sha256": "559cba489aaa318a2f7b08863a83f75ca1357a2bbdb6c0f7d2f5b052c5c1456f",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.12.1"
+    },
+    {
+      "build": "2",
+      "id": "py.fonttools",
+      "method": "wrapper",
+      "sha256": "42e719e9651ace189064d2bd0969961af29b1545d5a6dc02dd7d1fd11c2fd352",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.67.0"
+    },
+    {
+      "build": "2",
+      "id": "py.kiwisolver",
+      "method": "wrapper",
+      "sha256": "7f3d82b1790cd686498f5c5b07a460da4e9598a89335b9bd123fd444a77d8219",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.5.1"
+    },
+    {
+      "build": "2",
+      "id": "py.packaging",
+      "method": "wrapper",
+      "sha256": "45b55fb90ca2b1747819b90000711ffc049ccaff6ef141988a5d0feca81a5ec6",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "26.3"
+    },
+    {
+      "build": "2",
+      "id": "py.pillow",
+      "method": "wrapper",
+      "sha256": "6d6c313b48970511ed1f5ab0f0e44a749adf66cb0b3555da88fe19570576a21e",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "13.0.0"
+    },
+    {
+      "build": "2",
+      "id": "py.pyparsing",
+      "method": "wrapper",
+      "sha256": "048c5f806e48464fa01abd6d8de44daf9e12b35436c47ccaa1d428641c359b81",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.3.3"
+    },
+    {
+      "build": "2",
+      "id": "py.six",
+      "method": "wrapper",
+      "sha256": "968330bd46df8c41e72d9fa8108937e031b73245551ae9b1f2056bc021ac99be",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "1.17.0"
+    },
+    {
+      "build": "2",
+      "id": "py.python-dateutil",
+      "method": "wrapper",
+      "sha256": "04dff4a262697c13e2d94924db7e13418c01181df300c4dc23fd9f23ed746bf9",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.9.0.post0"
+    },
+    {
+      "build": "1-static-check1-730a9494",
+      "id": "py.matplotlib",
+      "method": "wrapper",
+      "sha256": "992392837bb83981614c81c8bf31e2ba9cb4868d66e346cc19eea501bbfd7e99",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.11.2"
+    },
+    {
+      "build": "2",
+      "id": "py.pandas",
+      "method": "wrapper",
+      "sha256": "85aef7cb517f37db2aa17d4816abb263ef05308ac0504904fbe93a5382c284ff",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.0.6"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

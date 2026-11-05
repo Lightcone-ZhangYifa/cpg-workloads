@@ -1,0 +1,279 @@
+{
+  "build": "1-static-check1-4101214f",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exact-private-distribution",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "-B",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-installed-operations",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.googleapis-common-protos",
+      "py.opentelemetry-api",
+      "py.opentelemetry-exporter-http-transport",
+      "py.opentelemetry-exporter-otlp-common",
+      "py.opentelemetry-exporter-otlp-proto-common",
+      "py.opentelemetry-proto",
+      "py.opentelemetry-sdk",
+      "py.requests",
+      "py.typing-extensions"
+    ],
+    "system": []
+  },
+  "id": "py.opentelemetry-exporter-otlp-proto-http",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 22180,
+      "category": [
+        "Python packages",
+        "Core research environment"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.googleapis-common-protos",
+        "py.opentelemetry-api",
+        "py.opentelemetry-exporter-http-transport",
+        "py.opentelemetry-exporter-otlp-common",
+        "py.opentelemetry-exporter-otlp-proto-common",
+        "py.opentelemetry-proto",
+        "py.opentelemetry-sdk",
+        "py.requests",
+        "py.typing-extensions"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/opentelemetry-exporter-otlp-proto-http/"
+      ],
+      "id": "py.opentelemetry-exporter-otlp-proto-http",
+      "immutable_ref": "sha256:24a97cf3753c7fb52fad44a696e452ff371686339e2acf3309e2eda3d0230700",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "Apache-2.0",
+      "mandatory": false,
+      "material_path": "wheels/opentelemetry_exporter_otlp_proto_http-1.45.1-py3-none-any.whl",
+      "package_name": "opentelemetry-exporter-otlp-proto-http",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "24a97cf3753c7fb52fad44a696e452ff371686339e2acf3309e2eda3d0230700",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/opentelemetry-exporter-otlp-proto-http/1.45.1/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/aa/1f/517eaa0187ba106a9da97160ce2add3a371812681dc440930b267f714e42/opentelemetry_exporter_otlp_proto_http-1.45.1-py3-none-any.whl",
+      "title": "opentelemetry-exporter-otlp-proto-http",
+      "upstream": "https://pypi.org/project/opentelemetry-exporter-otlp-proto-http/1.45.1/",
+      "version": "1.45.1"
+    },
+    "catalog_sha256": "77ab035ac91cf01d8f2da216fff16a18e1f7a076960161de50dbaf9c450dfb21",
+    "historical_checks": [],
+    "static_wrapper_revision": {
+      "build_executed": false,
+      "check_definition_source_artifact_sha256": "846ab871c3f45ad3667b19aae57a563d9802222ceb9d893eb9660eb58f022990",
+      "check_definition_source_manifest_sha256": "a52229fb371770ff4db5adc4c2acba213b7b4641a7183e6ed292d5d4868ad226",
+      "functional_tests_executed": false,
+      "kind": "static_wrapper_check_and_dependency_revision",
+      "original_artifact_sha256": "4101214fbe7ce0eb4e58347b5fedda808e7b40465bc1a88ce0845cb464de9432",
+      "original_build": "1",
+      "original_manifest_sha256": "c1365996927ea0d0f3e253386b08b220d23e3e2ac54c2991d9b0b0673220ff16",
+      "original_official_wheel_identity_preserved": true,
+      "original_profiles": [
+        "v02111"
+      ],
+      "original_resolved_dependencies": [],
+      "resolved_dependency_replacements": [
+        {
+          "original": {
+            "build": "1",
+            "id": "py.opentelemetry-exporter-otlp-proto-common",
+            "method": "wrapper",
+            "sha256": "a5f9fa46aee401baa9fa62e12fad71cc67b9f38479c6747e2f93d1e3623d8afd",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "1.45.1"
+          },
+          "revised": {
+            "build": "1-static-check1-a5f9fa46",
+            "id": "py.opentelemetry-exporter-otlp-proto-common",
+            "method": "wrapper",
+            "sha256": "b9ab1570078fc7f1193f99d778316312ddcc888eb315af1db6e30f5e41ac9c67",
+            "target": {
+              "arch": "x86_64",
+              "distribution": "ubuntu",
+              "distribution_version": "24.04",
+              "os": "linux"
+            },
+            "version": "1.45.1"
+          }
+        }
+      ],
+      "reused_authored_files": [
+        {
+          "bytes": 315,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/check.py",
+          "sha256": "1b733b8503cabb06286f7ee21ec8540d47e50d99611a0ee3d2b7a3d60eea3af3"
+        },
+        {
+          "bytes": 13617,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/probes_03.py",
+          "sha256": "8a5638b32b86d7bd7738f75208811027de5c058c3689e603c8faa978fab7290d"
+        },
+        {
+          "bytes": 23704,
+          "kind": "file",
+          "mode": 420,
+          "path": "recipe/profile_probes.py",
+          "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+        }
+      ]
+    }
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "opentelemetry-exporter-otlp-proto-http",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 22180,
+      "extract": false,
+      "id": "py.opentelemetry-exporter-otlp-proto-http",
+      "material_path": "wheels/opentelemetry_exporter_otlp_proto_http-1.45.1-py3-none-any.whl",
+      "sha256": "24a97cf3753c7fb52fad44a696e452ff371686339e2acf3309e2eda3d0230700",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/aa/1f/517eaa0187ba106a9da97160ce2add3a371812681dc440930b267f714e42/opentelemetry_exporter_otlp_proto_http-1.45.1-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+    ],
+    "documentation": [
+      "https://pypi.org/project/opentelemetry-exporter-otlp-proto-http/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect package metadata in the selected environment."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/opentelemetry_exporter_otlp_proto_http-1.45.1-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+      "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper."
+    ],
+    "summary": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure."
+  },
+  "version": "1.45.1"
+}
