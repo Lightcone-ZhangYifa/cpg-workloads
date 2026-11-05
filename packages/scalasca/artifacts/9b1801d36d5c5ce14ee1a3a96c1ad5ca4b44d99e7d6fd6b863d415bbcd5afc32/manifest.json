@@ -1,0 +1,300 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 1227,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSE.CPG",
+      "sha256": "82a2b7c35b4501e905b422e0bc6d23893946fbb647bfecc0cfc6181ed11490cc"
+    },
+    {
+      "bytes": 26531,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSES.txt",
+      "sha256": "405040134fb4cc92808b0c6f7f049a469404a15ae0e0b7dc1230afe2749059df"
+    },
+    {
+      "bytes": 2153,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/MATERIALS.md",
+      "sha256": "e653804b5923a068b7a9d63eddc53b61743590ed9bdb1df78ef3aaeb7c964a27"
+    },
+    {
+      "bytes": 571,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/POLICY.json",
+      "sha256": "98786f7646dce41ef432ce0758dd1d5db7c0f199c3c8631eb258a45b55f230d3"
+    },
+    {
+      "bytes": 2612,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/PUBLICATION.md",
+      "sha256": "089e66277adfc4767e63cb3a895ff2931a383db7f416a28e10631ae4df62ad7d"
+    },
+    {
+      "bytes": 379351,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/archive-members.json",
+      "sha256": "374ffbb0afb9bc8c0a37954bf9b55e7811d33eb75aff78a55592e6837b225fd4"
+    },
+    {
+      "bytes": 3302,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/inspect_material.py",
+      "sha256": "8559cfff59af3d138ff5c6673e1ca2893711c5c7fbcd611a47ab03f378db8d6a"
+    },
+    {
+      "bytes": 1767,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/material-index.json",
+      "sha256": "81ac0ad63e0906acb66f629f2b3d49adb9f67d2effda4f10662f548719ddbbe7"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/original-archives"
+    },
+    {
+      "bytes": 11303156,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/original-archives/scalasca.tar.gz",
+      "sha256": "17e72fd908be43879955e4ed49c2732d4dbda7d295fec2d8b3af7ddafe1202a0"
+    },
+    {
+      "bytes": 4951856,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/reference-text.jsonl",
+      "sha256": "960013e00b41952cbbe696ea12851e1d8518458a2540a6b35321a3d06589c529"
+    },
+    {
+      "bytes": 905,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/source-lock.json",
+      "sha256": "667fb47dfc2d33ba816a9644e9e5e2c682bd32a512d6e6a33d5521920f3e7fcb"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2538,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "a00e0447b12542c5ffe9e99f09fc6ff0d9a3f205f17fcf42ec162b62659e6233"
+    }
+  ],
+  "inventory_sha256": "da993114fc833fd0a03b5f7295ffdd689567b2e515f9aaff69e0c9ef436b3073",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "b5ca5931f4d79194da40db8bf8921234b3ff5bf96e977dfd79bd087630ca238c",
+  "method": "material",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "locked-static-materials",
+        "kind": "availability",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "scalasca",
+    "metadata": {
+      "baseline_catalog_sha256": null,
+      "baseline_definition_sha256": null,
+      "catalog": {
+        "archive_bytes": 11303156,
+        "category": [
+          "Observability",
+          "Static reference materials"
+        ],
+        "dependencies": [],
+        "documentation": "https://www.scalasca.org/",
+        "extract": false,
+        "id": "scalasca",
+        "kind": "url",
+        "license_class": "open",
+        "license_id": "BSD-3-Clause; bundled component notices retained",
+        "license_scope": "This independently distributed material; upstream products retain their own rights.",
+        "logical_resource_id": "scalasca",
+        "mandatory": false,
+        "material_path": "original-archives/scalasca.tar.gz",
+        "material_variant": true,
+        "policy_held": true,
+        "profile_kind": "complete-locked-source-materials",
+        "purpose": "固定 Scalasca 2.6.2 官方发行及随附 OTF2/CUBE 文档，供等待时间和并行轨迹分析设计研究。",
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "17e72fd908be43879955e4ed49c2732d4dbda7d295fec2d8b3af7ddafe1202a0",
+        "source_url": "https://apps.fz-juelich.de/scalasca/releases/scalasca/2.6/dist/scalasca-2.6.2.tar.gz",
+        "strip_archive_root": false,
+        "title": "Scalasca Trace Tools 2.6.2：并行 trace 语义与格式",
+        "version": "2.6.2"
+      },
+      "catalog_sha256": "96c10a0c517dec1385b8d7a9ce92e855ef3bdc9bd2ebfa5dfd944eff66dde398",
+      "does_not_claim_tool_material_completeness": false,
+      "logical_resource_id": "scalasca",
+      "material_variant": true,
+      "original_qualification": {
+        "basis": "Inherited historical resource scope; not execution evidence for this artifact.",
+        "dataset": null,
+        "functional": null,
+        "material": true
+      },
+      "policy_held": true,
+      "profile_kind": "complete-locked-source-materials",
+      "publication_policy": {
+        "build_check": "not_run",
+        "formal_qualification_changed": false,
+        "functional": "not_run",
+        "review_policy": "static-trust-v1"
+      }
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "corpus",
+      "additional_acquisition_locks": [
+        {
+          "bytes": 11303156,
+          "complete_original_bytes": true,
+          "expected_sha256": "17e72fd908be43879955e4ed49c2732d4dbda7d295fec2d8b3af7ddafe1202a0",
+          "id": "source-material-0",
+          "immutable_ref": "2.6.2",
+          "name": "scalasca.tar.gz",
+          "parent": "scalasca",
+          "path": "original-archives/scalasca.tar.gz",
+          "role": "original-source",
+          "sha256": "17e72fd908be43879955e4ed49c2732d4dbda7d295fec2d8b3af7ddafe1202a0",
+          "status": "verified",
+          "url": "https://apps.fz-juelich.de/scalasca/releases/scalasca/2.6/dist/scalasca-2.6.2.tar.gz"
+        }
+      ],
+      "collection_enabled": false,
+      "profile_kind": "complete-locked-source-materials",
+      "required_installed_paths": [
+        "{prefix}/MATERIALS.md",
+        "{prefix}/material-index.json",
+        "{prefix}/source-lock.json",
+        "{prefix}/POLICY.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 11303156,
+        "extract": false,
+        "id": "scalasca",
+        "material_path": "original-archives/scalasca.tar.gz",
+        "sha256": "17e72fd908be43879955e4ed49c2732d4dbda7d295fec2d8b3af7ddafe1202a0",
+        "strip_root": false,
+        "url": "https://apps.fz-juelich.de/scalasca/releases/scalasca/2.6/dist/scalasca-2.6.2.tar.gz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "any",
+      "distribution_version": "any",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://www.scalasca.org/"
+      ],
+      "examples": [
+        {
+          "command": "python3 {prefix}/inspect_material.py --list",
+          "description": "List static topics"
+        },
+        {
+          "command": "python3 {prefix}/inspect_material.py --search metadata --limit 10",
+          "description": "Search indexed materials"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Static reading guide",
+          "path": "{prefix}/MATERIALS.md",
+          "purpose": "Authored task-specific guide and limits."
+        },
+        {
+          "label": "Locked source archives",
+          "path": "{prefix}/source-lock.json",
+          "purpose": "Exact original byte identities and closure mapping."
+        }
+      ],
+      "notes": [
+        "System collection is policy-held. Static availability is not runtime or hardware qualification.",
+        "All original baseline identities and dependencies are unchanged.",
+        "Distribution metadata is descriptive; material content is not bound to one Linux distribution.",
+        "Current material publication uses static review only; no installation, reader, collector, topology, benchmark or hardware execution was performed."
+      ],
+      "summary": "固定 Scalasca 2.6.2 官方发行及随附 OTF2/CUBE 文档，供等待时间和并行轨迹分析设计研究。"
+    },
+    "version": "2.6.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "changes": "Normalize software identity/build; include existing MIT license text with neutral scope label; declare the corpus adapter; clarify independent material licensing and historical qualification.",
+    "formal_qualification_changed": false,
+    "operation": "independent-software-material-publication",
+    "original_artifact": {
+      "bytes": 11202631,
+      "sha256": "23698b23552ffc79e42fc8f307f43eb23a954d58302af10a754a5ce47617d59b"
+    },
+    "original_manifest_sha256": "8131aa452ae0c3d6a619be0d953caed6543314465f1c173c2d29ab3674d164a9",
+    "original_spec_sha256": "f87d23bdc7c99861ff32aa30cdc95d406c49192db862e4a81130714b4e073139",
+    "package_installation": "not_run",
+    "reference_text_and_member_index_unchanged": true,
+    "resource_id": "scalasca",
+    "scope": "exact source release, source dependencies where declared, upstream license notices, and indexed static reference text",
+    "software_execution": "not_run",
+    "upstream_archive_bytes_unchanged": true
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,169 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "locked-static-materials",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "scalasca",
+  "metadata": {
+    "baseline_catalog_sha256": null,
+    "baseline_definition_sha256": null,
+    "catalog": {
+      "archive_bytes": 11303156,
+      "category": [
+        "Observability",
+        "Static reference materials"
+      ],
+      "dependencies": [],
+      "documentation": "https://www.scalasca.org/",
+      "extract": false,
+      "id": "scalasca",
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause; bundled component notices retained",
+      "license_scope": "This independently distributed material; upstream products retain their own rights.",
+      "logical_resource_id": "scalasca",
+      "mandatory": false,
+      "material_path": "original-archives/scalasca.tar.gz",
+      "material_variant": true,
+      "policy_held": true,
+      "profile_kind": "complete-locked-source-materials",
+      "purpose": "固定 Scalasca 2.6.2 官方发行及随附 OTF2/CUBE 文档，供等待时间和并行轨迹分析设计研究。",
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "17e72fd908be43879955e4ed49c2732d4dbda7d295fec2d8b3af7ddafe1202a0",
+      "source_url": "https://apps.fz-juelich.de/scalasca/releases/scalasca/2.6/dist/scalasca-2.6.2.tar.gz",
+      "strip_archive_root": false,
+      "title": "Scalasca Trace Tools 2.6.2：并行 trace 语义与格式",
+      "version": "2.6.2"
+    },
+    "catalog_sha256": "96c10a0c517dec1385b8d7a9ce92e855ef3bdc9bd2ebfa5dfd944eff66dde398",
+    "does_not_claim_tool_material_completeness": false,
+    "logical_resource_id": "scalasca",
+    "material_variant": true,
+    "original_qualification": {
+      "basis": "Inherited historical resource scope; not execution evidence for this artifact.",
+      "dataset": null,
+      "functional": null,
+      "material": true
+    },
+    "policy_held": true,
+    "profile_kind": "complete-locked-source-materials",
+    "publication_policy": {
+      "build_check": "not_run",
+      "formal_qualification_changed": false,
+      "functional": "not_run",
+      "review_policy": "static-trust-v1"
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "additional_acquisition_locks": [
+      {
+        "bytes": 11303156,
+        "complete_original_bytes": true,
+        "expected_sha256": "17e72fd908be43879955e4ed49c2732d4dbda7d295fec2d8b3af7ddafe1202a0",
+        "id": "source-material-0",
+        "immutable_ref": "2.6.2",
+        "name": "scalasca.tar.gz",
+        "parent": "scalasca",
+        "path": "original-archives/scalasca.tar.gz",
+        "role": "original-source",
+        "sha256": "17e72fd908be43879955e4ed49c2732d4dbda7d295fec2d8b3af7ddafe1202a0",
+        "status": "verified",
+        "url": "https://apps.fz-juelich.de/scalasca/releases/scalasca/2.6/dist/scalasca-2.6.2.tar.gz"
+      }
+    ],
+    "collection_enabled": false,
+    "profile_kind": "complete-locked-source-materials",
+    "required_installed_paths": [
+      "{prefix}/MATERIALS.md",
+      "{prefix}/material-index.json",
+      "{prefix}/source-lock.json",
+      "{prefix}/POLICY.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 11303156,
+      "extract": false,
+      "id": "scalasca",
+      "material_path": "original-archives/scalasca.tar.gz",
+      "sha256": "17e72fd908be43879955e4ed49c2732d4dbda7d295fec2d8b3af7ddafe1202a0",
+      "strip_root": false,
+      "url": "https://apps.fz-juelich.de/scalasca/releases/scalasca/2.6/dist/scalasca-2.6.2.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.scalasca.org/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/inspect_material.py --list",
+        "description": "List static topics"
+      },
+      {
+        "command": "python3 {prefix}/inspect_material.py --search metadata --limit 10",
+        "description": "Search indexed materials"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reading guide",
+        "path": "{prefix}/MATERIALS.md",
+        "purpose": "Authored task-specific guide and limits."
+      },
+      {
+        "label": "Locked source archives",
+        "path": "{prefix}/source-lock.json",
+        "purpose": "Exact original byte identities and closure mapping."
+      }
+    ],
+    "notes": [
+      "System collection is policy-held. Static availability is not runtime or hardware qualification.",
+      "All original baseline identities and dependencies are unchanged.",
+      "Distribution metadata is descriptive; material content is not bound to one Linux distribution.",
+      "Current material publication uses static review only; no installation, reader, collector, topology, benchmark or hardware execution was performed."
+    ],
+    "summary": "固定 Scalasca 2.6.2 官方发行及随附 OTF2/CUBE 文档，供等待时间和并行轨迹分析设计研究。"
+  },
+  "version": "2.6.2"
+}

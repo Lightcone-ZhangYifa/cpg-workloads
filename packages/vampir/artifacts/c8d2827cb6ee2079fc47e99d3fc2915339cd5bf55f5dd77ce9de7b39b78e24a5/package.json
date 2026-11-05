@@ -1,0 +1,152 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "locked-static-materials",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "vampir",
+  "metadata": {
+    "baseline_catalog_sha256": null,
+    "baseline_definition_sha256": null,
+    "catalog": {
+      "archive_bytes": null,
+      "category": [
+        "Observability",
+        "Static reference materials"
+      ],
+      "dependencies": [],
+      "documentation": "https://vampir.eu/",
+      "extract": false,
+      "id": "vampir",
+      "kind": "virtual",
+      "license_class": "open",
+      "license_id": "MIT",
+      "license_scope": "Only original CPG reference notes, reader code, factual URL/fingerprint metadata; no vendor product or document body.",
+      "logical_resource_id": "vampir",
+      "mandatory": false,
+      "material_path": null,
+      "material_variant": true,
+      "policy_held": true,
+      "profile_kind": "reference-only",
+      "purpose": "保存 Vampir 官方输入格式与授权规则的原创参考卡和来源指纹，不含商业产品或手册正文。",
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": null,
+      "source_url": null,
+      "strip_archive_root": false,
+      "title": "Vampir：输入格式和授权边界参考",
+      "version": "10.9-docs-20261102"
+    },
+    "catalog_sha256": "9e04dba7e87731c3b008fb778904fc3b93d641bee1626df9cf7e3659637c42d2",
+    "does_not_claim_tool_material_completeness": true,
+    "logical_resource_id": "vampir",
+    "material_variant": true,
+    "original_qualification": {
+      "basis": "Inherited historical resource scope; not execution evidence for this artifact.",
+      "dataset": null,
+      "functional": null,
+      "material": null
+    },
+    "policy_held": true,
+    "profile_kind": "reference-only",
+    "publication_policy": {
+      "build_check": "not_run",
+      "formal_qualification_changed": false,
+      "functional": "not_run",
+      "review_policy": "static-trust-v1"
+    },
+    "upstream_product_license": {
+      "license_accepted": false,
+      "license_class": "restricted",
+      "license_id": "LicenseRef-Vampir; original CPG notes MIT",
+      "product_included": false,
+      "redistributable": false,
+      "vendor_document_body_included": false
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "additional_acquisition_locks": [],
+    "collection_enabled": false,
+    "profile_kind": "reference-only",
+    "required_installed_paths": [
+      "{prefix}/MATERIALS.md",
+      "{prefix}/material-index.json",
+      "{prefix}/source-lock.json",
+      "{prefix}/POLICY.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://vampir.eu/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/inspect_material.py --list",
+        "description": "List static topics"
+      },
+      {
+        "command": "python3 {prefix}/inspect_material.py --search metadata --limit 10",
+        "description": "Search indexed materials"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reading guide",
+        "path": "{prefix}/MATERIALS.md",
+        "purpose": "Authored task-specific guide and limits."
+      },
+      {
+        "label": "Locked source archives",
+        "path": "{prefix}/source-lock.json",
+        "purpose": "Exact original byte identities and closure mapping."
+      }
+    ],
+    "notes": [
+      "System collection is policy-held. Static availability is not runtime or hardware qualification.",
+      "All original baseline identities and dependencies are unchanged.",
+      "Distribution metadata is descriptive; material content is not bound to one Linux distribution.",
+      "Current material publication uses static review only; no installation, reader, collector, topology, benchmark or hardware execution was performed."
+    ],
+    "summary": "保存 Vampir 官方输入格式与授权规则的原创参考卡和来源指纹，不含商业产品或手册正文。"
+  },
+  "version": "10.9-docs-20261102"
+}
