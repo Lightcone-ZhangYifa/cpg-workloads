@@ -230,7 +230,7 @@ def import_and_publish(archive, item, scratch):
             receipt["packages"].append({"sha256": checksum, "status": "already_published"})
             continue
         try:
-            if member["method"] == "online-recipe":
+            if member.get("method") == "online-recipe":
                 from online_recipe import import_recipe
                 record = import_recipe(path, release.ROOT, origin)
             else:
@@ -240,11 +240,12 @@ def import_and_publish(archive, item, scratch):
             # A malformed member cannot prevent other independent deliveries from
             # being retained and published. Outer and per-member byte locks above
             # remain mandatory and still fail the request on any mismatch.
-            receipt["errors"].append({"sha256": checksum, "id": member["id"],
-                                      "method": member["method"], "error_type": type(error).__name__,
+            receipt["errors"].append({"sha256": checksum, "id": member.get("id"),
+                                      "method": member.get("method"), "error_type": type(error).__name__,
                                       "error": str(error)[:600]})
             continue
-        if any(record.get(key) != member[key] for key in ("id", "version", "method", "sha256", "bytes")):
+        if any(record.get(key) != member[key] for key in ("id", "version", "method", "sha256", "bytes")
+               if key in member):
             raise ValueError("Artifact identity differs from the explicit member plan")
         if "canonical_primary_index" in member:
             record["index_role"] = "canonical" if member["canonical_primary_index"] else "dependency-variant"
@@ -323,7 +324,13 @@ def main():
         paths = receive(request, branch, scratch, reader_destination=reader)
         import sys
         sys.path.insert(0, str(reader / "src"))
-        for number, (path, item) in enumerate(zip(paths, request["inputs"])):
+        if "assembly" in request:
+            from delivery_archive import prepare
+            assembled = prepare(paths, request["inputs"], request["assembly"], scratch)
+            deliveries = [(assembled, request["assembly"]["delivery"])]
+        else:
+            deliveries = list(zip(paths, request["inputs"]))
+        for number, (path, item) in enumerate(deliveries):
             current = scratch / ("batch-" + str(number))
             current.mkdir()
             import_and_publish(path, item, current)
