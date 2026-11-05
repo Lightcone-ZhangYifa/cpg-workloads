@@ -189,6 +189,14 @@ def static_review(record, manifest, template):
     method, recipe = manifest.get("method"), spec.get("recipe")
     template = Path(template)
     root = template.resolve()
+    external_inputs = {}
+    try:
+        from authored_inputs import verify_authored_inputs
+        external_inputs = verify_authored_inputs(record, manifest, template)
+        if external_inputs:
+            checks["external_authored_inputs"] = sorted(external_inputs)
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        errors.append(str(error))
     if not isinstance(spec.get("provider"), str) or not spec["provider"]:
         errors.append("Provider is missing")
     target = spec.get("target")
@@ -252,6 +260,9 @@ def static_review(record, manifest, template):
     for relative in sorted(references):
         try:
             path = template / safe_relative(relative)
+            if relative in external_inputs:
+                checks["referenced_template_paths"].append(relative)
+                continue
             if not path.resolve().is_relative_to(root) or not path.exists():
                 raise ValueError("Missing or escaping template reference: " + relative)
             checks["referenced_template_paths"].append(relative)
@@ -270,3 +281,4 @@ def static_review(record, manifest, template):
                 errors.append(str(path.relative_to(template)) + ": " + str(error))
     return {"policy": POLICY, "status": "passed" if not errors else "failed",
             "errors": errors, "warnings": warnings, "checks": checks}
+

@@ -62,12 +62,14 @@ def validate(root=ROOT):
                     raise ValueError("Artifact and manifest identity differ")
                 if row["asset_name"] != artifact_name(spec, row["method"], row["sha256"]):
                     raise ValueError("Noncanonical release filename")
+                from authored_inputs import verify_authored_inputs
+                external_inputs = verify_authored_inputs(row, manifest, template)
                 for member in manifest["files"]:
                     relative = safe_relative(member["path"])
                     if relative.parts[0] not in {"recipe", "tools"}:
                         continue
                     source = template / relative
-                    if member["kind"] == "file":
+                    if member["kind"] == "file" and member["path"] not in external_inputs:
                         if (source.is_symlink() or not source.is_file() or source.stat().st_size != member["bytes"]
                                 or sha256(source) != member["sha256"]):
                             raise ValueError("Authored template member identity mismatch: " + member["path"])
@@ -181,3 +183,4 @@ def main():
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

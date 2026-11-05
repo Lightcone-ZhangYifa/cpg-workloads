@@ -362,6 +362,8 @@ def import_package(path, root, origin, *, attempt_build=False, jobs=2, source_ov
                     record["qualification_errors"] = qualification_errors(record, manifest)
                     write_json(previous_path, record)
                     raise
+    from authored_inputs import externalize_authored_inputs
+    externalize_authored_inputs(record, manifest, directory)
     if static_trust:
         from static_review import POLICY, static_review
         record["review_policy"] = POLICY
@@ -571,3 +573,4 @@ def main():
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

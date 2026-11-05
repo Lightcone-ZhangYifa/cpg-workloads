@@ -280,6 +280,8 @@ def verify_binary(record, manifest, template):
     review = record.get("binary_payload_review", {})
     path = template / "binary-sources.json"
     mapping = load_json(path)
+    from authored_inputs import verify_authored_inputs
+    external_inputs = verify_authored_inputs(record, manifest, template)
     if (review.get("status") != "passed" or review.get("source_type") != "pinned_upstream_binary_subset"
             or review.get("mapping_sha256") != sha256(path) or mapping.get("schema_version") != 1):
         raise ValueError("Binary payload lacks its frozen source-member review")
@@ -334,7 +336,7 @@ def verify_binary(record, manifest, template):
                 raise ValueError("SDK link escapes the payload")
         elif row["kind"] != "file":
             raise ValueError("Unsupported binary payload member type")
-        elif name not in members:
+        elif name not in members and name not in external_inputs:
             # Only authored text belongs in Git; upstream binary bytes are fetched
             # from the independently pinned archive at publication time.
             material_member(template, row, {})
@@ -699,6 +701,8 @@ def rebuild(record, output, cache, *, network=False):
         return repack(template, record, destination)
     manifest = load_manifest(template)
     spec, method = manifest["package"], manifest["method"]
+    from authored_inputs import verify_authored_inputs
+    external_inputs = verify_authored_inputs(record, manifest, template)
     delivered = os.environ.get("CPG_DELIVERED_ARTIFACTS")
     if delivered and record.get("review_policy") == "static-trust-v1":
         # Transported deliveries retain their exact archive identity; this path
@@ -728,7 +732,8 @@ def rebuild(record, output, cache, *, network=False):
         raise ValueError("Unqualified artifact: " + "; ".join(problems))
     verify_evidence(record, template)
     binaries = verify_material(record, manifest, template) if method == "material" else {}
-    sources = {}
+    sources = {name: source_file(source, cache, network=network)
+               for name, source in external_inputs.items()}
     if method == "material":
         for name, source in material_archives(record, manifest).items():
             sources[name] = source_file(source, cache, network=network)
@@ -755,7 +760,7 @@ def rebuild(record, output, cache, *, network=False):
     try:
         if method == "binary":
             binary_directory = tempfile.TemporaryDirectory(prefix="cpg-sdk-payload-", dir=output)
-            sources = binary_payload(record, manifest, template, cache, Path(binary_directory.name), network=network)
+            sources.update(binary_payload(record, manifest, template, cache, Path(binary_directory.name), network=network))
         with temporary.open("wb") as stream, gzip.GzipFile(filename="", mode="wb", fileobj=stream, mtime=0) as compressed:
             with tarfile.open(fileobj=compressed, mode="w", format=tarfile.PAX_FORMAT) as archive:
                 info = tarfile.TarInfo("manifest.json")
@@ -1240,3 +1245,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
