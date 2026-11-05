@@ -10,7 +10,8 @@ from urllib.parse import urlparse
 
 from import_archives import safe_relative
 from release import (ROOT, artifact_name, digest, load_json, load_manifest, publication_errors,
-                     published_rows, published_recipes, row_asset_name, sha256, verify_evidence, verify_material)
+                     published_rows, published_recipes, row_asset_name, sha256,
+                     verify_binary, verify_evidence, verify_material)
 
 
 def validate(root=ROOT):
@@ -77,6 +78,8 @@ def validate(root=ROOT):
                     verify_evidence(row, template)
                     if row["method"] == "material" and row.get("review_policy") != "static-trust-v1":
                         verify_material(row, manifest, template)
+                    elif row["method"] == "binary" and row.get("review_policy") != "static-trust-v1":
+                        verify_binary(row, manifest, template)
             else:
                 from online_recipe import verify_template
                 verify_template(template, row)

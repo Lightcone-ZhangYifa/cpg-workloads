@@ -7,6 +7,7 @@ this script reconstructs an already-audited archive from its source template.
 from __future__ import annotations
 
 import argparse
+from contextlib import contextmanager
 import gzip
 import hashlib
 import io
@@ -16,7 +17,6 @@ from pathlib import Path, PurePosixPath
 import re
 import shutil
 import stat
-import shutil
 import subprocess
 import tarfile
 import tempfile
@@ -223,6 +223,204 @@ def verify_material(record, manifest, template):
     return binaries
 
 
+def verify_binary(record, manifest, template):
+    """Validate a static SDK subset contract without acquiring or executing it."""
+    review = record.get("binary_payload_review", {})
+    path = template / "binary-sources.json"
+    mapping = load_json(path)
+    if (review.get("status") != "passed" or review.get("source_type") != "pinned_upstream_binary_subset"
+            or review.get("mapping_sha256") != sha256(path) or mapping.get("schema_version") != 1):
+        raise ValueError("Binary payload lacks its frozen source-member review")
+    archive, members = mapping.get("archive", {}), mapping.get("members")
+    if (not isinstance(archive, dict) or archive.get("format") not in {"tar.xz", "tar.zst"}
+            or archive.get("member_lookup", "exact") not in {"exact", "unique_suffix"}
+            or not isinstance(archive.get("source_commit"), str)
+            or COMMIT.fullmatch(archive["source_commit"]) is None
+            or not isinstance(members, dict) or not members):
+        raise ValueError("Invalid binary source archive or member mapping")
+    locks = manifest.get("resolved_sources", manifest["package"]["sources"])
+    if not any(all(source.get(key) == archive.get(key) for key in ("url", "sha256", "bytes")) for source in locks):
+        raise ValueError("Binary archive differs from the effective package source lock")
+    url = urlparse(archive.get("url", ""))
+    if (url.scheme != "https" or not url.netloc or url.username or url.password or url.fragment
+            or type(archive.get("bytes")) is not int or archive["bytes"] <= 0
+            or not isinstance(archive.get("sha256"), str) or CHECKSUM.fullmatch(archive["sha256"]) is None):
+        raise ValueError("Binary archive needs an exact public HTTPS byte identity")
+    rows = {row["path"]: row for row in manifest["files"]}
+    if len(rows) != len(manifest["files"]) or "manifest.json" in rows:
+        raise ValueError("Duplicate or reserved binary template member")
+    for name, member in members.items():
+        safe_relative(member)
+        if name not in rows or not name.startswith("payload/") or rows[name]["kind"] not in {"file", "symlink"}:
+            raise ValueError("Binary source mapping names an undeclared payload member")
+    for name, row in rows.items():
+        relative = safe_relative(name)
+        if (relative.parts[0] not in {"recipe", "tools", "payload"}
+                or type(row.get("mode")) is not int or not 0 <= row["mode"] <= 0o777):
+            raise ValueError("Invalid binary template member or permissions")
+        if row["kind"] == "directory":
+            continue
+        if row["kind"] == "file" and (type(row.get("bytes")) is not int or row["bytes"] < 0
+                                       or not isinstance(row.get("sha256"), str)
+                                       or CHECKSUM.fullmatch(row["sha256"]) is None):
+            raise ValueError("Binary file has an invalid byte identity")
+        if row["kind"] == "symlink":
+            if name not in members:
+                raise ValueError("SDK links must have an upstream source member")
+            target = PurePosixPath(row["target"])
+            resolved = list(relative.parent.parts)
+            if target.is_absolute() or not row["target"] or "\\" in row["target"] or "\0" in row["target"]:
+                raise ValueError("SDK link has an unsafe target")
+            for part in target.parts:
+                if part == "..":
+                    if len(resolved) <= 1:
+                        raise ValueError("SDK link escapes the payload")
+                    resolved.pop()
+                elif part != ".":
+                    resolved.append(part)
+            if not resolved or resolved[0] != "payload":
+                raise ValueError("SDK link escapes the payload")
+        elif row["kind"] != "file":
+            raise ValueError("Unsupported binary payload member type")
+        elif name not in members:
+            # Only authored text belongs in Git; upstream binary bytes are fetched
+            # from the independently pinned archive at publication time.
+            material_member(template, row, {})
+    return mapping
+
+
+@contextmanager
+def locked_tar(path, archive_format):
+    if archive_format == "tar.xz":
+        with tarfile.open(path, mode="r|xz") as archive:
+            yield archive
+        return
+    if not shutil.which("zstd"):
+        raise RuntimeError("The locked SDK source requires the system zstd decoder")
+    with tempfile.TemporaryFile() as errors:
+        process = subprocess.Popen(["zstd", "-d", "--long=31", "-c", "--", str(path)],
+                                   stdout=subprocess.PIPE, stderr=errors)
+        try:
+            with tarfile.open(fileobj=process.stdout, mode="r|") as archive:
+                yield archive
+            while process.stdout.read(1024 * 1024):
+                pass
+            if process.wait():
+                errors.seek(0)
+                raise ValueError("Locked SDK archive decompression failed: " + errors.read(2000).decode(errors="replace"))
+        finally:
+            process.stdout.close()
+            if process.poll() is None:
+                process.terminate()
+                try:
+                    process.wait(timeout=10)
+                except subprocess.TimeoutExpired:
+                    process.kill()
+                    process.wait()
+
+
+def binary_payload(record, manifest, template, cache, directory, *, network):
+    """Stream selected upstream bytes into scratch; never execute or extract links."""
+    mapping = verify_binary(record, manifest, template)
+    source = source_file(mapping["archive"], cache, network=network)
+    rows = {row["path"]: row for row in manifest["files"]}
+    selected = {}
+    for name, member in mapping["members"].items():
+        selected.setdefault(member, []).append(name)
+    suffix_lookup = mapping["archive"].get("member_lookup", "exact") == "unique_suffix"
+    suffixes = {}
+    if suffix_lookup:
+        for name in selected:
+            suffixes.setdefault(PurePosixPath(name).name, []).append(name)
+    common_prefix = None
+    seen, regular, hardlinks = set(), {}, {}
+    with locked_tar(source, mapping["archive"]["format"]) as archive:
+        for member in archive:
+            name = member.name
+            if suffix_lookup:
+                if name.startswith("./"):
+                    name = name[2:]
+                candidates = [suffix for suffix in suffixes.get(PurePosixPath(name).name, [])
+                              if name == suffix or name.endswith("/" + suffix)]
+                if not candidates:
+                    continue
+                if len(candidates) != 1:
+                    raise ValueError("SDK archive member has an ambiguous requested suffix")
+                safe_relative(name)
+                selector = candidates[0]
+                prefix = name[:-len(selector)]
+                if common_prefix is None:
+                    common_prefix = prefix
+                elif common_prefix != prefix:
+                    raise ValueError("SDK suffix matches do not share one archive prefix")
+                name = selector
+            elif name not in selected:
+                continue
+            if name in seen:
+                raise ValueError("Locked SDK archive has a duplicate selected member")
+            seen.add(name)
+            names = selected[name]
+            expected = rows[names[0]]
+            if any(any(rows[name].get(key) != expected.get(key) for key in ("kind", "sha256", "bytes", "target", "mode"))
+                   for name in names):
+                raise ValueError("One upstream member maps to inconsistent payload identities")
+            if expected["kind"] == "symlink":
+                if not member.issym() or member.linkname != expected["target"]:
+                    raise ValueError("Upstream SDK symlink differs from the frozen inventory")
+                continue
+            # The reviewed package inventory fixes installed permissions; source
+            # extraction may have removed upstream owner/group write bits.
+            if member.islnk():
+                target = member.linkname
+                if suffix_lookup:
+                    if target.startswith("./"):
+                        target = target[2:]
+                    safe_relative(target)
+                    if not target.startswith(common_prefix):
+                        raise ValueError("SDK hardlink leaves the resolved archive prefix")
+                    target = target[len(common_prefix):]
+                target = safe_relative(target).as_posix()
+                if target not in selected:
+                    raise ValueError("SDK hardlink target is outside the selected source closure")
+                hardlinks[name] = target
+                continue
+            if not member.isfile() or member.size != expected["bytes"]:
+                raise ValueError("Upstream SDK file type or size differs from the frozen inventory")
+            destination = directory / expected["sha256"]
+            observed, checksum = 0, hashlib.sha256()
+            with archive.extractfile(member) as stream, destination.open("wb") as output:
+                while block := stream.read(1024 * 1024):
+                    observed += len(block)
+                    if observed > expected["bytes"]:
+                        raise ValueError("Upstream SDK file exceeds its frozen size")
+                    checksum.update(block)
+                    output.write(block)
+            if observed != expected["bytes"] or checksum.hexdigest() != expected["sha256"]:
+                raise ValueError("Upstream SDK bytes differ from the frozen inventory")
+            regular[name] = destination
+    if seen != set(selected):
+        raise ValueError("Locked SDK archive is missing selected payload members")
+    if suffix_lookup:
+        print(json.dumps({"source_archive_sha256": mapping["archive"]["sha256"],
+                          "member_lookup": "unique_suffix", "resolved_archive_prefix": common_prefix,
+                          "selected_members": len(seen)}), flush=True)
+    for name in hardlinks:
+        target, visited = name, set()
+        while target in hardlinks:
+            if target in visited:
+                raise ValueError("SDK hardlink cycle")
+            visited.add(target)
+            target = hardlinks[target]
+        if target not in regular:
+            raise ValueError("SDK hardlink does not resolve to a selected ordinary file")
+        expected = rows[selected[name][0]]
+        target_row = rows[selected[target][0]]
+        if any(expected[key] != target_row[key] for key in ("sha256", "bytes", "mode")):
+            raise ValueError("SDK hardlink target differs from its frozen file identity")
+        regular[name] = regular[target]
+    return {name: regular[member] for name, member in mapping["members"].items() if rows[name]["kind"] == "file"}
+
+
 def checked_record(checksum):
     if not isinstance(checksum, str) or CHECKSUM.fullmatch(checksum) is None:
         raise ValueError("Invalid artifact checksum")
@@ -251,6 +449,8 @@ def checked_record(checksum):
     verify_evidence(record, ROOT / safe_relative(record["template"]))
     if manifest["method"] == "material" and record.get("review_policy") != "static-trust-v1":
         verify_material(record, manifest, ROOT / safe_relative(record["template"]))
+    elif manifest["method"] == "binary" and record.get("review_policy") != "static-trust-v1":
+        verify_binary(record, manifest, ROOT / safe_relative(record["template"]))
     if record.get("asset_name") != artifact_name(manifest["package"], manifest["method"], checksum):
         raise ValueError("Noncanonical artifact filename")
     return record
@@ -404,12 +604,12 @@ def rebuild(record, output, cache, *, network=False):
             if (source.is_symlink() or not source.is_file() or source.stat().st_size != record["bytes"]
                     or sha256(source) != record["sha256"]):
                 raise ValueError("Delivered online recipe differs from its complete byte lock")
-            if destination.exists() or destination.is_symlink():
+            try:
+                os.link(source, destination)
+            except FileExistsError:
                 if (destination.is_symlink() or destination.stat().st_size != record["bytes"]
                         or sha256(destination) != record["sha256"]):
                     raise ValueError("Refusing to overwrite different recipe bytes")
-            else:
-                os.link(source, destination)
             return destination
         from online_recipe import repack
         return repack(template, record, destination)
@@ -417,7 +617,8 @@ def rebuild(record, output, cache, *, network=False):
     spec, method = manifest["package"], manifest["method"]
     delivered = os.environ.get("CPG_DELIVERED_ARTIFACTS")
     if delivered and record.get("review_policy") == "static-trust-v1":
-        # Migration publishes exactly the delivered bytes; no workload recipe runs.
+        # Transported deliveries retain their exact archive identity; this path
+        # copies verified bytes and never invokes their workload recipes.
         problems = publication_errors(record, manifest)
         if record.get("release_eligible") is not True or problems:
             raise ValueError("Unqualified delivered artifact: " + "; ".join(problems))
@@ -427,14 +628,16 @@ def rebuild(record, output, cache, *, network=False):
             raise ValueError("Delivered artifact differs from its complete SHA-256/size lock")
         output.mkdir(parents=True, exist_ok=True)
         destination = output / record["asset_name"]
-        if destination.exists() or destination.is_symlink():
+        if destination.is_symlink():
+            raise ValueError("Release output must not be a symlink")
+        try:
+            os.link(source, destination)
+        except FileExistsError:
             if (destination.is_symlink() or destination.stat().st_size != record["bytes"]
                     or sha256(destination) != record["sha256"]):
                 raise ValueError("Refusing to overwrite different release bytes")
-        else:
-            os.link(source, destination)
         return destination
-    if method not in {"wrapper", "source", "material"}:
+    if method not in {"wrapper", "source", "material", "binary"}:
         raise ValueError("This template needs its separately reviewed payload reproducer")
     problems = publication_errors(record, manifest)
     if record.get("release_eligible") is not True or problems:
@@ -461,7 +664,11 @@ def rebuild(record, output, cache, *, network=False):
         raise FileExistsError("Refusing to overwrite different release bytes")
     with tempfile.NamedTemporaryFile(prefix="cpg-rebuild-", suffix=".part", dir=output, delete=False) as staged:
         temporary = Path(staged.name)
+    binary_directory = None
     try:
+        if method == "binary":
+            binary_directory = tempfile.TemporaryDirectory(prefix="cpg-sdk-payload-", dir=output)
+            sources = binary_payload(record, manifest, template, cache, Path(binary_directory.name), network=network)
         with temporary.open("wb") as stream, gzip.GzipFile(filename="", mode="wb", fileobj=stream, mtime=0) as compressed:
             with tarfile.open(fileobj=compressed, mode="w", format=tarfile.PAX_FORMAT) as archive:
                 info = tarfile.TarInfo("manifest.json")
@@ -469,7 +676,7 @@ def rebuild(record, output, cache, *, network=False):
                 archive.addfile(info, io.BytesIO(payload))
                 for row in rows:
                     relative = safe_relative(row["path"])
-                    allowed_roots = {"recipe", "tools", "payload"} if method == "material" else {"recipe", "tools", "sources"}
+                    allowed_roots = {"recipe", "tools", "payload"} if method in {"material", "binary"} else {"recipe", "tools", "sources"}
                     if relative.parts[0] not in allowed_roots:
                         raise ValueError("Source/wrapper templates must not carry an installed payload")
                     info = tarfile.TarInfo(row["path"])
@@ -481,7 +688,7 @@ def rebuild(record, output, cache, *, network=False):
                         if method == "material":
                             raise ValueError("Material members must not be symlinks")
                         link = PurePosixPath(row["target"])
-                        if link.is_absolute() or ".." in link.parts:
+                        if method != "binary" and (link.is_absolute() or ".." in link.parts):
                             raise ValueError("Recipe links need a separately reviewed reproducer")
                         info.type, info.linkname = tarfile.SYMTYPE, row["target"]
                         archive.addfile(info)
@@ -511,14 +718,15 @@ def rebuild(record, output, cache, *, network=False):
                 raise FileExistsError("Refusing to overwrite different release bytes")
     finally:
         temporary.unlink(missing_ok=True)
+        if binary_directory is not None:
+            binary_directory.cleanup()
     return destination
 
 
 def repository_row(record, tag):
     if record["method"] == "online-recipe":
         row = {key: record[key] for key in ("id", "version", "build", "target", "method", "sha256", "bytes")}
-        row.update(kind="online_recipe", template=record["template"],
-                   path=row_mirror_path(row),
+        row.update(kind="online_recipe", template=record["template"], path=row_mirror_path(row),
                    download_url=f"https://github.com/{REPOSITORY}/releases/download/{tag}/{record['asset_name']}",
                    qualification={key: record[key] for key in ("structure", "build_check", "functional")},
                    review_policy=record["review_policy"], static_review=record["static_review"])
@@ -561,7 +769,7 @@ def plan_software(prefix, batch_size):
             selected[key] = checksum
     records = [json.loads(path.read_text()) for path in sorted((ROOT / "catalog/artifacts").glob("*.json"))]
     records = sorted((checked_record(row["sha256"]) for row in records
-                      if row.get("release_eligible") and row["method"] in {"wrapper", "source", "material"}
+                      if row.get("release_eligible") and row["method"] in {"wrapper", "source", "material", "binary"}
                       and row["sha256"] not in planned
                       and not (identity(row) in published and published[identity(row)]["sha256"] == row["sha256"])),
                      key=lambda row: (row["id"], row["version"], row["build"], row["method"], row["sha256"]))
@@ -626,7 +834,8 @@ def build_plan(tag, output, *, network, source_commit=None):
         (recipes if record["method"] == "online-recipe" else rows).append(repository_row(record, tag))
     manifest = {"schema_version": 1, "kind": "compiler_playground_package_repository", "packages": rows,
                 "release": {"tag": tag, "repository": REPOSITORY,
-                            "source_commit": source_commit or os.environ.get("GITHUB_SHA"), "scope": "historical workload deliveries"}}
+                            "source_commit": source_commit or os.environ.get("GITHUB_SHA"),
+                            "scope": "historical workload deliveries"}}
     if recipes:
         manifest["online_recipes"] = recipes
     write_json(output / "manifest.json", manifest)

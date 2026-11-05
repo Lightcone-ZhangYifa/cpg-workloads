@@ -1,0 +1,112 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/clang",
+        "--version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "clang-version",
+      "kind": "version",
+      "stdout_regex": "7a941dfb2877a0b8cf30323fefa85ad019e0b0f5",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "{prefix}/bin/clangd",
+        "--version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "clangd-version",
+      "kind": "version",
+      "stdout_regex": "7a941dfb2877a0b8cf30323fefa85ad019e0b0f5",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "llvm-sdk.clang",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1190060068,
+      "category": [
+        "Compilers",
+        "LLVM SDK variants"
+      ],
+      "id": "llvm-sdk.clang",
+      "immutable_ref": "7a941dfb2877a0b8cf30323fefa85ad019e0b0f5",
+      "kind": "native_bundle",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception AND MIT",
+      "material_path": "sources/LLVM-23.1.4-Linux-X64.tar.zst",
+      "new_upstream_family": false,
+      "parent_resource": "llvm-release",
+      "purpose": "Clang, clang++, clangd, llvm-config, the shared Clang API library, LLVM/Clang headers and Clang builtin resources. CIR is disabled in this baseline build.",
+      "redistributable": true,
+      "sha256": "efdd1dbd089b99bfcfcde7b8eb1236163f2e88df5a981cca4f783ec9cb5e0378",
+      "source_url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/LLVM-23.1.4-Linux-X64.tar.zst",
+      "subset": true,
+      "title": "Clang tooling SDK subset",
+      "upstream": "https://github.com/llvm/llvm-project",
+      "version": "llvmorg-23.1.4"
+    },
+    "catalog_sha256": "ba54df8aa4dcf36a6b1bdb0bb173f1108f332797c9f8c8c57abe38e53b77f8f1",
+    "parent_resource": "llvm-release",
+    "publication_policy": {
+      "build_check": "not_run",
+      "functional": "not_run",
+      "qualification_mode": "trusted_delivery_static_review"
+    },
+    "subset": true
+  },
+  "provider": "binary",
+  "recipe": {},
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1190060068,
+      "extract": false,
+      "id": "llvm-sdk.clang",
+      "material_path": "sources/LLVM-23.1.4-Linux-X64.tar.zst",
+      "sha256": "efdd1dbd089b99bfcfcde7b8eb1236163f2e88df5a981cca4f783ec9cb5e0378",
+      "strip_root": true,
+      "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/LLVM-23.1.4-Linux-X64.tar.zst"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [
+      {
+        "command": "{prefix}/bin/clang --version",
+        "description": "Inspect the pinned compiler identity."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Clang tooling SDK subset",
+        "path": "{prefix}",
+        "purpose": "Explicit pinned SDK input"
+      }
+    ],
+    "notes": [
+      "SDK subset only; does not replace the full llvm-release definition.",
+      "Current publication uses trusted delivery static review. Installation, functional and relocation checks have not been rerun.",
+      "The parent software identity and separate supplemental CIR commit remain explicit."
+    ],
+    "summary": "Clang, clang++, clangd, llvm-config, the shared Clang API library, LLVM/Clang headers and Clang builtin resources. CIR is disabled in this baseline build."
+  },
+  "version": "llvmorg-23.1.4"
+}

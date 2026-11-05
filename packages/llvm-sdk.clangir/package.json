@@ -1,0 +1,100 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/clang",
+        "--version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "clang-version",
+      "kind": "version",
+      "stdout_regex": "ccc56cc44dedcf13c553508e198ddc8ec1aaff95",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "llvm-sdk.clangir",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1503130568,
+      "category": [
+        "Compilers",
+        "LLVM SDK variants"
+      ],
+      "id": "llvm-sdk.clangir",
+      "immutable_ref": "ccc56cc44dedcf13c553508e198ddc8ec1aaff95",
+      "kind": "native_bundle",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception AND MIT",
+      "material_path": "sources/clang-trunk-20261101.tar.xz",
+      "new_upstream_family": false,
+      "parent_resource": "llvm-release",
+      "purpose": "The separately pinned CIR-enabled clang compiler, cir-opt, cir-translate and required builtin resources. It is a supplemental llvm-project snapshot, not the original 23.1.4 compiler.",
+      "redistributable": true,
+      "sha256": "db3c806443bd45210027758d4e46fe80e6139aa59852036545305b443face685",
+      "source_url": "https://compiler-explorer.s3.amazonaws.com/opt/clang-trunk-20261101.tar.xz",
+      "subset": true,
+      "title": "ClangIR compiler SDK subset",
+      "upstream": "https://github.com/llvm/llvm-project",
+      "version": "clang-trunk-20261101"
+    },
+    "catalog_sha256": "d1a4ab1d9adb4fe8b5e51be26791f6eb8e3345067445a823fa88591f43c26b81",
+    "parent_resource": "llvm-release",
+    "publication_policy": {
+      "build_check": "not_run",
+      "functional": "not_run",
+      "qualification_mode": "trusted_delivery_static_review"
+    },
+    "subset": true
+  },
+  "provider": "binary",
+  "recipe": {},
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1503130568,
+      "extract": false,
+      "id": "llvm-sdk.clangir",
+      "material_path": "sources/clang-trunk-20261101.tar.xz",
+      "sha256": "db3c806443bd45210027758d4e46fe80e6139aa59852036545305b443face685",
+      "strip_root": true,
+      "url": "https://compiler-explorer.s3.amazonaws.com/opt/clang-trunk-20261101.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [
+      {
+        "command": "{prefix}/bin/clang --version",
+        "description": "Inspect the pinned compiler identity."
+      }
+    ],
+    "locations": [
+      {
+        "label": "ClangIR compiler SDK subset",
+        "path": "{prefix}",
+        "purpose": "Explicit pinned SDK input"
+      }
+    ],
+    "notes": [
+      "SDK subset only; does not replace the full llvm-release definition.",
+      "Current publication uses trusted delivery static review. Installation, functional and relocation checks have not been rerun.",
+      "The parent software identity and separate supplemental CIR commit remain explicit."
+    ],
+    "summary": "The separately pinned CIR-enabled clang compiler, cir-opt, cir-translate and required builtin resources. It is a supplemental llvm-project snapshot, not the original 23.1.4 compiler."
+  },
+  "version": "clang-trunk-20261101"
+}

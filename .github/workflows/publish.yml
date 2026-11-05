@@ -42,6 +42,12 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
           python-version: '3.12'
+      - name: Prepare the locked archive decoder
+        run: |
+          if ! command -v zstd >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install --yes --no-install-recommends zstd
+          fi
       - name: Reproduce, publish, and verify exact assets
         run: |
           tag="${REQUEST_REF#publish/}"
