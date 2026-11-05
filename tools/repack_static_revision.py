@@ -47,6 +47,37 @@ def output_identity_mode(revision):
     return mode
 
 
+def preserved_authored_inputs(revision, old, manifest, template):
+    """Accept only explicitly locked, unchanged original external recipe inputs."""
+    declared = revision.get('preserved_original_authored_inputs')
+    if declared is None:
+        return {}
+    from authored_inputs import descriptor_for
+    _require(isinstance(declared, dict), 'Invalid preserved original-input descriptor')
+    identity = {**revision['original_artifact'],
+                'id': old['package']['id'], 'method': old['method']}
+    _require(identity.get('manifest_sha256') == old['manifest_sha256'],
+        'Preserved inputs require the reviewed original manifest fingerprint')
+    expected = descriptor_for(identity, old, template)
+    _require(expected is not None and declared == expected,
+        'Preserved original inputs differ from their exact original descriptor')
+    old_rows = {row['path']: row for row in old['files']}
+    new_rows = {row['path']: row for row in manifest['files']}
+    _require(len(old_rows) == len(old['files']) and len(new_rows) == len(manifest['files']),
+        'Preserved inputs require unique complete original and reviewed inventories')
+    result = {}
+    for name, item in expected['members'].items():
+        _relative(name)
+        row = item['inventory']
+        _require(item['source']['kind'] == 'https'
+            and old_rows.get(name) == row == new_rows.get(name),
+            'Preserved input must retain its full inventory and public source lock')
+        _require(not (template / name).exists() and not (template / name).is_symlink(),
+            'Preserved external input must remain outside the source template')
+        result[name] = row
+    return result
+
+
 def repack(original, template, revision, output):
     """Use verified original payload plus exact reviewed authored files and notices."""
     from compiler_playground.packages import pack, verify_package
@@ -111,6 +142,16 @@ def repack(original, template, revision, output):
                                 source.close()
         root = temporary / 'original'
         verify_package(normalized, extract=root)
+        retained_inputs = preserved_authored_inputs(revision, old, manifest, template)
+        retained_root = temporary / 'retained-original-inputs'
+        for name, row in retained_inputs.items():
+            source = root / _relative(name)
+            _require(source.is_file() and not source.is_symlink()
+                and source.stat().st_size == row['bytes'] and _sha(source) == row['sha256'],
+                'Verified original input differs from its locked inventory')
+            retained = retained_root / name
+            retained.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source, retained)
         for directory in ('recipe', 'tools'):
             path = root / directory
             if path.exists():
@@ -123,7 +164,8 @@ def repack(original, template, revision, output):
             if row['kind'] == 'directory':
                 target.mkdir(exist_ok=True)
             elif row['kind'] == 'file':
-                source = template / relative
+                source = (retained_root / relative if row['path'] in retained_inputs
+                          else template / relative)
                 _require(source.is_file() and not source.is_symlink() and _sha(source) == row['sha256']
                     and source.stat().st_size == row['bytes'], 'Reviewed authored file changed')
                 shutil.copyfile(source, target)

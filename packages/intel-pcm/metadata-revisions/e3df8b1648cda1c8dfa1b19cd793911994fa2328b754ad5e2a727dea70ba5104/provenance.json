@@ -1,0 +1,56 @@
+{
+  "baseline": "0.21.4",
+  "development_round": "0.21.5-r06",
+  "original_catalog_unchanged": true,
+  "original_source_locks_unchanged": true,
+  "original_target_unchanged": true,
+  "static_functional_definition_revision": {
+    "artifact_sha256": "13730f0ed11d98a450f833909e7900c37260bc53cd43019c0c0ebfe6b30320a6",
+    "build_or_workload_execution": "not_performed",
+    "official_test_cases": 5,
+    "original_manifest_sha256": "6a776f046125aad861b0c98283a36ea3ddee5332302d42978dac45c85ffe8431",
+    "scope_note": "After the unchanged source recipe builds the exact pinned PCM with its already locked googletest supplement, run the five upstream numeric-input parsing unit tests from the retained build tree. This checks decimal/hex conversion, uint64 boundary values, whitespace and malformed-input rejection. It does not qualify physical PMU/MSR/PCI counter collection, and does not claim the test executable is installed in the exported prefix.",
+    "source_commit": "abb6bce87cc2ed23d6677541ebcfc47ca769d1ed",
+    "source_evidence": [
+      {
+        "finding": "Root adds tests unconditionally; the original recipe builds all targets in {build}/native.",
+        "path": "CMakeLists.txt",
+        "url": "https://raw.githubusercontent.com/intel/pcm/abb6bce87cc2ed23d6677541ebcfc47ca769d1ed/CMakeLists.txt"
+      },
+      {
+        "bytes": 2385,
+        "finding": "Tests use ${CMAKE_BINARY_DIR}/bin/tests; existing locked googletest header enables utests.",
+        "git_blob": "528f0d16104d4c633ca0cc0fc673a925df652858",
+        "path": "tests/CMakeLists.txt",
+        "sha256": "5a1e0382a692f7e7c547ec116c7669cfbf4c455d10d22c7831aa4af7c5061309",
+        "url": "https://raw.githubusercontent.com/intel/pcm/abb6bce87cc2ed23d6677541ebcfc47ca769d1ed/tests/CMakeLists.txt"
+      },
+      {
+        "bytes": 1534,
+        "finding": "Creates read-number-utest in bin/tests/utests and links GTest::gtest_main/GTest::gmock_main/PCM_STATIC.",
+        "git_blob": "49fbc781626acaeba0ac9f55cc69ebd5a427daf5",
+        "path": "tests/utests/CMakeLists.txt",
+        "sha256": "133f2b23cf2caaef01a5f792df90a6aadfad87d7c04131621a531c9e0925ba82",
+        "url": "https://raw.githubusercontent.com/intel/pcm/abb6bce87cc2ed23d6677541ebcfc47ca769d1ed/tests/utests/CMakeLists.txt"
+      },
+      {
+        "bytes": 2227,
+        "finding": "Exactly five ReadNumberTest cases use EXPECT_EQ and EXPECT_THROW on pcm::read_number; no hardware collector invoked.",
+        "git_blob": "3f559f9cd7ab55df92aa3824d9ec606ddc4c4a81",
+        "path": "tests/utests/read-number-utest.cpp",
+        "sha256": "33184d6d6db575e4e10c9f1d3ced3977b5be657fceafc62981fc979c513b6c63",
+        "url": "https://raw.githubusercontent.com/intel/pcm/abb6bce87cc2ed23d6677541ebcfc47ca769d1ed/tests/utests/read-number-utest.cpp"
+      },
+      {
+        "commit": "cd430b47a54841ec45d64d2377d7cabaf0eba610",
+        "finding": "Actual pinned output implementation prints [  PASSED  ] then FormatTestCount(successful_test_count), then a period; expected summary therefore derives from exact five declared upstream tests.",
+        "path": "googletest/src/gtest.cc",
+        "url": "https://raw.githubusercontent.com/google/googletest/cd430b47a54841ec45d64d2377d7cabaf0eba610/googletest/src/gtest.cc"
+      }
+    ],
+    "source_locks_and_embedded_inputs_unchanged": true
+  },
+  "status": "source_candidate_not_target_qualified",
+  "supplemental_inputs": "all_five_original_locked_archives_preserved",
+  "target_admission": "blocked_host_is_debian_13"
+}

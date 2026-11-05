@@ -1,7 +1,10 @@
-"""Keep locked precompiled recipe inputs in artifacts, outside the source tree.
+"""Keep locked external recipe inputs in artifacts, outside the source tree.
 
-Only original ordinary .deb/.whl files under recipe/ or tools/ qualify. Each
-mapping binds the original CPG archive, manifest and complete inventory row.
+Original ordinary .deb/.whl files under recipe/ or tools/ qualify. Exact
+recipe/inputs/<sha256> files additionally require an inventory-bound authored
+JSON HTTPS source lock. Ordinary recipe/<source-basename>.tar.gz files also
+require an exact original HTTPS lock whose URL basename agrees. Each mapping
+binds the original CPG archive, manifest and complete inventory row.
 Public source URLs are reused only from hash-verified original JSON metadata.
 No package manager, compiler, check script or delivered executable is invoked.
 """
@@ -43,12 +46,25 @@ def _inventory(manifest):
     return rows
 
 
+def _hash_named_input(name):
+    parts = PurePosixPath(name).parts
+    return (len(parts) == 3 and parts[:2] == ("recipe", "inputs")
+            and CHECKSUM.fullmatch(parts[2]) is not None)
+
+
+def _named_source_archive(name):
+    parts = PurePosixPath(name).parts
+    return (len(parts) == 2 and parts[0] == "recipe"
+            and parts[1].endswith(".tar.gz"))
+
+
 def _inputs(manifest):
     result = {}
     for name, row in _inventory(manifest).items():
         relative = PurePosixPath(name)
         if (not relative.parts or relative.parts[0] not in {"recipe", "tools"}
-                or relative.suffix.lower() not in {".deb", ".whl"}):
+                or (relative.suffix.lower() not in {".deb", ".whl"}
+                    and not _hash_named_input(name) and not _named_source_archive(name))):
             continue
         if (relative.is_absolute() or ".." in relative.parts or "\\" in name
                 or relative.as_posix() != name or any(ord(c) < 32 for c in name)
@@ -58,6 +74,8 @@ def _inputs(manifest):
                 or CHECKSUM.fullmatch(row["sha256"]) is None
                 or type(row.get("mode")) is not int or not 0 <= row["mode"] <= 0o777):
             raise ValueError("Finished authored input has no safe complete original inventory")
+        if _hash_named_input(name) and relative.name != row["sha256"]:
+            raise ValueError("Hash-named authored input differs from its original content identity")
         result[name] = row
     return result
 
@@ -128,6 +146,19 @@ def descriptor_for(record, manifest, template):
     members = {}
     for name, row in sorted(rows.items()):
         candidates = locks.get((row["sha256"], row["bytes"]), [])
+        if _hash_named_input(name):
+            # These source archives need the independently inventory-bound
+            # original supplemental JSON, never the CPG fallback or an unbound URL.
+            candidates = [source for source in candidates
+                          if source["document"]["path"] != "manifest.json"]
+            if not candidates:
+                raise ValueError("Hash-named authored input has no exact original HTTPS supplemental lock")
+        if _named_source_archive(name):
+            candidates = [source for source in candidates
+                          if PurePosixPath(urlparse(source["url"]).path).name
+                          == PurePosixPath(name).name]
+            if not candidates:
+                raise ValueError("Source archive input has no matching original HTTPS basename lock")
         source = candidates[0] if candidates else {
             "kind": "original_cpg_member", "artifact_sha256": record["sha256"],
             "artifact_bytes": record["bytes"], "member": name}
@@ -279,3 +310,4 @@ def acquire_authored_inputs(record, manifest, template, cache, *, network):
         finally:
             temporary.unlink(missing_ok=True)
     return result
+
