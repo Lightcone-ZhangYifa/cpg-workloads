@@ -1,0 +1,381 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 11596,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "dc65946fd27c016f02cd7514e0c3365024b3aa81d92beaef1381e0757c56b007"
+    },
+    {
+      "bytes": 577,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/script-locks.json",
+      "sha256": "a06f28d3de4931539174e1885850ffe871d1a7b89f39ef02f90357aa2cd0d246"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 1063248,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/b1ba3aaaf296ab72ced4dca84514377a4b2c8122831d743f726c106d3d339c2a",
+      "sha256": "b1ba3aaaf296ab72ced4dca84514377a4b2c8122831d743f726c106d3d339c2a"
+    }
+  ],
+  "inventory_sha256": "e5e99239524521094ceb5e0f76904b9ae615b3e99be17375771df2ae63c6ee6d",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "6ebf3153380b9fb68969e83a952015d6135544e43825928b2bd52e1e3bf1547d",
+  "method": "source",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--expected-version",
+          "{version}",
+          "--perl",
+          "/usr/bin/perl",
+          "--identity-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "pinned-script-identities",
+        "kind": "version",
+        "requires_commands": [
+          "python3"
+        ],
+        "requires_paths": [
+          "{prefix}/flamegraph.pl",
+          "{prefix}/stackcollapse-perf.pl",
+          "{prefix}/difffolded.pl"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--expected-version",
+          "{version}",
+          "--perl",
+          "/usr/bin/perl",
+          "--syntax-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "perl-syntax",
+        "kind": "availability",
+        "requires_commands": [
+          "python3",
+          "/usr/bin/perl"
+        ],
+        "requires_paths": [
+          "{prefix}/flamegraph.pl",
+          "{prefix}/stackcollapse-perf.pl",
+          "{prefix}/difffolded.pl"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--expected-version",
+          "{version}",
+          "--perl",
+          "/usr/bin/perl"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "fold-collapse-svg-differential-and-errors",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "/usr/bin/perl"
+        ],
+        "requires_paths": [
+          "{prefix}/flamegraph.pl",
+          "{prefix}/stackcollapse-perf.pl",
+          "{prefix}/difffolded.pl"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.perl"
+      ]
+    },
+    "id": "flamegraph",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 1063248,
+        "build_peak_bytes": null,
+        "category": [
+          "Profiling",
+          "Analysis and visualization"
+        ],
+        "container_strategy": "Copy scripts with their license. Render from admitted perf-script data on dev; target needs scripts only when local postprocessing is requested.",
+        "dependencies": [
+          "apt.perl"
+        ],
+        "deployment": {
+          "adapter": "copy",
+          "apt_dependencies": {
+            "dev": [
+              "perl"
+            ],
+            "target": [
+              "perl"
+            ]
+          },
+          "build_argv": [],
+          "build_role": "dev",
+          "configure_argv": [],
+          "install_argv": [
+            "cp",
+            "-a",
+            "{source}/.",
+            "{prefix}/"
+          ],
+          "install_roles": [
+            "dev",
+            "target"
+          ],
+          "probe_requires_host": [],
+          "smoke_argv": [
+            "perl",
+            "-c",
+            "{prefix}/flamegraph.pl"
+          ],
+          "state": "script-deployment",
+          "target_exports": [
+            {
+              "destination": "opt/research/selected/flamegraph",
+              "kind": "tree",
+              "required": true,
+              "role": "profiler",
+              "source": "{prefix}"
+            }
+          ],
+          "target_smoke_commands": [
+            [
+              "perl",
+              "-c",
+              "{prefix}/flamegraph.pl"
+            ]
+          ]
+        },
+        "documentation": "https://www.brendangregg.com/flamegraphs.html",
+        "extract": true,
+        "id": "flamegraph",
+        "immutable_ref": "41fee1f99f9276008b7cd112fca19dc3ea84ac32",
+        "installed_bytes": null,
+        "kind": "url",
+        "legacy_source_id": "flamegraph",
+        "license_class": "open",
+        "license_id": "CDDL-1.0",
+        "mandatory": false,
+        "material_path": "sources/flamegraph",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Convert captured native stacks into reproducible SVG flame graphs and differential flame graphs.",
+        "qualification_gaps": [
+          "Accurate stack profiles require unwind data, build-ID-matched binaries and symbols; visualization cannot repair missing frames."
+        ],
+        "redistributable": true,
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "b1ba3aaaf296ab72ced4dca84514377a4b2c8122831d743f726c106d3d339c2a",
+        "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+        "size_evidence": "workspace-evidence/resources-v050/platform-research/archive-measurements.json",
+        "source_evidence": [
+          "https://github.com/brendangregg/FlameGraph",
+          "https://www.brendangregg.com/flamegraphs.html",
+          "https://codeload.github.com/brendangregg/FlameGraph/tar.gz/41fee1f99f9276008b7cd112fca19dc3ea84ac32"
+        ],
+        "source_url": "https://codeload.github.com/brendangregg/FlameGraph/tar.gz/41fee1f99f9276008b7cd112fca19dc3ea84ac32",
+        "title": "FlameGraph stack visualization",
+        "upstream": "https://github.com/brendangregg/FlameGraph",
+        "version": "commit-41fee1f99f92"
+      },
+      "catalog_sha256": "a34326509bc8c7dd0616ad6231838752a7c464ebe056a2c8124a69f5cc562323"
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "copy",
+      "apt_dependencies": {
+        "dev": [
+          "perl"
+        ],
+        "target": [
+          "perl"
+        ]
+      },
+      "build_argv": [],
+      "build_role": "dev",
+      "configure_argv": [],
+      "install_argv": [
+        "cp",
+        "-a",
+        "{source}/.",
+        "{prefix}/"
+      ],
+      "install_roles": [
+        "dev",
+        "target"
+      ],
+      "probe_requires_host": [],
+      "smoke_argv": [
+        "perl",
+        "-c",
+        "{prefix}/flamegraph.pl"
+      ],
+      "state": "script-deployment",
+      "target_exports": [
+        {
+          "destination": "opt/research/selected/flamegraph",
+          "kind": "tree",
+          "required": true,
+          "role": "profiler",
+          "source": "{prefix}"
+        }
+      ],
+      "target_smoke_commands": [
+        [
+          "perl",
+          "-c",
+          "{prefix}/flamegraph.pl"
+        ]
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1063248,
+        "extract": true,
+        "id": "flamegraph",
+        "material_path": "sources/flamegraph",
+        "sha256": "b1ba3aaaf296ab72ced4dca84514377a4b2c8122831d743f726c106d3d339c2a",
+        "strip_root": true,
+        "url": "https://codeload.github.com/brendangregg/FlameGraph/tar.gz/41fee1f99f9276008b7cd112fca19dc3ea84ac32"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "No activation is required. Use the explicit script paths and the installed Perl interpreter. Capturing stacks is a separate profiler operation."
+      ],
+      "documentation": [
+        "https://www.brendangregg.com/flamegraphs.html",
+        "https://github.com/brendangregg/FlameGraph/tree/41fee1f99f9276008b7cd112fca19dc3ea84ac32"
+      ],
+      "examples": [
+        {
+          "command": "/usr/bin/perl {prefix}/stackcollapse-perf.pl profile.perf.txt > profile.folded",
+          "description": "Convert an existing perf script text file; this does not collect a profile."
+        },
+        {
+          "command": "/usr/bin/perl {prefix}/flamegraph.pl --hash --title \"Compiler profile\" profile.folded > profile.svg",
+          "description": "Render folded stack weights into SVG for browser inspection."
+        },
+        {
+          "command": "/usr/bin/perl {prefix}/difffolded.pl before.folded after.folded > difference.folded",
+          "description": "Join before/after folded weights while retaining both observations."
+        },
+        {
+          "command": "/usr/bin/perl {prefix}/flamegraph.pl --title \"Compiler profile change\" difference.folded > difference.svg",
+          "description": "Render a differential SVG; widths use the second profile and color records change."
+        },
+        {
+          "command": "cpg packages check flamegraph --kind availability --kind functional",
+          "description": "Run syntax and real transformation checks in this environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "FlameGraph scripts and original materials",
+          "path": "{prefix}",
+          "purpose": "Complete pinned upstream tree, including converter scripts, examples, documentation and original license notices."
+        },
+        {
+          "label": "SVG renderer",
+          "path": "{prefix}/flamegraph.pl",
+          "purpose": "Render folded stack weights or before/after columns into an interactive SVG."
+        },
+        {
+          "label": "Linux perf converter",
+          "path": "{prefix}/stackcollapse-perf.pl",
+          "purpose": "Convert perf script text with stack frames into folded weighted stacks."
+        },
+        {
+          "label": "Differential converter",
+          "path": "{prefix}/difffolded.pl",
+          "purpose": "Join two folded files into per-stack before/after weights."
+        },
+        {
+          "label": "Prepared material",
+          "path": "{assets}/sources/flamegraph",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        }
+      ],
+      "notes": [
+        "The exact source commit has no reliable conventional --version interface. The version check verifies SHA-256 and byte counts of the three qualified scripts against the pinned original archive; complete material integrity remains a separate package-inventory check.",
+        "The functional fixture sends three synthetic perf-script records with periods 300, 200 and 100 through the actual upstream converter, checks exact folded paths/weights, verifies ordinary and differential SVG frames, and requires invalid folded input to fail with exit 2. The total weight 600 is not a claim that 600 samples were captured.",
+        "This resource preserves the complete upstream tree and all notices. Individual upstream files can carry different license notices; consult each original file when redistributing.",
+        "Default horizontal order is not a time axis. Width describes the selected stack weight; the meaning of that weight depends on the profiler/event. Use --countname for explicit units such as bytes, time or synthetic weights.",
+        "Use the same event, units, symbolization and collection policy when comparing profiles. difffolded.pl -n explicitly normalizes totals; whether normalization is appropriate is an experimental choice.",
+        "Profile collection, symbolization, kernel permissions and PMU access belong to the selected profiler. Conversion/rendering does not require root and does not establish a benchmark score.",
+        "Perl is an exact declared system dependency. Private qualification uses its locked Debian executable, loader, libraries and modules with ambient module fallback disabled; it does not claim an APT or PackageManager installation transaction.",
+        "The source artifact retains the original archive; the material artifact retains the complete ready-to-copy script tree. No native compilation is required for these scripts."
+      ],
+      "summary": "Convert captured stack records into folded weights, interactive SVG flame graphs and differential flame graphs using the pinned upstream scripts."
+    },
+    "version": "commit-41fee1f99f92"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "flamegraph",
+      "path": "sources/b1ba3aaaf296ab72ced4dca84514377a4b2c8122831d743f726c106d3d339c2a"
+    }
+  ]
+}

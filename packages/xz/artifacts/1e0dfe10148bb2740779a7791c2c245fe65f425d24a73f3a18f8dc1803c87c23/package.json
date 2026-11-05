@@ -1,0 +1,267 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "xz-version",
+      "kind": "version",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 30
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "xz-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 240
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "apt.build-essential",
+      "apt.cmake",
+      "apt.ninja-build",
+      "apt.gettext"
+    ],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "xz",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 1673778,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Compression"
+      ],
+      "container_strategy": "Use the official source commit, preserve security provenance and build CLI/tests in dev before target execution.",
+      "corpus_contract": {
+        "code": "Library, CLI and tests included.",
+        "inputs": "Separate frozen compression corpus.",
+        "oracle": "Byte-exact round trip and upstream tests.",
+        "split_unit": "Application family with input strata recorded separately."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/tukaani-project/xz"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/xz.measurement.json",
+        "workspace-evidence/resources-v050/open-research/xz.refs.json"
+      ],
+      "extract": true,
+      "id": "xz",
+      "immutable_ref": "d3e650e63c110e830fd5391e7f8b45df0b91d3da",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "0BSD AND GPL-2.0-or-later AND LGPL-2.1-or-later",
+      "mandatory": false,
+      "material_path": "corpora/xz",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Branch-heavy compression, decompression and memory-sensitive native C workload coverage.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Source Git snapshots and release tarballs can have different generated files; use the pinned artifact consistently.",
+        "Input corpus, compression options and threading policy are separate experiment inputs."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "b5aad5c776b324a39a46bbd588d4b5c001266b87ed3887aea1dc2854702d041c",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/tukaani-project/xz",
+        "https://codeload.github.com/tukaani-project/xz/tar.gz/d3e650e63c110e830fd5391e7f8b45df0b91d3da",
+        "https://github.com/tukaani-project/xz/commit/d3e650e63c110e830fd5391e7f8b45df0b91d3da"
+      ],
+      "source_logical_bytes": 6704017,
+      "source_url": "https://codeload.github.com/tukaani-project/xz/tar.gz/d3e650e63c110e830fd5391e7f8b45df0b91d3da",
+      "title": "XZ/LZMA compression workload",
+      "upstream": "https://github.com/tukaani-project/xz",
+      "version": "v5.8.4"
+    },
+    "catalog_sha256": "24fbced7493cf052b86c3d5e8e9ec837464d2f5094c4f86d9257aef2a7a2d66e"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "cmake",
+    "install_argv": [
+      "/usr/bin/python3",
+      "{recipe}/build.py",
+      "--source",
+      "{source}",
+      "--build",
+      "{build}",
+      "--prefix",
+      "{prefix}",
+      "--jobs",
+      "{jobs}"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/xz",
+      "{prefix}/bin/xzdec",
+      "{prefix}/bin/lzmadec",
+      "{prefix}/bin/lzmainfo",
+      "{prefix}/bin/xzgrep",
+      "{prefix}/bin/xzdiff",
+      "{prefix}/bin/cpg-xz-api-probe",
+      "{prefix}/bin/cpg-xz-api-probe-static",
+      "{prefix}/include/lzma.h",
+      "{prefix}/lib/liblzma.so.5.8.4",
+      "{prefix}/lib/liblzma.a",
+      "{prefix}/lib/pkgconfig/liblzma.pc",
+      "{prefix}/lib/cmake/liblzma/liblzma-config.cmake",
+      "{prefix}/share/locale/de/LC_MESSAGES/xz.mo",
+      "{prefix}/share/man/man1/xz.1",
+      "{prefix}/share/doc/xz/COPYING.0BSD"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1673778,
+      "extract": true,
+      "id": "xz",
+      "material_path": "corpora/xz",
+      "sha256": "b5aad5c776b324a39a46bbd588d4b5c001266b87ed3887aea1dc2854702d041c",
+      "strip_root": true,
+      "url": "https://codeload.github.com/tukaani-project/xz/tar.gz/d3e650e63c110e830fd5391e7f8b45df0b91d3da"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Start with cpg packages info xz, paths xz and check xz --prefix <prefix>. The source recipe may build at a chosen absolute prefix; binary packages must use exactly the prefix recorded in their manifest.",
+      "Add <prefix>/bin before system paths when selecting these tools/scripts. For development, use <prefix>/include and <prefix>/lib, or add <prefix>/lib/pkgconfig to PKG_CONFIG_PATH. No global loader-cache update is required.",
+      "NLS messages use <fixed-prefix>/share/locale. Set a usable non-C locale such as LC_ALL=C.UTF-8 and LANGUAGE=de to select German messages. CMake exports liblzma::liblzma from <prefix>/lib/cmake/liblzma."
+    ],
+    "documentation": [
+      "https://tukaani.org/xz/",
+      "https://github.com/tukaani-project/xz/tree/d3e650e63c110e830fd5391e7f8b45df0b91d3da",
+      "https://github.com/tukaani-project/xz/blob/d3e650e63c110e830fd5391e7f8b45df0b91d3da/INSTALL",
+      "https://github.com/tukaani-project/xz/blob/d3e650e63c110e830fd5391e7f8b45df0b91d3da/CMakeLists.txt",
+      "https://github.com/tukaani-project/xz/blob/d3e650e63c110e830fd5391e7f8b45df0b91d3da/tests/tests.cmake"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages info xz --json; cpg packages paths xz; cpg packages check xz --prefix <prefix>",
+        "description": "Query and verify the selected installation"
+      },
+      {
+        "command": "<prefix>/bin/xz --threads=2 --check=sha256 -6 -c input.bin > input.xz; <prefix>/bin/xz -dc input.xz > restored.bin",
+        "description": "Compress with a specified checksum and thread count"
+      },
+      {
+        "command": "LC_ALL=C.UTF-8 LANGUAGE=de <prefix>/bin/xz --help",
+        "description": "Observe actual native-language messages"
+      },
+      {
+        "command": "cpg packages pack resources/packages/xz/package.json --definition --method source --source xz=/path/to/exact-locked-archive --recipe resources/packages/xz/recipe --output xz.source.cpgpkg.tar.gz",
+        "description": "Pack the source recipe"
+      },
+      {
+        "command": "cpg packages pack resources/packages/xz/material-profile.json --definition --method material --payload /path/to/full-verified-source --output xz.material.cpgpkg.tar.gz",
+        "description": "Pack original material with the same resource ID"
+      },
+      {
+        "command": "cpg packages pack resources/packages/xz/package.json --definition --method binary --payload /opt/cpg/packages/xz/5.8.4 --prefix /opt/cpg/packages/xz/5.8.4 --recipe resources/packages/xz/recipe --output xz.binary.cpgpkg.tar.gz",
+        "description": "Pack for an explicit production container prefix after building at that exact prefix"
+      }
+    ],
+    "locations": [
+      {
+        "label": "XZ command-line tools and scripts",
+        "path": "{prefix}/bin",
+        "purpose": "xz, xzdec, lzmadec, lzmainfo, legacy aliases, xzgrep/xzdiff/xzmore/xzless and installed shared/static API probes."
+      },
+      {
+        "label": "Development libraries and metadata",
+        "path": "{prefix}/lib",
+        "purpose": "liblzma.so.5.8.4 and liblzma.a, pkg-config and CMake target metadata; shared binaries use a relative RUNPATH."
+      },
+      {
+        "label": "C API headers",
+        "path": "{prefix}/include",
+        "purpose": "lzma.h and lzma/* public API headers."
+      },
+      {
+        "label": "Native language messages",
+        "path": "{prefix}/share/locale",
+        "purpose": "Compiled upstream .mo catalogs. Upstream embeds this absolute path, so the complete binary profile is fixed-prefix."
+      },
+      {
+        "label": "Manuals and upstream documentation",
+        "path": "{prefix}/share",
+        "purpose": "English man pages, share/doc/xz licenses/examples and share/compiler-playground/xz build profiles, checks and actual CMake caches."
+      },
+      {
+        "label": "Complete original source after source installation",
+        "path": "{assets}/corpora/xz",
+        "purpose": "All locked source, official tests, fixtures, po/po4a translations and references. Binary-only installs do not populate this path."
+      },
+      {
+        "label": "Raw material profile",
+        "path": "{prefix}",
+        "purpose": "With material-profile.json this is the complete unbuilt upstream tree rather than a bin/lib installation."
+      }
+    ],
+    "notes": [
+      "The existing ID has two explicit maintained definitions: package.json for source/binary and original material-profile.json for the complete raw tree. Use the existing pack --definition option; source lock and metadata.catalog are unchanged.",
+      "The source recipe leaves upstream source untouched and enables NLS, POSIX threads, every default encoder/decoder/check/filter, all CLI tools, aliases, scripts and basic docs. Both shared and static liblzma are installed; the official CMake/CTest suite runs against the shared build, and installed API probes exercise both forms.",
+      "Exact build prerequisites: apt.build-essential=12.10ubuntu1, apt.cmake=3.28.3-1build7, apt.ninja-build=1.11.1-2 and apt.gettext=0.21-14ubuntu2. apt.python3=3.12.3-0ubuntu2.1 supplies checks and the host-reference lzma module. Base Ubuntu POSIX shell/grep/diff/sed are observed when used; this does not certify a complete APT dependency transaction.",
+      "The maintainer replay can provide separately extracted exact CMake/Ninja build-only bindings from the existing locked .deb files, recording actual library bindings and unchanged dpkg database. It does not register or pretend to install those packages. Ordinary deployments use the declared exact APT prerequisites.",
+      "Binary installation is fixed-prefix because upstream gettext embeds LOCALEDIR. Build directly at the eventual container path, then pack with --prefix set to that exact path and without --relocatable. The package manager must reject a different prefix. Same-prefix reinstall is tested; independent-container deployment is not claimed.",
+      "The locked Git source preserves all po4a translation inputs but has no pre-generated translated man pages. This profile builds translated .mo messages and installs source English man pages; po4a/update-po generation remains not_run. No translation source is removed.",
+      "Version, fixed CRC vectors, 45 length/preset/check combinations per shared/static linkage, truncated/damaged streams, memory-limit/invalid-preset rejection, raw x86+LZMA2 filters and two-thread encoding are checked. CLI XZ/LZMA-Alone streams are compared with the observed Python lzma reference; installed tools, machine-readable listing, xzgrep/xzdiff and real German help are exercised.",
+      "Material installs verify the entire inventory and correctly report executable checks as not_run. Interactive xzmore/xzless pager sessions, translated manual generation, APT/OCI transactions, sanitizer/cross-architecture matrices and benchmark timing remain separate qualifications."
+    ],
+    "summary": "XZ Utils 5.8.4, liblzma shared/static APIs, all upstream CLI tools/scripts and native-language messages; fixed-prefix binary profile preserves upstream NLS behavior, while the complete original source/test material stays available under the same ID."
+  },
+  "version": "v5.8.4"
+}

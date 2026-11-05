@@ -1,0 +1,259 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 4943,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "8541262aad33a7442a9741d177dfceaa6f9c525090430ce08d4f60dd039747ec"
+    }
+  ],
+  "inventory_sha256": "4e05b5f9400dfc41cc8a8e9d9963e3ddf1a65264ce9b2cccfc5133cb003a222d",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "30e0781a1f80aaf3539f394b9cf518d24736999cdba20fbcc7847cc88493a4bb",
+  "method": "wrapper",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "{python}",
+          "{recipe}/check.py",
+          "--tool",
+          "/usr/bin/rg",
+          "--expected-version",
+          "14.1.0",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "upstream-version",
+        "kind": "version",
+        "requires_commands": [
+          "{python}",
+          "/usr/bin/rg"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 20
+      },
+      {
+        "argv": [
+          "{python}",
+          "{recipe}/check.py",
+          "--tool",
+          "/usr/bin/rg",
+          "--expected-version",
+          "14.1.0"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "json-search-ignore-pcre2-and-exits",
+        "kind": "functional",
+        "requires_commands": [
+          "{python}",
+          "/usr/bin/rg"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 90
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libpcre2-8-0"
+      ]
+    },
+    "id": "apt.ripgrep",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libgcc-s1",
+          "apt.libpcre2-8-0"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 1551362,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/ripgrep"
+        ],
+        "id": "apt.ripgrep",
+        "immutable_ref": "sha256:c5ae63c7bee915b1cfc9f0bd07c55b4ce7f2bcd1133cba4da56719aac26101a4",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 5210,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/ripgrep_14.1.0-1_amd64.deb",
+        "package_name": "ripgrep",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Recursively searches directories for a regex pattern",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "c5ae63c7bee915b1cfc9f0bd07c55b4ce7f2bcd1133cba4da56719aac26101a4",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/r/rust-ripgrep/ripgrep_14.1.0-1_amd64.deb",
+        "title": "ripgrep",
+        "upstream": "https://github.com/BurntSushi/ripgrep",
+        "version": "14.1.0-1"
+      },
+      "catalog_sha256": "e82ea0850a9576effbc3c14ceb4ebd89349861eb06d3490815aa6caed0c2b6f9"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "ripgrep",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1551362,
+        "extract": false,
+        "id": "apt.ripgrep",
+        "material_path": "apt/ripgrep_14.1.0-1_amd64.deb",
+        "sha256": "c5ae63c7bee915b1cfc9f0bd07c55b4ce7f2bcd1133cba4da56719aac26101a4",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/r/rust-ripgrep/ripgrep_14.1.0-1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "No activation is required after APT installation; use the recorded /usr/bin executable."
+      ],
+      "documentation": [
+        "https://github.com/BurntSushi/ripgrep/blob/14.1.0/GUIDE.md",
+        "https://manpages.ubuntu.com/manpages/noble/man1/rg.1.html"
+      ],
+      "examples": [
+        {
+          "command": "/usr/bin/rg -n --glob '*.[ch]' --glob '*.cpp' 'optimization|lowering' source/",
+          "description": "Find symbols in C and C++ source with line numbers."
+        },
+        {
+          "command": "/usr/bin/rg --json 'pattern' source/",
+          "description": "Produce structured matches for a Python consumer without scraping terminal formatting."
+        },
+        {
+          "command": "/usr/bin/rg --hidden --no-ignore -n 'pattern' build/",
+          "description": "Explicitly include hidden and ignored files when investigating generated artifacts."
+        },
+        {
+          "command": "/usr/bin/rg --pcre2 '(?<=pass: )[^ ]+' compiler.log",
+          "description": "Use PCRE2 when a lookaround is required."
+        },
+        {
+          "command": "/usr/bin/rg --files source/",
+          "description": "List searchable files using the active ignore rules."
+        },
+        {
+          "command": "cpg packages check apt.ripgrep --kind functional",
+          "description": "Run the declared functional checks."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Executable",
+          "path": "/usr/bin/rg",
+          "purpose": "Tool supplied by the exact APT package."
+        },
+        {
+          "label": "Prepared material",
+          "path": "{assets}/apt/ripgrep_14.1.0-1_amd64.deb",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "System package files",
+          "path": "/var/lib/dpkg/info/ripgrep.list",
+          "purpose": "Ask dpkg-query -L for the actual installed file list, including multiarch packages."
+        }
+      ],
+      "notes": [
+        "The check creates a temporary source tree and verifies real JSON path/line/submatch data, gitignore/hidden filtering, explicit overrides, PCRE2 lookbehind and exit codes 0/1/2.",
+        "Exit 0 means a match; exit 1 means no match; exit 2 means an error. A no-match result is not an installation failure.",
+        "Default searches skip hidden, ignored and binary files. Use explicit flags appropriate for the research task; the framework does not choose a data visibility policy.",
+        "RIPGREP_CONFIG_PATH can alter user commands. The qualification disables external configuration and global/parent ignore rules so its fixture has explicit search boundaries.",
+        "The payload-free wrapper delegates install/removal to APT. Wrapper integrity, original Debian-byte integrity, package metadata and actual function checks are separate evidence.",
+        "Private extracted-package qualification does not imply an APT transaction or OCI qualification.",
+        "An explicitly inclusive --glob can override ignore/hidden filtering. Use plain recursive search when you intend the default ignore policy, or choose overrides deliberately."
+      ],
+      "summary": "Search compiler source and experiment artifacts recursively with fast regex, structured JSON matches and explicit ignore-file control."
+    },
+    "version": "14.1.0-1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

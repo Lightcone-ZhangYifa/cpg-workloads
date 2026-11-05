@@ -1,0 +1,266 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 5861,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "8faa328433d2610aa26633a63494f54cd25e7b27ac2a55d31e6e11f3a23a8040"
+    }
+  ],
+  "inventory_sha256": "d6a12c56126373d051099a7ac6cda27995a3e073526ac587d34e66e0e975dbb4",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "f722ff9bbf3349d696e48b3fde4a65d40132a2694702f260246a44f82e422a04",
+  "method": "wrapper",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "{python}",
+          "{recipe}/check.py",
+          "--tool",
+          "/usr/bin/ltrace",
+          "--expected-version",
+          "0.7.3",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "upstream-version",
+        "kind": "version",
+        "requires_commands": [
+          "{python}",
+          "/usr/bin/ltrace"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 15
+      },
+      {
+        "argv": [
+          "{python}",
+          "{recipe}/check.py",
+          "--tool",
+          "/usr/bin/ltrace",
+          "--expected-version",
+          "0.7.3",
+          "--config",
+          "/etc/ltrace.conf"
+        ],
+        "blocked_returncodes": [
+          77
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "dynamic-calls-and-target-exit-record",
+        "kind": "hardware",
+        "requires_commands": [
+          "{python}",
+          "cc",
+          "/usr/bin/ltrace"
+        ],
+        "requires_paths": [
+          "/etc/ltrace.conf"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 90
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libelf1t64",
+        "apt.libselinux1"
+      ]
+    },
+    "id": "apt.ltrace",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libelf1t64",
+          "apt.libselinux1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 134192,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/ltrace"
+        ],
+        "id": "apt.ltrace",
+        "immutable_ref": "sha256:829ce2c5c867ba0a40fc12e63fe29a7caef7b27afa7d568083ef212332490c4a",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 382,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/ltrace_0.7.3-6.4ubuntu3_amd64.deb",
+        "package_name": "ltrace",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Tracks runtime library calls in dynamically linked programs",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "829ce2c5c867ba0a40fc12e63fe29a7caef7b27afa7d568083ef212332490c4a",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/ltrace/ltrace_0.7.3-6.4ubuntu3_amd64.deb",
+        "title": "ltrace",
+        "upstream": "https://packages.ubuntu.com/noble/ltrace",
+        "version": "0.7.3-6.4ubuntu3"
+      },
+      "catalog_sha256": "08c2382ae7876aed661915ea6dbb123a1c16b14b1c2a82c98dd495100ee526ea"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "ltrace",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 134192,
+        "extract": false,
+        "id": "apt.ltrace",
+        "material_path": "apt/ltrace_0.7.3-6.4ubuntu3_amd64.deb",
+        "sha256": "829ce2c5c867ba0a40fc12e63fe29a7caef7b27afa7d568083ef212332490c4a",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/ltrace/ltrace_0.7.3-6.4ubuntu3_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "No activation is required after APT installation. Use the explicit /usr/bin executable."
+      ],
+      "documentation": [
+        "https://man7.org/linux/man-pages/man1/ltrace.1.html",
+        "https://packages.ubuntu.com/noble/ltrace"
+      ],
+      "examples": [
+        {
+          "command": "/usr/bin/ltrace -F /etc/ltrace.conf -s 256 -e 'malloc+free+strlen+puts' -o library.trace ./program",
+          "description": "Trace selected dynamic-library calls with explicit prototype configuration."
+        },
+        {
+          "command": "/usr/bin/ltrace -c ./program",
+          "description": "Summarize library-call counts and durations."
+        },
+        {
+          "command": "/usr/bin/ltrace -f -o library.trace ./program",
+          "description": "Follow child processes while retaining the raw trace."
+        },
+        {
+          "command": "cpg packages check apt.ltrace --kind hardware",
+          "description": "Run the host-sensitive tracing operation check; denied ptrace is recorded as blocked."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Tracer executable",
+          "path": "/usr/bin/ltrace",
+          "purpose": "Actual executable owned by the exact system package."
+        },
+        {
+          "label": "Prototype configuration",
+          "path": "/etc/ltrace.conf",
+          "purpose": "Function declarations used to decode library-call arguments."
+        },
+        {
+          "label": "Prepared material",
+          "path": "{assets}/apt/ltrace_0.7.3-6.4ubuntu3_amd64.deb",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "System package files",
+          "path": "/var/lib/dpkg/info/ltrace.list",
+          "purpose": "Ask dpkg-query -L for the actual installed file list, including multiarch packages."
+        }
+      ],
+      "notes": [
+        "The check uses a dynamically linked non-PIE C fixture compiled with -O0 -fno-builtin. It verifies eight distinct library calls, real arguments/results, output artifacts and target exit records for statuses 0 and 7.",
+        "The target exit status is read from its trace record; the ltrace process return code is recorded separately and must not be silently interpreted as target success.",
+        "Function prototypes determine argument decoding. The normal APT configuration is /etc/ltrace.conf; use -F for explicit prototype files/directories.",
+        "Inlining, static linking, missing PLT calls, unusual ABI or optimized/PIE binaries can reduce the calls visible to this old locked release. The qualification scope is explicitly recorded.",
+        "Kernel ptrace restrictions may block tracing even when --version succeeds. The check does not modify ptrace policy or attach to unrelated processes.",
+        "The upstream version probe and the exact Debian package identity are separate checks. A privately extracted Debian package is not an APT install/remove transaction.",
+        "The tracing operation is a host-sensitive check using the existing hardware-check blocked status; it does not measure hardware performance."
+      ],
+      "summary": "Trace dynamically linked program library calls and decoded arguments using ltrace prototype libraries; investigate runtime calls in compiler-produced binaries."
+    },
+    "version": "0.7.3-6.4ubuntu3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

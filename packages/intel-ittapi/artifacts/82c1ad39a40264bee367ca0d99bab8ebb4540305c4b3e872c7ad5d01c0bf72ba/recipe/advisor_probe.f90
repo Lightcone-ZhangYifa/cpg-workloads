@@ -1,0 +1,51 @@
+program advisor_probe
+  use advisor_annotate
+  implicit none
+  integer(kind=2), target :: i2 = 7
+  integer(kind=4), target :: i4 = 7
+  integer(kind=8), target :: i8 = 7
+  real(kind=4), target :: r4 = 7
+  real(kind=8), target :: r8 = 7
+  complex(kind=4), target :: c4 = (7, 2)
+  complex(kind=8), target :: c8 = (7, 2)
+  call annotate_site_begin('cpg-site')
+  call annotate_task_begin('cpg-task')
+  call annotate_iteration_task('cpg-iteration')
+  call annotate_lock_acquire(17)
+  call annotate_lock_release(17)
+  call annotate_disable_observation_push()
+  call annotate_disable_observation_pop()
+  call annotate_disable_collection_push()
+  call annotate_disable_collection_pop()
+  call annotate_induction_uses(i2)
+  call annotate_induction_uses(i4)
+  call annotate_induction_uses(i8)
+  call annotate_induction_uses(r4)
+  call annotate_induction_uses(r8)
+  call annotate_induction_uses(c4)
+  call annotate_induction_uses(c8)
+  call annotate_reduction_uses(i2)
+  call annotate_reduction_uses(i4)
+  call annotate_reduction_uses(i8)
+  call annotate_reduction_uses(r4)
+  call annotate_reduction_uses(r8)
+  call annotate_reduction_uses(c4)
+  call annotate_reduction_uses(c8)
+  call annotate_observe_uses(i2)
+  call annotate_observe_uses(i4)
+  call annotate_observe_uses(i8)
+  call annotate_observe_uses(r4)
+  call annotate_observe_uses(r8)
+  call annotate_observe_uses(c4)
+  call annotate_observe_uses(c8)
+  call annotate_clear_uses(i2)
+  call annotate_clear_uses(i4)
+  call annotate_clear_uses(i8)
+  call annotate_clear_uses(r4)
+  call annotate_clear_uses(r8)
+  call annotate_clear_uses(c4)
+  call annotate_clear_uses(c8)
+  call annotate_aggregate_task(9)
+  call annotate_task_end()
+  call annotate_site_end()
+end program advisor_probe

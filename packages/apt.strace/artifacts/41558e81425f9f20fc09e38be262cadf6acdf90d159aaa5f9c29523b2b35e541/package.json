@@ -1,0 +1,251 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--tool",
+        "/usr/bin/strace",
+        "--expected-version",
+        "6.8",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "upstream-version",
+      "kind": "version",
+      "requires_commands": [
+        "python3",
+        "/usr/bin/strace"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 15
+    },
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--tool",
+        "/usr/bin/strace",
+        "--expected-version",
+        "6.8"
+      ],
+      "blocked_returncodes": [
+        77
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "host-child-ptrace-capability",
+      "kind": "hardware",
+      "requires_commands": [
+        "python3",
+        "cc",
+        "/usr/bin/strace"
+      ],
+      "requires_paths": [],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 90
+    },
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--tool",
+        "/usr/bin/strace",
+        "--expected-version",
+        "6.8"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "child-syscalls-and-exit-status",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "cc",
+        "/usr/bin/strace"
+      ],
+      "requires_paths": [],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 90
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libunwind8"
+    ]
+  },
+  "id": "apt.strace",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libunwind8"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 584172,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/strace"
+      ],
+      "id": "apt.strace",
+      "immutable_ref": "sha256:d588810ae26b06fee6678dc81e5b54f6efcde8e718e4589adb4d11d254b9820b",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 2103,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/strace_6.8-0ubuntu2_amd64.deb",
+      "package_name": "strace",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "System call tracer",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "d588810ae26b06fee6678dc81e5b54f6efcde8e718e4589adb4d11d254b9820b",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/s/strace/strace_6.8-0ubuntu2_amd64.deb",
+      "title": "strace",
+      "upstream": "https://strace.io",
+      "version": "6.8-0ubuntu2"
+    },
+    "catalog_sha256": "d9823cf296f07991454a20731e217ec625542dd30defe86642f2bb70e952316e"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "strace",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 584172,
+      "extract": false,
+      "id": "apt.strace",
+      "material_path": "apt/strace_6.8-0ubuntu2_amd64.deb",
+      "sha256": "d588810ae26b06fee6678dc81e5b54f6efcde8e718e4589adb4d11d254b9820b",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/strace/strace_6.8-0ubuntu2_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "No activation is required after APT installation. Use the explicit /usr/bin executable."
+    ],
+    "documentation": [
+      "https://strace.io/",
+      "https://man7.org/linux/man-pages/man1/strace.1.html"
+    ],
+    "examples": [
+      {
+        "command": "/usr/bin/strace -f -tt -T -s 256 -o compiler.trace ./compiler input.c -o program",
+        "description": "Trace a fresh child and descendants, retain timestamps and syscall durations."
+      },
+      {
+        "command": "/usr/bin/strace -f -e trace=%file,%process -o compiler-files.trace ./compiler input.c -o program",
+        "description": "Inspect only file and process activity."
+      },
+      {
+        "command": "/usr/bin/strace -f -c ./compiler input.c -o program",
+        "description": "Summarize syscall counts and observed syscall time."
+      },
+      {
+        "command": "cpg packages check apt.strace --kind hardware",
+        "description": "Run the host-sensitive tracing operation check; denied ptrace is recorded as blocked."
+      },
+      {
+        "command": "cpg packages check apt.strace --kind functional",
+        "description": "Validate actual tracing after the host capability check passes."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Tracer executable",
+        "path": "/usr/bin/strace",
+        "purpose": "Actual executable owned by the exact system package."
+      },
+      {
+        "label": "Prepared material",
+        "path": "{assets}/apt/strace_6.8-0ubuntu2_amd64.deb",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "System package files",
+        "path": "/var/lib/dpkg/info/strace.list",
+        "purpose": "Ask dpkg-query -L for the actual installed file list, including multiarch packages."
+      }
+    ],
+    "notes": [
+      "The check compiles and traces a real child twice, verifies file writes and decoded ENOENT, and requires propagation of child exit codes 0 and 7.",
+      "Tracing depends on kernel ptrace permission, container seccomp/capabilities and process ownership. A denied trace is blocked; the check does not alter host policy or attach to unrelated processes.",
+      "Syscall tracing perturbs the workload. Its durations/counts support diagnosis and do not replace an official benchmark measurement.",
+      "The upstream version probe and the exact Debian package identity are separate checks. A privately extracted Debian package is not an APT install/remove transaction.",
+      "The host-sensitive capability check records denied ptrace as blocked. The separate functional check performs the complete trace assertions on a capable host; neither check measures physical hardware performance."
+    ],
+    "summary": "Trace Linux system calls and signals to diagnose compiler file access, subprocesses, failed syscalls and process termination."
+  },
+  "version": "6.8-0ubuntu2"
+}

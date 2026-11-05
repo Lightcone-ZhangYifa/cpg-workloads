@@ -1,0 +1,254 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 4528,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "e76f9077def0de812a36a71c966527c173a1b48c43c8340c43cbe47716813672"
+    }
+  ],
+  "inventory_sha256": "0cc1587e9cbe1b97e6174d90966a20f6118118e9f67c09e02f654ed1fca0bb2f",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "e72d3e0945696e68b1ff30392325986d60656ab9441648f65039a3421a11ac08",
+  "method": "wrapper",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "{python}",
+          "{recipe}/check.py",
+          "--tool",
+          "/usr/bin/jq",
+          "--expected-version",
+          "1.7",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "tool-reported-version",
+        "kind": "version",
+        "requires_commands": [
+          "{python}",
+          "/usr/bin/jq"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 20
+      },
+      {
+        "argv": [
+          "{python}",
+          "{recipe}/check.py",
+          "--tool",
+          "/usr/bin/jq",
+          "--expected-version",
+          "1.7"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "json-transform-stream-and-exit-contract",
+        "kind": "functional",
+        "requires_commands": [
+          "{python}",
+          "/usr/bin/jq"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 90
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libjq1"
+      ]
+    },
+    "id": "apt.jq",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libjq1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 65694,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/jq"
+        ],
+        "id": "apt.jq",
+        "immutable_ref": "sha256:f59183392f84fe67b407b494d8ba6185e9b0e4a106ffcb369490bd20a83fd40e",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 113,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/jq_1.7.1-3ubuntu0.24.04.2_amd64.deb",
+        "package_name": "jq",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "lightweight and flexible command-line JSON processor",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "f59183392f84fe67b407b494d8ba6185e9b0e4a106ffcb369490bd20a83fd40e",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/j/jq/jq_1.7.1-3ubuntu0.24.04.2_amd64.deb",
+        "title": "jq",
+        "upstream": "https://jqlang.github.io/jq",
+        "version": "1.7.1-3ubuntu0.24.04.2"
+      },
+      "catalog_sha256": "34dbb5ccd0046e35d75e47546cd5f949c0a46eb18a7d43fddbf9f16de02fedfd"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "jq",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 65694,
+        "extract": false,
+        "id": "apt.jq",
+        "material_path": "apt/jq_1.7.1-3ubuntu0.24.04.2_amd64.deb",
+        "sha256": "f59183392f84fe67b407b494d8ba6185e9b0e4a106ffcb369490bd20a83fd40e",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/j/jq/jq_1.7.1-3ubuntu0.24.04.2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "No activation is required after APT installation; use the recorded /usr/bin executable."
+      ],
+      "documentation": [
+        "https://jqlang.org/manual/v1.7/",
+        "https://github.com/jqlang/jq"
+      ],
+      "examples": [
+        {
+          "command": "/usr/bin/jq -c '.results[] | select(.valid)' results.json",
+          "description": "Select valid experiment records and emit one compact JSON value per line."
+        },
+        {
+          "command": "/usr/bin/jq -s 'map(.elapsed_seconds) | add' measurements.jsonl",
+          "description": "Aggregate a column from newline-separated JSON records."
+        },
+        {
+          "command": "/usr/bin/jq -e '.status == \"passed\"' report.json",
+          "description": "Return a failing process status when an assertion is false or absent."
+        },
+        {
+          "command": "/usr/bin/jq --stream -c 'select(length == 2)' large.json",
+          "description": "Stream leaf paths and values without materializing a large complete document."
+        },
+        {
+          "command": "cpg packages check apt.jq --kind functional",
+          "description": "Run the declared functional checks."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Executable",
+          "path": "/usr/bin/jq",
+          "purpose": "Tool supplied by the exact APT package."
+        },
+        {
+          "label": "Prepared material",
+          "path": "{assets}/apt/jq_1.7.1-3ubuntu0.24.04.2_amd64.deb",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "System package files",
+          "path": "/var/lib/dpkg/info/jq.list",
+          "purpose": "Ask dpkg-query -L for the actual installed file list, including multiarch packages."
+        }
+      ],
+      "notes": [
+        "The operation check validates real filtering/grouping/reduction, exact literal Unicode arguments, streaming leaves, regex capture and distinct failure exits.",
+        "Use single quotes around jq filters in a POSIX shell. Pass dynamic strings using --arg and JSON values using --argjson; do not splice untrusted text into filter source.",
+        "With -e, false/null returns 1 and no valid result returns 4; filter compile errors and malformed input are failures. Check process status before using a result.",
+        "Large-number behavior and arithmetic precision depend on jq's documented numeric model; JSON parsing success does not establish arbitrary-precision arithmetic.",
+        "The payload-free wrapper delegates install/removal to APT. Wrapper integrity, original Debian-byte integrity, package metadata and actual function checks are separate evidence.",
+        "Private extracted-package qualification does not imply an APT transaction or OCI qualification.",
+        "The locked Ubuntu 1.7.1-3ubuntu0.24.04.2 executable reports jq-1.7. The exact Debian metadata and original byte lock establish the package version; the version probe preserves the observed string."
+      ],
+      "summary": "Filter, aggregate, transform and stream JSON experiment records with explicit exit-status handling."
+    },
+    "version": "1.7.1-3ubuntu0.24.04.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

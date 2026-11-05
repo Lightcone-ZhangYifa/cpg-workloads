@@ -1,0 +1,261 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "sqlite-version",
+      "kind": "version",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 30
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "sqlite-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "apt.build-essential"
+    ],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "sqlite",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": 14899528,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Workloads",
+        "Applications and libraries",
+        "Databases"
+      ],
+      "container_strategy": "Use the complete canonical source tree to retain open tests and speedtest infrastructure. Build in dev and run deterministic SQL/database bundles in target.",
+      "corpus_contract": {
+        "code": "Canonical full source tree, open tests and extensions.",
+        "inputs": "Frozen SQL/schema/data generator seeds and optional prebuilt databases.",
+        "oracle": "Exact query result comparison and open integrity/regression checks.",
+        "split_unit": "Application family; query/data families can support an explicitly separate input-generalization study."
+      },
+      "dependencies": [],
+      "deployment": {
+        "adapter": "corpus",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://www.sqlite.org/"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/sqlite.measurement.json"
+      ],
+      "extract": true,
+      "id": "sqlite",
+      "immutable_ref": "sha256:387e7f6cad4797b17848c07d453dc6606917bb356a6cfe5a3abafd38c240c71b",
+      "kind": "dataset",
+      "license_class": "open",
+      "license_id": "LicenseRef-SQLite-Public-Domain",
+      "mandatory": false,
+      "material_path": "corpora/sqlite",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "End-to-end SQL interpreter, B-tree, memory, branch and storage-independent compiler workload coverage.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The proprietary TH3 suite is not part of the public source archive.",
+        "Declare in-memory versus filesystem tests and separate SQLite result validation from filesystem noise.",
+        "Versioned SQL scripts, schema/data generators, PRAGMA settings and database bytes require independent locks."
+      ],
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": "387e7f6cad4797b17848c07d453dc6606917bb356a6cfe5a3abafd38c240c71b",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://www.sqlite.org/",
+        "https://www.sqlite.org/2026/sqlite-src-3540100.zip"
+      ],
+      "source_logical_bytes": 113150111,
+      "source_url": "https://www.sqlite.org/2026/sqlite-src-3540100.zip",
+      "title": "SQLite canonical source and tests",
+      "upstream": "https://www.sqlite.org/",
+      "version": "3.54.1"
+    },
+    "catalog_sha256": "663373378007a90b25a4cdf5a150b936b640e236f88404e94a0861d1404e8889"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "configure-make",
+    "install_argv": [
+      "/usr/bin/python3",
+      "{recipe}/build.py",
+      "--source",
+      "{source}",
+      "--build",
+      "{build}",
+      "--prefix",
+      "{prefix}",
+      "--jobs",
+      "{jobs}"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/sqlite3",
+      "{prefix}/bin/cpg-sqlite-api-probe",
+      "{prefix}/lib/libsqlite3.so.3.54.1",
+      "{prefix}/lib/libsqlite3.a",
+      "{prefix}/include/sqlite3.h",
+      "{prefix}/include/sqlite3ext.h",
+      "{prefix}/lib/pkgconfig/sqlite3.pc",
+      "{prefix}/share/man/man1/sqlite3.1",
+      "{prefix}/share/compiler-playground/sqlite/LICENSE.md",
+      "{prefix}/share/compiler-playground/sqlite/amalgamation/sqlite3.c",
+      "{prefix}/share/compiler-playground/sqlite/cpg_extension.so"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 14899528,
+      "extract": true,
+      "id": "sqlite",
+      "material_path": "corpora/sqlite",
+      "sha256": "387e7f6cad4797b17848c07d453dc6606917bb356a6cfe5a3abafd38c240c71b",
+      "strip_root": true,
+      "url": "https://www.sqlite.org/2026/sqlite-src-3540100.zip"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use cpg packages info sqlite and paths sqlite to select the intended installation. The host Python sqlite3 module may link another SQLite version and is not this resource.",
+      "Optionally add <prefix>/bin to PATH and <prefix>/lib/pkgconfig to PKG_CONFIG_PATH; use explicit library paths when compiling applications. No daemon or database initialization is required."
+    ],
+    "documentation": [
+      "https://www.sqlite.org/howtocompile.html",
+      "https://www.sqlite.org/testing.html",
+      "https://www.sqlite.org/2026/sqlite-src-3540100.zip",
+      "https://www.sqlite.org/src/info/555e07ef33f69a0957d24d8e555b702464a131d6f1607f4c3c1e4551e8e6ca76"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages info sqlite --json; cpg packages paths sqlite; cpg packages check sqlite --prefix <prefix>",
+        "description": "Inspect the exact selected version and functionality"
+      },
+      {
+        "command": "<prefix>/bin/sqlite3 -batch experiment.db \"CREATE TABLE IF NOT EXISTS runs(id INTEGER PRIMARY KEY, score REAL); PRAGMA integrity_check;\"",
+        "description": "Create a database and verify its structure"
+      },
+      {
+        "command": "<prefix>/bin/sqlite3 experiment.db \"PRAGMA journal_mode=WAL; SELECT json_extract('{\"score\":42}', '$.score');\"",
+        "description": "Use WAL and JSON SQL explicitly"
+      },
+      {
+        "command": "cpg packages pack packages/sqlite/package.json --definition --method source --source sqlite=/path/to/locked-archive --recipe packages/sqlite/recipe --output sqlite.source.cpgpkg.tar.gz",
+        "description": "Pack the canonical source/build view"
+      },
+      {
+        "command": "cpg packages pack packages/sqlite/material-profile.json --definition --method material --payload /path/to/verified-unpacked-source --output sqlite.material.cpgpkg.tar.gz",
+        "description": "Pack the same ID with every original raw material file"
+      },
+      {
+        "command": "cpg packages pack packages/sqlite/package.json --definition --method binary --payload <checked-prefix> --recipe packages/sqlite/recipe --relocatable --output sqlite.binary.cpgpkg.tar.gz",
+        "description": "Pack a checked installation for independent same-target prefixes"
+      }
+    ],
+    "locations": [
+      {
+        "label": "SQL shell and API probe",
+        "path": "{prefix}/bin",
+        "purpose": "sqlite3 and cpg-sqlite-api-probe; the latter exercises the selected shared library in a caller-provided temporary database."
+      },
+      {
+        "label": "Shared/static libraries",
+        "path": "{prefix}/lib",
+        "purpose": "libsqlite3.so.3.54.1, relative SONAME links and libsqlite3.a."
+      },
+      {
+        "label": "C API headers",
+        "path": "{prefix}/include",
+        "purpose": "sqlite3.h and sqlite3ext.h for applications and loadable extensions."
+      },
+      {
+        "label": "Developer linking metadata",
+        "path": "{prefix}/lib/pkgconfig/sqlite3.pc",
+        "purpose": "pcfiledir-relative development metadata."
+      },
+      {
+        "label": "Generated amalgamation",
+        "path": "{prefix}/share/compiler-playground/sqlite/amalgamation",
+        "purpose": "sqlite3.c/sqlite3.h/shell.c generated from the original canonical source; useful for compiler workloads without rerunning code generation."
+      },
+      {
+        "label": "Usage, licenses, configuration and real checks",
+        "path": "{prefix}/share/compiler-playground/sqlite",
+        "purpose": "Upstream README/build instructions, public-domain notice, Fossil identity, runnable checker, API probe and loadable-extension sources."
+      },
+      {
+        "label": "Complete canonical source for source installs",
+        "path": "{assets}/corpora/sqlite",
+        "purpose": "Unmodified canonical source, public tests, fuzz corpora, extension sources and references. Binary-only installation does not materialize this path."
+      },
+      {
+        "label": "Original material installation",
+        "path": "{prefix}",
+        "purpose": "With material-profile.json, this is the complete original unbuilt SQLite source tree rather than a bin/lib installation."
+      }
+    ],
+    "notes": [
+      "package.json adds explicit source/binary profiles; material-profile.json preserves the original same-ID definition byte for byte. Both are directly usable with pack --definition. Full source locks and metadata.catalog remain unchanged.",
+      "Native target: Ubuntu 24.04 x86_64, exact existing apt.build-essential=12.10ubuntu1 build and apt.python3=3.12.3-0ubuntu2.1 check prerequisites. No APT transaction is performed by this recipe; the native build environment/tool hashes are recorded separately.",
+      "Configuration: --all SQL extensions (including FTS5, RTREE, session, JSON/default math), shared/static C libraries, threadsafe default, loadable extensions, no readline/editline and no full Tcl extension. Bundled Jim Tcl performs canonical code generation.",
+      "Explicit no-zlib profile: this pinned upstream configure script has no public disable switch, so the recipe disables its single zlib autodetection branch in a private build copy with an exact-match guard. It does not edit original source assets or raw materials. Compressed ZIP/archive functions requiring zlib are not claimed. All upstream integration source remains available for developer-selected builds with exact extra dependencies.",
+      "Before installation the recipe runs upstream make sourcetest and the public fuzzcheck harness against the complete fuzzdata1.db corpus with a fixed PRNG seed and explicit per-case timeout. Full Tcl devtest/releasetest requires separately installed exact apt.tcl/apt.tcl-dev prerequisites and is not_run here. TH3 is separately distributed upstream and is not included or claimed.",
+      "Installed functional checks cover shared-library/Fossil identity, prepared statements/blobs, foreign keys, transaction rollback, WAL reader/writer behavior, online backup, FTS5/RTREE/JSON/session, CLI backup/dump/restore, uniqueness failure and a genuinely loaded custom extension.",
+      "Original material installs retain every file and report executable checks not_run. Binary relocation only covers fresh independent prefixes on the same declared target; it does not certify all architectures, a complete APT closure, OCI deployment, release testing or benchmark scores.",
+      "The official public fuzz harness has its own extra compile-time test flags. Its source qualification supplements, and does not replace, the separately executed installed-library checks. The bundled static archive is available; the functional C API probe selects the shared library."
+    ],
+    "summary": "SQLite 3.54.1 canonical-source SQL engine: CLI, checked shared C API, static archive, headers, generated amalgamation and loadable-extension example; full original source/test material remains under the same ID."
+  },
+  "version": "3.54.1"
+}
