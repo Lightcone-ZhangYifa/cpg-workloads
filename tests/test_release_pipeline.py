@@ -260,12 +260,12 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result["status"], "failed")
         self.assertIn("Root manifest does not exactly preserve every verified publication", result["errors"])
 
-    def test_foreign_worker_catalogs_are_not_reinterpreted(self):
+    def test_foreign_catalogs_are_not_reinterpreted(self):
         self.prepare_validation_root()
-        for relative in ("catalog/workers/worker-035.json", "resource-integrations/workers/worker-035.json"):
+        for relative in ("catalog/references/foreign-format.json", "resource-integrations/references/foreign-format.json"):
             path = self.root / relative
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text("different worker schema; intentionally not parsed")
+            path.write_text("unrelated schema; intentionally not parsed")
         self.assertEqual(validator.validate(self.root)["status"], "passed")
 
     def test_failed_download_does_not_remove_another_partial(self):
@@ -321,7 +321,7 @@ class PipelineTests(unittest.TestCase):
         if suffix == ".zip":
             with zipfile.ZipFile(target, "w") as archive:
                 archive.write(package, "objects/" + self.record["sha256"])
-                archive.writestr("cpg-worker-001.zip", package.read_bytes())
+                archive.writestr("excluded-input.zip", package.read_bytes())
                 archive.writestr("readme.txt", "ordinary text")
         else:
             with tarfile.open(target, "w:gz") as archive:
@@ -337,12 +337,12 @@ class PipelineTests(unittest.TestCase):
                     seen.append((importer.sha256(path), origin["member"]))
                     return {"sha256": importer.sha256(path)}
                 with patch.object(importer, "import_package", side_effect=inspect):
-                    result = importer.inspect_archive(archive, self.root, self.work / "rolling")
+                    result = importer.inspect_archive(archive, self.root, self.work / "rolling", exclude=("excluded-input.zip",))
                 self.assertEqual(len(result["packages"]), 1)
                 self.assertEqual(seen[0][0], self.record["sha256"])
                 self.assertEqual(list((self.work / "rolling").iterdir()), [])
                 if suffix == ".zip":
-                    self.assertEqual(result["worker_excluded"], 1)
+                    self.assertEqual(result["excluded_members"], 1)
 
     @unittest.skipUnless(shutil.which("zstd"), "zstd not installed on this runner")
     def test_zstd_outer_tar_is_read_without_an_expanded_tree(self):

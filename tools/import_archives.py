@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import copy
 from contextlib import contextmanager
+import fnmatch
 import hashlib
 import json
 import os
@@ -23,8 +24,13 @@ import zipfile
 
 
 FORMAT = "compiler_playground_resource_package"
-WORKER = re.compile(r"(?:workers?|wokers?)[-_ ]*\d", re.I)
 DECLARED_CPG = re.compile(r"\.cpg(?:pkg|recipe)(?:\.|$)", re.I)
+
+
+def is_excluded(name, patterns):
+    return any(fnmatch.fnmatchcase(name, pattern)
+               or fnmatch.fnmatchcase(PurePosixPath(name).name, pattern)
+               for pattern in patterns)
 
 
 def sha256(path):
@@ -432,14 +438,14 @@ def open_outer_tar(path):
             process.stdout.close()
 
 
-def inspect_archive(path, root, scratch, *, attempt_build=False, depth=0, origin=None, static_trust=False):
+def inspect_archive(path, root, scratch, *, attempt_build=False, depth=0, origin=None, static_trust=False, exclude=()):
     path, root, scratch = Path(path), Path(root), Path(scratch)
     root.mkdir(parents=True, exist_ok=True)
     scratch.mkdir(parents=True, exist_ok=True)
     checksum = sha256(path)
     origin = origin or {"archive": path.name, "sha256": checksum, "bytes": path.stat().st_size}
     receipt = {"archive": path.name, "sha256": checksum, "bytes": path.stat().st_size,
-               "packages": [], "online_recipes": [], "nonpackage_members": 0, "errors": [], "worker_excluded": 0}
+               "packages": [], "online_recipes": [], "nonpackage_members": 0, "errors": [], "excluded_members": 0}
 
     def consume(member_path, kind, source):
         try:
@@ -455,8 +461,8 @@ def inspect_archive(path, root, scratch, *, attempt_build=False, depth=0, origin
     def inspect_member(name, size, stream):
         normalized = name[2:] if name.startswith("./") else name
         safe_relative(normalized)
-        if WORKER.search(name):
-            receipt["worker_excluded"] += 1
+        if is_excluded(normalized, exclude):
+            receipt["excluded_members"] += 1
             return
         # sniff() consumes the stream. Spool only archive-like members so a
         # non-seekable outer TAR does not require extracting the whole tree.
@@ -490,10 +496,10 @@ def inspect_archive(path, root, scratch, *, attempt_build=False, depth=0, origin
                     "error": "Unsupported or invalid declared CPG archive format/schema"})
             elif depth < 3:
                 child = inspect_archive(local, root, scratch, attempt_build=attempt_build,
-                                        depth=depth + 1, origin=source, static_trust=static_trust)
+                                        depth=depth + 1, origin=source, static_trust=static_trust, exclude=exclude)
                 for key in ("packages", "online_recipes", "errors"):
                     receipt[key].extend(child[key])
-                for key in ("nonpackage_members", "worker_excluded"):
+                for key in ("nonpackage_members", "excluded_members"):
                     receipt[key] += child[key]
             else:
                 receipt["errors"].append({"member": name, "error": "Nested archive depth exceeds three"})
@@ -543,15 +549,18 @@ def main():
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--scratch", type=Path, required=True)
     parser.add_argument("--framework", type=Path)
+    parser.add_argument("--exclude", action="append", default=[], metavar="GLOB",
+                        help="Exclude matching archive names or member paths; repeat as needed")
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--attempt-build", action="store_true")
     mode.add_argument("--static-trust", action="store_true")
     args = parser.parse_args()
     if args.framework:
         sys.path.insert(0, str(args.framework.resolve() / "src"))
-    if WORKER.search(args.archive.name):
-        parser.error("Worker-numbered deliveries are outside this migration")
-    result = inspect_archive(args.archive, args.root, args.scratch, attempt_build=args.attempt_build, static_trust=args.static_trust)
+    if is_excluded(args.archive.name, args.exclude):
+        parser.error("Input archive matches an exclusion rule")
+    result = inspect_archive(args.archive, args.root, args.scratch, attempt_build=args.attempt_build,
+                             static_trust=args.static_trust, exclude=args.exclude)
     print(json.dumps({"archive": result["archive"], "status": result["status"],
                       "packages": len(result["packages"]), "online_recipes": len(result["online_recipes"]),
                       "errors": len(result["errors"]), "nonpackage_members": result["nonpackage_members"]}))

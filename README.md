@@ -21,8 +21,7 @@ Git stores unpacked package definitions, build recipes, functional checks, sourc
 | `resource-integrations/` | Historical maintainer drivers and evidence, retained with their original scope. |
 | `tools/`, `tests/` | Repository validation and publication infrastructure, plus resource-specific tests. |
 
-The initial migration covers deliveries made before numbered workers. Numbered-worker
-deliveries are assigned separately and are not silently included. The historical
+Each package retains its software identity, source locks, and provenance. The historical
 discovery denominator remains **1,862 resources**; discovery, available input, successful
 build, functional qualification, and publication are different measurements.
 
@@ -91,9 +90,12 @@ python tools/validate_repository.py
 python -m unittest discover -s tests -p 'test_release_pipeline.py' -v
 
 # Create explicit immutable publication plans from qualified artifacts.
-python tools/release.py plan --prefix preworker-20261105-apt --batch-size 500
-python tools/release.py build preworker-20261105-apt-001 --output /path/to/new-output
+python tools/release.py plan --prefix apt-wrappers-20261105 --batch-size 500
+python tools/release.py build apt-wrappers-20261105-001 --output /path/to/new-output
 ```
+
+Input scope is explicit: repeat `--exclude '<glob>'` to omit matching archive
+names or nested member paths. Receipts record these omissions as `excluded_members`.
 
 Publication is an explicit push to `publish/<plan-tag>` at the current `main`
 commit. GitHub Actions rebuilds the exact audited archive bytes, publishes a draft
