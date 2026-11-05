@@ -1,0 +1,353 @@
+{
+  "resource_id": "bpftrace",
+  "original_package_spec": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/bpftrace",
+          "--version"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "declared-001",
+        "kind": "version",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libelf1t64",
+        "apt.xz-utils",
+        "apt.zlib1g"
+      ]
+    },
+    "id": "bpftrace",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 191716284,
+        "build_peak_bytes": null,
+        "category": [
+          "Profiling",
+          "Tracing and instrumentation"
+        ],
+        "container_strategy": "Prestage the exact release payload and complete the documented dependencies before research. Host collectors or a feature-specific target launch profile preserve full collection functionality.",
+        "dependencies": [
+          "apt.libelf1t64",
+          "apt.xz-utils",
+          "apt.zlib1g"
+        ],
+        "deployment": {
+          "adapter": "copy",
+          "apt_dependencies": {
+            "dev": [
+              "xz-utils"
+            ],
+            "target": [
+              "libelf1t64",
+              "zlib1g"
+            ]
+          },
+          "build_argv": [],
+          "build_role": "dev",
+          "configure_argv": [],
+          "install_argv": [
+            "tar",
+            "-xf",
+            "{payload}",
+            "-C",
+            "{prefix}"
+          ],
+          "install_roles": [
+            "dev",
+            "target"
+          ],
+          "layout_evidence": "workspace-evidence/resources-v050/platform-research/bpftrace-layout-prefix.json",
+          "probe_requires_host": [
+            "host BTF or matching kernel headers",
+            "BPF syscall",
+            "tracefs",
+            "CAP_BPF/CAP_PERFMON or kernel-specific elevated collector profile"
+          ],
+          "smoke_argv": [
+            "{prefix}/bin/bpftrace",
+            "--version"
+          ],
+          "state": "recipe-described-not-executed",
+          "target_exports": [
+            {
+              "destination": "opt/research/selected/bpftrace",
+              "kind": "tree",
+              "required": true,
+              "role": "profiler",
+              "source": "{prefix}"
+            }
+          ],
+          "target_smoke_commands": [
+            [
+              "{prefix}/bin/bpftrace",
+              "--version"
+            ]
+          ]
+        },
+        "documentation": "https://bpftrace.org/docs/release_027/introduction",
+        "extract": false,
+        "id": "bpftrace",
+        "immutable_ref": "sha256:7f950a96358fd62ddc4d85c82cd153a8eaba96af6f275ac75228abc3e1b4a934",
+        "installed_bytes": null,
+        "kind": "url",
+        "license_class": "open",
+        "license_id": "Apache-2.0",
+        "mandatory": false,
+        "material_path": "payloads/bpftrace",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Trace CPU/kernel behavior, scheduler latency, syscalls, allocation and application probes with a standalone tool bundle.",
+        "qualification_gaps": [
+          "A physical target CPU, kernel, PMU and container launch profile must pass feature-specific collection probes; an installed executable is not full runtime qualification.",
+          "The reference deployment commands are not an executed container qualification."
+        ],
+        "redistributable": true,
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "7f950a96358fd62ddc4d85c82cd153a8eaba96af6f275ac75228abc3e1b4a934",
+        "size_basis": "Official GitHub release API exact asset size and SHA-256 digest; payload not downloaded in this audit.",
+        "size_evidence": "workspace-evidence/resources-v050/platform-research/bpftrace.json",
+        "source_evidence": [
+          "https://github.com/bpftrace/bpftrace/releases/tag/v0.27.0",
+          "https://bpftrace.org/docs/release_027/introduction"
+        ],
+        "source_url": "https://github.com/bpftrace/bpftrace/releases/download/v0.27.0/binary_tools_man-bundle-x86_64.tar.xz",
+        "title": "bpftrace CPU and kernel tracing",
+        "upstream": "https://github.com/bpftrace/bpftrace/releases/tag/v0.27.0",
+        "version": "0.27.0"
+      },
+      "catalog_sha256": "cc9cf9aaad3a93e135b06b908fab47209dee9de1f727d6d19660cc216a053ddb"
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "copy",
+      "apt_dependencies": {
+        "dev": [
+          "xz-utils"
+        ],
+        "target": [
+          "libelf1t64",
+          "zlib1g"
+        ]
+      },
+      "build_argv": [],
+      "build_role": "dev",
+      "configure_argv": [],
+      "install_argv": [
+        "tar",
+        "-xf",
+        "{payload}",
+        "-C",
+        "{prefix}"
+      ],
+      "install_roles": [
+        "dev",
+        "target"
+      ],
+      "layout_evidence": "workspace-evidence/resources-v050/platform-research/bpftrace-layout-prefix.json",
+      "probe_requires_host": [
+        "host BTF or matching kernel headers",
+        "BPF syscall",
+        "tracefs",
+        "CAP_BPF/CAP_PERFMON or kernel-specific elevated collector profile"
+      ],
+      "smoke_argv": [
+        "{prefix}/bin/bpftrace",
+        "--version"
+      ],
+      "state": "recipe-described-not-executed",
+      "target_exports": [
+        {
+          "destination": "opt/research/selected/bpftrace",
+          "kind": "tree",
+          "required": true,
+          "role": "profiler",
+          "source": "{prefix}"
+        }
+      ],
+      "target_smoke_commands": [
+        [
+          "{prefix}/bin/bpftrace",
+          "--version"
+        ]
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 191716284,
+        "extract": false,
+        "id": "bpftrace",
+        "material_path": "payloads/bpftrace",
+        "sha256": "7f950a96358fd62ddc4d85c82cd153a8eaba96af6f275ac75228abc3e1b4a934",
+        "strip_root": true,
+        "url": "https://github.com/bpftrace/bpftrace/releases/download/v0.27.0/binary_tools_man-bundle-x86_64.tar.xz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://bpftrace.org/docs/release_027/introduction"
+      ],
+      "examples": [
+        {
+          "command": "'{prefix}/bin/bpftrace' --version",
+          "description": "Run the recorded version check."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/payloads/bpftrace",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "Some capabilities require host conditions: host BTF or matching kernel headers; BPF syscall; tracefs; CAP_BPF/CAP_PERFMON or kernel-specific elevated collector profile.",
+        "Target-specific checks are retained in recipe.target_smoke_commands and must run in the declared target context."
+      ],
+      "summary": "Trace CPU/kernel behavior, scheduler latency, syscalls, allocation and application probes with a standalone tool bundle."
+    },
+    "version": "0.27.0"
+  },
+  "source_original": {
+    "bytes": 191716284,
+    "extract": false,
+    "id": "bpftrace",
+    "material_path": "payloads/bpftrace",
+    "sha256": "7f950a96358fd62ddc4d85c82cd153a8eaba96af6f275ac75228abc3e1b4a934",
+    "strip_root": true,
+    "url": "https://github.com/bpftrace/bpftrace/releases/download/v0.27.0/binary_tools_man-bundle-x86_64.tar.xz"
+  },
+  "original_pending_evidence": {
+    "baseline_provider": "material",
+    "build_cost": "not_measured",
+    "catalog_kind": "url",
+    "catalog_sha256": "cc9cf9aaad3a93e135b06b908fab47209dee9de1f727d6d19660cc216a053ddb",
+    "id": "bpftrace",
+    "next_action": "review_complete_material_closure_and_lifecycle",
+    "provider": "material",
+    "source_locks_sha256": "08f1c71f93dd351ab8d864716dfa669dd58e46eeda27536b539e85fac996560f",
+    "source_origin": {
+      "group": "GitHub",
+      "hosts": [
+        "github.com"
+      ],
+      "urls": [
+        "https://github.com/bpftrace/bpftrace/releases/download/v0.27.0/binary_tools_man-bundle-x86_64.tar.xz"
+      ]
+    },
+    "stages": {
+      "current_functional_profile": {
+        "status": "not_reviewed"
+      },
+      "current_material_availability_profile": {
+        "status": "not_covered"
+      },
+      "declared_checks": {
+        "checks": [
+          {
+            "id": "declared-001",
+            "kind": "version"
+          }
+        ],
+        "status": "declared"
+      },
+      "exact_input_integrity": {
+        "evidence": {
+          "bytes": 25687,
+          "path": "resource-integrations/v0200/inputs/run-2/resources/bpftrace.json",
+          "sha256": "e9161cd62acbb087264d4f4a5db201e6022dce79781ecfed4c35848710a8d48c"
+        },
+        "qualification_release": "0.20.0",
+        "scope": "All canonical source locks and complete regular archive members; no installation or function claim.",
+        "status": "verified"
+      },
+      "functional_profile_continuation_20261029": {
+        "status": "not_covered"
+      },
+      "functional_profile_v02110": {
+        "status": "not_covered"
+      },
+      "functional_profile_v02111": {
+        "status": "not_covered"
+      },
+      "functional_profile_v02112": {
+        "status": "not_covered"
+      },
+      "functional_profile_v02113": {
+        "status": "not_covered"
+      },
+      "functional_profile_v0219": {
+        "status": "not_covered"
+      },
+      "inherited_isolated_python_installation": {
+        "status": "not_covered"
+      },
+      "material_availability_profile_r02": {
+        "status": "not_covered"
+      },
+      "material_availability_profile_r03": {
+        "status": "not_covered"
+      },
+      "material_availability_profile_r04": {
+        "status": "not_covered"
+      },
+      "material_availability_profile_r05": {
+        "status": "not_covered"
+      },
+      "material_availability_profile_recovery_20261028": {
+        "status": "not_covered"
+      },
+      "material_profile_continuation_20261029": {
+        "status": "not_covered"
+      },
+      "material_profile_v02110": {
+        "status": "not_covered"
+      },
+      "material_profile_v02111": {
+        "status": "not_covered"
+      },
+      "material_profile_v02112": {
+        "status": "not_covered"
+      },
+      "material_profile_v02113": {
+        "status": "not_covered"
+      },
+      "material_profile_v0219": {
+        "status": "not_covered"
+      },
+      "native_functional_profile_recovery_20261028": {
+        "status": "not_covered"
+      },
+      "oci_deployment": {
+        "status": "not_run"
+      },
+      "physical_hardware_measurement": {
+        "status": "not_run"
+      },
+      "trusted_apt_wrapper": {
+        "status": "not_covered"
+      }
+    }
+  }
+}
