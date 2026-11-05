@@ -1,0 +1,45 @@
+{
+  "id": "lpm-libxml2-source",
+  "version": "2.13.6",
+  "source_subdir": "",
+  "cmake_options": [
+    "-DLIBXML2_WITH_PYTHON=OFF",
+    "-DLIBXML2_WITH_ICONV=OFF",
+    "-DLIBXML2_WITH_ICU=OFF",
+    "-DLIBXML2_WITH_LZMA=OFF",
+    "-DLIBXML2_WITH_ZLIB=OFF",
+    "-DLIBXML2_WITH_HTTP=OFF",
+    "-DLIBXML2_WITH_FTP=OFF",
+    "-DLIBXML2_WITH_PROGRAMS=ON",
+    "-DLIBXML2_WITH_READLINE=OFF"
+  ],
+  "test_options": [
+    "LIBXML2_WITH_TESTS"
+  ],
+  "minimum_ctest_count": 8,
+  "installed_tests": [
+    "runtest",
+    "testchar",
+    "testdict",
+    "testparser",
+    "testrecurse",
+    "testThreads"
+  ],
+  "consumer": "xml2_api.c",
+  "libraries": [
+    "xml2"
+  ],
+  "include_suffix": "libxml2",
+  "compiler": "gcc",
+  "standard": "c99",
+  "pkgconfig": "libxml-2.0",
+  "cmake_package": "libxml2",
+  "cmake_target": "LibXml2::LibXml2",
+  "unperformed": [
+    "external XML conformance corpora absent from the locked source",
+    "Python, iconv, ICU, compressed-input and network protocol backends",
+    "fuzzing campaigns",
+    "performance qualification",
+    "cross-platform or cross-ABI deployment"
+  ]
+}

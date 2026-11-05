@@ -1,0 +1,206 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "distribution-identity",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "installed-api-contract",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.numpy",
+      "py.packaging",
+      "py.protobuf"
+    ],
+    "system": []
+  },
+  "id": "py.tensorboardx",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 87510,
+      "category": [
+        "Python packages",
+        "Core research environment"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.numpy",
+        "py.packaging",
+        "py.protobuf"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/tensorboardX/"
+      ],
+      "id": "py.tensorboardx",
+      "immutable_ref": "sha256:c10b891d00af306537cb8b58a039b2ba41571f0da06f433a41c4ca8d6abe1373",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "wheels/tensorboardx-2.6.5-py3-none-any.whl",
+      "package_name": "tensorboardx",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "c10b891d00af306537cb8b58a039b2ba41571f0da06f433a41c4ca8d6abe1373",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/tensorboardX/2.6.5/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/87/0f/69fbab4c30b2f3a76e6de67585ea72a8eccf381751f5c0046b966fde9658/tensorboardx-2.6.5-py3-none-any.whl",
+      "title": "tensorboardX",
+      "upstream": "https://pypi.org/project/tensorboardX/2.6.5/",
+      "version": "2.6.5"
+    },
+    "catalog_sha256": "9b3ad36eb44ac50c721842ff6668b177154d10bad01fcaabe0e24d320248fdf7"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "tensorboardx",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 87510,
+      "extract": false,
+      "id": "py.tensorboardx",
+      "material_path": "wheels/tensorboardx-2.6.5-py3-none-any.whl",
+      "sha256": "c10b891d00af306537cb8b58a039b2ba41571f0da06f433a41c4ca8d6abe1373",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/87/0f/69fbab4c30b2f3a76e6de67585ea72a8eccf381751f5c0046b966fde9658/tensorboardx-2.6.5-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Invoke {prefix}/bin/python explicitly; this environment owns the distribution and its fixed dependency closure."
+    ],
+    "documentation": [
+      "https://tensorboard-pytorch.readthedocs.io/en/stable/tensorboard.html",
+      "https://pypi.org/project/tensorboardX/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -c 'from tensorboardX import SummaryWriter; writer=SummaryWriter('\"'\"'runs'\"'\"'); writer.add_scalar('\"'\"'compile/score'\"'\"',1.5,0); writer.close()'",
+        "description": "Use the selected installed resource."
+      },
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect the exact installed distribution."
+      },
+      {
+        "command": "cpg packages check py.tensorboardx --prefix {prefix} --kind functional",
+        "description": "Run the bounded package-specific functional checks."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/tensorboardx-2.6.5-py3-none-any.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "The check requires the exact distribution and an imported module inside the selected environment, then checks actual operations and error cases.",
+      "Qualification is bounded to the recipe's stated local cases, not every upstream test or optional backend. No remote service or data download is performed.",
+      "The wrapper contains metadata, hooks and checks; its locked wheel and dependency closure remain separately identified inputs.",
+      "The original metadata.catalog facts and source locks are retained. Execution evidence is recorded separately."
+    ],
+    "summary": "Local scalar/text event logging with verified framed protobuf files."
+  },
+  "version": "2.6.5"
+}

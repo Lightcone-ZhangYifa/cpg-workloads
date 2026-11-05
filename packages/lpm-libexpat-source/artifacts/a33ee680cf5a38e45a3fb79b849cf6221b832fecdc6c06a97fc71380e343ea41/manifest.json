@@ -1,0 +1,301 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 5735,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "57533f5b5522ed978413ecc60db11597781b7c64b5f1c0e4160cf8823687396a"
+    },
+    {
+      "bytes": 10005,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "ea1b38ffd7e553df94cd03902302833369a66372768ee4e922029802f1f0c373"
+    },
+    {
+      "bytes": 866,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/config.json",
+      "sha256": "5c65c8ec77af5e135767553b4afd3b5ddf37cd5a2677459d50d0b68c2f59180d"
+    },
+    {
+      "bytes": 3269,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/expat_api.c",
+      "sha256": "ff8cfbeeb0c2a2b7accf893657e82075f12247f4b19f1207a4ab53e345238b35"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 8419611,
+      "kind": "file",
+      "mode": 384,
+      "path": "sources/9315a380ee2fc7fa18416c29d58ea36f4514a98bf65759e4d1bf0f1fe4f1d305",
+      "sha256": "9315a380ee2fc7fa18416c29d58ea36f4514a98bf65759e4d1bf0f1fe4f1d305"
+    }
+  ],
+  "inventory_sha256": "4fd76672ecaef5164415560b3c7908d2c1ce8400932135108741984cb4e8cd7b",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "82f6320fbad3224c66990c23bbaaf9f3d70d10d64ae3ae32bbd2af782015fc2d",
+  "method": "source",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "upstream"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "lpm-libexpat-source-upstream",
+        "kind": "functional",
+        "requires_commands": [
+          "/usr/bin/python3",
+          "/usr/bin/gcc"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 900
+      },
+      {
+        "argv": [
+          "/usr/bin/python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--case",
+          "api"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "lpm-libexpat-source-api",
+        "kind": "functional",
+        "requires_commands": [
+          "/usr/bin/python3",
+          "/usr/bin/gcc"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 900
+      }
+    ],
+    "dependencies": {
+      "build": [
+        "apt.cmake",
+        "apt.ninja-build"
+      ],
+      "run": [],
+      "system": [
+        "apt.g++",
+        "apt.python3"
+      ]
+    },
+    "id": "lpm-libexpat-source",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 8419611,
+        "build_peak_bytes": null,
+        "category": [
+          "Correctness",
+          "Structured fuzzing dependencies"
+        ],
+        "container_strategy": "Materialize an immutable source tree; the parent mutator recipe copies it into a writable isolated build tree and preserves notices. This is not an independently installed system library.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "state": "immutable-local-build-dependency-source",
+          "target_exports": [],
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/libexpat/libexpat"
+        ],
+        "evidence_files": [
+          "workspace-evidence/community-v070/resource-audit/lpm-dependencies/git-refs.json",
+          "workspace-evidence/community-v070/resource-audit/lpm-dependencies/archive-measurements.json",
+          "workspace-evidence/community-v070/resource-audit/lpm-dependencies/http-headers/lpm-libexpat-source.json"
+        ],
+        "extract": true,
+        "id": "lpm-libexpat-source",
+        "immutable_ref": "2691aff4304a6d7e053199c205620136481b9dd1",
+        "installed_allocated_bytes": null,
+        "installed_bytes": null,
+        "kind": "source_supplement",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "material_path": "sources/lpm-libexpat-source",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Provide the exact version selected by libprotobuf-mutator v1.5 for its tests or instrumented examples, avoiding implicit ExternalProject network acquisition.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "The parent mutator's full-feature CMake build has not run in a complete prepared system dependency environment."
+        ],
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "9315a380ee2fc7fa18416c29d58ea36f4514a98bf65759e4d1bf0f1fe4f1d305",
+        "size_basis": "Complete measured HTTPS archive and regular-file logical source size; external dependencies and build outputs excluded.",
+        "size_evidence": "workspace-evidence/community-v070/resource-audit/lpm-dependencies/archive-measurements.json",
+        "source_evidence": [
+          "https://github.com/libexpat/libexpat",
+          "https://github.com/libexpat/libexpat/commit/2691aff4304a6d7e053199c205620136481b9dd1",
+          "https://codeload.github.com/libexpat/libexpat/tar.gz/2691aff4304a6d7e053199c205620136481b9dd1"
+        ],
+        "source_logical_bytes": 135972659,
+        "source_url": "https://codeload.github.com/libexpat/libexpat/tar.gz/2691aff4304a6d7e053199c205620136481b9dd1",
+        "title": "libexpat/libexpat source for libprotobuf-mutator tests and examples",
+        "upstream": "https://github.com/libexpat/libexpat",
+        "version": "R_2_6_4"
+      },
+      "catalog_sha256": "ecf5a1f1b3c352feeb75b1d15818763db2fb8a700a58d9e637e8b3f270f1788f"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "cmake",
+      "commands": [
+        [
+          "/usr/bin/python3",
+          "{recipe}/build.py",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "qualified": false,
+      "required_installed_paths": [
+        "{prefix}/lib/libexpat.a",
+        "{prefix}/lib/libexpat.so",
+        "{prefix}/share/compiler-playground/lpm-libexpat-source/profile.json"
+      ],
+      "state": "immutable-local-build-dependency-source",
+      "target_exports": [],
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 8419611,
+        "extract": true,
+        "id": "lpm-libexpat-source",
+        "material_path": "sources/lpm-libexpat-source",
+        "sha256": "9315a380ee2fc7fa18416c29d58ea36f4514a98bf65759e4d1bf0f1fe4f1d305",
+        "strip_root": true,
+        "url": "https://codeload.github.com/libexpat/libexpat/tar.gz/2691aff4304a6d7e053199c205620136481b9dd1"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/libexpat/libexpat"
+      ],
+      "examples": [
+        {
+          "command": "cpg packages check lpm-libexpat-source --kind functional",
+          "description": "Run installed functional checks"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Public headers",
+          "path": "{prefix}/include",
+          "purpose": "Headers for the selected configuration."
+        },
+        {
+          "label": "Shared and static libraries",
+          "path": "{prefix}/lib",
+          "purpose": "Independently installed libraries and CMake/pkg-config metadata."
+        },
+        {
+          "label": "Original source",
+          "path": "{prefix}/share/lpm-libexpat-source/source",
+          "purpose": "Complete unchanged source, licenses, original tests and fixtures."
+        },
+        {
+          "label": "Qualification profile",
+          "path": "{prefix}/share/compiler-playground/lpm-libexpat-source/profile.json",
+          "purpose": "Exact configured and executed scope."
+        }
+      ],
+      "notes": [
+        "Source and binary profiles retain the original material profile.",
+        "Binary relocation is qualified only on the stated Ubuntu 24.04 x86_64 ABI.",
+        "Full installed functional checks compile fresh consumers and require the C/C++ toolchain.",
+        "32-bit and wide-character Expat configurations",
+        "fuzzing campaigns",
+        "performance qualification",
+        "cross-platform or cross-ABI deployment"
+      ],
+      "summary": "Build and independently validate the locked lpm-libexpat-source libraries; original source remains available."
+    },
+    "version": "R_2_6_4"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "0a5127a5f242f19de5172886fad970e6d1c575417bf4b7d8198ab2d1b1b0e216",
+    "profile": "Complete source recipe and installed functional checks",
+    "source_locks": [
+      {
+        "bytes": 8419611,
+        "extract": true,
+        "id": "lpm-libexpat-source",
+        "material_path": "sources/lpm-libexpat-source",
+        "sha256": "9315a380ee2fc7fa18416c29d58ea36f4514a98bf65759e4d1bf0f1fe4f1d305",
+        "strip_root": true,
+        "url": "https://codeload.github.com/libexpat/libexpat/tar.gz/2691aff4304a6d7e053199c205620136481b9dd1"
+      }
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "lpm-libexpat-source",
+      "path": "sources/9315a380ee2fc7fa18416c29d58ea36f4514a98bf65759e4d1bf0f1fe4f1d305"
+    }
+  ]
+}
