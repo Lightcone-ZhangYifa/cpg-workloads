@@ -18,7 +18,7 @@ import shutil
 import subprocess
 import tarfile
 import tempfile
-from urllib.parse import urlparse
+from urllib.parse import urlparse, quote
 from urllib.request import urlopen
 
 from import_archives import (artifact_name, qualification_errors, qualification_logs,
@@ -381,7 +381,7 @@ def build_plan(tag, output, *, network):
         rows.append(repository_row(record, tag))
     manifest = {"schema_version": 1, "kind": "compiler_playground_package_repository", "packages": rows,
                 "release": {"tag": tag, "repository": REPOSITORY,
-                            "source_commit": os.environ.get("GITHUB_SHA"), "scope": "pre-worker deliveries"}}
+                            "source_commit": os.environ.get("GITHUB_SHA"), "scope": "historical workload deliveries"}}
     write_json(output / "manifest.json", manifest)
     assets.append(output / "manifest.json")
     (output / "SHA256SUMS").write_text("".join(f"{sha256(path)}  {path.name}\n" for path in sorted(assets)))
@@ -485,15 +485,24 @@ def publish(tag, output):
     notes.write_text(f"# {tag}\n\nReproduces {len(plan['artifacts'])} audited CPG artifacts from unpacked source templates.\n\n"
                      "Every published asset matches the previously verified complete SHA-256 and byte size. "
                      "APT wrappers are metadata-only and carry an explicit functional-test exemption. "
-                     "Other artifacts require a successful recorded build and functional check.\n\n"
+                     "Each artifact records its review scope; a static review does not claim a new build or functional run.\n\n"
                      "Use the pinned manifest with Compiler Playground's existing package manager. "
                      "This release does not claim unexecuted hardware or official benchmark qualification.\n")
     existing = gh("api", f"repos/{REPOSITORY}/releases/tags/{tag}", json_output=True, check=False)
+    if existing is None:
+        # GitHub does not resolve an unpublished draft through the tag endpoint.
+        pages = gh("api", "--paginate", "--slurp",
+                   f"repos/{REPOSITORY}/releases?per_page=100", json_output=True)
+        matches = [row for page in pages for row in page if row.get("tag_name") == tag]
+        if len(matches) > 1:
+            raise ValueError("Multiple releases use the requested tag")
+        existing = matches[0] if matches else None
     verify_release_commit(tag, commit, missing=True)
     if existing is None:
-        gh("release", "create", tag, "--repo", REPOSITORY, "--target", commit,
-           "--title", tag, "--notes-file", str(notes), "--draft")
-        existing = gh("api", f"repos/{REPOSITORY}/releases/tags/{tag}", json_output=True)
+        existing = gh("api", "--method", "POST", f"repos/{REPOSITORY}/releases",
+                      "-f", "tag_name=" + tag, "-f", "target_commitish=" + commit,
+                      "-f", "name=" + tag, "-f", "body=" + notes.read_text(),
+                      "-F", "draft=true", "-f", "make_latest=false", json_output=True)
     elif existing.get("target_commitish") != commit:
         raise ValueError("Existing release has a different source commit")
     if existing.get("tag_name") != tag:
@@ -506,9 +515,15 @@ def publish(tag, output):
     if len(expected) != len(assets):
         raise ValueError("Release asset filenames collide")
     verify_assets(by_name, expected, complete=not existing["draft"])
-    missing = [str(path) for path in assets if path.name not in by_name]
-    for offset in range(0, len(missing), 25):
-        gh("release", "upload", tag, "--repo", REPOSITORY, *missing[offset:offset + 25])
+    missing = [path for path in assets if path.name not in by_name]
+    upload_url = f"https://uploads.github.com/repos/{REPOSITORY}/releases/{existing['id']}/assets"
+    for number, path in enumerate(missing, 1):
+        uploaded_asset = gh("api", "--method", "POST", upload_url + "?name=" + quote(path.name, safe=""),
+                            "-H", "Content-Type: application/octet-stream", "--input", str(path),
+                            json_output=True)
+        verify_assets({path.name: uploaded_asset}, {path.name: expected[path.name]}, complete=True)
+        if number % 25 == 0 or number == len(missing):
+            print(json.dumps({"tag": tag, "uploaded": number, "total": len(missing)}), flush=True)
     actual = release_assets(existing["id"])
     verify_assets(actual, expected, complete=True)
     if existing["draft"]:
@@ -517,8 +532,9 @@ def publish(tag, output):
         main = gh("api", f"repos/{REPOSITORY}/git/ref/heads/main", json_output=True)["object"]["sha"]
         verify_publication_source(commit, main, tag)
         verify_release_commit(tag, commit, missing=True)
-        gh("release", "edit", tag, "--repo", REPOSITORY, "--draft=false", "--latest=false")
-    uploaded = gh("api", f"repos/{REPOSITORY}/releases/tags/{tag}", json_output=True)
+        gh("api", "--method", "PATCH", f"repos/{REPOSITORY}/releases/{existing['id']}",
+           "-F", "draft=false", "-f", "make_latest=false", json_output=True)
+    uploaded = gh("api", f"repos/{REPOSITORY}/releases/{existing['id']}", json_output=True)
     if uploaded["id"] != existing["id"] or uploaded.get("draft") is not False or not uploaded.get("published_at"):
         raise ValueError("Release has not been confirmed public")
     verify_release_commit(tag, commit)
@@ -539,7 +555,7 @@ def merge_manifest():
              "releases": releases, "online_recipes": [],
              "policy": {"git": "Unpacked definitions, build recipes, tests, provenance and manifests only",
                         "release": "Verified immutable artifacts; no silent fallback to untested variants",
-                        "historical_resource_denominator": 1862, "scope": "pre-worker delivery migration"}}
+                        "historical_resource_denominator": 1862, "scope": "historical workload delivery migration"}}
     write_json(ROOT / "manifest.json", value)
     return value
 
