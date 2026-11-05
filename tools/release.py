@@ -847,6 +847,8 @@ def plan_software(prefix, batch_size):
     if not re.fullmatch(r"[a-z0-9][a-z0-9._-]*", prefix) or not 1 <= batch_size <= 950:
         raise ValueError("Invalid release prefix or batch size")
     published, _ = published_rows()
+    published = {publication_key(row): row
+                 for row in [*published.values(), *published_variants()]}
     planned = set()
     selected = {key: row["sha256"] for key, row in published.items()}
     for path in sorted((ROOT / "release-plans").glob("*.json")):
@@ -854,7 +856,7 @@ def plan_software(prefix, batch_size):
         planned.update(value["artifacts"])
         for checksum in value["artifacts"]:
             record = checked_record(checksum)
-            key = identity(record)
+            key = publication_key(record)
             if key in selected and selected[key] != checksum:
                 raise ValueError("Different planned bytes share an immutable package identity; increment build")
             selected[key] = checksum
@@ -862,10 +864,10 @@ def plan_software(prefix, batch_size):
     records = sorted((checked_record(row["sha256"]) for row in records
                       if row.get("release_eligible") and row["method"] in {"wrapper", "source", "material", "binary"}
                       and row["sha256"] not in planned
-                      and not (identity(row) in published and published[identity(row)]["sha256"] == row["sha256"])),
+                      and not (publication_key(row) in published and published[publication_key(row)]["sha256"] == row["sha256"])),
                      key=lambda row: (row["id"], row["version"], row["build"], row["method"], row["sha256"]))
     for record in records:
-        key = identity(record)
+        key = publication_key(record)
         if key in selected and selected[key] != record["sha256"]:
             raise ValueError("Different artifact bytes share an immutable package identity; increment build")
         selected[key] = record["sha256"]

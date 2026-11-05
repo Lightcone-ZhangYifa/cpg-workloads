@@ -9,7 +9,7 @@ import sys
 from urllib.parse import urlparse
 
 from import_archives import safe_relative
-from release import (ROOT, artifact_name, digest, load_json, load_manifest, publication_errors,
+from release import (publication_key, ROOT, artifact_name, digest, load_json, load_manifest, publication_errors,
                      published_rows, published_recipes, published_variants, checked_variant_origin, row_asset_name, sha256,
                      verify_binary, verify_evidence, verify_material)
 
@@ -104,7 +104,7 @@ def validate(root=ROOT):
                 if checksum not in records or not records[checksum]["release_eligible"]:
                     raise ValueError("Plan references an absent or unqualified artifact")
                 row = records[checksum]
-                key = digest({name: row[name] for name in ("id", "version", "build", "method", "target")})
+                key = publication_key(row)
                 if key in planned_identities and planned_identities[key] != checksum:
                     raise ValueError("Different release plans assign different bytes to one immutable package identity")
                 planned_identities[key] = checksum
