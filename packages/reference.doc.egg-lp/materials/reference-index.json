@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "kind": "cpg_reference_index",
+  "resource_id": "reference.doc.egg-lp",
+  "title": "egg 共享感知 ILP 提取参考材料",
+  "version": "0.11.0",
+  "immutable_ref": "fb6167957beb5dd7c784121459e08ebd1ccb1a00",
+  "qualification": "material_only",
+  "summary_zh": "锁定 egg 0.11.0 的 LpExtractor、LpCostFunction、ILP 约束、共享 DAG 示例和求解器边界，供算法实现与审查时精确查阅。",
+  "entries": [
+    {
+      "id": "egg.node-cost",
+      "title": "LpCostFunction / node_cost",
+      "path": "source/src/lp_extract.rs",
+      "line_start": 11,
+      "line_end": 24,
+      "anchor": "pub trait LpCostFunction",
+      "anchor_occurrence": 0,
+      "file_sha256": "445df17fa01de2198ea78bd92e512b95821b4146eac5519a029eb1a3844c88b5",
+      "selection_sha256": "2caefdc3f171c29eef621f6605b8a942af8257ff653a13dc72bd7f40ebe0e2c3",
+      "explanation_zh": "每个 e-node 的标量成本接口；AstSize 实现取 1。成本由调用方提供，不能直接解释为真实机器运行时间。",
+      "leaf_ids": [
+        "O04.L08"
+      ],
+      "search_terms": [
+        "cost",
+        "成本"
+      ],
+      "evidence_kind": "pinned_upstream_material",
+      "upstream_functional_status": "not_run"
+    },
+    {
+      "id": "egg.sharing-example",
+      "title": "共享 DAG 与树成本的不同选择",
+      "path": "source/src/lp_extract.rs",
+      "line_start": 39,
+      "line_end": 60,
+      "anchor": "/// # Example",
+      "anchor_occurrence": 0,
+      "file_sha256": "445df17fa01de2198ea78bd92e512b95821b4146eac5519a029eb1a3844c88b5",
+      "selection_sha256": "0ca90bc0e242935070cbdd12235b0058eaf350feeae3dbc93ec1d8a88d97f31e",
+      "explanation_zh": "官方示例用重复 x 解释共享只计一次的行为；这里保存原文，未运行示例。",
+      "leaf_ids": [
+        "O04.L08"
+      ],
+      "search_terms": [
+        "DAG",
+        "共享",
+        "AstSize"
+      ],
+      "evidence_kind": "pinned_upstream_material",
+      "upstream_functional_status": "not_run"
+    },
+    {
+      "id": "egg.backend-contract",
+      "title": "LP backend 及依赖要求",
+      "path": "source/src/lp_extract.rs",
+      "line_start": 61,
+      "line_end": 95,
+      "anchor": "/// # Configuring the LP backend",
+      "anchor_occurrence": 0,
+      "file_sha256": "445df17fa01de2198ea78bd92e512b95821b4146eac5519a029eb1a3844c88b5",
+      "selection_sha256": "0e4f5ab8207f989ff88082fd4204902c60d6816f6e9282fe38009177c1b951ed",
+      "explanation_zh": "需要启用 lp 与 good_lp solver feature；CBC 是默认后端。原样保留上游仍写 0.10 的 Cargo 示例，未把它当作此包的依赖锁。",
+      "leaf_ids": [
+        "O04.L08"
+      ],
+      "search_terms": [
+        "CBC",
+        "HiGHS",
+        "good_lp",
+        "lp"
+      ],
+      "evidence_kind": "pinned_upstream_material",
+      "upstream_functional_status": "not_run"
+    },
+    {
+      "id": "egg.constructor",
+      "title": "LpExtractor::new",
+      "path": "source/src/lp_extract.rs",
+      "line_start": 119,
+      "line_end": 142,
+      "anchor": "pub fn new<CF>",
+      "anchor_occurrence": 0,
+      "file_sha256": "445df17fa01de2198ea78bd92e512b95821b4146eac5519a029eb1a3844c88b5",
+      "selection_sha256": "4393fc44322917b8194bc07cfe69a4483a84db1965636c62765da34781249dc0",
+      "explanation_zh": "在给定 e-graph 上预计算节点成本和循环节点集合。",
+      "leaf_ids": [
+        "O04.L08"
+      ],
+      "search_terms": [
+        "LpExtractor",
+        "new"
+      ],
+      "evidence_kind": "pinned_upstream_material",
+      "upstream_functional_status": "not_run"
+    },
+    {
+      "id": "egg.single-and-multiple-roots",
+      "title": "单根、多根和超时入口",
+      "path": "source/src/lp_extract.rs",
+      "line_start": 148,
+      "line_end": 169,
+      "anchor": "pub fn solve(&mut self",
+      "anchor_occurrence": 0,
+      "file_sha256": "445df17fa01de2198ea78bd92e512b95821b4146eac5519a029eb1a3844c88b5",
+      "selection_sha256": "26d0b416800df3f4a9c88bc047d28673c6df0deb88d1d7f6297cd902798e4008",
+      "explanation_zh": "solve / solve_with / solve_with_timeout 最终进入多根提取。多根允许共同子表达式共享。",
+      "leaf_ids": [
+        "O04.L08"
+      ],
+      "search_terms": [
+        "solve",
+        "solve_multiple",
+        "root"
+      ],
+      "evidence_kind": "pinned_upstream_material",
+      "upstream_functional_status": "not_run"
+    },
+    {
+      "id": "egg.ilp-variables",
+      "title": "ILP 二进制变量和循环过滤",
+      "path": "source/src/lp_extract.rs",
+      "line_start": 172,
+      "line_end": 199,
+      "anchor": "fn build_ilp_model<S:",
+      "anchor_occurrence": 0,
+      "file_sha256": "445df17fa01de2198ea78bd92e512b95821b4146eac5519a029eb1a3844c88b5",
+      "selection_sha256": "81e37fda104d41504cc211ce93bdfcea4ec0f0166156a61a534ad2867faff106",
+      "explanation_zh": "每个 e-class 有 active 变量，每个候选节点有选择变量；循环节点按实现提前禁用。最优性应限定到实际构造的模型。",
+      "leaf_ids": [
+        "O04.L08"
+      ],
+      "search_terms": [
+        "ILP",
+        "binary",
+        "cycle"
+      ],
+      "evidence_kind": "pinned_upstream_material",
+      "upstream_functional_status": "not_run"
+    },
+    {
+      "id": "egg.ilp-objective",
+      "title": "ILP 目标函数",
+      "path": "source/src/lp_extract.rs",
+      "line_start": 201,
+      "line_end": 217,
+      "anchor": "// Objective: minimize",
+      "anchor_occurrence": 0,
+      "file_sha256": "445df17fa01de2198ea78bd92e512b95821b4146eac5519a029eb1a3844c88b5",
+      "selection_sha256": "e62955d1c391af6a8d78caf658fcb2bd697874a99a21215228117dcaa0592b89",
+      "explanation_zh": "目标是所有被选节点的 cost × active 之和，避免按树展开重复计共享子式。",
+      "leaf_ids": [
+        "O04.L08"
+      ],
+      "search_terms": [
+        "objective",
+        "cost",
+        "DAG"
+      ],
+      "evidence_kind": "pinned_upstream_material",
+      "upstream_functional_status": "not_run"
+    },
+    {
+      "id": "egg.ilp-constraints",
+      "title": "ILP 选择、子节点和根约束",
+      "path": "source/src/lp_extract.rs",
+      "line_start": 218,
+      "line_end": 262,
+      "anchor": "fn add_constraints<S:",
+      "anchor_occurrence": 0,
+      "file_sha256": "445df17fa01de2198ea78bd92e512b95821b4146eac5519a029eb1a3844c88b5",
+      "selection_sha256": "a368c6a46ac2d615c1f902a99f3d9261758b0a6127532fe8b9c40a77b6f37b86",
+      "explanation_zh": "活跃 e-class 选择恰好一个 e-node；选择父节点要求子 e-class 活跃；输入根被约束为活跃。",
+      "leaf_ids": [
+        "O04.L08"
+      ],
+      "search_terms": [
+        "constraint",
+        "root",
+        "active"
+      ],
+      "evidence_kind": "pinned_upstream_material",
+      "upstream_functional_status": "not_run"
+    },
+    {
+      "id": "egg.solution-extraction",
+      "title": "从 ILP 解恢复 RecExpr",
+      "path": "source/src/lp_extract.rs",
+      "line_start": 264,
+      "line_end": 306,
+      "anchor": "fn extract_solution<S:",
+      "anchor_occurrence": 0,
+      "file_sha256": "445df17fa01de2198ea78bd92e512b95821b4146eac5519a029eb1a3844c88b5",
+      "selection_sha256": "24312daa50abc527802fe6e311072245aab0000d3b9b99f83f93762e8b1a9453",
+      "explanation_zh": "根据选择变量重建共享表达式，并检查输出为 DAG；不是外部程序语义证明。",
+      "leaf_ids": [
+        "O04.L08"
+      ],
+      "search_terms": [
+        "RecExpr",
+        "extract",
+        "DAG"
+      ],
+      "evidence_kind": "pinned_upstream_material",
+      "upstream_functional_status": "not_run"
+    },
+    {
+      "id": "egg.status-without-timeout",
+      "title": "求解状态与最优性",
+      "path": "source/src/lp_extract.rs",
+      "line_start": 309,
+      "line_end": 336,
+      "anchor": "pub fn solve_multiple_with<S:",
+      "anchor_occurrence": 0,
+      "file_sha256": "445df17fa01de2198ea78bd92e512b95821b4146eac5519a029eb1a3844c88b5",
+      "selection_sha256": "b36e76f7d4f53a167ec3e550b9c94df20eaada486d9ce124a724591eb0488f52",
+      "explanation_zh": "实现区分 Optimal、TimeLimit、GapLimit；后两者不支持无条件最优性结论。",
+      "leaf_ids": [
+        "O04.L08"
+      ],
+      "search_terms": [
+        "Optimal",
+        "TimeLimit",
+        "GapLimit"
+      ],
+      "evidence_kind": "pinned_upstream_material",
+      "upstream_functional_status": "not_run"
+    },
+    {
+      "id": "egg.status-timeout",
+      "title": "超时版本的边界",
+      "path": "source/src/lp_extract.rs",
+      "line_start": 341,
+      "line_end": 375,
+      "anchor": "pub fn solve_multiple_with_timeout<S:",
+      "anchor_occurrence": 0,
+      "file_sha256": "445df17fa01de2198ea78bd92e512b95821b4146eac5519a029eb1a3844c88b5",
+      "selection_sha256": "7a8bd9d0baed19bbf753d7cde42bfa32e5466a39a3d5b1cd974c48ce0f9b4e11",
+      "explanation_zh": "实际求解器必须实现 WithTimeLimit；返回表达式不代表已证明最优。",
+      "leaf_ids": [
+        "O04.L08"
+      ],
+      "search_terms": [
+        "timeout",
+        "WithTimeLimit",
+        "最优"
+      ],
+      "evidence_kind": "pinned_upstream_material",
+      "upstream_functional_status": "not_run"
+    },
+    {
+      "id": "egg.cycle-detection",
+      "title": "循环检测具体实现",
+      "path": "source/src/lp_extract.rs",
+      "line_start": 380,
+      "line_end": 412,
+      "anchor": "fn find_cycles<L, N>",
+      "anchor_occurrence": 0,
+      "file_sha256": "445df17fa01de2198ea78bd92e512b95821b4146eac5519a029eb1a3844c88b5",
+      "selection_sha256": "4c32a94db65e4d595dfa16ac4f735f55449791b51f40a4485432e5743fd0fb7d",
+      "explanation_zh": "基于遍历颜色标记禁用形成回边的候选节点；材料没有验证这种剪枝对所有 e-graph 的完备性。",
+      "leaf_ids": [
+        "O04.L08"
+      ],
+      "search_terms": [
+        "cycles",
+        "completeness"
+      ],
+      "evidence_kind": "pinned_upstream_material",
+      "upstream_functional_status": "not_run"
+    },
+    {
+      "id": "egg.feature-gate",
+      "title": "Cargo lp feature",
+      "path": "source/Cargo.toml",
+      "line_start": 122,
+      "line_end": 137,
+      "anchor": "[features]",
+      "anchor_occurrence": 0,
+      "file_sha256": "3b00a0a6c878672b6edc90af3a4c009ac0b39ddbc14decbac6d89458693f31a6",
+      "selection_sha256": "f936d8d67a5cd7dbd3a05e5b8d1f23191416092aa79db7184eabc30c958f9d85",
+      "explanation_zh": "锁定原包 manifest；运行依赖闭包另属工具接入任务，当前仅材料。",
+      "leaf_ids": [
+        "O04.L08"
+      ],
+      "search_terms": [
+        "Cargo",
+        "feature"
+      ],
+      "evidence_kind": "pinned_upstream_material",
+      "upstream_functional_status": "not_run"
+    }
+  ]
+}

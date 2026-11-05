@@ -1,0 +1,158 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "reference.doc.egg-lp-material",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 90
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "reference.doc.egg-lp",
+  "metadata": {
+    "entity_kind": "reference_asset",
+    "immutable_ref": "fb6167957beb5dd7c784121459e08ebd1ccb1a00",
+    "license": "MIT",
+    "material_only": true,
+    "original_qualification": {
+      "current_artifact_execution": "not_run",
+      "dataset": null,
+      "functional": null,
+      "material": true
+    },
+    "publication_license": {
+      "license_class": "open",
+      "license_id": "MIT",
+      "redistributable": true,
+      "scope": "Pinned upstream reference/source content with original notices, plus MIT-licensed original CPG integration."
+    },
+    "publication_policy": {
+      "build_check": "not_run",
+      "formal_qualification_changed": false,
+      "functional": "not_run",
+      "review_policy": "static-trust-v1"
+    },
+    "record_id": "reference.doc.egg-lp",
+    "tool_functional_status": "not_run",
+    "upstream_family_increment": 0
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "build_dependency_closure_complete": false,
+    "material_archive_complete": true,
+    "native_execution_qualified": false,
+    "qualification_scope": "static reference material only; no upstream execution",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/reference-index.json",
+      "{prefix}/README.zh.txt"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_complete": true,
+    "source_closure_scope": "complete locked archive material; executable dependency closure explicitly not asserted"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 122598,
+      "extract": false,
+      "id": "egg-0.11.0.crate",
+      "material_path": "upstream/egg-0.11.0.crate",
+      "sha256": "dd40cfd4196d7a8f882ace95d623d4d6734588e502b4e188675a7c2f55eb4fb4",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/egg/egg-0.11.0.crate"
+    },
+    {
+      "bytes": 54027,
+      "extract": false,
+      "id": "lp-extractor-0.11.0.html",
+      "material_path": "upstream/lp-extractor-0.11.0.html",
+      "sha256": "6f69c80f05aa2efbf27755af70c54c023ed6cce4f8dd9dbe3210758995e10e95",
+      "strip_root": false,
+      "url": "https://docs.rs/egg/0.11.0/egg/struct.LpExtractor.html"
+    },
+    {
+      "bytes": 24782,
+      "extract": false,
+      "id": "lp-cost-function-0.11.0.html",
+      "material_path": "upstream/lp-cost-function-0.11.0.html",
+      "sha256": "16cb155742baa171283a4034bc8a85ab7977fa68a4a5d3f8d60b97ca8e0a2199",
+      "strip_root": false,
+      "url": "https://docs.rs/egg/0.11.0/egg/trait.LpCostFunction.html"
+    },
+    {
+      "bytes": 42320,
+      "extract": false,
+      "id": "crate-metadata.json",
+      "material_path": "upstream/crate-metadata.json",
+      "sha256": "2292240031f6e0d2a50af35633785d99e9180ceb55b371f1f22b44887975329a",
+      "strip_root": false,
+      "url": "https://crates.io/api/v1/crates/egg"
+    },
+    {
+      "bytes": 8247,
+      "extract": false,
+      "id": "tags.json",
+      "material_path": "upstream/tags.json",
+      "sha256": "898bfed185ae3400ad532f8c467800bd775bdb37a0c5d72a0d0206bd14e373af",
+      "strip_root": false,
+      "url": "https://api.github.com/repos/egraphs-good/egg/tags?per_page=20"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "debian",
+    "distribution_version": "13",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://docs.rs/egg/latest/egg/struct.LpExtractor.html"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/tools/reference.py verify",
+        "description": "Verify material and locators"
+      },
+      {
+        "command": "python3 -B {prefix}/tools/reference.py search sketch",
+        "description": "Search reference index"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Offline source and chapter index",
+        "path": "{prefix}/readers/index.html",
+        "purpose": "Exact local chapter and source-symbol navigation"
+      }
+    ],
+    "notes": [
+      "本包不构建 egg，不安装 CBC/HiGHS/good_lp，也不运行求解器。0.11.0 文档中的 Cargo 示例仍写 0.10，原文保留；如实施应按锁定版本另行审查。超时或 gap 限制下的可行解不等于全局最优；最优性仅针对给定 e-graph、节点成本和实际 ILP 模型。",
+      "This material build was statically reviewed and packaged only; installation, reader checks and upstream execution were not run."
+    ],
+    "summary": "锁定 egg 0.11.0 的 LpExtractor、LpCostFunction、ILP 约束、共享 DAG 示例和求解器边界，供算法实现与审查时精确查阅。"
+  },
+  "version": "0.11.0"
+}
