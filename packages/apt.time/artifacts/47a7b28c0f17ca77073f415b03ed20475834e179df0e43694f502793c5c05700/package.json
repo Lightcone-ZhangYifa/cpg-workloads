@@ -1,0 +1,188 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/time",
+        "--version"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "gnu-time-version",
+      "kind": "version",
+      "requires_commands": [
+        "/usr/bin/time"
+      ],
+      "stdout_regex": "GNU Time",
+      "timeout_seconds": 15
+    },
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "resource-accounting-and-exit-status",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "/usr/bin/time"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 60
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6"
+    ]
+  },
+  "id": "apt.time",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 45246,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/time"
+      ],
+      "id": "apt.time",
+      "immutable_ref": "sha256:abe09ee9806b336cc255c013cc726b39cbf9d56ff9dc7c2acff5762ab0f07be8",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 126,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/time_1.9-0.2build1_amd64.deb",
+      "package_name": "time",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "GNU time program for measuring CPU resource usage",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "abe09ee9806b336cc255c013cc726b39cbf9d56ff9dc7c2acff5762ab0f07be8",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/t/time/time_1.9-0.2build1_amd64.deb",
+      "title": "time",
+      "upstream": "https://www.gnu.org/software/time",
+      "version": "1.9-0.2build1"
+    },
+    "catalog_sha256": "45e47ea0e72b10225fdae5122363b46e4947260dad7095057d8088d157e755a5"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "time",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 45246,
+      "extract": false,
+      "id": "apt.time",
+      "material_path": "apt/time_1.9-0.2build1_amd64.deb",
+      "sha256": "abe09ee9806b336cc255c013cc726b39cbf9d56ff9dc7c2acff5762ab0f07be8",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/time/time_1.9-0.2build1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Invoke /usr/bin/time explicitly; shell time keywords have different options and output."
+    ],
+    "documentation": [
+      "https://www.gnu.org/software/time/manual/time.pdf",
+      "https://packages.ubuntu.com/noble/time"
+    ],
+    "examples": [
+      {
+        "command": "/usr/bin/time -v -o resource-usage.txt ./program",
+        "description": "Write verbose resource accounting to a separate file while preserving program stdout."
+      },
+      {
+        "command": "/usr/bin/time -f 'wall_seconds=%e user_seconds=%U system_seconds=%S max_rss_kib=%M exit=%x' -o resource-usage.txt ./program",
+        "description": "Write selected measurements with explicit units and the child exit code."
+      }
+    ],
+    "locations": [
+      {
+        "label": "GNU time",
+        "path": "/usr/bin/time",
+        "purpose": "External GNU time executable managed by APT."
+      }
+    ],
+    "notes": [
+      "On Linux, %M is maximum resident set size in KiB. Timing/resource samples are auxiliary observations and do not replace an official benchmark protocol.",
+      "The functional check runs allocating Python children exiting 0 and 7, validates resource fields and confirms both child stdout and exit status are preserved.",
+      "Some distribution builds print UNKNOWN as their upstream GNU time version; the exact Ubuntu package version and archive hash remain the package identity."
+    ],
+    "summary": "Measure child wall time, CPU time and peak resident memory with GNU time; preserve the child exit status for experiment diagnostics."
+  },
+  "version": "1.9-0.2build1"
+}

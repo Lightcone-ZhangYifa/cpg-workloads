@@ -1,0 +1,238 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/patchelf",
+        "--version"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "patchelf-version",
+      "kind": "version",
+      "requires_paths": [
+        "{prefix}/bin/patchelf"
+      ],
+      "stdout_regex": "^patchelf 0\\.18\\.0\\s*$",
+      "timeout_seconds": 15
+    },
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--tool",
+        "{prefix}/bin/patchelf",
+        "--work-dir",
+        "{build}/functional",
+        "--expected-version",
+        "0.18.0"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "elf-loader-edit-roundtrip",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "cc"
+      ],
+      "requires_paths": [
+        "{prefix}/bin/patchelf"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libgcc-s1",
+      "apt.libstdc++6"
+    ]
+  },
+  "id": "apt.patchelf",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libstdc++6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 106300,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/patchelf"
+      ],
+      "id": "apt.patchelf",
+      "immutable_ref": "sha256:962a43e33cd56061522554898557a038ccbb8aa4e1e0f421b2d6f6adf1f80c60",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 273,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/patchelf_0.18.0-1.1build1_amd64.deb",
+      "package_name": "patchelf",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "modify properties of ELF executables",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "962a43e33cd56061522554898557a038ccbb8aa4e1e0f421b2d6f6adf1f80c60",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/patchelf/patchelf_0.18.0-1.1build1_amd64.deb",
+      "title": "patchelf",
+      "upstream": "https://nixos.org/patchelf.html",
+      "version": "0.18.0-1.1build1"
+    },
+    "catalog_sha256": "2f94f3d51454f77128ca339b139dfa23e95f84fd8aedf90ec1fef46996afb134"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "patchelf",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 106300,
+      "extract": false,
+      "id": "apt.patchelf",
+      "material_path": "apt/patchelf_0.18.0-1.1build1_amd64.deb",
+      "sha256": "962a43e33cd56061522554898557a038ccbb8aa4e1e0f421b2d6f6adf1f80c60",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/patchelf/patchelf_0.18.0-1.1build1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "No shell activation is required for an APT installation; use /usr/bin/patchelf.",
+      "The functional check needs Python 3 and a working C compiler named cc. It builds a private executable and shared library and runs each edited variant."
+    ],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/patchelf",
+      "https://github.com/NixOS/patchelf",
+      "https://github.com/NixOS/patchelf/blob/0.18.0/README.md"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -L {package_name}",
+        "description": "List the files registered by the system package manager."
+      },
+      {
+        "command": "patchelf --print-interpreter ./program\npatchelf --print-needed ./program\npatchelf --print-rpath ./program",
+        "description": "Inspect the dynamic loader and direct shared-library names before changing a binary."
+      },
+      {
+        "command": "patchelf --set-rpath '$ORIGIN/../lib' ./bin/program",
+        "description": "Use a library directory relative to the executable; single quotes preserve the literal $ORIGIN token."
+      },
+      {
+        "command": "patchelf --replace-needed libold.so libnew.so ./program",
+        "description": "Replace one DT_NEEDED entry after arranging the compatible replacement library."
+      },
+      {
+        "command": "patchelf --print-soname ./libexample.so",
+        "description": "Read the declared identity of a shared library."
+      },
+      {
+        "command": "cpg packages check apt.patchelf --kind functional",
+        "description": "Run loader-failure, RUNPATH, relocation, NEEDED and SONAME checks on private fixtures."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/apt/patchelf_0.18.0-1.1build1_amd64.deb",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "System package files",
+        "path": "/var/lib/dpkg/info/patchelf.list",
+        "purpose": "Ask dpkg-query -L for the actual installed file list, including multiarch packages."
+      },
+      {
+        "label": "ELF editing command",
+        "path": "{prefix}/bin/patchelf",
+        "purpose": "Inspect or modify ELF loader metadata; pass the specific executable or shared library path."
+      },
+      {
+        "label": "Manual page",
+        "path": "{prefix}/share/man/man1/patchelf.1.gz",
+        "purpose": "Installed command options; read with man patchelf."
+      },
+      {
+        "label": "Package notices",
+        "path": "{prefix}/share/doc/patchelf",
+        "purpose": "Distribution copyright and package documentation."
+      }
+    ],
+    "notes": [
+      "Ubuntu 0.18.0-1.1build1 is the pinned distribution package; patchelf --version reports upstream 0.18.0.",
+      "Qualification covers generated x86_64 ELF fixtures. Editing metadata is not proof that an arbitrary binary remains runnable: execute the edited program with its intended libraries and deployment layout.",
+      "The check verifies two expected missing-library failures and four successful execution variants, including a moved directory tree and a renamed DT_NEEDED dependency.",
+      "The wrapper delegates installation/removal to APT. Querying resources and running these private-file checks do not themselves perform an APT transaction."
+    ],
+    "summary": "Inspect and edit ELF dynamic-loader metadata: origin-relative RPATH/RUNPATH, DT_NEEDED shared-library names, interpreter path, and shared-library SONAME."
+  },
+  "version": "0.18.0-1.1build1"
+}

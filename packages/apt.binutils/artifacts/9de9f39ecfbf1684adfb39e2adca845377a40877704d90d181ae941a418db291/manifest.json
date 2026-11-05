@@ -1,0 +1,286 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 10103,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "a591fab79454bc841c22e2459f5138cc56e89a27b7e7b7156f17120dc217a537"
+    }
+  ],
+  "inventory_sha256": "d72e8f465fa45666ceb4fee5ac724e4d6c89607f5da3d40ae6dfc25200eed27b",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "cc54da9e97badbbcd503f6903c28dab37db8f787ef08df3a29ddc3f48fe504ff",
+  "method": "wrapper",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/readelf",
+          "--version"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "gnu-binutils-version",
+        "kind": "version",
+        "requires_paths": [
+          "{prefix}/bin/readelf"
+        ],
+        "stdout_regex": "GNU readelf .*2\\.42(?:\\s|$)",
+        "timeout_seconds": 15
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--work-dir",
+          "{build}/functional",
+          "--expected-version",
+          "2.42"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "elf-debug-archive-roundtrip",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "cc"
+        ],
+        "requires_paths": [
+          "{prefix}/bin/readelf",
+          "{prefix}/bin/nm",
+          "{prefix}/bin/objdump",
+          "{prefix}/bin/addr2line",
+          "{prefix}/bin/ar",
+          "{prefix}/bin/objcopy",
+          "{prefix}/bin/as",
+          "{prefix}/bin/ld",
+          "/lib64/ld-linux-x86-64.so.2"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.binutils-common",
+        "apt.binutils-x86-64-linux-gnu",
+        "apt.libbinutils"
+      ]
+    },
+    "id": "apt.binutils",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.binutils-common",
+          "apt.binutils-x86-64-linux-gnu",
+          "apt.libbinutils"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 18154,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/binutils"
+        ],
+        "id": "apt.binutils",
+        "immutable_ref": "sha256:b3b5a84181a38fd191820b2cdcc1a3eeb1cd6333ad472f2092f96e81047e9c74",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 161,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/binutils_2.42-4ubuntu2.10_amd64.deb",
+        "package_name": "binutils",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "GNU assembler, linker and binary utilities",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "b3b5a84181a38fd191820b2cdcc1a3eeb1cd6333ad472f2092f96e81047e9c74",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils_2.42-4ubuntu2.10_amd64.deb",
+        "title": "binutils",
+        "upstream": "https://www.gnu.org/software/binutils/",
+        "version": "2.42-4ubuntu2.10"
+      },
+      "catalog_sha256": "3be93ca9e78d083717a4ce62686c8ff562e67d5e7226a6690191b8ad1b2586fb"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "binutils",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 18154,
+        "extract": false,
+        "id": "apt.binutils",
+        "material_path": "apt/binutils_2.42-4ubuntu2.10_amd64.deb",
+        "sha256": "b3b5a84181a38fd191820b2cdcc1a3eeb1cd6333ad472f2092f96e81047e9c74",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils_2.42-4ubuntu2.10_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "No shell activation is required for an APT installation: the commands are in /usr/bin.",
+        "The functional check additionally needs Python 3 and a working C compiler named cc. It creates disposable C/ELF fixtures and preserves command logs in the check build directory."
+      ],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/binutils",
+        "https://sourceware.org/binutils/docs/binutils.html",
+        "https://sourceware.org/binutils/docs/binutils/objcopy.html",
+        "https://sourceware.org/binutils/docs/binutils/addr2line.html"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -L {package_name}",
+          "description": "List the files registered by the system package manager."
+        },
+        {
+          "command": "readelf -hSW ./program",
+          "description": "Inspect ELF headers and sections, including DWARF debug sections."
+        },
+        {
+          "command": "nm -n --defined-only ./program",
+          "description": "List defined symbols ordered by address."
+        },
+        {
+          "command": "objdump -d -M intel --disassemble=my_function ./program",
+          "description": "Disassemble a named function using Intel x86 syntax; replace my_function with its actual symbol."
+        },
+        {
+          "command": "addr2line -e ./program -f -C 0x401000",
+          "description": "Map an address from the selected executable to its function and source line; replace the example address."
+        },
+        {
+          "command": "ar rcsD libexample.a example.o",
+          "description": "Create a deterministic static archive from already compiled object files."
+        },
+        {
+          "command": "objcopy --only-keep-debug ./program ./program.debug\nobjcopy --strip-debug ./program ./program.stripped\nobjcopy --add-gnu-debuglink=./program.debug ./program.stripped",
+          "description": "Preserve separate debug information and attach its GNU debug link to a stripped copy."
+        },
+        {
+          "command": "cpg packages check apt.binutils --kind functional",
+          "description": "Run the declared real ELF, archive, source-line and split-debug checks."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/apt/binutils_2.42-4ubuntu2.10_amd64.deb",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "System package files",
+          "path": "/var/lib/dpkg/info/binutils.list",
+          "purpose": "Ask dpkg-query -L for the actual installed file list, including multiarch packages."
+        },
+        {
+          "label": "GNU ELF tools",
+          "path": "{prefix}/bin",
+          "purpose": "readelf, nm, objdump, addr2line, ar, objcopy, as and ld; x86_64-linux-gnu-prefixed commands are provided by the exact sibling package."
+        },
+        {
+          "label": "Binutils shared libraries",
+          "path": "{prefix}/lib/x86_64-linux-gnu",
+          "purpose": "Matched libbfd, libopcodes, libctf and libsframe libraries from the same Ubuntu binutils source revision."
+        },
+        {
+          "label": "Package copyright and changelog",
+          "path": "{prefix}/share/doc/binutils",
+          "purpose": "Installed distribution notices and changelog; see sibling package documentation for their files."
+        }
+      ],
+      "notes": [
+        "The wrapper pins Ubuntu 2.42-4ubuntu2.10. GNU command version banners report upstream 2.42; the wrapper database observation and locked .deb hashes establish the distribution revision.",
+        "The functional check uses this prefix explicitly, verifies same-prefix binutils sibling library loading, compiles actual C objects, links/runs a static archive consumer, and tests separate debug-link resolution.",
+        "Version banners or successful package installation alone do not establish these functional checks.",
+        "Raw addresses belong to the selected ELF image; account for load bias when converting runtime PIE/ASLR addresses.",
+        "The original package definition and runtime dependencies remain available. No system package is installed or removed merely by querying this resource."
+      ],
+      "summary": "GNU ELF and DWARF inspection, symbols, disassembly, source-line lookup, deterministic static archives, assembler/linker, and debug-section processing with readelf, nm, objdump, addr2line, ar and objcopy."
+    },
+    "version": "2.42-4ubuntu2.10"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

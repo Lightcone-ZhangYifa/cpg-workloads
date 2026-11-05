@@ -1,0 +1,218 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 4826,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "6fe15f78918ab34cd83c175215dfebc7b710cb5b3b8b4a63b34f876fe2373f95"
+    }
+  ],
+  "inventory_sha256": "3f34e956ef1f149ed4c89f92d777e71e73fceea908c8fa3954c8dffd83da0d06",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "9f9baca1897c9baebe6ae8f934d7b8ffbc310545befddd5677ffe4a53916fe7e",
+  "method": "wrapper",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "/usr/bin/hyperfine",
+          "--version"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "hyperfine-version",
+        "kind": "version",
+        "requires_commands": [
+          "/usr/bin/hyperfine"
+        ],
+        "stdout_regex": "hyperfine 1\\.18\\.0",
+        "timeout_seconds": 15
+      },
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "json-repetitions-and-child-failure",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "/usr/bin/hyperfine"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 90
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libgcc-s1"
+      ]
+    },
+    "id": "apt.hyperfine",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libgcc-s1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 526974,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/hyperfine"
+        ],
+        "id": "apt.hyperfine",
+        "immutable_ref": "sha256:832a5344830827d39fb3e059c3c6609fab468115212287db255443bdd270ab26",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 1314,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/hyperfine_1.18.0-2build1_amd64.deb",
+        "package_name": "hyperfine",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Command-line benchmarking tool",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "832a5344830827d39fb3e059c3c6609fab468115212287db255443bdd270ab26",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/r/rust-hyperfine/hyperfine_1.18.0-2build1_amd64.deb",
+        "title": "hyperfine",
+        "upstream": "https://github.com/sharkdp/hyperfine",
+        "version": "1.18.0-2build1"
+      },
+      "catalog_sha256": "6ce5d5cb2465b9660cb2d45e41b26261d620622ee50290ca10f756838a7b272b"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "hyperfine",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 526974,
+        "extract": false,
+        "id": "apt.hyperfine",
+        "material_path": "apt/hyperfine_1.18.0-2build1_amd64.deb",
+        "sha256": "832a5344830827d39fb3e059c3c6609fab468115212287db255443bdd270ab26",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/r/rust-hyperfine/hyperfine_1.18.0-2build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Invoke /usr/bin/hyperfine explicitly. The pinned 1.18.0 JSON contract differs from newer major releases."
+      ],
+      "documentation": [
+        "https://github.com/sharkdp/hyperfine",
+        "https://github.com/sharkdp/hyperfine/releases/tag/v1.18.0",
+        "https://packages.ubuntu.com/noble/hyperfine"
+      ],
+      "examples": [
+        {
+          "command": "/usr/bin/hyperfine --warmup 3 --runs 10 --export-json timings.json './program-a' './program-b'",
+          "description": "Compare two executable commands and retain individual timing samples."
+        },
+        {
+          "command": "/usr/bin/hyperfine --shell=none --runs 10 --export-json timings.json './program'",
+          "description": "Measure a direct executable without a shell wrapper."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Hyperfine",
+          "path": "/usr/bin/hyperfine",
+          "purpose": "APT-managed command timing executable."
+        }
+      ],
+      "notes": [
+        "The functional check confirms one warmup plus three measured child executions, validates JSON raw samples and summary statistics, and verifies that a nonzero-exit child fails the run.",
+        "Choose warm/cold-cache conditions, CPU affinity and workload controls in experiment code. This tool does not replace any official Benchmark timer, validation or aggregation protocol.",
+        "Do not silently enable --ignore-failure in a qualification run. Invalid command executions are not successful timing results."
+      ],
+      "summary": "Run repeated command timing experiments with warmups and raw JSON samples; compare compiler builds or programs while preserving measurement failures."
+    },
+    "version": "1.18.0-2build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
