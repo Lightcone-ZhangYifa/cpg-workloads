@@ -1,0 +1,43 @@
+{
+  "original_locked_binary": {
+    "bytes": 2974106,
+    "extract": false,
+    "id": "rr",
+    "material_path": "payloads/rr",
+    "sha256": "fe3ccb579eab96220b2b91b918ce80da7173f3c098804370a93247a056fab3a1",
+    "strip_root": true,
+    "url": "https://github.com/rr-debugger/rr/releases/download/5.10.0/rr-5.10.0-Linux-x86_64.deb"
+  },
+  "original_recipe": {
+    "error": "{payload} placeholder is a directory in a CPG material package, not a DEB file",
+    "install_argv": [
+      "dpkg-deb",
+      "--extract",
+      "{payload}",
+      "{prefix}"
+    ]
+  },
+  "original_target": "Ubuntu 24.04 x86_64",
+  "repair": {
+    "build": 2,
+    "catalog_id_version_url_sha_unchanged": true,
+    "install_argv": [
+      "dpkg-deb",
+      "--extract",
+      "{source}/rr-5.10.0-Linux-x86_64.deb",
+      "{prefix}"
+    ]
+  },
+  "runtime_record_replay": "blocked_perf_event_open_in_Debian13_host",
+  "static_check_definition_revision": {
+    "build_executed": false,
+    "check_definition_executed": false,
+    "historical_check_correction": "The old executable version check targets an extracted executable that this material package does not install; preserved in historical_checks and replaced with the actual archive read definition.",
+    "original_artifact_sha256": "0df84e78e5c6cdca36d5b87fc4d492342af7723afcd8e8883791fc4b6a986037",
+    "original_build": "2",
+    "original_manifest_sha256": "fa8ed288f2262a8f1d02d0314e0c20126a2113aa6a281396f5539e80ea1ad265",
+    "original_payload_and_source_rows_unchanged": true,
+    "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33",
+    "scope": "Read the complete delivered original archive in the actual installed material layout; no extraction, compilation, benchmark execution, BPF probe or kernel qualification."
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/sources"
+    },
+    {
+      "bytes": 172751524,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/sources/test-suite-23.1.4.src.tar.xz",
+      "sha256": "f3c8d4da44ccfb0d95a8f2b7cc4c88a8327e446243679a0d496b0ff91c61f562"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2291,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 763,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "eb3e9dda4759f79ea9c645ddfb9f4ebdc3b79680866a7cd37613816486c3c76c"
+    }
+  ],
+  "inventory_sha256": "a13863a9c27a4305ba64a6c2748331b2055a3493224333379e7257084ec7efcb",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ffa87653ebc6e5300d00a680f695a1934c343e6ac89dd2b30b76ef1042cdf66a",
+  "method": "material",
+  "package": {
+    "build": "1-static-read1-d7c345ee",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-manifest.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "complete-original-material-availability",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "llvm-test-suite",
+    "metadata": {
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": 172751524,
+        "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+        "category": [
+          "Workloads",
+          "Compiler suites"
+        ],
+        "container_strategy": "Store the complete suite in controller-owned material storage, derive family-disjoint train/validation/test views, compile in dev and run admitted binary/input/oracle bundles in target.",
+        "corpus_contract": {
+          "code": "Included for the built-in suite; external suites need separate resources.",
+          "inputs": "Mixed included and externally provided inputs.",
+          "oracle": "Per-program reference output or suite-specific validation; each adapter needs qualification.",
+          "split_unit": "Upstream application family including all forks, versions, input sizes and translated variants."
+        },
+        "dependencies": [],
+        "deployment": {
+          "adapter": "corpus",
+          "qualified": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://llvm.org/docs/TestSuiteGuide.html"
+        ],
+        "evidence_files": [
+          "workspace-evidence/resources-v050/open-research/llvm-test-suite.measurement.json",
+          "workspace-evidence/resources-v050/open-research/llvm-test-suite.refs.json"
+        ],
+        "extract": false,
+        "id": "llvm-test-suite",
+        "immutable_ref": "2919e55176a572ee085cb46b291c47b7092c363e",
+        "kind": "dataset",
+        "legacy_source_id": "llvm-test-suite",
+        "license_class": "open",
+        "license_id": "Apache-2.0 WITH LLVM-exception AND LicenseRef-Per-Benchmark",
+        "mandatory": false,
+        "material_path": "sources/test-suite-23.1.4.src.tar.xz",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Broad C/C++/Fortran runtime workloads, regression cases and CTMark compile-time diagnostics.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "External suites and inputs are not included merely because the CMake adapter exists.",
+          "Each benchmark requires a license, liveness check, input set, oracle and runtime contract.",
+          "CTMark is a compile-time diagnostic; do not double-count those same program families in the runtime aggregate."
+        ],
+        "redistributable": true,
+        "roles": [
+          "host"
+        ],
+        "sha256": "f3c8d4da44ccfb0d95a8f2b7cc4c88a8327e446243679a0d496b0ff91c61f562",
+        "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+        "source_evidence": [
+          "https://github.com/llvm/llvm-test-suite",
+          "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz",
+          "https://github.com/llvm/llvm-test-suite/commit/2919e55176a572ee085cb46b291c47b7092c363e"
+        ],
+        "source_logical_bytes": 2116579658,
+        "source_url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz",
+        "title": "LLVM test-suite and CTMark",
+        "upstream": "https://github.com/llvm/llvm-test-suite",
+        "version": "llvmorg-23.1.4"
+      },
+      "catalog_sha256": "3e1aaeb0fff8a29fb4a93d4bbbdbe8de012e43b11ad2f92c06ec03c0c781d39b",
+      "historical_checks_before_static_definition_revision": [],
+      "static_check_definition_revision": {
+        "build_executed": false,
+        "check_definition_executed": false,
+        "original_artifact_sha256": "d7c345ee2b7167e8b84c79ba23d4d655ba224777f631025f63f9be27fd8af51b",
+        "original_build": "1",
+        "original_manifest_sha256": "c78177183a16e75d21111405be95232cd0c192c010616dadf5118444ab6551c7",
+        "original_payload_and_source_rows_unchanged": true,
+        "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33",
+        "scope": "Read the complete delivered original archive in the actual installed material layout; no extraction, compilation, benchmark execution, BPF probe or kernel qualification."
+      }
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "corpus",
+      "qualified": false,
+      "source_dependencies": [],
+      "system_packages": [],
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 172751524,
+        "extract": false,
+        "id": "llvm-test-suite",
+        "material_path": "sources/test-suite-23.1.4.src.tar.xz",
+        "sha256": "f3c8d4da44ccfb0d95a8f2b7cc4c88a8327e446243679a0d496b0ff91c61f562",
+        "strip_root": true,
+        "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://llvm.org/docs/TestSuiteGuide.html"
+      ],
+      "examples": [
+        {
+          "command": "python3 -B {recipe}/check.py --prefix {prefix} --manifest {recipe}/material-manifest.json",
+          "description": "Verify the exact installed original archive without extracting it."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Complete original material archive",
+          "path": "{prefix}/sources/test-suite-23.1.4.src.tar.xz",
+          "purpose": "Hash-locked original archive; building or tracing requires a separate deployment."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "The material read/integrity definition verifies the exact original archive at its installed prefix path. It has not been executed; no binary or workload qualification is added."
+      ],
+      "summary": "Broad C/C++/Fortran runtime workloads, regression cases and CTMark compile-time diagnostics."
+    },
+    "version": "llvmorg-23.1.4"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "static_check_definition_revision": {
+      "build_executed": false,
+      "check_definition_executed": false,
+      "original_artifact_sha256": "d7c345ee2b7167e8b84c79ba23d4d655ba224777f631025f63f9be27fd8af51b",
+      "original_build": "1",
+      "original_manifest_sha256": "c78177183a16e75d21111405be95232cd0c192c010616dadf5118444ab6551c7",
+      "original_payload_and_source_rows_unchanged": true,
+      "reader_definition_sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33",
+      "scope": "Read the complete delivered original archive in the actual installed material layout; no extraction, compilation, benchmark execution, BPF probe or kernel qualification."
+    }
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
