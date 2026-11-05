@@ -1,0 +1,178 @@
+{
+  "dataset_api_qualified": false,
+  "entry_point": "run.py prepare --cache CACHE --output NEW_OUTPUT [--framework-path PROJECT] [--no-network]",
+  "framework_api": "Existing resource_deploy.acquire_file, unpack_archive and packages.pack/verify_package; use the existing PackageManager for installation",
+  "kind": "cpg_online_material_recipe",
+  "native_execution_qualified": false,
+  "new_installation_engine": false,
+  "offline_artifact": {
+    "bytes": 174234709,
+    "manifest_sha256": "1b7a58d2d81f868abee57f18b9229cf82c7d229f50834a748661e8f26f06a4aa",
+    "sha256": "d8aaf47ef2ba6f0c60da94b05cc90235615f381689089b9d9b18a07bd690fa36"
+  },
+  "original_catalog": {
+    "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+    "archive_bytes": 172751524,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Workloads",
+      "Compiler suites"
+    ],
+    "container_strategy": "Store the complete suite in controller-owned material storage, derive family-disjoint train/validation/test views, compile in dev and run admitted binary/input/oracle bundles in target.",
+    "corpus_contract": {
+      "code": "Included for the built-in suite; external suites need separate resources.",
+      "inputs": "Mixed included and externally provided inputs.",
+      "oracle": "Per-program reference output or suite-specific validation; each adapter needs qualification.",
+      "split_unit": "Upstream application family including all forks, versions, input sizes and translated variants."
+    },
+    "dependencies": [],
+    "deployment": {
+      "adapter": "corpus",
+      "qualified": false,
+      "source_dependencies": [],
+      "system_packages": [],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://llvm.org/docs/TestSuiteGuide.html"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/llvm-test-suite.measurement.json",
+      "workspace-evidence/resources-v050/open-research/llvm-test-suite.refs.json"
+    ],
+    "extract": false,
+    "id": "llvm-test-suite",
+    "immutable_ref": "2919e55176a572ee085cb46b291c47b7092c363e",
+    "kind": "dataset",
+    "legacy_source_id": "llvm-test-suite",
+    "license_class": "open",
+    "license_id": "Apache-2.0 WITH LLVM-exception AND LicenseRef-Per-Benchmark",
+    "mandatory": false,
+    "material_path": "sources/test-suite-23.1.4.src.tar.xz",
+    "presets": [
+      "core",
+      "open",
+      "all"
+    ],
+    "purpose": "Broad C/C++/Fortran runtime workloads, regression cases and CTMark compile-time diagnostics.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "External suites and inputs are not included merely because the CMake adapter exists.",
+      "Each benchmark requires a license, liveness check, input set, oracle and runtime contract.",
+      "CTMark is a compile-time diagnostic; do not double-count those same program families in the runtime aggregate."
+    ],
+    "redistributable": true,
+    "roles": [
+      "host"
+    ],
+    "sha256": "f3c8d4da44ccfb0d95a8f2b7cc4c88a8327e446243679a0d496b0ff91c61f562",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://github.com/llvm/llvm-test-suite",
+      "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz",
+      "https://github.com/llvm/llvm-test-suite/commit/2919e55176a572ee085cb46b291c47b7092c363e"
+    ],
+    "source_logical_bytes": 2116579658,
+    "source_url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz",
+    "title": "LLVM test-suite and CTMark",
+    "upstream": "https://github.com/llvm/llvm-test-suite",
+    "version": "llvmorg-23.1.4"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 172751524,
+      "extract": false,
+      "id": "llvm-test-suite",
+      "material_path": "sources/test-suite-23.1.4.src.tar.xz",
+      "sha256": "f3c8d4da44ccfb0d95a8f2b7cc4c88a8327e446243679a0d496b0ff91c61f562",
+      "strip_root": true,
+      "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/test-suite-23.1.4.src.tar.xz"
+    }
+  ],
+  "qualification_scope": "complete_original_declared_archive_material_only; the entire fixed 172751524-byte LLVM test-suite release archive is retained at its original material_path; all archive members, original link records, source, inputs, references and per-benchmark license notices are preserved unchanged; external suites and separately distributed inputs are excluded by the original catalog; no expanded tree, source build, program execution, Dataset API, semantic oracle, official Benchmark, OCI or hardware qualification",
+  "recipe_files": [
+    {
+      "bytes": 12020,
+      "kind": "file",
+      "mode": 420,
+      "path": "offline-manifest.json",
+      "sha256": "4d3d8d300bd2744ff69ea3f6476d4d1d90af35637e227d761ea850a0d4ce44b3"
+    },
+    {
+      "bytes": 8071,
+      "kind": "file",
+      "mode": 420,
+      "path": "package.json",
+      "sha256": "deb6c6a42c40b1d20ca3a64ccc6bdd5a6cc5690fcc120c9974da0b3d7f28840d"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1199,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/acquisition-locks.json",
+      "sha256": "4f90b56eefee57d08640a4e2c48d0b0285bf8708d949a5e2363ff69693d8222d"
+    },
+    {
+      "bytes": 6835112,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/archive-members.json",
+      "sha256": "5f745c4433f8c2ddc5eb944f5c087517f9aecc736e1bd8754763c879f3f07e45"
+    },
+    {
+      "bytes": 2566,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "30be0d56e4a26b43419e946896a6f551934dac8b76e9bff932ba24129d57b8f1"
+    },
+    {
+      "bytes": 1372,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "ddc38576bebea5db0018989d9daf760f2bbcb867383272f079ce48976a763b30"
+    },
+    {
+      "bytes": 680126,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/original-license-notices.json",
+      "sha256": "28f9ac3037721f75f0ce4f396c31b893d52546abc22b66c952f2b4b301034ebb"
+    },
+    {
+      "bytes": 4158,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/prepare.py",
+      "sha256": "316ab5b4ee089af239ad20790c68c1f83fcd61a648cce454335f6b8aeb4e56a3"
+    },
+    {
+      "bytes": 5599,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/source-closure-audit.json",
+      "sha256": "07766b86d3d57eada5c14f91058e083d6fd0c3f720b3f2a7514790546d49ed23"
+    },
+    {
+      "bytes": 5426,
+      "kind": "file",
+      "mode": 420,
+      "path": "run.py",
+      "sha256": "b8b3dc56860fd8a53ad44b3ca50e749cd251e52c9d576199c04e00c981d36ca4"
+    }
+  ],
+  "resource_id": "llvm-test-suite",
+  "schema_version": 1,
+  "source_specific_preparer": "recipe/prepare.py"
+}
