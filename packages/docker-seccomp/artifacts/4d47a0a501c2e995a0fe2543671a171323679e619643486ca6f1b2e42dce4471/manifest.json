@@ -1,0 +1,215 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/policy"
+    },
+    {
+      "bytes": 17867,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/policy/docker-default-seccomp.json",
+      "sha256": "6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2291,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 1522,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/input-audit.json",
+      "sha256": "8e1c233dc5580ccc6186295bb5a5c511993b9cb52e8a2948e505b042e95d1348"
+    },
+    {
+      "bytes": 1064,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "58033ff93f7c0787dda84523378e1e3108e733bec6318c666dfb573eca1822a1"
+    },
+    {
+      "bytes": 3019,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/prepare.py",
+      "sha256": "86b6c0e824b2159e2970b84a95c24e85b3ae388f57aa77c3a98b292dc762008c"
+    }
+  ],
+  "inventory_sha256": "a93a38df84918daa4c669609baa49f46f65a32b889260279449fa3e9cb7016d0",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "6c7ddc93ec61a7e943881453af47a630f89a601a99fcbd9788f5a0547db8b8b3",
+  "method": "material",
+  "package": {
+    "build": "recovery-static-material-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-manifest.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "docker-seccomp-complete-material",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 60
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "docker-seccomp",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 17867,
+        "bundled_path": "resources/docker-default-seccomp.frozen.json",
+        "category": [
+          "Agent and observability",
+          "Collector and policy"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "copy",
+          "handled_by": "controller-bootstrap",
+          "state": "downloaded-and-hashed"
+        },
+        "documentation": [],
+        "extract": false,
+        "id": "docker-seccomp",
+        "immutable_ref": "sha256:6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6",
+        "installed_bytes": null,
+        "kind": "url",
+        "license_class": "open",
+        "license_id": "Apache-2.0",
+        "mandatory": true,
+        "material_path": "policy/docker-default-seccomp.json",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Versioned observability or container policy initialization artifact.",
+        "qualification_gaps": [],
+        "redistributable": true,
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6",
+        "size_basis": "Complete payload GET with measured bytes and SHA256",
+        "source_evidence": [
+          "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json"
+        ],
+        "source_logical_bytes": 17867,
+        "source_url": "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json",
+        "title": "docker-seccomp",
+        "upstream": "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json",
+        "version": "commit-4b8214fc4971"
+      },
+      "catalog_sha256": "dede99e316016ae288decae9572ff67a1a517d52a3aaba1465cf75b990224789"
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "corpus",
+      "handled_by": "controller-bootstrap",
+      "qualification_scope": "complete_original_single_file_static_material_only",
+      "qualified": true,
+      "required_installed_paths": [
+        "{prefix}/policy/docker-default-seccomp.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "source_closure_scope": "one complete declared original file; no archive or submodule closure is applicable",
+      "state": "downloaded-and-hashed"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bundled_path": "resources/docker-default-seccomp.frozen.json",
+        "bytes": 17867,
+        "extract": false,
+        "id": "docker-seccomp",
+        "material_path": "policy/docker-default-seccomp.json",
+        "sha256": "6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6",
+        "strip_root": true,
+        "url": "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Complete original upstream file",
+          "path": "{prefix}/policy/docker-default-seccomp.json",
+          "purpose": "Independent exact original static material, verified by full byte count, SHA-256 and file inventory."
+        }
+      ],
+      "notes": [
+        "The complete originally declared file is preserved at its exact URL, revision, SHA-256 and byte count; canonical source and catalog fields are unchanged.",
+        "This static-material qualification does not build Enzyme, deploy a Docker seccomp policy, run a container or grant executable/hardware/benchmark qualification.",
+        "Use recipe/prepare.py with the public CPG acquisition cache and material pack API for online or explicitly offline reconstruction. HTTPS fetching has not been retested in this recovery round.",
+        "Installed paths are independent ordinary copies. Availability checks validate all material members; package lifecycle and corruption isolation have separate receipts."
+      ],
+      "summary": "Versioned observability or container policy initialization artifact."
+    },
+    "version": "commit-4b8214fc4971"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "native_execution": false,
+    "oci_execution": false,
+    "original_source_lock": {
+      "bundled_path": "resources/docker-default-seccomp.frozen.json",
+      "bytes": 17867,
+      "extract": false,
+      "id": "docker-seccomp",
+      "material_path": "policy/docker-default-seccomp.json",
+      "sha256": "6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6",
+      "strip_root": true,
+      "url": "https://raw.githubusercontent.com/moby/profiles/4b8214fc4971e06172938a1f1554ccff6647ee80/seccomp/default.json"
+    },
+    "qualification_scope": "complete_original_single_file_static_material_only"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
