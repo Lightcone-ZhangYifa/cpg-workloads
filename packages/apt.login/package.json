@@ -1,0 +1,163 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libaudit1",
+      "apt.libc6",
+      "apt.libcrypt1",
+      "apt.libpam-modules",
+      "apt.libpam-runtime",
+      "apt.libpam0g"
+    ]
+  },
+  "id": "apt.login",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libaudit1",
+        "apt.libc6",
+        "apt.libcrypt1",
+        "apt.libpam-modules",
+        "apt.libpam-runtime",
+        "apt.libpam0g"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 201680,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/login"
+      ],
+      "id": "apt.login",
+      "immutable_ref": "sha256:393cb0ed5c12e5a6c0f8e1f0c035fbc5781c19321f43c7d10733c917fb17e01b",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 884,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/login_4.13+dfsg1-4ubuntu3.2_amd64.deb",
+      "package_name": "login",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "system login tools",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "393cb0ed5c12e5a6c0f8e1f0c035fbc5781c19321f43c7d10733c917fb17e01b",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/s/shadow/login_4.13+dfsg1-4ubuntu3.2_amd64.deb",
+      "title": "login",
+      "upstream": "https://github.com/shadow-maint/shadow",
+      "version": "1:4.13+dfsg1-4ubuntu3.2"
+    },
+    "catalog_sha256": "fcb48aac51f0186d53f6dd5b06dd0ad5eb0753992b47e1602300eca82762b315"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "login",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 201680,
+      "extract": false,
+      "id": "apt.login",
+      "material_path": "apt/login_4.13+dfsg1-4ubuntu3.2_amd64.deb",
+      "sha256": "393cb0ed5c12e5a6c0f8e1f0c035fbc5781c19321f43c7d10733c917fb17e01b",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/shadow/login_4.13+dfsg1-4ubuntu3.2_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/login"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W login",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L login",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/login.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for login (= 1:4.13+dfsg1-4ubuntu3.2). system login tools"
+  },
+  "version": "1:4.13+dfsg1-4ubuntu3.2"
+}

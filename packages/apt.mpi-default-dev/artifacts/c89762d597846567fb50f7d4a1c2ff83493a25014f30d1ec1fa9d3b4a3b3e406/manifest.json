@@ -1,0 +1,178 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "4d5ae466eb6dd977c603491c84d95e8bb7533ccf246b0a7939ca23ba95f8bd15",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libopenmpi-dev"
+      ]
+    },
+    "id": "apt.mpi-default-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libopenmpi-dev"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 3154,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/mpi-default-dev"
+        ],
+        "id": "apt.mpi-default-dev",
+        "immutable_ref": "sha256:6b95ee4ad55b46461f000229d17d74c61850a00bd6e6b1603da99cbf7970ee0c",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 11,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/mpi-default-dev_1.15build1_amd64.deb",
+        "package_name": "mpi-default-dev",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Standard MPI development files (metapackage)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "6b95ee4ad55b46461f000229d17d74c61850a00bd6e6b1603da99cbf7970ee0c",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/m/mpi-defaults/mpi-default-dev_1.15build1_amd64.deb",
+        "title": "mpi-default-dev",
+        "upstream": "https://packages.ubuntu.com/noble/mpi-default-dev",
+        "version": "1.15build1"
+      },
+      "catalog_sha256": "3274e852330cf7e18451299591591fd6f90431f6a74e0058224237628036d1d2"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "mpi-default-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 3154,
+        "extract": false,
+        "id": "apt.mpi-default-dev",
+        "material_path": "apt/mpi-default-dev_1.15build1_amd64.deb",
+        "sha256": "6b95ee4ad55b46461f000229d17d74c61850a00bd6e6b1603da99cbf7970ee0c",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/m/mpi-defaults/mpi-default-dev_1.15build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/mpi-default-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W mpi-default-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L mpi-default-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/mpi-default-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for mpi-default-dev (= 1.15build1). Standard MPI development files (metapackage)"
+    },
+    "version": "1.15build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "9eccdf5ab7fa4ca4105b8dc542dc1c501a56ba245db7115582b8cbb629316eca",
+    "dependencies_sha256": "826c76f791f38944fbb5ade47797246ac936e34d63f3efec006c2d4fa9d6c14b",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "5b23e80dfc2743ac11435c611e5ed1e6e8f75a5a47d6774ae822b93a68dd595e",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "5bb284ead586dccbe71e550839fa27fe537e0f5abd141a94fd4fc39a8df7a4e0"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

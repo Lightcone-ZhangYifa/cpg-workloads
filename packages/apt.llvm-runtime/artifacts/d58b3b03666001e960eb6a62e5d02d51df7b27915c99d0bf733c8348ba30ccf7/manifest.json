@@ -1,0 +1,179 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ce894dbb0c73d5328ff009b077bdf6deee16d174ce4fc8d7f3a58ef20f678712",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.llvm-18-runtime"
+      ]
+    },
+    "id": "apt.llvm-runtime",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.llvm-18-runtime"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 5496,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/llvm-runtime"
+        ],
+        "id": "apt.llvm-runtime",
+        "immutable_ref": "sha256:5072fae1250c3362b39b39d9c7ba7832b14870a16bf5c6c6e9796eb289c6d73a",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 16,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/llvm-runtime_18.0-59~exp2_amd64.deb",
+        "package_name": "llvm-runtime",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Low-Level Virtual Machine (LLVM), bytecode interpreter",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "5072fae1250c3362b39b39d9c7ba7832b14870a16bf5c6c6e9796eb289c6d73a",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-defaults/llvm-runtime_18.0-59~exp2_amd64.deb",
+        "title": "llvm-runtime",
+        "upstream": "https://packages.ubuntu.com/noble/llvm-runtime",
+        "version": "1:18.0-59~exp2"
+      },
+      "catalog_sha256": "1a4ceba31f614618d76258af7f6d09c5df43b918fbf47e4da3a6cb864d50b527"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "llvm-runtime",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 5496,
+        "extract": false,
+        "id": "apt.llvm-runtime",
+        "material_path": "apt/llvm-runtime_18.0-59~exp2_amd64.deb",
+        "sha256": "5072fae1250c3362b39b39d9c7ba7832b14870a16bf5c6c6e9796eb289c6d73a",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-defaults/llvm-runtime_18.0-59~exp2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/llvm-runtime"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W llvm-runtime",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L llvm-runtime",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/llvm-runtime.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for llvm-runtime (= 1:18.0-59~exp2). Low-Level Virtual Machine (LLVM), bytecode interpreter"
+    },
+    "version": "1:18.0-59~exp2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "af54d2f3a3a8eed4ca74712cefcb32dcfffe94b8ef91a1f9d6bd4de2bd48b1a8",
+    "dependencies_sha256": "0244daa61d5135f8cd5291df8faf07a5cfd09fe8ea68c27ea43fa372c54ac2bb",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "3562e72316b1b45ad8bb6f9782323f1c0dbd50f9a3f1059fe21f21f244a9aa7f",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "7c485f5701e7121a468f123e5678ba099cd66da1b62fa61d574aab3245ace825"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

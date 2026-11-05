@@ -1,0 +1,185 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ea740365257fba87ae7dee355ac9c8db1200d053ea9e931331627a406301c48f",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.ca-certificates",
+        "apt.python3",
+        "apt.python3-setuptools",
+        "apt.python3-wheel"
+      ]
+    },
+    "id": "apt.python3-pip",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.ca-certificates",
+          "apt.python3",
+          "apt.python3-setuptools",
+          "apt.python3-wheel"
+        ],
+        "architecture": "all",
+        "archive_bytes": 1319940,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/python3-pip"
+        ],
+        "id": "apt.python3-pip",
+        "immutable_ref": "sha256:4e1af0b6f0b52c847ffa7b192b9f650845b99ff300138af05ab9a6252eb75682",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 6862,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/python3-pip_24.0+dfsg-1ubuntu1.3_all.deb",
+        "package_name": "python3-pip",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Python package installer",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "4e1af0b6f0b52c847ffa7b192b9f650845b99ff300138af05ab9a6252eb75682",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/python-pip/python3-pip_24.0+dfsg-1ubuntu1.3_all.deb",
+        "title": "python3-pip",
+        "upstream": "https://pip.pypa.io/en/stable/",
+        "version": "24.0+dfsg-1ubuntu1.3"
+      },
+      "catalog_sha256": "2fe2c0e260e0751a29d87dd1b9be5f837e8101c366ee05dde119617f0cfdaf9e"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "python3-pip",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1319940,
+        "extract": false,
+        "id": "apt.python3-pip",
+        "material_path": "apt/python3-pip_24.0+dfsg-1ubuntu1.3_all.deb",
+        "sha256": "4e1af0b6f0b52c847ffa7b192b9f650845b99ff300138af05ab9a6252eb75682",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/python-pip/python3-pip_24.0+dfsg-1ubuntu1.3_all.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/python3-pip"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W python3-pip",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L python3-pip",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/python3-pip.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for python3-pip (= 24.0+dfsg-1ubuntu1.3). Python package installer"
+    },
+    "version": "24.0+dfsg-1ubuntu1.3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "e419db75646e6d5f85a0ab4011d913211bd528bc4a11f7a01b7ac1e2205c2242",
+    "dependencies_sha256": "df2369d6ba59faf2d3369f750bb2e984dcc8c8d5eb9389a1900771f73e7d5cae",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "85de5f0d9647bb89e842ca86e0e6608ac389f6656220ff80b95ee19d3081842c",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "9f4cef1b26a67fe7cdb49bfe14ac119486dabd2f81d847f3cc4b112959d85797"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

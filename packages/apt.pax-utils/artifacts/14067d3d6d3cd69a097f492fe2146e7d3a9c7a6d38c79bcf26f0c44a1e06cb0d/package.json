@@ -1,0 +1,162 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.binutils",
+      "apt.libc6",
+      "apt.libcap2",
+      "apt.python3",
+      "apt.python3-pyelftools"
+    ]
+  },
+  "id": "apt.pax-utils",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.binutils",
+        "apt.libc6",
+        "apt.libcap2",
+        "apt.python3",
+        "apt.python3-pyelftools"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 89080,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/pax-utils"
+      ],
+      "id": "apt.pax-utils",
+      "immutable_ref": "sha256:10caf24678b05eee359dba20b7a47712277bdc4701ac575ed0ba94edcf670e35",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 270,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/pax-utils_1.3.7-1_amd64.deb",
+      "package_name": "pax-utils",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Security-focused ELF files checking tool",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "target"
+      ],
+      "sha256": "10caf24678b05eee359dba20b7a47712277bdc4701ac575ed0ba94edcf670e35",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/pax-utils/pax-utils_1.3.7-1_amd64.deb",
+      "title": "pax-utils",
+      "upstream": "https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities",
+      "version": "1.3.7-1"
+    },
+    "catalog_sha256": "3b091c52b1201f61a558d78d042f68fb5a15ec9a1c8e17d39233e5e0f99b5861"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "pax-utils",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 89080,
+      "extract": false,
+      "id": "apt.pax-utils",
+      "material_path": "apt/pax-utils_1.3.7-1_amd64.deb",
+      "sha256": "10caf24678b05eee359dba20b7a47712277bdc4701ac575ed0ba94edcf670e35",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/pax-utils/pax-utils_1.3.7-1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/pax-utils"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W pax-utils",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L pax-utils",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/pax-utils.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for pax-utils (= 1.3.7-1). Security-focused ELF files checking tool"
+  },
+  "version": "1.3.7-1"
+}

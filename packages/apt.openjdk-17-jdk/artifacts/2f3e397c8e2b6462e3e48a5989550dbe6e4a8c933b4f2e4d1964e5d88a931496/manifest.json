@@ -1,0 +1,184 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "a3b1c5fe99f5d59297beba2450cbcf9d6b16757269189d7a9fc5430652436a76",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.openjdk-17-jdk-headless",
+        "apt.openjdk-17-jre",
+        "apt.zlib1g"
+      ]
+    },
+    "id": "apt.openjdk-17-jdk",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.openjdk-17-jdk-headless",
+          "apt.openjdk-17-jre",
+          "apt.zlib1g"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 1538292,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/openjdk-17-jdk"
+        ],
+        "id": "apt.openjdk-17-jdk",
+        "immutable_ref": "sha256:5e5b98dd2a64d2ed38de4b4d976ff959420428d62e30e28eb9c171dac647a0f0",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 1556,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/openjdk-17-jdk_17.0.20.1+1-1~24.04_amd64.deb",
+        "package_name": "openjdk-17-jdk",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "OpenJDK Development Kit (JDK)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "5e5b98dd2a64d2ed38de4b4d976ff959420428d62e30e28eb9c171dac647a0f0",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/o/openjdk-17/openjdk-17-jdk_17.0.20.1+1-1~24.04_amd64.deb",
+        "title": "openjdk-17-jdk",
+        "upstream": "https://openjdk.java.net/",
+        "version": "17.0.20.1+1-1~24.04"
+      },
+      "catalog_sha256": "bece8af3f91098f1be914d610e6272f0a3db06a5f7a20bc1dbe0d7411a7e283c"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "openjdk-17-jdk",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1538292,
+        "extract": false,
+        "id": "apt.openjdk-17-jdk",
+        "material_path": "apt/openjdk-17-jdk_17.0.20.1+1-1~24.04_amd64.deb",
+        "sha256": "5e5b98dd2a64d2ed38de4b4d976ff959420428d62e30e28eb9c171dac647a0f0",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/o/openjdk-17/openjdk-17-jdk_17.0.20.1+1-1~24.04_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/openjdk-17-jdk"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W openjdk-17-jdk",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L openjdk-17-jdk",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/openjdk-17-jdk.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for openjdk-17-jdk (= 17.0.20.1+1-1~24.04). OpenJDK Development Kit (JDK)"
+    },
+    "version": "17.0.20.1+1-1~24.04"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "d26b508a42b19be646dca1514cc92f52c4121a836efe051df199dd264dc81751",
+    "dependencies_sha256": "539759b7cc68690575862c1db4637d82be40e558f0e9f7f119c2c4e133518e8f",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "23765f6519041514ef89ff9e7f99ed93883403973c76ec782d6284d809bdebae",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "f8ccb60fdd7281e1f310b56422d390a30e886f282db60dccb8728b1a94fdd7a5"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

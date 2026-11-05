@@ -1,0 +1,186 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "1bda5c966a475e4a21998ff8490d532d0d0ae26cb5cae2c2b4b323352c78e5ef",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libstdc++6",
+        "apt.python3",
+        "apt.python3-numpy"
+      ]
+    },
+    "id": "apt.python3-contourpy",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libgcc-s1",
+          "apt.libstdc++6",
+          "apt.python3",
+          "apt.python3-numpy"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 180834,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/python3-contourpy"
+        ],
+        "id": "apt.python3-contourpy",
+        "immutable_ref": "sha256:fc5c86817c02d749c8b0c7794cb3059ae2c68b44ad66b2aac64935da3b69fc0e",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 568,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/python3-contourpy_1.0.7-2build1_amd64.deb",
+        "package_name": "python3-contourpy",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Python library for calculating contours of 2D quadrilateral grids",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "fc5c86817c02d749c8b0c7794cb3059ae2c68b44ad66b2aac64935da3b69fc0e",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/c/contourpy/python3-contourpy_1.0.7-2build1_amd64.deb",
+        "title": "python3-contourpy",
+        "upstream": "https://contourpy.readthedocs.io/",
+        "version": "1.0.7-2build1"
+      },
+      "catalog_sha256": "702788c300bc41a6502e200fa6e89f46658836ba9e5a62a77b164f7f00af5031"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "python3-contourpy",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 180834,
+        "extract": false,
+        "id": "apt.python3-contourpy",
+        "material_path": "apt/python3-contourpy_1.0.7-2build1_amd64.deb",
+        "sha256": "fc5c86817c02d749c8b0c7794cb3059ae2c68b44ad66b2aac64935da3b69fc0e",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/c/contourpy/python3-contourpy_1.0.7-2build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/python3-contourpy"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W python3-contourpy",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L python3-contourpy",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/python3-contourpy.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for python3-contourpy (= 1.0.7-2build1). Python library for calculating contours of 2D quadrilateral grids"
+    },
+    "version": "1.0.7-2build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "6e63cd47d4c8f6fa95d6ccef9336d5ee61a5bda895a91ed17cbe3e18b9c999d0",
+    "dependencies_sha256": "31bbb003744521448738c7db31da4752f84c8b850936479469aef4a8cf040a4b",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "3c2bc86363dcfb0c6c867151c05f16f05d5ac67965120fa0522df74fdc3247e7",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "374a2dd5c30c7684df880eae1d4f7a1131e79617b15b0d17e469047440588219"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

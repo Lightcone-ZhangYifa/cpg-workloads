@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "bd10d5465d3dd67dcaaffa2aaea8485d6442a848ef97f9a9535684a1bdfc4d19",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libbpfcc",
+        "apt.python3"
+      ]
+    },
+    "id": "apt.python3-bpfcc",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libbpfcc",
+          "apt.python3"
+        ],
+        "architecture": "all",
+        "archive_bytes": 40164,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/python3-bpfcc"
+        ],
+        "id": "apt.python3-bpfcc",
+        "immutable_ref": "sha256:80bc62922aae952899208ae6015854476c4bbf623fcf627cf7c37617e04a30d2",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 220,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/python3-bpfcc_0.29.1+ds-1ubuntu7_all.deb",
+        "package_name": "python3-bpfcc",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Python 3 wrappers for BPF Compiler Collection (BCC)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "80bc62922aae952899208ae6015854476c4bbf623fcf627cf7c37617e04a30d2",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/b/bpfcc/python3-bpfcc_0.29.1+ds-1ubuntu7_all.deb",
+        "title": "python3-bpfcc",
+        "upstream": "https://github.com/iovisor/bcc",
+        "version": "0.29.1+ds-1ubuntu7"
+      },
+      "catalog_sha256": "ee0e314161ca72fb6dfefd0634de9014f6092a74fcf66024737bcbc3961c6793"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "python3-bpfcc",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 40164,
+        "extract": false,
+        "id": "apt.python3-bpfcc",
+        "material_path": "apt/python3-bpfcc_0.29.1+ds-1ubuntu7_all.deb",
+        "sha256": "80bc62922aae952899208ae6015854476c4bbf623fcf627cf7c37617e04a30d2",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/bpfcc/python3-bpfcc_0.29.1+ds-1ubuntu7_all.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/python3-bpfcc"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W python3-bpfcc",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L python3-bpfcc",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/python3-bpfcc.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for python3-bpfcc (= 0.29.1+ds-1ubuntu7). Python 3 wrappers for BPF Compiler Collection (BCC)"
+    },
+    "version": "0.29.1+ds-1ubuntu7"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "bcd6449b879addcfb02070d802623cbdb870fe4d290237398c34c362524d47e6",
+    "dependencies_sha256": "a4965370f1d3ae7ccfdb5da38af3242b488a55620a530bd541b968ac10559a46",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "f8ecc42a22f94e0e7e0b89c0b6bd2c762b8227f5441e6113d8b8f8a01f0fe3c4",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "d774c6672e829d4d4be9bbaee9424c38f94e76a16221fe24e700f1bfb5c43406"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

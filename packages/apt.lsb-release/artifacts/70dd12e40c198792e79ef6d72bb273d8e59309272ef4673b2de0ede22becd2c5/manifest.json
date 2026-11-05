@@ -1,0 +1,176 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ad20ccc2c71398cbff790d7295ce357d8abfa4b55ffa89cf30ee8a21de0fb696",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "apt.lsb-release",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [],
+        "architecture": "all",
+        "archive_bytes": 6564,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/lsb-release"
+        ],
+        "id": "apt.lsb-release",
+        "immutable_ref": "sha256:0ae566092f2d6f3000ce25a7a68497a97b637abf8dc25cbdf961c8ee66e562a7",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 17,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/lsb-release_12.0-2_all.deb",
+        "package_name": "lsb-release",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Linux Standard Base version reporting utility (minimal implementation)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "0ae566092f2d6f3000ce25a7a68497a97b637abf8dc25cbdf961c8ee66e562a7",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/l/lsb-release-minimal/lsb-release_12.0-2_all.deb",
+        "title": "lsb-release",
+        "upstream": "https://gioele.io/lsb-release-minimal",
+        "version": "12.0-2"
+      },
+      "catalog_sha256": "4a37b12d86c871fe35be72c199384bf4a770905f63b6c947889e0a619cda2d31"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "lsb-release",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 6564,
+        "extract": false,
+        "id": "apt.lsb-release",
+        "material_path": "apt/lsb-release_12.0-2_all.deb",
+        "sha256": "0ae566092f2d6f3000ce25a7a68497a97b637abf8dc25cbdf961c8ee66e562a7",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/lsb-release-minimal/lsb-release_12.0-2_all.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/lsb-release"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W lsb-release",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L lsb-release",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/lsb-release.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for lsb-release (= 12.0-2). Linux Standard Base version reporting utility (minimal implementation)"
+    },
+    "version": "12.0-2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "c9d156886659f6f8cf23c84d76f89fc6f38379953ca22bdc675ff3a8640f3237",
+    "dependencies_sha256": "b43229407f2a4febfea62fb3c8a3b1eaf980671984c997a90842b68f1b0c55a1",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "a368133b2a516a92f6c407074ba9e906979d39c7d73722ff97e95e2e0897d14f",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "2287790a37601b5bd43dd57d06657a13de60d2ff0de3dd116d7ace1ad1234b7e"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

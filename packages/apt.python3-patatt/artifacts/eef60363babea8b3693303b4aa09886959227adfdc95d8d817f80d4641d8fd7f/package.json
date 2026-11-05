@@ -1,0 +1,151 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.git",
+      "apt.gnupg",
+      "apt.python3",
+      "apt.python3-nacl"
+    ]
+  },
+  "id": "apt.python3-patatt",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.git",
+        "apt.gnupg",
+        "apt.python3",
+        "apt.python3-nacl"
+      ],
+      "architecture": "all",
+      "archive_bytes": 23312,
+      "category": [
+        "Community development",
+        "Resolved system dependencies"
+      ],
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built"
+      },
+      "id": "apt.python3-patatt",
+      "immutable_ref": "sha256:a96b8150a3b8d4019e0f0fb303c18d39ce30e89b22de138ab5b63f886449a2b3",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 93,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/python3-patatt_0.6.3-1_all.deb",
+      "package_name": "python3-patatt",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "library for cryptographic attestation of patches",
+      "qualification_gaps": [
+        "Perform role-specific installation and first-use checks in the selected dev image."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "a96b8150a3b8d4019e0f0fb303c18d39ce30e89b22de138ab5b63f886449a2b3",
+      "size_basis": "Exact signed captured Packages metadata; actual APT resolver with all existing catalog versions fixed; no deb or OCI installation measurement.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://gcc.gnu.org/install/prerequisites.html"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/patatt/python3-patatt_0.6.3-1_all.deb",
+      "title": "python3-patatt",
+      "version": "0.6.3-1"
+    },
+    "catalog_sha256": "68a911784fdfcf0e300f7c390cfb3f3c15b8eeac06726856733a02fae83b6de6"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "python3-patatt",
+    "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 23312,
+      "extract": false,
+      "id": "apt.python3-patatt",
+      "material_path": "apt/python3-patatt_0.6.3-1_all.deb",
+      "sha256": "a96b8150a3b8d4019e0f0fb303c18d39ce30e89b22de138ab5b63f886449a2b3",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/patatt/python3-patatt_0.6.3-1_all.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [
+      {
+        "command": "dpkg-query -W python3-patatt",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L python3-patatt",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/python3-patatt.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for python3-patatt (= 0.6.3-1). library for cryptographic attestation of patches"
+  },
+  "version": "0.6.3-1"
+}

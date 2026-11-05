@@ -1,0 +1,161 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libevent-core-2.1-7t64",
+      "apt.libsystemd0",
+      "apt.libtinfo6",
+      "apt.libutempter0"
+    ]
+  },
+  "id": "apt.tmux",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libevent-core-2.1-7t64",
+        "apt.libsystemd0",
+        "apt.libtinfo6",
+        "apt.libutempter0"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 479630,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/tmux"
+      ],
+      "id": "apt.tmux",
+      "immutable_ref": "sha256:fd14ca543ca0c00c7314c7bb524be40f3d058d9e587a5f47d9b35e851d9bd67d",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 1160,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/tmux_3.4-1ubuntu0.2_amd64.deb",
+      "package_name": "tmux",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "terminal multiplexer",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "fd14ca543ca0c00c7314c7bb524be40f3d058d9e587a5f47d9b35e851d9bd67d",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tmux/tmux_3.4-1ubuntu0.2_amd64.deb",
+      "title": "tmux",
+      "upstream": "https://tmux.github.io/",
+      "version": "3.4-1ubuntu0.2"
+    },
+    "catalog_sha256": "92583705d78ae4f100201a0eb6208f8dc40135366e47bd115f7e8c978e973569"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "tmux",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 479630,
+      "extract": false,
+      "id": "apt.tmux",
+      "material_path": "apt/tmux_3.4-1ubuntu0.2_amd64.deb",
+      "sha256": "fd14ca543ca0c00c7314c7bb524be40f3d058d9e587a5f47d9b35e851d9bd67d",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tmux/tmux_3.4-1ubuntu0.2_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/tmux"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W tmux",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L tmux",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/tmux.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for tmux (= 3.4-1ubuntu0.2). terminal multiplexer"
+  },
+  "version": "3.4-1ubuntu0.2"
+}

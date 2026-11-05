@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "932328887759e7aee59f75ad43a4335996de17370efd24d53f44fbc8b3a6a46e",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6-dev",
+        "apt.libuuid1"
+      ]
+    },
+    "id": "apt.uuid-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6-dev",
+          "apt.libuuid1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 33546,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/uuid-dev"
+        ],
+        "id": "apt.uuid-dev",
+        "immutable_ref": "sha256:266115cc3bcecef70b9f75c0cf8ca4daccd40958bf7872f8ccebec50502d2a13",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 123,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/uuid-dev_2.39.3-9ubuntu6.6_amd64.deb",
+        "package_name": "uuid-dev",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Universally Unique ID library - headers and static libraries",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "266115cc3bcecef70b9f75c0cf8ca4daccd40958bf7872f8ccebec50502d2a13",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/u/util-linux/uuid-dev_2.39.3-9ubuntu6.6_amd64.deb",
+        "title": "uuid-dev",
+        "upstream": "https://www.kernel.org/pub/linux/utils/util-linux/",
+        "version": "2.39.3-9ubuntu6.6"
+      },
+      "catalog_sha256": "c526c6726bc9bac0fd76ba9ba1ffa4636105f4575941a8c7095d59e6820cb65e"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "uuid-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 33546,
+        "extract": false,
+        "id": "apt.uuid-dev",
+        "material_path": "apt/uuid-dev_2.39.3-9ubuntu6.6_amd64.deb",
+        "sha256": "266115cc3bcecef70b9f75c0cf8ca4daccd40958bf7872f8ccebec50502d2a13",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/u/util-linux/uuid-dev_2.39.3-9ubuntu6.6_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/uuid-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W uuid-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L uuid-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/uuid-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for uuid-dev (= 2.39.3-9ubuntu6.6). Universally Unique ID library - headers and static libraries"
+    },
+    "version": "2.39.3-9ubuntu6.6"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "ea285fc6cb1f2b9590663049323a0ba9a577c0f87abf6ccd32e09f5c38808f7a",
+    "dependencies_sha256": "d77c77e09846ffee1a0ea148b5d27176ca255328434c4bb5052fdbb55fcf5bee",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "ee7934a2ad9d87a9a5686c741301736d1549c52bd06e4adf871157a89f639615",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "4977c62da1d98f70a4352bcc9f3a8387ff9174a1c6469b687640e9a6b1b05b04"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

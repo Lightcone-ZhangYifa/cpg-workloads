@@ -1,0 +1,182 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "6d4f97b9c676cf1db0be4dc0c0d2e588233739ded1440f4660152ba5e44f7aa9",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libc6-dbg"
+      ]
+    },
+    "id": "apt.valgrind",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libc6-dbg"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 14911212,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/valgrind"
+        ],
+        "id": "apt.valgrind",
+        "immutable_ref": "sha256:744e081e5cf3d5c598b499dbb7d2250ea3f2869dde4a4d7b231fe6114f347d7d",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 76943,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/valgrind_3.22.0-0ubuntu3_amd64.deb",
+        "package_name": "valgrind",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "instrumentation framework for building dynamic analysis tools",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "744e081e5cf3d5c598b499dbb7d2250ea3f2869dde4a4d7b231fe6114f347d7d",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/v/valgrind/valgrind_3.22.0-0ubuntu3_amd64.deb",
+        "title": "valgrind",
+        "upstream": "https://www.valgrind.org/",
+        "version": "1:3.22.0-0ubuntu3"
+      },
+      "catalog_sha256": "ed97ba48b49ed922992679b54448384739cea9f5f710cabcf294428d941d49c8"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "valgrind",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 14911212,
+        "extract": false,
+        "id": "apt.valgrind",
+        "material_path": "apt/valgrind_3.22.0-0ubuntu3_amd64.deb",
+        "sha256": "744e081e5cf3d5c598b499dbb7d2250ea3f2869dde4a4d7b231fe6114f347d7d",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/v/valgrind/valgrind_3.22.0-0ubuntu3_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/valgrind"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W valgrind",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L valgrind",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/valgrind.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for valgrind (= 1:3.22.0-0ubuntu3). instrumentation framework for building dynamic analysis tools"
+    },
+    "version": "1:3.22.0-0ubuntu3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "11f8d5e40a9776f8417ac985ea0e98bd87d0001e0809b84ef0f9392bb3b6d54e",
+    "dependencies_sha256": "bde698e5840d19f6648cddf5c5c8c5c5a2b078a73980545c47d12dd3096cdb4f",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "ef59c7bc7600890871a278d189cb7b291a0115ef36c0450d8ca7fbae607ef34a",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "2daf8e475c1a9bb4c4cf85b9c8699c186444cb31c18d71307fd4ea34b621ba2f"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,186 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "81cab3c99446e03c73aeb0f9768ad5572c7c7a20f8f6335a2eac2835637aa532",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.dpkg",
+        "apt.libperl5.38t64",
+        "apt.perl-base",
+        "apt.perl-modules-5.38"
+      ]
+    },
+    "id": "apt.perl",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.dpkg",
+          "apt.libperl5.38t64",
+          "apt.perl-base",
+          "apt.perl-modules-5.38"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 231438,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/perl"
+        ],
+        "id": "apt.perl",
+        "immutable_ref": "sha256:1a2341674a1c69e3247537ab243dc3d5878b74a39a696964232e1a4f5a27502d",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 674,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/perl_5.38.2-3.2ubuntu0.6_amd64.deb",
+        "package_name": "perl",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Larry Wall's Practical Extraction and Report Language",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "1a2341674a1c69e3247537ab243dc3d5878b74a39a696964232e1a4f5a27502d",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/p/perl/perl_5.38.2-3.2ubuntu0.6_amd64.deb",
+        "title": "perl",
+        "upstream": "http://dev.perl.org/perl5/",
+        "version": "5.38.2-3.2ubuntu0.6"
+      },
+      "catalog_sha256": "cbce63efa9f945d1ffdf1385c6806010841151da45bbcb1de6fae29a23b0377a"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "perl",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 231438,
+        "extract": false,
+        "id": "apt.perl",
+        "material_path": "apt/perl_5.38.2-3.2ubuntu0.6_amd64.deb",
+        "sha256": "1a2341674a1c69e3247537ab243dc3d5878b74a39a696964232e1a4f5a27502d",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/perl/perl_5.38.2-3.2ubuntu0.6_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/perl"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W perl",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L perl",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/perl.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for perl (= 5.38.2-3.2ubuntu0.6). Larry Wall's Practical Extraction and Report Language"
+    },
+    "version": "5.38.2-3.2ubuntu0.6"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "e5fbd3d456479d3d68d670bdcf719be4b473f0008b7eb23be106ebef90b5c1b1",
+    "dependencies_sha256": "03601fb437049cec0343c09ed43e08a62f09a786ccd18ca29f8b8e669b34edfe",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "a8f51f44d0b1629a0b14f4ed760a0500303226d5e0d273a482c271d7fe3a0f5f",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "da84a367b744b3b705e751d391f40b0d964bae1250061608e7cc24f0533f040a"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,184 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "50e45534ae52ec8c9b6e433bd7eaed9f3c75dc229fc215b0493f3bd1d1b90267",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libgmp10",
+        "apt.libstdlib-ocaml",
+        "apt.ocaml-base"
+      ]
+    },
+    "id": "apt.libzarith-ocaml",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libgmp10",
+          "apt.libstdlib-ocaml",
+          "apt.ocaml-base"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 120214,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/libzarith-ocaml"
+        ],
+        "id": "apt.libzarith-ocaml",
+        "immutable_ref": "sha256:b7319d0b5567916991fd2d76ad6e07eb41cba377f66c4979f5fbefbd90153861",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 386,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/libzarith-ocaml_1.13-2build4_amd64.deb",
+        "package_name": "libzarith-ocaml",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "arithmetic and logical operations over arbitrary-precision integers (runtime)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "b7319d0b5567916991fd2d76ad6e07eb41cba377f66c4979f5fbefbd90153861",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/o/ocaml-zarith/libzarith-ocaml_1.13-2build4_amd64.deb",
+        "title": "libzarith-ocaml",
+        "upstream": "https://github.com/ocaml/Zarith",
+        "version": "1.13-2build4"
+      },
+      "catalog_sha256": "08cf3ecbd20be11bb2a6f27b8ba948abaa9c6626476654824f21b9ff753a5172"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "libzarith-ocaml",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 120214,
+        "extract": false,
+        "id": "apt.libzarith-ocaml",
+        "material_path": "apt/libzarith-ocaml_1.13-2build4_amd64.deb",
+        "sha256": "b7319d0b5567916991fd2d76ad6e07eb41cba377f66c4979f5fbefbd90153861",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/o/ocaml-zarith/libzarith-ocaml_1.13-2build4_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/libzarith-ocaml"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W libzarith-ocaml",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L libzarith-ocaml",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/libzarith-ocaml.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for libzarith-ocaml (= 1.13-2build4). arithmetic and logical operations over arbitrary-precision integers (runtime)"
+    },
+    "version": "1.13-2build4"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "2a1400275d84a3db3d296e5e3347746278af4384e158f088a8e26b8a31710a72",
+    "dependencies_sha256": "9e3af7e595ac76590d8a035a58161d0765aa79795ab6306004a008012c2cfc3f",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "c6c96b9e96a3bf0abb1fc7abc71435e709305ee3e925699c7a5bcec362d98474",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "1b0e640d5f21e26621e1247e76c59a97a5a2d655590e8eb22b4323f81dc32143"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

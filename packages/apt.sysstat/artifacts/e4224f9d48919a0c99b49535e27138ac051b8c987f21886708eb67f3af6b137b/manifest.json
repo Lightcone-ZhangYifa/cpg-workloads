@@ -1,0 +1,188 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "1dd87cc9491d099073ec760b35af57d05bd52df939dee4d50c1d581388b069af",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.debconf",
+        "apt.libc6",
+        "apt.libsensors5",
+        "apt.ucf",
+        "apt.xz-utils"
+      ]
+    },
+    "id": "apt.sysstat",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.debconf",
+          "apt.libc6",
+          "apt.libsensors5",
+          "apt.ucf",
+          "apt.xz-utils"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 489308,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/sysstat"
+        ],
+        "id": "apt.sysstat",
+        "immutable_ref": "sha256:40f8a528434e2816f78869b7aa71a9ff4057678e76ae3a4109b5a7a72caa1285",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 1452,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/sysstat_12.6.1-2_amd64.deb",
+        "package_name": "sysstat",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "system performance tools for Linux",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "40f8a528434e2816f78869b7aa71a9ff4057678e76ae3a4109b5a7a72caa1285",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/s/sysstat/sysstat_12.6.1-2_amd64.deb",
+        "title": "sysstat",
+        "upstream": "https://sysstat.github.io/",
+        "version": "12.6.1-2"
+      },
+      "catalog_sha256": "c660734d2ca7d788ae5eeaa0789952da7246fb2bb30148699b1d0ce0833ecca6"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "sysstat",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 489308,
+        "extract": false,
+        "id": "apt.sysstat",
+        "material_path": "apt/sysstat_12.6.1-2_amd64.deb",
+        "sha256": "40f8a528434e2816f78869b7aa71a9ff4057678e76ae3a4109b5a7a72caa1285",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/sysstat/sysstat_12.6.1-2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/sysstat"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W sysstat",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L sysstat",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/sysstat.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for sysstat (= 12.6.1-2). system performance tools for Linux"
+    },
+    "version": "12.6.1-2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "36c3f4840d0f47446e1ff1fe0edb7a84bb719a7fd5e30d7f1a5f365d3cd829ed",
+    "dependencies_sha256": "314f615b4c884b299563ff586ca4ca1aab2d27756586397054c0c64f84e78763",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "e0b33f815b98aa9304e2733cb26c08f2b97fb88e99af19530e26cd29518c7363",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "4883b30342316547ac96f3490651094b79ff210c8d6f62c5d5c04aab78b9bb06"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

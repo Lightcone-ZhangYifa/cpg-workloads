@@ -1,0 +1,190 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "e6dbbf151cd4a4436ac2662eff1f98e5f095b0711a8dee05b95d4e72e0fb17d3",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libaudit1",
+        "apt.libc6",
+        "apt.libcrypt1",
+        "apt.libpam-modules",
+        "apt.libpam0g",
+        "apt.libselinux1",
+        "apt.libsemanage2"
+      ]
+    },
+    "id": "apt.passwd",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libaudit1",
+          "apt.libc6",
+          "apt.libcrypt1",
+          "apt.libpam-modules",
+          "apt.libpam0g",
+          "apt.libselinux1",
+          "apt.libsemanage2"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 844580,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/passwd"
+        ],
+        "id": "apt.passwd",
+        "immutable_ref": "sha256:139b51228c8065eefa3051f649d8480eb986f1cf629448e49d2eaf9813318412",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 2419,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/passwd_4.13+dfsg1-4ubuntu3.2_amd64.deb",
+        "package_name": "passwd",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "change and administer password and group data",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "139b51228c8065eefa3051f649d8480eb986f1cf629448e49d2eaf9813318412",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/s/shadow/passwd_4.13+dfsg1-4ubuntu3.2_amd64.deb",
+        "title": "passwd",
+        "upstream": "https://github.com/shadow-maint/shadow",
+        "version": "1:4.13+dfsg1-4ubuntu3.2"
+      },
+      "catalog_sha256": "547f2995274fcc900564f9758993913c99bd12ed8f3bfa2084a935132ebe9107"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "passwd",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 844580,
+        "extract": false,
+        "id": "apt.passwd",
+        "material_path": "apt/passwd_4.13+dfsg1-4ubuntu3.2_amd64.deb",
+        "sha256": "139b51228c8065eefa3051f649d8480eb986f1cf629448e49d2eaf9813318412",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/shadow/passwd_4.13+dfsg1-4ubuntu3.2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/passwd"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W passwd",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L passwd",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/passwd.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for passwd (= 1:4.13+dfsg1-4ubuntu3.2). change and administer password and group data"
+    },
+    "version": "1:4.13+dfsg1-4ubuntu3.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "debf87bcb76f7aeb9cc1042674c3a8f9f4546be7d948f332231f5358c84ec37e",
+    "dependencies_sha256": "3648f4d833899cd527ec00d4196ccec8a7681d7af85a9d26b4fc4d1b68f927e0",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "246f04b60927fa5e2422f7f91552f1edd97acfe2d74c5e03ed3072264f0d1163",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "debb566c95099c025da326f7e582c4ef324a14b0d5418281daad7141861cb350"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

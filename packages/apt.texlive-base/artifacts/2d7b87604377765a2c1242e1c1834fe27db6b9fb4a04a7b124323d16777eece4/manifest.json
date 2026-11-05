@@ -1,0 +1,190 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "e639eeae29b6fac6f51a9a7bdc50dfca781550b2ceaed0010878215723bd22bd",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.debconf",
+        "apt.libpaper-utils",
+        "apt.sensible-utils",
+        "apt.tex-common",
+        "apt.texlive-binaries",
+        "apt.ucf",
+        "apt.xdg-utils"
+      ]
+    },
+    "id": "apt.texlive-base",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.debconf",
+          "apt.libpaper-utils",
+          "apt.sensible-utils",
+          "apt.tex-common",
+          "apt.texlive-binaries",
+          "apt.ucf",
+          "apt.xdg-utils"
+        ],
+        "architecture": "all",
+        "archive_bytes": 21746552,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/texlive-base"
+        ],
+        "id": "apt.texlive-base",
+        "immutable_ref": "sha256:d5fb8e71ede65344896349498fc9d8931dfdc69892c601f0c406c2767ccd6216",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 43685,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/texlive-base_2023.20240207-1_all.deb",
+        "package_name": "texlive-base",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "TeX Live: Essential programs and files",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "d5fb8e71ede65344896349498fc9d8931dfdc69892c601f0c406c2767ccd6216",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/t/texlive-base/texlive-base_2023.20240207-1_all.deb",
+        "title": "texlive-base",
+        "upstream": "http://www.tug.org/texlive/",
+        "version": "2023.20240207-1"
+      },
+      "catalog_sha256": "b05cd0fd3f91cb4f6a1eda0517e5669cf8ea5ecb05352fda68def83cf7f531e3"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "texlive-base",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 21746552,
+        "extract": false,
+        "id": "apt.texlive-base",
+        "material_path": "apt/texlive-base_2023.20240207-1_all.deb",
+        "sha256": "d5fb8e71ede65344896349498fc9d8931dfdc69892c601f0c406c2767ccd6216",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/t/texlive-base/texlive-base_2023.20240207-1_all.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/texlive-base"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W texlive-base",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L texlive-base",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/texlive-base.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for texlive-base (= 2023.20240207-1). TeX Live: Essential programs and files"
+    },
+    "version": "2023.20240207-1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "80b196000e000a5834ce1097ea297a6107527c05a3ee2a47820beea24aad60d8",
+    "dependencies_sha256": "1938bae10b8f1d68d733181a339e0a230b554c21581aa07265cfca3036b89ed2",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "275b22e79269eefce31695492fa0c28b0c30297bc9972fd391e448a164150948",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "f9742dce08a5f6869fab5c85a950337d287a5bb6c7999246147bd263deb327af"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,162 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libtext-unidecode-perl",
+      "apt.libxml-libxml-perl",
+      "apt.perl",
+      "apt.tex-common",
+      "apt.texinfo-lib"
+    ]
+  },
+  "id": "apt.texinfo",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libtext-unidecode-perl",
+        "apt.libxml-libxml-perl",
+        "apt.perl",
+        "apt.tex-common",
+        "apt.texinfo-lib"
+      ],
+      "architecture": "all",
+      "archive_bytes": 1272972,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/texinfo"
+      ],
+      "id": "apt.texinfo",
+      "immutable_ref": "sha256:d45be908b080a764422bf8dc337381b7ba697e4dae0fd59a862f97588a9ef71a",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 7812,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/texinfo_7.1-3build2_all.deb",
+      "package_name": "texinfo",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Documentation system for on-line information and printed output",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "d45be908b080a764422bf8dc337381b7ba697e4dae0fd59a862f97588a9ef71a",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/t/texinfo/texinfo_7.1-3build2_all.deb",
+      "title": "texinfo",
+      "upstream": "https://www.gnu.org/software/texinfo/",
+      "version": "7.1-3build2"
+    },
+    "catalog_sha256": "7e909730389fe6c09415daec8d24e81cd80e21ef0f658b8600f6ff466b8cbc03"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "texinfo",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1272972,
+      "extract": false,
+      "id": "apt.texinfo",
+      "material_path": "apt/texinfo_7.1-3build2_all.deb",
+      "sha256": "d45be908b080a764422bf8dc337381b7ba697e4dae0fd59a862f97588a9ef71a",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/t/texinfo/texinfo_7.1-3build2_all.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/texinfo"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W texinfo",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L texinfo",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/texinfo.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for texinfo (= 7.1-3build2). Documentation system for on-line information and printed output"
+  },
+  "version": "7.1-3build2"
+}

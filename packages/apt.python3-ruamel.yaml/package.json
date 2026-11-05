@@ -1,0 +1,155 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3",
+      "apt.python3-ruamel.yaml.clib"
+    ]
+  },
+  "id": "apt.python3-ruamel.yaml",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.python3",
+        "apt.python3-ruamel.yaml.clib"
+      ],
+      "architecture": "all",
+      "archive_bytes": 86648,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/python3-ruamel.yaml"
+      ],
+      "id": "apt.python3-ruamel.yaml",
+      "immutable_ref": "sha256:6393db2939943a0ffe40ab618f97b24b1f80ffdd8ba18b89fe60e29625f30803",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 577,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/python3-ruamel.yaml_0.17.21-1_all.deb",
+      "package_name": "python3-ruamel.yaml",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "roundtrip YAML parser/emitter (Python 3 module)",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "6393db2939943a0ffe40ab618f97b24b1f80ffdd8ba18b89fe60e29625f30803",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/r/ruamel.yaml/python3-ruamel.yaml_0.17.21-1_all.deb",
+      "title": "python3-ruamel.yaml",
+      "upstream": "https://yaml.readthedocs.io",
+      "version": "0.17.21-1"
+    },
+    "catalog_sha256": "d78c7653ffbed8cd189ac74be2cab195e95faa372d409467b59b49e61dff2b27"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "python3-ruamel.yaml",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 86648,
+      "extract": false,
+      "id": "apt.python3-ruamel.yaml",
+      "material_path": "apt/python3-ruamel.yaml_0.17.21-1_all.deb",
+      "sha256": "6393db2939943a0ffe40ab618f97b24b1f80ffdd8ba18b89fe60e29625f30803",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/r/ruamel.yaml/python3-ruamel.yaml_0.17.21-1_all.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/python3-ruamel.yaml"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W python3-ruamel.yaml",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L python3-ruamel.yaml",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/python3-ruamel.yaml.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for python3-ruamel.yaml (= 0.17.21-1). roundtrip YAML parser/emitter (Python 3 module)"
+  },
+  "version": "0.17.21-1"
+}

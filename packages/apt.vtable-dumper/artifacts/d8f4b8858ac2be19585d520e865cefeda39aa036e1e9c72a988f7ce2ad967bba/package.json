@@ -1,0 +1,149 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libelf1t64",
+      "apt.libstdc++6"
+    ]
+  },
+  "id": "apt.vtable-dumper",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libelf1t64",
+        "apt.libstdc++6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 7560,
+      "category": [
+        "Community development",
+        "Resolved system dependencies"
+      ],
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built"
+      },
+      "id": "apt.vtable-dumper",
+      "immutable_ref": "sha256:1fe379d75a0d42845bbd2f77cddd56b661b9b3e3733c3bf4574848bac45d86c0",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 31,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/vtable-dumper_1.2-1build3_amd64.deb",
+      "package_name": "vtable-dumper",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "tool to list content of virtual tables in a C++ shared library",
+      "qualification_gaps": [
+        "Perform role-specific installation and first-use checks in the selected dev image."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "1fe379d75a0d42845bbd2f77cddd56b661b9b3e3733c3bf4574848bac45d86c0",
+      "size_basis": "Exact signed captured Packages metadata; actual APT resolver with all existing catalog versions fixed; no deb or OCI installation measurement.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://gcc.gnu.org/install/prerequisites.html"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/v/vtable-dumper/vtable-dumper_1.2-1build3_amd64.deb",
+      "title": "vtable-dumper",
+      "version": "1.2-1build3"
+    },
+    "catalog_sha256": "aa2827f16cfe696ce6778faa494cd9a69b8b81b29f6f9d833af91db0999e326d"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "vtable-dumper",
+    "state": "signed-metadata-and-frozen-union-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 7560,
+      "extract": false,
+      "id": "apt.vtable-dumper",
+      "material_path": "apt/vtable-dumper_1.2-1build3_amd64.deb",
+      "sha256": "1fe379d75a0d42845bbd2f77cddd56b661b9b3e3733c3bf4574848bac45d86c0",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/v/vtable-dumper/vtable-dumper_1.2-1build3_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [
+      {
+        "command": "dpkg-query -W vtable-dumper",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L vtable-dumper",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/vtable-dumper.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for vtable-dumper (= 1.2-1build3). tool to list content of virtual tables in a C++ shared library"
+  },
+  "version": "1.2-1build3"
+}

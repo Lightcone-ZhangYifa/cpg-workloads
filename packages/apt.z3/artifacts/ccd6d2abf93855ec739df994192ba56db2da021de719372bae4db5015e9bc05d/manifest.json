@@ -1,0 +1,183 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "1d7698b570a118fbc3d5c8afec317b0f537471bd7e6dd7c1b902ef7cde3a4c9f",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libstdc++6"
+      ]
+    },
+    "id": "apt.z3",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libgcc-s1",
+          "apt.libstdc++6"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 5910556,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/z3"
+        ],
+        "id": "apt.z3",
+        "immutable_ref": "sha256:3b15884d5f77563b2941f5c679ce9c3d252d098340094f46b891bc57603e3793",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 16023,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/z3_4.8.12-3.1build1_amd64.deb",
+        "package_name": "z3",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "theorem prover from Microsoft Research",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "3b15884d5f77563b2941f5c679ce9c3d252d098340094f46b891bc57603e3793",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/z/z3/z3_4.8.12-3.1build1_amd64.deb",
+        "title": "z3",
+        "upstream": "https://github.com/Z3Prover/z3",
+        "version": "4.8.12-3.1build1"
+      },
+      "catalog_sha256": "17157ef2d501b06aadb3ff85a2f7f5718c2431aad39b208019636f4b8ac4fab4"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "z3",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 5910556,
+        "extract": false,
+        "id": "apt.z3",
+        "material_path": "apt/z3_4.8.12-3.1build1_amd64.deb",
+        "sha256": "3b15884d5f77563b2941f5c679ce9c3d252d098340094f46b891bc57603e3793",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/z/z3/z3_4.8.12-3.1build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/z3"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W z3",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L z3",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/z3.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for z3 (= 4.8.12-3.1build1). theorem prover from Microsoft Research"
+    },
+    "version": "4.8.12-3.1build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "6580ee62d71eda28b8645b145de1dc293d92e677de980d999356a38fd23b6b90",
+    "dependencies_sha256": "e8c7fef34bc992e765e6fab24ddf2e8d01b7007f703a86b6311c3321a259c38d",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "f528ce11ad68a679a0dd8b54930df254989f1ded7774637494846a20b64b8bfc",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "80a5f85a4f38825f52f39e66c39a670dfa2c9731bca93ae74ad804ecd0a3cfa6"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "63fc362513df8a19d88e0b356180df4b8b615e30c059c6cf73fdae1e35954080",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libstdlib-ocaml"
+      ]
+    },
+    "id": "apt.ocaml-base",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libstdlib-ocaml"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 256214,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/ocaml-base"
+        ],
+        "id": "apt.ocaml-base",
+        "immutable_ref": "sha256:58efc8df3c84db7ca31a7b5312a60ec416ed417953882c0cbe108f69d1dd35d7",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 1059,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/ocaml-base_4.14.1-1ubuntu1_amd64.deb",
+        "package_name": "ocaml-base",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Runtime system for OCaml bytecode executables",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "58efc8df3c84db7ca31a7b5312a60ec416ed417953882c0cbe108f69d1dd35d7",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/o/ocaml/ocaml-base_4.14.1-1ubuntu1_amd64.deb",
+        "title": "ocaml-base",
+        "upstream": "https://ocaml.org/",
+        "version": "4.14.1-1ubuntu1"
+      },
+      "catalog_sha256": "30b65aa4175589c2aa358471e370cd21211cd6ee07a82156295799e9ec2c033b"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "ocaml-base",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 256214,
+        "extract": false,
+        "id": "apt.ocaml-base",
+        "material_path": "apt/ocaml-base_4.14.1-1ubuntu1_amd64.deb",
+        "sha256": "58efc8df3c84db7ca31a7b5312a60ec416ed417953882c0cbe108f69d1dd35d7",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/o/ocaml/ocaml-base_4.14.1-1ubuntu1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/ocaml-base"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W ocaml-base",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L ocaml-base",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/ocaml-base.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for ocaml-base (= 4.14.1-1ubuntu1). Runtime system for OCaml bytecode executables"
+    },
+    "version": "4.14.1-1ubuntu1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "a0e3458877531be3cf3b040b4764e618ec8bfac62a25ee53c027d2abc8b0147c",
+    "dependencies_sha256": "ae3219fe6c19be4865fe619868171e9a2d6cb1e13e078ecc81f688f69bba3d3a",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "94c683d2265b48f895004feb6999bd054b118e6486a395652e7387c6c2dfd91b",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "046bc94abc4d017b969ebc0863375d668a03694d799791ff51f18aa6bfc03b93"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

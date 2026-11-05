@@ -1,0 +1,161 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libgcc-s1",
+      "apt.libglib2.0-0t64",
+      "apt.libstdc++6",
+      "apt.libxml2"
+    ]
+  },
+  "id": "apt.shared-mime-info",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libglib2.0-0t64",
+        "apt.libstdc++6",
+        "apt.libxml2"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 473572,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/shared-mime-info"
+      ],
+      "id": "apt.shared-mime-info",
+      "immutable_ref": "sha256:7a774ea291ab99bfa987866c6b68e825531eeea7c8a732dd47d14cf480453fda",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 2852,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/shared-mime-info_2.4-4_amd64.deb",
+      "package_name": "shared-mime-info",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "FreeDesktop.org shared MIME database and spec",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "7a774ea291ab99bfa987866c6b68e825531eeea7c8a732dd47d14cf480453fda",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/s/shared-mime-info/shared-mime-info_2.4-4_amd64.deb",
+      "title": "shared-mime-info",
+      "upstream": "https://freedesktop.org/wiki/Software/shared-mime-info",
+      "version": "2.4-4"
+    },
+    "catalog_sha256": "88b9d69a812b6666ceeddd1f80fac4696c19aa4705318210fed13b761ef38a68"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "shared-mime-info",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 473572,
+      "extract": false,
+      "id": "apt.shared-mime-info",
+      "material_path": "apt/shared-mime-info_2.4-4_amd64.deb",
+      "sha256": "7a774ea291ab99bfa987866c6b68e825531eeea7c8a732dd47d14cf480453fda",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/shared-mime-info/shared-mime-info_2.4-4_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/shared-mime-info"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W shared-mime-info",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L shared-mime-info",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/shared-mime-info.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for shared-mime-info (= 2.4-4). FreeDesktop.org shared MIME database and spec"
+  },
+  "version": "2.4-4"
+}

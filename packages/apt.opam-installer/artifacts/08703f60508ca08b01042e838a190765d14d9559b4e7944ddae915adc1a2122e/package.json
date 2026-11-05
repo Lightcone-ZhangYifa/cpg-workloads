@@ -1,0 +1,153 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6"
+    ]
+  },
+  "id": "apt.opam-installer",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 1255714,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/opam-installer"
+      ],
+      "id": "apt.opam-installer",
+      "immutable_ref": "sha256:d0c0adb39fa8b456c0fb9864220e0b0f98319ea2ea9ee7351e8a5747583e2402",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 4443,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/opam-installer_2.1.5-1_amd64.deb",
+      "package_name": "opam-installer",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Utility handling (un)installation of Opam .install files",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "d0c0adb39fa8b456c0fb9864220e0b0f98319ea2ea9ee7351e8a5747583e2402",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/o/opam/opam-installer_2.1.5-1_amd64.deb",
+      "title": "opam-installer",
+      "upstream": "https://opam.ocaml.org",
+      "version": "2.1.5-1"
+    },
+    "catalog_sha256": "3428a0f223cbfff64ef569507d42377701d5ea00f12ffad38ff30942c8f5832f"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "opam-installer",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1255714,
+      "extract": false,
+      "id": "apt.opam-installer",
+      "material_path": "apt/opam-installer_2.1.5-1_amd64.deb",
+      "sha256": "d0c0adb39fa8b456c0fb9864220e0b0f98319ea2ea9ee7351e8a5747583e2402",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/o/opam/opam-installer_2.1.5-1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/opam-installer"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W opam-installer",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L opam-installer",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/opam-installer.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for opam-installer (= 2.1.5-1). Utility handling (un)installation of Opam .install files"
+  },
+  "version": "2.1.5-1"
+}

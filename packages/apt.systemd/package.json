@@ -1,0 +1,195 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libacl1",
+      "apt.libapparmor1",
+      "apt.libaudit1",
+      "apt.libblkid1",
+      "apt.libc6",
+      "apt.libcap2",
+      "apt.libcryptsetup12",
+      "apt.libfdisk1",
+      "apt.libgcrypt20",
+      "apt.libkmod2",
+      "apt.liblz4-1",
+      "apt.liblzma5",
+      "apt.libmount1",
+      "apt.libpam0g",
+      "apt.libseccomp2",
+      "apt.libselinux1",
+      "apt.libssl3t64",
+      "apt.libsystemd-shared",
+      "apt.libsystemd0",
+      "apt.libzstd1",
+      "apt.mount",
+      "apt.systemd-dev"
+    ]
+  },
+  "id": "apt.systemd",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libacl1",
+        "apt.libapparmor1",
+        "apt.libaudit1",
+        "apt.libblkid1",
+        "apt.libc6",
+        "apt.libcap2",
+        "apt.libcryptsetup12",
+        "apt.libfdisk1",
+        "apt.libgcrypt20",
+        "apt.libkmod2",
+        "apt.liblz4-1",
+        "apt.liblzma5",
+        "apt.libmount1",
+        "apt.libpam0g",
+        "apt.libseccomp2",
+        "apt.libselinux1",
+        "apt.libssl3t64",
+        "apt.libsystemd-shared",
+        "apt.libsystemd0",
+        "apt.libzstd1",
+        "apt.mount",
+        "apt.systemd-dev"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 3474856,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/systemd"
+      ],
+      "id": "apt.systemd",
+      "immutable_ref": "sha256:ba37e7dc1e33690d94a1063543d27f9b17c013a20791c3315b2423fbf9e7ae7b",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 11748,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/systemd_255.4-1ubuntu8.18_amd64.deb",
+      "package_name": "systemd",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "system and service manager",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "ba37e7dc1e33690d94a1063543d27f9b17c013a20791c3315b2423fbf9e7ae7b",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/s/systemd/systemd_255.4-1ubuntu8.18_amd64.deb",
+      "title": "systemd",
+      "upstream": "https://www.freedesktop.org/wiki/Software/systemd",
+      "version": "255.4-1ubuntu8.18"
+    },
+    "catalog_sha256": "1b7d2ad53f0d07569abee87d9e05cf208813f9acdefabe55f3347c610d319c6b"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "systemd",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3474856,
+      "extract": false,
+      "id": "apt.systemd",
+      "material_path": "apt/systemd_255.4-1ubuntu8.18_amd64.deb",
+      "sha256": "ba37e7dc1e33690d94a1063543d27f9b17c013a20791c3315b2423fbf9e7ae7b",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/systemd/systemd_255.4-1ubuntu8.18_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/systemd"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W systemd",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L systemd",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/systemd.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for systemd (= 255.4-1ubuntu8.18). system and service manager"
+  },
+  "version": "255.4-1ubuntu8.18"
+}

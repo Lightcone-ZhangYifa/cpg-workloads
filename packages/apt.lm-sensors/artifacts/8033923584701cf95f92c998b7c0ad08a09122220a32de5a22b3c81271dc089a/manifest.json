@@ -1,0 +1,184 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "5e070e366ae7129895d9d6b29f9fcdec1f0909aa647ab4cca37dc41d3c44ad08",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.libsensors5",
+        "apt.perl",
+        "apt.sed"
+      ]
+    },
+    "id": "apt.lm-sensors",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.libsensors5",
+          "apt.perl",
+          "apt.sed"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 90142,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/lm-sensors"
+        ],
+        "id": "apt.lm-sensors",
+        "immutable_ref": "sha256:dfc9430a421f24e3cf3fa5607f9e9a7a799b468fe818467ad5301669bf1f5c59",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 378,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/lm-sensors_3.6.0-9build1_amd64.deb",
+        "package_name": "lm-sensors",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "utilities to read temperature/voltage/fan sensors",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "dfc9430a421f24e3cf3fa5607f9e9a7a799b468fe818467ad5301669bf1f5c59",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/lm-sensors/lm-sensors_3.6.0-9build1_amd64.deb",
+        "title": "lm-sensors",
+        "upstream": "https://hwmon.wiki.kernel.org/lm_sensors",
+        "version": "1:3.6.0-9build1"
+      },
+      "catalog_sha256": "89f436217b16bccb84d6424d0bf183ed8640af4882ab7d59e06a5c8469d21535"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "lm-sensors",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 90142,
+        "extract": false,
+        "id": "apt.lm-sensors",
+        "material_path": "apt/lm-sensors_3.6.0-9build1_amd64.deb",
+        "sha256": "dfc9430a421f24e3cf3fa5607f9e9a7a799b468fe818467ad5301669bf1f5c59",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/lm-sensors/lm-sensors_3.6.0-9build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/lm-sensors"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W lm-sensors",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L lm-sensors",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/lm-sensors.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for lm-sensors (= 1:3.6.0-9build1). utilities to read temperature/voltage/fan sensors"
+    },
+    "version": "1:3.6.0-9build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "43e480f0cece1f06ee66f61f9924795cd3b28825f1d5f30f51aef6ed25a1b14a",
+    "dependencies_sha256": "15918b5a9f046d4c0020ab9835c1a4c8e03b3f53455b93ab581925ac84ef717b",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "d3d3cc12e3c48e7b0398664958dbb537066d3ed6ef8a06833c7109edd8fd1898",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "38d84a6e8cdf42deafb11abfb0df38b20344d5e7b2d43b28de65ab5b032201fb"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

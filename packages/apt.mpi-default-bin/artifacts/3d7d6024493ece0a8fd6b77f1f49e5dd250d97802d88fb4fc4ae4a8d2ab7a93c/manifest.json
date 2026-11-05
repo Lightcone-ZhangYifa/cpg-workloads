@@ -1,0 +1,178 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "2f315097968ce6095926eb5dbfe563602b2700b3736555e8a38afe56688e86d4",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.openmpi-bin"
+      ]
+    },
+    "id": "apt.mpi-default-bin",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.openmpi-bin"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 2376,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/mpi-default-bin"
+        ],
+        "id": "apt.mpi-default-bin",
+        "immutable_ref": "sha256:1224761a93a9273969cb25bce0ad2ed435187cf6c5e689502bd7816358faf2af",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 8,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/mpi-default-bin_1.15build1_amd64.deb",
+        "package_name": "mpi-default-bin",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Standard MPI runtime programs (metapackage)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "1224761a93a9273969cb25bce0ad2ed435187cf6c5e689502bd7816358faf2af",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/m/mpi-defaults/mpi-default-bin_1.15build1_amd64.deb",
+        "title": "mpi-default-bin",
+        "upstream": "https://packages.ubuntu.com/noble/mpi-default-bin",
+        "version": "1.15build1"
+      },
+      "catalog_sha256": "4d0d5a1c2ae75d2fc60d74791753301e566f65e1f6d1b9d1f65c48b94ef56a31"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "mpi-default-bin",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 2376,
+        "extract": false,
+        "id": "apt.mpi-default-bin",
+        "material_path": "apt/mpi-default-bin_1.15build1_amd64.deb",
+        "sha256": "1224761a93a9273969cb25bce0ad2ed435187cf6c5e689502bd7816358faf2af",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/m/mpi-defaults/mpi-default-bin_1.15build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/mpi-default-bin"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W mpi-default-bin",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L mpi-default-bin",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/mpi-default-bin.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for mpi-default-bin (= 1.15build1). Standard MPI runtime programs (metapackage)"
+    },
+    "version": "1.15build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "d5ff5eddc46ab842cac019d7ce7177496ccab4afbdbde730c2f89956e30d07dc",
+    "dependencies_sha256": "157ecb03cfb1bd475da7a5e16da8026105ec84939550d5bc4121f9c241a303b9",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "63c1d78fd3995c1fbd1c95d84fec9518a13bea3e4984b38f1e5f5c0795d995bd",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "852ba5708e775a2b8cf6fa24718ec270284067de22820ec79cfe7e6aff894112"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

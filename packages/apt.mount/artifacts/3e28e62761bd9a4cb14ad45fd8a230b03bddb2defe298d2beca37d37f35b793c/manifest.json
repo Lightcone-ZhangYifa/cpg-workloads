@@ -1,0 +1,186 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "3a0d638f98a390fdc278607e70217d40732bbc1db5f1856b621fa432041037a1",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libblkid1",
+        "apt.libc6",
+        "apt.libmount1",
+        "apt.libselinux1",
+        "apt.libsmartcols1"
+      ]
+    },
+    "id": "apt.mount",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libblkid1",
+          "apt.libc6",
+          "apt.libmount1",
+          "apt.libselinux1",
+          "apt.libsmartcols1"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 118192,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/mount"
+        ],
+        "id": "apt.mount",
+        "immutable_ref": "sha256:09e929ceb9fc5d11757f28429b3151601c44db4c96e0bc5ad46c501c8d56f4f9",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 349,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/mount_2.39.3-9ubuntu6.6_amd64.deb",
+        "package_name": "mount",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "tools for mounting and manipulating filesystems",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "09e929ceb9fc5d11757f28429b3151601c44db4c96e0bc5ad46c501c8d56f4f9",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/u/util-linux/mount_2.39.3-9ubuntu6.6_amd64.deb",
+        "title": "mount",
+        "upstream": "https://www.kernel.org/pub/linux/utils/util-linux/",
+        "version": "2.39.3-9ubuntu6.6"
+      },
+      "catalog_sha256": "cc9328daa396dead70e2521070d202dfe692327a027985a00a4eb9224384c968"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "mount",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 118192,
+        "extract": false,
+        "id": "apt.mount",
+        "material_path": "apt/mount_2.39.3-9ubuntu6.6_amd64.deb",
+        "sha256": "09e929ceb9fc5d11757f28429b3151601c44db4c96e0bc5ad46c501c8d56f4f9",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/u/util-linux/mount_2.39.3-9ubuntu6.6_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/mount"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W mount",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L mount",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/mount.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for mount (= 2.39.3-9ubuntu6.6). tools for mounting and manipulating filesystems"
+    },
+    "version": "2.39.3-9ubuntu6.6"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "bf8089a91ffa985767c70a72f9c4c6b14c6975e143b1f6add761ef3be886a3f0",
+    "dependencies_sha256": "4a1bc2f00d2a561940281fb8ae57432625e2511f75366da8f87847920f3c2547",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "af40706a51da6caaa5b843abd0475fd07e80c8b6acdd2c3f60345abfd3b5b015",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "373744bc15bbc48853d154163f5371511eb0b1ba56acb12b09ccfa30f54e61aa"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

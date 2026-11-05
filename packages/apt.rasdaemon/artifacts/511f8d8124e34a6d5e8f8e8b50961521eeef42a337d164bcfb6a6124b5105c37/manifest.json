@@ -1,0 +1,190 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "2fadbe2044f0c76ff7faed1086c0f0265d618ae8089e97bc3e19a2a7cff20b2e",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.init-system-helpers",
+        "apt.libc6",
+        "apt.libdbd-sqlite3-perl",
+        "apt.libsqlite3-0",
+        "apt.libtraceevent1",
+        "apt.perl",
+        "apt.sqlite3"
+      ]
+    },
+    "id": "apt.rasdaemon",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.init-system-helpers",
+          "apt.libc6",
+          "apt.libdbd-sqlite3-perl",
+          "apt.libsqlite3-0",
+          "apt.libtraceevent1",
+          "apt.perl",
+          "apt.sqlite3"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 74388,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/rasdaemon"
+        ],
+        "id": "apt.rasdaemon",
+        "immutable_ref": "sha256:e1c284189460a7b2d87d94a0c46359f20bc938cced6c30a361fb743e2bd011af",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 297,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/rasdaemon_0.8.0-2_amd64.deb",
+        "package_name": "rasdaemon",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "utility to receive RAS error tracings",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "e1c284189460a7b2d87d94a0c46359f20bc938cced6c30a361fb743e2bd011af",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/r/rasdaemon/rasdaemon_0.8.0-2_amd64.deb",
+        "title": "rasdaemon",
+        "upstream": "https://github.com/mchehab/rasdaemon",
+        "version": "0.8.0-2"
+      },
+      "catalog_sha256": "b92695fe9d1d6491e489dcd561471369d543ba2bf87acba818ae72f06be734cd"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "rasdaemon",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 74388,
+        "extract": false,
+        "id": "apt.rasdaemon",
+        "material_path": "apt/rasdaemon_0.8.0-2_amd64.deb",
+        "sha256": "e1c284189460a7b2d87d94a0c46359f20bc938cced6c30a361fb743e2bd011af",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/r/rasdaemon/rasdaemon_0.8.0-2_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/rasdaemon"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W rasdaemon",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L rasdaemon",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/rasdaemon.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for rasdaemon (= 0.8.0-2). utility to receive RAS error tracings"
+    },
+    "version": "0.8.0-2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "33aa50adc66a3db52b23fb3b35f0e6792a66702f486e9e93f3660fbbc8ef7134",
+    "dependencies_sha256": "84af70f32f75653019fd28a341518158a77276009d458c4d9f8d326cd5b31163",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "76446c1a38b1f83b15a8134d4d8e73e73203b977c03ad49fc4c5655bd40e4f82",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "a5a3c11637eb94618c3322f9dd73d24a44363f54423d4e702ca4d3ea741f530e"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

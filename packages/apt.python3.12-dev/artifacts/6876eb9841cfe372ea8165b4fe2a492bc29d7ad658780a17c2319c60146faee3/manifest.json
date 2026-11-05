@@ -1,0 +1,183 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "6a18869e9392db885c265375ae5239b1b6198390ba01e943dc05d81bb17106ed",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libpython3.12-dev",
+        "apt.libpython3.12t64",
+        "apt.python3.12"
+      ]
+    },
+    "id": "apt.python3.12-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libpython3.12-dev",
+          "apt.libpython3.12t64",
+          "apt.python3.12"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 497932,
+        "category": [
+          "System packages",
+          "Resolved dependencies"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/python3.12-dev"
+        ],
+        "id": "apt.python3.12-dev",
+        "immutable_ref": "sha256:c5d002080f07dd3524e6f2609bbf11a56b6f1d4ad28af8e34e4dce5121c85481",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 502,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/python3.12-dev_3.12.3-1ubuntu0.17_amd64.deb",
+        "package_name": "python3.12-dev",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Header files and a static library for Python (v3.12)",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "c5d002080f07dd3524e6f2609bbf11a56b6f1d4ad28af8e34e4dce5121c85481",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/p/python3.12/python3.12-dev_3.12.3-1ubuntu0.17_amd64.deb",
+        "title": "python3.12-dev",
+        "upstream": "https://packages.ubuntu.com/noble/python3.12-dev",
+        "version": "3.12.3-1ubuntu0.17"
+      },
+      "catalog_sha256": "7b528f018aadd5939d4bb6bdefcaad5d95826198c3832f44e02e3f0c34b654c5"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "python3.12-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 497932,
+        "extract": false,
+        "id": "apt.python3.12-dev",
+        "material_path": "apt/python3.12-dev_3.12.3-1ubuntu0.17_amd64.deb",
+        "sha256": "c5d002080f07dd3524e6f2609bbf11a56b6f1d4ad28af8e34e4dce5121c85481",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/python3.12/python3.12-dev_3.12.3-1ubuntu0.17_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/python3.12-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W python3.12-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L python3.12-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/python3.12-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for python3.12-dev (= 3.12.3-1ubuntu0.17). Header files and a static library for Python (v3.12)"
+    },
+    "version": "3.12.3-1ubuntu0.17"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "88ef8175af0de1d50f6f90de4084e7ac45fad6d9478e8e78c5d83d73507a8bec",
+    "dependencies_sha256": "30eb138046e689b59b02f7ca2f656c545572925c9389d4222a82d1080102ce27",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "ed9627764eecde91526a50855237bf625a541029cca3d0b4520c7b309bd53e66",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "e7bc57e1a751369e7be6a40263dbe323fba1e542d17fd6c68c178320a8b0159b"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

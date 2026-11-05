@@ -1,0 +1,180 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "b27bf425e9e706c0ade9020a183173533775c71143399a64fc61c6c9821734e5",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.tcl",
+        "apt.tcl8.6-dev"
+      ]
+    },
+    "id": "apt.tcl-dev",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.tcl",
+          "apt.tcl8.6-dev"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 5782,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/tcl-dev"
+        ],
+        "id": "apt.tcl-dev",
+        "immutable_ref": "sha256:b3d35c298ba6c7fd1a2bcb67f537529fe666316c61fde162bbed6d0a79e8f7bf",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 39,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/tcl-dev_8.6.14build1_amd64.deb",
+        "package_name": "tcl-dev",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Tool Command Language (default version) - development files",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "b3d35c298ba6c7fd1a2bcb67f537529fe666316c61fde162bbed6d0a79e8f7bf",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tcltk-defaults/tcl-dev_8.6.14build1_amd64.deb",
+        "title": "tcl-dev",
+        "upstream": "https://packages.ubuntu.com/noble/tcl-dev",
+        "version": "8.6.14build1"
+      },
+      "catalog_sha256": "57b9944805db0be23d33f33eef9a7b6dff9bc3d07b4c641979719817b9cd2ccc"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "tcl-dev",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 5782,
+        "extract": false,
+        "id": "apt.tcl-dev",
+        "material_path": "apt/tcl-dev_8.6.14build1_amd64.deb",
+        "sha256": "b3d35c298ba6c7fd1a2bcb67f537529fe666316c61fde162bbed6d0a79e8f7bf",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tcltk-defaults/tcl-dev_8.6.14build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/tcl-dev"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W tcl-dev",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L tcl-dev",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/tcl-dev.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for tcl-dev (= 8.6.14build1). Tool Command Language (default version) - development files"
+    },
+    "version": "8.6.14build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "28ec7809a5a4788106e137c1050a8f4eefa3c52fd0cb9c8d90426d908517dd7f",
+    "dependencies_sha256": "135ebaf5ae4d455c28b94b958ff22cf4af450e0bacbd1bc170a8f03b5f3fbfc1",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "fc43a5fd48d5683a92fd3a7541e3f637af36e4e6a0d8761473370d7ee5b6c5a0",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "a8e6d53a7a9b3bcf47de28d5b6c1fab74c8c0907d1e5cca8554ff776d2f6d520"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

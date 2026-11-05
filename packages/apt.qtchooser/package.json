@@ -1,0 +1,157 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.libc6",
+      "apt.libgcc-s1",
+      "apt.libstdc++6"
+    ]
+  },
+  "id": "apt.qtchooser",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libc6",
+        "apt.libgcc-s1",
+        "apt.libstdc++6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 25886,
+      "category": [
+        "System packages",
+        "Resolved dependencies"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/qtchooser"
+      ],
+      "id": "apt.qtchooser",
+      "immutable_ref": "sha256:26ab1fef1c1ef32a5d6bb0ef4f8c6deb115bec84c1b73198f0f301207c50bd71",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 125,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/qtchooser_66-2build2_amd64.deb",
+      "package_name": "qtchooser",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Wrapper to select between Qt development binary versions",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "26ab1fef1c1ef32a5d6bb0ef4f8c6deb115bec84c1b73198f0f301207c50bd71",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/q/qtchooser/qtchooser_66-2build2_amd64.deb",
+      "title": "qtchooser",
+      "upstream": "https://qt-project.org/",
+      "version": "66-2build2"
+    },
+    "catalog_sha256": "a748a196892bf505562479369b041bc89f37db45c34ab436a1c1582c237e8a90"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "qtchooser",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 25886,
+      "extract": false,
+      "id": "apt.qtchooser",
+      "material_path": "apt/qtchooser_66-2build2_amd64.deb",
+      "sha256": "26ab1fef1c1ef32a5d6bb0ef4f8c6deb115bec84c1b73198f0f301207c50bd71",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/q/qtchooser/qtchooser_66-2build2_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/qtchooser"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W qtchooser",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L qtchooser",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/qtchooser.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for qtchooser (= 66-2build2). Wrapper to select between Qt development binary versions"
+  },
+  "version": "66-2build2"
+}

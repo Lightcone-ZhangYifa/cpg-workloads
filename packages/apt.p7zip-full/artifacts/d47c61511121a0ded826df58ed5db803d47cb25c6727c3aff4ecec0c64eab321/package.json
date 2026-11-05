@@ -1,0 +1,153 @@
+{
+  "build": "2",
+  "checks": [],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.7zip"
+    ]
+  },
+  "id": "apt.p7zip-full",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.7zip"
+      ],
+      "architecture": "all",
+      "archive_bytes": 2500,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/p7zip-full"
+      ],
+      "id": "apt.p7zip-full",
+      "immutable_ref": "sha256:b8d8df9d07a37fabefb9f73519872be1d8fe9b4aac42316311e1e04db982a58a",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 12,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/p7zip-full_16.02+transitional.1_all.deb",
+      "package_name": "p7zip-full",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "transitional package",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "b8d8df9d07a37fabefb9f73519872be1d8fe9b4aac42316311e1e04db982a58a",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/p7zip/p7zip-full_16.02+transitional.1_all.deb",
+      "title": "p7zip-full",
+      "upstream": "https://7-zip.org/",
+      "version": "16.02+transitional.1"
+    },
+    "catalog_sha256": "1159e5e42cd4649ee5ee356f01052b8100a5f4e98f7e1ef9fbfd39b0aa15cb2a"
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "apt",
+    "install_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{package_name}={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "apt-get",
+        "install",
+        "--yes",
+        "--no-install-recommends",
+        "{source}"
+      ]
+    ],
+    "manager": "apt",
+    "package_name": "p7zip-full",
+    "state": "signed-metadata-and-resolver-verified; image-not-built",
+    "uninstall_commands": [
+      [
+        "apt-get",
+        "remove",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2500,
+      "extract": false,
+      "id": "apt.p7zip-full",
+      "material_path": "apt/p7zip-full_16.02+transitional.1_all.deb",
+      "sha256": "b8d8df9d07a37fabefb9f73519872be1d8fe9b4aac42316311e1e04db982a58a",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/p/p7zip/p7zip-full_16.02+transitional.1_all.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/p7zip-full"
+    ],
+    "examples": [
+      {
+        "command": "dpkg-query -W p7zip-full",
+        "description": "Query the package database without installing."
+      },
+      {
+        "command": "dpkg-query -L p7zip-full",
+        "description": "List the package manager registered files."
+      }
+    ],
+    "locations": [
+      {
+        "label": "System package database",
+        "path": "/var/lib/dpkg/info/p7zip-full.list",
+        "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+      }
+    ],
+    "notes": [
+      "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+      "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+      "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+      "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+      "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+    ],
+    "summary": "Trusted APT system wrapper for p7zip-full (= 16.02+transitional.1). transitional package"
+  },
+  "version": "16.02+transitional.1"
+}

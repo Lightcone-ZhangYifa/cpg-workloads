@@ -1,0 +1,188 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "9521181653dbac91d292029b29f6e1dc324ecbe50b59000dcd8079192586bba9",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.libc6",
+        "apt.liblz4-1",
+        "apt.liblzma5",
+        "apt.liblzo2-2",
+        "apt.libzstd1",
+        "apt.zlib1g"
+      ]
+    },
+    "id": "apt.squashfs-tools",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.libc6",
+          "apt.liblz4-1",
+          "apt.liblzma5",
+          "apt.liblzo2-2",
+          "apt.libzstd1",
+          "apt.zlib1g"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 189326,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/squashfs-tools"
+        ],
+        "id": "apt.squashfs-tools",
+        "immutable_ref": "sha256:87fae263846bab255d4a51ad9fc623685497ad830db60758dde39589c9fdadcb",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 473,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/squashfs-tools_4.6.1-1build1_amd64.deb",
+        "package_name": "squashfs-tools",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Tool to create and append to squashfs filesystems",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "87fae263846bab255d4a51ad9fc623685497ad830db60758dde39589c9fdadcb",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/s/squashfs-tools/squashfs-tools_4.6.1-1build1_amd64.deb",
+        "title": "squashfs-tools",
+        "upstream": "https://github.com/plougher/squashfs-tools",
+        "version": "1:4.6.1-1build1"
+      },
+      "catalog_sha256": "24f661ad31f969e47adc80db0a9ac2ce98f3c66fee241c9f62455224a37f1970"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "squashfs-tools",
+      "state": "signed-metadata-and-resolver-verified; image-not-built",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 189326,
+        "extract": false,
+        "id": "apt.squashfs-tools",
+        "material_path": "apt/squashfs-tools_4.6.1-1build1_amd64.deb",
+        "sha256": "87fae263846bab255d4a51ad9fc623685497ad830db60758dde39589c9fdadcb",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/squashfs-tools/squashfs-tools_4.6.1-1build1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/squashfs-tools"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -W squashfs-tools",
+          "description": "Query the package database without installing."
+        },
+        {
+          "command": "dpkg-query -L squashfs-tools",
+          "description": "List the package manager registered files."
+        }
+      ],
+      "locations": [
+        {
+          "label": "System package database",
+          "path": "/var/lib/dpkg/info/squashfs-tools.list",
+          "purpose": "Query dpkg-query -L for actual installed system paths, including multiarch naming."
+        }
+      ],
+      "notes": [
+        "Metadata-only wrapper; the original fixed version, dependency graph and source locks are unchanged.",
+        "Installation and removal use the existing APT wrapper hooks only when explicitly requested.",
+        "The standard wrapper lifecycle observes the underlying manager exact version; no private-prefix functional check is declared.",
+        "This build is admitted under explicit user trust in APT. No package download, installation or functional test was executed for this build.",
+        "Original check definitions and recipes remain in the batch baseline; historical executions are not attributed to this build."
+      ],
+      "summary": "Trusted APT system wrapper for squashfs-tools (= 1:4.6.1-1build1). Tool to create and append to squashfs filesystems"
+    },
+    "version": "1:4.6.1-1build1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "definition_sha256": "907b298925bc175fcd3f28a374461bf67ef6014f931dfbfa430d74a1b1a2d3c8",
+    "dependencies_sha256": "7c4d62aeae151412de355f2fe6857f4525cb151050094e13fe9b001a23215b44",
+    "functional_checks_executed": 0,
+    "original_definition_sha256": "b067ec90768b555089ffb42d687fdc08ed8aa622f0e14660fe12ac433fe3df21",
+    "package_installations": 0,
+    "policy_sha256": "199a4fb682d353ba81674c7e6e2a9f981aba1f878318be9d5dd4c4b010021c39",
+    "qualification_type": "trusted_apt_wrapper",
+    "raw_source_bytes_acquired": false,
+    "source_locks_sha256": "6f534d921c84d38ba434b2369005c52d0852d197d4568bbbc4243895e33d9fa3"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
