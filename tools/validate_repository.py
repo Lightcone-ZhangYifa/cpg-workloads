@@ -91,6 +91,7 @@ def validate(root=ROOT):
             records[row["sha256"]] = row
         except (OSError, ValueError, KeyError, TypeError) as error:
             errors.append(f"{path.relative_to(root)}: {error}")
+    planned_identities = {}
     for path in sorted((root / "release-plans").glob("*.json")):
         try:
             plan = json.loads(path.read_text())
@@ -101,6 +102,11 @@ def validate(root=ROOT):
             for checksum in plan["artifacts"]:
                 if checksum not in records or not records[checksum]["release_eligible"]:
                     raise ValueError("Plan references an absent or unqualified artifact")
+                row = records[checksum]
+                key = digest({name: row[name] for name in ("id", "version", "build", "method", "target")})
+                if key in planned_identities and planned_identities[key] != checksum:
+                    raise ValueError("Different release plans assign different bytes to one immutable package identity")
+                planned_identities[key] = checksum
         except (ValueError, KeyError, TypeError) as error:
             errors.append(f"{path.relative_to(root)}: {error}")
     manifest = json.loads((root / "manifest.json").read_text())

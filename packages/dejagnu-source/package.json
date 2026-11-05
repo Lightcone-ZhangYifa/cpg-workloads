@@ -1,6 +1,23 @@
 {
-  "build": "1",
-  "checks": [],
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/verify_payload.py",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-source-material",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 60
+    }
+  ],
   "dependencies": {
     "build": [],
     "run": [],
@@ -74,12 +91,21 @@
       "upstream": "https://www.gnu.org/software/dejagnu/",
       "version": "1.6.3"
     },
-    "catalog_sha256": "7475d778c52df1862e6151d206c6548af52173ea53bfa04ad89c889177847917"
+    "catalog_sha256": "7475d778c52df1862e6151d206c6548af52173ea53bfa04ad89c889177847917",
+    "publication_policy": {
+      "build_check": "not_run",
+      "functional": "not_run",
+      "qualification_mode": "trusted_delivery_static_review"
+    }
   },
   "provider": "material",
   "recipe": {
     "adapter": "reference",
     "qualified": false,
+    "required_installed_paths": [
+      "{prefix}/sources/dejagnu/lib/framework.exp",
+      "{prefix}/original-inputs/dejagnu-1.6.3.tar.gz"
+    ],
     "source_dependencies": [],
     "system_packages": []
   },
@@ -107,17 +133,28 @@
       "https://www.gnu.org/software/dejagnu/manual/",
       "https://gcc.gnu.org/install/test.html"
     ],
-    "examples": [],
+    "examples": [
+      {
+        "command": "python3 {recipe}/verify_payload.py {prefix}",
+        "description": "Verify the installed reference against its original archive"
+      }
+    ],
     "locations": [
       {
-        "label": "Prepared material",
-        "path": "{assets}/sources/dejagnu",
-        "purpose": "Independent verified source, input, data or upstream distribution."
+        "label": "Complete DejaGNU source reference",
+        "path": "{prefix}/sources/dejagnu",
+        "purpose": "Original board scripts, framework implementation, documentation and notices."
+      },
+      {
+        "label": "Original locked source archive",
+        "path": "{prefix}/original-inputs/dejagnu-1.6.3.tar.gz",
+        "purpose": "Byte-verifiable source provenance."
       }
     ],
     "notes": [
-      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
-      "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+      "This artifact adds complete reference material and an availability check; it does not qualify an executable DejaGNU harness or GCC regression run.",
+      "The original apt.dejagnu system-dependency contract is retained. Exact deployment remains blocked on hosts that do not satisfy it.",
+      "This new artifact was published after trusted delivery static review. Build, installation and functional execution have not been rerun under its hash."
     ],
     "summary": "Pinned implementation and reference material for DejaGNU board integration, summary parsing and regression-harness debugging; the runnable harness remains the separately locked apt.dejagnu package."
   },

@@ -213,13 +213,46 @@ def material_member(template, row, binaries):
     return data
 
 
+def material_archives(record, manifest):
+    """Bind explicitly reviewed original source archives to material payload rows."""
+    review = record.get("source_archive_payload_review")
+    if review is None:
+        return {}
+    if (not isinstance(review, dict) or review.get("status") != "passed"
+            or review.get("source_type") != "pinned_upstream_source_archive"
+            or not isinstance(review.get("files"), list) or not review["files"]):
+        raise ValueError("Invalid source-archive material review")
+    rows = {row["path"]: row for row in manifest["files"]}
+    locks = manifest.get("resolved_sources", manifest["package"]["sources"])
+    approved = {}
+    for item in review["files"]:
+        name = safe_relative(item["path"]).as_posix()
+        row = rows.get(name)
+        url = urlparse(item.get("url", ""))
+        if (name in approved or not name.startswith("payload/") or not name.endswith(".tar.gz")
+                or row is None or row["kind"] != "file" or type(row.get("mode")) is not int
+                or not 0 <= row["mode"] <= 0o777 or row["mode"] & 0o111
+                or type(item.get("bytes")) is not int or item["bytes"] <= 0
+                or item["bytes"] != row.get("bytes") or item.get("sha256") != row.get("sha256")
+                or not isinstance(item.get("sha256"), str) or CHECKSUM.fullmatch(item["sha256"]) is None
+                or url.scheme != "https" or not url.netloc or url.username or url.password or url.fragment
+                or not any(all(lock.get(key) == item.get(key) for key in ("url", "sha256", "bytes")) for lock in locks)):
+            raise ValueError("Original material archive differs from its manifest or effective source lock")
+        approved[name] = item
+    return approved
+
+
 def verify_material(record, manifest, template):
     binaries = documentation_binaries(record, manifest)
+    archives = material_archives(record, manifest)
+    if set(archives) & set(binaries):
+        raise ValueError("Material member has conflicting payload reviews")
     names = [row["path"] for row in manifest["files"]]
     if len(names) != len(set(names)) or "manifest.json" in names:
         raise ValueError("Duplicate or reserved material member")
     for row in manifest["files"]:
-        material_member(template, row, binaries)
+        if row["path"] not in archives:
+            material_member(template, row, binaries)
     return binaries
 
 
@@ -645,6 +678,9 @@ def rebuild(record, output, cache, *, network=False):
     verify_evidence(record, template)
     binaries = verify_material(record, manifest, template) if method == "material" else {}
     sources = {}
+    if method == "material":
+        for name, source in material_archives(record, manifest).items():
+            sources[name] = source_file(source, cache, network=network)
     if method == "source":
         locks = manifest.get("resolved_sources", spec["sources"])
         for source in locks:
@@ -685,7 +721,7 @@ def rebuild(record, output, cache, *, network=False):
                         info.type = tarfile.DIRTYPE
                         archive.addfile(info)
                     elif row["kind"] == "symlink":
-                        if method == "material":
+                        if method == "material" and row["path"] not in sources:
                             raise ValueError("Material members must not be symlinks")
                         link = PurePosixPath(row["target"])
                         if method != "binary" and (link.is_absolute() or ".." in link.parts):

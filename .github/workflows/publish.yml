@@ -5,8 +5,8 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: cpg-workloads-publication
-  # Keep every explicit software request; retain the existing publication queue.
+  group: cpg-workloads-publication-${{ github.ref_name }}
+  # Different Release plans can publish independently; the same request stays serial.
   queue: max
   cancel-in-progress: false
 defaults:
