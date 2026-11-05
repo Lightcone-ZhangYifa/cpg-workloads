@@ -1,0 +1,182 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "dataset-ref.lzbench-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "dataset-ref.lzbench",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Dataset research",
+        "Benchmarks and inputs"
+      ],
+      "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+      "dataset_card_id": "lzbench",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "requires_controller_only_storage": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "target_exports": [],
+        "visibility_policy": "developer_selected_complete_materials",
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/inikep/lzbench"
+      ],
+      "evidence_files": [
+        "workspace-evidence/datasets-v090/benchmarks/cards.json"
+      ],
+      "extract": true,
+      "id": "dataset-ref.lzbench",
+      "immutable_ref": "2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9",
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "review-required",
+      "license_id": "GPL-2.0-only AND LicenseRef-Per-Codec",
+      "mandatory": false,
+      "material_path": "dataset-research/lzbench",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Unified in-memory compression evaluation frontend; weight unique algorithms, not each repeated copy.",
+      "qualification": {
+        "archive_measured": false,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+        "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+        "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+        "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+        "Embedded copies duplicate standalone zstd/LZ4/zlib/Brotli families.",
+        "Codec versions and parameters must be independently pinned.",
+        "In-memory timing still needs complete round-trip validation."
+      ],
+      "redistributable": "license-and-component-review-required",
+      "roles": [
+        "host"
+      ],
+      "sha256": null,
+      "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+      "source_evidence": [
+        "https://raw.githubusercontent.com/inikep/lzbench/2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9/README.md",
+        "https://raw.githubusercontent.com/inikep/lzbench/2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9/LICENSE"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/inikep/lzbench/tar.gz/2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9",
+      "title": "lzbench research material",
+      "upstream": "https://github.com/inikep/lzbench",
+      "version": "HEAD observed at retrieval; use the full recorded commit"
+    },
+    "catalog_sha256": "ed631d7ce01bddf85964af97fd843f23d535e8e20207cb896160dc26a0473784"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 16454510,
+      "extract": true,
+      "id": "dataset-ref.lzbench",
+      "material_path": "dataset-research/lzbench",
+      "sha256": "1a89a5d5a07af2f5a809a0d37585c4258de173e8b0b261b0c9883741e8e01a6f",
+      "strip_root": true,
+      "url": "https://codeload.github.com/inikep/lzbench/tar.gz/2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9"
+    },
+    "adapter": "corpus",
+    "content_scope_audit_sha256": "b4fb0f93b69366c8e9df75511ee1ee2a6b5b3c991688d5b1a1b56c3b6f811ee0",
+    "dataset_content_complete": false,
+    "external_data_requirements": [
+      "The original compression implementation source tree is complete. A supplied corpus such as the README Silesia example, compilation and upstream optional build/test dependencies are separate."
+    ],
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.gitattributes"
+    ],
+    "requires_controller_only_storage": false,
+    "resource_content_class": "original_source_repository_material",
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; vendored_nested_gitmodule_metadata_and_external_build_test_dependencies_are_not_installed",
+    "source_dependencies": [],
+    "system_packages": [],
+    "target_exports": [],
+    "unfetched_submodule_declarations": 0,
+    "visibility_policy": "developer_selected_complete_materials",
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": true,
+      "id": "dataset-ref.lzbench",
+      "material_path": "dataset-research/lzbench",
+      "sha256": null,
+      "strip_root": true,
+      "url": "https://codeload.github.com/inikep/lzbench/tar.gz/2cc81a8ebccc0f43d4b7b7ff27847e5d39f96da9"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/inikep/lzbench"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "Only the exact declared source repository is qualified as static material. dataset_content_complete=false; see recipe/content-scope.json for external data/runtime requirements."
+    ],
+    "summary": "Unified in-memory compression evaluation frontend; weight unique algorithms, not each repeated copy."
+  },
+  "version": "HEAD observed at retrieval; use the full recorded commit"
+}

@@ -1,0 +1,173 @@
+{
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "release": "0.21.3",
+    "scope": "The original complete static source view only. Source-generated tool execution remains separately qualified.",
+    "source_execution_category": "source_built_interpreted_tool_with_private_runtime",
+    "status": "passed",
+    "summary": {
+      "bytes": 2115495,
+      "path": "resource-integrations/v0210/r04/source-tools/evidence/automake-attempt1/summary.json",
+      "sha256": "a9288793e3dc8fe6ee6153efc66c122f0f1a27a86e0dcc661a6648424e152ee6"
+    }
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 2245401,
+    "historical_path": "resource-integrations/v0210/r04/source-tools/evidence/automake-attempt1/artifacts/automake-1.15.1.material.cpgpkg.tar.gz",
+    "manifest_sha256": "bdcfab91ca5613dee4d7834077d0cfc82cd1ec7dca8fd0468ee70f6a1be31ff8",
+    "method": "material",
+    "sha256": "66bf3530b77cee489c33b36f827b30bdc87abbc7af11a2864e58a01a84fef387"
+  },
+  "original_catalog": {
+    "archive_bytes": 1509496,
+    "build_peak_bytes": null,
+    "category": [
+      "Community development",
+      "GCC regeneration tools"
+    ],
+    "dependencies": [
+      "apt.make",
+      "apt.m4",
+      "apt.perl",
+      "apt.build-essential",
+      "autoconf-2.69"
+    ],
+    "deployment": {
+      "adapter": "make",
+      "additional_install_commands": [
+        [
+          "mkdir",
+          "-p",
+          "{prefix}/share/automake-1.15.1/source"
+        ],
+        [
+          "cp",
+          "-a",
+          "{source}/.",
+          "{prefix}/share/automake-1.15.1/source/"
+        ]
+      ],
+      "build_argv": [
+        "env",
+        "PATH={dependencies.autoconf-2.69.prefix}/bin:/usr/bin:/bin",
+        "make",
+        "-j{jobs}"
+      ],
+      "configure_argv": [
+        "env",
+        "PATH={dependencies.autoconf-2.69.prefix}/bin:/usr/bin:/bin",
+        "{source}/configure",
+        "--prefix={prefix}"
+      ],
+      "install_argv": [
+        "env",
+        "PATH={dependencies.autoconf-2.69.prefix}/bin:/usr/bin:/bin",
+        "make",
+        "install"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/automake",
+        "{prefix}/share/automake-1.15.1/source/COPYING"
+      ],
+      "runtime_environment": {
+        "PATH": "{dependencies.autoconf-2.69.prefix}/bin:/usr/bin:/bin"
+      },
+      "smoke_argv": [
+        "{prefix}/bin/automake",
+        "--version"
+      ],
+      "state": "native-selected-recipe-and-minimal-project-generation-passed; OCI-not-qualified",
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://gcc.gnu.org/install/prerequisites.html"
+    ],
+    "extract": true,
+    "id": "automake-1.15.1",
+    "immutable_ref": "sha256:af6ba39142220687c500f79b4aa2f181d9b24e4f8d8ec497cea4ba26c64bedaf",
+    "installed_bytes": null,
+    "kind": "source_archive",
+    "license_class": "open",
+    "license_evidence_files": [
+      "automake-1.15.1/lib/COPYING",
+      "automake-1.15.1/COPYING"
+    ],
+    "license_id": "GPL-3.0-or-later AND LicenseRef-GNU-generation-exceptions-and-manual-terms",
+    "mandatory": false,
+    "material_path": "sources/automake-1.15.1",
+    "native_probe": {
+      "installed_logical_bytes": 10664143,
+      "receipt": "workspace-evidence/community-v070/gcc-regeneration/native-probe/summary.json"
+    },
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Regenerate GCC build-system files using the exact upstream-required historical version without replacing the distro tools.",
+    "qualification": {
+      "container_qualified": false,
+      "full_gcc_regeneration_qualified": false,
+      "minimal_generation_qualified": true,
+      "native_build_install_smoke_qualified": true
+    },
+    "qualification_gaps": [
+      "Use this version only for GCC paths that require it; do not globally shadow other projects' Autotools.",
+      "Installation and generation probes do not qualify every GCC regeneration target or an OCI image."
+    ],
+    "redistributable": "Preserve COPYING files, generated-file exceptions, manuals and source obligations.",
+    "roles": [
+      "dev"
+    ],
+    "sha256": "af6ba39142220687c500f79b4aa2f181d9b24e4f8d8ec497cea4ba26c64bedaf",
+    "size_basis": "Measured official HTTPS archive body and SHA256; logical bytes sum regular archive entries. GPG publisher verification and OCI installation are separate.",
+    "source_evidence": [
+      "https://ftp.gnu.org/gnu/automake/automake-1.15.1.tar.xz",
+      "https://gcc.gnu.org/install/prerequisites.html"
+    ],
+    "source_logical_bytes": 8510086,
+    "source_url": "https://ftp.gnu.org/gnu/automake/automake-1.15.1.tar.xz",
+    "title": "Automake 1.15.1 for GCC regeneration",
+    "upstream": "https://www.gnu.org/software/automake/",
+    "version": "1.15.1"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 1509496,
+      "extract": true,
+      "id": "automake-1.15.1",
+      "material_path": "sources/automake-1.15.1",
+      "sha256": "af6ba39142220687c500f79b4aa2f181d9b24e4f8d8ec497cea4ba26c64bedaf",
+      "strip_root": true,
+      "url": "https://ftp.gnu.org/gnu/automake/automake-1.15.1.tar.xz"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 318122,
+      "path": "offline-manifest.json",
+      "sha256": "8ed156bc33e23e12b318dece96de99b7e053859d63b529ead785c7736e9f3f9f"
+    },
+    {
+      "bytes": 14564,
+      "path": "run.py",
+      "sha256": "f16537c7b891e7fd2181406172deceeec0befb2db1e0b5ad4ea988e2881445f9"
+    }
+  ],
+  "release": "0.21.3",
+  "resource_id": "automake-1.15.1",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1
+}
