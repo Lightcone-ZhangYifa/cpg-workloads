@@ -197,12 +197,21 @@ def import_and_publish(archive, item, scratch):
         if checksum in existing_hashes:
             receipt["packages"].append({"sha256": checksum, "status": "already_published"})
             continue
-        if member["method"] == "online-recipe":
-            from online_recipe import import_recipe
-            record = import_recipe(path, release.ROOT, origin)
-        else:
-            import_archives.import_package(path, release.ROOT, origin, static_trust=True)
-            record = json.loads((release.ROOT / "catalog/artifacts" / (checksum + ".json")).read_text())
+        try:
+            if member["method"] == "online-recipe":
+                from online_recipe import import_recipe
+                record = import_recipe(path, release.ROOT, origin)
+            else:
+                import_archives.import_package(path, release.ROOT, origin, static_trust=True)
+                record = json.loads((release.ROOT / "catalog/artifacts" / (checksum + ".json")).read_text())
+        except (ValueError, KeyError, TypeError) as error:
+            # A malformed member cannot prevent other independent deliveries from
+            # being retained and published. Outer and per-member byte locks above
+            # remain mandatory and still fail the request on any mismatch.
+            receipt["errors"].append({"sha256": checksum, "id": member["id"],
+                                      "method": member["method"], "error_type": type(error).__name__,
+                                      "error": str(error)[:600]})
+            continue
         if any(record.get(key) != member[key] for key in ("id", "version", "method", "sha256", "bytes")):
             raise ValueError("Artifact identity differs from the explicit member plan")
         if "canonical_primary_index" in member:

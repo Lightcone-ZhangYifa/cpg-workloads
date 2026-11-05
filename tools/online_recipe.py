@@ -22,6 +22,7 @@ FORMATS = {
     'cpg_online_material_recipe',
     'cpg_online_source_recipe',
     'cpg_online_binary_recipe',
+    'cpg_authored_online_recipe',
 }
 MAX_EXPANDED_BYTES = 128 * 1024 * 1024
 MAX_FILES = 4096
@@ -131,6 +132,23 @@ def _validate_spec_shape(spec):
 
 
 def _validate_contents(contents):
+    if 'online.json' not in contents:
+        _require({'package.json', 'run.py'} <= set(contents), 'Authored online recipe lacks its package or entry point')
+        spec = _validate_spec_shape(_json(contents['package.json']))
+        _require(spec['sources'] and len({s['id'] for s in spec['sources']}) == len(spec['sources']),
+            'Missing or duplicate authored recipe source lock')
+        _require(all(isinstance(s.get('sha256'), str) and SHA.fullmatch(s['sha256'])
+            and type(s.get('bytes')) is int and s['bytes'] >= 0 for s in spec['sources']),
+            'Authored online acquisition byte locks are incomplete')
+        for name, data in contents.items():
+            _relative(name)
+            if name.endswith('.py'):
+                ast.parse(data.decode('utf-8'), filename=name)
+        # This legacy authored format has no embedded descriptor. Its complete
+        # immutable archive and authored inventory are retained in the record.
+        return {'kind':'cpg_authored_online_recipe', 'resource_id':spec['id'],
+            'embedded_payload_bytes':0, 'package_definition_sha256':_digest(spec),
+            'original_source_locks':spec['sources']}, spec
     _require({'online.json', 'offline-manifest.json', 'run.py'} <= set(contents),
         'Modern recipe lacks its descriptor, offline manifest, or entry point')
     descriptor = _json(contents['online.json'])
@@ -227,8 +245,9 @@ def _import_modern_recipe(path, root, origin=None):
         'asset_name':_asset_name(spec, checksum), 'online_format':descriptor['kind'],
         'archive_members':members, 'structure':'passed', 'build_check':'not_run', 'functional':'not_run',
         'review_policy':'static-trust-v1', 'static_review':{'status':'passed' if not findings else 'needs_correction',
-        'checks':['complete_authored_inventory', 'offline_manifest_identity', 'locked_source_acquisition',
-        'python_template_syntax', 'license_metadata'], 'findings':findings, 'warnings':warnings,
+        'checks':['complete_authored_inventory', 'locked_source_acquisition',
+        'python_template_syntax', 'license_metadata'] + ([] if descriptor['kind']=='cpg_authored_online_recipe'
+        else ['offline_manifest_identity']), 'findings':findings, 'warnings':warnings,
         'build_executed':False, 'functional_tests_executed':False},
         'qualification_errors':findings, 'release_eligible':not findings,
         'qualification_scope':'Locked online preparation recipe; no acquisition, build, installation, or native execution observed',
@@ -312,17 +331,22 @@ def _legacy_module():
 
 def _archive_format(path):
     total = 0
+    authored = set()
     with tarfile.open(path, 'r:gz') as archive:
         for count, member in enumerate(archive):
             _relative(member.name)
             total += member.size
             _require(count < MAX_FILES and 0 <= member.size <= MAX_EXPANDED_BYTES
                 and total <= MAX_EXPANDED_BYTES, 'Online recipe exceeds metadata limits')
+            if member.name in {'package.json', 'run.py'} and member.isfile():
+                authored.add(member.name)
             if member.name in {'online.json', 'manifest.json'} and member.isfile():
                 descriptor = _json(archive.extractfile(member).read(member.size + 1))
                 value = descriptor.get('kind') if member.name == 'online.json' else descriptor.get('format')
                 if value in FORMATS or value == 'compiler-playground-original-material-online-recipe-v1':
                     return value
+    if authored == {'package.json', 'run.py'}:
+        return 'cpg_authored_online_recipe'
     raise ValueError('Unrecognized online recipe format')
 
 
