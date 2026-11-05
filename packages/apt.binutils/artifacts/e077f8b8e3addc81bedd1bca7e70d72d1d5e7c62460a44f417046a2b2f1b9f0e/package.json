@@ -1,0 +1,179 @@
+{
+  "build": "3",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/material_check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-inventory",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "apt.binutils",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.binutils-common",
+        "apt.binutils-x86-64-linux-gnu",
+        "apt.libbinutils"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 18154,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/binutils"
+      ],
+      "id": "apt.binutils",
+      "immutable_ref": "sha256:b3b5a84181a38fd191820b2cdcc1a3eeb1cd6333ad472f2092f96e81047e9c74",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 161,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/binutils_2.42-4ubuntu2.10_amd64.deb",
+      "package_name": "binutils",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "GNU assembler, linker and binary utilities",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "b3b5a84181a38fd191820b2cdcc1a3eeb1cd6333ad472f2092f96e81047e9c74",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils_2.42-4ubuntu2.10_amd64.deb",
+      "title": "binutils",
+      "upstream": "https://www.gnu.org/software/binutils/",
+      "version": "2.42-4ubuntu2.10"
+    },
+    "catalog_sha256": "3be93ca9e78d083717a4ce62686c8ff562e67d5e7226a6690191b8ad1b2586fb",
+    "publication_policy": {
+      "build_check": "not_run",
+      "formal_qualification_changed": false,
+      "functional": "not_run",
+      "review_policy": "static-trust-v1"
+    },
+    "support_material": {
+      "explicit_replay_requires_suitable_host_dependencies": true,
+      "formal_qualification_changed": false,
+      "historical_scope": "The original frozen software identity is 2.42-4ubuntu2.10, while the historical host examples used 2.42-4ubuntu2.5. Those observations are not execution evidence for the frozen version or this new artifact.",
+      "id": "apt.binutils",
+      "material_build": "3",
+      "material_installation_requires_native_dependencies": false,
+      "original_catalog_sha256": "3be93ca9e78d083717a4ce62686c8ff562e67d5e7226a6690191b8ad1b2586fb",
+      "original_master_sha256": "94bc2f90dc7c89065d0abf45321513d0710d65544a7bd58a6a3f71119f6aa8b6",
+      "scope": "Bounded ELF, archive, relocation, disassembly and detached-debuglink examples using a separately prepared host GNU Binutils. No Binutils executable or upstream source is bundled.",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.42-4ubuntu2.10",
+      "wrapper_build": "2",
+      "wrapper_system_dependencies": [
+        "apt.binutils-common",
+        "apt.binutils-x86-64-linux-gnu",
+        "apt.libbinutils"
+      ]
+    },
+    "support_material_license": "MIT for authored integration; original per-file upstream notices and complete corresponding source for the enclosed DEBs."
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "corpus",
+    "additional_acquisition_locks": [],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "state": "Support-material installation only; native replay is explicit and not performed during publication."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 18154,
+      "extract": false,
+      "id": "apt.binutils",
+      "material_path": "apt/binutils_2.42-4ubuntu2.10_amd64.deb",
+      "sha256": "b3b5a84181a38fd191820b2cdcc1a3eeb1cd6333ad472f2092f96e81047e9c74",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils_2.42-4ubuntu2.10_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/binutils",
+      "https://sourceware.org/binutils/docs/binutils.html",
+      "https://sourceware.org/binutils/docs/binutils/objcopy.html",
+      "https://sourceware.org/binutils/docs/binutils/addr2line.html"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/scripts/replay.py --output /absolute/new/output",
+        "description": "Explicitly run this software example in a new independent directory."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Support material",
+        "path": "{prefix}",
+        "purpose": "Bounded ELF, archive, relocation, disassembly and detached-debuglink examples using a separately prepared host GNU Binutils. No Binutils executable or upstream source is bundled."
+      }
+    ],
+    "notes": [
+      "Bounded ELF, archive, relocation, disassembly and detached-debuglink examples using a separately prepared host GNU Binutils. No Binutils executable or upstream source is bundled.",
+      "The original frozen software identity is 2.42-4ubuntu2.10, while the historical host examples used 2.42-4ubuntu2.5. Those observations are not execution evidence for the frozen version or this new artifact.",
+      "Static review only; no new native or functional execution."
+    ],
+    "summary": "GNU Binutils support material: explicit offline examples and pinned inputs; existing APT wrapper unchanged."
+  },
+  "version": "2.42-4ubuntu2.10"
+}

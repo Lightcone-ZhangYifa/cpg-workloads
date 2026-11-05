@@ -1,0 +1,267 @@
+{
+  "build": "3",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/material_check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-inventory",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "apt.elfutils",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [
+        "apt.libasm1t64",
+        "apt.libc6",
+        "apt.libdw1t64",
+        "apt.libelf1t64",
+        "apt.libgcc-s1",
+        "apt.libstdc++6"
+      ],
+      "architecture": "amd64",
+      "archive_bytes": 524878,
+      "category": [
+        "System packages",
+        "Direct tools"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "apt",
+        "state": "signed-metadata-and-resolver-verified; image-not-built"
+      },
+      "documentation": [
+        "https://packages.ubuntu.com/noble/elfutils"
+      ],
+      "id": "apt.elfutils",
+      "immutable_ref": "sha256:aa0fb4da13d8babb38e3e1fe39b6365016bca9a76d4f8e9f91752fecafee419b",
+      "installed_bytes": null,
+      "installed_size_kib_metadata": 2958,
+      "kind": "apt",
+      "license_class": "open",
+      "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+      "mandatory": false,
+      "material_path": "apt/elfutils_0.190-1.1ubuntu0.1_amd64.deb",
+      "package_name": "elfutils",
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "collection of utilities to handle ELF objects",
+      "qualification_gaps": [
+        "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+      ],
+      "redistributable": "component-notices-and-source-obligations-apply",
+      "roles": [
+        "dev",
+        "target"
+      ],
+      "sha256": "aa0fb4da13d8babb38e3e1fe39b6365016bca9a76d4f8e9f91752fecafee419b",
+      "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+      "source_evidence": [
+        "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+        "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/elfutils_0.190-1.1ubuntu0.1_amd64.deb",
+      "title": "elfutils",
+      "upstream": "https://sourceware.org/elfutils/",
+      "version": "0.190-1.1ubuntu0.1"
+    },
+    "catalog_sha256": "79be7ef41095ace5a4e49cf38732d85817ef0e64ad6a6ae210873e48b1799db2",
+    "publication_policy": {
+      "build_check": "not_run",
+      "formal_qualification_changed": false,
+      "functional": "not_run",
+      "review_policy": "static-trust-v1"
+    },
+    "support_material": {
+      "explicit_replay_requires_suitable_host_dependencies": true,
+      "formal_qualification_changed": false,
+      "historical_scope": "The trusted delivery used 0.190-1.1ubuntu0.1 private tool/library inputs and disabled debuginfod. No remote/core, full ABI or performance qualification was established. The frozen ELF tools require a suitable host dynamic-linker environment; the original environment used glibc 2.39 and noted a 2.38 floor.",
+      "id": "apt.elfutils",
+      "material_build": "3",
+      "material_installation_requires_native_dependencies": false,
+      "original_catalog_sha256": "79be7ef41095ace5a4e49cf38732d85817ef0e64ad6a6ae210873e48b1799db2",
+      "original_master_sha256": "bcadb3d3a9f8d2ac918aa6ae9a5fceb2f96ddabeb652c01b9cef20b709c4adbd",
+      "scope": "Local ELF/DWARF/debuglink, eu-unstrip, eu-elflint and damaged-input examples, with five exact Ubuntu DEB inputs and the complete corresponding elfutils source set. GNU fixture construction is a host prerequisite.",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.190-1.1ubuntu0.1",
+      "wrapper_build": "2",
+      "wrapper_system_dependencies": [
+        "apt.libasm1t64",
+        "apt.libc6",
+        "apt.libdw1t64",
+        "apt.libelf1t64",
+        "apt.libgcc-s1",
+        "apt.libstdc++6"
+      ]
+    },
+    "support_material_license": "MIT for authored integration; original per-file upstream notices and complete corresponding source for the enclosed DEBs."
+  },
+  "provider": "apt",
+  "recipe": {
+    "adapter": "corpus",
+    "additional_acquisition_locks": [
+      {
+        "architecture": "amd64",
+        "bytes": 524878,
+        "id": "support-input-0",
+        "identity_status": "original-frozen-digest-match",
+        "name": "elfutils",
+        "original_payload_sha256_expected": "aa0fb4da13d8babb38e3e1fe39b6365016bca9a76d4f8e9f91752fecafee419b",
+        "path": "inputs/deb/elfutils_0.190-1.1ubuntu0.1_amd64.deb",
+        "sha256": "aa0fb4da13d8babb38e3e1fe39b6365016bca9a76d4f8e9f91752fecafee419b",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/elfutils_0.190-1.1ubuntu0.1_amd64.deb",
+        "version": "0.190-1.1ubuntu0.1"
+      },
+      {
+        "architecture": "amd64",
+        "bytes": 261194,
+        "id": "support-input-1",
+        "identity_status": "original-frozen-digest-match",
+        "name": "libdw1t64",
+        "original_payload_sha256_expected": "edaa9ce4221d95f4bd72a9805100902e313092a2f31a7a51e7186be97734714d",
+        "path": "inputs/deb/libdw1t64_0.190-1.1ubuntu0.1_amd64.deb",
+        "sha256": "edaa9ce4221d95f4bd72a9805100902e313092a2f31a7a51e7186be97734714d",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/libdw1t64_0.190-1.1ubuntu0.1_amd64.deb",
+        "version": "0.190-1.1ubuntu0.1"
+      },
+      {
+        "architecture": "amd64",
+        "bytes": 17468,
+        "id": "support-input-2",
+        "identity_status": "original-frozen-digest-match",
+        "name": "libasm1t64",
+        "original_payload_sha256_expected": "81420ff43f36cd447757fee97e70c89c821a907c33a7e5a5a4dd8c76aee3b87a",
+        "path": "inputs/deb/libasm1t64_0.190-1.1ubuntu0.1_amd64.deb",
+        "sha256": "81420ff43f36cd447757fee97e70c89c821a907c33a7e5a5a4dd8c76aee3b87a",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/libasm1t64_0.190-1.1ubuntu0.1_amd64.deb",
+        "version": "0.190-1.1ubuntu0.1"
+      },
+      {
+        "architecture": "amd64",
+        "bytes": 17082,
+        "id": "support-input-3",
+        "identity_status": "original-frozen-digest-match",
+        "name": "libdebuginfod1t64",
+        "original_payload_sha256_expected": "7ff18c57198200f4af7e50e0dce29366dc832c10d8c475ca7e0403083e042ea7",
+        "path": "inputs/deb/libdebuginfod1t64_0.190-1.1ubuntu0.1_amd64.deb",
+        "sha256": "7ff18c57198200f4af7e50e0dce29366dc832c10d8c475ca7e0403083e042ea7",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/libdebuginfod1t64_0.190-1.1ubuntu0.1_amd64.deb",
+        "version": "0.190-1.1ubuntu0.1"
+      },
+      {
+        "architecture": "amd64",
+        "bytes": 57810,
+        "id": "support-input-4",
+        "identity_status": "original-frozen-digest-match",
+        "name": "libelf1t64",
+        "original_payload_sha256_expected": "b4aee123a37472d213647594b4f7d4a0d13615b0ca2a6fd33926b768d6b232c2",
+        "path": "inputs/deb/libelf1t64_0.190-1.1ubuntu0.1_amd64.deb",
+        "sha256": "b4aee123a37472d213647594b4f7d4a0d13615b0ca2a6fd33926b768d6b232c2",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/libelf1t64_0.190-1.1ubuntu0.1_amd64.deb",
+        "version": "0.190-1.1ubuntu0.1"
+      },
+      {
+        "bytes": 3410,
+        "dsc_checksum_verified": false,
+        "id": "support-input-5",
+        "path": "inputs/source/elfutils_0.190-1.1ubuntu0.1.dsc",
+        "sha256": "7852785ce5ce51a6dad0f6b67188d94ffedaffa6d0128fecabeb6a1ccc2aabea",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/elfutils_0.190-1.1ubuntu0.1.dsc"
+      },
+      {
+        "bytes": 9162766,
+        "dsc_checksum_verified": true,
+        "id": "support-input-6",
+        "path": "inputs/source/elfutils_0.190.orig.tar.bz2",
+        "sha256": "8e00a3a9b5f04bc1dc273ae86281d2d26ed412020b391ffcc23198f10231d692",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/elfutils_0.190.orig.tar.bz2"
+      },
+      {
+        "bytes": 46976,
+        "dsc_checksum_verified": true,
+        "id": "support-input-7",
+        "path": "inputs/source/elfutils_0.190-1.1ubuntu0.1.debian.tar.xz",
+        "sha256": "4c3130951f7b865d50ff57379a258926a66bcd2753e3c12301bbb110fbb417fa",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/elfutils_0.190-1.1ubuntu0.1.debian.tar.xz"
+      }
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "state": "Support-material installation only; native replay is explicit and not performed during publication."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 524878,
+      "extract": false,
+      "id": "apt.elfutils",
+      "material_path": "apt/elfutils_0.190-1.1ubuntu0.1_amd64.deb",
+      "sha256": "aa0fb4da13d8babb38e3e1fe39b6365016bca9a76d4f8e9f91752fecafee419b",
+      "strip_root": true,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/e/elfutils/elfutils_0.190-1.1ubuntu0.1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://packages.ubuntu.com/noble/elfutils"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/scripts/replay.py --output /absolute/new/output",
+        "description": "Explicitly run this software example in a new independent directory."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Support material",
+        "path": "{prefix}",
+        "purpose": "Local ELF/DWARF/debuglink, eu-unstrip, eu-elflint and damaged-input examples, with five exact Ubuntu DEB inputs and the complete corresponding elfutils source set. GNU fixture construction is a host prerequisite."
+      }
+    ],
+    "notes": [
+      "Local ELF/DWARF/debuglink, eu-unstrip, eu-elflint and damaged-input examples, with five exact Ubuntu DEB inputs and the complete corresponding elfutils source set. GNU fixture construction is a host prerequisite.",
+      "The trusted delivery used 0.190-1.1ubuntu0.1 private tool/library inputs and disabled debuginfod. No remote/core, full ABI or performance qualification was established. The frozen ELF tools require a suitable host dynamic-linker environment; the original environment used glibc 2.39 and noted a 2.38 floor.",
+      "Static review only; no new native or functional execution."
+    ],
+    "summary": "elfutils support material: explicit offline examples and pinned inputs; existing APT wrapper unchanged."
+  },
+  "version": "0.190-1.1ubuntu0.1"
+}

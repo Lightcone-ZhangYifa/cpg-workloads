@@ -1,0 +1,335 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 1305,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSE",
+      "sha256": "6c28491199de3d1a81b46d1d90f676b27d84ed3c1c12daffb92680cce0f329b8"
+    },
+    {
+      "bytes": 3933,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.md",
+      "sha256": "34cada72ddc41d556a28f58a39a84c86f173c6bbcfc8a53a0a253cc0e3562f3c"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/examples"
+    },
+    {
+      "bytes": 499,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/examples/elf_fixture.c",
+      "sha256": "95945716829f41e1555312dc621a3eb0529ae46c1124ef745ec909a8a4e42857"
+    },
+    {
+      "bytes": 117,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/examples/math_impl.c",
+      "sha256": "85fb7fc4e531437469afea10347447034bfb67d11731888501d2336283c9cb64"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/inputs"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/inputs/deb"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/inputs/source"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/licenses"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/metadata"
+    },
+    {
+      "bytes": 150,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/metadata/inputs.lock.json",
+      "sha256": "89e0c126e198c7952d5dceeae57a9b35149f0e28035c717b5e36ee12fd28aee7"
+    },
+    {
+      "bytes": 1146,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/metadata/software-identity.json",
+      "sha256": "6048d4abc765d93becac574bba85d0587423dd07de4321ac1725d9974a097719"
+    },
+    {
+      "bytes": 47,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/metadata/sources.lock.json",
+      "sha256": "8a9b720ef11aabc3d57bf7c84969ad02b7bb99984b782c6b5ade5afbf0cb5659"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/scripts"
+    },
+    {
+      "bytes": 2156,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/scripts/offline_exec.py",
+      "sha256": "3783681d996d567b10180d6ba00ef299fce5299dd039e91fa4b2ae362ab665ae"
+    },
+    {
+      "bytes": 10565,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/scripts/replay.py",
+      "sha256": "14aada851c87dabaaf92bdfd3327005d95cd69697dc2ef4a656b50dc9406cd9f"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2395,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "f27aa450c5cdea89efe5b64e0936cebc964f80ba2ff4d85ccc4bdc41689728dd"
+    },
+    {
+      "bytes": 2531,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material_check.py",
+      "sha256": "82a77927aaa41391372adfd0d6fd07c25c3431a7dc59a38fd189135717794366"
+    }
+  ],
+  "inventory_sha256": "657e8508564e81dc6f92a6dd8626238252bf5714afa5091ed6afb8c430fe79f0",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "501e6653bd46e1ae01287522cc588c11b433a3c598c88b0714c6f999501f5dab",
+  "method": "material",
+  "package": {
+    "build": "3",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/material_check.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-manifest.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "complete-material-inventory",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 300
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "apt.binutils",
+    "metadata": {
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.binutils-common",
+          "apt.binutils-x86-64-linux-gnu",
+          "apt.libbinutils"
+        ],
+        "architecture": "amd64",
+        "archive_bytes": 18154,
+        "category": [
+          "System packages",
+          "Direct tools"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "signed-metadata-and-resolver-verified; image-not-built"
+        },
+        "documentation": [
+          "https://packages.ubuntu.com/noble/binutils"
+        ],
+        "id": "apt.binutils",
+        "immutable_ref": "sha256:b3b5a84181a38fd191820b2cdcc1a3eeb1cd6333ad472f2092f96e81047e9c74",
+        "installed_bytes": null,
+        "installed_size_kib_metadata": 161,
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LicenseRef-Ubuntu-main-or-universe-package-notices",
+        "mandatory": false,
+        "material_path": "apt/binutils_2.42-4ubuntu2.10_amd64.deb",
+        "package_name": "binutils",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "GNU assembler, linker and binary utilities",
+        "qualification_gaps": [
+          "Install the frozen exact closure, retain /usr/share/doc notices, and perform role-specific first-use qualification."
+        ],
+        "redistributable": "component-notices-and-source-obligations-apply",
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": "b3b5a84181a38fd191820b2cdcc1a3eeb1cd6333ad472f2092f96e81047e9c74",
+        "size_basis": "Exact Size and SHA256 fields in signature-verified captured Ubuntu Packages index; Installed-Size is package metadata, not measured filesystem bytes.",
+        "source_evidence": [
+          "https://archive.ubuntu.com/ubuntu/dists/noble/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease",
+          "https://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils_2.42-4ubuntu2.10_amd64.deb",
+        "title": "binutils",
+        "upstream": "https://www.gnu.org/software/binutils/",
+        "version": "2.42-4ubuntu2.10"
+      },
+      "catalog_sha256": "3be93ca9e78d083717a4ce62686c8ff562e67d5e7226a6690191b8ad1b2586fb",
+      "publication_policy": {
+        "build_check": "not_run",
+        "formal_qualification_changed": false,
+        "functional": "not_run",
+        "review_policy": "static-trust-v1"
+      },
+      "support_material": {
+        "explicit_replay_requires_suitable_host_dependencies": true,
+        "formal_qualification_changed": false,
+        "historical_scope": "The original frozen software identity is 2.42-4ubuntu2.10, while the historical host examples used 2.42-4ubuntu2.5. Those observations are not execution evidence for the frozen version or this new artifact.",
+        "id": "apt.binutils",
+        "material_build": "3",
+        "material_installation_requires_native_dependencies": false,
+        "original_catalog_sha256": "3be93ca9e78d083717a4ce62686c8ff562e67d5e7226a6690191b8ad1b2586fb",
+        "original_master_sha256": "94bc2f90dc7c89065d0abf45321513d0710d65544a7bd58a6a3f71119f6aa8b6",
+        "scope": "Bounded ELF, archive, relocation, disassembly and detached-debuglink examples using a separately prepared host GNU Binutils. No Binutils executable or upstream source is bundled.",
+        "target": {
+          "arch": "x86_64",
+          "distribution": "ubuntu",
+          "distribution_version": "24.04",
+          "os": "linux"
+        },
+        "version": "2.42-4ubuntu2.10",
+        "wrapper_build": "2",
+        "wrapper_system_dependencies": [
+          "apt.binutils-common",
+          "apt.binutils-x86-64-linux-gnu",
+          "apt.libbinutils"
+        ]
+      },
+      "support_material_license": "MIT for authored integration; original per-file upstream notices and complete corresponding source for the enclosed DEBs."
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "corpus",
+      "additional_acquisition_locks": [],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "state": "Support-material installation only; native replay is explicit and not performed during publication."
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 18154,
+        "extract": false,
+        "id": "apt.binutils",
+        "material_path": "apt/binutils_2.42-4ubuntu2.10_amd64.deb",
+        "sha256": "b3b5a84181a38fd191820b2cdcc1a3eeb1cd6333ad472f2092f96e81047e9c74",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils_2.42-4ubuntu2.10_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://packages.ubuntu.com/noble/binutils",
+        "https://sourceware.org/binutils/docs/binutils.html",
+        "https://sourceware.org/binutils/docs/binutils/objcopy.html",
+        "https://sourceware.org/binutils/docs/binutils/addr2line.html"
+      ],
+      "examples": [
+        {
+          "command": "python3 -B {prefix}/scripts/replay.py --output /absolute/new/output",
+          "description": "Explicitly run this software example in a new independent directory."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Support material",
+          "path": "{prefix}",
+          "purpose": "Bounded ELF, archive, relocation, disassembly and detached-debuglink examples using a separately prepared host GNU Binutils. No Binutils executable or upstream source is bundled."
+        }
+      ],
+      "notes": [
+        "Bounded ELF, archive, relocation, disassembly and detached-debuglink examples using a separately prepared host GNU Binutils. No Binutils executable or upstream source is bundled.",
+        "The original frozen software identity is 2.42-4ubuntu2.10, while the historical host examples used 2.42-4ubuntu2.5. Those observations are not execution evidence for the frozen version or this new artifact.",
+        "Static review only; no new native or functional execution."
+      ],
+      "summary": "GNU Binutils support material: explicit offline examples and pinned inputs; existing APT wrapper unchanged."
+    },
+    "version": "2.42-4ubuntu2.10"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "changes": "Software-specific source/notice/input closure; original applicable replay methods retained, neutral fixture identifiers, scoped preparation and capability report; DSC pinned before explicit source retrieval.",
+    "formal_qualification_changed": false,
+    "native_build": "not_run",
+    "native_inputs_unchanged": true,
+    "operation": "per-software-support-material-publication",
+    "original_artifact": {
+      "bytes": 17324694,
+      "method": "material",
+      "sha256": "437a0bac4b0f8f1fd856897da86090b87b3d1f5b60f7dbb3a9ba654e229ed2b7"
+    },
+    "original_master_sha256": "94bc2f90dc7c89065d0abf45321513d0710d65544a7bd58a6a3f71119f6aa8b6",
+    "resource_id": "apt.binutils",
+    "scope": "Bounded ELF, archive, relocation, disassembly and detached-debuglink examples using a separately prepared host GNU Binutils. No Binutils executable or upstream source is bundled.",
+    "selected_deb_names": [],
+    "selected_source_package": null,
+    "signature_verification": "not_run",
+    "software_execution": "not_run"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}
