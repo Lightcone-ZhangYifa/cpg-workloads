@@ -1,0 +1,135 @@
+{
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "evidence_directory": "resource-integrations/v0210/r02/static-data/batch-a/evidence/polybench-c",
+    "release": "0.21.0",
+    "round": "r02",
+    "status": "passed",
+    "type": "complete_static_material_availability"
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 311443,
+    "historical_path": "resource-integrations/v0210/r02/static-data/batch-a/artifacts/polybench-c-4.2.1-beta-b2.material.cpgpkg.tar.gz",
+    "manifest_sha256": "76bbb239b023b94d73ba40f2316ff9145db85aecd55edf9b21aa61b0e1e304f0",
+    "method": "material",
+    "sha256": "1378b0c2d45659ffc3b03f1ae14d16c4945fb27f121ec6697fb3d4c1b9eae05a"
+  },
+  "original_catalog": {
+    "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+    "archive_bytes": 297237,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Workloads",
+      "Diagnostic kernels"
+    ],
+    "container_strategy": "Stage the original versioned archive, build parameterized kernels in dev and export full result arrays or robust independent checksums for target validation.",
+    "corpus_contract": {
+      "code": "Included C kernels and harness headers.",
+      "inputs": "Generated numerical arrays with configurable sizes.",
+      "oracle": "Reference full-array comparison or validated checksums, not timing output alone.",
+      "split_unit": "Kernel algorithm family across all sizes and transformations."
+    },
+    "dependencies": [],
+    "deployment": {
+      "adapter": "corpus",
+      "qualified": false,
+      "source_dependencies": [],
+      "system_packages": [],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://sourceforge.net/projects/polybench/"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/polybench-c.measurement.json"
+    ],
+    "extract": true,
+    "id": "polybench-c",
+    "immutable_ref": "sha256:426519ee8443a5f2175de6a3e9328cda8917a5e33053d0e8f59855ab56d689a4",
+    "kind": "dataset",
+    "license_class": "open",
+    "license_id": "LicenseRef-Ohio-State-PolyBench",
+    "mandatory": false,
+    "material_path": "corpora/polybench-c",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Loop transformations, tiling, fusion, vectorization and polyhedral optimization diagnostics.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "The release is old but intentionally frozen; application-level runtime gains require broader corpora.",
+      "Keep anti-elimination output paths and strict floating-point policy; random array size splits are not independent program splits."
+    ],
+    "redistributable": true,
+    "roles": [
+      "host"
+    ],
+    "sha256": "426519ee8443a5f2175de6a3e9328cda8917a5e33053d0e8f59855ab56d689a4",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://sourceforge.net/projects/polybench/",
+      "https://altushost-bul.dl.sourceforge.net/project/polybench/polybench-c-4.2.1-beta.tar.gz"
+    ],
+    "source_logical_bytes": 493231,
+    "source_url": "https://altushost-bul.dl.sourceforge.net/project/polybench/polybench-c-4.2.1-beta.tar.gz",
+    "title": "PolyBench/C static-control kernels",
+    "upstream": "https://sourceforge.net/projects/polybench/",
+    "version": "4.2.1-beta"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 297237,
+      "extract": true,
+      "id": "polybench-c",
+      "material_path": "corpora/polybench-c",
+      "sha256": "426519ee8443a5f2175de6a3e9328cda8917a5e33053d0e8f59855ab56d689a4",
+      "strip_root": true,
+      "url": "https://altushost-bul.dl.sourceforge.net/project/polybench/polybench-c-4.2.1-beta.tar.gz"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 29070,
+      "path": "offline-manifest.json",
+      "sha256": "bd380a44de712bc0b8e9b049c1e5bc41441ef985f78f68747038ac107801cea2"
+    },
+    {
+      "bytes": 2291,
+      "path": "recipe/check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 20661,
+      "path": "recipe/material-manifest.json",
+      "sha256": "63ac1e5ba96c3716f22a9ff611d7e6afd31741da124c40bd50b437658cad2d2e"
+    },
+    {
+      "bytes": 14564,
+      "path": "run.py",
+      "sha256": "dbdf92cc8130b0375d631b4212a79086a6007518db5ea91957a7012268217935"
+    }
+  ],
+  "release": "0.21.1",
+  "resource_id": "polybench-c",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1
+}

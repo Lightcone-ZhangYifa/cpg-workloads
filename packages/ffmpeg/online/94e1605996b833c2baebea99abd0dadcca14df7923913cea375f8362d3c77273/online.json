@@ -1,0 +1,132 @@
+{
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "release": "0.21.1",
+    "scope": "Only the complete material artifact online reproduction. Native execution qualification remains in the original separate summary.",
+    "status": "passed",
+    "summary": {
+      "bytes": 140375,
+      "path": "resource-integrations/v0210/r02/source-a/evidence/ffmpeg-r02/summary.json",
+      "sha256": "e6d71ff0e5d885b3a3094886cc909ae0ffebd308cdf5ccc033fd3403b52c4831"
+    }
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 17505688,
+    "historical_path": "resource-integrations/v0210/r02/source-a/evidence/ffmpeg-r02/artifacts/ffmpeg.material.cpgpkg.tar.gz",
+    "manifest_sha256": "42585a96dfa2be9316a801cc63ebba382d33413f6887cb2ad8263490ce13b00c",
+    "method": "material",
+    "sha256": "4d51f4e0df76e9c5ee3c6d3445509ee5b02881e1e1aae7d8db3155f51cd72d92"
+  },
+  "original_catalog": {
+    "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+    "archive_bytes": 17333895,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Workloads",
+      "Applications and libraries",
+      "Media"
+    ],
+    "container_strategy": "Freeze configure flags, enabled codecs, NASM/YASM and any optional library closure in dev; run fixed commands and licensed media input bundles on target.",
+    "corpus_contract": {
+      "code": "Application and FATE test definitions included.",
+      "inputs": "External FATE/sample/media input packs must be separately admitted.",
+      "oracle": "FATE checks, frame hashes or declared quality/error metrics.",
+      "split_unit": "Codec/filter/application family across clips and configurations."
+    },
+    "dependencies": [],
+    "deployment": {
+      "adapter": "corpus",
+      "qualified": false,
+      "source_dependencies": [],
+      "system_packages": [],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://github.com/FFmpeg/FFmpeg"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/ffmpeg.measurement.json",
+      "workspace-evidence/resources-v050/open-research/ffmpeg.refs.json"
+    ],
+    "extract": true,
+    "id": "ffmpeg",
+    "immutable_ref": "946fcce07b6dcd0331c8cc609192aeff5e1924f8",
+    "kind": "dataset",
+    "license_class": "open",
+    "license_id": "LGPL-2.1-or-later AND LicenseRef-Configuration-Dependent",
+    "mandatory": false,
+    "material_path": "corpora/ffmpeg",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Large real-world C application, codecs, filters, parsing and dispatch with end-to-end workloads.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "Optional GPL/nonfree dependencies alter distribution rights; the open preset must exclude incompatible combinations.",
+      "FATE media samples and representative clips are external datasets and require their own hashes/size receipts.",
+      "Output validation must account for declared lossy codec semantics and thread determinism."
+    ],
+    "redistributable": true,
+    "roles": [
+      "host"
+    ],
+    "sha256": "0aa2b1de2a5698b20a23e93d539a9a8e82ca0117496c5bdf05d198805f42bb3b",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://github.com/FFmpeg/FFmpeg",
+      "https://codeload.github.com/FFmpeg/FFmpeg/tar.gz/946fcce07b6dcd0331c8cc609192aeff5e1924f8",
+      "https://github.com/FFmpeg/FFmpeg/commit/946fcce07b6dcd0331c8cc609192aeff5e1924f8"
+    ],
+    "source_logical_bytes": 90361647,
+    "source_url": "https://codeload.github.com/FFmpeg/FFmpeg/tar.gz/946fcce07b6dcd0331c8cc609192aeff5e1924f8",
+    "title": "FFmpeg media application workload",
+    "upstream": "https://github.com/FFmpeg/FFmpeg",
+    "version": "n9.0.2"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 17333895,
+      "extract": true,
+      "id": "ffmpeg",
+      "material_path": "corpora/ffmpeg",
+      "sha256": "0aa2b1de2a5698b20a23e93d539a9a8e82ca0117496c5bdf05d198805f42bb3b",
+      "strip_root": true,
+      "url": "https://codeload.github.com/FFmpeg/FFmpeg/tar.gz/946fcce07b6dcd0331c8cc609192aeff5e1924f8"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 2235689,
+      "path": "offline-manifest.json",
+      "sha256": "6be0c64662a225e819a45e091f91c9e9f451d95b9b8020880f99ed04430bdcea"
+    },
+    {
+      "bytes": 14564,
+      "path": "run.py",
+      "sha256": "dbdf92cc8130b0375d631b4212a79086a6007518db5ea91957a7012268217935"
+    }
+  ],
+  "release": "0.21.1",
+  "resource_id": "ffmpeg",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1
+}

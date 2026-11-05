@@ -1,0 +1,152 @@
+{
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "release": "0.18.0",
+    "review": {
+      "bytes": 13777,
+      "path": "resource-integrations/v0180/worker-a/packages/xz/review.json",
+      "sha256": "8165b8175de3207b90bd0727b97fb6771b8a45a9b1ad49a7f566440a12e2e826"
+    },
+    "scope": {
+      "fixed_prefix": "/workspace/scratch/52f5dccd725f/compiler-playground-workspace-v0.16.0/resource-integrations/v0180/worker-a/evidence/xz/qualification-3/source-prefix",
+      "material_executable_checks": "not_run",
+      "methods": [
+        "material",
+        "source",
+        "binary"
+      ],
+      "oci_deployment": "not_run",
+      "relocatable": "Not applicable: full upstream XZ/NLS profile requires its fixed prefix; same-prefix binary reinstall is checked, cross-container deployment is not_run.",
+      "system_installation": "not_run",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      }
+    },
+    "summary": {
+      "bytes": 905144,
+      "path": "resource-integrations/v0180/worker-a/evidence/xz/qualification-3/summary.json",
+      "sha256": "d2be7b1cb6675cd7564a19b7b6729f76196e5a3dcd02e40ba852ebb1852447c0"
+    }
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 1689816,
+    "historical_path": "resource-integrations/v0180/worker-a/evidence/xz/qualification-3/artifacts/xz.material.cpgpkg.tar.gz",
+    "manifest_sha256": "3bfdc7948d0f275e7274fbfbd3ad26631406bb97c811247998d6e384b91325db",
+    "method": "material",
+    "sha256": "1d6a3fce2c6e8cadd9cc52e76d2caaa854fc67377f672a1eb0d9a77bade5cc3d"
+  },
+  "original_catalog": {
+    "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+    "archive_bytes": 1673778,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Workloads",
+      "Applications and libraries",
+      "Compression"
+    ],
+    "container_strategy": "Use the official source commit, preserve security provenance and build CLI/tests in dev before target execution.",
+    "corpus_contract": {
+      "code": "Library, CLI and tests included.",
+      "inputs": "Separate frozen compression corpus.",
+      "oracle": "Byte-exact round trip and upstream tests.",
+      "split_unit": "Application family with input strata recorded separately."
+    },
+    "dependencies": [],
+    "deployment": {
+      "adapter": "corpus",
+      "qualified": false,
+      "source_dependencies": [],
+      "system_packages": [],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://github.com/tukaani-project/xz"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/xz.measurement.json",
+      "workspace-evidence/resources-v050/open-research/xz.refs.json"
+    ],
+    "extract": true,
+    "id": "xz",
+    "immutable_ref": "d3e650e63c110e830fd5391e7f8b45df0b91d3da",
+    "kind": "dataset",
+    "license_class": "open",
+    "license_id": "0BSD AND GPL-2.0-or-later AND LGPL-2.1-or-later",
+    "mandatory": false,
+    "material_path": "corpora/xz",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Branch-heavy compression, decompression and memory-sensitive native C workload coverage.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "Source Git snapshots and release tarballs can have different generated files; use the pinned artifact consistently.",
+      "Input corpus, compression options and threading policy are separate experiment inputs."
+    ],
+    "redistributable": true,
+    "roles": [
+      "host"
+    ],
+    "sha256": "b5aad5c776b324a39a46bbd588d4b5c001266b87ed3887aea1dc2854702d041c",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://github.com/tukaani-project/xz",
+      "https://codeload.github.com/tukaani-project/xz/tar.gz/d3e650e63c110e830fd5391e7f8b45df0b91d3da",
+      "https://github.com/tukaani-project/xz/commit/d3e650e63c110e830fd5391e7f8b45df0b91d3da"
+    ],
+    "source_logical_bytes": 6704017,
+    "source_url": "https://codeload.github.com/tukaani-project/xz/tar.gz/d3e650e63c110e830fd5391e7f8b45df0b91d3da",
+    "title": "XZ/LZMA compression workload",
+    "upstream": "https://github.com/tukaani-project/xz",
+    "version": "v5.8.4"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 1673778,
+      "extract": true,
+      "id": "xz",
+      "material_path": "corpora/xz",
+      "sha256": "b5aad5c776b324a39a46bbd588d4b5c001266b87ed3887aea1dc2854702d041c",
+      "strip_root": true,
+      "url": "https://codeload.github.com/tukaani-project/xz/tar.gz/d3e650e63c110e830fd5391e7f8b45df0b91d3da"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 115782,
+      "path": "offline-manifest.json",
+      "sha256": "97719b19d6f420a2a194cb5c95091adfef48805645b2f4c05bbaab725c4783f1"
+    },
+    {
+      "bytes": 14564,
+      "path": "run.py",
+      "sha256": "dbdf92cc8130b0375d631b4212a79086a6007518db5ea91957a7012268217935"
+    }
+  ],
+  "release": "0.21.1",
+  "resource_id": "xz",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1
+}

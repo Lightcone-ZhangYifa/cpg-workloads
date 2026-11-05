@@ -1,0 +1,271 @@
+{
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "release": "0.18.0",
+    "review": {
+      "bytes": 17113,
+      "path": "resource-integrations/v0180/intel-ittapi/packages/intel-ittapi/review.json",
+      "sha256": "240ecf5ecb262422efe9ead1a7cdb6037eade967548295b3e7ab65fa545841da"
+    },
+    "scope": {
+      "advisor_profiler": "not_qualified; typed ABI fixture only",
+      "apt_transactions": "not_run",
+      "material_executable_checks": "not_applicable",
+      "methods": [
+        "source",
+        "binary",
+        "material"
+      ],
+      "oci_deployment": "not_run",
+      "python_binding": "not_installed",
+      "relocatable": "Two independent prefixes on Ubuntu 24.04 x86_64; no cross-OS or cross-ABI claim."
+    },
+    "summary": {
+      "bytes": 27928,
+      "path": "resource-integrations/v0180/intel-ittapi/evidence/qualification-5/summary.json",
+      "sha256": "bf28f09969eb08a9c216de2354829e8a1410e4a350419e8be0c0d1b1cd5c5b54"
+    }
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 454831,
+    "historical_path": "resource-integrations/v0180/intel-ittapi/evidence/qualification-5/artifacts/intel-ittapi.material.cpgpkg.tar.gz",
+    "manifest_sha256": "c6e2eb2a8244ce883d8af2ea62409e839e34222470435da35c6a16a5e9dd3745",
+    "method": "material",
+    "sha256": "37ff8450994f6ea61c05157501a91b07b7b2e804d220e8145a7d081d4668913f"
+  },
+  "original_catalog": {
+    "alternative_release_bundle": {
+      "archive_bytes": 1805765,
+      "default_selected": false,
+      "included_platforms": [
+        "Linux",
+        "Windows",
+        "Darwin"
+      ],
+      "layout_evidence": "workspace-evidence/resources-v050/platform-research/ittapi-archive-layout.json",
+      "python_distribution_version": "1.2.2",
+      "sha256": "cba7108a77caa1d5701961607079a19aa36c2ed81f13f7c795fbf31ffd4561ea",
+      "source_url": "https://github.com/intel/ittapi/releases/download/v3.28.4/ittapi_build_v3.28.4.zip"
+    },
+    "archive_bytes": 446168,
+    "build_peak_bytes": null,
+    "category": [
+      "Profiling",
+      "Tracing and instrumentation"
+    ],
+    "container_strategy": "Build native C/C++ ITT APIs and the reference collector from pinned source in dev, preserve licenses and Fortran sources, and export only Linux libraries. The multi-OS release ZIP is an unselected alternative.",
+    "dependencies": [
+      "apt.build-essential",
+      "apt.cmake",
+      "apt.gfortran",
+      "apt.libgcc-s1",
+      "apt.libstdc++6",
+      "apt.ninja-build",
+      "apt.pkg-config"
+    ],
+    "deployment": {
+      "adapter": "cmake",
+      "additional_install_commands": [
+        [
+          "install",
+          "-d",
+          "{prefix}/share/ittapi",
+          "{prefix}/include/ittapi-fortran"
+        ],
+        [
+          "cp",
+          "-a",
+          "{source}/LICENSES",
+          "{source}/include/fortran",
+          "{prefix}/share/ittapi/"
+        ],
+        [
+          "install",
+          "-m",
+          "644",
+          "{build}/bin/libjitprofiling.a",
+          "{build}/bin/libittnotify_refcol.so",
+          "{prefix}/lib/"
+        ],
+        [
+          "gfortran",
+          "-g",
+          "-O2",
+          "-fPIC",
+          "-J{prefix}/include/ittapi-fortran",
+          "-c",
+          "{source}/include/fortran/posix/ittnotify.f90",
+          "-o",
+          "{prefix}/lib/ittfortran.o"
+        ],
+        [
+          "gfortran",
+          "-g",
+          "-O2",
+          "-fPIC",
+          "-J{prefix}/include/ittapi-fortran",
+          "-c",
+          "{source}/include/fortran/advisor_annotate.f90",
+          "-o",
+          "{prefix}/lib/advisor_annotate.o"
+        ]
+      ],
+      "additional_smoke_commands": [
+        [
+          "env",
+          "INTEL_LIBITTNOTIFY64={prefix}/lib/libittnotify_refcol.so",
+          "{build}/bin/refcol_smoke_test"
+        ]
+      ],
+      "apt_dependencies": {
+        "dev": [
+          "build-essential",
+          "cmake",
+          "ninja-build",
+          "pkg-config",
+          "gfortran"
+        ],
+        "target": [
+          "libstdc++6",
+          "libgcc-s1"
+        ]
+      },
+      "build_argv": [
+        "cmake",
+        "--build",
+        "{build}",
+        "--parallel",
+        "{jobs}"
+      ],
+      "build_role": "dev",
+      "configure_argv": [
+        "cmake",
+        "-S",
+        "{source}",
+        "-B",
+        "{build}",
+        "-G",
+        "Ninja",
+        "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+        "-DCMAKE_INSTALL_PREFIX={prefix}",
+        "-DCMAKE_INSTALL_LIBDIR=lib",
+        "-DITT_API_CPP_SUPPORT=ON",
+        "-DITT_API_REFERENCE_COLLECTOR=ON",
+        "-DITT_API_REFCOL_SMOKE_TESTS=ON",
+        "-DITT_API_FORTRAN_SUPPORT=OFF"
+      ],
+      "fortran_strategy": "Upstream CMake passes the Intel-specific -module flag; explicit gfortran -J commands build these modules with the admitted GNU Fortran version. Rebuild modules for any other compiler ABI.",
+      "install_argv": [
+        "cmake",
+        "--install",
+        "{build}"
+      ],
+      "install_roles": [
+        "dev",
+        "target"
+      ],
+      "probe_requires_host": [],
+      "python_binding_strategy": "The release ZIP offers separate Python distribution 1.2.2 wheels. It is not silently installed as native SDK version 3.28.4; select and hash the matching Python ABI wheel before enabling Python bindings.",
+      "smoke_argv": [
+        "test",
+        "-f",
+        "{prefix}/include/ittnotify.h"
+      ],
+      "state": "recipe-described-not-executed",
+      "target_exports": [
+        {
+          "destination": "opt/research/selected/intel-ittapi",
+          "kind": "tree",
+          "required": true,
+          "role": "profiler",
+          "source": "{prefix}"
+        }
+      ],
+      "target_smoke_commands": [
+        [
+          "test",
+          "-f",
+          "{prefix}/include/ittnotify.h"
+        ]
+      ]
+    },
+    "documentation": "https://github.com/intel/ittapi",
+    "extract": true,
+    "id": "intel-ittapi",
+    "immutable_ref": "bd72cfb15e34a5fc4c0a8d10f5bb5305d60e1eec",
+    "installed_bytes": null,
+    "kind": "url",
+    "license_class": "open",
+    "license_id": "BSD-3-Clause OR GPL-2.0-only",
+    "mandatory": false,
+    "material_path": "sources/intel-ittapi",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Mark tasks, phases and regions for VTune and profiling analysis without changing formal timing workloads.",
+    "qualification_gaps": [
+      "A physical target CPU, kernel, PMU and container launch profile must pass feature-specific collection probes; an installed executable is not full runtime qualification.",
+      "The reference deployment commands are not an executed container qualification.",
+      "C/C++, reference-collector and GNU Fortran build recipes require native execution qualification; Python wheels are a separately admitted ABI-specific optional binding.",
+      "Intel Processor Trace marker support is a target-dependent optional build and must be qualified separately."
+    ],
+    "redistributable": true,
+    "roles": [
+      "dev",
+      "target"
+    ],
+    "sha256": "887ce69c1a770026259b09accc31026607cbecaa0ddb2bc003cf9afda6b756e9",
+    "size_basis": "complete HTTP GET, byte count and SHA-256 computed locally",
+    "size_evidence": "workspace-evidence/resources-v050/platform-research/submodule-archive-measurements.json",
+    "source_evidence": [
+      "https://github.com/intel/ittapi/releases/tag/v3.28.4",
+      "https://github.com/intel/ittapi",
+      "https://codeload.github.com/intel/ittapi/tar.gz/bd72cfb15e34a5fc4c0a8d10f5bb5305d60e1eec"
+    ],
+    "source_url": "https://codeload.github.com/intel/ittapi/tar.gz/bd72cfb15e34a5fc4c0a8d10f5bb5305d60e1eec",
+    "title": "Intel ITT instrumentation API",
+    "upstream": "https://github.com/intel/ittapi/releases/tag/v3.28.4",
+    "version": "3.28.4"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 446168,
+      "extract": true,
+      "id": "intel-ittapi",
+      "material_path": "sources/intel-ittapi",
+      "sha256": "887ce69c1a770026259b09accc31026607cbecaa0ddb2bc003cf9afda6b756e9",
+      "strip_root": true,
+      "url": "https://codeload.github.com/intel/ittapi/tar.gz/bd72cfb15e34a5fc4c0a8d10f5bb5305d60e1eec"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 57351,
+      "path": "offline-manifest.json",
+      "sha256": "a96daa413a85dc9f897975782e4f8c84d6d0d20c0ee627cac7260ec9227b540f"
+    },
+    {
+      "bytes": 14564,
+      "path": "run.py",
+      "sha256": "dbdf92cc8130b0375d631b4212a79086a6007518db5ea91957a7012268217935"
+    }
+  ],
+  "release": "0.21.1",
+  "resource_id": "intel-ittapi",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1
+}

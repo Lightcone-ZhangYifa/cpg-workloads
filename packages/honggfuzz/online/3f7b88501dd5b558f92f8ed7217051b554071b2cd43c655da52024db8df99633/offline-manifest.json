@@ -1,0 +1,198 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 6668902,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/archive-members.json",
+      "sha256": "493419b7746567673b99aca07fa0391368c8a531fac8e3ce6ca65512ad5d0c93"
+    },
+    {
+      "bytes": 65269741,
+      "kind": "file",
+      "mode": 292,
+      "path": "payload/honggfuzz-source.tar.gz",
+      "sha256": "3a37ff1dbdd31977a2990e74a3f63c77220fb9e077690e548f64e13d0cccc5ad"
+    }
+  ],
+  "inventory_sha256": "724232ff526fdf83eff75fb9649972202fe928036812360bc64086aa9a869498",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "70807676c6023088b4673a18a59837aca7e46df6b452efd97e5b442a4122d3b8",
+  "method": "material",
+  "package": {
+    "build": "1",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "honggfuzz",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 65269741,
+        "archive_scope": "Root repository only; recursive Git submodule payloads are excluded.",
+        "category": [
+          "Correctness",
+          "Generators and fuzzers"
+        ],
+        "container_strategy": "Build the Linux x86 host mode in dev; target profiling or hardware coverage modes require separately admitted host capabilities.",
+        "dependencies": [
+          "apt.binutils-dev",
+          "apt.g++",
+          "apt.libblocksruntime-dev",
+          "apt.liblzma-dev",
+          "apt.libunwind-dev",
+          "apt.make"
+        ],
+        "deployment": {
+          "adapter": "make",
+          "build_argv": [
+            "make",
+            "-j{jobs}"
+          ],
+          "install_argv": [
+            "make",
+            "PREFIX={prefix}",
+            "install"
+          ],
+          "qualified": false,
+          "smoke_argv": [
+            "{prefix}/bin/honggfuzz",
+            "--help"
+          ],
+          "source_dependencies": [],
+          "system_packages": [
+            "make",
+            "g++",
+            "binutils-dev",
+            "libunwind-dev",
+            "libblocksruntime-dev",
+            "liblzma-dev"
+          ],
+          "working_directory": "{source}"
+        },
+        "documentation": [
+          "https://github.com/google/honggfuzz"
+        ],
+        "evidence_files": [
+          "workspace-evidence/resources-v050/open-research/honggfuzz.measurement.json",
+          "workspace-evidence/resources-v050/open-research/honggfuzz.refs.json"
+        ],
+        "extract": true,
+        "id": "honggfuzz",
+        "immutable_ref": "83a8415a372d84dcc69ac1e2c2f152190bcf76d1",
+        "kind": "source_archive",
+        "license_class": "open",
+        "license_id": "Apache-2.0",
+        "mandatory": false,
+        "material_path": "sources/honggfuzz",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Complement AFL++ with sanitizer/coverage-guided compiler and native-program fuzzing.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Android submodules in the archive are not needed for the Linux host scope; optional hardware modes still need host qualification."
+        ],
+        "redistributable": true,
+        "roles": [
+          "dev",
+          "host"
+        ],
+        "sha256": "3a37ff1dbdd31977a2990e74a3f63c77220fb9e077690e548f64e13d0cccc5ad",
+        "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+        "source_evidence": [
+          "https://github.com/google/honggfuzz",
+          "https://codeload.github.com/google/honggfuzz/tar.gz/83a8415a372d84dcc69ac1e2c2f152190bcf76d1",
+          "https://github.com/google/honggfuzz/commit/83a8415a372d84dcc69ac1e2c2f152190bcf76d1"
+        ],
+        "source_logical_bytes": 146832300,
+        "source_url": "https://codeload.github.com/google/honggfuzz/tar.gz/83a8415a372d84dcc69ac1e2c2f152190bcf76d1",
+        "title": "Honggfuzz native fuzzing",
+        "upstream": "https://github.com/google/honggfuzz",
+        "version": "2.6"
+      },
+      "catalog_sha256": "cfe0dd88c635cb33c0557b5801cf965e5e6aecbd4bcdcf2e778a2af665978fef"
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "copy"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 65269741,
+        "extract": true,
+        "id": "honggfuzz",
+        "material_path": "sources/honggfuzz",
+        "sha256": "3a37ff1dbdd31977a2990e74a3f63c77220fb9e077690e548f64e13d0cccc5ad",
+        "strip_root": true,
+        "url": "https://codeload.github.com/google/honggfuzz/tar.gz/83a8415a372d84dcc69ac1e2c2f152190bcf76d1"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/google/honggfuzz/tree/83a8415a372d84dcc69ac1e2c2f152190bcf76d1"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Original source archive",
+          "path": "{prefix}/honggfuzz-source.tar.gz",
+          "purpose": "Exact original locked archive, including all original links and licenses."
+        },
+        {
+          "label": "Original archive member inventory",
+          "path": "{prefix}/archive-members.json",
+          "purpose": "Every original member identity, file SHA, size, mode and unmodified link target."
+        }
+      ],
+      "notes": [
+        "This is an archive material view, not an expanded source directory or native execution qualification. Original catalog/source locks are unchanged.",
+        "Upstream source links that point to build products remain unmodified inside the archive. No source extraction is performed by the material recipe."
+      ],
+      "summary": "Inspect or independently extract the entire original Honggfuzz source archive and its complete member inventory."
+    },
+    "version": "2.6"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "material_representation": "exact-archive-with-member-inventory",
+    "member_inventory_sha256": "493419b7746567673b99aca07fa0391368c8a531fac8e3ce6ca65512ad5d0c93",
+    "original_material_profile": true,
+    "source_lock": {
+      "bytes": 65269741,
+      "extract": true,
+      "id": "honggfuzz",
+      "material_path": "sources/honggfuzz",
+      "sha256": "3a37ff1dbdd31977a2990e74a3f63c77220fb9e077690e548f64e13d0cccc5ad",
+      "strip_root": true,
+      "url": "https://codeload.github.com/google/honggfuzz/tar.gz/83a8415a372d84dcc69ac1e2c2f152190bcf76d1"
+    }
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

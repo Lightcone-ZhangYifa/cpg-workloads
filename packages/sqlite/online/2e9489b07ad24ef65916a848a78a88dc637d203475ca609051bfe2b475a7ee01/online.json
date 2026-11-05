@@ -1,0 +1,150 @@
+{
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "release": "0.18.0",
+    "review": {
+      "bytes": 11595,
+      "path": "resource-integrations/v0180/worker-a/packages/sqlite/review.json",
+      "sha256": "2b7877fe292c2216a46b80900120fa63a529e7deb9d389cf9f5fd06cacb5435d"
+    },
+    "scope": {
+      "material_executable_checks": "not_run",
+      "methods": [
+        "material",
+        "source",
+        "binary"
+      ],
+      "oci_deployment": "not_run",
+      "relocatable": "Two independent prefixes on this declared target; no cross-OS/ABI/CPU qualification.",
+      "system_installation": "not_run",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      }
+    },
+    "summary": {
+      "bytes": 32245,
+      "path": "resource-integrations/v0180/worker-a/evidence/sqlite/qualification-2/summary.json",
+      "sha256": "38847ba713a347bc5c16a5e3de0fb1462cd0bad8681cbe25024ba326e6e3232d"
+    }
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 13211207,
+    "historical_path": "resource-integrations/v0180/worker-a/evidence/sqlite/qualification-2/artifacts/sqlite.material.cpgpkg.tar.gz",
+    "manifest_sha256": "a72edf22901f15fa9aca11d526a9eca2deb1f72394d470a8b4a254c24ac025eb",
+    "method": "material",
+    "sha256": "50545e30d5765980bc813d803e6f6bfcdd7349733a44709907d4011b5fa2e49a"
+  },
+  "original_catalog": {
+    "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+    "archive_bytes": 14899528,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Workloads",
+      "Applications and libraries",
+      "Databases"
+    ],
+    "container_strategy": "Use the complete canonical source tree to retain open tests and speedtest infrastructure. Build in dev and run deterministic SQL/database bundles in target.",
+    "corpus_contract": {
+      "code": "Canonical full source tree, open tests and extensions.",
+      "inputs": "Frozen SQL/schema/data generator seeds and optional prebuilt databases.",
+      "oracle": "Exact query result comparison and open integrity/regression checks.",
+      "split_unit": "Application family; query/data families can support an explicitly separate input-generalization study."
+    },
+    "dependencies": [],
+    "deployment": {
+      "adapter": "corpus",
+      "qualified": false,
+      "source_dependencies": [],
+      "system_packages": [],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://www.sqlite.org/"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/sqlite.measurement.json"
+    ],
+    "extract": true,
+    "id": "sqlite",
+    "immutable_ref": "sha256:387e7f6cad4797b17848c07d453dc6606917bb356a6cfe5a3abafd38c240c71b",
+    "kind": "dataset",
+    "license_class": "open",
+    "license_id": "LicenseRef-SQLite-Public-Domain",
+    "mandatory": false,
+    "material_path": "corpora/sqlite",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "End-to-end SQL interpreter, B-tree, memory, branch and storage-independent compiler workload coverage.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "The proprietary TH3 suite is not part of the public source archive.",
+      "Declare in-memory versus filesystem tests and separate SQLite result validation from filesystem noise.",
+      "Versioned SQL scripts, schema/data generators, PRAGMA settings and database bytes require independent locks."
+    ],
+    "redistributable": true,
+    "roles": [
+      "host"
+    ],
+    "sha256": "387e7f6cad4797b17848c07d453dc6606917bb356a6cfe5a3abafd38c240c71b",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://www.sqlite.org/",
+      "https://www.sqlite.org/2026/sqlite-src-3540100.zip"
+    ],
+    "source_logical_bytes": 113150111,
+    "source_url": "https://www.sqlite.org/2026/sqlite-src-3540100.zip",
+    "title": "SQLite canonical source and tests",
+    "upstream": "https://www.sqlite.org/",
+    "version": "3.54.1"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 14899528,
+      "extract": true,
+      "id": "sqlite",
+      "material_path": "corpora/sqlite",
+      "sha256": "387e7f6cad4797b17848c07d453dc6606917bb356a6cfe5a3abafd38c240c71b",
+      "strip_root": true,
+      "url": "https://www.sqlite.org/2026/sqlite-src-3540100.zip"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 480410,
+      "path": "offline-manifest.json",
+      "sha256": "d6fa3aabcc506577b521a2585071e000aafa695dc1644f7b57a069addf64d0c1"
+    },
+    {
+      "bytes": 14564,
+      "path": "run.py",
+      "sha256": "dbdf92cc8130b0375d631b4212a79086a6007518db5ea91957a7012268217935"
+    }
+  ],
+  "release": "0.21.1",
+  "resource_id": "sqlite",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1
+}

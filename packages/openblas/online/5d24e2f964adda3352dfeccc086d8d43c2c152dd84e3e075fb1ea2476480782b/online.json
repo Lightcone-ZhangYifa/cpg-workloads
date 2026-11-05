@@ -1,0 +1,136 @@
+{
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "release": "0.21.2",
+    "review": {
+      "bytes": 464410,
+      "path": "resource-integrations/v0210/r03/source-b/definitions/openblas/review.json",
+      "sha256": "7804d7399490a96ab7a9ef90dae472affbcd983dc794664dfb53fa140b2e7107"
+    },
+    "scope": "Only existing complete material online reproduction; native/source/binary execution qualification is retained separately.",
+    "status": "passed",
+    "summary": {
+      "bytes": 289071,
+      "path": "resource-integrations/v0210/r03/source-b/evidence/openblas-attempt2/summary.json",
+      "sha256": "a97a5a0725e9499d64bb2735b2451690f98e4bba61be3bdc3fb4af79ce72d972"
+    }
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 25412994,
+    "historical_path": "resource-integrations/v0210/r03/source-b/evidence/openblas-attempt2/artifacts/openblas.material.cpgpkg.tar.gz",
+    "manifest_sha256": "ad713799ff725daac91503bc1c3a637d40636b49e9410d26ecff36ea3780c31a",
+    "method": "material",
+    "sha256": "5326c2ae4b18a08fe2b82f74706a7240beda3852d7d5cfac5a9c972c297d95ec"
+  },
+  "original_catalog": {
+    "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+    "archive_bytes": 25363263,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Workloads",
+      "Applications and libraries",
+      "SIMD and numerics"
+    ],
+    "container_strategy": "Build a declared target and threading configuration in dev; preserve Fortran and OpenMP runtime closure in target.",
+    "corpus_contract": {
+      "code": "BLAS/LAPACK implementation and tests included.",
+      "inputs": "Frozen numerical matrices and operation parameters.",
+      "oracle": "LAPACK/BLAS residual checks and independent references.",
+      "split_unit": "Numerical algorithm family across data shapes."
+    },
+    "dependencies": [],
+    "deployment": {
+      "adapter": "corpus",
+      "qualified": false,
+      "source_dependencies": [],
+      "system_packages": [],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://github.com/OpenMathLib/OpenBLAS"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/openblas.measurement.json",
+      "workspace-evidence/resources-v050/open-research/openblas.refs.json"
+    ],
+    "extract": true,
+    "id": "openblas",
+    "immutable_ref": "e0166008be8e466242aa76b2ff75ce3f0fbf574a",
+    "kind": "dataset",
+    "license_class": "open",
+    "license_id": "BSD-3-Clause",
+    "mandatory": false,
+    "material_path": "corpora/openblas",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Fortran/C numerical routines, LAPACK, dense kernels and runtime dispatch coverage.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "Dynamic architecture selection, handwritten assembly and BLAS worker counts must be explicitly controlled.",
+      "Numerical tests and problem-conditioning policy are required before interpreting speedups."
+    ],
+    "redistributable": true,
+    "roles": [
+      "host"
+    ],
+    "sha256": "b35b87e3580efc61a664248f143172fd998116c109fee790cd372480c64492a2",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://github.com/OpenMathLib/OpenBLAS",
+      "https://codeload.github.com/OpenMathLib/OpenBLAS/tar.gz/e0166008be8e466242aa76b2ff75ce3f0fbf574a",
+      "https://github.com/OpenMathLib/OpenBLAS/commit/e0166008be8e466242aa76b2ff75ce3f0fbf574a"
+    ],
+    "source_logical_bytes": 184435567,
+    "source_url": "https://codeload.github.com/OpenMathLib/OpenBLAS/tar.gz/e0166008be8e466242aa76b2ff75ce3f0fbf574a",
+    "title": "OpenBLAS numerical library workload",
+    "upstream": "https://github.com/OpenMathLib/OpenBLAS",
+    "version": "v0.3.34"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 25363263,
+      "extract": true,
+      "id": "openblas",
+      "material_path": "corpora/openblas",
+      "sha256": "b35b87e3580efc61a664248f143172fd998116c109fee790cd372480c64492a2",
+      "strip_root": true,
+      "url": "https://codeload.github.com/OpenMathLib/OpenBLAS/tar.gz/e0166008be8e466242aa76b2ff75ce3f0fbf574a"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 2738212,
+      "path": "offline-manifest.json",
+      "sha256": "61a683d63451db9925f5beca3d6951ffc488d39ccb13a0f017eba6a57925f837"
+    },
+    {
+      "bytes": 14564,
+      "path": "run.py",
+      "sha256": "cef462171d9007bbb8c9934037a54bbf1ecd957dcde904b03e2b9a1d18fb769e"
+    }
+  ],
+  "release": "0.21.2",
+  "resource_id": "openblas",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1
+}

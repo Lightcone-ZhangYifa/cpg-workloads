@@ -1,0 +1,161 @@
+{
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "release": "0.21.1",
+    "scope": "Only the complete material artifact online reproduction. Native execution qualification remains in the original separate summary.",
+    "status": "passed",
+    "summary": {
+      "bytes": 926439,
+      "path": "resource-integrations/v0210/r02/source-b/evidence/z3-attempt4/summary.json",
+      "sha256": "cbd2c12275902476ae16cec40fec9ef1fd043e0c4404ea7e1fad04cd25ebe9ed"
+    }
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 7927939,
+    "historical_path": "resource-integrations/v0210/r02/source-b/evidence/z3-attempt4/artifacts/z3.material.cpgpkg.tar.gz",
+    "manifest_sha256": "b22b0266ef1833dc4a51e8b3ad95e0456555a7921313416810db446cb1e040bb",
+    "method": "material",
+    "sha256": "34e8ec22f33e18d2e6dcf2fdd508f30548aebd6e672d4471517af6deca70e5c9"
+  },
+  "original_catalog": {
+    "archive_bytes": 7876101,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Correctness",
+      "SMT solvers"
+    ],
+    "container_strategy": "Install the solver and development library in a dedicated dev prefix; match the loaded libz3 hash to the qualification receipt.",
+    "dependencies": [
+      "apt.cmake",
+      "apt.g++",
+      "apt.ninja-build",
+      "apt.python3"
+    ],
+    "deployment": {
+      "adapter": "cmake",
+      "build_argv": [
+        "cmake",
+        "--build",
+        "{build}",
+        "--parallel",
+        "{jobs}"
+      ],
+      "configure_argv": [
+        "cmake",
+        "-S",
+        "{source}",
+        "-B",
+        "{build}",
+        "-G",
+        "Ninja",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_INSTALL_PREFIX={prefix}"
+      ],
+      "install_argv": [
+        "cmake",
+        "--install",
+        "{build}"
+      ],
+      "qualified": false,
+      "smoke_argv": [
+        "{prefix}/bin/z3",
+        "-version"
+      ],
+      "source_dependencies": [],
+      "system_packages": [
+        "cmake",
+        "ninja-build",
+        "python3",
+        "g++"
+      ],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://github.com/Z3Prover/z3"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/z3.measurement.json",
+      "workspace-evidence/resources-v050/open-research/z3.refs.json"
+    ],
+    "extract": true,
+    "id": "z3",
+    "immutable_ref": "ac9156f97cb44e56472e1c841f7a2beb1e976b24",
+    "kind": "source_archive",
+    "legacy_source_id": "z3",
+    "license_class": "open",
+    "license_id": "MIT",
+    "mandatory": false,
+    "material_path": "sources/z3",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Bit-vector, floating-point, array and arithmetic reasoning for validators, bounded verification and superoptimization.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "Solver regression tests and known SAT/UNSAT controls are required after building this exact version."
+    ],
+    "redistributable": true,
+    "roles": [
+      "dev",
+      "host"
+    ],
+    "sha256": "33558971c286653d47b03f97f9f973d0350629c827cacda2583608ba14d74ea6",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://github.com/Z3Prover/z3",
+      "https://codeload.github.com/Z3Prover/z3/tar.gz/ac9156f97cb44e56472e1c841f7a2beb1e976b24",
+      "https://github.com/Z3Prover/z3/commit/ac9156f97cb44e56472e1c841f7a2beb1e976b24"
+    ],
+    "source_logical_bytes": 36745875,
+    "source_url": "https://codeload.github.com/Z3Prover/z3/tar.gz/ac9156f97cb44e56472e1c841f7a2beb1e976b24",
+    "title": "Z3 SMT solver",
+    "upstream": "https://github.com/Z3Prover/z3",
+    "version": "z3-5.3.1"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 7876101,
+      "extract": true,
+      "id": "z3",
+      "material_path": "sources/z3",
+      "sha256": "33558971c286653d47b03f97f9f973d0350629c827cacda2583608ba14d74ea6",
+      "strip_root": true,
+      "url": "https://codeload.github.com/Z3Prover/z3/tar.gz/ac9156f97cb44e56472e1c841f7a2beb1e976b24"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 684253,
+      "path": "offline-manifest.json",
+      "sha256": "65b020f86c16837128c5b176d0837ea5f9cfc60f7f6d6aee4e57e49655a22898"
+    },
+    {
+      "bytes": 14564,
+      "path": "run.py",
+      "sha256": "dbdf92cc8130b0375d631b4212a79086a6007518db5ea91957a7012268217935"
+    }
+  ],
+  "release": "0.21.1",
+  "resource_id": "z3",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1
+}

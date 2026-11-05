@@ -1,0 +1,150 @@
+{
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "release": "0.18.0",
+    "review": {
+      "bytes": 9767,
+      "path": "resource-integrations/v0180/worker-a/packages/zstd/review.json",
+      "sha256": "c1a3d3a6cf551ba0c12a4116359787421a50bd3b71fe293b76de32a8fdaf9c5b"
+    },
+    "scope": {
+      "material_executable_checks": "not_run",
+      "methods": [
+        "material",
+        "source",
+        "binary"
+      ],
+      "oci_deployment": "not_run",
+      "relocatable": "Two independent prefixes on this declared target; no cross-OS/ABI/CPU qualification.",
+      "system_installation": "not_run",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      }
+    },
+    "summary": {
+      "bytes": 28588,
+      "path": "resource-integrations/v0180/worker-a/evidence/zstd/qualification-2/summary.json",
+      "sha256": "09c9faa613c2ac886c88eb055b2c604b2afcf852fe555b7b03653d0fba6eec9d"
+    }
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 2467839,
+    "historical_path": "resource-integrations/v0180/worker-a/evidence/zstd/qualification-2/artifacts/zstd.material.cpgpkg.tar.gz",
+    "manifest_sha256": "cda3086efb644c76dbf5c7dd15438bbe0622a81ef01640716ab338b3907a79c9",
+    "method": "material",
+    "sha256": "7d42f2119b201699c0c32b77a5ecbca990a3b74e07ffd2feb4f61d7d3a0affca"
+  },
+  "original_catalog": {
+    "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+    "archive_bytes": 2453329,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Workloads",
+      "Applications and libraries",
+      "Compression"
+    ],
+    "container_strategy": "Build tests and representative compression levels in dev; run fixed input and dictionary bundles with round-trip checks on target.",
+    "corpus_contract": {
+      "code": "Library, CLI and tests included.",
+      "inputs": "Separately admitted text, binaries and structured corpora.",
+      "oracle": "Lossless round-trip byte comparison plus upstream tests.",
+      "split_unit": "Compression implementation family; dictionaries trained on train inputs only."
+    },
+    "dependencies": [],
+    "deployment": {
+      "adapter": "corpus",
+      "qualified": false,
+      "source_dependencies": [],
+      "system_packages": [],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://github.com/facebook/zstd"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/zstd.measurement.json",
+      "workspace-evidence/resources-v050/open-research/zstd.refs.json"
+    ],
+    "extract": true,
+    "id": "zstd",
+    "immutable_ref": "f8745da6ff1ad1e7bab384bd1f9d742439278e99",
+    "kind": "dataset",
+    "license_class": "open",
+    "license_id": "BSD-3-Clause OR GPL-2.0-only",
+    "mandatory": false,
+    "material_path": "corpora/zstd",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Compression/decompression loops, dictionary operations and large production C code coverage.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "The source tree does not define a representative study corpus; input licenses and dictionaries must be separately frozen."
+    ],
+    "redistributable": true,
+    "roles": [
+      "host"
+    ],
+    "sha256": "4b0bd1f0cfb25e61b9103c35f27395530ff5b4c0d2513a00fd745849e85ea52c",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://github.com/facebook/zstd",
+      "https://codeload.github.com/facebook/zstd/tar.gz/f8745da6ff1ad1e7bab384bd1f9d742439278e99",
+      "https://github.com/facebook/zstd/commit/f8745da6ff1ad1e7bab384bd1f9d742439278e99"
+    ],
+    "source_logical_bytes": 8354806,
+    "source_url": "https://codeload.github.com/facebook/zstd/tar.gz/f8745da6ff1ad1e7bab384bd1f9d742439278e99",
+    "title": "Zstandard compression workload",
+    "upstream": "https://github.com/facebook/zstd",
+    "version": "v1.5.7"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 2453329,
+      "extract": true,
+      "id": "zstd",
+      "material_path": "corpora/zstd",
+      "sha256": "4b0bd1f0cfb25e61b9103c35f27395530ff5b4c0d2513a00fd745849e85ea52c",
+      "strip_root": true,
+      "url": "https://codeload.github.com/facebook/zstd/tar.gz/f8745da6ff1ad1e7bab384bd1f9d742439278e99"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 153481,
+      "path": "offline-manifest.json",
+      "sha256": "2c2b0dcbb9e61123ceb68af72eb965883f1e9d84b3bbb761d7a6e95242bebae0"
+    },
+    {
+      "bytes": 14564,
+      "path": "run.py",
+      "sha256": "dbdf92cc8130b0375d631b4212a79086a6007518db5ea91957a7012268217935"
+    }
+  ],
+  "release": "0.21.1",
+  "resource_id": "zstd",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1
+}

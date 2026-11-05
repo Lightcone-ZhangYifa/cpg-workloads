@@ -1,0 +1,131 @@
+{
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "release": "0.21.1",
+    "scope": "Only the complete material artifact online reproduction. Native execution qualification remains in the original separate summary.",
+    "status": "passed",
+    "summary": {
+      "bytes": 668072,
+      "path": "resource-integrations/v0210/r02/source-b/evidence/openssl-attempt3-recovery/summary.json",
+      "sha256": "bab6980bdaad4518e981b4f80d82eba5e171903d64ca7051ea8faa61502370d5"
+    }
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 55558666,
+    "historical_path": "resource-integrations/v0210/r02/source-b/evidence/openssl-attempt3-recovery/artifacts/openssl.material.cpgpkg.tar.gz",
+    "manifest_sha256": "25ae042534822e6eb1fa83961aed8997764deaa476d00287fb1c1bcb04fbc588",
+    "method": "material",
+    "sha256": "50dd87d5d98a4f3594c43700a2668138c919a3bc5433634a336e365b36abc608"
+  },
+  "original_catalog": {
+    "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+    "archive_bytes": 55429548,
+    "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+    "category": [
+      "Workloads",
+      "Applications and libraries",
+      "Cryptography"
+    ],
+    "container_strategy": "Build default and explicitly C-only diagnostic variants in dev; freeze provider/configuration and hardware dispatch before target runs.",
+    "corpus_contract": {
+      "code": "Library, tools and regression tests included.",
+      "inputs": "Known-answer tests plus deterministic message-size distributions.",
+      "oracle": "Known-answer tests and independent references where available.",
+      "split_unit": "Algorithm and implementation lineage across sizes and providers."
+    },
+    "dependencies": [],
+    "deployment": {
+      "adapter": "corpus",
+      "qualified": false,
+      "source_dependencies": [],
+      "system_packages": [],
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://github.com/openssl/openssl"
+    ],
+    "evidence_files": [
+      "workspace-evidence/resources-v050/open-research/openssl.measurement.json",
+      "workspace-evidence/resources-v050/open-research/openssl.refs.json"
+    ],
+    "extract": true,
+    "id": "openssl",
+    "immutable_ref": "af1775b60dfa141a4ad762585052cabeb9f37e9e",
+    "kind": "dataset",
+    "license_class": "open",
+    "license_id": "Apache-2.0",
+    "mandatory": false,
+    "material_path": "corpora/openssl",
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Production C control-flow, arithmetic and cryptographic primitive workload coverage.",
+    "qualification": {
+      "archive_measured": true,
+      "build_qualified": false,
+      "target_qualified": false,
+      "version_pinned": true
+    },
+    "qualification_gaps": [
+      "Assembly acceleration can obscure compiler effects; report assembly-enabled and no-asm strata separately.",
+      "Performance alone does not establish constant-time behavior or cryptographic certification."
+    ],
+    "redistributable": true,
+    "roles": [
+      "host"
+    ],
+    "sha256": "219c0a389f3c76e58f2d9e2b216101887f94747e669bb79c43225d7b6ac1253a",
+    "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+    "source_evidence": [
+      "https://github.com/openssl/openssl",
+      "https://codeload.github.com/openssl/openssl/tar.gz/af1775b60dfa141a4ad762585052cabeb9f37e9e",
+      "https://github.com/openssl/openssl/commit/af1775b60dfa141a4ad762585052cabeb9f37e9e"
+    ],
+    "source_logical_bytes": 135651861,
+    "source_url": "https://codeload.github.com/openssl/openssl/tar.gz/af1775b60dfa141a4ad762585052cabeb9f37e9e",
+    "title": "OpenSSL cryptographic workload",
+    "upstream": "https://github.com/openssl/openssl",
+    "version": "openssl-4.0.3"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 55429548,
+      "extract": true,
+      "id": "openssl",
+      "material_path": "corpora/openssl",
+      "sha256": "219c0a389f3c76e58f2d9e2b216101887f94747e669bb79c43225d7b6ac1253a",
+      "strip_root": true,
+      "url": "https://codeload.github.com/openssl/openssl/tar.gz/af1775b60dfa141a4ad762585052cabeb9f37e9e"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 1345259,
+      "path": "offline-manifest.json",
+      "sha256": "4e7fdeb7f3dbfb9ee2dc1d4bb60a6175190c568a7b95a1f01d0f50cde8aee659"
+    },
+    {
+      "bytes": 14564,
+      "path": "run.py",
+      "sha256": "dbdf92cc8130b0375d631b4212a79086a6007518db5ea91957a7012268217935"
+    }
+  ],
+  "release": "0.21.1",
+  "resource_id": "openssl",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1
+}
