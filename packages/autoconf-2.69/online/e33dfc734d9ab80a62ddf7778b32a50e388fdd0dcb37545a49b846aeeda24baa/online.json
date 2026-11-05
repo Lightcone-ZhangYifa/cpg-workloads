@@ -1,0 +1,165 @@
+{
+  "embedded_payload_bytes": 0,
+  "historical_qualification": {
+    "release": "0.21.3",
+    "scope": "The original complete static source view only. Source-generated tool execution remains separately qualified.",
+    "source_execution_category": "source_built_interpreted_tool_with_private_runtime",
+    "status": "passed",
+    "summary": {
+      "bytes": 64729,
+      "path": "resource-integrations/v0210/r04/source-tools/evidence/autoconf-attempt4/summary.json",
+      "sha256": "3a94d837c6ed92ec458c63cf16dbcd97428f5a091f73bae97faf1a04dcd6595f"
+    }
+  },
+  "kind": "cpg_online_material_recipe",
+  "layout": "complete_single_original_archive_with_original_strip_root_rule",
+  "offline_artifact": {
+    "bytes": 1875920,
+    "historical_path": "resource-integrations/v0210/r04/source-tools/evidence/autoconf-attempt4/artifacts/autoconf-2.69.material.cpgpkg.tar.gz",
+    "manifest_sha256": "e17ceb02e9af2a1faa9eee761ee95352446acc7544145d2afc1e308413cbb5be",
+    "method": "material",
+    "sha256": "274d102bff423771f6aaea90598717b03cd3b0171f1dc6206017b7b0e75c1e63"
+  },
+  "original_catalog": {
+    "archive_bytes": 1214744,
+    "build_peak_bytes": null,
+    "category": [
+      "Community development",
+      "GCC regeneration tools"
+    ],
+    "dependencies": [
+      "apt.make",
+      "apt.m4",
+      "apt.perl",
+      "apt.build-essential"
+    ],
+    "deployment": {
+      "adapter": "make",
+      "additional_install_commands": [
+        [
+          "mkdir",
+          "-p",
+          "{prefix}/share/autoconf-2.69/source"
+        ],
+        [
+          "cp",
+          "-a",
+          "{source}/.",
+          "{prefix}/share/autoconf-2.69/source/"
+        ]
+      ],
+      "build_argv": [
+        "make",
+        "-j{jobs}"
+      ],
+      "configure_argv": [
+        "{source}/configure",
+        "--prefix={prefix}"
+      ],
+      "install_argv": [
+        "make",
+        "install"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/autoconf",
+        "{prefix}/share/autoconf-2.69/source/COPYING"
+      ],
+      "runtime_environment": {},
+      "smoke_argv": [
+        "{prefix}/bin/autoconf",
+        "--version"
+      ],
+      "state": "native-selected-recipe-and-minimal-project-generation-passed; OCI-not-qualified",
+      "working_directory": "{build}"
+    },
+    "documentation": [
+      "https://gcc.gnu.org/install/prerequisites.html"
+    ],
+    "extract": true,
+    "id": "autoconf-2.69",
+    "immutable_ref": "sha256:64ebcec9f8ac5b2487125a86a7760d2591ac9e1d3dbd59489633f9de62a57684",
+    "installed_bytes": null,
+    "kind": "source_archive",
+    "license_class": "open",
+    "license_evidence_files": [
+      "autoconf-2.69/COPYING",
+      "autoconf-2.69/COPYINGv3",
+      "autoconf-2.69/COPYING.EXCEPTION"
+    ],
+    "license_id": "GPL-3.0-or-later AND LicenseRef-GNU-generation-exceptions-and-manual-terms",
+    "mandatory": false,
+    "material_path": "sources/autoconf-2.69",
+    "native_probe": {
+      "installed_logical_bytes": 9846478,
+      "receipt": "workspace-evidence/community-v070/gcc-regeneration/native-probe/summary.json"
+    },
+    "presets": [
+      "open",
+      "all"
+    ],
+    "purpose": "Regenerate GCC build-system files using the exact upstream-required historical version without replacing the distro tools.",
+    "qualification": {
+      "container_qualified": false,
+      "full_gcc_regeneration_qualified": false,
+      "minimal_generation_qualified": true,
+      "native_build_install_smoke_qualified": true
+    },
+    "qualification_gaps": [
+      "Use this version only for GCC paths that require it; do not globally shadow other projects' Autotools.",
+      "Installation and generation probes do not qualify every GCC regeneration target or an OCI image."
+    ],
+    "redistributable": "Preserve COPYING files, generated-file exceptions, manuals and source obligations.",
+    "roles": [
+      "dev"
+    ],
+    "sha256": "64ebcec9f8ac5b2487125a86a7760d2591ac9e1d3dbd59489633f9de62a57684",
+    "size_basis": "Measured official HTTPS archive body and SHA256; logical bytes sum regular archive entries. GPG publisher verification and OCI installation are separate.",
+    "source_evidence": [
+      "https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz",
+      "https://gcc.gnu.org/install/prerequisites.html"
+    ],
+    "source_logical_bytes": 6599271,
+    "source_url": "https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz",
+    "title": "Autoconf 2.69 for GCC regeneration",
+    "upstream": "https://www.gnu.org/software/autoconf/",
+    "version": "2.69"
+  },
+  "original_source_locks": [
+    {
+      "bytes": 1214744,
+      "extract": true,
+      "id": "autoconf-2.69",
+      "material_path": "sources/autoconf-2.69",
+      "sha256": "64ebcec9f8ac5b2487125a86a7760d2591ac9e1d3dbd59489633f9de62a57684",
+      "strip_root": true,
+      "url": "https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz"
+    }
+  ],
+  "qualification_policy": {
+    "complete_input": "size_and_sha256_verified",
+    "new_native_or_dataset_qualification": false,
+    "offline_artifact": "must_equal_existing_artifact_hash",
+    "partial_http": "transport_observation_only"
+  },
+  "recipe_files": [
+    {
+      "bytes": 1265,
+      "path": "README.md",
+      "sha256": "83d462c402130f715b413eee8f7f85f8d9dc2d4219f32f6120bf9ad8f737aee5"
+    },
+    {
+      "bytes": 42906,
+      "path": "offline-manifest.json",
+      "sha256": "bf3f66ba80ba0b9db4f011622e8b08035e2d8e9d49da92159a3d146f779ea23c"
+    },
+    {
+      "bytes": 14564,
+      "path": "run.py",
+      "sha256": "f16537c7b891e7fd2181406172deceeec0befb2db1e0b5ad4ea988e2881445f9"
+    }
+  ],
+  "release": "0.21.3",
+  "resource_id": "autoconf-2.69",
+  "runtime_requirement": "Installed compiler-playground 0.21.x library; unchanged DownloadCache, unpack_archive, pack and verify_package APIs",
+  "schema_version": 1
+}
