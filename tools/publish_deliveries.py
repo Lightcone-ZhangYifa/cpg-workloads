@@ -7,11 +7,13 @@ import json
 import os
 from pathlib import Path
 import re
+import random
 import shutil
 import stat
 import subprocess
 import tarfile
 import tempfile
+import time
 import zipfile
 
 import import_archives
@@ -105,57 +107,124 @@ def members(archive, rows, scratch):
         raise ValueError("One or more explicitly requested members were absent")
 
 
+def merge_import_receipt(previous, incoming):
+    """Merge independent inspections of one exact archive against current main."""
+    if any(previous.get(key) != incoming.get(key) for key in ("sha256", "bytes")):
+        raise ValueError("Concurrent archive receipt has a different byte identity")
+    value = {**previous, **incoming}
+    attempted = {row.get("sha256") for key in ("packages", "online_recipes", "errors")
+                 for row in incoming.get(key, []) if isinstance(row, dict) and row.get("sha256")}
+    for key in ("packages", "online_recipes"):
+        by_sha = {row["sha256"]: row for row in previous.get(key, [])}
+        by_sha.update({row["sha256"]: row for row in incoming.get(key, [])})
+        value[key] = [by_sha[key] for key in sorted(by_sha)]
+    errors = [row for row in previous.get("errors", [])
+              if not isinstance(row, dict) or row.get("sha256") not in attempted]
+    for row in incoming.get("errors", []):
+        if row not in errors:
+            errors.append(row)
+    value["errors"] = errors
+    value["status"] = "inspected_with_corrections_needed" if errors else "inspected"
+    for key in ("nonpackage_members", "excluded_members"):
+        if key in previous or key in incoming:
+            value[key] = max(previous.get(key, 0), incoming.get(key, 0))
+    return value
+
+
 def commit_files(paths, message):
-    """Commit only named public source paths on top of current main, with FF retries."""
+    """Cache immutable blobs, then apply a small FF transaction to current main."""
     paths = sorted(set(paths))
     allowed = ("packages/", "catalog/artifacts/", "catalog/imports/", "release-plans/")
+    prepared = {}
     for path in paths:
         import_archives.safe_relative(path)
-        if not path.startswith(allowed) or not (release.ROOT / path).is_file():
+        source = release.ROOT / path
+        if (not path.startswith(allowed) or path == "packages/registry.json"
+                or "\n" in path or "\r" in path or source.is_symlink() or not source.is_file()):
             raise ValueError("Unexpected file in source-only import commit")
+        raw = source.read_bytes()
+        blob = git("hash-object", "-w", "--stdin", data=raw).stdout.decode().strip()
+        prepared[path] = (raw, blob, "100755" if source.stat().st_mode & 0o111 else "100644")
     env = dict(os.environ, GIT_AUTHOR_NAME="github-actions[bot]",
                GIT_AUTHOR_EMAIL="41898282+github-actions[bot]@users.noreply.github.com",
                GIT_COMMITTER_NAME="github-actions[bot]",
                GIT_COMMITTER_EMAIL="41898282+github-actions[bot]@users.noreply.github.com")
-    for _ in range(5):
+    failure = "main advanced throughout the bounded source-commit retries"
+    commit = None
+    for attempt in range(20):
         git("fetch", "--no-tags", "origin", "main")
         parent = git("rev-parse", "FETCH_HEAD").stdout.decode().strip()
+        existing = {}
+        for entry in git("ls-tree", "-r", "-z", parent).stdout.split(b"\0"):
+            if entry:
+                header, name = entry.split(b"\t", 1)
+                mode, kind, blob = header.decode().split()
+                existing[name.decode()] = (mode, kind, blob)
+        updates = []
+        for path in paths:
+            raw, blob, mode = prepared[path]
+            old = existing.get(path)
+            if old == (mode, "blob", blob):
+                continue
+            if old is not None and (old[1] != "blob" or old[0] == "120000"):
+                raise ValueError("Concurrent source path is not an ordinary file")
+            if old is not None and old[2] != blob:
+                previous_raw = git("cat-file", "blob", old[2]).stdout
+                if path.startswith("catalog/artifacts/"):
+                    previous, incoming = json.loads(previous_raw), json.loads(raw)
+                    if any(previous.get(key) != incoming.get(key) for key in (
+                            "sha256", "bytes", "id", "version", "build", "method",
+                            "target", "manifest_sha256", "template")):
+                        raise ValueError("Concurrent artifact identity conflict")
+                    origins = list(previous.get("origins", []))
+                    origins += [item for item in incoming.get("origins", []) if item not in origins]
+                    incoming["origins"] = origins
+                    for field in ("qualification", "previous_attempts", "failure", "blocker",
+                                  "reproduced_sha256", "build_check", "functional"):
+                        if field in previous:
+                            incoming[field] = previous[field]
+                    raw = (json.dumps(incoming, sort_keys=True, ensure_ascii=False, indent=2) + "\n").encode()
+                elif path.startswith("catalog/imports/"):
+                    value = merge_import_receipt(json.loads(previous_raw), json.loads(raw))
+                    raw = (json.dumps(value, sort_keys=True, ensure_ascii=False, indent=2) + "\n").encode()
+                else:
+                    raise ValueError("Concurrent source path has different immutable bytes: " + path)
+                blob = git("hash-object", "-w", "--stdin", data=raw).stdout.decode().strip()
+            updates.append((mode + " " + blob + "\t" + path).encode() + b"\0")
+        if not updates:
+            return parent
         with tempfile.TemporaryDirectory(prefix="cpg-source-index-") as folder:
             index_env = dict(env, GIT_INDEX_FILE=str(Path(folder) / "index"))
             git("read-tree", parent, env=index_env)
-            for path in paths:
-                raw = (release.ROOT / path).read_bytes()
-                old = git("show", parent + ":" + path, check=False)
-                if old.returncode == 0 and old.stdout != raw:
-                    if path.startswith("catalog/artifacts/"):
-                        previous, incoming = json.loads(old.stdout), json.loads(raw)
-                        if previous["sha256"] != incoming["sha256"]:
-                            raise ValueError("Concurrent artifact identity conflict")
-                        origins = previous.get("origins", [])
-                        origins += [item for item in incoming.get("origins", []) if item not in origins]
-                        incoming["origins"] = origins
-                        for field in ("qualification", "previous_attempts", "failure", "reproduced_sha256"):
-                            if field in previous:
-                                incoming[field] = previous[field]
-                        for field in ("build_check", "functional"):
-                            if field in previous:
-                                incoming[field] = previous[field]
-                        raw = (json.dumps(incoming, sort_keys=True, ensure_ascii=False, indent=2) + "\n").encode()
-                        (release.ROOT / path).write_bytes(raw)
-                    elif not path.startswith("catalog/imports/"):
-                        raise ValueError("Concurrent source path has different immutable bytes: " + path)
-                blob = git("hash-object", "-w", "--stdin", data=raw).stdout.decode().strip()
-                mode = "100755" if (release.ROOT / path).stat().st_mode & 0o111 else "100644"
-                git("update-index", "--add", "--cacheinfo", mode, blob, path, env=index_env)
+            git("update-index", "-z", "--index-info", data=b"".join(updates), env=index_env)
             tree = git("write-tree", env=index_env).stdout.decode().strip()
         if tree == git("rev-parse", parent + "^{tree}").stdout.decode().strip():
             return parent
         commit = git("commit-tree", tree, "-p", parent, env=env,
                      data=(message + "\n").encode()).stdout.decode().strip()
-        if git("push", "origin", commit + ":refs/heads/main", check=False).returncode == 0:
+        result = git("push", "origin", commit + ":refs/heads/main", check=False)
+        if result.returncode == 0:
             return commit
-    raise RuntimeError("main advanced repeatedly; the frozen source files remain recoverable")
-
+        observed = git("ls-remote", "origin", "refs/heads/main", check=False)
+        current = observed.stdout.decode().split()
+        if current and current[0] == commit:
+            return commit
+        if observed.returncode == 0 and current and current[0] == parent:
+            failure = "source push was rejected without a competing main update"
+            if b"GH001" in result.stderr or b"exceeds GitHub" in result.stderr:
+                failure = "source push rejected an oversized Git object"
+            break
+        print(json.dumps({"source_commit_retry": attempt + 1,
+                          "reason": "main advanced during the FF transaction"}), flush=True)
+        time.sleep(min(0.25 * (attempt + 1), 2.0) + random.random())
+    if commit is not None:
+        run_id = os.environ.get("GITHUB_RUN_ID", "")
+        if run_id.isdigit():
+            checkpoint = "checkpoint/source-" + run_id + "-" + commit[:12]
+            saved = git("push", "origin", commit + ":refs/heads/" + checkpoint, check=False).returncode == 0
+            print(json.dumps({"source_checkpoint": checkpoint, "saved": saved,
+                              "commit": commit}), flush=True)
+    raise RuntimeError(failure)
 
 def prepared_members(archive, item, scratch):
     """Optionally apply an exact reviewed metadata revision without executing it."""
