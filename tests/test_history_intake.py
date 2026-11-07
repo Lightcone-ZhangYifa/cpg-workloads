@@ -10,7 +10,7 @@ import zipfile
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 from authored_inputs import descriptor_for
 from history_ledger import index_zip
-from history_intake import candidate_jobs, check_template, worker_labeled_id
+from history_intake import candidate_jobs, check_template, verified_case_jobs, worker_labeled_id
 from history_manifest_ledger import hashes
 from history_object_lineage import category
 
@@ -85,6 +85,16 @@ class HistoryIntakeTests(unittest.TestCase):
                   'split_families': [], 'zip_indexes': {}}
         jobs = list(candidate_jobs(ledger, None, None))
         self.assertEqual(jobs[0]['kind'], 'standalone')
+
+    def test_only_verified_package_cases_become_intake_jobs(self):
+        ledger = {'files': [{'path': 'outer.zip', 'bytes': 20, 'sha256': 'a' * 64}],
+                  'split_families': []}
+        case = {'source': 'outer.zip', 'member': 'objects/' + 'b' * 64, 'bytes': 10,
+                'sha256_from_name': 'b' * 64, 'status': 'verified_member_format_identified',
+                'format': 'cpg_package'}
+        jobs = list(verified_case_jobs(ledger, [case, {**case, 'status': 'error'}]))
+        self.assertEqual(len(jobs), 1)
+        self.assertEqual(jobs[0]['expected_sha256'], 'b' * 64)
 
     def test_manifest_declared_hashes_remain_distinct_from_verified_members(self):
         value = {'source_sha256': 'a' * 64, 'files': [{'sha256': 'b' * 64}],

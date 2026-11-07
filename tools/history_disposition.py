@@ -71,7 +71,7 @@ def main():
             elif idx.get('status')!='central_directory_read':
                 item.update(disposition='unreadable_split_family_pending',reason='Original parts retained; no readable ZIP central directory.')
             else:
-                item.update(disposition='split_family_mixed_members_pending',reason='Selected members have individual outcomes; other members and dependency evidence remain to review.')
+                item.update(disposition='split_zip_retained_with_unresolved_members',reason='Selected members have individual outcomes; other members and dependency evidence remain to review.')
         elif direct:
             item['direct_outcomes']=dict(Counter(direct));item.update(
                 disposition='standalone_member_in_progress' if 'started' in direct else 'standalone_member_has_recorded_outcome',
@@ -82,7 +82,7 @@ def main():
                         reason='Original archive retained; no installation or functional qualification inferred.')
         elif row.get('zip_index_key'):
             idx=ledger['zip_indexes'][row['zip_index_key']];outcomes=grouped.get(('file',path),[])
-            item.update(disposition='zip_mixed_members_pending',reason='ZIP central directory indexed; nonselected, nested and unnamed members remain to review.',
+            item.update(disposition='zip_retained_with_unresolved_members',reason='ZIP central directory indexed; nonselected, nested and unnamed members remain to review.',
                 central_directory_status=idx['status'],member_count=idx.get('member_count'),
                 named_cpg_leads=len(idx.get('cpg_name_leads',[])),object_name_count=idx.get('object_name_count',0),
                 known_object_leads=len(idx.get('known_object_leads',[])),member_outcomes=dict(Counter(outcomes)),
