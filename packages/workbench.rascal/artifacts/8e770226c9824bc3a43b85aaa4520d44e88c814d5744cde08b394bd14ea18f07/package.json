@@ -1,0 +1,95 @@
+{
+  "build": "cpg20261101.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{tools}/run_check.py",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assignment-functional",
+      "kind": "functional",
+      "stdout_regex": "passed",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "workbench.rascal",
+  "metadata": {
+    "baseline_catalog_modified": false,
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Official Exp recipe adapted into deterministic precedence, visit, source-transform and malformed-input assertions; no full-suite claim.",
+    "record_id": "review.engineering.rascal",
+    "runtime_toolchain": {},
+    "worker_id": "046"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "java",
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 82002108,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "rascal-shell.jar",
+      "sha256": "ec0560e4bbc02360440f87181b3e0291d754f66e9b3b9bf86b96f245328c0c99",
+      "strip_root": false,
+      "url": "https://update.rascal-mpl.org/console/rascal-shell-stable.jar"
+    },
+    {
+      "bytes": 3784842,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "rascal-v0.42.0-source.tar.gz",
+      "sha256": "8c1865b5794f872cb7ce7af5d9de92601dab4e620568bca6cddca3b1a71c4ec1",
+      "strip_root": false,
+      "url": "https://codeload.github.com/usethesource/rascal/tar.gz/refs/tags/v0.42.0"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://update.rascal-mpl.org/console/rascal-shell-stable.jar",
+      "https://codeload.github.com/usethesource/rascal/tar.gz/refs/tags/v0.42.0"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B <prefix>/verify.py",
+        "description": "Run the bounded assignment qualification"
+      }
+    ],
+    "locations": [
+      {
+        "label": "installation",
+        "path": "{prefix}",
+        "purpose": "Immutable tool and qualification fixtures"
+      }
+    ],
+    "notes": [
+      "Official Exp recipe adapted into deterministic precedence, visit, source-transform and malformed-input assertions; no full-suite claim."
+    ],
+    "summary": "Parse, visit and transform a language using Rascal."
+  },
+  "version": "0.42.0"
+}

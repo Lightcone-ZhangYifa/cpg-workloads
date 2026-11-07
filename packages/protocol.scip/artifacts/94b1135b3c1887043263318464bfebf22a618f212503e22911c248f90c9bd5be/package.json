@@ -1,0 +1,95 @@
+{
+  "build": "cpg20261101.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{tools}/run_check.py",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assignment-functional",
+      "kind": "functional",
+      "stdout_regex": "passed",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "protocol.scip",
+  "metadata": {
+    "baseline_catalog_modified": false,
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Official protobuf schema, generated Python binding and original CLI. Actual scip-clang fixture normalized only by adding 8 missing local SymbolInformation records. Raw linter failure retained. Snapshot --strict upstream nil-error bug is recorded; normal snapshots plus complete independent range validation used. Negative broken-reference lint verified.",
+    "record_id": "review.root.scip-code-intelligence",
+    "runtime_toolchain": {
+      "description": "Linux x86_64; Python 3; host glibc; see ELF compatibility evidence"
+    },
+    "worker_id": "048"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 477985,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "scip-v0.10.0-source.tar.gz",
+      "sha256": "d6e9cce0aab47163eddfffd7c972ea1ef0cb2cf94976fc3a0112186137880fee",
+      "strip_root": false,
+      "url": "https://codeload.github.com/scip-code/scip/tar.gz/refs/tags/v0.10.0"
+    },
+    {
+      "bytes": 12357047,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "scip-v0.10.0-linux.tar.gz",
+      "sha256": "eeb28ebbff443c01609fb1691809958f3f0c7a8651af689a5bc8560061cd8ab0",
+      "strip_root": false,
+      "url": "https://github.com/scip-code/scip/releases/download/v0.10.0/scip-linux-amd64.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/scip-code/scip"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B <prefix>/check.py",
+        "description": "Run the bounded assignment qualification"
+      }
+    ],
+    "locations": [
+      {
+        "label": "installation",
+        "path": "{prefix}",
+        "purpose": "Immutable tool and qualification fixtures"
+      }
+    ],
+    "notes": [
+      "Official protobuf schema, generated Python binding and original CLI. Actual scip-clang fixture normalized only by adding 8 missing local SymbolInformation records. Raw linter failure retained. Snapshot --strict upstream nil-error bug is recorded; normal snapshots plus complete independent range validation used. Negative broken-reference lint verified."
+    ],
+    "summary": "Official protobuf schema, generated Python binding and original CLI. Actual scip-clang fixture normalized only by adding 8 missing local SymbolInformation records. Raw linter failure retained. Snapshot --strict upstream nil-error bug is recorded"
+  },
+  "version": "0.10.0"
+}

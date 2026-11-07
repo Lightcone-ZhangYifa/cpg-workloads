@@ -1,0 +1,86 @@
+{
+  "build": "cpg20261101.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{tools}/run_check.py",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assignment-functional",
+      "kind": "functional",
+      "stdout_regex": "passed",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "workbench.xtext",
+  "metadata": {
+    "baseline_catalog_modified": false,
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Fresh MWE2 grammar/model generation, fresh javac compilation, and 14 positive/negative assertions for AST, reference identity, syntax, unresolved names, typing, duplication and forward references. No Eclipse GUI or IDE/LSP qualification.",
+    "record_id": "review.engineering.xtext",
+    "runtime_toolchain": {},
+    "worker_id": "046"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "python3",
+      "java",
+      "javac"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 27405095,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "xtext-2.38.0-source.tar.gz",
+      "sha256": "a22f972453d174a26db129797ad509ae68bcd4340693e840be5b1ebae49747b4",
+      "strip_root": false,
+      "url": "https://codeload.github.com/eclipse-xtext/xtext/tar.gz/refs/tags/v2.38.0"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://eclipse.dev/Xtext/"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B <prefix>/verify.py",
+        "description": "Run the bounded assignment qualification"
+      }
+    ],
+    "locations": [
+      {
+        "label": "installation",
+        "path": "{prefix}",
+        "purpose": "Immutable tool and qualification fixtures"
+      }
+    ],
+    "notes": [
+      "Fresh MWE2 grammar/model generation, fresh javac compilation, and 14 positive/negative assertions for AST, reference identity, syntax, unresolved names, typing, duplication and forward references. No Eclipse GUI or IDE/LSP qualification."
+    ],
+    "summary": "Generate an Xtext DSL and exercise headless parsing, linking, and static typing."
+  },
+  "version": "2.38.0"
+}

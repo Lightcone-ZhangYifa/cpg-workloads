@@ -1,0 +1,212 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/guarded_check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/profile"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "locked-material-index",
+      "kind": "availability",
+      "stdout_regex": "CPG_CHECK_PASS",
+      "timeout_seconds": 2400
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "support.openxla-cpu-runtime",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "functional_claim": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualifications": {
+      "dataset": null,
+      "oci": false,
+      "official_benchmark": false,
+      "physical_hardware": false
+    },
+    "record_id": null,
+    "resource_metadata": {
+      "build_claim": false,
+      "check_timeout_seconds": 2400,
+      "functional_claim": false,
+      "id": "support.openxla-cpu-runtime",
+      "limitations": [
+        "支持依赖材料，不单计新增上游资源族或功能资格。",
+        "发布二进制只用于 CPython 3.12 / Linux x86_64 / glibc >= 2.27；CPU须满足jaxlib运行时特性检查。",
+        "所有上游wheel随包提供，检查只在独立临时目录离线展开；不修改安装prefix。"
+      ],
+      "method": "material",
+      "recipe_files": [
+        "common_check.py"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_target": {
+        "arch": "x86_64",
+        "glibc_min": "2.27",
+        "os": "Linux",
+        "python": "CPython 3.12"
+      },
+      "source_locks": [
+        {
+          "bytes": 2900279,
+          "id": "jax",
+          "path": "wheelhouse/jax-0.8.0-py3-none-any.whl",
+          "sha256": "d190158bc019756c6a0f6b3d5fc8783471fb407e6deaff559eaac60dd5ee850a",
+          "url": "https://files.pythonhosted.org/packages/b3/77/4e6c9a54247810eff8ac8a1af7dc1be0779b52df0d82f3fc8586061914f3/jax-0.8.0-py3-none-any.whl"
+        },
+        {
+          "bytes": 79698853,
+          "id": "jaxlib",
+          "path": "wheelhouse/jaxlib-0.8.0-cp312-cp312-manylinux_2_27_x86_64.whl",
+          "sha256": "2c8675bf86e391afe4f8d863080be1a024d734dfd3dd137f7aa8e7f22091adcd",
+          "url": "https://files.pythonhosted.org/packages/07/57/3e4abd3e8af698834c261a39247e4a098fef38378b9bd7b44f78b30f52ae/jaxlib-0.8.0-cp312-cp312-manylinux_2_27_x86_64.whl"
+        },
+        {
+          "bytes": 4928805,
+          "id": "ml_dtypes",
+          "path": "wheelhouse/ml_dtypes-0.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "1b255acada256d1fa8c35ed07b5f6d18bc21d1556f842fbc2d5718aea2cd9e55",
+          "url": "https://files.pythonhosted.org/packages/d8/a9/b98b86426c24900b0c754aad006dce2863df7ce0bb2bcc2c02f9cc7e8489/ml_dtypes-0.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+        },
+        {
+          "bytes": 16641271,
+          "id": "numpy",
+          "path": "wheelhouse/numpy-2.3.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "4121c5beb58a7f9e6dfdee612cb24f4df5cd4db6e8261d7f4d7450a997a65d6a",
+          "url": "https://files.pythonhosted.org/packages/f9/58/30a85127bfee6f108282107caf8e06a1f0cc997cb6b52cdee699276fcce4/numpy-2.3.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+        },
+        {
+          "bytes": 71932,
+          "id": "opt_einsum",
+          "path": "wheelhouse/opt_einsum-3.4.0-py3-none-any.whl",
+          "sha256": "69bb92469f86a1565195ece4ac0323943e83477171b91d24c35afe028a90d7cd",
+          "url": "https://files.pythonhosted.org/packages/23/cd/066e86230ae37ed0be70aae89aabf03ca8d9f39c8aea0dec8029455b5540/opt_einsum-3.4.0-py3-none-any.whl"
+        },
+        {
+          "bytes": 35676692,
+          "id": "scipy",
+          "path": "wheelhouse/scipy-1.16.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "sha256": "72d1717fd3b5e6ec747327ce9bda32d5463f472c9dce9f54499e81fbd50245a1",
+          "url": "https://files.pythonhosted.org/packages/79/2e/415119c9ab3e62249e18c2b082c07aff907a273741b3f8160414b0e9193c/scipy-1.16.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+        }
+      ],
+      "timeout_seconds": 2400,
+      "upstream_license": "Apache-2.0 (jax/jaxlib), BSD-3-Clause and bundled third-party licenses (numpy/scipy/ml_dtypes), MIT (opt_einsum); full licenses in wheels and LICENSES/",
+      "version": "0.8.0"
+    },
+    "source_build_claim": false,
+    "support_only": true,
+    "upstream_license": "Apache-2.0 (jax/jaxlib), BSD-3-Clause and bundled third-party licenses (numpy/scipy/ml_dtypes), MIT (opt_einsum); full licenses in wheels and LICENSES/",
+    "worker_id": "worker 063"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2900279,
+      "extract": false,
+      "id": "jax",
+      "material_path": "wheelhouse/jax-0.8.0-py3-none-any.whl",
+      "sha256": "d190158bc019756c6a0f6b3d5fc8783471fb407e6deaff559eaac60dd5ee850a",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/b3/77/4e6c9a54247810eff8ac8a1af7dc1be0779b52df0d82f3fc8586061914f3/jax-0.8.0-py3-none-any.whl"
+    },
+    {
+      "bytes": 79698853,
+      "extract": false,
+      "id": "jaxlib",
+      "material_path": "wheelhouse/jaxlib-0.8.0-cp312-cp312-manylinux_2_27_x86_64.whl",
+      "sha256": "2c8675bf86e391afe4f8d863080be1a024d734dfd3dd137f7aa8e7f22091adcd",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/07/57/3e4abd3e8af698834c261a39247e4a098fef38378b9bd7b44f78b30f52ae/jaxlib-0.8.0-cp312-cp312-manylinux_2_27_x86_64.whl"
+    },
+    {
+      "bytes": 4928805,
+      "extract": false,
+      "id": "ml_dtypes",
+      "material_path": "wheelhouse/ml_dtypes-0.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "1b255acada256d1fa8c35ed07b5f6d18bc21d1556f842fbc2d5718aea2cd9e55",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/d8/a9/b98b86426c24900b0c754aad006dce2863df7ce0bb2bcc2c02f9cc7e8489/ml_dtypes-0.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+    },
+    {
+      "bytes": 16641271,
+      "extract": false,
+      "id": "numpy",
+      "material_path": "wheelhouse/numpy-2.3.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "4121c5beb58a7f9e6dfdee612cb24f4df5cd4db6e8261d7f4d7450a997a65d6a",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/f9/58/30a85127bfee6f108282107caf8e06a1f0cc997cb6b52cdee699276fcce4/numpy-2.3.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+    },
+    {
+      "bytes": 71932,
+      "extract": false,
+      "id": "opt_einsum",
+      "material_path": "wheelhouse/opt_einsum-3.4.0-py3-none-any.whl",
+      "sha256": "69bb92469f86a1565195ece4ac0323943e83477171b91d24c35afe028a90d7cd",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/23/cd/066e86230ae37ed0be70aae89aabf03ca8d9f39c8aea0dec8029455b5540/opt_einsum-3.4.0-py3-none-any.whl"
+    },
+    {
+      "bytes": 35676692,
+      "extract": false,
+      "id": "scipy",
+      "material_path": "wheelhouse/scipy-1.16.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "sha256": "72d1717fd3b5e6ec747327ce9bda32d5463f472c9dce9f54499e81fbd50245a1",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/79/2e/415119c9ab3e62249e18c2b082c07aff907a273741b3f8160414b0e9193c/scipy-1.16.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [
+      {
+        "command": "manager.check(\"support.openxla-cpu-runtime\")",
+        "description": "Run the declared checks through the CPG Python API"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed payload",
+        "path": "{prefix}",
+        "purpose": "Locked resources and bounded offline check inputs"
+      }
+    ],
+    "notes": [
+      "支持依赖材料，不单计新增上游资源族或功能资格。",
+      "发布二进制只用于 CPython 3.12 / Linux x86_64 / glibc >= 2.27；CPU须满足jaxlib运行时特性检查。",
+      "所有上游wheel随包提供，检查只在独立临时目录离线展开；不修改安装prefix。"
+    ],
+    "summary": "Locked offline runtime inputs; no independent upstream resource count."
+  },
+  "version": "0.8.0"
+}

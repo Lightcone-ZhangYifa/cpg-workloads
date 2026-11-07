@@ -1,0 +1,22 @@
+@subheader '''
+def decimal_integer(token):
+    if not token.string.isascii() or not token.string.isdecimal():
+        raise SyntaxError("expected an ASCII decimal integer", ("<expression>", token.start[0], token.start[1] + 1, token.line))
+    return ("num", int(token.string))
+'''
+start[object]: value=expr NEWLINE? ENDMARKER { value }
+expr[object]:
+    | left=expr '+' right=term { ("add", left, right) }
+    | left=expr '-' right=term { ("sub", left, right) }
+    | term
+term[object]:
+    | left=term '*' right=power { ("mul", left, right) }
+    | power
+power[object]:
+    | left=atom '**' right=power { ("pow", left, right) }
+    | atom
+atom[object]:
+    | n=NUMBER { decimal_integer(n) }
+    | n=NAME { ("var", n.string) }
+    | '(' value=expr ')' { value }
+

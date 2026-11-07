@@ -1,0 +1,163 @@
+{
+  "build": "worker028-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/offline_exec.py",
+        "--",
+        "python3",
+        "{recipe}/worker028-check.py",
+        "--case",
+        "sphinx",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "worker028-assignment-acceptance",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "sphinx",
+  "metadata": {
+    "additional_input_lock": "recipe/python-config.json",
+    "baseline_relation": "new independent resource; original 1862 baseline unchanged",
+    "catalog": {
+      "archive_bytes": 3589741,
+      "category": [
+        "Compiler development",
+        "Build and continuous integration"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "sphinx",
+      "kind": "wheel",
+      "license_id": "BSD-2-Clause",
+      "mandatory": false,
+      "material_path": "sources/sphinx",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "编译器手册/API文档与离线交叉引用",
+      "qualification_scope": "固定扩展依赖，离线生成HTML并核引用/代码例",
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "4405915165f13521d875a8c29c8970800a0141c14cc5416a38feca4ea5d9b9c3",
+      "source_url": "https://files.pythonhosted.org/packages/31/53/136e9eca6e0b9dc0e1962e2c908fbea2e5ac000c2a2fbd9a35797958c48b/sphinx-8.2.3-py3-none-any.whl",
+      "strip_archive_root": false,
+      "title": "Sphinx",
+      "upstream": "https://www.sphinx-doc.org/en/master/",
+      "version": "8.2.3"
+    },
+    "catalog_sha256": "c199a962376a84f5482b7c06b8a6e3e907d56eaf798bc28931a7ec8de311e609",
+    "host_requirements": {
+      "libseccomp": "required by the no-network acceptance runner",
+      "platform": "Linux x86_64",
+      "python": "3.12 for frozen wheels; 3.12 checker validated"
+    },
+    "license_id": "BSD-2-Clause",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "固定扩展依赖，离线生成HTML并核引用/代码例",
+    "record_id": "review.engineering.sphinx",
+    "source_compile_qualified": false,
+    "worker_id": "worker 028"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "{recipe}/offline_exec.py",
+        "--",
+        "python3",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}"
+      ]
+    ],
+    "network_policy": "offline installation and acceptance via seccomp; preparation is a separate networked phase",
+    "required_host_commands": [
+      "python3"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/sphinx-build"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C.UTF-8",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONNOUSERSITE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3589741,
+      "extract": false,
+      "id": "sphinx",
+      "material_path": "sources/sphinx",
+      "sha256": "4405915165f13521d875a8c29c8970800a0141c14cc5416a38feca4ea5d9b9c3",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/31/53/136e9eca6e0b9dc0e1962e2c908fbea2e5ac000c2a2fbd9a35797958c48b/sphinx-8.2.3-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the selected {prefix}/bin explicitly, or add it to PATH."
+    ],
+    "documentation": [
+      "https://www.sphinx-doc.org/en/master/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/offline_exec.py -- python3 {recipe}/worker028-check.py --case sphinx --prefix {prefix} --build {build}",
+        "description": "Replay the concrete assignment acceptance case"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Installed resource",
+        "path": "{prefix}",
+        "purpose": "Independent relocatable installation with retained license notices"
+      }
+    ],
+    "notes": [
+      "Frozen Python 3.12 wheel closure; no source compilation is claimed.",
+      "Qualified built-in extensions are sphinx.ext.autodoc and sphinx.ext.doctest; their exact Python dependency closure is retained.",
+      "Runtime compatibility is defined by actual architecture, ELF/GLIBC requirements and explicit host commands, not a distribution-name gate.",
+      "The Linux acceptance guard needs libseccomp; it denies fresh AF_INET and AF_INET6 sockets to the checker and all descendants. No OCI or physical-target qualification is claimed."
+    ],
+    "summary": "编译器手册/API文档与离线交叉引用"
+  },
+  "version": "8.2.3"
+}

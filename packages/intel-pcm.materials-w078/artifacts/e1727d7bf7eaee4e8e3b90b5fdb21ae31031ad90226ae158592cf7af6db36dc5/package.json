@@ -1,0 +1,135 @@
+{
+  "build": "w078-static-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "locked-static-materials",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "intel-pcm.materials-w078",
+  "metadata": {
+    "baseline_catalog_sha256": "b3b975cedf9c6324b08efec1c1b638beebeca84f614eabebf5428b75fb1153f3",
+    "baseline_definition_sha256": "5c46749f748d0a427465ac32c0a3d67245591989c190ee3863fb826001ea6065",
+    "catalog": {
+      "archive_bytes": 1266957,
+      "category": [
+        "Observability",
+        "Static reference materials"
+      ],
+      "dependencies": [],
+      "documentation": "https://github.com/intel/pcm",
+      "extract": false,
+      "id": "intel-pcm.materials-w078",
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause; bundled component notices retained",
+      "logical_resource_id": "intel-pcm",
+      "mandatory": false,
+      "material_path": "original-archives/intel-pcm.tar.gz",
+      "policy_held": true,
+      "profile_kind": "complete-locked-source-materials",
+      "purpose": "沿原 intel-pcm 锁保存 202604 主归档及五个精确子模块，供 PMU 事件和平台指标静态研究。",
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "11a307e88477b4d808aaaa5d43ada326400e4a9558b734cb5a3e6e217bbddd3c",
+      "source_url": "https://codeload.github.com/intel/pcm/tar.gz/abb6bce87cc2ed23d6677541ebcfc47ca769d1ed",
+      "strip_archive_root": false,
+      "technical_profile_only": true,
+      "title": "Intel PCM 202604：PMU 语义和完整子模块材料",
+      "version": "202604"
+    },
+    "catalog_sha256": "e24300cdb2bcf1a9cffb1c7468588ba37bfdc756f1e24b8f654c9f52f1a39c09",
+    "does_not_claim_tool_material_completeness": false,
+    "logical_resource_id": "intel-pcm",
+    "policy_held": true,
+    "profile_kind": "complete-locked-source-materials",
+    "technical_profile_only": true
+  },
+  "provider": "material",
+  "recipe": {
+    "collection_enabled": false,
+    "profile_kind": "complete-locked-source-materials",
+    "required_installed_paths": [
+      "{prefix}/MATERIALS.md",
+      "{prefix}/material-index.json",
+      "{prefix}/source-lock.json",
+      "{prefix}/POLICY.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1266957,
+      "extract": false,
+      "id": "intel-pcm.materials-w078",
+      "material_path": "original-archives/intel-pcm.tar.gz",
+      "sha256": "11a307e88477b4d808aaaa5d43ada326400e4a9558b734cb5a3e6e217bbddd3c",
+      "strip_root": false,
+      "url": "https://codeload.github.com/intel/pcm/tar.gz/abb6bce87cc2ed23d6677541ebcfc47ca769d1ed"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/intel/pcm"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/inspect_material.py --list",
+        "description": "List static topics"
+      },
+      {
+        "command": "python3 {prefix}/inspect_material.py --search metadata --limit 10",
+        "description": "Search indexed materials"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reading guide",
+        "path": "{prefix}/MATERIALS.md",
+        "purpose": "Authored task-specific guide and limits."
+      },
+      {
+        "label": "Locked source archives",
+        "path": "{prefix}/source-lock.json",
+        "purpose": "Exact original byte identities and closure mapping."
+      }
+    ],
+    "notes": [
+      "System collection is policy-held. Static availability is not runtime or hardware qualification.",
+      "All original baseline identities and dependencies are unchanged.",
+      "Distribution metadata is descriptive; material content is not bound to one Linux distribution."
+    ],
+    "summary": "沿原 intel-pcm 锁保存 202604 主归档及五个精确子模块，供 PMU 事件和平台指标静态研究。"
+  },
+  "version": "202604"
+}

@@ -1,0 +1,102 @@
+{
+  "build": "cpg-20261101-w013-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/share/cpg-worker013/check.py",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-native-function",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 360
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "wabt",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "bounded_native_function": true,
+      "hardware": false,
+      "material": true,
+      "oci": false,
+      "official_benchmark": false,
+      "source_build_of_main_tool": false
+    },
+    "record_id": "review.engineering.wabt",
+    "scope": "具体子命令归属一个资源",
+    "source_files_retained": true,
+    "worker_id": "worker 013"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/share/cpg-worker013/check.py",
+      "{prefix}/share/cpg-worker013/sources/wabt-1.0.42.tar.xz"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "cc"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 7568944,
+      "extract": true,
+      "id": "wabt",
+      "material_path": "sources/wabt",
+      "sha256": "a76cda3c174a43097863a07fc0b0c202f770f53e21806ea2636f167d1ffb1e30",
+      "strip_root": true,
+      "url": "https://github.com/WebAssembly/wabt/releases/download/1.0.42/wabt-1.0.42.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "export PATH=\"{prefix}/bin:$PATH\""
+    ],
+    "documentation": [
+      "https://github.com/WebAssembly/wabt"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages info wabt --registry registry.json --json",
+        "description": "Inspect the resource through the supplied additive registry."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Executables",
+        "path": "{prefix}/bin",
+        "purpose": "Explicit resource tools and repeatable bounded check programs."
+      },
+      {
+        "label": "Complete upstream source",
+        "path": "{prefix}/share/cpg-worker013/sources",
+        "purpose": "Pinned unmodified project source retained for agent inspection and development."
+      }
+    ],
+    "notes": [
+      "The target distribution records the build host. CPG checks OS, architecture and actual ELF runtime compatibility; it does not enforce a distribution name.",
+      "Native functionality is bounded by the attached fixtures; OCI, target hardware and official benchmark qualifications are not granted.",
+      "Download preparation is separate from installation; this artifact consumes local files only."
+    ],
+    "summary": "WebAssembly text/binary conversion, interpreter and wasm2c generation."
+  },
+  "version": "1.0.42"
+}

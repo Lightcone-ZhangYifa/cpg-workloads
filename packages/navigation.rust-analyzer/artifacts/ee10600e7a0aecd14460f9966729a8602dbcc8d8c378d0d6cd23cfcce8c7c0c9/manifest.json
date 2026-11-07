@@ -1,0 +1,198 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/LICENSES"
+    },
+    {
+      "bytes": 9723,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSES/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    {
+      "bytes": 1023,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSES/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    {
+      "bytes": 587,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.txt",
+      "sha256": "7a82b632771aca7d2d006310d974078cd5823b6f76e03ebca5e4607692974cd5"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 42552336,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/rust-analyzer",
+      "sha256": "01c2dc9d7653769915fe26fa4737bfab2b99ff3c756414d04d5239e0eab97365"
+    },
+    {
+      "bytes": 6139,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/check.py",
+      "sha256": "8979da33bebcac26494d76fb927e7cb66e9eb73124725ccc58397e40f4f31584"
+    },
+    {
+      "bytes": 1190,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/source-lock.json",
+      "sha256": "312eba9503b2cc4e3ff610bc08b268d92aff3035290e2ab7413b836337b93ac6"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "tools"
+    },
+    {
+      "bytes": 39,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/check-command.json",
+      "sha256": "3d24c0da40fd967f3f34b2c69911cd01c2d2e64a40b06ca74e2b425c8153b2e4"
+    },
+    {
+      "bytes": 1215,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/payload-inventory.json",
+      "sha256": "4ecdb608a73d596ffa6b5b7c8953898c75a727219837f1229d7f597dde55fdef"
+    },
+    {
+      "bytes": 2208,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/run_check.py",
+      "sha256": "cb7575abc9778f0f9a0bbbb0ac50fffbed22a813941895c9a8149a415343ff36"
+    }
+  ],
+  "inventory_sha256": "556026e9cb5430b56b096446bf3a2d7a701b88dac2d5116e6a867124569a6fba",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "7a0abbc40939a601700148486a3aecc4b782767008860869eb06c2ce7b176965",
+  "method": "binary",
+  "package": {
+    "build": "cpg20261101.1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{tools}/run_check.py",
+          "{prefix}",
+          "{build}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "assignment-functional",
+        "kind": "functional",
+        "stdout_regex": "passed",
+        "timeout_seconds": 600
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "navigation.rust-analyzer",
+    "metadata": {
+      "baseline_catalog_modified": false,
+      "baseline_version": "0.21.14",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "Stdio LSP with a no_std rust-project.json project. Verified definition, references, rename and in-memory incremental updates; no Cargo/rustc compilation, macro expansion, GUI or benchmark claim.",
+      "record_id": "review.engineering.rust-analyzer",
+      "runtime_toolchain": {
+        "description": "Linux x86_64; Python 3; host glibc; see ELF compatibility evidence"
+      },
+      "worker_id": "048"
+    },
+    "provider": "binary",
+    "recipe": {
+      "adapter": "copy",
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 4092176,
+        "extract": false,
+        "id": "input-000",
+        "material_path": "rust-analyzer-2026-10-26-source.tar.gz",
+        "sha256": "de34f04868d5814b77964f380f21585915786ba46e15cf8606c7f60ab5f63204",
+        "strip_root": false,
+        "url": "https://codeload.github.com/rust-lang/rust-analyzer/tar.gz/refs/tags/2026-10-26"
+      },
+      {
+        "bytes": 15084499,
+        "extract": false,
+        "id": "input-001",
+        "material_path": "rust-analyzer-2026-10-26.gz",
+        "sha256": "4c83773525f93b636ed79761389568b4d2a89c05fa7ecc440245032d49ad80ce",
+        "strip_root": false,
+        "url": "https://github.com/rust-lang/rust-analyzer/releases/download/2026-10-26/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/rust-lang/rust-analyzer"
+      ],
+      "examples": [
+        {
+          "command": "python3 -B <prefix>/check.py",
+          "description": "Run the bounded assignment qualification"
+        }
+      ],
+      "locations": [
+        {
+          "label": "installation",
+          "path": "{prefix}",
+          "purpose": "Immutable tool and qualification fixtures"
+        }
+      ],
+      "notes": [
+        "Stdio LSP with a no_std rust-project.json project. Verified definition, references, rename and in-memory incremental updates; no Cargo/rustc compilation, macro expansion, GUI or benchmark claim."
+      ],
+      "summary": "Stdio LSP with a no_std rust-project.json project. Verified definition, references, rename and in-memory incremental updates"
+    },
+    "version": "2026-10-26"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "assignment_record_id": "review.engineering.rust-analyzer",
+    "baseline": "0.21.14",
+    "bounded_scope": "Stdio LSP with a no_std rust-project.json project. Verified definition, references, rename and in-memory incremental updates; no Cargo/rustc compilation, macro expansion, GUI or benchmark claim."
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

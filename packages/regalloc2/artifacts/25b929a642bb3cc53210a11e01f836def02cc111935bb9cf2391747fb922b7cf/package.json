@@ -1,0 +1,117 @@
+{
+  "build": "20261101-worker015-v1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/share/compiler-playground/regalloc2/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "requires_paths": [
+        "{prefix}/share/compiler-playground/regalloc2/check.py"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "regalloc2",
+  "metadata": {
+    "license_id": "Apache-2.0 WITH LLVM-exception",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": {
+      "algorithms": [
+        "Ion",
+        "Fastalloc"
+      ],
+      "cfg_blocks": 4,
+      "checker_negative": true,
+      "checker_positive": true,
+      "physical_registers": 2,
+      "resource_id": "regalloc2",
+      "revision": "4a233442f781dd7b84d5ea40504d3be07263b3e3",
+      "spills_forced": true,
+      "status": "passed",
+      "upstream_test_counts": [
+        10,
+        0
+      ],
+      "vregs": 11
+    },
+    "record_id": "review.engineering.regalloc2",
+    "source_archive_sha256": "47b384a06b8ebd9f65f4703768591b6534c618d07b94b8c9aaa9d6dc8613da17",
+    "upstream_revision": "4a233442f781dd7b84d5ea40504d3be07263b3e3",
+    "worker_id": "worker 015"
+  },
+  "provider": "source",
+  "recipe": {
+    "required_host_commands": [
+      "python3"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "state": "native-source-build-and-bounded-functional-verified"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 153720,
+      "extract": true,
+      "id": "regalloc2",
+      "material_path": "sources/regalloc2",
+      "sha256": "47b384a06b8ebd9f65f4703768591b6534c618d07b94b8c9aaa9d6dc8613da17",
+      "strip_root": true,
+      "url": "https://codeload.github.com/bytecodealliance/regalloc2/tar.gz/4a233442f781dd7b84d5ea40504d3be07263b3e3"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/bytecodealliance/regalloc2"
+    ],
+    "examples": [
+      {
+        "command": "python3 \"{prefix}/share/compiler-playground/regalloc2/check.py\" --prefix \"{prefix}\"",
+        "description": "Run the prefix-contained functional validation"
+      }
+    ],
+    "locations": [
+      {
+        "label": "regalloc2 executables",
+        "path": "{prefix}/bin",
+        "purpose": "Register allocation with checker and 4-block constrained spill fixture"
+      },
+      {
+        "label": "Pinned source archive",
+        "path": "{prefix}/share/source",
+        "purpose": "Inspect original compiler source and exact revision lock."
+      }
+    ],
+    "notes": [
+      "The native binary was built on Ubuntu 24.04 x86_64; this is reference build metadata, not a distribution restriction.",
+      "Full offline source and dependency replay is supplied by the worker015 delta. This package carries the exact upstream source archive.",
+      "Only the recorded bounded native checks are qualified; no OCI, hardware or official benchmark claim."
+    ],
+    "summary": "Register allocation with checker and 4-block constrained spill fixture"
+  },
+  "version": "0.15.2"
+}

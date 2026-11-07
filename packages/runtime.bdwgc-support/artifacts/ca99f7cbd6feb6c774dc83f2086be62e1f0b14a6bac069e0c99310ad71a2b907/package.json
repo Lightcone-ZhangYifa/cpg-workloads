@@ -1,0 +1,139 @@
+{
+  "build": "worker053-20261102-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "task-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "runtime.bdwgc-support",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 260652,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "SAT, SMT and runtimes"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "runtime.bdwgc-support",
+      "immutable_ref": "8.2.6-1build1",
+      "kind": "native_bundle",
+      "license_id": "See bundled upstream LICENSE and NOTICE files",
+      "material_path": "inputs/input-1",
+      "purpose": "Supplement to unchanged apt.libgc-dev identity; fresh linking with the exact baseline development archive; explicit roots keep an object alive across full collections, removing the root permits its finalizer.",
+      "qualification_scope": "Supplement to unchanged apt.libgc-dev identity; fresh linking with the exact baseline development archive; explicit roots keep an object alive across full collections, removing the root permits its finalizer.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "e5d9a3129688bcf6722c381561aeef1c938e7a70bcade830c04c04e55cfa0744",
+      "source_evidence": [
+        "https://www.hboehm.info/gc/"
+      ],
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libgc/libgc-dev_8.2.6-1build1_amd64.deb",
+      "strip_archive_root": false,
+      "title": "Boehm–Demers–Weiser GC",
+      "upstream": "https://www.hboehm.info/gc/",
+      "version": "8.2.6-1build1",
+      "worker_record_id": "review.engineering.bdwgc"
+    },
+    "catalog_sha256": "2dfe3d3f0e657d8d399f73d8cb75e5f3a085058956a6d382210087cd92277b86",
+    "input_provenance": [
+      {
+        "acquisition_snapshot": "https://snapshot.ubuntu.com/ubuntu/20260828T000000Z",
+        "bytes": 260652,
+        "local_path": "/workspace/scratch/81acee5764ca/worker053/payloads/bdwgc/sources/libgc-dev_1%3a8.2.6-1build1_amd64.deb",
+        "revision": "8.2.6-1build1",
+        "sha256": "e5d9a3129688bcf6722c381561aeef1c938e7a70bcade830c04c04e55cfa0744",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libgc/libgc-dev_8.2.6-1build1_amd64.deb"
+      }
+    ],
+    "original_resource_ids": [
+      "apt.libgc-dev"
+    ],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "source_build_qualified": false
+    },
+    "record_id": "review.engineering.bdwgc",
+    "runtime_requirements": [
+      "Python>=3.12",
+      "GCC-compatible C compiler and development files",
+      "POSIX threads",
+      "Validated on Linux x86_64 with glibc 2.39; no lower ABI bound is inferred. Exact ELF requirements are recorded separately."
+    ],
+    "worker_id": "worker 053"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "ldd",
+      "gcc"
+    ],
+    "runtime_environment": {}
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 260652,
+      "extract": false,
+      "id": "runtime.bdwgc-support",
+      "material_path": "inputs/input-1",
+      "sha256": "e5d9a3129688bcf6722c381561aeef1c938e7a70bcade830c04c04e55cfa0744",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libgc/libgc-dev_8.2.6-1build1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.hboehm.info/gc/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Supplement to unchanged apt.libgc-dev identity; fresh linking with the exact baseline development archive; explicit roots keep an object alive across full collections, removing the root permits its finalizer."
+      }
+    ],
+    "notes": [
+      "Qualification is limited to the explicit functional cases and fixed inputs recorded in this profile.",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "Supplement to unchanged apt.libgc-dev identity; fresh linking with the exact baseline development archive; explicit roots keep an object alive across full collections, removing the root permits its finalizer."
+  },
+  "version": "8.2.6-1build1"
+}

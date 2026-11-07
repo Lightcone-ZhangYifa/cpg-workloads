@@ -1,0 +1,149 @@
+{
+  "build": "cpg-worker016-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/run_checks.py"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "host-jit-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "luajit-dynasm-capability",
+  "metadata": {
+    "counted_new_upstream": false,
+    "host_data_dependencies": [],
+    "license": "MIT; original Ubuntu package copyright retained in original deb",
+    "not_formal_catalog_replacement": true,
+    "parent_resource_id": "apt.libluajit-5.1-dev",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "DynASM preprocessing, compile and W-to-X execution; exact original apt static library embedding, FFI callback and actual JIT traces",
+    "record_id": "review.engineering.dynasm",
+    "reference_host": {
+      "abi": "SysV",
+      "arch": "x86_64",
+      "build_cc": "GCC 13.3.0",
+      "os": "linux",
+      "tested_glibc": "2.39"
+    },
+    "upstream_pin": "c525bcb9024510cad9e170e12b6209aedb330f83",
+    "worker_id": "worker 016"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-B",
+        "{recipe}/source_build.py",
+        "--recipe",
+        "{recipe}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--name",
+        "luajit"
+      ]
+    ],
+    "required_host_commands": [
+      "python3",
+      "gcc",
+      "make",
+      "ar",
+      "sh",
+      "dpkg-deb"
+    ],
+    "required_installed_paths": [
+      "{prefix}/run_checks.py",
+      "{prefix}/cpg-resource.json",
+      "{prefix}/share/luajit/source"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "sh"
+    ],
+    "runtime_environment": {
+      "CPG_OFFLINE": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1078349,
+      "extract": false,
+      "id": "luajit-input",
+      "material_path": "raw/luajit.tar.gz",
+      "sha256": "9ab5da10b150320c0e8552ac2b280c80015faf3a600aac5af22662acdcb99a9e",
+      "strip_root": false,
+      "url": "https://codeload.github.com/LuaJIT/LuaJIT/tar.gz/c525bcb"
+    },
+    {
+      "bytes": 293160,
+      "extract": false,
+      "id": "libluajit-frozen-dev-input",
+      "material_path": "raw/libluajit-frozen-dev.deb",
+      "sha256": "ef46b0ec8984a6cc00120e156d5670a3f2aff448ec31dc17222c14f0a2248aaf",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/luajit/libluajit-5.1-dev_2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Add {prefix}/bin to PATH when needed."
+    ],
+    "documentation": [
+      "https://codeload.github.com/LuaJIT/LuaJIT/tar.gz/c525bcb"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/run_checks.py",
+        "description": "Run bounded offline functional profile"
+      }
+    ],
+    "locations": [
+      {
+        "label": "prefix",
+        "path": "{prefix}",
+        "purpose": "Independent installation prefix"
+      },
+      {
+        "label": "source",
+        "path": "{prefix}/share/luajit/source",
+        "purpose": "Complete fixed source and license context"
+      }
+    ],
+    "notes": [
+      "The original apt catalog identity is unchanged and is not recounted as new",
+      "Frozen apt library probe is separate from source-built LuaJIT runtime; system package installation was not performed",
+      "Distribution fields describe the measured reference host; the original manager gates only OS and architecture.",
+      "Source builds require the explicitly listed ambient host commands; no exact APT dependency closure is claimed."
+    ],
+    "summary": "DynASM preprocessing, compile and W-to-X execution; exact original apt static library embedding, FFI callback and actual JIT traces"
+  },
+  "version": "2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1"
+}

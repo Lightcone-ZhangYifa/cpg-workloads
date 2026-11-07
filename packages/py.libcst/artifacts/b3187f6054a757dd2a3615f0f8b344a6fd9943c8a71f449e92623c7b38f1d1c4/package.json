@@ -1,0 +1,231 @@
+{
+  "build": "worker005-v001",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}",
+        "--version-only"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "distribution-identity",
+      "kind": "version",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/check.py",
+        "--expected-version",
+        "{version}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "installed-api-contract",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-B",
+        "-I",
+        "{recipe}/check_adapter.py",
+        "--output-base",
+        "{build}/scope-aware-rename"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "scope-aware-function-rename",
+      "kind": "functional",
+      "requires_commands": [
+        "{prefix}/bin/python"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "py.pyyaml"
+    ],
+    "system": []
+  },
+  "id": "py.libcst",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 2255388,
+      "category": [
+        "Python packages",
+        "Optional search and analysis"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "py.pyyaml"
+      ],
+      "deployment": {
+        "adapter": "wheel",
+        "environment": "research",
+        "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+      },
+      "documentation": [
+        "https://pypi.org/project/libcst/"
+      ],
+      "id": "py.libcst",
+      "immutable_ref": "sha256:8d731abe1307720ea1a52d447555e8443a6d130e0e520243c0634a58f6edbc9d",
+      "installed_bytes": null,
+      "kind": "wheel",
+      "license_class": "open",
+      "license_id": "LicenseRef-Python-distribution-notices",
+      "mandatory": false,
+      "material_path": "wheels/libcst-1.9.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+      "package_name": "libcst",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+      "qualification_gaps": [
+        "pip check, import smoke and selected application-level workflows must pass after installation."
+      ],
+      "redistributable": "distribution-notices-and-obligations-apply",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "8d731abe1307720ea1a52d447555e8443a6d130e0e520243c0634a58f6edbc9d",
+      "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+      "source_evidence": [
+        "https://pypi.org/pypi/libcst/1.9.0/json"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://files.pythonhosted.org/packages/e8/90/e02ac2dad647423f947bb11f8322bfdba8ccfdd380e6c7b695add2d1acd4/libcst-1.9.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+      "title": "libcst",
+      "upstream": "https://pypi.org/project/libcst/1.9.0/",
+      "version": "1.9.0"
+    },
+    "catalog_sha256": "5cc1579c507edc517a345cb10d61f38e4c721569a1ab3c72eb7677a1ae9c3fdd",
+    "worker_capabilities": {
+      "baseline_version": "0.21.14",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "record_id": "review.engineering.libcst",
+      "scope": "One unambiguous undecorated module function and statically resolved references; ASCII identifiers; no global/nonlocal declarations or match statements.",
+      "worker_id": "worker 005"
+    }
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "wheel",
+    "environment": "research",
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{package_name}=={version}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "libcst",
+    "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "{package_name}"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2255388,
+      "extract": false,
+      "id": "py.libcst",
+      "material_path": "wheels/libcst-1.9.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+      "sha256": "8d731abe1307720ea1a52d447555e8443a6d130e0e520243c0634a58f6edbc9d",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/e8/90/e02ac2dad647423f947bb11f8322bfdba8ccfdd380e6c7b695add2d1acd4/libcst-1.9.0-cp312-cp312-manylinux_2_28_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Invoke {prefix}/bin/python explicitly; this environment owns the distribution and its fixed dependency closure."
+    ],
+    "documentation": [
+      "https://libcst.readthedocs.io/en/latest/",
+      "https://pypi.org/project/libcst/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/python -c 'import libcst as cst; print(cst.parse_module('\"'\"'value = 2\\n'\"'\"').code)'",
+        "description": "Use the selected installed resource."
+      },
+      {
+        "command": "{prefix}/bin/python -m pip show {package_name}",
+        "description": "Inspect the exact installed distribution."
+      },
+      {
+        "command": "cpg packages check py.libcst --prefix {prefix} --kind functional",
+        "description": "Run the bounded package-specific functional checks."
+      },
+      {
+        "command": "cpg packages check py.libcst --prefix {prefix} --kind functional",
+        "description": "Verify a scoped function rename including comments, shadowing and execution."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/wheels/libcst-1.9.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Python environment",
+        "path": "{prefix}",
+        "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+      }
+    ],
+    "notes": [
+      "The check requires the exact distribution and an imported module inside the selected environment, then checks actual operations and error cases.",
+      "Qualification is bounded to the recipe's stated local cases, not every upstream test or optional backend. No remote service or data download is performed.",
+      "The wrapper contains metadata, hooks and checks; its locked wheel and dependency closure remain separately identified inputs.",
+      "The original metadata.catalog facts and source locks are retained. Execution evidence is recorded separately."
+    ],
+    "summary": "Lossless Python syntax trees, transformations and source metadata."
+  },
+  "version": "1.9.0"
+}

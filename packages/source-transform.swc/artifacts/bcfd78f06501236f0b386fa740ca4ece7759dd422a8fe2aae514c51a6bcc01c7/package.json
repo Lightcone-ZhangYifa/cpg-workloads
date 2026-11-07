@@ -1,0 +1,391 @@
+{
+  "build": "worker006-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/cpg_check.py",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "worker006-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "node"
+      ],
+      "requires_paths": [
+        "{prefix}/recipe/check.py"
+      ],
+      "stdout_regex": "\"ok\"\\s*:\\s*true",
+      "timeout_seconds": 240
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "source-transform.swc",
+  "metadata": {
+    "artifact_profile": "upstream-native-prebuilt",
+    "baseline_version": "0.21.14",
+    "category": [
+      "source_transform"
+    ],
+    "original_assignment": {
+      "after_dataset_verified": null,
+      "after_functional": null,
+      "after_material": null,
+      "alias_target": "",
+      "assessment_ids": [
+        "engineering:swc"
+      ],
+      "baseline_catalog_sha256": {},
+      "baseline_dataset_verified": null,
+      "baseline_functional_ids": [],
+      "baseline_managed_ids": [],
+      "baseline_material_ids": [],
+      "baseline_pins": {},
+      "baseline_relation": "新增候选（独立身份仍需锁定）",
+      "baseline_resource_ids": [],
+      "baseline_trusted_apt_ids": [],
+      "baseline_version": "0.21.14",
+      "canonical_url": "https://swc.rs/",
+      "category": "source_transform",
+      "cost": "M",
+      "decision": "select",
+      "decision_zh": "入选",
+      "dependencies": "",
+      "entity_kind": "resource",
+      "evidence_relpath": "",
+      "evidence_urls": [
+        "https://swc.rs/"
+      ],
+      "has_active_task": true,
+      "identity_unresolved": false,
+      "increment_package": "cpg-20261101-worker-006-delta-v001.zip",
+      "new_family_candidate": true,
+      "owned_baseline_resource_ids": [],
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "quality_evidence": "{\"basis\":\"official maintainer / standards body / upstream documentation\",\"primary_source_url\":\"https://swc.rs/\",\"primary_source_ref\":\"turn70view8\",\"concrete_capability\":\"Rust实现JS/TS解析/代码生成/变换基础设施\",\"testable_value\":\"固定Rust或npm native包，parse/transform/print及source map验收\",\"scope_and_limits\":\"当前是来源与用途调研；尚未构建或执行，不能据此宣称任何目标/版本已支持。\",\"not_used_as_quality_proxy\":\"GitHub stars, search rank, or mere package presence\"}",
+      "record_id": "review.engineering.swc",
+      "research_scope": "本次公开来源评估",
+      "resource_name": "SWC",
+      "result_status": "未执行接入",
+      "reviewed_on": "2026-11-01",
+      "schema_version": 1,
+      "scope_limits": "",
+      "selected_new_family": true,
+      "selection_reason": "选入以支持：Rust实现JS/TS解析/代码生成/变换基础设施。可形成具体AI可调用目标：固定Rust或npm native包，parse/transform/print及source map验收。",
+      "source_refs": [
+        "turn70view8"
+      ],
+      "task": "固定Rust或npm native包，parse/transform/print及source map验收",
+      "taxonomy_categories": [
+        "D08",
+        "D10"
+      ],
+      "value_to_ai": "Rust实现JS/TS解析/代码生成/变换基础设施",
+      "worker_id": "worker 006",
+      "worker_scope": "AST与源码变换 · 2"
+    },
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.engineering.swc",
+    "source_build_performed": false,
+    "upstream_artifacts": [
+      {
+        "archive_root": "package",
+        "artifact": "raw/jridgewell__resolve-uri-3.1.2.tgz",
+        "bytes": 9622,
+        "cpu": null,
+        "engines": {
+          "node": ">=6.0.0"
+        },
+        "install_path": "node_modules/@jridgewell/resolve-uri",
+        "integrity": "sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@jridgewell/resolve-uri",
+        "os": null,
+        "repository": "https://github.com/jridgewell/resolve-uri",
+        "sha256": "db52f9f62558baab13353dd39e3200750fc33e6a129a575b46226f493776e230",
+        "url": "https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz",
+        "version": "3.1.2"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/jridgewell__sourcemap-codec-1.6.0.tgz",
+        "bytes": 18401,
+        "cpu": null,
+        "engines": null,
+        "install_path": "node_modules/@jridgewell/sourcemap-codec",
+        "integrity": "sha512-T7jf+5zgsZHwNJ4lvQ7/aezbyk0nNX+zJVWpmHA7VYsEx7a7qr5Rg5IbtJFqkgze5Y2sruq1RUY8Q837Od7iFw==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@jridgewell/sourcemap-codec",
+        "os": null,
+        "repository": {
+          "directory": "packages/sourcemap-codec",
+          "type": "git",
+          "url": "git+https://github.com/jridgewell/sourcemaps.git"
+        },
+        "sha256": "f30a35f6af8c347d01b8ff2f8662272f7d986cf21b916704d86c249a90b97e25",
+        "url": "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.6.0.tgz",
+        "version": "1.6.0"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/jridgewell__trace-mapping-0.3.31.tgz",
+        "bytes": 30747,
+        "cpu": null,
+        "engines": null,
+        "install_path": "node_modules/@jridgewell/trace-mapping",
+        "integrity": "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@jridgewell/trace-mapping",
+        "os": null,
+        "repository": {
+          "directory": "packages/trace-mapping",
+          "type": "git",
+          "url": "git+https://github.com/jridgewell/sourcemaps.git"
+        },
+        "sha256": "c64c71a119630d5abe8246889edf334b2ca9ddad094e20d623332956b1453ccf",
+        "url": "https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz",
+        "version": "0.3.31"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/swc__core-1.16.21.tgz",
+        "bytes": 25440,
+        "cpu": null,
+        "engines": {
+          "node": ">=10"
+        },
+        "install_path": "node_modules/@swc/core",
+        "integrity": "sha512-sE2asan0US6gcp11oBDFJb5+s+ltaAPBcagVQGub1+qo+8TsQET2TmXfJCw/Oy0w1eEPp1rV1wsR/Umx2KXGcw==",
+        "license": "Apache-2.0",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@swc/core",
+        "os": null,
+        "repository": {
+          "directory": "packages/core",
+          "type": "git",
+          "url": "git+https://github.com/swc-project/swc.git"
+        },
+        "sha256": "18b6c9a9a473375788d635c0847727d6edee4c373d1d0abb69d208b074deece9",
+        "url": "https://registry.npmjs.org/@swc/core/-/core-1.16.21.tgz",
+        "version": "1.16.21"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/swc__core-linux-x64-gnu-1.16.21.tgz",
+        "bytes": 10282920,
+        "cpu": [
+          "x64"
+        ],
+        "engines": {
+          "node": ">=10"
+        },
+        "install_path": "node_modules/@swc/core-linux-x64-gnu",
+        "integrity": "sha512-EUJsyrFw3aNE64iQzk3bDqjADgl4l0vpxfwVMjMuZIooNg35yKqvkw3bYNEhQyrBDY0+5kKoiirGLpth3Wf3lA==",
+        "license": "Apache-2.0 AND MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@swc/core-linux-x64-gnu",
+        "os": [
+          "linux"
+        ],
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/swc-project/swc.git"
+        },
+        "sha256": "557226e258134e13e681f4766338b082fe011a5a4b6bf98a304793c481e1436f",
+        "url": "https://registry.npmjs.org/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.16.21.tgz",
+        "version": "1.16.21"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/swc__counter-0.1.3.tgz",
+        "bytes": 841,
+        "cpu": null,
+        "engines": null,
+        "install_path": "node_modules/@swc/counter",
+        "integrity": "sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==",
+        "license": "Apache-2.0",
+        "license_members": [],
+        "name": "@swc/counter",
+        "os": null,
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/swc-project/pkgs.git"
+        },
+        "sha256": "31d218b0e9f67ff9cb2a03b6429fa94e87dd8ea470a186bcd93652aad104b019",
+        "url": "https://registry.npmjs.org/@swc/counter/-/counter-0.1.3.tgz",
+        "version": "0.1.3"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/swc__types-0.1.28.tgz",
+        "bytes": 19963,
+        "cpu": null,
+        "engines": null,
+        "install_path": "node_modules/@swc/types",
+        "integrity": "sha512-V6Mnml8v09QALx6K0elJ7o9K/MkVDtW3t6L+7Ou/JcWtb3xwId2AH4FeOceySd2JaO87IMw4+6vSZxLm34LPbw==",
+        "license": "Apache-2.0",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@swc/types",
+        "os": null,
+        "repository": {
+          "directory": "packages/types",
+          "type": "git",
+          "url": "git+https://github.com/swc-project/swc.git"
+        },
+        "sha256": "f85e490ead0c83c0df9972cc6571e7a2fc8e86b35df7d0745dad49a324bd3d66",
+        "url": "https://registry.npmjs.org/@swc/types/-/types-0.1.28.tgz",
+        "version": "0.1.28"
+      }
+    ],
+    "worker_id": "worker 006"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/recipe/check.py",
+      "{prefix}/artifacts.json"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "node"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 9622,
+      "extract": false,
+      "id": "artifact-001",
+      "material_path": "raw/jridgewell__resolve-uri-3.1.2.tgz",
+      "sha256": "db52f9f62558baab13353dd39e3200750fc33e6a129a575b46226f493776e230",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz"
+    },
+    {
+      "bytes": 18401,
+      "extract": false,
+      "id": "artifact-002",
+      "material_path": "raw/jridgewell__sourcemap-codec-1.6.0.tgz",
+      "sha256": "f30a35f6af8c347d01b8ff2f8662272f7d986cf21b916704d86c249a90b97e25",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.6.0.tgz"
+    },
+    {
+      "bytes": 30747,
+      "extract": false,
+      "id": "artifact-003",
+      "material_path": "raw/jridgewell__trace-mapping-0.3.31.tgz",
+      "sha256": "c64c71a119630d5abe8246889edf334b2ca9ddad094e20d623332956b1453ccf",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz"
+    },
+    {
+      "bytes": 25440,
+      "extract": false,
+      "id": "artifact-004",
+      "material_path": "raw/swc__core-1.16.21.tgz",
+      "sha256": "18b6c9a9a473375788d635c0847727d6edee4c373d1d0abb69d208b074deece9",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@swc/core/-/core-1.16.21.tgz"
+    },
+    {
+      "bytes": 10282920,
+      "extract": false,
+      "id": "artifact-005",
+      "material_path": "raw/swc__core-linux-x64-gnu-1.16.21.tgz",
+      "sha256": "557226e258134e13e681f4766338b082fe011a5a4b6bf98a304793c481e1436f",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.16.21.tgz"
+    },
+    {
+      "bytes": 841,
+      "extract": false,
+      "id": "artifact-006",
+      "material_path": "raw/swc__counter-0.1.3.tgz",
+      "sha256": "31d218b0e9f67ff9cb2a03b6429fa94e87dd8ea470a186bcd93652aad104b019",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@swc/counter/-/counter-0.1.3.tgz"
+    },
+    {
+      "bytes": 19963,
+      "extract": false,
+      "id": "artifact-007",
+      "material_path": "raw/swc__types-0.1.28.tgz",
+      "sha256": "f85e490ead0c83c0df9972cc6571e7a2fc8e86b35df7d0745dad49a324bd3d66",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@swc/types/-/types-0.1.28.tgz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use this explicit prefix; do not alter global Node or Java packages."
+    ],
+    "documentation": [
+      "https://swc.rs/docs/usage/core"
+    ],
+    "examples": [
+      {
+        "command": "python3 \"{prefix}/recipe/check.py\" \"{build}/manual-functional\"",
+        "description": "Re-run bounded functional qualification into a separate output directory"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installation",
+        "path": "{prefix}",
+        "purpose": "Pinned upstream distribution and isolated dependency closure"
+      },
+      {
+        "label": "Raw artifacts",
+        "path": "{prefix}/raw",
+        "purpose": "Original immutable packages and provenance"
+      },
+      {
+        "label": "Functional examples",
+        "path": "{prefix}/checks",
+        "purpose": "Complete positive and negative examples"
+      }
+    ],
+    "notes": [
+      "@swc/core parse/print/transform native NAPI package with explicit Linux GNU binary. Rust source compilation and other platform binaries not qualified.",
+      "Upstream binary/distribution installation; no Rust, TypeScript compiler, Babel or Spoon source build is claimed.",
+      "Runtime prerequisites: Python >=3.9; Node.js >=10; Linux x86_64 glibc for this pinned native artifact",
+      "Target distribution records the reference host only and is not a distro-name installation gate."
+    ],
+    "summary": "@swc/core parse/print/transform native NAPI package with explicit Linux GNU binary. Rust source compilation and other platform binaries not qualified."
+  },
+  "version": "1.16.21"
+}

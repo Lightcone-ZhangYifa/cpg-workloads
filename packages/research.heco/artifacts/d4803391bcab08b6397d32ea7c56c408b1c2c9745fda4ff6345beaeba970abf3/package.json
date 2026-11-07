@@ -1,0 +1,262 @@
+{
+  "build": "llvm17.0.6-seal4.0-cpg1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-S",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/functional",
+        "--payload-lock-sha256",
+        "8b7b2a2aac38f06499f9c312ef0bb3fbde6b63e7bb4fff11557cb869636f1cbd"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "transpiler-seal-arithmetic",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "g++",
+        "ldd"
+      ],
+      "requires_paths": [
+        "{prefix}/bin/heco",
+        "{prefix}/bin/emitc-translate",
+        "{prefix}/lib/libseal-4.0.a",
+        "{prefix}/PAYLOAD_LOCK.json"
+      ],
+      "stdout_regex": "PASS: HECO transpiler -> SEAL",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.heco",
+  "metadata": {
+    "actual_llvm_mlir_sdk": "17.0.6-9ubuntu1",
+    "license": "Apache-2.0 with LLVM exceptions and retained ETH Zurich MIT notice (HECO), Apache-2.0 with LLVM exceptions (LLVM components), MIT with retained third-party notices (SEAL)",
+    "original_llvm_gitlink": "4592543a01609feb4b3c19e81a9d54743e15e329",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile": "bounded BFV transpiler; base OS ABI explicitly external",
+    "record_id": "review.optimization.heco",
+    "source_build": {
+      "heco": true,
+      "llvm": false,
+      "seal": true
+    },
+    "worker_id": "worker 073"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "g++",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONNOUSERSITE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1994840,
+      "extract": false,
+      "id": "upstream.heco",
+      "material_path": "heco-73a2b3d88f3394ce42759c6e8967a5cf39383b72.tar.gz",
+      "sha256": "08b0afeeefc2802aa41461334cd7c4b8d919391c9f1621caecca2fc8f8e5f809",
+      "strip_root": false,
+      "url": "https://codeload.github.com/MarbleHE/HECO/tar.gz/73a2b3d88f3394ce42759c6e8967a5cf39383b72"
+    },
+    {
+      "bytes": 613649,
+      "extract": false,
+      "id": "upstream.seal",
+      "material_path": "seal-a0fc0b732f44fa5242593ab488c8b2b3076a5f76.tar.gz",
+      "sha256": "b075a70b2117082a86aa2460522bbc413eab1e5aa1b4f99d00b697cff2f7f4ab",
+      "strip_root": false,
+      "url": "https://codeload.github.com/microsoft/SEAL/tar.gz/a0fc0b732f44fa5242593ab488c8b2b3076a5f76"
+    },
+    {
+      "bytes": 194431831,
+      "extract": false,
+      "id": "upstream.original-llvm",
+      "material_path": "llvm-project-4592543a01609feb4b3c19e81a9d54743e15e329.tar.gz",
+      "sha256": "5fe158279e7feb9c691a8e383526c84284db0f947f2228c1ce2e4ed26b4149a7",
+      "strip_root": false,
+      "url": "https://codeload.github.com/llvm/llvm-project/tar.gz/4592543a01609feb4b3c19e81a9d54743e15e329"
+    },
+    {
+      "bytes": 43439060,
+      "extract": false,
+      "id": "sdk17.llvm-17-dev",
+      "material_path": "llvm17/llvm-17-dev_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "088f624e8fcddae11716bffb2dab18dadd1fd6588c673de0bf88840b3162f7a1",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-17/llvm-17-dev_17.0.6-9ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 26162724,
+      "extract": false,
+      "id": "sdk17.libllvm17t64",
+      "material_path": "llvm17/libllvm17t64_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "1863b5459ca4a6691f5e039e76157f074ee08b48176267642ee4dfea065f5db4",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-17/libllvm17t64_17.0.6-9ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 20378700,
+      "extract": false,
+      "id": "sdk17.libmlir-17-dev",
+      "material_path": "llvm17/libmlir-17-dev_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "b206209fb20184e1bce3643ef318de078ddf614010fedd0fb6f5f3aa68333936",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-17/libmlir-17-dev_17.0.6-9ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 10036722,
+      "extract": false,
+      "id": "sdk17.libmlir-17t64",
+      "material_path": "llvm17/libmlir-17t64_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "159fc6d513b498efd7603a983b7b224ba77ddda723f83ec0bde9eea38a761b68",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-17/libmlir-17t64_17.0.6-9ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 32408900,
+      "extract": false,
+      "id": "sdk17.mlir-17-tools",
+      "material_path": "llvm17/mlir-17-tools_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "8174412b5a6424a35ffef35b198a6912fb4cd771ca3567e81bc255cc941bf890",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-17/mlir-17-tools_17.0.6-9ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 23807754,
+      "extract": false,
+      "id": "sdk17.llvm-17",
+      "material_path": "llvm17/llvm-17_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "0d0505de84082a7d82cecbb6ecbf5843df62ea543e815b864d0271f8c98f1cd0",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-17/llvm-17_17.0.6-9ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 12853576,
+      "extract": false,
+      "id": "sdk17.libclang-cpp17t64",
+      "material_path": "llvm17/libclang-cpp17t64_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "abb9c4ad27251c3776c8e469cfbe2bddb3072bcfb2b9545d4ce40fcb5fe0b970",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-17/libclang-cpp17t64_17.0.6-9ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 517846,
+      "extract": false,
+      "id": "sdk17.llvm-17-tools",
+      "material_path": "llvm17/llvm-17-tools_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "9ddf47e76c8a038d0d8445c7c89f2eeda14d94c33943f049f4642b7eefba2428",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-17/llvm-17-tools_17.0.6-9ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 1308132,
+      "extract": false,
+      "id": "sdk17.llvm-17-linker-tools",
+      "material_path": "llvm17/llvm-17-linker-tools_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "cf8f09965a6b9508deeb8ad286b5443c3953a26fae2b485714d189c716108504",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-17/llvm-17-linker-tools_17.0.6-9ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 528946,
+      "extract": false,
+      "id": "sdk17.llvm-17-runtime",
+      "material_path": "llvm17/llvm-17-runtime_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "b29f2239a8487c701fd76c62dba78609c9ad611c674bff81c5059d9052b29d66",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-17/llvm-17-runtime_17.0.6-9ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 1779210,
+      "extract": false,
+      "id": "sdk17.libpolly-17-dev",
+      "material_path": "llvm17/libpolly-17-dev_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "225b70b20231d8b66a5ba80c93b91bfc111bff5159237eaa3e3fac81c97272a1",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-17/libpolly-17-dev_17.0.6-9ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 784118,
+      "extract": false,
+      "id": "sdk17.libomp-17-dev",
+      "material_path": "llvm17/libomp-17-dev_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "d7adecccdf065a95b75d2ece4098c8b027817f85ce0aba343dc0d7096c7be743",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-17/libomp-17-dev_17.0.6-9ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 567986,
+      "extract": false,
+      "id": "sdk17.libomp5-17t64",
+      "material_path": "llvm17/libomp5-17t64_17.0.6-9ubuntu1_amd64.deb",
+      "sha256": "a7e692b86e3c7035411cae65c973d79cde95c9a5601f3ad3210149e0983bdfe5",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-17/libomp5-17t64_17.0.6-9ubuntu1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/MarbleHE/HECO",
+      "https://github.com/microsoft/SEAL"
+    ],
+    "examples": [
+      {
+        "command": "python3 -S -B {recipe}/check.py --prefix {prefix} --output ./heco-fresh-check",
+        "description": "Fresh offline transpiler and encrypted arithmetic check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "HECO",
+        "path": "{prefix}/bin/heco",
+        "purpose": "Source-built FHE optimizer and BFV/EmitC lowering"
+      },
+      {
+        "label": "EmitC translator",
+        "path": "{prefix}/bin/emitc-translate",
+        "purpose": "Source-built HECO C++ translation tool"
+      },
+      {
+        "label": "SEAL static library",
+        "path": "{prefix}/lib/libseal-4.0.a",
+        "purpose": "Exact upstream gitlink, locally built for manual encrypted execution"
+      }
+    ],
+    "notes": [
+      "Package version normalizes the upstream CMake 0.1 project version and records the exact git commit; it does not name an upstream release asset.",
+      "Actual compiler SDK is official LLVM/MLIR 17.0.6-9ubuntu1; original LLVM gitlink 4592543a01609feb4b3c19e81a9d54743e15e329 remains a separate retained input.",
+      "HECO and exact SEAL gitlink are built from source; LLVM/MLIR and host Clang are separately pinned official prebuilt SDKs.",
+      "Base OS ABI dependencies are enumerated in HOST-ABI.json. Python 3, g++, ldd and usable libseccomp are explicit runtime prerequisites.",
+      "Only small BFV transpiler experiments are qualified. Interactive mode, compiler mode, automatic cryptographic parameter selection and official full-suite coverage are not claimed.",
+      "This SDK profile uses the genuine in-memory FHE-to-BFV-to-EmitC pipeline. The unchanged custom BFV diagnostic printer omits string quotes, so its snapshot is not claimed to support textual roundtrip.",
+      "The manual driver sets BFV degree4096/plainmodulus65537/tc128, generates fresh keys, encrypts and decrypts actual ciphertexts; the independent Python oracle checks 36 exact lane values."
+    ],
+    "summary": "HECO source-built bounded transpiler profile: FHE IR to BFV/EmitC to C++, followed by an explicit manual Microsoft SEAL build and encrypted execution."
+  },
+  "version": "0.1+git.73a2b3d88f33"
+}

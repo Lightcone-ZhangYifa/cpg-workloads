@@ -1,0 +1,317 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 3249,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "2b2ffdcf188617d5a44edd67068e379279dd4cfddc21a09b1cfb3835e4640542"
+    },
+    {
+      "bytes": 16945,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/capability_check.py",
+      "sha256": "fe40e0d9c1324a11be27f73ef01149d45cbd703143da3658c251d16dcc74c9f3"
+    },
+    {
+      "bytes": 2112,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "2f2314d3a09c4c24cf8bcc0ed075c87625c4be86657c720f43041f75fd828211"
+    },
+    {
+      "bytes": 3269,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_support.py",
+      "sha256": "244d7d0104542c7e3c897765453a47389ba54c0a047d050559c1f1d4f072f1a8"
+    },
+    {
+      "bytes": 3246,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/elfio_probe.cpp",
+      "sha256": "c1273b737f0dbd9a6f507dc8d3a781d718f2f6bfc8ec250a50b07d39ef0e0315"
+    },
+    {
+      "bytes": 2578,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/native_probe.c",
+      "sha256": "abf9a0e963a8db144ed4c0c55f023f8032169ca6e6d9cd285729f5ac51f25c1f"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe/oracles"
+    },
+    {
+      "bytes": 1766182,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/oracles/keystone_engine-0.9.2-py2.py3-none-manylinux1_x86_64.whl",
+      "sha256": "5a5316a34323620b1bba31dcfe9e4b4ca6f0c030e82fc7a151da7c8fbe81a379"
+    },
+    {
+      "bytes": 502,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/oracles/lock.json",
+      "sha256": "8f0e5f5e8827b0222a68ac58af6c4d739c93960f3b744f33b89c6ba7cef74747"
+    },
+    {
+      "bytes": 327,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/version_check.py",
+      "sha256": "eb38b1eacec9102f6951f83f7468a8132fad51ac4007b88a9617a9897f371d85"
+    }
+  ],
+  "inventory_sha256": "a9a5d61890eb150052ab2caf688a5fc892604171d632a162f3fb2873477a7b2a",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "433807b66fc635e9f188adae56ab4eb0a7a9f0e96114c0873ce89550ff8304cf",
+  "method": "wrapper",
+  "package": {
+    "build": "worker024.1",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "distribution-identity",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "installed-api-contract",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/capability_check.py",
+          "--resource",
+          "py.capstone",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "worker024-bounded-capability",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.capstone",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 1485316,
+        "category": [
+          "Python packages",
+          "Optional search and analysis"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "research",
+          "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://www.capstone-engine.org"
+        ],
+        "id": "py.capstone",
+        "immutable_ref": "sha256:273fd8d747d2e35c88f91450be51a603ecfaafb00d96d9f315dcb8689c86193e",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "LicenseRef-Python-distribution-notices",
+        "mandatory": false,
+        "material_path": "wheels/capstone-5.0.9-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "package_name": "capstone",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Preprovisioned Python distribution for analysis, testing, telemetry, optimization search or its exact dependency closure.",
+        "qualification_gaps": [
+          "pip check, import smoke and selected application-level workflows must pass after installation."
+        ],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "273fd8d747d2e35c88f91450be51a603ecfaafb00d96d9f315dcb8689c86193e",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/capstone/5.0.9/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/d1/39/17747862222bb062e86b501f1f148d5ff589b77908b080d30f7f085cbfb7/capstone-5.0.9-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "title": "capstone",
+        "upstream": "https://pypi.org/project/capstone/5.0.9/",
+        "version": "5.0.9"
+      },
+      "catalog_sha256": "2ef7d9f6b36d853b0c13dace56c0ef0f750af5f4f4fff67e42c19d6ea05042e1",
+      "worker024": {
+        "original_package_sha256": "dd7474c0e058ada4b7b2b499a238267f4f03bdef07a6404bcd4ce3e3d8f6317c",
+        "source_identity_preserved": true,
+        "upstream_family_increment": 0
+      }
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "{source}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "capstone",
+      "state": "resolver-and-official-artifact-metadata-verified; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1485316,
+        "extract": false,
+        "id": "py.capstone",
+        "material_path": "wheels/capstone-5.0.9-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "273fd8d747d2e35c88f91450be51a603ecfaafb00d96d9f315dcb8689c86193e",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/d1/39/17747862222bb062e86b501f1f148d5ff589b77908b080d30f7f085cbfb7/capstone-5.0.9-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Invoke {prefix}/bin/python explicitly; this environment owns the distribution and its fixed dependency closure."
+      ],
+      "documentation": [
+        "https://www.capstone-engine.org/lang_python",
+        "https://www.capstone-engine.org"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -c 'from capstone import Cs,CS_ARCH_X86,CS_MODE_64; print(list(Cs(CS_ARCH_X86,CS_MODE_64).disasm_lite(bytes.fromhex('\"'\"'b82a000000c3'\"'\"'),0x1000)))'",
+          "description": "Use the selected installed resource."
+        },
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect the exact installed distribution."
+        },
+        {
+          "command": "cpg packages check py.capstone --prefix {prefix} --kind functional",
+          "description": "Run the bounded package-specific functional checks."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/capstone-5.0.9-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "The check requires the exact distribution and an imported module inside the selected environment, then checks actual operations and error cases.",
+        "Qualification is bounded to the recipe's stated local cases, not every upstream test or optional backend. No remote service or data download is performed.",
+        "The wrapper contains metadata, hooks and checks; its locked wheel and dependency closure remain separately identified inputs.",
+        "The original metadata.catalog facts and source locks are retained. Execution evidence is recorded separately.",
+        "All immutable wheel bytes are delivered. Use scripts/lifecycle.py with local source_overrides and a network-denied process.",
+        "Original provider identity remains canonical; no APT installation is performed."
+      ],
+      "summary": "Multi-architecture disassembly with operand and instruction details."
+    },
+    "version": "5.0.9"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline": "0.21.14",
+    "scope": "explicit local wheel provider and bounded functional probes"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

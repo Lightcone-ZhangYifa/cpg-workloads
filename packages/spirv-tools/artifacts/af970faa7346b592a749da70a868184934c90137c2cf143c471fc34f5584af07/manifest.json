@@ -1,0 +1,224 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2146,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build-lock.json",
+      "sha256": "38971c4e1b1fc56bee44e0c24abfb433a86c047903f8579cee75280da18f439d"
+    },
+    {
+      "bytes": 8564,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_functional.py",
+      "sha256": "e8d706b036c2f3907e260d76e7df0f00e89e9f167ce7cc204d03976097b68dda"
+    },
+    {
+      "bytes": 3707,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install.py",
+      "sha256": "e35a3784b00556a116902628e86136dd00de520a00c8021cb703e668ec87d32c"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 422814,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/096487995473320de7f65d622c3f1d16c3ad174797602218ca8c967f51ec38a0",
+      "sha256": "096487995473320de7f65d622c3f1d16c3ad174797602218ca8c967f51ec38a0"
+    },
+    {
+      "bytes": 27800904,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/1c8b05df0602365da91ee6a3336fe57525b137706c4ab5675498f662ae1dbcec",
+      "sha256": "1c8b05df0602365da91ee6a3336fe57525b137706c4ab5675498f662ae1dbcec"
+    },
+    {
+      "bytes": 532355,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/2301e11e5c77213258d6863bf4e6c607a8c6431fa8336e98ac6a2131bd6284f8",
+      "sha256": "2301e11e5c77213258d6863bf4e6c607a8c6431fa8336e98ac6a2131bd6284f8"
+    },
+    {
+      "bytes": 3206156,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/41481a45441d92b2404aa06bdecbb0302f22636335be4e19023632c83fa89aa1",
+      "sha256": "41481a45441d92b2404aa06bdecbb0302f22636335be4e19023632c83fa89aa1"
+    }
+  ],
+  "inventory_sha256": "aad914fd2fc009381686d635d665c7a485f76163c68a24bc1678d0bf7a2f135e",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "b0bd2ebe0abbbaf3ec571653ac91188e6fe067b16ca601fa07d37ade3f706315",
+  "method": "source",
+  "package": {
+    "build": "worker042-v001-o1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check_functional.py",
+          "spirv-tools",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "cpu-artifact-validation",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 600
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "spirv-tools",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "build_flags": "-O1 -DNDEBUG; max 2 build jobs",
+      "headers_commit": "3f17b2af6784bfa2c5aa5dbb8e0e74a607dd8b3b",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_is_candidate": true,
+      "record_id": "review.verification.spirv-tools",
+      "source_build_scope": "Explicit bounded recipe; upstream full testsuite not run",
+      "upstream_commit": "4d2f0b40bfe290dea6c6904dafdf7fd8328ba346",
+      "worker_id": "worker 042"
+    },
+    "provider": "source",
+    "recipe": {
+      "commands": [
+        [
+          "python3",
+          "-B",
+          "{recipe}/install.py",
+          "--assets",
+          "{assets}",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--lock",
+          "{recipe}/build-lock.json",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "required_host_commands": [
+        "python3",
+        "gcc",
+        "g++"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 3206156,
+        "extract": false,
+        "id": "spirv-tools",
+        "material_path": "raw/spirv-tools.tar.gz",
+        "sha256": "41481a45441d92b2404aa06bdecbb0302f22636335be4e19023632c83fa89aa1",
+        "strip_root": false,
+        "url": "https://codeload.github.com/KhronosGroup/SPIRV-Tools/tar.gz/4d2f0b40bfe290dea6c6904dafdf7fd8328ba346"
+      },
+      {
+        "bytes": 532355,
+        "extract": false,
+        "id": "spirv-headers",
+        "material_path": "raw/spirv-headers.tar.gz",
+        "sha256": "2301e11e5c77213258d6863bf4e6c607a8c6431fa8336e98ac6a2131bd6284f8",
+        "strip_root": false,
+        "url": "https://codeload.github.com/KhronosGroup/SPIRV-Headers/tar.gz/3f17b2af6784bfa2c5aa5dbb8e0e74a607dd8b3b"
+      },
+      {
+        "bytes": 27800904,
+        "extract": false,
+        "id": "cmake",
+        "material_path": "raw/cmake-3.31.6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "1c8b05df0602365da91ee6a3336fe57525b137706c4ab5675498f662ae1dbcec",
+        "strip_root": false,
+        "url": "https://files.pythonhosted.org/packages/59/e8/096984b89133681533650b9078c5ed1c5c9b534e869b5487f22d4de1935c/cmake-3.31.6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      },
+      {
+        "bytes": 422814,
+        "extract": false,
+        "id": "ninja",
+        "material_path": "raw/ninja-1.11.1.4-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
+        "sha256": "096487995473320de7f65d622c3f1d16c3ad174797602218ca8c967f51ec38a0",
+        "strip_root": false,
+        "url": "https://files.pythonhosted.org/packages/eb/7a/455d2877fe6cf99886849c7f9755d897df32eaf3a0fba47b56e615f880f7/ninja-1.11.1.4-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [],
+      "locations": [
+        {
+          "label": "programs",
+          "path": "{prefix}/bin",
+          "purpose": "Independent command-line interfaces"
+        }
+      ],
+      "notes": [
+        "CPU-only bounded checks; no GPU execution or semantic-equivalence qualification.",
+        "Ubuntu24.04 is the measured build environment, not a global distribution allowlist."
+      ],
+      "summary": "SPIR-V assembler, disassembler, validator, optimizer and analysis tools"
+    },
+    "version": "2024.4+4d2f0b40"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "offline": true,
+    "revision": "final recipe with bounded SDK and private temporary directory"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "spirv-tools",
+      "path": "sources/41481a45441d92b2404aa06bdecbb0302f22636335be4e19023632c83fa89aa1"
+    },
+    {
+      "id": "spirv-headers",
+      "path": "sources/2301e11e5c77213258d6863bf4e6c607a8c6431fa8336e98ac6a2131bd6284f8"
+    },
+    {
+      "id": "cmake",
+      "path": "sources/1c8b05df0602365da91ee6a3336fe57525b137706c4ab5675498f662ae1dbcec"
+    },
+    {
+      "id": "ninja",
+      "path": "sources/096487995473320de7f65d622c3f1d16c3ad174797602218ca8c967f51ec38a0"
+    }
+  ]
+}

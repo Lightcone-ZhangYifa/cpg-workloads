@@ -1,0 +1,23 @@
+[magpie]
+seed = 84
+log_dir = evidence/magpie
+work_dir = build/magpie_work
+show_cmd_progress = False
+
+[magpie.log]
+color_output = False
+
+[software]
+path = samples/magpie_case
+target_files = kernel.c
+fitness = time
+compile_cmd = gcc -O2 kernel.c main.c -o candidate
+test_cmd = ./candidate --test
+run_cmd = ./candidate
+run_timeout = 4
+
+[search]
+max_steps = 40
+max_time = 120
+warmup = 2
+possible_edits = LineDeletion

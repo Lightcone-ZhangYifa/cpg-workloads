@@ -1,0 +1,212 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/guarded_check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/profile"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional-profile",
+      "kind": "functional",
+      "stdout_regex": "CPG_CHECK_PASS",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.byte-buddy",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "functional_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualifications": {
+      "dataset": null,
+      "oci": false,
+      "official_benchmark": false,
+      "physical_hardware": false
+    },
+    "record_id": "review.engineering.byte-buddy",
+    "resource_metadata": {
+      "build_claim": false,
+      "compiler_license": "EPL-2.0; source JAR retained",
+      "description": "生成本地子类并拦截value方法，核对返回类型、返回值与未选方法；不附加任何外部进程。",
+      "functional_claim": true,
+      "id": "research.byte-buddy",
+      "limitations": [
+        "仅覆盖随包小型功能profile，不代表上游全部测试或任意字节码变换正确。",
+        "Java17或更新JRE为宿主条件；探针编译使用随包ECJ3.37.0，目标classfile为Java8/major52。",
+        "上游库采用锁定官方Maven二进制；本轮从源码编译的是探针，没有声明从源码重建上游库。",
+        "不包含或调用byte-buddy-agent，不执行外部进程attach。"
+      ],
+      "method": "binary",
+      "probe_build": "bundled ECJ compiles probe sources on each offline check",
+      "recipe_files": [],
+      "record_id": "review.engineering.byte-buddy",
+      "required_runtime_commands": [
+        "python3",
+        "java"
+      ],
+      "source_locks": [
+        {
+          "bytes": 9018553,
+          "id": "byte-buddy-1.17.8.jar",
+          "path": "lib/byte-buddy-1.17.8.jar",
+          "sha256": "2b5ddc8c1f4234bdb7cb45338a8e10a13e0e3ca473e91d5d821d681127ea8ba1",
+          "url": "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.jar"
+        },
+        {
+          "bytes": 3257207,
+          "id": "ecj-3.37.0.jar",
+          "path": "tools/ecj-3.37.0.jar",
+          "sha256": "cde026ff966b48b5e5f148b6f041ceff3cf4f85cf75155f4ec0f40e4ee14b545",
+          "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.37.0/ecj-3.37.0.jar"
+        },
+        {
+          "bytes": 2705255,
+          "id": "byte-buddy-1.17.8-sources.jar",
+          "path": "upstream/byte-buddy-1.17.8-sources.jar",
+          "sha256": "5211140f46c380a5e9630a86b2c07b396a9c374128fa603ca1d321b3c7da7449",
+          "url": "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8-sources.jar"
+        },
+        {
+          "bytes": 19385,
+          "id": "byte-buddy-1.17.8.pom",
+          "path": "upstream/byte-buddy-1.17.8.pom",
+          "sha256": "33224d3f4e414dd991556233851e855259336e66e29fa8b800fc94a9e93195b7",
+          "url": "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.pom"
+        },
+        {
+          "bytes": 2347993,
+          "id": "ecj-3.37.0-sources.jar",
+          "path": "upstream/ecj-3.37.0-sources.jar",
+          "sha256": "89fed1614e4aa2f10f1e8b34b0e4a7cff6e95999e4b9660eb451101b859d1387",
+          "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.37.0/ecj-3.37.0-sources.jar"
+        },
+        {
+          "bytes": 1316,
+          "id": "ecj-3.37.0.pom",
+          "path": "upstream/ecj-3.37.0.pom",
+          "sha256": "521bcc0d7484f3a31a9dbf0812799a310a046ab650e0f9ced9c709f47bb3b86b",
+          "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.37.0/ecj-3.37.0.pom"
+        }
+      ],
+      "upstream_license": "Apache-2.0",
+      "version": "1.17.8"
+    },
+    "source_build_claim": false,
+    "support_only": false,
+    "upstream_license": "Apache-2.0",
+    "worker_id": "worker 062"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "java"
+    ],
+    "runtime_environment": {
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 9018553,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "lib/byte-buddy-1.17.8.jar",
+      "sha256": "2b5ddc8c1f4234bdb7cb45338a8e10a13e0e3ca473e91d5d821d681127ea8ba1",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.jar"
+    },
+    {
+      "bytes": 3257207,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "tools/ecj-3.37.0.jar",
+      "sha256": "cde026ff966b48b5e5f148b6f041ceff3cf4f85cf75155f4ec0f40e4ee14b545",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.37.0/ecj-3.37.0.jar"
+    },
+    {
+      "bytes": 2705255,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "upstream/byte-buddy-1.17.8-sources.jar",
+      "sha256": "5211140f46c380a5e9630a86b2c07b396a9c374128fa603ca1d321b3c7da7449",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8-sources.jar"
+    },
+    {
+      "bytes": 19385,
+      "extract": false,
+      "id": "input-004",
+      "material_path": "upstream/byte-buddy-1.17.8.pom",
+      "sha256": "33224d3f4e414dd991556233851e855259336e66e29fa8b800fc94a9e93195b7",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.pom"
+    },
+    {
+      "bytes": 2347993,
+      "extract": false,
+      "id": "input-005",
+      "material_path": "upstream/ecj-3.37.0-sources.jar",
+      "sha256": "89fed1614e4aa2f10f1e8b34b0e4a7cff6e95999e4b9660eb451101b859d1387",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.37.0/ecj-3.37.0-sources.jar"
+    },
+    {
+      "bytes": 1316,
+      "extract": false,
+      "id": "input-006",
+      "material_path": "upstream/ecj-3.37.0.pom",
+      "sha256": "521bcc0d7484f3a31a9dbf0812799a310a046ab650e0f9ced9c709f47bb3b86b",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.37.0/ecj-3.37.0.pom"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://bytebuddy.net/"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"research.byte-buddy\")",
+        "description": "Run the declared checks through the CPG Python API"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed payload",
+        "path": "{prefix}",
+        "purpose": "Locked resources and bounded offline check inputs"
+      }
+    ],
+    "notes": [
+      "仅覆盖随包小型功能profile，不代表上游全部测试或任意字节码变换正确。",
+      "Java17或更新JRE为宿主条件；探针编译使用随包ECJ3.37.0，目标classfile为Java8/major52。",
+      "上游库采用锁定官方Maven二进制；本轮从源码编译的是探针，没有声明从源码重建上游库。",
+      "不包含或调用byte-buddy-agent，不执行外部进程attach。"
+    ],
+    "summary": "生成类或拦截局部方法，核签名/返回值且不挂接外部进程"
+  },
+  "version": "1.17.8"
+}

@@ -1,0 +1,175 @@
+{
+  "build": "worker074-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--recipe",
+        "{recipe}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "frida-bounded-semantics",
+      "kind": "functional",
+      "stdout_regex": "CPG074_FUNCTIONAL_PASSED",
+      "timeout_seconds": 240
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.frida",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "candidate": true,
+    "license_provenance": "Original upstream license files retained in wheel/vendor distribution.",
+    "original_task": {
+      "after_dataset_verified": null,
+      "after_functional": null,
+      "after_material": null,
+      "alias_target": "",
+      "assessment_ids": [
+        "engineering:frida"
+      ],
+      "baseline_catalog_sha256": {},
+      "baseline_dataset_verified": null,
+      "baseline_functional_ids": [],
+      "baseline_managed_ids": [],
+      "baseline_material_ids": [],
+      "baseline_pins": {},
+      "baseline_relation": "新增候选（独立身份仍需锁定）",
+      "baseline_resource_ids": [],
+      "baseline_trusted_apt_ids": [],
+      "baseline_version": "0.21.14",
+      "canonical_url": "https://frida.re/",
+      "category": "observability",
+      "cost": "M",
+      "decision": "select",
+      "decision_zh": "入选",
+      "dependencies": "",
+      "entity_kind": "resource",
+      "evidence_relpath": "",
+      "evidence_urls": [
+        "https://frida.re/"
+      ],
+      "has_active_task": true,
+      "identity_unresolved": false,
+      "increment_package": "cpg-20261101-worker-074-delta-v001.zip",
+      "new_family_candidate": true,
+      "owned_baseline_resource_ids": [],
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "quality_evidence": "{\"basis\":\"official maintainer / standards body / upstream documentation\",\"primary_source_url\":\"https://frida.re/\",\"primary_source_ref\":\"turn100view2\",\"concrete_capability\":\"可脚本化用户程序hook与调用行为诊断\",\"testable_value\":\"对本地受控样例函数hook参数/返回值，不附着外部进程\",\"scope_and_limits\":\"当前是来源与用途调研；尚未构建或执行，不能据此宣称任何目标/版本已支持。\",\"not_used_as_quality_proxy\":\"GitHub stars, search rank, or mere package presence\"}",
+      "record_id": "review.engineering.frida",
+      "research_scope": "本次公开来源评估",
+      "resource_name": "Frida",
+      "result_status": "未执行接入",
+      "reviewed_on": "2026-11-01",
+      "schema_version": 1,
+      "scope_limits": "",
+      "selected_new_family": true,
+      "selection_reason": "选入以支持：可脚本化用户程序hook与调用行为诊断。可形成具体AI可调用目标：对本地受控样例函数hook参数/返回值，不附着外部进程。",
+      "source_refs": [
+        "turn100view2"
+      ],
+      "task": "对本地受控样例函数hook参数/返回值，不附着外部进程",
+      "taxonomy_categories": [
+        "D40",
+        "O38"
+      ],
+      "value_to_ai": "可脚本化用户程序hook与调用行为诊断",
+      "worker_id": "worker 074",
+      "worker_scope": "二进制变换与提升 · 1"
+    },
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.engineering.frida",
+    "scope": "对本地受控样例函数hook参数/返回值，不附着外部进程",
+    "scope_limits": "",
+    "source_build_qualification": false,
+    "worker_id": "worker 074"
+  },
+  "provider": "python",
+  "recipe": {
+    "commands": [
+      [
+        "python3",
+        "-B",
+        "{recipe}/install.py",
+        "--assets",
+        "{assets}",
+        "--prefix",
+        "{prefix}",
+        "--recipe",
+        "{recipe}"
+      ]
+    ],
+    "required_host_commands": [
+      "python3"
+    ],
+    "required_installed_paths": [
+      "{prefix}/CPG-INPUTS.json"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc",
+      "nm"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONNOUSERSITE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 52777300,
+      "extract": false,
+      "id": "input.0",
+      "material_path": "raw/frida-17.25.1-cp37-abi3-manylinux_2_5_x86_64.whl",
+      "sha256": "45ce6f855006ce855991e0b43736016b61b020e3a7261cc74e0bccf88be0e383",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/a9/91/8dc24836dd38a937a1b8e9b756e7c440b71771c1e88d65b128da78d2d49d/frida-17.25.1-cp37-abi3-manylinux_2_5_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the isolated prefix supplied by PackageManager."
+    ],
+    "documentation": [
+      "https://frida.re/"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"research.frida\")",
+        "description": "Replay declared semantic check through CPG"
+      }
+    ],
+    "locations": [
+      {
+        "label": "input-lock",
+        "path": "{prefix}/CPG-INPUTS.json",
+        "purpose": "Exact original input hashes and versions"
+      }
+    ],
+    "notes": [
+      "Candidate overlay; does not modify the formal 1862-resource catalog.",
+      "Source-form package replays original upstream wheels/vendor binaries; it does not claim a source-code compilation.",
+      "Tested on Linux x86_64 with Python 3.12; all imports and instrumented targets are private to the package/test."
+    ],
+    "summary": "对本地受控样例函数hook参数/返回值，不附着外部进程"
+  },
+  "version": "17.25.1"
+}

@@ -1,0 +1,92 @@
+{
+  "build": "cpg-20261101-w058-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "isa.riscv-opcodes",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "formal_qualification_promotion": false,
+    "license_note": "BSD-3-Clause; exact upstream commit and notices preserved",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "RV64IM fixed extension encoding generation with upstream parser and C generator; no instruction execution qualification",
+    "record_id": "review.engineering.riscv-opcodes",
+    "source_build_verified": false,
+    "source_material_scope": "Complete fixed upstream source archive",
+    "worker_id": "worker 058"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 159121,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "payload/sources/riscv-opcodes-f24ac23.tar.gz",
+      "sha256": "a3e7c166fc0ef33d47c6ed66647652952424531b55b69e339dceb3daed629bdc",
+      "strip_root": false,
+      "url": "https://codeload.github.com/riscv/riscv-opcodes/tar.gz/f24ac23ec9fa947011781a09cd6fd25a7c36dc45"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt",
+      "source-lock.json",
+      "resource-evidence.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/check.py",
+        "description": "Run the declared semantic and failure-path checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent prefix",
+        "path": "{prefix}",
+        "purpose": "Tool, source fixtures and offline checks"
+      }
+    ],
+    "notes": [
+      "instruction execution",
+      "all ISA extensions",
+      "compiler correctness proof"
+    ],
+    "summary": "Generate fixed RV32/RV64 I/M encoding definitions and validate known words and malformed definitions"
+  },
+  "version": "f24ac23ec9fa947011781a09cd6fd25a7c36dc45"
+}

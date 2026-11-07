@@ -1,0 +1,110 @@
+{
+  "build": "cpg-worker014-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--resource",
+        "ubpf",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-offline-functional",
+      "kind": "functional",
+      "stdout_regex": "\"passed\": true",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "ubpf",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "bounded_evidence": "worker014 delivery/evidence/portable-prebuilt-check/summary.json",
+    "formal_qualification": "not_promoted",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.engineering.ubpf",
+    "runtime_requirements": [
+      "Linux x86_64",
+      "compatible glibc/libm"
+    ],
+    "source_commits": {
+      "ubpf": "8d2dd3580ab80f9b4a79a9d2fa2420aa38fc7521"
+    },
+    "worker_id": "worker 014"
+  },
+  "provider": "source",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/bin/ubpf-probe"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 457618,
+      "extract": false,
+      "id": "ubpf",
+      "material_path": "raw/ubpf-8d2dd3580ab80f9b4a79a9d2fa2420aa38fc7521.tar.gz",
+      "sha256": "5d96a7f9de2835d1ab784542c01a7e7e280a02ced47d62b9398e1b662c1c5102",
+      "strip_root": false,
+      "url": "https://codeload.github.com/iovisor/ubpf/tar.gz/8d2dd3580ab80f9b4a79a9d2fa2420aa38fc7521"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "unspecified",
+    "distribution_version": "unspecified",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Add {prefix}/bin to PATH when needed."
+    ],
+    "documentation": [
+      "https://codeload.github.com/iovisor/ubpf/tar.gz/8d2dd3580ab80f9b4a79a9d2fa2420aa38fc7521"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --resource ubpf --prefix {prefix} --build {build}",
+        "description": "Run the bounded offline qualification with the installed CPG recipe."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Native tools",
+        "path": "{prefix}/bin",
+        "purpose": "Pinned local executables and bounded probes."
+      },
+      {
+        "label": "Original source",
+        "path": "{prefix}/raw",
+        "purpose": "Unchanged archives with SHA-256 locks."
+      },
+      {
+        "label": "Licenses",
+        "path": "{prefix}/licenses",
+        "purpose": "Upstream redistribution and integration notices."
+      }
+    ],
+    "notes": [
+      "Candidate additive resource; no formal project publication or original-denominator promotion.",
+      "Native Linux x86_64 prebuild. Runtime ABI is checked by CPG; distribution names are not gates.",
+      "Build/source/install environments remain separate. This native package installs entirely from local bytes.",
+      "The raw source archives are unmodified and pinned; source-build replay is provided by the surrounding worker014 delta."
+    ],
+    "summary": "Userspace eBPF interpreter/JIT and host-helper interface; controlled differential execution."
+  },
+  "version": "git.8d2dd3580ab8"
+}

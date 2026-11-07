@@ -1,0 +1,95 @@
+{
+  "build": "cpg20261101.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{tools}/run_check.py",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assignment-functional",
+      "kind": "functional",
+      "stdout_regex": "passed",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "workbench.mps",
+  "metadata": {
+    "baseline_catalog_modified": false,
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Seven headless assertions: absent pregenerated sources, real language Java generation, language and generator compilation, model generation and compilation, changed source-model marker, unless-to-negated-if lowering, exact generated runtime output. GUI editing, intentions, full sample suite, MPS self-bootstrap, OCI and other platforms are not qualified.",
+    "record_id": "review.engineering.jetbrains-mps",
+    "runtime_toolchain": {
+      "ant": "Bundled upstream MPS Ant launcher and ant-mps.jar",
+      "java": "Bundled JBR 25.0.4.1+1-b329.142, original release bytes",
+      "network_required": false
+    },
+    "source_acquisition": {},
+    "worker_id": "046"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/tool/jbr/lib/server:{prefix}/tool/jbr/lib"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 178135029,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "mps-source-a34586d804a846e0844fac5bce297cf08169caf6.tar.gz",
+      "sha256": "c1c98a89dbd21b4e9079341f668a3f15c9241a3578244dd1094e82c69b85f010",
+      "strip_root": false,
+      "url": "https://codeload.github.com/JetBrains/MPS/tar.gz/a34586d804a846e0844fac5bce297cf08169caf6"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.jetbrains.com/help/mps/mps-generator.html",
+      "https://www.jetbrains.com/help/mps/building-mps-language-plugins.html",
+      "https://download.jetbrains.com/mps/2026.1/MPS-2026.1.2.tar.gz"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B <prefix>/check.py",
+        "description": "Run the bounded assignment qualification"
+      }
+    ],
+    "locations": [
+      {
+        "label": "installation",
+        "path": "{prefix}",
+        "purpose": "Immutable tool and qualification fixtures"
+      }
+    ],
+    "notes": [
+      "Seven headless assertions: absent pregenerated sources, real language Java generation, language and generator compilation, model generation and compilation, changed source-model marker, unless-to-negated-if lowering, exact generated runtime output. GUI editing, intentions, full sample suite, MPS self-bootstrap, OCI and other platforms are not qualified."
+    ],
+    "summary": "Build the official MPS IfAndUnless sample language and generate, compile and execute its source model without a graphical session."
+  },
+  "version": "2026.1.2"
+}

@@ -1,0 +1,138 @@
+{
+  "build": "cpg-worker016-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/run_checks.py"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "host-jit-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "sljit",
+  "metadata": {
+    "counted_new_upstream": true,
+    "host_data_dependencies": [],
+    "license": "BSD-2-Clause",
+    "not_formal_catalog_replacement": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Official tutorial arithmetic, branch and external function call examples",
+    "record_id": "review.engineering.sljit",
+    "reference_host": {
+      "abi": "SysV",
+      "arch": "x86_64",
+      "build_cc": "GCC 13.3.0",
+      "os": "linux",
+      "tested_glibc": "2.39"
+    },
+    "upstream_pin": "39c508d1b8fbae332d60c7450db20236913089da",
+    "worker_id": "worker 016"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-B",
+        "{recipe}/source_build.py",
+        "--recipe",
+        "{recipe}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--name",
+        "sljit"
+      ]
+    ],
+    "required_host_commands": [
+      "python3",
+      "gcc",
+      "make",
+      "ar",
+      "sh"
+    ],
+    "required_installed_paths": [
+      "{prefix}/run_checks.py",
+      "{prefix}/cpg-resource.json",
+      "{prefix}/share/sljit/source"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "sh"
+    ],
+    "runtime_environment": {
+      "CPG_OFFLINE": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1467828,
+      "extract": false,
+      "id": "sljit-input",
+      "material_path": "raw/sljit.tar.gz",
+      "sha256": "f5fd7b9d548d049dad9ec664ec520b4bbaebf5bcb1bdcb53f3f2821c190e4452",
+      "strip_root": false,
+      "url": "https://codeload.github.com/zherczeg/sljit/tar.gz/39c508d1b8fbae332d60c7450db20236913089da"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Add {prefix}/bin to PATH when needed."
+    ],
+    "documentation": [
+      "https://codeload.github.com/zherczeg/sljit/tar.gz/39c508d1b8fbae332d60c7450db20236913089da"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/run_checks.py",
+        "description": "Run bounded offline functional profile"
+      }
+    ],
+    "locations": [
+      {
+        "label": "prefix",
+        "path": "{prefix}",
+        "purpose": "Independent installation prefix"
+      },
+      {
+        "label": "source",
+        "path": "{prefix}/share/sljit/source",
+        "purpose": "Complete fixed source and license context"
+      }
+    ],
+    "notes": [
+      "Current host execution only",
+      "Other architecture sources retained without execution qualification",
+      "Distribution fields describe the measured reference host; the original manager gates only OS and architecture.",
+      "Source builds require the explicitly listed ambient host commands; no exact APT dependency closure is claimed."
+    ],
+    "summary": "Official tutorial arithmetic, branch and external function call examples"
+  },
+  "version": "0.95+git39c508d1"
+}

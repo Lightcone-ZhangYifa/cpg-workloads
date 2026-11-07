@@ -1,0 +1,122 @@
+{
+  "build": "worker024.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-I",
+        "{recipe}/capability_check.py",
+        "--resource",
+        "zydis",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "worker024-bounded-capability",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "zydis",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "dependency_family_count_increment": 0,
+    "new_upstream_family": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Linux x86_64; fixed functional corpus and malformed inputs; not whole-ISA or CPU-execution certification",
+    "test_oracle_identity": "py.capstone frozen original 5.0.9 wheel",
+    "worker_id": "worker 024"
+  },
+  "provider": "source",
+  "recipe": {
+    "install_argv": [
+      "python3",
+      "{recipe}/build.py",
+      "--resource",
+      "zydis",
+      "--assets",
+      "{assets}",
+      "--build",
+      "{build}",
+      "--prefix",
+      "{prefix}",
+      "--jobs",
+      "{jobs}"
+    ],
+    "required_host_commands": [
+      "python3",
+      "gcc",
+      "g++",
+      "make"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/cpg-zydis-probe"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "objdump"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 812134,
+      "extract": true,
+      "id": "zydis",
+      "material_path": "zydis",
+      "sha256": "efbca210596ef954241ef40732376d50be5b6b7ca7d63a3834ef0c71f3471f36",
+      "strip_root": true,
+      "url": "https://codeload.github.com/zyantific/zydis/tar.gz/a2278f1d254e492f6a6b39f6cb5d1f5d515659dc"
+    },
+    {
+      "bytes": 65981,
+      "extract": true,
+      "id": "zycore",
+      "material_path": "zycore",
+      "sha256": "943f91eb9ab2a8cc01ab9f8b785e769a273502071e0ee8011cdfcaad93947cec",
+      "strip_root": true,
+      "url": "https://codeload.github.com/zyantific/zycore-c/tar.gz/refs/tags/v1.5.2"
+    },
+    {
+      "bytes": 29689505,
+      "extract": false,
+      "id": "build-prerequisite.cmake",
+      "material_path": "inputs/cmake-4.1.2-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "sha256": "7587a2b2ce48df1fd68a68657b6c5a711b467c346812e46dfb9cd996cd6e2352",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/f3/56/0fc4d83f212cef10b7bbf6c5043e4582af80ad2aef6905e0dc33fbf68b11/cmake-4.1.2-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/zyantific/zydis"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "prefix",
+        "path": "{prefix}",
+        "purpose": "Independent installation of pinned resource"
+      }
+    ],
+    "notes": [
+      "Bounded offline capability checks; hardware execution qualifications are stated in evidence."
+    ],
+    "summary": "zydis original source and independently verified native provider"
+  },
+  "version": "4.1.1"
+}

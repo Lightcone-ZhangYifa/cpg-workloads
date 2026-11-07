@@ -1,0 +1,190 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 161,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.txt",
+      "sha256": "ee8779b9cf3b3a25278026f06a7f9400d8430295d05860162119035a6da65715"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/licenses"
+    },
+    {
+      "bytes": 15141,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/licenses/LICENSE.TXT",
+      "sha256": "8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/licenses/llvm"
+    },
+    {
+      "bytes": 15141,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/licenses/llvm/LICENSE.TXT",
+      "sha256": "8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/upstream"
+    },
+    {
+      "bytes": 179272572,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/upstream/llvm-release.archive",
+      "sha256": "819ecf7351f1a66f76b2d701d8942faaf5faeb324cb90c9d5b090de142434bb2"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1261,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check-material.py",
+      "sha256": "619b434a1dd51132c41e85b1f3695c36c3decebfd17eb4ca0dedd4702721cdad"
+    },
+    {
+      "bytes": 1137,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-lock.json",
+      "sha256": "2bcd99d58c7e14d40908a9656c25eb6707257669f8204a61f24807822bbce487"
+    }
+  ],
+  "inventory_sha256": "f2c29902a03d5590ee445ac91d87cecc5e261f274291e8cd71dd7e9c7ee813cb",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "eb584845dc103f8f14c71a3768c557f087508f573f4da2dbe4db56054004ac74",
+  "method": "material",
+  "package": {
+    "build": "20261101-worker009-material-v1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check-material.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-lock.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-original-compressed-source",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "llvm-release"
+      ],
+      "system": []
+    },
+    "id": "llvm-feature.llubi",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": null,
+        "category": [
+          "Compilers and IR",
+          "LLVM components"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "llvm-release"
+        ],
+        "deployment": {
+          "adapter": "component",
+          "source_resource": "llvm-release"
+        },
+        "id": "llvm-feature.llubi",
+        "immutable_ref": "7a941dfb2877a0b8cf30323fefa85ad019e0b0f5",
+        "installed_bytes": null,
+        "kind": "virtual",
+        "license_class": "open",
+        "license_id": "Apache-2.0 WITH LLVM-exception",
+        "mandatory": false,
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Capability built from the shared locked LLVM source; full build and first-use evidence remain required.",
+        "qualification_gaps": [],
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": null,
+        "source_evidence": [],
+        "source_logical_bytes": null,
+        "title": "llubi",
+        "version": "llvmorg-23.1.4"
+      },
+      "catalog_sha256": "c20dcb44b5eb4dbcaa0a36c4835962c01f0b9c27bd8ceadf6051725641e91969",
+      "worker009_material_scope": {
+        "native_build_qualified": false,
+        "original_dependencies_preserved": true,
+        "scope": "complete compressed original source and license texts only",
+        "source_sha256": "819ecf7351f1a66f76b2d701d8942faaf5faeb324cb90c9d5b090de142434bb2",
+        "upstream_resource": "llvm-release"
+      }
+    },
+    "provider": "component",
+    "recipe": {
+      "adapter": "component",
+      "source_resource": "llvm-release"
+    },
+    "schema_version": 1,
+    "sources": [],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [],
+      "locations": [],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "Worker009 material profile stores the complete original archive without running or changing the native build contract. Original dependencies remain admission requirements."
+      ],
+      "summary": "Capability built from the shared locked LLVM source; full build and first-use evidence remain required."
+    },
+    "version": "llvmorg-23.1.4"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "scope": "compressed complete upstream material; no native or SDK qualification",
+    "source_bytes": 179272572,
+    "source_sha256": "819ecf7351f1a66f76b2d701d8942faaf5faeb324cb90c9d5b090de142434bb2",
+    "upstream_resource": "llvm-release"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

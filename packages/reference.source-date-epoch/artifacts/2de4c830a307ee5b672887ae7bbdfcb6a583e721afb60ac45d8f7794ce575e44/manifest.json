@@ -1,0 +1,147 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 338,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/NOTICE.txt",
+      "sha256": "9cac8193a5fb08b5219c2ff3d38fe21d381bca0e59426d3f29e6334636e5b289"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/checks"
+    },
+    {
+      "bytes": 572,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/checks/qualify_installed.py",
+      "sha256": "816a1708dd14c5071e5f7e516ebefc04f9a5c239e401c49338deb079da6cb231"
+    },
+    {
+      "bytes": 7983,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/checks/qualify_local.py",
+      "sha256": "efbd2dd6cdf51b823ffb9e8f2bec68a038b55ce5a0b5bffa8c411ff3be8b9d94"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/docs"
+    },
+    {
+      "bytes": 12090,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/docs/SOURCE_DATE_EPOCH-spec.html",
+      "sha256": "b35cecfdcf716b7542ef00ef88c8c59673c289111d90641d22ba69d2d72df2d6"
+    },
+    {
+      "bytes": 116213,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/docs/SOURCE_DATE_EPOCH.html",
+      "sha256": "1916c0a36c65753c9f8ae2972ab7246233c6e9776cd1a9d73318ffccd4002bff"
+    },
+    {
+      "bytes": 404,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/docs/snapshot-lock.json",
+      "sha256": "7f07e4f275cd1d38e74fd015003fcd0611b78d5465dd7b062503fe0feab9ce98"
+    }
+  ],
+  "inventory_sha256": "c6dca2cee2622707335d6be7ac50fa7e647b329d254834d7c192fd8f290b743c",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "b1390709be01cb60c6e3f03d26aa71e2244e1583a561782e6e7844eae512c768",
+  "method": "material",
+  "package": {
+    "build": "worker-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{prefix}/checks/qualify_installed.py",
+          "--tool",
+          "source-date-epoch",
+          "--prefix",
+          "{prefix}",
+          "--out",
+          "{build}/qualification"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "snapshot-and-demonstration",
+        "kind": "availability",
+        "timeout_seconds": 300
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "reference.source-date-epoch",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "Only the declared cases, target and pinned inputs",
+      "record_id": "review.engineering.source-date-epoch",
+      "worker_id": "worker 080"
+    },
+    "provider": "material",
+    "recipe": {
+      "required_runtime_commands": [
+        "python3",
+        "gcc"
+      ],
+      "runtime_environment": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://reproducible-builds.org/docs/source-date-epoch/",
+        "https://reproducible-builds.org/specs/source-date-epoch/"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Independent resource prefix",
+          "path": "{prefix}",
+          "purpose": "Fixed upstream resource and repeatable checks"
+        }
+      ],
+      "notes": [
+        "Static interface material, not a compiler executable.",
+        "Document hash checks and a GCC example do not confer runtime-software functional qualification."
+      ],
+      "summary": "Fixed official SOURCE_DATE_EPOCH documentation and a two-path timestamp demonstration"
+    },
+    "version": "2026.11.02"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

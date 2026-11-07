@@ -1,0 +1,250 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 60308,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSES.txt",
+      "sha256": "7b24c9b78dc554713e2abde15766cd17461975bc4ebc803d86f979965c709ffb"
+    },
+    {
+      "bytes": 1766,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/MATERIALS.md",
+      "sha256": "75aaecca3bf13e23c391112325c5cfb56b23df8ad4a63630b9cf8686a2f80d46"
+    },
+    {
+      "bytes": 569,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/POLICY.json",
+      "sha256": "f83b66189600c125686a579401002a32960e74fa1c2197d3961db52003177cbf"
+    },
+    {
+      "bytes": 370205,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/archive-members.json",
+      "sha256": "cf170336b1939b981a76902e5160572ec113425c30e033066814072035a4ce90"
+    },
+    {
+      "bytes": 11066,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/baseline-package.json",
+      "sha256": "6a02e29624ff32106fb168ceaf59c2f045620405495c3abae744e8eeaf0cf799"
+    },
+    {
+      "bytes": 3302,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/inspect_material.py",
+      "sha256": "8559cfff59af3d138ff5c6673e1ca2893711c5c7fbcd611a47ab03f378db8d6a"
+    },
+    {
+      "bytes": 2496,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/material-index.json",
+      "sha256": "289097a6ad91d7b6477a9a9725f72b51552509232560c70cee1246a0681a3bbb"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/original-archives"
+    },
+    {
+      "bytes": 2989555,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/original-archives/likwid.tar.gz",
+      "sha256": "786c6757243f4ccb2785b4c1856d06092f4dafdf92df357bc17d140ed750ae24"
+    },
+    {
+      "bytes": 3205609,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/reference-text.jsonl",
+      "sha256": "08316b7ac27387d2fb304ad85fcb216eadda1fb22237d352c1f7e20d39d6f69d"
+    },
+    {
+      "bytes": 1020,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/source-lock.json",
+      "sha256": "f3ceb3610194611dde8dc5f4311fa0bf763a8c71e530f4b771eccfdfc888ec0c"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2538,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "a00e0447b12542c5ffe9e99f09fc6ff0d9a3f205f17fcf42ec162b62659e6233"
+    }
+  ],
+  "inventory_sha256": "1d3d2269e68c6d9a5285f39aeb736beff7022f59f8961d42b819d4ac5c48417a",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "3aadb2ca8e126acd83a667e5c8e240e0f637f19dfe6216d749929eeb59ca6357",
+  "method": "material",
+  "package": {
+    "build": "w078-static-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "locked-static-materials",
+        "kind": "availability",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "likwid.materials-w078",
+    "metadata": {
+      "baseline_catalog_sha256": "537b1156bb8831cd5a8457f25c7e8c9bfdc5410463a413e79f28dc467284e1ef",
+      "baseline_definition_sha256": "6a02e29624ff32106fb168ceaf59c2f045620405495c3abae744e8eeaf0cf799",
+      "catalog": {
+        "archive_bytes": 2989555,
+        "category": [
+          "Observability",
+          "Static reference materials"
+        ],
+        "dependencies": [],
+        "documentation": "https://github.com/RRZE-HPC/likwid",
+        "extract": false,
+        "id": "likwid.materials-w078",
+        "kind": "url",
+        "license_class": "open",
+        "license_id": "GPL-3.0-or-later; bundled component notices retained",
+        "logical_resource_id": "likwid",
+        "mandatory": false,
+        "material_path": "original-archives/likwid.tar.gz",
+        "policy_held": true,
+        "profile_kind": "complete-locked-source-materials",
+        "purpose": "沿原 LIKWID 身份保存固定源码、拓扑资料和事件组定义，保留原有功能资格事实。",
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "786c6757243f4ccb2785b4c1856d06092f4dafdf92df357bc17d140ed750ae24",
+        "source_url": "https://codeload.github.com/RRZE-HPC/likwid/tar.gz/22abb561ca709ea867562f3801dcaff676a30f1a",
+        "strip_archive_root": false,
+        "technical_profile_only": true,
+        "title": "LIKWID 5.5.2：拓扑、事件组和 benchmark 资料",
+        "version": "5.5.2"
+      },
+      "catalog_sha256": "9cb62bed7a94083db2b0ed1d42b0d49902a6e14ec68fa71d74aab492bf3bf1c5",
+      "does_not_claim_tool_material_completeness": false,
+      "logical_resource_id": "likwid",
+      "policy_held": true,
+      "profile_kind": "complete-locked-source-materials",
+      "technical_profile_only": true
+    },
+    "provider": "material",
+    "recipe": {
+      "collection_enabled": false,
+      "profile_kind": "complete-locked-source-materials",
+      "required_installed_paths": [
+        "{prefix}/MATERIALS.md",
+        "{prefix}/material-index.json",
+        "{prefix}/source-lock.json",
+        "{prefix}/POLICY.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 2989555,
+        "extract": false,
+        "id": "likwid.materials-w078",
+        "material_path": "original-archives/likwid.tar.gz",
+        "sha256": "786c6757243f4ccb2785b4c1856d06092f4dafdf92df357bc17d140ed750ae24",
+        "strip_root": false,
+        "url": "https://codeload.github.com/RRZE-HPC/likwid/tar.gz/22abb561ca709ea867562f3801dcaff676a30f1a"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "any",
+      "distribution_version": "any",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/RRZE-HPC/likwid"
+      ],
+      "examples": [
+        {
+          "command": "python3 {prefix}/inspect_material.py --list",
+          "description": "List static topics"
+        },
+        {
+          "command": "python3 {prefix}/inspect_material.py --search metadata --limit 10",
+          "description": "Search indexed materials"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Static reading guide",
+          "path": "{prefix}/MATERIALS.md",
+          "purpose": "Authored task-specific guide and limits."
+        },
+        {
+          "label": "Locked source archives",
+          "path": "{prefix}/source-lock.json",
+          "purpose": "Exact original byte identities and closure mapping."
+        }
+      ],
+      "notes": [
+        "System collection is policy-held. Static availability is not runtime or hardware qualification.",
+        "All original baseline identities and dependencies are unchanged.",
+        "Distribution metadata is descriptive; material content is not bound to one Linux distribution."
+      ],
+      "summary": "沿原 LIKWID 身份保存固定源码、拓扑资料和事件组定义，保留原有功能资格事实。"
+    },
+    "version": "5.5.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "logical_resource_id": "likwid",
+    "official_runtime_qualification": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_kind": "complete-locked-source-materials",
+    "upstream_execution": false,
+    "worker_id": "worker 078"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

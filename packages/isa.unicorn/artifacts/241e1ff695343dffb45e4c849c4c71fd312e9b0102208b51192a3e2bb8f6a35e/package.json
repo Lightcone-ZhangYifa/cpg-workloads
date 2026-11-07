@@ -1,0 +1,101 @@
+{
+  "build": "cpg-20261101-w059-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "isa.unicorn",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "formal_qualification_promotion": false,
+    "license_note": "Preserved original notices from official source distribution and wheel; Unicorn core GPL-2.0, QEMU-derived portions and Python bindings retain their own notices.",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Linux x86_64 host; bounded x86_64/AArch64 machine-code fixtures and memory hooks; no OS emulation or hardware/performance qualification",
+    "record_id": "review.engineering.unicorn",
+    "source_build_verified": false,
+    "source_material_scope": "Exact complete PyPI 2.1.4 sdist, plus exact complete official abi3 manylinux x86_64 wheel; no claim of full Git repository/submodules or source build",
+    "worker_id": "worker 059"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 16436886,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "raw/unicorn-2.1.4-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "sha256": "9d6e6dea140560de4ebd8446661f7ef84a357d428c14a3ef09dacd306ec8c239",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/e7/df/ded5e3684c2d7600b30cc8a7530277b8cb36644a1a9d34cade7ebb45604c/unicorn-2.1.4-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+    },
+    {
+      "bytes": 2900334,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "raw/unicorn-2.1.4.tar.gz",
+      "sha256": "00567a70e323f749b419cd86bee4f9115beab7ebba32194581c090cbb7c59cff",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/b2/1b/b4248aa8422e86de690cf8e85cf8feae4c33405a097d1ebe71570bdaa6f5/unicorn-2.1.4.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt",
+      "source-lock.json",
+      "resource-evidence.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/check.py",
+        "description": "Run the declared semantic and failure-path checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent prefix",
+        "path": "{prefix}",
+        "purpose": "Tool, source fixtures and offline checks"
+      }
+    ],
+    "notes": [
+      "Only two bounded ISA fixtures, no claim all CPU models supported",
+      "No OS/kernel/syscall emulation or physical-hardware performance qualification",
+      "Prebuilt runtime verified; core not built from source during this task"
+    ],
+    "summary": "执行有限机器码，核寄存器/内存和越界hook行为"
+  },
+  "version": "2.1.4"
+}

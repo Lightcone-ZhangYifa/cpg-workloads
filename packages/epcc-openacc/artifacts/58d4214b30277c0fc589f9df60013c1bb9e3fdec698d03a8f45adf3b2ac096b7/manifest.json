@@ -1,0 +1,192 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 19925,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/cpg_openacc.py",
+      "sha256": "df14c129527393cc62581c19cca3de1dbc5683baa6b75fe16c9598738aabfe19"
+    },
+    {
+      "bytes": 2425,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/epcc_driver.c",
+      "sha256": "88163c2b68061cb7fa41e2ffc41dfe64a7cb99170b1e9b6f0e0d53d78fd421d7"
+    },
+    {
+      "bytes": 2940,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install.py",
+      "sha256": "e810e619601894f0c7a285c623cf250dc50d7870cfb552f9f6d43ab059d52aea"
+    },
+    {
+      "bytes": 10157,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/inventory.json",
+      "sha256": "7d1b9cfdab65df9b4e0f39225e06a1272a3a69e4ffc5522a82c96ee58d08aa13"
+    },
+    {
+      "bytes": 1739,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/upstream-files.json",
+      "sha256": "81d8b41964aeaafe6817937aeb4883f7f3eddd595fbb5a8e676a4b590e996841"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 27104,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/cf63f182a1536395a28ec3bccfc0fda9c7ebb91a1e0119e03affccf86cb07f52",
+      "sha256": "cf63f182a1536395a28ec3bccfc0fda9c7ebb91a1e0119e03affccf86cb07f52"
+    }
+  ],
+  "inventory_sha256": "adebba00ef03ff0c620b3cbff0f5faed780e299f31b676701a5f07b48a64f5ac",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "998e32c101debcf03d0dc50189c4d7e6f1fdf27237795920b11ce11a32974b33",
+  "method": "source",
+  "package": {
+    "build": "worker056-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{prefix}/share/epcc-openacc/cpg_openacc.py",
+          "epcc-openacc",
+          "check",
+          "--prefix",
+          "{prefix}",
+          "--work-root",
+          "{build}/functional-evidence"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "host-functional",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 300
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "epcc-openacc",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "license": "Apache-2.0 with preserved NOTICE and embedded attributions",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "worker-local bounded functional evidence; formal global baseline unchanged",
+      "upstream_commit": "3f91c5bb2cba810572f237ce0e62e09b3d364082",
+      "worker_id": "worker 056"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/install.py",
+          "--resource",
+          "epcc-openacc",
+          "--source",
+          "{source}",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}"
+        ]
+      ],
+      "required_host_commands": [
+        "python3",
+        "gcc"
+      ],
+      "required_installed_paths": [
+        "{prefix}/share/epcc-openacc/upstream-files.json",
+        "{prefix}/share/epcc-openacc/inventory.json"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "gcc"
+      ],
+      "runtime_environment": {
+        "ACC_DEVICE_TYPE": "host",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 27104,
+        "extract": true,
+        "id": "epcc-openacc",
+        "material_path": "sources/epcc-openacc",
+        "sha256": "cf63f182a1536395a28ec3bccfc0fda9c7ebb91a1e0119e03affccf86cb07f52",
+        "strip_root": true,
+        "url": "https://codeload.github.com/EPCCed/epcc-openacc-benchmarks/tar.gz/3f91c5bb2cba810572f237ce0e62e09b3d364082"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "any",
+      "distribution_version": "any",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "{prefix}/share/epcc-openacc/upstream/README"
+      ],
+      "examples": [
+        {
+          "command": "python3 {prefix}/share/epcc-openacc/cpg_openacc.py epcc-openacc check --prefix {prefix} --work /tmp/fresh-openacc-work",
+          "description": "Run bounded functional check"
+        }
+      ],
+      "locations": [
+        {
+          "label": "original source",
+          "path": "{prefix}/share/epcc-openacc/upstream",
+          "purpose": "Immutable upstream inputs"
+        }
+      ],
+      "notes": [
+        "Install and checks are offline. Source and binary installation are explicit.",
+        "GNU 13/OpenACC 2.6 is the bounded validated profile; distributions are not gated.",
+        "Use a writable work directory disjoint from the installation prefix."
+      ],
+      "summary": "Pinned original OpenACC resource and bounded GNU 13 host adapter; no GPU or compiler-wide conformance claim"
+    },
+    "version": "3f91c5bb2cba810572f237ce0e62e09b3d364082"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "source_build_install_disjoint": true,
+    "upstream_commit": "3f91c5bb2cba810572f237ce0e62e09b3d364082",
+    "worker": "056"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "epcc-openacc",
+      "path": "sources/cf63f182a1536395a28ec3bccfc0fda9c7ebb91a1e0119e03affccf86cb07f52"
+    }
+  ]
+}

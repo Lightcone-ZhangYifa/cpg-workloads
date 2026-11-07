@@ -1,0 +1,392 @@
+{
+  "build": "worker044-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-jit-regression",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "runtime.javascriptcore",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 37046712,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "Managed runtimes and JIT"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "runtime.javascriptcore",
+      "immutable_ref": "cd82e6bb7223de29d3696d7957c4a04ce3f64356",
+      "kind": "native_bundle",
+      "license_id": "See bundled upstream LICENSE and NOTICE files",
+      "material_path": "inputs/input-1",
+      "purpose": "WebKit多层JS JIT、DFG/FTL和类型推测实现参考",
+      "qualification_scope": "Locally source-built JSCOnly shell; 18 assertions in each of interpreter/Baseline/optimizing modes, observed squareSum Baseline/DFG/FTL compilation, observed addOne type-change OSR exit, 12 exact upstream regressions in two configurations. No browser, full suite, benchmark or general Wasm qualification.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "c66530e41ba59b1edba4ee89ef20b2188e273bed0497e95084729e3cfbe30c87",
+      "source_evidence": [
+        "https://docs.webkit.org/Deep%20Dive/JSC/JavaScriptCore.html"
+      ],
+      "source_url": "https://webkitgtk.org/releases/webkitgtk-2.44.0.tar.xz",
+      "strip_archive_root": false,
+      "title": "JavaScriptCore",
+      "upstream": "https://docs.webkit.org/Deep%20Dive/JSC/JavaScriptCore.html",
+      "version": "2.44.0-cpg1",
+      "worker_record_id": "review.engineering.javascriptcore"
+    },
+    "catalog_sha256": "a1e5ab7e7bba56f0fd687885a8b54eb27adc884e10d5bfa2259993656c824ea1",
+    "input_provenance": [
+      {
+        "bytes": 37046712,
+        "extracted_scope": "Source/JavaScriptCore,WTF,bmalloc,cmake, selected build dependencies and Tools scripts; exact full release archive retained",
+        "full_archive_file_bytes": 313077676,
+        "full_archive_members": 28183,
+        "project": "WebKit / JavaScriptCore",
+        "release": "webkitgtk-2.44.0",
+        "revision": "cd82e6bb7223de29d3696d7957c4a04ce3f64356",
+        "selected_files": 6648,
+        "sha256": "c66530e41ba59b1edba4ee89ef20b2188e273bed0497e95084729e3cfbe30c87",
+        "url": "https://webkitgtk.org/releases/webkitgtk-2.44.0.tar.xz"
+      },
+      {
+        "bytes": 26734553,
+        "metadata_license": "Apache 2.0",
+        "metadata_project_urls": {
+          "Bug tracker": "https://github.com/scikit-build/cmake-python-distributions/issues",
+          "Documentation": "https://cmake-python-distributions.readthedocs.io",
+          "Homepage": "https://cmake.org",
+          "Mailing list": "https://groups.google.com/forum/#!forum/scikit-build",
+          "Source": "https://github.com/scikit-build/cmake-python-distributions"
+        },
+        "metadata_url": "https://pypi.org/pypi/cmake/3.29.2/json",
+        "name": "cmake-3.29.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "sha256": "f9e941e73202cfa667ee488d1d88b8a758b516dcfa2a2728e73dbdcbfbdebf57",
+        "url": "https://files.pythonhosted.org/packages/be/2e/8f8daa34e6d743816f852c752da544c34ead6b4fbbdf547519430bdba590/cmake-3.29.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      },
+      {
+        "bytes": 307194,
+        "metadata_license": "Apache 2.0",
+        "metadata_project_urls": {
+          "Bug Tracker": "https://github.com/scikit-build/ninja-python-distributions/issues",
+          "Documentation": "https://github.com/scikit-build/ninja-python-distributions#readme",
+          "Download": "https://github.com/ninja-build/ninja/releases",
+          "Homepage": "http://ninja-build.org/",
+          "Mailing list": "https://groups.google.com/forum/#!forum/scikit-build",
+          "Source Code": "https://github.com/scikit-build/ninja-python-distributions"
+        },
+        "metadata_url": "https://pypi.org/pypi/ninja/1.11.1.1/json",
+        "name": "ninja-1.11.1.1-py2.py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl",
+        "sha256": "84502ec98f02a037a169c4b0d5d86075eaf6afc55e1879003d6cab51ced2ea4b",
+        "url": "https://files.pythonhosted.org/packages/6d/92/8d7aebd4430ab5ff65df2bfee6d5745f95c004284db2d8ca76dcbfd9de47/ninja-1.11.1.1-py2.py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl"
+      },
+      {
+        "bytes": 748688,
+        "depends": "m4, libc6 (>= 2.38)",
+        "package": "bison",
+        "sha256": "18f487c400da3e968a44ecb3783a443641bcd14e2b080ed9ed1167f4aa2c1612",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/bison/bison_3.8.2+dfsg-1build2_amd64.deb",
+        "version": "2:3.8.2+dfsg-1build2"
+      },
+      {
+        "bytes": 300754,
+        "depends": "libc6 (>= 2.38), m4",
+        "package": "flex",
+        "sha256": "c5604f55827b50e3f568b4731b7799f86b147454c867be02bc141d9d8ce561ff",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/f/flex/flex_2.6.4-8.2build1_amd64.deb",
+        "version": "2.6.4-8.2build1"
+      },
+      {
+        "bytes": 9768,
+        "depends": "libc6 (>= 2.2.5)",
+        "package": "libfl2",
+        "sha256": "098db71e672ded6e8194eec7132a2ca31dee49022848c7b0f77ce912d99cb445",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/f/flex/libfl2_2.6.4-8.2build1_amd64.deb",
+        "version": "2.6.4-8.2build1"
+      },
+      {
+        "bytes": 340104,
+        "depends": "libgmp10 (= 2:6.3.0+dfsg-2ubuntu6), libgmpxx4ldbl (= 2:6.3.0+dfsg-2ubuntu6)",
+        "package": "libgmp-dev",
+        "sha256": "ffadf91b116cc2647ef213742ac1cbe80f450af14413c146df6e200f8c3c9a1a",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/libgmp-dev_6.3.0+dfsg-2ubuntu6_amd64.deb",
+        "version": "2:6.3.0+dfsg-2ubuntu6"
+      },
+      {
+        "bytes": 11893158,
+        "depends": "libicu74 (= 74.2-1ubuntu3), icu-devtools (>= 74.2-1ubuntu3), libc6-dev | libc-dev",
+        "package": "libicu-dev",
+        "sha256": "18dc7c1730ad8006167f0e25289adc824b11b4cfce1baef0a1c1fb8dc044d945",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/i/icu/libicu-dev_74.2-1ubuntu3_amd64.deb",
+        "version": "74.2-1ubuntu3"
+      },
+      {
+        "bytes": 30652,
+        "depends": "libc6 (>= 2.38)",
+        "package": "libpkgconf3",
+        "sha256": "fc3a57e8f931ec06cb7c51acc56878f1fec247ff02a7adcab26905c2faeb2792",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pkgconf/libpkgconf3_1.8.1-2build1_amd64.deb",
+        "version": "1.8.1-2build1"
+      },
+      {
+        "bytes": 5338810,
+        "depends": "rake (>= 10.4.2), ruby-net-telnet (>= 0.1.1), ruby-xmlrpc (>= 0.3.2~), ruby-webrick (>= 1.7.0-4~), ruby-sdbm (>= 1.0.0-3~), libc6 (>= 2.38), libcrypt1 (>= 1:4.1.0), libedit2 (>= 3.1-20230828-1), libffi8 (>= 3.4), libgmp10 (>= 2:6.3.0+dfsg), libncurses6 (>= 6), libssl3t64 (>= 3.0.0), libtinfo6 (>= 6), libyaml-0-2, zlib1g (>= 1:1.2.11)",
+        "package": "libruby3.2",
+        "sha256": "c56a744e1c33945d6b1d50feb019ddb38961efdcf69e0a8d2605aba8f534dd9d",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/r/ruby3.2/libruby3.2_3.2.3-1build3_amd64.deb",
+        "version": "3.2.3-1build3"
+      },
+      {
+        "bytes": 51492,
+        "depends": "libc6 (>= 2.14)",
+        "package": "libyaml-0-2",
+        "sha256": "f5271b120d936dcc7ddf17b9e718df41d55386a6075555d0c634925eaef0b2ac",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/liby/libyaml/libyaml-0-2_0.2.5-1build1_amd64.deb",
+        "version": "0.2.5-1build1"
+      },
+      {
+        "bytes": 16790,
+        "depends": "pkgconf-bin",
+        "package": "pkgconf",
+        "sha256": "834a58031069d97d7cfb8b2f5bfd5effc69cecf7f30cc362071875f1f8dc1828",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pkgconf/pkgconf_1.8.1-2build1_amd64.deb",
+        "version": "1.8.1-2build1"
+      },
+      {
+        "bytes": 20730,
+        "depends": "libc6 (>= 2.34), libpkgconf3 (>= 1.8.0)",
+        "package": "pkgconf-bin",
+        "sha256": "7a812f05ee1610154b433e2ad54f6e4163fcbb306b9fb31afe959afb2e5e1545",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pkgconf/pkgconf-bin_1.8.1-2build1_amd64.deb",
+        "version": "1.8.1-2build1"
+      },
+      {
+        "bytes": 238488,
+        "depends": "ruby:any",
+        "package": "ruby-rubygems",
+        "sha256": "9cb6041d902b74fd6e9373b24922e788bc2d1ed4360705ca6b53945d67b32087",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/r/rubygems/ruby-rubygems_3.4.20-1_all.deb",
+        "version": "3.4.20-1"
+      },
+      {
+        "bytes": 52344,
+        "depends": null,
+        "package": "ruby-webrick",
+        "sha256": "fcdd9ed379d17ba09ebef02dcabd207cce4cc00e3055794b088269137855cd10",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/r/ruby-webrick/ruby-webrick_1.8.1-1_all.deb",
+        "version": "1.8.1-1"
+      },
+      {
+        "bytes": 50738,
+        "depends": "rubygems-integration (>= 1.17.1~), libc6 (>= 2.34), libcrypt1 (>= 1:4.1.0), libgmp10 (>= 2:6.3.0+dfsg), libruby3.2 (>= 3.2.0~preview1), zlib1g (>= 1:1.1.4)",
+        "package": "ruby3.2",
+        "sha256": "48c24a2f8b4f164029fbc83618e531270942e44ebaa436f0bf5fef3cce566dfe",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/r/ruby3.2/ruby3.2_3.2.3-1build3_amd64.deb",
+        "version": "3.2.3-1build3"
+      },
+      {
+        "bytes": 399102,
+        "depends": "libgmp-dev, libruby3.2 (= 3.2.3-1build3)",
+        "package": "ruby3.2-dev",
+        "sha256": "6dc0c7c8a6a5c6824e6aaa1ffeafe3f4536eb2dbbe682c3849f672aa91f1fb7b",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/r/ruby3.2/ruby3.2-dev_3.2.3-1build3_amd64.deb",
+        "version": "3.2.3-1build3"
+      },
+      {
+        "bytes": 243640,
+        "depends": "libc6 (>= 2.38)",
+        "package": "m4",
+        "sha256": "30ea715845a1863abd55d11e47ab91513130bf347852d4cdeae69e9d98fa795c",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/m/m4/m4_1.4.19-4build1_amd64.deb",
+        "version": "1.4.19-4build1"
+      },
+      {
+        "architecture": "amd64",
+        "bytes": 80564,
+        "depends": "libc6 (>= 2.34), libclang-cpp18 (>= 1:18.1.3), libllvm18 (= 1:18.1.3-1), libstdc++6 (>= 11), libstdc++-13-dev, libgcc-13-dev, libobjc-13-dev, libclang-common-18-dev (= 1:18.1.3-1), llvm-18-linker-tools (= 1:18.1.3-1), libclang1-18 (= 1:18.1.3-1), libc6-dev, binutils",
+        "filename": "pool/universe/l/llvm-toolchain-18/clang-18_18.1.3-1_amd64.deb",
+        "index_component": "universe",
+        "index_sha256": "ba9057fa1b91438cc8a1d26808d00c85389fe101d0c1496254df97236405599a",
+        "installed_size_kib": 375,
+        "package": "clang-18",
+        "raw_path": "raw/clang-18_18.1.3-1_amd64.deb",
+        "recommends": "llvm-18-dev, python3",
+        "sha256": "3d028a3b4c0b3dc942e043db94e153baedf5c384283181d274a5e915da1b5135",
+        "source_package": "llvm-toolchain-18",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/clang-18_18.1.3-1_amd64.deb",
+        "version": "1:18.1.3-1"
+      },
+      {
+        "architecture": "amd64",
+        "bytes": 13494854,
+        "depends": "libc6 (>= 2.38), libllvm18 (= 1:18.1.3-1), libstdc++6 (>= 12)",
+        "filename": "pool/main/l/llvm-toolchain-18/libclang-cpp18_18.1.3-1_amd64.deb",
+        "index_component": "main",
+        "index_sha256": "2a6a199e1031a5c279cb346646d594993f35b1c03dd4a82aaa0323980dd92451",
+        "installed_size_kib": 62999,
+        "package": "libclang-cpp18",
+        "raw_path": "raw/libclang-cpp18_18.1.3-1_amd64.deb",
+        "recommends": "",
+        "sha256": "899e354d4719c31eb7829517a3ed8d6b64173590fb5c7fe7371ede469fbbe05d",
+        "source_package": "llvm-toolchain-18",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-18/libclang-cpp18_18.1.3-1_amd64.deb",
+        "version": "1:18.1.3-1"
+      },
+      {
+        "architecture": "amd64",
+        "bytes": 27545628,
+        "depends": "libc6 (>= 2.38), libedit2 (>= 2.11-20080614-0), libffi8 (>= 3.4), libgcc-s1 (>= 3.3), libstdc++6 (>= 12), libtinfo6 (>= 6), libxml2 (>= 2.7.4), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.2.0)",
+        "filename": "pool/main/l/llvm-toolchain-18/libllvm18_18.1.3-1_amd64.deb",
+        "index_component": "main",
+        "index_sha256": "2a6a199e1031a5c279cb346646d594993f35b1c03dd4a82aaa0323980dd92451",
+        "installed_size_kib": 120148,
+        "package": "libllvm18",
+        "raw_path": "raw/libllvm18_18.1.3-1_amd64.deb",
+        "recommends": "",
+        "sha256": "826621c8e678dd27b4f5c3a9b26d10aae50d5de2d95575695a17c91014f5eaa5",
+        "source_package": "llvm-toolchain-18",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-18/libllvm18_18.1.3-1_amd64.deb",
+        "version": "1:18.1.3-1"
+      },
+      {
+        "architecture": "amd64",
+        "bytes": 736304,
+        "depends": "",
+        "filename": "pool/universe/l/llvm-toolchain-18/libclang-common-18-dev_18.1.3-1_amd64.deb",
+        "index_component": "universe",
+        "index_sha256": "ba9057fa1b91438cc8a1d26808d00c85389fe101d0c1496254df97236405599a",
+        "installed_size_kib": 13246,
+        "package": "libclang-common-18-dev",
+        "raw_path": "raw/libclang-common-18-dev_18.1.3-1_amd64.deb",
+        "recommends": "libclang-rt-18-dev",
+        "sha256": "91df14d6e3829652b837e2b368e35b076124277f2962a3f3daaea296bf86e4b0",
+        "source_package": "llvm-toolchain-18",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/libclang-common-18-dev_18.1.3-1_amd64.deb",
+        "version": "1:18.1.3-1"
+      },
+      {
+        "architecture": "amd64",
+        "bytes": 7815262,
+        "depends": "libc6 (>= 2.38), libllvm18, libstdc++6 (>= 11)",
+        "filename": "pool/main/l/llvm-toolchain-18/libclang1-18_18.1.3-1_amd64.deb",
+        "index_component": "main",
+        "index_sha256": "2a6a199e1031a5c279cb346646d594993f35b1c03dd4a82aaa0323980dd92451",
+        "installed_size_kib": 33699,
+        "package": "libclang1-18",
+        "raw_path": "raw/libclang1-18_18.1.3-1_amd64.deb",
+        "recommends": "",
+        "sha256": "c7972cec7003be32e57fcfc3ec6ca3ee65ac5d648fb9c420db52022919562855",
+        "source_package": "llvm-toolchain-18",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-18/libclang1-18_18.1.3-1_amd64.deb",
+        "version": "1:18.1.3-1"
+      },
+      {
+        "architecture": "amd64",
+        "bytes": 1294898,
+        "depends": "libc6 (>= 2.38), libllvm18, libstdc++6 (>= 11)",
+        "filename": "pool/universe/l/llvm-toolchain-18/llvm-18-linker-tools_18.1.3-1_amd64.deb",
+        "index_component": "universe",
+        "index_sha256": "ba9057fa1b91438cc8a1d26808d00c85389fe101d0c1496254df97236405599a",
+        "installed_size_kib": 4008,
+        "package": "llvm-18-linker-tools",
+        "raw_path": "raw/llvm-18-linker-tools_18.1.3-1_amd64.deb",
+        "recommends": "",
+        "sha256": "5724e42bd73a481386087b57dc9962c4d4d218c91175160668b6ceb297725093",
+        "source_package": "llvm-toolchain-18",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/llvm-18-linker-tools_18.1.3-1_amd64.deb",
+        "version": "1:18.1.3-1"
+      }
+    ],
+    "original_resource_ids": [],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "material_qualified": true,
+      "source_build_qualified": true
+    },
+    "record_id": "review.engineering.javascriptcore",
+    "runtime_requirements": [
+      "Linux x86_64; 64-bit little-endian ELF",
+      "Python 3.12 tested for the recipe checks; ldd and readelf for runtime dependency inspection",
+      "External ELF SONAMEs: ld-linux-x86-64.so.2, libatomic.so.1, libc.so.6, libgcc_s.so.1, libicudata.so.74, libicui18n.so.74, libicuuc.so.74, libm.so.6, libstdc++.so.6",
+      "Required ELF symbol versions: CXXABI_1.3, GCC_3.0, GLIBC_2.38, GLIBCXX_3.4.31",
+      "Source rebuild additionally requires the declared host compiler, sysroot and tools in source-kit/toolchain-boundary.json"
+    ],
+    "worker_id": "worker 044"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 37046712,
+      "extract": false,
+      "id": "runtime.javascriptcore",
+      "material_path": "inputs/input-1",
+      "sha256": "c66530e41ba59b1edba4ee89ef20b2188e273bed0497e95084729e3cfbe30c87",
+      "strip_root": false,
+      "url": "https://webkitgtk.org/releases/webkitgtk-2.44.0.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://docs.webkit.org/Deep%20Dive/JSC/JavaScriptCore.html"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Locally source-built JSCOnly shell; 18 assertions in each of interpreter/Baseline/optimizing modes, observed squareSum Baseline/DFG/FTL compilation, observed addOne type-change OSR exit, 12 exact upstream regressions in two configurations. No browser, full suite, benchmark or general Wasm qualification."
+      }
+    ],
+    "notes": [
+      "不以整个WebKit依赖构建宣称浏览器产品支持；FTL依赖版本须明确。",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "WebKit多层JS JIT、DFG/FTL和类型推测实现参考"
+  },
+  "version": "2.44.0-cpg1"
+}

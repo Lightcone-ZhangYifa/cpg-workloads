@@ -1,0 +1,126 @@
+{
+  "build": "cpg-worker084-cpu-v1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-S",
+        "{prefix}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--work",
+        "{build}/functional-checks"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "real-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "orio",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "canonical_commit": "c044d5dbdb84cc64c498d0cf388a53a9a1c2136e",
+    "new_candidate": true,
+    "package_manager": "original compiler_playground 0.21.14 APIs; no controller changes",
+    "record_id": "review.optimization.orio",
+    "runtime_contract": {
+      "arch": "x86_64",
+      "host_commands": [
+        "python3"
+      ],
+      "native_runtime": [
+        "glibc"
+      ],
+      "opencl": null,
+      "os": "linux",
+      "python": "CPython 3.12"
+    },
+    "scope": "conditional small CPU/OpenCL-CPU validation; no GPU, OCI, official benchmark score or MPI qualification",
+    "worker_id": "worker 084"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "install_argv": [
+      "python3",
+      "-S",
+      "{recipe}/install.py",
+      "--prefix",
+      "{prefix}",
+      "--build",
+      "{build}",
+      "--assets",
+      "{assets}",
+      "--recipe",
+      "{recipe}"
+    ],
+    "required_host_commands": [
+      "python3",
+      "gcc"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 19344329,
+      "extract": false,
+      "id": "input-07643b457d1ec7069cfb",
+      "material_path": "raw/orio-c044d5dbdb84cc64c498d0cf388a53a9a1c2136e.tar.gz",
+      "sha256": "07643b457d1ec7069cfb36f66aa73d3c12fda30a5a9c28215226ce6454dfc821",
+      "strip_root": false,
+      "url": "https://codeload.github.com/brnorris03/Orio/tar.gz/c044d5dbdb84cc64c498d0cf388a53a9a1c2136e"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the Python PackageManager API to install an explicit artifact into an independent prefix."
+    ],
+    "documentation": [
+      "https://github.com/brnorris03/Orio"
+    ],
+    "examples": [
+      {
+        "command": "python3 -S {prefix}/check.py --prefix {prefix} --work /your/external/check-directory",
+        "description": "Run a fresh external-work functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "profile",
+        "path": "{prefix}/profile.json",
+        "purpose": "Exact private input and runtime contract"
+      },
+      {
+        "label": "examples",
+        "path": "{prefix}/samples",
+        "purpose": "Real kernel and independent correctness harnesses"
+      }
+    ],
+    "notes": [
+      "Reference distribution is descriptive. Actual OS, architecture, interpreter and library loading are checked.",
+      "Full original source archives and exact wheels are retained in the source artifact. Optional execution subtrees do not claim complete upstream benchmark coverage.",
+      "CPU OpenCL execution does not qualify CUDA or physical GPU execution. No system profiler is used."
+    ],
+    "summary": "Locked offline orio integration with bounded real CPU functional checks."
+  },
+  "version": "git-c044d5dbdb84cc64c498d0cf388a53a9a1c2136e"
+}

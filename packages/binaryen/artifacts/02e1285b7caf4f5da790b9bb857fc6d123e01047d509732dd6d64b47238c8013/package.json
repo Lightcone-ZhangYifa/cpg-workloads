@@ -1,0 +1,110 @@
+{
+  "build": "cpg-20261101-w013-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--resource",
+        "binaryen",
+        "--prefix",
+        "{prefix}",
+        "--reference-prefix",
+        "{dependencies.wasmtime-cranelift.prefix}",
+        "--output",
+        "{build}/cross-runtime-checks"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-native-function",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 360
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "wasmtime-cranelift"
+    ],
+    "system": []
+  },
+  "id": "binaryen",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "bounded_native_function": true,
+      "hardware": false,
+      "material": true,
+      "oci": false,
+      "official_benchmark": false,
+      "source_build_of_main_tool": false
+    },
+    "record_id": "review.engineering.binaryen",
+    "scope": "不把任意优化后的验证通过当语义等价证明",
+    "source_files_retained": true,
+    "worker_id": "worker 013"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/share/cpg-worker013/check.py",
+      "{prefix}/share/cpg-worker013/sources/binaryen-source.tar.gz"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 7130796,
+      "extract": true,
+      "id": "binaryen",
+      "material_path": "sources/binaryen",
+      "sha256": "02ac4342e030c85a1849f3d0094c04cfa04c9ec11e5978f70349a588a659eac5",
+      "strip_root": true,
+      "url": "https://codeload.github.com/WebAssembly/binaryen/tar.gz/fba5005a132d85d578be5bd010e0487ed8e2ce3e"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "export PATH=\"{prefix}/bin:$PATH\""
+    ],
+    "documentation": [
+      "https://github.com/WebAssembly/binaryen/blob/main/README.md"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages info binaryen --registry registry.json --json",
+        "description": "Inspect the resource through the supplied additive registry."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Executables",
+        "path": "{prefix}/bin",
+        "purpose": "Explicit resource tools and repeatable bounded check programs."
+      },
+      {
+        "label": "Complete upstream source",
+        "path": "{prefix}/share/cpg-worker013/sources",
+        "purpose": "Pinned unmodified project source retained for agent inspection and development."
+      }
+    ],
+    "notes": [
+      "The target distribution records the build host. CPG checks OS, architecture and actual ELF runtime compatibility; it does not enforce a distribution name.",
+      "Native functionality is bounded by the attached fixtures; OCI, target hardware and official benchmark qualifications are not granted.",
+      "Download preparation is separate from installation; this artifact consumes local files only."
+    ],
+    "summary": "Wasm-to-Wasm optimization with finite independent runtime checks."
+  },
+  "version": "133"
+}

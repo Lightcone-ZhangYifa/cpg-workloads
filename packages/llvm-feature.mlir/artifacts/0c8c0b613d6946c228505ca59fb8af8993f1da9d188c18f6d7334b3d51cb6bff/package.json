@@ -1,0 +1,141 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_wrapper.py",
+        "reference",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "worker007-reference-integrity-query",
+      "kind": "availability",
+      "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_wrapper.py",
+        "mlir",
+        "{prefix}",
+        "{build}",
+        "{dependency_prefix:llvm-release}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "worker007-irdl-pdll-ods",
+      "kind": "functional",
+      "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "llvm-release"
+    ],
+    "system": []
+  },
+  "id": "llvm-feature.mlir",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "category": [
+        "Compilers and IR",
+        "LLVM components"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "llvm-release"
+      ],
+      "deployment": {
+        "adapter": "component",
+        "source_resource": "llvm-release"
+      },
+      "id": "llvm-feature.mlir",
+      "immutable_ref": "7a941dfb2877a0b8cf30323fefa85ad019e0b0f5",
+      "installed_bytes": null,
+      "kind": "virtual",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception",
+      "mandatory": false,
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Capability built from the shared locked LLVM source; full build and first-use evidence remain required.",
+      "qualification_gaps": [],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": null,
+      "source_evidence": [],
+      "source_logical_bytes": null,
+      "title": "MLIR",
+      "version": "llvmorg-23.1.4"
+    },
+    "catalog_sha256": "da35c2b8a4c5de222ea3639e9b61825534a2ecdc0556e0bf6dbfc4f00de2663d",
+    "worker007_candidate": {
+      "dependency_binding": "Explicit external llvm-release tool path, independently hash verified; does not qualify the complete parent resource",
+      "global_qualification_promotion": false,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "record_ids": [
+        "review.engineering.mlir-declarative-tooling",
+        "review.engineering.mlir-reference-pack"
+      ],
+      "scope": "Original pinned MLIR material plus bounded functional evidence through exact prebuilt tool profile",
+      "source_build_performed": false
+    }
+  },
+  "provider": "component",
+  "recipe": {
+    "adapter": "component",
+    "required_installed_paths": [
+      "{prefix}/source/mlir/docs",
+      "{prefix}/source/mlir/examples",
+      "{prefix}/reference-lock.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    },
+    "source_resource": "llvm-release"
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [
+      {
+        "label": "MLIR source and reference",
+        "path": "{prefix}/source/mlir",
+        "purpose": "Complete original MLIR subtree, including docs, examples and tests"
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "Worker007 material candidate preserves the original id, version, sources, target, provider, dependencies, catalog and catalog digest.",
+      "Use separately prepared llvm23-mlir-tools profile as an explicit dependency path for bounded functional checks. This is not a complete LLVM SDK or a parent-resource receipt.",
+      "MLIR material availability and executable functional evidence are separate checks. No local LLVM source build is claimed."
+    ],
+    "summary": "Capability built from the shared locked LLVM source; full build and first-use evidence remain required."
+  },
+  "version": "llvmorg-23.1.4"
+}

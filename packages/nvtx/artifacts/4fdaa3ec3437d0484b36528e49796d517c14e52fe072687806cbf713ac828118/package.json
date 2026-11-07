@@ -1,0 +1,129 @@
+{
+  "build": "w076.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "offline-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "cc",
+        "c++",
+        "nm"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "nvtx",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 4890732,
+      "baseline_version": "0.21.14",
+      "category": "observability",
+      "deployment": {
+        "adapter": "copy"
+      },
+      "extract": false,
+      "id": "nvtx",
+      "is_formal_baseline_addition": false,
+      "kind": "native_bundle",
+      "managed_profile_scope": "C/C++ annotation APIs in compile-time-disabled and no-injected-tool states preserve bounded workload results; no capture or GPU functionality",
+      "material_path": "raw/nvtx-7d113f290f89eeeae9c957011c497101f3948d9e.tar.gz",
+      "purpose": "C/C++ annotation APIs in compile-time-disabled and no-injected-tool states preserve bounded workload results; no capture or GPU functionality",
+      "sha256": "a9ec6ba17b4e93ba8c257f75901c81a4deded73eedc4f3d0cf1fd5f546e445e7",
+      "source_url": "https://codeload.github.com/NVIDIA/NVTX/tar.gz/7d113f290f89eeeae9c957011c497101f3948d9e",
+      "strip_archive_root": true,
+      "title": "nvtx",
+      "upstream_pin_record": "source-lock.json",
+      "version": "3.5.0"
+    },
+    "catalog_sha256": "835d4a9e8488fb28ff601ee6bad29518f6013b6ea72cc29148174d684b455276",
+    "functional_claim": true,
+    "hardware_claim": false,
+    "host_runtime_requirements_explicit": true,
+    "independent_new_family": true,
+    "logical_resource_id": "nvtx",
+    "material_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "C/C++ annotation APIs in compile-time-disabled and no-injected-tool states preserve bounded workload results; no capture or GPU functionality",
+    "worker_id": "worker 076"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_installed_paths": [
+      "{prefix}/CPG-POLICY.json",
+      "{prefix}/source-lock.json",
+      "{prefix}/material-manifest.json",
+      "{prefix}/GUIDE.md"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "cc",
+      "c++",
+      "nm"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 4890732,
+      "extract": false,
+      "id": "nvtx",
+      "material_path": "raw/nvtx-7d113f290f89eeeae9c957011c497101f3948d9e.tar.gz",
+      "sha256": "a9ec6ba17b4e93ba8c257f75901c81a4deded73eedc4f3d0cf1fd5f546e445e7",
+      "strip_root": true,
+      "url": "https://codeload.github.com/NVIDIA/NVTX/tar.gz/7d113f290f89eeeae9c957011c497101f3948d9e"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "{prefix}/GUIDE.md",
+      "{prefix}/source-lock.json",
+      "{prefix}/CPG-POLICY.json"
+    ],
+    "examples": [
+      {
+        "command": "cat {prefix}/GUIDE.md",
+        "description": "Read scope and offline invocation examples"
+      }
+    ],
+    "locations": [
+      {
+        "label": "independent payload",
+        "path": "{prefix}",
+        "purpose": "Selected pinned upstream resources and reproducible offline fixtures."
+      }
+    ],
+    "notes": [
+      "User perf-only collection policy remains in force.",
+      "No hardware, benchmark or UI browser execution qualification is implied.",
+      "All check outputs are outside the immutable prefix."
+    ],
+    "summary": "C/C++ annotation APIs in compile-time-disabled and no-injected-tool states preserve bounded workload results; no capture or GPU functionality"
+  },
+  "version": "3.5.0"
+}

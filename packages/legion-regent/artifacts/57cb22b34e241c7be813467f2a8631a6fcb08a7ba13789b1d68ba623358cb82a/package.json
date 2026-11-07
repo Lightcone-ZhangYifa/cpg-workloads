@@ -1,0 +1,114 @@
+{
+  "build": "worker055.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--work",
+        "{build}/functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "stdout_regex": "LEGION_FUNCTIONAL_OK",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "legion-regent",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "host_requirements": [
+      "python3",
+      "g++",
+      "gcc",
+      "make",
+      "cmake"
+    ],
+    "license": "Apache-2.0",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "upstream_commit": "d8e35c48d089014b0f764181b7b90278a7558b21",
+    "worker_id": "worker 055"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "{recipe}/install.py",
+        "--source",
+        "{source}",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "required_host_commands": [
+      "python3",
+      "g++",
+      "gcc",
+      "make",
+      "cmake"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "g++"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 5491507,
+      "extract": true,
+      "id": "legion-regent",
+      "material_path": "sources/legion-regent",
+      "sha256": "c611a00f61539b5fce9dfbb02ac60701fc6592ba42f99000f9fc05697a8e203e",
+      "strip_root": true,
+      "url": "https://codeload.github.com/StanfordLegion/legion/tar.gz/d8e35c48d089014b0f764181b7b90278a7558b21"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://codeload.github.com/StanfordLegion/legion/tar.gz/d8e35c48d089014b0f764181b7b90278a7558b21"
+    ],
+    "examples": [
+      {
+        "command": "pm.check(\"legion-regent\", prefix=prefix)",
+        "description": "Run retained bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Install prefix",
+        "path": "{prefix}",
+        "purpose": "Independent offline CPU resource installation"
+      }
+    ],
+    "notes": [
+      "All downloads happen before package preparation; install/check use only locked local materials.",
+      "Distribution metadata describes the reference build and does not impose a distribution allowlist.",
+      "No performance, GPU, distributed or full-language conformance qualification is inferred."
+    ],
+    "summary": "Legion/Regent source family; Legion C++ CPU logical-region dependence"
+  },
+  "version": "25.06.0"
+}

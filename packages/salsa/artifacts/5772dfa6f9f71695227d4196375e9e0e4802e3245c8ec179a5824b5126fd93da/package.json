@@ -1,0 +1,716 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check_adapter.py",
+        "{prefix}",
+        "salsa",
+        "{build}",
+        "version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "locked-version-identity",
+      "kind": "version",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 90
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check_adapter.py",
+        "{prefix}",
+        "salsa",
+        "{build}",
+        "functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "offline-compiled-capability",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "salsa",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 307086,
+      "checks": [
+        {
+          "argv": [
+            "python3",
+            "-B",
+            "{recipe}/check_adapter.py",
+            "{prefix}",
+            "salsa",
+            "{build}",
+            "version"
+          ],
+          "cwd": "{build}",
+          "expected_returncode": 0,
+          "id": "locked-version-identity",
+          "kind": "version",
+          "stdout_regex": "\"status\": \"passed\"",
+          "timeout_seconds": 90
+        },
+        {
+          "argv": [
+            "python3",
+            "-B",
+            "{recipe}/check_adapter.py",
+            "{prefix}",
+            "salsa",
+            "{build}",
+            "functional"
+          ],
+          "cwd": "{build}",
+          "expected_returncode": 0,
+          "id": "offline-compiled-capability",
+          "kind": "functional",
+          "stdout_regex": "\"status\": \"passed\"",
+          "timeout_seconds": 600
+        }
+      ],
+      "dependencies": [],
+      "deployment": {
+        "adapter": "offline-source-material",
+        "external_sdk_environment": "CPG_RUST_SDK_ROOT",
+        "external_sdk_version": "1.88.0",
+        "required_installed_paths": [
+          "{prefix}/run_offline.py",
+          "{prefix}/resource.json",
+          "{prefix}/material.lock.json",
+          "{prefix}/dependencies.lock.json"
+        ],
+        "required_runtime_commands": [
+          "python3"
+        ]
+      },
+      "documentation": [
+        "https://github.com/salsa-rs/salsa",
+        "https://docs.rs/salsa/0.28.5/salsa/",
+        "https://salsa-rs.github.io/salsa/tutorial/db.html",
+        "https://salsa-rs.github.io/salsa/tutorial/parser.html"
+      ],
+      "extract": false,
+      "id": "salsa",
+      "input_locks": {
+        "dependencies": [
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/allocator-api2-0.2.21/LICENSE-APACHE",
+              "project/vendor/allocator-api2-0.2.21/LICENSE-MIT"
+            ],
+            "name": "allocator-api2",
+            "rust_version": "1.63",
+            "source_bytes": 293163,
+            "source_files": 22,
+            "source_url": "https://static.crates.io/crates/allocator-api2/allocator-api2-0.2.21.crate",
+            "upstream_package_sha256": "683d7910e743518b0e34f1186f92494becacb047c7b6bf616c96772180fef923",
+            "version": "0.2.21"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/bitflags-2.13.2/LICENSE-APACHE",
+              "project/vendor/bitflags-2.13.2/LICENSE-MIT"
+            ],
+            "name": "bitflags",
+            "rust_version": "1.56.0",
+            "source_bytes": 244671,
+            "source_files": 61,
+            "source_url": "https://static.crates.io/crates/bitflags/bitflags-2.13.2.crate",
+            "upstream_package_sha256": "3ded4057c258ba199e2d26386d3af3780957ecaee6c4ef4041c6b4b8b97c0b06",
+            "version": "2.13.2"
+          },
+          {
+            "license": "MIT",
+            "license_files": [
+              "project/vendor/boxcar-0.2.14/LICENSE"
+            ],
+            "name": "boxcar",
+            "rust_version": "1.72.0",
+            "source_bytes": 117182,
+            "source_files": 13,
+            "source_url": "https://static.crates.io/crates/boxcar/boxcar-0.2.14.crate",
+            "upstream_package_sha256": "36f64beae40a84da1b4b26ff2761a5b895c12adc41dc25aaee1c4f2bbfe97a6e",
+            "version": "0.2.14"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/cfg-if-1.0.5/LICENSE-APACHE",
+              "project/vendor/cfg-if-1.0.5/LICENSE-MIT"
+            ],
+            "name": "cfg-if",
+            "rust_version": "1.32",
+            "source_bytes": 23652,
+            "source_files": 8,
+            "source_url": "https://static.crates.io/crates/cfg-if/cfg-if-1.0.5.crate",
+            "upstream_package_sha256": "4e7648175b45a9a48536d676f68d918270699102aa8dab5496df06904c914600",
+            "version": "1.0.5"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/crossbeam-queue-0.3.14/LICENSE-APACHE",
+              "project/vendor/crossbeam-queue-0.3.14/LICENSE-MIT"
+            ],
+            "name": "crossbeam-queue",
+            "rust_version": "1.60",
+            "source_bytes": 81629,
+            "source_files": 11,
+            "source_url": "https://static.crates.io/crates/crossbeam-queue/crossbeam-queue-0.3.14.crate",
+            "upstream_package_sha256": "03e8bd762f7479489c70ed6c768ddca99d7296857de437a68dcb2a94365b3fae",
+            "version": "0.3.14"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/crossbeam-utils-0.8.23/LICENSE-APACHE",
+              "project/vendor/crossbeam-utils-0.8.23/LICENSE-MIT"
+            ],
+            "name": "crossbeam-utils",
+            "rust_version": "1.60",
+            "source_bytes": 202070,
+            "source_files": 30,
+            "source_url": "https://static.crates.io/crates/crossbeam-utils/crossbeam-utils-0.8.23.crate",
+            "upstream_package_sha256": "a31eee39dddec8330830986fcd7625edb5a24ec90ea038215273bbc3adb08ac6",
+            "version": "0.8.23"
+          },
+          {
+            "license": "Apache-2.0 OR MIT",
+            "license_files": [
+              "project/vendor/equivalent-1.0.3/LICENSE-APACHE",
+              "project/vendor/equivalent-1.0.3/LICENSE-MIT"
+            ],
+            "name": "equivalent",
+            "rust_version": "1.6",
+            "source_bytes": 17734,
+            "source_files": 6,
+            "source_url": "https://static.crates.io/crates/equivalent/equivalent-1.0.3.crate",
+            "upstream_package_sha256": "00d174d5400e5e8fd687ad1049e2f578285fa914201b1af7e8b112a4546bd826",
+            "version": "1.0.3"
+          },
+          {
+            "license": "Zlib",
+            "license_files": [
+              "project/vendor/foldhash-0.2.0/LICENSE"
+            ],
+            "name": "foldhash",
+            "rust_version": "1.60",
+            "source_bytes": 83908,
+            "source_files": 9,
+            "source_url": "https://static.crates.io/crates/foldhash/foldhash-0.2.0.crate",
+            "upstream_package_sha256": "77ce24cb58228fbb8aa041425bb1050850ac19177686ea6e0f41a70416f56fdb",
+            "version": "0.2.0"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/hashbrown-0.17.1/LICENSE-APACHE",
+              "project/vendor/hashbrown-0.17.1/LICENSE-MIT"
+            ],
+            "name": "hashbrown",
+            "rust_version": "1.85.0",
+            "source_bytes": 885628,
+            "source_files": 47,
+            "source_url": "https://static.crates.io/crates/hashbrown/hashbrown-0.17.1.crate",
+            "upstream_package_sha256": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+            "version": "0.17.1"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/hashlink-0.12.2/LICENSE-APACHE",
+              "project/vendor/hashlink-0.12.2/LICENSE-MIT"
+            ],
+            "name": "hashlink",
+            "rust_version": "1.85",
+            "source_bytes": 172791,
+            "source_files": 16,
+            "source_url": "https://static.crates.io/crates/hashlink/hashlink-0.12.2.crate",
+            "upstream_package_sha256": "a596f1b20ed2cc5ecac41a164aaebc7258057060f06c0cf7a2ba3991ee7990fb",
+            "version": "0.12.2"
+          },
+          {
+            "license": "Apache-2.0 OR MIT",
+            "license_files": [
+              "project/vendor/indexmap-2.14.2/LICENSE-APACHE",
+              "project/vendor/indexmap-2.14.2/LICENSE-MIT"
+            ],
+            "name": "indexmap",
+            "rust_version": "1.85",
+            "source_bytes": 523476,
+            "source_files": 39,
+            "source_url": "https://static.crates.io/crates/indexmap/indexmap-2.14.2.crate",
+            "upstream_package_sha256": "cc4e190f5d26ca7051642629da2c52fc03bde85a03197c99408dcd291734c855",
+            "version": "2.14.2"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/intrusive-collections-0.10.3/LICENSE-APACHE",
+              "project/vendor/intrusive-collections-0.10.3/LICENSE-MIT"
+            ],
+            "name": "intrusive-collections",
+            "rust_version": "1.82",
+            "source_bytes": 397691,
+            "source_files": 16,
+            "source_url": "https://static.crates.io/crates/intrusive-collections/intrusive-collections-0.10.3.crate",
+            "upstream_package_sha256": "4275b20e6057cd7733fd8df8a5a31701e4fe44497dad0f3fa0e1c4fb971506be",
+            "version": "0.10.3"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/libc-0.2.191/LICENSE-APACHE",
+              "project/vendor/libc-0.2.191/LICENSE-MIT"
+            ],
+            "name": "libc",
+            "rust_version": "1.65",
+            "source_bytes": 4592824,
+            "source_files": 450,
+            "source_url": "https://static.crates.io/crates/libc/libc-0.2.191.crate",
+            "upstream_package_sha256": "65cd87c9a6d60536580b316ad985726104730a5151c99845f2490428ef91240a",
+            "version": "0.2.191"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/lock_api-0.4.14/LICENSE-APACHE",
+              "project/vendor/lock_api-0.4.14/LICENSE-MIT"
+            ],
+            "name": "lock_api",
+            "rust_version": "1.71.0",
+            "source_bytes": 206503,
+            "source_files": 8,
+            "source_url": "https://static.crates.io/crates/lock_api/lock_api-0.4.14.crate",
+            "upstream_package_sha256": "224399e74b87b5f3557511d98dff8b14089b3dadafcab6bb93eab67d3aace965",
+            "version": "0.4.14"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/once_cell-1.21.4/LICENSE-APACHE",
+              "project/vendor/once_cell-1.21.4/LICENSE-MIT"
+            ],
+            "name": "once_cell",
+            "rust_version": "1.65",
+            "source_bytes": 147998,
+            "source_files": 25,
+            "source_url": "https://static.crates.io/crates/once_cell/once_cell-1.21.4.crate",
+            "upstream_package_sha256": "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50",
+            "version": "1.21.4"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/parking_lot-0.12.5/LICENSE-APACHE",
+              "project/vendor/parking_lot-0.12.5/LICENSE-MIT"
+            ],
+            "name": "parking_lot",
+            "rust_version": "1.71",
+            "source_bytes": 210758,
+            "source_files": 23,
+            "source_url": "https://static.crates.io/crates/parking_lot/parking_lot-0.12.5.crate",
+            "upstream_package_sha256": "93857453250e3077bd71ff98b6a65ea6621a19bb0f559a85248955ac12c45a1a",
+            "version": "0.12.5"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/parking_lot_core-0.9.12/LICENSE-APACHE",
+              "project/vendor/parking_lot_core-0.9.12/LICENSE-MIT"
+            ],
+            "name": "parking_lot_core",
+            "rust_version": "1.71.0",
+            "source_bytes": 143250,
+            "source_files": 22,
+            "source_url": "https://static.crates.io/crates/parking_lot_core/parking_lot_core-0.9.12.crate",
+            "upstream_package_sha256": "2621685985a2ebf1c516881c026032ac7deafcda1a2c9b7850dc81e3dfcb64c1",
+            "version": "0.9.12"
+          },
+          {
+            "license": "Apache-2.0 OR MIT",
+            "license_files": [
+              "project/vendor/pin-project-lite-0.2.17/LICENSE-APACHE",
+              "project/vendor/pin-project-lite-0.2.17/LICENSE-MIT"
+            ],
+            "name": "pin-project-lite",
+            "rust_version": "1.37",
+            "source_bytes": 234454,
+            "source_files": 78,
+            "source_url": "https://static.crates.io/crates/pin-project-lite/pin-project-lite-0.2.17.crate",
+            "upstream_package_sha256": "a89322df9ebe1c1578d689c92318e070967d1042b512afbe49518723f4e6d5cd",
+            "version": "0.2.17"
+          },
+          {
+            "license": "Apache-2.0 OR MIT",
+            "license_files": [
+              "project/vendor/portable-atomic-1.15.0/LICENSE-APACHE",
+              "project/vendor/portable-atomic-1.15.0/LICENSE-MIT"
+            ],
+            "name": "portable-atomic",
+            "rust_version": "1.34",
+            "source_bytes": 1291711,
+            "source_files": 66,
+            "source_url": "https://static.crates.io/crates/portable-atomic/portable-atomic-1.15.0.crate",
+            "upstream_package_sha256": "05c8b63e8d9609db387f0324918f81d68fe27748f084ef092fb35954d0539a85",
+            "version": "1.15.0"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/proc-macro2-1.0.107/LICENSE-APACHE",
+              "project/vendor/proc-macro2-1.0.107/LICENSE-MIT"
+            ],
+            "name": "proc-macro2",
+            "rust_version": "1.71",
+            "source_bytes": 260441,
+            "source_files": 28,
+            "source_url": "https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.107.crate",
+            "upstream_package_sha256": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
+            "version": "1.0.107"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/quote-1.0.47/LICENSE-APACHE",
+              "project/vendor/quote-1.0.47/LICENSE-MIT"
+            ],
+            "name": "quote",
+            "rust_version": "1.71",
+            "source_bytes": 132718,
+            "source_files": 30,
+            "source_url": "https://static.crates.io/crates/quote/quote-1.0.47.crate",
+            "upstream_package_sha256": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
+            "version": "1.0.47"
+          },
+          {
+            "license": "MIT",
+            "license_files": [
+              "project/vendor/redox_syscall-0.5.18/LICENSE"
+            ],
+            "name": "redox_syscall",
+            "rust_version": null,
+            "source_bytes": 154871,
+            "source_files": 28,
+            "source_url": "https://static.crates.io/crates/redox_syscall/redox_syscall-0.5.18.crate",
+            "upstream_package_sha256": "ed2bf2547551a7053d6fdfafda3f938979645c44812fbfcda098faae3f1a362d",
+            "version": "0.5.18"
+          },
+          {
+            "license": "Apache-2.0 OR MIT",
+            "license_files": [
+              "project/vendor/rustc-hash-2.1.3/LICENSE-APACHE",
+              "project/vendor/rustc-hash-2.1.3/LICENSE-MIT"
+            ],
+            "name": "rustc-hash",
+            "rust_version": "1.77",
+            "source_bytes": 41119,
+            "source_files": 10,
+            "source_url": "https://static.crates.io/crates/rustc-hash/rustc-hash-2.1.3.crate",
+            "upstream_package_sha256": "6b1e7f9a428571be2dc5bc0505c13fb6bf936822b894ec87abf8a08a4e51742d",
+            "version": "2.1.3"
+          },
+          {
+            "license": "Apache-2.0 OR MIT",
+            "license_files": [
+              "project/vendor/salsa-0.28.5/LICENSE-APACHE",
+              "project/vendor/salsa-0.28.5/LICENSE-MIT"
+            ],
+            "name": "salsa",
+            "rust_version": "1.88",
+            "source_bytes": 1457662,
+            "source_files": 321,
+            "source_url": "https://static.crates.io/crates/salsa/salsa-0.28.5.crate",
+            "upstream_package_sha256": "27d2e6e19e39591cd99c01ac4141544b4d012cfd0831348629b8187fa9fe6d34",
+            "version": "0.28.5"
+          },
+          {
+            "license": "Apache-2.0 OR MIT",
+            "license_files": [
+              "project/vendor/salsa-macro-rules-0.28.5/LICENSE-APACHE",
+              "project/vendor/salsa-macro-rules-0.28.5/LICENSE-MIT"
+            ],
+            "name": "salsa-macro-rules",
+            "rust_version": "1.88",
+            "source_bytes": 107015,
+            "source_files": 18,
+            "source_url": "https://static.crates.io/crates/salsa-macro-rules/salsa-macro-rules-0.28.5.crate",
+            "upstream_package_sha256": "baf90a551c38f25ed8489111d3d5827aa18e1b85963f5e6a298505b1d1e2cb7e",
+            "version": "0.28.5"
+          },
+          {
+            "license": "Apache-2.0 OR MIT",
+            "license_files": [
+              "project/vendor/salsa-macros-0.28.5/LICENSE-APACHE",
+              "project/vendor/salsa-macros-0.28.5/LICENSE-MIT"
+            ],
+            "name": "salsa-macros",
+            "rust_version": "1.88",
+            "source_bytes": 197757,
+            "source_files": 23,
+            "source_url": "https://static.crates.io/crates/salsa-macros/salsa-macros-0.28.5.crate",
+            "upstream_package_sha256": "69dd77f86ec10e72e314f4ddf7c44c8d349e73cdff1aad524ba9668603fb0549",
+            "version": "0.28.5"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/scopeguard-1.2.0/LICENSE-APACHE",
+              "project/vendor/scopeguard-1.2.0/LICENSE-MIT"
+            ],
+            "name": "scopeguard",
+            "rust_version": null,
+            "source_bytes": 33697,
+            "source_files": 7,
+            "source_url": "https://static.crates.io/crates/scopeguard/scopeguard-1.2.0.crate",
+            "upstream_package_sha256": "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49",
+            "version": "1.2.0"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/smallvec-1.16.4/LICENSE-APACHE",
+              "project/vendor/smallvec-1.16.4/LICENSE-MIT"
+            ],
+            "name": "smallvec",
+            "rust_version": null,
+            "source_bytes": 143782,
+            "source_files": 9,
+            "source_url": "https://static.crates.io/crates/smallvec/smallvec-1.16.4.crate",
+            "upstream_package_sha256": "d0d5d4b1981b8bbbb7aed204cae5726d683d5d6ac7e74ec54122ea28f315e7c8",
+            "version": "1.16.4"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/syn-3.0.9/LICENSE-APACHE",
+              "project/vendor/syn-3.0.9/LICENSE-MIT"
+            ],
+            "name": "syn",
+            "rust_version": "1.71",
+            "source_bytes": 2362445,
+            "source_files": 102,
+            "source_url": "https://static.crates.io/crates/syn/syn-3.0.9.crate",
+            "upstream_package_sha256": "d78c8dee4c7bf0e14673097256fed6142ce9d3b85a408189d07482442145823b",
+            "version": "3.0.9"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/thin-vec-0.2.21/LICENSE-APACHE",
+              "project/vendor/thin-vec-0.2.21/LICENSE-MIT"
+            ],
+            "name": "thin-vec",
+            "rust_version": "1.85",
+            "source_bytes": 173227,
+            "source_files": 7,
+            "source_url": "https://static.crates.io/crates/thin-vec/thin-vec-0.2.21.crate",
+            "upstream_package_sha256": "d6a4b9ba8738cb4a4f399d37e266becfd475e75eb73425b87a05a2f2039ba63e",
+            "version": "0.2.21"
+          },
+          {
+            "license": "MIT",
+            "license_files": [
+              "project/vendor/tracing-0.1.44/LICENSE"
+            ],
+            "name": "tracing",
+            "rust_version": "1.65.0",
+            "source_bytes": 9815472,
+            "source_files": 91,
+            "source_url": "https://static.crates.io/crates/tracing/tracing-0.1.44.crate",
+            "upstream_package_sha256": "63e71662fa4b2a2c3a26f570f037eb95bb1f85397f3cd8076caed2f026a6d100",
+            "version": "0.1.44"
+          },
+          {
+            "license": "MIT",
+            "license_files": [
+              "project/vendor/tracing-core-0.1.36/LICENSE",
+              "project/vendor/tracing-core-0.1.36/src/spin/LICENSE"
+            ],
+            "name": "tracing-core",
+            "rust_version": "1.65.0",
+            "source_bytes": 253877,
+            "source_files": 26,
+            "source_url": "https://static.crates.io/crates/tracing-core/tracing-core-0.1.36.crate",
+            "upstream_package_sha256": "db97caf9d906fbde555dd62fa95ddba9eecfd14cb388e4f491a66d74cd5fb79a",
+            "version": "0.1.36"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/typeid-1.0.3/LICENSE-APACHE",
+              "project/vendor/typeid-1.0.3/LICENSE-MIT"
+            ],
+            "name": "typeid",
+            "rust_version": "1.34",
+            "source_bytes": 24332,
+            "source_files": 8,
+            "source_url": "https://static.crates.io/crates/typeid/typeid-1.0.3.crate",
+            "upstream_package_sha256": "bc7d623258602320d5c55d1bc22793b57daff0ec7efc270ea7d55ce1d5f5471c",
+            "version": "1.0.3"
+          },
+          {
+            "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+            "license_files": [
+              "project/vendor/unicode-ident-1.0.27/LICENSE-APACHE",
+              "project/vendor/unicode-ident-1.0.27/LICENSE-MIT",
+              "project/vendor/unicode-ident-1.0.27/LICENSE-UNICODE"
+            ],
+            "name": "unicode-ident",
+            "rust_version": "1.71",
+            "source_bytes": 336484,
+            "source_files": 19,
+            "source_url": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.27.crate",
+            "upstream_package_sha256": "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563",
+            "version": "1.0.27"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/windows-link-0.2.1/license-apache-2.0",
+              "project/vendor/windows-link-0.2.1/license-mit"
+            ],
+            "name": "windows-link",
+            "rust_version": "1.71",
+            "source_bytes": 15794,
+            "source_files": 6,
+            "source_url": "https://static.crates.io/crates/windows-link/windows-link-0.2.1.crate",
+            "upstream_package_sha256": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5",
+            "version": "0.2.1"
+          }
+        ],
+        "nuget_hash_semantics": null,
+        "resource_id": "salsa",
+        "schema_version": 1
+      },
+      "kind": "source_material",
+      "license": "MIT OR Apache-2.0",
+      "license_class": "open",
+      "material_path": "upstream/salsa-0.28.5.crate",
+      "profile": {
+        "baseline_resource_ids": [],
+        "baseline_version": "0.21.14",
+        "canonical_url": "https://github.com/salsa-rs/salsa",
+        "deployment_downloads": false,
+        "documentation_urls": [
+          "https://docs.rs/salsa/0.28.5/salsa/",
+          "https://salsa-rs.github.io/salsa/tutorial/db.html",
+          "https://salsa-rs.github.io/salsa/tutorial/parser.html"
+        ],
+        "entrypoint": "run_offline.py",
+        "language": "Rust",
+        "license": "MIT OR Apache-2.0",
+        "new_family_candidate": true,
+        "plan_id": "cpg-resource-research-20261101-v1",
+        "prevalidated_target": "Linux x86_64, glibc 2.39",
+        "qualification_scope": "In-process, single-threaded query graph with explicit ingredient registration, field-level dependencies, error propagation, execution counters, and equality backdating. No persistence or parallel scalability qualification.",
+        "required_sdk_version": "1.88.0",
+        "resource_id": "salsa",
+        "schema_version": 1,
+        "sdk_environment": "CPG_RUST_SDK_ROOT",
+        "sdk_included_in_component": false,
+        "version": "0.28.5",
+        "worker_id": "worker 005"
+      },
+      "purpose": "In-process, single-threaded query graph with explicit ingredient registration, field-level dependencies, error propagation, execution counters, and equality backdating. No persistence or parallel scalability qualification.",
+      "sha256": "27d2e6e19e39591cd99c01ac4141544b4d012cfd0831348629b8187fa9fe6d34",
+      "source_url": "https://static.crates.io/crates/salsa/salsa-0.28.5.crate",
+      "strip_archive_root": false,
+      "title": "salsa",
+      "version": "0.28.5"
+    },
+    "catalog_sha256": "c51d7f77bd154aec40e036d3e27547e723450b229ca320c1ff67b8336fa0de6d"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "offline-source-material",
+    "external_sdk_environment": "CPG_RUST_SDK_ROOT",
+    "external_sdk_version": "1.88.0",
+    "required_installed_paths": [
+      "{prefix}/run_offline.py",
+      "{prefix}/resource.json",
+      "{prefix}/material.lock.json",
+      "{prefix}/dependencies.lock.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 307086,
+      "extract": false,
+      "id": "salsa",
+      "material_path": "upstream/salsa-0.28.5.crate",
+      "sha256": "27d2e6e19e39591cd99c01ac4141544b4d012cfd0831348629b8187fa9fe6d34",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/salsa/salsa-0.28.5.crate"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/salsa-rs/salsa",
+      "https://docs.rs/salsa/0.28.5/salsa/",
+      "https://salsa-rs.github.io/salsa/tutorial/db.html",
+      "https://salsa-rs.github.io/salsa/tutorial/parser.html"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B '{recipe}/check_adapter.py' '{prefix}' salsa '{build}' version",
+        "description": "Run the recorded version check."
+      },
+      {
+        "command": "python3 -B '{recipe}/check_adapter.py' '{prefix}' salsa '{build}' functional",
+        "description": "Run the recorded functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/upstream/salsa-0.28.5.crate",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Source capability component",
+        "path": "{prefix}",
+        "purpose": "Source, complete locked local dependency closure, fixtures and Python offline API."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "A new worker005 candidate family; this record does not increase the qualified coverage of the baseline 1862 resources.",
+      "A material cpgpkg contains source/vendor or local NuGet feed. No external SDK is embedded and installation performs no dependency resolution.",
+      "Functional checks require the exact external SDK named by CPG_RUST_SDK_ROOT. Protected recipe manifests bind all executable/library/reference files before running the material payload.",
+      "Rust also needs a compatible host C linker; the reference host uses GCC. .NET requires compatible libc/libstdc++/ICU/OpenSSL and consistent PID/proc visibility.",
+      "Every functional check starts an empty dependency cache and a fresh build under the operation directory. Source prefixes remain unchanged.",
+      "Offline behavior is implemented through frozen Cargo/vendor and local-only locked NuGet. The runner does not create an operating-system network namespace or claim packet tracing.",
+      "The prepared upstream source references are provenance. Cargo archives are provided in extracted vendored form with checksums; original NuGet archives are embedded.",
+      "In-process, single-threaded query graph with explicit ingredient registration, field-level dependencies, error propagation, execution counters, and equality backdating. No persistence or parallel scalability qualification."
+    ],
+    "summary": "In-process, single-threaded query graph with explicit ingredient registration, field-level dependencies, error propagation, execution counters, and equality backdating. No persistence or parallel scalability qualification."
+  },
+  "version": "0.28.5"
+}

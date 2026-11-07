@@ -1,0 +1,63 @@
+{
+  "build": "worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/check_oci.py",
+        "--output",
+        "{build}/oci-check.json"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-task",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "oci-specs",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Only the declared cases, target and pinned inputs",
+    "record_id": "review.engineering.oci-specs",
+    "worker_id": "worker 081"
+  },
+  "provider": "material",
+  "recipe": {},
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://codeload.github.com/opencontainers/image-spec/tar.gz/refs/tags/v1.1.1",
+      "https://codeload.github.com/opencontainers/runtime-spec/tar.gz/refs/tags/v1.2.1",
+      "https://codeload.github.com/opencontainers/distribution-spec/tar.gz/refs/tags/v1.1.1"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Independent resource prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed upstream resource and repeatable checks"
+      }
+    ],
+    "notes": [
+      "Reference material and schema checks only; no runtime or registry conformance qualification.",
+      "Official schema validation and authored semantic checks are reported separately."
+    ],
+    "summary": "Pinned OCI image/runtime/distribution specifications with offline schema, digest, and bundle fixtures"
+  },
+  "version": "image1.1.1-runtime1.2.1-distribution1.1.1"
+}

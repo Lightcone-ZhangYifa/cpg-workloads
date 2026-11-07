@@ -1,0 +1,179 @@
+{
+  "build": "cpg-worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/run_check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "stdout_regex": "CPG_BOUNDED_FUNCTIONAL_PASS calyx",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "calyx",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "external_sdk_environment_keys": [],
+    "qualification_scope": "Bounded native worker profile; no new Dataset or hardware qualification.",
+    "source_lock": {
+      "artifacts": [
+        {
+          "archive_git_commit": "4901acb76364db4fcba2cc7877139aa2bf41291c",
+          "bytes": 775455,
+          "file": "raw/oss-cad-suite-build-2026-11-01.tar.gz",
+          "sha256": "c4025670fc0059c4ac3b9c9cfbd49a56126a6e7a10ed7733b28c0d51a353de0b",
+          "url": "https://codeload.github.com/YosysHQ/oss-cad-suite-build/tar.gz/2026-11-01"
+        },
+        {
+          "archive_git_commit": "dd8a7d5e449e624a7d92b993f1fda0abab2fd769",
+          "bytes": 7698565,
+          "file": "raw/verilator-dd8a7d5e4.tar.gz",
+          "sha256": "07675596720d75f2170c448a64cf9e44e964738a2bdd26479723f4699aa032b6",
+          "url": "https://codeload.github.com/verilator/verilator/tar.gz/dd8a7d5e4"
+        }
+      ],
+      "binary_sha256": "c199319eeec90549dabe7c0459cddef8507881e530f072ea9461d32acd267f06",
+      "build_command": "cargo build --offline --locked --release --jobs 2 --manifest-path <source>/Cargo.toml -p calyx",
+      "build_toolchain": "Rust/Cargo1.85.0 Linux x86_64",
+      "commit": "e4ee8300e3ab828431c3a6a062300d22550f5874",
+      "current_runtime_profile": "bundled_native_verilator",
+      "license": "Upstream MIT license and notices retained",
+      "native_simulator_lock": {
+        "artifacts": [
+          {
+            "archive_git_commit": "4901acb76364db4fcba2cc7877139aa2bf41291c",
+            "bytes": 775455,
+            "file": "raw/oss-cad-suite-build-2026-11-01.tar.gz",
+            "sha256": "c4025670fc0059c4ac3b9c9cfbd49a56126a6e7a10ed7733b28c0d51a353de0b",
+            "url": "https://codeload.github.com/YosysHQ/oss-cad-suite-build/tar.gz/2026-11-01"
+          },
+          {
+            "archive_git_commit": "dd8a7d5e449e624a7d92b993f1fda0abab2fd769",
+            "bytes": 7698565,
+            "file": "raw/verilator-dd8a7d5e4.tar.gz",
+            "sha256": "07675596720d75f2170c448a64cf9e44e964738a2bdd26479723f4699aa032b6",
+            "url": "https://codeload.github.com/verilator/verilator/tar.gz/dd8a7d5e4"
+          }
+        ],
+        "binary_changes_by_cpg": false,
+        "binary_supplier": {
+          "bytes": 748574166,
+          "name": "YosysHQ OSS CAD Suite",
+          "original_raw_sidecar": "oss-cad-suite-linux-x64-20261101.tgz",
+          "release": "2026-11-01",
+          "sha256": "c61fb5b91c72ecb1f2a61b166d65fd387d5ad51b12476078e96ef8db1c6f37a3",
+          "url": "https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2026-11-01/oss-cad-suite-linux-x64-20261101.tgz"
+        },
+        "build_from_source_verified": false,
+        "cpg_native_host_adaptation": "adaptation/native-host-runtime.json",
+        "license": "LGPL-3.0-only OR Artistic-2.0; bundled runtime licenses retained",
+        "resource_id": "verilator",
+        "runtime": "Linux x86_64; bundled ELF loader and recursively resolved shared libraries; host bash, perl, GCC/G++ and make for Verilator model generation",
+        "supplier_modifications": "Original OSS CAD wrappers/build recipes retained; Verilator identifies upstream supplier modifications as (mod).",
+        "upstream_commit": "dd8a7d5e449e624a7d92b993f1fda0abab2fd769",
+        "version": "5.053-dev.dd8a7d5e4.oss20261101"
+      },
+      "prior_native_icarus_attempt": "Icarus12 passed ELF checks but triggered generated $onehot0 guard at time0; failure retained. Final qualification uses unmodified generated RTL under Verilator with assertions enabled.",
+      "prior_simulator_attempt": "OSS CAD20261101/14.0 functional standalone passed, but original CPG native ABI checks rejected its GLIBC2.42/2.43 runtime. The attempt logs/source locks are preserved as superseded.",
+      "repository": "https://github.com/calyxir/calyx",
+      "resource_id": "calyx",
+      "runtime_platform": "Linux x86_64 glibc2.39 tested",
+      "simulation_dependency": "Exact Verilator5.053 native profile, independent bundled runtime, timing/guard assertions enabled.",
+      "simulator_corresponding_source": "sdk/verilator/raw",
+      "source_bytes": 1663258,
+      "source_changes": [],
+      "source_sha256": "ec8f75ea380b3bcae384d340727fbd6925cb4e8fda594a8906adb8e10c52311b",
+      "source_url": "https://codeload.github.com/calyxir/calyx/tar.gz/v0.7.1",
+      "version": "0.7.1"
+    },
+    "worker_plan_id": "cpg-resource-research-20261101-v1"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "wrapper": false
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 775455,
+      "extract": false,
+      "id": "upstream-1",
+      "material_path": null,
+      "sha256": "c4025670fc0059c4ac3b9c9cfbd49a56126a6e7a10ed7733b28c0d51a353de0b",
+      "strip_root": false,
+      "url": "https://codeload.github.com/YosysHQ/oss-cad-suite-build/tar.gz/2026-11-01"
+    },
+    {
+      "bytes": 7698565,
+      "extract": false,
+      "id": "upstream-2",
+      "material_path": null,
+      "sha256": "07675596720d75f2170c448a64cf9e44e964738a2bdd26479723f4699aa032b6",
+      "strip_root": false,
+      "url": "https://codeload.github.com/verilator/verilator/tar.gz/dd8a7d5e4"
+    },
+    {
+      "bytes": 1663258,
+      "extract": false,
+      "id": "upstream-3",
+      "material_path": null,
+      "sha256": "ec8f75ea380b3bcae384d340727fbd6925cb4e8fda594a8906adb8e10c52311b",
+      "strip_root": false,
+      "url": "https://codeload.github.com/calyxir/calyx/tar.gz/v0.7.1"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the original CPG PackageManager with an explicit fresh prefix and declared SDK bindings."
+    ],
+    "documentation": [
+      "https://github.com/calyxir/calyx"
+    ],
+    "examples": [
+      {
+        "command": "manager.check('calyx', prefix=prefix, kinds=['functional'], environment=bindings)",
+        "description": "Repeat the declared functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Payload",
+        "path": "{prefix}",
+        "purpose": "Independent runtime, source locks and upstream materials."
+      }
+    ],
+    "notes": [
+      "Reference distribution is build metadata; actual ELF ABI is verified by original CPG.",
+      "This worker increment does not promote original formal counts or claim hardware qualification."
+    ],
+    "summary": "calyx: independently installed, immutable upstream inputs and bounded functional validation."
+  },
+  "version": "0.7.1"
+}

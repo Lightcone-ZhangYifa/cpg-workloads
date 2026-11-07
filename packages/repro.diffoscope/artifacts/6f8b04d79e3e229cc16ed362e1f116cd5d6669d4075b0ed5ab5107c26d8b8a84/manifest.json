@@ -1,0 +1,154 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2415,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build_python.py",
+      "sha256": "40d70d66d5bb6fabaeea0e6c642f320f359516b81781527dd5d2b270c962f13a"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 7402324,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/61d91c942a88426861b3f6bec97e04a776819435cc0ed53a8aaaf97942219eb5",
+      "sha256": "61d91c942a88426861b3f6bec97e04a776819435cc0ed53a8aaaf97942219eb5"
+    }
+  ],
+  "inventory_sha256": "7a68fc1a50d28197a745a31cea46e12f78a76faf6f89a4773a1865c257aa27e2",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "1d93f7b57d5452147098e55254331b3316cb7f503f012853ab1ba07b27402c60",
+  "method": "source",
+  "package": {
+    "build": "worker-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{prefix}/checks/qualify_installed.py",
+          "--tool",
+          "diffoscope",
+          "--prefix",
+          "{prefix}",
+          "--out",
+          "{build}/qualification"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "bounded-functional",
+        "kind": "functional",
+        "timeout_seconds": 600
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "repro.diffoscope",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "Only the declared cases, target and pinned inputs",
+      "record_id": "review.engineering.diffoscope",
+      "worker_id": "worker 080"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "python",
+      "install_argv": [
+        "python3",
+        "{recipe}/build_python.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}"
+      ],
+      "required_host_commands": [
+        "python3"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "gcc",
+        "readelf",
+        "objdump",
+        "file",
+        "diff",
+        "tar"
+      ],
+      "runtime_environment": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 7402324,
+        "extract": true,
+        "id": "offline-source-bundle",
+        "material_path": "source-bundle",
+        "sha256": "61d91c942a88426861b3f6bec97e04a776819435cc0ed53a8aaaf97942219eb5",
+        "strip_root": true,
+        "url": null
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://diffoscope.org/"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Independent resource prefix",
+          "path": "{prefix}",
+          "purpose": "Fixed upstream resource and repeatable checks"
+        }
+      ],
+      "notes": [
+        "Only controlled ELF/archive or build-path/locale cases are qualified.",
+        "Source method rebuilds upstream sdists using bundled setuptools/wheel and exact dependencies; no network acquisition."
+      ],
+      "summary": "Pinned diffoscope with repeatable compiler reproducibility fixtures"
+    },
+    "version": "336"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "test_scope": "Declared compiler reproducibility fixtures",
+    "upstream_sources": [
+      "diffoscope"
+    ],
+    "worker": "080"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "offline-source-bundle",
+      "path": "sources/61d91c942a88426861b3f6bec97e04a776819435cc0ed53a8aaaf97942219eb5"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "build": "worker028-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/offline_exec.py",
+        "--",
+        "python3",
+        "{recipe}/worker028-check.py",
+        "--case",
+        "iwyu",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "worker028-assignment-acceptance",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "include-what-you-use",
+  "metadata": {
+    "additional_input_lock": "recipe/deb-input-lock.json",
+    "baseline_relation": "new independent resource; original 1862 baseline unchanged",
+    "catalog": {
+      "archive_bytes": 680912,
+      "category": [
+        "Compiler development",
+        "Build and continuous integration"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "include-what-you-use",
+      "kind": "native_bundle",
+      "license_id": "NCSA AND Apache-2.0 WITH LLVM-exception",
+      "mandatory": false,
+      "material_path": "sources/include-what-you-use",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "头文件依赖清理与编译开销定位",
+      "qualification_scope": "选与Clang版本对应release；对include例产生建议并验证改后编译",
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "a9f1c2c8e0e48e2f121368c17e4163141ab0a69347416e781883a3fe8bc03534",
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/i/iwyu/iwyu_8.21-1build2_amd64.deb",
+      "strip_archive_root": false,
+      "title": "include-what-you-use",
+      "upstream": "https://include-what-you-use.org/",
+      "version": "0.21"
+    },
+    "catalog_sha256": "2c5ecfa7b04057f2f8d0ff731d985a871878fdc4821538dfa32576c04aa6090e",
+    "distribution_package": "iwyu",
+    "distribution_version": "8.21-1build2",
+    "host_requirements": {
+      "libseccomp": "required by the no-network acceptance runner",
+      "platform": "Linux x86_64",
+      "python": "3.12 for frozen wheels; 3.12 checker validated"
+    },
+    "license_id": "NCSA AND Apache-2.0 WITH LLVM-exception",
+    "native_payload_recipe": "relative ELF RUNPATH; host glibc remains a declared runtime boundary",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "选与Clang版本对应release；对include例产生建议并验证改后编译",
+    "record_id": "review.engineering.iwyu",
+    "source_compile_qualified": false,
+    "upstream_version": "0.21",
+    "worker_id": "worker 028"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [],
+    "network_policy": "offline installation and acceptance via seccomp; preparation is a separate networked phase",
+    "required_installed_paths": [
+      "{prefix}/bin/include-what-you-use"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "g++"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C.UTF-8",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONNOUSERSITE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 680912,
+      "extract": false,
+      "id": "include-what-you-use",
+      "material_path": "sources/include-what-you-use",
+      "sha256": "a9f1c2c8e0e48e2f121368c17e4163141ab0a69347416e781883a3fe8bc03534",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/i/iwyu/iwyu_8.21-1build2_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the selected {prefix}/bin explicitly, or add it to PATH."
+    ],
+    "documentation": [
+      "https://include-what-you-use.org/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/offline_exec.py -- python3 {recipe}/worker028-check.py --case iwyu --prefix {prefix} --build {build}",
+        "description": "Replay the concrete assignment acceptance case"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Installed resource",
+        "path": "{prefix}",
+        "purpose": "Independent relocatable installation with retained license notices"
+      }
+    ],
+    "notes": [
+      "Official Ubuntu DEB input extracted privately and packaged with a declared ELF runtime closure; this does not claim a local source build.",
+      "Matching IWYU upstream 0.21 / Clang 17.0.6 is mandatory. The companion Clang 17 driver, headers and LLVM libraries are included within this resource.",
+      "Runtime compatibility is defined by actual architecture, ELF/GLIBC requirements and explicit host commands, not a distribution-name gate.",
+      "The Linux acceptance guard needs libseccomp; it denies fresh AF_INET and AF_INET6 sockets to the checker and all descendants. No OCI or physical-target qualification is claimed."
+    ],
+    "summary": "头文件依赖清理与编译开销定位"
+  },
+  "version": "0.21"
+}

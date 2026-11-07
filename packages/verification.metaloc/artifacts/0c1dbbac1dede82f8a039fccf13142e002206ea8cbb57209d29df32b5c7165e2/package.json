@@ -1,0 +1,548 @@
+{
+  "build": "worker038-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "locked-offline-capability-check",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "verification.metaloc",
+  "metadata": {
+    "license": "CC-BY-4.0 (exact Zenodo MetaLoc source and its derivatives); Apache-2.0 WITH LLVM-exception and retained third-party licenses (LLVM); original Cargo dependency licenses including MPL-2.0; MIT (CPG integration)",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "dataset_verified": null,
+      "formal_baseline_promotion": false,
+      "functional": true,
+      "material": true
+    },
+    "record_id": "review.verification.metaloc",
+    "scope": "Locally built unmodified, CC-BY-4.0-authorized MetaLoc passinst instruments a fixed isolated LLVM TailCallElim source, which is then compiled into a new opt. Installed check executes both delivered Linux x86_64 binaries, verifies exact generated source, detects the original author counterexample and passes a no-op-module negative control. Includes verified selected LLVM source, all 40 original Cargo crates and separately delivered fixed Rust build inputs for offline reconstruction. No full MetaLoc campaign, other-pass, target-backend or cross-platform qualification.",
+    "source_identity": {
+      "after_dataset_verified": null,
+      "after_functional": true,
+      "after_material": true,
+      "baseline_version": "0.21.14",
+      "integration_license": "CPG-LICENSE.txt",
+      "inventory_writes": false,
+      "kind": "metaloc",
+      "license": "CC-BY-4.0 (exact Zenodo MetaLoc source and its derivatives); Apache-2.0 WITH LLVM-exception and retained third-party licenses (LLVM); original Cargo dependency licenses including MPL-2.0; MIT (CPG integration)",
+      "license_notices": "licenses/",
+      "native_execution_during_check": true,
+      "offline_check": "python3 check.py",
+      "record_id": "review.verification.metaloc",
+      "resource_id": "verification.metaloc",
+      "scope": "Locally built unmodified, CC-BY-4.0-authorized MetaLoc passinst instruments a fixed isolated LLVM TailCallElim source, which is then compiled into a new opt. Installed check executes both delivered Linux x86_64 binaries, verifies exact generated source, detects the original author counterexample and passes a no-op-module negative control. Includes verified selected LLVM source, all 40 original Cargo crates and separately delivered fixed Rust build inputs for offline reconstruction. No full MetaLoc campaign, other-pass, target-backend or cross-platform qualification.",
+      "tested_platform": {
+        "arch": "x86_64",
+        "glibc": "2.39",
+        "os": "linux"
+      },
+      "tested_python": "3.12",
+      "version": "git-bbd9db07f805-llvm-b84323c-sourcebuild1",
+      "worker_id": "worker 038"
+    },
+    "worker_id": "worker 038"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/check.py",
+      "{prefix}/resource.json",
+      "{prefix}/inventory-lock.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 22783,
+      "extract": false,
+      "id": "upstream-0001",
+      "material_path": "inputs/MetaLoc-artifact_eval.zip",
+      "sha256": "c6d42612183a1604c8c8fd6040e99bd6421d28d6908d5fb28d8351404a29b343",
+      "strip_root": false,
+      "url": "https://zenodo.org/api/records/15023927/files/Apochens/MetaLoc-artifact_eval.zip/content"
+    },
+    {
+      "bytes": 17023,
+      "extract": false,
+      "id": "upstream-0002",
+      "material_path": "licenses/CC-BY-4.0.txt",
+      "sha256": "d557539df68e771cc1eedcc91d13f70fca930e508d11eedcafa4b15db49e3744",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/spdx/license-list-data/v3.26.0/text/CC-BY-4.0.txt"
+    },
+    {
+      "bytes": 15141,
+      "extract": false,
+      "id": "upstream-0003",
+      "material_path": "licenses/LLVM-LICENSE.TXT",
+      "sha256": "8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/llvm/llvm-project/b84323cca9e2c7049c0aec92a45911742822b40e/llvm/LICENSE.TXT"
+    },
+    {
+      "bytes": 36609,
+      "extract": false,
+      "id": "upstream-0004",
+      "material_path": "fixtures/TailRecursionElimination.cpp",
+      "sha256": "001e419a79be7b19daf644f569840047546f4c164038bd1e851e7dbcec86e451",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/llvm/llvm-project/b84323cca9e2c7049c0aec92a45911742822b40e/llvm/lib/Transforms/Scalar/TailRecursionElimination.cpp"
+    },
+    {
+      "bytes": 4966,
+      "extract": false,
+      "id": "upstream-0005",
+      "material_path": "fixtures/official-dropping_debugloc_acc_rec_inst_rnew.ll",
+      "sha256": "9c67c486fc7b87bd9fea1973a542b885843b3f8b5a37ab1efcb57377c2af4fc4",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/llvm/llvm-project/ace069d7c5882431d1fd72c5c297ec2508d20fb0/llvm/test/Transforms/TailCallElim/dropping_debugloc_acc_rec_inst_rnew.ll"
+    },
+    {
+      "bytes": 183311,
+      "extract": false,
+      "id": "upstream-0006",
+      "material_path": "inputs/crates/aho-corasick-1.1.3.crate",
+      "sha256": "8e60d3430d3a69478ad0993f19238d2df97c507009a52b3c10addcd7f6bcb916",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/aho-corasick/aho-corasick-1.1.3.crate"
+    },
+    {
+      "bytes": 29681,
+      "extract": false,
+      "id": "upstream-0007",
+      "material_path": "inputs/crates/anstream-0.6.18.crate",
+      "sha256": "8acc5369981196006228e28809f761875c0327210a891e941f4c683b3a99529b",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/anstream/anstream-0.6.18.crate"
+    },
+    {
+      "bytes": 15725,
+      "extract": false,
+      "id": "upstream-0008",
+      "material_path": "inputs/crates/anstyle-1.0.10.crate",
+      "sha256": "55cc3b69f167a1ef2e161439aa98aed94e6028e5f9a59be9a6ffb47aef1651f9",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/anstyle/anstyle-1.0.10.crate"
+    },
+    {
+      "bytes": 22343,
+      "extract": false,
+      "id": "upstream-0009",
+      "material_path": "inputs/crates/anstyle-parse-0.2.6.crate",
+      "sha256": "3b2d16507662817a6a20a9ea92df6652ee4f94f914589377d69f3b21bc5798a9",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/anstyle-parse/anstyle-parse-0.2.6.crate"
+    },
+    {
+      "bytes": 9969,
+      "extract": false,
+      "id": "upstream-0010",
+      "material_path": "inputs/crates/anstyle-query-1.1.2.crate",
+      "sha256": "79947af37f4177cfead1110013d678905c37501914fba0efea834c3fe9a8d60c",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/anstyle-query/anstyle-query-1.1.2.crate"
+    },
+    {
+      "bytes": 12400,
+      "extract": false,
+      "id": "upstream-0011",
+      "material_path": "inputs/crates/anstyle-wincon-3.0.7.crate",
+      "sha256": "ca3534e77181a9cc07539ad51f2141fe32f6c3ffd4df76db8ad92346b003ae4e",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/anstyle-wincon/anstyle-wincon-3.0.7.crate"
+    },
+    {
+      "bytes": 103847,
+      "extract": false,
+      "id": "upstream-0012",
+      "material_path": "inputs/crates/cc-1.2.16.crate",
+      "sha256": "be714c154be609ec7f5dad223a33bf1482fff90472de28f7362806e6d4832b8c",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/cc/cc-1.2.16.crate"
+    },
+    {
+      "bytes": 56962,
+      "extract": false,
+      "id": "upstream-0013",
+      "material_path": "inputs/crates/clap-4.5.32.crate",
+      "sha256": "6088f3ae8c3608d19260cd7445411865a485688711b78b5be70d78cd96136f83",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/clap/clap-4.5.32.crate"
+    },
+    {
+      "bytes": 168413,
+      "extract": false,
+      "id": "upstream-0014",
+      "material_path": "inputs/crates/clap_builder-4.5.32.crate",
+      "sha256": "22a7ef7f676155edfb82daa97f99441f3ebf4a58d5e32f295a56259f1b6facc8",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/clap_builder/clap_builder-4.5.32.crate"
+    },
+    {
+      "bytes": 33441,
+      "extract": false,
+      "id": "upstream-0015",
+      "material_path": "inputs/crates/clap_derive-4.5.32.crate",
+      "sha256": "09176aae279615badda0765c0c0b3f6ed53f4709118af73cf4655d85d1530cd7",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/clap_derive/clap_derive-4.5.32.crate"
+    },
+    {
+      "bytes": 12858,
+      "extract": false,
+      "id": "upstream-0016",
+      "material_path": "inputs/crates/clap_lex-0.7.4.crate",
+      "sha256": "f46ad14479a25103f283c0f10005961cf086d8dc42205bb44c46ac563475dca6",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/clap_lex/clap_lex-0.7.4.crate"
+    },
+    {
+      "bytes": 7923,
+      "extract": false,
+      "id": "upstream-0017",
+      "material_path": "inputs/crates/colorchoice-1.0.3.crate",
+      "sha256": "5b63caa9aa9397e2d9480a9b13673856c78d8ac123288526c37d7839f2a86990",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/colorchoice/colorchoice-1.0.3.crate"
+    },
+    {
+      "bytes": 35062,
+      "extract": false,
+      "id": "upstream-0018",
+      "material_path": "inputs/crates/colored-2.2.0.crate",
+      "sha256": "117725a109d387c937a1533ce01b450cbde6b88abceea8473c4d7a85853cda3c",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/colored/colored-2.2.0.crate"
+    },
+    {
+      "bytes": 11517,
+      "extract": false,
+      "id": "upstream-0019",
+      "material_path": "inputs/crates/heck-0.5.0.crate",
+      "sha256": "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/heck/heck-0.5.0.crate"
+    },
+    {
+      "bytes": 7492,
+      "extract": false,
+      "id": "upstream-0020",
+      "material_path": "inputs/crates/is_terminal_polyfill-1.70.1.crate",
+      "sha256": "7943c866cc5cd64cbc25b2e01621d07fa8eb2a1a23160ee81ce38704e97b8ecf",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/is_terminal_polyfill/is_terminal_polyfill-1.70.1.crate"
+    },
+    {
+      "bytes": 14025,
+      "extract": false,
+      "id": "upstream-0021",
+      "material_path": "inputs/crates/lazy_static-1.5.0.crate",
+      "sha256": "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/lazy_static/lazy_static-1.5.0.crate"
+    },
+    {
+      "bytes": 96670,
+      "extract": false,
+      "id": "upstream-0022",
+      "material_path": "inputs/crates/memchr-2.7.4.crate",
+      "sha256": "78ca9ab1a0babb1e7d5695e3530886289c18cf2f87ec19a575a0abdce112e3a3",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/memchr/memchr-2.7.4.crate"
+    },
+    {
+      "bytes": 33959,
+      "extract": false,
+      "id": "upstream-0023",
+      "material_path": "inputs/crates/once_cell-1.21.0.crate",
+      "sha256": "cde51589ab56b20a6f686b2c68f7a0bd6add753d697abf720d63f8db3ab7b1ad",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/once_cell/once_cell-1.21.0.crate"
+    },
+    {
+      "bytes": 52391,
+      "extract": false,
+      "id": "upstream-0024",
+      "material_path": "inputs/crates/proc-macro2-1.0.94.crate",
+      "sha256": "a31971752e70b8b2686d7e46ec17fb38dad4051d94024c88df49b667caea9c84",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.94.crate"
+    },
+    {
+      "bytes": 31063,
+      "extract": false,
+      "id": "upstream-0025",
+      "material_path": "inputs/crates/quote-1.0.40.crate",
+      "sha256": "1885c039570dc00dcb4ff087a89e185fd56bae234ddc7f056a945bf36467248d",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/quote/quote-1.0.40.crate"
+    },
+    {
+      "bytes": 254170,
+      "extract": false,
+      "id": "upstream-0026",
+      "material_path": "inputs/crates/regex-1.11.1.crate",
+      "sha256": "b544ef1b4eac5dc2db33ea63606ae9ffcfac26c1416a2806ae0bf5f56b201191",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/regex/regex-1.11.1.crate"
+    },
+    {
+      "bytes": 618525,
+      "extract": false,
+      "id": "upstream-0027",
+      "material_path": "inputs/crates/regex-automata-0.4.9.crate",
+      "sha256": "809e8dc61f6de73b46c85f4c96486310fe304c434cfa43669d7b40f711150908",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/regex-automata/regex-automata-0.4.9.crate"
+    },
+    {
+      "bytes": 357541,
+      "extract": false,
+      "id": "upstream-0028",
+      "material_path": "inputs/crates/regex-syntax-0.8.5.crate",
+      "sha256": "2b15c43186be67a4fd63bee50d0303afffcef381492ebe2c5d87f324e1b8815c",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/regex-syntax/regex-syntax-0.8.5.crate"
+    },
+    {
+      "bytes": 18713,
+      "extract": false,
+      "id": "upstream-0029",
+      "material_path": "inputs/crates/shlex-1.3.0.crate",
+      "sha256": "0fda2ff0d084019ba4d7c6f371c95d8fd75ce3524c3cb8fb653a3023f6323e64",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/shlex/shlex-1.3.0.crate"
+    },
+    {
+      "bytes": 14266,
+      "extract": false,
+      "id": "upstream-0030",
+      "material_path": "inputs/crates/strsim-0.11.1.crate",
+      "sha256": "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/strsim/strsim-0.11.1.crate"
+    },
+    {
+      "bytes": 297947,
+      "extract": false,
+      "id": "upstream-0031",
+      "material_path": "inputs/crates/syn-2.0.100.crate",
+      "sha256": "b09a44accad81e1ba1cd74a32461ba89dee89095ba17b32f5d03683b1b1fc2a0",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/syn/syn-2.0.100.crate"
+    },
+    {
+      "bytes": 173157,
+      "extract": false,
+      "id": "upstream-0032",
+      "material_path": "inputs/crates/tree-sitter-0.22.6.crate",
+      "sha256": "df7cc499ceadd4dcdf7ec6d4cbc34ece92c3fa07821e287aedecd4416c516dca",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/tree-sitter/tree-sitter-0.22.6.crate"
+    },
+    {
+      "bytes": 907252,
+      "extract": false,
+      "id": "upstream-0033",
+      "material_path": "inputs/crates/tree-sitter-cpp-0.22.3.crate",
+      "sha256": "1d509a22a992790d38f2c291961ff8a1ff016c437c7ec6befc9220b8eec8918c",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/tree-sitter-cpp/tree-sitter-cpp-0.22.3.crate"
+    },
+    {
+      "bytes": 47743,
+      "extract": false,
+      "id": "upstream-0034",
+      "material_path": "inputs/crates/unicode-ident-1.0.18.crate",
+      "sha256": "5a5f39404a5da50712a4c1eecf25e90dd62b613502b7e925fd4e4d19b5c96512",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.18.crate"
+    },
+    {
+      "bytes": 13499,
+      "extract": false,
+      "id": "upstream-0035",
+      "material_path": "inputs/crates/utf8parse-0.2.2.crate",
+      "sha256": "06abde3611657adf66d383f00b093d7faecc7fa57071cce2578660c9f1010821",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/utf8parse/utf8parse-0.2.2.crate"
+    },
+    {
+      "bytes": 2387323,
+      "extract": false,
+      "id": "upstream-0036",
+      "material_path": "inputs/crates/windows-sys-0.59.0.crate",
+      "sha256": "1e38bc4d79ed67fd075bcc251a1c39b32a1776bbe92e5bef1f0bf1f8c531853b",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/windows-sys/windows-sys-0.59.0.crate"
+    },
+    {
+      "bytes": 6403,
+      "extract": false,
+      "id": "upstream-0037",
+      "material_path": "inputs/crates/windows-targets-0.52.6.crate",
+      "sha256": "9b724f72796e036ab90c1021d4780d4d3d648aca59e491e6b98e725b84e99973",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/windows-targets/windows-targets-0.52.6.crate"
+    },
+    {
+      "bytes": 435718,
+      "extract": false,
+      "id": "upstream-0038",
+      "material_path": "inputs/crates/windows_aarch64_gnullvm-0.52.6.crate",
+      "sha256": "32a4622180e7a0ec044bb555404c800bc9fd9ec262ec147edd5989ccd0c02cd3",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/windows_aarch64_gnullvm/windows_aarch64_gnullvm-0.52.6.crate"
+    },
+    {
+      "bytes": 832615,
+      "extract": false,
+      "id": "upstream-0039",
+      "material_path": "inputs/crates/windows_aarch64_msvc-0.52.6.crate",
+      "sha256": "09ec2a7bb152e2252b53fa7803150007879548bc709c039df7627cabbd05d469",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/windows_aarch64_msvc/windows_aarch64_msvc-0.52.6.crate"
+    },
+    {
+      "bytes": 880402,
+      "extract": false,
+      "id": "upstream-0040",
+      "material_path": "inputs/crates/windows_i686_gnu-0.52.6.crate",
+      "sha256": "8e9b5ad5ab802e97eb8e295ac6720e509ee4c243f69d781394014ebfe8bbfa0b",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/windows_i686_gnu/windows_i686_gnu-0.52.6.crate"
+    },
+    {
+      "bytes": 475940,
+      "extract": false,
+      "id": "upstream-0041",
+      "material_path": "inputs/crates/windows_i686_gnullvm-0.52.6.crate",
+      "sha256": "0eee52d38c090b3caa76c563b86c3a4bd71ef1a819287c19d586d7334ae8ed66",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/windows_i686_gnullvm/windows_i686_gnullvm-0.52.6.crate"
+    },
+    {
+      "bytes": 901163,
+      "extract": false,
+      "id": "upstream-0042",
+      "material_path": "inputs/crates/windows_i686_msvc-0.52.6.crate",
+      "sha256": "240948bc05c5e7c6dabba28bf89d89ffce3e303022809e73deaefe4f6ec56c66",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/windows_i686_msvc/windows_i686_msvc-0.52.6.crate"
+    },
+    {
+      "bytes": 836363,
+      "extract": false,
+      "id": "upstream-0043",
+      "material_path": "inputs/crates/windows_x86_64_gnu-0.52.6.crate",
+      "sha256": "147a5c80aabfbf0c7d901cb5895d1de30ef2907eb21fbbab29ca94c5b08b1a78",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/windows_x86_64_gnu/windows_x86_64_gnu-0.52.6.crate"
+    },
+    {
+      "bytes": 435707,
+      "extract": false,
+      "id": "upstream-0044",
+      "material_path": "inputs/crates/windows_x86_64_gnullvm-0.52.6.crate",
+      "sha256": "24d5b23dc417412679681396f2b49f3de8c1473deb516bd34410872eff51ed0d",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/windows_x86_64_gnullvm/windows_x86_64_gnullvm-0.52.6.crate"
+    },
+    {
+      "bytes": 832564,
+      "extract": false,
+      "id": "upstream-0045",
+      "material_path": "inputs/crates/windows_x86_64_msvc-0.52.6.crate",
+      "sha256": "589f6da84c646204747d1270a2a5661ea66ed1cced2631d546fdfb155959f9ec",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/windows_x86_64_msvc/windows_x86_64_msvc-0.52.6.crate"
+    },
+    {
+      "bytes": 1085,
+      "extract": false,
+      "id": "upstream-0046",
+      "material_path": "licenses/cargo/tree-sitter-LICENSE",
+      "sha256": "5f9cf9fb6acb1972b35ae29119ce563bb60ec097656bc4b69b9bac2d04c7a147",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/tree-sitter/tree-sitter/b40f342067a89cd6331bf4c27407588320f3c263/LICENSE"
+    },
+    {
+      "bytes": 1080,
+      "extract": false,
+      "id": "upstream-0047",
+      "material_path": "licenses/cargo/tree-sitter-cpp-LICENSE",
+      "sha256": "2e0110e07abef7c2548b26ec9d6969775617ca539a0dc8dbeeb14d6452c711d1",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/tree-sitter/tree-sitter-cpp/0b4aa47f07d958a49260aadc87e8474b03897c23/LICENSE"
+    },
+    {
+      "bytes": 1995,
+      "extract": false,
+      "id": "upstream-0048",
+      "material_path": "licenses/llvm-third-party/UNICODE-LICENSE-V3.txt",
+      "sha256": "9ba0dc030e14ab692310b5395ea4f3a4921bcdbc1b9dbcebb1f81d83eb08f4e6",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/unicode-org/unicodetools/9595f090650e99e3e752b37a7a3866ac8a91999b/LICENSE"
+    },
+    {
+      "bytes": 84870,
+      "extract": false,
+      "id": "upstream-0049",
+      "material_path": "licenses/llvm-third-party/Unicode-15.1-CaseFolding.txt",
+      "sha256": "4e55acfdc32825a22e87670e9056a3bf94ad7c5400065778e9e10f8314372bcf",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/unicode-org/unicodetools/9595f090650e99e3e752b37a7a3866ac8a91999b/unicodetools/data/ucd/dev/CaseFolding.txt"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/ecnusse/MetaLoc"
+    ],
+    "examples": [
+      {
+        "command": "python3 \"{prefix}/check.py\"",
+        "description": "Verify the installed files and the stated offline capability"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Pinned resource",
+        "path": "{prefix}",
+        "purpose": "Read CPG-README.md for the exact local check and explicit native replay interfaces."
+      }
+    ],
+    "notes": [
+      "Locally built unmodified, CC-BY-4.0-authorized MetaLoc passinst instruments a fixed isolated LLVM TailCallElim source, which is then compiled into a new opt. Installed check executes both delivered Linux x86_64 binaries, verifies exact generated source, detects the original author counterexample and passes a no-op-module negative control. Includes verified selected LLVM source, all 40 original Cargo crates and separately delivered fixed Rust build inputs for offline reconstruction. No full MetaLoc campaign, other-pass, target-backend or cross-platform qualification.",
+      "The material carrier does not promote full author-framework or host qualification. Acquisition and live replay are explicit separate commands."
+    ],
+    "summary": "插桩 LLVM Pass，分析控制流位置符合性并定位调试位置更新错误。"
+  },
+  "version": "git-bbd9db07f805-llvm-b84323c-sourcebuild1"
+}

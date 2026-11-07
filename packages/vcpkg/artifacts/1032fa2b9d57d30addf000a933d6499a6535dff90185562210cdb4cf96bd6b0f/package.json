@@ -1,0 +1,71 @@
+{
+  "build": "worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/run_fresh.py",
+        "--base",
+        "{build}",
+        "--",
+        "python3",
+        "{prefix}/check.py",
+        "--bundle",
+        "{prefix}",
+        "--work-dir",
+        "@WORK@"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-task",
+      "kind": "functional",
+      "timeout_seconds": 1500
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "vcpkg",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Only the declared cases, target and pinned inputs",
+    "record_id": "review.engineering.vcpkg",
+    "worker_id": "worker 081"
+  },
+  "provider": "binary",
+  "recipe": {
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/microsoft/vcpkg"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Independent resource prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed upstream resource and repeatable checks"
+      }
+    ],
+    "notes": [
+      "Pinned baseline/tool; zlib real source build from file asset cache; 2 actual binary restorations; consumer pass; binary-only empty-cache rejected (rc1+zero restored+no output artifact). Caller supplies offline isolation."
+    ],
+    "summary": "Pinned vcpkg source assets, real zlib source build, offline binary cache restore and consumer verification"
+  },
+  "version": "2025.01.13"
+}

@@ -1,0 +1,175 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 274996,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/alias.json",
+      "sha256": "bf85fb2904dd6b6ad414485fcb70793e8cbdce591cbeb6a3ee0b45e1ce0f76af"
+    },
+    {
+      "bytes": 2124,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/legacy-alias-package.json",
+      "sha256": "50c5482f53753cbd97ee3584c06270406feb471bce79c443f5e5d9bc94c36856"
+    },
+    {
+      "bytes": 8996,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/legacy-lnt-package.json",
+      "sha256": "58b4564c96fdaccd022dd3798352737b3c8830d41f8d747b99f78856ee8e4eea"
+    },
+    {
+      "bytes": 2291,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/material-check.py",
+      "sha256": "9519a62f3efa278bcd8d020d8e79ef1d248171af6eeb5764b40c21ec8ac5bd33"
+    },
+    {
+      "bytes": 246682,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/material-manifest.json",
+      "sha256": "17d311313cd60940d0618e90ea9a97afee3266d06b60fdb83e92af40050c8eda"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 4230,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_lnt_alias.py",
+      "sha256": "d3a99a37fdc0a465f01f193fc20b88b51d829585f303efc3a0f74d0713f0b6c0"
+    }
+  ],
+  "inventory_sha256": "69eccfdede6bb8c95764fcaeb52ac5b62cbf48d9b28368383f76c9a65e5f58d0",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "fbd364f5ece35fe91c8d32f344923a683c23d6d2fb7e0d07e1355ef823b4abe8",
+  "method": "material",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check_lnt_alias.py",
+          "--prefix",
+          "{prefix}",
+          "--runtime",
+          "{dependencies.llvm-lnt.prefix}",
+          "--source",
+          "{dependencies.llvm-lnt.source}",
+          "--output",
+          "{build}/alias-checks"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "guarded-alias-real-lnt-consumer",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 900
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "llvm-lnt"
+      ],
+      "system": []
+    },
+    "id": "llvm-opt-benchmark",
+    "metadata": {
+      "catalog": {
+        "alias_of": "llvm-lnt",
+        "archive_bytes": null,
+        "category": [
+          "Compatibility",
+          "Historical resource identifiers"
+        ],
+        "dependencies": [
+          "llvm-lnt"
+        ],
+        "deployment": {
+          "adapter": "virtual"
+        },
+        "id": "llvm-opt-benchmark",
+        "immutable_ref": "alias:llvm-lnt",
+        "installed_bytes": null,
+        "kind": "virtual",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "presets": [],
+        "purpose": "The historical ID referred to LLVM LNT, not dtcxzyw's large LLVM IR corpus. New selections resolve explicitly to llvm-lnt; historical manifests remain immutable.",
+        "redistributable": true,
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Compatibility alias with no additional payload; the selected llvm-lnt archive is counted once.",
+        "source_evidence": [
+          "https://github.com/llvm/llvm-lnt",
+          "https://github.com/dtcxzyw/llvm-opt-benchmark"
+        ],
+        "title": "Legacy LNT identifier (alias of llvm-lnt)",
+        "version": "0.7.0-alias-correction"
+      },
+      "catalog_sha256": "e5ebe3473f5773c8b92d7efe77a3f563f49c1615fa123f45f205153a01c341cd",
+      "worker032_alias_binding": {
+        "binding_scope": "actual source+runtime byte verified explicit path; not a fabricated installed legacy receipt",
+        "legacy_definition_sha256": "62a3b7da386af57c9dc92cbc5a35a31ef25290d6043fbeb3760d2097c6d5eac0"
+      }
+    },
+    "provider": "meta",
+    "recipe": {
+      "adapter": "virtual",
+      "runtime_environment": {
+        "PIP_NO_INDEX": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [],
+      "locations": [],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution."
+      ],
+      "summary": "The historical ID referred to LLVM LNT, not dtcxzyw's large LLVM IR corpus. New selections resolve explicitly to llvm-lnt; historical manifests remain immutable."
+    },
+    "version": "0.7.0-alias-correction"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "implementation_delegate": "worker 031 LNT owner",
+    "original_alias_definition_sha256": "62a3b7da386af57c9dc92cbc5a35a31ef25290d6043fbeb3760d2097c6d5eac0",
+    "scope": "explicit external LNT consumer binding",
+    "worker_id": "worker 032"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

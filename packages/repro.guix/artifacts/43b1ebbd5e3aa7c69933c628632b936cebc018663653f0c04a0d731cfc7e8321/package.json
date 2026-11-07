@@ -1,0 +1,76 @@
+{
+  "build": "worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/checks/qualify_store.py",
+        "--kind",
+        "guix",
+        "--prefix",
+        "{prefix}",
+        "--out",
+        "{build}/qualification"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "offline-fixed-store",
+      "kind": "functional",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "repro.guix",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Only the declared cases, target and pinned inputs",
+    "record_id": "review.engineering.guix",
+    "worker_id": "worker 080"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "bwrap",
+      "sh"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://ftp.gnu.org/gnu/guix/"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Independent resource prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed upstream resource and repeatable checks"
+      }
+    ],
+    "notes": [
+      "Official signed GNU Guix 1.5.0 binary closure, release channel commit 230aa373f315f247852ee07dff34146e9b480aec, fixed single-Guix manifest/profile, signed fixture-and-bash closure import, and pure environment execution. Creating arbitrary new manifest profiles or bootstrapping Guix is not qualified; broader dependencies are not bundled.",
+      "Method is binary: the official upstream store closure is imported; the package manager itself is not claimed source-built.",
+      "Only an isolated local store and private daemon are used. Offline checks fail if user namespaces are denied."
+    ],
+    "summary": "Official signed GNU Guix 1.5.0 binary closure, release channel commit 230aa373f315f247852ee07dff34146e9b480aec, fixed single-Guix manifest/profile, signed fixture-and-bash closure import, and pure environment execution. Creating arbitrary new manifest profiles or bootstrapping Guix is not qualified; broader dependencies are not bundled."
+  },
+  "version": "1.5.0"
+}

@@ -1,0 +1,105 @@
+{
+  "build": "cpg-20261101-w059-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/cpg_check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "emulator.renode",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "formal_qualification_promotion": false,
+    "license_note": "Original official portable license/third-party notices preserved; complete official source release with its license files preserved. Renode core MIT, individual bundled components retain their own terms.",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "A fixed minimal RV32IM/NS16550 platform, two 96-byte real assembled images, exact raw UART bytes and an independent positive oracle that rejects changed firmware",
+    "record_id": "review.engineering.renode",
+    "source_build_verified": false,
+    "source_material_scope": "Complete official portable binary archive and complete official source release archive, plus fixture assembly/linker/platform/template sources and original build logs; no Renode MSBuild source build claimed",
+    "worker_id": "worker 059"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/renode_1.17.0-portable",
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 63459129,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "raw/renode-1.17.0.linux-portable.tar.gz",
+      "sha256": "4ba7c68b59e2447f188ef4b4b112fcccd2802582c460beedceb63b84e5605a5f",
+      "strip_root": false,
+      "url": "https://github.com/renode/renode/releases/download/v1.17.0/renode-1.17.0.linux-portable.tar.gz"
+    },
+    {
+      "bytes": 329418672,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "raw/renode_1.17.0_source.tar.xz",
+      "sha256": "65170aa79966044704ddef274568ed8b6e78b9f08edde578de33befee28a1eee",
+      "strip_root": false,
+      "url": "https://github.com/renode/renode/releases/download/v1.17.0/renode_1.17.0_source.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt",
+      "source-lock.json",
+      "resource-evidence.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/cpg_check.py",
+        "description": "Run the declared semantic and failure-path checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent prefix",
+        "path": "{prefix}",
+        "purpose": "Tool, source fixtures and offline checks"
+      }
+    ],
+    "notes": [
+      "Official portable Renode runtime, not source built during this task",
+      "Guest firmware was actually assembled/linked with fixed GCC13.2.0 and binutils2.42; source and build logs supplied",
+      "UART bytes are emitted by guest arithmetic and MMIO; no host UART injection",
+      "One fixed platform and two bare-metal images only, not physical hardware/timing or broad board compatibility",
+      "Source release preserved; full Renode MSBuild/toolchain dependency build not qualified",
+      "Dataset not applicable"
+    ],
+    "summary": "固定平台/启动脚本/镜像并真实 headless UART 正负断言"
+  },
+  "version": "1.17.0"
+}

@@ -1,0 +1,288 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 5830984,
+      "kind": "file",
+      "mode": 365,
+      "path": "payload/bin/wasm-reference",
+      "sha256": "d819dfdc8edc8ce343a3de54644d0e942e56815c74d90dfa146326c21d87e7b6"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/licenses"
+    },
+    {
+      "bytes": 1292,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/licenses/CPG-integration-MIT.txt",
+      "sha256": "c7440c9b040de5091b174d983b134db3ad8cf2c60e05c5da53216459e48d6e94"
+    },
+    {
+      "bytes": 577,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/licenses/wasm-spec-LICENSE",
+      "sha256": "c06a930f71554662be662d09287c7588b2d9e1aff7a84da503d10ea09a7117c3"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/metadata"
+    },
+    {
+      "bytes": 383,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/metadata/source-locks.json",
+      "sha256": "8d7c48373026d454a9c545b5a76beb03513813511e3d5b6d8d227dc1b54e7fe6"
+    },
+    {
+      "bytes": 2124,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/metadata/wasm-spec-selection.json",
+      "sha256": "ce5eea458ff432d99d82adf8a22229c8c8865ff4bdc74ea6f6e999b89d099b66"
+    },
+    {
+      "bytes": 101851,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/metadata/wasm-spec-tests.jsonl",
+      "sha256": "27b65342748652e5dbe704d3143a0942d9fe783d2651f451a06b84667fd8d789"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/raw"
+    },
+    {
+      "bytes": 15029858,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/raw/wasm-spec-6057acdb1a213f85369c64454c078a15f11ac4b1.tar.gz",
+      "sha256": "73b6b10278038f75d478fdcd0ed8cc4852224b379c5307056003717f403ce2e0"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/tests"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/tests/spec"
+    },
+    {
+      "bytes": 28849,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tests/spec/func.wast",
+      "sha256": "fb48ac22e13b3f5bd34063e194756af2f558b99d0f6f230e871c0b6d56849497"
+    },
+    {
+      "bytes": 46521,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tests/spec/i32.wast",
+      "sha256": "f3b7e8fd641893ea0989a8ab801fce0654d276d27b5cad9cf482291a422cffe8"
+    },
+    {
+      "bytes": 9693,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tests/spec/memory.wast",
+      "sha256": "fd3d84dd0bd5f6632eff0c29249329194df9fbae146d2769f717ec849080e31a"
+    },
+    {
+      "bytes": 10039,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tests/spec/unreachable.wast",
+      "sha256": "5ec91fd3df1ab694c77eb8d3e693d4e137fb96026d1c7f1b5bfd391cdaf6c89f"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/tools"
+    },
+    {
+      "bytes": 2988,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tools/import_spec_metadata.py",
+      "sha256": "6f41e2e92c8922166f5c1dabb8a16679abeec6ae12087178825a7f1a75978e02"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1522,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "5c1450e1bd9d0812194bf0e123684d8daa90c6273948750bd846eac68f65d897"
+    },
+    {
+      "bytes": 14493,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/worker014.py",
+      "sha256": "6dbeece41df0d92763ce50b09acc1147930c4947fe5d21bdba201c6613980557"
+    }
+  ],
+  "inventory_sha256": "316f912b4b1637544c7b24a2711864eef4ddfbff578299e2edf18fee61cfed79",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "c2d01e5defdbf097a964504e551131d8b3054810ea53303d9196791b3cbc5611",
+  "method": "binary",
+  "package": {
+    "build": "cpg-worker014-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--resource",
+          "wasm-spec",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "bounded-offline-functional",
+        "kind": "functional",
+        "stdout_regex": "\"passed\": true",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "wasm-spec",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "bounded_evidence": "worker014 delivery/evidence/portable-prebuilt-check/summary.json",
+      "formal_qualification": "not_promoted",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "record_id": "review.verification.wasm-spec",
+      "runtime_requirements": [
+        "Linux x86_64",
+        "compatible glibc/libm"
+      ],
+      "source_commits": {
+        "wasm-spec": "6057acdb1a213f85369c64454c078a15f11ac4b1"
+      },
+      "worker_id": "worker 014"
+    },
+    "provider": "source",
+    "recipe": {
+      "required_installed_paths": [
+        "{prefix}/bin/wasm-reference"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 15029858,
+        "extract": false,
+        "id": "wasm-spec",
+        "material_path": "raw/wasm-spec-6057acdb1a213f85369c64454c078a15f11ac4b1.tar.gz",
+        "sha256": "73b6b10278038f75d478fdcd0ed8cc4852224b379c5307056003717f403ce2e0",
+        "strip_root": false,
+        "url": "https://codeload.github.com/WebAssembly/spec/tar.gz/6057acdb1a213f85369c64454c078a15f11ac4b1"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "unspecified",
+      "distribution_version": "unspecified",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Add {prefix}/bin to PATH when needed."
+      ],
+      "documentation": [
+        "https://codeload.github.com/WebAssembly/spec/tar.gz/6057acdb1a213f85369c64454c078a15f11ac4b1"
+      ],
+      "examples": [
+        {
+          "command": "python3 {recipe}/check.py --resource wasm-spec --prefix {prefix} --build {build}",
+          "description": "Run the bounded offline qualification with the installed CPG recipe."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Native tools",
+          "path": "{prefix}/bin",
+          "purpose": "Pinned local executables and bounded probes."
+        },
+        {
+          "label": "Original source",
+          "path": "{prefix}/raw",
+          "purpose": "Unchanged archives with SHA-256 locks."
+        },
+        {
+          "label": "Licenses",
+          "path": "{prefix}/licenses",
+          "purpose": "Upstream redistribution and integration notices."
+        }
+      ],
+      "notes": [
+        "Candidate additive resource; no formal project publication or original-denominator promotion.",
+        "Native Linux x86_64 prebuild. Runtime ABI is checked by CPG; distribution names are not gates.",
+        "Build/source/install environments remain separate. This native package installs entirely from local bytes.",
+        "The raw source archives are unmodified and pinned; source-build replay is provided by the surrounding worker014 delta.",
+        "266 official test files indexed; only i32/memory/func/unreachable (771 assertions) executed, plus 3 negative oracle checks.",
+        "Pinned main-branch snapshot, not a blanket statement of a production runtime's feature/proposal support."
+      ],
+      "summary": "Pinned official WebAssembly reference interpreter, test metadata, and selected semantic checks."
+    },
+    "version": "git.6057acdb1a21"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline": "0.21.14",
+    "build_evidence": "delivery/evidence/source-replay/commands.json",
+    "final_check_evidence": "delivery/evidence/portable-prebuilt-check/summary.json",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.verification.wasm-spec",
+    "source_locks": [
+      {
+        "bytes": 15029858,
+        "commit": "6057acdb1a213f85369c64454c078a15f11ac4b1",
+        "filename": "wasm-spec-6057acdb1a213f85369c64454c078a15f11ac4b1.tar.gz",
+        "name": "wasm-spec",
+        "sha256": "73b6b10278038f75d478fdcd0ed8cc4852224b379c5307056003717f403ce2e0",
+        "url": "https://codeload.github.com/WebAssembly/spec/tar.gz/6057acdb1a213f85369c64454c078a15f11ac4b1"
+      }
+    ],
+    "worker_id": "worker 014"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

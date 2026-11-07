@@ -1,0 +1,885 @@
+{
+  "build": "worker066-20261101.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-I",
+        "-S",
+        "-B",
+        "{prefix}/check.py",
+        "--output",
+        "{build}/tensat-evidence",
+        "--variant",
+        "both"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "optimizer.tensat",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "known_limitations": [
+      "Original Tensat analysis/single-rule guarded rewriting/greedy extraction is executed through a bounded CPU compatibility driver; this is not qualification of its complete original model CLI, GPU runtime, multi-pattern rules or paper benchmarks",
+      "The referenced GPU TASO fork and actual CPU TASO source are separately pinned; BatchNorm API adapters are present for compilation but BN semantics are not qualified",
+      "Independent exact-integer oracle evaluates original/expected/extracted expression semantics; no unrestricted IEEE floating-point proof or full exported-TASO graph inference claim",
+      "Native operator-cost values are the original CPU cost-model inputs, not a new end-to-end speedup benchmark; auxiliary core uses AST-size cost",
+      "The standalone source bundle passes empty-cache offline dependency resolution; the already recorded actual offline source compile used the same locked bytes, and a second full rebuild of the portable archive was not claimed",
+      "No pretrained model weights, model downloads, services, GPU or NPU deployment"
+    ],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "provenance": {
+      "actual_cpu_taso_commit": "f11782c4db180ad7d1e7ff7f4bb82e574ac3b6b8",
+      "actual_cpu_taso_sha256": "994a68d531a689a9e18cfd4dd33e51b47259d30dee9e744b258125056831b77b",
+      "actual_cpu_taso_url": "https://github.com/jiazhihao/TASO",
+      "cpu_taso_build_adaptation": "Provider source-built official master with CPU CMake/config changes, one epsilon member qualification, three required cmath includes; -O1 -UNDEBUG. Public headers and graph optimization/rule source bytes unchanged. Full patch/audit/licenses included.",
+      "egg_commit": "12cc1ee7731d37fe91901c81f59678fa1d08a2bb",
+      "egg_source_url": "https://github.com/yycdavid/egg",
+      "functional_statistics": {
+        "abi_types": 5,
+        "abi_values_compared": 18,
+        "auxiliary_negative_cases": 4,
+        "auxiliary_oracle_input_sets": 108,
+        "auxiliary_output_positions_checked": 828,
+        "auxiliary_positive_cases": 6,
+        "graph_families": 6,
+        "native_negative_cases": 4,
+        "native_oracle_input_sets": 108,
+        "native_output_positions_checked": 828,
+        "native_positive_cases": 6,
+        "source_rules_used": 9
+      },
+      "integration_version": "0.1.0-cpgcpu1",
+      "numerical_arithmetic": "Exact Python mathematical integers, zero tolerance, includes explicit all-zero/all-negative inputs and 16 deterministic seed cases per graph; independent of egraph/TASO representation",
+      "offline_execution": "Both configurations executed with AF_INET/AF_INET6 denied by inherited syscall guard, OMP/MKL threads=1, isolated Python -I -S -B",
+      "qualified_scope": "Primary original TensorAnalysis + original CheckApply/rules_from_str + original TensorCost + author egg Runner/Extractor, real private TASO CPU runtime. Six graph families each with 18 exact-integer input sets, four negative cases, native metadata and independent C++/Rust ABI checks. Auxiliary author-IR/rules/egg AST-cost configuration separately checked.",
+      "reference_taso_commit": "8cfb983b27ef069768840873e946478c34896a77",
+      "reference_taso_url": "https://github.com/yycdavid/taso",
+      "resource": "Tensat",
+      "runtime_abi": {
+        "CXXABI": "1.3.13",
+        "GLIBC": "2.34",
+        "GLIBCXX": "3.4.32"
+      },
+      "source_adaptation": "Complete 8-file patch. Original rewrites.rs and converted.txt unchanged; model.rs and optimize.rs only change BN signatures. New driver and input preflight are separate. Build.rs regenerates CPU FFI and legally encodes libclang anonymous DNNL names through bindgen ParseCallbacks. All 82 original Cargo package versions/checksums preserved, stale root name corrected.",
+      "source_commit": "4fd1ad4a5082155e6bfb1685037f7d7fa07e5e0a",
+      "source_url": "https://github.com/uwplse/tensat",
+      "upstream_package_version": "0.1.0",
+      "vendored_files_checksum_verified": 5254,
+      "vendored_registry_crates": 98,
+      "vendored_resolution": "Succeeded under offline syscall guard and a fresh empty Cargo home: 82 native and 21 auxiliary packages"
+    },
+    "qualification": {
+      "benchmark": null,
+      "formal_promotion": false,
+      "functional": "bounded worker-local evidence only",
+      "hardware": null,
+      "oci": null,
+      "source_build": null
+    },
+    "record_id": "review.optimization.tensat",
+    "requirements": [
+      "Linux x86_64; recorded tests use CPython 3.12 standard library only",
+      "glibc >=2.34, libstdc++ providing GLIBCXX_3.4.32 and CXXABI_1.3.13 (recorded GCC 13 host)",
+      "Platform libgcc_s, libm, libgomp and libz; TASO/oneDNN/protobuf/OpenCL ICD loader are bundled privately",
+      "LD_LIBRARY_PATH={prefix}/lib must be set before CPG ELF compatibility scanning as well as execution",
+      "Offline source reconstruction additionally needs preinstalled Rust/Cargo 1.82.0 and the platform C/C++ toolchain; libclang 18.1.1 wheel and all 98 registry crate sources are supplied"
+    ],
+    "source_lock": {
+      "actual_cpu_taso_commit": "f11782c4db180ad7d1e7ff7f4bb82e574ac3b6b8",
+      "artifact_hashes": {
+        "bin/cpg-tensat-cpu": "4617e3b8e6ee9a335987ad8efc488d8c810b86c46fc0487fcc9c71daa052cdf9",
+        "bin/tensat-cpu-core": "8b3e6d546b94c4b7baac38e791c8d4657d0da94365479564888d35db46ba3498",
+        "check.py": "637bf712b4f1b9ec54513ac2a5024d64335c98dbd8617b4bee309b0f89a1a97a",
+        "share/tensat/cpp-abi-layout.json": "54d5f816d8fda3adf6df191154ca7a3fdf61582221c159f25a5e42e0cb26d181",
+        "share/tensat/selected-rules.txt": "a294eb143492145d7dc90d89ddd9884841d33547bc76aaf5106cb410af67003c",
+        "share/upstream/tensat-native-adaptation.patch": "9c2caddd3797a0baae52e6ca4f074fe819449d626448517798f7e7e501f73c6e"
+      },
+      "cpu_runtime_build": {
+        "build_flags": [
+          "-O1",
+          "-UNDEBUG",
+          "USE_DNNL"
+        ],
+        "bytes": 813808,
+        "native_runtime_minimums": [
+          "GLIBCXX_3.4.32",
+          "GLIBC_2.34"
+        ],
+        "profile": "official TASO source with documented minimal CPU build compatibility patches",
+        "public_header_unchanged": true,
+        "reference_Tensat_fork": "8cfb983b27ef069768840873e946478c34896a77",
+        "runtime_floor_source": "Complete provider runtime ELF version-needs scan",
+        "sha256": "994a68d531a689a9e18cfd4dd33e51b47259d30dee9e744b258125056831b77b",
+        "source_commit": "f11782c4db180ad7d1e7ff7f4bb82e574ac3b6b8"
+      },
+      "egg_fork_commit": "12cc1ee7731d37fe91901c81f59678fa1d08a2bb",
+      "fork_sources": [
+        {
+          "bytes": 85076,
+          "commit": "12cc1ee7731d37fe91901c81f59678fa1d08a2bb",
+          "repo": "https://github.com/yycdavid/egg",
+          "sha256": "47c71a673c8ab20dd24b9a63f63c11359ce50e60d2cba2b72de69e906ad6f63b",
+          "url": "https://codeload.github.com/yycdavid/egg/tar.gz/12cc1ee7731d37fe91901c81f59678fa1d08a2bb"
+        },
+        {
+          "bytes": 891417,
+          "commit": "8cfb983b27ef069768840873e946478c34896a77",
+          "repo": "https://github.com/yycdavid/taso",
+          "sha256": "d5ba82b05dd1392c4e95aad3ee533217dcdd265307499ba9abe64807f05278a3",
+          "url": "https://codeload.github.com/yycdavid/taso/tar.gz/8cfb983b27ef069768840873e946478c34896a77"
+        }
+      ],
+      "original_sources": {
+        "bytes": 101826,
+        "commit": "4fd1ad4a5082155e6bfb1685037f7d7fa07e5e0a",
+        "repo": "https://github.com/uwplse/tensat",
+        "sha256": "3235b91ff28d34a2ea81204acfd9171cbb5ae1ed81eaf9d5c74cbfc2c93dcae6",
+        "url": "https://codeload.github.com/uwplse/tensat/tar.gz/4fd1ad4a5082155e6bfb1685037f7d7fa07e5e0a"
+      },
+      "portable_source_bundle": {
+        "core_manifest_path_only_adjustment": {
+          "after_sha256": "93a943586ad34b6d5ec9e051b55fa1c34bf7c01af2d45cb503181c8a01c1525f",
+          "before_sha256": "c7770575c46fe5cd9622e87ee75ff59fe65a7e33dbd82614e4922433757fdb46",
+          "change": "same pinned egg source dependency path made relative to portable source bundle"
+        },
+        "libclang_wheel": {
+          "bytes": 24515943,
+          "file": "libclang-18.1.1-py2.py3-none-manylinux2010_x86_64.whl",
+          "sha256": "c533091d8a3bbf7460a00cb6c1a71da93bffe148f172c7d03b1c31fbf8aa2a0b"
+        },
+        "offline_source_scope": "Actual native and core Tensat source plus complete Cargo registry sources, fixed CPU TASO libraries/headers, and official libclang wheel. Preinstalled Rust/Cargo 1.82.0 and the platform C/C++ toolchain are explicit build prerequisites. GPU TASO and complete C++ TASO rebuilding are outside this recipe.",
+        "registry_packages_verified": 98,
+        "replay_scope": "Recorded native compilation used the identical pinned source/dependency bytes offline. The standalone vendored archive is separately checked with an empty Cargo home for offline dependency resolution; a second full source compilation is not claimed.",
+        "source_archive": {
+          "bytes": 12644266,
+          "file": "tensat-vendored-source.tar.gz",
+          "sha256": "52ab34e501306081279d11c9d42beac4647ebe1b19e22c6b04cec01122bc97fc"
+        },
+        "source_files_checksum_verified": 5254,
+        "vendored_registry_crates": [
+          {
+            "files_verified": 29,
+            "name": "aho-corasick",
+            "package_sha256": "8716408b8bc624ed7f65d223ddb9ac2d044c0547b6fa4b0d554f3a9540496ada",
+            "version": "0.7.10"
+          },
+          {
+            "files_verified": 12,
+            "name": "ansi_term",
+            "package_sha256": "ee49baf6cb617b853aa8d93bf420db2383fab46d314482ca2803b40d5fde979b",
+            "version": "0.11.0"
+          },
+          {
+            "files_verified": 15,
+            "name": "arrayvec",
+            "package_sha256": "cff77d8686867eceff3105329d4698d96c2391c176d5d03adc90c7389162b5b8",
+            "version": "0.5.1"
+          },
+          {
+            "files_verified": 8,
+            "name": "atty",
+            "package_sha256": "d9b39be18770d11421cdb1b9947a45dd3f37e93092cbf377614828a319d5fee8",
+            "version": "0.2.14"
+          },
+          {
+            "files_verified": 14,
+            "name": "autocfg",
+            "package_sha256": "f8aac770f1885fd7e387acedd76065302551364496e46b3dd00860b2f8359b9d",
+            "version": "1.0.0"
+          },
+          {
+            "files_verified": 20,
+            "name": "autocfg",
+            "package_sha256": "f2032f911046de80f0a198e0901378627c33f59ea0ac00e363d481118bd70a53",
+            "version": "1.5.1"
+          },
+          {
+            "files_verified": 52,
+            "name": "bindgen",
+            "package_sha256": "66c0bb6167449588ff70803f4127f0684f9063097eca5016f37eb52b92c2cf36",
+            "version": "0.54.0"
+          },
+          {
+            "files_verified": 9,
+            "name": "bitflags",
+            "package_sha256": "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693",
+            "version": "1.2.1"
+          },
+          {
+            "files_verified": 4,
+            "name": "block-buffer",
+            "package_sha256": "c0940dc441f31689269e10ac70eb1002a3a1d3ad1390e030043662eb7fe4688b",
+            "version": "0.7.3"
+          },
+          {
+            "files_verified": 4,
+            "name": "block-padding",
+            "package_sha256": "fa79dedbb091f449f1f39e53edf88d5dbe95f895dae6135a8d7b881fb5af73f5",
+            "version": "0.1.5"
+          },
+          {
+            "files_verified": 4,
+            "name": "byte-tools",
+            "package_sha256": "e3b5ca7a04898ad4bcd41c90c5285445ff5b791899bb1b0abdd2a2aa791211d7",
+            "version": "0.3.1"
+          },
+          {
+            "files_verified": 10,
+            "name": "byteorder",
+            "package_sha256": "08c48aae112d48ed9f069b33538ea9e3e90aa263cfa3d1c24309612b1f7472de",
+            "version": "1.3.4"
+          },
+          {
+            "files_verified": 17,
+            "name": "cc",
+            "package_sha256": "7bbb73db36c1246e9034e307d0fba23f9a2e251faa47ade70c1bd252220c8311",
+            "version": "1.0.54"
+          },
+          {
+            "files_verified": 17,
+            "name": "cexpr",
+            "package_sha256": "f4aedb84272dbe89af497cf81375129abda4fc0a9e7c5d317498c15cc30c0d27",
+            "version": "0.4.0"
+          },
+          {
+            "files_verified": 6,
+            "name": "cfg-if",
+            "package_sha256": "4785bdd1c96b2a846b2bd7cc02e86b6b3dbf14e7e53446c4f54c92a361040822",
+            "version": "0.1.10"
+          },
+          {
+            "files_verified": 7,
+            "name": "cfg-if",
+            "package_sha256": "4e7648175b45a9a48536d676f68d918270699102aa8dab5496df06904c914600",
+            "version": "1.0.5"
+          },
+          {
+            "files_verified": 20,
+            "name": "clang-sys",
+            "package_sha256": "fe6837df1d5cba2397b835c8530f51723267e16abbf83892e9e5af4f0e5dd10a",
+            "version": "0.29.3"
+          },
+          {
+            "files_verified": 49,
+            "name": "clap",
+            "package_sha256": "bdfa80d47f954d53a35a64987ca1422f495b8d6483c0fe9f7117b36c2a792129",
+            "version": "2.33.1"
+          },
+          {
+            "files_verified": 8,
+            "name": "digest",
+            "package_sha256": "f3d0c8c8752312f9713efd397ff63acb9f85585afbf179282e720e7704954dd5",
+            "version": "0.8.1"
+          },
+          {
+            "files_verified": 6,
+            "name": "either",
+            "package_sha256": "bb1f6b1ce1c140482ea30ddd3335fc0024ac7ee112895426e0a629a6c20adfe3",
+            "version": "1.5.3"
+          },
+          {
+            "files_verified": 29,
+            "name": "env_logger",
+            "package_sha256": "44533bbbb3bb3c1fa17d9f2e4e38bbbaf8396ba82193c4cb1b6445d711445d36",
+            "version": "0.7.1"
+          },
+          {
+            "files_verified": 4,
+            "name": "fake-simd",
+            "package_sha256": "e88a8acf291dafb59c2d96e8f59828f3838bb1a70398823ade51a84de6a6deed",
+            "version": "0.1.2"
+          },
+          {
+            "files_verified": 19,
+            "name": "generic-array",
+            "package_sha256": "c68f0274ae0e023facc3c97b2e00f076be70e254bc851d972503b328db79b2ec",
+            "version": "0.12.3"
+          },
+          {
+            "files_verified": 30,
+            "name": "getrandom",
+            "package_sha256": "7abc8dd8451921606d809ba32e95b6111925cd2906060d2dcc29c070220503eb",
+            "version": "0.1.14"
+          },
+          {
+            "files_verified": 6,
+            "name": "glob",
+            "package_sha256": "9b919933a397b79c37e33b77bb2aa3dc8eb6e165ad809e58ff75bc7db2e34574",
+            "version": "0.3.0"
+          },
+          {
+            "files_verified": 30,
+            "name": "hashbrown",
+            "package_sha256": "8a9ee70c43aaf417c914396645a0fa852624801b24ebb7ae78fe8272889ac888",
+            "version": "0.12.3"
+          },
+          {
+            "files_verified": 8,
+            "name": "hermit-abi",
+            "package_sha256": "b9586eedd4ce6b3c498bc3b4dd92fc9f11166aa908a914071953768066c67909",
+            "version": "0.1.14"
+          },
+          {
+            "files_verified": 12,
+            "name": "humantime",
+            "package_sha256": "df004cfca50ef23c36850aaaa59ad52cc70d0e90243c3c7737a4dd32dc7a3c4f",
+            "version": "1.3.0"
+          },
+          {
+            "files_verified": 23,
+            "name": "indexmap",
+            "package_sha256": "076f042c5b7b98f31d205f1249267e12a6518c1481e9dae9764af19b707d2292",
+            "version": "1.3.2"
+          },
+          {
+            "files_verified": 28,
+            "name": "indexmap",
+            "package_sha256": "bd070e393353796e801d209ad339e89596eb4c8d430d18ede6a1cced8fafbd99",
+            "version": "1.9.3"
+          },
+          {
+            "files_verified": 9,
+            "name": "instant",
+            "package_sha256": "e0242819d153cba4b4b05a5a8f2a7e9bbf97b6055b2a002b395c96b5ff3c0222",
+            "version": "0.1.13"
+          },
+          {
+            "files_verified": 8,
+            "name": "instant",
+            "package_sha256": "7777a24a1ce5de49fcdde84ec46efa487c3af49d5b6e6e0a50367cc5c1096182",
+            "version": "0.1.4"
+          },
+          {
+            "files_verified": 63,
+            "name": "itertools",
+            "package_sha256": "284f18f85651fe11e8a991b2adb42cb078325c996ed026d994719efcfca1d54b",
+            "version": "0.9.0"
+          },
+          {
+            "files_verified": 8,
+            "name": "itoa",
+            "package_sha256": "dc6f3ad7b9d11a0c00842ff8de1b60ee58661048eb8049ed33c73594f359d7e6",
+            "version": "0.4.6"
+          },
+          {
+            "files_verified": 8,
+            "name": "itoa",
+            "package_sha256": "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682",
+            "version": "1.0.18"
+          },
+          {
+            "files_verified": 9,
+            "name": "lazy_static",
+            "package_sha256": "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646",
+            "version": "1.4.0"
+          },
+          {
+            "files_verified": 6,
+            "name": "lazycell",
+            "package_sha256": "b294d6fa9ee409a054354afc4352b0b9ef7ca222c69b8812cbea9e7d2bf3783f",
+            "version": "1.2.1"
+          },
+          {
+            "files_verified": 173,
+            "name": "libc",
+            "package_sha256": "9457b06509d27052635f90d6466700c65095fdf75409b3fbdd903e988b886f49",
+            "version": "0.2.71"
+          },
+          {
+            "files_verified": 18,
+            "name": "libloading",
+            "package_sha256": "f2b111a074963af1d37a139918ac6d49ad1d0d5e47f72fd55388619691a7d753",
+            "version": "0.5.2"
+          },
+          {
+            "files_verified": 19,
+            "name": "log",
+            "package_sha256": "5d15f86d12da44cd8d4ec3c73984537eb7f4cadcb9776a575a0a8a05ca11005c",
+            "version": "0.4.35"
+          },
+          {
+            "files_verified": 18,
+            "name": "log",
+            "package_sha256": "14b6052be84e6b71ab17edffc2eeabf5c2c3ae1fdb464aae35ac50c67a44e1f7",
+            "version": "0.4.8"
+          },
+          {
+            "files_verified": 6,
+            "name": "maplit",
+            "package_sha256": "3e2e65a1a2e43cfcb47a895c4c8b10d1f4a61097f9f254f183aee60cad9c651d",
+            "version": "1.0.2"
+          },
+          {
+            "files_verified": 20,
+            "name": "memchr",
+            "package_sha256": "3728d817d99e5ac407411fa471ff9800a778d88a24685968b36824eaf4bee400",
+            "version": "2.3.3"
+          },
+          {
+            "files_verified": 53,
+            "name": "memchr",
+            "package_sha256": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98",
+            "version": "2.8.3"
+          },
+          {
+            "files_verified": 58,
+            "name": "nom",
+            "package_sha256": "ffb4262d26ed83a1c0a33a38fe2bb15797329c85770da05e6b828ddb782627af",
+            "version": "5.1.2"
+          },
+          {
+            "files_verified": 25,
+            "name": "once_cell",
+            "package_sha256": "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50",
+            "version": "1.21.4"
+          },
+          {
+            "files_verified": 17,
+            "name": "once_cell",
+            "package_sha256": "0b631f7e854af39a1739f401cf34a8a013dfe09eac4fa4dba91e9768bd28168d",
+            "version": "1.4.0"
+          },
+          {
+            "files_verified": 4,
+            "name": "opaque-debug",
+            "package_sha256": "2839e79665f131bdb5782e51f2c6c9599c133c6098982a54c794358bf432529c",
+            "version": "0.2.3"
+          },
+          {
+            "files_verified": 5,
+            "name": "peeking_take_while",
+            "package_sha256": "19b17cddbe7ec3f8bc800887bab5e717348c95ea2ca0b1bf0837fb964dc67099",
+            "version": "0.1.2"
+          },
+          {
+            "files_verified": 27,
+            "name": "pest",
+            "package_sha256": "10f4872ae94d7b90ae48754df22fd42ad52ce740b8f370b03da4835417403e53",
+            "version": "2.1.3"
+          },
+          {
+            "files_verified": 12,
+            "name": "pest_derive",
+            "package_sha256": "833d1ae558dc601e9a60366421196a8d94bc0ac980476d0b67e1d0988d72b2d0",
+            "version": "2.1.0"
+          },
+          {
+            "files_verified": 7,
+            "name": "pest_generator",
+            "package_sha256": "99b8db626e31e5b81787b9783425769681b347011cc59471e33ea46d2ea0cf55",
+            "version": "2.1.3"
+          },
+          {
+            "files_verified": 17,
+            "name": "pest_meta",
+            "package_sha256": "54be6e404f5317079812fc8f9f5279de376d8856929e21c184ecf6bbd692a11d",
+            "version": "2.1.3"
+          },
+          {
+            "files_verified": 9,
+            "name": "ppv-lite86",
+            "package_sha256": "237a5ed80e274dbc66f86bd59c1e25edc039660be53194b5fe0a482e0f2612ea",
+            "version": "0.2.8"
+          },
+          {
+            "files_verified": 27,
+            "name": "proc-macro2",
+            "package_sha256": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
+            "version": "1.0.107"
+          },
+          {
+            "files_verified": 15,
+            "name": "proc-macro2",
+            "package_sha256": "1502d12e458c49a4c9cbff560d0fe0060c252bc29799ed94ca2ed4bb665a0101",
+            "version": "1.0.17"
+          },
+          {
+            "files_verified": 9,
+            "name": "quick-error",
+            "package_sha256": "a1d01941d82fa2ab50be1e79e6714289dd7cde78eba4c074bc5a4374f650dfe0",
+            "version": "1.2.3"
+          },
+          {
+            "files_verified": 29,
+            "name": "quote",
+            "package_sha256": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
+            "version": "1.0.47"
+          },
+          {
+            "files_verified": 20,
+            "name": "quote",
+            "package_sha256": "54a21852a652ad6f610c9510194f398ff6f8692e334fd1145fed931f7fbe44ea",
+            "version": "1.0.6"
+          },
+          {
+            "files_verified": 50,
+            "name": "rand",
+            "package_sha256": "6a6b1679d49b24bbfe0c803429aa1874472f50d9b363131f0e89fc356b544d03",
+            "version": "0.7.3"
+          },
+          {
+            "files_verified": 9,
+            "name": "rand_chacha",
+            "package_sha256": "f4c8ed856279c9737206bf725bf36935d8666ead7aa69b52be55af369d193402",
+            "version": "0.2.2"
+          },
+          {
+            "files_verified": 12,
+            "name": "rand_core",
+            "package_sha256": "90bde5296fc891b0cef12a6d03ddccc162ce7b2aff54160af9338f8d40df6d19",
+            "version": "0.5.1"
+          },
+          {
+            "files_verified": 8,
+            "name": "rand_hc",
+            "package_sha256": "ca3129af7b92a17112d59ad498c6f81eaf463253766b90396d39ea7a39d6613c",
+            "version": "0.2.0"
+          },
+          {
+            "files_verified": 80,
+            "name": "regex",
+            "package_sha256": "9c3780fcf44b193bc4d09f36d2a3c87b251da4a046c87795a0d35f4f927ad8e6",
+            "version": "1.3.9"
+          },
+          {
+            "files_verified": 38,
+            "name": "regex-syntax",
+            "package_sha256": "26412eb97c6b088a6997e05f69403a802a92d520de2f8e63c2b65f9e0f47c4e8",
+            "version": "0.6.18"
+          },
+          {
+            "files_verified": 6,
+            "name": "rustc-hash",
+            "package_sha256": "08d43f7aa6b08d49f382cde6a7982047c3426db949b1424bc4b7ec9ae12c6ce2",
+            "version": "1.1.0"
+          },
+          {
+            "files_verified": 33,
+            "name": "ryu",
+            "package_sha256": "9774ba4a74de5f7b1c1451ed6cd5285a32eddb5cccb8cc655a4e50009e06477f",
+            "version": "1.0.23"
+          },
+          {
+            "files_verified": 32,
+            "name": "ryu",
+            "package_sha256": "71d301d4193d031abdd79ff7e3dd721168a9572ef3fe51a1517aba235bd8f86e",
+            "version": "1.0.5"
+          },
+          {
+            "files_verified": 25,
+            "name": "serde",
+            "package_sha256": "5317f7588f0a5078ee60ef675ef96735a1442132dc645eb1d12c018620ed8cd3",
+            "version": "1.0.114"
+          },
+          {
+            "files_verified": 25,
+            "name": "serde",
+            "package_sha256": "5f0e2c6ed6606019b4e29e69dbaba95b11854410e5347d525002456dbbb786b6",
+            "version": "1.0.219"
+          },
+          {
+            "files_verified": 21,
+            "name": "serde_derive",
+            "package_sha256": "2a0be94b04690fbaed37cddffc5c134bf537c8e3329d53e982fe04c374978f8e",
+            "version": "1.0.114"
+          },
+          {
+            "files_verified": 23,
+            "name": "serde_derive",
+            "package_sha256": "5b0276cf7f2c73365f7157c8123c21cd9a50fbbd844757af28ca1f5925fc2a00",
+            "version": "1.0.219"
+          },
+          {
+            "files_verified": 83,
+            "name": "serde_json",
+            "package_sha256": "20068b6e96dc6c9bd23e01df8827e6c7e1f2fddd43c21810382803c136b99373",
+            "version": "1.0.140"
+          },
+          {
+            "files_verified": 44,
+            "name": "serde_json",
+            "package_sha256": "164eacbdb13512ec2745fb09d51fd5b22b0d65ed294a1dcf7285a360c80a675c",
+            "version": "1.0.57"
+          },
+          {
+            "files_verified": 13,
+            "name": "sha-1",
+            "package_sha256": "f7d94d0bede923b3cea61f3f1ff57ff8cdfd77b400fb8f9998949e0cf04163df",
+            "version": "0.8.2"
+          },
+          {
+            "files_verified": 2,
+            "name": "shlex",
+            "package_sha256": "7fdf1b9db47230893d76faad238fd6097fd6d6a9245cd7a4d90dbd639536bbd2",
+            "version": "0.1.1"
+          },
+          {
+            "files_verified": 8,
+            "name": "smallvec",
+            "package_sha256": "d0d5d4b1981b8bbbb7aed204cae5726d683d5d6ac7e74ec54122ea28f315e7c8",
+            "version": "1.16.4"
+          },
+          {
+            "files_verified": 8,
+            "name": "smallvec",
+            "package_sha256": "c7cb5678e1615754284ec264d9bb5b4c27d2018577fd90ac0ceb578591ed5ee4",
+            "version": "1.4.0"
+          },
+          {
+            "files_verified": 9,
+            "name": "strsim",
+            "package_sha256": "8ea5119cdb4c55b55d432abb513a0429384878c15dde60cc77b1c99de1a95a6a",
+            "version": "0.8.0"
+          },
+          {
+            "files_verified": 16,
+            "name": "symbolic_expressions",
+            "package_sha256": "7c68d531d83ec6c531150584c42a4290911964d5f0d79132b193b67252a23b71",
+            "version": "5.0.3"
+          },
+          {
+            "files_verified": 88,
+            "name": "syn",
+            "package_sha256": "e69abc24912995b3038597a7a593be5053eb0fb44f3cc5beec0deb421790c1f4",
+            "version": "1.0.38"
+          },
+          {
+            "files_verified": 102,
+            "name": "syn",
+            "package_sha256": "872831b642d1a07999a962a351ed35b955ea2cfc8f3862091e2a240a84f17297",
+            "version": "2.0.119"
+          },
+          {
+            "files_verified": 7,
+            "name": "termcolor",
+            "package_sha256": "bb6bfa289a4d7c5766392812c0a1f4c1ba45afa1ad47803c11e1f407d846d75f",
+            "version": "1.1.0"
+          },
+          {
+            "files_verified": 10,
+            "name": "textwrap",
+            "package_sha256": "d326610f408c7a4eb6f51c37c330e496b08506c9457c9d34287ecc38809fb060",
+            "version": "0.11.0"
+          },
+          {
+            "files_verified": 9,
+            "name": "thread_local",
+            "package_sha256": "d40c6d1b69745a6ec6fb1ca717914848da4b44ae29d9b3080cbee91d72a69b14",
+            "version": "1.0.1"
+          },
+          {
+            "files_verified": 18,
+            "name": "typenum",
+            "package_sha256": "373c8a200f9e67a0c95e62a4f52fbf80c23b4381c05a17845531982fa99e6b33",
+            "version": "1.12.0"
+          },
+          {
+            "files_verified": 8,
+            "name": "ucd-trie",
+            "package_sha256": "56dee185309b50d1f11bfedef0fe6d036842e3fb77413abef29f8f8d1c5d4c1c",
+            "version": "0.1.3"
+          },
+          {
+            "files_verified": 18,
+            "name": "unicode-ident",
+            "package_sha256": "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563",
+            "version": "1.0.27"
+          },
+          {
+            "files_verified": 9,
+            "name": "unicode-width",
+            "package_sha256": "caaa9d531767d1ff2150b9332433f32a24622147e5ebb1f26409d5da67afd479",
+            "version": "0.1.7"
+          },
+          {
+            "files_verified": 8,
+            "name": "unicode-xid",
+            "package_sha256": "826e7639553986605ec5979c7dd957c7895e93eabed50ab2ffa7f6128a75097c",
+            "version": "0.2.0"
+          },
+          {
+            "files_verified": 5,
+            "name": "vec_map",
+            "package_sha256": "f1bddf1187be692e79c5ffeab891132dfb0f236ed36a43c7ed39f1165ee20191",
+            "version": "0.8.2"
+          },
+          {
+            "files_verified": 8,
+            "name": "version_check",
+            "package_sha256": "b5a972e5669d67ba988ce3dc826706fb0a8b01471c088cb0b6110b805cc36aed",
+            "version": "0.9.2"
+          },
+          {
+            "files_verified": 13,
+            "name": "wasi",
+            "package_sha256": "cccddf32554fecc6acb585f82a32a72e28b48f8c4c1883ddfeeeaa96f7d8e519",
+            "version": "0.9.0+wasi-snapshot-preview1"
+          },
+          {
+            "files_verified": 10,
+            "name": "which",
+            "package_sha256": "d011071ae14a2f6671d0b74080ae0cd8ebf3a6f8c9589a2cd45f23126fe29724",
+            "version": "3.1.1"
+          },
+          {
+            "files_verified": 378,
+            "name": "winapi",
+            "package_sha256": "8093091eeb260906a183e6ae1abdba2ef5ef2257a21801128899c3fc699229c6",
+            "version": "0.3.8"
+          },
+          {
+            "files_verified": 1390,
+            "name": "winapi-i686-pc-windows-gnu",
+            "package_sha256": "ac3b87c63620426dd9b991e5ce0329eff545bccbbb34f3be09ff6fb6ab51b7b6",
+            "version": "0.4.0"
+          },
+          {
+            "files_verified": 10,
+            "name": "winapi-util",
+            "package_sha256": "70ec6ce85bb158151cae5e5c87f95a8e97d2c0c4b001223f33a334e3ce5de178",
+            "version": "0.1.5"
+          },
+          {
+            "files_verified": 1419,
+            "name": "winapi-x86_64-pc-windows-gnu",
+            "package_sha256": "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f",
+            "version": "0.4.0"
+          }
+        ]
+      },
+      "reference_taso_fork_commit": "8cfb983b27ef069768840873e946478c34896a77",
+      "resource": "Tensat CPU compatibility integration",
+      "runtime_libraries": [
+        {
+          "bytes": 69136,
+          "file": "lib/libOpenCL.so.1",
+          "sha256": "b2b25f05472ab9109566852683f2a0e59c941e47fad1e23077d7b32a7cbd6327"
+        },
+        {
+          "file": "lib/libdnnl.so",
+          "symlink": "libdnnl.so.2"
+        },
+        {
+          "file": "lib/libdnnl.so.2",
+          "symlink": "libdnnl.so.2.6"
+        },
+        {
+          "bytes": 39644304,
+          "file": "lib/libdnnl.so.2.6",
+          "sha256": "a4f9d8057729f5ce8ddbbed61ef8d68425a9ca8a01415b7a8360ecb86bcb932e"
+        },
+        {
+          "file": "lib/libprotobuf.so",
+          "symlink": "libprotobuf.so.32.0.12"
+        },
+        {
+          "file": "lib/libprotobuf.so.32",
+          "symlink": "libprotobuf.so.32.0.12"
+        },
+        {
+          "bytes": 3340688,
+          "file": "lib/libprotobuf.so.32.0.12",
+          "sha256": "92983d5d4deb49f32db0d37d164e202a23995e9b64d7a672a071211f2324bb9e"
+        },
+        {
+          "bytes": 813808,
+          "file": "lib/libtaso_runtime.so",
+          "sha256": "994a68d531a689a9e18cfd4dd33e51b47259d30dee9e744b258125056831b77b"
+        }
+      ],
+      "tensat_commit": "4fd1ad4a5082155e6bfb1685037f7d7fa07e5e0a"
+    },
+    "worker_id": "worker 066"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib",
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 101826,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "locked-inputs/input-001",
+      "sha256": "3235b91ff28d34a2ea81204acfd9171cbb5ae1ed81eaf9d5c74cbfc2c93dcae6",
+      "strip_root": false,
+      "url": "https://codeload.github.com/uwplse/tensat/tar.gz/4fd1ad4a5082155e6bfb1685037f7d7fa07e5e0a"
+    },
+    {
+      "bytes": 85076,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "locked-inputs/input-002",
+      "sha256": "47c71a673c8ab20dd24b9a63f63c11359ce50e60d2cba2b72de69e906ad6f63b",
+      "strip_root": false,
+      "url": "https://codeload.github.com/yycdavid/egg/tar.gz/12cc1ee7731d37fe91901c81f59678fa1d08a2bb"
+    },
+    {
+      "bytes": 891417,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "locked-inputs/input-003",
+      "sha256": "d5ba82b05dd1392c4e95aad3ee533217dcdd265307499ba9abe64807f05278a3",
+      "strip_root": false,
+      "url": "https://codeload.github.com/yycdavid/taso/tar.gz/8cfb983b27ef069768840873e946478c34896a77"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/uwplse/tensat"
+    ],
+    "examples": [
+      {
+        "command": "python3 -I -S -B {prefix}/check.py --output /tmp/cpg-check/tensat-evidence --variant both",
+        "description": "Replay the bounded functional probe"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Installed resource",
+        "path": "{prefix}",
+        "purpose": "Pinned tool, source materials, examples, licences and verification interface"
+      }
+    ],
+    "notes": [
+      "Bounded local functionality; no automatic promotion of formal CPG qualification.",
+      "Original Tensat analysis/single-rule guarded rewriting/greedy extraction is executed through a bounded CPU compatibility driver; this is not qualification of its complete original model CLI, GPU runtime, multi-pattern rules or paper benchmarks",
+      "The referenced GPU TASO fork and actual CPU TASO source are separately pinned; BatchNorm API adapters are present for compilation but BN semantics are not qualified",
+      "Independent exact-integer oracle evaluates original/expected/extracted expression semantics; no unrestricted IEEE floating-point proof or full exported-TASO graph inference claim",
+      "Native operator-cost values are the original CPU cost-model inputs, not a new end-to-end speedup benchmark; auxiliary core uses AST-size cost",
+      "The standalone source bundle passes empty-cache offline dependency resolution; the already recorded actual offline source compile used the same locked bytes, and a second full rebuild of the portable archive was not claimed",
+      "No pretrained model weights, model downloads, services, GPU or NPU deployment",
+      "The target distribution is reference-build metadata, not an installation allowlist."
+    ],
+    "summary": "以等式饱和实现张量图重写与抽取"
+  },
+  "version": "0.1.0-cpgcpu1"
+}

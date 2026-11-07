@@ -1,0 +1,211 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 4914,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "363e5da76091b2e9e60d20c9dace2d036a572f4be53e57ac2880ecbd04ad1b3f"
+    },
+    {
+      "bytes": 2473,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/consumer.c",
+      "sha256": "1ebf113bb099965dce5fdd0182bb7b6b13c83628ec3ebc131f405dc7005d7043"
+    },
+    {
+      "bytes": 4747,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install.py",
+      "sha256": "72643662cd723925def1760cfeb1e061cf21721ba76b8f1aaae9f97ce0c435bc"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 62362350,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/a186e0f4fc279877ecb36d53a672c07d9fbd54839172c051de60e2acd5c94990",
+      "sha256": "a186e0f4fc279877ecb36d53a672c07d9fbd54839172c051de60e2acd5c94990"
+    }
+  ],
+  "inventory_sha256": "11f1dc33a84d3e1183b2af5a3c8d902691f4082b471fa224c3e78420a617eb67",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "448d89eb48dd7aede4d3796c2973bd24a675b83b540f0c33732750f065e2fdfd",
+  "method": "source",
+  "package": {
+    "build": "worker055-starpu-cpu-v3",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--work",
+          "{build}/functional"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "bounded-functional",
+        "kind": "functional",
+        "stdout_regex": "STARPU_FUNCTIONAL_OK",
+        "timeout_seconds": 1200
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "starpu",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "host_requirements": [
+        "python3",
+        "gcc",
+        "g++",
+        "make"
+      ],
+      "implementation_worker": "worker056 after explicit worker055 handoff",
+      "license": "LGPL-2.1-or-later",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualified_profile": {
+        "cases": 18,
+        "compiler_flags": "-O1 -march=x86-64 -mtune=generic",
+        "cpu_workers": [
+          1,
+          2,
+          4
+        ],
+        "device": "CPU",
+        "excluded": [
+          "GPU",
+          "MPI",
+          "Fortran",
+          "auxiliary command-line tools",
+          "performance",
+          "all StarPU schedulers",
+          "all runtime APIs"
+        ],
+        "installed_payload": "shared libstarpu runtime, public headers, starpu-1.4.pc and notices",
+        "isa": "x86-64 baseline",
+        "language": "C11 with _GNU_SOURCE for pthread API declarations",
+        "oracle": "exact integer results after two dependent RW codelets; atomic gate keeps first unfinished until second submit returns",
+        "seeds": [
+          0,
+          13
+        ],
+        "sizes": [
+          1,
+          17,
+          257
+        ]
+      },
+      "upstream_commit": null,
+      "worker_id": "worker 055"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/install.py",
+          "--source",
+          "{source}",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "required_host_commands": [
+        "python3",
+        "gcc",
+        "g++",
+        "make"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "gcc"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 62362350,
+        "extract": true,
+        "id": "starpu",
+        "material_path": "sources/starpu",
+        "sha256": "a186e0f4fc279877ecb36d53a672c07d9fbd54839172c051de60e2acd5c94990",
+        "strip_root": true,
+        "url": "https://files.inria.fr/starpu/starpu-1.4.12/starpu-1.4.12.tar.gz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://files.inria.fr/starpu/starpu-1.4.12/starpu-1.4.12.tar.gz"
+      ],
+      "examples": [
+        {
+          "command": "pm.check(\"starpu\", prefix=prefix)",
+          "description": "Run retained bounded functional check"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Install prefix",
+          "path": "{prefix}",
+          "purpose": "Independent offline CPU resource installation"
+        }
+      ],
+      "notes": [
+        "All downloads happen before package preparation; install/check use only locked local materials.",
+        "Distribution metadata describes the reference build and does not impose a distribution allowlist.",
+        "No performance, GPU, distributed or full-language conformance qualification is inferred.",
+        "Source, build and install locations must be disjoint.",
+        "Installed pkg-config metadata resolves relative to pcfiledir; validation checks variable expansion, not execution of the absent external pkg-config command.",
+        "CFLAGS/CXXFLAGS use explicit -march=x86-64 -mtune=generic; host GCC and libc remain external requirements."
+      ],
+      "summary": "StarPU CPU codelets and data-dependence scheduling"
+    },
+    "version": "1.4.12"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline": "0.21.14",
+    "scope": "bounded CPU integration",
+    "worker": "055"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "starpu",
+      "path": "sources/a186e0f4fc279877ecb36d53a672c07d9fbd54839172c051de60e2acd5c94990"
+    }
+  ]
+}

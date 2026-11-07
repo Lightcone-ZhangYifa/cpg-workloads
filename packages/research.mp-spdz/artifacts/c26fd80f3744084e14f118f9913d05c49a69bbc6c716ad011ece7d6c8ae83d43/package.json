@@ -1,0 +1,121 @@
+{
+  "build": "upstream-linux-adx-cpg1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-S",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/functional",
+        "--payload-lock-sha256",
+        "9353b05401d9d5a76ce87ec27743a0a3d8ecbc6ccb71ce02336138c18d865784"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "mascot-two-party",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "openssl"
+      ],
+      "requires_paths": [
+        "{prefix}/bin/mascot-party.x",
+        "{prefix}/PAYLOAD_LOCK.json"
+      ],
+      "stdout_regex": "PASS: mp-spdz MASCOT",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.mp-spdz",
+  "metadata": {
+    "cpg_guard_built_from_source": true,
+    "license": "BSD-3-Clause with retained upstream third-party notices",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.optimization.mp-spdz",
+    "scope": "Two-party localhost functionality only; not a cryptographic security proof",
+    "upstream_binary_build": true,
+    "upstream_source_build": false,
+    "worker_id": "worker 073"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "openssl"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONNOUSERSITE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 78428724,
+      "extract": true,
+      "id": "upstream.mp-spdz",
+      "material_path": "mp-spdz-0.4.4",
+      "sha256": "73d6473526101b4433999fc4f7521fdfdc53ddf018e5f64480518d6293f62760",
+      "strip_root": true,
+      "url": "https://github.com/data61/MP-SPDZ/releases/download/v0.4.4/mp-spdz-0.4.4.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/data61/MP-SPDZ/tree/v0.4.4",
+      "https://mp-spdz.readthedocs.io/"
+    ],
+    "examples": [
+      {
+        "command": "python3 -S -B {recipe}/check.py --prefix {prefix} --output ./mpspdz-check",
+        "description": "Independent check with fresh output directory"
+      },
+      {
+        "command": "python3 -S -B {recipe}/check.py --prefix {prefix} --output ./mpspdz-tutorial --full-tutorial",
+        "description": "Complete unchanged official tutorial"
+      }
+    ],
+    "locations": [
+      {
+        "label": "compiler",
+        "path": "{prefix}/compile.py",
+        "purpose": "Upstream Python-to-MPC bytecode compiler"
+      },
+      {
+        "label": "MASCOT runtime",
+        "path": "{prefix}/bin/mascot-party.x",
+        "purpose": "Official two-party-capable native virtual machine"
+      },
+      {
+        "label": "tutorial",
+        "path": "{prefix}/Programs/Source/tutorial.mpc",
+        "purpose": "Unmodified official tutorial"
+      }
+    ],
+    "notes": [
+      "Requires Linux x86_64 CPU ADX/AVX2/BMI2/AES/PCLMULQDQ and a compatible glibc host.",
+      "Installation checks compile and run a small input-sensitive program with 3 synthetic input pairs; the unchanged upstream tutorial is separately replayable with --full-tutorial.",
+      "MASCOT malicious/dishonest-majority protocol with 2 parties, 127-bit prime 2^127-1, integer bit length 64, statistical security 40, encrypted channels.",
+      "The trusted LD_PRELOAD transport adapter restricts libc connect/bind to loopback; this is not an adversarial network sandbox.",
+      "No external peer, actual privacy data, performance claim, production security certification, or native upstream source-build claim."
+    ],
+    "summary": "MP-SPDZ 0.4.4 upstream Python compiler and official Linux-adx MASCOT runtime, for local two-party synthetic input experiments."
+  },
+  "version": "0.4.4"
+}

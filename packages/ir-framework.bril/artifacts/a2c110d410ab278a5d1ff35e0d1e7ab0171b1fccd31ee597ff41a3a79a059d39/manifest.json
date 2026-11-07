@@ -1,0 +1,275 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1337,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/README.zh.md",
+      "sha256": "861221579b26c19bf735824fbf36fb6dc044994a40a9e35a71c44d7b6192fc72"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe/checks"
+    },
+    {
+      "bytes": 6158,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/checks/bril_check.py",
+      "sha256": "ef13c7a39d0e3ea63ddbe6aced63c05f81259d423c9ed376053c78fe5c08b68e"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe/recipe"
+    },
+    {
+      "bytes": 1854,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/recipe/check.py",
+      "sha256": "c61018bb40804ac21a1f5b70a61ba59ddd8b087e50e843204f87d678226be5fd"
+    },
+    {
+      "bytes": 12422,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/recipe/install.py",
+      "sha256": "72e2aba8d4aba5e15a17d20c056669978c918a2cf65bf2557ec90fd3aa748b0a"
+    },
+    {
+      "bytes": 2229,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/recipe/prepare.py",
+      "sha256": "4606ad9aa893e472f44b823e03e105162df0e9b809e070e10faa8bb3e881a2f7"
+    },
+    {
+      "bytes": 1995,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/source-lock.json",
+      "sha256": "be609154991ac577eef9356839eb60c736d5dbf249411348af82a50d7a4ceaf7"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 434511,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/2ead6a87fa594f74319bdf7e677ada8fc0675b86a6aac6ee40d73dccc9d76e08",
+      "sha256": "2ead6a87fa594f74319bdf7e677ada8fc0675b86a6aac6ee40d73dccc9d76e08"
+    },
+    {
+      "bytes": 42285097,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/a6596af07f3570b4f1ffa6783bfee9942aac14a719a601baa6bf5b71bf0105e2",
+      "sha256": "a6596af07f3570b4f1ffa6783bfee9942aac14a719a601baa6bf5b71bf0105e2"
+    },
+    {
+      "bytes": 1074,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/f62497fffecc0852960c8d3e6934b9db86d16396e9b604072e923892cae3a588",
+      "sha256": "f62497fffecc0852960c8d3e6934b9db86d16396e9b604072e923892cae3a588"
+    }
+  ],
+  "inventory_sha256": "b4c3bdc6873434c576b9732614d9b9097aed7d5868a5e7451cd1178f32e5b30a",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "4c4d94c3f0b4d04d7b1bd0d5faf8f3263bb6a0d5f4bee9dae1403f9312480f54",
+  "method": "source",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/recipe/check.py",
+          "--prefix",
+          "{prefix}/runtime",
+          "--out",
+          "{build}/acceptance"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "task-functional",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 600
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "ir-framework.bril",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "dataset_qualification": "not_applicable",
+      "host_prerequisites": [
+        "Linux x86_64 glibc",
+        "Python >=3.11"
+      ],
+      "installation_mode": "Unchanged interpreted upstream source; bundled upstream Deno binary, not a Deno source build.",
+      "native_source_build": false,
+      "new_resource": true,
+      "original_baseline_mutated": false,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "Educational core int/bool IR only; twelve bounded cases do not establish arbitrary program equivalence, memory, exceptions or side-effect semantics.",
+      "record_id": "review.engineering.bril",
+      "source_lock_sha256": "be609154991ac577eef9356839eb60c736d5dbf249411348af82a50d7a4ceaf7",
+      "worker_id": "worker 007"
+    },
+    "provider": "source",
+    "recipe": {
+      "install_argv": [
+        "python3",
+        "{recipe}/recipe/install.py",
+        "--prefix",
+        "{prefix}/runtime",
+        "--build-root",
+        "{build}",
+        "--assets-root",
+        "{assets}",
+        "--jobs",
+        "{jobs}"
+      ],
+      "required_host_commands": [
+        "python3"
+      ],
+      "required_installed_paths": [
+        "{prefix}/runtime/bin/brili",
+        "{prefix}/runtime/share/cpg/source-lock.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "DENO_NO_UPDATE_CHECK": "1",
+        "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+        "PIP_NO_INDEX": "1",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONOPTIMIZE": "0"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 434511,
+        "extract": false,
+        "id": "input-001",
+        "material_path": "assets/bril-e8b05b703acc9601addd6053294a3040863194cc.tar.gz",
+        "sha256": "2ead6a87fa594f74319bdf7e677ada8fc0675b86a6aac6ee40d73dccc9d76e08",
+        "strip_root": false,
+        "url": "https://codeload.github.com/sampsyo/bril/tar.gz/e8b05b703acc9601addd6053294a3040863194cc"
+      },
+      {
+        "bytes": 1074,
+        "extract": false,
+        "id": "input-002",
+        "material_path": "assets/deno-2.9.6-LICENSE.md",
+        "sha256": "f62497fffecc0852960c8d3e6934b9db86d16396e9b604072e923892cae3a588",
+        "strip_root": false,
+        "url": "https://raw.githubusercontent.com/denoland/deno/v2.9.6/LICENSE.md"
+      },
+      {
+        "bytes": 42285097,
+        "extract": false,
+        "id": "input-003",
+        "material_path": "assets/deno-linux-x64-glibc-2.9.6.tgz",
+        "sha256": "a6596af07f3570b4f1ffa6783bfee9942aac14a719a601baa6bf5b71bf0105e2",
+        "strip_root": false,
+        "url": "https://registry.npmjs.org/@deno/linux-x64-glibc/-/linux-x64-glibc-2.9.6.tgz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "unspecified",
+      "distribution_version": "unspecified",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# Invoke the selected prefix explicitly; no global PATH change is required."
+      ],
+      "documentation": [
+        "https://github.com/sampsyo/bril",
+        "https://capra.cs.cornell.edu/bril/tools/interp.html",
+        "https://docs.deno.com/runtime/getting_started/installation/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/runtime/bin/cpg-check --out /absolute/evidence-directory",
+          "description": "Replay the deterministic functional checks into an external evidence directory."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Independent installed resource",
+          "path": "{prefix}/runtime",
+          "purpose": "Unchanged interpreted upstream source; bundled upstream Deno binary, not a Deno source build."
+        },
+        {
+          "label": "Unmodified upstream source",
+          "path": "{prefix}/runtime/share/cpg/source",
+          "purpose": "Source and original licenses retained separately from disposable build trees."
+        }
+      ],
+      "notes": [
+        "Unchanged interpreted upstream source; bundled upstream Deno binary, not a Deno source build.",
+        "Educational core int/bool IR only; twelve bounded cases do not establish arbitrary program equivalence, memory, exceptions or side-effect semantics.",
+        "The source artifact method transports exact original inputs and an installation recipe; it is not itself evidence of a native source compilation.",
+        "Python >=3.11 with venv/ensurepip and tarfile data-filter support is required. Native resources additionally require cc, GNU make, ar and Perl.",
+        "The runtime target is Linux x86_64. No distribution allowlist is imposed; actual host details and executed checks are recorded."
+      ],
+      "summary": "Pinned educational Bril reference interpreter and upstream TDCE example, with the original Deno runtime distribution."
+    },
+    "version": "e8b05b703acc9601addd6053294a3040863194cc"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "cpg_version": "0.21.14",
+    "input_lock": "source-lock.json",
+    "installation_mode": "Unchanged interpreted upstream source; bundled upstream Deno binary, not a Deno source build.",
+    "native_source_build": false,
+    "primary_urls": [
+      "https://github.com/sampsyo/bril",
+      "https://capra.cs.cornell.edu/bril/tools/interp.html",
+      "https://docs.deno.com/runtime/getting_started/installation/"
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "input-001",
+      "path": "sources/2ead6a87fa594f74319bdf7e677ada8fc0675b86a6aac6ee40d73dccc9d76e08"
+    },
+    {
+      "id": "input-002",
+      "path": "sources/f62497fffecc0852960c8d3e6934b9db86d16396e9b604072e923892cae3a588"
+    },
+    {
+      "id": "input-003",
+      "path": "sources/a6596af07f3570b4f1ffa6783bfee9942aac14a719a601baa6bf5b71bf0105e2"
+    }
+  ]
+}

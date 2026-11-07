@@ -1,0 +1,149 @@
+{
+  "build": "worker045-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-jit-regression",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "runtime.v8",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 21360032,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "Managed runtimes and JIT"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "runtime.v8",
+      "immutable_ref": "3d09c151de0de036f90513cb829a877e92d45bdc813f360ace2a4a1d5844b00d",
+      "kind": "native_bundle",
+      "license_id": "BSD-3-Clause; see bundled third-party notices",
+      "material_path": "inputs/input-1",
+      "purpose": "JS/Wasm分层JIT、类型反馈、Maglev/TurboFan和deopt源码测试材料",
+      "qualification_scope": "official d8 consumption; Ignition/TurboFan/Maglev identical outputs; observed optimization and deoptimization; 16 upstream mjsunit cases; complete pinned source material with Git-tree verification",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "3d09c151de0de036f90513cb829a877e92d45bdc813f360ace2a4a1d5844b00d",
+      "source_evidence": [
+        "https://github.com/v8/v8"
+      ],
+      "source_url": "https://storage.googleapis.com/chromium-v8/official/canary/v8-linux64-rel-15.9.62.zip",
+      "strip_archive_root": false,
+      "title": "V8",
+      "upstream": "https://github.com/v8/v8",
+      "version": "15.9.62",
+      "worker_record_id": "review.optimization.v8"
+    },
+    "catalog_sha256": "add6a868276c53ec5a55ebd47a209268e2fdcb6c107d774b4a9bff1de1a468da",
+    "input_provenance": [
+      {
+        "bytes": 21360032,
+        "sha256": "3d09c151de0de036f90513cb829a877e92d45bdc813f360ace2a4a1d5844b00d",
+        "url": "https://storage.googleapis.com/chromium-v8/official/canary/v8-linux64-rel-15.9.62.zip"
+      },
+      {
+        "bytes": 32292924,
+        "sha256": "4fdad0b87ffa7cc5afd0870b2e9412eb82815015b7253753e03b401b88875f99",
+        "url": "https://codeload.github.com/v8/v8/tar.gz/47b64d3854b3b5ba981a7620f1af1eee34e85c25"
+      }
+    ],
+    "original_resource_ids": [],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "material_qualified": true,
+      "source_build_qualified": false
+    },
+    "record_id": "review.optimization.v8",
+    "runtime_requirements": {
+      "arch": "x86_64",
+      "elf_interpreter": "/lib64/ld-linux-x86-64.so.2",
+      "gcc_symbol_versions": [
+        "GCC_3.0",
+        "GCC_3.3"
+      ],
+      "glibc_minimum_from_ELF_symbols": "2.27",
+      "os": "Linux",
+      "sonames": [
+        "libpthread.so.0",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ]
+    },
+    "worker_id": "worker 045"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {}
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 21360032,
+      "extract": false,
+      "id": "runtime.v8",
+      "material_path": "inputs/input-1",
+      "sha256": "3d09c151de0de036f90513cb829a877e92d45bdc813f360ace2a4a1d5844b00d",
+      "strip_root": false,
+      "url": "https://storage.googleapis.com/chromium-v8/official/canary/v8-linux64-rel-15.9.62.zip"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/v8/v8"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "official d8 consumption; Ignition/TurboFan/Maglev identical outputs; observed optimization and deoptimization; 16 upstream mjsunit cases; complete pinned source material with Git-tree verification"
+      }
+    ],
+    "notes": [
+      "官方镜像；完整源码构建重，先精确源/文档/mjsunit材料。",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "JS/Wasm分层JIT、类型反馈、Maglev/TurboFan和deopt源码测试材料"
+  },
+  "version": "15.9.62"
+}

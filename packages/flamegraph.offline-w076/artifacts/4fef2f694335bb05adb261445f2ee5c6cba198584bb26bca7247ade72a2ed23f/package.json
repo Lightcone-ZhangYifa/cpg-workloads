@@ -1,0 +1,133 @@
+{
+  "build": "w076.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "offline-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "perl"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "flamegraph.offline-w076",
+  "metadata": {
+    "baseline_binding": {
+      "before_functional": true,
+      "before_material": false,
+      "catalog_sha256": "a34326509bc8c7dd0616ad6231838752a7c464ebe056a2c8124a69f5cc562323",
+      "logical_resource_id": "flamegraph",
+      "original_spec_sha256": "b38898707ece447ceb5e7199e5bc3d0c7feefbf90569e6ef49216a4890035097",
+      "technical_profile_is_not_new_resource": true
+    },
+    "catalog": {
+      "archive_bytes": 1063248,
+      "baseline_version": "0.21.14",
+      "category": "observability",
+      "deployment": {
+        "adapter": "copy"
+      },
+      "extract": false,
+      "id": "flamegraph.offline-w076",
+      "is_formal_baseline_addition": false,
+      "kind": "native_bundle",
+      "managed_profile_scope": "Original pinned FlameGraph conversion of saved perf text and exact period-weight fixtures into folded stacks and valid SVG; no new collection",
+      "material_path": "raw/flamegraph-41fee1f99f9276008b7cd112fca19dc3ea84ac32.tar.gz",
+      "purpose": "Original pinned FlameGraph conversion of saved perf text and exact period-weight fixtures into folded stacks and valid SVG; no new collection",
+      "sha256": "b1ba3aaaf296ab72ced4dca84514377a4b2c8122831d743f726c106d3d339c2a",
+      "source_url": "https://codeload.github.com/brendangregg/FlameGraph/tar.gz/41fee1f99f9276008b7cd112fca19dc3ea84ac32",
+      "strip_archive_root": true,
+      "title": "flamegraph.offline-w076",
+      "upstream_pin_record": "source-lock.json",
+      "version": "commit-41fee1f99f92"
+    },
+    "catalog_sha256": "bb7eae57481c1babaff2c32fe66e8020e562d27de0c3e7b8e0f022c93095e515",
+    "functional_claim": true,
+    "hardware_claim": false,
+    "host_runtime_requirements_explicit": true,
+    "independent_new_family": false,
+    "logical_resource_id": "flamegraph",
+    "material_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Original pinned FlameGraph conversion of saved perf text and exact period-weight fixtures into folded stacks and valid SVG; no new collection",
+    "worker_id": "worker 076"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_installed_paths": [
+      "{prefix}/CPG-POLICY.json",
+      "{prefix}/source-lock.json",
+      "{prefix}/material-manifest.json",
+      "{prefix}/GUIDE.md"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "perl"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1063248,
+      "extract": false,
+      "id": "flamegraph.offline-w076",
+      "material_path": "raw/flamegraph-41fee1f99f9276008b7cd112fca19dc3ea84ac32.tar.gz",
+      "sha256": "b1ba3aaaf296ab72ced4dca84514377a4b2c8122831d743f726c106d3d339c2a",
+      "strip_root": true,
+      "url": "https://codeload.github.com/brendangregg/FlameGraph/tar.gz/41fee1f99f9276008b7cd112fca19dc3ea84ac32"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "{prefix}/GUIDE.md",
+      "{prefix}/source-lock.json",
+      "{prefix}/CPG-POLICY.json"
+    ],
+    "examples": [
+      {
+        "command": "cat {prefix}/GUIDE.md",
+        "description": "Read scope and offline invocation examples"
+      }
+    ],
+    "locations": [
+      {
+        "label": "independent payload",
+        "path": "{prefix}",
+        "purpose": "Selected pinned upstream resources and reproducible offline fixtures."
+      }
+    ],
+    "notes": [
+      "User perf-only collection policy remains in force.",
+      "No hardware, benchmark or UI browser execution qualification is implied.",
+      "All check outputs are outside the immutable prefix."
+    ],
+    "summary": "Original pinned FlameGraph conversion of saved perf text and exact period-weight fixtures into folded stacks and valid SVG; no new collection"
+  },
+  "version": "commit-41fee1f99f92"
+}

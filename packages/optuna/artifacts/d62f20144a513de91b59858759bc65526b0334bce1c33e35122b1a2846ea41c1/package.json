@@ -1,0 +1,184 @@
+{
+  "build": "worker083-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-S",
+        "{recipe}/check_resource.py",
+        "--resource",
+        "optuna",
+        "--prefix",
+        "{prefix}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "fresh-measured-search-and-correctness",
+      "kind": "functional",
+      "stdout_regex": "CPG_WORKER083_CHECK_PASSED",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "optuna",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 780370,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Optimization search",
+        "Autotuning"
+      ],
+      "container_strategy": "Use the separately locked Python wheel environment at this source version; persist sampler seed, study state, trial failures and resource expenditure.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/optuna/optuna"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/optuna.measurement.json",
+        "workspace-evidence/resources-v050/open-research/optuna.refs.json"
+      ],
+      "extract": true,
+      "id": "optuna",
+      "immutable_ref": "01ddd17ab9f36c3d2817aed9afe376e1cb047d35",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/optuna",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Bayesian/TPE search, sampler studies and configurable compiler-training hyperparameter sweeps.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Pruning noisy compiler runtime trials can bias selection; the experiment must specify its statistical policy.",
+        "Wheel dependencies and storage backend are separate manifest resources."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "3eb92bd9e60b0b72818498da6bc7b775da9cf86eb0d0a3810ac071be150a1f72",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/optuna/optuna",
+        "https://codeload.github.com/optuna/optuna/tar.gz/01ddd17ab9f36c3d2817aed9afe376e1cb047d35",
+        "https://github.com/optuna/optuna/commit/01ddd17ab9f36c3d2817aed9afe376e1cb047d35"
+      ],
+      "source_logical_bytes": 4063089,
+      "source_url": "https://codeload.github.com/optuna/optuna/tar.gz/01ddd17ab9f36c3d2817aed9afe376e1cb047d35",
+      "title": "Optuna optimization source and examples",
+      "upstream": "https://github.com/optuna/optuna",
+      "version": "v5.0.0"
+    },
+    "catalog_sha256": "db06fd2528ffc439e760e51450f608c86d4803846ba8045dfb23fe910ba482bd",
+    "worker083_execution_profile": {
+      "input_manifest_sha256": "768d5c36640f6b4db1862032dd280077f2b6009c7cbc34dcc482640f05943103",
+      "scope": "Actual local measured compiler-parameter tuning with independent correctness gates; qualification is recorded separately in receipts"
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-S",
+        "{recipe}/install_resource.py",
+        "--resource",
+        "optuna",
+        "--source",
+        "{source}",
+        "--prefix",
+        "{prefix}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}"
+      ]
+    ],
+    "execution_profile": "Exact additional execution inputs; original source/dependency/catalog identity is preserved",
+    "required_host_commands": [
+      "python3",
+      "gcc"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc"
+    ],
+    "runtime_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 780370,
+      "extract": true,
+      "id": "optuna",
+      "material_path": "sources/optuna",
+      "sha256": "3eb92bd9e60b0b72818498da6bc7b775da9cf86eb0d0a3810ac071be150a1f72",
+      "strip_root": true,
+      "url": "https://codeload.github.com/optuna/optuna/tar.gz/01ddd17ab9f36c3d2817aed9afe376e1cb047d35"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/optuna/optuna"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile.",
+      "New execution recipe and checks supplement the unchanged baseline identity. Preparation and installation are separate; only frozen raw inputs are shared."
+    ],
+    "summary": "Bayesian/TPE search, sampler studies and configurable compiler-training hyperparameter sweeps."
+  },
+  "version": "v5.0.0"
+}

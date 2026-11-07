@@ -1,0 +1,157 @@
+{
+  "build": "arm-unknown-eabi-1-materials",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/verify_material.py",
+        "{prefix}",
+        "{prefix}/material-manifest.json"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "locked-materials",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "toolchain.crosstool-ng",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "qualification_scope": "Material/source-preparation qualification only; complete GCC/binutils/newlib toolchain rebuild deferred with a separate proposed budget.",
+    "worker": "worker 022"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2542208,
+      "extract": false,
+      "id": "crosstool-ng-1.29.0.tar.xz",
+      "material_path": "raw/crosstool-ng-1.29.0.tar.xz",
+      "sha256": "1e0c5efcf2af674993b74a1783fe78727c8d34b500ebab07eb1bb0a45c8fcc87",
+      "strip_root": false,
+      "url": "https://github.com/crosstool-ng/crosstool-ng/releases/download/crosstool-ng-1.29.0/crosstool-ng-1.29.0.tar.xz"
+    },
+    {
+      "bytes": 29034716,
+      "extract": false,
+      "id": "binutils-2.47.tar.xz",
+      "material_path": "raw/ctng-source/binutils-2.47.tar.xz",
+      "sha256": "154ab23b60070e8f27013c22977f1129425d67d1e8acd6e13010e617811e4cff",
+      "strip_root": false,
+      "url": "https://ftpmirror.gnu.org/gnu/binutils/binutils-2.47.tar.xz"
+    },
+    {
+      "bytes": 107200820,
+      "extract": false,
+      "id": "gcc-16.2.0.tar.xz",
+      "material_path": "raw/ctng-source/gcc-16.2.0.tar.xz",
+      "sha256": "e6738e29597f733270731aa90600f37ffdc045079dfc27ec7e8192cc81085c3e",
+      "strip_root": false,
+      "url": "https://ftpmirror.gnu.org/gnu/gcc/gcc-16.2.0/gcc-16.2.0.tar.xz"
+    },
+    {
+      "bytes": 2094196,
+      "extract": false,
+      "id": "gmp-6.3.0.tar.xz",
+      "material_path": "raw/ctng-source/gmp-6.3.0.tar.xz",
+      "sha256": "a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898",
+      "strip_root": false,
+      "url": "https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz"
+    },
+    {
+      "bytes": 2056436,
+      "extract": false,
+      "id": "isl-0.27.tar.xz",
+      "material_path": "raw/ctng-source/isl-0.27.tar.xz",
+      "sha256": "6d8babb59e7b672e8cb7870e874f3f7b813b6e00e6af3f8b04f7579965643d5c",
+      "strip_root": false,
+      "url": "https://libisl.sourceforge.io/isl-0.27.tar.xz"
+    },
+    {
+      "bytes": 773573,
+      "extract": false,
+      "id": "mpc-1.3.1.tar.gz",
+      "material_path": "raw/ctng-source/mpc-1.3.1.tar.gz",
+      "sha256": "ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8",
+      "strip_root": false,
+      "url": "https://www.multiprecision.org/downloads/mpc-1.3.1.tar.gz"
+    },
+    {
+      "bytes": 1505596,
+      "extract": false,
+      "id": "mpfr-4.2.2.tar.xz",
+      "material_path": "raw/ctng-source/mpfr-4.2.2.tar.xz",
+      "sha256": "b67ba0383ef7e8a8563734e2e889ef5ec3c3b898a01d00fa0a6869ad81c6ce01",
+      "strip_root": false,
+      "url": "https://www.mpfr.org/mpfr-4.2.2/mpfr-4.2.2.tar.xz"
+    },
+    {
+      "bytes": 9208322,
+      "extract": false,
+      "id": "newlib-4.6.0.20260123.tar.gz",
+      "material_path": "raw/ctng-source/newlib-4.6.0.20260123.tar.gz",
+      "sha256": "6ff27e3bf022666f43f7802255be680eeff722ac181b1725d21e2e8318604ee3",
+      "strip_root": false,
+      "url": "https://sourceware.org/pub/newlib/newlib-4.6.0.20260123.tar.gz"
+    },
+    {
+      "bytes": 1305740,
+      "extract": false,
+      "id": "zlib-1.3.1.tar.xz",
+      "material_path": "raw/ctng-source/zlib-1.3.1.tar.xz",
+      "sha256": "38ef96b8dfe510d42707d9c781877914792541133e1870841463bfa73f883e32",
+      "strip_root": false,
+      "url": "https://github.com/madler/zlib/releases/download/v1.3.1/zlib-1.3.1.tar.xz"
+    },
+    {
+      "bytes": 2434947,
+      "extract": false,
+      "id": "zstd-1.5.7.tar.gz",
+      "material_path": "raw/ctng-source/zstd-1.5.7.tar.gz",
+      "sha256": "eb33e51f49a15e023950cd7825ca74a4a2b43db8354825ac24fc1b7ee09e6fa3",
+      "strip_root": false,
+      "url": "https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://crosstool-ng.github.io/docs/configuration/",
+      "https://github.com/crosstool-ng/crosstool-ng/releases/tag/crosstool-ng-1.29.0"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "independent-prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed ct-ng arm-unknown-eabi sample and complete nine-archive source closure"
+      }
+    ],
+    "notes": [
+      "Material/source-preparation qualification only; complete GCC/binutils/newlib toolchain rebuild deferred with a separate proposed budget."
+    ],
+    "summary": "Fixed ct-ng arm-unknown-eabi sample and complete nine-archive source closure"
+  },
+  "version": "1.29.0"
+}

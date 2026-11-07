@@ -1,0 +1,158 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "reference.doc.pyzx-faq-material",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 90
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "reference.doc.pyzx-faq",
+  "metadata": {
+    "entity_kind": "reference_asset",
+    "immutable_ref": "d9691d0b2aaaab92f11ed0b2cabe2bcc36f8cc14",
+    "license": "Apache-2.0",
+    "material_only": true,
+    "original_qualification": {
+      "current_artifact_execution": "not_run",
+      "dataset": null,
+      "functional": null,
+      "material": true
+    },
+    "publication_license": {
+      "license_class": "open",
+      "license_id": "Apache-2.0 AND MIT",
+      "redistributable": true,
+      "scope": "Pinned upstream reference/source content with original notices, plus MIT-licensed original CPG integration."
+    },
+    "publication_policy": {
+      "build_check": "not_run",
+      "formal_qualification_changed": false,
+      "functional": "not_run",
+      "review_policy": "static-trust-v1"
+    },
+    "record_id": "reference.doc.pyzx-faq",
+    "tool_functional_status": "not_run",
+    "upstream_family_increment": 0
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "build_dependency_closure_complete": false,
+    "material_archive_complete": true,
+    "native_execution_qualified": false,
+    "qualification_scope": "static reference material only; no upstream execution",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/reference-index.json",
+      "{prefix}/README.zh.txt"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_complete": true,
+    "source_closure_scope": "complete locked archive material; executable dependency closure explicitly not asserted"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 6616376,
+      "extract": false,
+      "id": "pyzx-d9691d0b2aaaab92f11ed0b2cabe2bcc36f8cc14.tar.gz",
+      "material_path": "upstream/pyzx-d9691d0b2aaaab92f11ed0b2cabe2bcc36f8cc14.tar.gz",
+      "sha256": "778986830908062b27a210cc2abecee1463dd84a1db3befe1ca071563f8421f5",
+      "strip_root": false,
+      "url": "https://codeload.github.com/zxcalc/pyzx/tar.gz/d9691d0b2aaaab92f11ed0b2cabe2bcc36f8cc14"
+    },
+    {
+      "bytes": 9945,
+      "extract": false,
+      "id": "faq-pinned.rst",
+      "material_path": "upstream/faq-pinned.rst",
+      "sha256": "03a34d37b6d51daae4ffd5d68a5d167b19a3372a2b6dc5d7b74da1e4dae6b3db",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/zxcalc/pyzx/d9691d0b2aaaab92f11ed0b2cabe2bcc36f8cc14/doc/faq.rst"
+    },
+    {
+      "bytes": 20849,
+      "extract": false,
+      "id": "faq-latest.html",
+      "material_path": "upstream/faq-latest.html",
+      "sha256": "d4f1b953d5706cfd9ed97dbe860ea05cc9c7e18f1b21c9c52085822c8476ed77",
+      "strip_root": false,
+      "url": "https://pyzx.readthedocs.io/en/latest/faq.html"
+    },
+    {
+      "bytes": 6208,
+      "extract": false,
+      "id": "master-commit.json",
+      "material_path": "upstream/master-commit.json",
+      "sha256": "65c23cb99caf42917b21409580a04e1d513c348126744c7b674f907045edb163",
+      "strip_root": false,
+      "url": "https://api.github.com/repos/zxcalc/pyzx/commits/master"
+    },
+    {
+      "bytes": 3998,
+      "extract": false,
+      "id": "tags.json",
+      "material_path": "upstream/tags.json",
+      "sha256": "16e166e63939d124deb237cb7c8f1fd82c1fa1a7d8a7176b1a1fb83b51439378",
+      "strip_root": false,
+      "url": "https://api.github.com/repos/zxcalc/pyzx/tags?per_page=10"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "debian",
+    "distribution_version": "13",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://pyzx.readthedocs.io/en/latest/faq.html"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/tools/reference.py verify",
+        "description": "Verify material and locators"
+      },
+      {
+        "command": "python3 -B {prefix}/tools/reference.py search sketch",
+        "description": "Search reference index"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Offline source and chapter index",
+        "path": "{prefix}/readers/index.html",
+        "purpose": "Exact local chapter and source-symbol navigation"
+      }
+    ],
+    "notes": [
+      "本包不执行 PyZX，也不授予量子电路优化功能资格。FAQ 支持 T-count 方向，不能据此推出 T-depth 最优或所有门数单调改善。Circuit.depth 统计电路深度，不应充当 T-depth 指标。verify_equality 的文档说失败返回 None，但此固定版本实现返回 False；失败均不能作为不等价证明，且默认忽略全局相位。",
+      "This material build was statically reviewed and packaged only; installation, reader checks and upstream execution were not run."
+    ],
+    "summary": "锁定 PyZX 0.10.8 的 FAQ 与相关 API 原文，区分 T-count、两比特门数、总深度和 T-depth，保留图到电路提取与等价检查的限制。"
+  },
+  "version": "0.10.8"
+}

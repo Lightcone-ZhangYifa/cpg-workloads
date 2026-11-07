@@ -1,0 +1,150 @@
+{
+  "build": "worker089-reference-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "reference.doc.shine-sges-material",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 90
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "reference.doc.shine-sges",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "entity_kind": "reference_asset",
+    "immutable_ref": "b106ff6ad7d07559ec8375b529b9fb7f3c0fa725",
+    "license": "MIT AND CC-BY-4.0",
+    "material_only": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "reference.doc.shine-sges",
+    "tool_functional_status": "not_run",
+    "upstream_family_increment": 0
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "build_dependency_closure_complete": false,
+    "material_archive_complete": true,
+    "native_execution_qualified": false,
+    "qualification_scope": "static reference material only; no upstream execution",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/reference-index.json",
+      "{prefix}/README.zh.txt"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_complete": false,
+    "source_closure_scope": "complete locked archive material; executable dependency closure explicitly not asserted"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1825895,
+      "extract": false,
+      "id": "shine-b106ff6ad7d07559ec8375b529b9fb7f3c0fa725.tar.gz",
+      "material_path": "upstream/shine-b106ff6ad7d07559ec8375b529b9fb7f3c0fa725.tar.gz",
+      "sha256": "391bb6101da74c5f6f99e4984af53f973d229b3f0f5b2b0b59e12c8849e3a5ec",
+      "strip_root": false,
+      "url": "https://codeload.github.com/rise-lang/shine/tar.gz/b106ff6ad7d07559ec8375b529b9fb7f3c0fa725"
+    },
+    {
+      "bytes": 12787,
+      "extract": false,
+      "id": "sges-commit.json",
+      "material_path": "upstream/sges-commit.json",
+      "sha256": "40870c411edaac1e357a8c02a5716d62a3414ffb871bad6cdc5f0e6795790fa1",
+      "strip_root": false,
+      "url": "https://api.github.com/repos/rise-lang/shine/commits/sges"
+    },
+    {
+      "bytes": 202457,
+      "extract": false,
+      "id": "sges-tree.json",
+      "material_path": "upstream/sges-tree.json",
+      "sha256": "b63fe3e0e59fa93e86d1725faf7f6e9b225b900c809935fd02a5bd7092bbb2c9",
+      "strip_root": false,
+      "url": "https://api.github.com/repos/rise-lang/shine/git/trees/b106ff6ad7d07559ec8375b529b9fb7f3c0fa725?recursive=1"
+    },
+    {
+      "bytes": 1551585,
+      "extract": false,
+      "id": "sges-2021-author.pdf",
+      "material_path": "upstream/sges-2021-author.pdf",
+      "sha256": "5d98b627fd84263c3f7974fb05473f6ab1ad848f34685d37f071730689f0adf4",
+      "strip_root": false,
+      "url": "https://thok.eu/publications/2021/sges.pdf"
+    },
+    {
+      "bytes": 44139,
+      "extract": false,
+      "id": "arxiv-2111.13040v1.html",
+      "material_path": "upstream/arxiv-2111.13040v1.html",
+      "sha256": "98e7185a4322aa7d154fe68b17f1b6085a5eecb4a05f7663f15bd2b06162dc1f",
+      "strip_root": false,
+      "url": "https://arxiv.org/abs/2111.13040v1"
+    },
+    {
+      "bytes": 18657,
+      "extract": false,
+      "id": "cc-by-4.0.txt",
+      "material_path": "upstream/CC-BY-4.0.txt",
+      "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+      "strip_root": false,
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode.txt"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "debian",
+    "distribution_version": "13",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://thok.eu/publications/2021/sges.pdf"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/tools/reference.py verify",
+        "description": "Verify material and locators"
+      },
+      {
+        "command": "python3 -B {prefix}/tools/reference.py search sketch",
+        "description": "Search reference index"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Offline source and chapter index",
+        "path": "{prefix}/readers/index.html",
+        "purpose": "Exact local chapter and source-symbol navigation"
+      }
+    ],
+    "notes": [
+      "这是 2021 arXiv:2111.13040v1 与 sges 历史提交的材料集合，不能与主分支的一般 Shine 编译能力混同。本包不构建 Scala 项目、不补齐四个子模块或 Maven/SBT 依赖、不复现实验时间和内存数据。论文给出的提取式替换是覆盖范围受限的近似，不据此宣称搜索完备；源码存在未实现分支，见索引。"
+    ],
+    "summary": "保存 2021 SGES 作者论文和其明确链接的 Shine sges 历史分支，建立章节、定义、算法与源码符号对应。"
+  },
+  "version": "sges-2021-b106ff6ad7d0"
+}

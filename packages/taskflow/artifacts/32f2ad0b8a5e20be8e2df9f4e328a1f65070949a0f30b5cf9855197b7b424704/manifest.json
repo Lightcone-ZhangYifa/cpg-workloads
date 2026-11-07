@@ -1,0 +1,167 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 3902,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "e58e4d60e863227b0a6405ab74fb2777a6df18a1cdb7c318b2096e8f6e591283"
+    },
+    {
+      "bytes": 3606,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/consumer.cpp",
+      "sha256": "ccdbd0c9314be5ce59fc186c496fdff7cd5f7864e5448ada02e812d32e61f55d"
+    },
+    {
+      "bytes": 707,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install.py",
+      "sha256": "d41b63e58d319a015a705fd874faf2e37063547551aab96c36c858ea04b08a5c"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 42507041,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/2107f90e315e48a676922010b036357ff2b0c6b9160ce17fa9396e5860b1d715",
+      "sha256": "2107f90e315e48a676922010b036357ff2b0c6b9160ce17fa9396e5860b1d715"
+    }
+  ],
+  "inventory_sha256": "b91051bb3039c8af65225a646332245da748e92d1625a6edf719a412fe81e668",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ab63870da8e1099453810b207722b7acbea976faf059fece5c0d8e8fc0a088e3",
+  "method": "source",
+  "package": {
+    "build": "worker055.1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--work",
+          "{build}/functional"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "bounded-functional",
+        "kind": "functional",
+        "stdout_regex": "TASKFLOW_FUNCTIONAL_OK",
+        "timeout_seconds": 600
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "taskflow",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "host_requirements": [
+        "python3",
+        "g++"
+      ],
+      "license": "MIT",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "upstream_commit": "45366fe5bc4f2f8ec9aa590b40c504e296886865",
+      "worker_id": "worker 055"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/install.py",
+          "--source",
+          "{source}",
+          "--prefix",
+          "{prefix}"
+        ]
+      ],
+      "required_host_commands": [
+        "python3",
+        "g++"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "g++"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 42507041,
+        "extract": true,
+        "id": "taskflow",
+        "material_path": "sources/taskflow",
+        "sha256": "2107f90e315e48a676922010b036357ff2b0c6b9160ce17fa9396e5860b1d715",
+        "strip_root": true,
+        "url": "https://codeload.github.com/taskflow/taskflow/tar.gz/refs/tags/v4.1.0"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://codeload.github.com/taskflow/taskflow/tar.gz/refs/tags/v4.1.0"
+      ],
+      "examples": [
+        {
+          "command": "pm.check(\"taskflow\", prefix=prefix)",
+          "description": "Run retained bounded functional check"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Install prefix",
+          "path": "{prefix}",
+          "purpose": "Independent offline CPU resource installation"
+        }
+      ],
+      "notes": [
+        "All downloads happen before package preparation; install/check use only locked local materials.",
+        "Distribution metadata describes the reference build and does not impose a distribution allowlist.",
+        "No performance, GPU, distributed or full-language conformance qualification is inferred."
+      ],
+      "summary": "Taskflow CPU dependency and conditional task graphs"
+    },
+    "version": "4.1.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline": "0.21.14",
+    "scope": "bounded CPU integration",
+    "worker": "055"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "taskflow",
+      "path": "sources/2107f90e315e48a676922010b036357ff2b0c6b9160ce17fa9396e5860b1d715"
+    }
+  ]
+}

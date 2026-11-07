@@ -1,0 +1,321 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/guarded_check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/profile"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional-profile",
+      "kind": "functional",
+      "stdout_regex": "CPG_CHECK_PASS",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.accelergy",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "functional_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualifications": {
+      "dataset": null,
+      "oci": false,
+      "official_benchmark": false,
+      "physical_hardware": false
+    },
+    "record_id": "review.optimization.accelergy",
+    "resource_metadata": {
+      "build_claim": true,
+      "build_scope": "CACTI 7.0 child binary only; Accelergy is Python source executed with locked wheels",
+      "check_script": "check_v1.py",
+      "functional_claim": true,
+      "id": "research.accelergy",
+      "limitations": [
+        "Synthetic fixture has no physical meaning.",
+        "CACTI results are analytical estimates, not measured power.",
+        "Linux x86_64 CPython 3.12 runtime.",
+        "Only output input copies are adapted: action_share/area_share are renamed to energy_scale/area_scale, and four deprecated architecture attributes.area_scale values (2/3/4/5) are moved beside attributes so the current parser applies them. All 13 component ERT/ART entries have independent formula oracles; original fixtures and upstream algorithms are unchanged.",
+        "CACTI plugin upstream README deprecates this interface in favor of hwcomponents-cacti; this bundle deliberately pins the matching Accelergy 0.4 interface."
+      ],
+      "method": "binary",
+      "record_id": "review.optimization.accelergy",
+      "required_runtime_commands": [
+        "python3",
+        "ldd"
+      ],
+      "runtime_profile": "Linux x86_64; CPython 3.12; glibc >= 2.39",
+      "source_locks": [
+        {
+          "bytes": 63566,
+          "id": "Accelergy-Project/accelergy",
+          "path": "sources/accelergy-6911d15686ee7efdceba7d95605102df4472ae3a.tar.gz",
+          "revision": "6911d15686ee7efdceba7d95605102df4472ae3a",
+          "sha256": "f862377f3b1cc29d6dd8c6baaa37af138962857651daf54e41fc12bc2fa91a83",
+          "url": "https://codeload.github.com/Accelergy-Project/accelergy/tar.gz/6911d15686ee7efdceba7d95605102df4472ae3a"
+        },
+        {
+          "bytes": 8286,
+          "id": "Accelergy-Project/accelergy-cacti-plug-in",
+          "path": "sources/accelergy-cacti-plug-in-7649b2c02a389f3c3d585d7ff4ececacfb01e6ea.tar.gz",
+          "revision": "7649b2c02a389f3c3d585d7ff4ececacfb01e6ea",
+          "sha256": "8caf547f392229f8b6c684ec42f593ab11c493f5589f9290b375bfb16185bf97",
+          "url": "https://codeload.github.com/Accelergy-Project/accelergy-cacti-plug-in/tar.gz/7649b2c02a389f3c3d585d7ff4ececacfb01e6ea"
+        },
+        {
+          "bytes": 195137,
+          "id": "HewlettPackard/cacti",
+          "path": "sources/cacti-1ffd8dfb10303d306ecd8d215320aea07651e878.tar.gz",
+          "revision": "1ffd8dfb10303d306ecd8d215320aea07651e878",
+          "sha256": "bfed924722bb8ebfa0b224741d3955034e1ced7bd1371fbb5472c81c509df9a3",
+          "url": "https://codeload.github.com/HewlettPackard/cacti/tar.gz/1ffd8dfb10303d306ecd8d215320aea07651e878"
+        },
+        {
+          "bytes": 1457527,
+          "id": "Accelergy-Project/timeloop-accelergy-exercises",
+          "path": "sources/timeloop-accelergy-exercises-2d5510807128e9bd5f1cad0705cdf2ec4612fd4e.tar.gz",
+          "revision": "2d5510807128e9bd5f1cad0705cdf2ec4612fd4e",
+          "sha256": "e2283b5c6d567d3b88017ed104aacbf79f69bcfd53fa7408d010f38017d76dd2",
+          "url": "https://codeload.github.com/Accelergy-Project/timeloop-accelergy-exercises/tar.gz/2d5510807128e9bd5f1cad0705cdf2ec4612fd4e"
+        },
+        {
+          "bytes": 91378,
+          "id": "pypi:deepdiff",
+          "path": "wheels/deepdiff-8.6.1-py3-none-any.whl",
+          "sha256": "ee8708a7f7d37fb273a541fa24ad010ed484192cd0c4ffc0fa0ed5e2d4b9e78b",
+          "url": "https://files.pythonhosted.org/packages/f7/e6/efe534ef0952b531b630780e19cabd416e2032697019d5295defc6ef9bd9/deepdiff-8.6.1-py3-none-any.whl",
+          "version": "8.6.1"
+        },
+        {
+          "bytes": 134899,
+          "id": "pypi:Jinja2",
+          "path": "wheels/jinja2-3.1.6-py3-none-any.whl",
+          "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+          "url": "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl",
+          "version": "3.1.6"
+        },
+        {
+          "bytes": 22985,
+          "id": "pypi:MarkupSafe",
+          "path": "wheels/markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "8e124f974786f831d6043728e38296969d3579db8896fe004682f5758e613581",
+          "url": "https://files.pythonhosted.org/packages/4f/a7/aeedb5140afa41fc74c225e9184ab96723a6e873b6ee1c9fede7283456d8/markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "version": "3.0.4"
+        },
+        {
+          "bytes": 13068,
+          "id": "pypi:orderly-set",
+          "path": "wheels/orderly_set-5.5.0-py3-none-any.whl",
+          "sha256": "46f0b801948e98f427b412fcabb831677194c05c3b699b80de260374baa0b1e7",
+          "url": "https://files.pythonhosted.org/packages/12/27/fb8d7338b4d551900fa3e580acbe7a0cf655d940e164cb5c00ec31961094/orderly_set-5.5.0-py3-none-any.whl",
+          "version": "5.5.0"
+        },
+        {
+          "bytes": 1806118,
+          "id": "pypi:pyfiglet",
+          "path": "wheels/pyfiglet-1.0.4-py3-none-any.whl",
+          "sha256": "65b57b7a8e1dff8a67dc8e940a117238661d5e14c3e49121032bd404d9b2b39f",
+          "url": "https://files.pythonhosted.org/packages/9f/5c/fe9f95abd5eaedfa69f31e450f7e2768bef121dbdf25bcddee2cd3087a16/pyfiglet-1.0.4-py3-none-any.whl",
+          "version": "1.0.4"
+        },
+        {
+          "bytes": 807870,
+          "id": "pypi:PyYAML",
+          "path": "wheels/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc",
+          "url": "https://files.pythonhosted.org/packages/8b/9d/b3589d3877982d4f2329302ef98a8026e7f4443c765c46cfecc8858c6b4b/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "version": "6.0.3"
+        },
+        {
+          "bytes": 121594,
+          "id": "pypi:ruamel.yaml",
+          "path": "wheels/ruamel_yaml-0.18.17-py3-none-any.whl",
+          "sha256": "9c8ba9eb3e793efdf924b60d521820869d5bf0cb9c6f1b82d82de8295e290b9d",
+          "url": "https://files.pythonhosted.org/packages/af/fe/b6045c782f1fd1ae317d2a6ca1884857ce5c20f59befe6ab25a8603c43a7/ruamel_yaml-0.18.17-py3-none-any.whl",
+          "version": "0.18.17"
+        },
+        {
+          "bytes": 788211,
+          "id": "pypi:ruamel.yaml.clib",
+          "path": "wheels/ruamel_yaml_clib-0.2.15-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "11e5499db1ccbc7f4b41f0565e4f799d863ea720e01d3e99fa0b7b5fcd7802c9",
+          "url": "https://files.pythonhosted.org/packages/61/62/150c841f24cda9e30f588ef396ed83f64cfdc13b92d2f925bb96df337ba9/ruamel_yaml_clib-0.2.15-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "version": "0.2.15"
+        }
+      ],
+      "upstream_license": "MIT (Accelergy and plugin); BSD-style HP CACTI license in locked source; vendored Python wheel license files retained",
+      "version": "0.4+6911d156"
+    },
+    "source_build_claim": true,
+    "support_only": false,
+    "upstream_license": "MIT (Accelergy and plugin); BSD-style HP CACTI license in locked source; vendored Python wheel license files retained",
+    "worker_id": "worker 061"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 63566,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "sources/accelergy-6911d15686ee7efdceba7d95605102df4472ae3a.tar.gz",
+      "sha256": "f862377f3b1cc29d6dd8c6baaa37af138962857651daf54e41fc12bc2fa91a83",
+      "strip_root": false,
+      "url": "https://codeload.github.com/Accelergy-Project/accelergy/tar.gz/6911d15686ee7efdceba7d95605102df4472ae3a"
+    },
+    {
+      "bytes": 8286,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "sources/accelergy-cacti-plug-in-7649b2c02a389f3c3d585d7ff4ececacfb01e6ea.tar.gz",
+      "sha256": "8caf547f392229f8b6c684ec42f593ab11c493f5589f9290b375bfb16185bf97",
+      "strip_root": false,
+      "url": "https://codeload.github.com/Accelergy-Project/accelergy-cacti-plug-in/tar.gz/7649b2c02a389f3c3d585d7ff4ececacfb01e6ea"
+    },
+    {
+      "bytes": 195137,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "sources/cacti-1ffd8dfb10303d306ecd8d215320aea07651e878.tar.gz",
+      "sha256": "bfed924722bb8ebfa0b224741d3955034e1ced7bd1371fbb5472c81c509df9a3",
+      "strip_root": false,
+      "url": "https://codeload.github.com/HewlettPackard/cacti/tar.gz/1ffd8dfb10303d306ecd8d215320aea07651e878"
+    },
+    {
+      "bytes": 1457527,
+      "extract": false,
+      "id": "input-004",
+      "material_path": "sources/timeloop-accelergy-exercises-2d5510807128e9bd5f1cad0705cdf2ec4612fd4e.tar.gz",
+      "sha256": "e2283b5c6d567d3b88017ed104aacbf79f69bcfd53fa7408d010f38017d76dd2",
+      "strip_root": false,
+      "url": "https://codeload.github.com/Accelergy-Project/timeloop-accelergy-exercises/tar.gz/2d5510807128e9bd5f1cad0705cdf2ec4612fd4e"
+    },
+    {
+      "bytes": 91378,
+      "extract": false,
+      "id": "input-005",
+      "material_path": "wheels/deepdiff-8.6.1-py3-none-any.whl",
+      "sha256": "ee8708a7f7d37fb273a541fa24ad010ed484192cd0c4ffc0fa0ed5e2d4b9e78b",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/f7/e6/efe534ef0952b531b630780e19cabd416e2032697019d5295defc6ef9bd9/deepdiff-8.6.1-py3-none-any.whl"
+    },
+    {
+      "bytes": 134899,
+      "extract": false,
+      "id": "input-006",
+      "material_path": "wheels/jinja2-3.1.6-py3-none-any.whl",
+      "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl"
+    },
+    {
+      "bytes": 22985,
+      "extract": false,
+      "id": "input-007",
+      "material_path": "wheels/markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "8e124f974786f831d6043728e38296969d3579db8896fe004682f5758e613581",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/4f/a7/aeedb5140afa41fc74c225e9184ab96723a6e873b6ee1c9fede7283456d8/markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
+    },
+    {
+      "bytes": 13068,
+      "extract": false,
+      "id": "input-008",
+      "material_path": "wheels/orderly_set-5.5.0-py3-none-any.whl",
+      "sha256": "46f0b801948e98f427b412fcabb831677194c05c3b699b80de260374baa0b1e7",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/12/27/fb8d7338b4d551900fa3e580acbe7a0cf655d940e164cb5c00ec31961094/orderly_set-5.5.0-py3-none-any.whl"
+    },
+    {
+      "bytes": 1806118,
+      "extract": false,
+      "id": "input-009",
+      "material_path": "wheels/pyfiglet-1.0.4-py3-none-any.whl",
+      "sha256": "65b57b7a8e1dff8a67dc8e940a117238661d5e14c3e49121032bd404d9b2b39f",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/9f/5c/fe9f95abd5eaedfa69f31e450f7e2768bef121dbdf25bcddee2cd3087a16/pyfiglet-1.0.4-py3-none-any.whl"
+    },
+    {
+      "bytes": 807870,
+      "extract": false,
+      "id": "input-010",
+      "material_path": "wheels/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/8b/9d/b3589d3877982d4f2329302ef98a8026e7f4443c765c46cfecc8858c6b4b/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
+    },
+    {
+      "bytes": 121594,
+      "extract": false,
+      "id": "input-011",
+      "material_path": "wheels/ruamel_yaml-0.18.17-py3-none-any.whl",
+      "sha256": "9c8ba9eb3e793efdf924b60d521820869d5bf0cb9c6f1b82d82de8295e290b9d",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/af/fe/b6045c782f1fd1ae317d2a6ca1884857ce5c20f59befe6ab25a8603c43a7/ruamel_yaml-0.18.17-py3-none-any.whl"
+    },
+    {
+      "bytes": 788211,
+      "extract": false,
+      "id": "input-012",
+      "material_path": "wheels/ruamel_yaml_clib-0.2.15-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "11e5499db1ccbc7f4b41f0565e4f799d863ea720e01d3e99fa0b7b5fcd7802c9",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/61/62/150c841f24cda9e30f588ef396ed83f64cfdc13b92d2f925bb96df337ba9/ruamel_yaml_clib-0.2.15-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/Accelergy-Project/accelergy"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"research.accelergy\")",
+        "description": "Run the declared checks through the CPG Python API"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed payload",
+        "path": "{prefix}",
+        "purpose": "Locked resources and bounded offline check inputs"
+      }
+    ],
+    "notes": [
+      "Synthetic fixture has no physical meaning.",
+      "CACTI results are analytical estimates, not measured power.",
+      "Linux x86_64 CPython 3.12 runtime.",
+      "Only output input copies are adapted: action_share/area_share are renamed to energy_scale/area_scale, and four deprecated architecture attributes.area_scale values (2/3/4/5) are moved beside attributes so the current parser applies them. All 13 component ERT/ART entries have independent formula oracles; original fixtures and upstream algorithms are unchanged.",
+      "CACTI plugin upstream README deprecates this interface in favor of hwcomponents-cacti; this bundle deliberately pins the matching Accelergy 0.4 interface."
+    ],
+    "summary": "官方微型架构与动作计数生成ERT/ART/能耗结果，标明插件是实模型还是dummy"
+  },
+  "version": "0.4+6911d156"
+}

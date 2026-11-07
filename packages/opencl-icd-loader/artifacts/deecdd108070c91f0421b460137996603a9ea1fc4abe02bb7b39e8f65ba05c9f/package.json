@@ -1,0 +1,94 @@
+{
+  "build": "worker057-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/runtime_check.py",
+        "probe",
+        "--prefix",
+        "{dependency_prefix:pocl}",
+        "--loader",
+        "{prefix}",
+        "--output",
+        "{build}/functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "pocl"
+    ],
+    "system": []
+  },
+  "id": "opencl-icd-loader",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Khronos ICD Loader built from pinned source with layers disabled; actual isolated platform/device/kernel dispatch to pinned PoCL, plus empty-vendor rejection. Distinct from original ocl-icd identity.",
+    "worker_id": "worker 057"
+  },
+  "provider": "source",
+  "recipe": {
+    "required_installed_paths": [],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib:{dependency_prefix:pocl}/usr/lib/x86_64-linux-gnu:{dependency_prefix:pocl}/usr/lib/llvm-16/lib:{dependency_prefix:pocl}/usr/lib/x86_64-linux-gnu/pocl"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 115176,
+      "extract": false,
+      "id": "opencl-icd-loader-source",
+      "material_path": "sources/OpenCL-ICD-Loader-b7bd2803acc779c03d96588e9ca9e9568a18698a.tar.gz",
+      "sha256": "e9b9fac772ae5c5ad9e6b58e7c9a3bb37a842e21c27f8ab998cce0bcc4b79e28",
+      "strip_root": false,
+      "url": "https://codeload.github.com/KhronosGroup/OpenCL-ICD-Loader/tar.gz/b7bd2803acc779c03d96588e9ca9e9568a18698a"
+    },
+    {
+      "bytes": 89120,
+      "extract": false,
+      "id": "opencl-headers-source",
+      "material_path": "sources/opencl-headers-6fe718c31a45fe25151362a72ef041c3a1047cbd.tar.gz",
+      "sha256": "77b6bc606fe0c2b25ef0dd4c400ed508c12fda82dd4420eba3f9e00ce64206c4",
+      "strip_root": false,
+      "url": "https://codeload.github.com/KhronosGroup/OpenCL-Headers/tar.gz/6fe718c31a45fe25151362a72ef041c3a1047cbd"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt"
+    ],
+    "examples": [
+      {
+        "command": "python3 tools/replay.py --baseline /path/to/cpg --workdir /path/to/fresh-work",
+        "description": "Original CPG independent install/check/verify/remove replay"
+      }
+    ],
+    "locations": [],
+    "notes": [
+      "Candidate worker-local qualification only; original 1862 baseline entries and global coverage are unchanged.",
+      "Offline installation requires existing compatible Linux x86_64 system libraries; original PackageManager checks ELF dependencies. Distribution name is reference metadata, not a gate."
+    ],
+    "summary": "Khronos ICD Loader built from pinned source with layers disabled; actual isolated platform/device/kernel dispatch to pinned PoCL, plus empty-vendor rejection. Distinct from original ocl-icd identity."
+  },
+  "version": "2026.05.29"
+}

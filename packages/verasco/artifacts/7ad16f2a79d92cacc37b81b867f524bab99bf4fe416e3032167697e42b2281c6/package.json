@@ -1,0 +1,101 @@
+{
+  "build": "worker095-material-3",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "source-and-index",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "verasco",
+  "metadata": {
+    "entity_kind": "resource",
+    "license_id": "LicenseRef-INRIA-Non-Commercial AND GPL-2.0-or-later AND MIT",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.verification.verasco",
+    "worker_id": "worker 095",
+    "worker_local_qualification": {
+      "benchmark": null,
+      "dataset": null,
+      "functional": null,
+      "material": true,
+      "proof_replay": null
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "qualification_scope": "exact_author_source_material_and_checked_symbol_index_only",
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C.UTF-8",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2944684,
+      "extract": true,
+      "id": "author-release",
+      "material_path": "source",
+      "sha256": "688a0c8dd985c900dca012e56ba145a173198f0b9cfe34d21c846ccb6f96747f",
+      "strip_root": true,
+      "url": "https://compcert.inria.fr/verasco/release/verasco-1.3.tgz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://compcert.inria.fr/verasco/release/verasco-1.3.tgz"
+    ],
+    "examples": [
+      {
+        "command": "python3 -m json.tool {prefix}/index/selected.json",
+        "description": "Inspect selected theorem locations"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Unmodified source release",
+        "path": "{prefix}/source",
+        "purpose": "Inspect exact versioned formal definitions, proof scripts, build instructions and notices."
+      },
+      {
+        "label": "Symbol and leaf index",
+        "path": "{prefix}/index",
+        "purpose": "Locate selected statements and scope assumptions without confusing reference material with mechanically replayed proof."
+      }
+    ],
+    "notes": [
+      "Material-only package: the original task conditionally requests runtime checks if a usable historical binary can be obtained. Material validation does not grant analyzer execution or proof-replay qualification.",
+      "Official source and licenses are retained unchanged. The full distribution includes non-commercial CompCert components; Verasco-specific sources have the stated dual GPL/non-commercial licensing, and polyhedral components carry their own notices.",
+      "The soundness statement is no alarms implies no modeled run-time errors. Alarms may be conservative; the material is not a completeness guarantee or a proof about arbitrary ISO C/C++.",
+      "The historical prototype does not establish unrestricted recursion/dynamic-allocation support. Its specified CompCert language subset and external-function assumptions remain relevant.",
+      "A local Coq 8.4pl4/OCaml 4.01/Menhir 20160808 preflight passed. The proof build was paused during memory contention; it is not counted as a completed proof or analyzer execution."
+    ],
+    "summary": "Verasco 1.3 author source, soundness/fixed-point/points-to/memory theorem index and scoped historical-runtime notes."
+  },
+  "version": "1.3"
+}

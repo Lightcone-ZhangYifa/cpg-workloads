@@ -1,0 +1,197 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 3088,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.zh.md",
+      "sha256": "f1b951541bc5c1911ad070b17f5a9fbec62d8961e9a8be1280537abc620956e1"
+    },
+    {
+      "bytes": 262,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/bad_namespaceScript.sml",
+      "sha256": "23ec0c64e90400419e00565ba241c8ab6990c5e7b0a77147f05cff132fa2ac1c"
+    },
+    {
+      "bytes": 7823,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/check.py",
+      "sha256": "4ddffdfc73a1cfdc64fa664036a425f4f0a9063e85573fca8705b5e88e20f1c2"
+    },
+    {
+      "bytes": 2985,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/cpg_namespaceScript.sml",
+      "sha256": "e170be3c6fb5dc3f31b540cf11b89160faf323de5e07e5c371a4e729558b80af"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/licenses"
+    },
+    {
+      "bytes": 1637,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/licenses/CakeML-LICENSE",
+      "sha256": "563807b6d147728614cb470a86568f60e0ba1a5582b3ae8c9758e470e89066fb"
+    },
+    {
+      "bytes": 2518,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/licenses/HOL4-COPYRIGHT",
+      "sha256": "d071146fd9b5870fb76918eee569c105c84bea875ac302c55246a0904e27d1a4"
+    },
+    {
+      "bytes": 2926,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/namespaceScript.sml",
+      "sha256": "c801a0c47db1a07ddc1cc84b7f72f9bae9215be70d6ee21ee65ef43e82cd8b0c"
+    },
+    {
+      "bytes": 3993,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/sources.lock.json",
+      "sha256": "202e761c52c0c05fc73d99a1f9f50b794f75e99dc43bc683311e873b427755b2"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1354,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/run_check.py",
+      "sha256": "a3bf3ac6a7ede33f5c2fe6da20fbb0701c89b5c3a668209cc217978fa60c10fe"
+    }
+  ],
+  "inventory_sha256": "624347943228ee6d04a3528eb45be1bcaa5354c15005e0958d66324f4d92f673",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "a14770903270dbbdb1350ff584098a9fe2257f64be110005c10c3e5601b79084",
+  "method": "binary",
+  "package": {
+    "build": "cpg-20261101-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/run_check.py",
+          "--output-root",
+          "{build}/proof-results",
+          "--",
+          "python3",
+          "{prefix}/check.py",
+          "--runtime",
+          "{dependency_prefix:support.proof-hol4}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "kernel-helper-properties-and-wrong-assertion",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 1800
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "support.proof-hol4"
+      ],
+      "system": []
+    },
+    "id": "verification.hol4",
+    "metadata": {
+      "CakeML_commit": "2c8abfe53676cb4d1576174d5854a6de55e62e55",
+      "HOL4_commit": "9783a49979c94c401ff8c0e51b2eefae7ea95ae3",
+      "baseline_version": "0.21.14",
+      "formal_qualification_changed": false,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "prepack_evidence_sha256": "7dbf8f7730cd5211503dedb544aa3208532bea4ecd7b290b9687d2cf5886c232",
+      "record_id": "review.verification.hol4",
+      "support_only": false,
+      "trust_scope": "Audited HOL foundational axioms and DISK_THM imports; no full CakeML compiler-bootstrap qualification",
+      "worker_id": "worker 102"
+    },
+    "provider": "binary",
+    "recipe": {
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LD_LIBRARY_PATH": "{dependency_prefix:support.proof-hol4}/polyml/x86_64-linux"
+      }
+    },
+    "schema_version": 1,
+    "sources": [],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://codeload.github.com/HOL-Theorem-Prover/HOL/tar.gz/9783a49979c94c401ff8c0e51b2eefae7ea95ae3",
+        "https://codeload.github.com/CakeML/cakeml/tar.gz/2c8abfe53676cb4d1576174d5854a6de55e62e55",
+        "https://proofcraft.systems/isabelle/dist/contrib/polyml-5.9.2-6.tar.gz"
+      ],
+      "examples": [],
+      "locations": [],
+      "notes": [
+        "CPG 0.21.14 candidate overlay; formal baseline qualification is unchanged.",
+        "All generated proof files belong in an independent output directory."
+      ],
+      "summary": "Pinned original CakeML namespace semantic helper plus eight kernel-proved properties; 98 theorem/definition records, four inherited HOL axioms, DISK_THM explicitly retained; wrong assertion must fail"
+    },
+    "version": "HOL4-9783a49979c94c401ff8c0e51b2eefae7ea95ae3_CakeML-2c8abfe53676cb4d1576174d5854a6de55e62e55"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.14",
+    "packing_input_sha256": "ad79a545391bfa036f68c77715dc4ff77aef4f519823b4bfe00a3801f0779a89",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.verification.hol4",
+    "scope": "Pinned original CakeML namespace semantic helper plus eight kernel-proved properties; 98 theorem/definition records, four inherited HOL axioms, DISK_THM explicitly retained; wrong assertion must fail",
+    "support_only": false,
+    "worker_id": "worker 102"
+  },
+  "resolved_dependencies": [
+    {
+      "build": "cpg-20261101-v001",
+      "id": "support.proof-hol4",
+      "method": "source",
+      "sha256": "e5fe83526d05bdae3ea4c46df8eefe66f0240cd8b53c2a880801938e15ffbf35",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "HOL4-9783a49979c94c401ff8c0e51b2eefae7ea95ae3+PolyML-5.9.2"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

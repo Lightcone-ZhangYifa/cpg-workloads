@@ -1,0 +1,122 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/run_check.py",
+        "--output-root",
+        "{build}/proof-results",
+        "--",
+        "python3",
+        "-B",
+        "{prefix}/tools/proof_checks.py",
+        "--resource",
+        "smtcoq",
+        "--runtime",
+        "{dependency_prefix:support.proof-smtcoq}",
+        "--expected-coq",
+        "8.19.2",
+        "--expected-ocaml",
+        "4.09.1",
+        "--gc",
+        "s=256k,o=50,O=500"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "actual-proof-and-rejection",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 3600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "support.proof-smtcoq"
+    ],
+    "system": []
+  },
+  "id": "verification.smtcoq",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "formal_qualification_changed": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "prepack_evidence_sha256": "be2bbcc5debbe4db9cdf37ac0be4a5017e7f5df5c07b442299c64a880eedc126",
+    "proof_gates": [
+      "runtime-version exit",
+      "fixed Coq and OCaml version",
+      "dedicated SMTCoq fixed-commit runtime version",
+      "Certificate exit",
+      "real SAT witness checker returned true",
+      "checked_cnf independently associated assumption audit recorded",
+      "checker_correct independently associated assumption audit recorded",
+      "Mutant exit",
+      "changed certificate semantically rejected",
+      "coqchk exit"
+    ],
+    "record_id": "review.verification.smtcoq",
+    "support_only": false,
+    "upstream": [
+      {
+        "bytes": 599398,
+        "commit": "19e91e31a0393f4314625af51509bc14ebb65d97",
+        "id": "smtcoq-extrapi",
+        "image_manifest": "sha256:2fad095c3967fe0fd1c1330834846018d9051a9177bb29dff5f952065f1546f8",
+        "repo": "smtcoq/smtcoq",
+        "sha256": "5c0623ec26bbdc45ff438c05f49511df3fd76281a5ccbec1288e31349bd9ac6e",
+        "url": "https://codeload.github.com/smtcoq/smtcoq/tar.gz/19e91e31a0393f4314625af51509bc14ebb65d97",
+        "version": "extrapi-coq-8.19+git.19e91e31a039"
+      }
+    ],
+    "worker_id": "worker 100"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 599398,
+      "extract": false,
+      "id": "verification.smtcoq.upstream-1",
+      "material_path": "sources/smtcoq-extrapi-19e91e31a0393f4314625af51509bc14ebb65d97.tar.gz",
+      "sha256": "5c0623ec26bbdc45ff438c05f49511df3fd76281a5ccbec1288e31349bd9ac6e",
+      "strip_root": false,
+      "url": "https://codeload.github.com/smtcoq/smtcoq/tar.gz/19e91e31a0393f4314625af51509bc14ebb65d97"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://codeload.github.com/smtcoq/smtcoq/tar.gz/19e91e31a0393f4314625af51509bc14ebb65d97"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "proof-checker",
+        "path": "{prefix}/tools/proof_checks.py",
+        "purpose": "Replay the exact assigned proof and negative checks"
+      }
+    ],
+    "notes": [
+      "CPG 0.21.14 candidate overlay; formal baseline qualification is unchanged.",
+      "All generated proof files belong in an independent output directory."
+    ],
+    "summary": "SMTCoq fixed commit 19e91e31a0393f4314625af51509bc14ebb65d97, official extrapi Coq 8.19.2/OCaml 4.09.1 profile; supplied ZChaff SAT resolution certificate, one changed-antecedent negative; no external solver invocation"
+  },
+  "version": "git19e91e31a039+coq8.19.2"
+}

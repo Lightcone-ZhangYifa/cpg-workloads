@@ -1,0 +1,122 @@
+{
+  "build": "cpg-20261101-w058-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/cpg_check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "isa.cgen",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "formal_qualification_promotion": false,
+    "license_note": "CGEN GPL-3.0-or-later with COPYING.CGEN output exception; binutils GPL-3.0-or-later and per-file notices; Guile LGPL-3.0-or-later with retained per-file notices.",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "LM32 fixed description: 8 generated C files, 3 built tools, 7 independent encodings and round trips, 5 negative controls; no instruction-model execution",
+    "record_id": "review.engineering.cgen",
+    "source_build_verified": true,
+    "source_material_scope": "Official CGEN tree archived at fixed Git commit, original binutils2.42 source package and Guile3.0.9 binary packages",
+    "worker_id": "worker 058"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "tar",
+      "dpkg-deb"
+    ],
+    "runtime_environment": {
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3082240,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "assets/cgen-360079deda913ae36d1c9c985aa505bf0fd49af0.tar",
+      "sha256": "052a0eaca07a1758f07321f59e570ef133104eb8b22f650355d8bec079513c6e",
+      "strip_root": false,
+      "url": "https://sourceware.org/git/cgen.git"
+    },
+    {
+      "bytes": 26337514,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "assets/binutils-source_2.42-4ubuntu2_all.deb",
+      "sha256": "919920f22a22d1fe6bb0372935bab0d511e3a8dd25c4f2b35a149eb860243dfc",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/b/binutils/binutils-source_2.42-4ubuntu2_all.deb"
+    },
+    {
+      "bytes": 16416,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "assets/guile-3.0_3.0.9-1build2_amd64.deb",
+      "sha256": "6aa7c8ae9dcbf176d1b4aa2d3fb9ea0b5cec561588a57af1580b4bc0fa95aff3",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/guile-3.0/guile-3.0_3.0.9-1build2_amd64.deb"
+    },
+    {
+      "bytes": 7629720,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "assets/guile-3.0-libs_3.0.9-1build2_amd64.deb",
+      "sha256": "5a2deeb07b128d527b8ec8a21200ffcc1403c405c9cd8c06fc58945594494b83",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/guile-3.0/guile-3.0-libs_3.0.9-1build2_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt",
+      "source-lock.json",
+      "resource-evidence.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/cpg_check.py",
+        "description": "Run the declared semantic and failure-path checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent prefix",
+        "path": "{prefix}",
+        "purpose": "Tool, source fixtures and offline checks"
+      }
+    ],
+    "notes": [
+      "No LM32 instruction simulator execution",
+      "No other CPU descriptions qualified",
+      "No Dataset or Benchmark qualification",
+      "Guile runtime uses fixed upstream distro binary plus declared host ABI dependencies"
+    ],
+    "summary": "Generate and build tools from the fixed existing LM32 CPU description, verify independent encodings and byte-exact round trip"
+  },
+  "version": "360079deda913ae36d1c9c985aa505bf0fd49af0"
+}

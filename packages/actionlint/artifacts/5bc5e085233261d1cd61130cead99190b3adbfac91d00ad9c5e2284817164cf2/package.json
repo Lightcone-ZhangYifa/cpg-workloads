@@ -1,0 +1,126 @@
+{
+  "build": "worker029-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--resource",
+        "actionlint",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/assignment-acceptance"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assignment-acceptance",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 420
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "actionlint",
+  "metadata": {
+    "additional_input_lock": "recipe/input-lock.json",
+    "catalog": {
+      "archive_bytes": 2353908,
+      "category": [
+        "Compiler development",
+        "Build and continuous integration"
+      ],
+      "extract": true,
+      "id": "actionlint",
+      "kind": "native_bundle",
+      "license_id": "MIT",
+      "material_path": "sources/actionlint",
+      "purpose": "AI生成GitHub Actions的类型/表达式/语法静态核查",
+      "qualification_scope": "离线检查正反workflow样例并验证诊断位置",
+      "scope_limits": "",
+      "sha256": "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8",
+      "source_url": "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz",
+      "strip_archive_root": false,
+      "title": "actionlint",
+      "upstream": "https://github.com/rhysd/actionlint",
+      "version": "1.7.12"
+    },
+    "catalog_sha256": "c957c8abb2e0045b76b11df44d765c8b05f109cb65525895be0b9203c9084c0e",
+    "license_id": "MIT",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "provenance": "Exact PyPI digest verified for every wheel; upstream asset/source digest retained for non-Python inputs.",
+    "record_id": "review.engineering.actionlint",
+    "source_compile_qualified": false,
+    "worker_id": "worker 029"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [],
+    "installation_scope": "verified upstream distribution installation; no native source compilation claimed",
+    "network_policy": "offline",
+    "qualification_scope": "离线检查正反workflow样例并验证诊断位置",
+    "required_host_commands": [],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C.UTF-8",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2353908,
+      "extract": true,
+      "id": "actionlint",
+      "material_path": "sources/actionlint",
+      "sha256": "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8",
+      "strip_root": false,
+      "url": "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Add {prefix}/bin to PATH for this independent installation."
+    ],
+    "documentation": [
+      "https://github.com/rhysd/actionlint"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --resource actionlint --prefix {prefix} --output {build}/manual-acceptance",
+        "description": "Replay the assignment acceptance check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Installed resource",
+        "path": "{prefix}",
+        "purpose": "Independent local installation"
+      }
+    ],
+    "notes": [
+      "离线检查正反workflow样例并验证诊断位置",
+      "Qualified only for the explicitly tested local capability.",
+      "Frozen upstream distribution and retained notices.",
+      "Download preparation is separate; installation never downloads dependencies."
+    ],
+    "summary": "AI生成GitHub Actions的类型/表达式/语法静态核查"
+  },
+  "version": "1.7.12"
+}

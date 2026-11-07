@@ -1,0 +1,238 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/guarded_check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/profile"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional-profile",
+      "kind": "functional",
+      "stdout_regex": "CPG_CHECK_PASS",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.timeloop",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "functional_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualifications": {
+      "dataset": null,
+      "oci": false,
+      "official_benchmark": false,
+      "physical_hardware": false
+    },
+    "record_id": "review.optimization.timeloop",
+    "resource_metadata": {
+      "build_claim": false,
+      "check_script": "check.py",
+      "functional_claim": true,
+      "id": "research.timeloop",
+      "limitations": [
+        "Only the fixed dense 4x4x4 GEMM profile is functionally qualified; no general sparse/Sparseloop claim.",
+        "Built-in Timeloop/PAT analytical energy estimates are not target-hardware measurements or calibrated Accelergy ERT. Area is not qualified.",
+        "Local Timeloop source builds were attempted but did not finish under shared-memory limits; official prebuilt provenance is explicit, build_claim=false.",
+        "The official model XML output omits its final boost_serialization root closing tag; the check preserves it verbatim and records a root-tag-only normalized copy before full-precision comparison.",
+        "Search budget is exactly six legal mappings, one thread, deterministic exhaustive enumeration with no random seed."
+      ],
+      "method": "binary",
+      "record_id": "review.optimization.timeloop",
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_derivations": [
+        {
+          "derived_bytes": 12257440,
+          "derived_sha256": "4d03f643755810030ef178d5a8355e1823b69b828d4154dfeba2c9424ccd34c2",
+          "name": "timeloop-mapper",
+          "original_bytes": 107191512,
+          "original_sha256": "f6f39cf63d532924c3ce2df9c3efa15b9353719c46b830541e809e57291ce5da",
+          "transformation": "GNU strip --strip-debug; no code changes"
+        },
+        {
+          "derived_bytes": 11563440,
+          "derived_sha256": "b08ce9581d9b1d1cfc2dd09b5881f64513764893775ecc1539b3d7de457c7e2d",
+          "name": "timeloop-model",
+          "original_bytes": 95261096,
+          "original_sha256": "404b4d9a6859e6665613a8639051ab659ef3608953008bb7f2f4364889d681fa",
+          "transformation": "GNU strip --strip-debug; no code changes"
+        }
+      ],
+      "runtime_profile": "Linux x86_64; genuine static native mapper/model; Python 3 standard library for check harness; no runtime downloads or dynamic third-party libraries.",
+      "source_identity_note": "The image has no populated vcs-ref label and no .git HEAD in its selected source tree. Its exact manifest, original binary layers and image source layer are preserved. The v3.0.3 Git source is a separate reference, not a claimed build correspondence.",
+      "source_locks": [
+        {
+          "bytes": 7335,
+          "id": "official-image-manifest",
+          "path": "sources/oci/manifest.json",
+          "sha256": "6abe5cfe84454fe80ebfe01fd2c7419dcab82fb99b38a08050565d33137dce61",
+          "url": "https://registry-1.docker.io/v2/timeloopaccelergy/accelergy-timeloop-infrastructure/manifests/sha256:6abe5cfe84454fe80ebfe01fd2c7419dcab82fb99b38a08050565d33137dce61"
+        },
+        {
+          "bytes": 19789,
+          "id": "official-image-config",
+          "path": "sources/oci/config.json",
+          "sha256": "29dc3a5bed03738d2af9e35e1dcd659955ce0726cde4080c30b4c5ebd3c6cd73",
+          "url": "https://registry-1.docker.io/v2/timeloopaccelergy/accelergy-timeloop-infrastructure/blobs/sha256:29dc3a5bed03738d2af9e35e1dcd659955ce0726cde4080c30b4c5ebd3c6cd73"
+        },
+        {
+          "bytes": 41801017,
+          "id": "official-image-layer-3",
+          "path": "sources/oci/layer-03.tar.gz",
+          "sha256": "8d6c287c65eeb743a6f481d443905bc55775a248782ab4603e4c35fe767cd278",
+          "url": "https://registry-1.docker.io/v2/timeloopaccelergy/accelergy-timeloop-infrastructure/blobs/sha256:8d6c287c65eeb743a6f481d443905bc55775a248782ab4603e4c35fe767cd278"
+        },
+        {
+          "bytes": 36966626,
+          "id": "official-image-layer-5",
+          "path": "sources/oci/layer-05.tar.gz",
+          "sha256": "b941097a290687458f514cf0354b794cfcafc4e3f09fd90be8c05d3aa7b361d8",
+          "url": "https://registry-1.docker.io/v2/timeloopaccelergy/accelergy-timeloop-infrastructure/blobs/sha256:b941097a290687458f514cf0354b794cfcafc4e3f09fd90be8c05d3aa7b361d8"
+        },
+        {
+          "bytes": 47743622,
+          "id": "official-image-layer-16",
+          "path": "sources/oci/layer-16.tar.gz",
+          "sha256": "677cfbe5abdc6449e5c55a9b4507867ba274982a876e40ccc24e9bcab2be3b43",
+          "url": "https://registry-1.docker.io/v2/timeloopaccelergy/accelergy-timeloop-infrastructure/blobs/sha256:677cfbe5abdc6449e5c55a9b4507867ba274982a876e40ccc24e9bcab2be3b43"
+        },
+        {
+          "bytes": 403622,
+          "id": "independent-v3.0.3-source-reference",
+          "path": "sources/timeloop-6b41058f88bf6c70e04927f5907f20b8203e0498.tar.gz",
+          "role": "reference only; not asserted to be the source used to build these image binaries",
+          "sha256": "e5a06abbe2da2afb54810239ad8d808fae27772e658322e00261d8a3a437fb1b",
+          "url": "https://codeload.github.com/NVlabs/timeloop/tar.gz/6b41058f88bf6c70e04927f5907f20b8203e0498"
+        }
+      ],
+      "upstream_image": {
+        "config_digest": "sha256:29dc3a5bed03738d2af9e35e1dcd659955ce0726cde4080c30b4c5ebd3c6cd73",
+        "manifest_digest": "sha256:6abe5cfe84454fe80ebfe01fd2c7419dcab82fb99b38a08050565d33137dce61",
+        "manifest_response_digest": null,
+        "registry": "registry-1.docker.io",
+        "repository": "timeloopaccelergy/accelergy-timeloop-infrastructure",
+        "tag_observed": "latest-amd64"
+      },
+      "upstream_license": "Timeloop BSD-3-Clause (NVIDIA); original image dependency copyright/common-license files and exact package metadata are included under licenses/image-notices.",
+      "version": "oci-6abe5cfe8445"
+    },
+    "source_build_claim": false,
+    "support_only": false,
+    "upstream_license": "Timeloop BSD-3-Clause (NVIDIA); original image dependency copyright/common-license files and exact package metadata are included under licenses/image-notices.",
+    "worker_id": "worker 061"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 7335,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "sources/oci/manifest.json",
+      "sha256": "6abe5cfe84454fe80ebfe01fd2c7419dcab82fb99b38a08050565d33137dce61",
+      "strip_root": false,
+      "url": "https://registry-1.docker.io/v2/timeloopaccelergy/accelergy-timeloop-infrastructure/manifests/sha256:6abe5cfe84454fe80ebfe01fd2c7419dcab82fb99b38a08050565d33137dce61"
+    },
+    {
+      "bytes": 19789,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "sources/oci/config.json",
+      "sha256": "29dc3a5bed03738d2af9e35e1dcd659955ce0726cde4080c30b4c5ebd3c6cd73",
+      "strip_root": false,
+      "url": "https://registry-1.docker.io/v2/timeloopaccelergy/accelergy-timeloop-infrastructure/blobs/sha256:29dc3a5bed03738d2af9e35e1dcd659955ce0726cde4080c30b4c5ebd3c6cd73"
+    },
+    {
+      "bytes": 41801017,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "sources/oci/layer-03.tar.gz",
+      "sha256": "8d6c287c65eeb743a6f481d443905bc55775a248782ab4603e4c35fe767cd278",
+      "strip_root": false,
+      "url": "https://registry-1.docker.io/v2/timeloopaccelergy/accelergy-timeloop-infrastructure/blobs/sha256:8d6c287c65eeb743a6f481d443905bc55775a248782ab4603e4c35fe767cd278"
+    },
+    {
+      "bytes": 36966626,
+      "extract": false,
+      "id": "input-004",
+      "material_path": "sources/oci/layer-05.tar.gz",
+      "sha256": "b941097a290687458f514cf0354b794cfcafc4e3f09fd90be8c05d3aa7b361d8",
+      "strip_root": false,
+      "url": "https://registry-1.docker.io/v2/timeloopaccelergy/accelergy-timeloop-infrastructure/blobs/sha256:b941097a290687458f514cf0354b794cfcafc4e3f09fd90be8c05d3aa7b361d8"
+    },
+    {
+      "bytes": 47743622,
+      "extract": false,
+      "id": "input-005",
+      "material_path": "sources/oci/layer-16.tar.gz",
+      "sha256": "677cfbe5abdc6449e5c55a9b4507867ba274982a876e40ccc24e9bcab2be3b43",
+      "strip_root": false,
+      "url": "https://registry-1.docker.io/v2/timeloopaccelergy/accelergy-timeloop-infrastructure/blobs/sha256:677cfbe5abdc6449e5c55a9b4507867ba274982a876e40ccc24e9bcab2be3b43"
+    },
+    {
+      "bytes": 403622,
+      "extract": false,
+      "id": "input-006",
+      "material_path": "sources/timeloop-6b41058f88bf6c70e04927f5907f20b8203e0498.tar.gz",
+      "sha256": "e5a06abbe2da2afb54810239ad8d808fae27772e658322e00261d8a3a437fb1b",
+      "strip_root": false,
+      "url": "https://codeload.github.com/NVlabs/timeloop/tar.gz/6b41058f88bf6c70e04927f5907f20b8203e0498"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/NVlabs/timeloop"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"research.timeloop\")",
+        "description": "Run the declared checks through the CPG Python API"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed payload",
+        "path": "{prefix}",
+        "purpose": "Locked resources and bounded offline check inputs"
+      }
+    ],
+    "notes": [
+      "Only the fixed dense 4x4x4 GEMM profile is functionally qualified; no general sparse/Sparseloop claim.",
+      "Built-in Timeloop/PAT analytical energy estimates are not target-hardware measurements or calibrated Accelergy ERT. Area is not qualified.",
+      "Local Timeloop source builds were attempted but did not finish under shared-memory limits; official prebuilt provenance is explicit, build_claim=false.",
+      "The official model XML output omits its final boost_serialization root closing tag; the check preserves it verbatim and records a root-tag-only normalized copy before full-precision comparison.",
+      "Search budget is exactly six legal mappings, one thread, deterministic exhaustive enumeration with no random seed."
+    ],
+    "summary": "固定小矩阵乘、架构与mapspace，导出合法映射和模型cost，记录搜索预算"
+  },
+  "version": "oci-6abe5cfe8445"
+}

@@ -1,0 +1,125 @@
+{
+  "build": "worker104-functional-capsule-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "official-loops-complete-vcs-and-native-counterexample",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 1400
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "verification.creusot",
+  "metadata": {
+    "baseline_change": false,
+    "compiler": "nightly-2025-01-31",
+    "dataset_verified": null,
+    "engine": "1.8.2+git 05bf4ddf55cb3042f34c3bc0ed3aff56a226978a; static original Coma plugin",
+    "formal_baseline": "0.21.14",
+    "host_requirements": "CPG0.21.14 Python SDK, Python3, Ubuntu24.04 x86_64 glibc ABI, ldd, cc/linker and CRT development files",
+    "license": "Creusot LGPL-2.1-or-later; bundled component notices retained separately",
+    "logic_library": "Complete unmodified Why3 1.8.0 stdlib and drivers",
+    "material_qualification_added": false,
+    "provers": {
+      "CVC5": "1.4.1",
+      "Z3": "5.1.0"
+    },
+    "qualification_limits": [
+      "Original panic=abort and overflow-checks=off flags; no arbitrary overflow or panic theorem.",
+      "Loop partial correctness only; b=false does not terminate. Native witness uses b=true.",
+      "Ordinary bad Unknown is not a negative pass. Exact full-goal negation proof and same-source native witness are both required.",
+      "Good-negation control is not a background consistency proof. SMT results depend on the declared standard context and prover trust.",
+      "This finite functional profile does not qualify every Rust input or independent material completeness."
+    ],
+    "record_id": "review.verification.creusot",
+    "runtime_capsule_sha256": "0162cb23684a530c1f23d53a3bd978955b2d8a4e8e66ec45dad5bdf280d33541",
+    "runtime_layout": "compressed-capsule",
+    "scope": "bounded declared functional profile",
+    "worker_id": "worker 104"
+  },
+  "provider": "binary",
+  "recipe": {
+    "expanded_runtime_abi_gate": "original check_binary_runtime and current_target; same exact environment as execution",
+    "offline": true,
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/bin/creusot-profile",
+      "{prefix}/runtime.cpgpkg.tar.gz",
+      "{prefix}/runtime-manifest.json",
+      "{prefix}/capsule-lock.json"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "sh",
+      "ldd",
+      "cc"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1608555,
+      "extract": true,
+      "id": "creusot-v0.4.0-original-source",
+      "material_path": null,
+      "sha256": "c73c79c5fb35d9790bb51e7f8da5980a8c1daa895667d268be11b3f605cc9131",
+      "strip_root": true,
+      "url": "https://codeload.github.com/creusot-rs/creusot/tar.gz/b4bedbe5a0143d0ab46d84fe8666bdd2956adc44"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "export PATH=\"{prefix}/bin:$PATH\""
+    ],
+    "documentation": [
+      "https://github.com/creusot-rs/creusot/tree/v0.4.0"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/creusot-profile",
+        "description": "Execute the fixed profile from a fresh writable directory"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Complete functional profile",
+        "path": "{prefix}/bin/creusot-profile",
+        "purpose": "Fresh Rust frontend, complete original goals, exact logical counterproof and actual native witness"
+      }
+    ],
+    "notes": [
+      "Use a fresh writable cwd outside the installed prefix, then run bin/creusot-profile. The unchanged CPG SDK must be importable.",
+      "This entrypoint reruns the complete fixed profile. For custom experiments, verify and extract runtime.cpgpkg.tar.gz with the original SDK and use the preserved profile-config.json and runtime_environment.py; only the declared profile is qualified.",
+      "Rust frontend, complete contracts, Rustup and retained cargo/rustc/std components, OCaml/Why3, Z3 and CVC5 are bundled. Host cc/linker and CRT development files are required for native witness linking.",
+      "The inner archive is verified before expansion and every native ELF is checked by original check_binary_runtime against actual current_target using the exact functional environment.",
+      "No network is needed for install/check. Original upstream Rust/solver binary containers were SHA-locked but may require online reacquisition for upstream reconstruction; independent M qualification is not claimed.",
+      "Original panic=abort and overflow-checks=off flags; no arbitrary overflow or panic theorem.",
+      "Loop partial correctness only; b=false does not terminate. Native witness uses b=true.",
+      "Ordinary bad Unknown is not a negative pass. Exact full-goal negation proof and same-source native witness are both required.",
+      "Good-negation control is not a background consistency proof. SMT results depend on the declared standard context and prover trust.",
+      "This finite functional profile does not qualify every Rust input or independent material completeness."
+    ],
+    "summary": "Pinned Rust-to-Coma-to-SMT proof profile with a same-source native counterexample"
+  },
+  "version": "0.4.0-b4bedbe5a014"
+}

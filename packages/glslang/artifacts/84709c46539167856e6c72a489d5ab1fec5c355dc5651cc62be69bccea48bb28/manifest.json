@@ -1,0 +1,197 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 4333,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build_resource.py",
+      "sha256": "e084c2ae5acb23759791bcdb7d474f8302788593e9f0aa4e76b7c64cf412f2fc"
+    },
+    {
+      "bytes": 8485,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_resource.py",
+      "sha256": "6de8952768e020b931527d4e7f37551e442e378549dfc9080dcf511380fba27d"
+    },
+    {
+      "bytes": 4513,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/shaderc_api.c",
+      "sha256": "d7c403d74d7fc85d330aa86b3fa6a663c8c5502d57366f30e576a21e7052ddcd"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 3921303,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/84160d535e6889796bb8f106378d16b5667984e642b461b9c2a912da18bacda1",
+      "sha256": "84160d535e6889796bb8f106378d16b5667984e642b461b9c2a912da18bacda1"
+    }
+  ],
+  "inventory_sha256": "712f4a5d1fab24c620b1ac652081f2805eee1c303a882f4a47b3ca4a928e64f8",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "70d2b15356d6d4a8ed194ff9d8a9e902dc2dc57bec1e0d906cd0ef5a4075316d",
+  "method": "source",
+  "package": {
+    "build": "worker040-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check_resource.py",
+          "glslang",
+          "--prefix",
+          "{prefix}",
+          "--work",
+          "{build}/checks"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "glslang-functional",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "cc",
+          "c++",
+          "spirv-val",
+          "spirv-dis"
+        ],
+        "timeout_seconds": 240
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "glslang",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "dependency_counting": "shaderc bundled build dependencies are not new resource shares",
+      "gpu_execution_qualified": false,
+      "pinned_revision": "a0995c49ebcaca2c6d3b03efbabf74f3843decdb",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "record_id": "review.engineering.glslang",
+      "source_build_network": "disabled in acceptance by seccomp",
+      "verification_scope": "bounded functionality; no Dataset or Benchmark qualification",
+      "worker_id": "worker 040"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/build_resource.py",
+          "glslang",
+          "--assets",
+          "{assets}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "required_host_commands": [
+        "python3",
+        "g++",
+        "make",
+        "cmake"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/glslang",
+        "{prefix}/bin/glslangValidator"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 3921303,
+        "extract": true,
+        "id": "glslang",
+        "material_path": "glslang",
+        "sha256": "84160d535e6889796bb8f106378d16b5667984e642b461b9c2a912da18bacda1",
+        "strip_root": true,
+        "url": "https://codeload.github.com/KhronosGroup/glslang/tar.gz/a0995c49ebcaca2c6d3b03efbabf74f3843decdb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "any",
+      "distribution_version": "any",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Add {prefix}/bin to PATH."
+      ],
+      "documentation": [
+        "https://codeload.github.com/KhronosGroup/glslang/tar.gz/a0995c49ebcaca2c6d3b03efbabf74f3843decdb"
+      ],
+      "examples": [
+        {
+          "command": "cpg packages check glslang --prefix <PREFIX>",
+          "description": "Run package acceptance"
+        }
+      ],
+      "locations": [
+        {
+          "label": "prefix",
+          "path": "{prefix}",
+          "purpose": "Independent resource installation"
+        }
+      ],
+      "notes": [
+        "No network operation is performed by source build or installation.",
+        "Functional evidence covers the declared bounded cases; no GPU execution is claimed.",
+        "The source build requires local GCC/G++/make/Python, and CMake for glslang/shaderc.",
+        "SPIRV-Tools is an explicit external verification input for glslang/shaderc; its resource is owned by worker042."
+      ],
+      "summary": "Compile vertex and compute GLSL to SPIR-V with explicit Vulkan target; independently validate output."
+    },
+    "version": "a0995c49ebcaca2c6d3b03efbabf74f3843decdb"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "framework": "CPG 0.21.14 unmodified",
+    "original_source_locks": [
+      {
+        "bytes": 3921303,
+        "extract": true,
+        "id": "glslang",
+        "material_path": "glslang",
+        "sha256": "84160d535e6889796bb8f106378d16b5667984e642b461b9c2a912da18bacda1",
+        "strip_root": true,
+        "url": "https://codeload.github.com/KhronosGroup/glslang/tar.gz/a0995c49ebcaca2c6d3b03efbabf74f3843decdb"
+      }
+    ],
+    "worker": "worker040"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "glslang",
+      "path": "sources/84160d535e6889796bb8f106378d16b5667984e642b461b9c2a912da18bacda1"
+    }
+  ]
+}

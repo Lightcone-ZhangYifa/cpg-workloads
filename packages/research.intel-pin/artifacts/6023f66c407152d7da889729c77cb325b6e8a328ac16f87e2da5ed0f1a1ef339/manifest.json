@@ -1,0 +1,266 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1283,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "98726bb9e0e2a47f37cf5dcc40cbcbaeca9f2f93a4f688965f3f5a015031e910"
+    },
+    {
+      "bytes": 3225,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_pin.py",
+      "sha256": "8c1ca1c63e29e9fd7015c9c711b1575c1257cf7a226389eecc7df0c6dc57adfb"
+    },
+    {
+      "bytes": 447,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/config.json",
+      "sha256": "497a58c2440412e6b3fdac3087299404268d2a63baf3248913a161333a2eae15"
+    },
+    {
+      "bytes": 703,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/dr_client.c",
+      "sha256": "0ad1bc91aff3566b6c1214d94197653847a230c1c1dd0d0a1155d46466bc15a5"
+    },
+    {
+      "bytes": 10481,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/functional.py",
+      "sha256": "97ebf8867cbbab39cc64d887dfad5ac6c9200a98a6d8b3b83fcc05fe465c4ab0"
+    },
+    {
+      "bytes": 3955,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install.py",
+      "sha256": "f585d23ed5e9ea3880715174b9afdcc7b4d59c711e3449fdb9a69e6789f9431f"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 38189630,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/3138183a5d2b51ea5c8f29edd148b67ac9c249e2c510cc0e9e2a5880f523a34c",
+      "sha256": "3138183a5d2b51ea5c8f29edd148b67ac9c249e2c510cc0e9e2a5880f523a34c"
+    }
+  ],
+  "inventory_sha256": "502aa193978958c7fa7b2870ea23c0c8fd1438f45c05b95a3327e7a2294f144d",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "d01d508bcdf4868fe5ffa5585a8ebc0ff4d74a3e55036286a3fabf874cbc33ae",
+  "method": "source",
+  "package": {
+    "build": "worker074-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--recipe",
+          "{recipe}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "intel-pin-bounded-semantics",
+        "kind": "functional",
+        "stdout_regex": "CPG074_FUNCTIONAL_PASSED",
+        "timeout_seconds": 240
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "research.intel-pin",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "candidate": true,
+      "client_compilation": "original Intel inscount0.cpp built once per installation; immutable plugin reused for semantic checks",
+      "license_provenance": "Original upstream license files retained in wheel/vendor distribution.",
+      "original_task": {
+        "after_dataset_verified": null,
+        "after_functional": null,
+        "after_material": null,
+        "alias_target": "",
+        "assessment_ids": [
+          "engineering:intel-pin"
+        ],
+        "baseline_catalog_sha256": {},
+        "baseline_dataset_verified": null,
+        "baseline_functional_ids": [],
+        "baseline_managed_ids": [],
+        "baseline_material_ids": [],
+        "baseline_pins": {},
+        "baseline_relation": "新增候选（独立身份仍需锁定）",
+        "baseline_resource_ids": [],
+        "baseline_trusted_apt_ids": [],
+        "baseline_version": "0.21.14",
+        "canonical_url": "https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html",
+        "category": "observability",
+        "cost": "L",
+        "decision": "conditional",
+        "decision_zh": "条件入选",
+        "dependencies": "",
+        "entity_kind": "resource",
+        "evidence_relpath": "",
+        "evidence_urls": [
+          "https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html"
+        ],
+        "has_active_task": true,
+        "identity_unresolved": false,
+        "increment_package": "cpg-20261101-worker-074-delta-v001.zip",
+        "new_family_candidate": true,
+        "owned_baseline_resource_ids": [],
+        "plan_id": "cpg-resource-research-20261101-v1",
+        "quality_evidence": "{\"basis\":\"official maintainer / standards body / upstream documentation\",\"primary_source_url\":\"https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html\",\"primary_source_ref\":\"turn100view1\",\"concrete_capability\":\"x86动态二进制工具开发API\",\"testable_value\":\"合法取得payload后对本地小程序执行instruction-count样例\",\"scope_and_limits\":\"厂商Pin许可证与SDE/VTune身份不同；禁止启用VTune，系统采样仍perf-only。\",\"not_used_as_quality_proxy\":\"GitHub stars, search rank, or mere package presence\"}",
+        "record_id": "review.engineering.intel-pin",
+        "research_scope": "本次公开来源评估",
+        "resource_name": "Intel Pin",
+        "result_status": "未执行接入",
+        "reviewed_on": "2026-11-01",
+        "schema_version": 1,
+        "scope_limits": "厂商Pin许可证与SDE/VTune身份不同；禁止启用VTune，系统采样仍perf-only。",
+        "selected_new_family": true,
+        "selection_reason": "保留Pin插桩API和指令级调试作用；需合法厂商载荷且只做明确程序的功能插桩，不能将其包装为绕过perf-only的系统采样器。",
+        "source_refs": [
+          "turn100view1"
+        ],
+        "task": "合法取得payload后对本地小程序执行instruction-count样例",
+        "taxonomy_categories": [
+          "D40"
+        ],
+        "value_to_ai": "x86动态二进制工具开发API",
+        "worker_id": "worker 074",
+        "worker_scope": "二进制变换与提升 · 1"
+      },
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "record_id": "review.engineering.intel-pin",
+      "scope": "合法取得payload后对本地小程序执行instruction-count样例",
+      "scope_limits": "厂商Pin许可证与SDE/VTune身份不同；禁止启用VTune，系统采样仍perf-only。",
+      "source_build_qualification": false,
+      "worker_id": "worker 074"
+    },
+    "provider": "binary",
+    "recipe": {
+      "commands": [
+        [
+          "python3",
+          "-B",
+          "{recipe}/install.py",
+          "--assets",
+          "{assets}",
+          "--prefix",
+          "{prefix}",
+          "--recipe",
+          "{recipe}",
+          "--build",
+          "{build}"
+        ]
+      ],
+      "required_host_commands": [
+        "python3",
+        "g++",
+        "make"
+      ],
+      "required_installed_paths": [
+        "{prefix}/CPG-INPUTS.json",
+        "{prefix}/client/inscount0.so"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "gcc",
+        "nm",
+        "g++",
+        "make"
+      ],
+      "runtime_environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONNOUSERSITE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 38189630,
+        "extract": false,
+        "id": "input.0",
+        "material_path": "raw/pin-external-4.4-99977-g54fbb8814-gcc-linux.tar.gz",
+        "sha256": "3138183a5d2b51ea5c8f29edd148b67ac9c249e2c510cc0e9e2a5880f523a34c",
+        "strip_root": false,
+        "url": "https://software.intel.com/sites/landingpage/pintool/downloads/pin-external-4.4-99977-g54fbb8814-gcc-linux.tar.gz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Use the isolated prefix supplied by PackageManager."
+      ],
+      "documentation": [
+        "https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html"
+      ],
+      "examples": [
+        {
+          "command": "manager.check(\"research.intel-pin\")",
+          "description": "Replay declared semantic check through CPG"
+        }
+      ],
+      "locations": [
+        {
+          "label": "input-lock",
+          "path": "{prefix}/CPG-INPUTS.json",
+          "purpose": "Exact original input hashes and versions"
+        }
+      ],
+      "notes": [
+        "Candidate overlay; does not modify the formal 1862-resource catalog.",
+        "Source-form package replays original upstream wheels/vendor binaries; it does not claim a source-code compilation.",
+        "Tested on Linux x86_64 with Python 3.12; all imports and instrumented targets are private to the package/test."
+      ],
+      "summary": "合法取得payload后对本地小程序执行instruction-count样例"
+    },
+    "version": "4.4.99977"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "client_compiled_at_install": true,
+    "replaces_unpublished_candidate_sha256": "224d61bfa171d02d85fba37170cba587253acc0e08ca399f70ad84dc8ba8c57b",
+    "upstream_binary_unchanged": true
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "input.0",
+      "path": "sources/3138183a5d2b51ea5c8f29edd148b67ac9c249e2c510cc0e9e2a5880f523a34c"
+    }
+  ]
+}

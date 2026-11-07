@@ -1,0 +1,134 @@
+{
+  "build": "worker053-20261102-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "task-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 150
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "runtime.mmtk",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 968493,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "SAT, SMT and runtimes"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "runtime.mmtk",
+      "immutable_ref": "v0.30.0",
+      "kind": "native_bundle",
+      "license_id": "See bundled upstream LICENSE and NOTICE files",
+      "material_path": "inputs/input-1",
+      "purpose": "Actual source-built MMTk 0.30.0 with custom CPG GraphVM 0.1.0 binding, one mutator/worker, SemiSpace, 255-node rooted graph, root relocation and graph checks across two collections, unreachable and removed-root rejection through valid-object metadata and exactly zero copies in third collection. No general-purpose language VM or performance qualification is claimed.",
+      "qualification_scope": "Actual source-built MMTk 0.30.0 with custom CPG GraphVM 0.1.0 binding, one mutator/worker, SemiSpace, 255-node rooted graph, root relocation and graph checks across two collections, unreachable and removed-root rejection through valid-object metadata and exactly zero copies in third collection. No general-purpose language VM or performance qualification is claimed.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "97fc2585dfafef9ce5f004bea100d9e0a199762f167894cd0e21ed90020d1d5f",
+      "source_evidence": [
+        "https://www.mmtk.io/"
+      ],
+      "source_url": "https://codeload.github.com/mmtk/mmtk-core/tar.gz/refs/tags/v0.30.0",
+      "strip_archive_root": false,
+      "title": "MMTk",
+      "upstream": "https://www.mmtk.io/",
+      "version": "0.30.0",
+      "worker_record_id": "review.engineering.mmtk"
+    },
+    "catalog_sha256": "b724525e1778e7d16330af98429012b3e86082204f85b3dd5fbca765286cc8f6",
+    "input_provenance": [
+      {
+        "bytes": 968493,
+        "local_path": "/workspace/scratch/81acee5764ca/worker053/payloads/mmtk/sources/mmtk-0.30.0.tar.gz",
+        "revision": "v0.30.0",
+        "sha256": "97fc2585dfafef9ce5f004bea100d9e0a199762f167894cd0e21ed90020d1d5f",
+        "url": "https://codeload.github.com/mmtk/mmtk-core/tar.gz/refs/tags/v0.30.0"
+      }
+    ],
+    "original_resource_ids": [],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "source_build_qualified": true
+    },
+    "record_id": "review.engineering.mmtk",
+    "runtime_requirements": [
+      "Python >=3.12",
+      "Host tested: Linux x86_64 glibc2.39; minimum host ABI not inferred",
+      "Validated on Linux x86_64 with glibc 2.39; no lower ABI bound is inferred. Exact ELF requirements are recorded separately."
+    ],
+    "worker_id": "worker 053"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "ldd",
+      "python3"
+    ],
+    "runtime_environment": {}
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 968493,
+      "extract": false,
+      "id": "runtime.mmtk",
+      "material_path": "inputs/input-1",
+      "sha256": "97fc2585dfafef9ce5f004bea100d9e0a199762f167894cd0e21ed90020d1d5f",
+      "strip_root": false,
+      "url": "https://codeload.github.com/mmtk/mmtk-core/tar.gz/refs/tags/v0.30.0"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.mmtk.io/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Actual source-built MMTk 0.30.0 with custom CPG GraphVM 0.1.0 binding, one mutator/worker, SemiSpace, 255-node rooted graph, root relocation and graph checks across two collections, unreachable and removed-root rejection through valid-object metadata and exactly zero copies in third collection. No general-purpose language VM or performance qualification is claimed."
+      }
+    ],
+    "notes": [
+      "Qualification is limited to the explicit functional cases and fixed inputs recorded in this profile.",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "Actual source-built MMTk 0.30.0 with custom CPG GraphVM 0.1.0 binding, one mutator/worker, SemiSpace, 255-node rooted graph, root relocation and graph checks across two collections, unreachable and removed-root rejection through valid-object metadata and exactly zero copies in third collection. No general-purpose language VM or performance qualification is claimed."
+  },
+  "version": "0.30.0"
+}

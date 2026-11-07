@@ -1,0 +1,168 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 493,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSE-REVIEW.txt",
+      "sha256": "039c16b0e55bf14d2afd389d9af1ceaefbb210b3ff7bdfd77c715d1e44e7aed3"
+    },
+    {
+      "bytes": 910,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/acquire-explicitly.py",
+      "sha256": "ac8da59a4f17304c958d094aa51c20f3512ac6caf01da044c1a348b851b10553"
+    },
+    {
+      "bytes": 4744,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/index.json",
+      "sha256": "78fe495b625780d20c486df53a185d7af8aa9fc68f698d650258a758e1567763"
+    },
+    {
+      "bytes": 521,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/manifest.json",
+      "sha256": "90b10c60f1f64294a3106b737d7cce87f5772eda6b98a847a0388c364a077e8f"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 806,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material-manifest.json",
+      "sha256": "e1b4827f2434508831945c46c21c6af8082701999f6e59bc0c7b2bef48888a32"
+    },
+    {
+      "bytes": 2531,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/material_check.py",
+      "sha256": "82a77927aaa41391372adfd0d6fd07c25c3431a7dc59a38fd189135717794366"
+    }
+  ],
+  "inventory_sha256": "2387d168c5d2b9ccaa7d73609c041fded3677695e794e7e423c72c0431601e66",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "e50b206074086cb0eea05d15f40cf417204cca9da170ab9ba978812293f302ad",
+  "method": "material",
+  "package": {
+    "build": "cpg-20261101-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/material_check.py",
+          "--prefix",
+          "{prefix}",
+          "--manifest",
+          "{recipe}/material-manifest.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "complete-material-inventory",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 300
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "elf-gabi",
+    "metadata": {
+      "acquisition_lock": {
+        "commit": "81337e4611a7789761bdb4a46be12cac5a08dab1",
+        "inputs": [
+          {
+            "bytes": 68052,
+            "local_path": "downloads/gabi-source.tar.gz",
+            "name": "remote-source-archive-lock",
+            "reason": "No full-document/source redistribution grant found; locator and explicit recipe only.",
+            "redistributed": false,
+            "sha256": "d913778b2fa22c972e3bccfb9361cfdb5cbb2eeccee065fd0e7199db3065c2de",
+            "url": "https://codeload.github.com/xinuos/gabi/tar.gz/81337e4611a7789761bdb4a46be12cac5a08dab1"
+          }
+        ],
+        "payload_file_lock": "payload/elf-gabi/manifest.json",
+        "version": "4.2",
+        "version_evidence": "Pinned commit docsrc/conf.py version=4.2; README points to https://gabi.xinuos.com/v42/. Website root 4.3 DRAFT is a separate version."
+      },
+      "assignment_record_id": "review.engineering.elf-gabi",
+      "baseline_version": "0.21.14",
+      "formal_release_promoted": false,
+      "full_document_material": null,
+      "material_scope": "reference_recipe_only",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "upstream_commit": "81337e4611a7789761bdb4a46be12cac5a08dab1",
+      "worker_id": "worker 026"
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "corpus",
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "state": "Verified material; contents are not executed at installation except the inventory checker."
+    },
+    "schema_version": 1,
+    "sources": [],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "any",
+      "distribution_version": "any",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://gabi.xinuos.com/"
+      ],
+      "examples": [
+        {
+          "command": "python3 -m json.tool {prefix}/index.json",
+          "description": "Inspect the pinned document/reference index."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Material",
+          "path": "{prefix}",
+          "purpose": "Pinned reference files, original notices and explicit replay inputs."
+        }
+      ],
+      "notes": [
+        "Static material checks do not qualify target hardware or compiler ABI conformance.",
+        "The source/archive acquisition locks distinguish distributed inputs from reference-only inputs."
+      ],
+      "summary": "ELF gABI 4.2 pinned reference index and explicit acquisition recipe; document bodies are not redistributed."
+    },
+    "version": "4.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "original_package_engine": "CPG 0.21.14",
+    "scope": "ELF gABI 4.2 pinned reference index and explicit acquisition recipe; document bodies are not redistributed.",
+    "worker_id": "worker 026"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

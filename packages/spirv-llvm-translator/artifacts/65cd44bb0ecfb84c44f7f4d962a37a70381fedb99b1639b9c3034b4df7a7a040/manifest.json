@@ -1,0 +1,442 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 5317,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build-lock.json",
+      "sha256": "5129aa82ad45a6d21489458145626dd0903ce3803b76303ec4a588ad0664a50f"
+    },
+    {
+      "bytes": 8564,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_functional.py",
+      "sha256": "e8d706b036c2f3907e260d76e7df0f00e89e9f167ce7cc204d03976097b68dda"
+    },
+    {
+      "bytes": 7391,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install.py",
+      "sha256": "6849792a27f14e5db85583e3d79114724aaa1d6dd7c9bbc0cc32f20bc0342535"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 25291124,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/139cb82e16e75fcdd4a56562804ff9bfb482b65d0929580d621d28088075a27e",
+      "sha256": "139cb82e16e75fcdd4a56562804ff9bfb482b65d0929580d621d28088075a27e"
+    },
+    {
+      "bytes": 466701,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/1a248f4199f4a30b2e7304ed4d62f731765bab12d9fa4c5abb189a5e2d57f1f5",
+      "sha256": "1a248f4199f4a30b2e7304ed4d62f731765bab12d9fa4c5abb189a5e2d57f1f5"
+    },
+    {
+      "bytes": 45109568,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/1e68b8c3f788832c5c83d56a1b3dbbba1ee148407f61c873ed659bb373ae6388",
+      "sha256": "1e68b8c3f788832c5c83d56a1b3dbbba1ee148407f61c873ed659bb373ae6388"
+    },
+    {
+      "bytes": 1719445,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/3a78303b42ca2fc14abcb2e5b52e8aa53652c93c82767e490d43564ddfb5cac7",
+      "sha256": "3a78303b42ca2fc14abcb2e5b52e8aa53652c93c82767e490d43564ddfb5cac7"
+    },
+    {
+      "bytes": 80040,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/628b16701014ef7ad648380b20ea74b90dd543857f933b3e34d2fc042783de25",
+      "sha256": "628b16701014ef7ad648380b20ea74b90dd543857f933b3e34d2fc042783de25"
+    },
+    {
+      "bytes": 27518500,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/af6197096ce3b89aab86de59f01c1b5feb008b2ae1514a03906c0664edb8b0b1",
+      "sha256": "af6197096ce3b89aab86de59f01c1b5feb008b2ae1514a03906c0664edb8b0b1"
+    },
+    {
+      "bytes": 735998,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/d41631bb752815a8196261d1030c096591c59678c8adfbf2e6a740a691b49e80",
+      "sha256": "d41631bb752815a8196261d1030c096591c59678c8adfbf2e6a740a691b49e80"
+    },
+    {
+      "bytes": 13492572,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/e91eda104813ee0468d145d010a4a4e142401f3f17f9a65596c66d416298d018",
+      "sha256": "e91eda104813ee0468d145d010a4a4e142401f3f17f9a65596c66d416298d018"
+    }
+  ],
+  "inventory_sha256": "462d393570c895721e2c36583df9f0ed20dc206595b7eefa64f40bdc401df7af",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "46c3865a5b8596233d6bd412caad54e76e81f9a3f88ef34a0c702867fdd251b0",
+  "method": "source",
+  "package": {
+    "build": "worker042-v001-o0-llvm18",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check_functional.py",
+          "spirv-llvm-translator",
+          "--prefix",
+          "{prefix}",
+          "--validator-prefix",
+          "{dependencies.spirv-tools.prefix}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "cpu-artifact-validation",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 600
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "spirv-tools"
+      ],
+      "system": []
+    },
+    "id": "spirv-llvm-translator",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "build_lock": {
+        "compiler_flags": "Bundled Clang18.1.3 --driver-mode=g++ -std=c++17 -stdlib=libstdc++ -fPIC -O0 -g0 -pipe -DNDEBUG -fno-exceptions -funwind-tables and upstream LLVM macro/include contract",
+        "deviation": "Standalone exact source-list build instead of full CMake, dynamically linked LLVM18; no optional SPIRV-Tools in-process disassembly; external validator used.",
+        "headers_path": "raw/SPIRV-Headers-1c6bb274.tar.gz",
+        "inputs": [
+          {
+            "bytes": 1719445,
+            "extract": false,
+            "id": "translator",
+            "material_path": "raw/SPIRV-LLVM-Translator-cd8fd419.tar.gz",
+            "sha256": "3a78303b42ca2fc14abcb2e5b52e8aa53652c93c82767e490d43564ddfb5cac7",
+            "strip_root": false,
+            "url": "https://codeload.github.com/KhronosGroup/SPIRV-LLVM-Translator/tar.gz/cd8fd419bc50cd2b60bf514eb61d015a10318446"
+          },
+          {
+            "bytes": 466701,
+            "extract": false,
+            "id": "spirv-headers",
+            "material_path": "raw/SPIRV-Headers-1c6bb274.tar.gz",
+            "sha256": "1a248f4199f4a30b2e7304ed4d62f731765bab12d9fa4c5abb189a5e2d57f1f5",
+            "strip_root": false,
+            "url": "https://codeload.github.com/KhronosGroup/SPIRV-Headers/tar.gz/1c6bb2743599e6eb6f37b2969acc0aef812e32e3"
+          },
+          {
+            "bytes": 80040,
+            "extract": false,
+            "id": "clang-18",
+            "material_path": "raw/clang-18_18.1.3-1ubuntu1_amd64.deb",
+            "sdk_role": "runtime",
+            "sha256": "628b16701014ef7ad648380b20ea74b90dd543857f933b3e34d2fc042783de25",
+            "strip_root": false,
+            "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/clang-18_18.1.3-1ubuntu1_amd64.deb"
+          },
+          {
+            "bytes": 735998,
+            "extract": false,
+            "id": "libclang-common-18-dev",
+            "material_path": "raw/libclang-common-18-dev_18.1.3-1ubuntu1_amd64.deb",
+            "sdk_role": "runtime",
+            "sha256": "d41631bb752815a8196261d1030c096591c59678c8adfbf2e6a740a691b49e80",
+            "strip_root": false,
+            "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/libclang-common-18-dev_18.1.3-1ubuntu1_amd64.deb"
+          },
+          {
+            "bytes": 13492572,
+            "extract": false,
+            "id": "libclang-cpp18",
+            "material_path": "raw/libclang-cpp18_18.1.3-1ubuntu1_amd64.deb",
+            "sdk_role": "runtime",
+            "sha256": "e91eda104813ee0468d145d010a4a4e142401f3f17f9a65596c66d416298d018",
+            "strip_root": false,
+            "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-18/libclang-cpp18_18.1.3-1ubuntu1_amd64.deb"
+          },
+          {
+            "bytes": 27518500,
+            "extract": false,
+            "id": "libllvm18",
+            "material_path": "raw/libllvm18_18.1.3-1ubuntu1_amd64.deb",
+            "sdk_role": "runtime",
+            "sha256": "af6197096ce3b89aab86de59f01c1b5feb008b2ae1514a03906c0664edb8b0b1",
+            "strip_root": false,
+            "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-18/libllvm18_18.1.3-1ubuntu1_amd64.deb"
+          },
+          {
+            "bytes": 25291124,
+            "extract": false,
+            "id": "llvm-18",
+            "material_path": "raw/llvm-18_18.1.3-1ubuntu1_amd64.deb",
+            "sdk_role": "runtime",
+            "sha256": "139cb82e16e75fcdd4a56562804ff9bfb482b65d0929580d621d28088075a27e",
+            "strip_root": false,
+            "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/llvm-18_18.1.3-1ubuntu1_amd64.deb"
+          },
+          {
+            "bytes": 45109568,
+            "extract": false,
+            "id": "llvm-18-dev",
+            "material_path": "raw/llvm-18-dev_18.1.3-1ubuntu1_amd64.deb",
+            "sdk_role": "headers",
+            "sha256": "1e68b8c3f788832c5c83d56a1b3dbbba1ee148407f61c873ed659bb373ae6388",
+            "strip_root": false,
+            "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/llvm-18-dev_18.1.3-1ubuntu1_amd64.deb"
+          }
+        ],
+        "llvm_branch_pair": "llvm_release_180",
+        "llvm_version": "18.1.3",
+        "memory_evidence": "A fixed SPIRVReader.cpp Clang probe succeeded with 516628 KiB maximum RSS after GCC was killed in the shared 8GiB environment.",
+        "source_path": "raw/SPIRV-LLVM-Translator-cd8fd419.tar.gz",
+        "translator_version": "18.1.8",
+        "upstream_commit": "cd8fd419bc50cd2b60bf514eb61d015a10318446",
+        "upstream_source_list": [
+          "LLVMSPIRVOpts.cpp",
+          "LLVMToSPIRVDbgTran.cpp",
+          "Mangler/FunctionDescriptor.cpp",
+          "Mangler/Mangler.cpp",
+          "Mangler/ManglingUtils.cpp",
+          "Mangler/ParameterType.cpp",
+          "OCLToSPIRV.cpp",
+          "OCLTypeToSPIRV.cpp",
+          "OCLUtil.cpp",
+          "VectorComputeUtil.cpp",
+          "SPIRVBuiltinHelper.cpp",
+          "SPIRVLowerBitCastToNonStandardType.cpp",
+          "SPIRVLowerBool.cpp",
+          "SPIRVLowerConstExpr.cpp",
+          "SPIRVLowerMemmove.cpp",
+          "SPIRVLowerOCLBlocks.cpp",
+          "SPIRVLowerSaddWithOverflow.cpp",
+          "SPIRVReader.cpp",
+          "SPIRVRegularizeLLVM.cpp",
+          "SPIRVToLLVMDbgTran.cpp",
+          "SPIRVToOCL.cpp",
+          "SPIRVToOCL12.cpp",
+          "SPIRVToOCL20.cpp",
+          "SPIRVTypeScavenger.cpp",
+          "SPIRVUtil.cpp",
+          "SPIRVWriter.cpp",
+          "SPIRVWriterPass.cpp",
+          "PassPlugin.cpp",
+          "PreprocessMetadata.cpp",
+          "libSPIRV/SPIRVBasicBlock.cpp",
+          "libSPIRV/SPIRVDebug.cpp",
+          "libSPIRV/SPIRVDecorate.cpp",
+          "libSPIRV/SPIRVEntry.cpp",
+          "libSPIRV/SPIRVFunction.cpp",
+          "libSPIRV/SPIRVInstruction.cpp",
+          "libSPIRV/SPIRVModule.cpp",
+          "libSPIRV/SPIRVStream.cpp",
+          "libSPIRV/SPIRVType.cpp",
+          "libSPIRV/SPIRVValue.cpp",
+          "libSPIRV/SPIRVError.cpp"
+        ]
+      },
+      "compiler": "fixed bundled clang18.1.3",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_is_candidate": true,
+      "record_id": "review.engineering.spirv-llvm-translator",
+      "source_build_scope": "Explicit bounded recipe; upstream full testsuite not run",
+      "worker_id": "worker 042"
+    },
+    "provider": "source",
+    "recipe": {
+      "commands": [
+        [
+          "python3",
+          "-B",
+          "{recipe}/install.py",
+          "--assets",
+          "{assets}",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--lock",
+          "{recipe}/build-lock.json"
+        ]
+      ],
+      "required_host_commands": [
+        "g++",
+        "dpkg-deb",
+        "python3"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LD_LIBRARY_PATH": "{prefix}/native/lib:{prefix}/sdk/usr/lib/x86_64-linux-gnu:{prefix}/sdk/usr/lib/llvm-18/lib"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1719445,
+        "extract": false,
+        "id": "translator",
+        "material_path": "raw/SPIRV-LLVM-Translator-cd8fd419.tar.gz",
+        "sha256": "3a78303b42ca2fc14abcb2e5b52e8aa53652c93c82767e490d43564ddfb5cac7",
+        "strip_root": false,
+        "url": "https://codeload.github.com/KhronosGroup/SPIRV-LLVM-Translator/tar.gz/cd8fd419bc50cd2b60bf514eb61d015a10318446"
+      },
+      {
+        "bytes": 466701,
+        "extract": false,
+        "id": "spirv-headers",
+        "material_path": "raw/SPIRV-Headers-1c6bb274.tar.gz",
+        "sha256": "1a248f4199f4a30b2e7304ed4d62f731765bab12d9fa4c5abb189a5e2d57f1f5",
+        "strip_root": false,
+        "url": "https://codeload.github.com/KhronosGroup/SPIRV-Headers/tar.gz/1c6bb2743599e6eb6f37b2969acc0aef812e32e3"
+      },
+      {
+        "bytes": 80040,
+        "extract": false,
+        "id": "clang-18",
+        "material_path": "raw/clang-18_18.1.3-1ubuntu1_amd64.deb",
+        "sha256": "628b16701014ef7ad648380b20ea74b90dd543857f933b3e34d2fc042783de25",
+        "strip_root": false,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/clang-18_18.1.3-1ubuntu1_amd64.deb"
+      },
+      {
+        "bytes": 735998,
+        "extract": false,
+        "id": "libclang-common-18-dev",
+        "material_path": "raw/libclang-common-18-dev_18.1.3-1ubuntu1_amd64.deb",
+        "sha256": "d41631bb752815a8196261d1030c096591c59678c8adfbf2e6a740a691b49e80",
+        "strip_root": false,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/libclang-common-18-dev_18.1.3-1ubuntu1_amd64.deb"
+      },
+      {
+        "bytes": 13492572,
+        "extract": false,
+        "id": "libclang-cpp18",
+        "material_path": "raw/libclang-cpp18_18.1.3-1ubuntu1_amd64.deb",
+        "sha256": "e91eda104813ee0468d145d010a4a4e142401f3f17f9a65596c66d416298d018",
+        "strip_root": false,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-18/libclang-cpp18_18.1.3-1ubuntu1_amd64.deb"
+      },
+      {
+        "bytes": 27518500,
+        "extract": false,
+        "id": "libllvm18",
+        "material_path": "raw/libllvm18_18.1.3-1ubuntu1_amd64.deb",
+        "sha256": "af6197096ce3b89aab86de59f01c1b5feb008b2ae1514a03906c0664edb8b0b1",
+        "strip_root": false,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-18/libllvm18_18.1.3-1ubuntu1_amd64.deb"
+      },
+      {
+        "bytes": 25291124,
+        "extract": false,
+        "id": "llvm-18",
+        "material_path": "raw/llvm-18_18.1.3-1ubuntu1_amd64.deb",
+        "sha256": "139cb82e16e75fcdd4a56562804ff9bfb482b65d0929580d621d28088075a27e",
+        "strip_root": false,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/llvm-18_18.1.3-1ubuntu1_amd64.deb"
+      },
+      {
+        "bytes": 45109568,
+        "extract": false,
+        "id": "llvm-18-dev",
+        "material_path": "raw/llvm-18-dev_18.1.3-1ubuntu1_amd64.deb",
+        "sha256": "1e68b8c3f788832c5c83d56a1b3dbbba1ee148407f61c873ed659bb373ae6388",
+        "strip_root": false,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/llvm-18-dev_18.1.3-1ubuntu1_amd64.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [],
+      "locations": [
+        {
+          "label": "programs",
+          "path": "{prefix}/bin",
+          "purpose": "Independent command-line interfaces"
+        }
+      ],
+      "notes": [
+        "CPU-only bounded checks; no GPU execution or semantic-equivalence qualification.",
+        "Ubuntu24.04 is the measured build environment, not a global distribution allowlist."
+      ],
+      "summary": "Fixed LLVM18 OpenCL/SPIR-V bidirectional translator"
+    },
+    "version": "18.1.8"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "compiler": "pinned Clang18.1.3",
+    "llvm_runtime": "pinned official LLVM18.1.3 binary",
+    "offline": true,
+    "source_list": "complete upstream 40-file list plus CLI"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "translator",
+      "path": "sources/3a78303b42ca2fc14abcb2e5b52e8aa53652c93c82767e490d43564ddfb5cac7"
+    },
+    {
+      "id": "spirv-headers",
+      "path": "sources/1a248f4199f4a30b2e7304ed4d62f731765bab12d9fa4c5abb189a5e2d57f1f5"
+    },
+    {
+      "id": "clang-18",
+      "path": "sources/628b16701014ef7ad648380b20ea74b90dd543857f933b3e34d2fc042783de25"
+    },
+    {
+      "id": "libclang-common-18-dev",
+      "path": "sources/d41631bb752815a8196261d1030c096591c59678c8adfbf2e6a740a691b49e80"
+    },
+    {
+      "id": "libclang-cpp18",
+      "path": "sources/e91eda104813ee0468d145d010a4a4e142401f3f17f9a65596c66d416298d018"
+    },
+    {
+      "id": "libllvm18",
+      "path": "sources/af6197096ce3b89aab86de59f01c1b5feb008b2ae1514a03906c0664edb8b0b1"
+    },
+    {
+      "id": "llvm-18",
+      "path": "sources/139cb82e16e75fcdd4a56562804ff9bfb482b65d0929580d621d28088075a27e"
+    },
+    {
+      "id": "llvm-18-dev",
+      "path": "sources/1e68b8c3f788832c5c83d56a1b3dbbba1ee148407f61c873ed659bb373ae6388"
+    }
+  ]
+}

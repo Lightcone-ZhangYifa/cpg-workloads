@@ -1,0 +1,148 @@
+{
+  "build": "cpg-worker016-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/run_checks.py"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "host-jit-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "asmjit",
+  "metadata": {
+    "counted_new_upstream": true,
+    "host_data_dependencies": [],
+    "license": "Zlib",
+    "not_formal_catalog_replacement": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "JitRuntime-managed machine code for integer arguments; runtime release verified",
+    "record_id": "review.engineering.asmjit",
+    "reference_host": {
+      "abi": "SysV",
+      "arch": "x86_64",
+      "build_cc": "GCC 13.3.0",
+      "os": "linux",
+      "tested_glibc": "2.39"
+    },
+    "upstream_pin": "0464e1c8f1f43c861a0c73d4e59437fff255cdd9",
+    "worker_id": "worker 016"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-B",
+        "{recipe}/source_build.py",
+        "--recipe",
+        "{recipe}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--name",
+        "asmjit"
+      ]
+    ],
+    "required_host_commands": [
+      "python3",
+      "gcc",
+      "g++",
+      "make",
+      "ar",
+      "sh"
+    ],
+    "required_installed_paths": [
+      "{prefix}/run_checks.py",
+      "{prefix}/cpg-resource.json",
+      "{prefix}/share/asmjit/source"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "sh"
+    ],
+    "runtime_environment": {
+      "CPG_OFFLINE": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1409663,
+      "extract": false,
+      "id": "asmjit-input",
+      "material_path": "raw/asmjit.tar.gz",
+      "sha256": "2b6301e4179e782c676ec50a1ff4d58fac88f5e20ba630103ece5d2b6ea38243",
+      "strip_root": false,
+      "url": "https://codeload.github.com/asmjit/asmjit/tar.gz/0464e1c8f1f43c861a0c73d4e59437fff255cdd9"
+    },
+    {
+      "bytes": 27800904,
+      "extract": false,
+      "id": "cmake-input",
+      "material_path": "raw/cmake-3.31.6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "sha256": "1c8b05df0602365da91ee6a3336fe57525b137706c4ab5675498f662ae1dbcec",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/59/e8/096984b89133681533650b9078c5ed1c5c9b534e869b5487f22d4de1935c/cmake-3.31.6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Add {prefix}/bin to PATH when needed."
+    ],
+    "documentation": [
+      "https://codeload.github.com/asmjit/asmjit/tar.gz/0464e1c8f1f43c861a0c73d4e59437fff255cdd9"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/run_checks.py",
+        "description": "Run bounded offline functional profile"
+      }
+    ],
+    "locations": [
+      {
+        "label": "prefix",
+        "path": "{prefix}",
+        "purpose": "Independent installation prefix"
+      },
+      {
+        "label": "source",
+        "path": "{prefix}/share/asmjit/source",
+        "purpose": "Complete fixed source and license context"
+      }
+    ],
+    "notes": [
+      "No AArch64 execution",
+      "No full upstream regression suite",
+      "Distribution fields describe the measured reference host; the original manager gates only OS and architecture.",
+      "Source builds require the explicitly listed ambient host commands; no exact APT dependency closure is claimed."
+    ],
+    "summary": "JitRuntime-managed machine code for integer arguments; runtime release verified"
+  },
+  "version": "1.24.0+git0464e1c8"
+}

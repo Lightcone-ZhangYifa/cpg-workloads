@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/mman.h>
+#include <unistd.h>
+#include "dasm_proto.h"
+#include "dasm_x86.h"
+|.arch x64
+|.actionlist cpg_actions
+static void emit(dasm_State **Dst) {
+  | mov eax, edi
+  | imul eax, eax, 3
+  | add eax, esi
+  | ret
+}
+int main(void) {
+  dasm_State *D=NULL;size_t n=0;
+  dasm_init(&D,1);dasm_setup(&D,cpg_actions);emit(&D);
+  if(dasm_link(&D,&n)!=0||n==0)return 1;
+  long page=sysconf(_SC_PAGESIZE);if(page<=0)return 2;
+  size_t alloc=(n+(size_t)page-1)&~((size_t)page-1);
+  void *mem=mmap(NULL,alloc,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);
+  if(mem==MAP_FAILED)return 3;
+  if(dasm_encode(&D,mem)!=0)return 4;
+  if(mprotect(mem,alloc,PROT_READ|PROT_EXEC)!=0)return 5;
+  int(*fn)(int,int)=(int(*)(int,int))mem;
+  unsigned checked=0;
+  for(int x=-1000;x<=1000;x++)for(int y=-3;y<=3;y++){if(fn(x,y)!=x*3+y)return 6;checked++;}
+  if(munmap(mem,alloc)!=0)return 7;
+  dasm_free(&D);
+  printf("DYNASM_PASS host=x86_64-sysv checked=%u code_bytes=%zu rw_to_rx=1\n",checked,n);
+  return 0;
+}

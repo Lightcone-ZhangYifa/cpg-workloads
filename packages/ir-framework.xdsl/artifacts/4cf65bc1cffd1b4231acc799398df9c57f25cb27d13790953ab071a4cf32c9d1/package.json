@@ -1,0 +1,179 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/recipe/check.py",
+        "--prefix",
+        "{prefix}/runtime",
+        "--out",
+        "{build}/acceptance"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "task-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "ir-framework.xdsl",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "dataset_qualification": "not_applicable",
+    "host_prerequisites": [
+      "Python >=3.11 with venv/ensurepip"
+    ],
+    "installation_mode": "Install original upstream Python wheels with --no-index and --require-hashes; no xDSL source-build claim.",
+    "native_source_build": false,
+    "new_resource": true,
+    "original_baseline_mutated": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Pure wrapping i32 example. The upstream MLIR 22.1.2 version statement is recorded, but external MLIR interoperation was not executed.",
+    "record_id": "review.engineering.xdsl",
+    "source_lock_sha256": "b9b0a40e0ddcc6bdb9453c8aa9192b5dd3a92d34ab2afe4869fb9270017aae8e",
+    "worker_id": "worker 007"
+  },
+  "provider": "python",
+  "recipe": {
+    "install_argv": [
+      "python3",
+      "{recipe}/recipe/install.py",
+      "--prefix",
+      "{prefix}/runtime",
+      "--build-root",
+      "{build}",
+      "--assets-root",
+      "{assets}",
+      "--jobs",
+      "{jobs}"
+    ],
+    "required_host_commands": [
+      "python3"
+    ],
+    "required_installed_paths": [
+      "{prefix}/runtime/bin/xdsl-opt",
+      "{prefix}/runtime/share/cpg/source-lock.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "DENO_NO_UPDATE_CHECK": "1",
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONNOUSERSITE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 5000,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "assets/immutabledict-4.3.1-py3-none-any.whl",
+      "sha256": "c9facdc0ff30fdb8e35bd16532026cac472a549e182c94fa201b51b25e4bf7bf",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/a3/ce/f9018bf69ae91b273b6391a095e7c93fa5e1617f25b6ba81ad4b20c9df10/immutabledict-4.3.1-py3-none-any.whl"
+    },
+    {
+      "bytes": 7634,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "assets/ordered_set-4.1.0-py3-none-any.whl",
+      "sha256": "046e1132c71fcf3330438a539928932caf51ddbc582496833e23de611de14562",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/33/55/af02708f230eb77084a299d7b08175cff006dea4f2721074b92cdb0296c0/ordered_set-4.1.0-py3-none-any.whl"
+    },
+    {
+      "bytes": 45571,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "assets/typing_extensions-4.16.0-py3-none-any.whl",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl"
+    },
+    {
+      "bytes": 4605678,
+      "extract": false,
+      "id": "input-004",
+      "material_path": "assets/xdsl-0.74.0-py3-none-any.whl",
+      "sha256": "f6195d9ea6fc12cfeae5545e5e1674e2c982e775782f2f4648934e2e0736282d",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/a0/38/41ec4f802bd3422a6e79ebc23c8884c22f707e92a21fc26d0ee7095ef7f6/xdsl-0.74.0-py3-none-any.whl"
+    },
+    {
+      "bytes": 4288385,
+      "extract": false,
+      "id": "input-005",
+      "material_path": "assets/xdsl-0.74.0.tar.gz",
+      "sha256": "73e9df62bc4b67c296449da4935e26f0e2fbc5f6fb53a0747f1292fd72477015",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/37/72/8c94587e018de9c680cb5c96c6df8c0fb34f3ef488968b201659a8e5f4e5/xdsl-0.74.0.tar.gz"
+    },
+    {
+      "bytes": 12826,
+      "extract": false,
+      "id": "input-006",
+      "material_path": "assets/ordered-set-4.1.0.tar.gz",
+      "sha256": "694a8e44c87657c59292ede72891eb91d34131f6531463aab3009191c77364a8",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/4c/ca/bfac8bc689799bcca4157e0e0ced07e70ce125193fc2e166d2e685b7e2fe/ordered-set-4.1.0.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "unspecified",
+    "distribution_version": "unspecified",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# Invoke the selected prefix explicitly; no global PATH change is required."
+    ],
+    "documentation": [
+      "https://github.com/xdslproject/xdsl",
+      "https://xdsl.dev/",
+      "https://pypi.org/project/xdsl/0.74.0/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/runtime/bin/cpg-check --out /absolute/evidence-directory",
+        "description": "Replay the deterministic functional checks into an external evidence directory."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed resource",
+        "path": "{prefix}/runtime",
+        "purpose": "Install original upstream Python wheels with --no-index and --require-hashes; no xDSL source-build claim."
+      },
+      {
+        "label": "Unmodified upstream source",
+        "path": "{prefix}/runtime/share/cpg/source",
+        "purpose": "Source and original licenses retained separately from disposable build trees."
+      }
+    ],
+    "notes": [
+      "Install original upstream Python wheels with --no-index and --require-hashes; no xDSL source-build claim.",
+      "Pure wrapping i32 example. The upstream MLIR 22.1.2 version statement is recorded, but external MLIR interoperation was not executed.",
+      "The source artifact method transports exact original inputs and an installation recipe; it is not itself evidence of a native source compilation.",
+      "Python >=3.11 with venv/ensurepip and tarfile data-filter support is required. Native resources additionally require cc, GNU make, ar and Perl.",
+      "The runtime target is Linux x86_64. No distribution allowlist is imposed; actual host details and executed checks are recorded."
+    ],
+    "summary": "xDSL 0.74.0 with a locked wheel closure and an executable custom dialect, rewrite, roundtrip and interpreter example."
+  },
+  "version": "0.74.0"
+}

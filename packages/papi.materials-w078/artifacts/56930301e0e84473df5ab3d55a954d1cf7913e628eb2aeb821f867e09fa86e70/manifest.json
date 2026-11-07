@@ -1,0 +1,250 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 5773,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSES.txt",
+      "sha256": "690b69fb193d93d97c3d84b2263f53adedb3a4c19d8f09781bf933888628bfef"
+    },
+    {
+      "bytes": 2023,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/MATERIALS.md",
+      "sha256": "5d6183d5d1af6d00c22277bd1ffbbdc7ab2dfdcaa7079da1fce76427f652e2d0"
+    },
+    {
+      "bytes": 567,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/POLICY.json",
+      "sha256": "89a8339a4f9264fdb0b8e4110db5fe7c6bd827a29b33cecaf0bac6866b129361"
+    },
+    {
+      "bytes": 310148,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/archive-members.json",
+      "sha256": "35b25aa5b7e923dfe2285b83039bb457807f6ad837b0f356237400561fc0a9c8"
+    },
+    {
+      "bytes": 11422,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/baseline-package.json",
+      "sha256": "4555792d1aae32ef4709ba79c6885deb29257489ab1245d322f20f5bcabbe7b6"
+    },
+    {
+      "bytes": 3302,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/inspect_material.py",
+      "sha256": "8559cfff59af3d138ff5c6673e1ca2893711c5c7fbcd611a47ab03f378db8d6a"
+    },
+    {
+      "bytes": 2106,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/material-index.json",
+      "sha256": "5a3136ae7caf528ef8997bd2e38acfadb3261612f17112fe8ab48dc5e4692b6b"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/original-archives"
+    },
+    {
+      "bytes": 4420651,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/original-archives/papi.tar.gz",
+      "sha256": "a9bff89ccf39915d729e08ae0a0c6a71ce0ebbe98411e9a2eb3c83c8db0af39c"
+    },
+    {
+      "bytes": 5096408,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/reference-text.jsonl",
+      "sha256": "90494806f06f5186cb77e656cfff2cda26095674f0e95a163776510da5b53065"
+    },
+    {
+      "bytes": 1011,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/source-lock.json",
+      "sha256": "a42012dc929accd108101b170c312c47f08c3ae49f01c6c939c7db2d1116096a"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2538,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "a00e0447b12542c5ffe9e99f09fc6ff0d9a3f205f17fcf42ec162b62659e6233"
+    }
+  ],
+  "inventory_sha256": "e5d389a061789004749dc73945d361fe14da3cf92c94bd914bc4bae95f1e1e95",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "355c09abeca5e0452547c7e1d2efdd19f1197b0b593ed3ee474fff719a3f1f81",
+  "method": "material",
+  "package": {
+    "build": "w078-static-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "locked-static-materials",
+        "kind": "availability",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "papi.materials-w078",
+    "metadata": {
+      "baseline_catalog_sha256": "9b439245ba8cf886f3604bca70af23ce10a8dd537b698d28d8f462a6a5b4d716",
+      "baseline_definition_sha256": "4555792d1aae32ef4709ba79c6885deb29257489ab1245d322f20f5bcabbe7b6",
+      "catalog": {
+        "archive_bytes": 4420651,
+        "category": [
+          "Observability",
+          "Static reference materials"
+        ],
+        "dependencies": [],
+        "documentation": "https://icl.utk.edu/papi/",
+        "extract": false,
+        "id": "papi.materials-w078",
+        "kind": "url",
+        "license_class": "open",
+        "license_id": "BSD-3-Clause; bundled component notices retained",
+        "logical_resource_id": "papi",
+        "mandatory": false,
+        "material_path": "original-archives/papi.tar.gz",
+        "policy_held": true,
+        "profile_kind": "complete-locked-source-materials",
+        "purpose": "沿原 PAPI 7.2.0 身份补齐事件映射、组件设计、头文件与版本材料，禁止新的采集执行。",
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "a9bff89ccf39915d729e08ae0a0c6a71ce0ebbe98411e9a2eb3c83c8db0af39c",
+        "source_url": "https://github.com/icl-utk-edu/papi/releases/download/papi-7-2-0-t/papi-7.2.0.tar.gz",
+        "strip_archive_root": false,
+        "technical_profile_only": true,
+        "title": "PAPI 7.2.0：事件、组件和公共接口材料",
+        "version": "7.2.0"
+      },
+      "catalog_sha256": "14b0079cc49d3ab21c71d01589274619423b9f96f3ac354c2b9f9d90cbb6c0e5",
+      "does_not_claim_tool_material_completeness": false,
+      "logical_resource_id": "papi",
+      "policy_held": true,
+      "profile_kind": "complete-locked-source-materials",
+      "technical_profile_only": true
+    },
+    "provider": "material",
+    "recipe": {
+      "collection_enabled": false,
+      "profile_kind": "complete-locked-source-materials",
+      "required_installed_paths": [
+        "{prefix}/MATERIALS.md",
+        "{prefix}/material-index.json",
+        "{prefix}/source-lock.json",
+        "{prefix}/POLICY.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 4420651,
+        "extract": false,
+        "id": "papi.materials-w078",
+        "material_path": "original-archives/papi.tar.gz",
+        "sha256": "a9bff89ccf39915d729e08ae0a0c6a71ce0ebbe98411e9a2eb3c83c8db0af39c",
+        "strip_root": false,
+        "url": "https://github.com/icl-utk-edu/papi/releases/download/papi-7-2-0-t/papi-7.2.0.tar.gz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "any",
+      "distribution_version": "any",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://icl.utk.edu/papi/"
+      ],
+      "examples": [
+        {
+          "command": "python3 {prefix}/inspect_material.py --list",
+          "description": "List static topics"
+        },
+        {
+          "command": "python3 {prefix}/inspect_material.py --search metadata --limit 10",
+          "description": "Search indexed materials"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Static reading guide",
+          "path": "{prefix}/MATERIALS.md",
+          "purpose": "Authored task-specific guide and limits."
+        },
+        {
+          "label": "Locked source archives",
+          "path": "{prefix}/source-lock.json",
+          "purpose": "Exact original byte identities and closure mapping."
+        }
+      ],
+      "notes": [
+        "System collection is policy-held. Static availability is not runtime or hardware qualification.",
+        "All original baseline identities and dependencies are unchanged.",
+        "Distribution metadata is descriptive; material content is not bound to one Linux distribution."
+      ],
+      "summary": "沿原 PAPI 7.2.0 身份补齐事件映射、组件设计、头文件与版本材料，禁止新的采集执行。"
+    },
+    "version": "7.2.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "logical_resource_id": "papi",
+    "official_runtime_qualification": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_kind": "complete-locked-source-materials",
+    "upstream_execution": false,
+    "worker_id": "worker 078"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

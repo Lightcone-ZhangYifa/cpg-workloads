@@ -1,0 +1,209 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1584,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "4c37a385ad4960572cdae34ab8a6a8f66856dd0e70f25bef8f0d6b6e03033907"
+    },
+    {
+      "bytes": 763,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/expression.gram",
+      "sha256": "df2bda129d9c2186b22911214ec908ed3f096ba93fa53d3bb088ffaa3557caf3"
+    },
+    {
+      "bytes": 4060,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/fixture.py",
+      "sha256": "cdb9bfb72d1227e0bd4f5f3d9c47816d21ae3caa32115642329407a21c6455af"
+    }
+  ],
+  "inventory_sha256": "6efe684e5f3d7cb78e53d90bab786d3759f0a7e683650ee58036cb58a9b5e30e",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "71108026a74c133427a1f557911a28c5220f8c949867af75880615632fb1d930",
+  "method": "wrapper",
+  "package": {
+    "build": "worker002-v001",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "pegen-version",
+        "kind": "version",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 90
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/check.py"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "pegen-functional",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 90
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.pegen",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 35345,
+        "category": [
+          "Frontend",
+          "Parser generation"
+        ],
+        "dependencies": [],
+        "extract": false,
+        "id": "py.pegen",
+        "immutable_ref": "sha256:69253c196ea425828a6ca01cec1aadca415cd5c789b4d00d653962234497071a",
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "MIT",
+        "material_path": "wheels/pegen-0.3.0-py3-none-any.whl",
+        "package_name": "pegen",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Generate a Python PEG parser and verify expression ASTs and rejection locations.",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "69253c196ea425828a6ca01cec1aadca415cd5c789b4d00d653962234497071a",
+        "source_url": "https://files.pythonhosted.org/packages/2b/20/fcf4e7b9e36e1b45e04632d771b1f36fce7c8ce37e151b1bac0916c6b469/pegen-0.3.0-py3-none-any.whl",
+        "strip_archive_root": true,
+        "title": "pegen",
+        "upstream": "https://github.com/we-like-parsers/pegen",
+        "version": "0.3.0"
+      },
+      "catalog_sha256": "87232c67280217bba4051950ecf3a28bb45fcfbe0bac53feb9676fda4886bab8",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "research_record_id": "review.engineering.pegen"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "research",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-c",
+          "raise RuntimeError('Provide the pinned local wheel through source_overrides; network deployment is disabled')"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--no-cache-dir",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "pegen",
+      "state": "worker002-explicit-local-wheel",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 35345,
+        "extract": false,
+        "id": "py.pegen",
+        "material_path": "wheels/pegen-0.3.0-py3-none-any.whl",
+        "sha256": "69253c196ea425828a6ca01cec1aadca415cd5c789b4d00d653962234497071a",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/2b/20/fcf4e7b9e36e1b45e04632d771b1f36fce7c8ce37e151b1bac0916c6b469/pegen-0.3.0-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/we-like-parsers/pegen",
+        "https://we-like-parsers.github.io/pegen/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pegen expression.gram -o parser.py",
+          "description": "Generate a parser from a local grammar."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "The exact standalone pegen Python distribution."
+        },
+        {
+          "label": "Grammar and verification",
+          "path": "{recipe}",
+          "purpose": "Reproducible parser generation and bounded AST/error-location assertions."
+        }
+      ],
+      "notes": [
+        "This is the standalone PyPI Python generator, not CPython's C generator.",
+        "Installation requires an explicit local wheel through source_overrides. No deployment download is needed.",
+        "Original source distribution and notices are retained in the worker002 resource input directory.",
+        "The fixture accepts ASCII decimal integers, names, parentheses, +, -, *, and **. It is a bounded development example, not a general Python parser."
+      ],
+      "summary": "Generate a Python PEG parser and verify expression ASTs and rejection locations."
+    },
+    "version": "0.3.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "scope": "local wheel wrapper and grammar contract; no machine-code source-build claim",
+    "worker_id": "worker 002"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

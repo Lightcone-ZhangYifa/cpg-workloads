@@ -1,0 +1,159 @@
+{
+  "build": "cpg-worker107-20261102-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assigned-semantic-controls",
+      "kind": "functional",
+      "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "saw",
+  "metadata": {
+    "assignment": {
+      "after_dataset_verified": null,
+      "after_functional": null,
+      "after_material": null,
+      "alias_target": "",
+      "assessment_ids": [
+        "verification:saw"
+      ],
+      "baseline_catalog_sha256": {},
+      "baseline_dataset_verified": null,
+      "baseline_functional_ids": [],
+      "baseline_managed_ids": [],
+      "baseline_material_ids": [],
+      "baseline_pins": {},
+      "baseline_relation": "新增候选（独立身份仍需锁定）",
+      "baseline_resource_ids": [],
+      "baseline_trusted_apt_ids": [],
+      "baseline_version": "0.21.14",
+      "canonical_url": "https://github.com/GaloisInc/saw-script",
+      "category": "符号等价与规格验证",
+      "cost": "重",
+      "decision": "select",
+      "decision_zh": "入选",
+      "dependencies": "Haskell、Cryptol、Z3、匹配LLVM/MIR工具",
+      "entity_kind": "resource",
+      "evidence_relpath": "",
+      "evidence_urls": [
+        "https://github.com/GaloisInc/saw-script"
+      ],
+      "has_active_task": true,
+      "identity_unresolved": false,
+      "increment_package": "cpg-20261101-worker-107-delta-v001.zip",
+      "new_family_candidate": true,
+      "owned_baseline_resource_ids": [],
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "quality_evidence": "{\"primary_source_url\":\"https://github.com/GaloisInc/saw-script\",\"retrieval_ref\":\"turn30search0\",\"specific_usefulness\":\"利用LLVM/JVM/MIR模型和Cryptol规格验证函数。\",\"inspectable_validation_surface\":\"验证一个C函数与Cryptol规格一致，并使错误实现产生反例。\",\"known_limit\":\"MIR JSON与SAW schema必须匹配；不能把源码模型验收当机器码验证。\",\"academic_basis\":\"官方或作者项目的实现/文档/样例；未据此宣称独立学术认可或广泛采用\",\"local_execution_evidence\":\"本次只做调研，没有执行工具、重放证明或量化缺陷检出率\",\"confidence_boundary\":\"选择指资源对AI开发的适用价值，不等于所有分支已支持或所有证明已在当前工程重放\"}",
+      "record_id": "review.verification.saw",
+      "research_scope": "本次公开来源评估",
+      "resource_name": "SAW",
+      "result_status": "未执行接入",
+      "reviewed_on": "2026-11-01",
+      "schema_version": 1,
+      "scope_limits": "MIR JSON与SAW schema必须匹配；不能把源码模型验收当机器码验证。",
+      "selected_new_family": true,
+      "selection_reason": "纳入调研资源清单：利用LLVM/JVM/MIR模型和Cryptol规格验证函数。 选择依据是明确验证/参考/测试用途和具体可检查产物；MIR JSON与SAW schema必须匹配；不能把源码模型验收当机器码验证。",
+      "source_refs": [
+        "turn30search0"
+      ],
+      "task": "验证一个C函数与Cryptol规格一致，并使错误实现产生反例。",
+      "taxonomy_categories": [
+        "V06",
+        "V07",
+        "V18",
+        "V41",
+        "O34"
+      ],
+      "value_to_ai": "利用LLVM/JVM/MIR模型和Cryptol规格验证函数。",
+      "worker_id": "worker 107",
+      "worker_scope": "翻译与重写验证 · 2"
+    },
+    "baseline_version": "0.21.14",
+    "formal_promotion": false,
+    "logical_entity_id": "saw",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "LLVM bitcode of two unsigned 32-bit C functions versus a Cryptol specification; not machine-code or MIR validation",
+    "record_id": "review.verification.saw",
+    "system_runtime_requirements": [
+      "Linux x86_64",
+      "glibc",
+      "libgmp.so.10",
+      "libtinfo.so.6",
+      "libz.so.1",
+      "Python3"
+    ],
+    "worker_id": "worker 107"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/check.py"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "GHCRTS": "-N1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 203781023,
+      "extract": false,
+      "id": "official-distribution",
+      "material_path": null,
+      "sha256": "0b25c8b32db8b4a7ec32d6700024af60bb2a0398ee350b630dd84ff377c938f7",
+      "strip_root": false,
+      "url": "https://github.com/GaloisInc/saw-script/releases/download/v1.6/saw-1.6-ubuntu-24.04-X64-with-solvers.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use a fresh independent prefix; checks consume only local inputs."
+    ],
+    "documentation": [
+      "sources-lock.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/check.py",
+        "description": "Run the bounded profile"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Validation entry",
+        "path": "{prefix}/check.py",
+        "purpose": "Replay the assigned semantic controls."
+      }
+    ],
+    "notes": [
+      "Scope is the explicitly executed profile; no formal release promotion.",
+      "Host ELF loader and system libraries are checked by the unmodified CPG manager."
+    ],
+    "summary": "LLVM bitcode of two unsigned 32-bit C functions versus a Cryptol specification; not machine-code or MIR validation"
+  },
+  "version": "1.6-build-68eed5f01652"
+}

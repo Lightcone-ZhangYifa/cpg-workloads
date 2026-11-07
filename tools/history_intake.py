@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import importlib.util
+import itertools
 import json
 import os
 from pathlib import Path
@@ -67,6 +68,10 @@ def check_template(template):
         if path.is_symlink(): return 'authored_symlink_requires_review'
         if not path.is_file(): continue
         if path.name in ('manifest.json','package.json','authored-inputs.json'): continue
+        relative=path.relative_to(template).parts
+        if ('materials' in relative and path.suffix.lower() not in {'.json','.opam'}
+                and not path.name.lower().startswith(('license','copying','notice'))):
+            return 'authored_source_projection_requires_review'
         if path.stat().st_size > 1024*1024: return 'large_authored_file_requires_review'
         if path.name.lower().endswith(('.gz','.xz','.tbz','.bz2','.zip','.whl','.deb','.a','.so','.g4')):
             return 'authored_payload_requires_review'
@@ -78,13 +83,27 @@ def worker_labeled_id(identifier):
     return 'worker' in identifier.lower() or 'reference-pack' in identifier.lower()
 
 
+def verified_case_jobs(ledger, cases):
+    files={x['path']:x for x in ledger['files']};families={x['family']:x for x in ledger['split_families']}
+    for case in cases:
+        if case.get('status')!='verified_member_format_identified' or case.get('format')!='cpg_package':continue
+        source=case['source'];base={'source':source,'member':case['member'],'member_bytes':case['bytes'],
+            'expected_sha256':case['sha256_from_name'],'lead_role':'artifact','unsafe_container':False}
+        if source in files:
+            row=files[source];base.update(kind='file',source_sha256=row['sha256'],source_bytes=row['bytes'])
+        else:
+            base.update(kind='split',parts=families[source]['parts'])
+        yield base
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--ledger',type=Path,required=True);p.add_argument('--history-root',type=Path,required=True)
     p.add_argument('--framework-root',type=Path,required=True);p.add_argument('--workloads-root',type=Path,required=True)
     p.add_argument('--cold-root',type=Path,required=True);p.add_argument('--scratch',type=Path,required=True)
     p.add_argument('--state',type=Path,required=True);p.add_argument('--limit',type=int,default=None)
-    p.add_argument('--retry', choices=('apt','recipes','evidence','fixtures'), help='Revisit only the specified recorded deferrals')
+    p.add_argument('--case-table',type=Path,help='Include verified CPG packages discovered in object cases')
+    p.add_argument('--retry', choices=('apt','recipes','evidence','fixtures','cold-alias'), help='Revisit only the specified recorded deferrals')
     a=p.parse_args(); history=a.history_root.resolve(); root=a.workloads_root.resolve(); scratch=a.scratch.resolve()
     for dest in (a.state.resolve(),scratch,a.cold_root.resolve()):
         if dest.is_relative_to(history):p.error('Output must be outside historical input')
@@ -101,7 +120,12 @@ def main():
     rows={Path(r['path']).name:r for r in ledger['files']}
     scratch.mkdir(parents=True,exist_ok=True);cold=a.cold_root/'packages/sha256';cold.mkdir(parents=True,exist_ok=True)
     processed=0; verified_outer=set(); verified_splits={}; verified_cold=set()
-    for job in candidate_jobs(ledger,history,module.PartsReader):
+    case_jobs=[]
+    if a.case_table:
+        case_table=json.loads(a.case_table.read_text())
+        if case_table['inventory_sha256']!=ledger['inventory_sha256']:p.error('Case inventory identity differs')
+        case_jobs=verified_case_jobs(ledger,case_table['cases'])
+    for job in itertools.chain(candidate_jobs(ledger,history,module.PartsReader),case_jobs):
         key=hashlib.sha256(json.dumps(job,sort_keys=True).encode()).hexdigest()
         if key in state['results']:
             previous=state['results'][key]
@@ -110,7 +134,8 @@ def main():
             eligible_retry = (a.retry=='apt' and previous['status']=='held_apt_wrapper_import_would_rebuild') or (
                 a.retry=='recipes' and previous['status']=='error' and '.cpgrecipe' in job['member'].lower()) or (
                 a.retry=='evidence' and previous['status']=='error' and job['member'].lower().endswith('.preparation.json')) or (
-                a.retry=='fixtures' and previous['status']=='error' and job['member'].endswith('/deliberately-truncated.cpgpkg'))
+                a.retry=='fixtures' and previous['status']=='error' and job['member'].endswith('/deliberately-truncated.cpgpkg')) or (
+                a.retry=='cold-alias' and previous['status']=='known_object_name_matches_verified_cold_member_unverified')
             if not eligible_retry:continue
         elif a.retry:
             continue
@@ -149,6 +174,36 @@ def main():
                 origin={'archive':job['source'],'sha256':full_sha,'bytes':n,'member':job['member']}
                 zsource=module.PartsReader(parts)
             safe_relative(job['member'])
+            if a.retry=='cold-alias':
+                digest=job['expected_sha256'];role=job.get('lead_role')
+                candidate=(a.cold_root/'objects/sha256'/digest if role=='raw_source' else
+                    a.cold_root/'recipes/sha256'/(digest+'.cpgrecipe.tar.gz') if role=='online_recipe' else
+                    cold/(digest+'.cpgpkg.tar.gz'))
+                if candidate.is_symlink() or not candidate.is_file() or candidate.stat().st_size!=job['member_bytes']:
+                    raise ValueError('Existing cold object size differs')
+                if digest not in verified_cold:
+                    if sha256(candidate)!=digest:raise ValueError('Existing cold object SHA-256 differs')
+                    verified_cold.add(digest)
+                h=hashlib.sha256();count=0
+                if job['kind']=='standalone':
+                    with source.open('rb') as inp:
+                        for block in iter(lambda:inp.read(1024*1024),b''):h.update(block);count+=len(block)
+                else:
+                    with zipfile.ZipFile(zsource) as z:
+                        info=z.getinfo(job['member'])
+                        if info.file_size!=job['member_bytes']:raise ValueError('ZIP member size changed')
+                        with z.open(info) as inp:
+                            for block in iter(lambda:inp.read(1024*1024),b''):h.update(block);count+=len(block)
+                if h.hexdigest()!=digest or count!=job['member_bytes']:raise ValueError('Duplicate member SHA-256 or size differs')
+                record_path=root/'catalog/artifacts'/(digest+'.json')
+                if role in ('artifact','online_recipe') and record_path.exists():
+                    record=json.loads(record_path.read_text())
+                    if record.get('sha256')!=digest or record.get('bytes')!=count:raise ValueError('Catalog identity conflict')
+                    if origin not in record['origins']:record['origins'].append(origin);write_json(record_path,record)
+                outcome.update(status='cold_alias_member_sha_verified',member_sha256=digest)
+                write_json(a.state,state)
+                print(json.dumps({'status':outcome['status'],'source':job['source'],'member':job['member']}),flush=True)
+                continue
             if job.get('expected_sha256'):
                 digest=job['expected_sha256'];role=job.get('lead_role')
                 candidate=(a.cold_root/'objects/sha256'/digest if role=='raw_source' else
@@ -165,7 +220,7 @@ def main():
                     write_json(a.state,state)
                     print(json.dumps({'status':outcome['status'],'source':job['source'],'member':job['member']}),flush=True)
                     continue
-            if job['member_bytes']>shutil.disk_usage(scratch).free-1024**3:raise ValueError('Insufficient scratch reserve')
+            if job['member_bytes']>shutil.disk_usage(scratch).free:raise ValueError('Insufficient scratch space')
             with tempfile.TemporaryDirectory(prefix='intake-',dir=scratch) as temp:
                 tmp=Path(temp);member=tmp/'member.cpgpkg'
                 if job['kind']=='standalone':
@@ -191,7 +246,6 @@ def main():
                 if job['member'].endswith('/deliberately-truncated.cpgpkg'):
                     outcome['member_sha256']=sha256(member)
                 if job['member'].lower().endswith('.preparation.json'):
-                    if member.stat().st_size > 8*1024*1024:raise ValueError('Preparation evidence exceeds bounded JSON limit')
                     evidence=json.loads(member.read_text())
                     if not isinstance(evidence,dict):raise ValueError('Preparation evidence must be a JSON object')
                     outcome.update(status='preparation_metadata_retained_in_original',member_sha256=sha256(member))

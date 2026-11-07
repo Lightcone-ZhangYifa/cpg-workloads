@@ -1,0 +1,128 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 16048,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/answer",
+      "sha256": "84bcfbd2a14c10d7a19509098961bd387ae136550886b18656ed438de31bb6e0"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share"
+    },
+    {
+      "bytes": 45,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/README.txt",
+      "sha256": "a2c47ada30976f54fe735945e7b72267514d3a9553f1261ea6ab402373848bec"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 752,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "82370ed4cbf14941c7483f9614562253220535247c7a34377644c39e093923b6"
+    }
+  ],
+  "inventory_sha256": "4c4897c23a7861037693d427eea589977f65823146ac5f2d38ba811da4258c5d",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "bedda018fb1e1794952060c82fdae340e056c6fb4e4015302ce38eb26a97b864",
+  "method": "binary",
+  "package": {
+    "build": "review-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "{prefix}",
+          "--material-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "ordinary-native-payload",
+        "kind": "availability",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 30
+      },
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "native-positive-and-negative",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 30
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "lifecycle-prune-probe",
+    "metadata": {
+      "qualification_scope": "integration harness only, no worker proof qualification",
+      "test_fixture": true
+    },
+    "provider": "binary",
+    "recipe": {
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C.UTF-8",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [],
+      "locations": [],
+      "notes": [],
+      "summary": "Small real binary for lifecycle cleanup validation"
+    },
+    "version": "1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

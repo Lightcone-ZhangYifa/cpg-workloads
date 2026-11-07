@@ -1,0 +1,274 @@
+{
+  "build": "worker006-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/cpg_check.py",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "worker006-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "java"
+      ],
+      "requires_paths": [
+        "{prefix}/recipe/check.py"
+      ],
+      "stdout_regex": "\"ok\"\\s*:\\s*true",
+      "timeout_seconds": 240
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "source-transform.spoon",
+  "metadata": {
+    "artifact_profile": "upstream-fat-jar-and-source",
+    "baseline_version": "0.21.14",
+    "category": [
+      "source_transform"
+    ],
+    "original_assignment": {
+      "after_dataset_verified": null,
+      "after_functional": null,
+      "after_material": null,
+      "alias_target": "",
+      "assessment_ids": [
+        "engineering:spoon"
+      ],
+      "baseline_catalog_sha256": {},
+      "baseline_dataset_verified": null,
+      "baseline_functional_ids": [],
+      "baseline_managed_ids": [],
+      "baseline_material_ids": [],
+      "baseline_pins": {},
+      "baseline_relation": "新增候选（独立身份仍需锁定）",
+      "baseline_resource_ids": [],
+      "baseline_trusted_apt_ids": [],
+      "baseline_version": "0.21.14",
+      "canonical_url": "https://spoon.gforge.inria.fr/",
+      "category": "source_transform",
+      "cost": "M",
+      "decision": "select",
+      "decision_zh": "入选",
+      "dependencies": "",
+      "entity_kind": "resource",
+      "evidence_relpath": "",
+      "evidence_urls": [
+        "https://spoon.gforge.inria.fr/"
+      ],
+      "has_active_task": true,
+      "identity_unresolved": false,
+      "increment_package": "cpg-20261101-worker-006-delta-v001.zip",
+      "new_family_candidate": true,
+      "owned_baseline_resource_ids": [],
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "quality_evidence": "{\"basis\":\"author implementation and public research material\",\"primary_source_url\":\"https://spoon.gforge.inria.fr/\",\"primary_source_ref\":\"turn70view1\",\"concrete_capability\":\"Java AST/source rewrite和语义patch\",\"testable_value\":\"解析多文件Java，定点变换后重编译并保持注释\",\"scope_and_limits\":\"当前是来源与用途调研；尚未构建或执行，不能据此宣称任何目标/版本已支持。\",\"not_used_as_quality_proxy\":\"GitHub stars, search rank, or mere package presence\"}",
+      "record_id": "review.engineering.spoon",
+      "research_scope": "本次公开来源评估",
+      "resource_name": "Spoon",
+      "result_status": "未执行接入",
+      "reviewed_on": "2026-11-01",
+      "schema_version": 1,
+      "scope_limits": "",
+      "selected_new_family": true,
+      "selection_reason": "选入以支持：Java AST/source rewrite和语义patch。可形成具体AI可调用目标：解析多文件Java，定点变换后重编译并保持注释。",
+      "source_refs": [
+        "turn70view1"
+      ],
+      "task": "解析多文件Java，定点变换后重编译并保持注释",
+      "taxonomy_categories": [
+        "D01",
+        "D08",
+        "D10"
+      ],
+      "value_to_ai": "Java AST/source rewrite和语义patch",
+      "worker_id": "worker 006",
+      "worker_scope": "AST与源码变换 · 2"
+    },
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.engineering.spoon",
+    "source_build_performed": false,
+    "upstream_artifacts": [
+      {
+        "bytes": 15404819,
+        "path": "raw/spoon-core-11.5.0-jar-with-dependencies.jar",
+        "sha256": "ae7f38a745961b53b2d533cc58ddf9f0e10e5899342bd809ad323f646d3d320e",
+        "url": "https://repo.maven.apache.org/maven2/fr/inria/gforge/spoon/spoon-core/11.5.0/spoon-core-11.5.0-jar-with-dependencies.jar"
+      },
+      {
+        "bytes": 1090624,
+        "path": "raw/spoon-core-11.5.0-sources.jar",
+        "sha256": "900f278777ad373214dc4eda738cfe7dd25b20984a14d0ee09549102f223891c",
+        "url": "https://repo.maven.apache.org/maven2/fr/inria/gforge/spoon/spoon-core/11.5.0/spoon-core-11.5.0-sources.jar"
+      },
+      {
+        "bytes": 10176,
+        "path": "raw/spoon-core-11.5.0.pom",
+        "sha256": "89ce6afba84515a63f79bd9ae7ba14be50f5a8176a3b4e3f22f42b091b490443",
+        "url": "https://repo.maven.apache.org/maven2/fr/inria/gforge/spoon/spoon-core/11.5.0/spoon-core-11.5.0.pom"
+      },
+      {
+        "bytes": 1061,
+        "path": "licenses/Spoon-LICENSE-MIT.txt",
+        "sha256": "dc9df8b34f55adb3b2eaed3dea3e01da9528873fe52299b08fbbc2cb0cff18fe",
+        "url": "https://raw.githubusercontent.com/INRIA/spoon/v11.5.0/LICENSE-MIT.txt"
+      },
+      {
+        "bytes": 21864,
+        "path": "licenses/Spoon-LICENSE-CECILL-C.txt",
+        "sha256": "29199c598d3c47dd66528d2678a53574186d6d274bd2b627e19b45994129a8c5",
+        "url": "https://raw.githubusercontent.com/INRIA/spoon/v11.5.0/LICENSE-CECILL-C.txt"
+      },
+      {
+        "bytes": 304,
+        "path": "licenses/Spoon-LICENSE-short.txt",
+        "sha256": "e2a8556182a7f0b714f2c4958ade7d2cd4b5703bbf7e21339dd0ca1e5b376f6e",
+        "url": "https://raw.githubusercontent.com/INRIA/spoon/v11.5.0/LICENSE-short.txt"
+      },
+      {
+        "bytes": 24001,
+        "path": "raw/spoon-pom-11.2.0.pom",
+        "sha256": "768901edd0d0d5affcacabcff7d7a9ed574521a42606006148641f53ad902597",
+        "url": "https://repo.maven.apache.org/maven2/fr/inria/gforge/spoon/spoon-pom/11.2.0/spoon-pom-11.2.0.pom"
+      }
+    ],
+    "worker_id": "worker 006"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/recipe/check.py",
+      "{prefix}/artifacts.json"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "java"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 15404819,
+      "extract": false,
+      "id": "artifact-001",
+      "material_path": "raw/spoon-core-11.5.0-jar-with-dependencies.jar",
+      "sha256": "ae7f38a745961b53b2d533cc58ddf9f0e10e5899342bd809ad323f646d3d320e",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/fr/inria/gforge/spoon/spoon-core/11.5.0/spoon-core-11.5.0-jar-with-dependencies.jar"
+    },
+    {
+      "bytes": 1090624,
+      "extract": false,
+      "id": "artifact-002",
+      "material_path": "raw/spoon-core-11.5.0-sources.jar",
+      "sha256": "900f278777ad373214dc4eda738cfe7dd25b20984a14d0ee09549102f223891c",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/fr/inria/gforge/spoon/spoon-core/11.5.0/spoon-core-11.5.0-sources.jar"
+    },
+    {
+      "bytes": 10176,
+      "extract": false,
+      "id": "artifact-003",
+      "material_path": "raw/spoon-core-11.5.0.pom",
+      "sha256": "89ce6afba84515a63f79bd9ae7ba14be50f5a8176a3b4e3f22f42b091b490443",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/fr/inria/gforge/spoon/spoon-core/11.5.0/spoon-core-11.5.0.pom"
+    },
+    {
+      "bytes": 1061,
+      "extract": false,
+      "id": "artifact-004",
+      "material_path": "licenses/Spoon-LICENSE-MIT.txt",
+      "sha256": "dc9df8b34f55adb3b2eaed3dea3e01da9528873fe52299b08fbbc2cb0cff18fe",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/INRIA/spoon/v11.5.0/LICENSE-MIT.txt"
+    },
+    {
+      "bytes": 21864,
+      "extract": false,
+      "id": "artifact-005",
+      "material_path": "licenses/Spoon-LICENSE-CECILL-C.txt",
+      "sha256": "29199c598d3c47dd66528d2678a53574186d6d274bd2b627e19b45994129a8c5",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/INRIA/spoon/v11.5.0/LICENSE-CECILL-C.txt"
+    },
+    {
+      "bytes": 304,
+      "extract": false,
+      "id": "artifact-006",
+      "material_path": "licenses/Spoon-LICENSE-short.txt",
+      "sha256": "e2a8556182a7f0b714f2c4958ade7d2cd4b5703bbf7e21339dd0ca1e5b376f6e",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/INRIA/spoon/v11.5.0/LICENSE-short.txt"
+    },
+    {
+      "bytes": 24001,
+      "extract": false,
+      "id": "artifact-007",
+      "material_path": "raw/spoon-pom-11.2.0.pom",
+      "sha256": "768901edd0d0d5affcacabcff7d7a9ed574521a42606006148641f53ad902597",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/fr/inria/gforge/spoon/spoon-pom/11.2.0/spoon-pom-11.2.0.pom"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use this explicit prefix; do not alter global Node or Java packages."
+    ],
+    "documentation": [
+      "https://spoon.gforge.inria.fr/",
+      "https://spoon.gforge.inria.fr/custom-pretty-printing.html",
+      "https://spoon.gforge.inria.fr/comments.html",
+      "https://github.com/INRIA/spoon/blob/v11.5.0/LICENSE-short.txt"
+    ],
+    "examples": [
+      {
+        "command": "python3 \"{prefix}/recipe/check.py\" \"{build}/manual-functional\"",
+        "description": "Re-run bounded functional qualification into a separate output directory"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installation",
+        "path": "{prefix}",
+        "purpose": "Pinned upstream distribution and isolated dependency closure"
+      },
+      {
+        "label": "Raw artifacts",
+        "path": "{prefix}/raw",
+        "purpose": "Original immutable packages and provenance"
+      },
+      {
+        "label": "Functional examples",
+        "path": "{prefix}/checks",
+        "purpose": "Complete positive and negative examples"
+      }
+    ],
+    "notes": [
+      "Two-file Java 17 fixture, fully resolved model, integer simplification, Sniper printer, source recompile and runtime comparison. No Spoon source-build/all-language-level claim.",
+      "Upstream binary/distribution installation; no Rust, TypeScript compiler, Babel or Spoon source build is claimed.",
+      "Runtime prerequisites: Python >=3.9; Java 17+ with jdk.compiler module",
+      "Target distribution records the reference host only and is not a distro-name installation gate."
+    ],
+    "summary": "Two-file Java 17 fixture, fully resolved model, integer simplification, Sniper printer, source recompile and runtime comparison. No Spoon source-build/all-language-level claim."
+  },
+  "version": "11.5.0"
+}

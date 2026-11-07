@@ -1,0 +1,235 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 22277,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "8a6a9e249f236f5098306d34d45a46f8ed5d2c64ac14ec6891fa698274c0354d"
+    },
+    {
+      "bytes": 2233,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/input-lock.json",
+      "sha256": "4c93634dd3bd5d2b68cd059977e56c589a606c92afdafad4cbacb3674ac76122"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe/inputs"
+    },
+    {
+      "bytes": 807870,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/inputs/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc"
+    },
+    {
+      "bytes": 1370,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install-config.json",
+      "sha256": "ea7d55233af19439909fd81a54fec537cb6b85ffb44e46b16d4101c8c13bff96"
+    },
+    {
+      "bytes": 3211,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install.py",
+      "sha256": "1b3371d7e0bf345d5f16a5e2f761d4bdb297b196f517b7170f9614231de04544"
+    },
+    {
+      "bytes": 188,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/requirements.lock",
+      "sha256": "4388fbb84a268408e11713552080dbe8cb2000fac1bed6bfe19d5b20a243ed4f"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 768290,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/af196e0fa5715038a81c4ac25e7427cf312560da8664dc40e5da97454af33a91",
+      "sha256": "af196e0fa5715038a81c4ac25e7427cf312560da8664dc40e5da97454af33a91"
+    }
+  ],
+  "inventory_sha256": "84c810a3b09809d845cc722be49029f4c7c175f1575de43c02c6f226d12aa1e1",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "be8a847707fd187ea37be44afbce285dd975bf83745e69a4ef15d56de33bbe49",
+  "method": "source",
+  "package": {
+    "build": "worker029-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--resource",
+          "benchexec",
+          "--prefix",
+          "{prefix}",
+          "--output",
+          "{build}/assignment-acceptance"
+        ],
+        "blocked_returncodes": [
+          77
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "assignment-acceptance",
+        "kind": "hardware",
+        "requires_commands": [
+          "python3",
+          "gcc",
+          "unshare"
+        ],
+        "timeout_seconds": 420
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "benchexec",
+    "metadata": {
+      "additional_input_lock": "recipe/input-lock.json",
+      "catalog": {
+        "archive_bytes": 768290,
+        "category": [
+          "Compiler development",
+          "Build and continuous integration"
+        ],
+        "extract": false,
+        "id": "benchexec",
+        "kind": "wheel",
+        "license_id": "Apache-2.0 AND BSD-3-Clause AND CC-BY-4.0 AND MIT AND ISC AND LicenseRef-BSD-3-Clause-CMU",
+        "material_path": "sources/benchexec",
+        "purpose": "受控资源/隔离运行与可复现benchmark结果结构",
+        "qualification_scope": "在支持cgroups/namespace的环境执行限时/限内存样例，验证超限状态",
+        "scope_limits": "宿主缺权限要blocked而非降级伪称资源隔离；perf硬件计数仍单独。",
+        "sha256": "af196e0fa5715038a81c4ac25e7427cf312560da8664dc40e5da97454af33a91",
+        "source_url": "https://files.pythonhosted.org/packages/5a/41/f75e3cb3eeb75f18c432df365767b3105d2a0fa3e2024414ce7421f1ef35/benchexec-3.35-py3-none-any.whl",
+        "strip_archive_root": false,
+        "title": "BenchExec",
+        "upstream": "https://github.com/sosy-lab/benchexec",
+        "version": "3.35"
+      },
+      "catalog_sha256": "c57c995db597ccb70268974eb3409515c52630936770b80a088019ff20e6a971",
+      "license_id": "Apache-2.0 AND BSD-3-Clause AND CC-BY-4.0 AND MIT AND ISC AND LicenseRef-BSD-3-Clause-CMU",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "provenance": "Exact PyPI digest verified for every wheel; upstream asset/source digest retained for non-Python inputs.",
+      "record_id": "review.engineering.benchexec",
+      "source_compile_qualified": false,
+      "worker_id": "worker 029"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/install.py",
+          "--source",
+          "{source}",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}"
+        ]
+      ],
+      "installation_scope": "verified upstream distribution installation; no native source compilation claimed",
+      "network_policy": "offline",
+      "qualification_scope": "在支持cgroups/namespace的环境执行限时/限内存样例，验证超限状态",
+      "required_host_commands": [
+        "python3"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "gcc",
+        "unshare"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C.UTF-8",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 768290,
+        "extract": false,
+        "id": "benchexec",
+        "material_path": "sources/benchexec",
+        "sha256": "af196e0fa5715038a81c4ac25e7427cf312560da8664dc40e5da97454af33a91",
+        "strip_root": false,
+        "url": "https://files.pythonhosted.org/packages/5a/41/f75e3cb3eeb75f18c432df365767b3105d2a0fa3e2024414ce7421f1ef35/benchexec-3.35-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Add {prefix}/bin to PATH for this independent installation."
+      ],
+      "documentation": [
+        "https://github.com/sosy-lab/benchexec"
+      ],
+      "examples": [
+        {
+          "command": "python3 {recipe}/check.py --resource benchexec --prefix {prefix} --output {build}/manual-acceptance",
+          "description": "Replay the assignment acceptance check"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Installed resource",
+          "path": "{prefix}",
+          "purpose": "Independent local installation"
+        }
+      ],
+      "notes": [
+        "在支持cgroups/namespace的环境执行限时/限内存样例，验证超限状态",
+        "宿主缺权限要blocked而非降级伪称资源隔离；perf硬件计数仍单独。",
+        "Installation requires a Linux x86_64 Python 3.12 host for the supplied wheel closure.",
+        "Download preparation is separate; installation never downloads dependencies."
+      ],
+      "summary": "受控资源/隔离运行与可复现benchmark结果结构"
+    },
+    "version": "3.35"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "offline_closure": true,
+    "source_compiled": false,
+    "worker": "029"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "benchexec",
+      "path": "sources/af196e0fa5715038a81c4ac25e7427cf312560da8664dc40e5da97454af33a91"
+    }
+  ]
+}

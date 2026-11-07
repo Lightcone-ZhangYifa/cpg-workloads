@@ -1,0 +1,153 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2889,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build_python.py",
+      "sha256": "3e094f7a9812bcbba08c67b8af4174c53e705dc1a13e9e5b09c208e9aece7e57"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 7610097,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/6ac94ea4ed1af7042ecc3df7146a9f2496f97285f99b0c3d14781e74d582dbc5",
+      "sha256": "6ac94ea4ed1af7042ecc3df7146a9f2496f97285f99b0c3d14781e74d582dbc5"
+    }
+  ],
+  "inventory_sha256": "74fb50e49049fbd785f5ddbb8ead72009d86359dbdd7f36de9d2b8aac04cacb3",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "d2859447eff4088040652864fba94e685cc7a7ad83c80d6110051b0ee4cc904c",
+  "method": "source",
+  "package": {
+    "build": "worker-v002",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{prefix}/checks/qualify_installed.py",
+          "--tool",
+          "reprotest",
+          "--prefix",
+          "{prefix}",
+          "--out",
+          "{build}/qualification"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "bounded-functional",
+        "kind": "functional",
+        "timeout_seconds": 600
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "repro.reprotest",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "Only the declared cases, target and pinned inputs",
+      "record_id": "review.engineering.reprotest",
+      "worker_id": "worker 080"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "python",
+      "install_argv": [
+        "python3",
+        "{recipe}/build_python.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}"
+      ],
+      "required_host_commands": [
+        "python3"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "gcc",
+        "readelf",
+        "objdump",
+        "file",
+        "diff",
+        "tar"
+      ],
+      "runtime_environment": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 7610097,
+        "extract": true,
+        "id": "offline-source-bundle",
+        "material_path": "source-bundle",
+        "sha256": "6ac94ea4ed1af7042ecc3df7146a9f2496f97285f99b0c3d14781e74d582dbc5",
+        "strip_root": true,
+        "url": null
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://reproducible-builds.org/tools/"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Independent resource prefix",
+          "path": "{prefix}",
+          "purpose": "Fixed upstream resource and repeatable checks"
+        }
+      ],
+      "notes": [
+        "Only controlled ELF/archive or build-path/locale cases are qualified.",
+        "Source method rebuilds upstream sdists using bundled setuptools/wheel and exact dependencies; no network acquisition.",
+        "Build v002 preserves executable mode from upstream wheel metadata, including reprotest virt helper entrypoints."
+      ],
+      "summary": "Pinned reprotest with repeatable compiler reproducibility fixtures"
+    },
+    "version": "0.7.33"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "fix": "Preserve executable mode from upstream wheel metadata",
+    "supersedes": "worker-v001 recipe only; upstream sdists and closure unchanged",
+    "worker": "080"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "offline-source-bundle",
+      "path": "sources/6ac94ea4ed1af7042ecc3df7146a9f2496f97285f99b0c3d14781e74d582dbc5"
+    }
+  ]
+}

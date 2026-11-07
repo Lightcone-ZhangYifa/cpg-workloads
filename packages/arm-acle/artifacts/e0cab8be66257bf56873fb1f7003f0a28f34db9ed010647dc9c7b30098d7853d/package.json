@@ -1,0 +1,448 @@
+{
+  "build": "worker037-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/verify.py",
+        "--root",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "offline-corpus-index-and-locks",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "arm-acle",
+  "metadata": {
+    "license": "CC-BY-SA-4.0 AND LicenseRef-Arm-Patent-Grant AND Apache-2.0 AND BSD-3-Clause AND MIT",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "dataset_verified": null,
+      "formal_baseline_promotion": false,
+      "functional": null,
+      "material": true
+    },
+    "record_id": "review.engineering.arm-acle",
+    "scope": "Four open ACLE trees: main, Neon, MVE and Morello, including their embedded examples and licensing. The r2026Q1 repository release includes an MVE document still labeled 2021Q4. No Arm hardware, execution, performance, or semantic-conformance qualification.",
+    "source_identity": {
+      "after_dataset_verified": null,
+      "after_functional": null,
+      "after_material": true,
+      "commit": "c218a6b499897e70d88ceab7c6148d692541929f",
+      "license_notice": "Copyright Arm Limited and named contributors. The four selected specification trees are CC-BY-SA-4.0 plus the upstream patent grant; transformed reader/index pages retain that license. See each upstream/LICENSE.md. No endorsement is implied.",
+      "network_policy": "Only explicit prepare_external --download can access the network; installation/check/reader do not.",
+      "raw_base_url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/",
+      "repository": "https://github.com/ARM-software/acle",
+      "resource_id": "arm-acle",
+      "schema_version": 1,
+      "scope": "Four open ACLE trees: main, Neon, MVE and Morello, including their embedded examples and licensing. The r2026Q1 repository release includes an MVE document still labeled 2021Q4. No Arm hardware, execution, performance, or semantic-conformance qualification.",
+      "source_archive": {
+        "bytes": 44309422,
+        "commit": "c218a6b499897e70d88ceab7c6148d692541929f",
+        "entity_id": "arm-acle",
+        "repository": "https://github.com/ARM-software/acle",
+        "sha256": "5402f8cc70d1e08dafc6c0c3baf73faded446357be97af3e8949b5b1f9c28978",
+        "url": "https://codeload.github.com/ARM-software/acle/tar.gz/c218a6b499897e70d88ceab7c6148d692541929f",
+        "version": "r2026Q1"
+      },
+      "source_base_url": "https://github.com/ARM-software/acle/blob/c218a6b499897e70d88ceab7c6148d692541929f/",
+      "title": "Arm C Language Extensions — open specifications",
+      "upstream_version": "r2026Q1",
+      "version": "r2026Q1"
+    },
+    "worker_id": "worker 037"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/reader.py",
+      "{prefix}/search.sqlite",
+      "{prefix}/metadata.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1491,
+      "extract": false,
+      "id": "upstream-0000",
+      "material_path": "upstream/Arm_logo_blue_RGB.svg",
+      "sha256": "57ccc5bbdcb40becadfd7b683bd0a5969e4b95491b3279a1218c2fbcd0644c85",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/Arm_logo_blue_RGB.svg"
+    },
+    {
+      "bytes": 3659,
+      "extract": false,
+      "id": "upstream-0001",
+      "material_path": "upstream/CONTRIBUTING.md",
+      "sha256": "62dc38498f87ef9a67d4207a03d1d1b28b7ab97fc75acc35f601d9819057a850",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/CONTRIBUTING.md"
+    },
+    {
+      "bytes": 1509,
+      "extract": false,
+      "id": "upstream-0002",
+      "material_path": "upstream/LICENSE.md",
+      "sha256": "2ed1c316123364759b68aaac4074d33a92d5872d1e80783c9edea4dcc53b69f2",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/LICENSE.md"
+    },
+    {
+      "bytes": 22518,
+      "extract": false,
+      "id": "upstream-0003",
+      "material_path": "upstream/README.md",
+      "sha256": "01685bb18f9fc44e94e0013f401bfb4f9c721066048fa37cb5ef346afdbef5b8",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/README.md"
+    },
+    {
+      "bytes": 1491,
+      "extract": false,
+      "id": "upstream-0004",
+      "material_path": "upstream/main/Arm_logo_blue_RGB.svg",
+      "sha256": "57ccc5bbdcb40becadfd7b683bd0a5969e4b95491b3279a1218c2fbcd0644c85",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/main/Arm_logo_blue_RGB.svg"
+    },
+    {
+      "bytes": 527,
+      "extract": false,
+      "id": "upstream-0005",
+      "material_path": "upstream/main/CONTRIBUTING.md",
+      "sha256": "2dd063d3a579ab12bde837f4ad8804003069810744470857855f5a027b2659c3",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/main/CONTRIBUTING.md"
+    },
+    {
+      "bytes": 1525,
+      "extract": false,
+      "id": "upstream-0006",
+      "material_path": "upstream/main/LICENSE.md",
+      "sha256": "d6bb5995f411deff78fd26b525d5a979978c5a710f793f4429abde11bef0dcd5",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/main/LICENSE.md"
+    },
+    {
+      "bytes": 1673,
+      "extract": false,
+      "id": "upstream-0007",
+      "material_path": "upstream/main/README.md",
+      "sha256": "4c711f84cc9a6618c4ba05725167e8789f8467b55a0f828908614c598a6be4e6",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/main/README.md"
+    },
+    {
+      "bytes": 688,
+      "extract": false,
+      "id": "upstream-0008",
+      "material_path": "upstream/main/TRADEMARK_NOTICE.md",
+      "sha256": "eb12087a46d8729742ffd00b181123344fcbaf7577034913a8bbd91293514262",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/main/TRADEMARK_NOTICE.md"
+    },
+    {
+      "bytes": 727167,
+      "extract": false,
+      "id": "upstream-0009",
+      "material_path": "upstream/main/acle.md",
+      "sha256": "d74669ae11ab06d8041680ce4ed0940457f5267197fec8a8fff5b78cbd21d6d8",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/main/acle.md"
+    },
+    {
+      "bytes": 2723,
+      "extract": false,
+      "id": "upstream-0010",
+      "material_path": "upstream/main/design_documents/ARM_NEON_SVE_BRIDGE.md",
+      "sha256": "563a0fbcb03b0bc61f4d55276473cd47f080a18cf0a3b9af4a8a0b5a5d0a082e",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/main/design_documents/ARM_NEON_SVE_BRIDGE.md"
+    },
+    {
+      "bytes": 3597,
+      "extract": false,
+      "id": "upstream-0011",
+      "material_path": "upstream/main/design_documents/__ARM_FEATURE_MOPS.md",
+      "sha256": "5f12c1acdda4297b123db543d2440b0198a05a7d092de12f8db4a12cda000f18",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/main/design_documents/__ARM_FEATURE_MOPS.md"
+    },
+    {
+      "bytes": 1071,
+      "extract": false,
+      "id": "upstream-0012",
+      "material_path": "upstream/main/design_documents/aarch64_sve_pcs.md",
+      "sha256": "56606e101db3179f3dc6b4cab2add51304aa34e4d6280cb2da61ea113db87774",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/main/design_documents/aarch64_sve_pcs.md"
+    },
+    {
+      "bytes": 3034,
+      "extract": false,
+      "id": "upstream-0013",
+      "material_path": "upstream/main/design_documents/function-multi-versioning.md",
+      "sha256": "e2b6112f55a8e6ffa1179036baa083cd3b5fe04c672ea6db0f7647be52c61d4a",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/main/design_documents/function-multi-versioning.md"
+    },
+    {
+      "bytes": 2662,
+      "extract": false,
+      "id": "upstream-0014",
+      "material_path": "upstream/main/design_documents/gcs.md",
+      "sha256": "004fe0905611bb173e1dddda22dcb503665140a1fe14d5120eea96dc75223e8c",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/main/design_documents/gcs.md"
+    },
+    {
+      "bytes": 3147,
+      "extract": false,
+      "id": "upstream-0015",
+      "material_path": "upstream/main/design_documents/pacbti-tfm.rst",
+      "sha256": "ef2329bc28667fe38a2384fda902a8de34b8b0600deea1578d2f58d243ac168d",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/main/design_documents/pacbti-tfm.rst"
+    },
+    {
+      "bytes": 1491,
+      "extract": false,
+      "id": "upstream-0016",
+      "material_path": "upstream/morello/Arm_logo_blue_RGB.svg",
+      "sha256": "57ccc5bbdcb40becadfd7b683bd0a5969e4b95491b3279a1218c2fbcd0644c85",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/morello/Arm_logo_blue_RGB.svg"
+    },
+    {
+      "bytes": 527,
+      "extract": false,
+      "id": "upstream-0017",
+      "material_path": "upstream/morello/CONTRIBUTING.md",
+      "sha256": "2dd063d3a579ab12bde837f4ad8804003069810744470857855f5a027b2659c3",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/morello/CONTRIBUTING.md"
+    },
+    {
+      "bytes": 1525,
+      "extract": false,
+      "id": "upstream-0018",
+      "material_path": "upstream/morello/LICENSE.md",
+      "sha256": "d6bb5995f411deff78fd26b525d5a979978c5a710f793f4429abde11bef0dcd5",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/morello/LICENSE.md"
+    },
+    {
+      "bytes": 1751,
+      "extract": false,
+      "id": "upstream-0019",
+      "material_path": "upstream/morello/README.md",
+      "sha256": "9ae028d78c46c71056223e6549e67ad43e772306d04d48a9602cab48882dc7ed",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/morello/README.md"
+    },
+    {
+      "bytes": 688,
+      "extract": false,
+      "id": "upstream-0020",
+      "material_path": "upstream/morello/TRADEMARK_NOTICE.md",
+      "sha256": "eb12087a46d8729742ffd00b181123344fcbaf7577034913a8bbd91293514262",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/morello/TRADEMARK_NOTICE.md"
+    },
+    {
+      "bytes": 11422,
+      "extract": false,
+      "id": "upstream-0021",
+      "material_path": "upstream/morello/morello.md",
+      "sha256": "8bd2625b2dd09d7599f5c96783ab4391609e75b272b2a6742b39625f1cfd2482",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/morello/morello.md"
+    },
+    {
+      "bytes": 1491,
+      "extract": false,
+      "id": "upstream-0022",
+      "material_path": "upstream/mve_intrinsics/Arm_logo_blue_RGB.svg",
+      "sha256": "57ccc5bbdcb40becadfd7b683bd0a5969e4b95491b3279a1218c2fbcd0644c85",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/mve_intrinsics/Arm_logo_blue_RGB.svg"
+    },
+    {
+      "bytes": 527,
+      "extract": false,
+      "id": "upstream-0023",
+      "material_path": "upstream/mve_intrinsics/CONTRIBUTING.md",
+      "sha256": "2dd063d3a579ab12bde837f4ad8804003069810744470857855f5a027b2659c3",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/mve_intrinsics/CONTRIBUTING.md"
+    },
+    {
+      "bytes": 1525,
+      "extract": false,
+      "id": "upstream-0024",
+      "material_path": "upstream/mve_intrinsics/LICENSE.md",
+      "sha256": "d6bb5995f411deff78fd26b525d5a979978c5a710f793f4429abde11bef0dcd5",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/mve_intrinsics/LICENSE.md"
+    },
+    {
+      "bytes": 1619,
+      "extract": false,
+      "id": "upstream-0025",
+      "material_path": "upstream/mve_intrinsics/README.md",
+      "sha256": "f108a66d8ed7f23e9499732ae7a0e51b769820ac170e60ef347623a867a72b02",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/mve_intrinsics/README.md"
+    },
+    {
+      "bytes": 688,
+      "extract": false,
+      "id": "upstream-0026",
+      "material_path": "upstream/mve_intrinsics/TRADEMARK_NOTICE.md",
+      "sha256": "eb12087a46d8729742ffd00b181123344fcbaf7577034913a8bbd91293514262",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/mve_intrinsics/TRADEMARK_NOTICE.md"
+    },
+    {
+      "bytes": 1389541,
+      "extract": false,
+      "id": "upstream-0027",
+      "material_path": "upstream/mve_intrinsics/mve.md",
+      "sha256": "37b84dd0fda25ca63c1b1580e09c3d495ba2c30e2d96da481d02a65eb49b7947",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/mve_intrinsics/mve.md"
+    },
+    {
+      "bytes": 5730,
+      "extract": false,
+      "id": "upstream-0028",
+      "material_path": "upstream/mve_intrinsics/mve.template.md",
+      "sha256": "078e8f9ae574aa2da9b821693ef16218707f3dfe6c085e79c5868d561cacae25",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/mve_intrinsics/mve.template.md"
+    },
+    {
+      "bytes": 1491,
+      "extract": false,
+      "id": "upstream-0029",
+      "material_path": "upstream/neon_intrinsics/Arm_logo_blue_RGB.svg",
+      "sha256": "57ccc5bbdcb40becadfd7b683bd0a5969e4b95491b3279a1218c2fbcd0644c85",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/neon_intrinsics/Arm_logo_blue_RGB.svg"
+    },
+    {
+      "bytes": 527,
+      "extract": false,
+      "id": "upstream-0030",
+      "material_path": "upstream/neon_intrinsics/CONTRIBUTING.md",
+      "sha256": "2dd063d3a579ab12bde837f4ad8804003069810744470857855f5a027b2659c3",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/neon_intrinsics/CONTRIBUTING.md"
+    },
+    {
+      "bytes": 1525,
+      "extract": false,
+      "id": "upstream-0031",
+      "material_path": "upstream/neon_intrinsics/LICENSE.md",
+      "sha256": "d6bb5995f411deff78fd26b525d5a979978c5a710f793f4429abde11bef0dcd5",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/neon_intrinsics/LICENSE.md"
+    },
+    {
+      "bytes": 1640,
+      "extract": false,
+      "id": "upstream-0032",
+      "material_path": "upstream/neon_intrinsics/README.md",
+      "sha256": "905771bde69276ec0208eecd2d665565ab5c2302806e8ecf7318d0bb1db10dbd",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/neon_intrinsics/README.md"
+    },
+    {
+      "bytes": 688,
+      "extract": false,
+      "id": "upstream-0033",
+      "material_path": "upstream/neon_intrinsics/TRADEMARK_NOTICE.md",
+      "sha256": "eb12087a46d8729742ffd00b181123344fcbaf7577034913a8bbd91293514262",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/neon_intrinsics/TRADEMARK_NOTICE.md"
+    },
+    {
+      "bytes": 2096333,
+      "extract": false,
+      "id": "upstream-0034",
+      "material_path": "upstream/neon_intrinsics/advsimd.md",
+      "sha256": "2331c99e7a79ba5cd5003cd0660b6bf58fa481e62970f40bc32d253e72b72c00",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/neon_intrinsics/advsimd.md"
+    },
+    {
+      "bytes": 7122,
+      "extract": false,
+      "id": "upstream-0035",
+      "material_path": "upstream/neon_intrinsics/advsimd.template.md",
+      "sha256": "618b07654b78256c6f9f30f14974ba6fb4c419a17e1bf0fb68de13430b735132",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/neon_intrinsics/advsimd.template.md"
+    },
+    {
+      "bytes": 12957,
+      "extract": false,
+      "id": "upstream-0036",
+      "material_path": "upstream/tools/LICENSE.md",
+      "sha256": "a96e4bda45af16ec53de9e94c789731a8819d71c195d1256a9af89bfdd971212",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/ARM-software/acle/c218a6b499897e70d88ceab7c6148d692541929f/tools/LICENSE.md"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/ARM-software/acle"
+    ],
+    "examples": [
+      {
+        "command": "python3 \"{prefix}/verify.py\" --root \"{prefix}\"",
+        "description": "Verify all distributed material and query behavior"
+      },
+      {
+        "command": "python3 \"{prefix}/reader.py\" --help",
+        "description": "Read command help for source-aware offline search"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Offline corpus",
+        "path": "{prefix}",
+        "purpose": "Four open ACLE trees: main, Neon, MVE and Morello, including their embedded examples and licensing. The r2026Q1 repository release includes an MVE document still labeled 2021Q4. No Arm hardware, execution, performance, or semantic-conformance qualification."
+      }
+    ],
+    "notes": [
+      "Four open ACLE trees: main, Neon, MVE and Morello, including their embedded examples and licensing. The r2026Q1 repository release includes an MVE document still labeled 2021Q4. No Arm hardware, execution, performance, or semantic-conformance qualification.",
+      "Install and query locally with Python 3 and SQLite FTS5. No acquisition runs during installation."
+    ],
+    "summary": "Arm C扩展、Neon/MVE等intrinsics参考"
+  },
+  "version": "r2026Q1"
+}

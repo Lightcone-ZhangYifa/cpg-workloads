@@ -1,0 +1,100 @@
+{
+  "build": "cpg-worker103-v1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "official-defined-pointer-and-ub-semantics",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 500
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "verification.cerberus",
+  "metadata": {
+    "baseline_change": false,
+    "binary_provenance": "ghcr.io/rems-project/cerberus/cn@sha256:d82d52c9d2cca476b78cb1fed5b7f94f769958bdeda4aa236e33ccce03d7f534",
+    "formal_baseline": "0.21.14",
+    "license": "BSD-2-Clause; see included THIRD_PARTY_FILES.md",
+    "record_id": "review.verification.cerberus",
+    "scope": "bounded functional profile",
+    "worker_id": "worker 103"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/bin/cerberus",
+      "{prefix}/lib/cerberus/runtime/libc/libc.co"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "cc"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 8889302,
+      "extract": true,
+      "id": "official-source-layer",
+      "material_path": null,
+      "sha256": "bb10cd43ffc108794e3ab2cd324ab78c35a3269df0bad5b86427afe6760d3913",
+      "strip_root": false,
+      "url": "https://ghcr.io/v2/rems-project/cerberus/cn/blobs/sha256:bb10cd43ffc108794e3ab2cd324ab78c35a3269df0bad5b86427afe6760d3913"
+    },
+    {
+      "bytes": 192526960,
+      "extract": true,
+      "id": "official-binary-layer",
+      "material_path": null,
+      "sha256": "ed1b84b983fe09bf8195c62e10f790e6774a6f1a03872d2a4e75c1dfdabaf028",
+      "strip_root": false,
+      "url": "https://ghcr.io/v2/rems-project/cerberus/cn/blobs/sha256:ed1b84b983fe09bf8195c62e10f790e6774a6f1a03872d2a4e75c1dfdabaf028"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "export PATH=\"{prefix}/bin:$PATH\""
+    ],
+    "documentation": [
+      "https://github.com/rems-project/cerberus",
+      "https://www.cl.cam.ac.uk/~pes20/cerberus/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/cerberus --exec --batch --mode=exhaustive --iso {prefix}/share/fixtures/0003-return_arith.c",
+        "description": "Run the defined official test"
+      }
+    ],
+    "locations": [
+      {
+        "label": "CLI",
+        "path": "{prefix}/bin/cerberus",
+        "purpose": "Relocatable official executable C semantics"
+      }
+    ],
+    "notes": [
+      "Only the pinned Cerberus concrete-memory/ISO/exhaustive model and fixed implementation settings are validated. These tests do not decide arbitrary C program equivalence or all C implementation choices.",
+      "Host libc/libm/libgmp and cc preprocessor required; this is a Dev verification resource. Official binary reports unknown version; OCI digest pins the release.",
+      "The gcc_4.9.0_x86_64-apple-darwin10.8.0 implementation is a modeled C implementation. Ubuntu 24.04 is the execution host; this result does not establish equivalence to its ABI or native compiler."
+    ],
+    "summary": "Executable C semantics: fixed official defined/pointer/undefined-behaviour tests under exhaustive ISO concrete memory."
+  },
+  "version": "oci-20250306-d82d52c9d2cc"
+}

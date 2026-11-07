@@ -1,0 +1,330 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 207,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/epcc-openmp",
+      "sha256": "6e292a7bc353384e4c6f61d628fc168075a78ca87eba843717cbd087ac65ccff"
+    },
+    {
+      "bytes": 23128,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/schedbench",
+      "sha256": "c34677f52caaa2151af95ce7230b122c373a4b43bdc54f472b4bae14ab955aa3"
+    },
+    {
+      "bytes": 23800,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/syncbench",
+      "sha256": "913a4a1ef3ba2c1aced2a8bf5518a57069762a8d68df459391adbc693e9df91f"
+    },
+    {
+      "bytes": 28520,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/taskbench",
+      "sha256": "684bc0edefc76761694a33ea8bc55e02f2b1172555c729b8a8bf3a3e41f3924d"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/doc"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/doc/epcc-openmp"
+    },
+    {
+      "bytes": 4645,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/doc/epcc-openmp/C-v31-README.md",
+      "sha256": "91751b1f8952d31049d68831c80956e17da9d1e866b045d5092f216354b75651"
+    },
+    {
+      "bytes": 1248,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/doc/epcc-openmp/README.md",
+      "sha256": "7fa7cbdfad9d34db9a43614710689eac60049e7bee108557d50fa9a6c97baeaf"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/licenses"
+    },
+    {
+      "bytes": 11362,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/licenses/EPCC-C-v31-Licence.txt",
+      "sha256": "a79d4b31ba3a4cb7d26d0288b1aaaefc50e3075e252714a61f300e7bbb459d47"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1587,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "cd3132061a38c4d9bdda4e5abe3c1d0d0bfb0bde9222f19daf8bc0a6da2ffe1f"
+    },
+    {
+      "bytes": 1076,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "2f6569906da8438cdfcb1883118f5c05f75cbf138cb0200cf3713ac43ca41949"
+    }
+  ],
+  "inventory_sha256": "7b1220d8f82306477869d12e8172f56f42fd29b592c6e3642ded417df24bddcf",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "4803db8e876c3df6c60f49eeabddedb4cffe4d12975bc865eecd777ef29216ac",
+  "method": "binary",
+  "package": {
+    "build": "native-candidate-94628c25ef2b-debian13-x86_64",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "dataset-ref.epcc-openmp-host-functional",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 140
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "dataset-ref.epcc-openmp",
+    "metadata": {
+      "catalog": {
+        "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+        "archive_bytes": null,
+        "build_peak_bytes": null,
+        "category": [
+          "Dataset research",
+          "Benchmarks and inputs"
+        ],
+        "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+        "dataset_card_id": "epcc-openmp",
+        "dependencies": [],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "requires_controller_only_storage": false,
+          "source_dependencies": [],
+          "system_packages": [],
+          "target_exports": [],
+          "visibility_policy": "developer_selected_complete_materials",
+          "working_directory": "{build}"
+        },
+        "documentation": [
+          "https://github.com/EPCCed/epcc-openmp-microbenchmarks"
+        ],
+        "evidence_files": [
+          "workspace-evidence/datasets-v090/benchmarks/cards.json"
+        ],
+        "extract": true,
+        "id": "dataset-ref.epcc-openmp",
+        "immutable_ref": "94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a",
+        "installed_bytes": null,
+        "kind": "dataset",
+        "license_class": "review-required",
+        "license_id": "LicenseRef-EPCC-Per-Version",
+        "mandatory": false,
+        "material_path": "dataset-research/epcc-openmp",
+        "presets": [
+          "all"
+        ],
+        "purpose": "Runtime/affinity diagnostic axis and OpenMP capability checks, separately reported from application speed.",
+        "qualification": {
+          "archive_measured": false,
+          "build_qualified": false,
+          "container_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+          "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+          "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+          "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+          "The repository includes classic v3.1 and v4.0; pin one exact directory/revision.",
+          "GPU target-offload subdirectory is outside the current host study.",
+          "Synchronization/runtime overhead is not the same as optimized application execution."
+        ],
+        "redistributable": "license-and-component-review-required",
+        "roles": [
+          "host"
+        ],
+        "sha256": null,
+        "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+        "source_evidence": [
+          "https://raw.githubusercontent.com/EPCCed/epcc-openmp-microbenchmarks/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a/README.md"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://codeload.github.com/EPCCed/epcc-openmp-microbenchmarks/tar.gz/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a",
+        "title": "EPCC OpenMP microbenchmarks research material",
+        "upstream": "https://github.com/EPCCed/epcc-openmp-microbenchmarks",
+        "version": "HEAD observed at retrieval; use the full recorded commit"
+      },
+      "catalog_sha256": "6113a077364566504fc15defa0551514a0e1d23a613089553e28acec50d9d19b",
+      "native_candidate": {
+        "excluded_unqualified_subdirs": [
+          "openmpbench_C_v40",
+          "openmpbench_C_target"
+        ],
+        "full_immutable_ref": "94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a",
+        "host_dependency_override": {
+          "reason": "Debian host reference profile cannot impersonate Ubuntu 24.04 apt.python3 lock; system has tested python3/gcc/make executable commands.",
+          "system": []
+        },
+        "original_definition_sha256": "ce85b639133652a3af541e026edf393c7a32366493cb25e14e277d69b9277efa",
+        "original_dependencies": {
+          "build": [],
+          "run": [],
+          "system": [
+            "apt.python3"
+          ]
+        },
+        "original_provider": "material",
+        "original_target": {
+          "arch": "x86_64",
+          "distribution": "ubuntu",
+          "distribution_version": "24.04",
+          "os": "linux"
+        },
+        "original_upstream_url": "https://codeload.github.com/EPCCed/epcc-openmp-microbenchmarks/tar.gz/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a",
+        "qualification_scope": "Selected EPCC 3.1 CPU OpenMP host profile; official benchmark methodology, v4 and GPU, Ubuntu target, OCI untested.",
+        "selected_compilable_subdir": "openmpbench_C_v31",
+        "status": "isolated_host_profile_not_canonical_release",
+        "upstream_source_input_sha256": "d206b68fae382c2eb25a6fed3bf75eb7a3ed200ec38d8c3fa8a4a0bf5f445083",
+        "v40_negative_evidence": "Real GCC14 link of v40 syncbench blocked on omp_init_lock_with_hint; preserve actual failed log."
+      }
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "-B",
+          "{recipe}/build.py",
+          "--source",
+          "{source}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "qualification_scope": "debian13-x86_64-selected-epcc-v31-CPU-OpenMP-host-only",
+      "required_host_commands": [
+        "python3",
+        "gcc",
+        "make"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/epcc-openmp",
+        "{prefix}/bin/syncbench",
+        "{prefix}/bin/schedbench",
+        "{prefix}/bin/taskbench"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "ldd"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": null,
+        "extract": true,
+        "id": "dataset-ref.epcc-openmp",
+        "material_path": "dataset-research/epcc-openmp",
+        "sha256": null,
+        "strip_root": true,
+        "url": "https://codeload.github.com/EPCCed/epcc-openmp-microbenchmarks/tar.gz/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://codeload.github.com/EPCCed/epcc-openmp-microbenchmarks/tar.gz/94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Selected EPCC 3.1 CPU executables",
+          "path": "{prefix}/bin",
+          "purpose": "Independent copy of bounded functional host smoke"
+        }
+      ],
+      "notes": [
+        "Upstream C_v40 and GPU target content retained untouched in the source package, not qualified.",
+        "EPCC v40 negative link evidence retained: omp_init_lock_with_hint symbol absent on this host.",
+        "No original resource coverage increment: the resource was already material-qualified in 0.21.7.",
+        "Source version pinned to 94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a"
+      ],
+      "summary": "EPCC OpenMP microbenchmarks 3.1 selected CPU CLI tools from complete original pinned repository; Debian 13 host-only QA."
+    },
+    "version": "HEAD observed at retrieval; use the full recorded commit"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "profile": "debian13-x86_64-host-only",
+    "source_artifact_sha256": "07edc2beb8f77063b18734d82cdccf60bf2232875c38f5cff771f3a3072897f3",
+    "source_commit": "94628c25ef2b37b2e9bcc3ed7a6f7cd5cbac459a",
+    "source_prefix_will_be_removed_before_binary_installs": true,
+    "type": "native_binary_from_same_exact_source_artifact"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

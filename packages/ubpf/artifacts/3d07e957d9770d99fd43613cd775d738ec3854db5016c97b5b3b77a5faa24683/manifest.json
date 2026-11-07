@@ -1,0 +1,272 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 115232,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/ubpf-probe",
+      "sha256": "6718811fc7da9c5f06e7ddd2e53ff9bcd71cec8ed7c160a8037513fe2ea9a15e"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/include"
+    },
+    {
+      "bytes": 11250,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/include/ebpf.h",
+      "sha256": "82d1f454842d5ef58abe9310537a5aef17670707a4444d7f05d1e5aaf089aa9b"
+    },
+    {
+      "bytes": 34318,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/include/ubpf.h",
+      "sha256": "32bfca1ebd5e24872d2abdebf71970ca28e6f85bb0f34b6572cf7d433df4bb21"
+    },
+    {
+      "bytes": 328,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/include/ubpf_config.h",
+      "sha256": "8b13fb7fed6858f4540e879c999f346bd0f67b9c2a6f5bed86bb31c55a26fd51"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/lib"
+    },
+    {
+      "bytes": 172026,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/lib/libubpf.a",
+      "sha256": "adcd8e4daabaa1f31ae2563f46541e0685aaa1c3a9168a1efeb05fe4d6c5dcea"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/licenses"
+    },
+    {
+      "bytes": 1292,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/licenses/CPG-integration-MIT.txt",
+      "sha256": "c7440c9b040de5091b174d983b134db3ad8cf2c60e05c5da53216459e48d6e94"
+    },
+    {
+      "bytes": 11358,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/licenses/ubpf-LICENSE.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/metadata"
+    },
+    {
+      "bytes": 367,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/metadata/source-locks.json",
+      "sha256": "691bddfbd137fcac67baccc02a3a87529dd16a71859ea8e0b5bc6250d535ee39"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/raw"
+    },
+    {
+      "bytes": 457618,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/raw/ubpf-8d2dd3580ab80f9b4a79a9d2fa2420aa38fc7521.tar.gz",
+      "sha256": "5d96a7f9de2835d1ab784542c01a7e7e280a02ced47d62b9398e1b662c1c5102"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/tests"
+    },
+    {
+      "bytes": 4972,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tests/ubpf_probe.c",
+      "sha256": "55f7326908d25bca4126bb825751e254729849d2b15c1d74d0c36cdc6bd2e211"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1522,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "5c1450e1bd9d0812194bf0e123684d8daa90c6273948750bd846eac68f65d897"
+    },
+    {
+      "bytes": 14493,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/worker014.py",
+      "sha256": "6dbeece41df0d92763ce50b09acc1147930c4947fe5d21bdba201c6613980557"
+    }
+  ],
+  "inventory_sha256": "55aa4ce1f8f48cf6a29c21296359332c5b786d847696c8799e690da62cd1e05a",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "a8bdc70fd394ece9aad8a117fbe42afba4339b6213638f33c279d7a594d02475",
+  "method": "binary",
+  "package": {
+    "build": "cpg-worker014-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--resource",
+          "ubpf",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "bounded-offline-functional",
+        "kind": "functional",
+        "stdout_regex": "\"passed\": true",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "ubpf",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "bounded_evidence": "worker014 delivery/evidence/portable-prebuilt-check/summary.json",
+      "formal_qualification": "not_promoted",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "record_id": "review.engineering.ubpf",
+      "runtime_requirements": [
+        "Linux x86_64",
+        "compatible glibc/libm"
+      ],
+      "source_commits": {
+        "ubpf": "8d2dd3580ab80f9b4a79a9d2fa2420aa38fc7521"
+      },
+      "worker_id": "worker 014"
+    },
+    "provider": "source",
+    "recipe": {
+      "required_installed_paths": [
+        "{prefix}/bin/ubpf-probe"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 457618,
+        "extract": false,
+        "id": "ubpf",
+        "material_path": "raw/ubpf-8d2dd3580ab80f9b4a79a9d2fa2420aa38fc7521.tar.gz",
+        "sha256": "5d96a7f9de2835d1ab784542c01a7e7e280a02ced47d62b9398e1b662c1c5102",
+        "strip_root": false,
+        "url": "https://codeload.github.com/iovisor/ubpf/tar.gz/8d2dd3580ab80f9b4a79a9d2fa2420aa38fc7521"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "unspecified",
+      "distribution_version": "unspecified",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Add {prefix}/bin to PATH when needed."
+      ],
+      "documentation": [
+        "https://codeload.github.com/iovisor/ubpf/tar.gz/8d2dd3580ab80f9b4a79a9d2fa2420aa38fc7521"
+      ],
+      "examples": [
+        {
+          "command": "python3 {recipe}/check.py --resource ubpf --prefix {prefix} --build {build}",
+          "description": "Run the bounded offline qualification with the installed CPG recipe."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Native tools",
+          "path": "{prefix}/bin",
+          "purpose": "Pinned local executables and bounded probes."
+        },
+        {
+          "label": "Original source",
+          "path": "{prefix}/raw",
+          "purpose": "Unchanged archives with SHA-256 locks."
+        },
+        {
+          "label": "Licenses",
+          "path": "{prefix}/licenses",
+          "purpose": "Upstream redistribution and integration notices."
+        }
+      ],
+      "notes": [
+        "Candidate additive resource; no formal project publication or original-denominator promotion.",
+        "Native Linux x86_64 prebuild. Runtime ABI is checked by CPG; distribution names are not gates.",
+        "Build/source/install environments remain separate. This native package installs entirely from local bytes.",
+        "The raw source archives are unmodified and pinned; source-build replay is provided by the surrounding worker014 delta."
+      ],
+      "summary": "Userspace eBPF interpreter/JIT and host-helper interface; controlled differential execution."
+    },
+    "version": "git.8d2dd3580ab8"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline": "0.21.14",
+    "build_evidence": "delivery/evidence/source-replay/commands.json",
+    "final_check_evidence": "delivery/evidence/portable-prebuilt-check/summary.json",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.engineering.ubpf",
+    "source_locks": [
+      {
+        "bytes": 457618,
+        "commit": "8d2dd3580ab80f9b4a79a9d2fa2420aa38fc7521",
+        "filename": "ubpf-8d2dd3580ab80f9b4a79a9d2fa2420aa38fc7521.tar.gz",
+        "name": "ubpf",
+        "sha256": "5d96a7f9de2835d1ab784542c01a7e7e280a02ced47d62b9398e1b662c1c5102",
+        "url": "https://codeload.github.com/iovisor/ubpf/tar.gz/8d2dd3580ab80f9b4a79a9d2fa2420aa38fc7521"
+      }
+    ],
+    "worker_id": "worker 014"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,281 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 1398,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/check.py",
+      "sha256": "36ddf66403fee89ff0d3dbfa50b5eaf1cf77be5933116c6da86dd40683a303e6"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/include"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/include/jemalloc"
+    },
+    {
+      "bytes": 15664,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/include/jemalloc/jemalloc.h",
+      "sha256": "ffbdb42aef2b69767bb3d49ddd583b8769e360c4f34c176202c91fbfeaec53b0"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/lib"
+    },
+    {
+      "bytes": 1897942,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/lib/libjemalloc.a",
+      "sha256": "4474a859bcaeecce0481094db1085335d3256913b18dd7236015b1add23cd092"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/licenses"
+    },
+    {
+      "bytes": 1709,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/licenses/COPYING",
+      "sha256": "94aa2caa98c25d942f58b956c71dba6a99ff98fc3a31cbc669fe2a4cd0268b53"
+    },
+    {
+      "bytes": 468,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/profile.json",
+      "sha256": "3bc9e83ccc40c0b4eee8edae904239f99bd998c971a50bb56d4e2601a371399d"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/recipe"
+    },
+    {
+      "bytes": 2093,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/recipe/rebuild.py",
+      "sha256": "9e7442bd63d939ab1345629af1f12065b4ae2a6a1eac03e998192170c14c9954"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/sources"
+    },
+    {
+      "bytes": 349,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/sources-lock.json",
+      "sha256": "2f5fa1c431e635ca1114b529ea284a61472e73e8b73f9df4085be9b7a5cc4abe"
+    },
+    {
+      "bytes": 736023,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/sources/jemalloc-5.3.0.tar.bz2",
+      "sha256": "2db82d1e7119df3e71b7640219b6dfe84789bc0537983c3b7ac4f7189aecfeaa"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/tests"
+    },
+    {
+      "bytes": 1362,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tests/acceptance.c",
+      "sha256": "75034db7a56b655c340af7343c902ebdc43af33c72a55e7251ece2fb9be6aabe"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 322,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "d52ffefa4d642eabe0a8294cba9db8c82029933db4fc1dfe3017e2fe1c57ae07"
+    }
+  ],
+  "inventory_sha256": "de8d1c8446b0f5cfdcc67f00254b491cf8d7979dd8c64ac1b6d5a844455adac6",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "51951f5e1995794f0fffa9f1915c71bb979ceef17ce2940f376975d41a6b7098",
+  "method": "binary",
+  "package": {
+    "build": "worker053-20261102-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "task-functional",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "runtime.jemalloc",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 736023,
+        "baseline_version": "0.21.14",
+        "category": [
+          "Compiler development",
+          "SAT, SMT and runtimes"
+        ],
+        "dependencies": [],
+        "extract": false,
+        "id": "runtime.jemalloc",
+        "immutable_ref": "5.3.0",
+        "kind": "native_bundle",
+        "license_id": "See bundled upstream LICENSE and NOTICE files",
+        "material_path": "inputs/input-1",
+        "purpose": "Fresh isolated static linking; four concurrent allocation/reallocation workers, aligned allocation, mallctl statistics refreshed via epoch, invalid control-name rejection.",
+        "qualification_scope": "Fresh isolated static linking; four concurrent allocation/reallocation workers, aligned allocation, mallctl statistics refreshed via epoch, invalid control-name rejection.",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "2db82d1e7119df3e71b7640219b6dfe84789bc0537983c3b7ac4f7189aecfeaa",
+        "source_evidence": [
+          "https://jemalloc.net/"
+        ],
+        "source_url": "https://github.com/jemalloc/jemalloc/releases/download/5.3.0/jemalloc-5.3.0.tar.bz2",
+        "strip_archive_root": false,
+        "title": "jemalloc",
+        "upstream": "https://jemalloc.net/",
+        "version": "5.3.0",
+        "worker_record_id": "review.engineering.jemalloc"
+      },
+      "catalog_sha256": "9c1682467a49c89c37db256094474d966569221b0c490c3792c12c5459dfaf1a",
+      "input_provenance": [
+        {
+          "bytes": 736023,
+          "local_path": "/workspace/scratch/81acee5764ca/worker053/payloads/jemalloc/sources/jemalloc-5.3.0.tar.bz2",
+          "revision": "5.3.0",
+          "sha256": "2db82d1e7119df3e71b7640219b6dfe84789bc0537983c3b7ac4f7189aecfeaa",
+          "url": "https://github.com/jemalloc/jemalloc/releases/download/5.3.0/jemalloc-5.3.0.tar.bz2"
+        }
+      ],
+      "original_resource_ids": [],
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "profile_qualifications": {
+        "functional_qualified": true,
+        "source_build_qualified": true
+      },
+      "record_id": "review.engineering.jemalloc",
+      "runtime_requirements": [
+        "Python>=3.12",
+        "GCC-compatible C compiler and development files",
+        "POSIX threads",
+        "Validated on Linux x86_64 with glibc 2.39; no lower ABI bound is inferred. Exact ELF requirements are recorded separately."
+      ],
+      "worker_id": "worker 053"
+    },
+    "provider": "binary",
+    "recipe": {
+      "required_runtime_commands": [
+        "python3",
+        "ldd",
+        "gcc"
+      ],
+      "runtime_environment": {}
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 736023,
+        "extract": false,
+        "id": "runtime.jemalloc",
+        "material_path": "inputs/input-1",
+        "sha256": "2db82d1e7119df3e71b7640219b6dfe84789bc0537983c3b7ac4f7189aecfeaa",
+        "strip_root": false,
+        "url": "https://github.com/jemalloc/jemalloc/releases/download/5.3.0/jemalloc-5.3.0.tar.bz2"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://jemalloc.net/"
+      ],
+      "examples": [
+        {
+          "command": "python3 {recipe}/check.py --prefix {prefix}",
+          "description": "Run the declared bounded functional check"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Independent runtime and source material",
+          "path": "{prefix}",
+          "purpose": "Fresh isolated static linking; four concurrent allocation/reallocation workers, aligned allocation, mallctl statistics refreshed via epoch, invalid control-name rejection."
+        }
+      ],
+      "notes": [
+        "Qualification is limited to the explicit functional cases and fixed inputs recorded in this profile.",
+        "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+        "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+      ],
+      "summary": "Fresh isolated static linking; four concurrent allocation/reallocation workers, aligned allocation, mallctl statistics refreshed via epoch, invalid control-name rejection."
+    },
+    "version": "5.3.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "inputs": [
+      {
+        "bytes": 736023,
+        "local_path": "/workspace/scratch/81acee5764ca/worker053/payloads/jemalloc/sources/jemalloc-5.3.0.tar.bz2",
+        "revision": "5.3.0",
+        "sha256": "2db82d1e7119df3e71b7640219b6dfe84789bc0537983c3b7ac4f7189aecfeaa",
+        "url": "https://github.com/jemalloc/jemalloc/releases/download/5.3.0/jemalloc-5.3.0.tar.bz2"
+      }
+    ],
+    "record_id": "review.engineering.jemalloc",
+    "scope": "Fresh isolated static linking; four concurrent allocation/reallocation workers, aligned allocation, mallctl statistics refreshed via epoch, invalid control-name rejection.",
+    "source_build_qualified": true,
+    "worker": "worker 053"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

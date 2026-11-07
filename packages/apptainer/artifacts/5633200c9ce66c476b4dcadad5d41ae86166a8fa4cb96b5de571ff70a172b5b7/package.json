@@ -1,0 +1,67 @@
+{
+  "build": "worker-v003",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/run_fresh.py",
+        "--base",
+        "{build}",
+        "--",
+        "python3",
+        "{prefix}/check.py",
+        "--bundle",
+        "{prefix}",
+        "--work-dir",
+        "@WORK@"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-task",
+      "kind": "functional",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "apptainer",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Only the declared cases, target and pinned inputs",
+    "record_id": "review.engineering.apptainer",
+    "worker_id": "worker 081"
+  },
+  "provider": "binary",
+  "recipe": {},
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/apptainer/apptainer/releases/tag/v1.4.3"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Independent resource prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed upstream resource and repeatable checks"
+      }
+    ],
+    "notes": [
+      "Requires actual non-root host user or host process capable of dropping to UID65534; check installs its own seccomp network deny filter. Do NOT enclose in UID0-only user namespace. proc/sys disabled in private config; no FUSE, uses SIF extraction."
+    ],
+    "summary": "Pinned Apptainer SIF import with real non-root offline execution, read-only bind and environment verification"
+  },
+  "version": "1.4.3"
+}

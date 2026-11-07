@@ -1,0 +1,101 @@
+{
+  "build": "cpg-worker033-v003",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_dacapo.py",
+        "--prefix",
+        "{prefix}",
+        "--toolchain",
+        "{dependency_prefix:cpg-worker033-jvm}",
+        "--output",
+        "{build}/functional-evidence"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-offline-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "cpg-worker033-jvm"
+    ],
+    "system": []
+  },
+  "id": "dacapo",
+  "metadata": {
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "scope": "Bounded functionality; no official benchmark score, speedup, OCI or full upstream source-build claim.",
+    "supporting_dependency": false,
+    "worker_id": "worker 033"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "prebuilt",
+    "required_installed_paths": [],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 198610940,
+      "extract": false,
+      "id": "dacapo-9.12-mr1-bach.jar",
+      "material_path": "upstream/dacapo-9.12-MR1-bach.jar",
+      "sha256": "be3db084adcb2867760e1197b3ccf541c3213d918daa19386d8e236648d24be8",
+      "strip_root": false,
+      "url": "https://sourceforge.net/projects/dacapobench/files/9.12-bach-MR1/dacapo-9.12-MR1-bach.jar/download"
+    },
+    {
+      "bytes": 32410245,
+      "extract": false,
+      "id": "dacapo-9.12-mr1-bach-src.zip",
+      "material_path": "upstream/dacapo-9.12-MR1-bach-src.zip",
+      "sha256": "ec9bcc5a3e3a39d032de5ff2bd7c7f1ec920a4bc31ac536994cad52fa94b1aa3",
+      "strip_root": false,
+      "url": "https://sourceforge.net/projects/dacapobench/files/9.12-bach-MR1/dacapo-9.12-MR1-bach-src.zip/download"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://sourceforge.net/projects/dacapobench/files/9.12-bach-MR1/dacapo-9.12-MR1-bach.jar/download",
+      "https://sourceforge.net/projects/dacapobench/files/9.12-bach-MR1/dacapo-9.12-MR1-bach-src.zip/download"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check_dacapo.py --prefix {prefix} --toolchain {dependency_prefix:cpg-worker033-jvm} --output {build}/functional-evidence",
+        "description": "Replay the recorded bounded native check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared resource",
+        "path": "{prefix}",
+        "purpose": "Complete official DaCapo binary suite and sources; bounded avrora/fop/luindex validation profile."
+      }
+    ],
+    "notes": [
+      "Installation and checks require no network. Original inputs, acquisition identities, source/byte licenses and all qualification scopes are retained.",
+      "Distribution metadata does not constrain the host; actual architecture, interpreter and dynamic library compatibility are checked."
+    ],
+    "summary": "Complete official DaCapo binary suite and sources; bounded avrora/fop/luindex validation profile."
+  },
+  "version": "9.12-MR1-bach"
+}

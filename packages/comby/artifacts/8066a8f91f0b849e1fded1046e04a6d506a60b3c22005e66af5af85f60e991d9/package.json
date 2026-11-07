@@ -1,0 +1,265 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check_adapter.py",
+        "{prefix}",
+        "comby",
+        "{build}",
+        "version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "upstream-version",
+      "kind": "version",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 60
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check_adapter.py",
+        "{prefix}",
+        "comby",
+        "{build}",
+        "functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "offline-real-transformation",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "gcc"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 240
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "comby",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 11682729,
+      "checks": [
+        {
+          "argv": [
+            "python3",
+            "-B",
+            "{recipe}/check_adapter.py",
+            "{prefix}",
+            "comby",
+            "{build}",
+            "version"
+          ],
+          "cwd": "{build}",
+          "expected_returncode": 0,
+          "id": "upstream-version",
+          "kind": "version",
+          "requires_commands": [
+            "python3"
+          ],
+          "timeout_seconds": 60
+        },
+        {
+          "argv": [
+            "python3",
+            "-B",
+            "{recipe}/check_adapter.py",
+            "{prefix}",
+            "comby",
+            "{build}",
+            "functional"
+          ],
+          "cwd": "{build}",
+          "expected_returncode": 0,
+          "id": "offline-real-transformation",
+          "kind": "functional",
+          "requires_commands": [
+            "python3",
+            "gcc"
+          ],
+          "stdout_regex": "\"status\": \"passed\"",
+          "timeout_seconds": 240
+        }
+      ],
+      "dependencies": [],
+      "deployment": {
+        "adapter": "binary-profile",
+        "required_installed_paths": [
+          "{prefix}/runtime/comby/comby-1.8.1-x86_64-linux",
+          "{prefix}/native_checks.py",
+          "{prefix}/sources-lock.json"
+        ],
+        "required_runtime_commands": [
+          "ldd"
+        ],
+        "runtime_environment": {
+          "LD_LIBRARY_PATH": "{prefix}/runtime/comby-deps/usr/lib/x86_64-linux-gnu:{prefix}/runtime/comby-deps/lib/x86_64-linux-gnu"
+        }
+      },
+      "documentation": [
+        "https://github.com/comby-tools/comby"
+      ],
+      "extract": false,
+      "id": "comby",
+      "input_locks": [
+        {
+          "bytes": 11682729,
+          "digest_basis": "computed_from_bytes_fetched_from_the_listed_official_origin",
+          "file": "inputs/comby-1.8.1-x86_64-linux.tar.gz",
+          "role": "runtime_input_or_license",
+          "sha256": "ec0ca6477822154d71033e0b0a724c23a0608b99028ecab492bc9876ae8c458a",
+          "url": "https://github.com/comby-tools/comby/releases/download/1.8.1/comby-1.8.1-x86_64-linux.tar.gz"
+        },
+        {
+          "bytes": 449400,
+          "digest_basis": "computed_from_bytes_fetched_from_the_listed_official_origin",
+          "file": "inputs/comby-1.8.1.tar.gz",
+          "role": "corresponding_source_or_distribution_patch",
+          "sha256": "04d51cf742bbbf5e5fda064a710be44537fac49bff598d0e9762a3a799d666e2",
+          "url": "https://codeload.github.com/comby-tools/comby/tar.gz/refs/tags/1.8.1"
+        },
+        {
+          "bytes": 11347,
+          "digest_basis": "computed_from_bytes_fetched_from_the_listed_official_origin",
+          "file": "inputs/comby-LICENSE",
+          "role": "runtime_input_or_license",
+          "sha256": "d889c3079fd8a6f2685f3e39235125f8e6132d2ecc619185a6697f9439c1a842",
+          "url": "https://raw.githubusercontent.com/comby-tools/comby/1.8.1/LICENSE"
+        },
+        {
+          "bytes": 29380,
+          "debian_control": "Package: libev4\nVersion: 1:4.33-1\nArchitecture: amd64\nDepends: libc6 (>= 2.17)\n",
+          "digest_basis": "computed_from_bytes_fetched_from_the_listed_official_origin",
+          "file": "inputs/libev4_4.33-1_amd64.deb",
+          "role": "runtime_input_or_license",
+          "sha256": "4bd023c00db3f24ea36c10124c75e9d6585f731577026234b202cebc800e1b2a",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/libe/libev/libev4_4.33-1_amd64.deb"
+        },
+        {
+          "bytes": 245530,
+          "debian_control": "Package: libpcre3\nVersion: 2:8.39-13ubuntu0.22.04.1\nArchitecture: amd64\nDepends: libc6 (>= 2.14)\n",
+          "digest_basis": "computed_from_bytes_fetched_from_the_listed_official_origin",
+          "file": "inputs/libpcre3_8.39-13ubuntu0.22.04.1_amd64.deb",
+          "role": "runtime_input_or_license",
+          "sha256": "0d1eb051047eb0c637c893f618f45e1d419863bfa3bc821897ee05ad418ba22e",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pcre3/libpcre3_8.39-13ubuntu0.22.04.1_amd64.deb"
+        }
+      ],
+      "kind": "native_bundle",
+      "license": "Apache-2.0",
+      "license_class": "open",
+      "material_path": "inputs/comby-1.8.1-x86_64-linux.tar.gz",
+      "profile": {
+        "file_mode_normalization": {
+          "runtime/comby/comby-1.8.1-x86_64-linux": "0755; official archive mode is 0644, bytes unchanged"
+        },
+        "fixture_source": "locally authored non-proprietary synthetic examples",
+        "host_prerequisites": [
+          "python3",
+          "gcc",
+          "g++",
+          "ldd",
+          "glibc loader and compatible transitive system libraries"
+        ],
+        "payload_selection": "Unmodified native files plus locally authored offline runner/fixtures and notices.",
+        "resource": "comby",
+        "scope": "C lexical structural matching, no semantic type claim",
+        "selected_upstream_paths": [
+          "runtime/comby",
+          "runtime/comby-deps"
+        ]
+      },
+      "purpose": "C lexical structural matching, no semantic type claim",
+      "sha256": "ec0ca6477822154d71033e0b0a724c23a0608b99028ecab492bc9876ae8c458a",
+      "source_url": "https://github.com/comby-tools/comby/releases/download/1.8.1/comby-1.8.1-x86_64-linux.tar.gz",
+      "strip_archive_root": false,
+      "title": "comby",
+      "version": "1.8.1"
+    },
+    "catalog_sha256": "93b519690cfddc489c5f4b0f5405e5002518f13b5e591db982aae2be3a6b12b1"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "binary-profile",
+    "required_installed_paths": [
+      "{prefix}/runtime/comby/comby-1.8.1-x86_64-linux",
+      "{prefix}/native_checks.py",
+      "{prefix}/sources-lock.json"
+    ],
+    "required_runtime_commands": [
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/runtime/comby-deps/usr/lib/x86_64-linux-gnu:{prefix}/runtime/comby-deps/lib/x86_64-linux-gnu"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 11682729,
+      "extract": false,
+      "id": "comby",
+      "material_path": "inputs/comby-1.8.1-x86_64-linux.tar.gz",
+      "sha256": "ec0ca6477822154d71033e0b0a724c23a0608b99028ecab492bc9876ae8c458a",
+      "strip_root": false,
+      "url": "https://github.com/comby-tools/comby/releases/download/1.8.1/comby-1.8.1-x86_64-linux.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/comby-tools/comby"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B '{recipe}/check_adapter.py' '{prefix}' comby '{build}' version",
+        "description": "Run the recorded version check."
+      },
+      {
+        "command": "python3 -B '{recipe}/check_adapter.py' '{prefix}' comby '{build}' functional",
+        "description": "Run the recorded functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/inputs/comby-1.8.1-x86_64-linux.tar.gz",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "Run install/check using the Python PackageManager API. No Experiment or Trainer change is required.",
+      "The target distribution is reference build metadata; the original manager checks architecture and actual ABI.",
+      "Checks require host Python3 and GCC/G++, separate from installation dependencies. No package manager/download call runs during checks.",
+      "The complete provenance closure is metadata.catalog.input_locks and payload sources-lock.json.",
+      "Protected recipe hooks validate payload inventory before each version/functional check; this is package-level hardening, not a modification of the original manager.",
+      "C lexical structural matching, no semantic type claim"
+    ],
+    "summary": "C lexical structural matching, no semantic type claim"
+  },
+  "version": "1.8.1"
+}

@@ -1,0 +1,202 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 3249,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "2b2ffdcf188617d5a44edd67068e379279dd4cfddc21a09b1cfb3835e4640542"
+    },
+    {
+      "bytes": 16945,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/capability_check.py",
+      "sha256": "fe40e0d9c1324a11be27f73ef01149d45cbd703143da3658c251d16dcc74c9f3"
+    },
+    {
+      "bytes": 3246,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/elfio_probe.cpp",
+      "sha256": "c1273b737f0dbd9a6f507dc8d3a781d718f2f6bfc8ec250a50b07d39ef0e0315"
+    },
+    {
+      "bytes": 2578,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/native_probe.c",
+      "sha256": "abf9a0e963a8db144ed4c0c55f023f8032169ca6e6d9cd285729f5ac51f25c1f"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe/oracles"
+    },
+    {
+      "bytes": 1485316,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/oracles/capstone-5.0.9-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "sha256": "273fd8d747d2e35c88f91450be51a603ecfaafb00d96d9f315dcb8689c86193e"
+    },
+    {
+      "bytes": 533,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/oracles/lock.json",
+      "sha256": "4b4fa950918bf8d0ec9343d9e32955a5915b39ca9d0754075d4fa4d3114ece59"
+    },
+    {
+      "bytes": 327,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/version_check.py",
+      "sha256": "eb38b1eacec9102f6951f83f7468a8132fad51ac4007b88a9617a9897f371d85"
+    }
+  ],
+  "inventory_sha256": "87643f91472c057f94331c3f20a55933a7dd5c2b3ec157403cd8927cbc522e04",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "a4da75c243ee798a2ead5fb07825734dcf6423ca8bcba8236aa80b9ea2fb31a1",
+  "method": "wrapper",
+  "package": {
+    "build": "worker024.1",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/version_check.py",
+          "iced-x86",
+          "1.22.0"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "distribution-identity",
+        "kind": "version",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 30
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "{recipe}/capability_check.py",
+          "--resource",
+          "py.iced-x86",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "worker024-bounded-capability",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "py.iced-x86",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "new_upstream_family": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "worker_id": "worker 024"
+    },
+    "provider": "python",
+    "recipe": {
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "{source}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "iced-x86",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "iced-x86"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 921202,
+        "extract": false,
+        "id": "py.iced-x86",
+        "material_path": "wheels/iced_x86-1.22.0-cp311-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "sha256": "50b585b369cd3ff6539f7d02fa43376059481facee77eb34a5307a3f5f9eda62",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/e5/0e/f11b276ce18eebcd91d943dda557026b53049a7f08470254508aee50f949/iced_x86-1.22.0-cp311-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [],
+      "locations": [
+        {
+          "label": "prefix",
+          "path": "{prefix}",
+          "purpose": "Independent installation of pinned resource"
+        }
+      ],
+      "notes": [
+        "Bounded offline capability checks; hardware execution qualifications are stated in evidence.",
+        "All immutable wheel bytes are delivered. Use scripts/lifecycle.py with local source_overrides and a network-denied process.",
+        "Original provider identity remains canonical; no APT installation is performed."
+      ],
+      "summary": "iced-x86 pinned Python provider with independent codec oracle"
+    },
+    "version": "1.22.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline": "0.21.14",
+    "scope": "explicit local wheel provider and bounded functional probes"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

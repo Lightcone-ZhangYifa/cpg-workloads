@@ -1,0 +1,113 @@
+{
+  "build": "cpg20261101.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{tools}/run_check.py",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assignment-functional",
+      "kind": "functional",
+      "stdout_regex": "SPOOFAX_ACCEPTANCE_OK spt_cases=8 transform=java executed_answer=42",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "workbench.spoofax",
+  "metadata": {
+    "baseline_catalog_modified": false,
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Frozen author artifact Zenodo 11179594, AML org.metaborg:accmodlang:0.1.0; original SDF3/Statix/Stratego sources preserved. Eight SPT positive/negative cases check parsing, binding, unbound names, typing, visibility and shadowing. Freshly compiled API driver records exact Statix rule diagnostics and invokes upstream Stratego to generate Java; fresh javac and execution produce one=1 and answer=42. Workbench and AML binaries are not rebuilt; this is not an official Spoofax 2.5.23 distribution, Eclipse GUI, full research suite, or C#/Rust qualification.",
+    "record_id": "review.engineering.spoofax",
+    "runtime_toolchain": {
+      "distribution": "Shared pinned offline support runtime; Java and javac required; Maven/Gradle/Docker not required.",
+      "java": "Eclipse Temurin JDK 17.0.17+10",
+      "qualification": "Linux x86_64"
+    },
+    "source_acquisition": {
+      "member_lock": "payload/source-lock.json",
+      "member_uri_scheme": "archive-member:sha256:<archive_sha256>!/<layer.tar>!/<member-path>",
+      "method": "bounded_verified_stream_archive_members",
+      "raw_container_executed": false,
+      "raw_container_imported": false,
+      "retained": false,
+      "retained_members": "A self-contained AML runner, matching AML binary/source JARs, original AML grammar/Statix/Stratego/tests and provenance. The entire image is not retained.",
+      "scope": "Frozen author AML runtime; not an official Spoofax 2.5.23 distribution. Workbench and AML binaries not rebuilt.",
+      "verification_passes": [
+        {
+          "evidence": "worker046/spoofax/author-artifact/extraction.json",
+          "retention_ceiling_bytes": 402653184
+        },
+        {
+          "evidence": "worker046/spoofax/aml-original/source-extraction.json",
+          "retention_ceiling_bytes": 8388608
+        }
+      ]
+    },
+    "worker_id": "046"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "python3",
+      "java",
+      "javac"
+    ],
+    "runtime_environment": {}
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2541737529,
+      "extract": false,
+      "id": "input-000",
+      "material_path": null,
+      "sha256": "9dea4c0d33a0b3f266589c22cc7025c09b2450a5687ec67a5b93d15887bc4a2a",
+      "strip_root": false,
+      "url": "https://zenodo.org/api/records/11179594/files/aml-docker-image.tar.gz/content"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://spoofax.dev/",
+      "https://zenodo.org/records/11179594",
+      "https://doi.org/10.4230/DARTS.10.2.27"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B <prefix>/verify.py; or java -Xmx384m -jar <prefix>/lib/aml-test-runner.jar runTestSuite <suite.spt>",
+        "description": "Run the bounded assignment qualification"
+      }
+    ],
+    "locations": [
+      {
+        "label": "installation",
+        "path": "{prefix}",
+        "purpose": "Immutable tool and qualification fixtures"
+      }
+    ],
+    "notes": [
+      "Frozen author artifact Zenodo 11179594, AML org.metaborg:accmodlang:0.1.0; original SDF3/Statix/Stratego sources preserved. Eight SPT positive/negative cases check parsing, binding, unbound names, typing, visibility and shadowing. Freshly compiled API driver records exact Statix rule diagnostics and invokes upstream Stratego to generate Java; fresh javac and execution produce one=1 and answer=42. Workbench and AML binaries are not rebuilt; this is not an official Spoofax 2.5.23 distribution, Eclipse GUI, full research suite, or C#/Rust qualification."
+    ],
+    "summary": "Run a frozen Spoofax AML language with SDF3 parsing, Statix name/type/access checking and Stratego source transformation."
+  },
+  "version": "zenodo-11179594-aml-snapshot"
+}

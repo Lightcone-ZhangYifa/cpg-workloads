@@ -1,0 +1,165 @@
+{
+  "build": "worker052-20261102-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "task-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "verification.stp-support",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 3248305,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "SAT, SMT and runtimes"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "verification.stp-support",
+      "immutable_ref": "295953fc1f7424cc4822a02f5c7964e0aafbdf10",
+      "kind": "native_bundle",
+      "license_id": "See bundled upstream LICENSE and NOTICE files",
+      "material_path": "inputs/input-1",
+      "purpose": "Exact original baseline STP pin with five direct BV/array checks and an actual source-built upstream KLEE kleaver consumer: four core STP/MiniSat queries, exact validity results, overflow and array counterexample models, statistics, and both core log formats. Full KLEE VM/POSIX runtime is not qualified. LLVM runtime is an official artifact import. Baseline stp identity is preserved; this support profile is not a new resource family.",
+      "qualification_scope": "Exact original baseline STP pin with five direct BV/array checks and an actual source-built upstream KLEE kleaver consumer: four core STP/MiniSat queries, exact validity results, overflow and array counterexample models, statistics, and both core log formats. Full KLEE VM/POSIX runtime is not qualified. LLVM runtime is an official artifact import. Baseline stp identity is preserved; this support profile is not a new resource family.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "e74b71e26f1627f7ce27641a25bc6e91c30a25980c4335280fdb037cdce38810",
+      "source_evidence": [
+        "https://github.com/stp/stp"
+      ],
+      "source_url": "https://codeload.github.com/stp/stp/tar.gz/295953fc1f7424cc4822a02f5c7964e0aafbdf10",
+      "strip_archive_root": false,
+      "title": "STP",
+      "upstream": "https://github.com/stp/stp",
+      "version": "2.4.1",
+      "worker_record_id": "review.verification.stp"
+    },
+    "catalog_sha256": "05e33e68debee95f33731948a01f9e4cd187d9c08e4e4cc851f3e0313d974d09",
+    "input_provenance": [
+      {
+        "bytes": 3248305,
+        "local_path": "/workspace/scratch/81acee5764ca/worker052/downloads/stp-295953fc1f7424cc4822a02f5c7964e0aafbdf10.tar.gz",
+        "revision": "295953fc1f7424cc4822a02f5c7964e0aafbdf10",
+        "sha256": "e74b71e26f1627f7ce27641a25bc6e91c30a25980c4335280fdb037cdce38810",
+        "url": "https://codeload.github.com/stp/stp/tar.gz/295953fc1f7424cc4822a02f5c7964e0aafbdf10"
+      },
+      {
+        "bytes": 6266682,
+        "local_path": "/workspace/scratch/81acee5764ca/worker052/downloads/abc-95393064368b7c05da4d6f0264fc3419c175c7cb.tar.gz",
+        "revision": "95393064368b7c05da4d6f0264fc3419c175c7cb",
+        "sha256": "b23f9384edb297a27cb0420d9f99ca4cf4e2a2a301ac10b41418f770a839cb9e",
+        "url": "https://codeload.github.com/berkeley-abc/abc/tar.gz/95393064368b7c05da4d6f0264fc3419c175c7cb"
+      },
+      {
+        "bytes": 68571,
+        "local_path": "/workspace/scratch/81acee5764ca/worker052/downloads/minisat-62a143a12d059b53cf875db79867490d896546a5.tar.gz",
+        "revision": "62a143a12d059b53cf875db79867490d896546a5",
+        "sha256": "1c71a3e63a0072db766d789e9be3d0fa95e2e7a3b911b3149d1a2f1d26451ce0",
+        "url": "https://codeload.github.com/stp/minisat/tar.gz/62a143a12d059b53cf875db79867490d896546a5"
+      },
+      {
+        "bytes": 1066344,
+        "local_path": "/workspace/scratch/81acee5764ca/consumer/downloads/klee-74f49f1.tar.gz",
+        "revision": "74f49f1d243f0e1692a00ac688a7b805b37c5646",
+        "sha256": "28e8656db6132b3aac88514c8831611bed088f78c923d330d854f91fee43d2a8",
+        "url": "https://codeload.github.com/klee/klee/tar.gz/74f49f1d243f0e1692a00ac688a7b805b37c5646"
+      },
+      {
+        "bytes": 25497846,
+        "local_path": "/workspace/scratch/81acee5764ca/bootstrap/debs/libllvm15t64_1%3a15.0.7-14build3_amd64.deb",
+        "sha256": "a486f3bdd974133edb049b5f3396f9e75cf7894b9e91008407bec9885a2f33d9",
+        "url": "https://snapshot.ubuntu.com/ubuntu/20260828T000000Z/pool/universe/l/llvm-toolchain-15/libllvm15t64_15.0.7-14build3_amd64.deb"
+      }
+    ],
+    "original_resource_ids": [
+      "stp"
+    ],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "source_build_qualified": true
+    },
+    "record_id": "review.verification.stp",
+    "runtime_requirements": [
+      "Linux x86_64 with POPCNT; tested host ABI (minimum not inferred)",
+      "Python 3.12, ldd and readelf for acceptance",
+      "Host runtime SONAMEs: ld-linux-x86-64.so.2, libbsd.so.0, libc.so.6, libedit.so.2, libffi.so.8, libgcc_s.so.1, libicudata.so.74, libicuuc.so.74, liblzma.so.5, libm.so.6, libmd.so.0, libstdc++.so.6, libtinfo.so.6, libxml2.so.2, libz.so.1, libzstd.so.1",
+      "Source rebuild: C/C++17, CMake >=3.19 (3.31.6 tested), make, flex/bison/m4, zlib/libffi/libtinfo development files and the fixed private LLVM15/Clang15 development packages supplied in the shared bootstrap bundle",
+      "Validated on Linux x86_64 with glibc 2.39; no lower ABI bound is inferred. Exact ELF requirements are recorded separately."
+    ],
+    "worker_id": "worker 052"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "ldd",
+      "python3"
+    ],
+    "runtime_environment": {}
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3248305,
+      "extract": false,
+      "id": "verification.stp-support",
+      "material_path": "inputs/input-1",
+      "sha256": "e74b71e26f1627f7ce27641a25bc6e91c30a25980c4335280fdb037cdce38810",
+      "strip_root": false,
+      "url": "https://codeload.github.com/stp/stp/tar.gz/295953fc1f7424cc4822a02f5c7964e0aafbdf10"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/stp/stp"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Exact original baseline STP pin with five direct BV/array checks and an actual source-built upstream KLEE kleaver consumer: four core STP/MiniSat queries, exact validity results, overflow and array counterexample models, statistics, and both core log formats. Full KLEE VM/POSIX runtime is not qualified. LLVM runtime is an official artifact import. Baseline stp identity is preserved; this support profile is not a new resource family."
+      }
+    ],
+    "notes": [
+      "Qualification is limited to the explicit functional cases and fixed inputs recorded in this profile.",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "Exact original baseline STP pin with five direct BV/array checks and an actual source-built upstream KLEE kleaver consumer: four core STP/MiniSat queries, exact validity results, overflow and array counterexample models, statistics, and both core log formats. Full KLEE VM/POSIX runtime is not qualified. LLVM runtime is an official artifact import. Baseline stp identity is preserved; this support profile is not a new resource family."
+  },
+  "version": "2.4.1"
+}

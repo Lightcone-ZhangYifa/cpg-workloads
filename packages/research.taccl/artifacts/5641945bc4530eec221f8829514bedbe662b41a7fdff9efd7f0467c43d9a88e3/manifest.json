@@ -1,0 +1,198 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 5006,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "c63736cad5bb46db1fcaed6a75f1b9ed267762b65501cb14c6c2a2f5246c8207"
+    },
+    {
+      "bytes": 1728,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_python_resource.py",
+      "sha256": "40f02ef89fa2570730ea8a0151731232a88ce5885073e96ac385a408822a55ae"
+    },
+    {
+      "bytes": 3103,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/prepare_python_resource.py",
+      "sha256": "4be6dbb4e940b843f8eecea59f04bb171139bfb5b9d6ee44cf9d6cb4183c9261"
+    },
+    {
+      "bytes": 583,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/resource.json",
+      "sha256": "a3d1bde3022f58e5a736910b6c21aa483c6ddad7290681f9f28156f6f3bd8275"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 299317,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/75dc733d944c3774e3c4a3a29081ad75f46a386befbbd58160ec88d6afa28890",
+      "sha256": "75dc733d944c3774e3c4a3a29081ad75f46a386befbbd58160ec88d6afa28890"
+    }
+  ],
+  "inventory_sha256": "a2af734b7fc990f9f2f7d7ca36960b8daad922b3db91e56d16fd1dbf58b3dd79",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "3ecc647cc8c61c8407b395c8772191e5643186259f96d6eda8359070b5711f3f",
+  "method": "source",
+  "package": {
+    "build": "1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check_python_resource.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--recipe",
+          "{recipe}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "worker111-bounded-profile",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "research.taccl",
+    "metadata": {
+      "host_python_scope": {
+        "functional_check": "Host Python >=3.10 standard library",
+        "relocation_scope": "Independent installation prefixes; installed Python venv relocation is not qualified",
+        "source_install": "Python >=3.10 standard library"
+      },
+      "new_candidate": true,
+      "original_1862_unchanged": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "private_wheel_phase": "run",
+      "private_wheels": [],
+      "qualification_scope": "Official 5 topology/11 sketch parsers and schedule codec/checker; no licensed Gurobi solve or GPU execution",
+      "record_id": "review.optimization.taccl",
+      "upstream_commit": "426bd1e30b7a170713f04f4cf20ace57e8c07251",
+      "worker_id": "worker 111"
+    },
+    "provider": "source",
+    "recipe": {
+      "commands": [
+        [
+          "python3",
+          "-B",
+          "{recipe}/prepare_python_resource.py",
+          "--prefix",
+          "{prefix}",
+          "--source",
+          "{source}",
+          "--assets",
+          "{assets}",
+          "--build",
+          "{build}",
+          "--recipe",
+          "{recipe}"
+        ]
+      ],
+      "required_host_commands": [
+        "python3"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 299317,
+        "extract": true,
+        "id": "research.taccl.upstream",
+        "material_path": "upstream",
+        "sha256": "75dc733d944c3774e3c4a3a29081ad75f46a386befbbd58160ec88d6afa28890",
+        "strip_root": true,
+        "url": "https://codeload.github.com/microsoft/taccl/tar.gz/426bd1e30b7a170713f04f4cf20ace57e8c07251"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/microsoft/taccl"
+      ],
+      "examples": [
+        {
+          "command": "cpg packages check research.taccl",
+          "description": "Replay the installed bounded profile"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Original source tree",
+          "path": "{prefix}/source",
+          "purpose": "Private copy of the locked upstream source"
+        }
+      ],
+      "notes": [
+        "Preparation is explicit and consumes only bundled, hashed source archives and wheels.",
+        "Functional qualification applies only to the declared profile; Dataset, official benchmark, GPU and distributed runtime qualifications are unchanged.",
+        "Source installation Python prerequisite: Python >=3.10 standard library",
+        "Functional check Python prerequisite: Host Python >=3.10 standard library",
+        "Independent installation prefixes; installed Python venv relocation is not qualified"
+      ],
+      "summary": "Official 5 topology/11 sketch parsers and schedule codec/checker; no licensed Gurobi solve or GPU execution"
+    },
+    "version": "2.0.0+git.426bd1e"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "native_source_build": false,
+    "profile": "Official 5 topology/11 sketch parsers and schedule codec/checker; no licensed Gurobi solve or GPU execution",
+    "upstream_lock": {
+      "bytes": 299317,
+      "canonical_url": "https://github.com/microsoft/taccl",
+      "commit": "426bd1e30b7a170713f04f4cf20ace57e8c07251",
+      "commit_date": "2023-05-08T22:48:17Z",
+      "name": "taccl",
+      "raw": "raw/taccl-426bd1e30b7a170713f04f4cf20ace57e8c07251.tar.gz",
+      "sha256": "75dc733d944c3774e3c4a3a29081ad75f46a386befbbd58160ec88d6afa28890",
+      "url": "https://codeload.github.com/microsoft/taccl/tar.gz/426bd1e30b7a170713f04f4cf20ace57e8c07251"
+    },
+    "worker_id": "worker 111"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "research.taccl.upstream",
+      "path": "sources/75dc733d944c3774e3c4a3a29081ad75f46a386befbbd58160ec88d6afa28890"
+    }
+  ]
+}

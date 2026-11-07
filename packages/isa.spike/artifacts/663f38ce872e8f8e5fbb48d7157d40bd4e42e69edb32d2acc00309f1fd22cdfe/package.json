@@ -1,0 +1,129 @@
+{
+  "build": "cpg-20261101-w058-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "isa.spike",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "formal_qualification_promotion": false,
+    "license_note": "Spike BSD-3-Clause with complete upstream component notices; bundled official dtc GPL-2.0-or-later, libfdt dual GPL-2.0-or-later/BSD-2-Clause, exact corresponding source and original package copyright retained",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "RV64IM / RV64I, bare metal, M-mode, HTIF, 16 MiB RAM, built-in boot ROM and privately generated DTB",
+    "record_id": "review.engineering.spike",
+    "source_build_verified": true,
+    "source_material_scope": "Complete unmodified v1.1.0 source archive; actual native make -j1 spike build using the full upstream instruction list; exact official prebuilt dtc dependency with complete corresponding Ubuntu source package",
+    "worker_id": "worker 058"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 445575,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "sources/spike-v1.1.0.tar.gz",
+      "sha256": "9b29c220fed1e867e3bea4b5c565f2629237d525a4d9fe1668699c4406003a1f",
+      "strip_root": false,
+      "url": "https://codeload.github.com/riscv-software-src/riscv-isa-sim/tar.gz/refs/tags/v1.1.0"
+    },
+    {
+      "bytes": 228180,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "sources/device-tree-compiler_1.7.0-2build1_amd64.deb",
+      "sha256": "b2c1e8c86f18b6bda26408f92bfb9ec1a1e40bfdc41f1034600ccd68e82d2ed7",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/d/device-tree-compiler/device-tree-compiler_1.7.0-2build1_amd64.deb"
+    },
+    {
+      "bytes": 2590,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "sources/device-tree-compiler_1.7.0-2build1.dsc",
+      "sha256": "3b77f8e6fd090ce4212ff7acf1cc74897410bc1c7332223e5bddab216645690f",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/d/device-tree-compiler/device-tree-compiler_1.7.0-2build1.dsc"
+    },
+    {
+      "bytes": 211526,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "sources/device-tree-compiler_1.7.0.orig.tar.gz",
+      "sha256": "3155c8dd322904c9af767efdb9957011b38320f7b684817a26bc6470ab3a2af5",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/d/device-tree-compiler/device-tree-compiler_1.7.0.orig.tar.gz"
+    },
+    {
+      "bytes": 14536,
+      "extract": false,
+      "id": "input-004",
+      "material_path": "sources/device-tree-compiler_1.7.0-2build1.debian.tar.xz",
+      "sha256": "8b235136ace866e1dbc0cd42f7fbd6c294677872f10dbfb9b722b8f00d63518f",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/d/device-tree-compiler/device-tree-compiler_1.7.0-2build1.debian.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt",
+      "source-lock.json",
+      "resource-evidence.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/check.py",
+        "description": "Run the declared semantic and failure-path checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent prefix",
+        "path": "{prefix}",
+        "purpose": "Tool, source fixtures and offline checks"
+      }
+    ],
+    "notes": [
+      "pk/Linux execution",
+      "hardware compliance",
+      "real-machine performance",
+      "extensions not exercised by these fixtures"
+    ],
+    "summary": "锁pk或裸机环境，执行小ELF核结果与扩展支持"
+  },
+  "version": "1.1.0"
+}

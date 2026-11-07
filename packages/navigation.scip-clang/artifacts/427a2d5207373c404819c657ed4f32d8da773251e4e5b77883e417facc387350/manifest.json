@@ -1,0 +1,206 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/LICENSES"
+    },
+    {
+      "bytes": 11347,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSES/LICENSE",
+      "sha256": "96b8b909d18f94921214e3995e4c12483826b12ca64dd93fc710b87e1bc5a08a"
+    },
+    {
+      "bytes": 659,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.txt",
+      "sha256": "e9c19ee932b83346fc9f7eeddb243e1c6f9b536bcddeb253f386b0528d175ec4"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 26488530,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/scip",
+      "sha256": "7af5dbd13ba1d447457bb735d3f43372a067950a51b5234d2465f7a57a0d8eb2"
+    },
+    {
+      "bytes": 149130216,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/scip-clang",
+      "sha256": "a434d26a079fd80e1996ba79276cb1ef86b2b2ad28b13e24386285db32c59046"
+    },
+    {
+      "bytes": 4780,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/check.py",
+      "sha256": "9094ebda467bbe758acf629c1a3a8616b0f2787d0e4c8ad7d5d09d57abafb470"
+    },
+    {
+      "bytes": 215,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/compiler-lock.json",
+      "sha256": "28310b53d04fabeaa5dbc6577f19c790ff077a8a454884cf0ea299dfd917c6fc"
+    },
+    {
+      "bytes": 1223,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/source-lock.json",
+      "sha256": "55ea2b826574099280ca039c96fb2ca8c836a2d055ad943fed2f32e73486e32a"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "tools"
+    },
+    {
+      "bytes": 39,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/check-command.json",
+      "sha256": "3d24c0da40fd967f3f34b2c69911cd01c2d2e64a40b06ca74e2b425c8153b2e4"
+    },
+    {
+      "bytes": 1378,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/payload-inventory.json",
+      "sha256": "657b8b211447d4c1e6dc52c628af843dc547ee36c602c02f1a5d7b44a2b1a655"
+    },
+    {
+      "bytes": 2208,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/run_check.py",
+      "sha256": "cb7575abc9778f0f9a0bbbb0ac50fffbed22a813941895c9a8149a415343ff36"
+    }
+  ],
+  "inventory_sha256": "4a6df2a2e11bb98b2a78c720dfa58af2e658a8ee565515ea72a1a4659e1886b9",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "ae4f0ec75e5f4a314e833bd63027dc5c5e17054dce188c2a627670afc74c5203",
+  "method": "binary",
+  "package": {
+    "build": "cpg20261101.1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{tools}/run_check.py",
+          "{prefix}",
+          "{build}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "assignment-functional",
+        "kind": "functional",
+        "stdout_regex": "passed",
+        "timeout_seconds": 600
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "navigation.scip-clang",
+    "metadata": {
+      "baseline_catalog_modified": false,
+      "baseline_version": "0.21.14",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "Embedded Clang/LLVM 2078da43e25a4623cab2d0d60decddf709aaea28. Fixed GCC13 compile_commands driver. Real 2-TU C++17 indexing, macros, int/double overloads and template references. No CUDA or incomplete-TU whole-project claim. SCIP0.10 raw lint local-symbol mismatch retained.",
+      "record_id": "review.root.scip-clang",
+      "runtime_toolchain": {
+        "description": "Linux x86_64; Python 3; host glibc; see ELF compatibility evidence"
+      },
+      "worker_id": "048"
+    },
+    "provider": "binary",
+    "recipe": {
+      "adapter": "copy",
+      "required_runtime_commands": [
+        "python3",
+        "g++"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 223128,
+        "extract": false,
+        "id": "input-000",
+        "material_path": "scip-clang-v0.4.1-source.tar.gz",
+        "sha256": "910d34662b962d325b1c305b35e2725d06ac823257b27746c970f8ade85c4f62",
+        "strip_root": false,
+        "url": "https://codeload.github.com/sourcegraph/scip-clang/tar.gz/refs/tags/v0.4.1"
+      },
+      {
+        "bytes": 149130216,
+        "extract": false,
+        "id": "input-001",
+        "material_path": "scip-clang",
+        "sha256": "a434d26a079fd80e1996ba79276cb1ef86b2b2ad28b13e24386285db32c59046",
+        "strip_root": false,
+        "url": "https://github.com/sourcegraph/scip-clang/releases/download/v0.4.1/scip-clang-x86_64-linux"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/sourcegraph/scip-clang"
+      ],
+      "examples": [
+        {
+          "command": "python3 -B <prefix>/check.py",
+          "description": "Run the bounded assignment qualification"
+        }
+      ],
+      "locations": [
+        {
+          "label": "installation",
+          "path": "{prefix}",
+          "purpose": "Immutable tool and qualification fixtures"
+        }
+      ],
+      "notes": [
+        "Embedded Clang/LLVM 2078da43e25a4623cab2d0d60decddf709aaea28. Fixed GCC13 compile_commands driver. Real 2-TU C++17 indexing, macros, int/double overloads and template references. No CUDA or incomplete-TU whole-project claim. SCIP0.10 raw lint local-symbol mismatch retained."
+      ],
+      "summary": "Embedded Clang/LLVM 2078da43e25a4623cab2d0d60decddf709aaea28. Fixed GCC13 compile_commands driver. Real 2-TU C++17 indexing, macros, int/double overloads and template references. No CUDA or incomplete-TU whole-project claim. SCIP0.10 raw lint local-symbol mismatch retained."
+    },
+    "version": "0.4.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "assignment_record_id": "review.root.scip-clang",
+    "baseline": "0.21.14",
+    "bounded_scope": "Embedded Clang/LLVM 2078da43e25a4623cab2d0d60decddf709aaea28. Fixed GCC13 compile_commands driver. Real 2-TU C++17 indexing, macros, int/double overloads and template references. No CUDA or incomplete-TU whole-project claim. SCIP0.10 raw lint local-symbol mismatch retained."
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

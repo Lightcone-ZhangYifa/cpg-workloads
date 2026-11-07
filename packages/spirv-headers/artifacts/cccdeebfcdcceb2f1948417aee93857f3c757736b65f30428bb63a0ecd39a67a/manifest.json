@@ -1,0 +1,194 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 4175,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build_resource.py",
+      "sha256": "10f75c6584fa4ba0bcfd43261d884ce18e7663cbed15fbab6199329794ca1ff2"
+    },
+    {
+      "bytes": 8485,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_resource.py",
+      "sha256": "6de8952768e020b931527d4e7f37551e442e378549dfc9080dcf511380fba27d"
+    },
+    {
+      "bytes": 4513,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/shaderc_api.c",
+      "sha256": "d7c403d74d7fc85d330aa86b3fa6a663c8c5502d57366f30e576a21e7052ddcd"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 532355,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/2301e11e5c77213258d6863bf4e6c607a8c6431fa8336e98ac6a2131bd6284f8",
+      "sha256": "2301e11e5c77213258d6863bf4e6c607a8c6431fa8336e98ac6a2131bd6284f8"
+    }
+  ],
+  "inventory_sha256": "e8131a93b5f2a9287442d42e49327442c9661ff7e5b62abebe29c070ec5cfb9d",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "e9e6ca7126d20b3e6eda51a193582b70d6688f8f4c1f4da50aec8269540a70f0",
+  "method": "source",
+  "package": {
+    "build": "worker040-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check_resource.py",
+          "spirv-headers",
+          "--prefix",
+          "{prefix}",
+          "--work",
+          "{build}/checks"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "spirv-headers-functional",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "cc"
+        ],
+        "timeout_seconds": 240
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "spirv-headers",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "dependency_counting": "shaderc bundled build dependencies are not new resource shares",
+      "gpu_execution_qualified": false,
+      "pinned_revision": "3f17b2af6784bfa2c5aa5dbb8e0e74a607dd8b3b",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "record_id": "review.engineering.spirv-headers",
+      "source_build_network": "disabled in acceptance by seccomp",
+      "verification_scope": "bounded functionality; no Dataset or Benchmark qualification",
+      "worker_id": "worker 040"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/build_resource.py",
+          "spirv-headers",
+          "--assets",
+          "{assets}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "required_host_commands": [
+        "python3",
+        "g++",
+        "make"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/buildSpvHeaders",
+        "{prefix}/include/spirv/unified1/spirv.h",
+        "{prefix}/share/spirv-headers/include/spirv/spir-v.xml"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 532355,
+        "extract": true,
+        "id": "spirv-headers",
+        "material_path": "spirv-headers",
+        "sha256": "2301e11e5c77213258d6863bf4e6c607a8c6431fa8336e98ac6a2131bd6284f8",
+        "strip_root": true,
+        "url": "https://codeload.github.com/KhronosGroup/SPIRV-Headers/tar.gz/3f17b2af6784bfa2c5aa5dbb8e0e74a607dd8b3b"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "any",
+      "distribution_version": "any",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Add {prefix}/bin to PATH."
+      ],
+      "documentation": [
+        "https://codeload.github.com/KhronosGroup/SPIRV-Headers/tar.gz/3f17b2af6784bfa2c5aa5dbb8e0e74a607dd8b3b"
+      ],
+      "examples": [
+        {
+          "command": "cpg packages check spirv-headers --prefix <PREFIX>",
+          "description": "Run package acceptance"
+        }
+      ],
+      "locations": [
+        {
+          "label": "prefix",
+          "path": "{prefix}",
+          "purpose": "Independent resource installation"
+        }
+      ],
+      "notes": [
+        "No network operation is performed by source build or installation.",
+        "Functional evidence covers the declared bounded cases; no GPU execution is claimed.",
+        "The source build requires local GCC/G++/make/Python, and CMake for glslang/shaderc.",
+        "SPIRV-Tools is an explicit external verification input for glslang/shaderc; its resource is owned by worker042."
+      ],
+      "summary": "Frozen machine-readable grammars, registry and upstream header generator with regeneration comparison."
+    },
+    "version": "3f17b2af6784bfa2c5aa5dbb8e0e74a607dd8b3b"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "framework": "CPG 0.21.14 unmodified",
+    "original_source_locks": [
+      {
+        "bytes": 532355,
+        "extract": true,
+        "id": "spirv-headers",
+        "material_path": "spirv-headers",
+        "sha256": "2301e11e5c77213258d6863bf4e6c607a8c6431fa8336e98ac6a2131bd6284f8",
+        "strip_root": true,
+        "url": "https://codeload.github.com/KhronosGroup/SPIRV-Headers/tar.gz/3f17b2af6784bfa2c5aa5dbb8e0e74a607dd8b3b"
+      }
+    ],
+    "worker": "worker040"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "spirv-headers",
+      "path": "sources/2301e11e5c77213258d6863bf4e6c607a8c6431fa8336e98ac6a2131bd6284f8"
+    }
+  ]
+}

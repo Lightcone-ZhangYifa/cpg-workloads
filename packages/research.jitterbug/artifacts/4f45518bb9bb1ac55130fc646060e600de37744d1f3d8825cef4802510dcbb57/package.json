@@ -1,0 +1,738 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/driver.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--recipe",
+        "{recipe}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "jitterbug-official-positive-and-negative",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 1320
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.jitterbug",
+  "metadata": {
+    "new_candidate": true,
+    "original_1862_unchanged": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_input_lock": {
+      "additional_evidence": "The unmodified full default register domain positive proof passed in 308.113 seconds, separately recorded; the combined full-domain author-bug replay later received SIGKILL, so no full-domain negative qualification.",
+      "checked_files": {
+        "src/jitterbug/racket/lib/patch.rkt": "523d79e590a994ba0d677e72a133c0a459c63d40189488840effbfb25de8e87a",
+        "src/jitterbug/racket/lib/spec/per-insn.rkt": "055515dd30378eb0588a3686665b27b16984b24b1626b30e80b2251aeb2d4f6b",
+        "src/jitterbug/racket/lib/tests.rkt": "df0d36db1a5fe1e92a1d8de797a6adce0425c12651e10b2c05ee1423df68c0bf",
+        "src/jitterbug/racket/riscv/rv64/bpf_jit_comp64.rkt": "4390ae720dff4da63a2d07920be20013830b92a9ee9e87b504032a76fdd78d8e",
+        "src/jitterbug/racket/riscv/rv64/spec.rkt": "68bbe3b068401825df394cec67b94d8cce38f57468a646fe34b32f7a97ae808e",
+        "src/jitterbug/racket/test/rv64/bugs.rkt": "25eb812c7ce973bb8395ad2014bb0aecac51c0d157a098f2fcb3ae1e8c6a3684",
+        "src/jitterbug/serval/serval/lib/solver.rkt": "a6b300397cc0e1c3d3736ba0e978d258da2ec3d07cb2f417b605e10ecdf8de05",
+        "src/jitterbug/serval/serval/lib/unittest.rkt": "d1407d03cd020e3962e4c91df1e861dd818bf09b147031d1cd282e160a9252b2",
+        "tools/racket/bin/racket": "5131d439d3e6def9a6752f1eb487f669a32e8ec416b2ccddc676f97ffa0c1207",
+        "tools/racket/share/pkgs/rosette/rosette/private/install.rkt": "c3cf2a3eafe90dca5ccc96627430e2005933c916ec1ada6f02bf57806594c051",
+        "tools/z3/bin/z3": "24d3d3890a5a5104c76ca1eaecec188651c84773a724ff94d5066c27804ca2ec"
+      },
+      "jitterbug_commit": "78d1e75ad506498b585fbac66985ff9d9d05952d",
+      "proof_scope": {
+        "instruction": [
+          "BPF_ALU",
+          "BPF_ADD",
+          "BPF_X"
+        ],
+        "negative": "upstream with-jit-bug, kernel fix 1e692f09e091",
+        "operands": "symbolic; upstream preconditions unchanged",
+        "registers": "dst=r0, src=r1; arbitrary register values satisfying upstream preconditions",
+        "target": "RV64"
+      },
+      "racket": "8.9 CS x86_64-linux",
+      "rosette_commit": "373c8c35e4a7667f38fce10cf0b74ae17de07f1d",
+      "runtime_omissions": [
+        "30 optional documentation-only Racket packages ending -doc; original hashed omission inventory retained",
+        "Serval optional generated-test dangling symlink test/generated/racket/test -> ../../o.riscv64; complete upstream original archive retained"
+      ],
+      "serval_commit": "70b95ac37f79856fcef21e688df871e3c79f6bff",
+      "solver": "Z3 4.8.8 x64 ubuntu-16.04"
+    },
+    "qualification_scope": "RV64 BPF_ALU/BPF_ADD/BPF_X, dst=r0 and src=r1 with arbitrary symbolic operands and unchanged upstream preconditions; original author bug 1e692f09e091 replay.",
+    "record_id": "review.verification.jitterbug",
+    "source_commit": "78d1e75ad506498b585fbac66985ff9d9d05952d",
+    "worker_id": "worker 109"
+  },
+  "provider": "source",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "sh"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1356180,
+      "extract": false,
+      "id": "research.jitterbug.input-1",
+      "material_path": "input-1",
+      "sha256": "f9caa4e47aa8b178ca5207982fba9cdc2134be62ee6c9e68a3b0a9a8a4dbbd27",
+      "strip_root": false,
+      "url": "https://codeload.github.com/uw-unsat/jitterbug/tar.gz/78d1e75ad506498b585fbac66985ff9d9d05952d"
+    },
+    {
+      "bytes": 199451,
+      "extract": false,
+      "id": "research.jitterbug.input-2",
+      "material_path": "input-2",
+      "sha256": "e50085ac0688eef629c83482c18c2a1fed5406c88d3d25e38ba17c39dd1bd4dd",
+      "strip_root": false,
+      "url": "https://codeload.github.com/uw-unsat/serval/tar.gz/70b95ac37f79856fcef21e688df871e3c79f6bff"
+    },
+    {
+      "bytes": 33962862,
+      "extract": false,
+      "id": "research.jitterbug.input-3",
+      "material_path": "input-3",
+      "sha256": "3067632880035fbac40f20977b279bb3256df324e1216046ece4bc0b5b61c2e8",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/installers/racket-minimal-8.9-x86_64-linux-cs.tgz"
+    },
+    {
+      "bytes": 39530699,
+      "extract": false,
+      "id": "research.jitterbug.input-4",
+      "material_path": "input-4",
+      "sha256": "6534f26427ee4f02835d17c3472f5ce750f34b4898c35cdd4223459b3589664e",
+      "strip_root": false,
+      "url": "https://github.com/Z3Prover/z3/releases/download/z3-4.8.8/z3-4.8.8-x64-ubuntu-16.04.zip"
+    },
+    {
+      "bytes": 91696,
+      "extract": false,
+      "id": "research.jitterbug.input-5",
+      "material_path": "input-5",
+      "sha256": "77a0f75c83897c95f22b7778983433db9d9c69a4beeb0f31330c12a521d3e6a8",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/future-visualizer-pict.zip"
+    },
+    {
+      "bytes": 80208,
+      "extract": false,
+      "id": "research.jitterbug.input-6",
+      "material_path": "input-6",
+      "sha256": "13bc2e03da35d01e6d66ffa2321bb36616e5f954c8b54cfe48a1e451e26a622f",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/profile-lib.zip"
+    },
+    {
+      "bytes": 678455,
+      "extract": false,
+      "id": "research.jitterbug.input-7",
+      "material_path": "input-7",
+      "sha256": "618c8980bc8f94d9fee65b61e09e742a7130100c3198bd3d2206dd0a81df71f3",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/db-lib.zip"
+    },
+    {
+      "bytes": 91988,
+      "extract": false,
+      "id": "research.jitterbug.input-8",
+      "material_path": "input-8",
+      "sha256": "888264bebab252821201b233bd3c609992c940aa4f6f092de9a024c5a1ebb950",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/scribble-html-lib.zip"
+    },
+    {
+      "bytes": 37396,
+      "extract": false,
+      "id": "research.jitterbug.input-9",
+      "material_path": "input-9",
+      "sha256": "20651c69d80faa59af47131b44eb9e4f4bf4627e954ca414fee63f32e1e7cce5",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/class-iop-lib.zip"
+    },
+    {
+      "bytes": 874482,
+      "extract": false,
+      "id": "research.jitterbug.input-10",
+      "material_path": "input-10",
+      "sha256": "5ca934a54a3ebd46542990af40ee244416d1b3fe9713fef129974f02a4581702",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/icons.zip"
+    },
+    {
+      "bytes": 305034,
+      "extract": false,
+      "id": "research.jitterbug.input-11",
+      "material_path": "input-11",
+      "sha256": "c95c8f01c831fbe2e3d7b299e8c1a24870c64f40f380871f26aab17a7e0077d7",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/snip-lib.zip"
+    },
+    {
+      "bytes": 155263,
+      "extract": false,
+      "id": "research.jitterbug.input-12",
+      "material_path": "input-12",
+      "sha256": "a2c1097f197e6b0f41c96d30933618cf7da04e5512d8a12f6ba0dc978c6e8980",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/rackunit-typed.zip"
+    },
+    {
+      "bytes": 64049,
+      "extract": false,
+      "id": "research.jitterbug.input-13",
+      "material_path": "input-13",
+      "sha256": "f8f7eec55c46f3e61b493a03ba63dcfd841a25ffb4daa962426003d90a71a107",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/r5rs-lib.zip"
+    },
+    {
+      "bytes": 37365,
+      "extract": false,
+      "id": "research.jitterbug.input-14",
+      "material_path": "input-14",
+      "sha256": "6d5162fa7e071f2e51f84c26c36ec5a66f37fb58ec5b6f06b14918f5088ba64a",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/unix-socket-lib.zip"
+    },
+    {
+      "bytes": 2044537,
+      "extract": false,
+      "id": "research.jitterbug.input-15",
+      "material_path": "input-15",
+      "sha256": "9c91a5ce03078074120328eca120914557d29b6a486410b215210a2d85f34b8a",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/typed-racket-more.zip"
+    },
+    {
+      "bytes": 10265,
+      "extract": false,
+      "id": "research.jitterbug.input-16",
+      "material_path": "input-16",
+      "sha256": "06b22a7d21ce43af9bf0d64211a705baed6354ded39c98055eac6f9511cc0df3",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/tex-table.zip"
+    },
+    {
+      "bytes": 547900,
+      "extract": false,
+      "id": "research.jitterbug.input-17",
+      "material_path": "input-17",
+      "sha256": "730ff88914edb508bb86a9078c09ecf2f42c0f8cfa42aa9b97cb5ec122d1dbe6",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/slideshow-lib.zip"
+    },
+    {
+      "bytes": 476008,
+      "extract": false,
+      "id": "research.jitterbug.input-18",
+      "material_path": "input-18",
+      "sha256": "f61e75bfcc71e3379bc3491a5b2eb6b45239099ce29475fd22ce1fcac1917473",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/r6rs-lib.zip"
+    },
+    {
+      "bytes": 32720,
+      "extract": false,
+      "id": "research.jitterbug.input-19",
+      "material_path": "input-19",
+      "sha256": "dda7d18355e5827efbd50372e9eddd8292f492f88bf879d096e60903f35f4548",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/readline-lib.zip"
+    },
+    {
+      "bytes": 349800,
+      "extract": false,
+      "id": "research.jitterbug.input-20",
+      "material_path": "input-20",
+      "sha256": "7a206dcf3bab2a88a088968f0cff2a527e8b21acb4b7cc0eeed4a2b6c7891e4a",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/scheme-lib.zip"
+    },
+    {
+      "bytes": 943980,
+      "extract": false,
+      "id": "research.jitterbug.input-21",
+      "material_path": "input-21",
+      "sha256": "e2cb9a9a3171986ea64889aaa6a246ee22457bd53d29a12bf12c2a6684641c71",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/draw-lib.zip"
+    },
+    {
+      "bytes": 318497,
+      "extract": false,
+      "id": "research.jitterbug.input-22",
+      "material_path": "input-22",
+      "sha256": "c48ca1c794fb3f9c4d073538abcfd221c502b23caa0f0fe9ffed02d9fe86b4d3",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/racket-index.zip"
+    },
+    {
+      "bytes": 187997,
+      "extract": false,
+      "id": "research.jitterbug.input-23",
+      "material_path": "input-23",
+      "sha256": "8dd8b4ae5e5e84ee737355bce4c127fa99b2d2d4ec50507a1ad8dd4a485aac2e",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/future-visualizer.zip"
+    },
+    {
+      "bytes": 2618327,
+      "extract": false,
+      "id": "research.jitterbug.input-24",
+      "material_path": "input-24",
+      "sha256": "4b5f042a878c8e097d73f76a731fb392439ccabdeb40d1d540a61a9e3e84edbd",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/scribble-lib.zip"
+    },
+    {
+      "bytes": 625474,
+      "extract": false,
+      "id": "research.jitterbug.input-25",
+      "material_path": "input-25",
+      "sha256": "60d7979df506af73a0234da9b246e93d22cdcc37d055241800cff933866cc3d9",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/string-constants-lib.zip"
+    },
+    {
+      "bytes": 225752,
+      "extract": false,
+      "id": "research.jitterbug.input-26",
+      "material_path": "input-26",
+      "sha256": "f24ca230f94fe0989972d4072e7355c6b4fb9eb9d53bdda9118cc54021004a09",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/syntax-color-lib.zip"
+    },
+    {
+      "bytes": 83417,
+      "extract": false,
+      "id": "research.jitterbug.input-27",
+      "material_path": "input-27",
+      "sha256": "bfe8e4d740d409ceee7c47fc8e3faa774e169db3d6ae2c1654706e4869c43039",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/2d-lib.zip"
+    },
+    {
+      "bytes": 80103,
+      "extract": false,
+      "id": "research.jitterbug.input-28",
+      "material_path": "input-28",
+      "sha256": "6509a2493cc8982103ddeb3fa51d59545320d7c475ee160a36480cea02b84003",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/scribble-text-lib.zip"
+    },
+    {
+      "bytes": 166028,
+      "extract": false,
+      "id": "research.jitterbug.input-29",
+      "material_path": "input-29",
+      "sha256": "00821706fb3ba2269d092e15306568b6e849dd9bce0dfd5e5defbabe6a73ded3",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/zo-lib.zip"
+    },
+    {
+      "bytes": 1096230,
+      "extract": false,
+      "id": "research.jitterbug.input-30",
+      "material_path": "input-30",
+      "sha256": "a0c0951651e19ad8b025ad7b101264e0416145da00935ba8dd7296d4afc84ed4",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/srfi-lib.zip"
+    },
+    {
+      "bytes": 234448,
+      "extract": false,
+      "id": "research.jitterbug.input-31",
+      "material_path": "input-31",
+      "sha256": "0ecd202520a8ebc84191d568eab1027eaf652d86d8b0630df688b83cf31f2d7e",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/net-lib.zip"
+    },
+    {
+      "bytes": 70535,
+      "extract": false,
+      "id": "research.jitterbug.input-32",
+      "material_path": "input-32",
+      "sha256": "902cfc0b1ce1a4431af6977e93c955014434ac8adbd2fee82ec584509ffb7795",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/at-exp-lib.zip"
+    },
+    {
+      "bytes": 65206,
+      "extract": false,
+      "id": "research.jitterbug.input-33",
+      "material_path": "input-33",
+      "sha256": "8e64d268efc4596452468e350bc6f09e3c7d4199b36d7854a9e65771239fbdc0",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/simple-tree-text-markup-lib.zip"
+    },
+    {
+      "bytes": 1034140,
+      "extract": false,
+      "id": "research.jitterbug.input-34",
+      "material_path": "input-34",
+      "sha256": "0abced8fb89be4bc95a7f9092b6b8e0286a581ad9ef201238ba5dddccbcc24aa",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/images-lib.zip"
+    },
+    {
+      "bytes": 249700,
+      "extract": false,
+      "id": "research.jitterbug.input-35",
+      "material_path": "input-35",
+      "sha256": "05693301c0840e0c865b5828c3767cb0fe511a3cfc3b3e8d3a8b7a4db002477c",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/typed-racket-compatibility.zip"
+    },
+    {
+      "bytes": 80941,
+      "extract": false,
+      "id": "research.jitterbug.input-36",
+      "material_path": "input-36",
+      "sha256": "2e6c857b24eba3a3a1dd24f0aca44dfa736bfba61b3638e837c55f82e0837660",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/planet-lib.zip"
+    },
+    {
+      "bytes": 51200,
+      "extract": false,
+      "id": "research.jitterbug.input-37",
+      "material_path": "input-37",
+      "sha256": "38dd0c9b8ec031949c6913cb7a16e878301d988be26118da55b36cf7527a11d0",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/plot-compat.zip"
+    },
+    {
+      "bytes": 567388,
+      "extract": false,
+      "id": "research.jitterbug.input-38",
+      "material_path": "input-38",
+      "sha256": "a3e8447ea5cc41c866dd231d3a4ef734810a211cd04ac94195aafcdcba051736",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/pict-lib.zip"
+    },
+    {
+      "bytes": 3663950,
+      "extract": false,
+      "id": "research.jitterbug.input-39",
+      "material_path": "input-39",
+      "sha256": "734fad91302cf59afa09c1b707568e165e78c783419f817fcd5810ca789f3e9a",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/web-server-lib.zip"
+    },
+    {
+      "bytes": 729087,
+      "extract": false,
+      "id": "research.jitterbug.input-40",
+      "material_path": "input-40",
+      "sha256": "4f5959447e94198baedb233adc8615c4302e21da8a97eee75d07d58316b07797",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/compatibility-lib.zip"
+    },
+    {
+      "bytes": 208463,
+      "extract": false,
+      "id": "research.jitterbug.input-41",
+      "material_path": "input-41",
+      "sha256": "bb36d18c9d59b5d811d935884c667106ba85fef591e0ce513f86c226c1db3959",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/data-lib.zip"
+    },
+    {
+      "bytes": 24131,
+      "extract": false,
+      "id": "research.jitterbug.input-42",
+      "material_path": "input-42",
+      "sha256": "abb1bdb6b4017e202ca895046bfe7e3f7d91d2b1330a70fc08e35dd7d6227d91",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/serialize-cstruct-lib.zip"
+    },
+    {
+      "bytes": 285282,
+      "extract": false,
+      "id": "research.jitterbug.input-43",
+      "material_path": "input-43",
+      "sha256": "86029c116e1235499069e1e62c30f52523d0ac90c05cb386f6a67e0bc2e175bd",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/compiler-lib.zip"
+    },
+    {
+      "bytes": 84088,
+      "extract": false,
+      "id": "research.jitterbug.input-44",
+      "material_path": "input-44",
+      "sha256": "08dbb95b9eb22c9e31c353aeb341f3d8256637bb59fea03217ec09c41d954aae",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/xrepl-lib.zip"
+    },
+    {
+      "bytes": 203360,
+      "extract": false,
+      "id": "research.jitterbug.input-45",
+      "material_path": "input-45",
+      "sha256": "a46b7b7287b28aad4d41b658c646c9fd32d38f13653808fb6ee09103039ea6d9",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/plot-gui-lib.zip"
+    },
+    {
+      "bytes": 84098,
+      "extract": false,
+      "id": "research.jitterbug.input-46",
+      "material_path": "input-46",
+      "sha256": "67af18eb4ee6687c09b33b8d5feaab4624bc6bd6ab089efdec58d14091e8d808",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/net-cookies-lib.zip"
+    },
+    {
+      "bytes": 7449,
+      "extract": false,
+      "id": "research.jitterbug.input-47",
+      "material_path": "input-47",
+      "sha256": "ff9d080e05920ef49f26ae7a89a6107e6c63b0d2db1d4439c9a74144494ab66e",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/images-gui-lib.zip"
+    },
+    {
+      "bytes": 5703336,
+      "extract": false,
+      "id": "research.jitterbug.input-48",
+      "material_path": "input-48",
+      "sha256": "98cdbcee89552723afc9c1a8067bc5419d48d5e5a10c46abc965245062d6a634",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/typed-racket-lib.zip"
+    },
+    {
+      "bytes": 6374001,
+      "extract": false,
+      "id": "research.jitterbug.input-49",
+      "material_path": "input-49",
+      "sha256": "33506703186a9fb617bbb38ccf3f3fcba1dff04377efb2a15fcc0686632c308d",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/gui-lib.zip"
+    },
+    {
+      "bytes": 314478,
+      "extract": false,
+      "id": "research.jitterbug.input-50",
+      "material_path": "input-50",
+      "sha256": "2304c07e0beb15cb6fdff46de40bbf2703fcba009db43bc4117eeead6265d036",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/parser-tools-lib.zip"
+    },
+    {
+      "bytes": 180989,
+      "extract": false,
+      "id": "research.jitterbug.input-51",
+      "material_path": "input-51",
+      "sha256": "5b811471a00ea9d7ac7d3fae67889c82121bea3d37b24f65c4a97bb1784ce7ed",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/rackunit-lib.zip"
+    },
+    {
+      "bytes": 19332,
+      "extract": false,
+      "id": "research.jitterbug.input-52",
+      "material_path": "input-52",
+      "sha256": "a318cc2c800340ca98da3b48e9d515fab28dce7379fac4a3417d3a18300958cc",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/cext-lib.zip"
+    },
+    {
+      "bytes": 172056,
+      "extract": false,
+      "id": "research.jitterbug.input-53",
+      "material_path": "input-53",
+      "sha256": "ea8890440f563914b0567e44c4a721ecda66fce4c50c95533a9b848d735b2bae",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/data-enumerate-lib.zip"
+    },
+    {
+      "bytes": 96003,
+      "extract": false,
+      "id": "research.jitterbug.input-54",
+      "material_path": "input-54",
+      "sha256": "a6908ef6c62a7234797a3f3b4e81ac3a2327726e14d5099764d157803a0e680c",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/sasl-lib.zip"
+    },
+    {
+      "bytes": 3496072,
+      "extract": false,
+      "id": "research.jitterbug.input-55",
+      "material_path": "input-55",
+      "sha256": "33e71a7aec4560ee7df4b70abfcac3fdf2098686b1a3121511ad0471b5e18786",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/math-lib.zip"
+    },
+    {
+      "bytes": 4808,
+      "extract": false,
+      "id": "research.jitterbug.input-56",
+      "material_path": "input-56",
+      "sha256": "24dabc959cf3c92bf59373f81858732f4bb90a561b00cea43f14d601f7ed589a",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/testing-util-lib.zip"
+    },
+    {
+      "bytes": 691281,
+      "extract": false,
+      "id": "research.jitterbug.input-57",
+      "material_path": "input-57",
+      "sha256": "f359039df35196f18fed5cb0a19c0238204a3a89d02ee062e610637690b748a0",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/macro-debugger.zip"
+    },
+    {
+      "bytes": 24101,
+      "extract": false,
+      "id": "research.jitterbug.input-58",
+      "material_path": "input-58",
+      "sha256": "ee36b75f339537b2177de7ffbe45caf29140a7bb03e30626241641170f8fe857",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/option-contract-lib.zip"
+    },
+    {
+      "bytes": 78605,
+      "extract": false,
+      "id": "research.jitterbug.input-59",
+      "material_path": "input-59",
+      "sha256": "e082daaf4a8fa0d08b12560b29b59eee3761a877b22a3496a1517959cb7f86b1",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/errortrace-lib.zip"
+    },
+    {
+      "bytes": 671698,
+      "extract": false,
+      "id": "research.jitterbug.input-60",
+      "material_path": "input-60",
+      "sha256": "becf7fbd372676171a2a7c2b45da5be4906c6c5dc3b88d81466784c75a7aaee2",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/macro-debugger-text-lib.zip"
+    },
+    {
+      "bytes": 73030,
+      "extract": false,
+      "id": "research.jitterbug.input-61",
+      "material_path": "input-61",
+      "sha256": "f1c9e266964efe3a00ae94000e78feb979bb485185355b3f8f031329e1c3b76f",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/wxme-lib.zip"
+    },
+    {
+      "bytes": 57822,
+      "extract": false,
+      "id": "research.jitterbug.input-62",
+      "material_path": "input-62",
+      "sha256": "6389f52c3590e6a99a6bb64991321bc543ce4e1bde2759e9100cf49933d9eb6e",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/dynext-lib.zip"
+    },
+    {
+      "bytes": 153934,
+      "extract": false,
+      "id": "research.jitterbug.input-63",
+      "material_path": "input-63",
+      "sha256": "c37daea587755a6fcf41c6b4535909abe1d42121947fc174478aa01e02944047",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/distributed-places-lib.zip"
+    },
+    {
+      "bytes": 96424,
+      "extract": false,
+      "id": "research.jitterbug.input-64",
+      "material_path": "input-64",
+      "sha256": "e94bde3f9d34da0b61b987c306fd3b831e5a8bf658f10fda040c3dec61070c54",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/rackunit-gui.zip"
+    },
+    {
+      "bytes": 18767,
+      "extract": false,
+      "id": "research.jitterbug.input-65",
+      "material_path": "input-65",
+      "sha256": "fc81861a47b2ba7d7e9417a578b5fc40f135e26ba382b8441c5ef7af7fe2847b",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/pconvert-lib.zip"
+    },
+    {
+      "bytes": 215249,
+      "extract": false,
+      "id": "research.jitterbug.input-66",
+      "material_path": "input-66",
+      "sha256": "9d9ea04dbf541aead6fa120926ec8d6b13bf19d0487d601b0d878b30ae4757ea",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/srfi-lite-lib.zip"
+    },
+    {
+      "bytes": 4135208,
+      "extract": false,
+      "id": "research.jitterbug.input-67",
+      "material_path": "input-67",
+      "sha256": "97a58217c4db9c25826887b3bc77d375551d6a52b3117fcdaf4b32405bce4bfe",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/plot-lib.zip"
+    },
+    {
+      "bytes": 62428,
+      "extract": false,
+      "id": "research.jitterbug.input-68",
+      "material_path": "input-68",
+      "sha256": "d8c342cd8e8cc203e2a217ae15269f6824945add5d5deb0b96df603db3485764",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/sandbox-lib.zip"
+    },
+    {
+      "bytes": 7107,
+      "extract": false,
+      "id": "research.jitterbug.input-69",
+      "material_path": "input-69",
+      "sha256": "881091288679bd8c72616765560b6b85192af1d8c07ae622a984ffdeb878f5f6",
+      "strip_root": false,
+      "url": "https://download.racket-lang.org/releases/8.9/pkgs/source-syntax.zip"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/uw-unsat/jitterbug"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages check research.jitterbug",
+        "description": "Run the declared bounded proof"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Frozen proof profile",
+        "path": "{prefix}/provenance/profile-lock.json",
+        "purpose": "Identity and scope of original verifier inputs"
+      }
+    ],
+    "notes": [
+      "The declared profile fixes instruction register names only; register values remain symbolic.",
+      "The separate full default-register positive proof passed; its later negative run was interrupted, so full-domain negative qualification is not claimed.",
+      "Pinned Racket 8.9 CS, Rosette, Serval and Rosette's required Z3 4.8.8 are private to the prefix. Optional documentation omissions are recorded."
+    ],
+    "summary": "RV64 BPF_ALU/BPF_ADD/BPF_X, dst=r0 and src=r1 with arbitrary symbolic operands and unchanged upstream preconditions; original author bug 1e692f09e091 replay."
+  },
+  "version": "git.78d1e75ad506498b585fbac66985ff9d9d05952d"
+}

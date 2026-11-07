@@ -1,0 +1,153 @@
+{
+  "build": "worker067-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "lingodb.task-acceptance",
+      "kind": "functional",
+      "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "lingodb",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "benchmark_qualification": null,
+    "dataset_qualification": null,
+    "dependency_contract": "Embedded dependency locks plus explicit host commands and ELF checks",
+    "dependency_notes": [],
+    "license_notes": [
+      "MIT project; retained upstream third-party notices; see the source lock for the explicit static-component provenance boundary."
+    ],
+    "official_baseline_promoted": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Official Linux x86_64 CLI v0.0.5; DEFAULT execution mode retaining the IR verifier; fixed two-table join/filter/group/order with duplicates and NULL; actual compiler IR stages and SQLite result oracle",
+    "record_id": "review.engineering.lingodb",
+    "source_pins": [
+      {
+        "commit_evidence": "PAX global comment embedded by the official GitHub codeload source archive",
+        "execution_mode": "DEFAULT",
+        "inputs": [
+          {
+            "bytes": 48900168,
+            "file": "lingodb-cli.zip",
+            "payload_file": "source-archives/lingodb-cli.zip",
+            "sha256": "db537c111d30e74d9094601d6525c13654887feb152f3eb4c766bb8764cf8721",
+            "url": "https://github.com/lingo-db/lingo-db/releases/download/v0.0.5/lingodb-cli-linux-amd64.zip"
+          },
+          {
+            "bytes": 3334285,
+            "file": "lingodb-source.tar.gz",
+            "payload_file": "source-archives/lingodb-v0.0.5.tar.gz",
+            "sha256": "5f28bf8c397a203015304ebf594879d89e3374aeaf9a52fe80bc7b68c7456c55",
+            "url": "https://codeload.github.com/lingo-db/lingo-db/tar.gz/refs/tags/v0.0.5"
+          }
+        ],
+        "ir_verifier_enabled_by_default_pipeline": true,
+        "license": "MIT with bundled third-party licenses in the full source",
+        "rebuild_qualification": false,
+        "resource": "lingodb",
+        "runtime_sha256": "547a3d3f49d2e2c4f14f43a621abb787e367fe07a0749d2b3e3496971d7863bd",
+        "runtime_system_dependencies": [
+          "ELF x86_64 glibc loader",
+          "libc.so.6",
+          "libpthread.so.0",
+          "libdl.so.2",
+          "librt.so.1",
+          "libm.so.6",
+          "libatomic.so.1",
+          "libstdc++.so.6",
+          "libgcc_s.so.1"
+        ],
+        "source_archive_commit": "0b46e983587b9509861746b642670ee28700bb91",
+        "source_commit": "0b46e983587b9509861746b642670ee28700bb91",
+        "static_component_boundary": "Official release executable. The pinned source build configuration requires Arrow 24 and LLVM/MLIR/Clang 20.1; exact static component versions inside the prebuilt ELF were not independently reconstructed.",
+        "upstream": "https://github.com/lingo-db/lingo-db",
+        "version": "0.0.5"
+      }
+    ],
+    "worker_id": "worker 067"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/check.py"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "CARGO_NET_OFFLINE": "true",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 48900168,
+      "extract": false,
+      "id": "lingodb.input0",
+      "material_path": "upstream/lingodb-cli.zip",
+      "sha256": "db537c111d30e74d9094601d6525c13654887feb152f3eb4c766bb8764cf8721",
+      "strip_root": false,
+      "url": "https://github.com/lingo-db/lingo-db/releases/download/v0.0.5/lingodb-cli-linux-amd64.zip"
+    },
+    {
+      "bytes": 3334285,
+      "extract": false,
+      "id": "lingodb.input1",
+      "material_path": "upstream/lingodb-v0.0.5.tar.gz",
+      "sha256": "5f28bf8c397a203015304ebf594879d89e3374aeaf9a52fe80bc7b68c7456c55",
+      "strip_root": false,
+      "url": "https://codeload.github.com/lingo-db/lingo-db/tar.gz/refs/tags/v0.0.5"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/lingo-db/lingo-db",
+      "https://www.lingo-db.com/"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/check.py --prefix {prefix}",
+        "description": "Replay the task acceptance"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed resource",
+        "path": "{prefix}",
+        "purpose": "Locked sources, runtime, query examples and replay checks"
+      }
+    ],
+    "notes": [
+      "Official release executable and complete pinned project source are supplied; a full LLVM/Arrow/LingoDB source rebuild is not claimed.",
+      "Reference source commit 0b46e983587b9509861746b642670ee28700bb91; exact static LLVM/Arrow versions inside the official ELF have not been independently reconstructed.",
+      "Host GNU C/C++ runtime plus libatomic.so.1 are required and are checked through actual ELF dependency resolution.",
+      "DEFAULT pipeline retains the IR verifier; earlier CHEAP exploration is not used as final qualification."
+    ],
+    "summary": "Actual SQL to inspected MLIR stages and native execution against SQLite"
+  },
+  "version": "0.0.5"
+}

@@ -1,0 +1,354 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/guarded_check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/profile"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional-profile",
+      "kind": "functional",
+      "stdout_regex": "CPG_CHECK_PASS",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.jvm-asm",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "functional_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualifications": {
+      "dataset": null,
+      "oci": false,
+      "official_benchmark": false,
+      "physical_hardware": false
+    },
+    "record_id": "review.engineering.jvm-asm",
+    "resource_metadata": {
+      "build_claim": false,
+      "compiler_license": "EPL-2.0; source JAR retained",
+      "description": "构造并改写Java方法字节码；CheckClassAdapter与JVM均接受合法输出并拒绝非法栈类型，运行得到1→5。",
+      "functional_claim": true,
+      "id": "research.jvm-asm",
+      "limitations": [
+        "仅覆盖随包小型功能profile，不代表上游全部测试或任意字节码变换正确。",
+        "Java17或更新JRE为宿主条件；探针编译使用随包ECJ3.37.0，目标classfile为Java8/major52。",
+        "上游库采用锁定官方Maven二进制；本轮从源码编译的是探针，没有声明从源码重建上游库。"
+      ],
+      "method": "binary",
+      "probe_build": "bundled ECJ compiles probe sources on each offline check",
+      "recipe_files": [],
+      "record_id": "review.engineering.jvm-asm",
+      "required_runtime_commands": [
+        "python3",
+        "java"
+      ],
+      "source_locks": [
+        {
+          "bytes": 131138,
+          "id": "asm-9.11.1.jar",
+          "path": "lib/asm-9.11.1.jar",
+          "sha256": "ae4e6e10d59d0a1500317764b21881ad883f8550e33c66e6142f7032c6fb566c",
+          "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.11.1/asm-9.11.1.jar"
+        },
+        {
+          "bytes": 39657,
+          "id": "asm-analysis-9.11.1.jar",
+          "path": "lib/asm-analysis-9.11.1.jar",
+          "sha256": "3a91769287d0a186333d6e384e5d4eec37e4b8f705dcf920ff4aea4cc452fac2",
+          "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.11.1/asm-analysis-9.11.1.jar"
+        },
+        {
+          "bytes": 51957,
+          "id": "asm-tree-9.11.1.jar",
+          "path": "lib/asm-tree-9.11.1.jar",
+          "sha256": "2b15c3c1b288a9fad3bb2cd6d988ba9521554914ed1f2a2029141fa3f483154a",
+          "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.11.1/asm-tree-9.11.1.jar"
+        },
+        {
+          "bytes": 98085,
+          "id": "asm-util-9.11.1.jar",
+          "path": "lib/asm-util-9.11.1.jar",
+          "sha256": "23fdffacdfc38f447cbd8b80e058f462451fa5d4709e437067d530fa6513579d",
+          "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-util/9.11.1/asm-util-9.11.1.jar"
+        },
+        {
+          "bytes": 3257207,
+          "id": "ecj-3.37.0.jar",
+          "path": "tools/ecj-3.37.0.jar",
+          "sha256": "cde026ff966b48b5e5f148b6f041ceff3cf4f85cf75155f4ec0f40e4ee14b545",
+          "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.37.0/ecj-3.37.0.jar"
+        },
+        {
+          "bytes": 193283,
+          "id": "asm-9.11.1-sources.jar",
+          "path": "upstream/asm-9.11.1-sources.jar",
+          "sha256": "3cfc56ad047260d8ccff50cd55af8922a9c9e2b0439c6eba801dbfaf0870a3ae",
+          "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.11.1/asm-9.11.1-sources.jar"
+        },
+        {
+          "bytes": 2373,
+          "id": "asm-9.11.1.pom",
+          "path": "upstream/asm-9.11.1.pom",
+          "sha256": "11fbc3d89590bf8a8c76012d4588aa03aacf54fbacfbe94b1e765a77f86c219a",
+          "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.11.1/asm-9.11.1.pom"
+        },
+        {
+          "bytes": 48747,
+          "id": "asm-analysis-9.11.1-sources.jar",
+          "path": "upstream/asm-analysis-9.11.1-sources.jar",
+          "sha256": "44341d32582772e438aea69c4a5a3b060fda1d5004e93e4f09857bc548ab7c14",
+          "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.11.1/asm-analysis-9.11.1-sources.jar"
+        },
+        {
+          "bytes": 2627,
+          "id": "asm-analysis-9.11.1.pom",
+          "path": "upstream/asm-analysis-9.11.1.pom",
+          "sha256": "b5674a6a68018bb99b7b41e2cc39e5ecfa66cb5eab0f921821e5dabe6d416be1",
+          "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.11.1/asm-analysis-9.11.1.pom"
+        },
+        {
+          "bytes": 76684,
+          "id": "asm-tree-9.11.1-sources.jar",
+          "path": "upstream/asm-tree-9.11.1-sources.jar",
+          "sha256": "203604136ea5f116a261aa10a415d25a8e74897749c128e532853ec4a748c572",
+          "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.11.1/asm-tree-9.11.1-sources.jar"
+        },
+        {
+          "bytes": 2598,
+          "id": "asm-tree-9.11.1.pom",
+          "path": "upstream/asm-tree-9.11.1.pom",
+          "sha256": "c3725048603f7c9c6891c252b95a5585320aa821a1e3c08ec00826c0b97d5ff7",
+          "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.11.1/asm-tree-9.11.1.pom"
+        },
+        {
+          "bytes": 89626,
+          "id": "asm-util-9.11.1-sources.jar",
+          "path": "upstream/asm-util-9.11.1-sources.jar",
+          "sha256": "cf9be492118a6c8e2ebf8ec7f2389eb904b21eef0d8419897c7e7ed93aafc244",
+          "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-util/9.11.1/asm-util-9.11.1-sources.jar"
+        },
+        {
+          "bytes": 2950,
+          "id": "asm-util-9.11.1.pom",
+          "path": "upstream/asm-util-9.11.1.pom",
+          "sha256": "cbe4ff6d2c48c43f7f9a78a4f09222642bbf4da9d8060a42d290ad046182ad50",
+          "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-util/9.11.1/asm-util-9.11.1.pom"
+        },
+        {
+          "bytes": 2347993,
+          "id": "ecj-3.37.0-sources.jar",
+          "path": "upstream/ecj-3.37.0-sources.jar",
+          "sha256": "89fed1614e4aa2f10f1e8b34b0e4a7cff6e95999e4b9660eb451101b859d1387",
+          "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.37.0/ecj-3.37.0-sources.jar"
+        },
+        {
+          "bytes": 1316,
+          "id": "ecj-3.37.0.pom",
+          "path": "upstream/ecj-3.37.0.pom",
+          "sha256": "521bcc0d7484f3a31a9dbf0812799a310a046ab650e0f9ced9c709f47bb3b86b",
+          "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.37.0/ecj-3.37.0.pom"
+        }
+      ],
+      "upstream_license": "BSD-3-Clause",
+      "version": "9.11.1"
+    },
+    "source_build_claim": false,
+    "support_only": false,
+    "upstream_license": "BSD-3-Clause",
+    "worker_id": "worker 062"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "java"
+    ],
+    "runtime_environment": {
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 131138,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "lib/asm-9.11.1.jar",
+      "sha256": "ae4e6e10d59d0a1500317764b21881ad883f8550e33c66e6142f7032c6fb566c",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.11.1/asm-9.11.1.jar"
+    },
+    {
+      "bytes": 39657,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "lib/asm-analysis-9.11.1.jar",
+      "sha256": "3a91769287d0a186333d6e384e5d4eec37e4b8f705dcf920ff4aea4cc452fac2",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.11.1/asm-analysis-9.11.1.jar"
+    },
+    {
+      "bytes": 51957,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "lib/asm-tree-9.11.1.jar",
+      "sha256": "2b15c3c1b288a9fad3bb2cd6d988ba9521554914ed1f2a2029141fa3f483154a",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.11.1/asm-tree-9.11.1.jar"
+    },
+    {
+      "bytes": 98085,
+      "extract": false,
+      "id": "input-004",
+      "material_path": "lib/asm-util-9.11.1.jar",
+      "sha256": "23fdffacdfc38f447cbd8b80e058f462451fa5d4709e437067d530fa6513579d",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-util/9.11.1/asm-util-9.11.1.jar"
+    },
+    {
+      "bytes": 3257207,
+      "extract": false,
+      "id": "input-005",
+      "material_path": "tools/ecj-3.37.0.jar",
+      "sha256": "cde026ff966b48b5e5f148b6f041ceff3cf4f85cf75155f4ec0f40e4ee14b545",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.37.0/ecj-3.37.0.jar"
+    },
+    {
+      "bytes": 193283,
+      "extract": false,
+      "id": "input-006",
+      "material_path": "upstream/asm-9.11.1-sources.jar",
+      "sha256": "3cfc56ad047260d8ccff50cd55af8922a9c9e2b0439c6eba801dbfaf0870a3ae",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.11.1/asm-9.11.1-sources.jar"
+    },
+    {
+      "bytes": 2373,
+      "extract": false,
+      "id": "input-007",
+      "material_path": "upstream/asm-9.11.1.pom",
+      "sha256": "11fbc3d89590bf8a8c76012d4588aa03aacf54fbacfbe94b1e765a77f86c219a",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.11.1/asm-9.11.1.pom"
+    },
+    {
+      "bytes": 48747,
+      "extract": false,
+      "id": "input-008",
+      "material_path": "upstream/asm-analysis-9.11.1-sources.jar",
+      "sha256": "44341d32582772e438aea69c4a5a3b060fda1d5004e93e4f09857bc548ab7c14",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.11.1/asm-analysis-9.11.1-sources.jar"
+    },
+    {
+      "bytes": 2627,
+      "extract": false,
+      "id": "input-009",
+      "material_path": "upstream/asm-analysis-9.11.1.pom",
+      "sha256": "b5674a6a68018bb99b7b41e2cc39e5ecfa66cb5eab0f921821e5dabe6d416be1",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.11.1/asm-analysis-9.11.1.pom"
+    },
+    {
+      "bytes": 76684,
+      "extract": false,
+      "id": "input-010",
+      "material_path": "upstream/asm-tree-9.11.1-sources.jar",
+      "sha256": "203604136ea5f116a261aa10a415d25a8e74897749c128e532853ec4a748c572",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.11.1/asm-tree-9.11.1-sources.jar"
+    },
+    {
+      "bytes": 2598,
+      "extract": false,
+      "id": "input-011",
+      "material_path": "upstream/asm-tree-9.11.1.pom",
+      "sha256": "c3725048603f7c9c6891c252b95a5585320aa821a1e3c08ec00826c0b97d5ff7",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.11.1/asm-tree-9.11.1.pom"
+    },
+    {
+      "bytes": 89626,
+      "extract": false,
+      "id": "input-012",
+      "material_path": "upstream/asm-util-9.11.1-sources.jar",
+      "sha256": "cf9be492118a6c8e2ebf8ec7f2389eb904b21eef0d8419897c7e7ed93aafc244",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-util/9.11.1/asm-util-9.11.1-sources.jar"
+    },
+    {
+      "bytes": 2950,
+      "extract": false,
+      "id": "input-013",
+      "material_path": "upstream/asm-util-9.11.1.pom",
+      "sha256": "cbe4ff6d2c48c43f7f9a78a4f09222642bbf4da9d8060a42d290ad046182ad50",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-util/9.11.1/asm-util-9.11.1.pom"
+    },
+    {
+      "bytes": 2347993,
+      "extract": false,
+      "id": "input-014",
+      "material_path": "upstream/ecj-3.37.0-sources.jar",
+      "sha256": "89fed1614e4aa2f10f1e8b34b0e4a7cff6e95999e4b9660eb451101b859d1387",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.37.0/ecj-3.37.0-sources.jar"
+    },
+    {
+      "bytes": 1316,
+      "extract": false,
+      "id": "input-015",
+      "material_path": "upstream/ecj-3.37.0.pom",
+      "sha256": "521bcc0d7484f3a31a9dbf0812799a310a046ab650e0f9ced9c709f47bb3b86b",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.37.0/ecj-3.37.0.pom"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://asm.ow2.io/"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"research.jvm-asm\")",
+        "description": "Run the declared checks through the CPG Python API"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed payload",
+        "path": "{prefix}",
+        "purpose": "Locked resources and bounded offline check inputs"
+      }
+    ],
+    "notes": [
+      "仅覆盖随包小型功能profile，不代表上游全部测试或任意字节码变换正确。",
+      "Java17或更新JRE为宿主条件；探针编译使用随包ECJ3.37.0，目标classfile为Java8/major52。",
+      "上游库采用锁定官方Maven二进制；本轮从源码编译的是探针，没有声明从源码重建上游库。"
+    ],
+    "summary": "改写方法字节码并通过CheckClassAdapter与JVM执行"
+  },
+  "version": "9.11.1"
+}

@@ -1,0 +1,81 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/run_check.py",
+        "--output-root",
+        "{build}/proof-results",
+        "--",
+        "python3",
+        "{prefix}/check.py",
+        "--runtime",
+        "{dependency_prefix:support.proof-hol4}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "kernel-helper-properties-and-wrong-assertion",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "support.proof-hol4"
+    ],
+    "system": []
+  },
+  "id": "verification.hol4",
+  "metadata": {
+    "CakeML_commit": "2c8abfe53676cb4d1576174d5854a6de55e62e55",
+    "HOL4_commit": "9783a49979c94c401ff8c0e51b2eefae7ea95ae3",
+    "baseline_version": "0.21.14",
+    "formal_qualification_changed": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "prepack_evidence_sha256": "7dbf8f7730cd5211503dedb544aa3208532bea4ecd7b290b9687d2cf5886c232",
+    "record_id": "review.verification.hol4",
+    "support_only": false,
+    "trust_scope": "Audited HOL foundational axioms and DISK_THM imports; no full CakeML compiler-bootstrap qualification",
+    "worker_id": "worker 102"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{dependency_prefix:support.proof-hol4}/polyml/x86_64-linux"
+    }
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://codeload.github.com/HOL-Theorem-Prover/HOL/tar.gz/9783a49979c94c401ff8c0e51b2eefae7ea95ae3",
+      "https://codeload.github.com/CakeML/cakeml/tar.gz/2c8abfe53676cb4d1576174d5854a6de55e62e55",
+      "https://proofcraft.systems/isabelle/dist/contrib/polyml-5.9.2-6.tar.gz"
+    ],
+    "examples": [],
+    "locations": [],
+    "notes": [
+      "CPG 0.21.14 candidate overlay; formal baseline qualification is unchanged.",
+      "All generated proof files belong in an independent output directory."
+    ],
+    "summary": "Pinned original CakeML namespace semantic helper plus eight kernel-proved properties; 98 theorem/definition records, four inherited HOL axioms, DISK_THM explicitly retained; wrong assertion must fail"
+  },
+  "version": "HOL4-9783a49979c94c401ff8c0e51b2eefae7ea95ae3_CakeML-2c8abfe53676cb4d1576174d5854a6de55e62e55"
+}

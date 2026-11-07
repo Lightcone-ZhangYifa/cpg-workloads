@@ -1,0 +1,138 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/driver.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--recipe",
+        "{recipe}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "official-rules-and-theorem",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 720
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.alive-in-lean",
+  "metadata": {
+    "new_candidate": true,
+    "original_1862_unchanged": true,
+    "pins": {
+      "Lean": "3.4.2 / cbd2b6686ddb",
+      "Z3": "4.8.7",
+      "mathlib": "019b2364cadb1dd8b30c9f13c602d61c19d3b6ea",
+      "smt2_interface": "7ff0ce248b68ea4db2a2d4966a97b5786da05ed7"
+    },
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Original Lean 3.4.2 verifier: official opt001 SAT/Incorrect and opt002 UNSAT/Correct; compiled refinement theorem with upstream admitted overflow lemmas retained.",
+    "record_id": "review.verification.alive-in-lean",
+    "source_commit": "4b739dd6e4266b26a045613849df221374119871",
+    "source_rebuild_qualification": "successful initial elaboration; fresh repeats interrupted",
+    "upstream_admitted_overflow_lemmas": 4,
+    "worker_id": "worker 110"
+  },
+  "provider": "source",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 88596,
+      "extract": false,
+      "id": "research.alive-in-lean.input-1",
+      "material_path": "raw/AliveInLean-4b739dd6e4266b26a045613849df221374119871.tar.gz",
+      "sha256": "b630cdb7b9cee0e18ee6125d7cc1bb8185cd1d82b44cdf3fe742c72f64896740",
+      "strip_root": false,
+      "url": "https://codeload.github.com/microsoft/AliveInLean/tar.gz/4b739dd6e4266b26a045613849df221374119871"
+    },
+    {
+      "bytes": 15286762,
+      "extract": false,
+      "id": "research.alive-in-lean.input-2",
+      "material_path": "raw/lean-3.4.2-linux.tar.gz",
+      "sha256": "ba8a97b3e8f28dad50900a55e488579f2a26923eb0c4c40342120457c136d165",
+      "strip_root": false,
+      "url": "https://github.com/leanprover/lean3/releases/download/v3.4.2/lean-3.4.2-linux.tar.gz"
+    },
+    {
+      "bytes": 1001962,
+      "extract": false,
+      "id": "research.alive-in-lean.input-3",
+      "material_path": "raw/mathlib-019b2364cadb1dd8b30c9f13c602d61c19d3b6ea.tar.gz",
+      "sha256": "0117b726a36406fa4df6b5266503fb8efd0eb389c71f09f87fe425f609d7de33",
+      "strip_root": false,
+      "url": "https://codeload.github.com/leanprover/mathlib/tar.gz/019b2364cadb1dd8b30c9f13c602d61c19d3b6ea"
+    },
+    {
+      "bytes": 15975,
+      "extract": false,
+      "id": "research.alive-in-lean.input-4",
+      "material_path": "raw/smt2_interface-7ff0ce248b68ea4db2a2d4966a97b5786da05ed7.tar.gz",
+      "sha256": "f30a7d964f462f24def90fdc08d9c834ec23c065ee187da04692127281c0a102",
+      "strip_root": false,
+      "url": "https://codeload.github.com/leanprover/smt2_interface/tar.gz/7ff0ce248b68ea4db2a2d4966a97b5786da05ed7"
+    },
+    {
+      "bytes": 36873916,
+      "extract": false,
+      "id": "research.alive-in-lean.input-5",
+      "material_path": "raw/z3-4.8.7-x64-ubuntu-16.04.zip",
+      "sha256": "fcde3273ba88e291fe93db4b9d39957274700caeebba8aefbae28796da0dc0b7",
+      "strip_root": false,
+      "url": "https://github.com/Z3Prover/z3/releases/download/z3-4.8.7/z3-4.8.7-x64-ubuntu-16.04.zip"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/microsoft/AliveInLean"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages check research.alive-in-lean",
+        "description": "Replay rules and theorem"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Lean compiler",
+        "path": "{prefix}/tools/lean/bin/lean",
+        "purpose": "Pinned original Lean 3.4.2"
+      },
+      {
+        "label": "Verifier source",
+        "path": "{prefix}/project/src",
+        "purpose": "Unmodified upstream Lean sources with compiled modules"
+      }
+    ],
+    "notes": [
+      "The theorem reports propext, classical.choice, quot.sound, and [sorry]. Four upstream overflow lemmas remain admitted.",
+      "Source elaboration succeeded in preparation; subsequent fresh rebuilds were interrupted by shared-host resource limits. The delivered binary runtime is tested independently.",
+      "No proof of SMT-solver soundness or arbitrary LLVM program equivalence is claimed."
+    ],
+    "summary": "Original Lean 3.4.2 verifier: official opt001 SAT/Incorrect and opt002 UNSAT/Correct; compiled refinement theorem with upstream admitted overflow lemmas retained."
+  },
+  "version": "git.4b739dd6e4266b26a045613849df221374119871"
+}

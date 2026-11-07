@@ -1,0 +1,266 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 63863514,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/bazel",
+      "sha256": "7ff2b6a675b59a791d007c526977d5262ade8fa52efc8e0d1ff9e18859909fc0"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/bazel"
+    },
+    {
+      "bytes": 11358,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/bazel/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "bytes": 249,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/bazel/fixture-lock.json",
+      "sha256": "f046f81f63f4e0639f7350a98e9a022fc599356d37aa700248eb75facee2cb7a"
+    },
+    {
+      "bytes": 33657647,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/bazel/fixture.tar.gz",
+      "sha256": "0c69334292162b29f335fd26e9cde51bb2ec72543ed1bfe70b982395103470fc"
+    },
+    {
+      "bytes": 91,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/bazel/upstream.sha256",
+      "sha256": "0a75633a2b8f608020a05583554fec98ef6aa25eb5a915b4cc18bdf989a06c41"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 249,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/fixture-lock.json",
+      "sha256": "f046f81f63f4e0639f7350a98e9a022fc599356d37aa700248eb75facee2cb7a"
+    },
+    {
+      "bytes": 2649,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/offline_exec.py",
+      "sha256": "600020bddaf4a66a8a80e6cfece4b546bf6a885c19ebdda12e689451ba04bd34"
+    },
+    {
+      "bytes": 915,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/primary-input-lock.json",
+      "sha256": "8717ff2f9c560371cefda9b6b7c397d7cf7828c226add0d6dfbb2808509cfefb"
+    },
+    {
+      "bytes": 25640,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/worker028-check.py",
+      "sha256": "54a215fff3686ac5d030238cb9df30279832c2b52bbacd3e687ac4af5d1b3b8a"
+    }
+  ],
+  "inventory_sha256": "ee432666922e938d26eb02d65cbb49547d0115ded4779efc8edb1339a5cb5db7",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "12176447a6d9b791c678d275b06db807bd1f1d4578552d842be137dd986a316a",
+  "method": "binary",
+  "package": {
+    "build": "worker028-v002",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/offline_exec.py",
+          "--",
+          "python3",
+          "{recipe}/worker028-check.py",
+          "--case",
+          "bazel",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "worker028-assignment-acceptance",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 1800
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "bazel",
+    "metadata": {
+      "baseline_relation": "new independent resource; original 1862 baseline unchanged",
+      "catalog": {
+        "archive_bytes": 63863514,
+        "category": [
+          "Compiler development",
+          "Build and continuous integration"
+        ],
+        "dependencies": [],
+        "extract": false,
+        "id": "bazel",
+        "kind": "native_bundle",
+        "license_id": "Apache-2.0",
+        "mandatory": false,
+        "material_path": "sources/bazel",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "多语言toolchain描述、依赖图、缓存/远程执行接口",
+        "qualification_scope": "锁Bazel/modules/toolchain，对小多语言项目离线build/test与重建",
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "7ff2b6a675b59a791d007c526977d5262ade8fa52efc8e0d1ff9e18859909fc0",
+        "source_url": "https://github.com/bazelbuild/bazel/releases/download/8.2.1/bazel-8.2.1-linux-x86_64",
+        "strip_archive_root": false,
+        "title": "Bazel",
+        "upstream": "https://bazel.build/",
+        "version": "8.2.1"
+      },
+      "catalog_sha256": "bac70fe841f232110bb66decd8027edf7f150f5085e297e5f8d82fc9c4dc0566",
+      "host_requirements": {
+        "libseccomp": "required by the no-network acceptance runner",
+        "platform": "Linux x86_64",
+        "python": "3.12 for frozen wheels; 3.12 checker validated"
+      },
+      "license_id": "Apache-2.0",
+      "packaging_fix": {
+        "evidence": "evidence/bazel-packaging-fix",
+        "reason": "A residual directory-only fixture tree previously shadowed the complete archived fixture. The archive is now authoritative and its size/SHA and restored key inputs are checked.",
+        "source_identity_unchanged": true,
+        "superseded_artifact_sha256": "7ae2e3dda25fd29c7a6780a1671751e1422433ca51b6228f44d1cb6c17e6f079"
+      },
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "锁Bazel/modules/toolchain，对小多语言项目离线build/test与重建",
+      "record_id": "review.engineering.bazel",
+      "source_compile_qualified": false,
+      "worker_id": "worker 028"
+    },
+    "provider": "binary",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [],
+      "network_policy": "offline installation and acceptance via seccomp; preparation is a separate networked phase",
+      "required_installed_paths": [
+        "{prefix}/bin/bazel"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "gcc",
+        "g++",
+        "ar",
+        "ld",
+        "as",
+        "bash"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C.UTF-8",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONNOUSERSITE": "1"
+      },
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 63863514,
+        "extract": false,
+        "id": "bazel",
+        "material_path": "sources/bazel",
+        "sha256": "7ff2b6a675b59a791d007c526977d5262ade8fa52efc8e0d1ff9e18859909fc0",
+        "strip_root": false,
+        "url": "https://github.com/bazelbuild/bazel/releases/download/8.2.1/bazel-8.2.1-linux-x86_64"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Use the selected {prefix}/bin explicitly, or add it to PATH."
+      ],
+      "documentation": [
+        "https://bazel.build/"
+      ],
+      "examples": [
+        {
+          "command": "python3 {recipe}/offline_exec.py -- python3 {recipe}/worker028-check.py --case bazel --prefix {prefix} --build {build}",
+          "description": "Replay the concrete assignment acceptance case"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Installed resource",
+          "path": "{prefix}",
+          "purpose": "Independent relocatable installation with retained license notices"
+        }
+      ],
+      "notes": [
+        "The archived C/C++/shell fixture vendors all pinned modules and registry metadata. Acceptance uses --batch, an empty repository cache and offline lockfile enforcement.",
+        "Toolchain lock describes the exact tested GCC/binutils host bytes; the resource does not bundle an entire operating-system SDK. A changed toolchain must receive its own reviewed lock.",
+        "Runtime compatibility is defined by actual architecture, ELF/GLIBC requirements and explicit host commands, not a distribution-name gate.",
+        "The Linux acceptance guard needs libseccomp; it denies fresh AF_INET and AF_INET6 sockets to the checker and all descendants. No OCI or physical-target qualification is claimed."
+      ],
+      "summary": "多语言toolchain描述、依赖图、缓存/远程执行接口"
+    },
+    "version": "8.2.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "plan": "cpg-resource-research-20261101-v1",
+    "repair": "Residual directory-only fixture no longer shadows complete hashed archive; see evidence/bazel-packaging-fix",
+    "superseded_sha256": "7ae2e3dda25fd29c7a6780a1671751e1422433ca51b6228f44d1cb6c17e6f079",
+    "worker": "worker 028"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

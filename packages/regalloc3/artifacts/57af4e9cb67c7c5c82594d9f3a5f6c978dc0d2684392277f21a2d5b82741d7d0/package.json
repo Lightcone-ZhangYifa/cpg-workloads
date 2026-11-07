@@ -1,0 +1,117 @@
+{
+  "build": "20261101-worker015-v1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/share/compiler-playground/regalloc3/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "requires_paths": [
+        "{prefix}/share/compiler-playground/regalloc3/check.py"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "regalloc3",
+  "metadata": {
+    "license_id": "MIT OR Apache-2.0",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": {
+      "cfg_blocks": 2,
+      "physical_registers": 3,
+      "reloads": 6,
+      "resource_id": "regalloc3",
+      "revision": "1b98bce1cd32b8edfb4bf8f807a929d8d5b17393",
+      "scope": "experimental allocator at pinned commit; no claim of replacing regalloc2",
+      "spill_area_bytes": 48,
+      "spills": 6,
+      "spills_forced": true,
+      "status": "passed",
+      "undefined_use_rejected": true,
+      "upstream_checker": true,
+      "upstream_test_counts": [
+        0,
+        2
+      ],
+      "virtual_values": 15
+    },
+    "record_id": "review.engineering.regalloc3",
+    "source_archive_sha256": "ed8d1c68d757fd0bb1360f5ad7a9ec0d4090c0b0ea329041b548bfacfabcc84f",
+    "upstream_revision": "1b98bce1cd32b8edfb4bf8f807a929d8d5b17393",
+    "worker_id": "worker 015"
+  },
+  "provider": "source",
+  "recipe": {
+    "required_host_commands": [
+      "python3"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "state": "native-source-build-and-bounded-functional-verified"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 216611,
+      "extract": true,
+      "id": "regalloc3",
+      "material_path": "sources/regalloc3",
+      "sha256": "ed8d1c68d757fd0bb1360f5ad7a9ec0d4090c0b0ea329041b548bfacfabcc84f",
+      "strip_root": true,
+      "url": "https://codeload.github.com/Amanieu/regalloc3/tar.gz/1b98bce1cd32b8edfb4bf8f807a929d8d5b17393"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/Amanieu/regalloc3"
+    ],
+    "examples": [
+      {
+        "command": "python3 \"{prefix}/share/compiler-playground/regalloc3/check.py\" --prefix \"{prefix}\"",
+        "description": "Run the prefix-contained functional validation"
+      }
+    ],
+    "locations": [
+      {
+        "label": "regalloc3 executables",
+        "path": "{prefix}/bin",
+        "purpose": "Experimental register allocator and CLI; controlled spills and upstream checker"
+      },
+      {
+        "label": "Pinned source archive",
+        "path": "{prefix}/share/source",
+        "purpose": "Inspect original compiler source and exact revision lock."
+      }
+    ],
+    "notes": [
+      "The native binary was built on Ubuntu 24.04 x86_64; this is reference build metadata, not a distribution restriction.",
+      "Full offline source and dependency replay is supplied by the worker015 delta. This package carries the exact upstream source archive.",
+      "Only the recorded bounded native checks are qualified; no OCI, hardware or official benchmark claim."
+    ],
+    "summary": "Experimental register allocator and CLI; controlled spills and upstream checker"
+  },
+  "version": "0.1.0"
+}

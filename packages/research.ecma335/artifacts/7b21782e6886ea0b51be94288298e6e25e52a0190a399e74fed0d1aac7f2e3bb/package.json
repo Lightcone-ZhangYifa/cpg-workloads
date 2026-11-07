@@ -1,0 +1,141 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/guarded_check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/profile"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "locked-material-index",
+      "kind": "availability",
+      "stdout_regex": "CPG_CHECK_PASS",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.ecma335",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "functional_claim": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualifications": {
+      "dataset": null,
+      "oci": false,
+      "official_benchmark": false,
+      "physical_hardware": false
+    },
+    "record_id": "review.engineering.ecma335",
+    "resource_metadata": {
+      "build_claim": false,
+      "functional_claim": false,
+      "id": "research.ecma335",
+      "limitations": [
+        "完整官方PDF/XML与自编索引；无可执行编译器功能资格。",
+        "附录OPDEF含保留/内部编码且有六个规范指令缺项；第III部分规范索引与附录参考表分列。",
+        "官方XML成员名CLILibraryTypes.xml原样保留。"
+      ],
+      "method": "material",
+      "recipe_files": [],
+      "record_id": "review.engineering.ecma335",
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "source_locks": [
+        {
+          "bytes": 4982145,
+          "id": "ECMA-335_6th_edition_june_2012.pdf",
+          "path": "upstream/ECMA-335_6th_edition_june_2012.pdf",
+          "sha256": "8c1decf6d482f020776a12dd601537e024d5d5f30df130a3ea3bbf3c51adb1d6",
+          "url": "https://ecma-international.org/wp-content/uploads/ECMA-335_6th_edition_june_2012.pdf"
+        },
+        {
+          "bytes": 851681,
+          "id": "Ecma-335_6th_edition-xml.zip",
+          "path": "upstream/Ecma-335_6th_edition-xml.zip",
+          "sha256": "8f620f1f127eb1b4bdf0b0a3990abb223d68ae3d60c4628c2da6419de0b0be71",
+          "url": "https://www.ecma-international.org/wp-content/uploads/Ecma-335_6th_edition-xml.zip"
+        }
+      ],
+      "upstream_license": "Ecma International Copyright License and Disclaimer, retained verbatim with official PDF and derived text",
+      "version": "6th-edition-2012-06"
+    },
+    "source_build_claim": false,
+    "support_only": false,
+    "upstream_license": "Ecma International Copyright License and Disclaimer, retained verbatim with official PDF and derived text",
+    "worker_id": "worker 062"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 4982145,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "upstream/ECMA-335_6th_edition_june_2012.pdf",
+      "sha256": "8c1decf6d482f020776a12dd601537e024d5d5f30df130a3ea3bbf3c51adb1d6",
+      "strip_root": false,
+      "url": "https://ecma-international.org/wp-content/uploads/ECMA-335_6th_edition_june_2012.pdf"
+    },
+    {
+      "bytes": 851681,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "upstream/Ecma-335_6th_edition-xml.zip",
+      "sha256": "8f620f1f127eb1b4bdf0b0a3990abb223d68ae3d60c4628c2da6419de0b0be71",
+      "strip_root": false,
+      "url": "https://www.ecma-international.org/wp-content/uploads/Ecma-335_6th_edition-xml.zip"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://ecma-international.org/publications-and-standards/standards/ecma-335/"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"research.ecma335\")",
+        "description": "Run the declared checks through the CPG Python API"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed payload",
+        "path": "{prefix}",
+        "purpose": "Locked resources and bounded offline check inputs"
+      }
+    ],
+    "notes": [
+      "完整官方PDF/XML与自编索引；无可执行编译器功能资格。",
+      "附录OPDEF含保留/内部编码且有六个规范指令缺项；第III部分规范索引与附录参考表分列。",
+      "官方XML成员名CLILibraryTypes.xml原样保留。"
+    ],
+    "summary": "固定规范版与CLILibrary.xml，建立opcode/metadata类型索引"
+  },
+  "version": "6th-edition-2012-06"
+}

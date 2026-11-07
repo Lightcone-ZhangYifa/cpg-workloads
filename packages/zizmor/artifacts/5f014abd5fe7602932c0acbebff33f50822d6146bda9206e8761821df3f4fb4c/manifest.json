@@ -1,0 +1,216 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 22277,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "8a6a9e249f236f5098306d34d45a46f8ed5d2c64ac14ec6891fa698274c0354d"
+    },
+    {
+      "bytes": 824,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/input-lock.json",
+      "sha256": "e33c56f22ce02c8edfd6a76811449ddebdb246114ed83b099994a8ac70a8912e"
+    },
+    {
+      "bytes": 121,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install-config.json",
+      "sha256": "3cca145191c4559a77132e965f4830193c573abdbf4fb06451002d7d472fbd5d"
+    },
+    {
+      "bytes": 3211,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install.py",
+      "sha256": "1b3371d7e0bf345d5f16a5e2f761d4bdb297b196f517b7170f9614231de04544"
+    },
+    {
+      "bytes": 94,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/requirements.lock",
+      "sha256": "5bb4820196422cfd1d08c6cafdd2fcc4eb1a21cb735310aa0bda4c78993026cc"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 9579409,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/58e878eb2dbd2c6183c105e1ac28c14f7dd1eca44a783f1fe2a69647d012c410",
+      "sha256": "58e878eb2dbd2c6183c105e1ac28c14f7dd1eca44a783f1fe2a69647d012c410"
+    }
+  ],
+  "inventory_sha256": "7bd728c2c584b5d0db42acd6ecf04fb9c14f68ce221adc31f1df5bd7a83aac28",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "e6e767af36c21137159dc55ab33a8824b116145bc50f859c2969aad9303c1c25",
+  "method": "source",
+  "package": {
+    "build": "worker029-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--resource",
+          "zizmor",
+          "--prefix",
+          "{prefix}",
+          "--output",
+          "{build}/assignment-acceptance"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "assignment-acceptance",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "timeout_seconds": 420
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "zizmor",
+    "metadata": {
+      "additional_input_lock": "recipe/input-lock.json",
+      "catalog": {
+        "archive_bytes": 9579409,
+        "category": [
+          "Compiler development",
+          "Build and continuous integration"
+        ],
+        "extract": false,
+        "id": "zizmor",
+        "kind": "wheel",
+        "license_id": "MIT",
+        "material_path": "sources/zizmor",
+        "purpose": "CI规则静态审计，发现不安全插值/权限/依赖绑定",
+        "qualification_scope": "对测试workflow运行离线检查并保存SARIF/JSON诊断",
+        "scope_limits": "",
+        "sha256": "58e878eb2dbd2c6183c105e1ac28c14f7dd1eca44a783f1fe2a69647d012c410",
+        "source_url": "https://files.pythonhosted.org/packages/7c/f7/ee2c8eedc7bf07f443a41aa12f828c7846fd17bab184c22403afd0cbb137/zizmor-1.31.1-py3-none-manylinux_2_28_x86_64.whl",
+        "strip_archive_root": false,
+        "title": "zizmor",
+        "upstream": "https://docs.zizmor.sh/",
+        "version": "1.31.1"
+      },
+      "catalog_sha256": "ff5f17771d9a878e8a7fe7fe9c3e798c1d2517467a493e1401b6f82b6502f7c2",
+      "license_id": "MIT",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "provenance": "Exact PyPI digest verified for every wheel; upstream asset/source digest retained for non-Python inputs.",
+      "record_id": "review.engineering.zizmor",
+      "source_compile_qualified": false,
+      "worker_id": "worker 029"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/install.py",
+          "--source",
+          "{source}",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}"
+        ]
+      ],
+      "installation_scope": "verified upstream distribution installation; no native source compilation claimed",
+      "network_policy": "offline",
+      "qualification_scope": "对测试workflow运行离线检查并保存SARIF/JSON诊断",
+      "required_host_commands": [
+        "python3"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C.UTF-8",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 9579409,
+        "extract": false,
+        "id": "zizmor",
+        "material_path": "sources/zizmor",
+        "sha256": "58e878eb2dbd2c6183c105e1ac28c14f7dd1eca44a783f1fe2a69647d012c410",
+        "strip_root": false,
+        "url": "https://files.pythonhosted.org/packages/7c/f7/ee2c8eedc7bf07f443a41aa12f828c7846fd17bab184c22403afd0cbb137/zizmor-1.31.1-py3-none-manylinux_2_28_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Add {prefix}/bin to PATH for this independent installation."
+      ],
+      "documentation": [
+        "https://docs.zizmor.sh/"
+      ],
+      "examples": [
+        {
+          "command": "python3 {recipe}/check.py --resource zizmor --prefix {prefix} --output {build}/manual-acceptance",
+          "description": "Replay the assignment acceptance check"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Installed resource",
+          "path": "{prefix}",
+          "purpose": "Independent local installation"
+        }
+      ],
+      "notes": [
+        "对测试workflow运行离线检查并保存SARIF/JSON诊断",
+        "Qualified only for the explicitly tested local capability.",
+        "Installation requires a Linux x86_64 Python 3.12 host for the supplied wheel closure.",
+        "Download preparation is separate; installation never downloads dependencies."
+      ],
+      "summary": "CI规则静态审计，发现不安全插值/权限/依赖绑定"
+    },
+    "version": "1.31.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "offline_closure": true,
+    "source_compiled": false,
+    "worker": "029"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "zizmor",
+      "path": "sources/58e878eb2dbd2c6183c105e1ac28c14f7dd1eca44a783f1fe2a69647d012c410"
+    }
+  ]
+}

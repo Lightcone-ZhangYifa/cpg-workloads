@@ -1,0 +1,144 @@
+{
+  "build": "worker083-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-S",
+        "{recipe}/check_resource.py",
+        "--resource",
+        "hypermapper",
+        "--prefix",
+        "{prefix}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "fresh-measured-search-and-correctness",
+      "kind": "functional",
+      "stdout_regex": "CPG_WORKER083_CHECK_PASSED",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "hypermapper",
+  "metadata": {
+    "research_plan": "cpg-resource-research-20261101-v1",
+    "source_scope": "Complete fixed main repository archive; execution dependencies are separately locked",
+    "worker083_binary_runtime": {
+      "interpreter_notices": [
+        {
+          "bytes": 13936,
+          "file": "CPython-notices-1.txt",
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+          "source": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/LICENSE.txt"
+        },
+        {
+          "bytes": 49855,
+          "file": "CPython-notices-2.txt",
+          "sha256": "f1cbf908e1daa8789b389fdcf17811ed36b675d736b39a103591399861350382",
+          "source": "/usr/share/doc/python3.12/copyright"
+        },
+        {
+          "bytes": 49855,
+          "file": "CPython-notices-3.txt",
+          "sha256": "f1cbf908e1daa8789b389fdcf17811ed36b675d736b39a103591399861350382",
+          "source": "/usr/share/doc/python3.12-minimal/copyright"
+        }
+      ],
+      "policy": "Original ELF gate remains enabled; packaged libraries must resolve inside this independent prefix",
+      "private_library_directories": [
+        "lib/python3.12/site-packages/GPy.libs",
+        "lib/python3.12/site-packages/numpy.libs",
+        "lib/python3.12/site-packages/pillow.libs",
+        "lib/python3.12/site-packages/pyzmq.libs",
+        "lib/python3.12/site-packages/scikit_learn.libs",
+        "lib/python3.12/site-packages/scipy.libs"
+      ],
+      "python_binary_sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+      "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "relocation_scope": "Different prefix under the recorded host CPython standard-library and system-runtime layout; cross-host source rebuild may be required",
+      "schema_version": 1
+    },
+    "worker083_execution_profile": {
+      "input_manifest_sha256": "0539aac85dcf66c4f11a32f5d19d791a4f1c81b30c09f069f9ea91ec0b2ed7cc",
+      "scope": "Actual local measured compiler-parameter tuning with independent correctness gates; qualification is recorded separately in receipts"
+    }
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-S",
+        "{recipe}/install_resource.py",
+        "--resource",
+        "hypermapper",
+        "--source",
+        "{source}",
+        "--prefix",
+        "{prefix}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}"
+      ]
+    ],
+    "execution_profile": "Exact additional execution inputs; original source/dependency/catalog identity is preserved",
+    "required_host_commands": [
+      "python3",
+      "gcc"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib/python3.12/site-packages/GPy.libs:{prefix}/lib/python3.12/site-packages/numpy.libs:{prefix}/lib/python3.12/site-packages/pillow.libs:{prefix}/lib/python3.12/site-packages/pyzmq.libs:{prefix}/lib/python3.12/site-packages/scikit_learn.libs:{prefix}/lib/python3.12/site-packages/scipy.libs",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1184974,
+      "extract": true,
+      "id": "hypermapper",
+      "material_path": "sources/hypermapper",
+      "sha256": "761c0a6f4e6a748e1159ce49517a02b330ddb1ee176d7de1c452800d1e2269d3",
+      "strip_root": true,
+      "url": "https://codeload.github.com/luinardi/hypermapper/tar.gz/3dfa8a7010792546e2d688b6113569b0cf36958e"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/luinardi/hypermapper"
+    ],
+    "examples": [],
+    "locations": [],
+    "notes": [
+      "Complete fixed main repository archive; execution dependencies are separately locked",
+      "New execution recipe and checks supplement the unchanged baseline identity. Preparation and installation are separate; only frozen raw inputs are shared."
+    ],
+    "summary": "Measured local compiler-parameter search with hypermapper"
+  },
+  "version": "commit-3dfa8a701079"
+}

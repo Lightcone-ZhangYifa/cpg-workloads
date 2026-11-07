@@ -1,0 +1,232 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 22277,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "8a6a9e249f236f5098306d34d45a46f8ed5d2c64ac14ec6891fa698274c0354d"
+    },
+    {
+      "bytes": 1425,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/input-lock.json",
+      "sha256": "0e71509eaf3a2d07966ba209b15d35d6d1a551fc07680d7cb4f5819010675d68"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe/inputs"
+    },
+    {
+      "bytes": 30245729,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/inputs/cmake-4.4.4-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "sha256": "f773a0544c66370408f451acd487c2c643b0dfebb48c5d64f3638bc1bb820238"
+    },
+    {
+      "bytes": 1234,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install-config.json",
+      "sha256": "60ddfd16b890656af0b76552b86115ddffc85f6647d17e77dd9ffc13a20fd1c5"
+    },
+    {
+      "bytes": 3211,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install.py",
+      "sha256": "1b3371d7e0bf345d5f16a5e2f761d4bdb297b196f517b7170f9614231de04544"
+    },
+    {
+      "bytes": 92,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/requirements.lock",
+      "sha256": "d61c83ae3b9b37e734345a9b0191a03ec88f678b6cf094060891b0584f6bfb52"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 3498837,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/8caac71176d7301e548d0d1c947dcac302ebea10cc366c221e3e6944c6107c3a",
+      "sha256": "8caac71176d7301e548d0d1c947dcac302ebea10cc366c221e3e6944c6107c3a"
+    }
+  ],
+  "inventory_sha256": "2266a4c9e7275e76cd1aa39509e1bff80f9faa48e247043fab2234d329563ed9",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "995c2b9cd4fe5f140ff6bb23543026afe45bf8db7d692181270c63153590cfc0",
+  "method": "source",
+  "package": {
+    "build": "worker029-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--resource",
+          "cdash",
+          "--prefix",
+          "{prefix}",
+          "--output",
+          "{build}/assignment-acceptance"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "assignment-acceptance",
+        "kind": "availability",
+        "requires_commands": [
+          "python3",
+          "gcc",
+          "make"
+        ],
+        "timeout_seconds": 420
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "cdash",
+    "metadata": {
+      "additional_input_lock": "recipe/input-lock.json",
+      "catalog": {
+        "archive_bytes": 3498837,
+        "category": [
+          "Compiler development",
+          "Build and continuous integration"
+        ],
+        "extract": true,
+        "id": "cdash",
+        "kind": "source_archive",
+        "license_id": "BSD-3-Clause",
+        "material_path": "sources/cdash",
+        "purpose": "CTest结果结构与跨target状态汇总",
+        "qualification_scope": "先本地生成/解析CTest submission，后置隔离dashboard服务",
+        "scope_limits": "现有统计总账优先；不部署公开服务或上传结果。",
+        "sha256": "8caac71176d7301e548d0d1c947dcac302ebea10cc366c221e3e6944c6107c3a",
+        "source_url": "https://codeload.github.com/Kitware/CDash/tar.gz/refs/tags/v5.5.2",
+        "strip_archive_root": true,
+        "title": "CDash",
+        "upstream": "https://www.cdash.org/",
+        "version": "5.5.2"
+      },
+      "catalog_sha256": "07eb59bde8e758055eb64608169f987dda1e545a7d86db98167be82fc919afd3",
+      "license_id": "BSD-3-Clause",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "provenance": "Exact PyPI digest verified for every wheel; upstream asset/source digest retained for non-Python inputs.",
+      "record_id": "review.engineering.cdash",
+      "source_compile_qualified": false,
+      "worker_id": "worker 029"
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/install.py",
+          "--source",
+          "{source}",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}"
+        ]
+      ],
+      "installation_scope": "verified upstream distribution installation; no native source compilation claimed",
+      "network_policy": "offline",
+      "qualification_scope": "先本地生成/解析CTest submission，后置隔离dashboard服务",
+      "required_host_commands": [
+        "python3"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "gcc",
+        "make"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C.UTF-8",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 3498837,
+        "extract": true,
+        "id": "cdash",
+        "material_path": "sources/cdash",
+        "sha256": "8caac71176d7301e548d0d1c947dcac302ebea10cc366c221e3e6944c6107c3a",
+        "strip_root": true,
+        "url": "https://codeload.github.com/Kitware/CDash/tar.gz/refs/tags/v5.5.2"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Add {prefix}/bin to PATH for this independent installation."
+      ],
+      "documentation": [
+        "https://www.cdash.org/"
+      ],
+      "examples": [
+        {
+          "command": "python3 {recipe}/check.py --resource cdash --prefix {prefix} --output {build}/manual-acceptance",
+          "description": "Replay the assignment acceptance check"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Installed resource",
+          "path": "{prefix}",
+          "purpose": "Independent local installation"
+        }
+      ],
+      "notes": [
+        "先本地生成/解析CTest submission，后置隔离dashboard服务",
+        "现有统计总账优先；不部署公开服务或上传结果。",
+        "Installation requires a Linux x86_64 Python 3.12 host for the supplied wheel closure.",
+        "Download preparation is separate; installation never downloads dependencies."
+      ],
+      "summary": "CTest结果结构与跨target状态汇总"
+    },
+    "version": "5.5.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "offline_closure": true,
+    "source_compiled": false,
+    "worker": "029"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "cdash",
+      "path": "sources/8caac71176d7301e548d0d1c947dcac302ebea10cc366c221e3e6944c6107c3a"
+    }
+  ]
+}

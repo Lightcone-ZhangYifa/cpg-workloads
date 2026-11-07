@@ -1,0 +1,182 @@
+{
+  "build": "cpg-worker106-20261102-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assigned-semantic-controls",
+      "kind": "functional",
+      "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "lean-mlir",
+  "metadata": {
+    "assignment": {
+      "after_dataset_verified": null,
+      "after_functional": null,
+      "after_material": null,
+      "alias_target": "",
+      "assessment_ids": [
+        "verification:lean-mlir"
+      ],
+      "baseline_catalog_sha256": {},
+      "baseline_dataset_verified": null,
+      "baseline_functional_ids": [],
+      "baseline_managed_ids": [],
+      "baseline_material_ids": [],
+      "baseline_pins": {},
+      "baseline_relation": "新增候选（独立身份仍需锁定）",
+      "baseline_resource_ids": [],
+      "baseline_trusted_apt_ids": [],
+      "baseline_version": "0.21.14",
+      "canonical_url": "https://github.com/opencompl/lean-mlir",
+      "category": "SSA与重写证明",
+      "cost": "中/重",
+      "decision": "select",
+      "decision_zh": "入选",
+      "dependencies": "固定Lean、Lake缓存及相关MLIR/xdsl依赖",
+      "entity_kind": "resource",
+      "evidence_relpath": "",
+      "evidence_urls": [
+        "https://github.com/opencompl/lean-mlir"
+      ],
+      "has_active_task": true,
+      "identity_unresolved": false,
+      "increment_package": "cpg-20261101-worker-106-delta-v001.zip",
+      "new_family_candidate": true,
+      "owned_baseline_resource_ids": [],
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "quality_evidence": "{\"primary_source_url\":\"https://github.com/opencompl/lean-mlir\",\"retrieval_ref\":\"turn41view2\",\"specific_usefulness\":\"Lean中的SSA理论、peephole重写语义保持证明和MLIR交互工具。\",\"inspectable_validation_surface\":\"离线重放一个官方局部重写证明，检查axioms不含sorry；记录实验目录范围。\",\"known_limit\":\"不能把框架核心定理泛化成所有实验重写都已证明。\",\"academic_basis\":\"官方或作者项目的实现/文档/样例；未据此宣称独立学术认可或广泛采用\",\"local_execution_evidence\":\"本次只做调研，没有执行工具、重放证明或量化缺陷检出率\",\"confidence_boundary\":\"选择指资源对AI开发的适用价值，不等于所有分支已支持或所有证明已在当前工程重放\"}",
+      "record_id": "review.verification.lean-mlir",
+      "research_scope": "本次公开来源评估",
+      "resource_name": "Lean-MLIR",
+      "result_status": "未执行接入",
+      "reviewed_on": "2026-11-01",
+      "schema_version": 1,
+      "scope_limits": "不能把框架核心定理泛化成所有实验重写都已证明。",
+      "selected_new_family": true,
+      "selection_reason": "纳入调研资源清单：Lean中的SSA理论、peephole重写语义保持证明和MLIR交互工具。 选择依据是明确验证/参考/测试用途和具体可检查产物；不能把框架核心定理泛化成所有实验重写都已证明。",
+      "source_refs": [
+        "turn41view2"
+      ],
+      "task": "离线重放一个官方局部重写证明，检查axioms不含sorry；记录实验目录范围。",
+      "taxonomy_categories": [
+        "V04",
+        "V08",
+        "V09"
+      ],
+      "value_to_ai": "Lean中的SSA理论、peephole重写语义保持证明和MLIR交互工具。",
+      "worker_id": "worker 106",
+      "worker_scope": "翻译与重写验证 · 1"
+    },
+    "baseline_version": "0.21.14",
+    "formal_promotion": false,
+    "logical_entity_id": "lean-mlir",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Official ToyNoRegion fixed-i32 x+0 to x: original Lean4.3.0-rc1 kernel rechecks40 local declarations, exactly rejects the same-proof const0-to1 mutation, and recursively verifies8 axiom closures without sorry. Trusted imported context3727 constants; no source-macro/tactic replay or full-project promotion.",
+    "record_id": "review.verification.lean-mlir",
+    "system_runtime_requirements": [
+      "Linux x86-64 little endian; compatible host ELF loader/glibc (packaged target Ubuntu24.04)",
+      "Python3.11+; consistent PID/procfs; visible cgroup-v2 or unrestricted host",
+      "Ordinary installed files, no memfd; external temporary directory; DATA128MiB/AS512MiB per native child"
+    ],
+    "worker_id": "worker 106"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/check.py"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "GHCRTS": "-N1",
+      "LD_LIBRARY_PATH": "{prefix}/runtime/lib:{prefix}/runtime/lib/lean",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 259760,
+      "extract": false,
+      "id": "lean-mlir-official-source",
+      "material_path": null,
+      "sha256": "d4bb68c420c654f221767491a438c99190a15e547bdbcca475b828ed8a17648c",
+      "strip_root": false,
+      "url": "https://codeload.github.com/opencompl/lean-mlir/tar.gz/0c804afbfcb8d249d07ce291ed8095116009f6dd"
+    },
+    {
+      "bytes": 187872771,
+      "extract": false,
+      "id": "lean43rc1-official-native-runtime",
+      "material_path": null,
+      "sha256": "808b1ee09d6faddfc506a900257e6f542b9ee8607e340378db31939c2ae243e1",
+      "strip_root": false,
+      "url": "https://github.com/leanprover/lean4/releases/download/v4.3.0-rc1/lean-4.3.0-rc1-linux.tar.zst"
+    },
+    {
+      "bytes": 55598748,
+      "extract": false,
+      "id": "author-ssa-compiled-layer",
+      "material_path": null,
+      "sha256": "5d6e63ac3df00715a3196f9e7ddc8283fa14faf488972916234ad326184f8a80",
+      "strip_root": false,
+      "url": "https://registry-1.docker.io/v2/siddudruid/opencompl-ssa/blobs/sha256:5d6e63ac3df00715a3196f9e7ddc8283fa14faf488972916234ad326184f8a80"
+    },
+    {
+      "bytes": 1894421548,
+      "extract": false,
+      "id": "author-dependency-compiled-layer",
+      "material_path": null,
+      "sha256": "74c316beed3a41d39092a02b9c351c2bd387f2307ebf586c9f17ff3f5c97270b",
+      "strip_root": false,
+      "url": "https://registry-1.docker.io/v2/siddudruid/opencompl-ssa/blobs/sha256:74c316beed3a41d39092a02b9c351c2bd387f2307ebf586c9f17ff3f5c97270b"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use a fresh independent prefix; checks consume only local inputs."
+    ],
+    "documentation": [
+      "sources-lock.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/check.py",
+        "description": "Run the bounded profile"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Validation entry",
+        "path": "{prefix}/check.py",
+        "purpose": "Replay the assigned semantic controls."
+      }
+    ],
+    "notes": [
+      "Scope is the explicitly executed profile; no formal release promotion.",
+      "Host ELF loader and system libraries are checked by the unmodified CPG manager."
+    ],
+    "summary": "Official ToyNoRegion fixed-i32 x+0 to x: original Lean4.3.0-rc1 kernel rechecks40 local declarations, exactly rejects the same-proof const0-to1 mutation, and recursively verifies8 axiom closures without sorry. Trusted imported context3727 constants; no source-macro/tactic replay or full-project promotion."
+  },
+  "version": "0.1.0+lean4.3.0rc1-kernel"
+}

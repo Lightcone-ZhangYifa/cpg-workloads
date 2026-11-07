@@ -1,0 +1,95 @@
+{
+  "build": "cpg20261101.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{tools}/run_check.py",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assignment-functional",
+      "kind": "functional",
+      "stdout_regex": "passed",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "navigation.rust-analyzer",
+  "metadata": {
+    "baseline_catalog_modified": false,
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Stdio LSP with a no_std rust-project.json project. Verified definition, references, rename and in-memory incremental updates; no Cargo/rustc compilation, macro expansion, GUI or benchmark claim.",
+    "record_id": "review.engineering.rust-analyzer",
+    "runtime_toolchain": {
+      "description": "Linux x86_64; Python 3; host glibc; see ELF compatibility evidence"
+    },
+    "worker_id": "048"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 4092176,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "rust-analyzer-2026-10-26-source.tar.gz",
+      "sha256": "de34f04868d5814b77964f380f21585915786ba46e15cf8606c7f60ab5f63204",
+      "strip_root": false,
+      "url": "https://codeload.github.com/rust-lang/rust-analyzer/tar.gz/refs/tags/2026-10-26"
+    },
+    {
+      "bytes": 15084499,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "rust-analyzer-2026-10-26.gz",
+      "sha256": "4c83773525f93b636ed79761389568b4d2a89c05fa7ecc440245032d49ad80ce",
+      "strip_root": false,
+      "url": "https://github.com/rust-lang/rust-analyzer/releases/download/2026-10-26/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/rust-lang/rust-analyzer"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B <prefix>/check.py",
+        "description": "Run the bounded assignment qualification"
+      }
+    ],
+    "locations": [
+      {
+        "label": "installation",
+        "path": "{prefix}",
+        "purpose": "Immutable tool and qualification fixtures"
+      }
+    ],
+    "notes": [
+      "Stdio LSP with a no_std rust-project.json project. Verified definition, references, rename and in-memory incremental updates; no Cargo/rustc compilation, macro expansion, GUI or benchmark claim."
+    ],
+    "summary": "Stdio LSP with a no_std rust-project.json project. Verified definition, references, rename and in-memory incremental updates"
+  },
+  "version": "2026-10-26"
+}

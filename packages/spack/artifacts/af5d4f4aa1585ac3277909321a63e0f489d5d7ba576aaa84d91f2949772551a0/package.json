@@ -1,0 +1,71 @@
+{
+  "build": "worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/run_fresh.py",
+        "--base",
+        "{build}",
+        "--",
+        "/usr/bin/python3",
+        "{prefix}/check.py",
+        "--bundle",
+        "{prefix}",
+        "--work-dir",
+        "@WORK@"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-task",
+      "kind": "functional",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "spack",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Only the declared cases, target and pinned inputs",
+    "record_id": "review.engineering.spack",
+    "worker_id": "worker 081"
+  },
+  "provider": "binary",
+  "recipe": {
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/spack/spack/releases/tag/v0.23.1"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Independent resource prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed upstream resource and repeatable checks"
+      }
+    ],
+    "notes": [
+      "Real Spack/clingo solver reproduces lock, local source mirror, two clean independent stores rebuild real zlib+consumer, empty-mirror negative refusal. Explicit bounded external host toolchain; complete original upstream source archived."
+    ],
+    "summary": "Pinned Spack/clingo solver, actual lock, offline source mirror and independent zlib/consumer rebuilds"
+  },
+  "version": "0.23.1"
+}

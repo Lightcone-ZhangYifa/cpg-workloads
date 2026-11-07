@@ -1,0 +1,25 @@
+library(irace)
+args <- commandArgs(trailingOnly=TRUE)
+dir.create(args[1], showWarnings=FALSE, recursive=TRUE)
+out <- normalizePath(args[1]); python <- normalizePath(args[2]); script <- normalizePath(args[3])
+Sys.setenv(CPG083_IRACE_OUTPUT=out)
+params <- readParameters(text='opt "--opt " c (1,2,3)\ntile "--tile " c (4,8,16,32)\nunroll "--unroll " c (0,1) | opt %in% c("2","3")\nvectorize "--vectorize " c (0,1)')
+runner <- function(experiment, scenario) {
+  cfg <- experiment$configuration
+  a <- c("-S",script, as.character(experiment$id_configuration), as.character(experiment$instance), as.character(experiment$seed), '--opt',as.character(cfg$opt),'--tile',as.character(cfg$tile),'--vectorize',as.character(cfg$vectorize))
+  if(!is.na(cfg$unroll)) a<-c(a,'--unroll',as.character(cfg$unroll))
+  res <- system2(python, args=shQuote(a),stdout=TRUE,stderr=file.path(out,paste0('runner-',experiment$id_configuration,'-',experiment$instance,'.err')))
+  status <- attr(res,'status')
+  if(!is.null(status) && status!=0) stop('Measured target failed; cannot count as speed')
+  cost <- suppressWarnings(as.numeric(tail(res,1)))
+  if(length(cost)!=1 || !is.finite(cost) || cost<=0) stop('No valid measured runtime')
+  list(cost=cost)
+}
+scenario <- list(targetRunner=runner,instances=c('train-a','train-b','train-c'),maxExperiments=128,seed=83,parallel=1,logFile=file.path(out,'irace.Rdata'),execDir=out,debugLevel=0,nbIterations=2,firstTest=2,eachTest=1,minNbSurvival=2,nbConfigurations=8,sampleInstances=FALSE)
+scenario$parameters <- params
+result <- irace(scenario=scenario)
+print(result)
+write.csv(result,file.path(out,'elite.csv'),row.names=FALSE,na='')
+saveRDS(list(scenario=scenario,parameters=params,result=result,version=as.character(packageVersion('irace'))),file.path(out,'scenario-result.rds'))
+writeLines(as.character(packageVersion('irace')),file.path(out,'version.txt'))
+cat('IRACE_SEARCH_COMPLETE\n')

@@ -1,0 +1,130 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/material_check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-inventory",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "x86-64-psabi",
+  "metadata": {
+    "acquisition_lock": {
+      "commit": "e1ce098331da5dbd66e1ffc74162380bcc213236",
+      "derived_local_pdf": {
+        "bytes": 526993,
+        "derivation": "make pdf from same commit, TeX Live 2023/Debian; 154 pages; hash equality with upstream not asserted",
+        "local_path": "work/pdf-build/abi.pdf",
+        "name": "local-pdf-build",
+        "sha256": "24986642752e5280cd3e0f31d922e800f3fcdd291943b65708a0d30f71bd1cb1",
+        "upstream_artifact": false,
+        "url": null
+      },
+      "inputs": [
+        {
+          "bytes": 271954,
+          "local_path": "downloads/x86-64-ABI-e1ce098331da5dbd66e1ffc74162380bcc213236.tar.gz",
+          "name": "source-archive",
+          "payload_path": "x86-64-psabi/upstream/x86-64-ABI-e1ce0983.tar.gz",
+          "redistributed": true,
+          "sha256": "afbc3587192d70c640a78368b8b865f5e5e041d9654fe4a49505304502ffb3b7",
+          "url": "https://gitlab.com/api/v4/projects/11097494/repository/archive.tar.gz?sha=e1ce098331da5dbd66e1ffc74162380bcc213236"
+        },
+        {
+          "bytes": 510003,
+          "local_path": "downloads/x86-64-psabi-e1ce0983.pdf",
+          "name": "official-job-pdf",
+          "payload_path": "x86-64-psabi/abi-official.pdf",
+          "redistributed": true,
+          "sha256": "19f346cc723dbeb6ad80494614291f4e85aba3caca48dcfd537d33f82af6d6ac",
+          "url": "https://gitlab.com/api/v4/projects/11097494/jobs/9388606854/artifacts/x86-64-ABI/abi.pdf"
+        }
+      ]
+    },
+    "assignment_record_id": "review.engineering.x86-psabi",
+    "baseline_version": "0.21.14",
+    "formal_release_promoted": false,
+    "full_document_material": true,
+    "material_scope": "declared_current_specification_set",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "upstream_commit": "e1ce098331da5dbd66e1ffc74162380bcc213236",
+    "worker_id": "worker 026"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "state": "Verified material; contents are not executed at installation except the inventory checker."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 271954,
+      "extract": false,
+      "id": "x86-64-psabi.source-archive",
+      "material_path": "upstream/x86-64-ABI-e1ce0983.tar.gz",
+      "sha256": "afbc3587192d70c640a78368b8b865f5e5e041d9654fe4a49505304502ffb3b7",
+      "strip_root": false,
+      "url": "https://gitlab.com/api/v4/projects/11097494/repository/archive.tar.gz?sha=e1ce098331da5dbd66e1ffc74162380bcc213236"
+    },
+    {
+      "bytes": 510003,
+      "extract": false,
+      "id": "x86-64-psabi.official-job-pdf",
+      "material_path": "abi-official.pdf",
+      "sha256": "19f346cc723dbeb6ad80494614291f4e85aba3caca48dcfd537d33f82af6d6ac",
+      "strip_root": false,
+      "url": "https://gitlab.com/api/v4/projects/11097494/jobs/9388606854/artifacts/x86-64-ABI/abi.pdf"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://gitlab.com/x86-psABIs/x86-64-ABI"
+    ],
+    "examples": [
+      {
+        "command": "python3 -m json.tool {prefix}/index.json",
+        "description": "Inspect the pinned document/reference index."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Material",
+        "path": "{prefix}",
+        "purpose": "Pinned reference files, original notices and explicit replay inputs."
+      }
+    ],
+    "notes": [
+      "Static material checks do not qualify target hardware or compiler ABI conformance.",
+      "The source/archive acquisition locks distinguish distributed inputs from reference-only inputs."
+    ],
+    "summary": "Pinned x86-64 psABI source, official job PDF, local PDF build and chapter index."
+  },
+  "version": "commit-e1ce098331da5dbd66e1ffc74162380bcc213236"
+}

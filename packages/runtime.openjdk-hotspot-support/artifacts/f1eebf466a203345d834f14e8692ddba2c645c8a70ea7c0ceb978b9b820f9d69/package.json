@@ -1,0 +1,183 @@
+{
+  "build": "worker043-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-jit-regression",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "runtime.openjdk-hotspot-support",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 71575242,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "Managed runtimes and JIT"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "runtime.openjdk-hotspot-support",
+      "immutable_ref": "d699266aec4348543e4cfa9ef46e4f5bcbd42d8b20f52c713a4208d4755498c8",
+      "kind": "native_bundle",
+      "license_id": "GPL-2.0-only WITH Classpath-exception-2.0",
+      "material_path": "inputs/input-1",
+      "purpose": "真实C1/C2分层JIT、deoptimization、GC barrier和代码缓存实现参考",
+      "qualification_scope": "Supplement profile only; original APT definition remains immutable. Matching source+boot-JDK lock, javac, interpreter/C1/C2 semantic equivalence and nmethod logs verified.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "d699266aec4348543e4cfa9ef46e4f5bcbd42d8b20f52c713a4208d4755498c8",
+      "source_evidence": [
+        "https://github.com/openjdk/jdk"
+      ],
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/o/openjdk-17/openjdk-17-jdk-headless_17.0.20.1+1-1~24.04_amd64.deb",
+      "strip_archive_root": false,
+      "title": "OpenJDK / HotSpot编译器开发能力",
+      "upstream": "https://github.com/openjdk/jdk",
+      "version": "17.0.20.1+1-1~24.04",
+      "worker_record_id": "review.engineering.openjdk-hotspot"
+    },
+    "catalog_sha256": "e6fbc59cacb92d8f43a552210731318326b27026ebbeb0bfffdb92192f458929",
+    "input_provenance": [
+      {
+        "bytes": 71575242,
+        "delivery": "verified extraction in jdk/, original deb retained in worker raw input inventory",
+        "file": "openjdk-17-jdk-headless_17.0.20.1+1-1~24.04_amd64.deb",
+        "sha256": "d699266aec4348543e4cfa9ef46e4f5bcbd42d8b20f52c713a4208d4755498c8",
+        "size_bytes": 71575242,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/o/openjdk-17/openjdk-17-jdk-headless_17.0.20.1+1-1~24.04_amd64.deb"
+      },
+      {
+        "bytes": 48100670,
+        "delivery": "verified extraction in jdk/, original deb retained in worker raw input inventory",
+        "file": "openjdk-17-jre-headless_17.0.20.1+1-1~24.04_amd64.deb",
+        "sha256": "3b84d1e08916b8dd3349c8f50c611df3cd70e5da09fe01d94491333076b68895",
+        "size_bytes": 48100670,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/o/openjdk-17/openjdk-17-jre-headless_17.0.20.1+1-1~24.04_amd64.deb"
+      },
+      {
+        "bytes": 219440,
+        "delivery": "exact upstream compressed source",
+        "file": "sources/openjdk-17_17.0.20.1+1-1~24.04.debian.tar.xz",
+        "sha256": "ecb5c1fd8e51da5301dea76de4c2801e82988f07470689870fa504a9ada5f11f",
+        "size_bytes": 219440,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/o/openjdk-17/openjdk-17_17.0.20.1+1-1~24.04.debian.tar.xz"
+      },
+      {
+        "bytes": 615644,
+        "delivery": "exact upstream compressed source",
+        "file": "sources/openjdk-17_17.0.20.1+1.orig-googletest.tar.xz",
+        "sha256": "94695f01012f939e8eeb51f839dd11323a57a6bb70dee8a34c7a7a1cddf00905",
+        "size_bytes": 615644,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/o/openjdk-17/openjdk-17_17.0.20.1+1.orig-googletest.tar.xz"
+      },
+      {
+        "bytes": 64059532,
+        "delivery": "exact upstream compressed source",
+        "file": "sources/openjdk-17_17.0.20.1+1.orig.tar.xz",
+        "sha256": "098e267645e5f5282a105097404945e877af6eae5b429bfbe914eb17157e8a90",
+        "size_bytes": 64059532,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/o/openjdk-17/openjdk-17_17.0.20.1+1.orig.tar.xz"
+      },
+      {
+        "bytes": 4593,
+        "delivery": "exact upstream compressed source",
+        "file": "sources/openjdk17.dsc",
+        "sha256": "bcce192d06c691fd9fee50d7d3429fbcf7ef623561f3adbd791c9bd8f8505acf",
+        "size_bytes": 4593,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/o/openjdk-17/openjdk-17_17.0.20.1+1-1~24.04.dsc"
+      }
+    ],
+    "original_resource_ids": [
+      "apt.openjdk-17-jdk"
+    ],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "material_qualified": true,
+      "source_build_qualified": false
+    },
+    "record_id": "review.engineering.openjdk-hotspot",
+    "runtime_requirements": [
+      "Linux x86_64",
+      "glibc compatible with Ubuntu 24.04 build",
+      "libz.so.1",
+      "libgcc_s.so.1",
+      "libstdc++.so.6",
+      "Python >=3.10 for check"
+    ],
+    "worker_id": "worker 043"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/jdk/lib/server:{prefix}/jdk/lib"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 71575242,
+      "extract": false,
+      "id": "runtime.openjdk-hotspot-support",
+      "material_path": "inputs/input-1",
+      "sha256": "d699266aec4348543e4cfa9ef46e4f5bcbd42d8b20f52c713a4208d4755498c8",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/o/openjdk-17/openjdk-17-jdk-headless_17.0.20.1+1-1~24.04_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/openjdk/jdk"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Supplement profile only; original APT definition remains immutable. Matching source+boot-JDK lock, javac, interpreter/C1/C2 semantic equivalence and nmethod logs verified."
+      }
+    ],
+    "notes": [
+      "APT的java/javac可用不等于已验证HotSpot源码构建；保留旧17 pin，最新主线材料不能替换旧运行时资格。",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "真实C1/C2分层JIT、deoptimization、GC barrier和代码缓存实现参考"
+  },
+  "version": "17.0.20.1+1-1~24.04"
+}

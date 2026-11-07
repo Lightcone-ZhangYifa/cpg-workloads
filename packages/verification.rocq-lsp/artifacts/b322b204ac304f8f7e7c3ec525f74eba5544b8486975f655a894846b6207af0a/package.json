@@ -1,0 +1,141 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/run_check.py",
+        "--output-root",
+        "{build}/proof-results",
+        "--",
+        "python3",
+        "-B",
+        "{prefix}/tools/proof_checks.py",
+        "--resource",
+        "rocq-lsp",
+        "--runtime",
+        "{dependency_prefix:support.proof-coq}",
+        "--addon",
+        "{prefix}/runtime"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "interactive-proof-admission-and-rejection",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "support.proof-coq"
+    ],
+    "system": []
+  },
+  "id": "verification.rocq-lsp",
+  "metadata": {
+    "admitted_is_trusted_proof": false,
+    "baseline_version": "0.21.14",
+    "formal_qualification_changed": false,
+    "license_expression": "LGPL-2.1-or-later",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "prepack_evidence_sha256": "f517728c29d5cdbb4e55792fe027a95b9f127537149c3af0a72b9d9c982383de",
+    "proof_gates": [
+      "runtime-version exit",
+      "fixed Coq and OCaml version",
+      "state read from real proof file",
+      "actual theorem goal returned",
+      "incorrect tactic yields protocol error",
+      "valid proof step accepted",
+      "state changed after proof step",
+      "proof reaches Qed",
+      "interactive Qed branch has no axioms",
+      "Admitted accepted as finished state and explicitly recorded",
+      "interactive Admitted branch is an axiom",
+      "kernel-proof exit",
+      "Qed proof independently closed",
+      "AdmittedCase exit",
+      "Admitted recognized as axiom rather than proven",
+      "coqchk exit"
+    ],
+    "record_id": "review.verification.rocq-lsp",
+    "runtime_profile_sha256": "e4219d4527d1b8f314167569c381c5f9adff338aaab800c6f32b72836b0a20bf",
+    "support_only": false,
+    "upstream": [
+      {
+        "bytes": 25621785,
+        "commit": "e2ffcb55075462d0dd503180a22d956bb4a0eb53",
+        "id": "rocq-lsp",
+        "repo": "rocq-community/rocq-lsp",
+        "sha256": "b2911e05331923d51195b23c7729caf040ef645f5fc4864de4a99acdbabc998c",
+        "url": "https://codeload.github.com/rocq-community/rocq-lsp/tar.gz/e2ffcb55075462d0dd503180a22d956bb4a0eb53"
+      }
+    ],
+    "worker_id": "worker 100"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "CAML_LD_LIBRARY_PATH": "{dependency_prefix:support.proof-coq}/usr/lib/ocaml/stublibs",
+      "COQCORELIB": "{dependency_prefix:support.proof-coq}/usr/lib/ocaml/coq-core",
+      "COQLIB": "{dependency_prefix:support.proof-coq}/usr/lib/ocaml/coq",
+      "COQPATH": "{prefix}/runtime/usr/lib/ocaml/coq/user-contrib:{dependency_prefix:support.proof-coq}/usr/lib/ocaml/coq/user-contrib",
+      "LD_LIBRARY_PATH": "{dependency_prefix:support.proof-coq}/usr/lib/x86_64-linux-gnu:{dependency_prefix:support.proof-coq}/lib/x86_64-linux-gnu:{dependency_prefix:support.proof-coq}/usr/lib/ocaml/stublibs",
+      "OCAMLFIND_CONF": "/dev/null",
+      "OCAMLLIB": "{dependency_prefix:support.proof-coq}/usr/lib/ocaml",
+      "OCAMLPATH": "{prefix}/runtime/lib:{dependency_prefix:support.proof-coq}/lib:{dependency_prefix:support.proof-coq}/usr/lib/ocaml",
+      "OCAMLRUNPARAM": "s=256k,o=10,O=10"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 25621785,
+      "extract": false,
+      "id": "verification.rocq-lsp.upstream-1",
+      "material_path": "sources/rocq-lsp-e2ffcb55075462d0dd503180a22d956bb4a0eb53.tar.gz",
+      "sha256": "b2911e05331923d51195b23c7729caf040ef645f5fc4864de4a99acdbabc998c",
+      "strip_root": false,
+      "url": "https://codeload.github.com/rocq-community/rocq-lsp/tar.gz/e2ffcb55075462d0dd503180a22d956bb4a0eb53"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://codeload.github.com/rocq-community/rocq-lsp/tar.gz/e2ffcb55075462d0dd503180a22d956bb4a0eb53"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "petanque",
+        "path": "{prefix}/runtime/bin/pet",
+        "purpose": "Pinned standard-input/output proof protocol"
+      },
+      {
+        "label": "proof-checker",
+        "path": "{prefix}/tools/proof_checks.py",
+        "purpose": "Actual Qed/Admitted/error distinction"
+      }
+    ],
+    "notes": [
+      "CPG 0.21.14 candidate overlay; formal baseline qualification is unchanged.",
+      "All generated proof files belong in an independent output directory."
+    ],
+    "summary": "coq-lsp 0.2.3+8.18, petanque JSON-RPC over stdin/stdout; no TCP service"
+  },
+  "version": "0.2.3+8.18"
+}

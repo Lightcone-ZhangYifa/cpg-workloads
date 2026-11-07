@@ -1,0 +1,124 @@
+{
+  "build": "worker024.1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/version_check.py",
+        "iced-x86",
+        "1.22.0"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "distribution-identity",
+      "kind": "version",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 30
+    },
+    {
+      "argv": [
+        "{prefix}/bin/python",
+        "-I",
+        "{recipe}/capability_check.py",
+        "--resource",
+        "py.iced-x86",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "worker024-bounded-capability",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "py.iced-x86",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "new_upstream_family": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "worker_id": "worker 024"
+  },
+  "provider": "python",
+  "recipe": {
+    "install_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "{source}"
+      ]
+    ],
+    "install_from_cache_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "{source}"
+      ]
+    ],
+    "manager": "pip",
+    "package_name": "iced-x86",
+    "uninstall_commands": [
+      [
+        "{prefix}/bin/python",
+        "-m",
+        "pip",
+        "uninstall",
+        "--yes",
+        "iced-x86"
+      ]
+    ],
+    "wrapper": true
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 921202,
+      "extract": false,
+      "id": "py.iced-x86",
+      "material_path": "wheels/iced_x86-1.22.0-cp311-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "sha256": "50b585b369cd3ff6539f7d02fa43376059481facee77eb34a5307a3f5f9eda62",
+      "strip_root": true,
+      "url": "https://files.pythonhosted.org/packages/e5/0e/f11b276ce18eebcd91d943dda557026b53049a7f08470254508aee50f949/iced_x86-1.22.0-cp311-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [
+      {
+        "label": "prefix",
+        "path": "{prefix}",
+        "purpose": "Independent installation of pinned resource"
+      }
+    ],
+    "notes": [
+      "Bounded offline capability checks; hardware execution qualifications are stated in evidence.",
+      "All immutable wheel bytes are delivered. Use scripts/lifecycle.py with local source_overrides and a network-denied process.",
+      "Original provider identity remains canonical; no APT installation is performed."
+    ],
+    "summary": "iced-x86 pinned Python provider with independent codec oracle"
+  },
+  "version": "1.22.0"
+}

@@ -1,0 +1,255 @@
+{
+  "build": "worker074-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--recipe",
+        "{recipe}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "ddisasm-bounded-semantics",
+      "kind": "functional",
+      "stdout_regex": "CPG074_FUNCTIONAL_PASSED",
+      "timeout_seconds": 240
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.ddisasm",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "candidate": true,
+    "license_provenance": "Original upstream license files retained in wheel/vendor distribution.",
+    "original_task": {
+      "after_dataset_verified": null,
+      "after_functional": null,
+      "after_material": null,
+      "alias_target": "",
+      "assessment_ids": [
+        "optimization:ddisasm"
+      ],
+      "baseline_catalog_sha256": {},
+      "baseline_dataset_verified": null,
+      "baseline_functional_ids": [],
+      "baseline_managed_ids": [],
+      "baseline_material_ids": [],
+      "baseline_pins": {},
+      "baseline_relation": "新增候选（独立身份仍需锁定）",
+      "baseline_resource_ids": [],
+      "baseline_trusted_apt_ids": [],
+      "baseline_version": "0.21.14",
+      "canonical_url": "https://github.com/GrammaTech/ddisasm",
+      "category": "可重汇编反汇编",
+      "cost": "中/重",
+      "decision": "select",
+      "decision_zh": "入选",
+      "dependencies": "Souffle/GTIRB/反汇编与ELF库",
+      "entity_kind": "resource",
+      "evidence_relpath": "",
+      "evidence_urls": [
+        "https://github.com/GrammaTech/ddisasm"
+      ],
+      "has_active_task": true,
+      "identity_unresolved": false,
+      "increment_package": "cpg-20261101-worker-074-delta-v001.zip",
+      "new_family_candidate": true,
+      "owned_baseline_resource_ids": [],
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "quality_evidence": "已核实官方项目或研究作者的公开上游及其用途：https://github.com/GrammaTech/ddisasm；证据范围为资源身份、公开材料与项目所述能力，不是本机复现或学术界一致认可的证明。",
+      "record_id": "review.optimization.ddisasm",
+      "research_scope": "本次公开来源评估",
+      "resource_name": "DDisasm",
+      "result_status": "未执行接入",
+      "reviewed_on": "2026-11-01",
+      "schema_version": 1,
+      "scope_limits": "",
+      "selected_new_family": true,
+      "selection_reason": "入选已核源研究清单：用Datalog规则恢复可重汇编二进制表示。公开上游与具体可检查资产足以支持该限定用途；执行成本只影响任务分配。",
+      "source_refs": [
+        "turn31view5"
+      ],
+      "task": "本地小ELF反汇编成GTIRB后重汇编执行，并核控制流边界",
+      "taxonomy_categories": [
+        "O19"
+      ],
+      "value_to_ai": "用Datalog规则恢复可重汇编二进制表示",
+      "worker_id": "worker 074",
+      "worker_scope": "二进制变换与提升 · 1"
+    },
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.optimization.ddisasm",
+    "scope": "本地小ELF反汇编成GTIRB后重汇编执行，并核控制流边界",
+    "scope_limits": "",
+    "source_build_qualification": false,
+    "worker_id": "worker 074"
+  },
+  "provider": "python",
+  "recipe": {
+    "commands": [
+      [
+        "python3",
+        "-B",
+        "{recipe}/install.py",
+        "--assets",
+        "{assets}",
+        "--prefix",
+        "{prefix}",
+        "--recipe",
+        "{recipe}"
+      ]
+    ],
+    "required_host_commands": [
+      "python3"
+    ],
+    "required_installed_paths": [
+      "{prefix}/CPG-INPUTS.json"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc",
+      "nm"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONNOUSERSITE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 26252650,
+      "extract": false,
+      "id": "input.0",
+      "material_path": "raw/ddisasm-1.9.5-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
+      "sha256": "3d5148fe5c18e281e4fc68ef1cd67e7864ee28ec9244acd31a3940432101e5ec",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/db/14/fee8005546b7b70d2bc1c4c02429873dfc1df62f8bf35315dad4e054979c/ddisasm-1.9.5-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
+    },
+    {
+      "bytes": 8113074,
+      "extract": false,
+      "id": "input.1",
+      "material_path": "raw/gtirb_pprinter-2.2.5-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
+      "sha256": "eb17c02b0bfd3155af2b3d0ec7277301d6b342ac9560dd0549bacfd7a6b1add3",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/1d/7d/5de59cf5415c87cd299ae11f7231beea1965b9eac209c798af62f8635f52/gtirb_pprinter-2.2.5-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
+    },
+    {
+      "bytes": 62845,
+      "extract": false,
+      "id": "input.2",
+      "material_path": "raw/gtirb-2.3.2-py3-none-any.whl",
+      "sha256": "51b03fb0f03ea3ce3d2cd09e3ce59c7efb18a6752c824ef0ec705579764ecabd",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/99/1a/5eeefb232437efbc63fac54e9cbcf60711a1043ab4a35536edd77435382e/gtirb-2.3.2-py3-none-any.whl"
+    },
+    {
+      "bytes": 25929,
+      "extract": false,
+      "id": "input.3",
+      "material_path": "raw/intervaltree-3.2.1-py2.py3-none-any.whl",
+      "sha256": "a8a8381bbd35d48ceebee932c77ffc988492d22fb1d27d0ba1d74a7694eb8f0b",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/83/7f/8a80a1c7c2ed05822b5a2b312d2995f30c533641f8198366ba2e26a7bb03/intervaltree-3.2.1-py2.py3-none-any.whl"
+    },
+    {
+      "bytes": 2142205,
+      "extract": false,
+      "id": "input.4",
+      "material_path": "raw/networkx-3.7-py3-none-any.whl",
+      "sha256": "e3fd2c13a7814cee3746340d8d7f8598a67f16a58bf47fb7f8793fab6efca1b0",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/7e/cd/fe58041e9011f307c490e3e17dd48cc516448f7c698a3f2d9d9d65d7e6a8/networkx-3.7-py3-none-any.whl"
+    },
+    {
+      "bytes": 343223,
+      "extract": false,
+      "id": "input.5",
+      "material_path": "raw/protobuf-7.36.2-cp310-abi3-manylinux2014_x86_64.whl",
+      "sha256": "89f23aa53c24553a2416fd4fd1ec06f74fa42b14b546d8883128813f775bbfd2",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/db/f3/3996583dd2906297a637af12114deddf7658af6e683fedb83be061983fb5/protobuf-7.36.2-cp310-abi3-manylinux2014_x86_64.whl"
+    },
+    {
+      "bytes": 29575,
+      "extract": false,
+      "id": "input.6",
+      "material_path": "raw/sortedcontainers-2.4.0-py2.py3-none-any.whl",
+      "sha256": "a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/32/46/9cb0e58b2deb7f82b84065f37f3bffeb12413f947f9388e4cac22c4621ce/sortedcontainers-2.4.0-py2.py3-none-any.whl"
+    },
+    {
+      "bytes": 45571,
+      "extract": false,
+      "id": "input.7",
+      "material_path": "raw/typing_extensions-4.16.0-py3-none-any.whl",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl"
+    },
+    {
+      "bytes": 1144859,
+      "extract": false,
+      "id": "input.8",
+      "material_path": "raw/ddisasm-bde0d201fc9834e4ca5dc010e3969c052e228858.tar.gz",
+      "sha256": "f77424a1f0b58319cfd225c29dc70493016aa9e951e5332a7fc95aeb9f2c443e",
+      "strip_root": false,
+      "url": "https://codeload.github.com/GrammaTech/ddisasm/tar.gz/bde0d201fc9834e4ca5dc010e3969c052e228858"
+    },
+    {
+      "bytes": 324327,
+      "extract": false,
+      "id": "input.9",
+      "material_path": "raw/gtirb-pprinter-44c0131bf9f966de771c513c8f0c399438e0b305.tar.gz",
+      "sha256": "eaa82e4a1367f8f5bae3925ffff9a2ba1693a19f990ee1002b0624d4e5ecb0bf",
+      "strip_root": false,
+      "url": "https://codeload.github.com/GrammaTech/gtirb-pprinter/tar.gz/44c0131bf9f966de771c513c8f0c399438e0b305"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the isolated prefix supplied by PackageManager."
+    ],
+    "documentation": [
+      "https://github.com/GrammaTech/ddisasm"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"research.ddisasm\")",
+        "description": "Replay declared semantic check through CPG"
+      }
+    ],
+    "locations": [
+      {
+        "label": "input-lock",
+        "path": "{prefix}/CPG-INPUTS.json",
+        "purpose": "Exact original input hashes and versions"
+      }
+    ],
+    "notes": [
+      "Candidate overlay; does not modify the formal 1862-resource catalog.",
+      "Source-form package replays original upstream wheels/vendor binaries; it does not claim a source-code compilation.",
+      "Tested on Linux x86_64 with Python 3.12; all imports and instrumented targets are private to the package/test."
+    ],
+    "summary": "本地小ELF反汇编成GTIRB后重汇编执行，并核控制流边界"
+  },
+  "version": "1.9.5"
+}

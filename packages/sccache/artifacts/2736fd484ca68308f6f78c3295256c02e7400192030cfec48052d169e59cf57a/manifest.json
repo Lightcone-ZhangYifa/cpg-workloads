@@ -1,0 +1,148 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 11358,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "bytes": 19652,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.md",
+      "sha256": "2b6a3375859a0964a5e76d4899d74d3efbdf765714079317f83dacbd8043c2b6"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 21950080,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/sccache",
+      "sha256": "0b44834be857e21b026f7db49a7762023fedb5eb5ed60725a66f698d8d79a34b"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/tools"
+    },
+    {
+      "bytes": 5800,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tools/check_sccache.py",
+      "sha256": "f2d0ac718218cb2648fd8ca820d8f22b3e0708c8e3fb46e7f9f8109323ea97aa"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/upstream"
+    },
+    {
+      "bytes": 64,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/upstream/release.sha256",
+      "sha256": "8ce16e68eb237f65e294baa4dacd09a4283989ff2576521e14f0ceaddbd9d97d"
+    },
+    {
+      "bytes": 554322,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/upstream/sccache-0.19.0-source.tar.gz",
+      "sha256": "2da079033cd19fd8e2a09f56f9a7d9d1a72d591ff3acdc47d95b920145cf2671"
+    }
+  ],
+  "inventory_sha256": "69df0ea6710ed19076eb6212caab86bdaf5fd1f705e10ed17caa2eb92ded555c",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "4d5c2555a0df0b0760b33d353e79b85ac5bbcfe8c8daba2e3c92c1a68368a66c",
+  "method": "binary",
+  "package": {
+    "build": "worker-v002",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{prefix}/tools/check_sccache.py",
+          "--payload",
+          "{prefix}",
+          "--evidence",
+          "{build}/sccache-check"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "declared-task",
+        "kind": "functional",
+        "timeout_seconds": 1200
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "sccache",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "Only the declared cases, target and pinned inputs",
+      "record_id": "review.engineering.sccache",
+      "worker_id": "worker 079"
+    },
+    "provider": "binary",
+    "recipe": {},
+    "schema_version": 1,
+    "sources": [],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/mozilla/sccache/releases/download/v0.19.0/sccache-v0.19.0-x86_64-unknown-linux-musl.tar.gz"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Independent resource prefix",
+          "path": "{prefix}",
+          "purpose": "Fixed upstream resource and repeatable checks"
+        }
+      ],
+      "notes": [],
+      "summary": "Frozen upstream sccache local compiler cache; GCC C miss/hit/header invalidation verified"
+    },
+    "version": "0.19.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "record_id": "review.engineering.sccache",
+    "source_locks": [
+      {
+        "sha256": "aa73c7270c997894038c0d8f0d297865f57569e1687883322bc431713d4bb9dd",
+        "type": "archive",
+        "url": "https://github.com/mozilla/sccache/releases/download/v0.19.0/sccache-v0.19.0-x86_64-unknown-linux-musl.tar.gz"
+      }
+    ],
+    "worker_id": "worker 079"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

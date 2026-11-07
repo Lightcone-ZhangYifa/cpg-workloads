@@ -1,0 +1,128 @@
+{
+  "build": "worker007-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_wrapper.py",
+        "dialects",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "worker007-example-and-rewrite",
+      "kind": "functional",
+      "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "ir-framework.llvm-dialects",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "global_qualification_promotion": false,
+    "immutable_ref": "4d0dfd05c436ea49aaaa6ad010bb3cf64da0ddb9",
+    "llvm_pair": "23.1.4",
+    "new_resource_family": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.engineering.llvm-dialects",
+    "source_build_performed": true,
+    "worker_id": "worker 007"
+  },
+  "provider": "source",
+  "recipe": {
+    "install_argv": [
+      "python3",
+      "{recipe}/install_dialects.py",
+      "--assets",
+      "{assets}",
+      "--prefix",
+      "{prefix}",
+      "--build",
+      "{build}",
+      "--jobs",
+      "{jobs}"
+    ],
+    "required_host_commands": [
+      "python3",
+      "g++"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/llvm-dialects-example",
+      "{prefix}/bin/llvm-dialects-tblgen",
+      "{prefix}/bin/cpg-dialects-rewrite"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 116121,
+      "extract": true,
+      "id": "upstream",
+      "material_path": "upstream",
+      "sha256": "9a6a69fed3db80dc5bfbd54cb3c4fd8dc02bc3554f546d62181dd5b408ff14df",
+      "strip_root": true,
+      "url": "https://codeload.github.com/GPUOpen-Drivers/llvm-dialects/tar.gz/4d0dfd05c436ea49aaaa6ad010bb3cf64da0ddb9"
+    },
+    {
+      "bytes": 11927951,
+      "extract": true,
+      "id": "fixed-derived-llvm-sdk",
+      "material_path": "llvm-sdk",
+      "sha256": "e0c5b967bd322ee7163b659dbe506062f689d3e5ec720f30d1cd0fa0ae6ade51",
+      "strip_root": false,
+      "url": null
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/GPUOpen-Drivers/llvm-dialects"
+    ],
+    "examples": [
+      {
+        "command": "\"{prefix}/bin/llvm-dialects-example\"",
+        "description": "Run example builder"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Executables",
+        "path": "{prefix}/bin",
+        "purpose": "Upstream example and generator plus CPG bounded rewrite driver"
+      },
+      {
+        "label": "Unmodified upstream",
+        "path": "{prefix}/share/llvm-dialects",
+        "purpose": "Source, tests and license"
+      }
+    ],
+    "notes": [
+      "Exact tested pairing only: upstream dev commit 4d0dfd05c436ea49aaaa6ad010bb3cf64da0ddb9 and LLVM 23.1.4.",
+      "Source method compiles unchanged upstream C++ directly, not its full CMake/lit/gtest matrix.",
+      "SDK input is an explicitly derived subset of official release bytes, not an original upstream archive. Its manifest records every retained file hash and derivation.",
+      "Source build requires C++17 GCC-compatible compiler and host zlib, zstd and xml2 link/runtime libraries. Runtime binaries use host libc/libstdc++ and the same shared libraries.",
+      "Distribution is reference-host metadata, not a distro-name gate."
+    ],
+    "summary": "Pinned llvm-dialects upstream example, verifier, generator and bounded SSA rewrite with LLVM 23.1.4."
+  },
+  "version": "git-4d0dfd05c436"
+}

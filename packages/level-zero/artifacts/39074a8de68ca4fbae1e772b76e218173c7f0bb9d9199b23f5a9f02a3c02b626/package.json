@@ -1,0 +1,82 @@
+{
+  "build": "worker057-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/level_zero_check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "level-zero",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Pinned headers API1.19 + loader1.34.0; official loader-only -O0 build, C/C++ schema consumers, actual version query/null-pointer negative and observed driver-unavailable return. Device execution is NOT qualified.",
+    "worker_id": "worker 057"
+  },
+  "provider": "source",
+  "recipe": {
+    "required_installed_paths": [],
+    "required_runtime_commands": [
+      "python3",
+      "gcc",
+      "g++"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2396059,
+      "extract": false,
+      "id": "level-zero-source",
+      "material_path": "sources/level-zero-934714b278f850d164627eeaaa043eee02785a9e.tar.gz",
+      "sha256": "ec16e5f6a21443080494fe9ebeae5ea36de003124211d58ae3e3ae5eccfd1940",
+      "strip_root": false,
+      "url": "https://codeload.github.com/oneapi-src/level-zero/tar.gz/934714b278f850d164627eeaaa043eee02785a9e"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt"
+    ],
+    "examples": [
+      {
+        "command": "python3 tools/replay.py --baseline /path/to/cpg --workdir /path/to/fresh-work",
+        "description": "Original CPG independent install/check/verify/remove replay"
+      }
+    ],
+    "locations": [],
+    "notes": [
+      "Candidate worker-local qualification only; original 1862 baseline entries and global coverage are unchanged.",
+      "Offline installation requires existing compatible Linux x86_64 system libraries; original PackageManager checks ELF dependencies. Distribution name is reference metadata, not a gate."
+    ],
+    "summary": "Pinned headers API1.19 + loader1.34.0; official loader-only -O0 build, C/C++ schema consumers, actual version query/null-pointer negative and observed driver-unavailable return. Device execution is NOT qualified."
+  },
+  "version": "1.34.0"
+}

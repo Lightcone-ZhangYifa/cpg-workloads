@@ -1,0 +1,114 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/material_check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-inventory",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "arm-abi",
+  "metadata": {
+    "acquisition_lock": {
+      "commit": "daa7a94ca55973736c0e434a67a6e4bbcd35d7fa",
+      "inputs": [
+        {
+          "bytes": 27290475,
+          "local_path": "downloads/arm-source-2025Q4.tar.gz",
+          "name": "source-archive",
+          "reason": "Archive includes proprietary legacy-documents. Payload contains only current open-licensed sources from the exact commit.",
+          "redistributed": false,
+          "sha256": "c7ee4594f5af1cd2883dc57d5fdc9758960e25332bb74bfd9281b26e3cf66367",
+          "url": "https://codeload.github.com/ARM-software/abi-aa/tar.gz/daa7a94ca55973736c0e434a67a6e4bbcd35d7fa"
+        },
+        {
+          "bytes": 3328973,
+          "local_path": "downloads/arm-pdfs-2025Q4.zip",
+          "name": "official-pdf-release-zip",
+          "payload_path": "arm-abi/upstream/Arm-Architecture-ABI-rel-2025Q4.zip",
+          "redistributed": true,
+          "sha256": "e5eee0e5341502ccac92444707d506ce039159fa111af911776b5ab9382d11eb",
+          "url": "https://github.com/ARM-software/abi-aa/releases/download/2025Q4/Arm-Architecture-ABI-rel-2025Q4.zip"
+        }
+      ],
+      "payload_file_lock": "payload/arm-abi/manifest.json",
+      "release": "2025Q4"
+    },
+    "assignment_record_id": "review.engineering.arm-abi",
+    "baseline_version": "0.21.14",
+    "formal_release_promoted": false,
+    "full_document_material": true,
+    "material_scope": "declared_current_specification_set",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "upstream_commit": "daa7a94ca55973736c0e434a67a6e4bbcd35d7fa",
+    "worker_id": "worker 026"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "state": "Verified material; contents are not executed at installation except the inventory checker."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3328973,
+      "extract": false,
+      "id": "arm-abi.official-pdf-release-zip",
+      "material_path": "upstream/Arm-Architecture-ABI-rel-2025Q4.zip",
+      "sha256": "e5eee0e5341502ccac92444707d506ce039159fa111af911776b5ab9382d11eb",
+      "strip_root": false,
+      "url": "https://github.com/ARM-software/abi-aa/releases/download/2025Q4/Arm-Architecture-ABI-rel-2025Q4.zip"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/ARM-software/abi-aa"
+    ],
+    "examples": [
+      {
+        "command": "python3 -m json.tool {prefix}/index.json",
+        "description": "Inspect the pinned document/reference index."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Material",
+        "path": "{prefix}",
+        "purpose": "Pinned reference files, original notices and explicit replay inputs."
+      }
+    ],
+    "notes": [
+      "Static material checks do not qualify target hardware or compiler ABI conformance.",
+      "The source/archive acquisition locks distinguish distributed inputs from reference-only inputs."
+    ],
+    "summary": "Arm ABI 2025Q4 current open-licensed reference set: 26 specifications, source, PDFs and per-document licenses."
+  },
+  "version": "2025Q4"
+}

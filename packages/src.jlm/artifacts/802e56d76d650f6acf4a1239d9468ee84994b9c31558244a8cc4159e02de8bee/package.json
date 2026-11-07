@@ -1,0 +1,104 @@
+{
+  "build": "cpg-worker007-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/share/jlm/checks/check-jlm-material.py",
+        "--source-root",
+        "{prefix}/share/jlm"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "paper-source-integrity",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"material_verified\": true",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "src.jlm",
+  "metadata": {
+    "canonical_url": "https://github.com/phate/jlm",
+    "commit": "787169b415f63857d14fe59c6c36cfc398b3c051",
+    "license": "LGPL-2.1",
+    "paper_artifact_license": "CC-BY-4.0",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "material only; functional not run; no global catalog promotion",
+    "record_id": "review.engineering.jlm",
+    "worker_id": "worker 007"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "required_installed_paths": [
+      "{prefix}/share/jlm/assets/jlm-paper-source/COPYING",
+      "{prefix}/share/jlm/assets/jlm-paper-source/tests"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 712444,
+      "extract": true,
+      "id": "jlm-paper-source",
+      "material_path": "jlm/source",
+      "sha256": "ac037122fef4603ddbb66b3ce2f0c21c9d6133cb31e986314e580c1ee51e82bf",
+      "strip_root": true,
+      "url": "https://codeload.github.com/phate/jlm/tar.gz/787169b415f63857d14fe59c6c36cfc398b3c051"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/phate/jlm",
+      "https://haavakro.folk.ntnu.no/pip2026/",
+      "https://doi.org/10.5281/zenodo.16900791"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/share/jlm/checks/check-jlm-material.py --source-root {prefix}/share/jlm",
+        "description": "verify paper-pinned material offline"
+      }
+    ],
+    "locations": [
+      {
+        "label": "source",
+        "path": "{prefix}/share/jlm/assets/jlm-paper-source",
+        "purpose": "514 preserved source files including 159 test files"
+      },
+      {
+        "label": "paper materials",
+        "path": "{prefix}/share/jlm/assets/jlm-paper-materials",
+        "purpose": "author's artifact instructions, source map and dependency declarations"
+      }
+    ],
+    "notes": [
+      "This is a static material artifact. Functional/compiler verification has not been executed.",
+      "All 514 canonical files matched the author-published Zenodo 16900791 artifact byte for byte.",
+      "Optional compilation requires a separately provisioned matching LLVM/Clang 18 SDK; no LLVM rebuild or automatic download is performed.",
+      "Large benchmark inputs are not included. The author artifact and the paper are linked separately from this source material."
+    ],
+    "summary": "RVSDG research compiler: exact PIP paper source, tests, provenance and deferred LLVM18 build entry"
+  },
+  "version": "pip2026-787169b415f6"
+}

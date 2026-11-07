@@ -1,0 +1,279 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2051,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "5d0fbc442bee81ed86b0e7c53f197262b610e629d1566e337c70ea3cef0faaa8"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe/entrypoints"
+    },
+    {
+      "bytes": 271,
+      "kind": "file",
+      "mode": 493,
+      "path": "recipe/entrypoints/compiledb",
+      "sha256": "94ccc325e469cded0df9d462b2944c35f4d0ab9d5bd75d1d6cd78601dafffeff"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe/inputs"
+    },
+    {
+      "bytes": 69539,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/inputs/bashlex-0.18-py2.py3-none-any.whl",
+      "sha256": "91d73a23a3e51711919c1c899083890cdecffc91d8c088942725ac13e9dcfffa"
+    },
+    {
+      "bytes": 125251,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/inputs/click-8.5.0-py3-none-any.whl",
+      "sha256": "255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360"
+    },
+    {
+      "bytes": 2649,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/offline_exec.py",
+      "sha256": "600020bddaf4a66a8a80e6cfece4b546bf6a885c19ebdda12e689451ba04bd34"
+    },
+    {
+      "bytes": 985,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/primary-input-lock.json",
+      "sha256": "805930f2cb524593be27cc0d63062f0461d190aea6a0c30a62db7b4361e2b98b"
+    },
+    {
+      "bytes": 1733,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/python-config.json",
+      "sha256": "a12bdacd30981d3c0cc338caf9ffd9372c95d1027f826b0c82e510fcc459794a"
+    },
+    {
+      "bytes": 282,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/requirements.lock",
+      "sha256": "9323806a64c6afc59e5b9f2515fa57ba29d128e776a75457a6b3a46da20f5867"
+    },
+    {
+      "bytes": 24775,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/worker028-check.py",
+      "sha256": "3bbd48b794f4c3c56588d0cfd8bf6cf43734a31001e23f82e24bd65c7192ed06"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 26840,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/4c07cbb37b105951218e52e00fc4a8211fafc5f7eb7821d0a33c4225d7b28ecf",
+      "sha256": "4c07cbb37b105951218e52e00fc4a8211fafc5f7eb7821d0a33c4225d7b28ecf"
+    }
+  ],
+  "inventory_sha256": "d003e2d534f0b395cf29d72b0e72b58631f95d900e4348aba78829b2f7d26a71",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "49c99721de2dd9dac1b086a36bdde421943c46a7ba6afc2978c62095bf5846b4",
+  "method": "source",
+  "package": {
+    "build": "worker028-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/offline_exec.py",
+          "--",
+          "python3",
+          "{recipe}/worker028-check.py",
+          "--case",
+          "compiledb",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "worker028-assignment-acceptance",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 600
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "compiledb",
+    "metadata": {
+      "additional_input_lock": "recipe/python-config.json",
+      "baseline_relation": "new independent resource; original 1862 baseline unchanged",
+      "catalog": {
+        "archive_bytes": 26840,
+        "category": [
+          "Compiler development",
+          "Build and continuous integration"
+        ],
+        "dependencies": [],
+        "extract": false,
+        "id": "compiledb",
+        "kind": "wheel",
+        "license_id": "GPL-3.0-or-later",
+        "mandatory": false,
+        "material_path": "sources/compiledb",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "从make构建日志生成compile_commands",
+        "qualification_scope": "离线日志转数据库，检查目录/转义/参数且不执行日志命令",
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "4c07cbb37b105951218e52e00fc4a8211fafc5f7eb7821d0a33c4225d7b28ecf",
+        "source_url": "https://files.pythonhosted.org/packages/53/1a/34e78486c39af6f0e37b0e23558dcd3d7472a6bf6127b3cb4525f2398923/compiledb-0.10.7-py3-none-any.whl",
+        "strip_archive_root": false,
+        "title": "compiledb",
+        "upstream": "https://github.com/nickdiego/compiledb",
+        "version": "0.10.7"
+      },
+      "catalog_sha256": "e1ad57f2a0365c22159bd4e0580c8276bcc57c79f46d315acd32f8578a87be1f",
+      "host_requirements": {
+        "libseccomp": "required by the no-network acceptance runner",
+        "platform": "Linux x86_64",
+        "python": "3.12 for frozen wheels; 3.12 checker validated"
+      },
+      "license_id": "GPL-3.0-or-later",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "离线日志转数据库，检查目录/转义/参数且不执行日志命令",
+      "record_id": "review.engineering.compiledb",
+      "source_compile_qualified": false,
+      "worker_id": "worker 028"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/offline_exec.py",
+          "--",
+          "python3",
+          "{recipe}/build.py",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}"
+        ]
+      ],
+      "network_policy": "offline installation and acceptance via seccomp; preparation is a separate networked phase",
+      "required_host_commands": [
+        "python3"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/compiledb"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C.UTF-8",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONNOUSERSITE": "1"
+      },
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 26840,
+        "extract": false,
+        "id": "compiledb",
+        "material_path": "sources/compiledb",
+        "sha256": "4c07cbb37b105951218e52e00fc4a8211fafc5f7eb7821d0a33c4225d7b28ecf",
+        "strip_root": false,
+        "url": "https://files.pythonhosted.org/packages/53/1a/34e78486c39af6f0e37b0e23558dcd3d7472a6bf6127b3cb4525f2398923/compiledb-0.10.7-py3-none-any.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Use the selected {prefix}/bin explicitly, or add it to PATH."
+      ],
+      "documentation": [
+        "https://github.com/nickdiego/compiledb"
+      ],
+      "examples": [
+        {
+          "command": "python3 {recipe}/offline_exec.py -- python3 {recipe}/worker028-check.py --case compiledb --prefix {prefix} --build {build}",
+          "description": "Replay the concrete assignment acceptance case"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Installed resource",
+          "path": "{prefix}",
+          "purpose": "Independent relocatable installation with retained license notices"
+        }
+      ],
+      "notes": [
+        "Frozen Python 3.12 wheel closure; no source compilation is claimed.",
+        "compiledb command-style output loses shell quoting in version 0.10.7; use default arguments arrays.",
+        "Runtime compatibility is defined by actual architecture, ELF/GLIBC requirements and explicit host commands, not a distribution-name gate.",
+        "The Linux acceptance guard needs libseccomp; it denies fresh AF_INET and AF_INET6 sockets to the checker and all descendants. No OCI or physical-target qualification is claimed."
+      ],
+      "summary": "从make构建日志生成compile_commands"
+    },
+    "version": "0.10.7"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "functional_evidence": "delta/evidence plus recipe/worker028-check.py",
+    "plan": "cpg-resource-research-20261101-v1",
+    "scope": "Independent offline fixture capability; native prebuilt origin and source-build claims are recorded separately.",
+    "worker": "worker 028"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "compiledb",
+      "path": "sources/4c07cbb37b105951218e52e00fc4a8211fafc5f7eb7821d0a33c4225d7b28ecf"
+    }
+  ]
+}

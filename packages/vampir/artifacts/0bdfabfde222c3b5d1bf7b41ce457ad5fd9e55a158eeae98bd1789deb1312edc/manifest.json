@@ -1,0 +1,221 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 162,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSES.txt",
+      "sha256": "cfa900eabb4e3980e1dfe7c3b79843b2216f6942cc0f0df7d669653dc01089f3"
+    },
+    {
+      "bytes": 2241,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/MATERIALS.md",
+      "sha256": "fcc7732115a0f465447ea17c1dc92e2001678d39b17dedbdd41a39e37df4f71f"
+    },
+    {
+      "bytes": 569,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/POLICY.json",
+      "sha256": "e44d6e27ae03390fd7096e71186eb3c36e9684ed5c3a175932630085c7c49361"
+    },
+    {
+      "bytes": 3,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/archive-members.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "bytes": 3302,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/inspect_material.py",
+      "sha256": "8559cfff59af3d138ff5c6673e1ca2893711c5c7fbcd611a47ab03f378db8d6a"
+    },
+    {
+      "bytes": 976,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/material-index.json",
+      "sha256": "0354b4ed82e56327106fc98e9a87e6eef5787fb7fd57fe657da53d83f2a4d4c0"
+    },
+    {
+      "bytes": 0,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/reference-text.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1180,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/source-lock.json",
+      "sha256": "a4441a7fd8de4c207a0853a5d65c1a8eb4cf9cd8009a845f307f11decee4baeb"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2538,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "a00e0447b12542c5ffe9e99f09fc6ff0d9a3f205f17fcf42ec162b62659e6233"
+    }
+  ],
+  "inventory_sha256": "c088c0767b56dd95d4e256e982968b7e06c6526b78ec05951115a684bf157468",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "9edb22f1fe2d919cc51dd15801159867b18521385f54c106e6e9ba7bc4f64251",
+  "method": "material",
+  "package": {
+    "build": "w078-static-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "locked-static-materials",
+        "kind": "availability",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "vampir",
+    "metadata": {
+      "baseline_catalog_sha256": null,
+      "baseline_definition_sha256": null,
+      "catalog": {
+        "archive_bytes": null,
+        "category": [
+          "Observability",
+          "Static reference materials"
+        ],
+        "dependencies": [],
+        "documentation": "https://vampir.eu/",
+        "extract": false,
+        "id": "vampir",
+        "kind": "virtual",
+        "license_class": "restricted",
+        "license_id": "LicenseRef-Vampir; original CPG notes MIT",
+        "logical_resource_id": "vampir",
+        "mandatory": false,
+        "material_path": null,
+        "policy_held": true,
+        "profile_kind": "reference-only",
+        "purpose": "保存 Vampir 官方输入格式与授权规则的原创参考卡和来源指纹，不含商业产品或手册正文。",
+        "redistributable": false,
+        "roles": [
+          "dev"
+        ],
+        "sha256": null,
+        "source_url": null,
+        "strip_archive_root": false,
+        "technical_profile_only": false,
+        "title": "Vampir：输入格式和授权边界参考",
+        "version": "10.9-docs-20261102"
+      },
+      "catalog_sha256": "3150eb576858a93713a1b8994ca14f70c18136b9e0d8bf3d9c26621746d89d8e",
+      "does_not_claim_tool_material_completeness": true,
+      "logical_resource_id": "vampir",
+      "policy_held": true,
+      "profile_kind": "reference-only",
+      "technical_profile_only": false
+    },
+    "provider": "material",
+    "recipe": {
+      "collection_enabled": false,
+      "profile_kind": "reference-only",
+      "required_installed_paths": [
+        "{prefix}/MATERIALS.md",
+        "{prefix}/material-index.json",
+        "{prefix}/source-lock.json",
+        "{prefix}/POLICY.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "any",
+      "distribution_version": "any",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://vampir.eu/"
+      ],
+      "examples": [
+        {
+          "command": "python3 {prefix}/inspect_material.py --list",
+          "description": "List static topics"
+        },
+        {
+          "command": "python3 {prefix}/inspect_material.py --search metadata --limit 10",
+          "description": "Search indexed materials"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Static reading guide",
+          "path": "{prefix}/MATERIALS.md",
+          "purpose": "Authored task-specific guide and limits."
+        },
+        {
+          "label": "Locked source archives",
+          "path": "{prefix}/source-lock.json",
+          "purpose": "Exact original byte identities and closure mapping."
+        }
+      ],
+      "notes": [
+        "System collection is policy-held. Static availability is not runtime or hardware qualification.",
+        "All original baseline identities and dependencies are unchanged.",
+        "Distribution metadata is descriptive; material content is not bound to one Linux distribution."
+      ],
+      "summary": "保存 Vampir 官方输入格式与授权规则的原创参考卡和来源指纹，不含商业产品或手册正文。"
+    },
+    "version": "10.9-docs-20261102"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "logical_resource_id": "vampir",
+    "official_runtime_qualification": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_kind": "reference-only",
+    "upstream_execution": false,
+    "worker_id": "worker 078"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,415 @@
+{
+  "build": "cpg-worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/run_check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "stdout_regex": "CPG_BOUNDED_FUNCTIONAL_PASS vericert",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "vericert",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "external_sdk_environment_keys": [],
+    "qualification_scope": "Bounded native worker profile; no new Dataset or hardware qualification.",
+    "source_lock": {
+      "additional_proof_target": "vericert.Compiler.transf_c_program_correct",
+      "artifact_bytes": 56203755,
+      "artifact_sha256": "c559e9f0a9039be56e54e8a59d2c3436ba92d880425d1ceeaaf413e08ac925d7",
+      "artifact_url": "https://zenodo.org/records/10808233/files/vericert-pldi2024.tar.gz",
+      "build_adjustment": "Explicit OCAMLFIND command-line override relocates SDK generated-makefile metadata; serial targets and OCAMLRUNPARAM s=1M,o=20,O=50 bound memory pressure. No proof source editing or admitted lemma is introduced.",
+      "build_guide": "VERICERT_REBUILD.en.md",
+      "build_replay": "tests/rebuild_vericert_offline.sh <artifact-source> <coq-support-root> <gmp-sdk-root> <new-log-dir>",
+      "commit": "9f99cb2b9572b5d426f75b070a3e4b25d5000d71",
+      "coq_source_correspondence": {
+        "evidence": "evidence/vericert-coq-source-correspondence.json",
+        "scope": "All members of four extracted Coq8.17.1 package source trees match the exact official source archive; this does not claim the interrupted full OCI-layer scan completed.",
+        "sha256": "dfdff67ca378e71e41a88db9e9425be979ab79f277ea6725d8f7cd2980527395"
+      },
+      "gmp_development_lock": "toolchains/gmp/source-lock.json; identical complete input set embedded in runtime sources/gmp",
+      "known_limitations": [
+        "Cmaskzero mask condition is explicitly rejected by this source snapshot; original failure preserved.",
+        "Closed headerless main entry profile only; no arbitrary-C or practical multiple-translation-unit qualification.",
+        "The command-line -version identifies CompCert 3.12; the Vericert commit and CPG1 printer patch are separately fixed here."
+      ],
+      "license": "Vericert GPL-3.0 with separately retained component licenses; CompCert has INRIA Non-Commercial License Agreement or separate AbsInt agreement, with explicit listed portions alternatively LGPL. Educational/research/evaluation conditions apply; no unrestricted commercial license asserted.",
+      "multi_unit_limitation": "The original comment beside separate_transf_c_program_correct states that this snapshot rejects more than one translation unit; no practical multi-unit support is claimed.",
+      "native_printer_patch": {
+        "after_sha256": "306a67d82e61d325fd5357e2752f05bf7273e417e57d15d800428bd18313d114",
+        "before_sha256": "7c02434d4d5270aaa6de596d590a9eea7a4449e839b60e9e745dce862a2c6d58",
+        "corrected_literal": "32'h80000000",
+        "file": "src/hls/PrintVerilog.ml",
+        "fixed_compiler_sha256": "9db8f08e32b38869bac6c47cdedc7ddfa2f32d34043de794680cd2356afa9c06",
+        "formal_proof_source_modified": false,
+        "original_compiler_preservation": "evidence/vericert-original-compiler.bin.gz",
+        "original_compiler_sha256": "3cd05a0322630be0724a8804254c1f236fc2d854b4ff0e1fc8a9510c4419568c",
+        "patch": "tests/vericert-replay-support/int32-min-literal.patch",
+        "scope": "One textual literal printer special case; Coq source, extraction, compiler passes, and all non-INT32_MIN printer outputs unchanged. Unsigned 32-bit hex literal preserves the intended 0x80000000 bit pattern without overflowing Int32.neg. Printer adaptation is not claimed to be certified by the existing AST-level proof.",
+        "trigger_evidence": "evidence/vericert-functional-2/case-09/kernel.sv and iverilog.stderr",
+        "trigger_literal": "(- 32'd-2147483648)"
+      },
+      "num_source_correspondence": {
+        "embedded_version": "1.6~dev",
+        "evidence": "sources/dependency-sources/num-source-mapping.json in final runtime",
+        "installed_opam_version": "1.5-1 pinned",
+        "scope": "Exact 53-file image source reconstructed from official v1.5 + fixed upstream patch + retained two-file image delta; no unmodified v1.6 source correspondence claim."
+      },
+      "proof_statement": "Successful per-unit transf_hls and C linking imply a linked Verilog program with backward simulation from Csem.semantics to Verilog.semantics.",
+      "proof_target": "vericert.Compiler.separate_transf_c_program_correct",
+      "proof_toolchain": "Coq8.17.1; OCaml variants4.13.1+options with flambda; dune3.21.1; findlib1.9.6; Menhir20230608; ocamlgraph2.1.0; fixed original private SDK and corresponding sources",
+      "proof_validation": {
+        "assumptions_evidence": "evidence/vericert-proof-assumptions.json",
+        "assumptions_per_theorem": 88,
+        "checked_vo_files": 267,
+        "full_log": "logs/vericert-print-assumptions.log",
+        "make_proof_returncode": 0,
+        "original_v_files": 384,
+        "original_v_files_changed": 0,
+        "print_assumptions_returncode": 0,
+        "proof_inventory": "evidence/vericert-after-printer-proof-integrity.json",
+        "scope": "Exact upstream make proof VS set; not experimental src/pipelining. Native C parser/extraction/text printer and external runtime boundaries are recorded separately; native printer CPG1 fix is outside the AST-level theorem."
+      },
+      "repository": "https://github.com/ymherklotz/vericert",
+      "resource_id": "vericert",
+      "runtime": {
+        "compcert_ini_change": "arch=verilog -> arch=x86, exactly as upstream make install",
+        "compcert_ini_installed_sha256": "06a59589c486478ba53aa467bfd20990a5779706622d5fed3618805e2007903b",
+        "compcert_ini_source_sha256": "5343751fedede2b263ac6ac5521b4b463f016fe06adc8f3526c92979552ca935",
+        "compiler_binary_modified": false,
+        "compiler_path": "libexec/vericert.bin",
+        "compiler_sha256": "9db8f08e32b38869bac6c47cdedc7ddfa2f32d34043de794680cd2356afa9c06",
+        "compiler_source_change": "Only src/hls/PrintVerilog.ml INT32_MIN literal formatting; exact original and patch retained. All Coq source and proof objects are unchanged. Native text printer is outside the AST-level correctness theorem.",
+        "compiler_source_modified": true,
+        "dependency_source_locks": [
+          "sources/dependency-sources/source-lock.json",
+          "sources/dependency-sources/compiler-runtime-source-lock.json"
+        ],
+        "gmp": {
+          "all_downloads": [
+            {
+              "bytes": 2345,
+              "file": "gmp_6.3.0+dfsg-2ubuntu6.1.dsc",
+              "sha256": "7fdd2464ee453296e33598dad6f84dd489640c08f50552389469bcf90537582e",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/gmp_6.3.0+dfsg-2ubuntu6.1.dsc"
+            },
+            {
+              "bytes": 1870556,
+              "file": "gmp_6.3.0+dfsg.orig.tar.xz",
+              "sha256": "bd2966e6d277f79328e894a5a9f3ba3fbf2ed2be81def5f48623e30c23fb1572",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/gmp_6.3.0+dfsg.orig.tar.xz"
+            },
+            {
+              "bytes": 38908,
+              "file": "gmp_6.3.0+dfsg-2ubuntu6.1.debian.tar.xz",
+              "sha256": "0a7592ee94876fcc0dba60c9a9fba806a72752c104c04d553803e1b7a97026a3",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/gmp_6.3.0+dfsg-2ubuntu6.1.debian.tar.xz"
+            },
+            {
+              "bytes": 340090,
+              "file": "libgmp-dev_6.3.0+dfsg-2ubuntu6.1_amd64.deb",
+              "sha256": "a9847b5ecfff791a46cb198f29a06d9d23a20afdfdd434812f2b44ccfb61d46a",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/libgmp-dev_6.3.0+dfsg-2ubuntu6.1_amd64.deb"
+            },
+            {
+              "bytes": 253460,
+              "file": "libgmp10_6.3.0+dfsg-2ubuntu6.1_amd64.deb",
+              "sha256": "285f8a505dfa8e1b33f357a9d8d3477ad35bf18c0b34771a6df4c25923f3ae0d",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/libgmp10_6.3.0+dfsg-2ubuntu6.1_amd64.deb"
+            },
+            {
+              "bytes": 1407612,
+              "file": "Packages.xz",
+              "sha256": "4292c6f61b84c8685c73f6db585fce9974f293a0e62fb070a4c7a2572e333996",
+              "url": "https://archive.ubuntu.com/ubuntu/dists/noble-updates/main/binary-amd64/Packages.xz"
+            }
+          ],
+          "binary_packages": [
+            {
+              "bytes": 340090,
+              "filename": "libgmp-dev_6.3.0+dfsg-2ubuntu6.1_amd64.deb",
+              "package": "libgmp-dev",
+              "sha256": "a9847b5ecfff791a46cb198f29a06d9d23a20afdfdd434812f2b44ccfb61d46a",
+              "verification": "Exact SHA256 and byte count from official HTTPS Packages.xz; no OpenPGP signature verification claimed.",
+              "version": "2:6.3.0+dfsg-2ubuntu6.1"
+            },
+            {
+              "bytes": 253460,
+              "filename": "libgmp10_6.3.0+dfsg-2ubuntu6.1_amd64.deb",
+              "package": "libgmp10",
+              "sha256": "285f8a505dfa8e1b33f357a9d8d3477ad35bf18c0b34771a6df4c25923f3ae0d",
+              "verification": "Exact SHA256 and byte count from official HTTPS Packages.xz; no OpenPGP signature verification claimed.",
+              "version": "2:6.3.0+dfsg-2ubuntu6.1"
+            }
+          ],
+          "cxx_binding_used": false,
+          "dsc_file": "gmp_6.3.0+dfsg-2ubuntu6.1.dsc",
+          "dsc_sha256": "7fdd2464ee453296e33598dad6f84dd489640c08f50552389469bcf90537582e",
+          "extraction": "dpkg-deb -x only to private directory; no system installation",
+          "license": "GMP library dual LGPL-3.0-or-later or GPL-2.0-or-later; exact package copyright and full upstream license files retained",
+          "link_environment": "LIBRARY_PATH=<sdk>/usr/lib/x86_64-linux-gnu",
+          "matches_installed_host_libgmp_bytes": true,
+          "package": "GMP",
+          "platform": "Ubuntu noble-updates linux-x86_64",
+          "private_libgmp_sha256": "0ccdfb6d6f5c039465f6d002cf7e4c072d48ac6a2cffc8dd6c748dec31592804",
+          "published_sources": [
+            "https://packages.ubuntu.com/en/source/noble-updates/gmp",
+            "https://packages.ubuntu.com/en/noble-updates/libgmp-dev"
+          ],
+          "runtime_environment": "LD_LIBRARY_PATH=<payload>/sdk/gmp/lib",
+          "sources": [
+            {
+              "bytes": 1870556,
+              "file": "gmp_6.3.0+dfsg.orig.tar.xz",
+              "sha256": "bd2966e6d277f79328e894a5a9f3ba3fbf2ed2be81def5f48623e30c23fb1572",
+              "verified_against_dsc": true
+            },
+            {
+              "bytes": 38908,
+              "file": "gmp_6.3.0+dfsg-2ubuntu6.1.debian.tar.xz",
+              "sha256": "0a7592ee94876fcc0dba60c9a9fba806a72752c104c04d553803e1b7a97026a3",
+              "verified_against_dsc": true
+            }
+          ],
+          "version": "2:6.3.0+dfsg-2ubuntu6.1"
+        },
+        "host_requirements": "Linux x86_64; GCC preprocessor and C reference compiler; Python3 stdlib; system glibc/libm/libdl/libstdc++ as verified by native CPG ELF gate",
+        "icarus": {
+          "adaptation": "Relative launchers pass explicit -B compiler base and -M VPI module search directory; upstream binaries/modules are unchanged.",
+          "artifacts": [
+            {
+              "bytes": 2125764,
+              "file": "iverilog_12.0-2build2_amd64.deb",
+              "sha256": "f19394cee05ad526e0eb3873bc6c17a5828f56df17fbe2db40cb66513a2d4667",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/universe/i/iverilog/iverilog_12.0-2build2_amd64.deb"
+            },
+            {
+              "bytes": 2131,
+              "file": "iverilog_12.0-2build2.dsc",
+              "sha256": "6d3efc750521126f22e2b3bfbf9ff4d09992f2206c0381e27fad6efce9c8ddd2",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/universe/i/iverilog/iverilog_12.0-2build2.dsc"
+            },
+            {
+              "bytes": 2995096,
+              "file": "iverilog_12.0.orig.tar.gz",
+              "sha256": "a68cb1ef7c017ef090ebedb2bc3e39ef90ecc70a3400afb4aa94303bc3beaa7d",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/universe/i/iverilog/iverilog_12.0.orig.tar.gz"
+            },
+            {
+              "bytes": 8364,
+              "file": "iverilog_12.0-2build2.debian.tar.xz",
+              "sha256": "df9e7e9c88d5dfbf2689f38a9095a949b7958f4a423c5c757f70960da14462b6",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/universe/i/iverilog/iverilog_12.0-2build2.debian.tar.xz"
+            }
+          ],
+          "binary_bytes_modified": false,
+          "license": "GPL-2.0-or-later; complete corresponding upstream source, distribution patches, and copyright file retained.",
+          "repository": "https://github.com/steveicarus/iverilog",
+          "resource_id": "iverilog-runtime",
+          "selection_reason": "Fixed native glibc2.39-compatible distribution for original CPG ELF checks; 20261101 OSS CAD GLIBC2.42/2.43 failure retained separately.",
+          "signature_verified": false,
+          "source_checksums_verified_against_dsc": true,
+          "supplier": "Ubuntu noble universe",
+          "version": "12.0-2build2"
+        },
+        "launcher_adaptation": "Relative public launcher binds the bundled LP solver and simulator for ordinary user invocations; actual compiler ELF remains expanded and subject to CPG inspection.",
+        "launcher_sha256": "218b4738527728120c3ea68684583fff235605fa8f04d554326f229ad71862ad",
+        "licenses": [
+          {
+            "payload_path": "licenses/LICENSE",
+            "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+            "upstream_path": "LICENSE"
+          },
+          {
+            "payload_path": "licenses/lib/CompCert/LICENSE",
+            "sha256": "40e8151cb26269a4e051309a958714191a706b5dfc7aaec00a61137cb338a648",
+            "upstream_path": "lib/CompCert/LICENSE"
+          },
+          {
+            "payload_path": "licenses/lib/cohpred/LICENSE",
+            "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+            "upstream_path": "lib/cohpred/LICENSE"
+          },
+          {
+            "payload_path": "licenses/lib/cohpred/smtcoq/LICENSE",
+            "sha256": "b48f5dc16f144cd79ddaadce3cc8ef183778a0b4f75ab4362e134b347ca20f3d",
+            "upstream_path": "lib/cohpred/smtcoq/LICENSE"
+          },
+          {
+            "payload_path": "licenses/src/pipelining/LICENSE",
+            "sha256": "8d994b2aaad10d519096157d5d736655ef6909d1a24420c16fe0870ca7400905",
+            "upstream_path": "src/pipelining/LICENSE"
+          }
+        ],
+        "lp_solve_selection": "sdk/lp-solve/runtime-selection.json"
+      },
+      "submodules": {
+        "lib/CompCert": "504b0c12ad945e394375dcfb52cc503d95747087",
+        "lib/cohpred": "398ba29fc6f1be1b5a7bdf41b3c0afa6fa37b38d",
+        "lib/cohpred/smtcoq": "ad7ad4f7d247de76eb165e168149f1c1abd541e1"
+      },
+      "upstream_version": "pldi2024-9f99cb2b9572",
+      "version": "pldi2024-9f99cb2b9572.cpg1"
+    },
+    "worker_plan_id": "cpg-resource-research-20261101-v1"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/licenses/dependencies/coq-8.17.1.tar.gz/coq-8.17.1/plugins/micromega:{prefix}/sdk/gmp/lib:{prefix}/sdk/lp-solve/lib",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "wrapper": false
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2125764,
+      "extract": false,
+      "id": "upstream-1",
+      "material_path": null,
+      "sha256": "f19394cee05ad526e0eb3873bc6c17a5828f56df17fbe2db40cb66513a2d4667",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/i/iverilog/iverilog_12.0-2build2_amd64.deb"
+    },
+    {
+      "bytes": 2131,
+      "extract": false,
+      "id": "upstream-2",
+      "material_path": null,
+      "sha256": "6d3efc750521126f22e2b3bfbf9ff4d09992f2206c0381e27fad6efce9c8ddd2",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/i/iverilog/iverilog_12.0-2build2.dsc"
+    },
+    {
+      "bytes": 2995096,
+      "extract": false,
+      "id": "upstream-3",
+      "material_path": null,
+      "sha256": "a68cb1ef7c017ef090ebedb2bc3e39ef90ecc70a3400afb4aa94303bc3beaa7d",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/i/iverilog/iverilog_12.0.orig.tar.gz"
+    },
+    {
+      "bytes": 8364,
+      "extract": false,
+      "id": "upstream-4",
+      "material_path": null,
+      "sha256": "df9e7e9c88d5dfbf2689f38a9095a949b7958f4a423c5c757f70960da14462b6",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/i/iverilog/iverilog_12.0-2build2.debian.tar.xz"
+    },
+    {
+      "bytes": 2345,
+      "extract": false,
+      "id": "upstream-5",
+      "material_path": null,
+      "sha256": "7fdd2464ee453296e33598dad6f84dd489640c08f50552389469bcf90537582e",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/gmp_6.3.0+dfsg-2ubuntu6.1.dsc"
+    },
+    {
+      "bytes": 1870556,
+      "extract": false,
+      "id": "upstream-6",
+      "material_path": null,
+      "sha256": "bd2966e6d277f79328e894a5a9f3ba3fbf2ed2be81def5f48623e30c23fb1572",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/gmp_6.3.0+dfsg.orig.tar.xz"
+    },
+    {
+      "bytes": 38908,
+      "extract": false,
+      "id": "upstream-7",
+      "material_path": null,
+      "sha256": "0a7592ee94876fcc0dba60c9a9fba806a72752c104c04d553803e1b7a97026a3",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/gmp_6.3.0+dfsg-2ubuntu6.1.debian.tar.xz"
+    },
+    {
+      "bytes": 340090,
+      "extract": false,
+      "id": "upstream-8",
+      "material_path": null,
+      "sha256": "a9847b5ecfff791a46cb198f29a06d9d23a20afdfdd434812f2b44ccfb61d46a",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/libgmp-dev_6.3.0+dfsg-2ubuntu6.1_amd64.deb"
+    },
+    {
+      "bytes": 253460,
+      "extract": false,
+      "id": "upstream-9",
+      "material_path": null,
+      "sha256": "285f8a505dfa8e1b33f357a9d8d3477ad35bf18c0b34771a6df4c25923f3ae0d",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/libgmp10_6.3.0+dfsg-2ubuntu6.1_amd64.deb"
+    },
+    {
+      "bytes": 1407612,
+      "extract": false,
+      "id": "upstream-10",
+      "material_path": null,
+      "sha256": "4292c6f61b84c8685c73f6db585fce9974f293a0e62fb070a4c7a2572e333996",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/dists/noble-updates/main/binary-amd64/Packages.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the original CPG PackageManager with an explicit fresh prefix and declared SDK bindings."
+    ],
+    "documentation": [
+      "https://github.com/ymherklotz/vericert"
+    ],
+    "examples": [
+      {
+        "command": "manager.check('vericert', prefix=prefix, kinds=['functional'], environment=bindings)",
+        "description": "Repeat the declared functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Payload",
+        "path": "{prefix}",
+        "purpose": "Independent runtime, source locks and upstream materials."
+      }
+    ],
+    "notes": [
+      "Cmaskzero mask condition is explicitly rejected by this source snapshot; original failure preserved.",
+      "Closed headerless main entry profile only; no arbitrary-C or practical multiple-translation-unit qualification.",
+      "The command-line -version identifies CompCert 3.12; the Vericert commit and CPG1 printer patch are separately fixed here.",
+      "Two actual top-level Print Assumptions outputs each list 88 constants. Native CPG1 printer repair is outside the Coq AST-level theorem.",
+      "256 closed C inputs, 258 positive RTL runs, 1 detected mutation; no arbitrary-C or FPGA qualification.",
+      "Reference distribution is build metadata; actual ELF ABI is verified by original CPG.",
+      "This worker increment does not promote original formal counts or claim hardware qualification."
+    ],
+    "summary": "vericert: independently installed, immutable upstream inputs and bounded functional validation."
+  },
+  "version": "pldi2024-9f99cb2b9572.cpg1"
+}

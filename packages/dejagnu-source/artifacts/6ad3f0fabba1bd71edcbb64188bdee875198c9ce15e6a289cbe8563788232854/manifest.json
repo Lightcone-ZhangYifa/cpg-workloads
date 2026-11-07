@@ -1,0 +1,177 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/upstream-original"
+    },
+    {
+      "bytes": 622059,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/upstream-original/dejagnu-1.6.3.tar.gz",
+      "sha256": "87daefacd7958b4a69f88c6856dbd1634261963c414079d0c371f589cd66a2e3"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "tools"
+    },
+    {
+      "bytes": 428,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/VERIFY-ORIGINAL.zh.md",
+      "sha256": "ffe5a556f6f03f9147e420c2bdc73862e57790466fc68e472309b867af489ce2"
+    },
+    {
+      "bytes": 9096,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/locked-source.json",
+      "sha256": "acbf590f932ed1d235ab139029ab81cf37254c72f834bb9f107fc161fe0bddd2"
+    }
+  ],
+  "inventory_sha256": "3406c6ac6cd50d0400b71f77d049755e089b5164f4faa0703252fec6b08b4f0b",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "a1c9ab35242590637c85e6352e2f76e9d3d6560ff1c08a698bdd09cb2aec1e8f",
+  "method": "material",
+  "package": {
+    "build": "1",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.dejagnu"
+      ]
+    },
+    "id": "dejagnu-source",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 622059,
+        "archive_scope": "Complete official DejaGNU 1.6.3 source release including framework, board files, tests, manuals and per-file licenses.",
+        "category": [
+          "Compiler development",
+          "Upstream regression infrastructure"
+        ],
+        "container_strategy": "Extract the verified archive into the dev source-material prefix. Keep this source-only reference separate from the apt.dejagnu executable; preserve Tcl/Expect version and board/site.exp identities in run contexts.",
+        "dependencies": [
+          "apt.dejagnu"
+        ],
+        "deployment": {
+          "adapter": "reference",
+          "qualified": false,
+          "source_dependencies": [],
+          "system_packages": []
+        },
+        "documentation": [
+          "https://www.gnu.org/software/dejagnu/manual/",
+          "https://gcc.gnu.org/install/test.html"
+        ],
+        "evidence_files": [
+          "workspace-evidence/community-v070/gcc/source-probe/dejagnu-source-receipt.json",
+          "workspace-evidence/community-v070/gcc/parser-evidence/validation.json"
+        ],
+        "extract": true,
+        "id": "dejagnu-source",
+        "immutable_ref": "sha256:87daefacd7958b4a69f88c6856dbd1634261963c414079d0c371f589cd66a2e3",
+        "kind": "source_archive",
+        "license_class": "open",
+        "license_id": "GPL-3.0-or-later AND GFDL-1.3-no-invariants-or-later AND LicenseRef-Per-File",
+        "mandatory": false,
+        "material_path": "sources/dejagnu",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Pinned implementation and reference material for DejaGNU board integration, summary parsing and regression-harness debugging; the runnable harness remains the separately locked apt.dejagnu package.",
+        "qualification": {
+          "archive_measured": true,
+          "build_qualified": false,
+          "target_qualified": false,
+          "version_pinned": true
+        },
+        "qualification_gaps": [
+          "Reference material only; source presence does not install or qualify a second DejaGNU harness.",
+          "The parser was checked against framework.exp and runtest.exp plus synthetic fixtures; no full GCC regression run was executed."
+        ],
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "87daefacd7958b4a69f88c6856dbd1634261963c414079d0c371f589cd66a2e3",
+        "size_basis": "Measured complete archive bytes and SHA256; source logical bytes sum all regular tar entries, excluding filesystem allocation and build or installed sizes.",
+        "source_evidence": [
+          "https://ftp.gnu.org/gnu/dejagnu/dejagnu-1.6.3.tar.gz",
+          "https://www.gnu.org/software/dejagnu/"
+        ],
+        "source_logical_bytes": 2432796,
+        "source_url": "https://ftp.gnu.org/gnu/dejagnu/dejagnu-1.6.3.tar.gz",
+        "title": "DejaGNU source and harness format reference",
+        "upstream": "https://www.gnu.org/software/dejagnu/",
+        "version": "1.6.3"
+      },
+      "catalog_sha256": "7475d778c52df1862e6151d206c6548af52173ea53bfa04ad89c889177847917"
+    },
+    "provider": "material",
+    "recipe": {
+      "adapter": "reference",
+      "qualified": false,
+      "source_dependencies": [],
+      "system_packages": []
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 622059,
+        "extract": true,
+        "id": "dejagnu-source",
+        "material_path": "sources/dejagnu",
+        "sha256": "87daefacd7958b4a69f88c6856dbd1634261963c414079d0c371f589cd66a2e3",
+        "strip_root": true,
+        "url": "https://ftp.gnu.org/gnu/dejagnu/dejagnu-1.6.3.tar.gz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://www.gnu.org/software/dejagnu/manual/",
+        "https://gcc.gnu.org/install/test.html"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/sources/dejagnu",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "The recorded installation recipe is not an automatically qualified installer; review the explicit preparation blockers."
+      ],
+      "summary": "Pinned implementation and reference material for DejaGNU board integration, summary parsing and regression-harness debugging; the runnable harness remains the separately locked apt.dejagnu package."
+    },
+    "version": "1.6.3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,100 @@
+{
+  "build": "worker038-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "locked-offline-capability-check",
+      "kind": "availability",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "verification.debug-info-testing",
+  "metadata": {
+    "license": "MIT (integration/recipe only); original author repository-wide license unresolved, author source not bundled",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "dataset_verified": null,
+      "formal_baseline_promotion": false,
+      "functional": false,
+      "material": false
+    },
+    "record_id": "review.verification.debug-info-testing",
+    "scope": "Actual author-modified Dexter locally reproduced author-reported GCC PR89463 using GCC8.3 controls; original author Python source unchanged. Distribution contains only pinned acquisition/replay recipes and observed results. No complete author-framework material/functional qualification; full Csmith/CompCert generation campaign not run.",
+    "source_identity": {
+      "after_dataset_verified": null,
+      "after_functional": false,
+      "after_material": false,
+      "baseline_version": "0.21.14",
+      "installation_check_does_not_launch_native_debugger": true,
+      "inventory_writes": false,
+      "kind": "debug-info-testing",
+      "license": "MIT (integration/recipe only); original author repository-wide license unresolved, author source not bundled",
+      "license_scope": "CPG integration MIT; upstream license files retained where upstream material is distributed",
+      "offline_check": "python3 check.py",
+      "record_id": "review.verification.debug-info-testing",
+      "resource_id": "verification.debug-info-testing",
+      "scope": "Actual author-modified Dexter locally reproduced author-reported GCC PR89463 using GCC8.3 controls; original author Python source unchanged. Distribution contains only pinned acquisition/replay recipes and observed results. No complete author-framework material/functional qualification; full Csmith/CompCert generation campaign not run.",
+      "tested_python": "3.12",
+      "version": "git-0c74da8d2960-replay-pr89463",
+      "worker_id": "worker 038"
+    },
+    "worker_id": "worker 038"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/check.py",
+      "{prefix}/resource.json",
+      "{prefix}/inventory-lock.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/yuanboli233/debug-info-testing"
+    ],
+    "examples": [
+      {
+        "command": "python3 \"{prefix}/check.py\"",
+        "description": "Verify the installed files and the stated offline capability"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Pinned resource",
+        "path": "{prefix}",
+        "purpose": "Read CPG-README.md for the exact local check and explicit native replay interfaces."
+      }
+    ],
+    "notes": [
+      "Actual author-modified Dexter locally reproduced author-reported GCC PR89463 using GCC8.3 controls; original author Python source unchanged. Distribution contains only pinned acquisition/replay recipes and observed results. No complete author-framework material/functional qualification; full Csmith/CompCert generation campaign not run.",
+      "The material carrier does not promote full author-framework or host qualification. Acquisition and live replay are explicit separate commands."
+    ],
+    "summary": "作者 PLDI2020 框架 Python 实现，测试优化后的调试信息。"
+  },
+  "version": "git-0c74da8d2960-replay-pr89463"
+}

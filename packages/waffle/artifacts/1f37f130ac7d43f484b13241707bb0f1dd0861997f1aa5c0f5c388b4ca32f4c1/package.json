@@ -1,0 +1,110 @@
+{
+  "build": "cpg-20261101-w013-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--resource",
+        "waffle",
+        "--prefix",
+        "{prefix}",
+        "--reference-prefix",
+        "{dependencies.wasmtime-cranelift.prefix}",
+        "--output",
+        "{build}/cross-runtime-checks"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-native-function",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 360
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "wasmtime-cranelift"
+    ],
+    "system": []
+  },
+  "id": "waffle",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "bounded_native_function": true,
+      "hardware": false,
+      "material": true,
+      "oci": false,
+      "official_benchmark": false,
+      "source_build_of_main_tool": true
+    },
+    "record_id": "review.engineering.waffle",
+    "scope": "与weval共享依赖，不复制整个上游树",
+    "source_files_retained": true,
+    "worker_id": "worker 013"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/share/cpg-worker013/check.py",
+      "{prefix}/share/cpg-worker013/sources/waffle-source.tar.gz"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 113073,
+      "extract": true,
+      "id": "waffle",
+      "material_path": "sources/waffle",
+      "sha256": "6d5c581d87f6e5dd89ae92490eda1f88ab0c21ef23fc7008eb571e4d9d467e16",
+      "strip_root": true,
+      "url": "https://codeload.github.com/bytecodealliance/waffle/tar.gz/bdef36bd9385582a2a072d9211fe86f830213533"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "export PATH=\"{prefix}/bin:$PATH\""
+    ],
+    "documentation": [
+      "https://github.com/bytecodealliance/waffle"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages info waffle --registry registry.json --json",
+        "description": "Inspect the resource through the supplied additive registry."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Executables",
+        "path": "{prefix}/bin",
+        "purpose": "Explicit resource tools and repeatable bounded check programs."
+      },
+      {
+        "label": "Complete upstream source",
+        "path": "{prefix}/share/cpg-worker013/sources",
+        "purpose": "Pinned unmodified project source retained for agent inspection and development."
+      }
+    ],
+    "notes": [
+      "The target distribution records the build host. CPG checks OS, architecture and actual ELF runtime compatibility; it does not enforce a distribution name.",
+      "Native functionality is bounded by the attached fixtures; OCI, target hardware and official benchmark qualifications are not granted.",
+      "Download preparation is separate from installation; this artifact consumes local files only."
+    ],
+    "summary": "WebAssembly to SSA transformation and roundtrip with finite independent execution checks."
+  },
+  "version": "0.3.3+bdef36bd"
+}

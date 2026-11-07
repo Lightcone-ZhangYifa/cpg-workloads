@@ -1,0 +1,631 @@
+{
+  "build": "worker096-v001-coq8.14.1-x86_64",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "gc-runtime-and-selected-kernel-proof",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "requires_paths": [
+        "{prefix}/bin/gc-smoke",
+        "{prefix}/checker/bin/coqchk"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "certigc",
+  "metadata": {
+    "assignment_record": "review.verification.certigc",
+    "baseline_mutated": false,
+    "baseline_version": "0.21.14",
+    "bundled_dependency_closure": {
+      "certigraph": "d8e47a5f256561f2da8c739372918e942247f7e7",
+      "compcert": "3.9",
+      "coq": "8.14.1",
+      "image_manifest_digest": "sha256:c1641d50719d6ad309a8056928dedf8a4281ad51ed350572f8a81f6da7909288",
+      "vst": "2.8"
+    },
+    "checker_entrypoint_source": "certigc/package-recipe-source04/check.py",
+    "dataset_verified": null,
+    "host_runtime": "Linux x86_64; glibc >= 2.34; Python >= 3.11; libstdc++.so.6 with GLIBCXX_3.4.21/CXXABI_1.3.8; libgcc_s.so.1; readable own /proc mappings; writable ordinary filesystem for a bounded private file pool. Source replay additionally needs GNU make, libgmp.so.10 and GCC.",
+    "installed_historical_process_dependencies": false,
+    "kernel_check_recursive": false,
+    "memory_runtime_profile": {
+      "allocator_probe": "logs/amd64-filepool-probe/probe-result.json",
+      "allocator_probe_sha256": "f35e5fe6dfd334bb244c19d2da2966b8460f6ac7b956655349b2ab76ed8b031c",
+      "audit_guardian_activation": {
+        "bytes": 1644,
+        "path": "logs/proof-audit/guardian-activation.json",
+        "sha256": "b10c9f71ac480d8e12a0b4a2985fd00e16547df081c617ee0539a8f7559829b0"
+      },
+      "coq": "8.14.1",
+      "helper_derivation": {
+        "bytes": 2571,
+        "path": "logs/source04-static-preparation/portable-checker-helper-derivation.json",
+        "sha256": "a0b04eea69c45d9fd961a3bd655939b4423bca8cb63543806aefc62cb95cd27c"
+      },
+      "historical_allocator_probe_helper_sha256": "8958792caa2cd7434f3f4a1465582675a04312a2f64868e428f1b4ded1831687",
+      "historical_process_dependencies_in_installed_check": false,
+      "id": "author-amd64-with-official-gperftools-memfs",
+      "installed_external_guard": null,
+      "kernel_check_pool_mib": 1024,
+      "ocaml": "4.12.0",
+      "ocamlrunparam": "a=2,i=262144,s=131072,o=50,O=500",
+      "offline": {
+        "inherited_by_children": true,
+        "mechanism": "Linux seccomp denies IPv4/IPv6 socket/socketpair with EPERM",
+        "status": "passed"
+      },
+      "original_full_toolchain_manifest_sha256": "bb73e190d14906a1887bcf0378cb1e4327c449e10f4e7a214565716cf50ed928",
+      "runtime_helper_path": "tools/filepool_runtime_o50_portable.py",
+      "runtime_helper_sha256": "013d5f2049cc3b59eee7f26e836b53a06f34cd0ea22e5469ec50fcccd6f780cb",
+      "selected_original_files": 898,
+      "source_build_evidence": "logs/proof-filepool-04",
+      "source_profile_is_separately_recorded": true,
+      "whole_original_toolchain_installed": false
+    },
+    "official_benchmark": false,
+    "orphan_object_recovery": {
+      "independent_kernel_returncode": 0,
+      "native_evidence_path": "evidence/orphan-object-recovery/acceptance.json",
+      "object": "src/certigc/theories/CertiGC/vst/cmodel/spatial_gcgraph.vo",
+      "object_sha256": "00860e0f983616b94d2dc753a310cb1516c93db71bbf2c534b07d2b48fdd4c14",
+      "original_source_returncode": null,
+      "path": "logs/orphan-object-recovery/acceptance.json",
+      "sha256": "6081c4e83a614dd46e0c21446b85e933cc01af204a4106e59a13f0aee0485164",
+      "validation": {
+        "acceptance": {
+          "bytes": 4041,
+          "path": "logs/orphan-object-recovery/acceptance.json",
+          "sha256": "6081c4e83a614dd46e0c21446b85e933cc01af204a4106e59a13f0aee0485164"
+        },
+        "additional_evidence": [
+          {
+            "bytes": 33,
+            "path": "logs/orphan-object-recovery/kernel-check-recovered-spatial.stdout",
+            "sha256": "7a4ba40f37fd6f60cfae3eecad38a48fc8bdaae7ea39246f2d08b48be339fb9a"
+          },
+          {
+            "bytes": 22080,
+            "path": "logs/orphan-object-recovery/kernel-check-recovered-spatial.stderr",
+            "sha256": "55e0bac5aac9bb1182203c5841cd880586593442fa6b64a78d6ed6d64e82c391"
+          },
+          {
+            "bytes": 6947,
+            "path": "logs/orphan-object-recovery/kernel-check-recovered-spatial.maps",
+            "sha256": "f666c8a38bdc40bcce036942898a2a6cc5d71addd030f52713ac5b09e5f85a06"
+          },
+          {
+            "bytes": 1379,
+            "path": "logs/proof-filepool-01/proof-build-receipt.json",
+            "sha256": "338e2240fa87c5c132635efc585aa60b033138999035121be87171f4f70f1441"
+          },
+          {
+            "bytes": 435,
+            "path": "logs/orphan-object-recovery/producer-byte-binding.json",
+            "sha256": "a62ab936afad2f613a269a0bb4b16f462e7ff483c29e3382d0ddd70b6ed4510e"
+          },
+          {
+            "bytes": 11154,
+            "path": "logs/orphan-object-recovery/recover_orphan_object.executed-original.py",
+            "sha256": "15f29120d57c7501a9f22be063cc6d901f4fe61b724dba7765d931dd7383a935"
+          }
+        ],
+        "checked_source_files": 106,
+        "independent_kernel_returncode": 0,
+        "logical_module": "CertiGC.vst.cmodel.spatial_gcgraph",
+        "object": "src/certigc/theories/CertiGC/vst/cmodel/spatial_gcgraph.vo",
+        "object_sha256": "00860e0f983616b94d2dc753a310cb1516c93db71bbf2c534b07d2b48fdd4c14",
+        "original_source_returncode": null,
+        "preserved_source_objects": 31,
+        "proof_project": {
+          "bytes": 4464,
+          "path": "proof-build/_CoqProject",
+          "sha256": "d741def1646a78b2b589ce3e6de581089ef09d353dc5fea118ef02be7b02dd46"
+        },
+        "q_arguments": [
+          "-Q",
+          "src/int_or_ptr/theories/int_or_ptr/model",
+          "appliedfm.int_or_ptr.model",
+          "-Q",
+          "src/int_or_ptr/theories/int_or_ptr/vst/ast",
+          "appliedfm.int_or_ptr.vst.ast",
+          "-Q",
+          "src/int_or_ptr/theories/int_or_ptr/vst/clightgen/x86_64-linux",
+          "appliedfm.int_or_ptr.vst.clightgen",
+          "-Q",
+          "src/int_or_ptr/theories/int_or_ptr/vst/cmodel",
+          "appliedfm.int_or_ptr.vst.cmodel",
+          "-Q",
+          "src/int_or_ptr/theories/int_or_ptr/vst/spec",
+          "appliedfm.int_or_ptr.vst.spec",
+          "-Q",
+          "src/int_or_ptr/theories/int_or_ptr/vst/verif",
+          "appliedfm.int_or_ptr.vst.verif",
+          "-Q",
+          "src/block/theories/Block/model",
+          "CertiCoq.Block.model",
+          "-Q",
+          "src/block/theories/Block/vst/ast",
+          "CertiCoq.Block.vst.ast",
+          "-Q",
+          "src/block/theories/Block/vst/clightgen/x86_64-linux",
+          "CertiCoq.Block.vst.clightgen",
+          "-Q",
+          "src/block/theories/Block/vst/cmodel",
+          "CertiCoq.Block.vst.cmodel",
+          "-Q",
+          "src/block/theories/Block/vst/spec",
+          "CertiCoq.Block.vst.spec",
+          "-Q",
+          "src/block/theories/Block/vst/verif",
+          "CertiCoq.Block.vst.verif",
+          "-Q",
+          "src/certigc/theories/CertiGC/model",
+          "CertiGC.model",
+          "-Q",
+          "src/certigc/theories/CertiGC/vst/ast",
+          "CertiGC.vst.ast",
+          "-Q",
+          "src/certigc/theories/CertiGC/vst/clightgen/x86_64-linux",
+          "CertiGC.vst.clightgen",
+          "-Q",
+          "src/certigc/theories/CertiGC/vst/cmodel",
+          "CertiGC.vst.cmodel",
+          "-Q",
+          "src/certigc/theories/CertiGC/vst/spec",
+          "CertiGC.vst.spec",
+          "-Q",
+          "src/certigc/theories/CertiGC/vst/verif",
+          "CertiGC.vst.verif"
+        ],
+        "source_sha256": "205f8350aa3b69e68139256d2a376f7437789b58866da3b797c56a00f40163bd",
+        "status": "validated",
+        "validation_stage": "post-execution-static-evidence-binding",
+        "validator": {
+          "bytes": 15840,
+          "path": "tools/recovery_validation.py",
+          "sha256": "15608f2487a5cdbfa0882c99ab68003a1e3751c13116880979372848bc6ad0f9"
+        }
+      }
+    },
+    "proof_target": "CertiGC.vst.verif.verif_garbage_collect.body_garbage_collect",
+    "proof_target_vo_sha256": "e0d139655677f7e1954bd0bdbe18af1b1522708d9039bce6516f7be5b12244af",
+    "runtime_metrics": {
+      "allocated_words_first": 65535,
+      "collections": 2,
+      "copied_live_words": 6,
+      "nursery_words": 65536,
+      "restored_nursery_words": 65536,
+      "root_value": 12345,
+      "shared_child_preserved": true,
+      "target": "x86_64-linux",
+      "unreachable_blocks_first": 21843,
+      "unreachable_blocks_second": 21845
+    },
+    "scope": "worker-local bounded proof/runtime integration only",
+    "source04_evidence_validation_sha256": "006b1304ffd6b93d2b7a50684ddde4aa09bf6a3a38bdcce8e69eff80ecd87a4a",
+    "source_build_directory": "proof-build-o10-s16",
+    "source_commit": "ec0183449d5e7dc66d33c9bc2dd5759de0ebd877",
+    "source_runtime_profiles": [
+      {
+        "attempt": "logs/proof-filepool-01",
+        "independent_recovery": {
+          "independent_kernel_returncode": 0,
+          "object": "src/certigc/theories/CertiGC/vst/cmodel/spatial_gcgraph.vo",
+          "object_sha256": "00860e0f983616b94d2dc753a310cb1516c93db71bbf2c534b07d2b48fdd4c14",
+          "original_source_returncode": null,
+          "path": "logs/orphan-object-recovery/acceptance.json",
+          "sha256": "6081c4e83a614dd46e0c21446b85e933cc01af204a4106e59a13f0aee0485164",
+          "validation": {
+            "acceptance": {
+              "bytes": 4041,
+              "path": "logs/orphan-object-recovery/acceptance.json",
+              "sha256": "6081c4e83a614dd46e0c21446b85e933cc01af204a4106e59a13f0aee0485164"
+            },
+            "additional_evidence": [
+              {
+                "bytes": 33,
+                "path": "logs/orphan-object-recovery/kernel-check-recovered-spatial.stdout",
+                "sha256": "7a4ba40f37fd6f60cfae3eecad38a48fc8bdaae7ea39246f2d08b48be339fb9a"
+              },
+              {
+                "bytes": 22080,
+                "path": "logs/orphan-object-recovery/kernel-check-recovered-spatial.stderr",
+                "sha256": "55e0bac5aac9bb1182203c5841cd880586593442fa6b64a78d6ed6d64e82c391"
+              },
+              {
+                "bytes": 6947,
+                "path": "logs/orphan-object-recovery/kernel-check-recovered-spatial.maps",
+                "sha256": "f666c8a38bdc40bcce036942898a2a6cc5d71addd030f52713ac5b09e5f85a06"
+              },
+              {
+                "bytes": 1379,
+                "path": "logs/proof-filepool-01/proof-build-receipt.json",
+                "sha256": "338e2240fa87c5c132635efc585aa60b033138999035121be87171f4f70f1441"
+              },
+              {
+                "bytes": 435,
+                "path": "logs/orphan-object-recovery/producer-byte-binding.json",
+                "sha256": "a62ab936afad2f613a269a0bb4b16f462e7ff483c29e3382d0ddd70b6ed4510e"
+              },
+              {
+                "bytes": 11154,
+                "path": "logs/orphan-object-recovery/recover_orphan_object.executed-original.py",
+                "sha256": "15f29120d57c7501a9f22be063cc6d901f4fe61b724dba7765d931dd7383a935"
+              }
+            ],
+            "checked_source_files": 106,
+            "independent_kernel_returncode": 0,
+            "logical_module": "CertiGC.vst.cmodel.spatial_gcgraph",
+            "object": "src/certigc/theories/CertiGC/vst/cmodel/spatial_gcgraph.vo",
+            "object_sha256": "00860e0f983616b94d2dc753a310cb1516c93db71bbf2c534b07d2b48fdd4c14",
+            "original_source_returncode": null,
+            "preserved_source_objects": 31,
+            "proof_project": {
+              "bytes": 4464,
+              "path": "proof-build/_CoqProject",
+              "sha256": "d741def1646a78b2b589ce3e6de581089ef09d353dc5fea118ef02be7b02dd46"
+            },
+            "q_arguments": [
+              "-Q",
+              "src/int_or_ptr/theories/int_or_ptr/model",
+              "appliedfm.int_or_ptr.model",
+              "-Q",
+              "src/int_or_ptr/theories/int_or_ptr/vst/ast",
+              "appliedfm.int_or_ptr.vst.ast",
+              "-Q",
+              "src/int_or_ptr/theories/int_or_ptr/vst/clightgen/x86_64-linux",
+              "appliedfm.int_or_ptr.vst.clightgen",
+              "-Q",
+              "src/int_or_ptr/theories/int_or_ptr/vst/cmodel",
+              "appliedfm.int_or_ptr.vst.cmodel",
+              "-Q",
+              "src/int_or_ptr/theories/int_or_ptr/vst/spec",
+              "appliedfm.int_or_ptr.vst.spec",
+              "-Q",
+              "src/int_or_ptr/theories/int_or_ptr/vst/verif",
+              "appliedfm.int_or_ptr.vst.verif",
+              "-Q",
+              "src/block/theories/Block/model",
+              "CertiCoq.Block.model",
+              "-Q",
+              "src/block/theories/Block/vst/ast",
+              "CertiCoq.Block.vst.ast",
+              "-Q",
+              "src/block/theories/Block/vst/clightgen/x86_64-linux",
+              "CertiCoq.Block.vst.clightgen",
+              "-Q",
+              "src/block/theories/Block/vst/cmodel",
+              "CertiCoq.Block.vst.cmodel",
+              "-Q",
+              "src/block/theories/Block/vst/spec",
+              "CertiCoq.Block.vst.spec",
+              "-Q",
+              "src/block/theories/Block/vst/verif",
+              "CertiCoq.Block.vst.verif",
+              "-Q",
+              "src/certigc/theories/CertiGC/model",
+              "CertiGC.model",
+              "-Q",
+              "src/certigc/theories/CertiGC/vst/ast",
+              "CertiGC.vst.ast",
+              "-Q",
+              "src/certigc/theories/CertiGC/vst/clightgen/x86_64-linux",
+              "CertiGC.vst.clightgen",
+              "-Q",
+              "src/certigc/theories/CertiGC/vst/cmodel",
+              "CertiGC.vst.cmodel",
+              "-Q",
+              "src/certigc/theories/CertiGC/vst/spec",
+              "CertiGC.vst.spec",
+              "-Q",
+              "src/certigc/theories/CertiGC/vst/verif",
+              "CertiGC.vst.verif"
+            ],
+            "source_sha256": "205f8350aa3b69e68139256d2a376f7437789b58866da3b797c56a00f40163bd",
+            "status": "validated",
+            "validation_stage": "post-execution-static-evidence-binding",
+            "validator": {
+              "bytes": 15840,
+              "path": "tools/recovery_validation.py",
+              "sha256": "15608f2487a5cdbfa0882c99ab68003a1e3751c13116880979372848bc6ad0f9"
+            }
+          }
+        },
+        "original_source_returncode": null,
+        "role": "spatial object later independently rechecked"
+      },
+      {
+        "attempt": "logs/proof-filepool-02",
+        "disposition_at_independent_start": "kernel-paused-after-controller-loss",
+        "final_source_returncode_at_independent_start": null,
+        "gc_spec_object_sha256": "b42b814fdd8ca3fc7abecb62c761894a93d99ec2399db814db32abf12bb747b9",
+        "gc_spec_returncode": 0,
+        "ocamlrunparam": "a=2,i=262144,s=131072,o=50,O=500",
+        "pool_mib": 1536,
+        "role": "normal gc_spec; unfinished original final-module state retained"
+      },
+      {
+        "attempt": "logs/proof-filepool-03",
+        "disposition_at_independent_start": "kernel-paused-after-controller-loss",
+        "ocamlrunparam": "a=2,i=262144,s=131072,o=10,O=500,v=0x424",
+        "pool_mib": 1024,
+        "role": "unfinished s1/o10 source candidate retained",
+        "source_returncode_at_independent_start": null
+      },
+      {
+        "attempt": "logs/proof-filepool-04",
+        "configuration": {
+          "bytes": 1177,
+          "path": "logs/proof-filepool-04/runtime-configuration.json",
+          "sha256": "fa9b44aaf46806138580d49fa73e3734e54b340ad47e7a45cfe4a018c701764d"
+        },
+        "ocamlrunparam": "a=2,i=262144,s=2097152,o=10,O=500,v=0x424",
+        "pool_mib": 1024,
+        "role": "normal original final-source compilation after actual s16/orphan basic controls",
+        "runtime_controls": {
+          "bytes": 78884,
+          "path": "logs/amd64-kernel-controls-o10-s16-orphans/probe-result.json",
+          "sha256": "00c1c17b67a1eb702fa834b11bcf5494ba900750789c3ecd256115d879ac6417"
+        },
+        "runtime_controls_pool_mib": 512,
+        "runtime_controls_scope": "runtime-kernel-controls only; old constants/VST timeout remains failed and first s16 execution interruption remains unknown",
+        "source_evidence_validation": "006b1304ffd6b93d2b7a50684ddde4aa09bf6a3a38bdcce8e69eff80ecd87a4a",
+        "source_returncode": 0
+      }
+    ],
+    "source_supervision": {
+      "bytes": 4222,
+      "path": "logs/source04-supervision-binding.json",
+      "sha256": "ed4a8f8846cb67049f4eba0ff1cdfd36ee2351983395a75d3772e80d2ad1254f"
+    },
+    "upstream_admitted_count": 10,
+    "worker": "worker 096"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/bin/gc-smoke",
+      "{prefix}/checker/bin/coqchk",
+      "{prefix}/compiled/src/certigc/theories/CertiGC/vst/verif/verif_garbage_collect.vo",
+      "{prefix}/proof-acceptance.json",
+      "{prefix}/checker/lib/runtime/libtcmalloc_minimal.so.4.5.10",
+      "{prefix}/checker/lib/runtime/filepool_runtime_o50_portable.py"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 184854,
+      "extract": false,
+      "id": "certigc",
+      "material_path": "upstream/certigc-ec0183449d5e7dc66d33c9bc2dd5759de0ebd877.tar.gz",
+      "sha256": "6bf320b87d2b8b7596e5db924dcd450bb45c969d7fdc449ef63dfdb2a8be2fe0",
+      "strip_root": false,
+      "url": "https://codeload.github.com/CertiGraph/CertiGC/tar.gz/ec0183449d5e7dc66d33c9bc2dd5759de0ebd877"
+    },
+    {
+      "bytes": 937060,
+      "extract": false,
+      "id": "certigraph",
+      "material_path": "upstream/certigraph-d8e47a5f256561f2da8c739372918e942247f7e7.tar.gz",
+      "sha256": "62b956c0c589d1efd4b0e0d9909a28025844d59daeb3bce735c1273b29e6e606",
+      "strip_root": false,
+      "url": "https://codeload.github.com/Salamari/CertiGraph/tar.gz/d8e47a5f256561f2da8c739372918e942247f7e7"
+    },
+    {
+      "bytes": 7067363,
+      "extract": false,
+      "id": "coq",
+      "material_path": "upstream/coq-8.14.1-source.tar.gz",
+      "sha256": "f0a1d30a21954fb0cbe11875be8e29479dec17ecbfb68481548f066bbaa8e894",
+      "strip_root": false,
+      "url": "https://codeload.github.com/coq/coq/tar.gz/refs/tags/V8.14.1"
+    },
+    {
+      "bytes": 8279763,
+      "extract": false,
+      "id": "vst",
+      "material_path": "upstream/vst-2.8-source.tar.gz",
+      "sha256": "f36f8675b2d81ab4e621a16b312f41a66c4773a270c7650f434a6d1f33f4d3b0",
+      "strip_root": false,
+      "url": "https://codeload.github.com/PrincetonUniversity/VST/tar.gz/refs/tags/v2.8"
+    },
+    {
+      "bytes": 2751207,
+      "extract": false,
+      "id": "compcert",
+      "material_path": "upstream/compcert-3.9-source.tar.gz",
+      "sha256": "6a56b4e4c2b6e776eba43a1a08047c9efd6874244bd2d8c48ccb6ccd1117aefb",
+      "strip_root": false,
+      "url": "https://codeload.github.com/AbsInt/CompCert/tar.gz/refs/tags/v3.9"
+    },
+    {
+      "bytes": 5179734,
+      "extract": false,
+      "id": "ocaml",
+      "material_path": "upstream/ocaml-4.12.0-source.tar.gz",
+      "sha256": "adc07a3995362403f3cb11085a86354de08e5a7f9eb3c09be7bbcc38a3a26744",
+      "strip_root": false,
+      "url": "https://codeload.github.com/ocaml/ocaml/tar.gz/refs/tags/4.12.0"
+    },
+    {
+      "bytes": 93695,
+      "extract": false,
+      "id": "zarith",
+      "material_path": "upstream/zarith-1.12-source.tar.gz",
+      "sha256": "cc32563c3845c86d0f609c86d83bf8607ef12354863d31d3bffc0dacf1ed2881",
+      "strip_root": false,
+      "url": "https://codeload.github.com/ocaml/Zarith/tar.gz/refs/tags/release-1.12"
+    },
+    {
+      "bytes": 9829,
+      "extract": false,
+      "id": "coq-vsu",
+      "material_path": "upstream/coq-vsu-39642578e69839684b0bff2ee6f429c90f4532ef.tar.gz",
+      "sha256": "cd579082b40e9949133e9a2920728aad3be33707560bec5b357527c9be9e483f",
+      "strip_root": false,
+      "url": "https://codeload.github.com/appliedfm/coq-vsu/tar.gz/39642578e69839684b0bff2ee6f429c90f4532ef"
+    },
+    {
+      "bytes": 11569,
+      "extract": false,
+      "id": "int-or-ptr",
+      "material_path": "upstream/coq-vsu-int_or_ptr-043275c49339d31a546d2fb7a7c437876b011a0b.tar.gz",
+      "sha256": "2880bd72a37aefc4f307155c74c7d7ff645a827ca3c3f3218372efd2f66fc6da",
+      "strip_root": false,
+      "url": "https://codeload.github.com/appliedfm/coq-vsu-int_or_ptr/tar.gz/043275c49339d31a546d2fb7a7c437876b011a0b"
+    },
+    {
+      "bytes": 11368,
+      "extract": false,
+      "id": "certicoq-block",
+      "material_path": "upstream/coq-certicoq-block-d7920f9a2623d03d184084f7a2dc9404db0f815e.tar.gz",
+      "sha256": "e7ce7d97cd7e05eff2f6b8e89830bd545982c1fbe7fed11e96e7970a85beaf1b",
+      "strip_root": false,
+      "url": "https://codeload.github.com/appliedfm/coq-certicoq-block/tar.gz/d7920f9a2623d03d184084f7a2dc9404db0f815e"
+    },
+    {
+      "bytes": 453228,
+      "extract": false,
+      "id": "coq-flocq",
+      "material_path": "upstream/flocq-3.4.2-source.tar.gz",
+      "sha256": "b5b6ee3e7ca5bf48bfcc94354a8cd48b9f00a33b9b778e64dffda5887cd09671",
+      "strip_root": false,
+      "url": "https://flocq.gitlabpages.inria.fr/releases/flocq-3.4.2.tar.gz"
+    },
+    {
+      "bytes": 1190458,
+      "extract": false,
+      "id": "coq-menhirlib",
+      "material_path": "upstream/menhir-20211128-source.tar.gz",
+      "sha256": "ccc9201f2bb68d1bf15dad7ebd328065999c924bd08fa1fb2b879281540f4773",
+      "strip_root": false,
+      "url": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20211128/archive.tar.gz"
+    },
+    {
+      "bytes": 115500,
+      "extract": false,
+      "id": "coq-bignums",
+      "material_path": "upstream/bignums-8.14.0-source.tar.gz",
+      "sha256": "b9a487abd26b8e2205c5e12fd83da7f4ce89309c16bfbc2830946d0a0ce77ec6",
+      "strip_root": false,
+      "url": "https://github.com/coq/bignums/archive/V8.14.0.tar.gz"
+    },
+    {
+      "bytes": 93440,
+      "extract": false,
+      "id": "gperftools-minimal-amd64",
+      "material_path": "logs/allocator-source-review/gperftools-2.10/raw/libtcmalloc-minimal4_2.10-1_amd64.deb",
+      "sha256": "464aa2e804b0d48300ad71edfe525599deed8765db4af7a8d9de60326dc8e4c7",
+      "strip_root": false,
+      "url": "https://snapshot.debian.org/file/6a907b74352c1d80f3b529f5251f27164d591dc7"
+    },
+    {
+      "bytes": 926512,
+      "extract": false,
+      "id": "gperftools-source-orig",
+      "material_path": "logs/allocator-source-review/gperftools-2.10/raw/google-perftools_2.10.orig.tar.gz",
+      "sha256": "b0dcfe3aca1a8355955f4b415ede43530e3bb91953b6ffdd75c45891070fe0f1",
+      "strip_root": false,
+      "url": "https://snapshot.debian.org/file/5a5a0c086349ce0d9675bd09f31d2b1773f124ef"
+    },
+    {
+      "bytes": 2210,
+      "extract": false,
+      "id": "gperftools-source-dsc",
+      "material_path": "logs/allocator-source-review/gperftools-2.10/raw/google-perftools_2.10-1.dsc",
+      "sha256": "63221cd85485946dc41c5bac3b659615b02c44e1785fce0e6d3e1a74af38418a",
+      "strip_root": false,
+      "url": "https://snapshot.debian.org/file/693a721814a6ce2effd29e798408e04c949c0f1a"
+    },
+    {
+      "bytes": 6980,
+      "extract": false,
+      "id": "gperftools-source-debian",
+      "material_path": "logs/allocator-source-review/gperftools-2.10/raw/google-perftools_2.10-1.debian.tar.xz",
+      "sha256": "fd44a071fbadbb652d4ed453493963be0e223e23873665d63cfd3a8faca3e11d",
+      "strip_root": false,
+      "url": "https://snapshot.debian.org/file/eee59d51a3840aa2b0dc3a868f162d97c8264fc9"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/CertiGraph/CertiGC/tree/ec0183449d5e7dc66d33c9bc2dd5759de0ebd877"
+    ],
+    "examples": [
+      {
+        "command": "python3 '{prefix}/check.py' --prefix '{prefix}'",
+        "description": "安装后重跑功能检查。"
+      },
+      {
+        "command": "python3 '{prefix}/tests/run_gc.py' --source '{prefix}/source/certigc' --output ./certigc-runtime-replay",
+        "description": "用宿主 GCC 从原源码重建并运行有界 GC 样例。"
+      }
+    ],
+    "locations": [
+      {
+        "label": "运行样例",
+        "path": "{prefix}/bin/gc-smoke",
+        "purpose": "分配、根保活、共享子节点和两次 nursery 回收。"
+      },
+      {
+        "label": "证明与假设",
+        "path": "{prefix}/evidence/proof-audit",
+        "purpose": "实际 Print Assumptions 和 coqchk 输出；不推断无假设正确性。"
+      },
+      {
+        "label": "原源码与接口",
+        "path": "{prefix}/source/certigc",
+        "purpose": "完整原始 CertiGC 源码，含锁定的 64/32 位 AST；仅 64 位目标已执行。"
+      },
+      {
+        "label": "符号和叶级索引",
+        "path": "{prefix}/index",
+        "purpose": "定位定义、规格、证明和上游 Admitted。"
+      }
+    ],
+    "notes": [
+      "工具链与证明库均为该 prefix 的普通独立文件；安装和 check 无下载。",
+      "check 对已实际源编译的 verif_garbage_collect 使用 coqchk -norec；依赖模块按固定 hash 载入，不在每次安装递归重核。",
+      "上游 10 个 Admitted 清单与目标实际假设均保留；不能宣称完整无公理证明。",
+      "reset_heap、通用屏障插入、任意 JIT 栈图、其他架构和性能未获本次资格。",
+      "完整源码重放的 Coq/VST 工具链另见同一 worker 交付中的离线 support 包。",
+      "CompCert 部分遵守 INRIA 非商业许可；具体授权见各组件 licenses 与对应原始源码。",
+      "Coq 内核保持原始作者字节；官方 Debian gperftools 2.10-1 仅提供有限普通文件后备内存，完整来源、许可证和精确对应源码随包保留。",
+      "每个检查的 allocator/helper 为本 prefix 的普通独立文件，文件池位于独立临时目录；成功退出、真实 Coq/allocator/shared 映射均必须核验。",
+      "安装检查需要至少 1152 MiB 可访问剩余空间用于有限文件池及预留；池上限为 1024 MiB。实际 source proof 的池容量以独立原始日志为准。",
+      "spatial_gcgraph 的源码进程曾因执行环境断开而失去父进程；它写出了完整对象，但原退出码未知。该对象随后经过同版 coqchk 独立重核，剩余源码由新正式构建完成。原中断日志和独立恢复证据完整保留，未伪补原 rc=0。",
+      "source04 在第三个独立普通文件副本中，以原 Makefile 的完整参数和未改原源码正常证明最终模块；其16 MiB minor heap、o10、1024 MiB文件池均明确记录。实际监督器driver退出0和内部原Coq退出0分别绑定，随后实际Print Assumptions、错误架构拒绝与独立coqchk再次通过。先前source02/source03最后模块的原退出码仍未知；旧constants/VST控制超时与首次s16环境中断也完整保留，不改写为通过。",
+      "安装前缀仅包含本地独立kernel/库、官方allocator与便携observer；没有历史PID或暂停租约import，全部三组历史lease环境变量在调用前清除。安装检查使用明确o50和1024 MiB池，与source04的源证明profile分别记录。"
+    ],
+    "summary": "固定 64 位 CertiGC：真实分代 GC 样例、源文件重放证据及选定 GC 模块的 Coq 内核检查；保留上游假设。"
+  },
+  "version": "ec0183449d5e7dc66d33c9bc2dd5759de0ebd877"
+}

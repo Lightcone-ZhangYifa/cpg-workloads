@@ -1,0 +1,165 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/guarded_check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/profile"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional-profile",
+      "kind": "functional",
+      "stdout_regex": "CPG_CHECK_PASS",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.mono-cecil",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "functional_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualifications": {
+      "dataset": null,
+      "oci": false,
+      "official_benchmark": false,
+      "physical_hardware": false
+    },
+    "record_id": "review.engineering.mono-cecil",
+    "resource_metadata": {
+      "build_claim": false,
+      "functional_claim": true,
+      "id": "research.mono-cecil",
+      "limitations": [
+        "仅限Linux x86_64上随包.NET8.0.33运行时的有界profile；没有Windows原生执行资格。",
+        "上游库为锁定NuGet二进制，保留对应源码归档；本轮从源码编译的是测试探针，没有从源码重建上游库。",
+        "检查时运行时在output中独立展开，结束清理；安装prefix只读。",
+        "宿主仍需.NET运行时的基本glibc/libstdc++等系统动态库；不承诺任意Linux发行版的ABI兼容。",
+        "CIL变换只针对一条整型常量指令；不将此例视为任意变换的语义等价证明。"
+      ],
+      "method": "binary",
+      "probe_build_verified": true,
+      "probe_compiler": "Roslyn from SDK 8.0.427; offline support.dotnet-sdk-8 rebuild input",
+      "recipe_files": [],
+      "record_id": "review.engineering.mono-cecil",
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime": "Microsoft.NETCore.App 8.0.33 linux-x64",
+      "source_locks": [
+        {
+          "bytes": 16610350,
+          "id": "cecil-0.11.6.tar.gz",
+          "path": "upstream/cecil-0.11.6.tar.gz",
+          "sha256": "fc9297f09e3b7b808b203318b167de1695f947099aad14f97b149e3051b0df8e",
+          "url": "https://codeload.github.com/jbevain/cecil/tar.gz/refs/tags/0.11.6"
+        },
+        {
+          "bytes": 31318724,
+          "id": "dotnet-runtime-8.0.33-linux-x64.tar.gz",
+          "official_sha512_verified": "b314039d337a8c5c4be6a6f99712a2618cbeb5e1ab7cac7a5c1cbf1c97bd355f5d116b9932a8cfc604ac7849f74638896eba0534892c6518311908aba29b4f7b",
+          "path": "upstream/dotnet-runtime-8.0.33-linux-x64.tar.gz",
+          "sha256": "73e6b84de92cc8442229ea991e677cc1376a0a05e3e39f878cf98ebd756861b6",
+          "url": "https://builds.dotnet.microsoft.com/dotnet/Runtime/8.0.33/dotnet-runtime-8.0.33-linux-x64.tar.gz"
+        },
+        {
+          "bytes": 707868,
+          "id": "mono.cecil.0.11.6.nupkg",
+          "path": "upstream/mono.cecil.0.11.6.nupkg",
+          "sha256": "d2a23832aaa948ba9a01acc42b5726e34c5f995958f1b30d45c0e7c70b3a72d5",
+          "url": "https://api.nuget.org/v3-flatcontainer/mono.cecil/0.11.6/mono.cecil.0.11.6.nupkg"
+        }
+      ],
+      "upstream_license": "MIT; bundled .NET runtime license and ThirdPartyNotices retained",
+      "version": "0.11.6"
+    },
+    "source_build_claim": false,
+    "support_only": false,
+    "upstream_license": "MIT; bundled .NET runtime license and ThirdPartyNotices retained",
+    "worker_id": "worker 062"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 16610350,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "upstream/cecil-0.11.6.tar.gz",
+      "sha256": "fc9297f09e3b7b808b203318b167de1695f947099aad14f97b149e3051b0df8e",
+      "strip_root": false,
+      "url": "https://codeload.github.com/jbevain/cecil/tar.gz/refs/tags/0.11.6"
+    },
+    {
+      "bytes": 31318724,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "upstream/dotnet-runtime-8.0.33-linux-x64.tar.gz",
+      "sha256": "73e6b84de92cc8442229ea991e677cc1376a0a05e3e39f878cf98ebd756861b6",
+      "strip_root": false,
+      "url": "https://builds.dotnet.microsoft.com/dotnet/Runtime/8.0.33/dotnet-runtime-8.0.33-linux-x64.tar.gz"
+    },
+    {
+      "bytes": 707868,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "upstream/mono.cecil.0.11.6.nupkg",
+      "sha256": "d2a23832aaa948ba9a01acc42b5726e34c5f995958f1b30d45c0e7c70b3a72d5",
+      "strip_root": false,
+      "url": "https://api.nuget.org/v3-flatcontainer/mono.cecil/0.11.6/mono.cecil.0.11.6.nupkg"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.mono-project.com/docs/tools+libraries/libraries/Mono.Cecil/"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"research.mono-cecil\")",
+        "description": "Run the declared checks through the CPG Python API"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed payload",
+        "path": "{prefix}",
+        "purpose": "Locked resources and bounded offline check inputs"
+      }
+    ],
+    "notes": [
+      "仅限Linux x86_64上随包.NET8.0.33运行时的有界profile；没有Windows原生执行资格。",
+      "上游库为锁定NuGet二进制，保留对应源码归档；本轮从源码编译的是测试探针，没有从源码重建上游库。",
+      "检查时运行时在output中独立展开，结束清理；安装prefix只读。",
+      "宿主仍需.NET运行时的基本glibc/libstdc++等系统动态库；不承诺任意Linux发行版的ABI兼容。",
+      "CIL变换只针对一条整型常量指令；不将此例视为任意变换的语义等价证明。"
+    ],
+    "summary": "读取修改CIL方法并重写程序集，核加载执行及元数据"
+  },
+  "version": "0.11.6"
+}

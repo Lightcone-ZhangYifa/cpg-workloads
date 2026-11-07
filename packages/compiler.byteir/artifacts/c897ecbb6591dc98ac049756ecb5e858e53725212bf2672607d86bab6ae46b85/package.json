@@ -1,0 +1,175 @@
+{
+  "build": "worker065-20261101.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/share/probe.py",
+        "--workdir",
+        "{build}/byteir-evidence"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "compiler.byteir",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "known_limitations": [
+      "Bare unroll with zero-trip scf.for triggers upstream assertion; the supported tested pipeline runs canonicalize before unroll. Original failing input and assertion retained."
+    ],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "provenance": {
+      "binary_member": "byteir/_mlir_libs/libByteIRCAPIAggregation.so.19.0git",
+      "known_limitations": [
+        "Bare unroll with zero-trip scf.for triggers upstream assertion; the supported tested pipeline runs canonicalize before unroll. Original failing input and assertion retained."
+      ],
+      "method": "unmodified native C API library extracted from official release wheel; locally authored standard-library ctypes CLI; no Python CPython-3.9 binding loaded",
+      "qualified_scope": "Typed IR parse/verify, ByteIR-specific unroll and cmae passes, LLVM lowering and CPU JIT; no GPU/BRT/full model claim",
+      "raw_assets": [
+        {
+          "bytes": 73418666,
+          "file": "byteir-1.9.3.0.whl",
+          "sha256": "bad3a04fda385e7b128e30e753af299ef4eaea7c8f40bd93b4b70cb592012cc8",
+          "url": "https://github.com/bytedance/byteir/releases/download/v1.9.3.0/byteir-1.9.3.0-cp39-cp39-linux_x86_64.whl"
+        },
+        {
+          "bytes": 6953144,
+          "file": "ByteIR-e814ab0.tar.gz",
+          "sha256": "898d9ecc1b8c39ec5a9796dcf1900726804a5a1bcc7d2a34c4905983b4c018ea",
+          "url": "https://codeload.github.com/bytedance/byteir/tar.gz/e814ab0b0cf02c3f79ab4f6344e631a29fd2cb16"
+        }
+      ],
+      "release_url": "https://github.com/bytedance/byteir/releases/tag/v1.9.3.0",
+      "resource": "ByteIR",
+      "runtime_requirements": [
+        "Linux x86_64",
+        "Python >=3.8 (stdlib ctypes)",
+        "glibc, libstdc++, libgcc_s, libm, libpthread, librt, libdl, libz"
+      ],
+      "source_commit": "e814ab0b0cf02c3f79ab4f6344e631a29fd2cb16",
+      "source_url": "https://github.com/bytedance/byteir",
+      "version": "1.9.3.0"
+    },
+    "qualification": {
+      "benchmark": null,
+      "formal_promotion": false,
+      "functional": "bounded worker-local evidence only",
+      "hardware": null,
+      "oci": null,
+      "source_build": null
+    },
+    "record_id": "review.engineering.byteir",
+    "requirements": [
+      "Linux x86_64",
+      "Python >=3.8 (stdlib ctypes)",
+      "glibc, libstdc++, libgcc_s, libm, libpthread, librt, libdl, libz"
+    ],
+    "source_lock": {
+      "binary_member": "byteir/_mlir_libs/libByteIRCAPIAggregation.so.19.0git",
+      "known_limitations": [
+        "Bare unroll with zero-trip scf.for triggers upstream assertion; the supported tested pipeline runs canonicalize before unroll. Original failing input and assertion retained."
+      ],
+      "method": "unmodified native C API library extracted from official release wheel; locally authored standard-library ctypes CLI; no Python CPython-3.9 binding loaded",
+      "qualified_scope": "Typed IR parse/verify, ByteIR-specific unroll and cmae passes, LLVM lowering and CPU JIT; no GPU/BRT/full model claim",
+      "raw_assets": [
+        {
+          "bytes": 73418666,
+          "file": "byteir-1.9.3.0.whl",
+          "sha256": "bad3a04fda385e7b128e30e753af299ef4eaea7c8f40bd93b4b70cb592012cc8",
+          "url": "https://github.com/bytedance/byteir/releases/download/v1.9.3.0/byteir-1.9.3.0-cp39-cp39-linux_x86_64.whl"
+        },
+        {
+          "bytes": 6953144,
+          "file": "ByteIR-e814ab0.tar.gz",
+          "sha256": "898d9ecc1b8c39ec5a9796dcf1900726804a5a1bcc7d2a34c4905983b4c018ea",
+          "url": "https://codeload.github.com/bytedance/byteir/tar.gz/e814ab0b0cf02c3f79ab4f6344e631a29fd2cb16"
+        }
+      ],
+      "release_url": "https://github.com/bytedance/byteir/releases/tag/v1.9.3.0",
+      "resource": "ByteIR",
+      "runtime_requirements": [
+        "Linux x86_64",
+        "Python >=3.8 (stdlib ctypes)",
+        "glibc, libstdc++, libgcc_s, libm, libpthread, librt, libdl, libz"
+      ],
+      "source_commit": "e814ab0b0cf02c3f79ab4f6344e631a29fd2cb16",
+      "source_url": "https://github.com/bytedance/byteir",
+      "version": "1.9.3.0"
+    },
+    "worker_id": "worker 065"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 73418666,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "locked-inputs/input-001",
+      "sha256": "bad3a04fda385e7b128e30e753af299ef4eaea7c8f40bd93b4b70cb592012cc8",
+      "strip_root": false,
+      "url": "https://github.com/bytedance/byteir/releases/download/v1.9.3.0/byteir-1.9.3.0-cp39-cp39-linux_x86_64.whl"
+    },
+    {
+      "bytes": 6953144,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "locked-inputs/input-002",
+      "sha256": "898d9ecc1b8c39ec5a9796dcf1900726804a5a1bcc7d2a34c4905983b4c018ea",
+      "strip_root": false,
+      "url": "https://codeload.github.com/bytedance/byteir/tar.gz/e814ab0b0cf02c3f79ab4f6344e631a29fd2cb16"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/bytedance/byteir"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/share/probe.py --workdir /tmp/cpg-check/byteir-evidence",
+        "description": "Replay the bounded functional probe"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Installed resource",
+        "path": "{prefix}",
+        "purpose": "Pinned tool, source materials, examples, licences and verification interface"
+      }
+    ],
+    "notes": [
+      "Bounded local functionality; no automatic promotion of formal CPG qualification.",
+      "Bare unroll with zero-trip scf.for triggers upstream assertion; the supported tested pipeline runs canonicalize before unroll. Original failing input and assertion retained.",
+      "The target distribution is reference-build metadata, not an installation allowlist."
+    ],
+    "summary": "多硬件图编译、运行时和编译pass集成"
+  },
+  "version": "1.9.3.0"
+}

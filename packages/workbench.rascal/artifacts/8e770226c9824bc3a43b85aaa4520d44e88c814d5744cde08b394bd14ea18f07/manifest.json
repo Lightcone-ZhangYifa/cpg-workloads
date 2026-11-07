@@ -1,0 +1,201 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/fixtures"
+    },
+    {
+      "bytes": 1191,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/fixtures/CPG.rsc",
+      "sha256": "3e518d55599366cdedaa8c4534a54903257ee3a596717f0f16ff507bc43da437"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/fixtures/META-INF"
+    },
+    {
+      "bytes": 57,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/fixtures/META-INF/RASCAL.MF",
+      "sha256": "b379debb761ecab5a4d015161e1db8d03e4d6495b9a8adb739f5c59ad7babbc0"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/licenses"
+    },
+    {
+      "bytes": 1798,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/licenses/LICENSE",
+      "sha256": "84c81705b841dec84a49c76dcc95ba27918d8b28437cc40e54f26e7869b97ae7"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/tool"
+    },
+    {
+      "bytes": 82002108,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tool/rascal-0.42.0.jar",
+      "sha256": "ec0560e4bbc02360440f87181b3e0291d754f66e9b3b9bf86b96f245328c0c99"
+    },
+    {
+      "bytes": 1171,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/verify.py",
+      "sha256": "0d6adcb489c198447d5fc42f11a4d0c805dbbcba3e2326592e7c946ca89d6b19"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "tools"
+    },
+    {
+      "bytes": 40,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/check-command.json",
+      "sha256": "b79f11a4673ab4f92a9a8907b8bd7c2955212019cac8ed8d9c4ce2efa48a1f3e"
+    },
+    {
+      "bytes": 1206,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/payload-inventory.json",
+      "sha256": "808756b660e1b193f9c11c6fdf9a497ecead40324a3b4c73335494fe6c91f11b"
+    },
+    {
+      "bytes": 2208,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/run_check.py",
+      "sha256": "cb7575abc9778f0f9a0bbbb0ac50fffbed22a813941895c9a8149a415343ff36"
+    }
+  ],
+  "inventory_sha256": "a43b25883f778d718063c539d791bc9adb7cd0c9cf7b75d086872d335988379d",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "1c438762c7d73fb009d190aee907e3f2a8e5beac0a8adcb708226abc0f217f77",
+  "method": "binary",
+  "package": {
+    "build": "cpg20261101.1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{tools}/run_check.py",
+          "{prefix}",
+          "{build}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "assignment-functional",
+        "kind": "functional",
+        "stdout_regex": "passed",
+        "timeout_seconds": 600
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "workbench.rascal",
+    "metadata": {
+      "baseline_catalog_modified": false,
+      "baseline_version": "0.21.14",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "Official Exp recipe adapted into deterministic precedence, visit, source-transform and malformed-input assertions; no full-suite claim.",
+      "record_id": "review.engineering.rascal",
+      "runtime_toolchain": {},
+      "worker_id": "046"
+    },
+    "provider": "binary",
+    "recipe": {
+      "adapter": "copy",
+      "required_runtime_commands": [
+        "java",
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 82002108,
+        "extract": false,
+        "id": "input-000",
+        "material_path": "rascal-shell.jar",
+        "sha256": "ec0560e4bbc02360440f87181b3e0291d754f66e9b3b9bf86b96f245328c0c99",
+        "strip_root": false,
+        "url": "https://update.rascal-mpl.org/console/rascal-shell-stable.jar"
+      },
+      {
+        "bytes": 3784842,
+        "extract": false,
+        "id": "input-001",
+        "material_path": "rascal-v0.42.0-source.tar.gz",
+        "sha256": "8c1865b5794f872cb7ce7af5d9de92601dab4e620568bca6cddca3b1a71c4ec1",
+        "strip_root": false,
+        "url": "https://codeload.github.com/usethesource/rascal/tar.gz/refs/tags/v0.42.0"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://update.rascal-mpl.org/console/rascal-shell-stable.jar",
+        "https://codeload.github.com/usethesource/rascal/tar.gz/refs/tags/v0.42.0"
+      ],
+      "examples": [
+        {
+          "command": "python3 -B <prefix>/verify.py",
+          "description": "Run the bounded assignment qualification"
+        }
+      ],
+      "locations": [
+        {
+          "label": "installation",
+          "path": "{prefix}",
+          "purpose": "Immutable tool and qualification fixtures"
+        }
+      ],
+      "notes": [
+        "Official Exp recipe adapted into deterministic precedence, visit, source-transform and malformed-input assertions; no full-suite claim."
+      ],
+      "summary": "Parse, visit and transform a language using Rascal."
+    },
+    "version": "0.42.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "assignment_record_id": "review.engineering.rascal",
+    "baseline": "0.21.14",
+    "bounded_scope": "Official Exp recipe adapted into deterministic precedence, visit, source-transform and malformed-input assertions; no full-suite claim."
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,76 @@
+{
+  "build": "worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/checks/qualify_store.py",
+        "--kind",
+        "nix",
+        "--prefix",
+        "{prefix}",
+        "--out",
+        "{build}/qualification"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "offline-fixed-store",
+      "kind": "functional",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "repro.nix",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Only the declared cases, target and pinned inputs",
+    "record_id": "review.engineering.nix",
+    "worker_id": "worker 080"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "bwrap",
+      "sh"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://nix.dev/manual/nix/2.31/installation/installing-binary"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Independent resource prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed upstream resource and repeatable checks"
+      }
+    ],
+    "notes": [
+      "Official Nix 2.31.6 x86_64-linux binary closure, six-path locked input closure, and a sandboxed offline bash printf derivation in a private store. This does not qualify all nixpkgs, compiler bootstrap, or arbitrary derivations.",
+      "Method is binary: the official upstream store closure is imported; the package manager itself is not claimed source-built.",
+      "Only an isolated local store and private daemon are used. Offline checks fail if user namespaces are denied."
+    ],
+    "summary": "Official Nix 2.31.6 x86_64-linux binary closure, six-path locked input closure, and a sandboxed offline bash printf derivation in a private store. This does not qualify all nixpkgs, compiler bootstrap, or arbitrary derivations."
+  },
+  "version": "2.31.6"
+}

@@ -1,0 +1,155 @@
+{
+  "build": "worker-012-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--contract",
+        "{recipe}/payload-contract.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-ready-payload",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "{prefix}/bin/cpg-melior-check"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-ir-verifier-and-execution",
+      "kind": "functional",
+      "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "bindings.melior",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 55591,
+      "category": [
+        "Compiler bindings",
+        "LLVM and MLIR embedding"
+      ],
+      "documentation": [
+        "https://github.com/mlir-rs/melior"
+      ],
+      "extract": false,
+      "id": "bindings.melior",
+      "kind": "url",
+      "license_class": "open",
+      "material_path": "sources/melior-0.18.6.crate",
+      "original_1862_member": false,
+      "plan_record_id": "review.engineering.melior",
+      "purpose": "Generate, parse, verify and lower a func/arith module through the MLIR18 C API, then execute its lowered i64 function.",
+      "sha256": "9c3085c0169aa3b735d8e7df582baee23c2aeb280ea62cc7f71effda28d8e281",
+      "source_url": "https://static.crates.io/crates/melior/melior-0.18.6.crate",
+      "strip_archive_root": false,
+      "title": "melior",
+      "upstream": "https://github.com/mlir-rs/melior",
+      "version": "0.18.6"
+    },
+    "catalog_sha256": "c1d7f4b123bdeff38dd936354257f4fa69bdcd18afe6cc94c5df18610798b727",
+    "original_1862_increment": 0,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.engineering.melior",
+    "runtime_policy": "bundled libraries plus observed host ABI; not a hermetic system image",
+    "version_pair": {
+      "canonical_upstream": "https://github.com/mlir-rs/melior",
+      "crate_vcs_info": {
+        "git": {
+          "sha1": "60c709e37e6c883ec84f0bcc8f37894d736d07f0"
+        },
+        "path_in_vcs": "melior"
+      },
+      "documentation_discrepancy": "Melior 0.18.6 README says LLVM/MLIR17; its actual mlir-sys0.2.2 build.rs requires LLVM_MAJOR_VERSION=18. This frozen build follows the executable dependency contract.",
+      "entity_id": "bindings.melior",
+      "historical_upstream": "https://github.com/raviqqe/melior",
+      "license_paths": [
+        "src/upstream/melior-0.18.6/UPSTREAM-LICENSE"
+      ],
+      "license_url": "https://raw.githubusercontent.com/mlir-rs/melior/60c709e37e6c883ec84f0bcc8f37894d736d07f0/LICENSE",
+      "llvm_mlir_runtime_version": "18.1.8",
+      "mlir_sys_version": "0.2.2",
+      "validation_args": [],
+      "validation_entrypoint": "bin/cpg-melior-check",
+      "version": "0.18.6"
+    },
+    "worker_id": "worker 012"
+  },
+  "provider": "source",
+  "recipe": {
+    "qualification_scope": "Generate, parse, verify and lower a func/arith module through the MLIR18 C API, then execute its lowered i64 function.",
+    "required_installed_paths": [
+      "{prefix}/bin/cpg-melior-check"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "LD_LIBRARY_PATH": "{prefix}/lib",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    },
+    "source_rebuild": "See scripts and shared frozen inputs in this worker bundle; never downloaded during installation."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 55591,
+      "extract": false,
+      "id": "bindings.melior",
+      "material_path": "sources/melior-0.18.6.crate",
+      "sha256": "9c3085c0169aa3b735d8e7df582baee23c2aeb280ea62cc7f71effda28d8e281",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/melior/melior-0.18.6.crate"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/mlir-rs/melior"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/cpg-melior-check",
+        "description": "Run the exact admitted IR profile"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent compiler-binding validation prefix",
+        "path": "{prefix}",
+        "purpose": "Run the included bounded example; exact source and build recipes remain in the worker bundle."
+      }
+    ],
+    "notes": [
+      "Only this pinned version pair and recorded Linux x86_64 ABI were exercised.",
+      "The host loader and actual shared-library compatibility are checked during every CPG binary installation.",
+      "Distribution fields describe the validation host and are not an installation allowlist.",
+      "No official Benchmark, cross-target, OCI or hardware qualification is claimed.",
+      "The Rust bindings and included executable were built from the frozen vendored source closure."
+    ],
+    "summary": "Generate, parse, verify and lower a func/arith module through the MLIR18 C API, then execute its lowered i64 function."
+  },
+  "version": "0.18.6"
+}

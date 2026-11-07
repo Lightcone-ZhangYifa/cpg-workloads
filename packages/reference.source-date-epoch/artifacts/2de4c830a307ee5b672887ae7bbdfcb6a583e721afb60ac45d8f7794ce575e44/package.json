@@ -1,0 +1,74 @@
+{
+  "build": "worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/checks/qualify_installed.py",
+        "--tool",
+        "source-date-epoch",
+        "--prefix",
+        "{prefix}",
+        "--out",
+        "{build}/qualification"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "snapshot-and-demonstration",
+      "kind": "availability",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "reference.source-date-epoch",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Only the declared cases, target and pinned inputs",
+    "record_id": "review.engineering.source-date-epoch",
+    "worker_id": "worker 080"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "gcc"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://reproducible-builds.org/docs/source-date-epoch/",
+      "https://reproducible-builds.org/specs/source-date-epoch/"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Independent resource prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed upstream resource and repeatable checks"
+      }
+    ],
+    "notes": [
+      "Static interface material, not a compiler executable.",
+      "Document hash checks and a GCC example do not confer runtime-software functional qualification."
+    ],
+    "summary": "Fixed official SOURCE_DATE_EPOCH documentation and a two-path timestamp demonstration"
+  },
+  "version": "2026.11.02"
+}

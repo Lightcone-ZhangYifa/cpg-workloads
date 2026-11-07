@@ -1,0 +1,171 @@
+{
+  "files": [],
+  "inventory_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "76d8c7cb43b329a5b631e43483b3bdcf737d1ba4c5d2317a464dc5d6ad0ef410",
+  "method": "wrapper",
+  "package": {
+    "build": "cpg-20261101-v001",
+    "checks": [],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": [
+        "apt.build-essential",
+        "apt.perl"
+      ]
+    },
+    "id": "apt.abi-compliance-checker",
+    "metadata": {
+      "assignment_record_id": "review.engineering.abi-compliance-checker",
+      "catalog": {
+        "apt_dependency_ids": [
+          "apt.build-essential",
+          "apt.perl"
+        ],
+        "architecture": "all",
+        "archive_bytes": 172270,
+        "bundled_path": "abi-tools/inputs/deb/abi-compliance-checker_2.3-2_all.deb",
+        "category": [
+          "ABI",
+          "Compatibility"
+        ],
+        "dependencies": [],
+        "deployment": {
+          "adapter": "apt",
+          "state": "trusted thin wrapper; private extracted local probes are separate evidence"
+        },
+        "extract": false,
+        "id": "apt.abi-compliance-checker",
+        "immutable_ref": "sha256:77b943fffa54e27dc0b981fa6646b76ed3fea4c3d3d8a4d23dbd7ae764866de8",
+        "kind": "apt",
+        "license_class": "open",
+        "license_id": "LGPL-2.1-or-later AND GPL-3.0-or-later",
+        "mandatory": false,
+        "material_path": "apt/abi-compliance-checker_2.3-2_all.deb",
+        "package_name": "abi-compliance-checker",
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Compare C/C++ library ABI dumps for backward compatibility.",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "77b943fffa54e27dc0b981fa6646b76ed3fea4c3d3d8a4d23dbd7ae764866de8",
+        "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/a/abi-compliance-checker/abi-compliance-checker_2.3-2_all.deb",
+        "strip_archive_root": true,
+        "title": "ABI Compliance Checker",
+        "version": "2.3-2"
+      },
+      "catalog_sha256": "da37eae6b128d06b8f32195ddaae26c690d42da73727af2e5204ff1978a70494",
+      "formal_release_promoted": false,
+      "local_probe": {
+        "companion_material_package": "reference-pack.worker-026",
+        "scope": "private extracted 2.3-2 against fixed library fixtures; not an APT database installation"
+      },
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "worker_id": "worker 026"
+    },
+    "provider": "apt",
+    "recipe": {
+      "adapter": "apt",
+      "install_commands": [
+        [
+          "apt-get",
+          "install",
+          "--no-download",
+          "--yes",
+          "--no-install-recommends",
+          "{package_name}={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "apt-get",
+          "install",
+          "--no-download",
+          "--yes",
+          "--no-install-recommends",
+          "{source}"
+        ]
+      ],
+      "manager": "apt",
+      "package_name": "abi-compliance-checker",
+      "state": "trusted thin wrapper; private extracted local probes are separate evidence",
+      "uninstall_commands": [
+        [
+          "apt-get",
+          "remove",
+          "--yes",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bundled_path": "abi-tools/inputs/deb/abi-compliance-checker_2.3-2_all.deb",
+        "bytes": 172270,
+        "extract": false,
+        "id": "apt.abi-compliance-checker",
+        "material_path": "apt/abi-compliance-checker_2.3-2_all.deb",
+        "sha256": "77b943fffa54e27dc0b981fa6646b76ed3fea4c3d3d8a4d23dbd7ae764866de8",
+        "strip_root": true,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/a/abi-compliance-checker/abi-compliance-checker_2.3-2_all.deb"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/lvc/abi-compliance-checker"
+      ],
+      "examples": [
+        {
+          "command": "dpkg-query -L {package_name}",
+          "description": "List the files registered by the system package manager."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/apt/abi-compliance-checker_2.3-2_all.deb",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "System package files",
+          "path": "/var/lib/dpkg/info/abi-compliance-checker.list",
+          "purpose": "Ask dpkg-query -L for the actual installed file list, including multiarch packages."
+        }
+      ],
+      "notes": [
+        "Thin APT wrapper: it does not carry or install the managed tool at package-verification time.",
+        "The companion delivery carries exact DEB inputs and the compatible/incompatible-library experiment; the outer delta corresponding-sources directory carries the exact source archives and patches.",
+        "No global APT install was performed for this delivery. APT retains dependency resolution and package-database ownership.",
+        "Supply the verified local DEB explicitly with --source apt.abi-compliance-checker=/absolute/reference-prefix/abi-tools/inputs/deb/abi-compliance-checker_2.3-2_all.deb. The original manager refuses a missing explicit local input before any APT installation hook.",
+        "APT installation uses --no-download; required dependencies must already be installed or available through the prepared APT cache.",
+        "The SPDX expression summarizes upstream LGPL-2.1-or-later and Debian packaging GPL-3.0-or-later; preserve the complete package notices."
+      ],
+      "summary": "Compare C/C++ library ABI dumps for backward compatibility."
+    },
+    "version": "2.3-2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "original_package_engine": "CPG 0.21.14",
+    "scope": "new trusted APT definition; underlying system installation not executed"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

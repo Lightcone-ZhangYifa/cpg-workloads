@@ -1,0 +1,123 @@
+{
+  "build": "w076.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "material-integrity",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "amd-smi-materials",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 986706,
+      "baseline_version": "0.21.14",
+      "category": "observability",
+      "deployment": {
+        "adapter": "copy"
+      },
+      "extract": false,
+      "id": "amd-smi-materials",
+      "is_formal_baseline_addition": false,
+      "kind": "archive",
+      "managed_profile_scope": "Complete declared pinned documentation/API/configuration reference; no installed driver, queried device, collector, native build or hardware qualification",
+      "material_path": "raw/amdsmi-1e91f3c1527617066f50c22f9ec4368fe82e1a3c.tar.gz",
+      "purpose": "Complete declared pinned documentation/API/configuration reference; no installed driver, queried device, collector, native build or hardware qualification",
+      "sha256": "46ce010009a58547b554e18d4b7da8ffd8767eeff543b8e0d38fc0c519d0f07d",
+      "source_url": "https://codeload.github.com/ROCm/amdsmi/tar.gz/1e91f3c1527617066f50c22f9ec4368fe82e1a3c",
+      "strip_archive_root": true,
+      "title": "amd-smi-materials",
+      "upstream_pin_record": "source-lock.json",
+      "version": "26.2.2-rocm7.2.4"
+    },
+    "catalog_sha256": "233a746e33baad63ff1f4092e7d371249e9bb624765f9b17ffd5c4473a6db59f",
+    "functional_claim": false,
+    "hardware_claim": false,
+    "host_runtime_requirements_explicit": true,
+    "independent_new_family": true,
+    "logical_resource_id": "amd-smi-materials",
+    "material_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Complete declared pinned documentation/API/configuration reference; no installed driver, queried device, collector, native build or hardware qualification",
+    "worker_id": "worker 076"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "required_installed_paths": [
+      "{prefix}/CPG-POLICY.json",
+      "{prefix}/source-lock.json",
+      "{prefix}/material-manifest.json",
+      "{prefix}/GUIDE.md"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 986706,
+      "extract": false,
+      "id": "amd-smi-materials",
+      "material_path": "raw/amdsmi-1e91f3c1527617066f50c22f9ec4368fe82e1a3c.tar.gz",
+      "sha256": "46ce010009a58547b554e18d4b7da8ffd8767eeff543b8e0d38fc0c519d0f07d",
+      "strip_root": true,
+      "url": "https://codeload.github.com/ROCm/amdsmi/tar.gz/1e91f3c1527617066f50c22f9ec4368fe82e1a3c"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "{prefix}/GUIDE.md",
+      "{prefix}/source-lock.json",
+      "{prefix}/CPG-POLICY.json"
+    ],
+    "examples": [
+      {
+        "command": "cat {prefix}/GUIDE.md",
+        "description": "Read scope and offline invocation examples"
+      }
+    ],
+    "locations": [
+      {
+        "label": "independent payload",
+        "path": "{prefix}",
+        "purpose": "Selected pinned upstream resources and reproducible offline fixtures."
+      }
+    ],
+    "notes": [
+      "User perf-only collection policy remains in force.",
+      "No hardware, benchmark or UI browser execution qualification is implied.",
+      "All check outputs are outside the immutable prefix."
+    ],
+    "summary": "Complete declared pinned documentation/API/configuration reference; no installed driver, queried device, collector, native build or hardware qualification"
+  },
+  "version": "26.2.2-rocm7.2.4"
+}

@@ -1,0 +1,135 @@
+{
+  "build": "w078-static-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "locked-static-materials",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "papi.materials-w078",
+  "metadata": {
+    "baseline_catalog_sha256": "9b439245ba8cf886f3604bca70af23ce10a8dd537b698d28d8f462a6a5b4d716",
+    "baseline_definition_sha256": "4555792d1aae32ef4709ba79c6885deb29257489ab1245d322f20f5bcabbe7b6",
+    "catalog": {
+      "archive_bytes": 4420651,
+      "category": [
+        "Observability",
+        "Static reference materials"
+      ],
+      "dependencies": [],
+      "documentation": "https://icl.utk.edu/papi/",
+      "extract": false,
+      "id": "papi.materials-w078",
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause; bundled component notices retained",
+      "logical_resource_id": "papi",
+      "mandatory": false,
+      "material_path": "original-archives/papi.tar.gz",
+      "policy_held": true,
+      "profile_kind": "complete-locked-source-materials",
+      "purpose": "沿原 PAPI 7.2.0 身份补齐事件映射、组件设计、头文件与版本材料，禁止新的采集执行。",
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "a9bff89ccf39915d729e08ae0a0c6a71ce0ebbe98411e9a2eb3c83c8db0af39c",
+      "source_url": "https://github.com/icl-utk-edu/papi/releases/download/papi-7-2-0-t/papi-7.2.0.tar.gz",
+      "strip_archive_root": false,
+      "technical_profile_only": true,
+      "title": "PAPI 7.2.0：事件、组件和公共接口材料",
+      "version": "7.2.0"
+    },
+    "catalog_sha256": "14b0079cc49d3ab21c71d01589274619423b9f96f3ac354c2b9f9d90cbb6c0e5",
+    "does_not_claim_tool_material_completeness": false,
+    "logical_resource_id": "papi",
+    "policy_held": true,
+    "profile_kind": "complete-locked-source-materials",
+    "technical_profile_only": true
+  },
+  "provider": "material",
+  "recipe": {
+    "collection_enabled": false,
+    "profile_kind": "complete-locked-source-materials",
+    "required_installed_paths": [
+      "{prefix}/MATERIALS.md",
+      "{prefix}/material-index.json",
+      "{prefix}/source-lock.json",
+      "{prefix}/POLICY.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 4420651,
+      "extract": false,
+      "id": "papi.materials-w078",
+      "material_path": "original-archives/papi.tar.gz",
+      "sha256": "a9bff89ccf39915d729e08ae0a0c6a71ce0ebbe98411e9a2eb3c83c8db0af39c",
+      "strip_root": false,
+      "url": "https://github.com/icl-utk-edu/papi/releases/download/papi-7-2-0-t/papi-7.2.0.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://icl.utk.edu/papi/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/inspect_material.py --list",
+        "description": "List static topics"
+      },
+      {
+        "command": "python3 {prefix}/inspect_material.py --search metadata --limit 10",
+        "description": "Search indexed materials"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reading guide",
+        "path": "{prefix}/MATERIALS.md",
+        "purpose": "Authored task-specific guide and limits."
+      },
+      {
+        "label": "Locked source archives",
+        "path": "{prefix}/source-lock.json",
+        "purpose": "Exact original byte identities and closure mapping."
+      }
+    ],
+    "notes": [
+      "System collection is policy-held. Static availability is not runtime or hardware qualification.",
+      "All original baseline identities and dependencies are unchanged.",
+      "Distribution metadata is descriptive; material content is not bound to one Linux distribution."
+    ],
+    "summary": "沿原 PAPI 7.2.0 身份补齐事件映射、组件设计、头文件与版本材料，禁止新的采集执行。"
+  },
+  "version": "7.2.0"
+}

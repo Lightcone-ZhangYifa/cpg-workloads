@@ -1,0 +1,263 @@
+{
+  "build": "worker002-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "installed-parsec-contract",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "parsec",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 37969,
+      "category": [
+        "Frontend",
+        "Parser combinators"
+      ],
+      "checks": [
+        {
+          "argv": [
+            "python3",
+            "-B",
+            "{recipe}/check.py",
+            "--prefix",
+            "{prefix}"
+          ],
+          "cwd": "{prefix}",
+          "expected_returncode": 0,
+          "id": "installed-parsec-contract",
+          "kind": "functional",
+          "stdout_regex": "\"status\": \"passed\"",
+          "timeout_seconds": 120
+        }
+      ],
+      "dependencies": [],
+      "deployment": {
+        "adapter": "commands",
+        "commands": [
+          [
+            "python3",
+            "-B",
+            "{recipe}/install.py",
+            "--source",
+            "{source}",
+            "--build",
+            "{build}",
+            "--prefix",
+            "{prefix}",
+            "--tools",
+            "{tools}"
+          ]
+        ],
+        "required_host_commands": [
+          "python3",
+          "dpkg-deb",
+          "x86_64-linux-gnu-gcc",
+          "x86_64-linux-gnu-ld.gold",
+          "x86_64-linux-gnu-ar"
+        ],
+        "required_installed_paths": [
+          "{prefix}/bin/parsec-fixture",
+          "{prefix}/bin/cpg-parsec-fixture",
+          "{prefix}/share/parsec/source/src/Text/Parsec.hs",
+          "{prefix}/share/parsec/licenses/Parsec-BSD-2-Clause.txt"
+        ],
+        "required_runtime_commands": [
+          "python3",
+          "ldd"
+        ],
+        "runtime_environment": {
+          "LD_LIBRARY_PATH": "{prefix}/lib",
+          "PYTHONDONTWRITEBYTECODE": "1"
+        },
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://hackage.haskell.org/package/parsec",
+        "https://github.com/haskell/parsec/tree/647c570489a210584d9d99be39e1c02054ea7c64"
+      ],
+      "extract": false,
+      "id": "parsec",
+      "immutable_ref": "647c570489a210584d9d99be39e1c02054ea7c64",
+      "kind": "tarball",
+      "license_class": "open",
+      "license_id": "BSD-2-Clause",
+      "material_path": "sources/parsec-3.1.17.0.tar.gz",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Source-built Haskell Parsec development fixtures for operator precedence, backtracking, and exact error positions.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "58c500bec1ec3c849c8243ddfd675a5983b17a8e5da55acea6adade5ae179d36",
+      "source_url": "https://hackage.haskell.org/package/parsec-3.1.17.0/parsec-3.1.17.0.tar.gz",
+      "strip_archive_root": true,
+      "title": "Parsec",
+      "upstream": "https://hackage.haskell.org/package/parsec",
+      "usage": {
+        "activation": [
+          "Run {prefix}/bin/cpg-parsec-fixture; the launcher resolves native libraries within the selected prefix."
+        ],
+        "documentation": [
+          "https://hackage.haskell.org/package/parsec",
+          "https://hackage.haskell.org/package/parsec-3.1.17.0/docs/Text-Parsec-Expr.html"
+        ],
+        "examples": [
+          {
+            "command": "{prefix}/bin/cpg-parsec-fixture",
+            "description": "Execute the installed parser assertions."
+          }
+        ],
+        "locations": [
+          {
+            "label": "Native task fixture",
+            "path": "{prefix}/bin/cpg-parsec-fixture",
+            "purpose": "Run the 27 AST, backtracking and diagnostic assertions."
+          },
+          {
+            "label": "Unchanged upstream source",
+            "path": "{prefix}/share/parsec/source",
+            "purpose": "Inspect and adapt Parsec itself; original Hackage archive and BSD notice are retained beside it."
+          },
+          {
+            "label": "Original fixture source",
+            "path": "{prefix}/share/parsec/examples/Fixture.hs",
+            "purpose": "Concrete AI-editable Haskell parser examples with expected results."
+          }
+        ],
+        "notes": [
+          "Source installation compiles all 25 upstream modules, installs into a private GHC package-db, and links fixtures using the exact installed package-id.",
+          "The published portable prefix contains the native development fixtures, runtime libraries and original source materials; it does not claim a relocatable registered GHC library/package-db.",
+          "GHC and selected native bootstrap archives are bundled build support, not additional catalog resources.",
+          "The build requires a preprovisioned GNU C toolchain, Python and Linux libseccomp. No deployment download occurs.",
+          "Ubuntu 24.04 describes this reference build; CPG checks OS/architecture and actual runtime libraries rather than a distribution-name allowlist.",
+          "This is bounded native functional evidence, not Dataset, official Benchmark, OCI or other-architecture qualification."
+        ],
+        "summary": "Native Parsec development fixtures linked to the exact source-built library, with original source and licenses."
+      },
+      "version": "3.1.17.0"
+    },
+    "catalog_sha256": "a96f1a93b49f2c13e2bc514f66386ac013e2a7937a588abaaec1d23a04b60da4",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "research_record_id": "review.engineering.parsec"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-B",
+        "{recipe}/install.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--tools",
+        "{tools}"
+      ]
+    ],
+    "required_host_commands": [
+      "python3",
+      "dpkg-deb",
+      "x86_64-linux-gnu-gcc",
+      "x86_64-linux-gnu-ld.gold",
+      "x86_64-linux-gnu-ar"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/parsec-fixture",
+      "{prefix}/bin/cpg-parsec-fixture",
+      "{prefix}/share/parsec/source/src/Text/Parsec.hs",
+      "{prefix}/share/parsec/licenses/Parsec-BSD-2-Clause.txt"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 37969,
+      "extract": false,
+      "id": "parsec",
+      "material_path": "sources/parsec-3.1.17.0.tar.gz",
+      "sha256": "58c500bec1ec3c849c8243ddfd675a5983b17a8e5da55acea6adade5ae179d36",
+      "strip_root": true,
+      "url": "https://hackage.haskell.org/package/parsec-3.1.17.0/parsec-3.1.17.0.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Run {prefix}/bin/cpg-parsec-fixture; the launcher resolves native libraries within the selected prefix."
+    ],
+    "documentation": [
+      "https://hackage.haskell.org/package/parsec",
+      "https://hackage.haskell.org/package/parsec-3.1.17.0/docs/Text-Parsec-Expr.html"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/cpg-parsec-fixture",
+        "description": "Execute the installed parser assertions."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Native task fixture",
+        "path": "{prefix}/bin/cpg-parsec-fixture",
+        "purpose": "Run the 27 AST, backtracking and diagnostic assertions."
+      },
+      {
+        "label": "Unchanged upstream source",
+        "path": "{prefix}/share/parsec/source",
+        "purpose": "Inspect and adapt Parsec itself; original Hackage archive and BSD notice are retained beside it."
+      },
+      {
+        "label": "Original fixture source",
+        "path": "{prefix}/share/parsec/examples/Fixture.hs",
+        "purpose": "Concrete AI-editable Haskell parser examples with expected results."
+      }
+    ],
+    "notes": [
+      "Source installation compiles all 25 upstream modules, installs into a private GHC package-db, and links fixtures using the exact installed package-id.",
+      "The published portable prefix contains the native development fixtures, runtime libraries and original source materials; it does not claim a relocatable registered GHC library/package-db.",
+      "GHC and selected native bootstrap archives are bundled build support, not additional catalog resources.",
+      "The build requires a preprovisioned GNU C toolchain, Python and Linux libseccomp. No deployment download occurs.",
+      "Ubuntu 24.04 describes this reference build; CPG checks OS/architecture and actual runtime libraries rather than a distribution-name allowlist.",
+      "This is bounded native functional evidence, not Dataset, official Benchmark, OCI or other-architecture qualification."
+    ],
+    "summary": "Native Parsec development fixtures linked to the exact source-built library, with original source and licenses."
+  },
+  "version": "3.1.17.0"
+}

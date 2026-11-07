@@ -1,0 +1,202 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 4496568,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/qemu-riscv64",
+      "sha256": "aa833497ba3f48e06edc8b5b1bb7cba674df474c3f397cab602760e4d77a3e66"
+    },
+    {
+      "bytes": 3572,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/check.py",
+      "sha256": "a936d595a5c7282391ed0b94b3e3b4ed2f4368ca9f722033cb872abbf77eeac3"
+    },
+    {
+      "bytes": 304,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/fixture-lock.json",
+      "sha256": "331e1048f1b20322dc52567cd91087a0f2c7768e4ae346aad92c469c7f24fee7"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/fixtures"
+    },
+    {
+      "bytes": 1128,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/fixtures/elf.zip",
+      "sha256": "3f3f06e83523c700d7c618fb33ef53cf079ff410384cc460e3cbd797fd451964"
+    },
+    {
+      "bytes": 1067,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/fixtures/linux.c",
+      "sha256": "31c35138977ac48ae7882af5eb4e131acd085cc0435d942f28c3a5e0fb66be13"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/licenses"
+    },
+    {
+      "bytes": 31159,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/licenses/copyright",
+      "sha256": "38ed9e4ca12a9c52ff69079d7098672b2c9eb5a1f728cae402b57b268ec49767"
+    }
+  ],
+  "inventory_sha256": "440606c5540c1e5e64576735eb48db754429ca81a021e9a91984592f877aa631",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "70d596ad0e980ac55c141fa77019f1a2e453e0142995c959f624a5f7b7ebb724",
+  "method": "binary",
+  "package": {
+    "build": "cpg-20261101-w058-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{prefix}/check.py"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "bounded-functional",
+        "kind": "functional",
+        "timeout_seconds": 900
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "isa.qemu",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "formal_qualification_promotion": false,
+      "license_note": "Original Ubuntu copyright and QEMU source licenses preserved; QEMU main code GPL-2.0 with separately licensed components.",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "Linux x86_64 host; static RV64IM Linux syscall fixture without guest libc/sysroot; exact sum/fib stdout and invalid CPU/ELF rejection",
+      "record_id": "review.engineering.qemu",
+      "source_build_verified": false,
+      "source_material_scope": "Exact complete declared source archives; see source-lock.json",
+      "worker_id": "worker 058"
+    },
+    "provider": "binary",
+    "recipe": {
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+        "PIP_NO_INDEX": "1",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONOPTIMIZE": "0"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 14696804,
+        "extract": false,
+        "id": "input-000",
+        "material_path": "deps/qemu-user-static_8.2.2+ds-0ubuntu1_amd64.deb",
+        "sha256": "83ad62bfe0e28a5645cb6a40d8b99e7a629fdac9e1a9cea9949d1c59a01322c7",
+        "strip_root": false,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/q/qemu/qemu-user-static_8.2.2+ds-0ubuntu1_amd64.deb"
+      },
+      {
+        "bytes": 39678456,
+        "extract": false,
+        "id": "input-001",
+        "material_path": "raw/qemu_8.2.2+ds.orig.tar.xz",
+        "sha256": "5e692dd20950a819ff6550cd3974e00319a93f47c0a15f808c58df1a9e4d2478",
+        "strip_root": false,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/q/qemu/qemu_8.2.2+ds.orig.tar.xz"
+      },
+      {
+        "bytes": 153564,
+        "extract": false,
+        "id": "input-002",
+        "material_path": "raw/qemu_8.2.2+ds-0ubuntu1.debian.tar.xz",
+        "sha256": "647a4c28d3cfd7b8d0c38e03cacd1f515b472fd7d40fe0b61defd4ee7c3a672e",
+        "strip_root": false,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/q/qemu/qemu_8.2.2+ds-0ubuntu1.debian.tar.xz"
+      },
+      {
+        "bytes": 9328,
+        "extract": false,
+        "id": "input-003",
+        "material_path": "raw/qemu_8.2.2+ds-0ubuntu1.dsc",
+        "sha256": "ea4f9a01b81bda3dcc02f5c6667ca120c0c2b9b3e972b29a2f005242e99cd701",
+        "strip_root": false,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/q/qemu/qemu_8.2.2+ds-0ubuntu1.dsc"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "README.zh.txt",
+        "source-lock.json",
+        "resource-evidence.json"
+      ],
+      "examples": [
+        {
+          "command": "python3 -B {prefix}/check.py",
+          "description": "Run the declared semantic and failure-path checks"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Independent prefix",
+          "path": "{prefix}",
+          "purpose": "Tool, source fixtures and offline checks"
+        }
+      ],
+      "notes": [
+        "已本地交叉编译fixture；QEMU运行时使用固定Ubuntu官方预构建程序。",
+        "完整固定Ubuntu源码与发行补丁随附；未声称本地源码重建QEMU。",
+        "不包含system emulation、其他ISA/sysroot、真实硬件或性能测量资格。"
+      ],
+      "summary": "执行交叉编译RV64IM Linux-user样例并核精确输出"
+    },
+    "version": "8.2.2+ds-0ubuntu1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Linux x86_64 host; static RV64IM Linux syscall fixture without guest libc/sysroot; exact sum/fib stdout and invalid CPU/ELF rejection",
+    "record_id": "review.engineering.qemu",
+    "source_lock_sha256": "d8685fd5d45d938b2542db7686dfdae743f0a01be4d05e8baff6662078cf40cf"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,125 @@
+{
+  "build": "cpg-worker103-v1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "specified-array-and-boundary-mutation",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "verification.cn",
+  "metadata": {
+    "baseline_change": false,
+    "binary_provenance": "ghcr.io/rems-project/cn@sha256:5803bb11a4f505a8ba7578eafe294314234ccbd3324a5c4746fe12bcde114b96",
+    "formal_baseline": "0.21.14",
+    "functional_profile": {
+      "function": "set_a_pointer",
+      "incremental_solver_timeout_ms": 10000,
+      "negative_mutation": "idx < width becomes idx <= width",
+      "ownership": "Global_Array width=42",
+      "solver": "Z3 5.1.0"
+    },
+    "license": "BSD-2-Clause; Cerberus/BSD-2-Clause; Z3/MIT",
+    "record_id": "review.verification.cn",
+    "scope": "bounded functional profile",
+    "worker_id": "worker 103"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/bin/cn",
+      "{prefix}/bin/z3",
+      "{prefix}/source-lock.json"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "cc"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 678750431,
+      "extract": false,
+      "id": "oci-layer-7",
+      "material_path": null,
+      "sha256": "34b372effaed5a8a70160ffa5549f8aecac6481eb6f484c0c64f87d6e092f7f9",
+      "strip_root": false,
+      "url": "https://ghcr.io/v2/rems-project/cn/blobs/sha256:34b372effaed5a8a70160ffa5549f8aecac6481eb6f484c0c64f87d6e092f7f9"
+    },
+    {
+      "bytes": 47438494,
+      "extract": false,
+      "id": "oci-layer-8",
+      "material_path": null,
+      "sha256": "201ce5858aa6c9aa321e2d0442c6b2277ab10fe7c72804549e407a7fc6945eea",
+      "strip_root": false,
+      "url": "https://ghcr.io/v2/rems-project/cn/blobs/sha256:201ce5858aa6c9aa321e2d0442c6b2277ab10fe7c72804549e407a7fc6945eea"
+    },
+    {
+      "bytes": 199431165,
+      "extract": false,
+      "id": "oci-layer-9",
+      "material_path": null,
+      "sha256": "bd9c9bef6b68108c21655d15578adba8295fcd3fa449bf456b636b58c9bdd24a",
+      "strip_root": false,
+      "url": "https://ghcr.io/v2/rems-project/cn/blobs/sha256:bd9c9bef6b68108c21655d15578adba8295fcd3fa449bf456b636b58c9bdd24a"
+    },
+    {
+      "bytes": 8335087,
+      "extract": true,
+      "id": "cerberus-runtime-source",
+      "material_path": null,
+      "sha256": "3f1d4dead0d159c1a9d9c83da293b0cdf5a8b307c68af9c4ca2cae3a33ec7f0f",
+      "strip_root": true,
+      "url": "https://codeload.github.com/rems-project/cerberus/tar.gz/68bdc84"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "export PATH=\"{prefix}/bin:$PATH\""
+    ],
+    "documentation": [
+      "https://github.com/rems-project/cn",
+      "https://rems-project.github.io/cn-tutorial/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/cn verify --only=set_a_pointer {prefix}/share/fixtures/get_from_array.c",
+        "description": "Verify the official specified-array case"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Executables",
+        "path": "{prefix}/bin",
+        "purpose": "Relocatable CN and pinned Z3"
+      }
+    ],
+    "notes": [
+      "This profile verifies set_a_pointer and rejects exactly one widened upper bound; specifications are trusted inputs. It is not compiler-optimization equivalence validation.",
+      "Requires host libc/libm/libgmp and a C preprocessor. Tested Ubuntu 24.04 x86_64. Image binaries report unknown upstream version; immutable OCI digest is the release identity."
+    ],
+    "summary": "CN specified array ownership proof and boundary-mutation rejection, pinned official image with Z3 5.1.0."
+  },
+  "version": "oci-20261023-5803bb11a4f5"
+}

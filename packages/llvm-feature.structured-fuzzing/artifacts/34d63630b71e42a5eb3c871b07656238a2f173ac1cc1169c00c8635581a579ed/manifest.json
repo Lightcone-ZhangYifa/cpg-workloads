@@ -1,0 +1,199 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 409,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/capability-scope.json",
+      "sha256": "c72fbbdd1413a2c9bab54eeb318e283c8b244a86057a6a76eb4f15660aec7fcc"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "tools"
+    },
+    {
+      "bytes": 15531,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/capability_check.py",
+      "sha256": "ca90baece7660573e34b81ed82784baead4bf27910dec59811ae2df9019ccaba"
+    },
+    {
+      "bytes": 176666,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/lpm-lock.json",
+      "sha256": "aea091c152804a6574d51355e6c1e2d0853a1fdccac175c4e5284cb40adc9de6"
+    },
+    {
+      "bytes": 9368,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/structured_check.py",
+      "sha256": "8e102fb9d89e810ada568dd505ef3e4ab054b40baa77544822422a150bef894f"
+    },
+    {
+      "bytes": 97123,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/toolchain-lock.json",
+      "sha256": "f63377d8b4ea36ffec039a0abb48080b4f278d742198868f5be61f5e203692d1"
+    }
+  ],
+  "inventory_sha256": "71e4b05b45daf76933f6a239e439f914e384e3bc10f0d07bb57e244e183a9252",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "bafb27b00d716cfd75b933093b2a252f014029f70d4b61f3d18a67d07ba0674f",
+  "method": "material",
+  "package": {
+    "build": "cpg-workers031032-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{tools}/structured_check.py",
+          "--toolchain",
+          "{dependency_prefix:llvm-release}",
+          "--lock",
+          "{tools}/toolchain-lock.json",
+          "--output-parent",
+          "{build}/functional-evidence",
+          "--lpm",
+          "{dependency_prefix:libprotobuf-mutator}",
+          "--lpm-lock",
+          "{tools}/lpm-lock.json"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "worker032-bounded-native-capability",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 1800
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "llvm-release",
+        "libprotobuf-mutator"
+      ],
+      "system": []
+    },
+    "id": "llvm-feature.structured-fuzzing",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": null,
+        "category": [
+          "Community development",
+          "LLVM source capabilities"
+        ],
+        "dependencies": [
+          "llvm-release",
+          "libprotobuf-mutator"
+        ],
+        "deployment": {
+          "adapter": "virtual",
+          "state": "parent-source-capability; per-build-discovery-and-workflow-qualification-required"
+        },
+        "documentation": [
+          "https://llvm.org/docs/FuzzingLLVM.html"
+        ],
+        "id": "llvm-feature.structured-fuzzing",
+        "immutable_ref": "parent-resource:llvm-release",
+        "installed_bytes": null,
+        "kind": "virtual",
+        "license_class": "open",
+        "license_id": "Parent-source-license-terms",
+        "mandatory": false,
+        "presets": [
+          "open",
+          "all"
+        ],
+        "purpose": "Integrate prepared libprotobuf-mutator with LLVM/Clang fuzz targets; valid structured mutations complement C/C++ generators and differential testing.",
+        "qualification_gaps": [
+          "Use cpg-upstream tools to discover paths in the actual checkout/build; source availability alone is not execution qualification."
+        ],
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": null,
+        "size_basis": "Already contained in the selected parent source/build; no duplicated payload budget.",
+        "source_evidence": [
+          "https://llvm.org/docs/FuzzingLLVM.html"
+        ],
+        "source_logical_bytes": null,
+        "source_paths": [
+          "clang/tools/clang-fuzzer",
+          "llvm/tools/llvm-opt-fuzzer",
+          "llvm/tools/llvm-isel-fuzzer"
+        ],
+        "title": "LLVM structured IR and frontend fuzzing integration",
+        "version": "Parent source identity"
+      },
+      "catalog_sha256": "abaea2a3883f8763886edd2511a3584c4adf8c3188cf3ce6e26cdc425c522cfc",
+      "worker031032": {
+        "plan_id": "cpg-resource-research-20261101-v1",
+        "qualification_boundary": "Only this explicit material capability and declared checks. External independently copied parent paths do not qualify the complete LLVM or libprotobuf-mutator original installer.",
+        "scope": "Pinned LLVM/Clang and libprotobuf-mutator finite structured-fuzzing functionality; coverage and oracle scopes recorded separately.",
+        "source_identity_unchanged": true,
+        "toolchain_lock_sha256": "f63377d8b4ea36ffec039a0abb48080b4f278d742198868f5be61f5e203692d1",
+        "worker_id": "worker 032"
+      }
+    },
+    "provider": "meta",
+    "recipe": {
+      "adapter": "virtual",
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "DEBUGINFOD_URLS": "",
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "state": "parent-source-capability; per-build-discovery-and-workflow-qualification-required"
+    },
+    "schema_version": 1,
+    "sources": [],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://llvm.org/docs/FuzzingLLVM.html"
+      ],
+      "examples": [],
+      "locations": [],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution."
+      ],
+      "summary": "Integrate prepared libprotobuf-mutator with LLVM/Clang fuzz targets; valid structured mutations complement C/C++ generators and differential testing."
+    },
+    "version": "Parent source identity"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "scope": "Pinned LLVM/Clang and libprotobuf-mutator finite structured-fuzzing functionality; coverage and oracle scopes recorded separately.",
+    "worker_id": "worker 032"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

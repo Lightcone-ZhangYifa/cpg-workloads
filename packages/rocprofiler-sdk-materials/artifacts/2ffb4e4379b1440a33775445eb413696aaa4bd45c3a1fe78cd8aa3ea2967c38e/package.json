@@ -1,0 +1,117 @@
+{
+  "build": "worker077-static-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/static_check.py",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "static-material-integrity",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "rocprofiler-sdk-materials",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 7126584,
+      "category": "observability",
+      "description": "ROCm/rocm-systems therock-10.1的完整rocprofiler-sdk原始源归档、公开API头、文档、rocprofv3 JSON配置schema与rocpd SQL定义。材料不包含可运行的依赖/driver闭包。",
+      "extract": false,
+      "id": "rocprofiler-sdk-materials",
+      "kind": "material",
+      "license": "MIT",
+      "license_class": "open",
+      "material_path": "upstream/rocprofiler-sdk-therock-10.1.tar.gz",
+      "name": "ROCprofiler-SDK 静态API材料",
+      "new_material_profile": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "policy_status": "policy-held",
+      "record_id": "review.engineering.rocprofiler-sdk",
+      "sha256": "63c11f2a49ebcfacaac01cd3bfd4ff3eef71b1242e16dbdc25e2ae0ec4d9aba5",
+      "source_url": "https://github.com/ROCm/rocm-systems/releases/download/therock-10.1/rocprofiler-sdk.tar.gz",
+      "strip_archive_root": false,
+      "version": "1.4.1-therock10.1"
+    },
+    "catalog_sha256": "2e2d7b59110fc4a34ea49f7dbf5e653e86bd31ff286c8050b79a73902bf212d5",
+    "collector_policy": "policy-held",
+    "material_scope": "ROCm/rocm-systems therock-10.1的完整rocprofiler-sdk原始源归档、公开API头、文档、rocprofv3 JSON配置schema与rocpd SQL定义。材料不包含可运行的依赖/driver闭包。",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "benchmark": null,
+      "complete_profiler_installation": false,
+      "dataset_verified": null,
+      "functional": null,
+      "hardware": null,
+      "material": true,
+      "material_scope": "exactly the static profile documented here",
+      "oci": null,
+      "source_build": null
+    },
+    "worker_id": "worker 077"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 7126584,
+      "extract": false,
+      "id": "rocprofiler-sdk-materials",
+      "material_path": "upstream/rocprofiler-sdk-therock-10.1.tar.gz",
+      "sha256": "63c11f2a49ebcfacaac01cd3bfd4ff3eef71b1242e16dbdc25e2ae0ec4d9aba5",
+      "strip_root": false,
+      "url": "https://github.com/ROCm/rocm-systems/releases/download/therock-10.1/rocprofiler-sdk.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://rocm.docs.amd.com/projects/rocprofiler-sdk/en/latest/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/reference_query.py 'rocprofiler_create_context' --limit 20",
+        "description": "Search pinned text without executing vendor code"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reference guide",
+        "path": "{prefix}/REFERENCE.zh.md",
+        "purpose": "Exact scope, API/input map, licensing and policy boundary"
+      },
+      {
+        "label": "Pinned material files",
+        "path": "{prefix}/reference",
+        "purpose": "Offline documentation, type interfaces and licensed examples"
+      }
+    ],
+    "notes": [
+      "ROCm/rocm-systems therock-10.1的完整rocprofiler-sdk原始源归档、公开API头、文档、rocprofv3 JSON配置schema与rocpd SQL定义。材料不包含可运行的依赖/driver闭包。",
+      "原独立仓库README已指向rocm-systems；本包以新release为来源。未运行rocprofv3、未加载工具库、未启用callback或buffer，所有功能/硬件资格均未测试。静态JSON解析仅用于确认资料可读。",
+      "Collector execution remains policy-held; reference integrity does not imply profiler functionality."
+    ],
+    "summary": "定位AMD callback/buffered tracing、counter与PC sampling接口的生命周期及记录类型。agent可以静态检查context、buffer、service配置与记录关联的约束，并设计数据适配器。"
+  },
+  "version": "1.4.1-therock10.1"
+}

@@ -1,0 +1,169 @@
+{
+  "build": "worker105-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/functional-evidence"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-positive-negative-profile",
+      "kind": "functional",
+      "stdout_regex": "\"passed\": true",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "verification.viper",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "hardware_qualified": false,
+    "official_benchmark_qualified": false,
+    "official_binary_release": {
+      "asset_id": 549029083,
+      "file": "workers/worker105/raw/ViperToolsLinux.zip",
+      "name": "viper",
+      "release_tag": "v.26.08-release",
+      "sha256": "f78654b2b86038b2f6ba8c22b01e8ee62a0319d244673f4693829ba4336255ac",
+      "size": 129194558,
+      "target_commitish": "4b056e4bfa6ce0be337e2ad49cc4b0a5c635c8ab",
+      "upstream_digest": "sha256:f78654b2b86038b2f6ba8c22b01e8ee62a0319d244673f4693829ba4336255ac",
+      "url": "https://github.com/viperproject/viper-ide/releases/download/v.26.08-release/ViperToolsLinux.zip"
+    },
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Silver permission IR and Silicon symbolic execution with bundled Z3. Carbon source is retained but Carbon verification is not qualified.",
+    "record_id": "review.verification.viper",
+    "runtime_prerequisites": {
+      "glibc": "validated by ldd/ELF at installation",
+      "java": "bundled Temurin 17.0.21+9 (fixed SHA-256)"
+    },
+    "source_build_qualified": false,
+    "worker_id": "worker 105"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/share/cpg/profile.json",
+      "{prefix}/tool/backends/viperserver.jar",
+      "{prefix}/jre/bin/java"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/jre/lib:{prefix}/jre/lib/server"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 129194558,
+      "extract": false,
+      "id": "official-binary",
+      "material_path": "ViperToolsLinux.zip",
+      "sha256": "f78654b2b86038b2f6ba8c22b01e8ee62a0319d244673f4693829ba4336255ac",
+      "strip_root": false,
+      "url": "https://github.com/viperproject/viper-ide/releases/download/v.26.08-release/ViperToolsLinux.zip"
+    },
+    {
+      "bytes": 10231982,
+      "extract": false,
+      "id": "viperserver-source",
+      "material_path": "share/sources/viperserver-source.tar.gz",
+      "sha256": "ee3b4f74f985c4536b4a703e740ccd2e3ed4f7caf1d4a7c32e00e9fd855d8e89",
+      "strip_root": false,
+      "url": "https://codeload.github.com/viperproject/viperserver/tar.gz/e7163dc55b9113afc7db311e10c4e816a8a44b86"
+    },
+    {
+      "bytes": 1862292,
+      "extract": false,
+      "id": "silicon-source",
+      "material_path": "share/sources/silicon-source.tar.gz",
+      "sha256": "1328fb22e910ca9dbc2e77ddb44c26f7b78c7b1ddc00d796635435f179a1e398",
+      "strip_root": false,
+      "url": "https://codeload.github.com/viperproject/silicon/tar.gz/6b540aa45e5af214f4727b7be463ce84b328fabd"
+    },
+    {
+      "bytes": 1454908,
+      "extract": false,
+      "id": "silver-source",
+      "material_path": "share/sources/silver-source.tar.gz",
+      "sha256": "fe924cca06aa672e35b8a01676255b8f3079f9411e4646c0853b315c27e18769",
+      "strip_root": false,
+      "url": "https://codeload.github.com/viperproject/silver/tar.gz/f02e7010639f314447d74732146644565aa8d135"
+    },
+    {
+      "bytes": 198947,
+      "extract": false,
+      "id": "carbon-source",
+      "material_path": "share/sources/carbon-source.tar.gz",
+      "sha256": "06a770d7ee4cfc38f068e63486b0065e4f8c4ef167c485d6e61851b264582337",
+      "strip_root": false,
+      "url": "https://codeload.github.com/viperproject/carbon/tar.gz/d9a8b50384ce8c91a1ab50ac572df5d43149baa9"
+    },
+    {
+      "bytes": 46726088,
+      "extract": false,
+      "id": "temurin-jre17",
+      "material_path": "jre17.tar.gz",
+      "sha256": "9f41bf88c7900c7097444a1bdeb84146ae692bc08842490ab098063c74bf9a8a",
+      "strip_root": false,
+      "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.21%2B9/OpenJDK17U-jre_x64_linux_hotspot_17.0.21_9.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.pm.inf.ethz.ch/research/viper/downloads.html",
+      "https://github.com/viperproject/silicon"
+    ],
+    "examples": [
+      {
+        "command": "python3 recipe/check.py --prefix /absolute/prefix --output /absolute/output",
+        "description": "Run all bounded acceptance cases; output must be outside prefix"
+      }
+    ],
+    "locations": [
+      {
+        "label": "tool",
+        "path": "tool",
+        "purpose": "Relocatable offline verifier runtime"
+      },
+      {
+        "label": "sources",
+        "path": "share/sources",
+        "purpose": "Complete pinned project source archives"
+      },
+      {
+        "label": "fixtures",
+        "path": "share/cpg/fixtures",
+        "purpose": "Positive and intentionally incorrect verification inputs"
+      }
+    ],
+    "notes": [
+      "Run-time results are limited to the declared positive and negative profile.",
+      "Preparation uses fixed downloads; installation and checks require no network.",
+      "Only immutable original downloads may be shared. A/B prefixes are independent.",
+      "Host runtime libraries are checked by the original CPG ELF compatibility checker.",
+      "Bundled Temurin JRE 17.0.21+9 and bundled Z3 are used by absolute prefix paths. Host Java and Z3 are not selected."
+    ],
+    "summary": "Silver permission IR and Silicon symbolic execution with bundled Z3. Carbon source is retained but Carbon verification is not qualified."
+  },
+  "version": "2026.8"
+}

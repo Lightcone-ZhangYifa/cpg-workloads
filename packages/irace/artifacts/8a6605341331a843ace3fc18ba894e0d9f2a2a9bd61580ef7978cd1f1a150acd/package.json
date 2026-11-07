@@ -1,0 +1,111 @@
+{
+  "build": "worker083-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-S",
+        "{recipe}/check_resource.py",
+        "--resource",
+        "irace",
+        "--prefix",
+        "{prefix}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "fresh-measured-search-and-correctness",
+      "kind": "functional",
+      "stdout_regex": "CPG_WORKER083_CHECK_PASSED",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "irace",
+  "metadata": {
+    "research_plan": "cpg-resource-research-20261101-v1",
+    "source_scope": "Complete fixed main repository archive; execution dependencies are separately locked",
+    "worker083_execution_profile": {
+      "input_manifest_sha256": "a127670855329395d71f00658237634119a9bba90466ed40b7f10e08aa43e356",
+      "scope": "Actual local measured compiler-parameter tuning with independent correctness gates; qualification is recorded separately in receipts"
+    }
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-S",
+        "{recipe}/install_resource.py",
+        "--resource",
+        "irace",
+        "--source",
+        "{source}",
+        "--prefix",
+        "{prefix}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}"
+      ]
+    ],
+    "execution_profile": "Exact additional execution inputs; original source/dependency/catalog identity is preserved",
+    "required_host_commands": [
+      "python3",
+      "gcc",
+      "g++",
+      "make",
+      "dpkg-deb"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc"
+    ],
+    "runtime_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3052289,
+      "extract": true,
+      "id": "irace",
+      "material_path": "sources/irace",
+      "sha256": "af788214051e27ff43ce103135b9f0885ca234696c6441325c7117921edb025e",
+      "strip_root": true,
+      "url": "https://codeload.github.com/MLopez-Ibanez/irace/tar.gz/2c1426542e7a39258caabf760f3b5da70ba330df"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/MLopez-Ibanez/irace"
+    ],
+    "examples": [],
+    "locations": [],
+    "notes": [
+      "Complete fixed main repository archive; execution dependencies are separately locked",
+      "New execution recipe and checks supplement the unchanged baseline identity. Preparation and installation are separate; only frozen raw inputs are shared."
+    ],
+    "summary": "Measured local compiler-parameter search with irace"
+  },
+  "version": "commit-2c1426542e7a"
+}

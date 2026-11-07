@@ -1,0 +1,278 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 6074530,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/actionlint",
+      "sha256": "c872d6db8c6bf83a8eaa704fc93999f027d55dffbc63b8a6abdccb47df5f4cd4"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/actionlint"
+    },
+    {
+      "bytes": 1067,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/actionlint/LICENSE.txt",
+      "sha256": "03a26b06d224380a02bf100e05fff3b2dfc71b14d4e2fa685ec9963a87563c22"
+    },
+    {
+      "bytes": 8243,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/actionlint/README.md",
+      "sha256": "d78bc61d23ab010aef426ac6c2985d137a0c1309d87c54d1c80ee9587cadc9e3"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/actionlint/docs"
+    },
+    {
+      "bytes": 768,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/actionlint/docs/README.md",
+      "sha256": "f9825ef1be5ab417dc828a0d57298d58c6350cc3bb23c001626b3fbcee04b917"
+    },
+    {
+      "bytes": 4290,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/actionlint/docs/api.md",
+      "sha256": "d9606d798f3385ebe1043ff29d344027a0998a1d33b07e68346a796cb22a9bed"
+    },
+    {
+      "bytes": 129765,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/actionlint/docs/checks.md",
+      "sha256": "569344b90aebd15681f0605a985a95cd7ee2dea0be73d1958c6884d295ce62b3"
+    },
+    {
+      "bytes": 3525,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/actionlint/docs/config.md",
+      "sha256": "5dc305e6e5fba5d38356f1f6c0ab05941a40551f1d748ed93c541a3f07146bad"
+    },
+    {
+      "bytes": 6950,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/actionlint/docs/install.md",
+      "sha256": "5ca3d27feead184d50bab2040ce3ad82deee07d081234042d7f78e84e8a7b5b2"
+    },
+    {
+      "bytes": 1634,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/actionlint/docs/reference.md",
+      "sha256": "39cf8e88e8b3e9ed5d29749933d96118703bd4a6793cd9440b77dfcd350ade22"
+    },
+    {
+      "bytes": 19841,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/actionlint/docs/usage.md",
+      "sha256": "bca162fbcc888e37e8f54e511a33d94198a2422d496bde2b342e1ca3a635aa76"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/actionlint/man"
+    },
+    {
+      "bytes": 7278,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/actionlint/man/actionlint.1",
+      "sha256": "b7b0d84ecd273894855d3c6d76f6b225aab6e9e9ec98a32c2580b4b5401561d5"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 22277,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "8a6a9e249f236f5098306d34d45a46f8ed5d2c64ac14ec6891fa698274c0354d"
+    },
+    {
+      "bytes": 402,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/input-lock.json",
+      "sha256": "2bf45af743abf6762cd6c6a335db195ce808a6a459fdf63198ff04d90ea42b1c"
+    },
+    {
+      "bytes": 109,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install-config.json",
+      "sha256": "7803976abdbe92ba82c1ed730b06a1be314834d6664521ddb43d887318e8476a"
+    }
+  ],
+  "inventory_sha256": "55b5662308be35c81eb24d5b5cba663934cc0deb8fb7ca4960a599d2462065f8",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "e8a12df395a0f1055403b9b0b8ca914118ffb015d9cae1af776b77a998dace25",
+  "method": "binary",
+  "package": {
+    "build": "worker029-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--resource",
+          "actionlint",
+          "--prefix",
+          "{prefix}",
+          "--output",
+          "{build}/assignment-acceptance"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "assignment-acceptance",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "timeout_seconds": 420
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "actionlint",
+    "metadata": {
+      "additional_input_lock": "recipe/input-lock.json",
+      "catalog": {
+        "archive_bytes": 2353908,
+        "category": [
+          "Compiler development",
+          "Build and continuous integration"
+        ],
+        "extract": true,
+        "id": "actionlint",
+        "kind": "native_bundle",
+        "license_id": "MIT",
+        "material_path": "sources/actionlint",
+        "purpose": "AI生成GitHub Actions的类型/表达式/语法静态核查",
+        "qualification_scope": "离线检查正反workflow样例并验证诊断位置",
+        "scope_limits": "",
+        "sha256": "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8",
+        "source_url": "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz",
+        "strip_archive_root": false,
+        "title": "actionlint",
+        "upstream": "https://github.com/rhysd/actionlint",
+        "version": "1.7.12"
+      },
+      "catalog_sha256": "c957c8abb2e0045b76b11df44d765c8b05f109cb65525895be0b9203c9084c0e",
+      "license_id": "MIT",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "provenance": "Exact PyPI digest verified for every wheel; upstream asset/source digest retained for non-Python inputs.",
+      "record_id": "review.engineering.actionlint",
+      "source_compile_qualified": false,
+      "worker_id": "worker 029"
+    },
+    "provider": "binary",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [],
+      "installation_scope": "verified upstream distribution installation; no native source compilation claimed",
+      "network_policy": "offline",
+      "qualification_scope": "离线检查正反workflow样例并验证诊断位置",
+      "required_host_commands": [],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LC_ALL": "C.UTF-8",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "working_directory": "{build}"
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 2353908,
+        "extract": true,
+        "id": "actionlint",
+        "material_path": "sources/actionlint",
+        "sha256": "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8",
+        "strip_root": false,
+        "url": "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Add {prefix}/bin to PATH for this independent installation."
+      ],
+      "documentation": [
+        "https://github.com/rhysd/actionlint"
+      ],
+      "examples": [
+        {
+          "command": "python3 {recipe}/check.py --resource actionlint --prefix {prefix} --output {build}/manual-acceptance",
+          "description": "Replay the assignment acceptance check"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Installed resource",
+          "path": "{prefix}",
+          "purpose": "Independent local installation"
+        }
+      ],
+      "notes": [
+        "离线检查正反workflow样例并验证诊断位置",
+        "Qualified only for the explicitly tested local capability.",
+        "Frozen upstream distribution and retained notices.",
+        "Download preparation is separate; installation never downloads dependencies."
+      ],
+      "summary": "AI生成GitHub Actions的类型/表达式/语法静态核查"
+    },
+    "version": "1.7.12"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "upstream_asset_sha256": "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8",
+    "worker": "029"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

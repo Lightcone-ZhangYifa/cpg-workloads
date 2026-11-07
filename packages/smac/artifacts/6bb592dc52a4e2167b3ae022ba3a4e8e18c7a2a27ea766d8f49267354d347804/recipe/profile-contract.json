@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "manifest_file": "input-lock.json",
+  "manifest_sha256": "768d5c36640f6b4db1862032dd280077f2b6009c7cbc34dcc482640f05943103",
+  "resource": {
+    "profile": "common",
+    "source": "sources/smac",
+    "requirements": [
+      "ConfigSpace==1.2.2",
+      "Jinja2==3.1.6",
+      "MarkupSafe==3.0.4",
+      "PyYAML==6.0.3",
+      "click==8.5.0",
+      "cloudpickle==3.1.2",
+      "dask-jobqueue==0.9.0",
+      "dask==2026.8.0",
+      "distributed==2026.8.0",
+      "emcee==3.1.6",
+      "fsspec==2026.9.0",
+      "joblib==1.6.0",
+      "locket==1.0.0",
+      "more-itertools==11.2.1",
+      "msgpack==1.2.4",
+      "narwhals==2.28.0",
+      "numpy==2.5.4",
+      "packaging==26.3",
+      "partd==1.4.2",
+      "psutil==7.2.2",
+      "pynisher==1.0.10",
+      "pyparsing==3.3.3",
+      "regex==2026.9.29",
+      "scikit-learn==1.9.1",
+      "scipy==1.18.1",
+      "setuptools==84.2.1",
+      "sortedcontainers==2.4.0",
+      "tblib==3.2.2",
+      "threadpoolctl==3.7.0",
+      "toolz==1.2.0",
+      "tornado==6.6",
+      "typing_extensions==4.16.0",
+      "wheel==0.48.0",
+      "zict==3.0.0"
+    ],
+    "cli_phases": [
+      [
+        "run_search.py",
+        "smac",
+        "--out",
+        "{evidence}/smac",
+        "--phase",
+        "start"
+      ],
+      [
+        "run_search.py",
+        "smac",
+        "--out",
+        "{evidence}/smac",
+        "--phase",
+        "resume"
+      ]
+    ],
+    "requirements_file": "delta/materials/requirements-smac.txt",
+    "build_dependencies": [
+      "setuptools==84.2.1",
+      "wheel==0.48.0"
+    ],
+    "status": "functional_passed",
+    "evidence": "delta/evidence/smac/result.json",
+    "qualified_env": "envs/common",
+    "source_archive": "raw/smac-841488796a82944b7c753c62eec3dfb74f72585e.tar.gz",
+    "source_install_flags": [
+      "--no-index",
+      "--no-build-isolation",
+      "--no-deps",
+      "--no-compile"
+    ],
+    "id": "smac",
+    "result_subdirectory": "smac",
+    "wheel_directories": [
+      "wheelhouse/common"
+    ],
+    "build_requirements": [
+      "setuptools==84.2.1",
+      "wheel==0.48.0"
+    ],
+    "install_original_source": true
+  }
+}

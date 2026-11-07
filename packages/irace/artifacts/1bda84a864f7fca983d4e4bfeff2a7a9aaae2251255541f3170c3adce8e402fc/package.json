@@ -1,0 +1,203 @@
+{
+  "build": "worker083-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-S",
+        "{recipe}/check_resource.py",
+        "--resource",
+        "irace",
+        "--prefix",
+        "{prefix}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "fresh-measured-search-and-correctness",
+      "kind": "functional",
+      "stdout_regex": "CPG_WORKER083_CHECK_PASSED",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "irace",
+  "metadata": {
+    "research_plan": "cpg-resource-research-20261101-v1",
+    "source_scope": "Complete fixed main repository archive; execution dependencies are separately locked",
+    "worker083_binary_runtime": {
+      "interpreter_notices": [],
+      "policy": "Original ELF gate remains enabled; packaged libraries must resolve inside this independent prefix",
+      "private_library_directories": [
+        "R-root/usr/lib/R/lib",
+        "R-support/usr/lib/x86_64-linux-gnu"
+      ],
+      "python_binary_sha256": null,
+      "python_version": null,
+      "relocation_scope": "Different prefix under the recorded host CPython standard-library and system-runtime layout; cross-host source rebuild may be required",
+      "schema_version": 1
+    },
+    "worker083_binary_support": {
+      "additional_runtime_inputs": [
+        {
+          "bytes": 987614,
+          "id": "apt.libtcl8.6",
+          "package": "libtcl8.6",
+          "path": "raw/r-runtime-support/libtcl8.6_8.6.14+dfsg-1build1_amd64.deb",
+          "sha256": "7534eb825f6317514d747ce53b4d6c23bf24df1dc1785f9599610ece5515e685",
+          "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tcl8.6/libtcl8.6_8.6.14+dfsg-1build1_amd64.deb",
+          "version": "8.6.14+dfsg-1build1"
+        },
+        {
+          "bytes": 778878,
+          "id": "apt.libtk8.6",
+          "package": "libtk8.6",
+          "path": "raw/r-runtime-support/libtk8.6_8.6.14-1build1_amd64.deb",
+          "sha256": "c5edb6c79c91a9f4c25cf0ad68c3341467a6604cb97789b2ac36c6d3de352725",
+          "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tk8.6/libtk8.6_8.6.14-1build1_amd64.deb",
+          "version": "8.6.14-1build1"
+        },
+        {
+          "acquisition": "official-url-bounded-stream",
+          "bytes": 45280,
+          "id": "apt.libxft2",
+          "package": "libxft2",
+          "path": "raw/r-runtime-support/libxft2_2.3.6-1build1_amd64.deb",
+          "sha256": "b4f4f3255c0b8773b260c61cbe20ee7c63799cfc0e4e389fa58375dd480b093a",
+          "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/x/xft/libxft2_2.3.6-1build1_amd64.deb",
+          "version": "2.3.6-1build1"
+        },
+        {
+          "acquisition": "hardlink-verified-immutable-raw",
+          "bytes": 19016,
+          "id": "apt.libxrender1",
+          "package": "libxrender1",
+          "path": "raw/r-runtime-support/libxrender1_0.9.10-1.1build1_amd64.deb",
+          "sha256": "d70bd831aebe8d4834b5dd2ed98df26dd6bd27f1042c47543bd7f66df1ae22ea",
+          "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxrender/libxrender1_0.9.10-1.1build1_amd64.deb",
+          "version": "1:0.9.10-1.1build1"
+        }
+      ],
+      "independently_copied_files_verified": 2229,
+      "link_normalizations": [],
+      "omitted_source_ownership_marker": {
+        "path": ".cpg-prefix.json",
+        "reason": "Unmanaged staging payload omits the source-location-bound ownership sentinel; the original A sentinel and receipt remain intact",
+        "source_sha256": "b53cd789edc4a3f554d4f3089d0cb9867ee555d3ae815a81dd957f91353bb611"
+      },
+      "runtime_support_copyright_notices": [
+        {
+          "bytes": 7062,
+          "path": "R-support/usr/share/doc/libtcl8.6/copyright",
+          "sha256": "e925aa8863f0c9eda3625ce2cb16c0d5017fca248c5bd6af97006df5d9c6199c"
+        },
+        {
+          "bytes": 3657,
+          "path": "R-support/usr/share/doc/libtk8.6/copyright",
+          "sha256": "55756939bc322e1ddb187794a0deb8bdf72349ecba34b429446782cd04ea4cef"
+        },
+        {
+          "bytes": 1438,
+          "path": "R-support/usr/share/doc/libxft2/copyright",
+          "sha256": "5960983c962c864d7d73eae6bb9b3b06c1940a23fc6d22ce10ef0f0cde8fd48d"
+        },
+        {
+          "bytes": 2252,
+          "path": "R-support/usr/share/doc/libxrender1/copyright",
+          "sha256": "ed2a78123a5076b4f11da38cb1ffb85b5cb9fdc26b5746c517b1d7e7a9029704"
+        }
+      ],
+      "schema_version": 1,
+      "scope": "Original source-A bytes plus exact original Tcl/Tk/Xft/Xrender runtime debs; source A is not rewritten, all native ELF gates remain enabled, GUI/display functionality is not qualified",
+      "source_A_modified": false,
+      "source_A_prefix": "/workspace/scratch/e2985279316e/worker083/integration/prefixes/irace-cpg-new-v003-A",
+      "staging": "/workspace/scratch/e2985279316e/worker083/delta/evidence/lifecycle/irace/cpg-new-v003/irace-binary-staging-d2a74a0b90ab",
+      "support_manifest_sha256": "d2a74a0b90abcca006bb19d49813b39b0b3449f697e32f8bdc56e712f4e16d5d"
+    },
+    "worker083_execution_profile": {
+      "input_manifest_sha256": "a127670855329395d71f00658237634119a9bba90466ed40b7f10e08aa43e356",
+      "scope": "Actual local measured compiler-parameter tuning with independent correctness gates; qualification is recorded separately in receipts"
+    }
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-S",
+        "{recipe}/install_resource.py",
+        "--resource",
+        "irace",
+        "--source",
+        "{source}",
+        "--prefix",
+        "{prefix}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}"
+      ]
+    ],
+    "execution_profile": "Exact additional execution inputs; original source/dependency/catalog identity is preserved",
+    "required_host_commands": [
+      "python3",
+      "gcc",
+      "g++",
+      "make",
+      "dpkg-deb"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/R-root/usr/lib/R/lib:{prefix}/R-support/usr/lib/x86_64-linux-gnu",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "TCL_LIBRARY": "{prefix}/R-support/usr/share/tcltk/tcl8.6",
+      "TK_LIBRARY": "{prefix}/R-support/usr/share/tcltk/tk8.6"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3052289,
+      "extract": true,
+      "id": "irace",
+      "material_path": "sources/irace",
+      "sha256": "af788214051e27ff43ce103135b9f0885ca234696c6441325c7117921edb025e",
+      "strip_root": true,
+      "url": "https://codeload.github.com/MLopez-Ibanez/irace/tar.gz/2c1426542e7a39258caabf760f3b5da70ba330df"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/MLopez-Ibanez/irace"
+    ],
+    "examples": [],
+    "locations": [],
+    "notes": [
+      "Complete fixed main repository archive; execution dependencies are separately locked",
+      "New execution recipe and checks supplement the unchanged baseline identity. Preparation and installation are separate; only frozen raw inputs are shared."
+    ],
+    "summary": "Measured local compiler-parameter search with irace"
+  },
+  "version": "commit-2c1426542e7a"
+}

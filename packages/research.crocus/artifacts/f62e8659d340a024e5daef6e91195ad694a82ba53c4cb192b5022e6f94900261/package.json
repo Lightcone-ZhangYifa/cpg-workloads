@@ -1,0 +1,120 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/driver.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--recipe",
+        "{recipe}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "crocus-official-positive-and-negative",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 1080
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.crocus",
+  "metadata": {
+    "new_candidate": true,
+    "original_1862_unchanged": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_input_lock": {
+      "artifact_commit": "762320d87b288ac06d67e790935f3a7d7cd7ea92",
+      "checked_files": {
+        "bin/crocus-veri-tests": "f5dc87109c9d9cc39e568375ea994ef7eb909277e9f8b4ac97dcc811796be449",
+        "source/Cargo.lock": "71530315bb06b29d81611f4d54e08182dc824624d51d0be1c63ca8b819dc1cc9",
+        "source/artifact.tar.gz": "b29ac46043cbf693daa7c138d4c0677aedd68dd63e941f78820064491829f6e3",
+        "source/crocus.tar.gz": "562565180131bcdf4f52f42a61a2af71e54423703dfd01d78a4f5ca3b40aaea9",
+        "tools/z3/bin/z3": "4f490bb1b8f4d71dea98cbd4a7b56a3fdf261ba8ca30a65f22a359d51e70ebd8"
+      },
+      "implementation_commit": "4d553e46527631ee4f647104e50457a10d36f1cc",
+      "scope": "Author original test harness; AArch64 iadd_base_case/iadd_imm12_left/iadd_imm12_right at 8/16/32/64 and author broken udiv CVE underlying constant materialization at 32",
+      "solver": "Z3 4.12.2 x64 glibc-2.31"
+    },
+    "qualification_scope": "Author original test harness; AArch64 iadd_base_case/iadd_imm12_left/iadd_imm12_right at 8/16/32/64 and author broken udiv CVE underlying constant materialization at 32",
+    "record_id": "review.verification.crocus",
+    "source_commit": "4d553e46527631ee4f647104e50457a10d36f1cc",
+    "worker_id": "worker 109"
+  },
+  "provider": "source",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "sh"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 8985,
+      "extract": false,
+      "id": "research.crocus.input-1",
+      "material_path": "input-1",
+      "sha256": "b29ac46043cbf693daa7c138d4c0677aedd68dd63e941f78820064491829f6e3",
+      "strip_root": false,
+      "url": "https://codeload.github.com/avanhatt/asplos24-ae-crocus/tar.gz/762320d87b288ac06d67e790935f3a7d7cd7ea92"
+    },
+    {
+      "bytes": 4457698,
+      "extract": false,
+      "id": "research.crocus.input-2",
+      "material_path": "input-2",
+      "sha256": "562565180131bcdf4f52f42a61a2af71e54423703dfd01d78a4f5ca3b40aaea9",
+      "strip_root": false,
+      "url": "https://codeload.github.com/avanhatt/wasmtime/tar.gz/4d553e46527631ee4f647104e50457a10d36f1cc"
+    },
+    {
+      "bytes": 47043310,
+      "extract": false,
+      "id": "research.crocus.input-3",
+      "material_path": "input-3",
+      "sha256": "a198851a7403d8b25bab920bd4a4792efe1af5c28a5a932d840af0472d3a83eb",
+      "strip_root": false,
+      "url": "https://github.com/Z3Prover/z3/releases/download/z3-4.12.2/z3-4.12.2-x64-glibc-2.31.zip"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/avanhatt/asplos24-ae-crocus"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages check research.crocus",
+        "description": "Run the declared bounded proof"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Frozen proof profile",
+        "path": "{prefix}/provenance/profile-lock.json",
+        "purpose": "Identity and scope of original verifier inputs"
+      }
+    ],
+    "notes": [
+      "The exact author Rust test harness runs three rules at four widths and the author-provided udiv counterexample.",
+      "No full backend or hardware execution qualification is claimed. Source rebuilding consumes the separately locked Rust/Cargo/gitlink inputs."
+    ],
+    "summary": "Author original test harness; AArch64 iadd_base_case/iadd_imm12_left/iadd_imm12_right at 8/16/32/64 and author broken udiv CVE underlying constant materialization at 32"
+  },
+  "version": "git.4d553e46527631ee4f647104e50457a10d36f1cc"
+}

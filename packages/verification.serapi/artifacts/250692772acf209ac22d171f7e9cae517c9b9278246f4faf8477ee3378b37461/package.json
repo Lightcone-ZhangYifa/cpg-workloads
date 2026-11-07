@@ -1,0 +1,121 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/run_check.py",
+        "--output-root",
+        "{build}/proof-results",
+        "--",
+        "python3",
+        "-B",
+        "{prefix}/tools/proof_checks.py",
+        "--resource",
+        "serapi",
+        "--runtime",
+        "{dependency_prefix:support.proof-coq}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "actual-proof-and-rejection",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 3600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "support.proof-coq"
+    ],
+    "system": []
+  },
+  "id": "verification.serapi",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "formal_qualification_changed": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "prepack_evidence_sha256": "ff5889fc6b4235877ffc15702b4d647ec42d1dcb2f2e8c8e84885c8cc346041c",
+    "proof_gates": [
+      "runtime-version exit",
+      "fixed Coq and OCaml version",
+      "import executed",
+      "lemma opened",
+      "actual initial goals serialized",
+      "wrong proof step rejected",
+      "failed branch canceled",
+      "goal query after cancel",
+      "cancel restored the exact initial goal object",
+      "completed proof executed",
+      "actual proof term serialized",
+      "machine-readable assumption audit returned",
+      "interactive kernel flags and axiom list are safe",
+      "interactive theorem has no axioms",
+      "Fold exit",
+      "independent kernel compilation closed",
+      "coqchk exit"
+    ],
+    "record_id": "review.verification.serapi",
+    "support_only": false,
+    "upstream": [
+      {
+        "bytes": 274271,
+        "commit": "bc3450a8dfdd86136ce5d9aac427548ba828d30f",
+        "id": "serapi",
+        "repo": "rocq-archive/coq-serapi",
+        "sha256": "38acd0ea1d873fa0dcd0a2bdd2c904055e6e77e84b4566598ace30a1f3de53c9",
+        "url": "https://codeload.github.com/rocq-archive/coq-serapi/tar.gz/bc3450a8dfdd86136ce5d9aac427548ba828d30f"
+      }
+    ],
+    "worker_id": "worker 100"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 274271,
+      "extract": false,
+      "id": "verification.serapi.upstream-1",
+      "material_path": "sources/serapi-bc3450a8dfdd86136ce5d9aac427548ba828d30f.tar.gz",
+      "sha256": "38acd0ea1d873fa0dcd0a2bdd2c904055e6e77e84b4566598ace30a1f3de53c9",
+      "strip_root": false,
+      "url": "https://codeload.github.com/rocq-archive/coq-serapi/tar.gz/bc3450a8dfdd86136ce5d9aac427548ba828d30f"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://codeload.github.com/rocq-archive/coq-serapi/tar.gz/bc3450a8dfdd86136ce5d9aac427548ba828d30f"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "proof-checker",
+        "path": "{prefix}/tools/proof_checks.py",
+        "purpose": "Replay the exact assigned proof and negative checks"
+      }
+    ],
+    "notes": [
+      "CPG 0.21.14 candidate overlay; formal baseline qualification is unchanged.",
+      "All generated proof files belong in an independent output directory."
+    ],
+    "summary": "SerAPI 0.18.3 / Coq 8.18.0; Add/Exec/Query/Cancel and a closed arithmetic lemma"
+  },
+  "version": "8.18.0+0.18.3"
+}

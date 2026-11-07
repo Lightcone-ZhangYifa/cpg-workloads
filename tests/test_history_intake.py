@@ -11,6 +11,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 from authored_inputs import descriptor_for
 from history_ledger import index_zip
 from history_intake import candidate_jobs, check_template, worker_labeled_id
+from history_manifest_ledger import hashes
+from history_object_lineage import category
 
 
 class HistoryIntakeTests(unittest.TestCase):
@@ -57,6 +59,12 @@ class HistoryIntakeTests(unittest.TestCase):
             (root / 'grammar.g4').write_text('grammar G;')
             self.assertEqual(check_template(root), 'authored_payload_requires_review')
 
+    def test_unpacked_upstream_source_projection_is_held(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); material = root / 'recipe/materials/upstream/source.c'
+            material.parent.mkdir(parents=True);material.write_text('int main(void) { return 0; }')
+            self.assertEqual(check_template(root), 'authored_source_projection_requires_review')
+
     def test_worker_labeled_original_identity_stays_out_of_public_tree(self):
         self.assertTrue(worker_labeled_id('reference-pack.worker-010'))
         self.assertTrue(worker_labeled_id('cpg-worker031-runtime'))
@@ -77,6 +85,16 @@ class HistoryIntakeTests(unittest.TestCase):
                   'split_families': [], 'zip_indexes': {}}
         jobs = list(candidate_jobs(ledger, None, None))
         self.assertEqual(jobs[0]['kind'], 'standalone')
+
+    def test_manifest_declared_hashes_remain_distinct_from_verified_members(self):
+        value = {'source_sha256': 'a' * 64, 'files': [{'sha256': 'b' * 64}],
+                 'description': 'c' * 64}
+        self.assertEqual(set(hashes(value)), {'a' * 64, 'b' * 64})
+
+    def test_path_categories_keep_git_and_evidence_separate(self):
+        self.assertEqual(category('compiler-playground/.git/objects/ab/cd', 'core'), 'git_state')
+        self.assertEqual(category('workspace-evidence/datasets/run.json', 'core'), 'historical_evidence')
+        self.assertEqual(category('compiler-playground/src/optimizer.py', 'core'), 'framework_source')
 
 
 if __name__ == '__main__': unittest.main()

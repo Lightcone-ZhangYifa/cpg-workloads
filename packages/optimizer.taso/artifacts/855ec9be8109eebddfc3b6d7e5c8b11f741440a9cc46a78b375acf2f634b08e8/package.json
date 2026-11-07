@@ -1,0 +1,592 @@
+{
+  "build": "worker065-20261101.1",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/taso-check",
+        "--workdir",
+        "{build}/taso-evidence"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "optimizer.taso",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "known_limitations": [
+      "Qualified only for three small hand-written linear ONNX graphs. ONNX ReferenceEvaluator verifies export semantics; no claim of complete TASO native graph execution correctness, nonlinear/fused-activation support, convolution, GPU correctness or performance improvement.",
+      "Upstream oneDNN build requires the recorded compile-only compatibility changes; batchnorm and convolution affected by compile fixes are not functionally qualified.",
+      "Upstream exporter can repeat identical graph input ValueInfo declarations; the check deduplicates only byte-identical declarations and keeps raw exports. No node, tensor, weight or mathematical rewrite is performed by the adapter.",
+      "-O3 -DNDEBUG initial build was killed in substitution.cc under host memory pressure. Final build uses -O1 -UNDEBUG; side-effectful assert expressions in unmodified upstream code make assertion retention necessary.",
+      "Source helper script consolidates the actually performed build steps; a second clean-room source rebuild was not run. System compiler, CPython headers and standard OS libraries are explicit external build/system requirements."
+    ],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "provenance": {
+      "build_profile": {
+        "backend": "upstream oneDNN CPU",
+        "binding_flags": "-O1 -g0 -UNDEBUG -DUSE_DNNL -std=c++11",
+        "build_parallelism": 1,
+        "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+        "cxx_release_flags": "-O1 -UNDEBUG",
+        "optimizer_algorithm_or_rules_modified": false,
+        "patches": [
+          "upstream/cpu-compatibility.patch",
+          "upstream/actual-build-configuration.patch"
+        ]
+      },
+      "id": "optimizer.taso",
+      "known_limitations": [
+        "Qualified only for three small hand-written linear ONNX graphs. ONNX ReferenceEvaluator verifies export semantics; no claim of complete TASO native graph execution correctness, nonlinear/fused-activation support, convolution, GPU correctness or performance improvement.",
+        "Upstream oneDNN build requires the recorded compile-only compatibility changes; batchnorm and convolution affected by compile fixes are not functionally qualified.",
+        "Upstream exporter can repeat identical graph input ValueInfo declarations; the check deduplicates only byte-identical declarations and keeps raw exports. No node, tensor, weight or mathematical rewrite is performed by the adapter.",
+        "-O3 -DNDEBUG initial build was killed in substitution.cc under host memory pressure. Final build uses -O1 -UNDEBUG; side-effectful assert expressions in unmodified upstream code make assertion retention necessary.",
+        "Source helper script consolidates the actually performed build steps; a second clean-room source rebuild was not run. System compiler, CPython headers and standard OS libraries are explicit external build/system requirements."
+      ],
+      "license": "Apache-2.0",
+      "native_dependencies": [
+        {
+          "bytes": 90796,
+          "filename": "libdnnl-dev_2.6.3-1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/libdnnl-dev_2.6.3-1_amd64.deb",
+          "sha256": "1ac357ed0464a1c559dd66600ee3e713a2eb3531e743ccebb9f4e9193497bef3",
+          "url": "https://deb.debian.org/debian/pool/main/o/onednn/libdnnl-dev_2.6.3-1_amd64.deb"
+        },
+        {
+          "bytes": 6991100,
+          "filename": "libdnnl2_2.6.3-1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/libdnnl2_2.6.3-1_amd64.deb",
+          "sha256": "9a8c4d2a880ac44175e531f55b9618b6539584c9fc5fd9eaf2070b6099a819bd",
+          "url": "https://deb.debian.org/debian/pool/main/o/onednn/libdnnl2_2.6.3-1_amd64.deb"
+        },
+        {
+          "bytes": 1282804,
+          "filename": "libprotobuf-dev_3.21.12-3+deb12u1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/libprotobuf-dev_3.21.12-3+deb12u1_amd64.deb",
+          "sha256": "2f045f82e4ae0bdfce7f18f1f36613b9cd8c570024b8de68668bc255c32a2d88",
+          "url": "https://deb.debian.org/debian/pool/main/p/protobuf/libprotobuf-dev_3.21.12-3+deb12u1_amd64.deb"
+        },
+        {
+          "bytes": 931592,
+          "filename": "libprotobuf32_3.21.12-3+deb12u1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/libprotobuf32_3.21.12-3+deb12u1_amd64.deb",
+          "sha256": "e9e4e8cf0d2c48e2e3c17308e2093b3856f470b77e0022b7d906fb1b3551f213",
+          "url": "https://deb.debian.org/debian/pool/main/p/protobuf/libprotobuf32_3.21.12-3+deb12u1_amd64.deb"
+        },
+        {
+          "bytes": 830092,
+          "filename": "libprotoc32_3.21.12-3+deb12u1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/libprotoc32_3.21.12-3+deb12u1_amd64.deb",
+          "sha256": "27770048715fdebe3dab2f6603ca6667ac72ab474989226d2f70153522286adf",
+          "url": "https://deb.debian.org/debian/pool/main/p/protobuf/libprotoc32_3.21.12-3+deb12u1_amd64.deb"
+        },
+        {
+          "bytes": 84212,
+          "filename": "protobuf-compiler_3.21.12-3+deb12u1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/protobuf-compiler_3.21.12-3+deb12u1_amd64.deb",
+          "sha256": "698e96f08152490ee576ead6a9116e1239514de66473305473f67ce2b5408e23",
+          "url": "https://deb.debian.org/debian/pool/main/p/protobuf/protobuf-compiler_3.21.12-3+deb12u1_amd64.deb"
+        },
+        {
+          "bytes": 43016,
+          "filename": "ocl-icd-libopencl1_2.3.1-1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/ocl-icd-libopencl1_2.3.1-1_amd64.deb",
+          "sha256": "ddd8509c0430545173752bed272c7f44f8b5f7d125265b20456207aaefbb52c8",
+          "url": "https://deb.debian.org/debian/pool/main/o/ocl-icd/ocl-icd-libopencl1_2.3.1-1_amd64.deb"
+        }
+      ],
+      "native_library_sha256": "994a68d531a689a9e18cfd4dd33e51b47259d30dee9e744b258125056831b77b",
+      "python_wheels": [
+        {
+          "bytes": 3517692,
+          "filename": "Cython-3.0.12-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "name": "Cython",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/build-wheels/Cython-3.0.12-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "role": "build",
+          "sha256": "0faa5e39e5c8cdf6f9c3b1c3f24972826e45911e7f5b99cf99453fca5432f45e",
+          "url": "https://files.pythonhosted.org/packages/0d/72/743730d7c46b4c85abefb93187cbbcb7aae8de288d7722b990db3d13499e/Cython-3.0.12-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "version": "3.0.12"
+        },
+        {
+          "bytes": 1228782,
+          "filename": "setuptools-75.8.0-py3-none-any.whl",
+          "name": "setuptools",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/build-wheels/setuptools-75.8.0-py3-none-any.whl",
+          "role": "build",
+          "sha256": "e3982f444617239225d675215d51f6ba05f845d4eec313da4418fdbb56fb27e3",
+          "url": "https://files.pythonhosted.org/packages/69/8a/b9dc7678803429e4a3bc9ba462fa3dd9066824d3c607490235c6a796be5a/setuptools-75.8.0-py3-none-any.whl",
+          "version": "75.8.0"
+        },
+        {
+          "bytes": 72494,
+          "filename": "wheel-0.45.1-py3-none-any.whl",
+          "name": "wheel",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/build-wheels/wheel-0.45.1-py3-none-any.whl",
+          "role": "build",
+          "sha256": "708e7481cc80179af0e556bbf0cc00b8444c7321e2700b8d8580231d13017248",
+          "url": "https://files.pythonhosted.org/packages/0b/2c/87f3254fd8ffd29e4c02732eee68a83a1d3c346ae39bc6822dcbcb697f2b/wheel-0.45.1-py3-none-any.whl",
+          "version": "0.45.1"
+        },
+        {
+          "bytes": 27808794,
+          "filename": "cmake-3.31.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "name": "cmake",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/build-wheels/cmake-3.31.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "role": "build",
+          "sha256": "2f766bb46367e5e0559fa33184653754bce044583a06014dcaebf8e6dff8a1f1",
+          "url": "https://files.pythonhosted.org/packages/f4/2e/cefc60143950ca1a8dda26d4c8484e6fc406db16e7ca098ebae549de35f9/cmake-3.31.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "version": "3.31.10"
+        },
+        {
+          "bytes": 16046307,
+          "filename": "onnx-1.17.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "name": "onnx",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/build-wheels/onnx-1.17.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "role": "runtime",
+          "sha256": "4f3fb5cc4e2898ac5312a7dc03a65133dd2abf9a5e520e69afb880a7251ec97a",
+          "url": "https://files.pythonhosted.org/packages/3d/7c/67f4952d1b56b3f74a154b97d0dd0630d525923b354db117d04823b8b49b/onnx-1.17.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "version": "1.17.0"
+        },
+        {
+          "bytes": 17950613,
+          "filename": "numpy-1.26.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "name": "numpy",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker064/raw/wheels/numpy-1.26.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "role": "runtime",
+          "sha256": "675d61ffbfa78604709862923189bad94014bef562cc35cf61d3a07bba02a7ed",
+          "url": "https://files.pythonhosted.org/packages/0f/50/de23fde84e45f5c4fda2488c759b69990fd4512387a8632860f3ac9cd225/numpy-1.26.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "version": "1.26.4"
+        },
+        {
+          "bytes": 294634,
+          "filename": "protobuf-4.25.6-cp37-abi3-manylinux2014_x86_64.whl",
+          "name": "protobuf",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker064/raw/wheels/protobuf-4.25.6-cp37-abi3-manylinux2014_x86_64.whl",
+          "role": "runtime",
+          "sha256": "4434ff8bb5576f9e0c78f47c41cdf3a152c0b44de475784cd3fd170aef16205a",
+          "url": "https://files.pythonhosted.org/packages/d4/f0/6d5c100f6b18d973e86646aa5fc09bc12ee88a28684a56fd95511bceee68/protobuf-4.25.6-cp37-abi3-manylinux2014_x86_64.whl",
+          "version": "4.25.6"
+        }
+      ],
+      "resource": "TASO",
+      "runtime_requirements": [
+        "Linux x86_64",
+        "CPython 3.12 (compiled cp312 extension and NumPy/ONNX cp312 wheels)",
+        "GLIBC_2.34 or newer",
+        "GLIBCXX_3.4.32 or newer (GCC 13 era libstdc++)",
+        "system libgcc_s.so.1, libgomp.so.1, libz.so.1 and standard libc/libm dynamic loader; bundled oneDNN 2.6.3, protobuf native 3.21.12, OpenCL ICD loader 2.3.1",
+        "No CUDA/GPU/device/driver needed by the qualified CPU probe; OpenCL ICD loader is a oneDNN link dependency only"
+      ],
+      "source_assets": [
+        {
+          "bytes": 880287,
+          "filename": "TASO-f11782c.tar.gz",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/raw/TASO-f11782c.tar.gz",
+          "sha256": "b5342a49e618290ea7e99e4e9bc1c38480ee8cb75f468d5eaf385235e6162654",
+          "url": "https://codeload.github.com/jiazhihao/TASO/tar.gz/f11782c4db180ad7d1e7ff7f4bb82e574ac3b6b8"
+        }
+      ],
+      "source_closure": "Exact original TASO source archive is included. Dependency binary archives and Python wheels are separately locked original materials. System compiler/CPython development headers/OS libraries are declared external requirements. No assertion of recursively source-complete third-party dependency closure.",
+      "source_commit": "f11782c4db180ad7d1e7ff7f4bb82e574ac3b6b8",
+      "source_url": "https://github.com/jiazhihao/TASO",
+      "version": "0.1.0+f11782c.cpu"
+    },
+    "qualification": {
+      "benchmark": null,
+      "formal_promotion": false,
+      "functional": "bounded worker-local evidence only",
+      "hardware": null,
+      "oci": null,
+      "source_build": null
+    },
+    "record_id": "review.optimization.taso",
+    "requirements": [
+      "Linux x86_64",
+      "CPython 3.12 (compiled cp312 extension and NumPy/ONNX cp312 wheels)",
+      "GLIBC_2.34 or newer",
+      "GLIBCXX_3.4.32 or newer (GCC 13 era libstdc++)",
+      "system libgcc_s.so.1, libgomp.so.1, libz.so.1 and standard libc/libm dynamic loader; bundled oneDNN 2.6.3, protobuf native 3.21.12, OpenCL ICD loader 2.3.1",
+      "No CUDA/GPU/device/driver needed by the qualified CPU probe; OpenCL ICD loader is a oneDNN link dependency only"
+    ],
+    "source_lock": {
+      "build_profile": {
+        "backend": "upstream oneDNN CPU",
+        "binding_flags": "-O1 -g0 -UNDEBUG -DUSE_DNNL -std=c++11",
+        "build_parallelism": 1,
+        "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+        "cxx_release_flags": "-O1 -UNDEBUG",
+        "optimizer_algorithm_or_rules_modified": false,
+        "patches": [
+          "upstream/cpu-compatibility.patch",
+          "upstream/actual-build-configuration.patch"
+        ]
+      },
+      "id": "optimizer.taso",
+      "known_limitations": [
+        "Qualified only for three small hand-written linear ONNX graphs. ONNX ReferenceEvaluator verifies export semantics; no claim of complete TASO native graph execution correctness, nonlinear/fused-activation support, convolution, GPU correctness or performance improvement.",
+        "Upstream oneDNN build requires the recorded compile-only compatibility changes; batchnorm and convolution affected by compile fixes are not functionally qualified.",
+        "Upstream exporter can repeat identical graph input ValueInfo declarations; the check deduplicates only byte-identical declarations and keeps raw exports. No node, tensor, weight or mathematical rewrite is performed by the adapter.",
+        "-O3 -DNDEBUG initial build was killed in substitution.cc under host memory pressure. Final build uses -O1 -UNDEBUG; side-effectful assert expressions in unmodified upstream code make assertion retention necessary.",
+        "Source helper script consolidates the actually performed build steps; a second clean-room source rebuild was not run. System compiler, CPython headers and standard OS libraries are explicit external build/system requirements."
+      ],
+      "license": "Apache-2.0",
+      "native_dependencies": [
+        {
+          "bytes": 90796,
+          "filename": "libdnnl-dev_2.6.3-1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/libdnnl-dev_2.6.3-1_amd64.deb",
+          "sha256": "1ac357ed0464a1c559dd66600ee3e713a2eb3531e743ccebb9f4e9193497bef3",
+          "url": "https://deb.debian.org/debian/pool/main/o/onednn/libdnnl-dev_2.6.3-1_amd64.deb"
+        },
+        {
+          "bytes": 6991100,
+          "filename": "libdnnl2_2.6.3-1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/libdnnl2_2.6.3-1_amd64.deb",
+          "sha256": "9a8c4d2a880ac44175e531f55b9618b6539584c9fc5fd9eaf2070b6099a819bd",
+          "url": "https://deb.debian.org/debian/pool/main/o/onednn/libdnnl2_2.6.3-1_amd64.deb"
+        },
+        {
+          "bytes": 1282804,
+          "filename": "libprotobuf-dev_3.21.12-3+deb12u1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/libprotobuf-dev_3.21.12-3+deb12u1_amd64.deb",
+          "sha256": "2f045f82e4ae0bdfce7f18f1f36613b9cd8c570024b8de68668bc255c32a2d88",
+          "url": "https://deb.debian.org/debian/pool/main/p/protobuf/libprotobuf-dev_3.21.12-3+deb12u1_amd64.deb"
+        },
+        {
+          "bytes": 931592,
+          "filename": "libprotobuf32_3.21.12-3+deb12u1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/libprotobuf32_3.21.12-3+deb12u1_amd64.deb",
+          "sha256": "e9e4e8cf0d2c48e2e3c17308e2093b3856f470b77e0022b7d906fb1b3551f213",
+          "url": "https://deb.debian.org/debian/pool/main/p/protobuf/libprotobuf32_3.21.12-3+deb12u1_amd64.deb"
+        },
+        {
+          "bytes": 830092,
+          "filename": "libprotoc32_3.21.12-3+deb12u1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/libprotoc32_3.21.12-3+deb12u1_amd64.deb",
+          "sha256": "27770048715fdebe3dab2f6603ca6667ac72ab474989226d2f70153522286adf",
+          "url": "https://deb.debian.org/debian/pool/main/p/protobuf/libprotoc32_3.21.12-3+deb12u1_amd64.deb"
+        },
+        {
+          "bytes": 84212,
+          "filename": "protobuf-compiler_3.21.12-3+deb12u1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/protobuf-compiler_3.21.12-3+deb12u1_amd64.deb",
+          "sha256": "698e96f08152490ee576ead6a9116e1239514de66473305473f67ce2b5408e23",
+          "url": "https://deb.debian.org/debian/pool/main/p/protobuf/protobuf-compiler_3.21.12-3+deb12u1_amd64.deb"
+        },
+        {
+          "bytes": 43016,
+          "filename": "ocl-icd-libopencl1_2.3.1-1_amd64.deb",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/debs/ocl-icd-libopencl1_2.3.1-1_amd64.deb",
+          "sha256": "ddd8509c0430545173752bed272c7f44f8b5f7d125265b20456207aaefbb52c8",
+          "url": "https://deb.debian.org/debian/pool/main/o/ocl-icd/ocl-icd-libopencl1_2.3.1-1_amd64.deb"
+        }
+      ],
+      "native_library_sha256": "994a68d531a689a9e18cfd4dd33e51b47259d30dee9e744b258125056831b77b",
+      "python_wheels": [
+        {
+          "bytes": 3517692,
+          "filename": "Cython-3.0.12-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "name": "Cython",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/build-wheels/Cython-3.0.12-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "role": "build",
+          "sha256": "0faa5e39e5c8cdf6f9c3b1c3f24972826e45911e7f5b99cf99453fca5432f45e",
+          "url": "https://files.pythonhosted.org/packages/0d/72/743730d7c46b4c85abefb93187cbbcb7aae8de288d7722b990db3d13499e/Cython-3.0.12-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "version": "3.0.12"
+        },
+        {
+          "bytes": 1228782,
+          "filename": "setuptools-75.8.0-py3-none-any.whl",
+          "name": "setuptools",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/build-wheels/setuptools-75.8.0-py3-none-any.whl",
+          "role": "build",
+          "sha256": "e3982f444617239225d675215d51f6ba05f845d4eec313da4418fdbb56fb27e3",
+          "url": "https://files.pythonhosted.org/packages/69/8a/b9dc7678803429e4a3bc9ba462fa3dd9066824d3c607490235c6a796be5a/setuptools-75.8.0-py3-none-any.whl",
+          "version": "75.8.0"
+        },
+        {
+          "bytes": 72494,
+          "filename": "wheel-0.45.1-py3-none-any.whl",
+          "name": "wheel",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/build-wheels/wheel-0.45.1-py3-none-any.whl",
+          "role": "build",
+          "sha256": "708e7481cc80179af0e556bbf0cc00b8444c7321e2700b8d8580231d13017248",
+          "url": "https://files.pythonhosted.org/packages/0b/2c/87f3254fd8ffd29e4c02732eee68a83a1d3c346ae39bc6822dcbcb697f2b/wheel-0.45.1-py3-none-any.whl",
+          "version": "0.45.1"
+        },
+        {
+          "bytes": 27808794,
+          "filename": "cmake-3.31.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "name": "cmake",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/build-wheels/cmake-3.31.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "role": "build",
+          "sha256": "2f766bb46367e5e0559fa33184653754bce044583a06014dcaebf8e6dff8a1f1",
+          "url": "https://files.pythonhosted.org/packages/f4/2e/cefc60143950ca1a8dda26d4c8484e6fc406db16e7ca098ebae549de35f9/cmake-3.31.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "version": "3.31.10"
+        },
+        {
+          "bytes": 16046307,
+          "filename": "onnx-1.17.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "name": "onnx",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/build-wheels/onnx-1.17.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "role": "runtime",
+          "sha256": "4f3fb5cc4e2898ac5312a7dc03a65133dd2abf9a5e520e69afb880a7251ec97a",
+          "url": "https://files.pythonhosted.org/packages/3d/7c/67f4952d1b56b3f74a154b97d0dd0630d525923b354db117d04823b8b49b/onnx-1.17.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "version": "1.17.0"
+        },
+        {
+          "bytes": 17950613,
+          "filename": "numpy-1.26.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "name": "numpy",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker064/raw/wheels/numpy-1.26.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "role": "runtime",
+          "sha256": "675d61ffbfa78604709862923189bad94014bef562cc35cf61d3a07bba02a7ed",
+          "url": "https://files.pythonhosted.org/packages/0f/50/de23fde84e45f5c4fda2488c759b69990fd4512387a8632860f3ac9cd225/numpy-1.26.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "version": "1.26.4"
+        },
+        {
+          "bytes": 294634,
+          "filename": "protobuf-4.25.6-cp37-abi3-manylinux2014_x86_64.whl",
+          "name": "protobuf",
+          "official_PyPI_metadata_matched": true,
+          "raw_path": "/workspace/scratch/9331f079ae56/worker064/raw/wheels/protobuf-4.25.6-cp37-abi3-manylinux2014_x86_64.whl",
+          "role": "runtime",
+          "sha256": "4434ff8bb5576f9e0c78f47c41cdf3a152c0b44de475784cd3fd170aef16205a",
+          "url": "https://files.pythonhosted.org/packages/d4/f0/6d5c100f6b18d973e86646aa5fc09bc12ee88a28684a56fd95511bceee68/protobuf-4.25.6-cp37-abi3-manylinux2014_x86_64.whl",
+          "version": "4.25.6"
+        }
+      ],
+      "resource": "TASO",
+      "runtime_requirements": [
+        "Linux x86_64",
+        "CPython 3.12 (compiled cp312 extension and NumPy/ONNX cp312 wheels)",
+        "GLIBC_2.34 or newer",
+        "GLIBCXX_3.4.32 or newer (GCC 13 era libstdc++)",
+        "system libgcc_s.so.1, libgomp.so.1, libz.so.1 and standard libc/libm dynamic loader; bundled oneDNN 2.6.3, protobuf native 3.21.12, OpenCL ICD loader 2.3.1",
+        "No CUDA/GPU/device/driver needed by the qualified CPU probe; OpenCL ICD loader is a oneDNN link dependency only"
+      ],
+      "source_assets": [
+        {
+          "bytes": 880287,
+          "filename": "TASO-f11782c.tar.gz",
+          "raw_path": "/workspace/scratch/9331f079ae56/worker065/raw/TASO-f11782c.tar.gz",
+          "sha256": "b5342a49e618290ea7e99e4e9bc1c38480ee8cb75f468d5eaf385235e6162654",
+          "url": "https://codeload.github.com/jiazhihao/TASO/tar.gz/f11782c4db180ad7d1e7ff7f4bb82e574ac3b6b8"
+        }
+      ],
+      "source_closure": "Exact original TASO source archive is included. Dependency binary archives and Python wheels are separately locked original materials. System compiler/CPython development headers/OS libraries are declared external requirements. No assertion of recursively source-complete third-party dependency closure.",
+      "source_commit": "f11782c4db180ad7d1e7ff7f4bb82e574ac3b6b8",
+      "source_url": "https://github.com/jiazhihao/TASO",
+      "version": "0.1.0+f11782c.cpu"
+    },
+    "worker_id": "worker 065"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib:{prefix}/lib/python/numpy.libs",
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 880287,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "locked-inputs/input-001",
+      "sha256": "b5342a49e618290ea7e99e4e9bc1c38480ee8cb75f468d5eaf385235e6162654",
+      "strip_root": false,
+      "url": "https://codeload.github.com/jiazhihao/TASO/tar.gz/f11782c4db180ad7d1e7ff7f4bb82e574ac3b6b8"
+    },
+    {
+      "bytes": 90796,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "locked-inputs/input-002",
+      "sha256": "1ac357ed0464a1c559dd66600ee3e713a2eb3531e743ccebb9f4e9193497bef3",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/o/onednn/libdnnl-dev_2.6.3-1_amd64.deb"
+    },
+    {
+      "bytes": 6991100,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "locked-inputs/input-003",
+      "sha256": "9a8c4d2a880ac44175e531f55b9618b6539584c9fc5fd9eaf2070b6099a819bd",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/o/onednn/libdnnl2_2.6.3-1_amd64.deb"
+    },
+    {
+      "bytes": 1282804,
+      "extract": false,
+      "id": "input-004",
+      "material_path": "locked-inputs/input-004",
+      "sha256": "2f045f82e4ae0bdfce7f18f1f36613b9cd8c570024b8de68668bc255c32a2d88",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/p/protobuf/libprotobuf-dev_3.21.12-3+deb12u1_amd64.deb"
+    },
+    {
+      "bytes": 931592,
+      "extract": false,
+      "id": "input-005",
+      "material_path": "locked-inputs/input-005",
+      "sha256": "e9e4e8cf0d2c48e2e3c17308e2093b3856f470b77e0022b7d906fb1b3551f213",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/p/protobuf/libprotobuf32_3.21.12-3+deb12u1_amd64.deb"
+    },
+    {
+      "bytes": 830092,
+      "extract": false,
+      "id": "input-006",
+      "material_path": "locked-inputs/input-006",
+      "sha256": "27770048715fdebe3dab2f6603ca6667ac72ab474989226d2f70153522286adf",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/p/protobuf/libprotoc32_3.21.12-3+deb12u1_amd64.deb"
+    },
+    {
+      "bytes": 84212,
+      "extract": false,
+      "id": "input-007",
+      "material_path": "locked-inputs/input-007",
+      "sha256": "698e96f08152490ee576ead6a9116e1239514de66473305473f67ce2b5408e23",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/p/protobuf/protobuf-compiler_3.21.12-3+deb12u1_amd64.deb"
+    },
+    {
+      "bytes": 43016,
+      "extract": false,
+      "id": "input-008",
+      "material_path": "locked-inputs/input-008",
+      "sha256": "ddd8509c0430545173752bed272c7f44f8b5f7d125265b20456207aaefbb52c8",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/o/ocl-icd/ocl-icd-libopencl1_2.3.1-1_amd64.deb"
+    },
+    {
+      "bytes": 3517692,
+      "extract": false,
+      "id": "input-009",
+      "material_path": "locked-inputs/input-009",
+      "sha256": "0faa5e39e5c8cdf6f9c3b1c3f24972826e45911e7f5b99cf99453fca5432f45e",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/0d/72/743730d7c46b4c85abefb93187cbbcb7aae8de288d7722b990db3d13499e/Cython-3.0.12-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+    },
+    {
+      "bytes": 1228782,
+      "extract": false,
+      "id": "input-010",
+      "material_path": "locked-inputs/input-010",
+      "sha256": "e3982f444617239225d675215d51f6ba05f845d4eec313da4418fdbb56fb27e3",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/69/8a/b9dc7678803429e4a3bc9ba462fa3dd9066824d3c607490235c6a796be5a/setuptools-75.8.0-py3-none-any.whl"
+    },
+    {
+      "bytes": 72494,
+      "extract": false,
+      "id": "input-011",
+      "material_path": "locked-inputs/input-011",
+      "sha256": "708e7481cc80179af0e556bbf0cc00b8444c7321e2700b8d8580231d13017248",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/0b/2c/87f3254fd8ffd29e4c02732eee68a83a1d3c346ae39bc6822dcbcb697f2b/wheel-0.45.1-py3-none-any.whl"
+    },
+    {
+      "bytes": 27808794,
+      "extract": false,
+      "id": "input-012",
+      "material_path": "locked-inputs/input-012",
+      "sha256": "2f766bb46367e5e0559fa33184653754bce044583a06014dcaebf8e6dff8a1f1",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/f4/2e/cefc60143950ca1a8dda26d4c8484e6fc406db16e7ca098ebae549de35f9/cmake-3.31.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+    },
+    {
+      "bytes": 16046307,
+      "extract": false,
+      "id": "input-013",
+      "material_path": "locked-inputs/input-013",
+      "sha256": "4f3fb5cc4e2898ac5312a7dc03a65133dd2abf9a5e520e69afb880a7251ec97a",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/3d/7c/67f4952d1b56b3f74a154b97d0dd0630d525923b354db117d04823b8b49b/onnx-1.17.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+    },
+    {
+      "bytes": 17950613,
+      "extract": false,
+      "id": "input-014",
+      "material_path": "locked-inputs/input-014",
+      "sha256": "675d61ffbfa78604709862923189bad94014bef562cc35cf61d3a07bba02a7ed",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/0f/50/de23fde84e45f5c4fda2488c759b69990fd4512387a8632860f3ac9cd225/numpy-1.26.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+    },
+    {
+      "bytes": 294634,
+      "extract": false,
+      "id": "input-015",
+      "material_path": "locked-inputs/input-015",
+      "sha256": "4434ff8bb5576f9e0c78f47c41cdf3a152c0b44de475784cd3fd170aef16205a",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/d4/f0/6d5c100f6b18d973e86646aa5fc09bc12ee88a28684a56fd95511bceee68/protobuf-4.25.6-cp37-abi3-manylinux2014_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/jiazhihao/TASO"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/taso-check --workdir /tmp/cpg-check/taso-evidence",
+        "description": "Replay the bounded functional probe"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Installed resource",
+        "path": "{prefix}",
+        "purpose": "Pinned tool, source materials, examples, licences and verification interface"
+      }
+    ],
+    "notes": [
+      "Actual native TASO CPU optimize/export on three handwritten linear graphs. The complete independent native-library search path is declared before original CPG ELF compatibility checks, not only in the check launcher.",
+      "Qualified only for three small hand-written linear ONNX graphs. ONNX ReferenceEvaluator verifies export semantics; no claim of complete TASO native graph execution correctness, nonlinear/fused-activation support, convolution, GPU correctness or performance improvement.",
+      "Upstream oneDNN build requires the recorded compile-only compatibility changes; batchnorm and convolution affected by compile fixes are not functionally qualified.",
+      "Upstream exporter can repeat identical graph input ValueInfo declarations; the check deduplicates only byte-identical declarations and keeps raw exports. No node, tensor, weight or mathematical rewrite is performed by the adapter.",
+      "-O3 -DNDEBUG initial build was killed in substitution.cc under host memory pressure. Final build uses -O1 -UNDEBUG; side-effectful assert expressions in unmodified upstream code make assertion retention necessary.",
+      "Source helper script consolidates the actually performed build steps; a second clean-room source rebuild was not run. System compiler, CPython headers and standard OS libraries are explicit external build/system requirements.",
+      "The target distribution is reference-build metadata, not an installation allowlist."
+    ],
+    "summary": "基于图替换搜索的DNN张量代数超优化"
+  },
+  "version": "0.1.0+f11782c.cpu"
+}

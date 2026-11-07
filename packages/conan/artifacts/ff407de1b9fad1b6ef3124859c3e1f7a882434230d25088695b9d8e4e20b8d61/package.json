@@ -1,0 +1,68 @@
+{
+  "build": "worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/run_fresh.py",
+        "--base",
+        "{build}",
+        "--",
+        "python3",
+        "{prefix}/check.py",
+        "--bundle",
+        "{prefix}",
+        "--work-dir",
+        "@WORK@"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-task",
+      "kind": "functional",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "conan",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Only the declared cases, target and pinned inputs",
+    "record_id": "review.engineering.conan",
+    "worker_id": "worker 081"
+  },
+  "provider": "binary",
+  "recipe": {},
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://pypi.org/project/conan/2.24.0/",
+      "https://docs.conan.io/2/"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Independent resource prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed upstream resource and repeatable checks"
+      }
+    ],
+    "notes": [
+      "13 actual command cases; host/build profile locks, upstream zlib source+make test, independent cache save/restore, wrong profile and missing cache rejected. Check must execute under external network isolation."
+    ],
+    "summary": "Pinned Conan 2 profiles, offline zlib build/test, independent cache import and consumer verification"
+  },
+  "version": "2.24.0"
+}

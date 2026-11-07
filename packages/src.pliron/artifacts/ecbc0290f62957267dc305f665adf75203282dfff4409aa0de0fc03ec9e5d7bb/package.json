@@ -1,0 +1,139 @@
+{
+  "build": "cpg-worker007-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/share/pliron/checks/check-pliron.py",
+        "--binary",
+        "{prefix}/bin/cpg-pliron-probe",
+        "--source-root",
+        "{prefix}/share/pliron"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "cpg-dialect-pass",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"passed\": 9",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "src.pliron",
+  "metadata": {
+    "canonical_url": "https://github.com/pliron-org/pliron",
+    "commit": "435536c8611af34c48c8f73d78e77894a05d103d",
+    "license": "Apache-2.0",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "local bounded integration; no global catalog promotion",
+    "record_id": "review.engineering.pliron",
+    "worker_id": "worker 007"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "{recipe}/install.py",
+        "--upstream",
+        "{assets}/pliron/upstream",
+        "--offline-inputs",
+        "{assets}/pliron/offline-inputs",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "required_host_commands": [
+      "cargo",
+      "rustc",
+      "cc",
+      "python3"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/cpg-pliron-probe",
+      "{prefix}/share/pliron/checks/pliron-cpg-probe/Cargo.lock"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "CARGO_NET_OFFLINE": "true",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 917746,
+      "extract": true,
+      "id": "pliron-upstream",
+      "material_path": "pliron/upstream",
+      "sha256": "607524c1a3147f34322f03f018eb1e4f7dda51c8333566578dca7eebbfa5deac",
+      "strip_root": true,
+      "url": "https://codeload.github.com/pliron-org/pliron/tar.gz/435536c8611af34c48c8f73d78e77894a05d103d"
+    },
+    {
+      "bytes": 4109884,
+      "extract": true,
+      "id": "pliron-offline-inputs",
+      "material_path": "pliron/offline-inputs",
+      "sha256": "433c443113130c529675d760fbc5e65757295d44afb182e101a0bd8acdf7bf1d",
+      "strip_root": true,
+      "url": null
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/pliron-org/pliron"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/cpg-pliron-probe {prefix}/share/pliron/checks/pliron-cpg-probe/fixtures/add.pliron --fold",
+        "description": "fold and verify the sample"
+      }
+    ],
+    "locations": [
+      {
+        "label": "probe",
+        "path": "{prefix}/bin/cpg-pliron-probe",
+        "purpose": "run bounded parse/print/verify and constant-fold contracts"
+      },
+      {
+        "label": "source",
+        "path": "{prefix}/share/pliron/assets/pliron-source",
+        "purpose": "canonical pinned upstream source, tests and documentation"
+      },
+      {
+        "label": "integration",
+        "path": "{prefix}/share/pliron/checks/pliron-cpg-probe",
+        "purpose": "editable Rust dialect/pass example with locked offline dependencies"
+      }
+    ],
+    "notes": [
+      "Source build requires pre-provisioned Rust/Cargo and a C linker; tested with Rust 1.99.1.",
+      "Only the custom signless-i64 dialect is functionally qualified; the pliron LLVM dialect and general compiler semantics are outside this check.",
+      "The binary is Linux x86_64, built on glibc 2.39. Distribution fields record the build host and are not an installation allowlist."
+    ],
+    "summary": "Rust extensible IR: source, 53 vendored crates, custom dialect, verifier and constant-fold pass"
+  },
+  "version": "0.20.0"
+}

@@ -1,0 +1,186 @@
+{
+  "build": "worker043-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-jit-regression",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "runtime.rpython",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 23689553,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "Managed runtimes and JIT"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "runtime.rpython",
+      "immutable_ref": "c7f2b53ceffe0fa397d06671d96a7b3ff9997c8f",
+      "kind": "native_bundle",
+      "license_id": "MIT (primary RPython/PyPy project); component-specific notices in licenses/",
+      "material_path": "inputs/input-1",
+      "purpose": "元追踪JIT和解释器到本机代码的参考实现；元追踪JIT、整数窥孔DSL、虚拟对象与守卫/去优化实现资料",
+      "qualification_scope": "Locked RPython 7.3.17 source plus official PyPy bootstrap and offline libffi/pkgconf inputs. A minimal AILH bytecode interpreter is freshly translated to both a native non-JIT VM and a generated tracing-JIT VM. Five legal inputs including n=1000000 and seven invalid inputs agree across ordinary interpretation/native/JIT. The target optimized loop contains guards, a nonempty native machine-code address range and matching positive machine-code entry counter; native target-loop counter and compiled-loop summary are recorded. Complete PyPy interpreter build, full upstream suite, GUI, benchmark and dataset qualification are not claimed.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "a02904bf70fe3cdd696db07d665b00048dd90690a37c246ec7ec059fda9c0eea",
+      "source_evidence": [
+        "https://rpython.readthedocs.io/en/latest/",
+        "https://github.com/pypy/pypy"
+      ],
+      "source_url": "https://codeload.github.com/pypy/pypy/tar.gz/refs/tags/release-pypy2.7-v7.3.17",
+      "strip_archive_root": false,
+      "title": "RPython translation and JIT toolchain",
+      "upstream": "https://rpython.readthedocs.io/en/latest/",
+      "version": "7.3.17",
+      "worker_record_id": "review.engineering.rpython"
+    },
+    "catalog_sha256": "1ef48c56e8398b93258eca3a8e12d3743b2c51d887fa39f74c4379a2fd2e385f",
+    "input_provenance": [
+      {
+        "bytes": 23689553,
+        "payload_path": "raw/pypy-release-pypy2.7-v7.3.17.tar.gz",
+        "purpose": "Complete upstream PyPy/RPython source archive, primary project",
+        "revision": "c7f2b53ceffe0fa397d06671d96a7b3ff9997c8f",
+        "sha256": "a02904bf70fe3cdd696db07d665b00048dd90690a37c246ec7ec059fda9c0eea",
+        "url": "https://codeload.github.com/pypy/pypy/tar.gz/refs/tags/release-pypy2.7-v7.3.17"
+      },
+      {
+        "bytes": 30988704,
+        "payload_path": "raw/pypy2.7-v7.3.17-linux64.tar.bz2",
+        "purpose": "Official PyPy2.7 bootstrap used to translate the minimal interpreter; bootstrap itself is not a new source-build claim",
+        "sha256": "9f3497f87b3372d17e447369e0016a4bec99a6b4d2a59aba774a25bfe4353474",
+        "url": "https://downloads.python.org/pypy/pypy2.7-v7.3.17-linux64.tar.bz2"
+      },
+      {
+        "bytes": 62802,
+        "payload_path": "raw/libffi-dev_3.4.6-1build1_amd64.deb",
+        "purpose": "Offline libffi/pkgconf headers, native shared libraries and configuration tool closure",
+        "sha256": "7009959b8a3b77206325026917fb45150ac81bf6139468abc0841d5a29c8619d",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libf/libffi/libffi-dev_3.4.6-1build1_amd64.deb"
+      },
+      {
+        "bytes": 24718,
+        "payload_path": "raw/libffi8_3.4.6-1build1_amd64.deb",
+        "purpose": "Offline libffi/pkgconf headers, native shared libraries and configuration tool closure",
+        "sha256": "637e6a7744de08cd331a41f4efd0d24e6ea9064843dea9d1c6ca87bdb5f038a2",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libf/libffi/libffi8_3.4.6-1build1_amd64.deb"
+      },
+      {
+        "bytes": 20730,
+        "payload_path": "raw/pkgconf-bin_1.8.1-2build1_amd64.deb",
+        "purpose": "Offline libffi/pkgconf headers, native shared libraries and configuration tool closure",
+        "sha256": "7a812f05ee1610154b433e2ad54f6e4163fcbb306b9fb31afe959afb2e5e1545",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pkgconf/pkgconf-bin_1.8.1-2build1_amd64.deb"
+      },
+      {
+        "bytes": 30652,
+        "payload_path": "raw/libpkgconf3_1.8.1-2build1_amd64.deb",
+        "purpose": "Offline libffi/pkgconf headers, native shared libraries and configuration tool closure",
+        "sha256": "fc3a57e8f931ec06cb7c51acc56878f1fec247ff02a7adcab26905c2faeb2792",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pkgconf/libpkgconf3_1.8.1-2build1_amd64.deb"
+      },
+      {
+        "bytes": 45280,
+        "payload_path": "raw/libxft2_2.3.6-1build1_amd64.deb",
+        "purpose": "Close the preserved PyPy bootstrap Tk shared-library dependency; GUI behavior not qualified",
+        "sha256": "b4f4f3255c0b8773b260c61cbe20ee7c63799cfc0e4e389fa58375dd480b093a",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/x/xft/libxft2_2.3.6-1build1_amd64.deb"
+      }
+    ],
+    "original_resource_ids": [],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "full_pypy_source_build_qualified": false,
+      "functional_qualified": true,
+      "jit_generator_qualified": true,
+      "material_qualified": true,
+      "native_jit_execution_qualified": true,
+      "source_build_qualified": true
+    },
+    "record_id": "review.engineering.rpython",
+    "runtime_requirements": [
+      "Linux x86_64; tested host Ubuntu 24.04 with glibc 2.39",
+      "Check: Python 3.12 (tested), ldd, and the host ELF SONAMEs listed in host_runtime_libraries",
+      "Source replay only: gcc 13.3.0, make 4.3, dpkg-deb, binutils and system libc development headers. Exact compiler/binutils executable SHA256 values are recorded in execution-inputs.json.",
+      "The preserved optional bootstrap GUI ELF dependencies are loader-checked, without GUI functional qualification."
+    ],
+    "worker_id": "worker 043"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib:{prefix}/bootstrap/bin:{prefix}/bootstrap/lib"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 23689553,
+      "extract": false,
+      "id": "runtime.rpython",
+      "material_path": "inputs/input-1",
+      "sha256": "a02904bf70fe3cdd696db07d665b00048dd90690a37c246ec7ec059fda9c0eea",
+      "strip_root": false,
+      "url": "https://codeload.github.com/pypy/pypy/tar.gz/refs/tags/release-pypy2.7-v7.3.17"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://rpython.readthedocs.io/en/latest/",
+      "https://github.com/pypy/pypy"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Locked RPython 7.3.17 source plus official PyPy bootstrap and offline libffi/pkgconf inputs. A minimal AILH bytecode interpreter is freshly translated to both a native non-JIT VM and a generated tracing-JIT VM. Five legal inputs including n=1000000 and seven invalid inputs agree across ordinary interpretation/native/JIT. The target optimized loop contains guards, a nonempty native machine-code address range and matching positive machine-code entry counter; native target-loop counter and compiled-loop summary are recorded. Complete PyPy interpreter build, full upstream suite, GUI, benchmark and dataset qualification are not claimed."
+      }
+    ],
+    "notes": [
+      "来源属于PyPy仓库的RPython，不等于已部署PyPy就验证了translation/JIT generator。；只运行与本实验有关的代码，不把完整Python生态重装作为先决。",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "元追踪JIT和解释器到本机代码的参考实现；元追踪JIT、整数窥孔DSL、虚拟对象与守卫/去优化实现资料"
+  },
+  "version": "7.3.17"
+}

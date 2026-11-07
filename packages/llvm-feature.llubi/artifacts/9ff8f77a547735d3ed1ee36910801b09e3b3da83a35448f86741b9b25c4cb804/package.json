@@ -1,0 +1,102 @@
+{
+  "build": "20261101-worker009-material-v1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check-material.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-lock.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "exact-original-compressed-source",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "llvm-release"
+    ],
+    "system": []
+  },
+  "id": "llvm-feature.llubi",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "category": [
+        "Compilers and IR",
+        "LLVM components"
+      ],
+      "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+      "dependencies": [
+        "llvm-release"
+      ],
+      "deployment": {
+        "adapter": "component",
+        "source_resource": "llvm-release"
+      },
+      "id": "llvm-feature.llubi",
+      "immutable_ref": "7a941dfb2877a0b8cf30323fefa85ad019e0b0f5",
+      "installed_bytes": null,
+      "kind": "virtual",
+      "license_class": "open",
+      "license_id": "Apache-2.0 WITH LLVM-exception",
+      "mandatory": false,
+      "presets": [
+        "core",
+        "open",
+        "all"
+      ],
+      "purpose": "Capability built from the shared locked LLVM source; full build and first-use evidence remain required.",
+      "qualification_gaps": [],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": null,
+      "source_evidence": [],
+      "source_logical_bytes": null,
+      "title": "llubi",
+      "version": "llvmorg-23.1.4"
+    },
+    "catalog_sha256": "c20dcb44b5eb4dbcaa0a36c4835962c01f0b9c27bd8ceadf6051725641e91969",
+    "worker009_material_scope": {
+      "native_build_qualified": false,
+      "original_dependencies_preserved": true,
+      "scope": "complete compressed original source and license texts only",
+      "source_sha256": "819ecf7351f1a66f76b2d701d8942faaf5faeb324cb90c9d5b090de142434bb2",
+      "upstream_resource": "llvm-release"
+    }
+  },
+  "provider": "component",
+  "recipe": {
+    "adapter": "component",
+    "source_resource": "llvm-release"
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "Worker009 material profile stores the complete original archive without running or changing the native build contract. Original dependencies remain admission requirements."
+    ],
+    "summary": "Capability built from the shared locked LLVM source; full build and first-use evidence remain required."
+  },
+  "version": "llvmorg-23.1.4"
+}

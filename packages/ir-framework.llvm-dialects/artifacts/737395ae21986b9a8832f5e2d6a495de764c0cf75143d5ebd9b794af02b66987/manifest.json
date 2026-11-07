@@ -1,0 +1,268 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 3445,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build_dialects.py",
+      "sha256": "4c72f04a147c6b2aeee0e7c17e68e81ae72840914745fa1708d02ecf4c600459"
+    },
+    {
+      "bytes": 1870,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_wrapper.py",
+      "sha256": "5df176cc19e7a239e357ecbeb39598a2e26cf3ea5a266f5284505ae115337291"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe/checks"
+    },
+    {
+      "bytes": 3143,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/checks/CpgDialectRewrite.cpp",
+      "sha256": "c2c29bb62065394d9aedce1590e396b0afd16b5f0396953e60f285528f2bc53f"
+    },
+    {
+      "bytes": 3528,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/checks/check_dialects.py",
+      "sha256": "2c9795643dc09db572920f567cd699a720ad0f6f255805fd5f66519e771b1450"
+    },
+    {
+      "bytes": 3767,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/checks/check_mlir.py",
+      "sha256": "b1e117b021296895f94e9147122335025be19af5957e42da809c763721413eaf"
+    },
+    {
+      "bytes": 243,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/checks/dialect-input.ll",
+      "sha256": "9f06a18f36c66c2361d710f7827398d9a3d9efeb5c219d37e86f5c6b49afeba8"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe/checks/mlir"
+    },
+    {
+      "bytes": 291,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/checks/mlir/cpg.td",
+      "sha256": "89f2cc66ac40d9d3e154ec9207efba118e3376b5006998a8a0bb1c0b5b7e4069"
+    },
+    {
+      "bytes": 129,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/checks/mlir/identity.pdll",
+      "sha256": "550272bf445272b6b05601df55b0dbabfdea4a4d009b09927ac9afe00eb747dc"
+    },
+    {
+      "bytes": 268,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/checks/mlir/input.mlir",
+      "sha256": "c834f27d9ecf2460e41697e313e7de791719f361e5644c8bfbf73f9a83eae5cc"
+    },
+    {
+      "bytes": 159,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/checks/mlir/rules.irdl.mlir",
+      "sha256": "b1827e2955d0c5b46f2234c553babecdc0d1545732910416d8516b1c48e99ed8"
+    },
+    {
+      "bytes": 1918,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install_dialects.py",
+      "sha256": "b39beb5be517c42b0b84bb7f0a04fbe97ba31b856f720a608b7f04c0c100e677"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 116121,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/9a6a69fed3db80dc5bfbd54cb3c4fd8dc02bc3554f546d62181dd5b408ff14df",
+      "sha256": "9a6a69fed3db80dc5bfbd54cb3c4fd8dc02bc3554f546d62181dd5b408ff14df"
+    },
+    {
+      "bytes": 11927951,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/e0c5b967bd322ee7163b659dbe506062f689d3e5ec720f30d1cd0fa0ae6ade51",
+      "sha256": "e0c5b967bd322ee7163b659dbe506062f689d3e5ec720f30d1cd0fa0ae6ade51"
+    }
+  ],
+  "inventory_sha256": "c4c86ba9bcae081f70b58b203f5671efde769ec6b23d10c1dfdfeea829d3ed9d",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "9e13b8670d69afab3a5009a83ffb2a57affbba957f67f28c4c99acdb9ac05f30",
+  "method": "source",
+  "package": {
+    "build": "worker007-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check_wrapper.py",
+          "dialects",
+          "{prefix}",
+          "{build}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "worker007-example-and-rewrite",
+        "kind": "functional",
+        "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+        "timeout_seconds": 300
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "ir-framework.llvm-dialects",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "global_qualification_promotion": false,
+      "immutable_ref": "4d0dfd05c436ea49aaaa6ad010bb3cf64da0ddb9",
+      "llvm_pair": "23.1.4",
+      "new_resource_family": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "record_id": "review.engineering.llvm-dialects",
+      "source_build_performed": true,
+      "worker_id": "worker 007"
+    },
+    "provider": "source",
+    "recipe": {
+      "install_argv": [
+        "python3",
+        "{recipe}/install_dialects.py",
+        "--assets",
+        "{assets}",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--jobs",
+        "{jobs}"
+      ],
+      "required_host_commands": [
+        "python3",
+        "g++"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/llvm-dialects-example",
+        "{prefix}/bin/llvm-dialects-tblgen",
+        "{prefix}/bin/cpg-dialects-rewrite"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONOPTIMIZE": "0"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 116121,
+        "extract": true,
+        "id": "upstream",
+        "material_path": "upstream",
+        "sha256": "9a6a69fed3db80dc5bfbd54cb3c4fd8dc02bc3554f546d62181dd5b408ff14df",
+        "strip_root": true,
+        "url": "https://codeload.github.com/GPUOpen-Drivers/llvm-dialects/tar.gz/4d0dfd05c436ea49aaaa6ad010bb3cf64da0ddb9"
+      },
+      {
+        "bytes": 11927951,
+        "extract": true,
+        "id": "fixed-derived-llvm-sdk",
+        "material_path": "llvm-sdk",
+        "sha256": "e0c5b967bd322ee7163b659dbe506062f689d3e5ec720f30d1cd0fa0ae6ade51",
+        "strip_root": false,
+        "url": null
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/GPUOpen-Drivers/llvm-dialects"
+      ],
+      "examples": [
+        {
+          "command": "\"{prefix}/bin/llvm-dialects-example\"",
+          "description": "Run example builder"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Executables",
+          "path": "{prefix}/bin",
+          "purpose": "Upstream example and generator plus CPG bounded rewrite driver"
+        },
+        {
+          "label": "Unmodified upstream",
+          "path": "{prefix}/share/llvm-dialects",
+          "purpose": "Source, tests and license"
+        }
+      ],
+      "notes": [
+        "Exact tested pairing only: upstream dev commit 4d0dfd05c436ea49aaaa6ad010bb3cf64da0ddb9 and LLVM 23.1.4.",
+        "Source method compiles unchanged upstream C++ directly, not its full CMake/lit/gtest matrix.",
+        "SDK input is an explicitly derived subset of official release bytes, not an original upstream archive. Its manifest records every retained file hash and derivation.",
+        "Source build requires C++17 GCC-compatible compiler and host zlib, zstd and xml2 link/runtime libraries. Runtime binaries use host libc/libstdc++ and the same shared libraries.",
+        "Distribution is reference-host metadata, not a distro-name gate."
+      ],
+      "summary": "Pinned llvm-dialects upstream example, verifier, generator and bounded SSA rewrite with LLVM 23.1.4."
+    },
+    "version": "git-4d0dfd05c436"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.14",
+    "global_catalog_modified": false,
+    "worker_id": "worker 007"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "upstream",
+      "path": "sources/9a6a69fed3db80dc5bfbd54cb3c4fd8dc02bc3554f546d62181dd5b408ff14df"
+    },
+    {
+      "id": "fixed-derived-llvm-sdk",
+      "path": "sources/e0c5b967bd322ee7163b659dbe506062f689d3e5ec720f30d1cd0fa0ae6ade51"
+    }
+  ]
+}

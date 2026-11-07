@@ -1,0 +1,167 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 383,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/capability-scope.json",
+      "sha256": "f71db67ce38cc522a82d41c344677408106ade114a4615f00dae135ba8656e1c"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "tools"
+    },
+    {
+      "bytes": 15531,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/capability_check.py",
+      "sha256": "ca90baece7660573e34b81ed82784baead4bf27910dec59811ae2df9019ccaba"
+    },
+    {
+      "bytes": 95623,
+      "kind": "file",
+      "mode": 420,
+      "path": "tools/toolchain-lock.json",
+      "sha256": "7d0e11a78e2ee8d6787e8a57b925b349f685e9c8222cb92953ebf5d489cbe887"
+    }
+  ],
+  "inventory_sha256": "6d3b86a2e872ffe775733f0268938064e51ce1ec082721cb4eea8d2e73ff4917",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "6b062336b0aad6c524fb9bd62b333d241b91e031db0efc00870ed185ff6e9e65",
+  "method": "material",
+  "package": {
+    "build": "cpg-workers031032-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{tools}/capability_check.py",
+          "filecheck-lit",
+          "--toolchain",
+          "{dependency_prefix:llvm-release}",
+          "--lock",
+          "{tools}/toolchain-lock.json",
+          "--output-parent",
+          "{build}/functional-evidence"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "worker031-bounded-native-capability",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 1800
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "llvm-release"
+      ],
+      "system": []
+    },
+    "id": "llvm-feature.filecheck-and-lit",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": null,
+        "category": [
+          "Compilers and IR",
+          "LLVM components"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "llvm-release"
+        ],
+        "deployment": {
+          "adapter": "component",
+          "source_resource": "llvm-release"
+        },
+        "id": "llvm-feature.filecheck-and-lit",
+        "immutable_ref": "7a941dfb2877a0b8cf30323fefa85ad019e0b0f5",
+        "installed_bytes": null,
+        "kind": "virtual",
+        "license_class": "open",
+        "license_id": "Apache-2.0 WITH LLVM-exception",
+        "mandatory": false,
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Capability built from the shared locked LLVM source; full build and first-use evidence remain required.",
+        "qualification_gaps": [],
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": null,
+        "source_evidence": [],
+        "source_logical_bytes": null,
+        "title": "FileCheck and lit",
+        "version": "llvmorg-23.1.4"
+      },
+      "catalog_sha256": "9ead3c7f4a4cbc7df5298b4ae3abe4565b5927c0e4908b63ffa4e0c525b652c2",
+      "worker031032": {
+        "plan_id": "cpg-resource-research-20261101-v1",
+        "qualification_boundary": "Only this explicit material capability and declared checks. External independently copied parent paths do not qualify the complete LLVM or libprotobuf-mutator original installer.",
+        "scope": "Exact source-built FileCheck and pinned source lit semantics, including expected and unexpected failures.",
+        "source_identity_unchanged": true,
+        "toolchain_lock_sha256": "7d0e11a78e2ee8d6787e8a57b925b349f685e9c8222cb92953ebf5d489cbe887",
+        "worker_id": "worker 031"
+      }
+    },
+    "provider": "component",
+    "recipe": {
+      "adapter": "component",
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "DEBUGINFOD_URLS": "",
+        "LC_ALL": "C",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "source_resource": "llvm-release"
+    },
+    "schema_version": 1,
+    "sources": [],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [],
+      "locations": [],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution."
+      ],
+      "summary": "Capability built from the shared locked LLVM source; full build and first-use evidence remain required."
+    },
+    "version": "llvmorg-23.1.4"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "scope": "Exact source-built FileCheck and pinned source lit semantics, including expected and unexpected failures.",
+    "worker_id": "worker 031"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

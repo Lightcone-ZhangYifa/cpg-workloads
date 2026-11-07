@@ -1,0 +1,156 @@
+{
+  "build": "cpg-worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/run_check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "stdout_regex": "CPG_BOUNDED_FUNCTIONAL_PASS circt",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "circt",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "external_sdk_environment_keys": [],
+    "qualification_scope": "Bounded native worker profile; no new Dataset or hardware qualification.",
+    "source_lock": {
+      "artifacts": [
+        {
+          "bytes": 10545278,
+          "file": "raw/circt-firtool-1.162.0-source.tar.gz",
+          "sha256": "0a31c94122f2918a79ce732abe1a9057e47bf71336c3472dd5e30d16a39fd662",
+          "url": "https://codeload.github.com/llvm/circt/tar.gz/refs/tags/firtool-1.162.0"
+        },
+        {
+          "bytes": 143020090,
+          "file": "raw/circt-full-shared-linux-x64.tar.gz",
+          "sha256": "6be43434f1fe1ed2f4438e820e3cd636fac551df7090d90db258f0ba223d1de9",
+          "url": "https://github.com/llvm/circt/releases/download/firtool-1.162.0/circt-full-shared-linux-x64.tar.gz"
+        },
+        {
+          "bytes": 65,
+          "file": "raw/circt-full-shared-linux-x64.tar.gz.sha256",
+          "sha256": "472355a217428f21989e01c1a60c11a045c8ed0cbca35979e8d914e6f04f5f0d",
+          "url": "https://github.com/llvm/circt/releases/download/firtool-1.162.0/circt-full-shared-linux-x64.tar.gz.sha256"
+        },
+        {
+          "bytes": 5836188,
+          "file": "raw/libz3-4_4.8.12-3.1build1_amd64.deb",
+          "sha256": "67ceb432593fe62afbaf3bd85c73d46c66fa19433a6b58326a3248162f139b19",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/z/z3/libz3-4_4.8.12-3.1build1_amd64.deb"
+        }
+      ],
+      "build_from_source_verified": false,
+      "license": "Apache-2.0 WITH LLVM-exception; bundled Z3 MIT",
+      "resource_id": "circt",
+      "runtime": "Linux x86_64; declared bundled Z3 4.8.12-3.1build1; host glibc/libstdc++",
+      "sdk_scope": "circt-lec, FileCheck and recursively selected unchanged upstream shared libraries; full original shared SDK retained raw",
+      "upstream": "https://github.com/llvm/circt",
+      "upstream_commit": "fa4f662cbe710906347fac795c581a06c6b99757",
+      "version": "firtool-1.162.0"
+    },
+    "worker_plan_id": "cpg-resource-research-20261101-v1"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "wrapper": false
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 10545278,
+      "extract": false,
+      "id": "upstream-1",
+      "material_path": null,
+      "sha256": "0a31c94122f2918a79ce732abe1a9057e47bf71336c3472dd5e30d16a39fd662",
+      "strip_root": false,
+      "url": "https://codeload.github.com/llvm/circt/tar.gz/refs/tags/firtool-1.162.0"
+    },
+    {
+      "bytes": 143020090,
+      "extract": false,
+      "id": "upstream-2",
+      "material_path": null,
+      "sha256": "6be43434f1fe1ed2f4438e820e3cd636fac551df7090d90db258f0ba223d1de9",
+      "strip_root": false,
+      "url": "https://github.com/llvm/circt/releases/download/firtool-1.162.0/circt-full-shared-linux-x64.tar.gz"
+    },
+    {
+      "bytes": 65,
+      "extract": false,
+      "id": "upstream-3",
+      "material_path": null,
+      "sha256": "472355a217428f21989e01c1a60c11a045c8ed0cbca35979e8d914e6f04f5f0d",
+      "strip_root": false,
+      "url": "https://github.com/llvm/circt/releases/download/firtool-1.162.0/circt-full-shared-linux-x64.tar.gz.sha256"
+    },
+    {
+      "bytes": 5836188,
+      "extract": false,
+      "id": "upstream-4",
+      "material_path": null,
+      "sha256": "67ceb432593fe62afbaf3bd85c73d46c66fa19433a6b58326a3248162f139b19",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/z/z3/libz3-4_4.8.12-3.1build1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the original CPG PackageManager with an explicit fresh prefix and declared SDK bindings."
+    ],
+    "documentation": [
+      "https://github.com/llvm/circt"
+    ],
+    "examples": [
+      {
+        "command": "manager.check('circt', prefix=prefix, kinds=['functional'], environment=bindings)",
+        "description": "Repeat the declared functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Payload",
+        "path": "{prefix}",
+        "purpose": "Independent runtime, source locks and upstream materials."
+      }
+    ],
+    "notes": [
+      "Debug annotations in the official document example are unsupported by the same-version circt-lec; three non-computational trackers are explicitly removed after preserving original rejection.",
+      "No sequential/hardware qualification; 32-bit combinational equivalence and one official SMT export regression only.",
+      "Reference distribution is build metadata; actual ELF ABI is verified by original CPG.",
+      "This worker increment does not promote original formal counts or claim hardware qualification."
+    ],
+    "summary": "circt: independently installed, immutable upstream inputs and bounded functional validation."
+  },
+  "version": "firtool-1.162.0"
+}

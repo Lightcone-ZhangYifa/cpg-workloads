@@ -1,0 +1,117 @@
+{
+  "build": "worker077-static-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/static_check.py",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "static-material-integrity",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "cupti-materials",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 6096422,
+      "category": "observability",
+      "description": "CUPTI Python 13.4.0 的原始分发归档、全部 .pyi 类型接口、6 个官方样例与高层 Python 接口；另含 C Activity/Callback/PC sampling/Profiler Host 的自编事实索引。C SDK 全文、头文件和GPU库闭包不在本材料profile内。",
+      "extract": false,
+      "id": "cupti-materials",
+      "kind": "material",
+      "license": "LicenseRef-NVIDIA-CUPTI-Python-20240924",
+      "license_class": "restricted",
+      "material_path": "upstream/cupti_python-13.4.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+      "name": "CUPTI 静态接口材料",
+      "new_material_profile": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "policy_status": "policy-held",
+      "record_id": "review.engineering.cupti",
+      "sha256": "0d6c286c191c8c466dcd4dcea90fa0fd15f16288592b9039af3a367e87e3c0b5",
+      "source_url": "https://files.pythonhosted.org/packages/83/6a/22830508acf59c1aeefc709213b74e5a54a70223b892a6bc8113b86290e7/cupti_python-13.4.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+      "strip_archive_root": false,
+      "version": "13.4.0"
+    },
+    "catalog_sha256": "c01c85aadb2e9f3f1d9f46abf178f6d57b438d95b4605698c7ae6c7a4c197192",
+    "collector_policy": "policy-held",
+    "material_scope": "CUPTI Python 13.4.0 的原始分发归档、全部 .pyi 类型接口、6 个官方样例与高层 Python 接口；另含 C Activity/Callback/PC sampling/Profiler Host 的自编事实索引。C SDK 全文、头文件和GPU库闭包不在本材料profile内。",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "benchmark": null,
+      "complete_profiler_installation": false,
+      "dataset_verified": null,
+      "functional": null,
+      "hardware": null,
+      "material": true,
+      "material_scope": "exactly the static profile documented here",
+      "oci": null,
+      "source_build": null
+    },
+    "worker_id": "worker 077"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 6096422,
+      "extract": false,
+      "id": "cupti-materials",
+      "material_path": "upstream/cupti_python-13.4.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "0d6c286c191c8c466dcd4dcea90fa0fd15f16288592b9039af3a367e87e3c0b5",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/83/6a/22830508acf59c1aeefc709213b74e5a54a70223b892a6bc8113b86290e7/cupti_python-13.4.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://docs.nvidia.com/cupti/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/reference_query.py 'activity_register_callbacks' --limit 20",
+        "description": "Search pinned text without executing vendor code"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reference guide",
+        "path": "{prefix}/REFERENCE.zh.md",
+        "purpose": "Exact scope, API/input map, licensing and policy boundary"
+      },
+      {
+        "label": "Pinned material files",
+        "path": "{prefix}/reference",
+        "purpose": "Offline documentation, type interfaces and licensed examples"
+      }
+    ],
+    "notes": [
+      "CUPTI Python 13.4.0 的原始分发归档、全部 .pyi 类型接口、6 个官方样例与高层 Python 接口；另含 C Activity/Callback/PC sampling/Profiler Host 的自编事实索引。C SDK 全文、头文件和GPU库闭包不在本材料profile内。",
+      "未安装cupti-python，未导入cupti或加载任何 .so，未访问GPU、修改时钟或申请采样权限。归档内原软件仅作为可追溯输入保存，解出的资料为类型stub/源码文本。CUPTI Python保留NVIDIA原协议；其分发许可与用途限制继续适用，只用于开发在含NVIDIA GPU系统中运行的应用，不能视为开放源代码许可。C SDK专有文档只记录链接和核验摘要，许可证不由CUPTI Python的许可替代。",
+      "Collector execution remains policy-held; reference integrity does not imply profiler functionality."
+    ],
+    "summary": "定位 CUDA activity 记录、callback 回调和 metric 配置接口。编译器 agent 可对照时间线中的 correlation ID、API 参数和采样口径，设计日志转换与可追溯证据结构。"
+  },
+  "version": "13.4.0"
+}

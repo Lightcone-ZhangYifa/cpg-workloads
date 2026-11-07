@@ -1,0 +1,232 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 672712,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/test_compiler",
+      "sha256": "976b523e70105b7c1bd3f6472966b87cf9791338fa2dec641663ddf6aef931df"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/licenses"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/licenses/cts"
+    },
+    {
+      "bytes": 11358,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/licenses/cts/LICENSE.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/opencl-cts"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/opencl-cts/includeTestDirectory"
+    },
+    {
+      "bytes": 633,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/opencl-cts/includeTestDirectory/testIncludeFile.h",
+      "sha256": "e8ff71c2eeaf8754d53ad69e3e18b8bc225fccd3f0e4e6e7ca20099a7c31db86"
+    },
+    {
+      "bytes": 3130,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/opencl-cts/representative-cases.json",
+      "sha256": "1b8db94385a7dce46f83d6f911df194971096a27124ba74e8e61d183ad3e8913"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/opencl-cts/secondIncludeTestDirectory"
+    },
+    {
+      "bytes": 633,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/opencl-cts/secondIncludeTestDirectory/testIncludeFile.h",
+      "sha256": "e5db190a84d8d4b43ae3e2e7595d92a32912c666f588c0c10deb1930a7960994"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 4915,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/runtime_check.py",
+      "sha256": "9ccd4fb686fb236a99543b2da3d0aa595619ef6f32b2d3350faf26f314397b19"
+    }
+  ],
+  "inventory_sha256": "c3bf19aab7216e5e105e77f888a93b65895042b1368e84dce7a4090d944232c6",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "e1a6f127af1561f6c3e8e81cb7fb0b55856796d6c1721c2fce31456b5adbd725",
+  "method": "binary",
+  "package": {
+    "build": "worker057-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/runtime_check.py",
+          "cts",
+          "--prefix",
+          "{prefix}",
+          "--pocl",
+          "{dependency_prefix:pocl}",
+          "--loader",
+          "{dependency_prefix:opencl-icd-loader}",
+          "--output",
+          "{build}/functional"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "bounded-functional",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 1800
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "pocl",
+        "opencl-icd-loader"
+      ],
+      "system": []
+    },
+    "id": "opencl-cts",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "Official CTS compiler sub-suite representative cases on PoCL basic CPU, preserving per-case native upstream JSON; no full CTS, GPU or Khronos certification claim.",
+      "worker_id": "worker 057"
+    },
+    "provider": "source",
+    "recipe": {
+      "required_installed_paths": [],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LD_LIBRARY_PATH": "{dependency_prefix:opencl-icd-loader}/lib:{dependency_prefix:pocl}/usr/lib/x86_64-linux-gnu:{dependency_prefix:pocl}/usr/lib/llvm-16/lib:{dependency_prefix:pocl}/usr/lib/x86_64-linux-gnu/pocl"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 19902632,
+        "extract": false,
+        "id": "opencl-cts-source",
+        "material_path": "sources/OpenCL-CTS-5b3518096ca7b82854daadb2b2fae704fe2d9cb5.tar.gz",
+        "sha256": "bb01f65a397f83eb3634eebac0c71eb8216d1f62289bc5d8b9b40371cff6b518",
+        "strip_root": false,
+        "url": "https://codeload.github.com/KhronosGroup/OpenCL-CTS/tar.gz/5b3518096ca7b82854daadb2b2fae704fe2d9cb5"
+      },
+      {
+        "bytes": 89120,
+        "extract": false,
+        "id": "opencl-headers-source",
+        "material_path": "sources/opencl-headers-6fe718c31a45fe25151362a72ef041c3a1047cbd.tar.gz",
+        "sha256": "77b6bc606fe0c2b25ef0dd4c400ed508c12fda82dd4420eba3f9e00ce64206c4",
+        "strip_root": false,
+        "url": "https://codeload.github.com/KhronosGroup/OpenCL-Headers/tar.gz/6fe718c31a45fe25151362a72ef041c3a1047cbd"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "README.zh.txt"
+      ],
+      "examples": [
+        {
+          "command": "python3 tools/replay.py --baseline /path/to/cpg --workdir /path/to/fresh-work",
+          "description": "Original CPG independent install/check/verify/remove replay"
+        }
+      ],
+      "locations": [],
+      "notes": [
+        "Candidate worker-local qualification only; original 1862 baseline entries and global coverage are unchanged.",
+        "Offline installation requires existing compatible Linux x86_64 system libraries; original PackageManager checks ELF dependencies. Distribution name is reference metadata, not a gate."
+      ],
+      "summary": "Official CTS compiler sub-suite representative cases on PoCL basic CPU, preserving per-case native upstream JSON; no full CTS, GPU or Khronos certification claim."
+    },
+    "version": "2025-01-22-00"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "preparation": "Fixed official sources and Debian binary locks; no installation downloads.",
+    "validation_scope": "Official CTS compiler sub-suite representative cases on PoCL basic CPU, preserving per-case native upstream JSON; no full CTS, GPU or Khronos certification claim.",
+    "worker_id": "worker 057"
+  },
+  "resolved_dependencies": [
+    {
+      "build": "worker057-v001",
+      "id": "pocl",
+      "method": "binary",
+      "sha256": "57adb542ceaadc39dead0b44a19c136d6525ead0a40ceb7c7c54ac4c3d9977c2",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "5.0-2.1build3+llvm16.0.6"
+    },
+    {
+      "build": "worker057-v001",
+      "id": "opencl-icd-loader",
+      "method": "binary",
+      "sha256": "deecdd108070c91f0421b460137996603a9ea1fc4abe02bb7b39e8f65ba05c9f",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2026.05.29"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

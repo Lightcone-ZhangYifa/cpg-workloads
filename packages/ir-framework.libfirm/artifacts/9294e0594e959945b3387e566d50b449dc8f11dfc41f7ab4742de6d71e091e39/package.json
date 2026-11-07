@@ -1,0 +1,163 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/recipe/check.py",
+        "--prefix",
+        "{prefix}/runtime",
+        "--out",
+        "{build}/acceptance"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "task-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "cc"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "ir-framework.libfirm",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "dataset_qualification": "not_applicable",
+    "host_prerequisites": [
+      "Linux x86_64",
+      "Python >=3.11",
+      "C99 compiler named cc",
+      "GNU make",
+      "ar",
+      "Perl",
+      "system assembler/linker/libc development files"
+    ],
+    "installation_mode": "Compile the original locked libFirm source with the host C toolchain; no downloaded native replacement.",
+    "native_source_build": true,
+    "new_resource": true,
+    "original_baseline_mutated": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Linux x86_64 code generation and twelve upstream unit tests only; no all-target, optimization-correctness or performance claim.",
+    "record_id": "review.engineering.libfirm",
+    "source_lock_sha256": "1f20d463fd799e1c383f6f15ebb7c4b0c4abf00a33b2ae8ab76ea5edfff97752",
+    "worker_id": "worker 007"
+  },
+  "provider": "source",
+  "recipe": {
+    "install_argv": [
+      "python3",
+      "{recipe}/recipe/install.py",
+      "--prefix",
+      "{prefix}/runtime",
+      "--build-root",
+      "{build}",
+      "--assets-root",
+      "{assets}",
+      "--jobs",
+      "{jobs}"
+    ],
+    "required_host_commands": [
+      "python3",
+      "cc",
+      "make",
+      "ar",
+      "perl"
+    ],
+    "required_installed_paths": [
+      "{prefix}/runtime/lib/libfirm.a",
+      "{prefix}/runtime/share/cpg/source-lock.json"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "cc"
+    ],
+    "runtime_environment": {
+      "DENO_NO_UPDATE_CHECK": "1",
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONNOUSERSITE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 134899,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "assets/jinja2-3.1.6-py3-none-any.whl",
+      "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl"
+    },
+    {
+      "bytes": 1512982,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "assets/libfirm-9107be1e1035dae7e509fce6abdbd7a1e8a83565.tar.gz",
+      "sha256": "fd36d3f0143e209f71c78a2557aa655d9ec7f365a90138d1b2b288d9ecfc548c",
+      "strip_root": false,
+      "url": "https://codeload.github.com/libfirm/libfirm/tar.gz/9107be1e1035dae7e509fce6abdbd7a1e8a83565"
+    },
+    {
+      "bytes": 22947,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "assets/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "d6dd0be5b5b189d31db7cda48b91d7e0a9795f31430b7f271219ab30f1d3ac9d",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/3c/2e/8d0c2ab90a8c1d9a24f0399058ab8519a3279d1bd4289511d74e909f060e/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "unspecified",
+    "distribution_version": "unspecified",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "# Invoke the selected prefix explicitly; no global PATH change is required."
+    ],
+    "documentation": [
+      "https://github.com/libfirm/libfirm",
+      "https://libfirm.github.io/api_latest/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/runtime/bin/cpg-check --out /absolute/evidence-directory",
+        "description": "Replay the deterministic functional checks into an external evidence directory."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed resource",
+        "path": "{prefix}/runtime",
+        "purpose": "Compile the original locked libFirm source with the host C toolchain; no downloaded native replacement."
+      },
+      {
+        "label": "Unmodified upstream source",
+        "path": "{prefix}/runtime/share/cpg/source",
+        "purpose": "Source and original licenses retained separately from disposable build trees."
+      }
+    ],
+    "notes": [
+      "Compile the original locked libFirm source with the host C toolchain; no downloaded native replacement.",
+      "Linux x86_64 code generation and twelve upstream unit tests only; no all-target, optimization-correctness or performance claim.",
+      "The source artifact method transports exact original inputs and an installation recipe; it is not itself evidence of a native source compilation.",
+      "Python >=3.11 with venv/ensurepip and tarfile data-filter support is required. Native resources additionally require cc, GNU make, ar and Perl.",
+      "The runtime target is Linux x86_64. No distribution allowlist is imposed; actual host details and executed checks are recorded."
+    ],
+    "summary": "Pinned libFirm native source build, upstream unit tests and a direct SSA-to-x86-64 code generation example."
+  },
+  "version": "9107be1e1035dae7e509fce6abdbd7a1e8a83565"
+}

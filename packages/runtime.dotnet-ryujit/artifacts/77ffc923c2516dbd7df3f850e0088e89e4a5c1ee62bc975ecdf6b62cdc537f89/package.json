@@ -1,0 +1,193 @@
+{
+  "build": "worker044-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-jit-regression",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "runtime.dotnet-ryujit",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 85517472,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "Managed runtimes and JIT"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "runtime.dotnet-ryujit",
+      "immutable_ref": "5535e31a712343a63f5d7d796cd874e563e5ac14",
+      "kind": "native_bundle",
+      "license_id": "See bundled upstream LICENSE and NOTICE files",
+      "material_path": "inputs/input-1",
+      "purpose": "托管IL到机器码、分层JIT、GC接口和AOT工程参考",
+      "qualification_scope": "17 IL semantic assertions in each of MinOpts / FullOpts / TieredPGO with mandatory RyuJIT and observed Tier1 evidence; bootstrap csc subset of official SDK8.0.100; no NativeAOT",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "3adbd0c8521e7594a8c112bca84e3e4753481111df8f6eba937f8b00d073f1cc",
+      "source_evidence": [
+        "https://github.com/dotnet/runtime/blob/main/docs/design/coreclr/jit/ryujit-overview.md"
+      ],
+      "source_url": "https://codeload.github.com/dotnet/runtime/tar.gz/5535e31a712343a63f5d7d796cd874e563e5ac14",
+      "strip_archive_root": false,
+      "title": "CoreCLR / RyuJIT / NativeAOT",
+      "upstream": "https://github.com/dotnet/runtime/blob/main/docs/design/coreclr/jit/ryujit-overview.md",
+      "version": "8.0.0-cpg1",
+      "worker_record_id": "review.engineering.dotnet-ryujit"
+    },
+    "catalog_sha256": "9951e989ef3cd99b173205047183cb96850138f6247b7e1a0f34d970db51e9ba",
+    "input_provenance": [
+      {
+        "bytes": 85517472,
+        "project": "dotnet/runtime",
+        "revision": "5535e31a712343a63f5d7d796cd874e563e5ac14",
+        "runtime_imported_not_locally_built": true,
+        "sha256": "3adbd0c8521e7594a8c112bca84e3e4753481111df8f6eba937f8b00d073f1cc",
+        "source_archive_scope": "complete upstream git snapshot; submodule inclusion follows codeload, no implicit submodule checkout",
+        "tag": "v8.0.0",
+        "url": "https://codeload.github.com/dotnet/runtime/tar.gz/5535e31a712343a63f5d7d796cd874e563e5ac14"
+      },
+      {
+        "bytes": 214395068,
+        "elapsed_seconds": 8.020132541656494,
+        "expected_sha512": "13905ea20191e70baeba50b0e9bbe5f752a7c34587878ee104744f9fb453bfe439994d38969722bdae7f60ee047d75dda8636f3ab62659450e9cd4024f38b2a5",
+        "runtime_version": "8.0.0",
+        "sdk_version": "8.0.100",
+        "selected_files": 509,
+        "selection_policy": "dotnet host/fxr shared/Microsoft.NETCore.App sdk/8.0.100/Roslyn/bincore packs/Microsoft.NETCore.App.Ref/8.0.0/ref/net8.0 plus LICENSE and ThirdPartyNotices. Direct csc bootstrap subset; not a complete msbuild/SDK installation.",
+        "sha256": "550692ae3233e69692822b8be31bb01c5a2b60c3cfa59e9bfce8278b99f36211",
+        "sha512": "13905ea20191e70baeba50b0e9bbe5f752a7c34587878ee104744f9fb453bfe439994d38969722bdae7f60ee047d75dda8636f3ab62659450e9cd4024f38b2a5",
+        "url": "https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.100/dotnet-sdk-8.0.100-linux-x64.tar.gz"
+      },
+      {
+        "distribution": "Ubuntu focal, ABI-compatible passive runtime dependencies only",
+        "inrelease_signature_verified": true,
+        "packages": [
+          {
+            "bytes": 80872,
+            "depends": "libc6 (>= 2.17), libnuma1 (>= 2.0.11)",
+            "description": "Passive dependency closure of official CoreCLR trace provider; no tracing/profiling tool or collection executed.",
+            "package": "liblttng-ust-ctl4",
+            "sha256": "387ef8bd33d8e97764e3e02138f0eceeff5c82605d70e290e24e9f8acf03630f",
+            "url": "https://archive.ubuntu.com/ubuntu/pool/main/u/ust/liblttng-ust-ctl4_2.11.0-1_amd64.deb",
+            "version": "2.11.0-1"
+          },
+          {
+            "bytes": 159756,
+            "depends": "libc6 (>= 2.17), libnuma1 (>= 2.0.11), liburcu6 (>= 0.11.1), liblttng-ust-ctl4 (= 2.11.0-1)",
+            "description": "Passive dependency closure of official CoreCLR trace provider; no tracing/profiling tool or collection executed.",
+            "package": "liblttng-ust0",
+            "sha256": "1744c0abe5cbf09463212eef5ea0292c00f6fb50b2bc3e8715817054d76e322a",
+            "url": "https://archive.ubuntu.com/ubuntu/pool/main/u/ust/liblttng-ust0_2.11.0-1_amd64.deb",
+            "version": "2.11.0-1"
+          },
+          {
+            "bytes": 54180,
+            "depends": "libc6 (>= 2.6)",
+            "description": "Passive dependency closure of official CoreCLR trace provider; no tracing/profiling tool or collection executed.",
+            "package": "liburcu6",
+            "sha256": "8b401f4bb1dfb85f24bdcc791cd7fb6ebe3189cff01e153c13f8b5601a0da877",
+            "url": "https://archive.ubuntu.com/ubuntu/pool/main/libu/liburcu/liburcu6_0.11.1-2_amd64.deb",
+            "version": "0.11.1-2"
+          }
+        ],
+        "packages_index_sha256": "7757921ff8feed9c3934a0c9936d441ba4a238bee3ea6c8c1df5cbcd43fc9861"
+      }
+    ],
+    "original_resource_ids": [],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "material_qualified": true,
+      "native_aot_qualified": false,
+      "source_build_qualified": false
+    },
+    "record_id": "review.engineering.dotnet-ryujit",
+    "runtime_requirements": [
+      "glibc",
+      "libstdc++6",
+      "libgcc-s1",
+      "libicu74",
+      "libssl3t64",
+      "zlib1g",
+      "libnuma1"
+    ],
+    "worker_id": "worker 044"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+      "DOTNET_MULTILEVEL_LOOKUP": "0",
+      "LD_LIBRARY_PATH": "{prefix}/dependencies/usr/lib/x86_64-linux-gnu"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 85517472,
+      "extract": false,
+      "id": "runtime.dotnet-ryujit",
+      "material_path": "inputs/input-1",
+      "sha256": "3adbd0c8521e7594a8c112bca84e3e4753481111df8f6eba937f8b00d073f1cc",
+      "strip_root": false,
+      "url": "https://codeload.github.com/dotnet/runtime/tar.gz/5535e31a712343a63f5d7d796cd874e563e5ac14"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/dotnet/runtime/blob/main/docs/design/coreclr/jit/ryujit-overview.md"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "17 IL semantic assertions in each of MinOpts / FullOpts / TieredPGO with mandatory RyuJIT and observed Tier1 evidence; bootstrap csc subset of official SDK8.0.100; no NativeAOT"
+      }
+    ],
+    "notes": [
+      "CoreCLR/RyuJIT/NativeAOT为同源码族的不同能力；不将Roslyn C#前端资格当作JIT资格。",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "托管IL到机器码、分层JIT、GC接口和AOT工程参考"
+  },
+  "version": "8.0.0-cpg1"
+}

@@ -1,0 +1,250 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 56556608,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/wild",
+      "sha256": "b3396bb8554592ee0c1bdf2b89642e3e24fbf124fd821b204fbd05eeb5b154ab"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/doc"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/doc/wild"
+    },
+    {
+      "bytes": 9723,
+      "kind": "file",
+      "mode": 436,
+      "path": "payload/share/doc/wild/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    {
+      "bytes": 1023,
+      "kind": "file",
+      "mode": 436,
+      "path": "payload/share/doc/wild/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 11573,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_link_tools.py",
+      "sha256": "6a82f5fb38fe95069a1adf40769e5223cebaa73485b8c0377e83b2948d8c015f"
+    }
+  ],
+  "inventory_sha256": "93ec03c40846593bc54049d3b17a624172291bfbfd23b644e3f63fc97b14dd91",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "9084452ff7c077955f443f94c6ee8255674ae71a676b0a552a86c982846c2020",
+  "method": "binary",
+  "package": {
+    "build": "linux-elf-fork-ci-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check_link_tools.py",
+          "native",
+          "{prefix}/bin/wild",
+          "{build}/native-check"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "native-elf-semantics",
+        "kind": "functional",
+        "requires_commands": [
+          "python3",
+          "gcc",
+          "ar",
+          "readelf"
+        ],
+        "timeout_seconds": 900
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "linker.wild",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "qualification_scope": "Linux x86_64 ELF C-object linking/execution versus system linker; features=fork, no default features, ci debug=0, no LTO, no incremental compilation. No Wasm/plugins/zstd/full-platform qualification.",
+      "worker": "worker 022"
+    },
+    "provider": "binary",
+    "recipe": {
+      "required_runtime_commands": [
+        "python3",
+        "gcc",
+        "ar",
+        "readelf"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1199487,
+        "extract": false,
+        "id": "wild-source",
+        "material_path": "raw/wild-0.11.0-source.tar.gz",
+        "sha256": "34d0c66c70b3c4744c548b2b821180d2d578b86eb747cb4a9ed1f4b11a95b337",
+        "strip_root": false,
+        "url": "https://codeload.github.com/wild-linker/wild/tar.gz/refs/tags/0.11.0"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/wild-linker/wild/releases/tag/0.11.0"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "independent-prefix",
+          "path": "{prefix}",
+          "purpose": "Wild 0.11.0 built offline from the fixed Rust closure for Linux ELF"
+        }
+      ],
+      "notes": [
+        "Linux x86_64 ELF C-object linking/execution versus system linker; features=fork, no default features, ci debug=0, no LTO, no incremental compilation. No Wasm/plugins/zstd/full-platform qualification."
+      ],
+      "summary": "Wild 0.11.0 built offline from the fixed Rust closure for Linux ELF"
+    },
+    "version": "0.11.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline": "0.21.14",
+    "scope": "Linux x86_64 ELF C-object linking/execution versus system linker; features=fork, no default features, ci debug=0, no LTO, no incremental compilation. No Wasm/plugins/zstd/full-platform qualification.",
+    "source_build": {
+      "binary_bytes": 56556608,
+      "binary_sha256": "b3396bb8554592ee0c1bdf2b89642e3e24fbf124fd821b204fbd05eeb5b154ab",
+      "cargo_lock_sha256": "5ae0778fb45afcde76cb14fb6e6dbd6f364f4405a2b27693a7af8be50bc031b8",
+      "commands": [
+        {
+          "argv": [
+            "sh",
+            "/workspace/scratch/4d6f82e6c3ae/worker022/build/wild-final-source/rust-installer/install.sh",
+            "--prefix=/workspace/scratch/4d6f82e6c3ae/worker022/build/wild-final-source/rust",
+            "--disable-ldconfig"
+          ],
+          "elapsed_seconds": 3.4201561410000068,
+          "log": "rustc.log",
+          "returncode": 0
+        },
+        {
+          "argv": [
+            "sh",
+            "/workspace/scratch/4d6f82e6c3ae/worker022/build/wild-final-source/rust-installer/install.sh",
+            "--prefix=/workspace/scratch/4d6f82e6c3ae/worker022/build/wild-final-source/rust",
+            "--disable-ldconfig"
+          ],
+          "elapsed_seconds": 2.132898953000222,
+          "log": "cargo.log",
+          "returncode": 0
+        },
+        {
+          "argv": [
+            "sh",
+            "/workspace/scratch/4d6f82e6c3ae/worker022/build/wild-final-source/rust-installer/install.sh",
+            "--prefix=/workspace/scratch/4d6f82e6c3ae/worker022/build/wild-final-source/rust",
+            "--disable-ldconfig"
+          ],
+          "elapsed_seconds": 4.004475701999581,
+          "log": "rust-std.log",
+          "returncode": 0
+        },
+        {
+          "argv": [
+            "/workspace/scratch/4d6f82e6c3ae/worker022/build/wild-final-source/rust/bin/rustc",
+            "--version",
+            "--verbose"
+          ],
+          "elapsed_seconds": 0.4283755870001187,
+          "log": "rust-version.log",
+          "returncode": 0
+        },
+        {
+          "argv": [
+            "/workspace/scratch/4d6f82e6c3ae/worker022/build/wild-final-source/rust/bin/cargo",
+            "build",
+            "--locked",
+            "--offline",
+            "--profile",
+            "ci",
+            "-p",
+            "wild-linker",
+            "--no-default-features",
+            "--features",
+            "fork",
+            "-j",
+            "1"
+          ],
+          "elapsed_seconds": 749.0998265569997,
+          "log": "cargo-elf-build.log",
+          "returncode": 0
+        }
+      ],
+      "default_features": false,
+      "features": [
+        "fork"
+      ],
+      "functional_qualification": null,
+      "incremental": false,
+      "jobs": 1,
+      "offline_fd_audit": {
+        "inherited_local_sockets": 0,
+        "inherited_network_sockets": 0
+      },
+      "offline_policy": "socket/connect/io_uring denied; local IPC allowed",
+      "profile": "ci (dev, debug=0, no LTO)",
+      "registry_crates": 231,
+      "reproducible_intermediates_removed": true,
+      "rust_version": "1.99.0",
+      "rustflags": "-C debuginfo=0",
+      "source_archive_sha256": "34d0c66c70b3c4744c548b2b821180d2d578b86eb747cb4a9ed1f4b11a95b337",
+      "status": "built",
+      "version": "0.11.0"
+    },
+    "worker": "worker 022"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,123 @@
+{
+  "build": "w076.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "material-integrity",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "hpctoolkit-materials",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 47438659,
+      "baseline_version": "0.21.14",
+      "category": "observability",
+      "deployment": {
+        "adapter": "copy"
+      },
+      "extract": false,
+      "id": "hpctoolkit-materials",
+      "is_formal_baseline_addition": false,
+      "kind": "archive",
+      "managed_profile_scope": "Pinned source/documentation, database format and API reference; collection remains policy-held; no native build or trace-analysis execution qualification",
+      "material_path": "raw/hpctoolkit-b841f6b811d6ce98e8b85317591bcdbf021dd4ed.tar.gz",
+      "purpose": "Pinned source/documentation, database format and API reference; collection remains policy-held; no native build or trace-analysis execution qualification",
+      "sha256": "bf14e1b78f3f205fdcee0b3dc95dca8fdfe6d370ab29bfeacb1f8e37c75fc31e",
+      "source_url": "https://gitlab.com/api/v4/projects/38709409/repository/archive.tar.gz?sha=b841f6b811d6ce98e8b85317591bcdbf021dd4ed",
+      "strip_archive_root": true,
+      "title": "hpctoolkit-materials",
+      "upstream_pin_record": "source-lock.json",
+      "version": "2026.0.2"
+    },
+    "catalog_sha256": "74ad9cdc95ead25e453166d14c9123eb9ccf9c66ca06adb33ec81bbea0ffc94e",
+    "functional_claim": false,
+    "hardware_claim": false,
+    "host_runtime_requirements_explicit": true,
+    "independent_new_family": true,
+    "logical_resource_id": "hpctoolkit-materials",
+    "material_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Pinned source/documentation, database format and API reference; collection remains policy-held; no native build or trace-analysis execution qualification",
+    "worker_id": "worker 076"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "required_installed_paths": [
+      "{prefix}/CPG-POLICY.json",
+      "{prefix}/source-lock.json",
+      "{prefix}/material-manifest.json",
+      "{prefix}/GUIDE.md"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 47438659,
+      "extract": false,
+      "id": "hpctoolkit-materials",
+      "material_path": "raw/hpctoolkit-b841f6b811d6ce98e8b85317591bcdbf021dd4ed.tar.gz",
+      "sha256": "bf14e1b78f3f205fdcee0b3dc95dca8fdfe6d370ab29bfeacb1f8e37c75fc31e",
+      "strip_root": true,
+      "url": "https://gitlab.com/api/v4/projects/38709409/repository/archive.tar.gz?sha=b841f6b811d6ce98e8b85317591bcdbf021dd4ed"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "{prefix}/GUIDE.md",
+      "{prefix}/source-lock.json",
+      "{prefix}/CPG-POLICY.json"
+    ],
+    "examples": [
+      {
+        "command": "cat {prefix}/GUIDE.md",
+        "description": "Read scope and offline invocation examples"
+      }
+    ],
+    "locations": [
+      {
+        "label": "independent payload",
+        "path": "{prefix}",
+        "purpose": "Selected pinned upstream resources and reproducible offline fixtures."
+      }
+    ],
+    "notes": [
+      "User perf-only collection policy remains in force.",
+      "No hardware, benchmark or UI browser execution qualification is implied.",
+      "All check outputs are outside the immutable prefix."
+    ],
+    "summary": "Pinned source/documentation, database format and API reference; collection remains policy-held; no native build or trace-analysis execution qualification"
+  },
+  "version": "2026.0.2"
+}

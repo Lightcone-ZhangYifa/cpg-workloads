@@ -1,0 +1,122 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/material_check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-material-inventory",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "riscv-elf-psabi",
+  "metadata": {
+    "acquisition_lock": {
+      "commit": "9b2767e2a8851709608c4e1452998ad232d6278b",
+      "inputs": [
+        {
+          "bytes": 12536475,
+          "local_path": "downloads/riscv-source.tar.gz",
+          "name": "source-archive",
+          "payload_path": "riscv-elf-psabi/upstream/riscv-source-9b2767e2.tar.gz",
+          "redistributed": true,
+          "sha256": "16ff66d9c014f73ee132ed224263dc36974b22a16b5099359e14147a789003f5",
+          "url": "https://codeload.github.com/riscv-non-isa/riscv-elf-psabi-doc/tar.gz/9b2767e2a8851709608c4e1452998ad232d6278b"
+        },
+        {
+          "bytes": 548482,
+          "local_path": "downloads/riscv-abi.pdf",
+          "name": "official-draft-pdf",
+          "payload_path": "riscv-elf-psabi/riscv-abi.pdf",
+          "redistributed": true,
+          "sha256": "75a70da60ca34143df74525c0bca496715d44d7f2465b07c9c7d29d4bd261375",
+          "url": "https://github.com/riscv-non-isa/riscv-elf-psabi-doc/releases/download/draft-20261027-9b2767e2a8851709608c4e1452998ad232d6278b/riscv-abi.pdf"
+        }
+      ],
+      "release": "draft-20261027-9b2767e2a8851709608c4e1452998ad232d6278b"
+    },
+    "assignment_record_id": "review.engineering.riscv-psabi",
+    "baseline_version": "0.21.14",
+    "formal_release_promoted": false,
+    "full_document_material": true,
+    "material_scope": "declared_current_specification_set",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "upstream_commit": "9b2767e2a8851709608c4e1452998ad232d6278b",
+    "worker_id": "worker 026"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "corpus",
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "state": "Verified material; contents are not executed at installation except the inventory checker."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 12536475,
+      "extract": false,
+      "id": "riscv-elf-psabi.source-archive",
+      "material_path": "upstream/riscv-source-9b2767e2.tar.gz",
+      "sha256": "16ff66d9c014f73ee132ed224263dc36974b22a16b5099359e14147a789003f5",
+      "strip_root": false,
+      "url": "https://codeload.github.com/riscv-non-isa/riscv-elf-psabi-doc/tar.gz/9b2767e2a8851709608c4e1452998ad232d6278b"
+    },
+    {
+      "bytes": 548482,
+      "extract": false,
+      "id": "riscv-elf-psabi.official-draft-pdf",
+      "material_path": "riscv-abi.pdf",
+      "sha256": "75a70da60ca34143df74525c0bca496715d44d7f2465b07c9c7d29d4bd261375",
+      "strip_root": false,
+      "url": "https://github.com/riscv-non-isa/riscv-elf-psabi-doc/releases/download/draft-20261027-9b2767e2a8851709608c4e1452998ad232d6278b/riscv-abi.pdf"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/riscv-non-isa/riscv-elf-psabi-doc"
+    ],
+    "examples": [
+      {
+        "command": "python3 -m json.tool {prefix}/index.json",
+        "description": "Inspect the pinned document/reference index."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Material",
+        "path": "{prefix}",
+        "purpose": "Pinned reference files, original notices and explicit replay inputs."
+      }
+    ],
+    "notes": [
+      "Static material checks do not qualify target hardware or compiler ABI conformance.",
+      "The source/archive acquisition locks distinguish distributed inputs from reference-only inputs."
+    ],
+    "summary": "Pinned RISC-V ELF psABI draft, source and PDF, with ABI status and experimental-extension index."
+  },
+  "version": "draft-20261027-9b2767e2a8851709608c4e1452998ad232d6278b"
+}

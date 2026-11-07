@@ -1,0 +1,141 @@
+{
+  "build": "cpg20261101.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{tools}/run_check.py",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assignment-functional",
+      "kind": "functional",
+      "stdout_regex": "passed",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "protocol.lsp",
+  "metadata": {
+    "baseline_catalog_modified": false,
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Eleven bounded JSON message tests using official metamodel; positive and negative TypeScript compilation. Not a complete language server.",
+    "record_id": "review.engineering.lsp-spec",
+    "runtime_toolchain": {},
+    "worker_id": "048"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "node",
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 395040,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "lsp-v3.17.0-metaModel.json",
+      "sha256": "ba382feb60d4bab4249073c0508b19c67ba2b32c53d70505f452bb49a6f39997",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/microsoft/vscode-languageserver-node/release/protocol/3.17.5/protocol/metaModel.json"
+    },
+    {
+      "bytes": 457755,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "1852009e5b2e5d687a6239b8d4a1800a1ef97cfa274637dd2a716f1ed11a3595.tgz",
+      "sha256": "1852009e5b2e5d687a6239b8d4a1800a1ef97cfa274637dd2a716f1ed11a3595",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@types/node/-/node-24.10.0.tgz"
+    },
+    {
+      "bytes": 4377468,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "10e108c9cf7d5f2879053dff18515fb405abf2ccef63eaaf017d9c571687a1d3.tgz",
+      "sha256": "10e108c9cf7d5f2879053dff18515fb405abf2ccef63eaaf017d9c571687a1d3",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz"
+    },
+    {
+      "bytes": 27127,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "53b5e2fa12a4118a4838e80b1cc6e1d8cd30d6f7e5bea69640e5386f6eb3f8af.tgz",
+      "sha256": "53b5e2fa12a4118a4838e80b1cc6e1d8cd30d6f7e5bea69640e5386f6eb3f8af",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/undici-types/-/undici-types-7.16.0.tgz"
+    },
+    {
+      "bytes": 35427,
+      "extract": false,
+      "id": "input-004",
+      "material_path": "3da44531c398f1545074cb728e359a822f35b9f8ac7171c847f42f0728b9c7cb.tgz",
+      "sha256": "3da44531c398f1545074cb728e359a822f35b9f8ac7171c847f42f0728b9c7cb",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/vscode-jsonrpc/-/vscode-jsonrpc-8.2.0.tgz"
+    },
+    {
+      "bytes": 59008,
+      "extract": false,
+      "id": "input-005",
+      "material_path": "7473eb2d2163f3f8bea09644f9d803789a195e596b65d3946c4157e583e3ccc8.tgz",
+      "sha256": "7473eb2d2163f3f8bea09644f9d803789a195e596b65d3946c4157e583e3ccc8",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/vscode-languageserver-protocol/-/vscode-languageserver-protocol-3.17.5.tgz"
+    },
+    {
+      "bytes": 71382,
+      "extract": false,
+      "id": "input-006",
+      "material_path": "d673f9e7f8bbe51351be51c58f32d4dcfa97a670ebb86bc633368394c609cac0.tgz",
+      "sha256": "d673f9e7f8bbe51351be51c58f32d4dcfa97a670ebb86bc633368394c609cac0",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/vscode-languageserver-types/-/vscode-languageserver-types-3.17.5.tgz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://raw.githubusercontent.com/microsoft/vscode-languageserver-node/release/protocol/3.17.5/protocol/metaModel.json",
+      "https://registry.npmjs.org/@types/node/-/node-24.10.0.tgz",
+      "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B <prefix>/verify.py",
+        "description": "Run the bounded assignment qualification"
+      }
+    ],
+    "locations": [
+      {
+        "label": "installation",
+        "path": "{prefix}",
+        "purpose": "Immutable tool and qualification fixtures"
+      }
+    ],
+    "notes": [
+      "Eleven bounded JSON message tests using official metamodel; positive and negative TypeScript compilation. Not a complete language server."
+    ],
+    "summary": "Pin LSP specification model and protocol TypeScript types."
+  },
+  "version": "3.17.0-types3.17.5"
+}

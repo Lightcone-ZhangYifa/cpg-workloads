@@ -1,0 +1,235 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 778,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSE.txt",
+      "sha256": "66b414d7269692131f0416dfa119a37bd5b975f645c1a2679c522feb3484564d"
+    },
+    {
+      "bytes": 381,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.txt",
+      "sha256": "d1a7f5c428b6110197344121162b554ad6c04fdd95ea0c10d05d051c184ba9db"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/examples"
+    },
+    {
+      "bytes": 216,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/examples/Fold.v",
+      "sha256": "ebfc48040882afe2eafb1dbf09458632634f04cff0c654817a0263138b9b05f5"
+    },
+    {
+      "bytes": 4081,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/reference-check-result.json",
+      "sha256": "3222eeee33dc28a5d2ec8d37d574786a76eb3fff1744f2efa14051080341b11e"
+    },
+    {
+      "bytes": 814,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/resource.json",
+      "sha256": "9161e1759ca4afb9b04346e748261c8a16e6ae3cf0477f7347a899dcb1749898"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/tools"
+    },
+    {
+      "bytes": 1763,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tools/env.py",
+      "sha256": "529c9ac336a563750e1c358cfaefc98c4efe07e717c7b87d3c8109f15f2938a0"
+    },
+    {
+      "bytes": 20713,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tools/proof_checks.py",
+      "sha256": "1d3084029d57be295bc7538d61d650fb019215987af3456494075fdb1a31967b"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1354,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/run_check.py",
+      "sha256": "a3bf3ac6a7ede33f5c2fe6da20fbb0701c89b5c3a668209cc217978fa60c10fe"
+    }
+  ],
+  "inventory_sha256": "5e63c7803a40e8c4bb934046f3ce9a163e97137bad2c8addf09bdf04abe07558",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "1c39e025caf0262a57f940bad200d9624c3c169f2a4f216d5b98c1a46e699e61",
+  "method": "binary",
+  "package": {
+    "build": "cpg-20261101-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/run_check.py",
+          "--output-root",
+          "{build}/proof-results",
+          "--",
+          "python3",
+          "-B",
+          "{prefix}/tools/proof_checks.py",
+          "--resource",
+          "serapi",
+          "--runtime",
+          "{dependency_prefix:support.proof-coq}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "actual-proof-and-rejection",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 3600
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "support.proof-coq"
+      ],
+      "system": []
+    },
+    "id": "verification.serapi",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "formal_qualification_changed": false,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "prepack_evidence_sha256": "ff5889fc6b4235877ffc15702b4d647ec42d1dcb2f2e8c8e84885c8cc346041c",
+      "proof_gates": [
+        "runtime-version exit",
+        "fixed Coq and OCaml version",
+        "import executed",
+        "lemma opened",
+        "actual initial goals serialized",
+        "wrong proof step rejected",
+        "failed branch canceled",
+        "goal query after cancel",
+        "cancel restored the exact initial goal object",
+        "completed proof executed",
+        "actual proof term serialized",
+        "machine-readable assumption audit returned",
+        "interactive kernel flags and axiom list are safe",
+        "interactive theorem has no axioms",
+        "Fold exit",
+        "independent kernel compilation closed",
+        "coqchk exit"
+      ],
+      "record_id": "review.verification.serapi",
+      "support_only": false,
+      "upstream": [
+        {
+          "bytes": 274271,
+          "commit": "bc3450a8dfdd86136ce5d9aac427548ba828d30f",
+          "id": "serapi",
+          "repo": "rocq-archive/coq-serapi",
+          "sha256": "38acd0ea1d873fa0dcd0a2bdd2c904055e6e77e84b4566598ace30a1f3de53c9",
+          "url": "https://codeload.github.com/rocq-archive/coq-serapi/tar.gz/bc3450a8dfdd86136ce5d9aac427548ba828d30f"
+        }
+      ],
+      "worker_id": "worker 100"
+    },
+    "provider": "binary",
+    "recipe": {
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 274271,
+        "extract": false,
+        "id": "verification.serapi.upstream-1",
+        "material_path": "sources/serapi-bc3450a8dfdd86136ce5d9aac427548ba828d30f.tar.gz",
+        "sha256": "38acd0ea1d873fa0dcd0a2bdd2c904055e6e77e84b4566598ace30a1f3de53c9",
+        "strip_root": false,
+        "url": "https://codeload.github.com/rocq-archive/coq-serapi/tar.gz/bc3450a8dfdd86136ce5d9aac427548ba828d30f"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://codeload.github.com/rocq-archive/coq-serapi/tar.gz/bc3450a8dfdd86136ce5d9aac427548ba828d30f"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "proof-checker",
+          "path": "{prefix}/tools/proof_checks.py",
+          "purpose": "Replay the exact assigned proof and negative checks"
+        }
+      ],
+      "notes": [
+        "CPG 0.21.14 candidate overlay; formal baseline qualification is unchanged.",
+        "All generated proof files belong in an independent output directory."
+      ],
+      "summary": "SerAPI 0.18.3 / Coq 8.18.0; Add/Exec/Query/Cancel and a closed arithmetic lemma"
+    },
+    "version": "8.18.0+0.18.3"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.14",
+    "packing_input_sha256": "00a9027d795844c25f783a9082061c571b893640d0af6ba7b9b9a400c36a4eeb",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.verification.serapi",
+    "scope": "SerAPI 0.18.3 / Coq 8.18.0; Add/Exec/Query/Cancel and a closed arithmetic lemma",
+    "support_only": false,
+    "worker_id": "worker 100"
+  },
+  "resolved_dependencies": [
+    {
+      "build": "cpg-20261101-v001",
+      "id": "support.proof-coq",
+      "method": "binary",
+      "sha256": "d5e6ea2a191303eea78c0f947b6baf46ddcde674fba2cdccb843011096d7e6f9",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "8.18.0+20261102.core1"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

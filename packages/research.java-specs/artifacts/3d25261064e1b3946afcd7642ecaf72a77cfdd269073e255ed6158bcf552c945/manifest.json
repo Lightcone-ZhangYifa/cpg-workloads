@@ -1,0 +1,307 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 88,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/CPG-INTEGRITY-MARKER.txt",
+      "sha256": "defb96d39724da4c683e3af86b1b62181b8daeaf3190aef309b6fb1e6afc4900"
+    },
+    {
+      "bytes": 604,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSE-SCOPE.zh.txt",
+      "sha256": "d10a157a50507bd3aa1dfe95a36ce4affeeb998c57c6533a676948c617629a2b"
+    },
+    {
+      "bytes": 749,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.zh.txt",
+      "sha256": "dbf25eb28573573c7eac3ff7b08a03e5c97c94cb0b6e677267f9496c33e29a0a"
+    },
+    {
+      "bytes": 50453,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/index.json",
+      "sha256": "cb3a22c2cd5a99b3f12cffec3c603ef5794925a6e775874bd337bd658c3478f2"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/indexes"
+    },
+    {
+      "bytes": 44311,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/indexes/instruction-families.json",
+      "sha256": "9a63c0fe436d9c3f940772d32ed5106ae2406dc2b6ef38a1eeb65fb016e97d33"
+    },
+    {
+      "bytes": 6144,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/indexes/topics.json",
+      "sha256": "8eed05e9a609844d243984b878c2fa6443df88626586e83a9eb4214d69de7420"
+    },
+    {
+      "bytes": 556,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/lookup.py",
+      "sha256": "2d7e5fd9411d60a6dd4872feda9d0aca3abfd2fe17631b743935fda9d045de35"
+    },
+    {
+      "bytes": 330,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/profile.json",
+      "sha256": "1c05517bcfb08d465aa340c01606e46827af018fd13d480d67bd1b6f30ab4c1c"
+    },
+    {
+      "bytes": 967,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/source-references.json",
+      "sha256": "2ac46af7712b3bc6b3387539f8d787a59d7754a19adaba33ec41ed9a4e14ca27"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/src"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 3272,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/guarded_check.py",
+      "sha256": "2cbba3aaa7614dc5ad655202fe92893e1c784d2b5d32b3e92ce27af0446e21aa"
+    },
+    {
+      "bytes": 1760,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/payload-inventory.json",
+      "sha256": "616ed3e2efb8ca43681f59c85025cf8287773416660f3046ba57c184cad22654"
+    },
+    {
+      "bytes": 3669,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/resource_check.py",
+      "sha256": "2345b86dbebabdfa49ab1dada2c879bc4d215e14ad93fb88f4d7838fa0575fc4"
+    }
+  ],
+  "inventory_sha256": "af9a20152bf8c00de5e056c1267e1d862f50c87120e67d846625618e95a5e04e",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "b8c7310ae7f01c9442bdbe2ef1667a836fb5004f2a0e901e16c8cddf678a85bf",
+  "method": "material",
+  "package": {
+    "build": "cpg-20261101-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/guarded_check.py",
+          "--prefix",
+          "{prefix}",
+          "--output",
+          "{build}/profile"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "locked-material-index",
+        "kind": "availability",
+        "stdout_regex": "CPG_CHECK_PASS",
+        "timeout_seconds": 900
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "research.java-specs",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "functional_claim": false,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualifications": {
+        "dataset": null,
+        "oci": false,
+        "official_benchmark": false,
+        "physical_hardware": false
+      },
+      "record_id": "review.engineering.java-specs",
+      "resource_metadata": {
+        "build_claim": false,
+        "functional_claim": false,
+        "id": "research.java-specs",
+        "limitations": [
+          "自编章节/指令族索引与许可/来源材料；不含Oracle规范正文。",
+          "官方规范正文许可不因可公开访问而自动获得再分发授权。",
+          "离线索引检查不是JVM/JLS实现合规检查。"
+        ],
+        "local_materials": [
+          {
+            "bytes": 604,
+            "path": "LICENSE-SCOPE.zh.txt",
+            "sha256": "d10a157a50507bd3aa1dfe95a36ce4affeeb998c57c6533a676948c617629a2b"
+          },
+          {
+            "bytes": 749,
+            "path": "README.zh.txt",
+            "sha256": "dbf25eb28573573c7eac3ff7b08a03e5c97c94cb0b6e677267f9496c33e29a0a"
+          },
+          {
+            "bytes": 50453,
+            "path": "index.json",
+            "sha256": "cb3a22c2cd5a99b3f12cffec3c603ef5794925a6e775874bd337bd658c3478f2"
+          },
+          {
+            "bytes": 44311,
+            "path": "indexes/instruction-families.json",
+            "sha256": "9a63c0fe436d9c3f940772d32ed5106ae2406dc2b6ef38a1eeb65fb016e97d33"
+          },
+          {
+            "bytes": 6144,
+            "path": "indexes/topics.json",
+            "sha256": "8eed05e9a609844d243984b878c2fa6443df88626586e83a9eb4214d69de7420"
+          },
+          {
+            "bytes": 556,
+            "path": "lookup.py",
+            "sha256": "2d7e5fd9411d60a6dd4872feda9d0aca3abfd2fe17631b743935fda9d045de35"
+          },
+          {
+            "bytes": 330,
+            "path": "profile.json",
+            "sha256": "1c05517bcfb08d465aa340c01606e46827af018fd13d480d67bd1b6f30ab4c1c"
+          },
+          {
+            "bytes": 967,
+            "path": "source-references.json",
+            "sha256": "2ac46af7712b3bc6b3387539f8d787a59d7754a19adaba33ec41ed9a4e14ca27"
+          }
+        ],
+        "method": "material",
+        "recipe_files": [],
+        "record_id": "review.engineering.java-specs",
+        "required_runtime_commands": [
+          "python3"
+        ],
+        "source_locks": [],
+        "source_references": [
+          {
+            "document_date": "2021-08-09",
+            "edition": 17,
+            "id": "jvms-se17",
+            "observation": "Official edition/date and section index inspected through public web retrieval.",
+            "url": "https://docs.oracle.com/javase/specs/jvms/se17/html/index.html"
+          },
+          {
+            "document_date": "2021-08-09",
+            "edition": 17,
+            "id": "jls-se17",
+            "observation": "Official edition/date inspected through public web retrieval.",
+            "url": "https://docs.oracle.com/javase/specs/jls/se17/html/index.html"
+          },
+          {
+            "edition": 17,
+            "id": "jvms-se17-classfile",
+            "url": "https://docs.oracle.com/javase/specs/jvms/se17/html/jvms-4.html"
+          },
+          {
+            "edition": 17,
+            "id": "jvms-se17-instructions",
+            "url": "https://docs.oracle.com/javase/specs/jvms/se17/html/jvms-6.html"
+          },
+          {
+            "edition": 17,
+            "final_release": "September 2021",
+            "id": "jsr392-license",
+            "url": "https://docs.oracle.com/javase/specs/jvms/se17/html/spec-license.html"
+          }
+        ],
+        "upstream_license": "Oracle JSR-392 Limited License Grant; full specification not redistributed; authored index supplied separately",
+        "version": "java-se17-2021-08-09"
+      },
+      "source_build_claim": false,
+      "support_only": false,
+      "upstream_license": "Oracle JSR-392 Limited License Grant; full specification not redistributed; authored index supplied separately",
+      "worker_id": "worker 062"
+    },
+    "provider": "material",
+    "recipe": {
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "PIP_NO_INDEX": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://docs.oracle.com/javase/specs/"
+      ],
+      "examples": [
+        {
+          "command": "manager.check(\"research.java-specs\")",
+          "description": "Run the declared checks through the CPG Python API"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Independent installed payload",
+          "path": "{prefix}",
+          "purpose": "Locked resources and bounded offline check inputs"
+        }
+      ],
+      "notes": [
+        "自编章节/指令族索引与许可/来源材料；不含Oracle规范正文。",
+        "官方规范正文许可不因可公开访问而自动获得再分发授权。",
+        "离线索引检查不是JVM/JLS实现合规检查。"
+      ],
+      "summary": "固定目标Java edition，索引classfile/verification/指令语义"
+    },
+    "version": "java-se17-2021-08-09"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.engineering.java-specs",
+    "scope": "New resource overlay; original 1862 definitions remain unchanged.",
+    "worker_id": "worker 062"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

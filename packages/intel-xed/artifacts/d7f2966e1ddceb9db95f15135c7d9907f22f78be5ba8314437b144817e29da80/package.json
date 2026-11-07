@@ -1,0 +1,117 @@
+{
+  "build": "worker024.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-I",
+        "{recipe}/capability_check.py",
+        "--resource",
+        "intel-xed",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "worker024-bounded-capability",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "intel-xed",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "dependency_family_count_increment": 0,
+    "identity_distinct_from": "uica.supplement.xed",
+    "identity_reason": "The old ID denotes andreas-abel/XED-to-XML; this new independent ID denotes intelxed/xed.",
+    "new_independent_resource_id": true,
+    "new_upstream_family": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Linux x86_64; fixed functional corpus and malformed inputs; not whole-ISA or CPU-execution certification",
+    "test_oracle_identity": "py.capstone frozen original 5.0.9 wheel",
+    "upstream_family_overlap": [
+      "uica.supplement.xed"
+    ],
+    "worker_id": "worker 024"
+  },
+  "provider": "source",
+  "recipe": {
+    "install_argv": [
+      "python3",
+      "{recipe}/build.py",
+      "--resource",
+      "intel-xed",
+      "--assets",
+      "{assets}",
+      "--build",
+      "{build}",
+      "--prefix",
+      "{prefix}",
+      "--jobs",
+      "{jobs}"
+    ],
+    "required_host_commands": [
+      "python3",
+      "gcc"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/cpg-intel-xed-probe"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "objdump"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1611416,
+      "extract": true,
+      "id": "intel-xed",
+      "material_path": "intel-xed",
+      "sha256": "75a432bb687eef39c1a71e0b500c60adee1ad4da465e8cc97e4dbb8483e724e9",
+      "strip_root": true,
+      "url": "https://codeload.github.com/intelxed/xed/tar.gz/0bcb6237345c5066726dcc08b3d87928df3b5b26"
+    },
+    {
+      "bytes": 81023,
+      "extract": true,
+      "id": "intel-mbuild",
+      "material_path": "intel-mbuild",
+      "sha256": "0d52a3ffd872e69f03c58260e4ced0690e164d944ac670feaa41aa690a80300c",
+      "strip_root": true,
+      "url": "https://codeload.github.com/intelxed/mbuild/tar.gz/1b437e409221a2b5703b4d8896baa20d43e4ba1a"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/intelxed/xed"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "prefix",
+        "path": "{prefix}",
+        "purpose": "Independent installation of pinned resource"
+      }
+    ],
+    "notes": [
+      "Bounded offline capability checks; hardware execution qualifications are stated in evidence."
+    ],
+    "summary": "intel-xed original source and independently verified native provider"
+  },
+  "version": "v2026.08.23"
+}

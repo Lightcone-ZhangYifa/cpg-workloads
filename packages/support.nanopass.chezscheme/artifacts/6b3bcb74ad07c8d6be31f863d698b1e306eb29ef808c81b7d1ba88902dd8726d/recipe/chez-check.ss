@@ -1,0 +1,8 @@
+(import (chezscheme))
+(unless (= (apply + (map (lambda (x) (* x x)) '(1 2 3 4 5))) 55)
+  (error 'chez-check "exact integer arithmetic failed"))
+(unless (= (let loop ((n 10) (r 1)) (if (= n 0) r (loop (- n 1) (* n r)))) 3628800)
+  (error 'chez-check "tail-recursive control flow failed"))
+(unless (equal? (read (open-input-string "(compiler (pass lower) 42)")) '(compiler (pass lower) 42))
+  (error 'chez-check "reader structure failed"))
+(printf "{\"status\":\"passed\",\"version\":\"~a\",\"machine_type\":\"~a\",\"checks\":3}\n" (scheme-version) (machine-type))

@@ -1,0 +1,184 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 3249,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "2b2ffdcf188617d5a44edd67068e379279dd4cfddc21a09b1cfb3835e4640542"
+    },
+    {
+      "bytes": 16945,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/capability_check.py",
+      "sha256": "fe40e0d9c1324a11be27f73ef01149d45cbd703143da3658c251d16dcc74c9f3"
+    },
+    {
+      "bytes": 3246,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/elfio_probe.cpp",
+      "sha256": "c1273b737f0dbd9a6f507dc8d3a781d718f2f6bfc8ec250a50b07d39ef0e0315"
+    },
+    {
+      "bytes": 2578,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/native_probe.c",
+      "sha256": "abf9a0e963a8db144ed4c0c55f023f8032169ca6e6d9cd285729f5ac51f25c1f"
+    },
+    {
+      "bytes": 327,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/version_check.py",
+      "sha256": "eb38b1eacec9102f6951f83f7468a8132fad51ac4007b88a9617a9897f371d85"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 6589842,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/418315e42d2c4e6745b66b672e05ca9e4d29a57d7d52404b2dda855155136084",
+      "sha256": "418315e42d2c4e6745b66b672e05ca9e4d29a57d7d52404b2dda855155136084"
+    }
+  ],
+  "inventory_sha256": "31ad1218a992a9c5e5ce1339dde8cb33d8fb88a11db26b31e8e02d81e8a334c9",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "27245ffef4340d5daef2ff8fc89259f9e5d377eedf2808b2414a59153346963f",
+  "method": "source",
+  "package": {
+    "build": "worker024.1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-I",
+          "{recipe}/capability_check.py",
+          "--resource",
+          "elfio",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "worker024-bounded-capability",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "elfio",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "dependency_family_count_increment": 0,
+      "new_upstream_family": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "Linux x86_64; fixed functional corpus and malformed inputs; not whole-ISA or CPU-execution certification",
+      "test_oracle_identity": "GNU binutils and GCC",
+      "worker_id": "worker 024"
+    },
+    "provider": "source",
+    "recipe": {
+      "install_argv": [
+        "python3",
+        "{recipe}/build.py",
+        "--resource",
+        "elfio",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ],
+      "required_host_commands": [
+        "python3",
+        "g++"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/cpg-elfio-probe"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "gcc",
+        "readelf",
+        "ar",
+        "nm"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 6589842,
+        "extract": true,
+        "id": "elfio",
+        "material_path": "elfio",
+        "sha256": "418315e42d2c4e6745b66b672e05ca9e4d29a57d7d52404b2dda855155136084",
+        "strip_root": true,
+        "url": "https://codeload.github.com/serge1/ELFIO/tar.gz/660e90514a2e80fba1c55f2cee07bbeda3d1c601"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/serge1/ELFIO"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "prefix",
+          "path": "{prefix}",
+          "purpose": "Independent installation of pinned resource"
+        }
+      ],
+      "notes": [
+        "Bounded offline capability checks; hardware execution qualifications are stated in evidence."
+      ],
+      "summary": "elfio original source and independently verified native provider"
+    },
+    "version": "commit-660e90514a2e80fba1c55f2cee07bbeda3d1c601"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline": "0.21.14",
+    "native_build_logs": "evidence/elfio-build.log",
+    "source_pins": [
+      "418315e42d2c4e6745b66b672e05ca9e4d29a57d7d52404b2dda855155136084"
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "elfio",
+      "path": "sources/418315e42d2c4e6745b66b672e05ca9e4d29a57d7d52404b2dda855155136084"
+    }
+  ]
+}

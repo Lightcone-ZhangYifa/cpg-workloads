@@ -1,0 +1,287 @@
+{
+  "build": "worker067-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "qcert.task-acceptance",
+      "kind": "functional",
+      "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "qcert",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "benchmark_qualification": null,
+    "dataset_qualification": null,
+    "dependency_contract": "Embedded dependency locks plus explicit host commands and ELF checks",
+    "dependency_notes": [],
+    "license_notes": [
+      "Qcert Apache-2.0; JsAst and original Coq/OCaml SDK license notices are retained in the payload."
+    ],
+    "official_baseline_promoted": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Pinned source e112de6d7fda1b916244a1feb08bedd7f8a96bc1; actual 86-module proof closure; each check freshly recompiles original NRAEnvtoNNRC and the exact select/map/sum query, result 22 and result!=23; separate three-case official npm 3.0.0-alpha.5 functionality",
+    "record_id": "review.verification.qcert",
+    "source_pins": [
+      {
+        "commit_evidence": "PAX global comment embedded by the official GitHub codeload source archive",
+        "inputs": [
+          {
+            "bytes": 3471249,
+            "file": "qcert-source.tar.gz",
+            "sha256": "d9ca475ed0cfce83ee983db0c227609779b9efe655cae9a76642ce4318a31ca3",
+            "url": "https://codeload.github.com/querycert/qcert/tar.gz/e112de6d7fda1b916244a1feb08bedd7f8a96bc1"
+          },
+          {
+            "bytes": 440650,
+            "file": "qcert-compiler.tgz",
+            "npm_gitHead": "b80a09bae89acdcf9704144e83f2a3661bf49b21",
+            "npm_integrity": "sha512-ecxpkNKMLJmRiEl1hjgkhoq509vt6R3pYMxnOt/N77wj4JkJT3Hu03mjUrhWZw3b7DCGMLGrbjQMYeMgHCDXVQ==",
+            "npm_sha1": "7daca66d15ab1ec18fe681e2dad0f109570f24a6",
+            "npm_version": "3.0.0-alpha.5",
+            "sha256": "b6ec6ea83f214918f47185d06d1270334a91271b36cd2ea02121562dcf360e6e",
+            "url": "https://registry.npmjs.org/qcert-compiler/-/qcert-compiler-3.0.0-alpha.5.tgz"
+          },
+          {
+            "bytes": 7225,
+            "file": "qcert-runtime.tgz",
+            "npm_gitHead": "b80a09bae89acdcf9704144e83f2a3661bf49b21",
+            "npm_integrity": "sha512-dS4XbKYNZcJO7O9WZgHO1rGQoZPq9yP7GGUXG4S8sdlLVUmlt0Gce1Jrkw7CNsaI02hCF3O/yQzPT6/AC/1AOA==",
+            "npm_sha1": "1ad7c002f1da344a3d846012ed848e83132fc399",
+            "npm_version": "3.0.0-alpha.5",
+            "sha256": "225b22f36cad41c758a4eee1bec07af6f486814caba331150478fe3943a55a86",
+            "url": "https://registry.npmjs.org/qcert-runtime-js/-/qcert-runtime-js-3.0.0-alpha.5.tgz"
+          }
+        ],
+        "license": "Apache-2.0",
+        "npm_source_binary_boundary": "npm gitHead b80a09bae89acdcf9704144e83f2a3661bf49b21 could not be recovered from the official repositories; npm functionality is reported separately from source proof replay.",
+        "npm_source_binary_link_verified": false,
+        "proof_profile": "Coq 8.16.1, source NRAEnvtoNNRC.v and concrete QueryPass.v, coq-jsast 3.0.0",
+        "resource": "qcert",
+        "source_archive_commit": "e112de6d7fda1b916244a1feb08bedd7f8a96bc1",
+        "source_commit": "e112de6d7fda1b916244a1feb08bedd7f8a96bc1",
+        "upstream": "https://github.com/querycert/qcert"
+      },
+      {
+        "jsast": {
+          "bytes": 5460,
+          "commit": "1568ab86cc17c60b9a0054684a0bba13a791fd7e",
+          "sha256": "7067e36e2e6422ac22a2b8c95df5c957a8f13772a406184aa75a677ca7cf0f72",
+          "upstream": "https://github.com/querycert/jsast",
+          "url": "https://codeload.github.com/querycert/jsast/tar.gz/1568ab86cc17c60b9a0054684a0bba13a791fd7e",
+          "version": "3.0.0"
+        }
+      },
+      {
+        "coq_sdk": [
+          {
+            "bytes": 93212572,
+            "filename": "coq_8.16.1+dfsg-1+b2_amd64.deb",
+            "name": "coq",
+            "sha256": "6496db435f9585e1f1527d9418070f15977b049c01c37c9bd33f7cc4152f8677",
+            "url": "https://deb.debian.org/debian/pool/main/c/coq/coq_8.16.1+dfsg-1+b2_amd64.deb",
+            "version": "8.16.1+dfsg-1+b2"
+          },
+          {
+            "bytes": 22556068,
+            "filename": "libcoq-core-ocaml_8.16.1+dfsg-1+b2_amd64.deb",
+            "name": "libcoq-core-ocaml",
+            "sha256": "c796433dbebc58bab6c26d33deba19e8efdfc32fcc4d69332ca90774966210e3",
+            "url": "https://deb.debian.org/debian/pool/main/c/coq/libcoq-core-ocaml_8.16.1+dfsg-1+b2_amd64.deb",
+            "version": "8.16.1+dfsg-1+b2"
+          },
+          {
+            "bytes": 21526056,
+            "filename": "libcoq-stdlib_8.16.1+dfsg-1+b2_amd64.deb",
+            "name": "libcoq-stdlib",
+            "sha256": "8041ed20fb162a30553e273d9d3e8a3e67d97e08020b604af2402cc4be2e6431",
+            "url": "https://deb.debian.org/debian/pool/main/c/coq/libcoq-stdlib_8.16.1+dfsg-1+b2_amd64.deb",
+            "version": "8.16.1+dfsg-1+b2"
+          },
+          {
+            "bytes": 168976,
+            "filename": "libfindlib-ocaml_1.9.6-1+b1_amd64.deb",
+            "name": "libfindlib-ocaml",
+            "sha256": "722e171e23532cf689ffa408286f2d72aa90385d30bb2b58b87749626ac03e91",
+            "url": "https://deb.debian.org/debian/pool/main/f/findlib/libfindlib-ocaml_1.9.6-1+b1_amd64.deb",
+            "version": "1.9.6-1+b1"
+          },
+          {
+            "bytes": 667508,
+            "filename": "ocaml-base_4.13.1-4_amd64.deb",
+            "name": "ocaml-base",
+            "sha256": "c0b44b8aa8045dba80d8328241b439aa8ef47429a87867f1ef2de65f27cb59f5",
+            "url": "https://deb.debian.org/debian/pool/main/o/ocaml/ocaml-base_4.13.1-4_amd64.deb",
+            "version": "4.13.1-4"
+          },
+          {
+            "bytes": 56500,
+            "filename": "libzarith-ocaml_1.12-1+b1_amd64.deb",
+            "name": "libzarith-ocaml",
+            "sha256": "8bf04a496c5a7b4e436c8ac9819705b67dc71328be0d88b1643397de182e17a8",
+            "url": "https://deb.debian.org/debian/pool/main/o/ocaml-zarith/libzarith-ocaml_1.12-1+b1_amd64.deb",
+            "version": "1.12-1+b1"
+          }
+        ]
+      }
+    ],
+    "worker_id": "worker 067"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/check.py"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "node"
+    ],
+    "runtime_environment": {
+      "CARGO_NET_OFFLINE": "true",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3471249,
+      "extract": false,
+      "id": "qcert.input0",
+      "material_path": "upstream/qcert-source.tar.gz",
+      "sha256": "d9ca475ed0cfce83ee983db0c227609779b9efe655cae9a76642ce4318a31ca3",
+      "strip_root": false,
+      "url": "https://codeload.github.com/querycert/qcert/tar.gz/e112de6d7fda1b916244a1feb08bedd7f8a96bc1"
+    },
+    {
+      "bytes": 440650,
+      "extract": false,
+      "id": "qcert.input1",
+      "material_path": "upstream/qcert-compiler.tgz",
+      "sha256": "b6ec6ea83f214918f47185d06d1270334a91271b36cd2ea02121562dcf360e6e",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/qcert-compiler/-/qcert-compiler-3.0.0-alpha.5.tgz"
+    },
+    {
+      "bytes": 7225,
+      "extract": false,
+      "id": "qcert.input2",
+      "material_path": "upstream/qcert-runtime.tgz",
+      "sha256": "225b22f36cad41c758a4eee1bec07af6f486814caba331150478fe3943a55a86",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/qcert-runtime-js/-/qcert-runtime-js-3.0.0-alpha.5.tgz"
+    },
+    {
+      "bytes": 93212572,
+      "extract": false,
+      "id": "qcert.input3",
+      "material_path": "upstream/coq_8.16.1+dfsg-1+b2_amd64.deb",
+      "sha256": "6496db435f9585e1f1527d9418070f15977b049c01c37c9bd33f7cc4152f8677",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/c/coq/coq_8.16.1+dfsg-1+b2_amd64.deb"
+    },
+    {
+      "bytes": 22556068,
+      "extract": false,
+      "id": "qcert.input4",
+      "material_path": "upstream/libcoq-core-ocaml_8.16.1+dfsg-1+b2_amd64.deb",
+      "sha256": "c796433dbebc58bab6c26d33deba19e8efdfc32fcc4d69332ca90774966210e3",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/c/coq/libcoq-core-ocaml_8.16.1+dfsg-1+b2_amd64.deb"
+    },
+    {
+      "bytes": 21526056,
+      "extract": false,
+      "id": "qcert.input5",
+      "material_path": "upstream/libcoq-stdlib_8.16.1+dfsg-1+b2_amd64.deb",
+      "sha256": "8041ed20fb162a30553e273d9d3e8a3e67d97e08020b604af2402cc4be2e6431",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/c/coq/libcoq-stdlib_8.16.1+dfsg-1+b2_amd64.deb"
+    },
+    {
+      "bytes": 168976,
+      "extract": false,
+      "id": "qcert.input6",
+      "material_path": "upstream/libfindlib-ocaml_1.9.6-1+b1_amd64.deb",
+      "sha256": "722e171e23532cf689ffa408286f2d72aa90385d30bb2b58b87749626ac03e91",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/f/findlib/libfindlib-ocaml_1.9.6-1+b1_amd64.deb"
+    },
+    {
+      "bytes": 667508,
+      "extract": false,
+      "id": "qcert.input7",
+      "material_path": "upstream/ocaml-base_4.13.1-4_amd64.deb",
+      "sha256": "c0b44b8aa8045dba80d8328241b439aa8ef47429a87867f1ef2de65f27cb59f5",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/o/ocaml/ocaml-base_4.13.1-4_amd64.deb"
+    },
+    {
+      "bytes": 56500,
+      "extract": false,
+      "id": "qcert.input8",
+      "material_path": "upstream/libzarith-ocaml_1.12-1+b1_amd64.deb",
+      "sha256": "8bf04a496c5a7b4e436c8ac9819705b67dc71328be0d88b1643397de182e17a8",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/o/ocaml-zarith/libzarith-ocaml_1.12-1+b1_amd64.deb"
+    },
+    {
+      "bytes": 5460,
+      "extract": false,
+      "id": "qcert.input9",
+      "material_path": "upstream/jsast-3.0.0.tar.gz",
+      "sha256": "7067e36e2e6422ac22a2b8c95df5c957a8f13772a406184aa75a677ca7cf0f72",
+      "strip_root": false,
+      "url": "https://codeload.github.com/querycert/jsast/tar.gz/1568ab86cc17c60b9a0054684a0bba13a791fd7e"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/querycert/qcert",
+      "https://querycert.github.io/"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/check.py --prefix {prefix}",
+        "description": "Replay the task acceptance"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed resource",
+        "path": "{prefix}",
+        "purpose": "Locked sources, runtime, query examples and replay checks"
+      }
+    ],
+    "notes": [
+      "The same-source proof instantiates original nraenv_to_nnrc_top_correct on the identical query AST and retains all five Print Assumptions blocks.",
+      "This proof is not axiom-free: upstream float/JsNumber/PrimFloat interfaces and Eqdep.Eq_rect_eq.eq_rect_eq remain explicit assumptions.",
+      "npm gitHead could not be recovered from the source repository; official npm functionality is separate from the source proof and is not a verified source-to-binary chain.",
+      "Parser, extraction, JavaScript runtime, other compiler passes and the native Coq implementation are outside this qualified proof.",
+      "Linux x86_64, Python 3.12 and Node.js are host prerequisites. The six locked Coq SDK debs are extracted into a fresh external temporary directory; no system Coq or apt installation is required."
+    ],
+    "summary": "Same-source original Qcert pass and concrete bag-query proof replay, with separate npm compiler checks"
+  },
+  "version": "e112de6d7fda"
+}

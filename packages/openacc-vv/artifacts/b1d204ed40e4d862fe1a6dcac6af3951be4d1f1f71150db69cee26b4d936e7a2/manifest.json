@@ -1,0 +1,192 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 19925,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/cpg_openacc.py",
+      "sha256": "df14c129527393cc62581c19cca3de1dbc5683baa6b75fe16c9598738aabfe19"
+    },
+    {
+      "bytes": 2425,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/epcc_driver.c",
+      "sha256": "88163c2b68061cb7fa41e2ffc41dfe64a7cb99170b1e9b6f0e0d53d78fd421d7"
+    },
+    {
+      "bytes": 2169,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install.py",
+      "sha256": "91c680be85a37d0140cb8b4644b13391ef8950ce94e6ffe64f7214d4799c855f"
+    },
+    {
+      "bytes": 778739,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/inventory.json",
+      "sha256": "0f45697340b562d6fea0293e42ecdce0ba8ec0db4f4961d1ea06e921662ac89a"
+    },
+    {
+      "bytes": 152414,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/upstream-files.json",
+      "sha256": "6cc502854ca7ff949006df3dbda16e7f90278902a8517e7ce55dbd9d816a4bc0"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 572114,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/13953b271e9574aab19e274ba0bd0aaa098dd6d7295122b34a4f787bfc62f8e0",
+      "sha256": "13953b271e9574aab19e274ba0bd0aaa098dd6d7295122b34a4f787bfc62f8e0"
+    }
+  ],
+  "inventory_sha256": "dad14913e315b6137dd06054b21a1e54d79f96f1c145f888da0fc74689a23981",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "e1d84d81f375625778f02a5c53723b2561e72bab13dd142f93f721a19b8ae437",
+  "method": "source",
+  "package": {
+    "build": "worker056-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{prefix}/share/openacc-vv/cpg_openacc.py",
+          "openacc-vv",
+          "check",
+          "--prefix",
+          "{prefix}",
+          "--work-root",
+          "{build}/functional-evidence"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "host-functional",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 300
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "openacc-vv",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "license": "BSD-3-Clause; bundled third-party viewer notices preserved",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "worker-local bounded functional evidence; formal global baseline unchanged",
+      "upstream_commit": "48d8b854280bfbd0294fea79668fdf2dd9386305",
+      "worker_id": "worker 056"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/install.py",
+          "--resource",
+          "openacc-vv",
+          "--source",
+          "{source}",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}"
+        ]
+      ],
+      "required_host_commands": [
+        "python3"
+      ],
+      "required_installed_paths": [
+        "{prefix}/share/openacc-vv/upstream-files.json",
+        "{prefix}/share/openacc-vv/inventory.json"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "gcc",
+        "g++"
+      ],
+      "runtime_environment": {
+        "ACC_DEVICE_TYPE": "host",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 572114,
+        "extract": true,
+        "id": "openacc-vv",
+        "material_path": "sources/openacc-vv",
+        "sha256": "13953b271e9574aab19e274ba0bd0aaa098dd6d7295122b34a4f787bfc62f8e0",
+        "strip_root": true,
+        "url": "https://codeload.github.com/OpenACCUserGroup/OpenACCV-V/tar.gz/48d8b854280bfbd0294fea79668fdf2dd9386305"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "any",
+      "distribution_version": "any",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "{prefix}/share/openacc-vv/upstream/README.md"
+      ],
+      "examples": [
+        {
+          "command": "python3 {prefix}/share/openacc-vv/cpg_openacc.py openacc-vv check --prefix {prefix} --work /tmp/fresh-openacc-work",
+          "description": "Run bounded functional check"
+        }
+      ],
+      "locations": [
+        {
+          "label": "original source",
+          "path": "{prefix}/share/openacc-vv/upstream",
+          "purpose": "Immutable upstream inputs"
+        }
+      ],
+      "notes": [
+        "Install and checks are offline. Source and binary installation are explicit.",
+        "GNU 13/OpenACC 2.6 is the bounded validated profile; distributions are not gated.",
+        "Use a writable work directory disjoint from the installation prefix."
+      ],
+      "summary": "Pinned original OpenACC resource and bounded GNU 13 host adapter; no GPU or compiler-wide conformance claim"
+    },
+    "version": "48d8b854280bfbd0294fea79668fdf2dd9386305"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "original_source": "fixed-commit codeload archive",
+    "upstream_commit": "48d8b854280bfbd0294fea79668fdf2dd9386305",
+    "worker": "056"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "openacc-vv",
+      "path": "sources/13953b271e9574aab19e274ba0bd0aaa098dd6d7295122b34a4f787bfc62f8e0"
+    }
+  ]
+}

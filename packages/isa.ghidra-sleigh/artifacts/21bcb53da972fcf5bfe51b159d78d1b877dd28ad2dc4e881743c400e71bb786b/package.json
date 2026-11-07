@@ -1,0 +1,113 @@
+{
+  "build": "cpg-20261101-w058-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "isa.ghidra-sleigh",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "formal_qualification_promotion": false,
+    "license_note": "Apache-2.0 (Ghidra; bundled dependencies retain their own notices); GPL-2.0-only WITH Classpath-exception-2.0 (OpenJDK; original legal directory retained); libXtst: original X.Org component license notice retained in licenses/native/libxtst6.copyright",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "RISCV:LE:64:RV64G SLEIGH compile and four integer machine instructions, headless Java script",
+    "record_id": "review.engineering.ghidra-sleigh",
+    "source_build_verified": false,
+    "source_material_scope": "Complete official Ghidra/JDK binary distributions, complete fixed RISCV SLEIGH source, and pinned libXtst native dependency. No full Ghidra/JDK source build.",
+    "worker_id": "worker 058"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/deps/lib:{prefix}/jdk/lib:{prefix}/jdk/lib/server",
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 370096003,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "raw/ghidra_10.4_PUBLIC_20230928.zip",
+      "sha256": "6911d674798f145f8ea723fdd3eb67a8fae8c7be92e117bca081e6ef66acac19",
+      "strip_root": false,
+      "url": "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.4_build/ghidra_10.4_PUBLIC_20230928.zip"
+    },
+    {
+      "bytes": 191867538,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "raw/OpenJDK17U-jdk_x64_linux_hotspot_17.0.13_11.tar.gz",
+      "sha256": "8682892fc02965930b9022c066fa164dd6f458ef4a5dc262016aa28333b30f49",
+      "strip_root": false,
+      "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.13%2B11/OpenJDK17U-jdk_x64_linux_hotspot_17.0.13_11.tar.gz"
+    },
+    {
+      "bytes": 12642,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "raw/libxtst6_1.2.3-1.1build1_amd64.deb",
+      "sha256": "632d74c760f0a4e844c499e7bc1eca4c709aa096fde783a7a6807604aef77545",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxtst/libxtst6_1.2.3-1.1build1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt",
+      "source-lock.json",
+      "resource-evidence.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/check.py",
+        "description": "Run the declared semantic and failure-path checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent prefix",
+        "path": "{prefix}",
+        "purpose": "Tool, source fixtures and offline checks"
+      }
+    ],
+    "notes": [
+      "No formal semantic proof",
+      "No arbitrary p-code interpreter claim",
+      "No all-language/all-extension/Ghidra-GUI qualification",
+      "No JDK or complete Ghidra source build",
+      "No hardware/performance conclusion"
+    ],
+    "summary": "固定Ghidra/JDK，编译SLEIGH语言并对样例机器码导出p-code"
+  },
+  "version": "10.4"
+}

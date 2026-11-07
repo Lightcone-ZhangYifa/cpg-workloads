@@ -1,0 +1,145 @@
+{
+  "build": "worker095-binary-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check_material.py",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "source-and-proof-output-integrity",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check_ssa.py",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "ssa-compile-execute-controls",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 240
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "compcert-ssa",
+  "metadata": {
+    "entity_kind": "resource",
+    "execution_contract": "The same-ZIP companion raw directory contains these54 originals,54 matching metadata files and this lock. Fresh independent native-compiler, i386-proof and QEMU prefixes are restored offline. This source lock is separate from proof/functionality qualification.",
+    "license_id": "LicenseRef-INRIA-Non-Commercial AND GPL-2.0-or-later AND LGPL-3.0-or-later AND BSD-3-Clause AND LicenseRef-QEMU-Debian-copyright",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.verification.compcert-ssa",
+    "worker_id": "worker 095",
+    "worker_local_qualification": {
+      "benchmark": null,
+      "dataset": null,
+      "functional": true,
+      "material": true,
+      "physical_hardware": null,
+      "proof_replay": true
+    }
+  },
+  "provider": "binary",
+  "recipe": {
+    "qualification_scope": "historical-ia32-ssa-compilation-and-qemu-user-freestanding-execution",
+    "required_runtime_commands": [
+      "python3",
+      "gcc",
+      "as",
+      "ld",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C.UTF-8",
+      "LD_LIBRARY_PATH": "{prefix}/lib",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 6752697,
+      "extract": false,
+      "id": "author-release",
+      "material_path": "raw/compcertSSA_cc16.tar.gz",
+      "sha256": "bcdf97edbcc8d3449deea080df8367d1e3598e71ba10e0a07d997aaed9510562",
+      "strip_root": false,
+      "url": "https://www.irisa.fr/celtique/ext/coalescing/compcertSSA_cc16.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "export PATH=\"{prefix}/bin:$PATH\""
+    ],
+    "documentation": [
+      "https://www.irisa.fr/celtique/ext/coalescing/",
+      "https://compcertssa.gitlabpages.inria.fr/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/ccomp -ssa on -S -o example.s example.c",
+        "description": "Run the SSA compiler on a C source"
+      },
+      {
+        "command": "python3 {prefix}/scripts/check_ssa.py {prefix}",
+        "description": "Run executable controls"
+      },
+      {
+        "command": "python3 {prefix}/scripts/build_ssa_offline.py --inputs /absolute/path/to/unpacked-worker095/raw-inputs/compcert-ssa --output ./ssa-replay --lock ./shared-proof.lock",
+        "description": "Rebuild all original proofs, extraction, compiler and runtime offline into a fresh directory, using the companion original inputs"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Compiler",
+        "path": "{prefix}/bin/ccomp",
+        "purpose": "Compile supported C through the historical SSA pipeline."
+      },
+      {
+        "label": "Proofs and theorem index",
+        "path": "{prefix}/proof",
+        "purpose": "Inspect actual proof outputs, assumptions and command records."
+      },
+      {
+        "label": "Author original and closure metadata",
+        "path": "{prefix}/raw",
+        "purpose": "Inspect the author source archive and the complete lock for the companion raw-inputs/compcert-ssa directory in the worker ZIP."
+      }
+    ],
+    "notes": [
+      "Author-published historical CC 2016 snapshot, source VERSION 2.0. It is not the latest CompCertSSA GitLab revision or modern CompCert.",
+      "Original upstream Coq proof target, extraction and compiler build completed with pinned Debian Coq 8.4pl4 / OCaml 4.01.0. The unchanged official i386 Coq kernel executes through fixed native amd64 QEMU, private guest glibc2.33 and official i386 gperftools2.10-1, with a bounded1024MiB ordinary MAP_SHARED file pool. Original amd64 coqc is only a launcher; native amd64 OCaml still builds the compiler. Guest-only allocator settings do not preload the QEMU host or native compiler. Author companion records 8.4pl6 / 4.02.2; both identities are retained. No proof source or kernel was patched, skipped or admitted.",
+      "The functional contract is native x86_64 -ssa on/off compilation to ia32 assembly plus real execution of the generated ELF32 programs through the pinned QEMU i386 user-mode emulator, with expected exits 0 and 42 and malformed C rejection. This is a bounded compiler test, not native ia32 hardware evidence, an official benchmark or an unrestricted C correctness claim.",
+      "The original ia32 CompCert runtime static library is included. Hosted linking additionally requires a compatible 32-bit C runtime supplied by the consumer platform; the delivered freestanding tests need no 32-bit libc.",
+      "GNU gcc/as/ld, Python 3 and compatible Linux x86_64 dynamic libraries are explicit host prerequisites. Native ia32 execution is unavailable on the reference host, so the fixed QEMU i386 executor is bundled. Source replay also uses make, dpkg-deb, Python >=3.12 and libseccomp. No network is used for installation or source replay.",
+      "The native package contains the actual compiler, QEMU user-mode executor, capstone4/liburing2 runtime, author source archive/source tree and checked proof objects. All 54 original historical toolchain/runtime/allocator/source inputs and their matching Debian source archives/patches accompany it in raw-inputs/compcert-ssa in the same worker ZIP. Keep that complete delivery together for full offline source replay and the retained component source/license materials. Prefix raw/closure-lock.json is the complete metadata lock; the companion directory contains the complete original archives.",
+      "Full source replay takes --inputs /absolute/path/to/unpacked-worker095/raw-inputs/compcert-ssa and restores private source, build and toolchain directories. Only the verified immutable original inputs may be shared read-only. Remaining host dynamic libraries, OS and GNU preprocessing/assembly/linking tools are recorded separately as the platform contract, not represented as a complete OS image.",
+      "Proof-runtime restoration uses the exact fixed i386 guest glibc2.33/libstdc++/libgcc/allocator closure under the pinned native amd64 QEMU. The QEMU host requires compatible GLIBC>=2.34 and its listed dynamic libraries; an ordinary writable file system must have space for the bounded1024MiB pool and build outputs, and own-child /proc identity/mappings must be readable in a matching PID view. Its positive proof must exit0, False must be rejected with exit1, and the actual unchanged kernel, selected allocator and rw-s pool mappings must be observed. These small controls do not replace the original CompCert source proof targets. The actual compiler and routine CPG functional checks do not use this allocator.",
+      "The historical toolchain execution scope is the command-line Coq proof checker and OCaml build chain. Original Debian Depends fields remain visible; GTK/Emacs distribution integrations are not activated by local archive extraction or used by these proof targets.",
+      "The package is independently installed under each prefix; no shared writable build tree or global environment mutation is used. The historical upstream driver expects simple paths without whitespace for its shell preprocessing command.",
+      "The whole release includes the original INRIA Non-Commercial License and component GPL/LGPL/BSD terms. Research/evaluation use and redistribution retain the upstream terms and attribution.",
+      "Proof source indices, actual proof replay, executable tests, material availability and original global CPG qualification are distinct. The baseline 0.21.14 identities and global statistics are not modified."
+    ],
+    "summary": "Historical verified SSA/GVN/SCCP compiler: actual ia32 compilation, QEMU user-mode execution and replayed Coq proof target with offline raw-input closure."
+  },
+  "version": "2.0-cc2016"
+}

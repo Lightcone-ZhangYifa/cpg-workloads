@@ -1,0 +1,58 @@
+{
+  "build": "worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/check_metadata.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-task",
+      "kind": "availability",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "support.apt-research-closure",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Only the declared cases, target and pinned inputs",
+    "record_id": "baseline.apt-research-closure",
+    "worker_id": "worker 081"
+  },
+  "provider": "material",
+  "recipe": {},
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Independent resource prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed upstream resource and repeatable checks"
+      }
+    ],
+    "notes": [
+      "Original apt-research-closure identity remains unchanged.",
+      "This support package is metadata/notices; all exact DEBs are in seven accompanying offline raw parts.",
+      "No APT transaction or system runtime qualification is asserted."
+    ],
+    "summary": "Exact material and license support for the unchanged apt-research-closure meta group"
+  },
+  "version": "0.5.0"
+}

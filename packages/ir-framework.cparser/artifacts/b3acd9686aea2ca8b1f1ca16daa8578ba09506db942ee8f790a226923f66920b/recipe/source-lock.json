@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "resource": "cparser",
+  "entity_id": "ir-framework.cparser",
+  "plan_id": "cpg-resource-research-20261101-v1",
+  "worker_id": "worker 007",
+  "pins": {
+    "libfirm": "9107be1e1035dae7e509fce6abdbd7a1e8a83565",
+    "cparser": "81330da3ee9650c88a1afdc93de654b9dfd9fb78"
+  },
+  "artifacts": [
+    {
+      "path": "assets/cparser-81330da3ee9650c88a1afdc93de654b9dfd9fb78.tar.gz",
+      "url": "https://codeload.github.com/libfirm/cparser/tar.gz/81330da3ee9650c88a1afdc93de654b9dfd9fb78",
+      "sha256": "c15c32a2f10c5f1ddf8eb9f6ab3f07b303ed0085e3246f1a055a90b4c7fd4a61",
+      "bytes": 294414,
+      "role": "source"
+    },
+    {
+      "path": "assets/jinja2-3.1.6-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl",
+      "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+      "bytes": 134899,
+      "role": "python-wheel"
+    },
+    {
+      "path": "assets/libfirm-9107be1e1035dae7e509fce6abdbd7a1e8a83565.tar.gz",
+      "url": "https://codeload.github.com/libfirm/libfirm/tar.gz/9107be1e1035dae7e509fce6abdbd7a1e8a83565",
+      "sha256": "fd36d3f0143e209f71c78a2557aa655d9ec7f365a90138d1b2b288d9ecfc548c",
+      "bytes": 1512982,
+      "role": "source"
+    },
+    {
+      "path": "assets/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "url": "https://files.pythonhosted.org/packages/3c/2e/8d0c2ab90a8c1d9a24f0399058ab8519a3279d1bd4289511d74e909f060e/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "d6dd0be5b5b189d31db7cda48b91d7e0a9795f31430b7f271219ab30f1d3ac9d",
+      "bytes": 22947,
+      "role": "python-wheel"
+    }
+  ],
+  "source_archives": {
+    "libfirm": "assets/libfirm-9107be1e1035dae7e509fce6abdbd7a1e8a83565.tar.gz",
+    "cparser": "assets/cparser-81330da3ee9650c88a1afdc93de654b9dfd9fb78.tar.gz"
+  },
+  "upstream_license": "GPL-2.0 (see bundled COPYING and source headers)",
+  "prepared_on": "2026-11-01",
+  "network_policy": "prepare.py may download exact hashes; install.py/check.py do not acquire inputs",
+  "system_requirements": [
+    "Linux x86_64",
+    "Python >=3.11",
+    "C99 compiler named cc",
+    "GNU make",
+    "ar",
+    "Perl",
+    "system assembler/linker/libc development files"
+  ],
+  "qualification_scope": "Bounded executed task checks, not whole project correctness or arbitrary platform compatibility",
+  "build_wheels": [
+    "assets/jinja2-3.1.6-py3-none-any.whl",
+    "assets/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
+  ],
+  "build_dependency_policy": "Locked Jinja2/MarkupSafe pure Python portions extracted into isolated build tree; native MarkupSafe extension not used",
+  "checks_sha256": {
+    "cparser_check.py": "38b69974244c6151eae57c2b47b1703508e2c9cbb4a7eeb0c76c9dbe59e86b5c"
+  }
+}

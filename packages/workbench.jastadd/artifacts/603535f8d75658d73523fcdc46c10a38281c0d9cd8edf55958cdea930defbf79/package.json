@@ -1,0 +1,106 @@
+{
+  "build": "cpg20261101.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{tools}/run_check.py",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assignment-functional",
+      "kind": "functional",
+      "stdout_regex": "passed",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "workbench.jastadd",
+  "metadata": {
+    "baseline_catalog_modified": false,
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Eight bounded assertions on an authored expression/graph grammar; no full JastAdd upstream-suite claim.",
+    "record_id": "review.engineering.jastadd",
+    "runtime_toolchain": {},
+    "worker_id": "046"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "java",
+      "javac",
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 781329,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "jastadd2-bin-2.4.0.zip",
+      "sha256": "7cbf4260c68b8c10aa9fe57d96075f6e83b24b0cf5596f4c27cd3b8cdc021d37",
+      "strip_root": false,
+      "url": "https://jastadd.cs.lth.se/releases/jastadd2/2.4.0/jastadd2-bin.zip"
+    },
+    {
+      "bytes": 1354699,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "jastadd2-src-2.4.0.zip",
+      "sha256": "a6fd57c6d71759c8c27a9e9371ede4dd6ca91559b0cf0f62953e7d2637cb1d99",
+      "strip_root": false,
+      "url": "https://jastadd.cs.lth.se/releases/jastadd2/2.4.0/jastadd2-src.zip"
+    },
+    {
+      "bytes": 77706,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "reference-manual-2.4.0.html",
+      "sha256": "1d6028ba49e29db49b70e08dd142ea3ce095255444e333cb274999b9d535f311",
+      "strip_root": false,
+      "url": "https://jastadd.cs.lth.se/releases/jastadd2/2.4.0/reference-manual.php"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://jastadd.cs.lth.se/releases/jastadd2/2.4.0/jastadd2-bin.zip",
+      "https://jastadd.cs.lth.se/releases/jastadd2/2.4.0/jastadd2-src.zip",
+      "https://jastadd.cs.lth.se/releases/jastadd2/2.4.0/reference-manual.php"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B <prefix>/verify.py",
+        "description": "Run the bounded assignment qualification"
+      }
+    ],
+    "locations": [
+      {
+        "label": "installation",
+        "path": "{prefix}",
+        "purpose": "Immutable tool and qualification fixtures"
+      }
+    ],
+    "notes": [
+      "Eight bounded assertions on an authored expression/graph grammar; no full JastAdd upstream-suite claim."
+    ],
+    "summary": "Generate an expression AST and verify name binding, memoized and circular attributes."
+  },
+  "version": "2.4.0"
+}

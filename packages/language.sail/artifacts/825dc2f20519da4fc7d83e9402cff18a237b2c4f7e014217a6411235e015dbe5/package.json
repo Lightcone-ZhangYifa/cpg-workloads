@@ -1,0 +1,150 @@
+{
+  "build": "cpg-20261101-w059-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "language.sail",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "formal_qualification_promotion": false,
+    "license_note": "Sail BSD-2-Clause with all upstream exceptions and THIRD_PARTY_FILES preserved; bundled Z3 MIT; GMP dual LGPL-3.0-or-later / GPL-2.0-or-later with original copyright and exact Ubuntu corresponding source.",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "One fixed stateful integer/register model; real C generation, host C compilation and execution, independent Sail interpretation, type-error rejection",
+    "record_id": "review.verification.sail",
+    "source_build_verified": false,
+    "source_material_scope": "Exact binary release and complete matching tracked source at 60695b1e; no claim complete OPAM dependency source build; exact GMP dev/runtime/source closure preserved",
+    "worker_id": "worker 059"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "gcc"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/deps/lib",
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 39386838,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "raw/sail-Linux-x86_64.tar.gz",
+      "sha256": "8d7cd75624ece407d7001ad32905a13ae111d5cc1a055404f21510e113207e3f",
+      "strip_root": false,
+      "url": "https://github.com/rems-project/sail/releases/download/0.20.3-binary/sail-Linux-x86_64.tar.gz"
+    },
+    {
+      "bytes": 27655295,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "raw/sail-60695b1ea377048f0adc39c62671cd099b2ed9f6.tar.gz",
+      "sha256": "0326968532d7b55667d9277752f31c826e4cfdf1b39b402bd97e812ae54a8759",
+      "strip_root": false,
+      "url": "https://codeload.github.com/rems-project/sail/tar.gz/60695b1ea377048f0adc39c62671cd099b2ed9f6"
+    },
+    {
+      "bytes": 340090,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "raw/libgmp-dev_6.3.0+dfsg-2ubuntu6.1_amd64.deb",
+      "sha256": "a9847b5ecfff791a46cb198f29a06d9d23a20afdfdd434812f2b44ccfb61d46a",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/libgmp-dev_6.3.0+dfsg-2ubuntu6.1_amd64.deb"
+    },
+    {
+      "bytes": 253460,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "raw/libgmp10_6.3.0+dfsg-2ubuntu6.1_amd64.deb",
+      "sha256": "285f8a505dfa8e1b33f357a9d8d3477ad35bf18c0b34771a6df4c25923f3ae0d",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/libgmp10_6.3.0+dfsg-2ubuntu6.1_amd64.deb"
+    },
+    {
+      "bytes": 1870556,
+      "extract": false,
+      "id": "input-004",
+      "material_path": "raw/gmp_6.3.0+dfsg.orig.tar.xz",
+      "sha256": "bd2966e6d277f79328e894a5a9f3ba3fbf2ed2be81def5f48623e30c23fb1572",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/gmp_6.3.0+dfsg.orig.tar.xz"
+    },
+    {
+      "bytes": 38908,
+      "extract": false,
+      "id": "input-005",
+      "material_path": "raw/gmp_6.3.0+dfsg-2ubuntu6.1.debian.tar.xz",
+      "sha256": "0a7592ee94876fcc0dba60c9a9fba806a72752c104c04d553803e1b7a97026a3",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/gmp_6.3.0+dfsg-2ubuntu6.1.debian.tar.xz"
+    },
+    {
+      "bytes": 2345,
+      "extract": false,
+      "id": "input-006",
+      "material_path": "raw/gmp_6.3.0+dfsg-2ubuntu6.1.dsc",
+      "sha256": "7fdd2464ee453296e33598dad6f84dd489640c08f50552389469bcf90537582e",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/gmp_6.3.0+dfsg-2ubuntu6.1.dsc"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt",
+      "source-lock.json",
+      "resource-evidence.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/check.py",
+        "description": "Run the declared semantic and failure-path checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent prefix",
+        "path": "{prefix}",
+        "purpose": "Tool, source fixtures and offline checks"
+      }
+    ],
+    "notes": [
+      "Sail compiler uses official prebuilt release; tool itself was not source built",
+      "Actual generated model C compilation and interpreter both verified",
+      "One fixed integer/register model only; no whole ISA, hardware, performance or proof qualification",
+      "Requires host C compiler and zlib development/link environment; GMP header and static library are bundled",
+      "Dataset not applicable"
+    ],
+    "summary": "真实编译小 Sail 模型并执行固定输入输出，解释器差分和错误类型负例"
+  },
+  "version": "0.20.3"
+}

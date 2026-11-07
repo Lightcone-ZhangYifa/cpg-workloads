@@ -1,0 +1,156 @@
+{
+  "build": "cpg-worker107-20261102-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assigned-semantic-controls",
+      "kind": "functional",
+      "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "cryptol",
+  "metadata": {
+    "assignment": {
+      "after_dataset_verified": null,
+      "after_functional": null,
+      "after_material": null,
+      "alias_target": "",
+      "assessment_ids": [
+        "verification:cryptol"
+      ],
+      "baseline_catalog_sha256": {},
+      "baseline_dataset_verified": null,
+      "baseline_functional_ids": [],
+      "baseline_managed_ids": [],
+      "baseline_material_ids": [],
+      "baseline_pins": {},
+      "baseline_relation": "新增候选（独立身份仍需锁定）",
+      "baseline_resource_ids": [],
+      "baseline_trusted_apt_ids": [],
+      "baseline_version": "0.21.14",
+      "canonical_url": "https://github.com/GaloisInc/cryptol",
+      "category": "位向量与密码规格",
+      "cost": "中/重",
+      "decision": "select",
+      "decision_zh": "入选",
+      "dependencies": "Haskell、Z3等求解器",
+      "entity_kind": "resource",
+      "evidence_relpath": "",
+      "evidence_urls": [
+        "https://github.com/GaloisInc/cryptol"
+      ],
+      "has_active_task": true,
+      "identity_unresolved": false,
+      "increment_package": "cpg-20261101-worker-107-delta-v001.zip",
+      "new_family_candidate": true,
+      "owned_baseline_resource_ids": [],
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "quality_evidence": "{\"primary_source_url\":\"https://github.com/GaloisInc/cryptol\",\"retrieval_ref\":\"turn27view1\",\"specific_usefulness\":\"可执行位向量规格语言，作为优化和密码实现的独立参考。\",\"inspectable_validation_surface\":\"执行一个位向量规格并用证明命令检查恒等式与反例。\",\"known_limit\":\"Cryptol规格本身需审查；测试通过和形式证明分别记。\",\"academic_basis\":\"官方或作者项目的实现/文档/样例；未据此宣称独立学术认可或广泛采用\",\"local_execution_evidence\":\"本次只做调研，没有执行工具、重放证明或量化缺陷检出率\",\"confidence_boundary\":\"选择指资源对AI开发的适用价值，不等于所有分支已支持或所有证明已在当前工程重放\"}",
+      "record_id": "review.verification.cryptol",
+      "research_scope": "本次公开来源评估",
+      "resource_name": "Cryptol",
+      "result_status": "未执行接入",
+      "reviewed_on": "2026-11-01",
+      "schema_version": 1,
+      "scope_limits": "Cryptol规格本身需审查；测试通过和形式证明分别记。",
+      "selected_new_family": true,
+      "selection_reason": "纳入调研资源清单：可执行位向量规格语言，作为优化和密码实现的独立参考。 选择依据是明确验证/参考/测试用途和具体可检查产物；Cryptol规格本身需审查；测试通过和形式证明分别记。",
+      "source_refs": [
+        "turn27view1"
+      ],
+      "task": "执行一个位向量规格并用证明命令检查恒等式与反例。",
+      "taxonomy_categories": [
+        "V07",
+        "V32"
+      ],
+      "value_to_ai": "可执行位向量规格语言，作为优化和密码实现的独立参考。",
+      "worker_id": "worker 107",
+      "worker_scope": "翻译与重写验证 · 2"
+    },
+    "baseline_version": "0.21.14",
+    "formal_promotion": false,
+    "logical_entity_id": "cryptol",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "32-bit bit-vector specifications; two proofs and one counterexample",
+    "record_id": "review.verification.cryptol",
+    "system_runtime_requirements": [
+      "Linux x86_64",
+      "glibc",
+      "libgmp.so.10",
+      "libtinfo.so.6",
+      "libz.so.1",
+      "Python3"
+    ],
+    "worker_id": "worker 107"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/check.py"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "GHCRTS": "-N1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 59375120,
+      "extract": false,
+      "id": "official-distribution",
+      "material_path": null,
+      "sha256": "bd4846c3a1a521721c16cffdcd08ae794a2e1d6020d93314d48a5a6428692608",
+      "strip_root": false,
+      "url": "https://github.com/GaloisInc/cryptol/releases/download/3.6.0/cryptol-3.6.0-ubuntu-24.04-X64.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use a fresh independent prefix; checks consume only local inputs."
+    ],
+    "documentation": [
+      "sources-lock.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/check.py",
+        "description": "Run the bounded profile"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Validation entry",
+        "path": "{prefix}/check.py",
+        "purpose": "Replay the assigned semantic controls."
+      }
+    ],
+    "notes": [
+      "Scope is the explicitly executed profile; no formal release promotion.",
+      "Host ELF loader and system libraries are checked by the unmodified CPG manager."
+    ],
+    "summary": "32-bit bit-vector specifications; two proofs and one counterexample"
+  },
+  "version": "3.6.0"
+}

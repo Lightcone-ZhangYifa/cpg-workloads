@@ -1,0 +1,197 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/cafe_check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--kind",
+        "availability"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "pinned-source-and-toolchain",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/cafe_check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--kind",
+        "functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "gcc-rust-fixedaggregate-bidirectional",
+      "kind": "functional",
+      "stdout_regex": "\"positive_test_combinations\": 2",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "abi-cafe",
+  "metadata": {
+    "assignment_record_id": "review.verification.abi-cafe",
+    "baseline_version": "0.21.14",
+    "formal_release_promoted": false,
+    "license": "MIT OR Apache-2.0 upstream declaration; each vendored dependency and Rust component retains its original license.",
+    "measured_host_distribution": "Ubuntu 24.04; evidence metadata, not an installation gate",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "source_archive_identity": "locally assembled fixed Git tree/vendor bundles; urn hashes identify these exact generated artifacts, not an unrelated upstream archive",
+    "source_commit": "94d38030419eb00a1ba80e5e2b4d763dcee58db4",
+    "source_repository": "https://github.com/Gankra/abi-cafe",
+    "vendor_crates": 143,
+    "worker_id": "worker 027"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-B",
+        "{recipe}/cafe_prepare.py",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ]
+    ],
+    "required_host_commands": [
+      "python3",
+      "bash",
+      "cc",
+      "ar",
+      "ld"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc",
+      "cc",
+      "ar",
+      "ld"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/toolchain/lib:{prefix}/toolchain/lib/rustlib/x86_64-unknown-linux-gnu/lib"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 139194,
+      "extract": false,
+      "id": "abi-cafe.abi-cafe-source",
+      "material_path": "raw/abi-cafe-source.tar.gz",
+      "sha256": "0f61ea5ed4d7e92b68ea003275902e68554cad0815beff64d54feb369f7b13d8",
+      "strip_root": false,
+      "url": "urn:cpg:artifact:sha256:0f61ea5ed4d7e92b68ea003275902e68554cad0815beff64d54feb369f7b13d8"
+    },
+    {
+      "bytes": 45094651,
+      "extract": false,
+      "id": "abi-cafe.abi-cafe-vendor",
+      "material_path": "raw/abi-cafe-vendor.tar.gz",
+      "sha256": "5f86a1d8b4a19febc5d8402a29cf50244e4dfc29a30f44cfd2940542a4b57c56",
+      "strip_root": false,
+      "url": "urn:cpg:artifact:sha256:5f86a1d8b4a19febc5d8402a29cf50244e4dfc29a30f44cfd2940542a4b57c56"
+    },
+    {
+      "bytes": 80014172,
+      "extract": false,
+      "id": "abi-cafe.rust.rustc",
+      "material_path": "rust/rustc-1.88.0-x86_64-unknown-linux-gnu.tar.xz",
+      "sha256": "b049fd57fce274d10013e2cf0e05f215f68f6580865abc52178f66ae9bf43fd8",
+      "strip_root": false,
+      "url": "https://static.rust-lang.org/dist/2025-06-26/rustc-1.88.0-x86_64-unknown-linux-gnu.tar.xz"
+    },
+    {
+      "bytes": 9955712,
+      "extract": false,
+      "id": "abi-cafe.rust.cargo",
+      "material_path": "rust/cargo-1.88.0-x86_64-unknown-linux-gnu.tar.xz",
+      "sha256": "856962610ee821648cee32e3d6abac667af7bb7ea6ec6f3d184cc31e66044f6b",
+      "strip_root": false,
+      "url": "https://static.rust-lang.org/dist/2025-06-26/cargo-1.88.0-x86_64-unknown-linux-gnu.tar.xz"
+    },
+    {
+      "bytes": 30914344,
+      "extract": false,
+      "id": "abi-cafe.rust.rust-std",
+      "material_path": "rust/rust-std-1.88.0-x86_64-unknown-linux-gnu.tar.xz",
+      "sha256": "36d7eacf46bd5199cb433e49a9ed9c9b380d82f8a0ebc05e89b43b51c070c955",
+      "strip_root": false,
+      "url": "https://static.rust-lang.org/dist/2025-06-26/rust-std-1.88.0-x86_64-unknown-linux-gnu.tar.xz"
+    },
+    {
+      "bytes": 80497,
+      "extract": false,
+      "id": "abi-cafe.integration",
+      "material_path": "integration/abi-cafe-integration.tar.gz",
+      "sha256": "104d5276c9ca36aa00afad11b07a28fca355dcf47fca84bf63bcc0efa42f4488",
+      "strip_root": false,
+      "url": "urn:cpg:artifact:sha256:104d5276c9ca36aa00afad11b07a28fca355dcf47fca84bf63bcc0efa42f4488"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "export PATH={prefix}/bin:{prefix}/toolchain/bin:$PATH",
+      "export LD_LIBRARY_PATH={prefix}/toolchain/lib:{prefix}/toolchain/lib/rustlib/x86_64-unknown-linux-gnu/lib"
+    ],
+    "documentation": [
+      "https://github.com/Gankra/abi-cafe/tree/94d38030419eb00a1ba80e5e2b4d763dcee58db4"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/scripts/check-cafe.py --root {prefix} --out /absolute/fresh/cafe-results",
+        "description": "Run the bounded full profile in a fresh external output directory."
+      }
+    ],
+    "locations": [
+      {
+        "label": "ABI Cafe",
+        "path": "{prefix}/bin/abi-cafe",
+        "purpose": "Descriptive ABI compatibility testing"
+      },
+      {
+        "label": "Source and vendor",
+        "path": "{prefix}/source",
+        "purpose": "Original fixed build inputs and dependency license texts"
+      }
+    ],
+    "notes": [
+      "Build/install performs no downloads. Immutable source archives may be reused; each installation builds and owns separate source/build/toolchain/prefix trees.",
+      "Checks require the measured host GCC 13.3.0 targeting x86_64-linux-gnu; this is a declared profile rather than universal ABI conformance.",
+      "The upstream random17 SimplePaddedStruct NaNf generation failure is retained separately in known-limitations.json and evidence; it is not a compiler bug.",
+      "The induced float/integer mismatch is an intentional negative control.",
+      "Bundled Rust auxiliary ELF tools use the explicitly declared package-local library path; activate it for direct SDK use."
+    ],
+    "summary": "Pinned ABI Cafe 1.1.0 with offline source/vendor inputs, an independent Rust 1.88.0 SDK, and bounded GCC 13.3.0 ↔ Rust checks."
+  },
+  "version": "1.1.0"
+}

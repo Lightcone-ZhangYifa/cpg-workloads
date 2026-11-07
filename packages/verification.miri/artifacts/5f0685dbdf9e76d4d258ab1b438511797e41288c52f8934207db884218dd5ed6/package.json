@@ -1,0 +1,140 @@
+{
+  "build": "cpg-worker103-capsule-v3",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "safe-uaf-and-tree-borrows-alias",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 1000
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "verification.miri",
+  "metadata": {
+    "alias_model": "Tree Borrows, explicit -Zmiri-tree-borrows",
+    "baseline_change": false,
+    "binary_provenance": "ghcr.io/integer32llc/rust-playground-ci-rust-nightly@sha256:ebc77e3609f9db71573518960deada5c33ac6d876a7805568b945392d0751ed1",
+    "formal_baseline": "0.21.14",
+    "inner_elf_gate": "original check_binary_runtime/current_target with full raw ELF evidence",
+    "license": "MIT OR Apache-2.0, with bundled Rust/LLVM third-party notices",
+    "miri_source_path": "src/tools/miri",
+    "private_library_dir": "runtime/lib",
+    "record_id": "review.verification.miri",
+    "runtime_capsule_sha256": "ba3f3cd7423928f80104faeed02a597d12f3aa1b1a6eb49dc785d4e18193ee8d",
+    "runtime_layout": "compressed-capsule",
+    "runtime_member_inventory": "runtime-manifest.json",
+    "rust_commit": "3e92e1a2d20b991ef23a6c6064c34d57ee8c98d3",
+    "scope": "bounded functional profile",
+    "worker_id": "worker 103"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/bin/miri",
+      "{prefix}/runtime.cpgpkg.tar.gz",
+      "{prefix}/runtime-manifest.json",
+      "{prefix}/capsule-lock.json"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "sh",
+      "ldd"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 193,
+      "extract": true,
+      "id": "official-oci-layer-8",
+      "material_path": null,
+      "sha256": "e8dbb9e34e2f3269b589047956cf8a9eb43da22607525f9fed27d3d7fdacb7fa",
+      "strip_root": false,
+      "url": "https://ghcr.io/v2/integer32llc/rust-playground-ci-rust-nightly/blobs/sha256:e8dbb9e34e2f3269b589047956cf8a9eb43da22607525f9fed27d3d7fdacb7fa"
+    },
+    {
+      "bytes": 281999553,
+      "extract": true,
+      "id": "official-oci-layer-9",
+      "material_path": null,
+      "sha256": "4ba6bb9d3acd4e20d9bb75790caa6b581fc360a0d9bad5f6ef08a884e1778b13",
+      "strip_root": false,
+      "url": "https://ghcr.io/v2/integer32llc/rust-playground-ci-rust-nightly/blobs/sha256:4ba6bb9d3acd4e20d9bb75790caa6b581fc360a0d9bad5f6ef08a884e1778b13"
+    },
+    {
+      "bytes": 5962131,
+      "extract": true,
+      "id": "official-oci-layer-10",
+      "material_path": null,
+      "sha256": "3a0ba94e6b999844f1ef988342a14b8b5e31d9bdd48d289c18773aee99c5889a",
+      "strip_root": false,
+      "url": "https://ghcr.io/v2/integer32llc/rust-playground-ci-rust-nightly/blobs/sha256:3a0ba94e6b999844f1ef988342a14b8b5e31d9bdd48d289c18773aee99c5889a"
+    },
+    {
+      "bytes": 408492174,
+      "extract": true,
+      "id": "official-oci-layer-19",
+      "material_path": null,
+      "sha256": "58cdf1b9dca2b2cf963968bb5f274d9ef59422d106b8349055da62a38aced3e6",
+      "strip_root": false,
+      "url": "https://ghcr.io/v2/integer32llc/rust-playground-ci-rust-nightly/blobs/sha256:58cdf1b9dca2b2cf963968bb5f274d9ef59422d106b8349055da62a38aced3e6"
+    },
+    {
+      "bytes": 40928462,
+      "extract": true,
+      "id": "exact-rust-miri-source",
+      "material_path": null,
+      "sha256": "aacd3681320b69cc749632d919d7d9eea9defdb4964981ce69c80c259eeecad3",
+      "strip_root": true,
+      "url": "https://codeload.github.com/rust-lang/rust/tar.gz/3e92e1a2d20b991ef23a6c6064c34d57ee8c98d3"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "export PATH=\"{prefix}/bin:$PATH\""
+    ],
+    "documentation": [
+      "https://github.com/rust-lang/miri",
+      "https://github.com/rust-lang/rust-playground"
+    ],
+    "examples": [
+      {
+        "command": "MIRIFLAGS=-Zmiri-tree-borrows CARGO_NET_OFFLINE=true CARGO_TARGET_DIR=/tmp/cpg-miri-target {prefix}/bin/miri run --offline --manifest-path PROJECT/Cargo.toml",
+        "description": "Run a project using the pinned Tree Borrows model"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Miri CLI",
+        "path": "{prefix}/bin/miri",
+        "purpose": "Cargo-backed Miri run/test with the pinned precompiled sysroot"
+      }
+    ],
+    "notes": [
+      "Three executed deterministic fixture paths only; no all-input or Rust soundness proof. Tree Borrows is experimental. Runtime prefix is immutable; Cargo output and home are outside the prefix.",
+      "Host Ubuntu 24.04 libc, libstdc++, zlib and libgcc ABI are required. The delivered profile uses dependency-free Cargo fixtures and includes no network setup or rustup install.",
+      "The bin/miri convenience entrypoint accepts cargo-miri subcommands, for example miri run --offline --manifest-path PROJECT/Cargo.toml. Interpreter binary remains under runtime/bin/miri.",
+      "Runtime is a SHA-locked compressed capsule. CPG0.21.14 SDK must be importable by python3. CLI/check verifies and expands the full runtime into a private writable build directory per invocation, then removes it; CPG_RUNTIME_BUILD can choose a location outside the immutable prefix. Functional logs and inputs are retained separately from the temporary runtime.",
+      "The expanded capsule is additionally checked by the original SDK ELF/runtime checker against actual current_target; its private libraries must resolve inside that expansion. Undeclared ambient LD_* variables are excluded from qualified execution."
+    ],
+    "summary": "Paired Miri nightly with ready MIR sysroot for safe Rust and explicit UB diagnostics."
+  },
+  "version": "nightly-2026-11-02-3e92e1a2d2"
+}

@@ -1,0 +1,167 @@
+{
+  "build": "cpg-worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/run_check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "stdout_regex": "CPG_BOUNDED_FUNCTIONAL_PASS cgra-mapper",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "cgra-mapper",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "external_sdk_environment_keys": [],
+    "qualification_scope": "Bounded native worker profile; no new Dataset or hardware qualification.",
+    "source_lock": {
+      "build_copy_modified": true,
+      "build_patch": "metadata/cgra-demangle.patch",
+      "build_patch_reason": "Link the matched LLVM12 LLVMDemangle static component because the official SDK opt does not export llvm::demangle.",
+      "bundled_runtime_selection": "metadata/llvm12-runtime-selection.json",
+      "check": "checks/check_cgra.py",
+      "commit": "f5eeba755245451367251c9a787615a8c681ef2d",
+      "external_sdk": {
+        "bytes": 452975464,
+        "environment": "CPG_LLVM12_ROOT",
+        "extracted_directory": "clang+llvm-12.0.1-x86_64-linux-gnu-ubuntu-",
+        "extracted_members": {
+          "member_count": 4918,
+          "path": "evidence/llvm12-sdk-members.json",
+          "regular_file_bytes": 3059231633,
+          "sha256": "a19434cb13904ee420ca52b50005f3f5eac87a65c8964ff804dc8f05a947f02e"
+        },
+        "path": "raw/clang+llvm-12.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz",
+        "receipt": "raw/clang+llvm-12.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz.receipt.json",
+        "runtime_requirement": "A selected unchanged clang/opt/header subset is now bundled in the CPG payload; full original SDK is retained separately for rebuilding.",
+        "sha256": "6b3cc55d3ef413be79785c4dc02828ab3bd6b887872b143e3091692fc6acefe7",
+        "signature_verified": false,
+        "upstream_commit": "fed41342a82f5a3a9201819a82bf7a48313e296b",
+        "upstream_tag": "llvmorg-12.0.1",
+        "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.1/clang%2Bllvm-12.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz",
+        "version": "12.0.1"
+      },
+      "maintainer_cmake": {
+        "bytes": 27800904,
+        "path": "raw/cmake-3.31.6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "purpose": "maintainer build only; not a check runtime",
+        "sha256": "1c8b05df0602365da91ee6a3336fe57525b137706c4ab5675498f662ae1dbcec",
+        "url": "https://files.pythonhosted.org/packages/59/e8/096984b89133681533650b9078c5ed1c5c9b534e869b5487f22d4de1935c/cmake-3.31.6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "version": "3.31.6"
+      },
+      "pass_abi": {
+        "compiler": "host GCC 13.3.0",
+        "llvm": "12.0.1",
+        "openmp": "libomp.so from the same official LLVM SDK",
+        "plugin_runpath": "$ORIGIN",
+        "runtime_opt_matches_build_sdk": true
+      },
+      "qualification": "unfused inter_edge static exported constraints only",
+      "repository": "https://github.com/tancheng/CGRA-Mapper",
+      "resource_id": "cgra-mapper",
+      "source": {
+        "bytes": 7209638,
+        "path": "raw/cgra-mapper-f5eeba755245451367251c9a787615a8c681ef2d.tar.gz",
+        "receipt": "raw/cgra-mapper-f5eeba755245451367251c9a787615a8c681ef2d.tar.gz.receipt.json",
+        "sha256": "9c9ca7bc4aaa09ead07bc2bad3bef7ced0c57eefa09017e93e030eb072144850",
+        "url": "https://codeload.github.com/tancheng/CGRA-Mapper/tar.gz/f5eeba755245451367251c9a787615a8c681ef2d"
+      },
+      "source_build_verified": true,
+      "submodules": [],
+      "upstream_license": "BSD-3-Clause",
+      "upstream_source_modified": false
+    },
+    "worker_plan_id": "cpg-resource-research-20261101-v1"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/evidence/reference-run/build/src:{prefix}/lib",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "wrapper": false
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 7209638,
+      "extract": false,
+      "id": "upstream-1",
+      "material_path": null,
+      "sha256": "9c9ca7bc4aaa09ead07bc2bad3bef7ced0c57eefa09017e93e030eb072144850",
+      "strip_root": false,
+      "url": "https://codeload.github.com/tancheng/CGRA-Mapper/tar.gz/f5eeba755245451367251c9a787615a8c681ef2d"
+    },
+    {
+      "bytes": 452975464,
+      "extract": false,
+      "id": "upstream-2",
+      "material_path": null,
+      "sha256": "6b3cc55d3ef413be79785c4dc02828ab3bd6b887872b143e3091692fc6acefe7",
+      "strip_root": false,
+      "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.1/clang%2Bllvm-12.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz"
+    },
+    {
+      "bytes": 27800904,
+      "extract": false,
+      "id": "upstream-3",
+      "material_path": null,
+      "sha256": "1c8b05df0602365da91ee6a3336fe57525b137706c4ab5675498f662ae1dbcec",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/59/e8/096984b89133681533650b9078c5ed1c5c9b534e869b5487f22d4de1935c/cmake-3.31.6-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the original CPG PackageManager with an explicit fresh prefix and declared SDK bindings."
+    ],
+    "documentation": [
+      "https://github.com/tancheng/CGRA-Mapper"
+    ],
+    "examples": [
+      {
+        "command": "manager.check('cgra-mapper', prefix=prefix, kinds=['functional'], environment=bindings)",
+        "description": "Repeat the declared functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Payload",
+        "path": "{prefix}",
+        "purpose": "Independent runtime, source locks and upstream materials."
+      }
+    ],
+    "notes": [
+      "Unfused static mapping contract only; fused nonlinear DFG export is detected and quarantined; not cycle-accurate or hardware proof. Exact upstream clang/opt/header runtime subset bundled; original full SDK separately preserved.",
+      "Reference distribution is build metadata; actual ELF ABI is verified by original CPG.",
+      "This worker increment does not promote original formal counts or claim hardware qualification."
+    ],
+    "summary": "cgra-mapper: independently installed, immutable upstream inputs and bounded functional validation."
+  },
+  "version": "git-f5eeba755245451367251c9a787615a8c681ef2d-llvm12.0.1-cpg1"
+}

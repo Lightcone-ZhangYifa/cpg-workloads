@@ -1,0 +1,101 @@
+{
+  "build": "worker095-material-3",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "source-and-index",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "compcert-tso",
+  "metadata": {
+    "entity_kind": "resource",
+    "license_id": "LicenseRef-INRIA-Non-Commercial",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.verification.compcert-tso",
+    "worker_id": "worker 095",
+    "worker_local_qualification": {
+      "benchmark": null,
+      "dataset": null,
+      "functional": null,
+      "material": true,
+      "proof_replay": null
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "qualification_scope": "exact_author_source_material_and_checked_symbol_index_only",
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C.UTF-8",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2438119,
+      "extract": true,
+      "id": "author-release",
+      "material_path": "source",
+      "sha256": "e8c4af3aec99d68b3cd72f3395146595a061b306f47584feaf24db5947be5247",
+      "strip_root": true,
+      "url": "https://www.cl.cam.ac.uk/~pes20/CompCertTSO/tarballs/compcert-tso-1.13.8255.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.cl.cam.ac.uk/~pes20/CompCertTSO/tarballs/compcert-tso-1.13.8255.tar.gz"
+    ],
+    "examples": [
+      {
+        "command": "python3 -m json.tool {prefix}/index/selected.json",
+        "description": "Inspect selected theorem locations"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Unmodified source release",
+        "path": "{prefix}/source",
+        "purpose": "Inspect exact versioned formal definitions, proof scripts, build instructions and notices."
+      },
+      {
+        "label": "Symbol and leaf index",
+        "path": "{prefix}/index",
+        "purpose": "Locate selected statements and scope assumptions without confusing reference material with mechanically replayed proof."
+      }
+    ],
+    "notes": [
+      "The original worker task explicitly permits material-only delivery. No CompCertTSO binary execution or Coq 8.3 proof replay is claimed.",
+      "The author documentation excludes out-of-memory errors. This is not a correctness proof for unrestricted modern C++ atomics, ARM or RISC-V.",
+      "Two literal admit tactics occur in common/Memcomp.v at lines 630 and 632, in a file listed by the upstream Makefile. They are preserved and indexed; this delivery does not certify all upstream proof targets.",
+      "The upstream README pins Coq 8.3pl1/pl2, OCaml 3.12.0 (or 3.11) and optional Ott 0.20.3 for regeneration. These historical execution dependencies are documented, not silently replaced by the Coq 8.4 toolkit used for CompCertSSA.",
+      "The complete release is distributed under the included INRIA Non-Commercial License; retain attribution and license terms."
+    ],
+    "summary": "Historical ClightTSO to x86-TSO source and formal-semantics reference, with exact theorem/assumption index."
+  },
+  "version": "1.13.8255"
+}

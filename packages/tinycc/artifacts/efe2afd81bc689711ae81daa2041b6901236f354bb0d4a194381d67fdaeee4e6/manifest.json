@@ -1,0 +1,285 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe/fixtures"
+    },
+    {
+      "bytes": 756,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/fixtures/asmjit_check.cpp",
+      "sha256": "efd6fae08237aa9eca626eec2d9a1ad4f3b838faadf814266615f99c6d4f1f0a"
+    },
+    {
+      "bytes": 1042,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/fixtures/dynasm_check.dasc",
+      "sha256": "c10b27c7e2e4a09fc14fe23a6caefaec6ba3e0891fe7dea9ab06ecb593d7bed5"
+    },
+    {
+      "bytes": 858,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/fixtures/libtcc_check.c",
+      "sha256": "5d269b5dc63397015f6aeb0006d5c1ecd0279bf655389f1117aa581c7d6c5254"
+    },
+    {
+      "bytes": 322,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/fixtures/luajit_driver.c",
+      "sha256": "b3c92aea8d35ab01ae7b19a0877b5e199424af55386bb7381a6201e3745f2d91"
+    },
+    {
+      "bytes": 1059,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/fixtures/luajit_ffi_trace.lua",
+      "sha256": "7170240d4e0ec9e4c5759810d2d02ec382e5c8a367727dc71c526908b5a9c1ee"
+    },
+    {
+      "bytes": 2708,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/fixtures/run_checks.py",
+      "sha256": "a2ee5d2dce9e183f4e377b7e21fb24ff51e8d987e154fa557615b797364b8757"
+    },
+    {
+      "bytes": 136,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/fixtures/tcc_elf_check.c",
+      "sha256": "8f3058c168af8353a182273f222106298c4030abe3eb2a4b801fe80f7125a87c"
+    },
+    {
+      "bytes": 896,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/fixtures/xbyak_check.cpp",
+      "sha256": "f685256a977abfc50b971d194803d2bf6366f24657f943fe714d2ffa42963ade"
+    },
+    {
+      "bytes": 4837,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/inputs.lock.json",
+      "sha256": "9694688a98368f375e92e14a15ec7470fbb6baacab58d621f274813f0cd4601b"
+    },
+    {
+      "bytes": 11628,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/replay_lightweight.py",
+      "sha256": "423a0f42357685995f3b309601963a73132bcc8725184663f28acc96a056a74c"
+    },
+    {
+      "bytes": 3068,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/runtime_layout.py",
+      "sha256": "53b90d75992d33e32d7423e43b70df16df808ca812a50697bc590edac6e4a0a2"
+    },
+    {
+      "bytes": 1606,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/source_build.py",
+      "sha256": "95bf0528c83f91913fb168b626e81744c85bc71ee4483a89861641c9ef9e57c7"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 1047402,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/d2470fdeed862ddb18f4ec4e6a405fa984580c3d85c38492516749c61931c30e",
+      "sha256": "d2470fdeed862ddb18f4ec4e6a405fa984580c3d85c38492516749c61931c30e"
+    }
+  ],
+  "inventory_sha256": "0f33d5f01d7a80407b9380b1e357aa0881371d3601242705acfc267dc5fd3d9a",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "04322b9698982b53cb1746e0380c95166e822bfdf6a9a4df544a3abd6927539c",
+  "method": "source",
+  "package": {
+    "build": "cpg-worker016-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{prefix}/run_checks.py"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "host-jit-functional",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "tinycc",
+    "metadata": {
+      "counted_new_upstream": true,
+      "host_data_dependencies": [
+        "libc development headers",
+        "host ELF startup objects",
+        "host libc shared libraries"
+      ],
+      "license": "LGPL-2.1-or-later; per-file runtime notices retained",
+      "not_formal_catalog_replacement": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "String compilation, host symbol callbacks, C to ELF compilation and execution",
+      "record_id": "review.engineering.tinycc",
+      "reference_host": {
+        "abi": "SysV",
+        "arch": "x86_64",
+        "build_cc": "GCC 13.3.0",
+        "os": "linux",
+        "tested_glibc": "2.39"
+      },
+      "upstream_pin": "e23dabed154a8495f3ac1ff3cc9d04fa1c207893",
+      "worker_id": "worker 016"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "-B",
+          "{recipe}/source_build.py",
+          "--recipe",
+          "{recipe}",
+          "--assets",
+          "{assets}",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}",
+          "--name",
+          "tinycc"
+        ]
+      ],
+      "required_host_commands": [
+        "python3",
+        "gcc",
+        "make",
+        "ar",
+        "sh"
+      ],
+      "required_installed_paths": [
+        "{prefix}/run_checks.py",
+        "{prefix}/cpg-resource.json",
+        "{prefix}/share/tinycc/source"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "sh"
+      ],
+      "runtime_environment": {
+        "CPG_OFFLINE": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1047402,
+        "extract": false,
+        "id": "tinycc-input",
+        "material_path": "raw/tinycc.tar.gz",
+        "sha256": "d2470fdeed862ddb18f4ec4e6a405fa984580c3d85c38492516749c61931c30e",
+        "strip_root": false,
+        "url": "https://codeload.github.com/TinyCC/tinycc/tar.gz/e23dabed154a8495f3ac1ff3cc9d04fa1c207893"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Add {prefix}/bin to PATH when needed."
+      ],
+      "documentation": [
+        "https://codeload.github.com/TinyCC/tinycc/tar.gz/e23dabed154a8495f3ac1ff3cc9d04fa1c207893"
+      ],
+      "examples": [
+        {
+          "command": "python3 {prefix}/run_checks.py",
+          "description": "Run bounded offline functional profile"
+        }
+      ],
+      "locations": [
+        {
+          "label": "prefix",
+          "path": "{prefix}",
+          "purpose": "Independent installation prefix"
+        },
+        {
+          "label": "source",
+          "path": "{prefix}/share/tinycc/source",
+          "purpose": "Complete fixed source and license context"
+        }
+      ],
+      "notes": [
+        "Canonical repo.or.cz bot denial recorded; exact same published commit obtained from explicit unofficial mirror",
+        "Host libc headers and startup objects remain host toolchain dependencies",
+        "Distribution fields describe the measured reference host; the original manager gates only OS and architecture.",
+        "Source builds require the explicitly listed ambient host commands; no exact APT dependency closure is claimed."
+      ],
+      "summary": "String compilation, host symbol callbacks, C to ELF compilation and execution"
+    },
+    "version": "0.9.28rc+gite23dabed"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "bounded_functional_evidence": "/workspace/scratch/f955c70ab71b/workers/worker-016/run-final/logs/tinycc/result.json",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "raw_locks": [
+      {
+        "bytes": 1047402,
+        "extract": false,
+        "id": "tinycc-input",
+        "material_path": "raw/tinycc.tar.gz",
+        "sha256": "d2470fdeed862ddb18f4ec4e6a405fa984580c3d85c38492516749c61931c30e",
+        "strip_root": false,
+        "url": "https://codeload.github.com/TinyCC/tinycc/tar.gz/e23dabed154a8495f3ac1ff3cc9d04fa1c207893"
+      }
+    ],
+    "upstream_source_unmodified": true,
+    "worker_id": "worker 016"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "tinycc-input",
+      "path": "sources/d2470fdeed862ddb18f4ec4e6a405fa984580c3d85c38492516749c61931c30e"
+    }
+  ]
+}

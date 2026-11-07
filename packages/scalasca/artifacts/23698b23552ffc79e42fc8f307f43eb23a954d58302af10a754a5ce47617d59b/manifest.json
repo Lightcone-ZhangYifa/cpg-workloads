@@ -1,0 +1,243 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 26531,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSES.txt",
+      "sha256": "405040134fb4cc92808b0c6f7f049a469404a15ae0e0b7dc1230afe2749059df"
+    },
+    {
+      "bytes": 2153,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/MATERIALS.md",
+      "sha256": "e653804b5923a068b7a9d63eddc53b61743590ed9bdb1df78ef3aaeb7c964a27"
+    },
+    {
+      "bytes": 571,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/POLICY.json",
+      "sha256": "98786f7646dce41ef432ce0758dd1d5db7c0f199c3c8631eb258a45b55f230d3"
+    },
+    {
+      "bytes": 379351,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/archive-members.json",
+      "sha256": "374ffbb0afb9bc8c0a37954bf9b55e7811d33eb75aff78a55592e6837b225fd4"
+    },
+    {
+      "bytes": 3302,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/inspect_material.py",
+      "sha256": "8559cfff59af3d138ff5c6673e1ca2893711c5c7fbcd611a47ab03f378db8d6a"
+    },
+    {
+      "bytes": 1742,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/material-index.json",
+      "sha256": "2afb4941492317aa4a0d68ae8846199ad64c8645c6841dca4554641ac04d2f77"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/original-archives"
+    },
+    {
+      "bytes": 11303156,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/original-archives/scalasca.tar.gz",
+      "sha256": "17e72fd908be43879955e4ed49c2732d4dbda7d295fec2d8b3af7ddafe1202a0"
+    },
+    {
+      "bytes": 4951856,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/reference-text.jsonl",
+      "sha256": "960013e00b41952cbbe696ea12851e1d8518458a2540a6b35321a3d06589c529"
+    },
+    {
+      "bytes": 905,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/source-lock.json",
+      "sha256": "667fb47dfc2d33ba816a9644e9e5e2c682bd32a512d6e6a33d5521920f3e7fcb"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 2538,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "a00e0447b12542c5ffe9e99f09fc6ff0d9a3f205f17fcf42ec162b62659e6233"
+    }
+  ],
+  "inventory_sha256": "fd43fcdfdc72f08ab249599b747659f50a835866f1947b766764466671c0c9b5",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "8131aa452ae0c3d6a619be0d953caed6543314465f1c173c2d29ab3674d164a9",
+  "method": "material",
+  "package": {
+    "build": "w078-static-1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "locked-static-materials",
+        "kind": "availability",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "scalasca",
+    "metadata": {
+      "baseline_catalog_sha256": null,
+      "baseline_definition_sha256": null,
+      "catalog": {
+        "archive_bytes": 11303156,
+        "category": [
+          "Observability",
+          "Static reference materials"
+        ],
+        "dependencies": [],
+        "documentation": "https://www.scalasca.org/",
+        "extract": false,
+        "id": "scalasca",
+        "kind": "url",
+        "license_class": "open",
+        "license_id": "BSD-3-Clause; bundled component notices retained",
+        "logical_resource_id": "scalasca",
+        "mandatory": false,
+        "material_path": "original-archives/scalasca.tar.gz",
+        "policy_held": true,
+        "profile_kind": "complete-locked-source-materials",
+        "purpose": "固定 Scalasca 2.6.2 官方发行及随附 OTF2/CUBE 文档，供等待时间和并行轨迹分析设计研究。",
+        "redistributable": true,
+        "roles": [
+          "dev"
+        ],
+        "sha256": "17e72fd908be43879955e4ed49c2732d4dbda7d295fec2d8b3af7ddafe1202a0",
+        "source_url": "https://apps.fz-juelich.de/scalasca/releases/scalasca/2.6/dist/scalasca-2.6.2.tar.gz",
+        "strip_archive_root": false,
+        "technical_profile_only": false,
+        "title": "Scalasca Trace Tools 2.6.2：并行 trace 语义与格式",
+        "version": "2.6.2"
+      },
+      "catalog_sha256": "fbf32eb9abdfdf752b1d7350cebe960d30683c5ffd2725bf4cad6606f67fac26",
+      "does_not_claim_tool_material_completeness": false,
+      "logical_resource_id": "scalasca",
+      "policy_held": true,
+      "profile_kind": "complete-locked-source-materials",
+      "technical_profile_only": false
+    },
+    "provider": "material",
+    "recipe": {
+      "collection_enabled": false,
+      "profile_kind": "complete-locked-source-materials",
+      "required_installed_paths": [
+        "{prefix}/MATERIALS.md",
+        "{prefix}/material-index.json",
+        "{prefix}/source-lock.json",
+        "{prefix}/POLICY.json"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 11303156,
+        "extract": false,
+        "id": "scalasca",
+        "material_path": "original-archives/scalasca.tar.gz",
+        "sha256": "17e72fd908be43879955e4ed49c2732d4dbda7d295fec2d8b3af7ddafe1202a0",
+        "strip_root": false,
+        "url": "https://apps.fz-juelich.de/scalasca/releases/scalasca/2.6/dist/scalasca-2.6.2.tar.gz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "any",
+      "distribution_version": "any",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://www.scalasca.org/"
+      ],
+      "examples": [
+        {
+          "command": "python3 {prefix}/inspect_material.py --list",
+          "description": "List static topics"
+        },
+        {
+          "command": "python3 {prefix}/inspect_material.py --search metadata --limit 10",
+          "description": "Search indexed materials"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Static reading guide",
+          "path": "{prefix}/MATERIALS.md",
+          "purpose": "Authored task-specific guide and limits."
+        },
+        {
+          "label": "Locked source archives",
+          "path": "{prefix}/source-lock.json",
+          "purpose": "Exact original byte identities and closure mapping."
+        }
+      ],
+      "notes": [
+        "System collection is policy-held. Static availability is not runtime or hardware qualification.",
+        "All original baseline identities and dependencies are unchanged.",
+        "Distribution metadata is descriptive; material content is not bound to one Linux distribution."
+      ],
+      "summary": "固定 Scalasca 2.6.2 官方发行及随附 OTF2/CUBE 文档，供等待时间和并行轨迹分析设计研究。"
+    },
+    "version": "2.6.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "logical_resource_id": "scalasca",
+    "official_runtime_qualification": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_kind": "complete-locked-source-materials",
+    "upstream_execution": false,
+    "worker_id": "worker 078"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

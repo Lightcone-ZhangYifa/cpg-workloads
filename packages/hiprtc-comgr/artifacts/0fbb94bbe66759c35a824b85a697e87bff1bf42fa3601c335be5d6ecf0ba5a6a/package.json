@@ -1,0 +1,188 @@
+{
+  "build": "worker040-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_hiprtc.py",
+        "--prefix",
+        "{prefix}",
+        "--work",
+        "{build}/checks"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "explicit-target-compile-and-bitcode-link",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "c++"
+      ],
+      "timeout_seconds": 360
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "hiprtc-comgr",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "hardware_execution_qualified": false,
+    "host_requirements": [
+      "glibc",
+      "libstdc++",
+      "libgcc_s",
+      "libnuma.so.1",
+      "libz.so.1",
+      "libzstd.so.1"
+    ],
+    "license_files_included": true,
+    "licenses": [
+      "MIT (HIP/Comgr API)",
+      "Apache-2.0 WITH LLVM-exception (embedded LLVM)"
+    ],
+    "original_packages": [
+      {
+        "bytes": 59923644,
+        "file": "comgr_3.0.0.70002-56~24.04_amd64.deb",
+        "name": "comgr",
+        "sha256": "d24fe9eefbb7c7d85c6e18a76ee812c97e82822aeb1d3b8f41002a73d43a8d5f",
+        "url": "https://repo.radeon.com/rocm/apt/7.0.2/pool/main/c/comgr/comgr_3.0.0.70002-56~24.04_amd64.deb",
+        "version": "3.0.0.70002-56~24.04"
+      },
+      {
+        "bytes": 359562,
+        "file": "hip-dev_7.0.51831.70002-56~24.04_amd64.deb",
+        "name": "hip-dev",
+        "sha256": "0f96a380dce611852cb8cffebe3ceebb3268e903391e1ef53a9e8ecca6b57b33",
+        "url": "https://repo.radeon.com/rocm/apt/7.0.2/pool/main/h/hip-dev/hip-dev_7.0.51831.70002-56~24.04_amd64.deb",
+        "version": "7.0.51831.70002-56~24.04"
+      },
+      {
+        "bytes": 13045756,
+        "file": "hip-runtime-amd_7.0.51831.70002-56~24.04_amd64.deb",
+        "name": "hip-runtime-amd",
+        "sha256": "358e6050486237d6388a4eaad66bba2577bf8435c25aa47128af0074a82b74c6",
+        "url": "https://repo.radeon.com/rocm/apt/7.0.2/pool/main/h/hip-runtime-amd/hip-runtime-amd_7.0.51831.70002-56~24.04_amd64.deb",
+        "version": "7.0.51831.70002-56~24.04"
+      },
+      {
+        "bytes": 727228,
+        "file": "rocm-device-libs_1.0.0.70002-56~24.04_amd64.deb",
+        "name": "rocm-device-libs",
+        "sha256": "12fc3b0545cc128ae3c9b2451b017b3d82a9b69c526ac52701cd55c172db3500",
+        "url": "https://repo.radeon.com/rocm/apt/7.0.2/pool/main/r/rocm-device-libs/rocm-device-libs_1.0.0.70002-56~24.04_amd64.deb",
+        "version": "1.0.0.70002-56~24.04"
+      }
+    ],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.engineering.hiprtc-comgr",
+    "scope": "gfx90a/gfx1100 offline compile; matched bitcode link and code object inspection",
+    "source_rebuild_qualified": false,
+    "vendor_release": "ROCm7.0.2",
+    "worker_id": "worker 040"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "commands",
+    "required_installed_paths": [
+      "{prefix}/lib/libhiprtc.so.7",
+      "{prefix}/lib/libamd_comgr.so.3",
+      "{prefix}/include/hip/hiprtc.h",
+      "{prefix}/share/cpg/hiprtc_adapter.py"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "c++"
+    ],
+    "runtime_environment": {
+      "AMD_COMGR_CACHE": "0",
+      "LD_LIBRARY_PATH": "{prefix}/lib"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 59923644,
+      "extract": false,
+      "id": "comgr",
+      "material_path": "raw/comgr_3.0.0.70002-56~24.04_amd64.deb",
+      "sha256": "d24fe9eefbb7c7d85c6e18a76ee812c97e82822aeb1d3b8f41002a73d43a8d5f",
+      "strip_root": false,
+      "url": "https://repo.radeon.com/rocm/apt/7.0.2/pool/main/c/comgr/comgr_3.0.0.70002-56~24.04_amd64.deb"
+    },
+    {
+      "bytes": 359562,
+      "extract": false,
+      "id": "hip-dev",
+      "material_path": "raw/hip-dev_7.0.51831.70002-56~24.04_amd64.deb",
+      "sha256": "0f96a380dce611852cb8cffebe3ceebb3268e903391e1ef53a9e8ecca6b57b33",
+      "strip_root": false,
+      "url": "https://repo.radeon.com/rocm/apt/7.0.2/pool/main/h/hip-dev/hip-dev_7.0.51831.70002-56~24.04_amd64.deb"
+    },
+    {
+      "bytes": 13045756,
+      "extract": false,
+      "id": "hip-runtime-amd",
+      "material_path": "raw/hip-runtime-amd_7.0.51831.70002-56~24.04_amd64.deb",
+      "sha256": "358e6050486237d6388a4eaad66bba2577bf8435c25aa47128af0074a82b74c6",
+      "strip_root": false,
+      "url": "https://repo.radeon.com/rocm/apt/7.0.2/pool/main/h/hip-runtime-amd/hip-runtime-amd_7.0.51831.70002-56~24.04_amd64.deb"
+    },
+    {
+      "bytes": 727228,
+      "extract": false,
+      "id": "rocm-device-libs",
+      "material_path": "raw/rocm-device-libs_1.0.0.70002-56~24.04_amd64.deb",
+      "sha256": "12fc3b0545cc128ae3c9b2451b017b3d82a9b69c526ac52701cd55c172db3500",
+      "strip_root": false,
+      "url": "https://repo.radeon.com/rocm/apt/7.0.2/pool/main/r/rocm-device-libs/rocm-device-libs_1.0.0.70002-56~24.04_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the local Python OfflineCompiler(prefix) client in {prefix}/share/cpg/hiprtc_adapter.py.",
+      "For native clients set LD_LIBRARY_PATH to {prefix}/lib."
+    ],
+    "documentation": [
+      "https://rocm.docs.amd.com/projects/HIP/en/docs-7.0.2/how-to/hip_rtc.html",
+      "https://github.com/ROCm/llvm-project/tree/rocm-7.0.2/amd/comgr"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages check hiprtc-comgr --prefix <PREFIX>",
+        "description": "Run bounded offline acceptance"
+      }
+    ],
+    "locations": [
+      {
+        "label": "libraries",
+        "path": "{prefix}/lib",
+        "purpose": "Matched compiler-only shared libraries"
+      },
+      {
+        "label": "client",
+        "path": "{prefix}/share/cpg/hiprtc_adapter.py",
+        "purpose": "Explicit architecture checked Python compiler API"
+      }
+    ],
+    "notes": [
+      "ROCm release7.0.2: hip-runtime-amd7.0.51831.70002-56 and comgr3.0.0.70002-56.",
+      "HIPRTC API version function reports9.0 in this vendor build; authoritative release identity is original package hashes.",
+      "Only compiler libraries/headers/bitcode/docs are extracted; no GPU runtime, driver or profiler is installed.",
+      "The raw HIPRTC API crashes for gfx999999 on this version. The supplied Python adapter validates against Comgr ISA enumeration first.",
+      "HIPRTC LinkComplete in this upstream version requires runtime device discovery. Offline linking is performed through Comgr with explicit ISA.",
+      "GPU kernel loading and execution remain untested on this host."
+    ],
+    "summary": "Matched standalone HIPRTC/Comgr compiler subset for explicit-target offline HIP compilation and LLVM bitcode linking."
+  },
+  "version": "7.0.2"
+}

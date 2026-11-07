@@ -1,0 +1,117 @@
+{
+  "build": "worker077-static-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/static_check.py",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "static-material-integrity",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "tau-materials",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 76306479,
+      "category": "observability",
+      "description": "UO-OACISS/tau2固定commit的完整官方镜像源归档，展开公开头、man/quickref、profile/trace读取源码与JSON schema、相关许可；未配置编译或运行TAU。",
+      "extract": false,
+      "id": "tau-materials",
+      "kind": "material",
+      "license": "LicenseRef-TAU-permissive and bundled third-party licenses",
+      "license_class": "open",
+      "material_path": "upstream/tau2-bae1ebec0414a6e8422fabe6c2d58974f6a2969f.tar.gz",
+      "name": "TAU 静态API与输入格式材料",
+      "new_material_profile": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "policy_status": "policy-held",
+      "record_id": "review.engineering.tau",
+      "sha256": "821976844ade52091eda2df00c13cd00a532622f8943afa585de4eb6f265ec68",
+      "source_url": "https://codeload.github.com/UO-OACISS/tau2/tar.gz/bae1ebec0414a6e8422fabe6c2d58974f6a2969f",
+      "strip_archive_root": false,
+      "version": "git-bae1ebec0414"
+    },
+    "catalog_sha256": "6f6403d9ad098bbef1fec7845b3f0573b705a89648205949a6faba5213c70e4c",
+    "collector_policy": "policy-held",
+    "material_scope": "UO-OACISS/tau2固定commit的完整官方镜像源归档，展开公开头、man/quickref、profile/trace读取源码与JSON schema、相关许可；未配置编译或运行TAU。",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "benchmark": null,
+      "complete_profiler_installation": false,
+      "dataset_verified": null,
+      "functional": null,
+      "hardware": null,
+      "material": true,
+      "material_scope": "exactly the static profile documented here",
+      "oci": null,
+      "source_build": null
+    },
+    "worker_id": "worker 077"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 76306479,
+      "extract": false,
+      "id": "tau-materials",
+      "material_path": "upstream/tau2-bae1ebec0414a6e8422fabe6c2d58974f6a2969f.tar.gz",
+      "sha256": "821976844ade52091eda2df00c13cd00a532622f8943afa585de4eb6f265ec68",
+      "strip_root": false,
+      "url": "https://codeload.github.com/UO-OACISS/tau2/tar.gz/bae1ebec0414a6e8422fabe6c2d58974f6a2969f"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.cs.uoregon.edu/research/tau/home.php"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/reference_query.py 'TAU_PROFILE_TIMER' --limit 20",
+        "description": "Search pinned text without executing vendor code"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reference guide",
+        "path": "{prefix}/REFERENCE.zh.md",
+        "purpose": "Exact scope, API/input map, licensing and policy boundary"
+      },
+      {
+        "label": "Pinned material files",
+        "path": "{prefix}/reference",
+        "purpose": "Offline documentation, type interfaces and licensed examples"
+      }
+    ],
+    "notes": [
+      "UO-OACISS/tau2固定commit的完整官方镜像源归档，展开公开头、man/quickref、profile/trace读取源码与JSON schema、相关许可；未配置编译或运行TAU。",
+      "未运行tau_exec、tau_cc/tau_cxx、插桩器、PAPI/CUPTI后端或paraprof。主项目许可允许保留版权声明的复制分发，归档中的third-party许可仍分别适用，完整原始归档保留所有这些声明。主项目commit来自每日镜像，不捏造为稳定发行版。",
+      "Collector execution remains policy-held; reference integrity does not imply profiler functionality."
+    ],
+    "summary": "理解多语言region、事件计数及每node/context/thread的profile组织。agent可从API和原生解析器校对profile导入逻辑，避免把inclusive/exclusive字段、调用次数和不同metric混为一类。"
+  },
+  "version": "git-bae1ebec0414"
+}

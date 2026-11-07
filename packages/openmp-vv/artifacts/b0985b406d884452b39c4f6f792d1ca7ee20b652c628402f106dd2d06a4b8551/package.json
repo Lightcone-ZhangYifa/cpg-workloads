@@ -1,0 +1,104 @@
+{
+  "build": "worker055.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--work",
+        "{build}/functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "stdout_regex": "OPENMP_VV_FUNCTIONAL_OK",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "openmp-vv",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "host_requirements": [
+      "python3",
+      "gcc"
+    ],
+    "license": "LicenseRef-OpenMP-VV-BSD-3",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "upstream_commit": "09662b4233265647a70ca2a00cc3c4c7ac750e5d",
+    "worker_id": "worker 055"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "{recipe}/install.py",
+        "--source",
+        "{source}",
+        "--prefix",
+        "{prefix}"
+      ]
+    ],
+    "required_host_commands": [
+      "python3",
+      "gcc"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 638713,
+      "extract": true,
+      "id": "openmp-vv",
+      "material_path": "sources/openmp-vv",
+      "sha256": "b808c77df3033791246cf16015d8cd986a9a98a975d78f6267accb9dd24fdd22",
+      "strip_root": true,
+      "url": "https://codeload.github.com/OpenMP-Validation-and-Verification/OpenMP_VV/tar.gz/09662b4233265647a70ca2a00cc3c4c7ac750e5d"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://codeload.github.com/OpenMP-Validation-and-Verification/OpenMP_VV/tar.gz/09662b4233265647a70ca2a00cc3c4c7ac750e5d"
+    ],
+    "examples": [
+      {
+        "command": "pm.check(\"openmp-vv\", prefix=prefix)",
+        "description": "Run retained bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Install prefix",
+        "path": "{prefix}",
+        "purpose": "Independent offline CPU resource installation"
+      }
+    ],
+    "notes": [
+      "All downloads happen before package preparation; install/check use only locked local materials.",
+      "Distribution metadata describes the reference build and does not impose a distribution allowlist.",
+      "No performance, GPU, distributed or full-language conformance qualification is inferred."
+    ],
+    "summary": "OpenMP V&V exact original tests with explicit compiler/run/device classifications"
+  },
+  "version": "2026.10.29-09662b4"
+}

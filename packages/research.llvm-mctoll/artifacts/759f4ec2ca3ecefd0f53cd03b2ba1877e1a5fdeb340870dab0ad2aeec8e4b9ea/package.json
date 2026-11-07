@@ -1,0 +1,102 @@
+{
+  "build": "worker075-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_resource.py",
+        "llvm-mctoll",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "raise-verify-rebuild-execute",
+      "kind": "functional",
+      "stdout_regex": "CPG_RESOURCE_CHECK_PASSED",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.llvm-mctoll",
+  "metadata": {
+    "candidate_only": true,
+    "license": "Apache-2.0 WITH LLVM-exception; original full LICENSE.TXT and applicable notices retained",
+    "llvm_commit": "8dfdcc7b7bf66834a761bd8de445840ef68e4d1a",
+    "llvm_full_source_build": false,
+    "llvm_sdk": "Ubuntu 15.0.7-14build3",
+    "llvm_version": "15.0.7",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": "Linux x86_64 scalar integer C ELF only",
+    "record_id": "review.optimization.llvm-mctoll",
+    "target_source_build": true,
+    "worker_id": "worker 075"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "commands",
+    "required_installed_paths": [
+      "{prefix}/INVENTORY.json",
+      "{prefix}/bin/llvm-mctoll",
+      "{prefix}/lib/libLLVM-15.so.1"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc",
+      "readelf",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONNOUSERSITE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 384915,
+      "extract": false,
+      "id": "llvm-mctoll-upstream",
+      "material_path": "sources/llvm-mctoll-ffd1e8bab0a44522b41082b473a577377dc58214.tar.gz",
+      "sha256": "0e876ae921aa6a03320508b083061ee5530ae8f5b62860e8eb53b410104be4cc",
+      "strip_root": false,
+      "url": "https://codeload.github.com/microsoft/llvm-mctoll/tar.gz/ffd1e8bab0a44522b41082b473a577377dc58214"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the bin/ wrappers for the independent paired LLVM15 runtime."
+    ],
+    "documentation": [
+      "https://github.com/microsoft/llvm-mctoll/tree/ffd1e8bab0a44522b41082b473a577377dc58214"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/tools/check_resource.py llvm-mctoll {prefix} /absolute/new-check-dir",
+        "description": "Repeat fresh semantic check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "sources",
+        "path": "{prefix}/sources",
+        "purpose": "Exact target source and Apache-2.0 WITH LLVM-exception license"
+      }
+    ],
+    "notes": [
+      "New candidate overlay; formal CPG baseline unchanged."
+    ],
+    "summary": "llvm-mctoll bounded Linux x86_64 profile\nUse bin/llvm-mctoll -d OWNED_ELF; raised IR appears as OWNED_ELF-dis.ll.\nUse paired bin/opt -passes=verify -disable-output IR and bin/clang to rebuild.\nExact mctoll ffd1e8bab0a44522b41082b473a577377dc58214 is paired with LLVM source\n8dfdcc7b7bf66834a761bd8de445840ef68e4d1a (llvmorg-15.0.7). All 21 mctoll C++\ntranslation units were compiled from the unmodified pinned source. Missing\nprivate X86 interfaces in the distribution SDK are supplied by generated tables\nand matching original LLVM function implementations in a documented build profile.\nLLVM itself was not rebuilt in full: the libraries/toolchain are fixed official\nUbuntu LLVM15.0.7-14build3 packages. Exact source, input debs, logs and offline\nbuild entry are supplied at workers/075-mctoll-support in the accompanying inputs.\nTarget Apache-2.0 WITH LLVM-exception and dependency notices are preserved. The exact target source is also\nincluded in this prefix. Private runtime libraries are resolved from lib/.\nHost Linux x86_64 glibc, libstdc++, GCC/binutils and standard LLVM runtime libraries\nare prerequisites. Acceptance uses owned non-PIE scalar integer C with argc input,\nloops, conditional branches, LLVM verification and 11 independent execution cases.\nNo general C++, vector, Windows, ARM/RISC-V or arbitrary binary lifting claim.\n"
+  },
+  "version": "git.ffd1e8bab0a4"
+}

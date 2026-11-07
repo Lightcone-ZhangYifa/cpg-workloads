@@ -1,0 +1,245 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check_adapter.py",
+        "{prefix}",
+        "srcml",
+        "{build}",
+        "version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "upstream-version",
+      "kind": "version",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 60
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check_adapter.py",
+        "{prefix}",
+        "srcml",
+        "{build}",
+        "functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "offline-real-transformation",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "gcc",
+        "g++"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 240
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "srcml",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1321929,
+      "checks": [
+        {
+          "argv": [
+            "python3",
+            "-B",
+            "{recipe}/check_adapter.py",
+            "{prefix}",
+            "srcml",
+            "{build}",
+            "version"
+          ],
+          "cwd": "{build}",
+          "expected_returncode": 0,
+          "id": "upstream-version",
+          "kind": "version",
+          "requires_commands": [
+            "python3"
+          ],
+          "timeout_seconds": 60
+        },
+        {
+          "argv": [
+            "python3",
+            "-B",
+            "{recipe}/check_adapter.py",
+            "{prefix}",
+            "srcml",
+            "{build}",
+            "functional"
+          ],
+          "cwd": "{build}",
+          "expected_returncode": 0,
+          "id": "offline-real-transformation",
+          "kind": "functional",
+          "requires_commands": [
+            "python3",
+            "gcc",
+            "g++"
+          ],
+          "stdout_regex": "\"status\": \"passed\"",
+          "timeout_seconds": 240
+        }
+      ],
+      "dependencies": [],
+      "deployment": {
+        "adapter": "binary-profile",
+        "required_installed_paths": [
+          "{prefix}/runtime/srcml/bin/srcml",
+          "{prefix}/native_checks.py",
+          "{prefix}/sources-lock.json"
+        ],
+        "required_runtime_commands": [
+          "ldd"
+        ],
+        "runtime_environment": {
+          "LD_LIBRARY_PATH": "{prefix}/runtime/srcml/lib"
+        }
+      },
+      "documentation": [
+        "https://github.com/srcML/srcML"
+      ],
+      "extract": false,
+      "id": "srcml",
+      "input_locks": [
+        {
+          "bytes": 35147,
+          "digest_basis": "computed_from_bytes_fetched_from_the_listed_official_origin",
+          "file": "inputs/srcML-COPYING.txt",
+          "role": "runtime_input_or_license",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "url": "https://raw.githubusercontent.com/srcML/srcML/v1.2.0/COPYING.txt"
+        },
+        {
+          "bytes": 894624,
+          "digest_basis": "computed_from_bytes_fetched_from_the_listed_official_origin",
+          "file": "inputs/srcML-v1.2.0.tar.gz",
+          "role": "corresponding_source_or_distribution_patch",
+          "sha256": "d196c99c10dbc7816037eb8052262fd4968570d52c65d336d0e5e1a0df996558",
+          "url": "https://codeload.github.com/srcML/srcML/tar.gz/refs/tags/v1.2.0"
+        },
+        {
+          "bytes": 1321929,
+          "digest_basis": "computed_from_bytes_fetched_from_the_listed_official_origin",
+          "file": "inputs/srcml_1.2.0-1_ubuntu24.04_amd64.tar.gz",
+          "role": "runtime_input_or_license",
+          "sha256": "8c97d1b394e0758f575a427aeec1e062c1524bb78cd3d3edd07f72a5c07623d0",
+          "url": "https://github.com/srcML/srcML/releases/download/v1.2.0/srcml_1.2.0-1_ubuntu24.04_amd64.tar.gz"
+        }
+      ],
+      "kind": "native_bundle",
+      "license": "GPL-3.0-or-later",
+      "license_class": "open",
+      "material_path": "inputs/srcml_1.2.0-1_ubuntu24.04_amd64.tar.gz",
+      "profile": {
+        "fixture_source": "locally authored non-proprietary synthetic examples",
+        "host_prerequisites": [
+          "python3",
+          "gcc",
+          "g++",
+          "ldd",
+          "glibc loader and compatible transitive system libraries"
+        ],
+        "payload_selection": "Unmodified native files plus locally authored offline runner/fixtures and notices.",
+        "resource": "srcml",
+        "scope": "C/C++ XML conversion and XPath, explicit UTF-8 and LF/CRLF contract",
+        "selected_upstream_paths": [
+          "runtime/srcml"
+        ]
+      },
+      "purpose": "C/C++ XML conversion and XPath, explicit UTF-8 and LF/CRLF contract",
+      "sha256": "8c97d1b394e0758f575a427aeec1e062c1524bb78cd3d3edd07f72a5c07623d0",
+      "source_url": "https://github.com/srcML/srcML/releases/download/v1.2.0/srcml_1.2.0-1_ubuntu24.04_amd64.tar.gz",
+      "strip_archive_root": false,
+      "title": "srcml",
+      "version": "1.2.0"
+    },
+    "catalog_sha256": "15c1e6accc0992f30c24b7f48d95ca9d2627afe90830a8490b1fa8894b90a4a5"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "binary-profile",
+    "required_installed_paths": [
+      "{prefix}/runtime/srcml/bin/srcml",
+      "{prefix}/native_checks.py",
+      "{prefix}/sources-lock.json"
+    ],
+    "required_runtime_commands": [
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/runtime/srcml/lib"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1321929,
+      "extract": false,
+      "id": "srcml",
+      "material_path": "inputs/srcml_1.2.0-1_ubuntu24.04_amd64.tar.gz",
+      "sha256": "8c97d1b394e0758f575a427aeec1e062c1524bb78cd3d3edd07f72a5c07623d0",
+      "strip_root": false,
+      "url": "https://github.com/srcML/srcML/releases/download/v1.2.0/srcml_1.2.0-1_ubuntu24.04_amd64.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/srcML/srcML"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B '{recipe}/check_adapter.py' '{prefix}' srcml '{build}' version",
+        "description": "Run the recorded version check."
+      },
+      {
+        "command": "python3 -B '{recipe}/check_adapter.py' '{prefix}' srcml '{build}' functional",
+        "description": "Run the recorded functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/inputs/srcml_1.2.0-1_ubuntu24.04_amd64.tar.gz",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "Run install/check using the Python PackageManager API. No Experiment or Trainer change is required.",
+      "The target distribution is reference build metadata; the original manager checks architecture and actual ABI.",
+      "Checks require host Python3 and GCC/G++, separate from installation dependencies. No package manager/download call runs during checks.",
+      "The complete provenance closure is metadata.catalog.input_locks and payload sources-lock.json.",
+      "Protected recipe hooks validate payload inventory before each version/functional check; this is package-level hardening, not a modification of the original manager.",
+      "C/C++ XML conversion and XPath, explicit UTF-8 and LF/CRLF contract"
+    ],
+    "summary": "C/C++ XML conversion and XPath, explicit UTF-8 and LF/CRLF contract"
+  },
+  "version": "1.2.0"
+}

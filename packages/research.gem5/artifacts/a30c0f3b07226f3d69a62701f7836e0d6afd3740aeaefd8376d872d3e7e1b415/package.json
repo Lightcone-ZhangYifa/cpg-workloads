@@ -1,0 +1,526 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/guarded_check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/profile"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional-profile",
+      "kind": "functional",
+      "stdout_regex": "CPG_CHECK_PASS",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.gem5",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "functional_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualifications": {
+      "dataset": null,
+      "oci": false,
+      "official_benchmark": false,
+      "physical_hardware": false
+    },
+    "record_id": "review.engineering.gem5",
+    "resource_metadata": {
+      "binary_provenance": {
+        "image_digest": "sha256:dc299b8bf11b324cbd89aab82bdbe31bf9ce71a33386f2a2153a590a803d2c71",
+        "layer_bytes": 1078091947,
+        "layer_digest": "sha256:4f6b9996da3d28cf26f41e0327b1de268a51b20fa4d61eac1f8f49a556b35b03",
+        "member": {
+          "bytes": 1184136040,
+          "mode": 493,
+          "path": "usr/local/bin/gem5-mesi"
+        },
+        "original_binary_sha256": "212fe899b139591c0ee46a8e197eea0d8828918be5913bd93f0cf213f4e5ab2a",
+        "scope": "Official precompiled image member; runtime dependencies and functional qualification are separate.",
+        "source_build_qualification": false,
+        "status": "binary_extracted",
+        "stripped_binary_bytes": 133048560,
+        "stripped_binary_sha256": "424e7a100570ca1cec447bf8ddd0fccf8622fe1f4ead94d7de64dbb198185366",
+        "transformation": [
+          "strip",
+          "--strip-debug"
+        ]
+      },
+      "build_claim": false,
+      "check_script": "check.py",
+      "check_wall_timeout_seconds": 900,
+      "functional_claim": true,
+      "host_library_requirements": [
+        "libz.so.1",
+        "libpng16.so.16",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "libexpat.so.1",
+        "libcrypto.so.3",
+        "libcurl.so.4",
+        "libnghttp2.so.14",
+        "libidn2.so.0",
+        "librtmp.so.1",
+        "libssh.so.4",
+        "libpsl.so.5",
+        "libssl.so.3",
+        "libgssapi_krb5.so.2",
+        "libldap.so.2",
+        "liblber.so.2",
+        "libzstd.so.1",
+        "libbrotlidec.so.1",
+        "libunistring.so.5",
+        "libgnutls.so.30",
+        "libhogweed.so.6",
+        "libnettle.so.8",
+        "libgmp.so.10",
+        "libkrb5.so.3",
+        "libk5crypto.so.3",
+        "libcom_err.so.2",
+        "libkrb5support.so.0",
+        "libsasl2.so.2",
+        "libbrotlicommon.so.1",
+        "libp11-kit.so.0",
+        "libtasn1.so.6",
+        "libkeyutils.so.1",
+        "libresolv.so.2",
+        "libffi.so.8"
+      ],
+      "id": "research.gem5",
+      "limitations": [
+        "This is a fixed classic-memory RV64 hello syscall-emulation profile; other ISAs, CPU models, full-system mode and Ruby/MESI coherence are not functionally qualified.",
+        "Atomic memory mode and no explicit cache hierarchy; this fixture does not model timing-mode contention or qualify hardware performance.",
+        "Simulator ticks/statistics are model outputs, not real CPU measurements; host wall-clock is never used as an optimization score.",
+        "Official image prebuilt; exact binary identity is image/layer/member/derived SHA256. The observed embedded version is 24.0.0.0 but matching source-tag commit is only a release reference, not proof of binary reproducibility.",
+        "The official --build-info/banner incorrectly reads missing m5.defines.gem5Version; -q suppresses that display only. Actual version comes from _m5.core.gem5Version during successful simulation. The failed probes are retained.",
+        "Private dependencies are bundled; compatible platform libraries listed in host_library_requirements remain required and are resolved by the unchanged CPG ELF checker."
+      ],
+      "matched_release_source": {
+        "bytes": 15838574,
+        "commit": "43769abaf05120fed1e4e0cfbb34619edbc10f3f",
+        "id": "gem5-v24.0.0.0-source-reference",
+        "path": "sources/gem5-43769abaf05120fed1e4e0cfbb34619edbc10f3f.tar.gz",
+        "role": "Matching release reference; image binary commit/build reproducibility is not asserted.",
+        "sha256": "c236ad6dab78faf8dc8dcee5e3230312742a77e57b6c430f7084927736c97633",
+        "tag": "v24.0.0.0",
+        "url": "https://codeload.github.com/gem5/gem5/tar.gz/43769abaf05120fed1e4e0cfbb34619edbc10f3f"
+      },
+      "method": "binary",
+      "qualified_profile": {
+        "Cxx_SimObject_type": "BaseAtomicSimpleCPU",
+        "ISA": "RISC-V RV64",
+        "Python_CPU_class": "RiscvAtomicSimpleCPU",
+        "address_range_bytes": 134217728,
+        "clock": "1GHz",
+        "guest": "upstream static hello binary from matching v24.0.0.0 source",
+        "memory_class": "DDR3_1600_8x8",
+        "memory_mode": "atomic",
+        "remote_gdb_listener": "off",
+        "tick_budget": 1000000000
+      },
+      "record_id": "review.engineering.gem5",
+      "required_runtime_commands": [
+        "python3",
+        "ldd"
+      ],
+      "runtime_environment": {
+        "LD_LIBRARY_PATH": "{prefix}/lib"
+      },
+      "runtime_profile": "Linux x86_64 Ubuntu noble-compatible host; glibc 2.39; private CPython 3.12.3 and seven selected native runtime packages. Host-library requirements are explicit and checked by original CPG ELF runtime verification.",
+      "source_locks": [
+        {
+          "bytes": 2013,
+          "id": "official-image-manifest",
+          "path": "sources/oci/image-manifest.json",
+          "sha256": "dc299b8bf11b324cbd89aab82bdbe31bf9ce71a33386f2a2153a590a803d2c71",
+          "url": "https://ghcr.io/v2/gem5/devcontainer/manifests/sha256:dc299b8bf11b324cbd89aab82bdbe31bf9ce71a33386f2a2153a590a803d2c71"
+        },
+        {
+          "bytes": 4004,
+          "id": "official-image-config",
+          "path": "sources/oci/image-config.json",
+          "sha256": "f797b417c82324897ea9866fc9859728fe9395210531af21d7576cfdbe83d722",
+          "url": "https://ghcr.io/v2/gem5/devcontainer/blobs/sha256:f797b417c82324897ea9866fc9859728fe9395210531af21d7576cfdbe83d722"
+        },
+        {
+          "bytes": 133048560,
+          "id": "official-gem5-mesi-stripped-derivative",
+          "kind": "derived_from_archive_member",
+          "note": "The SHA256/bytes/path identify the delivered strip-debug derivative, not the full remote OCI blob. The original layer and member digest are separately preserved.",
+          "origin_layer_bytes": 1078091947,
+          "origin_layer_sha256": "4f6b9996da3d28cf26f41e0327b1de268a51b20fa4d61eac1f8f49a556b35b03",
+          "origin_member": "usr/local/bin/gem5-mesi",
+          "origin_member_sha256": "212fe899b139591c0ee46a8e197eea0d8828918be5913bd93f0cf213f4e5ab2a",
+          "path": "bin/gem5-mesi",
+          "sha256": "424e7a100570ca1cec447bf8ddd0fccf8622fe1f4ead94d7de64dbb198185366",
+          "transformation": [
+            "strip",
+            "--strip-debug"
+          ],
+          "url": "https://ghcr.io/v2/gem5/devcontainer/blobs/sha256:4f6b9996da3d28cf26f41e0327b1de268a51b20fa4d61eac1f8f49a556b35b03"
+        },
+        {
+          "bytes": 15838574,
+          "commit": "43769abaf05120fed1e4e0cfbb34619edbc10f3f",
+          "id": "gem5-v24.0.0.0-source-reference",
+          "path": "sources/gem5-43769abaf05120fed1e4e0cfbb34619edbc10f3f.tar.gz",
+          "role": "Matching release reference; image binary commit/build reproducibility is not asserted.",
+          "sha256": "c236ad6dab78faf8dc8dcee5e3230312742a77e57b6c430f7084927736c97633",
+          "tag": "v24.0.0.0",
+          "url": "https://codeload.github.com/gem5/gem5/tar.gz/43769abaf05120fed1e4e0cfbb34619edbc10f3f"
+        },
+        {
+          "bytes": 2348034,
+          "id": "libpython3.12t64",
+          "path": "sources/debs/libpython3.12t64_3.12.3-1ubuntu0.17_amd64.deb",
+          "sha256": "0d29f4763eb95b8a4283a4aca3ef1d9658629c618be1778def41bdc31be12b46",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/python3.12/libpython3.12t64_3.12.3-1ubuntu0.17_amd64.deb",
+          "version": "3.12.3-1ubuntu0.17"
+        },
+        {
+          "bytes": 838536,
+          "id": "libpython3.12-minimal",
+          "path": "sources/debs/libpython3.12-minimal_3.12.3-1ubuntu0.17_amd64.deb",
+          "sha256": "d646ad7112b5adec21ba0e1af015f04ae8ca7f5efdc619622547dd6673c4c14b",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/python3.12/libpython3.12-minimal_3.12.3-1ubuntu0.17_amd64.deb",
+          "version": "3.12.3-1ubuntu0.17"
+        },
+        {
+          "bytes": 2070530,
+          "id": "libpython3.12-stdlib",
+          "path": "sources/debs/libpython3.12-stdlib_3.12.3-1ubuntu0.17_amd64.deb",
+          "sha256": "45d3f530ba1f9d6e879ad46b92046fabab13fe50a82450e4f65557a3bbad1489",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/python3.12/libpython3.12-stdlib_3.12.3-1ubuntu0.17_amd64.deb",
+          "version": "3.12.3-1ubuntu0.17"
+        },
+        {
+          "bytes": 89486,
+          "id": "libtcmalloc-minimal4t64",
+          "path": "sources/debs/libtcmalloc-minimal4t64_2.15-3build1_amd64.deb",
+          "sha256": "f4ebba418cc336c07d82f9e3b89b2abe570637cf321d2f899e4ec718f86447ca",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/google-perftools/libtcmalloc-minimal4t64_2.15-3build1_amd64.deb",
+          "verification": "SHA256 and Size from the project private Ubuntu APT index",
+          "version": "2.15-3build1"
+        },
+        {
+          "bytes": 922780,
+          "id": "libprotobuf32t64",
+          "path": "sources/debs/libprotobuf32t64_3.21.12-8.2ubuntu0.4_amd64.deb",
+          "sha256": "765aec7fc6c7c14aea8d10677c17617d71acc5103ad580f0e97bff903acccdaf",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/protobuf/libprotobuf32t64_3.21.12-8.2ubuntu0.4_amd64.deb",
+          "verification": "SHA256 and Size from the project private Ubuntu APT index",
+          "version": "3.21.12-8.2ubuntu0.4"
+        },
+        {
+          "bytes": 1269972,
+          "id": "libhdf5-103-1t64",
+          "path": "sources/debs/libhdf5-103-1t64_1.10.10+repack-3.1ubuntu4_amd64.deb",
+          "sha256": "875e7de8aff8e6af3df2ed8b4455f767c3e9b021652a1ee2bd924f76932d22d1",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/h/hdf5/libhdf5-103-1t64_1.10.10+repack-3.1ubuntu4_amd64.deb",
+          "verification": "SHA256 and Size from the project private Ubuntu APT index",
+          "version": "1.10.10+repack-3.1ubuntu4"
+        },
+        {
+          "bytes": 127786,
+          "id": "libhdf5-cpp-103-1t64",
+          "path": "sources/debs/libhdf5-cpp-103-1t64_1.10.10+repack-3.1ubuntu4_amd64.deb",
+          "sha256": "70161b612a610439b1153cbf41747b935fb708a0b80410a71e63e7f66b74d4ad",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/h/hdf5/libhdf5-cpp-103-1t64_1.10.10+repack-3.1ubuntu4_amd64.deb",
+          "verification": "SHA256 and Size from the project private Ubuntu APT index",
+          "version": "1.10.10+repack-3.1ubuntu4"
+        },
+        {
+          "bytes": 655652,
+          "id": "libcapstone4",
+          "path": "sources/debs/libcapstone4_4.0.2-5.1build1_amd64.deb",
+          "sha256": "c2b92fa793412f00fe14f3a8e30bb73b1138d237bafda520f291db33ed475e0c",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/c/capstone/libcapstone4_4.0.2-5.1build1_amd64.deb",
+          "verification": "SHA256 and Size from the project private Ubuntu APT index",
+          "version": "4.0.2-5.1build1"
+        },
+        {
+          "bytes": 5476,
+          "id": "libsz2",
+          "path": "sources/debs/libsz2_1.1.2-1build1_amd64.deb",
+          "sha256": "d442719f0f7597886df1d87fb4978f15941c468a452bba7f85fd7b2d93f1400f",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/liba/libaec/libsz2_1.1.2-1build1_amd64.deb",
+          "verification": "SHA256 and Size from the project private Ubuntu APT index",
+          "version": "1.1.2-1build1"
+        },
+        {
+          "bytes": 22918,
+          "id": "libaec0",
+          "path": "sources/debs/libaec0_1.1.2-1build1_amd64.deb",
+          "sha256": "c045fd79f37e38e69520172137700cee2dd2be72fa2ce5698a3a835809bfd2e0",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/liba/libaec/libaec0_1.1.2-1build1_amd64.deb",
+          "verification": "SHA256 and Size from the project private Ubuntu APT index",
+          "version": "1.1.2-1build1"
+        }
+      ],
+      "upstream_image": {
+        "architecture": "amd64",
+        "config_digest": "sha256:f797b417c82324897ea9866fc9859728fe9395210531af21d7576cfdbe83d722",
+        "history_layer_alignment": true,
+        "image_digest": "sha256:dc299b8bf11b324cbd89aab82bdbe31bf9ce71a33386f2a2153a590a803d2c71",
+        "layers": [
+          {
+            "created_by": "/bin/sh -c #(nop) ADD file:7f5ee17de6aff2b67213e3ad424185b6eed94293669c5ab7cb155108c8df0e9e in / ",
+            "digest": "sha256:00d679a470c495ef7d52e70bcd7a008f4983530b67653e63e9d3cd27fade63d7",
+            "index": 0,
+            "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+            "size": 28872332
+          },
+          {
+            "created_by": "RUN /bin/sh -c apt -y update && apt -y upgrade && apt -y install     build-essential     scons     python3-dev     git     pre-commit     zlib1g     zlib1g-dev     libprotobuf-dev     protobuf-compiler     libprotoc-dev     libgoogle-perftools-dev     libboost-all-dev     libhdf5-serial-dev     python3-pydot     python3-venv     python3-tk     mypy     m4     libcapstone-dev     libpng-dev     libelf-dev     pkg-config     wget     cmake     doxygen # buildkit",
+            "digest": "sha256:c782a11a41b670d159fc96410254307b87e8f1bd274f8d4e0d3d43440f953970",
+            "index": 1,
+            "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+            "size": 533074768
+          },
+          {
+            "created_by": "COPY /gem5/build/ALL/gem5.opt /usr/local/bin/gem5-mesi # buildkit",
+            "digest": "sha256:4f6b9996da3d28cf26f41e0327b1de268a51b20fa4d61eac1f8f49a556b35b03",
+            "index": 2,
+            "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+            "size": 1078091947
+          },
+          {
+            "created_by": "COPY /gem5/build/ALL_CHI/gem5.opt /usr/local/bin/gem5-chi # buildkit",
+            "digest": "sha256:bb60cbcef55878a8fc7b4bd6a8d746236cccbd6ce80e7676b53f711c13bb9a7f",
+            "index": 3,
+            "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+            "size": 1079105240
+          },
+          {
+            "created_by": "COPY /gem5/build/VEGA_X86/gem5.opt /usr/local/bin/gem5-vega # buildkit",
+            "digest": "sha256:92c0abbbf0ee9a528e895bb915c1cd1bb0d4118e4102484d6154bd5f888bfe58",
+            "index": 4,
+            "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+            "size": 829620181
+          },
+          {
+            "created_by": "RUN /bin/sh -c ln -s /usr/local/bin/gem5-chi /usr/local/bin/gem5 # buildkit",
+            "digest": "sha256:865d1839a002ff102b9bfbcc829c7a000aa958140bd319102afa9f60100840f6",
+            "index": 5,
+            "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+            "size": 169
+          },
+          {
+            "created_by": "RUN /bin/sh -c apt -y update  &&     apt -y install     vim     qemu-system     qemu-kvm     g++-aarch64-linux-gnu     g++-riscv64-linux-gnu     gcc-aarch64-linux-gnu     gcc-riscv64-linux-gnu     locales     gdb     unzip # buildkit",
+            "digest": "sha256:2ceb23f2c7bbaaa333d3dd93b03f9ec19fa290641b932e3fd153652098e91d18",
+            "index": 6,
+            "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+            "size": 466959125
+          },
+          {
+            "created_by": "RUN /bin/sh -c locale-gen en_US.UTF-8 # buildkit",
+            "digest": "sha256:31825ae2d13471ea4cba4b51d40676985af76471b2fc17c73141523701504a58",
+            "index": 7,
+            "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+            "size": 866597
+          }
+        ],
+        "os": "linux",
+        "repository": "ghcr.io/gem5/devcontainer",
+        "tag": "bootcamp-2024",
+        "tag_digest": "sha256:dc299b8bf11b324cbd89aab82bdbe31bf9ce71a33386f2a2153a590a803d2c71",
+        "total_compressed_bytes": 4016590359
+      },
+      "upstream_license": "gem5 BSD-style license notices in COPYING/source headers; original Python and native-library Debian copyright notices and referenced common licenses are retained.",
+      "version": "24.0.0.0+oci.dc299b8bf11b"
+    },
+    "source_build_claim": false,
+    "support_only": false,
+    "upstream_license": "gem5 BSD-style license notices in COPYING/source headers; original Python and native-library Debian copyright notices and referenced common licenses are retained.",
+    "worker_id": "worker 061"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2013,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "sources/oci/image-manifest.json",
+      "sha256": "dc299b8bf11b324cbd89aab82bdbe31bf9ce71a33386f2a2153a590a803d2c71",
+      "strip_root": false,
+      "url": "https://ghcr.io/v2/gem5/devcontainer/manifests/sha256:dc299b8bf11b324cbd89aab82bdbe31bf9ce71a33386f2a2153a590a803d2c71"
+    },
+    {
+      "bytes": 4004,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "sources/oci/image-config.json",
+      "sha256": "f797b417c82324897ea9866fc9859728fe9395210531af21d7576cfdbe83d722",
+      "strip_root": false,
+      "url": "https://ghcr.io/v2/gem5/devcontainer/blobs/sha256:f797b417c82324897ea9866fc9859728fe9395210531af21d7576cfdbe83d722"
+    },
+    {
+      "bytes": 133048560,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "bin/gem5-mesi",
+      "sha256": "424e7a100570ca1cec447bf8ddd0fccf8622fe1f4ead94d7de64dbb198185366",
+      "strip_root": false,
+      "url": null
+    },
+    {
+      "bytes": 15838574,
+      "extract": false,
+      "id": "input-004",
+      "material_path": "sources/gem5-43769abaf05120fed1e4e0cfbb34619edbc10f3f.tar.gz",
+      "sha256": "c236ad6dab78faf8dc8dcee5e3230312742a77e57b6c430f7084927736c97633",
+      "strip_root": false,
+      "url": "https://codeload.github.com/gem5/gem5/tar.gz/43769abaf05120fed1e4e0cfbb34619edbc10f3f"
+    },
+    {
+      "bytes": 2348034,
+      "extract": false,
+      "id": "input-005",
+      "material_path": "sources/debs/libpython3.12t64_3.12.3-1ubuntu0.17_amd64.deb",
+      "sha256": "0d29f4763eb95b8a4283a4aca3ef1d9658629c618be1778def41bdc31be12b46",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/python3.12/libpython3.12t64_3.12.3-1ubuntu0.17_amd64.deb"
+    },
+    {
+      "bytes": 838536,
+      "extract": false,
+      "id": "input-006",
+      "material_path": "sources/debs/libpython3.12-minimal_3.12.3-1ubuntu0.17_amd64.deb",
+      "sha256": "d646ad7112b5adec21ba0e1af015f04ae8ca7f5efdc619622547dd6673c4c14b",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/python3.12/libpython3.12-minimal_3.12.3-1ubuntu0.17_amd64.deb"
+    },
+    {
+      "bytes": 2070530,
+      "extract": false,
+      "id": "input-007",
+      "material_path": "sources/debs/libpython3.12-stdlib_3.12.3-1ubuntu0.17_amd64.deb",
+      "sha256": "45d3f530ba1f9d6e879ad46b92046fabab13fe50a82450e4f65557a3bbad1489",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/python3.12/libpython3.12-stdlib_3.12.3-1ubuntu0.17_amd64.deb"
+    },
+    {
+      "bytes": 89486,
+      "extract": false,
+      "id": "input-008",
+      "material_path": "sources/debs/libtcmalloc-minimal4t64_2.15-3build1_amd64.deb",
+      "sha256": "f4ebba418cc336c07d82f9e3b89b2abe570637cf321d2f899e4ec718f86447ca",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/google-perftools/libtcmalloc-minimal4t64_2.15-3build1_amd64.deb"
+    },
+    {
+      "bytes": 922780,
+      "extract": false,
+      "id": "input-009",
+      "material_path": "sources/debs/libprotobuf32t64_3.21.12-8.2ubuntu0.4_amd64.deb",
+      "sha256": "765aec7fc6c7c14aea8d10677c17617d71acc5103ad580f0e97bff903acccdaf",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/protobuf/libprotobuf32t64_3.21.12-8.2ubuntu0.4_amd64.deb"
+    },
+    {
+      "bytes": 1269972,
+      "extract": false,
+      "id": "input-010",
+      "material_path": "sources/debs/libhdf5-103-1t64_1.10.10+repack-3.1ubuntu4_amd64.deb",
+      "sha256": "875e7de8aff8e6af3df2ed8b4455f767c3e9b021652a1ee2bd924f76932d22d1",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/h/hdf5/libhdf5-103-1t64_1.10.10+repack-3.1ubuntu4_amd64.deb"
+    },
+    {
+      "bytes": 127786,
+      "extract": false,
+      "id": "input-011",
+      "material_path": "sources/debs/libhdf5-cpp-103-1t64_1.10.10+repack-3.1ubuntu4_amd64.deb",
+      "sha256": "70161b612a610439b1153cbf41747b935fb708a0b80410a71e63e7f66b74d4ad",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/h/hdf5/libhdf5-cpp-103-1t64_1.10.10+repack-3.1ubuntu4_amd64.deb"
+    },
+    {
+      "bytes": 655652,
+      "extract": false,
+      "id": "input-012",
+      "material_path": "sources/debs/libcapstone4_4.0.2-5.1build1_amd64.deb",
+      "sha256": "c2b92fa793412f00fe14f3a8e30bb73b1138d237bafda520f291db33ed475e0c",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/c/capstone/libcapstone4_4.0.2-5.1build1_amd64.deb"
+    },
+    {
+      "bytes": 5476,
+      "extract": false,
+      "id": "input-013",
+      "material_path": "sources/debs/libsz2_1.1.2-1build1_amd64.deb",
+      "sha256": "d442719f0f7597886df1d87fb4978f15941c468a452bba7f85fd7b2d93f1400f",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/liba/libaec/libsz2_1.1.2-1build1_amd64.deb"
+    },
+    {
+      "bytes": 22918,
+      "extract": false,
+      "id": "input-014",
+      "material_path": "sources/debs/libaec0_1.1.2-1build1_amd64.deb",
+      "sha256": "c045fd79f37e38e69520172137700cee2dd2be72fa2ce5698a3a835809bfd2e0",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/liba/libaec/libaec0_1.1.2-1build1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.gem5.org/"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"research.gem5\")",
+        "description": "Run the declared checks through the CPG Python API"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed payload",
+        "path": "{prefix}",
+        "purpose": "Locked resources and bounded offline check inputs"
+      }
+    ],
+    "notes": [
+      "This is a fixed classic-memory RV64 hello syscall-emulation profile; other ISAs, CPU models, full-system mode and Ruby/MESI coherence are not functionally qualified.",
+      "Atomic memory mode and no explicit cache hierarchy; this fixture does not model timing-mode contention or qualify hardware performance.",
+      "Simulator ticks/statistics are model outputs, not real CPU measurements; host wall-clock is never used as an optimization score.",
+      "Official image prebuilt; exact binary identity is image/layer/member/derived SHA256. The observed embedded version is 24.0.0.0 but matching source-tag commit is only a release reference, not proof of binary reproducibility.",
+      "The official --build-info/banner incorrectly reads missing m5.defines.gem5Version; -q suppresses that display only. Actual version comes from _m5.core.gem5Version during successful simulation. The failed probes are retained.",
+      "Private dependencies are bundled; compatible platform libraries listed in host_library_requirements remain required and are resolved by the unchanged CPG ELF checker."
+    ],
+    "summary": "锁模型配置/workload，运行短程序并记录模拟ticks/statistics；最小syscall-emulation程序在明确CPU模型下完成并保存stats/config及输出"
+  },
+  "version": "24.0.0.0+oci.dc299b8bf11b"
+}

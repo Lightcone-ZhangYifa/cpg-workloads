@@ -1,0 +1,189 @@
+{
+  "build": "worker074-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--recipe",
+        "{recipe}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "egalito-bounded-semantics",
+      "kind": "functional",
+      "stdout_regex": "CPG074_FUNCTIONAL_PASSED",
+      "timeout_seconds": 240
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.egalito",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "candidate": true,
+    "license_provenance": "GPLv3 Egalito source, local driver source and original Capstone/diStorm license texts retained.",
+    "local_source_build_evidence": true,
+    "original_task": {
+      "after_dataset_verified": null,
+      "after_functional": null,
+      "after_material": null,
+      "alias_target": "",
+      "assessment_ids": [
+        "optimization:egalito"
+      ],
+      "baseline_catalog_sha256": {},
+      "baseline_dataset_verified": null,
+      "baseline_functional_ids": [],
+      "baseline_managed_ids": [],
+      "baseline_material_ids": [],
+      "baseline_pins": {},
+      "baseline_relation": "新增候选（独立身份仍需锁定）",
+      "baseline_resource_ids": [],
+      "baseline_trusted_apt_ids": [],
+      "baseline_version": "0.21.14",
+      "canonical_url": "https://github.com/columbia/egalito",
+      "category": "二进制重写",
+      "cost": "中",
+      "decision": "select",
+      "decision_zh": "入选",
+      "dependencies": "C++/ELF及反汇编依赖",
+      "entity_kind": "resource",
+      "evidence_relpath": "",
+      "evidence_urls": [
+        "https://github.com/columbia/egalito"
+      ],
+      "has_active_task": true,
+      "identity_unresolved": false,
+      "increment_package": "cpg-20261101-worker-074-delta-v001.zip",
+      "new_family_candidate": true,
+      "owned_baseline_resource_ids": [],
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "quality_evidence": "已核实官方项目或研究作者的公开上游及其用途：https://github.com/columbia/egalito；证据范围为资源身份、公开材料与项目所述能力，不是本机复现或学术界一致认可的证明。",
+      "record_id": "review.optimization.egalito",
+      "research_scope": "本次公开来源评估",
+      "resource_name": "Egalito",
+      "result_status": "未执行接入",
+      "reviewed_on": "2026-11-01",
+      "schema_version": 1,
+      "scope_limits": "",
+      "selected_new_family": true,
+      "selection_reason": "入选已核源研究清单：可自托管的二进制分析与重写框架。公开上游与具体可检查资产足以支持该限定用途；执行成本只影响任务分配。",
+      "source_refs": [
+        "turn31view3"
+      ],
+      "task": "重写最小本地hello与一处安全插桩，核输出/重定位；只处理自有测试程序",
+      "taxonomy_categories": [
+        "O19",
+        "O38"
+      ],
+      "value_to_ai": "可自托管的二进制分析与重写框架",
+      "worker_id": "worker 074",
+      "worker_scope": "二进制变换与提升 · 1"
+    },
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.optimization.egalito",
+    "scope": "重写最小本地hello与一处安全插桩，核输出/重定位；只处理自有测试程序",
+    "scope_limits": "Own generated PIE ELF only; mirror and exactly one NOP in compute; no system profiling.",
+    "source_build_qualification": false,
+    "worker_id": "worker 074"
+  },
+  "provider": "binary",
+  "recipe": {
+    "commands": [],
+    "required_host_commands": [],
+    "required_installed_paths": [
+      "{prefix}/CPG-INPUTS.json",
+      "{prefix}/bin/cpg-egalito-rewrite",
+      "{prefix}/lib/libegalito.so"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc",
+      "readelf"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONNOUSERSITE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 549179,
+      "extract": false,
+      "id": "input.0",
+      "material_path": "raw/egalito-c5bccb4a13dc0dea7beb5751dd4f334280b36b91.tar.gz",
+      "sha256": "bdc1893473699ece20c7c7f368149829aad1af7b4e7ceef5f6cf5ac19f8b2cbb",
+      "strip_root": false,
+      "url": "https://codeload.github.com/columbia/egalito/tar.gz/c5bccb4a13dc0dea7beb5751dd4f334280b36b91"
+    },
+    {
+      "bytes": 3340983,
+      "extract": false,
+      "id": "input.1",
+      "material_path": "raw/egalito-capstone-ee5054effc2bbbdcccb8fc46de72e1e6776cd454.tar.gz",
+      "sha256": "105c6c573466086885689235d27fb23be6ac8928ba998e192cd77b86e055098a",
+      "strip_root": false,
+      "url": "https://codeload.github.com/columbia/egalito-capstone/tar.gz/ee5054effc2bbbdcccb8fc46de72e1e6776cd454"
+    },
+    {
+      "bytes": 221372,
+      "extract": false,
+      "id": "input.2",
+      "material_path": "raw/distorm-16e6f43509616234b8478187c00569a65f15287c.tar.gz",
+      "sha256": "1351233856d73382df6933abe6337bb8c1d6ba09a1e264b7a544a163a1aea280",
+      "strip_root": false,
+      "url": "https://codeload.github.com/gdabah/distorm/tar.gz/16e6f43509616234b8478187c00569a65f15287c"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "The driver and shared libraries use relative $ORIGIN RUNPATH."
+    ],
+    "documentation": [
+      "https://github.com/columbia/egalito"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"research.egalito\")",
+        "description": "Recheck a fresh private fixture"
+      }
+    ],
+    "locations": [
+      {
+        "label": "driver",
+        "path": "{prefix}/bin/cpg-egalito-rewrite",
+        "purpose": "Public Egalito API test driver"
+      },
+      {
+        "label": "source-build",
+        "path": "{prefix}/share/build/build_egalito.py",
+        "purpose": "Separate reproducible native source-build recipe"
+      }
+    ],
+    "notes": [
+      "Candidate overlay; original formal catalog unchanged.",
+      "Locally compiled from the frozen original source and locked submodules; this package qualifies binary deployment only.",
+      "One explicit missing <string> include is patched for Clang. GNU-extension TUs use GCC; other C++ TUs use Clang15 -O0 -g0.",
+      "Source archives, exact build driver, patch, generated IFUNC table and license texts are included.",
+      "Only owned x86_64 PIE mirror and one-byte NOP mutation are qualified; union, libc/IFUNC resolution, self-hosted loader, other architectures and arbitrary binaries are outside this evidence."
+    ],
+    "summary": "重写最小本地hello与一处安全插桩，核输出/重定位；只处理自有测试程序"
+  },
+  "version": "0.0.0.gitc5bccb4a13dc"
+}

@@ -1,0 +1,149 @@
+{
+  "build": "worker052-20261102-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "task-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "verification.kissat",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 532688,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "SAT, SMT and runtimes"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "verification.kissat",
+      "immutable_ref": "8af8e56f174b778aef3aa45af9f739b2a5f492c2",
+      "kind": "native_bundle",
+      "license_id": "See bundled upstream LICENSE and NOTICE files",
+      "material_path": "inputs/input-1",
+      "purpose": "Fresh CNF SAT/UNSAT, exhaustive truth and complete model validation; generated non-unit-propagation pigeonhole UNSAT certificate independently checked by DRAT-trim; empty and altered proofs rejected. Same 26 CNFs cross-checked with CaDiCaL.",
+      "qualification_scope": "Fresh CNF SAT/UNSAT, exhaustive truth and complete model validation; generated non-unit-propagation pigeonhole UNSAT certificate independently checked by DRAT-trim; empty and altered proofs rejected. Same 26 CNFs cross-checked with CaDiCaL.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "9268b6daaf76ea34ea9da503338beddc5539eb783d1a83a37a7af2a028f3b236",
+      "source_evidence": [
+        "https://github.com/arminbiere/kissat"
+      ],
+      "source_url": "https://codeload.github.com/arminbiere/kissat/tar.gz/8af8e56f174b778aef3aa45af9f739b2a5f492c2",
+      "strip_archive_root": false,
+      "title": "Kissat",
+      "upstream": "https://github.com/arminbiere/kissat",
+      "version": "rel-4.0.4",
+      "worker_record_id": "review.verification.kissat"
+    },
+    "catalog_sha256": "bed044a0f740951f091f62ac8aa3868e25888a31a2c264a67ba1e2e20bb9f010",
+    "input_provenance": [
+      {
+        "bytes": 532688,
+        "local_path": "/workspace/scratch/81acee5764ca/worker052/downloads/kissat-8af8e56f174b778aef3aa45af9f739b2a5f492c2.tar.gz",
+        "revision": "8af8e56f174b778aef3aa45af9f739b2a5f492c2",
+        "sha256": "9268b6daaf76ea34ea9da503338beddc5539eb783d1a83a37a7af2a028f3b236",
+        "url": "https://codeload.github.com/arminbiere/kissat/tar.gz/8af8e56f174b778aef3aa45af9f739b2a5f492c2"
+      },
+      {
+        "bytes": 890795,
+        "local_path": "/workspace/scratch/81acee5764ca/worker052/downloads/cadical-c60730422e758ef1cebe7aeddf2dda31c996bf04.tar.gz",
+        "revision": "c60730422e758ef1cebe7aeddf2dda31c996bf04",
+        "sha256": "2dccd6ecc1878348dd70194d51df6b69006bf86439b5b3c395a5c5dd8863201e",
+        "url": "https://codeload.github.com/arminbiere/cadical/tar.gz/c60730422e758ef1cebe7aeddf2dda31c996bf04"
+      },
+      {
+        "bytes": 7290624,
+        "local_path": "/workspace/scratch/81acee5764ca/worker052/downloads/drat-trim-2e5e29cb0019d5cfd547d4208dca1b3ec290349f.tar.gz",
+        "revision": "2e5e29cb0019d5cfd547d4208dca1b3ec290349f",
+        "sha256": "2ac28cd9e38e050b4f78fbff0efd4a1aa2349d157aef08c9b1fb6c7139949108",
+        "url": "https://codeload.github.com/marijnheule/drat-trim/tar.gz/2e5e29cb0019d5cfd547d4208dca1b3ec290349f"
+      }
+    ],
+    "original_resource_ids": [],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "source_build_qualified": true
+    },
+    "record_id": "review.verification.kissat",
+    "runtime_requirements": [
+      "Linux x86_64",
+      "Python >= 3.12",
+      "GCC C/C++ and GNU make only for optional rebuild",
+      "Validated on Linux x86_64 with glibc 2.39; no lower ABI bound is inferred. Exact ELF requirements are recorded separately."
+    ],
+    "worker_id": "worker 052"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {}
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 532688,
+      "extract": false,
+      "id": "verification.kissat",
+      "material_path": "inputs/input-1",
+      "sha256": "9268b6daaf76ea34ea9da503338beddc5539eb783d1a83a37a7af2a028f3b236",
+      "strip_root": false,
+      "url": "https://codeload.github.com/arminbiere/kissat/tar.gz/8af8e56f174b778aef3aa45af9f739b2a5f492c2"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/arminbiere/kissat"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Fresh CNF SAT/UNSAT, exhaustive truth and complete model validation; generated non-unit-propagation pigeonhole UNSAT certificate independently checked by DRAT-trim; empty and altered proofs rejected. Same 26 CNFs cross-checked with CaDiCaL."
+      }
+    ],
+    "notes": [
+      "Qualification is limited to the explicit functional cases and fixed inputs recorded in this profile.",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "Fresh CNF SAT/UNSAT, exhaustive truth and complete model validation; generated non-unit-propagation pigeonhole UNSAT certificate independently checked by DRAT-trim; empty and altered proofs rejected. Same 26 CNFs cross-checked with CaDiCaL."
+  },
+  "version": "rel-4.0.4"
+}

@@ -1,0 +1,936 @@
+{
+  "build": "worker067-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "calcite.task-acceptance",
+      "kind": "functional",
+      "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "calcite",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "benchmark_qualification": null,
+    "dataset_qualification": null,
+    "dependency_contract": "Embedded dependency locks plus explicit host commands and ELF checks",
+    "dependency_notes": [],
+    "license_notes": [
+      "Apache-2.0; transitive dependency license files remain in each upstream JAR"
+    ],
+    "official_baseline_promoted": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Calcite 1.36.0 parse/validate, Hep FILTER_INTO_JOIN/FILTER_MERGE, RelRunner execution before/after, duplicate/NULL/join/filter/aggregate/order fixture versus SQLite",
+    "record_id": "review.engineering.calcite",
+    "source_pins": [
+      {
+        "dependency_lock": {
+          "file": "maven-lock.json",
+          "sha256": "a798ad7d603365fcfdf5a5a08fc6b82f911d41056d0dc19ff50b2b4409ee2795"
+        },
+        "distribution_mode": "upstream released Maven binaries plus original full source archive",
+        "full_source_rebuild_qualified": false,
+        "license": "Apache-2.0; transitive dependency license files remain in each upstream JAR",
+        "resource": "calcite",
+        "source": {
+          "bytes": 5444164,
+          "file": "apache-calcite-1.36.0-src.tar.gz",
+          "sha256": "34c51137e0d89f70638169fc9eb27023330c724e02d917329a7a541c62af72df",
+          "upstream_sha512": "3bf003a87f76f2fa85b6af9b5243cddf67c767cb5caa828532784bd380e0d929da097677a453dc8d6a0d31f8cf97085031cf66b15a390571065b666095db3b80",
+          "url": "https://archive.apache.org/dist/calcite/apache-calcite-1.36.0/apache-calcite-1.36.0-src.tar.gz"
+        },
+        "upstream": "https://calcite.apache.org/",
+        "version": "1.36.0"
+      },
+      {
+        "maven_dependencies": [
+          {
+            "artifact": "calcite-core",
+            "bytes": 7915023,
+            "group": "org.apache.calcite",
+            "sha256": "1322396c24f0c80c03fc4ac8ed4f35e61d97d6717b74a6da866502c8e59827b7",
+            "upstream_sha1": "ce59aedc97cf6fdabc039ed7638997ea3254214c",
+            "url": "https://repo.maven.apache.org/maven2/org/apache/calcite/calcite-core/1.36.0/calcite-core-1.36.0.jar",
+            "version": "1.36.0"
+          },
+          {
+            "artifact": "calcite-linq4j",
+            "bytes": 510210,
+            "group": "org.apache.calcite",
+            "sha256": "8e5a76cbfb997157a4abe9de52a6d92515a6e611f13c8b46312982d46ea6ff3f",
+            "upstream_sha1": "9d4a9ab0dd314e238e7d48c6a587fe12b6eced5d",
+            "url": "https://repo.maven.apache.org/maven2/org/apache/calcite/calcite-linq4j/1.36.0/calcite-linq4j-1.36.0.jar",
+            "version": "1.36.0"
+          },
+          {
+            "artifact": "apiguardian-api",
+            "bytes": 6806,
+            "group": "org.apiguardian",
+            "sha256": "b509448ac506d607319f182537f0b35d71007582ec741832a1f111e5b5b70b38",
+            "upstream_sha1": "a231e0d844d2721b0fa1b238006d15c6ded6842a",
+            "url": "https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar",
+            "version": "1.1.2"
+          },
+          {
+            "artifact": "checker-qual",
+            "bytes": 224460,
+            "group": "org.checkerframework",
+            "sha256": "e4ce1376cc2735e1dde220b62ad0913f51297704daad155a33f386bc5db0d9f7",
+            "upstream_sha1": "ba74746d38026581c12166e164bb3c15e90cc4ea",
+            "url": "https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.37.0/checker-qual-3.37.0.jar",
+            "version": "3.37.0"
+          },
+          {
+            "artifact": "guava",
+            "bytes": 3043932,
+            "group": "com.google.guava",
+            "sha256": "6d4e2b5a118aab62e6e5e29d185a0224eed82c85c40ac3d33cf04a270c3b3744",
+            "upstream_sha1": "0f306708742ce2bf0fb0901216183bc14073feae",
+            "url": "https://repo.maven.apache.org/maven2/com/google/guava/guava/32.1.3-jre/guava-32.1.3-jre.jar",
+            "version": "32.1.3-jre"
+          },
+          {
+            "artifact": "failureaccess",
+            "bytes": 4617,
+            "group": "com.google.guava",
+            "sha256": "a171ee4c734dd2da837e4b16be9df4661afab72a41adaf31eb84dfdaf936ca26",
+            "upstream_sha1": "1dcf1de382a0bf95a3d8b0849546c88bac1292c9",
+            "url": "https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar",
+            "version": "1.0.1"
+          },
+          {
+            "artifact": "listenablefuture",
+            "bytes": 2199,
+            "group": "com.google.guava",
+            "sha256": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+            "upstream_sha1": "b421526c5f297295adef1c886e5246c39d4ac629",
+            "url": "https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar",
+            "version": "9999.0-empty-to-avoid-conflict-with-guava"
+          },
+          {
+            "artifact": "jsr305",
+            "bytes": 19936,
+            "group": "com.google.code.findbugs",
+            "sha256": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+            "upstream_sha1": "25ea2e8b0c338a877313bd4672d3fe056ea78f0d",
+            "url": "https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar",
+            "version": "3.0.2"
+          },
+          {
+            "artifact": "error_prone_annotations",
+            "bytes": 16830,
+            "group": "com.google.errorprone",
+            "sha256": "d1f3c66aa91ac52549e00ae3b208ba4b9af7d72d68f230643553beb38e6118ac",
+            "upstream_sha1": "6d9b10773b5237df178a7b3c1b4208df7d0e7f94",
+            "url": "https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.21.1/error_prone_annotations-2.21.1.jar",
+            "version": "2.21.1"
+          },
+          {
+            "artifact": "j2objc-annotations",
+            "bytes": 9301,
+            "group": "com.google.j2objc",
+            "sha256": "f02a95fa1a5e95edb3ed859fd0fb7df709d121a35290eff8b74dce2ab7f4d6ed",
+            "upstream_sha1": "c85270e307e7b822f1086b93689124b89768e273",
+            "url": "https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar",
+            "version": "2.8"
+          },
+          {
+            "artifact": "avatica-core",
+            "bytes": 1278202,
+            "group": "org.apache.calcite.avatica",
+            "sha256": "9e138b51f28da396fec4e29574f05d60c8ea56551c2a6213fdb90f269e63ed7f",
+            "upstream_sha1": "e434691139bff7637983a7a5b9100393d1639d01",
+            "url": "https://repo.maven.apache.org/maven2/org/apache/calcite/avatica/avatica-core/1.23.0/avatica-core-1.23.0.jar",
+            "version": "1.23.0"
+          },
+          {
+            "artifact": "avatica-metrics",
+            "bytes": 15681,
+            "group": "org.apache.calcite.avatica",
+            "sha256": "96a3ff3def22702c9c231256c55d1f57219ba356c02656191f04036d33932318",
+            "upstream_sha1": "e4e3da6966845ed3c96c71382c4afc65111dd07d",
+            "url": "https://repo.maven.apache.org/maven2/org/apache/calcite/avatica/avatica-metrics/1.23.0/avatica-metrics-1.23.0.jar",
+            "version": "1.23.0"
+          },
+          {
+            "artifact": "protobuf-java",
+            "bytes": 1671409,
+            "group": "com.google.protobuf",
+            "sha256": "1b78b4a76a71512debfdff8f8fc5aef6bfd459f65758fecf7aff245e6e6301e4",
+            "upstream_sha1": "ed1240d9231044ce6ccf1978512f6e44416bb7e7",
+            "url": "https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar",
+            "version": "3.21.9"
+          },
+          {
+            "artifact": "httpclient5",
+            "bytes": 797934,
+            "group": "org.apache.httpcomponents.client5",
+            "sha256": "28c759254f4e35319e078bb6ffea75676608dc12cb243b24fb3c8732522977fe",
+            "upstream_sha1": "13c984b7b881afcff3a7f0bb95878724a48a4b66",
+            "url": "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.1.3/httpclient5-5.1.3.jar",
+            "version": "5.1.3"
+          },
+          {
+            "artifact": "httpcore5",
+            "bytes": 850808,
+            "group": "org.apache.httpcomponents.core5",
+            "sha256": "f2bf2f2c7772169c9e30699719667ad30f9b46c4e9d7841907deb2d12d9923fe",
+            "upstream_sha1": "d1638d1e5f2793f187d4144c702a93524ba6fd3b",
+            "url": "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.1.3/httpcore5-5.1.3.jar",
+            "version": "5.1.3"
+          },
+          {
+            "artifact": "httpcore5-h2",
+            "bytes": 232137,
+            "group": "org.apache.httpcomponents.core5",
+            "sha256": "d0e78ba15aa8ebe77982b660ac4b09a95d6e035dbdbea762577dc1c8e2935807",
+            "upstream_sha1": "4664b59b09f5ee008e37a963bbb92f4068e91696",
+            "url": "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.1.3/httpcore5-h2-5.1.3.jar",
+            "version": "5.1.3"
+          },
+          {
+            "artifact": "jts-core",
+            "bytes": 1103721,
+            "group": "org.locationtech.jts",
+            "sha256": "dbb8644cf324123d06c27aa982f570811e10b4cb1f2aef893b00de237d33efc0",
+            "upstream_sha1": "3ff3baa0074445384f9e0068df81fbd0a168395a",
+            "url": "https://repo.maven.apache.org/maven2/org/locationtech/jts/jts-core/1.19.0/jts-core-1.19.0.jar",
+            "version": "1.19.0"
+          },
+          {
+            "artifact": "jts-io-common",
+            "bytes": 38657,
+            "group": "org.locationtech.jts.io",
+            "sha256": "e0f0c62024d4282f5f905de1abd2cc96f975a51d9e8d98254234fa14b16bbe9b",
+            "upstream_sha1": "4c7018119aeb66335746e6748456c821e304d3a2",
+            "url": "https://repo.maven.apache.org/maven2/org/locationtech/jts/io/jts-io-common/1.19.0/jts-io-common-1.19.0.jar",
+            "version": "1.19.0"
+          },
+          {
+            "artifact": "json-simple",
+            "bytes": 23931,
+            "group": "com.googlecode.json-simple",
+            "sha256": "4e69696892b88b41c55d49ab2fdcc21eead92bf54acc588c0050596c3b75199c",
+            "upstream_sha1": "c9ad4a0850ab676c5c64461a05ca524cdfff59f1",
+            "url": "https://repo.maven.apache.org/maven2/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar",
+            "version": "1.1.1"
+          },
+          {
+            "artifact": "proj4j",
+            "bytes": 256854,
+            "group": "org.locationtech.proj4j",
+            "sha256": "e6fb89b55a6466aff5cc8497079e9d08c160122f4b433e8061acc37f81d7f802",
+            "upstream_sha1": "6eb2c27f1b7d048a6912a42a0637e470cdc46562",
+            "url": "https://repo.maven.apache.org/maven2/org/locationtech/proj4j/proj4j/1.2.2/proj4j-1.2.2.jar",
+            "version": "1.2.2"
+          },
+          {
+            "artifact": "jackson-annotations",
+            "bytes": 75564,
+            "group": "com.fasterxml.jackson.core",
+            "sha256": "91adcd3dcf5fd9a16499934e7536a23d456692a0093e3d4fd52f138c3936348c",
+            "upstream_sha1": "89b0fd554928425a776a6e97ed010034312af21d",
+            "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.15.0/jackson-annotations-2.15.0.jar",
+            "version": "2.15.0"
+          },
+          {
+            "artifact": "slf4j-api",
+            "bytes": 41473,
+            "group": "org.slf4j",
+            "sha256": "336811855ee97fcd8413343dc42f4d26362502860e8a9193e4db305e3e8ef80a",
+            "upstream_sha1": "d375aa1b98d34d5ddf73a3f19eaad66e98975b12",
+            "url": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.33/slf4j-api-1.7.33.jar",
+            "version": "1.7.33"
+          },
+          {
+            "artifact": "jackson-core",
+            "bytes": 542635,
+            "group": "com.fasterxml.jackson.core",
+            "sha256": "5b483f68fa9dd6aa37da37d1f79dd5c4b9464238f4f0660a242cb6b5c724950c",
+            "upstream_sha1": "12f334a1dc9c6d2854c43ae314024dde8b3ad572",
+            "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.15.0/jackson-core-2.15.0.jar",
+            "version": "2.15.0"
+          },
+          {
+            "artifact": "jackson-databind",
+            "bytes": 1619579,
+            "group": "com.fasterxml.jackson.core",
+            "sha256": "00c5a5d5ae71ac8e8d5b8da606841e2251c806355939cb5d51c4cdc6b644a0dc",
+            "upstream_sha1": "0d41caa3a4e9f85382702a059a65c512f85ac230",
+            "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.15.0/jackson-databind-2.15.0.jar",
+            "version": "2.15.0"
+          },
+          {
+            "artifact": "jackson-dataformat-yaml",
+            "bytes": 54629,
+            "group": "com.fasterxml.jackson.dataformat",
+            "sha256": "691a0a605de15ea610180317331957fe6f7e91f45471ee45cbf9832d74291c31",
+            "upstream_sha1": "fafaf40ed4bcd4bc29891441b7d256f24e55fa7f",
+            "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.15.0/jackson-dataformat-yaml-2.15.0.jar",
+            "version": "2.15.0"
+          },
+          {
+            "artifact": "snakeyaml",
+            "bytes": 334803,
+            "group": "org.yaml",
+            "sha256": "880c9d896e4b74a06c549c15ca496450165d6909fa15d7e662bee8f6a66d7afa",
+            "upstream_sha1": "3aab2116756442bf0d4cd1c089b24d34c3baa253",
+            "url": "https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.0/snakeyaml-2.0.jar",
+            "version": "2.0"
+          },
+          {
+            "artifact": "uzaygezen-core",
+            "bytes": 121893,
+            "group": "com.google.uzaygezen",
+            "sha256": "29aabe951d220f03b3789332f9f455ca2eba953c91ecef8aa06f76f458cedc4e",
+            "upstream_sha1": "611b82d4c4b4f67cc3d83cf0697ec660fcee2fff",
+            "url": "https://repo.maven.apache.org/maven2/com/google/uzaygezen/uzaygezen-core/0.2/uzaygezen-core-0.2.jar",
+            "version": "0.2"
+          },
+          {
+            "artifact": "json-path",
+            "bytes": 271159,
+            "group": "com.jayway.jsonpath",
+            "sha256": "de82f0e4602eea0187df36779ae8cfc1653b6d920125674af4d365d0bca59508",
+            "upstream_sha1": "f9d7d9659f2694e61142046ff8a216c047f263e8",
+            "url": "https://repo.maven.apache.org/maven2/com/jayway/jsonpath/json-path/2.7.0/json-path-2.7.0.jar",
+            "version": "2.7.0"
+          },
+          {
+            "artifact": "json-smart",
+            "bytes": 119227,
+            "group": "net.minidev",
+            "sha256": "28c17ed16ac22e6845743fd1e84321edf5d7735fc216e44ee269d106bf3d8146",
+            "upstream_sha1": "8d7f4c1530c07c54930935f3da85f48b83b3c109",
+            "url": "https://repo.maven.apache.org/maven2/net/minidev/json-smart/2.4.7/json-smart-2.4.7.jar",
+            "version": "2.4.7"
+          },
+          {
+            "artifact": "accessors-smart",
+            "bytes": 29489,
+            "group": "net.minidev",
+            "sha256": "ef5103429f101f7e3ff62f3a182342720439eaea43d2eed3119bba770bb202a9",
+            "upstream_sha1": "3970cfc505e6657ca60f3aa57c849f6043000d7a",
+            "url": "https://repo.maven.apache.org/maven2/net/minidev/accessors-smart/2.4.7/accessors-smart-2.4.7.jar",
+            "version": "2.4.7"
+          },
+          {
+            "artifact": "asm",
+            "bytes": 121790,
+            "group": "org.ow2.asm",
+            "sha256": "cda4de455fab48ff0bcb7c48b4639447d4de859a7afc30a094a986f0936beba2",
+            "upstream_sha1": "a99500cf6eea30535eeac6be73899d048f8d12a8",
+            "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.1/asm-9.1.jar",
+            "version": "9.1"
+          },
+          {
+            "artifact": "sketches-core",
+            "bytes": 456917,
+            "group": "com.yahoo.datasketches",
+            "sha256": "672a7973eae372d9f6ad9dab5904292ab38a1be2b7445521a0d820a59f2ae13c",
+            "upstream_sha1": "ba592b4cca8eb7dd425721acc1b5d4c034e34fa0",
+            "url": "https://repo.maven.apache.org/maven2/com/yahoo/datasketches/sketches-core/0.9.0/sketches-core-0.9.0.jar",
+            "version": "0.9.0"
+          },
+          {
+            "artifact": "memory",
+            "bytes": 30383,
+            "group": "com.yahoo.datasketches",
+            "sha256": "c7d22ca0298753de7a5c85edc9b926892936e978595fe44375159b8ada15fdfc",
+            "upstream_sha1": "010a7f4c09076d5c5d5d7a3f0546b71764ec5704",
+            "url": "https://repo.maven.apache.org/maven2/com/yahoo/datasketches/memory/0.9.0/memory-0.9.0.jar",
+            "version": "0.9.0"
+          },
+          {
+            "artifact": "commons-codec",
+            "bytes": 344339,
+            "group": "commons-codec",
+            "sha256": "61f7a3079e92b9fdd605238d0295af5fd11ac411a0a0af48deace1f6c5ffa072",
+            "upstream_sha1": "3f18e1aa31031d89db6f01ba05d501258ce69d2c",
+            "url": "https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.13/commons-codec-1.13.jar",
+            "version": "1.13"
+          },
+          {
+            "artifact": "aggdesigner-algorithm",
+            "bytes": 48509,
+            "group": "net.hydromatic",
+            "sha256": "9c06b3af57653eaf004231818cc8e91569d832d0b24ae1a8600daf023c050bfb",
+            "upstream_sha1": "bd0cd7ad1e3791a8a0929df0dcdbffc02fd0bab4",
+            "url": "https://repo.maven.apache.org/maven2/net/hydromatic/aggdesigner-algorithm/6.0/aggdesigner-algorithm-6.0.jar",
+            "version": "6.0"
+          },
+          {
+            "artifact": "commons-lang",
+            "bytes": 261809,
+            "group": "commons-lang",
+            "sha256": "2c73b940c91250bc98346926270f13a6a10bb6e29d2c9316a70d134e382c873e",
+            "upstream_sha1": "16313e02a793435009f1e458fa4af5d879f6fb11",
+            "url": "https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.4/commons-lang-2.4.jar",
+            "version": "2.4"
+          },
+          {
+            "artifact": "commons-logging",
+            "bytes": 61829,
+            "group": "commons-logging",
+            "sha256": "daddea1ea0be0f56978ab3006b8ac92834afeefbd9b7e4e6316fca57df0fa636",
+            "upstream_sha1": "4bfc12adfe4842bf07b657f0369c4cb522955686",
+            "url": "https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2.jar",
+            "version": "1.2"
+          },
+          {
+            "artifact": "commons-dbcp2",
+            "bytes": 211301,
+            "group": "org.apache.commons",
+            "sha256": "887720912c5cbbcdff6e0e21d5034937555f8ffc597381eff8fa77f33ce6d64e",
+            "upstream_sha1": "16d808749cf3dac900c073dd834b5e288562a59c",
+            "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-dbcp2/2.9.0/commons-dbcp2-2.9.0.jar",
+            "version": "2.9.0"
+          },
+          {
+            "artifact": "commons-pool2",
+            "bytes": 141192,
+            "group": "org.apache.commons",
+            "sha256": "d80021de162f9570252b281ddf6f5e2ad876f0c196f4d1dbe85ab0a5b0dca554",
+            "upstream_sha1": "dd571e1d24e3994ec2b8c45f08ca43eed11f2c0d",
+            "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-pool2/2.10.0/commons-pool2-2.10.0.jar",
+            "version": "2.10.0"
+          },
+          {
+            "artifact": "commons-lang3",
+            "bytes": 587402,
+            "group": "org.apache.commons",
+            "sha256": "d919d904486c037f8d193412da0c92e22a9fa24230b9d67a57855c5c31c7e94e",
+            "upstream_sha1": "c6842c86792ff03b9f1d1fe2aab8dc23aa6c6f0e",
+            "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar",
+            "version": "3.12.0"
+          },
+          {
+            "artifact": "commons-math3",
+            "bytes": 2213560,
+            "group": "org.apache.commons",
+            "sha256": "1e56d7b058d28b65abd256b8458e3885b674c1d588fa43cd7d1cbb9c7ef2b308",
+            "upstream_sha1": "e4ba98f1d4b3c80ec46392f25e094a6a2e58fcbf",
+            "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar",
+            "version": "3.6.1"
+          },
+          {
+            "artifact": "commons-text",
+            "bytes": 238400,
+            "group": "org.apache.commons",
+            "sha256": "770cd903fa7b604d1f7ef7ba17f84108667294b2b478be8ed1af3bffb4ae0018",
+            "upstream_sha1": "3363381aef8cef2dbc1023b3e3a9433b08b64e01",
+            "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-text/1.10.0/commons-text-1.10.0.jar",
+            "version": "1.10.0"
+          },
+          {
+            "artifact": "commons-io",
+            "bytes": 327135,
+            "group": "commons-io",
+            "sha256": "961b2f6d87dbacc5d54abf45ab7a6e2495f89b75598962d8c723cea9bc210908",
+            "upstream_sha1": "a2503f302b11ebde7ebc3df41daebe0e4eea3689",
+            "url": "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar",
+            "version": "2.11.0"
+          },
+          {
+            "artifact": "commons-compiler",
+            "bytes": 173752,
+            "group": "org.codehaus.janino",
+            "sha256": "d988a3ebc17188e9a1a3efadd8e958b90eb995c4fcc077292a5dfe5fe1109d25",
+            "upstream_sha1": "f0d70bb319e9339aea90a8665693e69848acc598",
+            "url": "https://repo.maven.apache.org/maven2/org/codehaus/janino/commons-compiler/3.1.9/commons-compiler-3.1.9.jar",
+            "version": "3.1.9"
+          },
+          {
+            "artifact": "janino",
+            "bytes": 958840,
+            "group": "org.codehaus.janino",
+            "sha256": "7df88d90aa165ab48bdebea425fa009eeef04918c82e98cdbea5e747e114508d",
+            "upstream_sha1": "536fb0c44627faae32ca7a8a24734f4aab38c878",
+            "url": "https://repo.maven.apache.org/maven2/org/codehaus/janino/janino/3.1.9/janino-3.1.9.jar",
+            "version": "3.1.9"
+          }
+        ]
+      }
+    ],
+    "worker_id": "worker 067"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/check.py"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "java"
+    ],
+    "runtime_environment": {
+      "CARGO_NET_OFFLINE": "true",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 5444164,
+      "extract": false,
+      "id": "calcite.input0",
+      "material_path": "upstream/apache-calcite-1.36.0-src.tar.gz",
+      "sha256": "34c51137e0d89f70638169fc9eb27023330c724e02d917329a7a541c62af72df",
+      "strip_root": false,
+      "url": "https://archive.apache.org/dist/calcite/apache-calcite-1.36.0/apache-calcite-1.36.0-src.tar.gz"
+    },
+    {
+      "bytes": 7915023,
+      "extract": false,
+      "id": "calcite.input1",
+      "material_path": "upstream/calcite-core-1.36.0.jar",
+      "sha256": "1322396c24f0c80c03fc4ac8ed4f35e61d97d6717b74a6da866502c8e59827b7",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/apache/calcite/calcite-core/1.36.0/calcite-core-1.36.0.jar"
+    },
+    {
+      "bytes": 510210,
+      "extract": false,
+      "id": "calcite.input2",
+      "material_path": "upstream/calcite-linq4j-1.36.0.jar",
+      "sha256": "8e5a76cbfb997157a4abe9de52a6d92515a6e611f13c8b46312982d46ea6ff3f",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/apache/calcite/calcite-linq4j/1.36.0/calcite-linq4j-1.36.0.jar"
+    },
+    {
+      "bytes": 6806,
+      "extract": false,
+      "id": "calcite.input3",
+      "material_path": "upstream/apiguardian-api-1.1.2.jar",
+      "sha256": "b509448ac506d607319f182537f0b35d71007582ec741832a1f111e5b5b70b38",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar"
+    },
+    {
+      "bytes": 224460,
+      "extract": false,
+      "id": "calcite.input4",
+      "material_path": "upstream/checker-qual-3.37.0.jar",
+      "sha256": "e4ce1376cc2735e1dde220b62ad0913f51297704daad155a33f386bc5db0d9f7",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.37.0/checker-qual-3.37.0.jar"
+    },
+    {
+      "bytes": 3043932,
+      "extract": false,
+      "id": "calcite.input5",
+      "material_path": "upstream/guava-32.1.3-jre.jar",
+      "sha256": "6d4e2b5a118aab62e6e5e29d185a0224eed82c85c40ac3d33cf04a270c3b3744",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/google/guava/guava/32.1.3-jre/guava-32.1.3-jre.jar"
+    },
+    {
+      "bytes": 4617,
+      "extract": false,
+      "id": "calcite.input6",
+      "material_path": "upstream/failureaccess-1.0.1.jar",
+      "sha256": "a171ee4c734dd2da837e4b16be9df4661afab72a41adaf31eb84dfdaf936ca26",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar"
+    },
+    {
+      "bytes": 2199,
+      "extract": false,
+      "id": "calcite.input7",
+      "material_path": "upstream/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar",
+      "sha256": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"
+    },
+    {
+      "bytes": 19936,
+      "extract": false,
+      "id": "calcite.input8",
+      "material_path": "upstream/jsr305-3.0.2.jar",
+      "sha256": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar"
+    },
+    {
+      "bytes": 16830,
+      "extract": false,
+      "id": "calcite.input9",
+      "material_path": "upstream/error_prone_annotations-2.21.1.jar",
+      "sha256": "d1f3c66aa91ac52549e00ae3b208ba4b9af7d72d68f230643553beb38e6118ac",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.21.1/error_prone_annotations-2.21.1.jar"
+    },
+    {
+      "bytes": 9301,
+      "extract": false,
+      "id": "calcite.input10",
+      "material_path": "upstream/j2objc-annotations-2.8.jar",
+      "sha256": "f02a95fa1a5e95edb3ed859fd0fb7df709d121a35290eff8b74dce2ab7f4d6ed",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar"
+    },
+    {
+      "bytes": 1278202,
+      "extract": false,
+      "id": "calcite.input11",
+      "material_path": "upstream/avatica-core-1.23.0.jar",
+      "sha256": "9e138b51f28da396fec4e29574f05d60c8ea56551c2a6213fdb90f269e63ed7f",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/apache/calcite/avatica/avatica-core/1.23.0/avatica-core-1.23.0.jar"
+    },
+    {
+      "bytes": 15681,
+      "extract": false,
+      "id": "calcite.input12",
+      "material_path": "upstream/avatica-metrics-1.23.0.jar",
+      "sha256": "96a3ff3def22702c9c231256c55d1f57219ba356c02656191f04036d33932318",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/apache/calcite/avatica/avatica-metrics/1.23.0/avatica-metrics-1.23.0.jar"
+    },
+    {
+      "bytes": 1671409,
+      "extract": false,
+      "id": "calcite.input13",
+      "material_path": "upstream/protobuf-java-3.21.9.jar",
+      "sha256": "1b78b4a76a71512debfdff8f8fc5aef6bfd459f65758fecf7aff245e6e6301e4",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar"
+    },
+    {
+      "bytes": 797934,
+      "extract": false,
+      "id": "calcite.input14",
+      "material_path": "upstream/httpclient5-5.1.3.jar",
+      "sha256": "28c759254f4e35319e078bb6ffea75676608dc12cb243b24fb3c8732522977fe",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.1.3/httpclient5-5.1.3.jar"
+    },
+    {
+      "bytes": 850808,
+      "extract": false,
+      "id": "calcite.input15",
+      "material_path": "upstream/httpcore5-5.1.3.jar",
+      "sha256": "f2bf2f2c7772169c9e30699719667ad30f9b46c4e9d7841907deb2d12d9923fe",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.1.3/httpcore5-5.1.3.jar"
+    },
+    {
+      "bytes": 232137,
+      "extract": false,
+      "id": "calcite.input16",
+      "material_path": "upstream/httpcore5-h2-5.1.3.jar",
+      "sha256": "d0e78ba15aa8ebe77982b660ac4b09a95d6e035dbdbea762577dc1c8e2935807",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.1.3/httpcore5-h2-5.1.3.jar"
+    },
+    {
+      "bytes": 1103721,
+      "extract": false,
+      "id": "calcite.input17",
+      "material_path": "upstream/jts-core-1.19.0.jar",
+      "sha256": "dbb8644cf324123d06c27aa982f570811e10b4cb1f2aef893b00de237d33efc0",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/locationtech/jts/jts-core/1.19.0/jts-core-1.19.0.jar"
+    },
+    {
+      "bytes": 38657,
+      "extract": false,
+      "id": "calcite.input18",
+      "material_path": "upstream/jts-io-common-1.19.0.jar",
+      "sha256": "e0f0c62024d4282f5f905de1abd2cc96f975a51d9e8d98254234fa14b16bbe9b",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/locationtech/jts/io/jts-io-common/1.19.0/jts-io-common-1.19.0.jar"
+    },
+    {
+      "bytes": 23931,
+      "extract": false,
+      "id": "calcite.input19",
+      "material_path": "upstream/json-simple-1.1.1.jar",
+      "sha256": "4e69696892b88b41c55d49ab2fdcc21eead92bf54acc588c0050596c3b75199c",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar"
+    },
+    {
+      "bytes": 256854,
+      "extract": false,
+      "id": "calcite.input20",
+      "material_path": "upstream/proj4j-1.2.2.jar",
+      "sha256": "e6fb89b55a6466aff5cc8497079e9d08c160122f4b433e8061acc37f81d7f802",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/locationtech/proj4j/proj4j/1.2.2/proj4j-1.2.2.jar"
+    },
+    {
+      "bytes": 75564,
+      "extract": false,
+      "id": "calcite.input21",
+      "material_path": "upstream/jackson-annotations-2.15.0.jar",
+      "sha256": "91adcd3dcf5fd9a16499934e7536a23d456692a0093e3d4fd52f138c3936348c",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.15.0/jackson-annotations-2.15.0.jar"
+    },
+    {
+      "bytes": 41473,
+      "extract": false,
+      "id": "calcite.input22",
+      "material_path": "upstream/slf4j-api-1.7.33.jar",
+      "sha256": "336811855ee97fcd8413343dc42f4d26362502860e8a9193e4db305e3e8ef80a",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.33/slf4j-api-1.7.33.jar"
+    },
+    {
+      "bytes": 542635,
+      "extract": false,
+      "id": "calcite.input23",
+      "material_path": "upstream/jackson-core-2.15.0.jar",
+      "sha256": "5b483f68fa9dd6aa37da37d1f79dd5c4b9464238f4f0660a242cb6b5c724950c",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.15.0/jackson-core-2.15.0.jar"
+    },
+    {
+      "bytes": 1619579,
+      "extract": false,
+      "id": "calcite.input24",
+      "material_path": "upstream/jackson-databind-2.15.0.jar",
+      "sha256": "00c5a5d5ae71ac8e8d5b8da606841e2251c806355939cb5d51c4cdc6b644a0dc",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.15.0/jackson-databind-2.15.0.jar"
+    },
+    {
+      "bytes": 54629,
+      "extract": false,
+      "id": "calcite.input25",
+      "material_path": "upstream/jackson-dataformat-yaml-2.15.0.jar",
+      "sha256": "691a0a605de15ea610180317331957fe6f7e91f45471ee45cbf9832d74291c31",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.15.0/jackson-dataformat-yaml-2.15.0.jar"
+    },
+    {
+      "bytes": 334803,
+      "extract": false,
+      "id": "calcite.input26",
+      "material_path": "upstream/snakeyaml-2.0.jar",
+      "sha256": "880c9d896e4b74a06c549c15ca496450165d6909fa15d7e662bee8f6a66d7afa",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.0/snakeyaml-2.0.jar"
+    },
+    {
+      "bytes": 121893,
+      "extract": false,
+      "id": "calcite.input27",
+      "material_path": "upstream/uzaygezen-core-0.2.jar",
+      "sha256": "29aabe951d220f03b3789332f9f455ca2eba953c91ecef8aa06f76f458cedc4e",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/google/uzaygezen/uzaygezen-core/0.2/uzaygezen-core-0.2.jar"
+    },
+    {
+      "bytes": 271159,
+      "extract": false,
+      "id": "calcite.input28",
+      "material_path": "upstream/json-path-2.7.0.jar",
+      "sha256": "de82f0e4602eea0187df36779ae8cfc1653b6d920125674af4d365d0bca59508",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/jayway/jsonpath/json-path/2.7.0/json-path-2.7.0.jar"
+    },
+    {
+      "bytes": 119227,
+      "extract": false,
+      "id": "calcite.input29",
+      "material_path": "upstream/json-smart-2.4.7.jar",
+      "sha256": "28c17ed16ac22e6845743fd1e84321edf5d7735fc216e44ee269d106bf3d8146",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/net/minidev/json-smart/2.4.7/json-smart-2.4.7.jar"
+    },
+    {
+      "bytes": 29489,
+      "extract": false,
+      "id": "calcite.input30",
+      "material_path": "upstream/accessors-smart-2.4.7.jar",
+      "sha256": "ef5103429f101f7e3ff62f3a182342720439eaea43d2eed3119bba770bb202a9",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/net/minidev/accessors-smart/2.4.7/accessors-smart-2.4.7.jar"
+    },
+    {
+      "bytes": 121790,
+      "extract": false,
+      "id": "calcite.input31",
+      "material_path": "upstream/asm-9.1.jar",
+      "sha256": "cda4de455fab48ff0bcb7c48b4639447d4de859a7afc30a094a986f0936beba2",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.1/asm-9.1.jar"
+    },
+    {
+      "bytes": 456917,
+      "extract": false,
+      "id": "calcite.input32",
+      "material_path": "upstream/sketches-core-0.9.0.jar",
+      "sha256": "672a7973eae372d9f6ad9dab5904292ab38a1be2b7445521a0d820a59f2ae13c",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/yahoo/datasketches/sketches-core/0.9.0/sketches-core-0.9.0.jar"
+    },
+    {
+      "bytes": 30383,
+      "extract": false,
+      "id": "calcite.input33",
+      "material_path": "upstream/memory-0.9.0.jar",
+      "sha256": "c7d22ca0298753de7a5c85edc9b926892936e978595fe44375159b8ada15fdfc",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/com/yahoo/datasketches/memory/0.9.0/memory-0.9.0.jar"
+    },
+    {
+      "bytes": 344339,
+      "extract": false,
+      "id": "calcite.input34",
+      "material_path": "upstream/commons-codec-1.13.jar",
+      "sha256": "61f7a3079e92b9fdd605238d0295af5fd11ac411a0a0af48deace1f6c5ffa072",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.13/commons-codec-1.13.jar"
+    },
+    {
+      "bytes": 48509,
+      "extract": false,
+      "id": "calcite.input35",
+      "material_path": "upstream/aggdesigner-algorithm-6.0.jar",
+      "sha256": "9c06b3af57653eaf004231818cc8e91569d832d0b24ae1a8600daf023c050bfb",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/net/hydromatic/aggdesigner-algorithm/6.0/aggdesigner-algorithm-6.0.jar"
+    },
+    {
+      "bytes": 261809,
+      "extract": false,
+      "id": "calcite.input36",
+      "material_path": "upstream/commons-lang-2.4.jar",
+      "sha256": "2c73b940c91250bc98346926270f13a6a10bb6e29d2c9316a70d134e382c873e",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.4/commons-lang-2.4.jar"
+    },
+    {
+      "bytes": 61829,
+      "extract": false,
+      "id": "calcite.input37",
+      "material_path": "upstream/commons-logging-1.2.jar",
+      "sha256": "daddea1ea0be0f56978ab3006b8ac92834afeefbd9b7e4e6316fca57df0fa636",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"
+    },
+    {
+      "bytes": 211301,
+      "extract": false,
+      "id": "calcite.input38",
+      "material_path": "upstream/commons-dbcp2-2.9.0.jar",
+      "sha256": "887720912c5cbbcdff6e0e21d5034937555f8ffc597381eff8fa77f33ce6d64e",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-dbcp2/2.9.0/commons-dbcp2-2.9.0.jar"
+    },
+    {
+      "bytes": 141192,
+      "extract": false,
+      "id": "calcite.input39",
+      "material_path": "upstream/commons-pool2-2.10.0.jar",
+      "sha256": "d80021de162f9570252b281ddf6f5e2ad876f0c196f4d1dbe85ab0a5b0dca554",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-pool2/2.10.0/commons-pool2-2.10.0.jar"
+    },
+    {
+      "bytes": 587402,
+      "extract": false,
+      "id": "calcite.input40",
+      "material_path": "upstream/commons-lang3-3.12.0.jar",
+      "sha256": "d919d904486c037f8d193412da0c92e22a9fa24230b9d67a57855c5c31c7e94e",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar"
+    },
+    {
+      "bytes": 2213560,
+      "extract": false,
+      "id": "calcite.input41",
+      "material_path": "upstream/commons-math3-3.6.1.jar",
+      "sha256": "1e56d7b058d28b65abd256b8458e3885b674c1d588fa43cd7d1cbb9c7ef2b308",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar"
+    },
+    {
+      "bytes": 238400,
+      "extract": false,
+      "id": "calcite.input42",
+      "material_path": "upstream/commons-text-1.10.0.jar",
+      "sha256": "770cd903fa7b604d1f7ef7ba17f84108667294b2b478be8ed1af3bffb4ae0018",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-text/1.10.0/commons-text-1.10.0.jar"
+    },
+    {
+      "bytes": 327135,
+      "extract": false,
+      "id": "calcite.input43",
+      "material_path": "upstream/commons-io-2.11.0.jar",
+      "sha256": "961b2f6d87dbacc5d54abf45ab7a6e2495f89b75598962d8c723cea9bc210908",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar"
+    },
+    {
+      "bytes": 173752,
+      "extract": false,
+      "id": "calcite.input44",
+      "material_path": "upstream/commons-compiler-3.1.9.jar",
+      "sha256": "d988a3ebc17188e9a1a3efadd8e958b90eb995c4fcc077292a5dfe5fe1109d25",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/codehaus/janino/commons-compiler/3.1.9/commons-compiler-3.1.9.jar"
+    },
+    {
+      "bytes": 958840,
+      "extract": false,
+      "id": "calcite.input45",
+      "material_path": "upstream/janino-3.1.9.jar",
+      "sha256": "7df88d90aa165ab48bdebea425fa009eeef04918c82e98cdbea5e747e114508d",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/codehaus/janino/janino/3.1.9/janino-3.1.9.jar"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://calcite.apache.org/",
+      "https://github.com/apache/calcite"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/check.py --prefix {prefix}",
+        "description": "Replay the task acceptance"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed resource",
+        "path": "{prefix}",
+        "purpose": "Locked sources, runtime, query examples and replay checks"
+      }
+    ],
+    "notes": [
+      "Java 17 with jdk.compiler and Python sqlite3 are host prerequisites.",
+      "Upstream released Maven binaries and full upstream source are supplied; a full Calcite source rebuild is not claimed.",
+      "Task-scoped result checks are not general SQL equivalence or an official benchmark qualification."
+    ],
+    "summary": "Actual relational rule optimization and executable result equivalence"
+  },
+  "version": "1.36.0"
+}

@@ -1,0 +1,175 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1829,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build-chez.py",
+      "sha256": "1d77dbd9f8e4a97033fb40f5ba46bd05302924dbc7b38f10e5632374ddb809df"
+    },
+    {
+      "bytes": 563,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/chez-check.ss",
+      "sha256": "244ca3bf80e66f936a48ac89501068e8c5bc883c3082b487265dfedf6b3ce28d"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 9505195,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/25e5e99c8c4613cc7b8f5bc87c787fe169f6e7a500668af6301756ac3121e90d",
+      "sha256": "25e5e99c8c4613cc7b8f5bc87c787fe169f6e7a500668af6301756ac3121e90d"
+    }
+  ],
+  "inventory_sha256": "9e25c506dd0459d29bc2529d61fdf1de4a460408396b34f2b33c3510d1c4788b",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "6da14f19c87d3482755c96378333cef228b2a78d312dabd5067d6e1fe8bee006",
+  "method": "source",
+  "package": {
+    "build": "20261101-worker008-v1",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/scheme",
+          "--program",
+          "{recipe}/chez-check.ss"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "chez-portable-language-runtime",
+        "kind": "functional",
+        "stdout_regex": "\"status\":\"passed\"",
+        "timeout_seconds": 30
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "support.nanopass.chezscheme",
+    "metadata": {
+      "license": "Apache-2.0 and bundled dependency notices",
+      "runtime_kind": "Chez portable bytecode (pb)",
+      "source_inputs": [
+        {
+          "commit": "e95a7efbafa2cf3bd5343ea542e6bc909a7ab2c4",
+          "path": ".",
+          "url": "https://github.com/cisco/ChezScheme.git"
+        },
+        {
+          "commit": "ebb370ca83af193212df4dcbadcc5d87bc0de2f0",
+          "path": "lz4",
+          "url": "https://github.com/lz4/lz4.git"
+        },
+        {
+          "commit": "bb47b5695a5bffdfd4d99ec9b349f0864b08e0d4",
+          "path": "nanopass",
+          "url": "https://github.com/nanopass/nanopass-framework-scheme.git"
+        },
+        {
+          "commit": "afa607564a5662ffd748e824801277a6b5a3d11c",
+          "path": "stex",
+          "url": "https://github.com/dybvig/stex"
+        },
+        {
+          "commit": "da607da739fa6047df13e66a2af6b8bec7c2a498",
+          "path": "zlib",
+          "url": "https://github.com/madler/zlib.git"
+        },
+        {
+          "commit": "a288cbfe350403899311ca7d8267d570e781ed2c",
+          "path": "zuo",
+          "url": "https://github.com/racket/zuo"
+        }
+      ],
+      "source_kind": "deterministic composition of exact official git archives including locked submodules; not an upstream release tarball",
+      "support_only": true,
+      "upstream": "https://github.com/cisco/ChezScheme"
+    },
+    "provider": "source",
+    "recipe": {
+      "commands": [
+        [
+          "python3",
+          "{recipe}/build-chez.py",
+          "--source",
+          "{source}",
+          "--build",
+          "{build}/chez",
+          "--prefix",
+          "{prefix}",
+          "--jobs",
+          "{jobs}"
+        ]
+      ],
+      "required_host_commands": [
+        "gcc",
+        "make"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/scheme"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 9505195,
+        "extract": true,
+        "id": "chezscheme-vendored",
+        "material_path": "sources/chezscheme-10.4.1",
+        "sha256": "25e5e99c8c4613cc7b8f5bc87c787fe169f6e7a500668af6301756ac3121e90d",
+        "strip_root": true,
+        "url": null
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/cisco/ChezScheme/blob/v10.4.1/BUILDING"
+      ],
+      "examples": [],
+      "locations": [],
+      "notes": [
+        "Dependency-only package; not an additional assigned research family.",
+        "The C portable kernel is built from source. Official portable boot files are reused exactly; no native Chez bootstrap qualification is claimed.",
+        "X11 and curses disabled; no host-global installation."
+      ],
+      "summary": "Private Chez Scheme 10.4.1 portable-bytecode runtime for Nanopass"
+    },
+    "version": "10.4.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "scope": "portable C kernel plus exact upstream pb boot",
+    "source_commit": "e95a7efbafa2cf3bd5343ea542e6bc909a7ab2c4"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "chezscheme-vendored",
+      "path": "sources/25e5e99c8c4613cc7b8f5bc87c787fe169f6e7a500668af6301756ac3121e90d"
+    }
+  ]
+}

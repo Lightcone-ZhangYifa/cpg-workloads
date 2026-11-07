@@ -1,0 +1,150 @@
+{
+  "build": "cpg-20261101-w060-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/cpg_check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 3600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "isa.riscv-arch-tests",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "formal_qualification_promotion": false,
+    "license_note": "Per-asset original notices retained in archives and payload/licenses; test code BSD-3-Clause/Apache-2.0, documentation CC-BY-4.0.",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "2.7.4 / RV32I,M,C + RV64I,M,C: 169 original assembly tests, 93116 reference words; ACT4 4.1.0 material/configuration only, runtime=null",
+    "record_id": "review.root.riscv-arch-tests",
+    "source_build_verified": false,
+    "source_material_scope": "Complete original 2.7.4 and 4.1.0 source archives; exact GCC13/binutils2.35.1+2.42 and Sail0.16 prebuilt inputs plus Sail model sources",
+    "worker_id": "worker 060"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "tar",
+      "dpkg-deb"
+    ],
+    "runtime_environment": {
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 60032717,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "assets/arch-test-2.7.4.tar.gz",
+      "sha256": "c72b1ac401eeb1fb611a683738abbf4f8f036789c68661f64acc64fcccff4be6",
+      "strip_root": false,
+      "url": "https://codeload.github.com/riscv/riscv-arch-test/tar.gz/96e3589a867955e94c95ba098822da54d3ae39c0"
+    },
+    {
+      "bytes": 44926185,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "assets/arch-test-4.1.0.tar.gz",
+      "sha256": "6b891613a0990235ac46b5c6ee694f5e92cd07d923ca8a088c03d479d7516f36",
+      "strip_root": false,
+      "url": "https://codeload.github.com/riscv/riscv-arch-test/tar.gz/6e8a45123f14cebfb3df151a0e7b849b4389b33b"
+    },
+    {
+      "bytes": 48423204,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "assets/gcc-riscv64-unknown-elf_13.2.0-11ubuntu1+12_amd64.deb",
+      "sha256": "47d4670801c391c65513e2002a19280c6bbdba158f5a467ac5100bff813de0e3",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/gcc-riscv64-unknown-elf/gcc-riscv64-unknown-elf_13.2.0-11ubuntu1+12_amd64.deb"
+    },
+    {
+      "bytes": 2385984,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "assets/binutils-riscv64-unknown-elf_2.35.1-0ubuntu1_amd64.deb",
+      "sha256": "e843ec1406f5ddfd19fb517c6328ec2ec71481949126986bd9d2502cfb347267",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/b/binutils-riscv64-unknown-elf/binutils-riscv64-unknown-elf_2.35.1-0ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 2996620,
+      "extract": false,
+      "id": "input-004",
+      "material_path": "assets/binutils-riscv64-unknown-elf_2.42-1ubuntu1+6_amd64.deb",
+      "sha256": "d42d42efdaa0563155d0e1263675852255b20864cc525db9265247a5dec2ce30",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/b/binutils-riscv64-unknown-elf/binutils-riscv64-unknown-elf_2.42-1ubuntu1+6_amd64.deb"
+    },
+    {
+      "bytes": 2966239,
+      "extract": false,
+      "id": "input-005",
+      "material_path": "assets/sail-riscv-0.16-Linux-x86_64.tar.gz",
+      "sha256": "f9bb8a32b8f3eddbdf69b3a29d96dff4ba1e77f45877165e0478418367da6bee",
+      "strip_root": false,
+      "url": "https://github.com/riscv/sail-riscv/releases/download/0.16/sail-riscv-Linux-x86_64.tar.gz"
+    },
+    {
+      "bytes": 876356,
+      "extract": false,
+      "id": "input-006",
+      "material_path": "assets/sail-riscv-0.16-source.tar.gz",
+      "sha256": "73a617fae97429f0659f7dedac4dada86ea6f27183146698ef70804b23b4203e",
+      "strip_root": false,
+      "url": "https://codeload.github.com/riscv/sail-riscv/tar.gz/refs/tags/0.16"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt",
+      "source-lock.json",
+      "resource-evidence.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/cpg_check.py",
+        "description": "Run the declared semantic and failure-path checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent prefix",
+        "path": "{prefix}",
+        "purpose": "Tool, source fixtures and offline checks"
+      }
+    ],
+    "notes": [
+      "No official certification",
+      "No compiler equivalence proof",
+      "No Dataset or formal Benchmark promotion",
+      "ACT4 4.1.0 runtime unqualified",
+      "Only the fixed legacy integer profiles are executed"
+    ],
+    "summary": "Build and execute fixed original RV32/RV64 I/M/C architectural tests; compare independent reference signatures; preserve current/legacy configuration compatibility"
+  },
+  "version": "2.7.4+4.1.0-compat"
+}

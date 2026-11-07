@@ -1,0 +1,243 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check_adapter.py",
+        "{prefix}",
+        "coccinelle",
+        "{build}",
+        "version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "upstream-version",
+      "kind": "version",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 60
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check_adapter.py",
+        "{prefix}",
+        "coccinelle",
+        "{build}",
+        "functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "offline-real-transformation",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "gcc"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 240
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "coccinelle",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 6981578,
+      "checks": [
+        {
+          "argv": [
+            "python3",
+            "-B",
+            "{recipe}/check_adapter.py",
+            "{prefix}",
+            "coccinelle",
+            "{build}",
+            "version"
+          ],
+          "cwd": "{build}",
+          "expected_returncode": 0,
+          "id": "upstream-version",
+          "kind": "version",
+          "requires_commands": [
+            "python3"
+          ],
+          "timeout_seconds": 60
+        },
+        {
+          "argv": [
+            "python3",
+            "-B",
+            "{recipe}/check_adapter.py",
+            "{prefix}",
+            "coccinelle",
+            "{build}",
+            "functional"
+          ],
+          "cwd": "{build}",
+          "expected_returncode": 0,
+          "id": "offline-real-transformation",
+          "kind": "functional",
+          "requires_commands": [
+            "python3",
+            "gcc"
+          ],
+          "stdout_regex": "\"status\": \"passed\"",
+          "timeout_seconds": 240
+        }
+      ],
+      "dependencies": [],
+      "deployment": {
+        "adapter": "binary-profile",
+        "required_installed_paths": [
+          "{prefix}/runtime/coccinelle/usr/bin/spatch",
+          "{prefix}/native_checks.py",
+          "{prefix}/sources-lock.json"
+        ],
+        "required_runtime_commands": [
+          "ldd"
+        ],
+        "runtime_environment": {}
+      },
+      "documentation": [
+        "https://coccinelle.gitlabpages.inria.fr/website/"
+      ],
+      "extract": false,
+      "id": "coccinelle",
+      "input_locks": [
+        {
+          "bytes": 6981578,
+          "debian_control": "Package: coccinelle\nVersion: 1.1.1.deb-5build1\nArchitecture: amd64\nDepends: libparmap-ocaml, ocaml-findlib, libstdcompat-ocaml-v38e5, libstdlib-ocaml-ep7y0, python3:any, libc6 (>= 2.38)\n",
+          "digest_basis": "computed_from_bytes_fetched_from_the_listed_official_origin",
+          "file": "inputs/coccinelle-deb.deb",
+          "role": "runtime_input_or_license",
+          "sha256": "7ff53db03c73fdeb5b6063b999463d74c580763beca7a2dcf3cb470c7a8c6aa0",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/c/coccinelle/coccinelle_1.1.1.deb-5build1_amd64.deb"
+        },
+        {
+          "bytes": 12508,
+          "digest_basis": "computed_from_bytes_fetched_from_the_listed_official_origin",
+          "file": "inputs/coccinelle_1.1.1.deb-5build1.debian.tar.xz",
+          "role": "corresponding_source_or_distribution_patch",
+          "sha256": "f548781ae9e4b93cf4fb97418480ec5df769d8237587a3eb7d3a46e2f06ddfbd",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/c/coccinelle/coccinelle_1.1.1.deb-5build1.debian.tar.xz"
+        },
+        {
+          "bytes": 1799837,
+          "digest_basis": "computed_from_bytes_fetched_from_the_listed_official_origin",
+          "file": "inputs/coccinelle_1.1.1.deb.orig.tar.gz",
+          "role": "corresponding_source_or_distribution_patch",
+          "sha256": "ffc44e6801045957f4fdfc9db46e7433dbc6a01d51b25ca5349b6ea0f58a0559",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/c/coccinelle/coccinelle_1.1.1.deb.orig.tar.gz"
+        }
+      ],
+      "kind": "native_bundle",
+      "license": "GPL-2.0-or-later",
+      "license_class": "open",
+      "material_path": "inputs/coccinelle-deb.deb",
+      "profile": {
+        "fixture_source": "locally authored non-proprietary synthetic examples",
+        "host_prerequisites": [
+          "python3",
+          "gcc",
+          "g++",
+          "ldd",
+          "glibc loader and compatible transitive system libraries"
+        ],
+        "payload_selection": "Unmodified native files plus locally authored offline runner/fixtures and notices.",
+        "resource": "coccinelle",
+        "scope": "Native SmPL expression transformations; embedded Python/OCaml extensions unqualified",
+        "selected_upstream_paths": [
+          "runtime/coccinelle/usr/bin/spatch",
+          "runtime/coccinelle/usr/lib/coccinelle/standard.iso",
+          "runtime/coccinelle/usr/lib/coccinelle/standard.h",
+          "runtime/coccinelle/usr/share/doc/coccinelle"
+        ]
+      },
+      "purpose": "Native SmPL expression transformations; embedded Python/OCaml extensions unqualified",
+      "sha256": "7ff53db03c73fdeb5b6063b999463d74c580763beca7a2dcf3cb470c7a8c6aa0",
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/c/coccinelle/coccinelle_1.1.1.deb-5build1_amd64.deb",
+      "strip_archive_root": false,
+      "title": "coccinelle",
+      "version": "1.1.1.deb-5build1"
+    },
+    "catalog_sha256": "ffddcd18615e88e44233ec14601e1da30f7eefe1dc778069829cfce1e74eb76f"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "binary-profile",
+    "required_installed_paths": [
+      "{prefix}/runtime/coccinelle/usr/bin/spatch",
+      "{prefix}/native_checks.py",
+      "{prefix}/sources-lock.json"
+    ],
+    "required_runtime_commands": [
+      "ldd"
+    ],
+    "runtime_environment": {}
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 6981578,
+      "extract": false,
+      "id": "coccinelle",
+      "material_path": "inputs/coccinelle-deb.deb",
+      "sha256": "7ff53db03c73fdeb5b6063b999463d74c580763beca7a2dcf3cb470c7a8c6aa0",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/c/coccinelle/coccinelle_1.1.1.deb-5build1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://coccinelle.gitlabpages.inria.fr/website/"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B '{recipe}/check_adapter.py' '{prefix}' coccinelle '{build}' version",
+        "description": "Run the recorded version check."
+      },
+      {
+        "command": "python3 -B '{recipe}/check_adapter.py' '{prefix}' coccinelle '{build}' functional",
+        "description": "Run the recorded functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/inputs/coccinelle-deb.deb",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Installation prefix",
+        "path": "{prefix}",
+        "purpose": "The selected version's independently installed files."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "Run install/check using the Python PackageManager API. No Experiment or Trainer change is required.",
+      "The target distribution is reference build metadata; the original manager checks architecture and actual ABI.",
+      "Checks require host Python3 and GCC/G++, separate from installation dependencies. No package manager/download call runs during checks.",
+      "The complete provenance closure is metadata.catalog.input_locks and payload sources-lock.json.",
+      "Protected recipe hooks validate payload inventory before each version/functional check; this is package-level hardening, not a modification of the original manager.",
+      "Native SmPL expression transformations; embedded Python/OCaml extensions unqualified"
+    ],
+    "summary": "Native SmPL expression transformations; embedded Python/OCaml extensions unqualified"
+  },
+  "version": "1.1.1.deb-5build1"
+}

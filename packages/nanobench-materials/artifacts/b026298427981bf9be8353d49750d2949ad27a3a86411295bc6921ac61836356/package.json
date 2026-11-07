@@ -1,0 +1,123 @@
+{
+  "build": "w076.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "material-integrity",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "nanobench-materials",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 314926,
+      "baseline_version": "0.21.14",
+      "category": "observability",
+      "deployment": {
+        "adapter": "copy"
+      },
+      "extract": false,
+      "id": "nanobench-materials",
+      "is_formal_baseline_addition": false,
+      "kind": "archive",
+      "managed_profile_scope": "Pinned source/documentation and counter configuration format reference; user/kernel collector remains policy-held",
+      "material_path": "raw/nanobench-36c077fd30db11e8c83cedfcb58daa505d1d0b12.tar.gz",
+      "purpose": "Pinned source/documentation and counter configuration format reference; user/kernel collector remains policy-held",
+      "sha256": "8fad0d417d11b88c7223c21c4710a403581cff4d6dc530077c7d4aded975eb55",
+      "source_url": "https://codeload.github.com/andreas-abel/nanoBench/tar.gz/36c077fd30db11e8c83cedfcb58daa505d1d0b12",
+      "strip_archive_root": true,
+      "title": "nanobench-materials",
+      "upstream_pin_record": "source-lock.json",
+      "version": "commit-36c077fd30db"
+    },
+    "catalog_sha256": "b6c45436f2db5ddbeb2ab7ad61812a3156e189fce2bbd2c08ccbf676701933c1",
+    "functional_claim": false,
+    "hardware_claim": false,
+    "host_runtime_requirements_explicit": true,
+    "independent_new_family": true,
+    "logical_resource_id": "nanobench-materials",
+    "material_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Pinned source/documentation and counter configuration format reference; user/kernel collector remains policy-held",
+    "worker_id": "worker 076"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "required_installed_paths": [
+      "{prefix}/CPG-POLICY.json",
+      "{prefix}/source-lock.json",
+      "{prefix}/material-manifest.json",
+      "{prefix}/GUIDE.md"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 314926,
+      "extract": false,
+      "id": "nanobench-materials",
+      "material_path": "raw/nanobench-36c077fd30db11e8c83cedfcb58daa505d1d0b12.tar.gz",
+      "sha256": "8fad0d417d11b88c7223c21c4710a403581cff4d6dc530077c7d4aded975eb55",
+      "strip_root": true,
+      "url": "https://codeload.github.com/andreas-abel/nanoBench/tar.gz/36c077fd30db11e8c83cedfcb58daa505d1d0b12"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "{prefix}/GUIDE.md",
+      "{prefix}/source-lock.json",
+      "{prefix}/CPG-POLICY.json"
+    ],
+    "examples": [
+      {
+        "command": "cat {prefix}/GUIDE.md",
+        "description": "Read scope and offline invocation examples"
+      }
+    ],
+    "locations": [
+      {
+        "label": "independent payload",
+        "path": "{prefix}",
+        "purpose": "Selected pinned upstream resources and reproducible offline fixtures."
+      }
+    ],
+    "notes": [
+      "User perf-only collection policy remains in force.",
+      "No hardware, benchmark or UI browser execution qualification is implied.",
+      "All check outputs are outside the immutable prefix."
+    ],
+    "summary": "Pinned source/documentation and counter configuration format reference; user/kernel collector remains policy-held"
+  },
+  "version": "commit-36c077fd30db"
+}

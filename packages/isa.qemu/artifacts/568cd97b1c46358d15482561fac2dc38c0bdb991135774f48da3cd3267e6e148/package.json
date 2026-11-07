@@ -1,0 +1,119 @@
+{
+  "build": "cpg-20261101-w058-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "isa.qemu",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "formal_qualification_promotion": false,
+    "license_note": "Original Ubuntu copyright and QEMU source licenses preserved; QEMU main code GPL-2.0 with separately licensed components.",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Linux x86_64 host; static RV64IM Linux syscall fixture without guest libc/sysroot; exact sum/fib stdout and invalid CPU/ELF rejection",
+    "record_id": "review.engineering.qemu",
+    "source_build_verified": false,
+    "source_material_scope": "Exact complete declared source archives; see source-lock.json",
+    "worker_id": "worker 058"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 14696804,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "deps/qemu-user-static_8.2.2+ds-0ubuntu1_amd64.deb",
+      "sha256": "83ad62bfe0e28a5645cb6a40d8b99e7a629fdac9e1a9cea9949d1c59a01322c7",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/q/qemu/qemu-user-static_8.2.2+ds-0ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 39678456,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "raw/qemu_8.2.2+ds.orig.tar.xz",
+      "sha256": "5e692dd20950a819ff6550cd3974e00319a93f47c0a15f808c58df1a9e4d2478",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/q/qemu/qemu_8.2.2+ds.orig.tar.xz"
+    },
+    {
+      "bytes": 153564,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "raw/qemu_8.2.2+ds-0ubuntu1.debian.tar.xz",
+      "sha256": "647a4c28d3cfd7b8d0c38e03cacd1f515b472fd7d40fe0b61defd4ee7c3a672e",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/q/qemu/qemu_8.2.2+ds-0ubuntu1.debian.tar.xz"
+    },
+    {
+      "bytes": 9328,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "raw/qemu_8.2.2+ds-0ubuntu1.dsc",
+      "sha256": "ea4f9a01b81bda3dcc02f5c6667ca120c0c2b9b3e972b29a2f005242e99cd701",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/q/qemu/qemu_8.2.2+ds-0ubuntu1.dsc"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt",
+      "source-lock.json",
+      "resource-evidence.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/check.py",
+        "description": "Run the declared semantic and failure-path checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent prefix",
+        "path": "{prefix}",
+        "purpose": "Tool, source fixtures and offline checks"
+      }
+    ],
+    "notes": [
+      "已本地交叉编译fixture；QEMU运行时使用固定Ubuntu官方预构建程序。",
+      "完整固定Ubuntu源码与发行补丁随附；未声称本地源码重建QEMU。",
+      "不包含system emulation、其他ISA/sysroot、真实硬件或性能测量资格。"
+    ],
+    "summary": "执行交叉编译RV64IM Linux-user样例并核精确输出"
+  },
+  "version": "8.2.2+ds-0ubuntu1"
+}

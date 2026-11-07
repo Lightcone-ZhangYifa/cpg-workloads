@@ -1,0 +1,170 @@
+{
+  "build": "worker069-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "feldera-dbsp.task-acceptance",
+      "kind": "functional",
+      "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "feldera-dbsp",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "benchmark_qualification": null,
+    "dataset_qualification": null,
+    "dependency_contract": "Embedded dependency locks plus explicit host commands and ELF checks",
+    "dependency_notes": [],
+    "license_notes": [
+      "DBSP MIT selected from its declared MIT OR Apache-2.0; separate trace notices retained. All 184 component licenses are individually audited with no unresolved entries. priority-queue uses MPL-2.0 with complete unmodified source; unicode-ident Unicode-DFS-2016 and xxhash-rust BSL-1.0 are separately preserved."
+    ],
+    "official_baseline_promoted": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Original Rust DBSP 0.2.0 core at 3846fcd0d7f6b419c8ceaee9e259e99fd55aa93c; 149 batches/418 weighted inserts and deletes; filter, grouped COUNT, two-input join and DISTINCT with 1/2 workers; 3576 per-step Python/SQLite/delta/integration comparisons and a rejected corrupt-join control",
+    "record_id": "review.optimization.feldera-dbsp",
+    "source_pins": [
+      {
+        "additional_notice": "src/trace/LICENSE",
+        "bytes": 3966538,
+        "commit": "3846fcd0d7f6b419c8ceaee9e259e99fd55aa93c",
+        "crate": "dbsp",
+        "crate_published_at": "2023-09-06T22:19:14.304034Z",
+        "license_cargo_expression": "MIT OR Apache-2.0",
+        "license_selected": "MIT",
+        "path_in_vcs": "crates/dbsp",
+        "registry_checksum_match": true,
+        "repository": "https://github.com/feldera/feldera",
+        "scope": "Rust core; default features disabled, with-serde explicitly enabled because upstream core requires serialization metadata; persistence, SQL frontend and platform services disabled",
+        "sha256": "86be57090477a33f6a222d23872808904cd1ffcd0056766cb0d1617c660280b2",
+        "source_url": "https://static.crates.io/crates/dbsp/dbsp-0.2.0.crate",
+        "unmodified_upstream_archive_members": 192,
+        "version": "0.2.0"
+      },
+      {
+        "vendor_archive": {
+          "archive": "vendor.tar.gz",
+          "bytes": 43981478,
+          "compression": "gzip level 3, deterministic mtime 0",
+          "crate_count": 184,
+          "full_member_bytes_types_modes_and_links_verified": true,
+          "inventory": "provenance/vendor-inventory.json",
+          "inventory_sha256": "f5178a5aff2cfc5a4f5c93e49abadbdd43ef78941897b7527f0a76e434658874",
+          "members": 12725,
+          "schema_version": 1,
+          "sha256": "1c7acb56d8c28b18288770bc1611d8a266dca35db02954257ab28872afe8282c"
+        }
+      },
+      {
+        "rust_components": [
+          {
+            "bytes": 64420052,
+            "file": "rustc-1.75.0-x86_64-unknown-linux-gnu.tar.xz",
+            "sha256": "2824ba4045acdddfa436da4f0bb72807b64a089aa2e7c9a66ca1a3a571114ce7",
+            "url": "https://static.rust-lang.org/dist/rustc-1.75.0-x86_64-unknown-linux-gnu.tar.xz"
+          },
+          {
+            "bytes": 24719960,
+            "file": "rust-std-1.75.0-x86_64-unknown-linux-gnu.tar.xz",
+            "sha256": "136b132199f7bbda2aa0bbff6d1e6ae7d5fca2994a2f2a432a5e99de224b6314",
+            "url": "https://static.rust-lang.org/dist/rust-std-1.75.0-x86_64-unknown-linux-gnu.tar.xz"
+          },
+          {
+            "bytes": 7896780,
+            "file": "cargo-1.75.0-x86_64-unknown-linux-gnu.tar.xz",
+            "sha256": "6ac164e7da969a1d524f747f22792e9aa08bc7446f058314445a4f3c1d31a6bd",
+            "url": "https://static.rust-lang.org/dist/cargo-1.75.0-x86_64-unknown-linux-gnu.tar.xz"
+          }
+        ]
+      },
+      {
+        "application_cargo_lock_sha256": "ff033491d80d9b9a87ec1bfe05550f72e9871380d23567fd015e0f60ae04e3b1",
+        "features": {
+          "default_features": false,
+          "features": [
+            "with-serde"
+          ],
+          "persistence": false
+        },
+        "registry_crates_compiled": 133,
+        "registry_crates_preserved": 184
+      }
+    ],
+    "worker_id": "worker 069"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/check.py"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "CARGO_NET_OFFLINE": "true",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3966538,
+      "extract": false,
+      "id": "feldera-dbsp.input0",
+      "material_path": "upstream/dbsp-0.2.0.crate",
+      "sha256": "86be57090477a33f6a222d23872808904cd1ffcd0056766cb0d1617c660280b2",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/dbsp/dbsp-0.2.0.crate"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/feldera/feldera",
+      "https://crates.io/crates/dbsp/0.2.0"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/check.py --prefix {prefix}",
+        "description": "Replay the task acceptance"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed resource",
+        "path": "{prefix}",
+        "purpose": "Locked sources, runtime, query examples and replay checks"
+      }
+    ],
+    "notes": [
+      "All 192 upstream archive members are preserved byte-for-byte. Caller enables only the original with-serde feature with default features disabled; persistence remains disabled.",
+      "The first private SDK/empty-target build reached DBSP and exposed a missing caller feature. The original source and 184 dependency versions/checksums are unchanged; an explicit feature/lock-edge fix was followed by successful local-cache compilation. Both attempts are retained, without an uninterrupted-cold-build claim.",
+      "Only the fixed historical local Rust core and non-NULL integer bag operations are qualified; Feldera SQL frontend, platform services, connectors, persistence, accounts and distributed execution were not used.",
+      "Runtime requires Linux x86_64, Python sqlite3 and compatible host libgcc_s/libm/libc/ELF loader; observed host glibc 2.39. No cross-host binary identity is claimed.",
+      "A new source rebuild uses the three immutable Rust 1.75.0 archives in common support plus host C compiler/linker and Python 3.12; SDK, source/vendor, Cargo home and target are private to the selected build directory.",
+      "184 component source and license records are supplied; 133 were actually compiled on this host and 51 are retained conditional/non-host dependencies."
+    ],
+    "summary": "Source-built original local DBSP incremental queries with per-step independent recomputation"
+  },
+  "version": "0.2.0+cpg-worker069"
+}

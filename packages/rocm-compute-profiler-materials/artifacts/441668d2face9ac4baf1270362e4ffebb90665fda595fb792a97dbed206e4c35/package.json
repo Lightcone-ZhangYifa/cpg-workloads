@@ -1,0 +1,117 @@
+{
+  "build": "worker077-static-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/static_check.py",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "static-material-integrity",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "rocm-compute-profiler-materials",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 17828526,
+      "category": "observability",
+      "description": "ROCm/rocm-systems therock-10.1发布的完整rocprofiler-compute原始源归档及展开的当前文档、输入schema/指标配置源码与许可。未取得运行依赖闭包，未构建或执行软件。",
+      "extract": false,
+      "id": "rocm-compute-profiler-materials",
+      "kind": "material",
+      "license": "MIT",
+      "license_class": "open",
+      "material_path": "upstream/rocprofiler-compute-therock-10.1.tar.gz",
+      "name": "ROCm Compute Profiler 静态材料",
+      "new_material_profile": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "policy_status": "policy-held",
+      "record_id": "review.engineering.rocm-compute-profiler",
+      "sha256": "d7c8b5233de8e59372402458b0d393e399b5785945eba02e23c4488245dd2644",
+      "source_url": "https://github.com/ROCm/rocm-systems/releases/download/therock-10.1/rocprofiler-compute.tar.gz",
+      "strip_archive_root": false,
+      "version": "3.9.0-therock10.1"
+    },
+    "catalog_sha256": "a10238b85746bb29eac16db7ea6e45746f7175a4b280098379324949793a82fe",
+    "collector_policy": "policy-held",
+    "material_scope": "ROCm/rocm-systems therock-10.1发布的完整rocprofiler-compute原始源归档及展开的当前文档、输入schema/指标配置源码与许可。未取得运行依赖闭包，未构建或执行软件。",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "benchmark": null,
+      "complete_profiler_installation": false,
+      "dataset_verified": null,
+      "functional": null,
+      "hardware": null,
+      "material": true,
+      "material_scope": "exactly the static profile documented here",
+      "oci": null,
+      "source_build": null
+    },
+    "worker_id": "worker 077"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 17828526,
+      "extract": false,
+      "id": "rocm-compute-profiler-materials",
+      "material_path": "upstream/rocprofiler-compute-therock-10.1.tar.gz",
+      "sha256": "d7c8b5233de8e59372402458b0d393e399b5785945eba02e23c4488245dd2644",
+      "strip_root": false,
+      "url": "https://github.com/ROCm/rocm-systems/releases/download/therock-10.1/rocprofiler-compute.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://rocm.docs.amd.com/projects/rocprofiler-compute/en/latest/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/reference_query.py 'pmc_perf' --limit 20",
+        "description": "Search pinned text without executing vendor code"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reference guide",
+        "path": "{prefix}/REFERENCE.zh.md",
+        "purpose": "Exact scope, API/input map, licensing and policy boundary"
+      },
+      {
+        "label": "Pinned material files",
+        "path": "{prefix}/reference",
+        "purpose": "Offline documentation, type interfaces and licensed examples"
+      }
+    ],
+    "notes": [
+      "ROCm/rocm-systems therock-10.1发布的完整rocprofiler-compute原始源归档及展开的当前文档、输入schema/指标配置源码与许可。未取得运行依赖闭包，未构建或执行软件。",
+      "旧独立仓库已迁入rocm-systems，来源锁指向新官方release及其commit。虽有离线analysis模块，本任务仍只交静态材料；未运行分析器、采集器、GUI或查询GPU。源码归档完整不等于运行依赖完整或可构建。",
+      "Collector execution remains policy-held; reference integrity does not imply profiler functionality."
+    ],
+    "summary": "为AMD GPU优化阅读指标定义、架构差异、输入表与派生指标计算所需字段。agent可核对counter名称和派生表达式，避免将不同GPU族或不同版本的metric含义混用。"
+  },
+  "version": "3.9.0-therock10.1"
+}

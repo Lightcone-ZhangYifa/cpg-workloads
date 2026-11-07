@@ -1,0 +1,128 @@
+{
+  "build": "cpg-worker014-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--resource",
+        "bpftool",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-offline-functional",
+      "kind": "functional",
+      "stdout_regex": "\"passed\": true",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "bpftool",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "bounded_evidence": "worker014 delivery/evidence/portable-prebuilt-check/summary.json",
+    "formal_qualification": "not_promoted",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.engineering.bpftool",
+    "runtime_requirements": [
+      "Linux x86_64",
+      "compatible glibc/libm",
+      "libelf",
+      "zlib",
+      "libzstd"
+    ],
+    "source_commits": {
+      "bpftool": "687e7f06f2ee104ed6515ec3a9816af77bfa7a17",
+      "bpftool-libbpf": "20c0a9e3d7e7d4aeb283eae982543c9cacc29477"
+    },
+    "worker_id": "worker 014"
+  },
+  "provider": "source",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/bin/bpftool",
+      "{prefix}/bin/skeleton-probe"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 470062,
+      "extract": false,
+      "id": "bpftool",
+      "material_path": "raw/bpftool-687e7f06f2ee104ed6515ec3a9816af77bfa7a17.tar.gz",
+      "sha256": "2edc5971edd1bfed372c5bf3b5a37ab0af097c01fffeb1ac663a5942a3b5b536",
+      "strip_root": false,
+      "url": "https://codeload.github.com/libbpf/bpftool/tar.gz/687e7f06f2ee104ed6515ec3a9816af77bfa7a17"
+    },
+    {
+      "bytes": 999808,
+      "extract": false,
+      "id": "bpftool-libbpf",
+      "material_path": "raw/bpftool-libbpf-20c0a9e3d7e7d4aeb283eae982543c9cacc29477.tar.gz",
+      "sha256": "ca89210ef0ca09551108222f046c67773f69e483d62ff86d79fc38cbbc49ad28",
+      "strip_root": false,
+      "url": "https://codeload.github.com/libbpf/libbpf/tar.gz/20c0a9e3d7e7d4aeb283eae982543c9cacc29477"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "unspecified",
+    "distribution_version": "unspecified",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Add {prefix}/bin to PATH when needed."
+    ],
+    "documentation": [
+      "https://codeload.github.com/libbpf/bpftool/tar.gz/687e7f06f2ee104ed6515ec3a9816af77bfa7a17",
+      "https://codeload.github.com/libbpf/libbpf/tar.gz/20c0a9e3d7e7d4aeb283eae982543c9cacc29477"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --resource bpftool --prefix {prefix} --build {build}",
+        "description": "Run the bounded offline qualification with the installed CPG recipe."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Native tools",
+        "path": "{prefix}/bin",
+        "purpose": "Pinned local executables and bounded probes."
+      },
+      {
+        "label": "Original source",
+        "path": "{prefix}/raw",
+        "purpose": "Unchanged archives with SHA-256 locks."
+      },
+      {
+        "label": "Licenses",
+        "path": "{prefix}/licenses",
+        "purpose": "Upstream redistribution and integration notices."
+      }
+    ],
+    "notes": [
+      "Candidate additive resource; no formal project publication or original-denominator promotion.",
+      "Native Linux x86_64 prebuild. Runtime ABI is checked by CPG; distribution names are not gates.",
+      "Build/source/install environments remain separate. This native package installs entirely from local bytes.",
+      "The raw source archives are unmodified and pinned; source-build replay is provided by the surrounding worker014 delta.",
+      "Fixed kernel source checkpoint 750011e239a50873251c16207b0fe78eabf8577e; current kernel load/attach unqualified.",
+      "EM_BPF fixture objects are non-native target data, archived under data/ and unpacked only into the check work directory.",
+      "The new skeleton probe statically links original apt.libbpf-dev 1:1.3.0-2build2 under BSD-2-Clause; no APT wrapper is duplicated."
+    ],
+    "summary": "Pinned bpftool with offline BTF inspection and skeleton generation/open checks; no kernel load."
+  },
+  "version": "7.3.0"
+}

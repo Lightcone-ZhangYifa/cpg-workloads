@@ -1,0 +1,2675 @@
+{
+  "build": "cpg-worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/run_check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "stdout_regex": "CPG_BOUNDED_FUNCTIONAL_PASS yosys",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "yosys",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "external_sdk_environment_keys": [],
+    "qualification_scope": "Bounded native worker profile; no new Dataset or hardware qualification.",
+    "source_lock": {
+      "binary_modifications": "None. All native ELF bytes are copied unchanged from the fixed official Ubuntu packages; only new relocation launchers are added.",
+      "corresponding_source_checksums_verified_against_dsc": [
+        {
+          "bytes": 7091313,
+          "dsc": "tcl8.6_8.6.14+dfsg-1build1.dsc",
+          "file": "tcl8.6_8.6.14+dfsg.orig.tar.gz",
+          "sha256": "dc6b06142abfc46692c2f614064f930aa0d3ea2d59ee185dc27399b5d0503ee1"
+        },
+        {
+          "bytes": 14484,
+          "dsc": "tcl8.6_8.6.14+dfsg-1build1.dsc",
+          "file": "tcl8.6_8.6.14+dfsg-1build1.debian.tar.xz",
+          "sha256": "4c74f35c55bf254de69e9b89b435a120ef9e4d03e6cae464f1dd6de3f0366977"
+        },
+        {
+          "bytes": 6161029,
+          "dsc": "yosys_0.33-5build2.dsc",
+          "file": "yosys_0.33.orig-abc.tar.gz",
+          "sha256": "6559115f2bbf4f1aac86ae4edbae416e8c60b8998bb3ac552451f4283bf6a5a7"
+        },
+        {
+          "bytes": 2586120,
+          "dsc": "yosys_0.33-5build2.dsc",
+          "file": "yosys_0.33.orig.tar.gz",
+          "sha256": "c240fa4fcc71c73b8989ab500f7bfa3109436fa1d7ba8d7e1028af4c42688f29"
+        },
+        {
+          "bytes": 30252,
+          "dsc": "yosys_0.33-5build2.dsc",
+          "file": "yosys_0.33-5build2.debian.tar.xz",
+          "sha256": "704b00f0302d1806c569d4a0f73029dfc436c6e7e928b377b06ac36de9d80982"
+        }
+      ],
+      "distribution": "https://packages.ubuntu.com/noble/yosys",
+      "files": [
+        {
+          "bytes": 20986,
+          "path": "LICENSE",
+          "sha256": "c84b7de4e8193fb1e1dc247990d2ef3cec6c1ce82a64458a3280f7cfca856fff"
+        },
+        {
+          "bytes": 317,
+          "path": "bin/yosys",
+          "sha256": "accf17ced06bcf27865b5430b310a91c93899803a5d98bffba9d96228e8a2f14"
+        },
+        {
+          "bytes": 321,
+          "path": "bin/yosys-abc",
+          "sha256": "6b0de3b8936ef0880cfb32a38c0fe557578ceb19bb3583345296ecff5c73d7b7"
+        },
+        {
+          "bytes": 327,
+          "path": "bin/yosys-filterlib",
+          "sha256": "e52e25818ada3c3630ac8faa33b2c39d61d9b2be8f4d8818f4ebe535b61c7ec5"
+        },
+        {
+          "bytes": 1753856,
+          "path": "lib/libtcl8.6.so",
+          "sha256": "2d072235d4a518cb02fd8c6a2dd052119545a9a4406cb69e8cdeef156571dec2"
+        },
+        {
+          "bytes": 8174408,
+          "path": "libexec/yosys",
+          "sha256": "88c0a12bb814a1a8716b1ae10b482e35d3005ed558e1f5f626b3dc983ea3abd0"
+        },
+        {
+          "bytes": 14918408,
+          "path": "libexec/yosys-abc",
+          "sha256": "001a99fb8648794076dd238e42f3bd8c5112a4b8bd89660883325a7e0d006043"
+        },
+        {
+          "bytes": 43256,
+          "path": "libexec/yosys-filterlib",
+          "sha256": "c0333f946f87499b1bcf65004b0dfab29851137727d4f07abdcd0380deb0b8c5"
+        },
+        {
+          "bytes": 987614,
+          "path": "raw/libtcl8.6_8.6.14+dfsg-1build1_amd64.deb",
+          "sha256": "7534eb825f6317514d747ce53b4d6c23bf24df1dc1785f9599610ece5515e685"
+        },
+        {
+          "bytes": 14484,
+          "path": "raw/tcl8.6_8.6.14+dfsg-1build1.debian.tar.xz",
+          "sha256": "4c74f35c55bf254de69e9b89b435a120ef9e4d03e6cae464f1dd6de3f0366977"
+        },
+        {
+          "bytes": 2260,
+          "path": "raw/tcl8.6_8.6.14+dfsg-1build1.dsc",
+          "sha256": "2b4f50e91737f89121b4a2c264fc4ca2ee036a039fc521ecf442920bc4f49be8"
+        },
+        {
+          "bytes": 7091313,
+          "path": "raw/tcl8.6_8.6.14+dfsg.orig.tar.gz",
+          "sha256": "dc6b06142abfc46692c2f614064f930aa0d3ea2d59ee185dc27399b5d0503ee1"
+        },
+        {
+          "bytes": 5829332,
+          "path": "raw/yosys-abc_0.33-5build2_amd64.deb",
+          "sha256": "916ba59b6ca6dd1b6b927c7364357c2801ccb85db7eb3ca858ac9a856270fa44"
+        },
+        {
+          "bytes": 2056508,
+          "path": "raw/yosys-doc_0.33-5build2_all.deb",
+          "sha256": "83fca324a506a2e62b59561bba18a4198aa4669c7ab7a69846a0c3324f788c39"
+        },
+        {
+          "bytes": 30252,
+          "path": "raw/yosys_0.33-5build2.debian.tar.xz",
+          "sha256": "704b00f0302d1806c569d4a0f73029dfc436c6e7e928b377b06ac36de9d80982"
+        },
+        {
+          "bytes": 3069,
+          "path": "raw/yosys_0.33-5build2.dsc",
+          "sha256": "538743309f336b70406401d5edcb2c224d2b6eca5114f01ae8ee9691098a9c84"
+        },
+        {
+          "bytes": 3222052,
+          "path": "raw/yosys_0.33-5build2_amd64.deb",
+          "sha256": "94247f2157ec6ce63c6638326e419975d911ace5356b3dc276d1d8b36659efbd"
+        },
+        {
+          "bytes": 6161029,
+          "path": "raw/yosys_0.33.orig-abc.tar.gz",
+          "sha256": "6559115f2bbf4f1aac86ae4edbae416e8c60b8998bb3ac552451f4283bf6a5a7"
+        },
+        {
+          "bytes": 2586120,
+          "path": "raw/yosys_0.33.orig.tar.gz",
+          "sha256": "c240fa4fcc71c73b8989ab500f7bfa3109436fa1d7ba8d7e1028af4c42688f29"
+        },
+        {
+          "bytes": 590,
+          "path": "share/doc/libtcl8.6/changelog.Debian.gz",
+          "sha256": "fe090ceacd3275ee2ff1272d40e9a271a925719f6d85901be82a6531ddad814b"
+        },
+        {
+          "bytes": 7062,
+          "path": "share/doc/libtcl8.6/copyright",
+          "sha256": "e925aa8863f0c9eda3625ce2cb16c0d5017fca248c5bd6af97006df5d9c6199c"
+        },
+        {
+          "bytes": 9286,
+          "path": "share/doc/yosys/README.md.gz",
+          "sha256": "7b917701ee0334b7420fe6bdf642b20fe036b344b3b51ded7bada32dae839f24"
+        },
+        {
+          "bytes": 20986,
+          "path": "share/doc/yosys/copyright",
+          "sha256": "c84b7de4e8193fb1e1dc247990d2ef3cec6c1ce82a64458a3280f7cfca856fff"
+        },
+        {
+          "bytes": 894355,
+          "path": "share/doc/yosys/presentation.pdf",
+          "sha256": "ef11f4d255884147b2be72cd40ca47dd0e2e9072ee4415b1c3ebfaa1763fb15b"
+        },
+        {
+          "bytes": 1329588,
+          "path": "share/doc/yosys/yosyshqyosys.pdf",
+          "sha256": "c303c3f49837d81278b370a0c48bbdc421a8bebc80c30eff9f42133402d682ca"
+        },
+        {
+          "bytes": 2469,
+          "path": "share/doc/yosys-abc/changelog.Debian.gz",
+          "sha256": "b85aedefa65203fb8a02c717f613e422ffadf71240a9cdc6ff32976e0976069a"
+        },
+        {
+          "bytes": 20986,
+          "path": "share/doc/yosys-abc/copyright",
+          "sha256": "c84b7de4e8193fb1e1dc247990d2ef3cec6c1ce82a64458a3280f7cfca856fff"
+        },
+        {
+          "bytes": 2469,
+          "path": "share/doc/yosys-doc/changelog.Debian.gz",
+          "sha256": "39b3ece7bf1c7099839dbc1c31e592034f92a74b5c19e85120669873ca478637"
+        },
+        {
+          "bytes": 20986,
+          "path": "share/doc/yosys-doc/copyright",
+          "sha256": "c84b7de4e8193fb1e1dc247990d2ef3cec6c1ce82a64458a3280f7cfca856fff"
+        },
+        {
+          "bytes": 20845,
+          "path": "share/tcltk/tcl8.6/auto.tcl",
+          "sha256": "2302234f123a10fef315aa50893bd349bc52201fa12f6dc7bc09fdfc8e84bf85"
+        },
+        {
+          "bytes": 128442,
+          "path": "share/tcltk/tcl8.6/clock.tcl",
+          "sha256": "08d61e36bb536aa02fda040abead556a862018ef9a7b465f1063a973d8da3af0"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/ascii.enc",
+          "sha256": "294c97175fd0894093b866e73548ae660aeed0c3cc1e73867eb66e52d34c0dd2"
+        },
+        {
+          "bytes": 92873,
+          "path": "share/tcltk/tcl8.6/encoding/big5.enc",
+          "sha256": "465ae2d4880b8006b1476cd60facf676875438244c1d93a7dbe4cde1035e745f"
+        },
+        {
+          "bytes": 97050,
+          "path": "share/tcltk/tcl8.6/encoding/cns11643.enc",
+          "sha256": "0a95f67f90b1cdd407a78ea4032af9eb996fc38864c46d74b42b3a7f7eda0c8a"
+        },
+        {
+          "bytes": 1091,
+          "path": "share/tcltk/tcl8.6/encoding/cp1250.enc",
+          "sha256": "1b42df7e7d6b0feb17cb0bc8d97e6ce6899492306dd880c48a39d1a2f0279004"
+        },
+        {
+          "bytes": 1091,
+          "path": "share/tcltk/tcl8.6/encoding/cp1251.enc",
+          "sha256": "2d1bed2422e131a140087faf1b12b8a46f7de3b6413bae8bc395c06f0d70b9b0"
+        },
+        {
+          "bytes": 1091,
+          "path": "share/tcltk/tcl8.6/encoding/cp1252.enc",
+          "sha256": "14df3ae30e81e7620be6bbb7a9e42083af1ae04d94cf1203565f8a3c0542ace0"
+        },
+        {
+          "bytes": 1091,
+          "path": "share/tcltk/tcl8.6/encoding/cp1253.enc",
+          "sha256": "2174d94e1c1d5ad93717b9e8c20569ed95a8af51b2d3ab2bce99f1a887049c0e"
+        },
+        {
+          "bytes": 1091,
+          "path": "share/tcltk/tcl8.6/encoding/cp1254.enc",
+          "sha256": "bc4cbe4c99fd65abea45fbdaf28cc1d5c42119280125fbbd5c2c11892ae460b2"
+        },
+        {
+          "bytes": 1091,
+          "path": "share/tcltk/tcl8.6/encoding/cp1255.enc",
+          "sha256": "f8bd79ae5a90e5390d77dc31cb3065b0f93cb8813c9e67accec72e2db2027a08"
+        },
+        {
+          "bytes": 1091,
+          "path": "share/tcltk/tcl8.6/encoding/cp1256.enc",
+          "sha256": "bbacea81d4f7a3a7f3c036273a4534d31dbf8b6b5cca2bcc4c00cb1593cf03d8"
+        },
+        {
+          "bytes": 1091,
+          "path": "share/tcltk/tcl8.6/encoding/cp1257.enc",
+          "sha256": "4151434a714fc82228677c39b07908c4e19952fc058e26e7c3ebab7724ce0c77"
+        },
+        {
+          "bytes": 1091,
+          "path": "share/tcltk/tcl8.6/encoding/cp1258.enc",
+          "sha256": "0cdb59e255ccd7dcf4af847c9b020aeaee78ce7fcf5f214ebcf123328acf9f24"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp437.enc",
+          "sha256": "d707a1f03514806e714f01cbfcb7c9f9973acdc80c2d67bbd4e6f85223a50952"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp737.enc",
+          "sha256": "8bfca34869b3f9a3b2fc71b02cbac41512af6d1f8ab17d2564e65320f88ede10"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp775.enc",
+          "sha256": "44fb04b5c72b584b6283a99b34789690c627b5083c5df6e8b5b7ab2c68903c06"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp850.enc",
+          "sha256": "55aa2d13b789b3125f5c9d0dc5b6e3a90d79426d3b7825dcd604f56d4c6e36a2"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp852.enc",
+          "sha256": "5266b6f18c3144cfadbcb7b1d27f0a7eaa1c641fd3b33905e42e4549fd373770"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp855.enc",
+          "sha256": "e3f071c63ac43af66061506ef2c574c35f7bf48553fb5158ae41d9230c1a10df"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp857.enc",
+          "sha256": "e39985c6a238086b54427475519c9e0285750707db521d1820e639723c01c36f"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp860.enc",
+          "sha256": "6db59139627d29abd36f38ed2e0de2a6b234a7d7e681c7dbaf8b888f1cac49a5"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp861.enc",
+          "sha256": "a43a5b58bfc57bd723b12bbdea9f6e1a921360b36d2d52c420f37299788442d3"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp862.enc",
+          "sha256": "aea716d490c35439621a8f00ca7e4397ef1c70428e206c5036b7af25f1c3d82f"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp863.enc",
+          "sha256": "13b5cb481e0216a8fc28bfa9d0f6b060cdf5c457b3e12435ca826eb2ef52b068"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp864.enc",
+          "sha256": "e87ec076f950fcd58189e362e1505dd55b0c8f4fa7dd1a9331c5c111d2ce569f"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp865.enc",
+          "sha256": "407fc0fe06d2a057e9ba0109ea9356cab38f27756d135ef3b06a85705b616f50"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp866.enc",
+          "sha256": "82633643cd326543915acc5d28a634b5795274cd39974d3955e51d7330ba9338"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp869.enc",
+          "sha256": "27f16e3dd02b2212c4980ea09bdc068cf01584a1b8bb91456c03fcababe0931e"
+        },
+        {
+          "bytes": 1090,
+          "path": "share/tcltk/tcl8.6/encoding/cp874.enc",
+          "sha256": "3e067363fc07662ebe52ba617c2aad364920f2af395b3416297400859acd78bb"
+        },
+        {
+          "bytes": 48207,
+          "path": "share/tcltk/tcl8.6/encoding/cp932.enc",
+          "sha256": "9d33df6e1cfdd2cf2553f5e2758f457d710caff5f8c69968f2665accd6e9a6fd"
+        },
+        {
+          "bytes": 132509,
+          "path": "share/tcltk/tcl8.6/encoding/cp936.enc",
+          "sha256": "619330192984a80f93ac6f2e4e5eaa463fd3dddc75c1f65f3975f33e0dd7a0bb"
+        },
+        {
+          "bytes": 130423,
+          "path": "share/tcltk/tcl8.6/encoding/cp949.enc",
+          "sha256": "26bcb620472433962717712d04597a63264c8e444459432565c4c113de0a240b"
+        },
+        {
+          "bytes": 91831,
+          "path": "share/tcltk/tcl8.6/encoding/cp950.enc",
+          "sha256": "1fb9a3d52d432ea2d6cd43927cebf9f58f309a236e1b11d20fe8d5a5fb944e6e"
+        },
+        {
+          "bytes": 1093,
+          "path": "share/tcltk/tcl8.6/encoding/dingbats.enc",
+          "sha256": "3bde9ae7eaf9be799c84b2aa4e80d78be8acbaca1e486f10b9bdd42e3aeddcb2"
+        },
+        {
+          "bytes": 1054,
+          "path": "share/tcltk/tcl8.6/encoding/ebcdic.enc",
+          "sha256": "17a7d45f3b82f2a42e1d36b13db5ced077945a3e82700947cd1f803dd2a60dbf"
+        },
+        {
+          "bytes": 85574,
+          "path": "share/tcltk/tcl8.6/encoding/euc-cn.enc",
+          "sha256": "546392237f47d71cee1daa1aae287d94d93216a1fabd648b50f59ddce7e8ae35"
+        },
+        {
+          "bytes": 82537,
+          "path": "share/tcltk/tcl8.6/encoding/euc-jp.enc",
+          "sha256": "3bfb42c4d36d1763693aefce87f6277a11ad5a756d691deda804d9d0edcb3093"
+        },
+        {
+          "bytes": 93918,
+          "path": "share/tcltk/tcl8.6/encoding/euc-kr.enc",
+          "sha256": "1f1ad4c4079b33b706e948a735a8c3042f40cc68065c48c220d0f56fd048c33b"
+        },
+        {
+          "bytes": 86619,
+          "path": "share/tcltk/tcl8.6/encoding/gb12345.enc",
+          "sha256": "0c0df17bfece897a1da7765c822453b09866573028cecced13e2efee02bcccc4"
+        },
+        {
+          "bytes": 1091,
+          "path": "share/tcltk/tcl8.6/encoding/gb1988.enc",
+          "sha256": "a2717ae09e0cf2d566c245dc5c5889d326661b40db0d5d9a6d95b8e6b0f0e753"
+        },
+        {
+          "bytes": 84532,
+          "path": "share/tcltk/tcl8.6/encoding/gb2312-raw.enc",
+          "sha256": "ec11bfd49c715cd89fb9d387a07cf54261e0f4a1ccec1a810e02c7b38ad2f285"
+        },
+        {
+          "bytes": 85574,
+          "path": "share/tcltk/tcl8.6/encoding/gb2312.enc",
+          "sha256": "546392237f47d71cee1daa1aae287d94d93216a1fabd648b50f59ddce7e8ae35"
+        },
+        {
+          "bytes": 192,
+          "path": "share/tcltk/tcl8.6/encoding/iso2022-jp.enc",
+          "sha256": "e12928e8b5754d49d0d3e799135de2b480ba84b5dbaa0e350d9846fa67f943ec"
+        },
+        {
+          "bytes": 115,
+          "path": "share/tcltk/tcl8.6/encoding/iso2022-kr.enc",
+          "sha256": "6ac0f1845a56a1a537b9a6d9bcb724dddf3d3a5e61879ae925931b1c0534fbb7"
+        },
+        {
+          "bytes": 226,
+          "path": "share/tcltk/tcl8.6/encoding/iso2022.enc",
+          "sha256": "753dda518a7e9f6dc0309721b1faae58c9661f545801da9f04728391f70be2d0"
+        },
+        {
+          "bytes": 1094,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-1.enc",
+          "sha256": "754ef6bf3a564228ab0b56dde391521dcc1a6c83cfb95d4b761141e71d2e8e87"
+        },
+        {
+          "bytes": 1095,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-10.enc",
+          "sha256": "79f6470d9bebd30832b3a9ca59cd1fdca28c5be6373bd01d949eee1ba51aa7a8"
+        },
+        {
+          "bytes": 1095,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-11.enc",
+          "sha256": "ad939139ff7140970bde3d91180f7c4d703d7fcf67a02c71392de1980dc560e4"
+        },
+        {
+          "bytes": 1095,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-13.enc",
+          "sha256": "33c6072a006ba4e9513d7b7fd3d08b1c745ca1079b6d796c36b2a5ae8e4ae02b"
+        },
+        {
+          "bytes": 1095,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-14.enc",
+          "sha256": "8d737283289baf8c08ef1dd7e47a6c775dace480419c5e2a92d6c0e85bb5b381"
+        },
+        {
+          "bytes": 1095,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-15.enc",
+          "sha256": "c7b0377f30e42048492e4710fe5a0a54fa9865395b8a6748f7dac53b901284f9"
+        },
+        {
+          "bytes": 1095,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-16.enc",
+          "sha256": "c40ca014b88f97ae62ae1a816c5963b1ed432a77d84d89c3a764ba15c8a23708"
+        },
+        {
+          "bytes": 1094,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-2.enc",
+          "sha256": "0e0732480338a229cc3ad4cdde09021a0a81902dc6edfb5f12203e2aff44668f"
+        },
+        {
+          "bytes": 1094,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-3.enc",
+          "sha256": "73342c27cf55f625d3db90c5fc8e7340ffdf85a51872dbfb1d0a8cb1e43ec5da"
+        },
+        {
+          "bytes": 1094,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-4.enc",
+          "sha256": "17745bdd299779e91d41db0cee26cdc7132da3666907a94210b591ced5a55adb"
+        },
+        {
+          "bytes": 1094,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-5.enc",
+          "sha256": "bc5ed164d15321404bbdcad0d647c322ffab1659462182dbd3945439d9ecbae7"
+        },
+        {
+          "bytes": 1094,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-6.enc",
+          "sha256": "f502e07ae3f19ccdc31e434049cfc733dd5df85487c0160b0331e40241ad0274"
+        },
+        {
+          "bytes": 1094,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-7.enc",
+          "sha256": "013b3b2911c66bc1ca54e510814af4954c310da10737f9b2a2474d714be2ab39"
+        },
+        {
+          "bytes": 1094,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-8.enc",
+          "sha256": "e1d207917aa3483d9110e24a0cc0cd1e0e5843c8bfc901cfee7a6d872dd945a9"
+        },
+        {
+          "bytes": 1094,
+          "path": "share/tcltk/tcl8.6/encoding/iso8859-9.enc",
+          "sha256": "1cdcf510c38464e5284edcfaec334e3fc516236c1ca3b9ab91ca878c23866914"
+        },
+        {
+          "bytes": 1092,
+          "path": "share/tcltk/tcl8.6/encoding/jis0201.enc",
+          "sha256": "480f61d0e1a75dee59bf9a66de0bb78faae4e87fd6317f93480412123277d442"
+        },
+        {
+          "bytes": 80453,
+          "path": "share/tcltk/tcl8.6/encoding/jis0208.enc",
+          "sha256": "118ea160ef29e11b46dec57af2c44405934dd8a7c49d2bc8b90c94e8baa6138b"
+        },
+        {
+          "bytes": 70974,
+          "path": "share/tcltk/tcl8.6/encoding/jis0212.enc",
+          "sha256": "24a9d379fda39f2bcc0580ca3e0bd2e99ae279af5e2841c9e7dbe7f931d19cc0"
+        },
+        {
+          "bytes": 1091,
+          "path": "share/tcltk/tcl8.6/encoding/koi8-r.enc",
+          "sha256": "7142b1120b993d6091197574090fe04be3ea64ffc3ad5a167a4b5e0b42c9f062"
+        },
+        {
+          "bytes": 1091,
+          "path": "share/tcltk/tcl8.6/encoding/koi8-u.enc",
+          "sha256": "bbb729b906f5fc3b7ee6694b208b206d19a9d4dc571e235b9c94dcdd4a323a2a"
+        },
+        {
+          "bytes": 92877,
+          "path": "share/tcltk/tcl8.6/encoding/ksc5601.enc",
+          "sha256": "0f8b530ad0decbf8dd81da8291b8b0f976c643b5a292db84680b31ecfbe5d00a"
+        },
+        {
+          "bytes": 1096,
+          "path": "share/tcltk/tcl8.6/encoding/macCentEuro.enc",
+          "sha256": "8f3089f4b2ca47b7ac4cb78375b2bfac01268113a7c67d020f8b5b7f2c25bbda"
+        },
+        {
+          "bytes": 1096,
+          "path": "share/tcltk/tcl8.6/encoding/macCroatian.enc",
+          "sha256": "8d0b6a882b742c5cce938241328606c111dda0cb83334ebedcda17605f3641ae"
+        },
+        {
+          "bytes": 1096,
+          "path": "share/tcltk/tcl8.6/encoding/macCyrillic.enc",
+          "sha256": "eb135a89519f2e004282ded21b11c3af7ccb2320c9772f2df7d1a4a1b674e491"
+        },
+        {
+          "bytes": 1096,
+          "path": "share/tcltk/tcl8.6/encoding/macDingbats.enc",
+          "sha256": "8fbcc63cb289afaae15b438752c1746f413f3b79ba5845c2ef52ba1104f8bda6"
+        },
+        {
+          "bytes": 1093,
+          "path": "share/tcltk/tcl8.6/encoding/macGreek.enc",
+          "sha256": "f7bff98228ded981ec9a4d1d0da62247a8d23f158926e3acbec3cce379c998c2"
+        },
+        {
+          "bytes": 1095,
+          "path": "share/tcltk/tcl8.6/encoding/macIceland.enc",
+          "sha256": "633f5e3e75bf1590c94ab9cbf3538d0f0a7a319db9016993908452d903d9c4fd"
+        },
+        {
+          "bytes": 48028,
+          "path": "share/tcltk/tcl8.6/encoding/macJapan.enc",
+          "sha256": "2a6856298ec629a16bdd924711dfe3f3b1e3a882ddf04b7310785d83ec0d566c"
+        },
+        {
+          "bytes": 1093,
+          "path": "share/tcltk/tcl8.6/encoding/macRoman.enc",
+          "sha256": "68f22bad30daa81b215925416c1cc83360b3bb87efc342058929731ac678ff37"
+        },
+        {
+          "bytes": 1095,
+          "path": "share/tcltk/tcl8.6/encoding/macRomania.enc",
+          "sha256": "71ae80adfb437b7bc88f3c76fd37074449b3526e7aa5776d2b9fd5a43c066fa8"
+        },
+        {
+          "bytes": 1092,
+          "path": "share/tcltk/tcl8.6/encoding/macThai.enc",
+          "sha256": "cead5eb2b0b44ef4003fbcb2e49ca0503992ba1d6540d11acbbb84fdbbd6e79a"
+        },
+        {
+          "bytes": 1095,
+          "path": "share/tcltk/tcl8.6/encoding/macTurkish.enc",
+          "sha256": "f703b7f74cc6f5faa959f51c757c94623677e27013bcae23befba01a392646d9"
+        },
+        {
+          "bytes": 1095,
+          "path": "share/tcltk/tcl8.6/encoding/macUkraine.enc",
+          "sha256": "4c94e7fbe183379805056d960ab624d78879e43278262e4d6b98ab78e5fefea8"
+        },
+        {
+          "bytes": 41862,
+          "path": "share/tcltk/tcl8.6/encoding/shiftjis.enc",
+          "sha256": "7502587d52e7810228f2ecb45ac4319ea0f5c008b7ac91053b920010dc6ddf94"
+        },
+        {
+          "bytes": 1091,
+          "path": "share/tcltk/tcl8.6/encoding/symbol.enc",
+          "sha256": "73fd2b5e14309d8c036d334f137b9edf1f7b32dbd45491cf93184818582d0671"
+        },
+        {
+          "bytes": 1092,
+          "path": "share/tcltk/tcl8.6/encoding/tis-620.enc",
+          "sha256": "5918b5e1def09781efd28751b6883665aaee29f1d244f0891edecda9bf6a4b63"
+        },
+        {
+          "bytes": 7908,
+          "path": "share/tcltk/tcl8.6/history.tcl",
+          "sha256": "cb1634980996ff393a0034afa5ed2dfe4afc2e2b25c4e399c74d7c3dcb8ee23d"
+        },
+        {
+          "bytes": 9689,
+          "path": "share/tcltk/tcl8.6/http1.0/http.tcl",
+          "sha256": "acbff9b5ef75790920b95023156fad80b18aff8cafc4a6dc03893f9388e053a2"
+        },
+        {
+          "bytes": 735,
+          "path": "share/tcltk/tcl8.6/http1.0/pkgIndex.tcl",
+          "sha256": "420c4b3088c9dacd21bc348011cac61d7cb283b9bee78ae72eed764ab094651c"
+        },
+        {
+          "bytes": 24826,
+          "path": "share/tcltk/tcl8.6/init.tcl",
+          "sha256": "374e8e83d501dc0283d4b6cae60d96b46141048e5a57d1500dd379f966879f98"
+        },
+        {
+          "bytes": 989,
+          "path": "share/tcltk/tcl8.6/msgs/af.msg",
+          "sha256": "2981965bd23a93a09eb5b4a334acb15d00645d645c596a5ecadb88bfa0b6a908"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/af_za.msg",
+          "sha256": "3c2f5f631ed3603ef0d5bcb31c51b2353c5c27839c806a036f3b7007af7f3de8"
+        },
+        {
+          "bytes": 1964,
+          "path": "share/tcltk/tcl8.6/msgs/ar.msg",
+          "sha256": "bf984ec7cf619e700fe7e00381ff58abe9bd2f4b3dd622eb2edaccc5e6681050"
+        },
+        {
+          "bytes": 259,
+          "path": "share/tcltk/tcl8.6/msgs/ar_in.msg",
+          "sha256": "29a70eac43b1f3aa189d8ae4d92658e07783965bae417fb66ee5f69cfcb564f3"
+        },
+        {
+          "bytes": 1812,
+          "path": "share/tcltk/tcl8.6/msgs/ar_jo.msg",
+          "sha256": "78116e7e706c7d1e3e7446094709819fb39a50c2a2302f92d6a498e06ed4a31b"
+        },
+        {
+          "bytes": 1812,
+          "path": "share/tcltk/tcl8.6/msgs/ar_lb.msg",
+          "sha256": "7c970efeb55c53758143df42cc452a3632f805487ca69db57e37c1f478a7571b"
+        },
+        {
+          "bytes": 1812,
+          "path": "share/tcltk/tcl8.6/msgs/ar_sy.msg",
+          "sha256": "aef17b94a0db878e2f0fb49d982057c5b663289e3a8e0e2b195dcec37e8555b1"
+        },
+        {
+          "bytes": 2105,
+          "path": "share/tcltk/tcl8.6/msgs/be.msg",
+          "sha256": "d790e54217a4bf9a7e1dcb4f3399b5861728918e93cd3f00b63f1349bdb71c57"
+        },
+        {
+          "bytes": 1819,
+          "path": "share/tcltk/tcl8.6/msgs/bg.msg",
+          "sha256": "e737d8dc724aa3b9ec07165c13e8628c6a8ac1e80345e10dc77e1fc62a6d86f1"
+        },
+        {
+          "bytes": 2286,
+          "path": "share/tcltk/tcl8.6/msgs/bn.msg",
+          "sha256": "297d4d7cae6e99db3ca6ee793519512bff65013cf261cf90ded4d28d3d4f826f"
+        },
+        {
+          "bytes": 259,
+          "path": "share/tcltk/tcl8.6/msgs/bn_in.msg",
+          "sha256": "7d3a956663c529d07c8a9610414356de717f3a2a2ce9b331b052367270acea94"
+        },
+        {
+          "bytes": 1102,
+          "path": "share/tcltk/tcl8.6/msgs/ca.msg",
+          "sha256": "14ff564fab584571e954be20d61c2facb096fe2b3ef369cc5ecb7c25c2d92d5a"
+        },
+        {
+          "bytes": 1300,
+          "path": "share/tcltk/tcl8.6/msgs/cs.msg",
+          "sha256": "49cf452eef0b8970bc56a7b8e040ba088215508228a77032cba0035522412f86"
+        },
+        {
+          "bytes": 1156,
+          "path": "share/tcltk/tcl8.6/msgs/da.msg",
+          "sha256": "ca58ff5baa9681d9162e094e833470077b7555bb09eee8e8dd41881b108008a0"
+        },
+        {
+          "bytes": 1222,
+          "path": "share/tcltk/tcl8.6/msgs/de.msg",
+          "sha256": "cc3672969c1dd223eadd9a226e00cac731d8245532408b75ab9a70e9edd28673"
+        },
+        {
+          "bytes": 812,
+          "path": "share/tcltk/tcl8.6/msgs/de_at.msg",
+          "sha256": "80513a9969a12a8fb01802d6fc3015712a4efdda64552911a1bb3ea7a098d02c"
+        },
+        {
+          "bytes": 1223,
+          "path": "share/tcltk/tcl8.6/msgs/de_be.msg",
+          "sha256": "7573581dec27e90b0c7d34057d9f4ef89727317d55f2c4e0428a47740fb1eb7a"
+        },
+        {
+          "bytes": 2252,
+          "path": "share/tcltk/tcl8.6/msgs/el.msg",
+          "sha256": "9b2f91be34024fbcf645f6ef92460e5f944ca6a16268b79478ab904b2934d357"
+        },
+        {
+          "bytes": 300,
+          "path": "share/tcltk/tcl8.6/msgs/en_au.msg",
+          "sha256": "b85c9a373ff0f036151432652dd55c182b0704bd0625ea84bed1727ec0de3dd8"
+        },
+        {
+          "bytes": 305,
+          "path": "share/tcltk/tcl8.6/msgs/en_be.msg",
+          "sha256": "596ac02204c845aa74451fc527645549f2a3318cb63051fcacb2bf948fd77351"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/en_bw.msg",
+          "sha256": "340804f73b620686ab698b2202191d69227e736b1652271c99f2cfef03d72296"
+        },
+        {
+          "bytes": 288,
+          "path": "share/tcltk/tcl8.6/msgs/en_ca.msg",
+          "sha256": "c9fe2223c4949ac0a193f321fc0fd7c344a9e49a54b00f8a4c30404798658631"
+        },
+        {
+          "bytes": 279,
+          "path": "share/tcltk/tcl8.6/msgs/en_gb.msg",
+          "sha256": "ae38ad5452314b0946c5cb9d3c89cdfc2ad214e146eb683b8d0ce3fe84070fe1"
+        },
+        {
+          "bytes": 321,
+          "path": "share/tcltk/tcl8.6/msgs/en_hk.msg",
+          "sha256": "c9be2c9ad31d516b508d01e85bcca375aaf807d6d8cd7c658085d5007069fffd"
+        },
+        {
+          "bytes": 279,
+          "path": "share/tcltk/tcl8.6/msgs/en_ie.msg",
+          "sha256": "e7868c80fd59d18bb15345d29f5292856f639559cffd42ee649c16c7938bf58d"
+        },
+        {
+          "bytes": 310,
+          "path": "share/tcltk/tcl8.6/msgs/en_in.msg",
+          "sha256": "71e5367fe839afc4338c50d450f111728e097538ecaccc1b17b10238001b0bb1"
+        },
+        {
+          "bytes": 300,
+          "path": "share/tcltk/tcl8.6/msgs/en_nz.msg",
+          "sha256": "812db204e4cb8266207a4e948fba3dd1efe4d071bbb793f9743a4320a1ceebe3"
+        },
+        {
+          "bytes": 321,
+          "path": "share/tcltk/tcl8.6/msgs/en_ph.msg",
+          "sha256": "be107f5fae1e303ea766075c52ef2146ef149eda37662776e18e93685b176cdc"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/en_sg.msg",
+          "sha256": "b8d354519bd4eb1004eb7b25f4e23fd3ee7f533a5f491a46d19fd520ed34c930"
+        },
+        {
+          "bytes": 245,
+          "path": "share/tcltk/tcl8.6/msgs/en_za.msg",
+          "sha256": "98ce9ca4bb590ba5f922d6a196e5381e19c64e7682cdbef914f2dce6745a7332"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/en_zw.msg",
+          "sha256": "91088bbbf58a704185dec13dbd421296bbd271a1aebbcb3ef85a99cecd848ff8"
+        },
+        {
+          "bytes": 1231,
+          "path": "share/tcltk/tcl8.6/msgs/eo.msg",
+          "sha256": "50df3e0e669502ed08dd778d0afedf0f71993be388b0fcaa1065d1c91bd22d83"
+        },
+        {
+          "bytes": 1180,
+          "path": "share/tcltk/tcl8.6/msgs/es.msg",
+          "sha256": "fff2f08a5be202c81e469e16d4de1f8a0c1cfe556cda063da071279f29314837"
+        },
+        {
+          "bytes": 242,
+          "path": "share/tcltk/tcl8.6/msgs/es_ar.msg",
+          "sha256": "af530acd69676678c95b803a29a44642ed2d2f2d077cf0f47b53ff24bac03b2e"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_bo.msg",
+          "sha256": "24b58de38cd4cb2abd08d1eda6c9454ffde7ed1a33367b457d7702434a0a55ee"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_cl.msg",
+          "sha256": "12ad1546eb391989105d80b41a87686d3b30626d0c42a73705f33b2d711950cc"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_co.msg",
+          "sha256": "1b4979874c3f025317dfcf0b06fc8cee080a28ff3e8efe1de9e899f6d4f4d21e"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_cr.msg",
+          "sha256": "7ac5fc35bc422a5445603e0430236e62cca3558787811de22305f72d439eb4bb"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_do.msg",
+          "sha256": "847c14c297dbe4d8517debaa8ed555f3daedf843d6bad1f411598631a0bd3507"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_ec.msg",
+          "sha256": "2086ee8d7398d5e60e5c3048843b388437bd6f2507d2293ca218936e3bf61e59"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_gt.msg",
+          "sha256": "1bc22af98267d635e3f07615a264a716940a2b1faa5caa3aff54d4c5a4a34370"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_hn.msg",
+          "sha256": "a2d25880c64309552aaced082deed1ee006482a14cab97db524e9983ee84acfc"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_mx.msg",
+          "sha256": "d0faa9d7997d5696bff92384144e0b9dfb2e4c38375817613f81a89c06ec6383"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_ni.msg",
+          "sha256": "4b28b46981bbb78cbd2b22060e2dd018c66fcff1cee52755425ad4900a90d6c3"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_pa.msg",
+          "sha256": "6832dc5ab9f610883784cf702691fcf16850651bc1c6a77a0efa81f43bc509ac"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_pe.msg",
+          "sha256": "cc826c93682ef19d29ab6304657e07802c70cf18b1e5ea99c3480df6d2383983"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_pr.msg",
+          "sha256": "19563225ce7875696c6aa2c156e6438292de436b58f8d7c23253e3132069f9a2"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_py.msg",
+          "sha256": "94ff64201c27ab04f362617dd56b7d85b223bcca0735124196e7669270c591f0"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_sv.msg",
+          "sha256": "e3268c95e9b7d471f5fd2436c17318d5a796220ba39cebebcd39fbb0141a49ce"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_uy.msg",
+          "sha256": "ba557a3c656275a0c870fb8466f2237850f5a7cf2d001919896725bb3d3eaa4b"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/es_ve.msg",
+          "sha256": "64f796c5e3e300448a1f309a0da7d43548cc40511036ff3a3e0c917e32147d62"
+        },
+        {
+          "bytes": 1206,
+          "path": "share/tcltk/tcl8.6/msgs/et.msg",
+          "sha256": "ccc2b4738db16fafb48bfc77c9e2f8be17bc19e4140e48b61f3ef1ce7c9f3a8c"
+        },
+        {
+          "bytes": 985,
+          "path": "share/tcltk/tcl8.6/msgs/eu.msg",
+          "sha256": "7dcc4966a5c13a52b6d1db62be200b9b5a1decbaccfcaf15045dd03a2c3e3faa"
+        },
+        {
+          "bytes": 287,
+          "path": "share/tcltk/tcl8.6/msgs/eu_es.msg",
+          "sha256": "935164a2d2d14815906b438562889b31139519b3a8e8db3d2ac152a77ec591dc"
+        },
+        {
+          "bytes": 1664,
+          "path": "share/tcltk/tcl8.6/msgs/fa.msg",
+          "sha256": "f9ca4819e8c8b044d7d68c97fc67e0f4ccd6245e30024161dab24d0f7c3a9683"
+        },
+        {
+          "bytes": 1957,
+          "path": "share/tcltk/tcl8.6/msgs/fa_in.msg",
+          "sha256": "6360ce0f31ee593e311b275f3c1f1ed427e237f31010a4280ef2c58aa6f2633a"
+        },
+        {
+          "bytes": 417,
+          "path": "share/tcltk/tcl8.6/msgs/fa_ir.msg",
+          "sha256": "cf492cbd73a6c230725225d70566b6e46d5730bd3f63879781de4433965620be"
+        },
+        {
+          "bytes": 1145,
+          "path": "share/tcltk/tcl8.6/msgs/fi.msg",
+          "sha256": "be0d2dce08e6cd786bc3b07a1fb1adc5b2cf12053c99eacddaacddb8802dfb9c"
+        },
+        {
+          "bytes": 986,
+          "path": "share/tcltk/tcl8.6/msgs/fo.msg",
+          "sha256": "f249dd1698ed1687e13654c04d08b829193027a2fecc24222ec854b59350466a"
+        },
+        {
+          "bytes": 279,
+          "path": "share/tcltk/tcl8.6/msgs/fo_fo.msg",
+          "sha256": "7145b57ac5c074bca968580b337c04a71bbd6efb93afaf291c1361fd700dc791"
+        },
+        {
+          "bytes": 1205,
+          "path": "share/tcltk/tcl8.6/msgs/fr.msg",
+          "sha256": "7a87e418b6d8d14d8c11d63708b38d607d28f7ddbf39606c7d8fba22be7892ca"
+        },
+        {
+          "bytes": 279,
+          "path": "share/tcltk/tcl8.6/msgs/fr_be.msg",
+          "sha256": "980e703dfb1eede7de48c958f6b501ed4251f69cb0fbce0fca85555f5acf134a"
+        },
+        {
+          "bytes": 279,
+          "path": "share/tcltk/tcl8.6/msgs/fr_ca.msg",
+          "sha256": "f16e212d5d1f6e83a9fc4e56874e4c7b8f1947ee882610a73199480319efa529"
+        },
+        {
+          "bytes": 281,
+          "path": "share/tcltk/tcl8.6/msgs/fr_ch.msg",
+          "sha256": "ab160bfdeb5c3adf071e01c78312a81ee4223bbf5470ab880972bbf5965291f3"
+        },
+        {
+          "bytes": 1141,
+          "path": "share/tcltk/tcl8.6/msgs/ga.msg",
+          "sha256": "057c75c1ad70653733dce43ea5bf151500f39314e8b0236ee80f8d5db623627f"
+        },
+        {
+          "bytes": 279,
+          "path": "share/tcltk/tcl8.6/msgs/ga_ie.msg",
+          "sha256": "2072e48c98b480db5677188836485b4605d5a9d99870ac73b5bfe9dcc6db46f4"
+        },
+        {
+          "bytes": 950,
+          "path": "share/tcltk/tcl8.6/msgs/gl.msg",
+          "sha256": "c71a07169cdbe9962616d28f38c32d641da277e53e67f8e3a69eb320c1e2b88c"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/gl_es.msg",
+          "sha256": "bc2b0424cf27bef67f309e2b6dffef4d39c46f15d91c15e83e070c7fd4e20c9c"
+        },
+        {
+          "bytes": 1037,
+          "path": "share/tcltk/tcl8.6/msgs/gv.msg",
+          "sha256": "75aa686ff901c9e66e51d36e8e78e5154b57ee9045784568f6a8798ea9689207"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/gv_gb.msg",
+          "sha256": "823af00f4e44613e929d32770edb214132b6e210e872751624824da5f0b78448"
+        },
+        {
+          "bytes": 1938,
+          "path": "share/tcltk/tcl8.6/msgs/he.msg",
+          "sha256": "d27adaf74ebb18d6964882cf931260331b93ae4b283427f9a0db147a83de1d55"
+        },
+        {
+          "bytes": 1738,
+          "path": "share/tcltk/tcl8.6/msgs/hi.msg",
+          "sha256": "fafe65db09bdcb863742fda8705bcd1c31b59e0dd8a3b347ea6dec2596cee0e9"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/hi_in.msg",
+          "sha256": "29c7ca358fffcaf94753c7cc2f63b58386234b75552fa3272c2e36f253770c3f"
+        },
+        {
+          "bytes": 1121,
+          "path": "share/tcltk/tcl8.6/msgs/hr.msg",
+          "sha256": "9e14d8f7f54be953983f198c8d59f38842c5f73419a5e81be6460b3623e7307a"
+        },
+        {
+          "bytes": 1327,
+          "path": "share/tcltk/tcl8.6/msgs/hu.msg",
+          "sha256": "314f4180c05de4a4860f65af6460900fff77f12c08edd728f68ca0065126b9ae"
+        },
+        {
+          "bytes": 914,
+          "path": "share/tcltk/tcl8.6/msgs/id.msg",
+          "sha256": "1f1b0f5dede0263bd81773a78e98af551f36361accb315b618c8ae70a5fe781e"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/id_id.msg",
+          "sha256": "db81643ba1fd115e9d547943a889a56dfc0c81b63f21b1edc1955c6884c1b2f5"
+        },
+        {
+          "bytes": 1255,
+          "path": "share/tcltk/tcl8.6/msgs/is.msg",
+          "sha256": "6767115fff2da05f49a28bad78853fac6fc716186b985474d6d30764e1727c40"
+        },
+        {
+          "bytes": 1240,
+          "path": "share/tcltk/tcl8.6/msgs/it.msg",
+          "sha256": "c7d84001855586a0bab236a6a5878922d9c4a2ea1799bf18544869359750c0df"
+        },
+        {
+          "bytes": 244,
+          "path": "share/tcltk/tcl8.6/msgs/it_ch.msg",
+          "sha256": "2ee356ffa2491a5a60bdf7d7febfac426824904738615a0c1d07aef6bda3b76f"
+        },
+        {
+          "bytes": 1645,
+          "path": "share/tcltk/tcl8.6/msgs/ja.msg",
+          "sha256": "1fa391a6b22ddba5fb0431dfe0507f0b0754140b424700f1675f72c279ab0a0a"
+        },
+        {
+          "bytes": 978,
+          "path": "share/tcltk/tcl8.6/msgs/kl.msg",
+          "sha256": "1b00229df5a979a040339bbc72d448f39968fee5cc24f07241c9f6129a9b53dd"
+        },
+        {
+          "bytes": 279,
+          "path": "share/tcltk/tcl8.6/msgs/kl_gl.msg",
+          "sha256": "f99da45138a8aebfd92747fc28992f0c315c6c4ad97710eaf9427263bffa139c"
+        },
+        {
+          "bytes": 1566,
+          "path": "share/tcltk/tcl8.6/msgs/ko.msg",
+          "sha256": "f6e2b0d116d2c9ac90dda430b6892371d87a4ecfb6955318978ed6f6e9d546a6"
+        },
+        {
+          "bytes": 346,
+          "path": "share/tcltk/tcl8.6/msgs/ko_kr.msg",
+          "sha256": "31a4b74f51c584354907251c55fe5ce894d2c9618156a1dc6f5a979bc350db17"
+        },
+        {
+          "bytes": 1958,
+          "path": "share/tcltk/tcl8.6/msgs/kok.msg",
+          "sha256": "d236d5b27184b1e813e686d901418117f22d67024e6944018fc4b633df9ff744"
+        },
+        {
+          "bytes": 254,
+          "path": "share/tcltk/tcl8.6/msgs/kok_in.msg",
+          "sha256": "bee07f14c7f4fc93b62ac318f89d2ed0dd6ff30d2bf21c2874654ff0292a6c4b"
+        },
+        {
+          "bytes": 966,
+          "path": "share/tcltk/tcl8.6/msgs/kw.msg",
+          "sha256": "f49f4e1c7142bf7a82fc2b9fc075171ae45903fe69131478c15219d72bbaad33"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/kw_gb.msg",
+          "sha256": "7a8a539c8b990aeffea06188b98dc437fd2a6e89ff66483ef334994e73fd0ec9"
+        },
+        {
+          "bytes": 1255,
+          "path": "share/tcltk/tcl8.6/msgs/lt.msg",
+          "sha256": "510d8eed3040b50afaf6a3c85bc98847f1b4d5d8a685c5ec06acc2491b890101"
+        },
+        {
+          "bytes": 1219,
+          "path": "share/tcltk/tcl8.6/msgs/lv.msg",
+          "sha256": "fd95b38a3bebd59468bdc2890bac59df31c352e17f2e77c82471e1ca89469802"
+        },
+        {
+          "bytes": 2105,
+          "path": "share/tcltk/tcl8.6/msgs/mk.msg",
+          "sha256": "f384dd88523147cef42aa871d323fc4cbee338ff67cc5c95aec7940c0e531ae3"
+        },
+        {
+          "bytes": 1807,
+          "path": "share/tcltk/tcl8.6/msgs/mr.msg",
+          "sha256": "eb2e2b7a41854af68cef5881cf1fbf4d38e70d2fab2c3f3ce5901aa5cc56fc15"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/mr_in.msg",
+          "sha256": "f75a29bb323db4354b0c759cb1c8c5a4ffc376dffd74274ca60a36994816a75c"
+        },
+        {
+          "bytes": 910,
+          "path": "share/tcltk/tcl8.6/msgs/ms.msg",
+          "sha256": "831f611ee851a64bf1ba5f9a5441ec1d50722fa9f15b4227707fe1927f754de4"
+        },
+        {
+          "bytes": 259,
+          "path": "share/tcltk/tcl8.6/msgs/ms_my.msg",
+          "sha256": "d05948d75c06669addb9708bc5fb48e6b651d4e62ef1b327ef8a3f605fd5271c"
+        },
+        {
+          "bytes": 690,
+          "path": "share/tcltk/tcl8.6/msgs/mt.msg",
+          "sha256": "d115718818e3e3367847ce35bb5ff0361d08993d9749d438c918f8eb87ad8814"
+        },
+        {
+          "bytes": 1157,
+          "path": "share/tcltk/tcl8.6/msgs/nb.msg",
+          "sha256": "bc401889dd934c49d10d99b471441be2b536b1722739c7b0ab7de7629680f602"
+        },
+        {
+          "bytes": 1079,
+          "path": "share/tcltk/tcl8.6/msgs/nl.msg",
+          "sha256": "49128b36b88e380188059c4b593c317382f32e29d1adc18d58d14d142459a2bb"
+        },
+        {
+          "bytes": 279,
+          "path": "share/tcltk/tcl8.6/msgs/nl_be.msg",
+          "sha256": "9cd54ec24cbdbec5e4fe543dda8ca95390678d432d33201fa1c32b61f8fe225a"
+        },
+        {
+          "bytes": 1148,
+          "path": "share/tcltk/tcl8.6/msgs/nn.msg",
+          "sha256": "5ee93a8c245722deb64b68eff50c081f24da5de43d999c006a10c484e1d3b4ed"
+        },
+        {
+          "bytes": 1211,
+          "path": "share/tcltk/tcl8.6/msgs/pl.msg",
+          "sha256": "c39595ddc0095eb4ae9e66db02ee175b31ac3da1f649eb88fa61b911f838f753"
+        },
+        {
+          "bytes": 1127,
+          "path": "share/tcltk/tcl8.6/msgs/pt.msg",
+          "sha256": "9f2bffa3b4d8783b2cfb2ced9cc4319acf06988f61829a1e5291d55b19854e88"
+        },
+        {
+          "bytes": 279,
+          "path": "share/tcltk/tcl8.6/msgs/pt_br.msg",
+          "sha256": "e383b20484ee90c00054d52dd5af473b2ac9dc50c14d459a579ef5f44271d256"
+        },
+        {
+          "bytes": 1172,
+          "path": "share/tcltk/tcl8.6/msgs/ro.msg",
+          "sha256": "d2e14be188350d343927d5380eb5672039fe9a37e9a9957921b40e4619b36027"
+        },
+        {
+          "bytes": 2039,
+          "path": "share/tcltk/tcl8.6/msgs/ru.msg",
+          "sha256": "c2a3a0be5bc5a46a6a63c4de34e317b402bad40c22fb2936e1a4f53c1e2f625f"
+        },
+        {
+          "bytes": 242,
+          "path": "share/tcltk/tcl8.6/msgs/ru_ua.msg",
+          "sha256": "ae5d3df23f019455f3edfc3262aac2b00098881f09b9a934c0d26c0ab896700c"
+        },
+        {
+          "bytes": 1160,
+          "path": "share/tcltk/tcl8.6/msgs/sh.msg",
+          "sha256": "00f119701c9f3eba273701a6a731adafd7b8902f6bccf34e61308984456e193a"
+        },
+        {
+          "bytes": 1203,
+          "path": "share/tcltk/tcl8.6/msgs/sk.msg",
+          "sha256": "043dece6ea7c83956b3300b95f8a0e92badaa8fc29d6c510706649d1d810679a"
+        },
+        {
+          "bytes": 1164,
+          "path": "share/tcltk/tcl8.6/msgs/sl.msg",
+          "sha256": "bd488c9d791abedf698b66b768e2bf24251ffeaf06f53fb3746cab457710ff77"
+        },
+        {
+          "bytes": 1267,
+          "path": "share/tcltk/tcl8.6/msgs/sq.msg",
+          "sha256": "cb27007e138315b064576c17931280cfe6e6929efc3dafd7171713d204cfc3bf"
+        },
+        {
+          "bytes": 2035,
+          "path": "share/tcltk/tcl8.6/msgs/sr.msg",
+          "sha256": "313e8cdbbc0288aed922b9927a7331d0faa2e451d4174b1f5b76c5c9faec8f9b"
+        },
+        {
+          "bytes": 1167,
+          "path": "share/tcltk/tcl8.6/msgs/sv.msg",
+          "sha256": "4f32e1518be3270f4db80136fac0031c385dd3ce133faa534f141cf459c6113a"
+        },
+        {
+          "bytes": 991,
+          "path": "share/tcltk/tcl8.6/msgs/sw.msg",
+          "sha256": "6b5ab8ae265db436b15d32263a8870ec55c7c0c07415b3f9baac37f73bc704e5"
+        },
+        {
+          "bytes": 1835,
+          "path": "share/tcltk/tcl8.6/msgs/ta.msg",
+          "sha256": "30a142a48e57f194ecc3aa9243930f3e6e1b4e8b331a8cdd2705ec9c280dccbb"
+        },
+        {
+          "bytes": 251,
+          "path": "share/tcltk/tcl8.6/msgs/ta_in.msg",
+          "sha256": "aa57d5fb5cc3f59ec6a3f99d7a5184403809aa3a3bc02ed0842507d4218b683d"
+        },
+        {
+          "bytes": 2102,
+          "path": "share/tcltk/tcl8.6/msgs/te.msg",
+          "sha256": "42c34d02a6079c4d0d683750b3809f345637bc6d814652c3fb0b344b66b70c79"
+        },
+        {
+          "bytes": 411,
+          "path": "share/tcltk/tcl8.6/msgs/te_in.msg",
+          "sha256": "88bdaf4b25b684b0320a2e11d3fe77dddd25e3b17141bd7ed1d63698c480e4ba"
+        },
+        {
+          "bytes": 2305,
+          "path": "share/tcltk/tcl8.6/msgs/th.msg",
+          "sha256": "f9641a6ebe3845ce5d36ced473749f5909c90c52e405f074a6da817ef6f39867"
+        },
+        {
+          "bytes": 1133,
+          "path": "share/tcltk/tcl8.6/msgs/tr.msg",
+          "sha256": "df7c4ba67457cb47eef0f5ca8e028ff466acdd877a487697dc48ecac7347ac47"
+        },
+        {
+          "bytes": 2113,
+          "path": "share/tcltk/tcl8.6/msgs/uk.msg",
+          "sha256": "cf2e78ef3322f0121e958098ef5f92da008344657a73439eac658cb6bf3d72bd"
+        },
+        {
+          "bytes": 1421,
+          "path": "share/tcltk/tcl8.6/msgs/vi.msg",
+          "sha256": "9c69094c0bd52d5ae8448431574eae8ee4be31ec2e8602366df6c6bf4bc89a58"
+        },
+        {
+          "bytes": 3330,
+          "path": "share/tcltk/tcl8.6/msgs/zh.msg",
+          "sha256": "ef81b41ec69f67a394ece2b3983b67b3d0c8813624c2bfa1d8a8c15b21608ac9"
+        },
+        {
+          "bytes": 312,
+          "path": "share/tcltk/tcl8.6/msgs/zh_cn.msg",
+          "sha256": "85f91cf6e316774aa5d0c1eca85c88e591fd537165bb79929c5e6a1ca99e56c8"
+        },
+        {
+          "bytes": 752,
+          "path": "share/tcltk/tcl8.6/msgs/zh_hk.msg",
+          "sha256": "d123e0b4c2614f680808b58cca0c140ba187494b2c8bcf8c604c7eb739c70882"
+        },
+        {
+          "bytes": 339,
+          "path": "share/tcltk/tcl8.6/msgs/zh_sg.msg",
+          "sha256": "2683517766af9da0d87b7a862de9adea82d9a1454fc773a9e3c1a6d92aba947a"
+        },
+        {
+          "bytes": 346,
+          "path": "share/tcltk/tcl8.6/msgs/zh_tw.msg",
+          "sha256": "d582406c51a3db1eadf6507c50a1f85740fda7da8e27fc1438feb6242900cb12"
+        },
+        {
+          "bytes": 32716,
+          "path": "share/tcltk/tcl8.6/opt0.4/optparse.tcl",
+          "sha256": "0513c82e03403530c0ee66d34ab697d213e9a2def86dd935cc5f6bf01c3b7dcf"
+        },
+        {
+          "bytes": 608,
+          "path": "share/tcltk/tcl8.6/opt0.4/pkgIndex.tcl",
+          "sha256": "bc4aff8132402e6244f497b3f849b6b30c328db8512a04e4c86c523a80f2fe68"
+        },
+        {
+          "bytes": 23245,
+          "path": "share/tcltk/tcl8.6/package.tcl",
+          "sha256": "9edf9783fe26c85040dc849b7aed8350becb25144b6b2ce6068f58cfdf574f4a"
+        },
+        {
+          "bytes": 816,
+          "path": "share/tcltk/tcl8.6/parray.tcl",
+          "sha256": "ebe5a2b4cbbcd7fd3f7a6f76d68d7856301db01b350c040942a7b806a46e0014"
+        },
+        {
+          "bytes": 40936,
+          "path": "share/tcltk/tcl8.6/safe.tcl",
+          "sha256": "f39ba5d85c2041a86ea61fda6f67e1e0281f8d6ea7cc09431b885fff65d71f65"
+        },
+        {
+          "bytes": 114818,
+          "path": "share/tcltk/tcl8.6/tcl8/http-2.9.8.tm",
+          "sha256": "751ea55adf3905201d97c8788e7d7ab6180a4fe21dafb876079e501fa448eca0"
+        },
+        {
+          "bytes": 33931,
+          "path": "share/tcltk/tcl8.6/tcl8/msgcat-1.6.1.tm",
+          "sha256": "c29589596069ef698f1394262d019f5708a05a5211d8feceaa4c3ab74f5d7d9a"
+        },
+        {
+          "bytes": 5976,
+          "path": "share/tcltk/tcl8.6/tcl8/platform/shell-1.1.4.tm",
+          "sha256": "46654e58c56bff375310e38bbc5c68f642c099e09c951b5bad9ac81d8a377e01"
+        },
+        {
+          "bytes": 11258,
+          "path": "share/tcltk/tcl8.6/tcl8/platform-1.0.19.tm",
+          "sha256": "cc798eb26659cb12469cf91f2e79555b44973dd6707bfebf7aa2b9d98d806a82"
+        },
+        {
+          "bytes": 105075,
+          "path": "share/tcltk/tcl8.6/tcl8/tcltest-2.5.7.tm",
+          "sha256": "df623d89cef0fa5d2c53cb9ace1ee8ff4afd5a735ab6d86e68757da89122f26b"
+        },
+        {
+          "bytes": 4871,
+          "path": "share/tcltk/tcl8.6/tclAppInit.c",
+          "sha256": "5006ea395c2ca96e74353e9486d6be3e2a85a7925969a4fe41662f092ef94caa"
+        },
+        {
+          "bytes": 5613,
+          "path": "share/tcltk/tcl8.6/tclIndex",
+          "sha256": "f832bc13238565d1427c463fdcacef0a93f4dc0352c0e3f35b573d9b11deaca5"
+        },
+        {
+          "bytes": 11932,
+          "path": "share/tcltk/tcl8.6/tm.tcl",
+          "sha256": "31a9a49ed39a5a2d7c1394e382db6cfdd37218dc5bb8574727d0327676908787"
+        },
+        {
+          "bytes": 4897,
+          "path": "share/tcltk/tcl8.6/word.tcl",
+          "sha256": "f18e8ae29aa8ed2be2cbb5568b4243f654f7fb0aa2066e16977863ee1415b9bc"
+        },
+        {
+          "bytes": 923,
+          "path": "share/yosys/abc9_map.v",
+          "sha256": "b960ea3290504de79a747d41947570902cb64ad285f3ddb16e006030a2cae7ec"
+        },
+        {
+          "bytes": 653,
+          "path": "share/yosys/abc9_model.v",
+          "sha256": "21f332106384501759ca256e95ed30321ad5615610a66488731ca06e0b4722d2"
+        },
+        {
+          "bytes": 638,
+          "path": "share/yosys/abc9_unmap.v",
+          "sha256": "c35d3b6378898cc53a0ffebf6982dfd8dce25d39c08696b9fc2140c1a60ed625"
+        },
+        {
+          "bytes": 2629,
+          "path": "share/yosys/achronix/speedster22i/cells_map.v",
+          "sha256": "97f26436a79b2f263dc4756468b6b92431c4c621110fbd96f9378a02a1de52a5"
+        },
+        {
+          "bytes": 2343,
+          "path": "share/yosys/achronix/speedster22i/cells_sim.v",
+          "sha256": "58001759aa3463114c8162146af52c3e1fabddd624429ca2a80c1d817cc3bc43"
+        },
+        {
+          "bytes": 575,
+          "path": "share/yosys/adff2dff.v",
+          "sha256": "beb053280dc959be7be1e88592b2be5cc68f0d6ea5c577691e4fd17eea7ceaf2"
+        },
+        {
+          "bytes": 2473,
+          "path": "share/yosys/anlogic/arith_map.v",
+          "sha256": "b984bb3d6ec4266e9edc4132daa57738a8da115e25c373c43d8845992455baff"
+        },
+        {
+          "bytes": 1137,
+          "path": "share/yosys/anlogic/brams.txt",
+          "sha256": "5560988d9b4d3f9faa3f620af0e94e5b59dd1e800227bab0e839292350f8aff7"
+        },
+        {
+          "bytes": 12152,
+          "path": "share/yosys/anlogic/brams_map.v",
+          "sha256": "86c834ff3d737f5c9b5836e258d3b389a486d0d278fa077077598ca8245e8b18"
+        },
+        {
+          "bytes": 3928,
+          "path": "share/yosys/anlogic/cells_map.v",
+          "sha256": "867f06c7ae2404216b92e697924224fa5dd723f59ed386f0bb3971f8941434a0"
+        },
+        {
+          "bytes": 3209,
+          "path": "share/yosys/anlogic/cells_sim.v",
+          "sha256": "7a9ada2471d00446f1fe449a8ffd1d192ea96d173422b3ffda0f65ab2eac32f1"
+        },
+        {
+          "bytes": 33586,
+          "path": "share/yosys/anlogic/eagle_bb.v",
+          "sha256": "6508569de2922fe01e6db6998f7854bf6b233e9cebb51e025c2c1f836e5f88c1"
+        },
+        {
+          "bytes": 151,
+          "path": "share/yosys/anlogic/lutrams.txt",
+          "sha256": "f7aa5d713fcda56593717d6fe471219e22c7d814e00fc7582642ba059a7370dd"
+        },
+        {
+          "bytes": 661,
+          "path": "share/yosys/anlogic/lutrams_map.v",
+          "sha256": "584bea29742f7744dd84fc92d43b8fc0e03795bc5c76a059d911d3d0b1d6d7a6"
+        },
+        {
+          "bytes": 2432,
+          "path": "share/yosys/cells.lib",
+          "sha256": "932ff5436ed3bea9b692c66e34006c6490250718eaac67526d940cdaf1b0ee51"
+        },
+        {
+          "bytes": 5260,
+          "path": "share/yosys/cmp2lcu.v",
+          "sha256": "dd41396c59636a27af5634276f826242644e0466c06ef91b309d33b956b3fdf2"
+        },
+        {
+          "bytes": 2540,
+          "path": "share/yosys/cmp2lut.v",
+          "sha256": "0c5c6df785d0f8c333cfedc2a09beae130fa5eab50535b5074d586bcff667559"
+        },
+        {
+          "bytes": 4884,
+          "path": "share/yosys/coolrunner2/cells_counter_map.v",
+          "sha256": "ce2d186b494f275c3cca722419214400ca8f0d762b9f1bf58d9a05fdc52b5907"
+        },
+        {
+          "bytes": 367,
+          "path": "share/yosys/coolrunner2/cells_latch.v",
+          "sha256": "3c6d380f6a49db157b429a29cef6cc6b35918695d62c2cb3b87c2037c6009053"
+        },
+        {
+          "bytes": 5435,
+          "path": "share/yosys/coolrunner2/cells_sim.v",
+          "sha256": "930546121fa04368cff11710ab4aaf9b45b9b49b790a2104f68df929650acdcf"
+        },
+        {
+          "bytes": 465,
+          "path": "share/yosys/coolrunner2/tff_extract.v",
+          "sha256": "3350f896f7282939a4bb20f2a75edb19a1f0780034d1d7a0cf110dc59fc9e441"
+        },
+        {
+          "bytes": 839,
+          "path": "share/yosys/coolrunner2/xc2_dff.lib",
+          "sha256": "8a09d329e4bd67f9ac76589bce4b535bede45d8e8ff087028a5b1478caded9f8"
+        },
+        {
+          "bytes": 299,
+          "path": "share/yosys/dff2ff.v",
+          "sha256": "cda7e5ad24b83525310e822d5dbc6dffe792a4b211a0fed9931cbb93460aa63c"
+        },
+        {
+          "bytes": 2591,
+          "path": "share/yosys/ecp5/arith_map.v",
+          "sha256": "49d75e6a2df8f85368b55edd7e2b1ce849f96862d69f301bcd5ff6d128ccb225"
+        },
+        {
+          "bytes": 822,
+          "path": "share/yosys/ecp5/brams.txt",
+          "sha256": "3067f4e562f465da1ac1c5a3e7fab12913bfdfff1c3bc91bd441d41b1ae0e668"
+        },
+        {
+          "bytes": 11917,
+          "path": "share/yosys/ecp5/brams_map.v",
+          "sha256": "c6f43de8cf238de2dd5aedb74eb07813f58c247bf0e55ded126d0f41ad05e2ca"
+        },
+        {
+          "bytes": 36560,
+          "path": "share/yosys/ecp5/cells_bb.v",
+          "sha256": "ad0dc37be5e46afabba8d69915708b536919527a1f69399fb6ed6cb2f03d137c"
+        },
+        {
+          "bytes": 6129,
+          "path": "share/yosys/ecp5/cells_ff.vh",
+          "sha256": "9d3c49d7a470d87a8888ffef5312334f5a4b9567d71bffb33782f88a59c296f4"
+        },
+        {
+          "bytes": 2055,
+          "path": "share/yosys/ecp5/cells_io.vh",
+          "sha256": "bbc7bb1406ed0d249ac588f1216c3c3964eb98a802816a4a21b14703d8dae62b"
+        },
+        {
+          "bytes": 15010,
+          "path": "share/yosys/ecp5/cells_map.v",
+          "sha256": "ea608cada6e640bf555afb9a5328dfddf23e03137bf1e67ba80d195c113d2126"
+        },
+        {
+          "bytes": 22821,
+          "path": "share/yosys/ecp5/cells_sim.v",
+          "sha256": "23c1d1d35b5bd9ba5a07e17cf7d5c07fe7b6840e1deb6c2f746c3f430b4cec54"
+        },
+        {
+          "bytes": 1436,
+          "path": "share/yosys/ecp5/dsp_map.v",
+          "sha256": "aa05c8ea6efc57dd51cdf6a94d2af6fc7675f3a93325ec5cae8abc5ed97f2b44"
+        },
+        {
+          "bytes": 258,
+          "path": "share/yosys/ecp5/latches_map.v",
+          "sha256": "57937005a20c2faf1e3a5843694254b3c5be82045e3e33ec0ed527de69d2a5aa"
+        },
+        {
+          "bytes": 145,
+          "path": "share/yosys/ecp5/lutrams.txt",
+          "sha256": "60bc6b886d5323b7ba3e54508287b129d55afbd34a5b84ff15a65222b927730b"
+        },
+        {
+          "bytes": 519,
+          "path": "share/yosys/ecp5/lutrams_map.v",
+          "sha256": "0e36e11b61bbca96d424c83d991745bee2422453645431c3f72a370517984b3c"
+        },
+        {
+          "bytes": 2437,
+          "path": "share/yosys/efinix/arith_map.v",
+          "sha256": "d2889f5ead413009da6dbe7c049289b4448ac35c970356c3a6339798cc46762a"
+        },
+        {
+          "bytes": 296,
+          "path": "share/yosys/efinix/brams.txt",
+          "sha256": "0254219cb7244006ff3a665e5abaf97443c58b474a740d258688ddb53bbc6983"
+        },
+        {
+          "bytes": 3603,
+          "path": "share/yosys/efinix/brams_map.v",
+          "sha256": "5d4226ec33309eb7e67f9d6aa9ed10ce3b57a4557e0a210a43c9beeb2a8f38e0"
+        },
+        {
+          "bytes": 2693,
+          "path": "share/yosys/efinix/cells_map.v",
+          "sha256": "062b5bab163f62ff498325f5040a2b4e31c0dafd71079d13c40b59bfa69e260b"
+        },
+        {
+          "bytes": 5391,
+          "path": "share/yosys/efinix/cells_sim.v",
+          "sha256": "a1215b79a68f53554de5b50d75826b62876319522331ddca1dec5c1da32d3b6d"
+        },
+        {
+          "bytes": 131,
+          "path": "share/yosys/efinix/gbuf_map.v",
+          "sha256": "1130400f5fed673226f5d936894d8b6d1146447d6a3b76041a2e89f8058c8fd1"
+        },
+        {
+          "bytes": 1385,
+          "path": "share/yosys/fabulous/arith_map.v",
+          "sha256": "ce64db1b44fc94aa6dcf70742b02fde6ed3b96422589f15dfde51e1fa64761b5"
+        },
+        {
+          "bytes": 1063,
+          "path": "share/yosys/fabulous/cells_map.v",
+          "sha256": "d7a0c6e414557dff86b99e288d6c781add1aad213a2eef4ac7d49831a808f67a"
+        },
+        {
+          "bytes": 720,
+          "path": "share/yosys/fabulous/ff_map.v",
+          "sha256": "23ec28311325dcfe9f935de12eb6eb767222bd0eede7c8c4a4a7642e5f26e5e7"
+        },
+        {
+          "bytes": 290,
+          "path": "share/yosys/fabulous/io_map.v",
+          "sha256": "6a8dde6cce8766207399f18c854b7698bad048311913d9ac48d262e487a43264"
+        },
+        {
+          "bytes": 258,
+          "path": "share/yosys/fabulous/latches_map.v",
+          "sha256": "57937005a20c2faf1e3a5843694254b3c5be82045e3e33ec0ed527de69d2a5aa"
+        },
+        {
+          "bytes": 11731,
+          "path": "share/yosys/fabulous/prims.v",
+          "sha256": "31ffc86217206abae5bc61bf997321c567be6faf309bdae24be2e2fc772a6c5a"
+        },
+        {
+          "bytes": 782,
+          "path": "share/yosys/fabulous/ram_regfile.txt",
+          "sha256": "91e81487f040b366cc39fd3384da4332d0714294601b94fb9a613f59850c6aed"
+        },
+        {
+          "bytes": 1431,
+          "path": "share/yosys/fabulous/regfile_map.v",
+          "sha256": "266d05809945164414ccd82bf0112f444ef2b9c8f45423be0bf293e3c9305774"
+        },
+        {
+          "bytes": 1447,
+          "path": "share/yosys/gate2lut.v",
+          "sha256": "8f910902e06758dc35e63d2c8caf927aad814e095e79b0c5dda00dd2973ef0bd"
+        },
+        {
+          "bytes": 2016,
+          "path": "share/yosys/gatemate/arith_map.v",
+          "sha256": "53c2f3f308f45a9521f583fcf4c5507e4818730e31604d175849adfa8c1cfc3e"
+        },
+        {
+          "bytes": 1230,
+          "path": "share/yosys/gatemate/brams.txt",
+          "sha256": "945c31af3a1340e2a70aa3bd05640d6beca6ccc05949fecbc7229b8ab8f160e4"
+        },
+        {
+          "bytes": 4480,
+          "path": "share/yosys/gatemate/brams_init_20.vh",
+          "sha256": "3ca61245938bfe2e859a3cb5741fa5174792955f0114b8c6bc3aabc3ace12e9c"
+        },
+        {
+          "bytes": 17970,
+          "path": "share/yosys/gatemate/brams_init_40.vh",
+          "sha256": "c8ae748102b529ce7d4716db57dc63796a218489e4c99de0e8de569ada6a32e8"
+        },
+        {
+          "bytes": 29326,
+          "path": "share/yosys/gatemate/brams_map.v",
+          "sha256": "754b499ac52ac5ecf325fb85789abcc71082fcc7959440986a0c6c5e11842470"
+        },
+        {
+          "bytes": 3649,
+          "path": "share/yosys/gatemate/cells_bb.v",
+          "sha256": "fd82ca289ed9ba2a5e77679a19eae395f2e98a3363364c92bafa4e941593909c"
+        },
+        {
+          "bytes": 65939,
+          "path": "share/yosys/gatemate/cells_sim.v",
+          "sha256": "0221c623883b57249e4594bd6e41bdf24a2c630ac23a755c9c94ff7d11c2d4ea"
+        },
+        {
+          "bytes": 180,
+          "path": "share/yosys/gatemate/inv_map.v",
+          "sha256": "5299997ed6eb646bfb2bca1dd6b8c8774f7d753baa43268fef3e33f95de14202"
+        },
+        {
+          "bytes": 1558,
+          "path": "share/yosys/gatemate/lut_map.v",
+          "sha256": "30cdfa2d4878d12ed558a8146bf2145a8f6feb907a5893de079ebea27ec04fd3"
+        },
+        {
+          "bytes": 6422,
+          "path": "share/yosys/gatemate/lut_tree_cells.genlib",
+          "sha256": "f040996864e7375591817ccbf23381f397b7694c1045e5dc62ee600bb11be7ab"
+        },
+        {
+          "bytes": 19119,
+          "path": "share/yosys/gatemate/lut_tree_map.v",
+          "sha256": "21e954d2111ce929ff32c69a1eb322ca2b65e7deb13fecee2b972d80d1263d95"
+        },
+        {
+          "bytes": 2029,
+          "path": "share/yosys/gatemate/mul_map.v",
+          "sha256": "2b5f05cfa902f6662105c9f4c30186f8aee2f38b1ffde084f43f2758841f307a"
+        },
+        {
+          "bytes": 1493,
+          "path": "share/yosys/gatemate/mux_map.v",
+          "sha256": "9db277cf9a35f59e107b94eced546696148aa41541e652e90f33c2448174cbde"
+        },
+        {
+          "bytes": 1871,
+          "path": "share/yosys/gatemate/reg_map.v",
+          "sha256": "5fd706a655be0a113cd517a6122e2df16b124da7734d5dbded2efc3a61f92947"
+        },
+        {
+          "bytes": 2104,
+          "path": "share/yosys/gowin/arith_map.v",
+          "sha256": "cd9170f9fd88ca98c5d11507571b98f9bb01d0113fd1a00362150007ce358e7d"
+        },
+        {
+          "bytes": 1225,
+          "path": "share/yosys/gowin/brams.txt",
+          "sha256": "f570bee95d9a4ba7f3da3302771bb0dc8c07c37966bda38e2e799c39abeacb7b"
+        },
+        {
+          "bytes": 9019,
+          "path": "share/yosys/gowin/brams_map.v",
+          "sha256": "eaba8cdd5ae64cf643446636a3bafa68952b4407266983da2ce5715b42ae994f"
+        },
+        {
+          "bytes": 6100,
+          "path": "share/yosys/gowin/cells_map.v",
+          "sha256": "666ab656564e1411e150deb98f70ce59d80aa4a04ca124e2aa0601a71f7e8ff9"
+        },
+        {
+          "bytes": 42970,
+          "path": "share/yosys/gowin/cells_sim.v",
+          "sha256": "2474380e2e4681c1bcb34f40845b95ba37c89b6db3353fef5de3f70515304938"
+        },
+        {
+          "bytes": 100151,
+          "path": "share/yosys/gowin/cells_xtra.v",
+          "sha256": "1d0161843e7efb25d6fb5af918bfbc2e8b4fb7430c28b265cd1ae1d99462f1d3"
+        },
+        {
+          "bytes": 160,
+          "path": "share/yosys/gowin/lutrams.txt",
+          "sha256": "89bed0fe92e829e0f73c374ab6a677563552ac7a58a527051ec64f13d942a622"
+        },
+        {
+          "bytes": 1122,
+          "path": "share/yosys/gowin/lutrams_map.v",
+          "sha256": "51f6cbb7ebb5eeb4e7a565befcb3da74f37bd3678be9b4400e3694289816f5e6"
+        },
+        {
+          "bytes": 365,
+          "path": "share/yosys/greenpak4/cells_blackbox.v",
+          "sha256": "72359eae291db06748c70d7652b35930244b5c371c88e81d16f6328988b60500"
+        },
+        {
+          "bytes": 248,
+          "path": "share/yosys/greenpak4/cells_latch.v",
+          "sha256": "89a9d99bc9a160f5ce728a9c1814cd9d00f9e86181a2024acfa0523c36c967f4"
+        },
+        {
+          "bytes": 5298,
+          "path": "share/yosys/greenpak4/cells_map.v",
+          "sha256": "9f3f393c44af5ab67282fcaa2124dd6ec76b60ce1697b4d3cddd36ac7ddc5bd9"
+        },
+        {
+          "bytes": 105,
+          "path": "share/yosys/greenpak4/cells_sim.v",
+          "sha256": "4b39e5d58856f84da366ae9bbd786d4614d0b443ec0c576e3e8adeca22bc370a"
+        },
+        {
+          "bytes": 2072,
+          "path": "share/yosys/greenpak4/cells_sim_ams.v",
+          "sha256": "ea76c3e1dc8670987696ba0aec11327a4ca54d3441e36b793a01268a22185353"
+        },
+        {
+          "bytes": 15006,
+          "path": "share/yosys/greenpak4/cells_sim_digital.v",
+          "sha256": "5e80d82fbd90b9bff93f4faa60cc27f21fbf32e45f500d0ea247467dcabc6d73"
+        },
+        {
+          "bytes": 2926,
+          "path": "share/yosys/greenpak4/cells_sim_wip.v",
+          "sha256": "17350d7cca55ce474f4ea9064d2f9e21f9a40910708794ab0a64b41206bf3c7e"
+        },
+        {
+          "bytes": 998,
+          "path": "share/yosys/greenpak4/gp_dff.lib",
+          "sha256": "68d7bb3bcb19841831c2b6975c754c3aaa85c540071209fb10f68edea96f2eb6"
+        },
+        {
+          "bytes": 3612,
+          "path": "share/yosys/ice40/abc9_model.v",
+          "sha256": "c9becd1ccb295ccb8a79f70812739bf4bcd0bf846f77f22c2627ea802a3123ba"
+        },
+        {
+          "bytes": 2172,
+          "path": "share/yosys/ice40/arith_map.v",
+          "sha256": "5793343d6950e5b961cb2c0ccbd0241c0977f84aef8bfacaeac39381b94d18a8"
+        },
+        {
+          "bytes": 300,
+          "path": "share/yosys/ice40/brams.txt",
+          "sha256": "5b909e796ee26e7d18aca1637a4e396675d93b39300936dd31860490a6d3c13d"
+        },
+        {
+          "bytes": 3958,
+          "path": "share/yosys/ice40/brams_map.v",
+          "sha256": "b9f606a53b9fe24b1810601e4d74b057df287b8924989c0f1516ddc77b570d50"
+        },
+        {
+          "bytes": 1087,
+          "path": "share/yosys/ice40/cells_map.v",
+          "sha256": "4f3f2d0d036d3a494c5b433b0a2a1f1ea4fb5f170906a4b611d9e407c7c8ce92"
+        },
+        {
+          "bytes": 153943,
+          "path": "share/yosys/ice40/cells_sim.v",
+          "sha256": "b5b2bcd86c0d6eea269015aaebff1d5fb66e7ec3f7eded0bde07406e5ac99527"
+        },
+        {
+          "bytes": 789,
+          "path": "share/yosys/ice40/dsp_map.v",
+          "sha256": "6297d8ea9049a47f2bfddd8a98f2e91c5a86bb7f1b76c6ad4da90572855abdc8"
+        },
+        {
+          "bytes": 3043,
+          "path": "share/yosys/ice40/ff_map.v",
+          "sha256": "d2292afa2d7f5154fac6e14b323d997e2970bbac33f2889b31db4f7a06654eb3"
+        },
+        {
+          "bytes": 258,
+          "path": "share/yosys/ice40/latches_map.v",
+          "sha256": "57937005a20c2faf1e3a5843694254b3c5be82045e3e33ec0ed527de69d2a5aa"
+        },
+        {
+          "bytes": 153,
+          "path": "share/yosys/ice40/spram.txt",
+          "sha256": "742455d1f95f26e9ef9ef295d10e4aab9341ae187f3e46465ef52debbe5a8889"
+        },
+        {
+          "bytes": 475,
+          "path": "share/yosys/ice40/spram_map.v",
+          "sha256": "3bc7d1915b87d5d8005c402d609821f304c79d910aef97cf00c048f8f81856ab"
+        },
+        {
+          "bytes": 14302,
+          "path": "share/yosys/intel/common/altpll_bb.v",
+          "sha256": "16a26a5eff0bd07ba8496086ea7347d3105182c9d04a8ba53093932d9b7162b8"
+        },
+        {
+          "bytes": 518,
+          "path": "share/yosys/intel/common/brams_m9k.txt",
+          "sha256": "b5d34e3dcf93104e6dfbdbe6e60ffe889925552626a36bbab6e804859d7a12fb"
+        },
+        {
+          "bytes": 4319,
+          "path": "share/yosys/intel/common/brams_map_m9k.v",
+          "sha256": "58a7508a771a2150df2a3a6f801b90649b34178c213c454040e7e5ebe1967fb0"
+        },
+        {
+          "bytes": 630,
+          "path": "share/yosys/intel/common/ff_map.v",
+          "sha256": "6de068e4123712bae46a0cc1f7b88c728bfb2f0e0be52440930eec5c714d9491"
+        },
+        {
+          "bytes": 3076,
+          "path": "share/yosys/intel/common/m9k_bb.v",
+          "sha256": "51eb1b2b6dd5c970722cd4d7d1a83f89fe023db5ad579535584abdbacd4e6ad3"
+        },
+        {
+          "bytes": 3442,
+          "path": "share/yosys/intel/cyclone10lp/cells_map.v",
+          "sha256": "c07c04f0aac2646387789900c7bb73ed6b92b490d71953a3cf7e869d1d2005d4"
+        },
+        {
+          "bytes": 4373,
+          "path": "share/yosys/intel/cyclone10lp/cells_sim.v",
+          "sha256": "142ce722a9b82e46f4ef353eb179c119a91e874539f0f52fd89a4e2746ba6eb1"
+        },
+        {
+          "bytes": 2302,
+          "path": "share/yosys/intel/cycloneiv/cells_map.v",
+          "sha256": "132a66a41839120a8f377717b997e6690ae044bfea8b0ffa95ffac8fd0e97261"
+        },
+        {
+          "bytes": 9690,
+          "path": "share/yosys/intel/cycloneiv/cells_sim.v",
+          "sha256": "c71c01faf382912187cb28096e937f81d62eba582e37d4b0598e19df574b76e8"
+        },
+        {
+          "bytes": 3437,
+          "path": "share/yosys/intel/cycloneive/cells_map.v",
+          "sha256": "b543ea008f927e85853a4243202dde543d1364bf848d8e9cc5aa2fd892fecd2a"
+        },
+        {
+          "bytes": 9839,
+          "path": "share/yosys/intel/cycloneive/cells_sim.v",
+          "sha256": "d1f563a41bf1bb018646f073116a8e2d90850991bde15911a306df8cf0f73934"
+        },
+        {
+          "bytes": 2318,
+          "path": "share/yosys/intel/max10/cells_map.v",
+          "sha256": "ac62d1730994314807a5808f409b5d294279e218bbf02fcd2281b10eff8677b4"
+        },
+        {
+          "bytes": 9538,
+          "path": "share/yosys/intel/max10/cells_sim.v",
+          "sha256": "a9fa73b29fd98e72f3ccc1955c7f3299a1d9cb49e23f44d732ee77615fea8b55"
+        },
+        {
+          "bytes": 632,
+          "path": "share/yosys/intel_alm/common/abc9_map.v",
+          "sha256": "fe9442025d78d51a104ca0f17a8214d4d333d76230d13a7646da102e0d441313"
+        },
+        {
+          "bytes": 342,
+          "path": "share/yosys/intel_alm/common/abc9_model.v",
+          "sha256": "96479f981e035a1f985615dbb9e4e96ece6a55caa927ecbf02e82000f1cccf08"
+        },
+        {
+          "bytes": 352,
+          "path": "share/yosys/intel_alm/common/abc9_unmap.v",
+          "sha256": "07c96ef54a061bd4b34e07e080145e80a0fd56141baaa730b7d55dd7fbc73481"
+        },
+        {
+          "bytes": 1504,
+          "path": "share/yosys/intel_alm/common/alm_map.v",
+          "sha256": "c3f6cb34359cf7e687780a1d8d853be16da291b482b9a467164243eb310f9f33"
+        },
+        {
+          "bytes": 16659,
+          "path": "share/yosys/intel_alm/common/alm_sim.v",
+          "sha256": "5aedca84fbb160f6f020f550a3664a70b200911362f5b84958d0fded1dac095d"
+        },
+        {
+          "bytes": 2096,
+          "path": "share/yosys/intel_alm/common/arith_alm_map.v",
+          "sha256": "b2b3dcdce789ad09be53dd9066e0eecde7cdc3ebc9bdf58ed00e649a5bde21d9"
+        },
+        {
+          "bytes": 578,
+          "path": "share/yosys/intel_alm/common/bram_m10k.txt",
+          "sha256": "aa9846e636bcc43f04640840626847e7663fcb455a659aa0541607744897c4b8"
+        },
+        {
+          "bytes": 746,
+          "path": "share/yosys/intel_alm/common/bram_m10k_map.v",
+          "sha256": "b715c7e24f0fdcb363f681025c24d9d11aa2da8471e93cc854894fad0932a2d2"
+        },
+        {
+          "bytes": 780,
+          "path": "share/yosys/intel_alm/common/bram_m20k.txt",
+          "sha256": "d723b4b155645cb95f06e8a37d44da3ead0acb5b5a323c30e6e532340710a833"
+        },
+        {
+          "bytes": 696,
+          "path": "share/yosys/intel_alm/common/bram_m20k_map.v",
+          "sha256": "4e90fc5d71cf8b47c3ed1d41ed1aa8f91f7dbeddfc93d0c0a78ca1fe1cfa6c8e"
+        },
+        {
+          "bytes": 579,
+          "path": "share/yosys/intel_alm/common/dff_map.v",
+          "sha256": "8281b81ba0f0699bce381083ea5d03c4884ff755858de4fe12111ee5aa678661"
+        },
+        {
+          "bytes": 4803,
+          "path": "share/yosys/intel_alm/common/dff_sim.v",
+          "sha256": "4f7dc95c4409216d691aae3dee0784ff77953ec3af16cc52f4e393327eeafbe4"
+        },
+        {
+          "bytes": 891,
+          "path": "share/yosys/intel_alm/common/dsp_map.v",
+          "sha256": "bf4aadd88ef82cd617d49aaa2881de80e09a46fd9aae6bb35d6f6039e02e5671"
+        },
+        {
+          "bytes": 2238,
+          "path": "share/yosys/intel_alm/common/dsp_sim.v",
+          "sha256": "0e39b87aeebd14582aae668dc8a2d2cac35e4670a47fc3e9b1d1d53353c2ff77"
+        },
+        {
+          "bytes": 316,
+          "path": "share/yosys/intel_alm/common/lutram_mlab.txt",
+          "sha256": "0e5c39c3c268e3aec35c7487103d959b05270404700c046375c1ae5f1051393e"
+        },
+        {
+          "bytes": 23589,
+          "path": "share/yosys/intel_alm/common/megafunction_bb.v",
+          "sha256": "d725513db697fe76a66325bf410421eff54760a6c189317f0ff82f7e1b55f855"
+        },
+        {
+          "bytes": 5317,
+          "path": "share/yosys/intel_alm/common/mem_sim.v",
+          "sha256": "6b05ac833060e53e2734a71755074d22681aab2e8ad1c568d504336cfabee0e3"
+        },
+        {
+          "bytes": 562,
+          "path": "share/yosys/intel_alm/common/misc_sim.v",
+          "sha256": "77d263a7c6ae02716eba386b1f153961872623fcad02f32a61319b59da751982"
+        },
+        {
+          "bytes": 7552,
+          "path": "share/yosys/intel_alm/common/quartus_rename.v",
+          "sha256": "1e9e1425f53acd3657cbfe4b2fd6ab5becf53944cb2f1faa39550fb311ababb2"
+        },
+        {
+          "bytes": 5522,
+          "path": "share/yosys/intel_alm/cyclonev/cells_sim.v",
+          "sha256": "880c9d6d6fc24e1722bff7c70fbb34f65cd07ac023c8ca08703da3a833dfb8e6"
+        },
+        {
+          "bytes": 2592,
+          "path": "share/yosys/lattice/arith_map_ccu2c.v",
+          "sha256": "46f63e58251d21088783e817c609aed5ecdf075b938d038de1b310c4ee89bbe6"
+        },
+        {
+          "bytes": 2596,
+          "path": "share/yosys/lattice/arith_map_ccu2d.v",
+          "sha256": "6dbbd5ab8c697e01da9b80414e1cc96c5245ebc9962a82559bcc010cdc1c40aa"
+        },
+        {
+          "bytes": 812,
+          "path": "share/yosys/lattice/brams_16kd.txt",
+          "sha256": "faf42a66c03a939808f09e1ef580d647133d8c81863eb625c3cb65268f98ecb5"
+        },
+        {
+          "bytes": 776,
+          "path": "share/yosys/lattice/brams_8kc.txt",
+          "sha256": "87eab6ff8b3aa32abfd161959b02272df52b19ca67256f117b814a899652c106"
+        },
+        {
+          "bytes": 11907,
+          "path": "share/yosys/lattice/brams_map_16kd.v",
+          "sha256": "a18f1fba714c81c8e469a20fc0fae0dcd93cfb56cf27037e3d0a11573f3595b4"
+        },
+        {
+          "bytes": 7750,
+          "path": "share/yosys/lattice/brams_map_8kc.v",
+          "sha256": "778a0a4c0a5ed6167e83b5c95667867ef135f30372875e10139fde95a86aa606"
+        },
+        {
+          "bytes": 1624,
+          "path": "share/yosys/lattice/ccu2c_sim.vh",
+          "sha256": "178b1310b2e70768114e1c795118529055799df1ad650a09d0613b3856a81ccc"
+        },
+        {
+          "bytes": 1083,
+          "path": "share/yosys/lattice/ccu2d_sim.vh",
+          "sha256": "6619e625751624895a993360e721e8ce2c857fed62c880cac9aba3e3cd2fc6fa"
+        },
+        {
+          "bytes": 61140,
+          "path": "share/yosys/lattice/cells_bb_ecp5.v",
+          "sha256": "2e7e48bf0d9601999134c40a8dc34992e6c6e6332180ad1bdf1915a192dbeef6"
+        },
+        {
+          "bytes": 20410,
+          "path": "share/yosys/lattice/cells_bb_xo2.v",
+          "sha256": "e261779e9f6779e07364a95cb2aa418a2ed122d5d768e5e62f4110ac7f7d433d"
+        },
+        {
+          "bytes": 20410,
+          "path": "share/yosys/lattice/cells_bb_xo3.v",
+          "sha256": "e261779e9f6779e07364a95cb2aa418a2ed122d5d768e5e62f4110ac7f7d433d"
+        },
+        {
+          "bytes": 20429,
+          "path": "share/yosys/lattice/cells_bb_xo3d.v",
+          "sha256": "6a7c74bdef22d76dca07e3dd34b6aaf33ac872582f7b9e46be2b3aa631e395fe"
+        },
+        {
+          "bytes": 6129,
+          "path": "share/yosys/lattice/cells_ff.vh",
+          "sha256": "9d3c49d7a470d87a8888ffef5312334f5a4b9567d71bffb33782f88a59c296f4"
+        },
+        {
+          "bytes": 2055,
+          "path": "share/yosys/lattice/cells_io.vh",
+          "sha256": "bbc7bb1406ed0d249ac588f1216c3c3964eb98a802816a4a21b14703d8dae62b"
+        },
+        {
+          "bytes": 15010,
+          "path": "share/yosys/lattice/cells_map.v",
+          "sha256": "ea608cada6e640bf555afb9a5328dfddf23e03137bf1e67ba80d195c113d2126"
+        },
+        {
+          "bytes": 125,
+          "path": "share/yosys/lattice/cells_sim_ecp5.v",
+          "sha256": "976e6d8152bfc753fe7d4acbf96c0fd00df124d2451203a996ae7bf1627d2874"
+        },
+        {
+          "bytes": 125,
+          "path": "share/yosys/lattice/cells_sim_xo2.v",
+          "sha256": "794cb8c0ac411ef892cc6c09b8062fd2440c3adcef7f2a8e9f7405fc306eac27"
+        },
+        {
+          "bytes": 125,
+          "path": "share/yosys/lattice/cells_sim_xo3.v",
+          "sha256": "794cb8c0ac411ef892cc6c09b8062fd2440c3adcef7f2a8e9f7405fc306eac27"
+        },
+        {
+          "bytes": 125,
+          "path": "share/yosys/lattice/cells_sim_xo3d.v",
+          "sha256": "794cb8c0ac411ef892cc6c09b8062fd2440c3adcef7f2a8e9f7405fc306eac27"
+        },
+        {
+          "bytes": 9492,
+          "path": "share/yosys/lattice/common_sim.vh",
+          "sha256": "0d7f9ceb35771c6d089d44b0334c491d82a3616b25b1319876bddbcb12a5a331"
+        },
+        {
+          "bytes": 1436,
+          "path": "share/yosys/lattice/dsp_map_18x18.v",
+          "sha256": "aa05c8ea6efc57dd51cdf6a94d2af6fc7675f3a93325ec5cae8abc5ed97f2b44"
+        },
+        {
+          "bytes": 258,
+          "path": "share/yosys/lattice/latches_map.v",
+          "sha256": "57937005a20c2faf1e3a5843694254b3c5be82045e3e33ec0ed527de69d2a5aa"
+        },
+        {
+          "bytes": 145,
+          "path": "share/yosys/lattice/lutrams.txt",
+          "sha256": "60bc6b886d5323b7ba3e54508287b129d55afbd34a5b84ff15a65222b927730b"
+        },
+        {
+          "bytes": 519,
+          "path": "share/yosys/lattice/lutrams_map.v",
+          "sha256": "0e36e11b61bbca96d424c83d991745bee2422453645431c3f72a370517984b3c"
+        },
+        {
+          "bytes": 9065,
+          "path": "share/yosys/mul2dsp.v",
+          "sha256": "4cbff6175da1c48b7eae79db6d9fb5c58bfd55724451d196f27fec169be91458"
+        },
+        {
+          "bytes": 2804,
+          "path": "share/yosys/nexus/arith_map.v",
+          "sha256": "e66415ae11bb05782dd64fbef0049191d9667dc09cfe4fc470438812824cb1f7"
+        },
+        {
+          "bytes": 882,
+          "path": "share/yosys/nexus/brams.txt",
+          "sha256": "8987103eb718169bdcd8889850773634aef00cac4128599c6a03a8dc184d036a"
+        },
+        {
+          "bytes": 15609,
+          "path": "share/yosys/nexus/brams_map.v",
+          "sha256": "1e5f57dcb1cf91b9949d48788e2f47d3f309d965884c41c2060ae115116e44e3"
+        },
+        {
+          "bytes": 3947,
+          "path": "share/yosys/nexus/cells_map.v",
+          "sha256": "9ca37ddc46e3e31ce3530c613a170124ff13f8234cda057b546fb23e6ac32e46"
+        },
+        {
+          "bytes": 25106,
+          "path": "share/yosys/nexus/cells_sim.v",
+          "sha256": "517e7713fc69a401fe6a624909b063047ffad5eca857e42fa3450383db381c0c"
+        },
+        {
+          "bytes": 1161486,
+          "path": "share/yosys/nexus/cells_xtra.v",
+          "sha256": "fc776d3c1a9559da2dbed4a20da1c9de4dcb7639912b8098df77156a24d8f01f"
+        },
+        {
+          "bytes": 1671,
+          "path": "share/yosys/nexus/dsp_map.v",
+          "sha256": "222ce292f3f61dd70e56ef73365735bf8e7273d810d45fcf06d2e92709c8202f"
+        },
+        {
+          "bytes": 258,
+          "path": "share/yosys/nexus/latches_map.v",
+          "sha256": "57937005a20c2faf1e3a5843694254b3c5be82045e3e33ec0ed527de69d2a5aa"
+        },
+        {
+          "bytes": 324,
+          "path": "share/yosys/nexus/lrams.txt",
+          "sha256": "7a48ad31266fcad1a1d640ee64a48151e7b033a76f396c2e532b5de675532c2e"
+        },
+        {
+          "bytes": 8557,
+          "path": "share/yosys/nexus/lrams_map.v",
+          "sha256": "e33acb1964f8e92b74d2247eeded1fd00ef15a9088a7023972b0b5e47d2058e4"
+        },
+        {
+          "bytes": 148,
+          "path": "share/yosys/nexus/lutrams.txt",
+          "sha256": "d67678115d2b08b3353475a276d6e92af0e6d94d7c509eaba6303d8a32ba2790"
+        },
+        {
+          "bytes": 428,
+          "path": "share/yosys/nexus/lutrams_map.v",
+          "sha256": "cd3162c0ae587a88623b7923574e12de1d9d25da522a93882caa5f8491963463"
+        },
+        {
+          "bytes": 855,
+          "path": "share/yosys/nexus/parse_init.vh",
+          "sha256": "59e7aff484d693c244a1aa2f21ddfa318c3fbd72e6b19be967d539f63142ee7e"
+        },
+        {
+          "bytes": 342,
+          "path": "share/yosys/pmux2mux.v",
+          "sha256": "3fb31c0ed479d45648b97e674a57a35e4b76133ec8d67398d8907179a4f92fbf"
+        },
+        {
+          "bytes": 771,
+          "path": "share/yosys/quicklogic/abc9_map.v",
+          "sha256": "c11cd7c83ef44439227f6cad120bcbdab98f53b9ab3662120c1ef56207e71f1c"
+        },
+        {
+          "bytes": 197,
+          "path": "share/yosys/quicklogic/abc9_model.v",
+          "sha256": "17413894e3fd5a4385f5d64f5a3cb960d186aa8145828339c756375962dd920b"
+        },
+        {
+          "bytes": 384,
+          "path": "share/yosys/quicklogic/abc9_unmap.v",
+          "sha256": "c0d4c545f41920a6e9a2d443868fd71bfabe5171a2654514b10cd4a7fe21b46d"
+        },
+        {
+          "bytes": 366,
+          "path": "share/yosys/quicklogic/cells_sim.v",
+          "sha256": "5e355446bcff9207f69f7d8cabd28a51701b98a26c6b3a92f3b3e2ce70bbe44c"
+        },
+        {
+          "bytes": 1862,
+          "path": "share/yosys/quicklogic/lut_sim.v",
+          "sha256": "7cb4c92eb59af75830e947c295ead2a25ed9f5994e81f2971b7d8adbecf65915"
+        },
+        {
+          "bytes": 499,
+          "path": "share/yosys/quicklogic/pp3_cells_map.v",
+          "sha256": "21c27662dbe19e969bb00a83c484feb6819270ffae7998daacceaca1e401fc8c"
+        },
+        {
+          "bytes": 6064,
+          "path": "share/yosys/quicklogic/pp3_cells_sim.v",
+          "sha256": "f44f7421ee2c963f3be820fd5f90c6de5082e82cdf1152e9eee00388f6935445"
+        },
+        {
+          "bytes": 194,
+          "path": "share/yosys/quicklogic/pp3_ffs_map.v",
+          "sha256": "b338b851f6b3571c80ba50d74db2a9a189ac6f9b5bc8273975498edcf3dbb0a6"
+        },
+        {
+          "bytes": 258,
+          "path": "share/yosys/quicklogic/pp3_latches_map.v",
+          "sha256": "52b1b3465c30213c00ee63255e11e50c53e2c17a293ba29d775e02e1f92a8189"
+        },
+        {
+          "bytes": 928,
+          "path": "share/yosys/quicklogic/pp3_lut_map.v",
+          "sha256": "0668a3312e04a9540f3f604fa36ce0292b4a3cf8512d37f991b700b46299115b"
+        },
+        {
+          "bytes": 1942,
+          "path": "share/yosys/sf2/arith_map.v",
+          "sha256": "f16e6b9c13d4452a802c5d85a683024c37cb9d2141a35b5ed7e722830740b452"
+        },
+        {
+          "bytes": 1745,
+          "path": "share/yosys/sf2/cells_map.v",
+          "sha256": "7abdef63be659627e9c8a36f27b9596affff97909ba001a9f4ef225713a0a685"
+        },
+        {
+          "bytes": 8449,
+          "path": "share/yosys/sf2/cells_sim.v",
+          "sha256": "244b67dacb1a726905d63f8b3b6c3f24dc72513a02983cf42256541586ae7b75"
+        },
+        {
+          "bytes": 87795,
+          "path": "share/yosys/simcells.v",
+          "sha256": "d9f51c586c0718ff828ba7740d4e7be3de764bef2c546f0bc52d65594ba90344"
+        },
+        {
+          "bytes": 63685,
+          "path": "share/yosys/simlib.v",
+          "sha256": "ff9ce5f89725c3050902a0fde063e5dfe8ed54e4b72d9c9ee99671d8707b9178"
+        },
+        {
+          "bytes": 44972,
+          "path": "share/yosys/smtio.py",
+          "sha256": "0cdc21363ba3fd4d5693f7fd8fb52573a786e8867d13b573e6704ca8074ea3ca"
+        },
+        {
+          "bytes": 654,
+          "path": "share/yosys/smtmap.v",
+          "sha256": "0eaab0c3a5324dcc30d0503cc3a571f5d4fb13fea6fbc18151efb294ff799cac"
+        },
+        {
+          "bytes": 16929,
+          "path": "share/yosys/techmap.v",
+          "sha256": "3f01d280a3104cd2f42ca8664f6bf3555b17c6a4485a7eee271a9caa13bd7e1d"
+        },
+        {
+          "bytes": 1497,
+          "path": "share/yosys/xilinx/abc9_model.v",
+          "sha256": "dc0e139669a32c2436cec6c7e49b716415bd0cdcb0d8d29f3ac4293a991cfa6c"
+        },
+        {
+          "bytes": 4593,
+          "path": "share/yosys/xilinx/arith_map.v",
+          "sha256": "20324a11d4ac4165b07a1a2204123a351a601385fd0d6a0dee92ab069e8a5279"
+        },
+        {
+          "bytes": 15515,
+          "path": "share/yosys/xilinx/brams_defs.vh",
+          "sha256": "6060e135ee7cc4a391d06547f0c6f37bf6da55878cc58be89165078526b04a55"
+        },
+        {
+          "bytes": 665,
+          "path": "share/yosys/xilinx/brams_xc2v.txt",
+          "sha256": "abf9e8aea3c3c5935e16114574e77c3d2d0b63a9d709b2d400f031bb5eb1b67d"
+        },
+        {
+          "bytes": 11752,
+          "path": "share/yosys/xilinx/brams_xc2v_map.v",
+          "sha256": "21b9df7ef7e879d803ef5aa15a63dca8d2c6c9a4fc6a0120940050ba54d709f1"
+        },
+        {
+          "bytes": 2357,
+          "path": "share/yosys/xilinx/brams_xc3sda.txt",
+          "sha256": "28b303dade5811f5394ebd320e18650f1d5da6d77dc97c0895f8d3b36d8bd426"
+        },
+        {
+          "bytes": 5591,
+          "path": "share/yosys/xilinx/brams_xc3sda_map.v",
+          "sha256": "c9780d27aac8d2b749b6d06de8583b2b0bd276f109c1a3dfad0b87349445399a"
+        },
+        {
+          "bytes": 3268,
+          "path": "share/yosys/xilinx/brams_xc4v.txt",
+          "sha256": "13e895e452af7e34161aa7572f4e11ab81d787fc1b9b85d10c713f03554b85f2"
+        },
+        {
+          "bytes": 3501,
+          "path": "share/yosys/xilinx/brams_xc4v_map.v",
+          "sha256": "ca785c3de3c76b7b1f4e8b9cc8a28ad27e001836ca2d67dd0479e8e8c2eb34a0"
+        },
+        {
+          "bytes": 5590,
+          "path": "share/yosys/xilinx/brams_xc5v_map.v",
+          "sha256": "c99f911c73df5a7115fb4298f6a8094f622845cf5238186dce42827a9db88c49"
+        },
+        {
+          "bytes": 7211,
+          "path": "share/yosys/xilinx/brams_xc6v_map.v",
+          "sha256": "678908f431dd3304aa41f2d1cb87ed6958c20adff848a0b3a6ea8903e59a1008"
+        },
+        {
+          "bytes": 5949,
+          "path": "share/yosys/xilinx/brams_xcu_map.v",
+          "sha256": "8b8d9987d057e1128402f492d66d7f1a1e3a858667029a6b3720894514dd1d24"
+        },
+        {
+          "bytes": 302,
+          "path": "share/yosys/xilinx/brams_xcv.txt",
+          "sha256": "3b9ef4d87cd29044d0f6de58a3f2f820fa8472a0618f49cba1d1531644e4af3a"
+        },
+        {
+          "bytes": 5210,
+          "path": "share/yosys/xilinx/brams_xcv_map.v",
+          "sha256": "f7a79f9452fe34079dbe7b79228e905e0e71aba81699e06b09442ae28a2e5363"
+        },
+        {
+          "bytes": 16017,
+          "path": "share/yosys/xilinx/cells_map.v",
+          "sha256": "93c15f9b06804e4b92d813cd07434cb9b3e01a971bedd5771a4399035e541ff3"
+        },
+        {
+          "bytes": 161270,
+          "path": "share/yosys/xilinx/cells_sim.v",
+          "sha256": "10f8afc61bf708949ebf238294327dce95eaa68919bb0ab5938d40f24e39d15e"
+        },
+        {
+          "bytes": 1375136,
+          "path": "share/yosys/xilinx/cells_xtra.v",
+          "sha256": "0ac0a7855a1ef616ce4b2c9a0687037a414cc82dc74dedd4e215b02ecf62642d"
+        },
+        {
+          "bytes": 4943,
+          "path": "share/yosys/xilinx/ff_map.v",
+          "sha256": "da62eca9f5bc7d8c0dbe24ffb2b8339d6c07d77a6e3660f4ae17ae1af49ccb1b"
+        },
+        {
+          "bytes": 3503,
+          "path": "share/yosys/xilinx/lut_map.v",
+          "sha256": "7b99ff5c1b9c1705c64a7cefbf29105655dd268192ccf4cf982b2bb18380f0ac"
+        },
+        {
+          "bytes": 1364,
+          "path": "share/yosys/xilinx/lutrams_xc5v.txt",
+          "sha256": "88b460c2a164059c4fb7cf89f71f7a657a993905c275e6acd8685a316d3a8ce9"
+        },
+        {
+          "bytes": 19522,
+          "path": "share/yosys/xilinx/lutrams_xc5v_map.v",
+          "sha256": "a88ef19a3318a4b45655d826bfcb80f17bd241fa4f573fca8dcd6b12c5640cff"
+        },
+        {
+          "bytes": 2167,
+          "path": "share/yosys/xilinx/lutrams_xcu.txt",
+          "sha256": "80aa75e6797d1f167ccde4f43322b09f528ac766133bb8a856114efc15bb6d94"
+        },
+        {
+          "bytes": 797,
+          "path": "share/yosys/xilinx/lutrams_xcv.txt",
+          "sha256": "b1f1b6ab0ad11e215430003725e0121343bf3bc490a71c4fef906e405117b387"
+        },
+        {
+          "bytes": 3209,
+          "path": "share/yosys/xilinx/lutrams_xcv_map.v",
+          "sha256": "d25d077d95ae9563b44b07a15ff3653a1f16539ce4962db243cc9c47cb9dfaa8"
+        },
+        {
+          "bytes": 2498,
+          "path": "share/yosys/xilinx/mux_map.v",
+          "sha256": "1f19d8e13e7ca893151339322090e6995c6e077c0ef6aa4c9bebd081f681fda6"
+        },
+        {
+          "bytes": 617,
+          "path": "share/yosys/xilinx/urams.txt",
+          "sha256": "47ad642d8260cef7bbac082ed16597be0f38437a468d213544d70319a2878314"
+        },
+        {
+          "bytes": 3552,
+          "path": "share/yosys/xilinx/urams_map.v",
+          "sha256": "df7fba6f6ffbeb2b617fccad04d500db93ed191eeb66d68515be242c768880b3"
+        },
+        {
+          "bytes": 266,
+          "path": "share/yosys/xilinx/xc3s_mult_map.v",
+          "sha256": "b76d7ed2070d94deb321d322d527514e157bcf2485a77e06cc5b0694956c396a"
+        },
+        {
+          "bytes": 560,
+          "path": "share/yosys/xilinx/xc3sda_dsp_map.v",
+          "sha256": "22031a499e92cf2f9009c57deea7d38c418324c120ada74f0a0eaf207f096138"
+        },
+        {
+          "bytes": 661,
+          "path": "share/yosys/xilinx/xc4v_dsp_map.v",
+          "sha256": "ed688a24c26663848684a8db7ff51feaed6563f76f8e6b6d415542e6a3fe1f54"
+        },
+        {
+          "bytes": 785,
+          "path": "share/yosys/xilinx/xc5v_dsp_map.v",
+          "sha256": "238960d11439e1f0416daffb34dbd48304b8b50d722c8b141cea7297333fc7e2"
+        },
+        {
+          "bytes": 562,
+          "path": "share/yosys/xilinx/xc6s_dsp_map.v",
+          "sha256": "813c47a1c07e0e7e46e01a655a0ae2fed2e14fa0c83b64b45fecaee2204a6329"
+        },
+        {
+          "bytes": 884,
+          "path": "share/yosys/xilinx/xc7_dsp_map.v",
+          "sha256": "cebceb7908bb98496b00cb6b6b2c6d88efc1c34d12eb3b234a34957239893c7d"
+        },
+        {
+          "bytes": 882,
+          "path": "share/yosys/xilinx/xcu_dsp_map.v",
+          "sha256": "8330a09757a6ac719c8a05665349cfd295bb765850d3549a5b05f31c772ab7ea"
+        },
+        {
+          "bytes": 12249,
+          "path": "share/yosys/ywio.py",
+          "sha256": "341115065a0243b9ee81eedbfc17a3df33ee4546152e3f4075676baa9e3d8356"
+        },
+        {
+          "bytes": 299,
+          "path": "validation/arith.v",
+          "sha256": "de7b05c99bc5346248609890e825e7008dabfc34d20f7936cafdc058cbe86e32"
+        },
+        {
+          "bytes": 8131,
+          "path": "validation/check.py",
+          "sha256": "eb6a84b8118a3abebe84ad302be8f2eb0bc285f869098f38544ddc7b78f1cc07"
+        }
+      ],
+      "native_host_dependencies": {
+        "yosys": "\tlinux-vdso.so.1 (0x00007fd278dbf000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fd278346000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fd27825d000)\n\tlibreadline.so.8 => /lib/x86_64-linux-gnu/libreadline.so.8 (0x00007fd278208000)\n\tlibffi.so.8 => /lib/x86_64-linux-gnu/libffi.so.8 (0x00007fd2781fc000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007fd2781e0000)\n\tlibtcl8.6.so => /workspace/scratch/2c2148ee9dab/worker019/payloads/yosys/lib/libtcl8.6.so (0x00007fd278031000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fd278003000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fd277df1000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fd278dc1000)\n\tlibtinfo.so.6 => /lib/x86_64-linux-gnu/libtinfo.so.6 (0x00007fd277dbd000)\n",
+        "yosys-abc": "\tlinux-vdso.so.1 (0x00007fb828615000)\n\tlibreadline.so.8 => /lib/x86_64-linux-gnu/libreadline.so.8 (0x00007fb827447000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fb82735e000)\n\tlibbz2.so.1.0 => /lib/x86_64-linux-gnu/libbz2.so.1.0 (0x00007fb82734a000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007fb82732e000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fb8270b0000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fb827080000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fb826e6e000)\n\tlibtinfo.so.6 => /lib/x86_64-linux-gnu/libtinfo.so.6 (0x00007fb826e3a000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fb828617000)\n",
+        "yosys-filterlib": "\tlinux-vdso.so.1 (0x00007f2fcb114000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f2fcae79000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f2fcae4b000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f2fcac39000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f2fcab50000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f2fcb116000)\n"
+      },
+      "package_sources": [
+        {
+          "bytes": 3222052,
+          "file": "yosys_0.33-5build2_amd64.deb",
+          "sha256": "94247f2157ec6ce63c6638326e419975d911ace5356b3dc276d1d8b36659efbd",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys_0.33-5build2_amd64.deb"
+        },
+        {
+          "bytes": 5829332,
+          "file": "yosys-abc_0.33-5build2_amd64.deb",
+          "sha256": "916ba59b6ca6dd1b6b927c7364357c2801ccb85db7eb3ca858ac9a856270fa44",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys-abc_0.33-5build2_amd64.deb"
+        },
+        {
+          "bytes": 2056508,
+          "file": "yosys-doc_0.33-5build2_all.deb",
+          "sha256": "83fca324a506a2e62b59561bba18a4198aa4669c7ab7a69846a0c3324f788c39",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys-doc_0.33-5build2_all.deb"
+        },
+        {
+          "bytes": 3069,
+          "file": "yosys_0.33-5build2.dsc",
+          "sha256": "538743309f336b70406401d5edcb2c224d2b6eca5114f01ae8ee9691098a9c84",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys_0.33-5build2.dsc"
+        },
+        {
+          "bytes": 30252,
+          "file": "yosys_0.33-5build2.debian.tar.xz",
+          "sha256": "704b00f0302d1806c569d4a0f73029dfc436c6e7e928b377b06ac36de9d80982",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys_0.33-5build2.debian.tar.xz"
+        },
+        {
+          "bytes": 6161029,
+          "file": "yosys_0.33.orig-abc.tar.gz",
+          "sha256": "6559115f2bbf4f1aac86ae4edbae416e8c60b8998bb3ac552451f4283bf6a5a7",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys_0.33.orig-abc.tar.gz"
+        },
+        {
+          "bytes": 2586120,
+          "file": "yosys_0.33.orig.tar.gz",
+          "sha256": "c240fa4fcc71c73b8989ab500f7bfa3109436fa1d7ba8d7e1028af4c42688f29",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys_0.33.orig.tar.gz"
+        },
+        {
+          "bytes": 987614,
+          "file": "libtcl8.6_8.6.14+dfsg-1build1_amd64.deb",
+          "sha256": "7534eb825f6317514d747ce53b4d6c23bf24df1dc1785f9599610ece5515e685",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tcl8.6/libtcl8.6_8.6.14+dfsg-1build1_amd64.deb"
+        },
+        {
+          "bytes": 2260,
+          "file": "tcl8.6_8.6.14+dfsg-1build1.dsc",
+          "sha256": "2b4f50e91737f89121b4a2c264fc4ca2ee036a039fc521ecf442920bc4f49be8",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tcl8.6/tcl8.6_8.6.14+dfsg-1build1.dsc"
+        },
+        {
+          "bytes": 14484,
+          "file": "tcl8.6_8.6.14+dfsg-1build1.debian.tar.xz",
+          "sha256": "4c74f35c55bf254de69e9b89b435a120ef9e4d03e6cae464f1dd6de3f0366977",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tcl8.6/tcl8.6_8.6.14+dfsg-1build1.debian.tar.xz"
+        },
+        {
+          "bytes": 7091313,
+          "file": "tcl8.6_8.6.14+dfsg.orig.tar.gz",
+          "sha256": "dc6b06142abfc46692c2f614064f930aa0d3ea2d59ee185dc27399b5d0503ee1",
+          "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tcl8.6/tcl8.6_8.6.14+dfsg.orig.tar.gz"
+        }
+      ],
+      "platform": "Ubuntu 24.04 x86_64 / native-host glibc 2.39",
+      "reported_version": "Yosys 0.33 (git sha1 2584903a060)",
+      "resource": "Yosys",
+      "source_signature_verified": false,
+      "superseded_candidate": {
+        "path": "../yosys-superseded-oss20261101",
+        "reason": "Original CPG ABI admission found GLIBC_2.43(log10f) and bundled libtinfo GLIBC_2.42 requirements incompatible with the native glibc 2.39. Original candidate and both adaptation failures are preserved.",
+        "version": "0.70+286.63eecf3dd.oss20261101"
+      },
+      "upstream": "https://github.com/YosysHQ/yosys",
+      "version": "0.33-5build2"
+    },
+    "worker_plan_id": "cpg-resource-research-20261101-v1"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "wrapper": false
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3222052,
+      "extract": false,
+      "id": "upstream-1",
+      "material_path": null,
+      "sha256": "94247f2157ec6ce63c6638326e419975d911ace5356b3dc276d1d8b36659efbd",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys_0.33-5build2_amd64.deb"
+    },
+    {
+      "bytes": 5829332,
+      "extract": false,
+      "id": "upstream-2",
+      "material_path": null,
+      "sha256": "916ba59b6ca6dd1b6b927c7364357c2801ccb85db7eb3ca858ac9a856270fa44",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys-abc_0.33-5build2_amd64.deb"
+    },
+    {
+      "bytes": 2056508,
+      "extract": false,
+      "id": "upstream-3",
+      "material_path": null,
+      "sha256": "83fca324a506a2e62b59561bba18a4198aa4669c7ab7a69846a0c3324f788c39",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys-doc_0.33-5build2_all.deb"
+    },
+    {
+      "bytes": 3069,
+      "extract": false,
+      "id": "upstream-4",
+      "material_path": null,
+      "sha256": "538743309f336b70406401d5edcb2c224d2b6eca5114f01ae8ee9691098a9c84",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys_0.33-5build2.dsc"
+    },
+    {
+      "bytes": 30252,
+      "extract": false,
+      "id": "upstream-5",
+      "material_path": null,
+      "sha256": "704b00f0302d1806c569d4a0f73029dfc436c6e7e928b377b06ac36de9d80982",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys_0.33-5build2.debian.tar.xz"
+    },
+    {
+      "bytes": 6161029,
+      "extract": false,
+      "id": "upstream-6",
+      "material_path": null,
+      "sha256": "6559115f2bbf4f1aac86ae4edbae416e8c60b8998bb3ac552451f4283bf6a5a7",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys_0.33.orig-abc.tar.gz"
+    },
+    {
+      "bytes": 2586120,
+      "extract": false,
+      "id": "upstream-7",
+      "material_path": null,
+      "sha256": "c240fa4fcc71c73b8989ab500f7bfa3109436fa1d7ba8d7e1028af4c42688f29",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/y/yosys/yosys_0.33.orig.tar.gz"
+    },
+    {
+      "bytes": 987614,
+      "extract": false,
+      "id": "upstream-8",
+      "material_path": null,
+      "sha256": "7534eb825f6317514d747ce53b4d6c23bf24df1dc1785f9599610ece5515e685",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tcl8.6/libtcl8.6_8.6.14+dfsg-1build1_amd64.deb"
+    },
+    {
+      "bytes": 2260,
+      "extract": false,
+      "id": "upstream-9",
+      "material_path": null,
+      "sha256": "2b4f50e91737f89121b4a2c264fc4ca2ee036a039fc521ecf442920bc4f49be8",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tcl8.6/tcl8.6_8.6.14+dfsg-1build1.dsc"
+    },
+    {
+      "bytes": 14484,
+      "extract": false,
+      "id": "upstream-10",
+      "material_path": null,
+      "sha256": "4c74f35c55bf254de69e9b89b435a120ef9e4d03e6cae464f1dd6de3f0366977",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tcl8.6/tcl8.6_8.6.14+dfsg-1build1.debian.tar.xz"
+    },
+    {
+      "bytes": 7091313,
+      "extract": false,
+      "id": "upstream-11",
+      "material_path": null,
+      "sha256": "dc6b06142abfc46692c2f614064f930aa0d3ea2d59ee185dc27399b5d0503ee1",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/t/tcl8.6/tcl8.6_8.6.14+dfsg.orig.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the original CPG PackageManager with an explicit fresh prefix and declared SDK bindings."
+    ],
+    "documentation": [
+      "https://github.com/YosysHQ/yosys"
+    ],
+    "examples": [
+      {
+        "command": "manager.check('yosys', prefix=prefix, kinds=['functional'], environment=bindings)",
+        "description": "Repeat the declared functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Payload",
+        "path": "{prefix}",
+        "purpose": "Independent runtime, source locks and upstream materials."
+      }
+    ],
+    "notes": [
+      "Pinned native Ubuntu 24.04 distribution profile; latest OSS candidate is preserved as superseded after real GLIBC ABI rejection.",
+      "Synthesized combinational 8-bit netlist equivalence and local negative SAT counterexample only; no FPGA timing/area or whole-tool qualification.",
+      "Reference distribution is build metadata; actual ELF ABI is verified by original CPG.",
+      "This worker increment does not promote original formal counts or claim hardware qualification."
+    ],
+    "summary": "yosys: independently installed, immutable upstream inputs and bounded functional validation."
+  },
+  "version": "0.33-5build2"
+}

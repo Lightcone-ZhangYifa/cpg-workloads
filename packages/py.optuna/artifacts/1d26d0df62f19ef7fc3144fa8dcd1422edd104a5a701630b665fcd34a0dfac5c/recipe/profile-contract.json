@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "manifest_file": "input-lock.json",
+  "manifest_sha256": "af1edda7723b280c7e85ef2615958256a1b64e96943ebd252c3e20e80c015b4c",
+  "resource": {
+    "profile": "baseline",
+    "requirements": [
+      "optuna==5.0.0"
+    ],
+    "cli_phases": [
+      [
+        "run_search.py",
+        "optuna",
+        "--out",
+        "{evidence}/optuna",
+        "--phase",
+        "start"
+      ],
+      [
+        "run_search.py",
+        "optuna",
+        "--out",
+        "{evidence}/optuna",
+        "--phase",
+        "resume"
+      ]
+    ],
+    "status": "original_wheel_functionally_exercised_in_common_profile; exact_baseline_closure_lifecycle_parent_validation_pending",
+    "id": "py.optuna",
+    "result_subdirectory": "optuna",
+    "wheel_directories": [
+      "wheelhouse/baseline"
+    ],
+    "install_original_source": false,
+    "build_requirements": []
+  }
+}

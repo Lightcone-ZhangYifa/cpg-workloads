@@ -1,0 +1,148 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/guarded_check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/profile",
+        "--runtime-prefix",
+        "{dependencies.support.openxla-cpu-runtime.prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional-profile",
+      "kind": "functional",
+      "stdout_regex": "CPG_CHECK_PASS",
+      "timeout_seconds": 2400
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "support.openxla-cpu-runtime"
+    ],
+    "system": []
+  },
+  "id": "research.xla",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "functional_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualifications": {
+      "dataset": null,
+      "oci": false,
+      "official_benchmark": false,
+      "physical_hardware": false
+    },
+    "record_id": "review.optimization.xla",
+    "resource_metadata": {
+      "build_claim": false,
+      "check_extra_args": [
+        "--runtime-prefix",
+        "{dependencies.support.openxla-cpu-runtime.prefix}"
+      ],
+      "check_timeout_seconds": 2400,
+      "dependencies": [
+        "support.openxla-cpu-runtime"
+      ],
+      "functional_claim": true,
+      "id": "research.xla",
+      "limitations": [
+        "使用官方jaxlib 0.8.0 CPU预编译绑定，本会话未从源码重建XLA/LLVM依赖闭包。",
+        "源码commit由JAX 0.8.0正式源码依赖锁追溯；发布wheel未嵌入可独立核验的上游commit，不能据此宣称二进制可复现构建。",
+        "功能资格仅覆盖本包可重放的小规模profile；不代表官方全量测试、Benchmark、GPU或生产资格。",
+        "优化后HLO与CPU数值运行均实际检查，不以模拟墙钟或性能变化授予性能资格。"
+      ],
+      "method": "binary",
+      "recipe_files": [
+        "common_check.py"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_target": {
+        "arch": "x86_64",
+        "glibc_min": "2.27",
+        "os": "Linux",
+        "python": "CPython 3.12"
+      },
+      "source_locks": [
+        {
+          "bytes": 23176617,
+          "id": "xla-source",
+          "path": "sources/xla-9f150f6b75c08d6ea7b97697c4f393f1a0eb6121.tar.gz",
+          "sha256": "523d23e8ea0d16c6134be49fbd0b25848ee3f1c00821e0a91207327dd3dc71cb",
+          "url": "https://api.github.com/repos/openxla/xla/tarball/9f150f6b75c08d6ea7b97697c4f393f1a0eb6121"
+        }
+      ],
+      "timeout_seconds": 2400,
+      "upstream_license": "Apache-2.0; full upstream LICENSE in payload/upstream/LICENSE",
+      "upstream_source_commit": "9f150f6b75c08d6ea7b97697c4f393f1a0eb6121",
+      "version": "0.8.0-cpu"
+    },
+    "source_build_claim": false,
+    "support_only": false,
+    "upstream_license": "Apache-2.0; full upstream LICENSE in payload/upstream/LICENSE",
+    "worker_id": "worker 063"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 23176617,
+      "extract": false,
+      "id": "xla-source",
+      "material_path": "sources/xla-9f150f6b75c08d6ea7b97697c4f393f1a0eb6121.tar.gz",
+      "sha256": "523d23e8ea0d16c6134be49fbd0b25848ee3f1c00821e0a91207327dd3dc71cb",
+      "strip_root": false,
+      "url": "https://api.github.com/repos/openxla/xla/tarball/9f150f6b75c08d6ea7b97697c4f393f1a0eb6121"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/openxla/xla"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"research.xla\")",
+        "description": "Run the declared checks through the CPG Python API"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed payload",
+        "path": "{prefix}",
+        "purpose": "Locked resources and bounded offline check inputs"
+      }
+    ],
+    "notes": [
+      "使用官方jaxlib 0.8.0 CPU预编译绑定，本会话未从源码重建XLA/LLVM依赖闭包。",
+      "源码commit由JAX 0.8.0正式源码依赖锁追溯；发布wheel未嵌入可独立核验的上游commit，不能据此宣称二进制可复现构建。",
+      "功能资格仅覆盖本包可重放的小规模profile；不代表官方全量测试、Benchmark、GPU或生产资格。",
+      "优化后HLO与CPU数值运行均实际检查，不以模拟墙钟或性能变化授予性能资格。"
+    ],
+    "summary": "固定小HLO完成优化和CPU执行，保存pass前后IR；构建过大先材料"
+  },
+  "version": "0.8.0-cpu"
+}

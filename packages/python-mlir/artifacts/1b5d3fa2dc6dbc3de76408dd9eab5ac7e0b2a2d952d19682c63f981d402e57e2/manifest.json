@@ -1,0 +1,384 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/python-mlir"
+    },
+    {
+      "bytes": 180,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/python-mlir/README.txt",
+      "sha256": "231e91d61094363295f6cdfee833a6afb70bfa4e939710015f2537c274d9c30f"
+    },
+    {
+      "bytes": 5919,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/python-mlir/closure-lock.json",
+      "sha256": "c55e35556c174e197812b54ce17d4d3ca2a12e9f7d2cfb3b54b51bd559ca9886"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 3836,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check_closure.py",
+      "sha256": "53ca45219d5922d71ea2d4b4b625c88c37e23885ddcb8d0e0b04c1b3a7038ac3"
+    }
+  ],
+  "inventory_sha256": "ebf311de6ce962db2aa458985e5fff022ce38b6c80fd8b99536f123262e30186",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "958920f25ce56bf7ac8edc3d1412e7ce71aae2032c9ff6f211b01cd25a16220d",
+  "method": "binary",
+  "package": {
+    "build": "20261101-worker008-group-v1",
+    "checks": [
+      {
+        "argv": [
+          "{dependencies.py.mlir.numpy.prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check_closure.py",
+          "--lock",
+          "{prefix}/share/python-mlir/closure-lock.json"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "original-closure-and-composition",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.mlir.cffi",
+        "py.mlir.cryptography",
+        "py.mlir.ml-dtypes",
+        "py.mlir.nanobind",
+        "py.mlir.numpy",
+        "py.mlir.packaging",
+        "py.mlir.pexpect",
+        "py.mlir.pip",
+        "py.mlir.psutil",
+        "py.mlir.ptyprocess",
+        "py.mlir.pycparser",
+        "py.mlir.pyyaml",
+        "py.mlir.setuptools",
+        "py.mlir.typing-extensions",
+        "py.mlir.wheel"
+      ],
+      "system": []
+    },
+    "id": "python-mlir",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": null,
+        "category": [
+          "Compilers and IR",
+          "LLVM components"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.mlir.cffi",
+          "py.mlir.cryptography",
+          "py.mlir.ml-dtypes",
+          "py.mlir.nanobind",
+          "py.mlir.numpy",
+          "py.mlir.packaging",
+          "py.mlir.pexpect",
+          "py.mlir.pip",
+          "py.mlir.psutil",
+          "py.mlir.ptyprocess",
+          "py.mlir.pycparser",
+          "py.mlir.pyyaml",
+          "py.mlir.setuptools",
+          "py.mlir.typing-extensions",
+          "py.mlir.wheel"
+        ],
+        "deployment": {
+          "adapter": "group"
+        },
+        "id": "python-mlir",
+        "immutable_ref": "catalog-defined",
+        "installed_bytes": null,
+        "kind": "group",
+        "license_class": "open",
+        "license_id": "MIT",
+        "mandatory": false,
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "",
+        "qualification_gaps": [],
+        "redistributable": true,
+        "roles": [
+          "dev",
+          "target"
+        ],
+        "sha256": null,
+        "source_evidence": [],
+        "title": "Isolated MLIR Python binding environment",
+        "version": "0.5.0"
+      },
+      "catalog_sha256": "9813675ee72c029d3f248b6005a2bf576db532cb4383c13c3c7e9bcb8e6e6a42",
+      "worker008_qualification": {
+        "binding_runtime_qualified": false,
+        "original_identity_preserved": true,
+        "scope": "original fifteen-member Python dependency capsule"
+      }
+    },
+    "provider": "meta",
+    "recipe": {
+      "adapter": "group"
+    },
+    "schema_version": 1,
+    "sources": [],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [],
+      "examples": [],
+      "locations": [],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "worker008 qualifies the original dependency capsule only. MLIR C++/Python bindings are not included by this meta group and are not claimed as functional."
+      ],
+      "summary": "Isolated MLIR Python binding environment"
+    },
+    "version": "0.5.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "scope": "Python dependency capsule; not MLIR binding execution",
+    "worker_id": "worker 008"
+  },
+  "resolved_dependencies": [
+    {
+      "build": "2",
+      "id": "py.mlir.cffi",
+      "method": "wrapper",
+      "sha256": "d92a30e8556632c3b34cc3bbd955ace36fd4d7166d931c4246ec3c0b00a8840b",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.1.1"
+    },
+    {
+      "build": "2",
+      "id": "py.mlir.cryptography",
+      "method": "wrapper",
+      "sha256": "83ce91ac8c89221d05dec2b00df10ef6ee93ee1583ab12f7770883cbf0e0061b",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "50.0.2"
+    },
+    {
+      "build": "2",
+      "id": "py.mlir.ml-dtypes",
+      "method": "wrapper",
+      "sha256": "0723d6aa7165e898cd569b3c51193d20a8ae771b5f8148bb3c6be82844d060a8",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.6.0"
+    },
+    {
+      "build": "2",
+      "id": "py.mlir.nanobind",
+      "method": "wrapper",
+      "sha256": "b72079d20284b5512d90d238fe841a352adedb7f4290672da9f4939fd2803c6e",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.15.0"
+    },
+    {
+      "build": "2",
+      "id": "py.mlir.numpy",
+      "method": "wrapper",
+      "sha256": "f303e688eedbc8ffce9a6d92ff6c5a951c3aeb0183a27d09d05421667f707356",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "2.1.2"
+    },
+    {
+      "build": "20261029-isolated-exact-wheel-host-qualification-1",
+      "id": "py.mlir.packaging",
+      "method": "wrapper",
+      "sha256": "2c4f66c5363ab76b56e7ede7b277103f602b2217e6cfdac6faba03d60f36b1d7",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "26.3"
+    },
+    {
+      "build": "2",
+      "id": "py.mlir.pexpect",
+      "method": "wrapper",
+      "sha256": "10a2335b02335b0e7be9aa3e961e879a05e3260236d17f99ba79f5d3a6ca86ae",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.9.0"
+    },
+    {
+      "build": "2",
+      "id": "py.mlir.pip",
+      "method": "wrapper",
+      "sha256": "ceebb12568daaf8f90d48530cd7f0bed497b2a6366ae892520120c440618bdc9",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "26.2.2"
+    },
+    {
+      "build": "2",
+      "id": "py.mlir.psutil",
+      "method": "wrapper",
+      "sha256": "441c8b2b2be6176e1475feede5b32061d8f4bcd19f893b76093cf1a91261c1f6",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "7.2.2"
+    },
+    {
+      "build": "2",
+      "id": "py.mlir.ptyprocess",
+      "method": "wrapper",
+      "sha256": "4ca31794c5946e0a06d1be79d7f214740f4b0598838500ad9f5b92c5bf003c01",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.7.0"
+    },
+    {
+      "build": "20261029-exact-wheel-offline-isolation-1",
+      "id": "py.mlir.pycparser",
+      "method": "wrapper",
+      "sha256": "51fc78bb93b13f1992b4c4027345c51a6d969b946baff418ee4317398f602515",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "3.11"
+    },
+    {
+      "build": "2",
+      "id": "py.mlir.pyyaml",
+      "method": "wrapper",
+      "sha256": "f0bf5f43b919996cd5bf27f728bf386b1efeb1c5f7d49ef0fe72b905c15fb137",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "6.0.3"
+    },
+    {
+      "build": "20261029-isolated-exact-wheel-host-qualification-1",
+      "id": "py.mlir.setuptools",
+      "method": "wrapper",
+      "sha256": "4b3c5c0a9629e7bc75acfd7757250e5f4cbafbb18999e20fc38533f087258c26",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "84.2.1"
+    },
+    {
+      "build": "2",
+      "id": "py.mlir.typing-extensions",
+      "method": "wrapper",
+      "sha256": "cb5c685356bb69f581508bd0aad7bfb0cc245ff8ebd63bd0ca7a39a4268b7a34",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "4.16.0"
+    },
+    {
+      "build": "2",
+      "id": "py.mlir.wheel",
+      "method": "wrapper",
+      "sha256": "e0a8d3e960a736124752c8d5c43f48b2a9b3f03619e543d03c3c8c137969760c",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.48.0"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

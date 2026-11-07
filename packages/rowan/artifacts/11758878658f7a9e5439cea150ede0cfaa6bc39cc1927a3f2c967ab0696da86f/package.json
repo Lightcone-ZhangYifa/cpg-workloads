@@ -1,0 +1,323 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check_adapter.py",
+        "{prefix}",
+        "rowan",
+        "{build}",
+        "version"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "locked-version-identity",
+      "kind": "version",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 90
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check_adapter.py",
+        "{prefix}",
+        "rowan",
+        "{build}",
+        "functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "offline-compiled-capability",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "rowan",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 36120,
+      "checks": [
+        {
+          "argv": [
+            "python3",
+            "-B",
+            "{recipe}/check_adapter.py",
+            "{prefix}",
+            "rowan",
+            "{build}",
+            "version"
+          ],
+          "cwd": "{build}",
+          "expected_returncode": 0,
+          "id": "locked-version-identity",
+          "kind": "version",
+          "stdout_regex": "\"status\": \"passed\"",
+          "timeout_seconds": 90
+        },
+        {
+          "argv": [
+            "python3",
+            "-B",
+            "{recipe}/check_adapter.py",
+            "{prefix}",
+            "rowan",
+            "{build}",
+            "functional"
+          ],
+          "cwd": "{build}",
+          "expected_returncode": 0,
+          "id": "offline-compiled-capability",
+          "kind": "functional",
+          "stdout_regex": "\"status\": \"passed\"",
+          "timeout_seconds": 600
+        }
+      ],
+      "dependencies": [],
+      "deployment": {
+        "adapter": "offline-source-material",
+        "external_sdk_environment": "CPG_RUST_SDK_ROOT",
+        "external_sdk_version": "1.88.0",
+        "required_installed_paths": [
+          "{prefix}/run_offline.py",
+          "{prefix}/resource.json",
+          "{prefix}/material.lock.json",
+          "{prefix}/dependencies.lock.json"
+        ],
+        "required_runtime_commands": [
+          "python3"
+        ]
+      },
+      "documentation": [
+        "https://github.com/rust-analyzer/rowan",
+        "https://docs.rs/rowan/0.17.0/rowan/",
+        "https://docs.rs/rowan/0.17.0/rowan/api/struct.SyntaxToken.html"
+      ],
+      "extract": false,
+      "id": "rowan",
+      "input_locks": {
+        "dependencies": [
+          {
+            "license": "Apache-2.0 OR MIT",
+            "license_files": [
+              "project/vendor/autocfg-1.5.1/LICENSE-APACHE",
+              "project/vendor/autocfg-1.5.1/LICENSE-MIT"
+            ],
+            "name": "autocfg",
+            "rust_version": "1.0",
+            "source_bytes": 61417,
+            "source_files": 20,
+            "source_url": "https://static.crates.io/crates/autocfg/autocfg-1.5.1.crate",
+            "upstream_package_sha256": "f2032f911046de80f0a198e0901378627c33f59ea0ac00e363d481118bd70a53",
+            "version": "1.5.1"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/countme-3.0.1/LICENSE-APACHE",
+              "project/vendor/countme-3.0.1/LICENSE-MIT"
+            ],
+            "name": "countme",
+            "rust_version": null,
+            "source_bytes": 31096,
+            "source_files": 10,
+            "source_url": "https://static.crates.io/crates/countme/countme-3.0.1.crate",
+            "upstream_package_sha256": "7704b5fdd17b18ae31c4c1da5a2e0305a2bf17b5249300a9ee9ed7b72114c636",
+            "version": "3.0.1"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/hashbrown-0.14.5/LICENSE-APACHE",
+              "project/vendor/hashbrown-0.14.5/LICENSE-MIT"
+            ],
+            "name": "hashbrown",
+            "rust_version": "1.63.0",
+            "source_bytes": 830212,
+            "source_files": 38,
+            "source_url": "https://static.crates.io/crates/hashbrown/hashbrown-0.14.5.crate",
+            "upstream_package_sha256": "e5274423e17b7c9fc20b6e7e208532f9b19825d82dfd615708b70edd83df41f1",
+            "version": "0.14.5"
+          },
+          {
+            "license": "MIT",
+            "license_files": [
+              "project/vendor/memoffset-0.9.1/LICENSE"
+            ],
+            "name": "memoffset",
+            "rust_version": null,
+            "source_bytes": 36589,
+            "source_files": 9,
+            "source_url": "https://static.crates.io/crates/memoffset/memoffset-0.9.1.crate",
+            "upstream_package_sha256": "488016bfae457b036d996092f6cb448677611ce4449e970ceaf42695203f218a",
+            "version": "0.9.1"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/rowan-0.17.0/LICENSE-APACHE",
+              "project/vendor/rowan-0.17.0/LICENSE-MIT"
+            ],
+            "name": "rowan",
+            "rust_version": null,
+            "source_bytes": 145778,
+            "source_files": 23,
+            "source_url": "https://static.crates.io/crates/rowan/rowan-0.17.0.crate",
+            "upstream_package_sha256": "14b574c58582fa59fa43a2feb6608b8744184659f08a2e0117e4b8224d95ed61",
+            "version": "0.17.0"
+          },
+          {
+            "license": "Apache-2.0/MIT",
+            "license_files": [
+              "project/vendor/rustc-hash-1.1.0/LICENSE-APACHE",
+              "project/vendor/rustc-hash-1.1.0/LICENSE-MIT"
+            ],
+            "name": "rustc-hash",
+            "rust_version": null,
+            "source_bytes": 23819,
+            "source_files": 6,
+            "source_url": "https://static.crates.io/crates/rustc-hash/rustc-hash-1.1.0.crate",
+            "upstream_package_sha256": "08d43f7aa6b08d49f382cde6a7982047c3426db949b1424bc4b7ec9ae12c6ce2",
+            "version": "1.1.0"
+          },
+          {
+            "license": "MIT OR Apache-2.0",
+            "license_files": [
+              "project/vendor/text-size-1.1.1/LICENSE-APACHE",
+              "project/vendor/text-size-1.1.1/LICENSE-MIT"
+            ],
+            "name": "text-size",
+            "rust_version": null,
+            "source_bytes": 41775,
+            "source_files": 16,
+            "source_url": "https://static.crates.io/crates/text-size/text-size-1.1.1.crate",
+            "upstream_package_sha256": "f18aa187839b2bdb1ad2fa35ead8c4c2976b64e4363c386d45ac0f7ee85c9233",
+            "version": "1.1.1"
+          }
+        ],
+        "nuget_hash_semantics": null,
+        "resource_id": "rowan",
+        "schema_version": 1
+      },
+      "kind": "source_material",
+      "license": "MIT OR Apache-2.0",
+      "license_class": "open",
+      "material_path": "upstream/rowan-0.17.0.crate",
+      "profile": {
+        "baseline_resource_ids": [],
+        "baseline_version": "0.21.14",
+        "canonical_url": "https://github.com/rust-analyzer/rowan",
+        "deployment_downloads": false,
+        "documentation_urls": [
+          "https://docs.rs/rowan/0.17.0/rowan/",
+          "https://docs.rs/rowan/0.17.0/rowan/api/struct.SyntaxToken.html"
+        ],
+        "entrypoint": "run_offline.py",
+        "language": "Rust",
+        "license": "MIT OR Apache-2.0",
+        "new_family_candidate": true,
+        "plan_id": "cpg-resource-research-20261101-v1",
+        "prevalidated_target": "Linux x86_64, glibc 2.39",
+        "qualification_scope": "Lossless trees for a deliberately small expression syntax, nested callee replacement, UTF-8 trivia and CRLF preservation. Not a C/C++ semantic parser.",
+        "required_sdk_version": "1.88.0",
+        "resource_id": "rowan",
+        "schema_version": 1,
+        "sdk_environment": "CPG_RUST_SDK_ROOT",
+        "sdk_included_in_component": false,
+        "version": "0.17.0",
+        "worker_id": "worker 005"
+      },
+      "purpose": "Lossless trees for a deliberately small expression syntax, nested callee replacement, UTF-8 trivia and CRLF preservation. Not a C/C++ semantic parser.",
+      "sha256": "14b574c58582fa59fa43a2feb6608b8744184659f08a2e0117e4b8224d95ed61",
+      "source_url": "https://static.crates.io/crates/rowan/rowan-0.17.0.crate",
+      "strip_archive_root": false,
+      "title": "rowan",
+      "version": "0.17.0"
+    },
+    "catalog_sha256": "768dc17e378aa4094bd849de89f34d122400d178146d1668e657df3416bf45e6"
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "offline-source-material",
+    "external_sdk_environment": "CPG_RUST_SDK_ROOT",
+    "external_sdk_version": "1.88.0",
+    "required_installed_paths": [
+      "{prefix}/run_offline.py",
+      "{prefix}/resource.json",
+      "{prefix}/material.lock.json",
+      "{prefix}/dependencies.lock.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 36120,
+      "extract": false,
+      "id": "rowan",
+      "material_path": "upstream/rowan-0.17.0.crate",
+      "sha256": "14b574c58582fa59fa43a2feb6608b8744184659f08a2e0117e4b8224d95ed61",
+      "strip_root": false,
+      "url": "https://static.crates.io/crates/rowan/rowan-0.17.0.crate"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/rust-analyzer/rowan",
+      "https://docs.rs/rowan/0.17.0/rowan/",
+      "https://docs.rs/rowan/0.17.0/rowan/api/struct.SyntaxToken.html"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B '{recipe}/check_adapter.py' '{prefix}' rowan '{build}' version",
+        "description": "Run the recorded version check."
+      },
+      {
+        "command": "python3 -B '{recipe}/check_adapter.py' '{prefix}' rowan '{build}' functional",
+        "description": "Run the recorded functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared material",
+        "path": "{assets}/upstream/rowan-0.17.0.crate",
+        "purpose": "Independent verified source, input, data or upstream distribution."
+      },
+      {
+        "label": "Source capability component",
+        "path": "{prefix}",
+        "purpose": "Source, complete locked local dependency closure, fixtures and Python offline API."
+      }
+    ],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+      "A new worker005 candidate family; this record does not increase the qualified coverage of the baseline 1862 resources.",
+      "A material cpgpkg contains source/vendor or local NuGet feed. No external SDK is embedded and installation performs no dependency resolution.",
+      "Functional checks require the exact external SDK named by CPG_RUST_SDK_ROOT. Protected recipe manifests bind all executable/library/reference files before running the material payload.",
+      "Rust also needs a compatible host C linker; the reference host uses GCC. .NET requires compatible libc/libstdc++/ICU/OpenSSL and consistent PID/proc visibility.",
+      "Every functional check starts an empty dependency cache and a fresh build under the operation directory. Source prefixes remain unchanged.",
+      "Offline behavior is implemented through frozen Cargo/vendor and local-only locked NuGet. The runner does not create an operating-system network namespace or claim packet tracing.",
+      "The prepared upstream source references are provenance. Cargo archives are provided in extracted vendored form with checksums; original NuGet archives are embedded.",
+      "Lossless trees for a deliberately small expression syntax, nested callee replacement, UTF-8 trivia and CRLF preservation. Not a C/C++ semantic parser."
+    ],
+    "summary": "Lossless trees for a deliberately small expression syntax, nested callee replacement, UTF-8 trivia and CRLF preservation. Not a C/C++ semantic parser."
+  },
+  "version": "0.17.0"
+}

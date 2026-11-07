@@ -1,0 +1,117 @@
+{
+  "build": "worker077-static-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/static_check.py",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "static-material-integrity",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "rocm-systems-profiler-materials",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 7423915,
+      "category": "observability",
+      "description": "ROCm/rocm-systems therock-10.1的完整rocprofiler-systems原始源归档、全部当前文档、公开接口头及preset schema。仅静态可查询；未展开或满足运行依赖闭包。",
+      "extract": false,
+      "id": "rocm-systems-profiler-materials",
+      "kind": "material",
+      "license": "MIT",
+      "license_class": "open",
+      "material_path": "upstream/rocprofiler-systems-therock-10.1.tar.gz",
+      "name": "ROCm Systems Profiler 静态材料",
+      "new_material_profile": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "policy_status": "policy-held",
+      "record_id": "review.engineering.rocm-systems-profiler",
+      "sha256": "9fdf426a02743ff79a96b2066132108e64fefb583a1105040a64bed1b52efb8b",
+      "source_url": "https://github.com/ROCm/rocm-systems/releases/download/therock-10.1/rocprofiler-systems.tar.gz",
+      "strip_archive_root": false,
+      "version": "1.9.0-therock10.1"
+    },
+    "catalog_sha256": "42dfe5c961915d9f5147313e8f556f29ed783021daaed033c94f9bebed3c6ad7",
+    "collector_policy": "policy-held",
+    "material_scope": "ROCm/rocm-systems therock-10.1的完整rocprofiler-systems原始源归档、全部当前文档、公开接口头及preset schema。仅静态可查询；未展开或满足运行依赖闭包。",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "benchmark": null,
+      "complete_profiler_installation": false,
+      "dataset_verified": null,
+      "functional": null,
+      "hardware": null,
+      "material": true,
+      "material_scope": "exactly the static profile documented here",
+      "oci": null,
+      "source_build": null
+    },
+    "worker_id": "worker 077"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 7423915,
+      "extract": false,
+      "id": "rocm-systems-profiler-materials",
+      "material_path": "upstream/rocprofiler-systems-therock-10.1.tar.gz",
+      "sha256": "9fdf426a02743ff79a96b2066132108e64fefb583a1105040a64bed1b52efb8b",
+      "strip_root": false,
+      "url": "https://github.com/ROCm/rocm-systems/releases/download/therock-10.1/rocprofiler-systems.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://rocm.docs.amd.com/projects/rocprofiler-systems/en/latest/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/reference_query.py 'Perfetto' --limit 20",
+        "description": "Search pinned text without executing vendor code"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reference guide",
+        "path": "{prefix}/REFERENCE.zh.md",
+        "purpose": "Exact scope, API/input map, licensing and policy boundary"
+      },
+      {
+        "label": "Pinned material files",
+        "path": "{prefix}/reference",
+        "purpose": "Offline documentation, type interfaces and licensed examples"
+      }
+    ],
+    "notes": [
+      "ROCm/rocm-systems therock-10.1的完整rocprofiler-systems原始源归档、全部当前文档、公开接口头及preset schema。仅静态可查询；未展开或满足运行依赖闭包。",
+      "本包未运行rocprof-sys-instrument、sample、run或attach等入口，未插桩任何二进制或读取设备counter。所有upstream源码是材料。对外部trace的实际分析资格留空，本任务仅完成文档/API/格式/许可锁定。",
+      "Collector execution remains policy-held; reference integrity does not imply profiler functionality."
+    ],
+    "summary": "理解线程、通信、OpenMP和用户范围如何映射到trace及summary。agent可查阅事件字段、输出域和标识关系，用于设计已有trace的导入/解释流程。"
+  },
+  "version": "1.9.0-therock10.1"
+}

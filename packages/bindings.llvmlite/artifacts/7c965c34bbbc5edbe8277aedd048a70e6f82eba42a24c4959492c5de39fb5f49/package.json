@@ -1,0 +1,148 @@
+{
+  "build": "worker-012-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--contract",
+        "{recipe}/payload-contract.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "complete-ready-payload",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    },
+    {
+      "argv": [
+        "{prefix}/bin/cpg-llvmlite-check"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-ir-verifier-and-execution",
+      "kind": "functional",
+      "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "bindings.llvmlite",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 56288211,
+      "category": [
+        "Compiler bindings",
+        "LLVM and MLIR embedding"
+      ],
+      "documentation": [
+        "https://github.com/numba/llvmlite"
+      ],
+      "extract": false,
+      "id": "bindings.llvmlite",
+      "kind": "wheel",
+      "license_class": "open",
+      "material_path": "sources/llvmlite-0.45.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "original_1862_member": false,
+      "plan_record_id": "review.engineering.llvmlite",
+      "purpose": "Construct and verify i64 addition/loop LLVM IR, then execute bounded MCJIT cases using the frozen official wheel.",
+      "sha256": "5b3796b1b1e1c14dcae34285d2f4ea488402fbd2c400ccf7137603ca3800864f",
+      "source_url": "https://files.pythonhosted.org/packages/96/76/0f7154952f037cb320b83e1c952ec4a19d5d689cf7d27cb8a26887d7bbc1/llvmlite-0.45.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "strip_archive_root": false,
+      "title": "llvmlite",
+      "upstream": "https://github.com/numba/llvmlite",
+      "version": "0.45.1"
+    },
+    "catalog_sha256": "2ed7414dbe12cd4ad3fa28f3c87b60343017b213b10eb7b4dc474bcd76c93dd9",
+    "original_1862_increment": 0,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.engineering.llvmlite",
+    "runtime_policy": "bundled libraries plus observed host ABI; not a hermetic system image",
+    "version_pair": {
+      "canonical_upstream": "https://github.com/numba/llvmlite",
+      "entity_id": "bindings.llvmlite",
+      "license_paths": [
+        "src/upstream/llvmlite-0.45.1/LICENSE"
+      ],
+      "llvm_linkage": "statically bundled in official wheel",
+      "llvm_runtime_version": "20.1.8",
+      "source": "https://pypi.org/project/llvmlite/0.45.1/",
+      "source_build_status": "recipe supplied; not executed; official wheel is the validated provider",
+      "validation_args": [],
+      "validation_entrypoint": "bin/cpg-llvmlite-check",
+      "version": "0.45.1"
+    },
+    "worker_id": "worker 012"
+  },
+  "provider": "python",
+  "recipe": {
+    "qualification_scope": "Construct and verify i64 addition/loop LLVM IR, then execute bounded MCJIT cases using the frozen official wheel.",
+    "required_installed_paths": [
+      "{prefix}/bin/cpg-llvmlite-check"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "LD_LIBRARY_PATH": "{prefix}/lib",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    },
+    "source_rebuild": "See scripts and shared frozen inputs in this worker bundle; never downloaded during installation."
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 56288211,
+      "extract": false,
+      "id": "bindings.llvmlite",
+      "material_path": "sources/llvmlite-0.45.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "sha256": "5b3796b1b1e1c14dcae34285d2f4ea488402fbd2c400ccf7137603ca3800864f",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/96/76/0f7154952f037cb320b83e1c952ec4a19d5d689cf7d27cb8a26887d7bbc1/llvmlite-0.45.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/numba/llvmlite"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/cpg-llvmlite-check",
+        "description": "Run the exact admitted IR profile"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent compiler-binding validation prefix",
+        "path": "{prefix}",
+        "purpose": "Run the included bounded example; exact source and build recipes remain in the worker bundle."
+      }
+    ],
+    "notes": [
+      "Only this pinned version pair and recorded Linux x86_64 ABI were exercised.",
+      "The host loader and actual shared-library compatibility are checked during every CPG binary installation.",
+      "Distribution fields describe the validation host and are not an installation allowlist.",
+      "No official Benchmark, cross-target, OCI or hardware qualification is claimed.",
+      "recipe supplied; not executed; official wheel is the validated provider"
+    ],
+    "summary": "Construct and verify i64 addition/loop LLVM IR, then execute bounded MCJIT cases using the frozen official wheel."
+  },
+  "version": "0.45.1"
+}

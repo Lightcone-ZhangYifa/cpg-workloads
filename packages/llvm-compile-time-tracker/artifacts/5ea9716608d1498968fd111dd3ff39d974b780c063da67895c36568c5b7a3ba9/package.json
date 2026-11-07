@@ -1,0 +1,190 @@
+{
+  "build": "2",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--manifest",
+        "{recipe}/material-manifest.json"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "llvm-compile-time-tracker-complete-materials",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "llvm-compile-time-tracker",
+  "metadata": {
+    "catalog": {
+      "apt_dependency_ids": [],
+      "archive_bytes": 2733549,
+      "build_peak_bytes": null,
+      "category": [
+        "Measurement",
+        "Compile-time diagnostics"
+      ],
+      "conflicts": [],
+      "container_strategy": "Preserve exact source and notices in immutable prepared materials. A reference adapter does not install or start this resource.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "source_dependencies": [],
+        "state": "immutable-source-reference; executable-deployment-not-qualified",
+        "system_packages": [],
+        "target_exports": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/nikic/llvm-compile-time-tracker"
+      ],
+      "evidence_files": [
+        "workspace-evidence/community-v070/resource-audit/git-refs.json",
+        "workspace-evidence/community-v070/resource-audit/archive-measurements.json",
+        "workspace-evidence/community-v070/resource-audit/http-headers/llvm-compile-time-tracker.json"
+      ],
+      "extract": true,
+      "id": "llvm-compile-time-tracker",
+      "immutable_ref": "4759cdea0a835c1fb08a6b8c585fdd52307e3f96",
+      "installed_allocated_bytes": null,
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/llvm-compile-time-tracker",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Reference CTMark compile-cost collection and analysis used by an LLVM developer. Adapt recorded measurements to the project event schema without launching the author's bot or modifying global machine settings.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Source qualification does not demonstrate build, container, runtime service or dependency closure readiness.",
+        "Full execution requires PHP>=8.1, JSON/zlib/msgpack extensions, Composer dependencies and prepared compiler/test-suite/data checkouts; no composer.lock is bundled.",
+        "Upstream setup.sh changes global git identity, creates users and fetches repositories. It is retained as a reference and is not an approved deployment recipe.",
+        "Compile time and instructions are diagnostics; generated-program runtime speed remains the optimization target."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "122a6195744ed639f3fe307432687f6867f4bc818ff1aa33459da62b9c1c7ca5",
+      "size_basis": "Complete HTTPS payload measured locally; source logical bytes sum regular archive members and exclude filesystem allocation, external dependencies and build trees.",
+      "size_evidence": "workspace-evidence/community-v070/resource-audit/archive-measurements.json",
+      "source_evidence": [
+        "https://github.com/nikic/llvm-compile-time-tracker",
+        "https://github.com/nikic/llvm-compile-time-tracker/commit/4759cdea0a835c1fb08a6b8c585fdd52307e3f96",
+        "https://codeload.github.com/nikic/llvm-compile-time-tracker/tar.gz/4759cdea0a835c1fb08a6b8c585fdd52307e3f96"
+      ],
+      "source_logical_bytes": 10204041,
+      "source_url": "https://codeload.github.com/nikic/llvm-compile-time-tracker/tar.gz/4759cdea0a835c1fb08a6b8c585fdd52307e3f96",
+      "title": "LLVM Compile Time Tracker reference",
+      "upstream": "https://github.com/nikic/llvm-compile-time-tracker",
+      "version": "commit-4759cdea0a83"
+    },
+    "catalog_sha256": "72acb1a25fdb14546b7bdd6de1284a2f7a45c4e1e629dfe7af9e0bdf6408a8a6"
+  },
+  "provider": "material",
+  "recipe": {
+    "acquisition_lock": {
+      "bytes": 2733549,
+      "extract": true,
+      "id": "llvm-compile-time-tracker",
+      "material_path": "sources/llvm-compile-time-tracker",
+      "sha256": "122a6195744ed639f3fe307432687f6867f4bc818ff1aa33459da62b9c1c7ca5",
+      "strip_root": true,
+      "url": "https://codeload.github.com/nikic/llvm-compile-time-tracker/tar.gz/4759cdea0a835c1fb08a6b8c585fdd52307e3f96"
+    },
+    "adapter": "corpus",
+    "content_scope_audit_sha256": "c28d3a649bf0d5c960e2987a0a86f91298aa3f883a732b8ecd30daa3fac88686",
+    "dataset_content_complete": false,
+    "external_data_requirements": "External benchmark datasets, generated inputs and native dependency closure are outside this original repository material qualification",
+    "material_profile_dependency_mapping": {
+      "build": "Original native/tool build dependencies preserved but not executed by material installation",
+      "run": "Original native/tool runtime dependencies preserved but not qualified by availability",
+      "system": "Only apt.python3 is used for all-file material verification"
+    },
+    "material_profile_original_dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "qualification_scope": "complete_declared_repository_material_only",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/.gitignore"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "source_closure_scope": "complete_declared_main_archive; exact_original_git_tree_has_zero_gitlinks; native_build_and_external_data_closure_not_qualified",
+    "source_dependencies": [],
+    "state": "immutable-source-reference; executable-deployment-not-qualified",
+    "system_packages": [],
+    "target_exports": [],
+    "unfetched_submodule_declarations": 0,
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2733549,
+      "extract": true,
+      "id": "llvm-compile-time-tracker",
+      "material_path": "sources/llvm-compile-time-tracker",
+      "sha256": "122a6195744ed639f3fe307432687f6867f4bc818ff1aa33459da62b9c1c7ca5",
+      "strip_root": true,
+      "url": "https://codeload.github.com/nikic/llvm-compile-time-tracker/tar.gz/4759cdea0a835c1fb08a6b8c585fdd52307e3f96"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/nikic/llvm-compile-time-tracker"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile."
+    ],
+    "summary": "Reference CTMark compile-cost collection and analysis used by an LLVM developer. Adapt recorded measurements to the project event schema without launching the author's bot or modifying global machine settings."
+  },
+  "version": "commit-4759cdea0a83"
+}

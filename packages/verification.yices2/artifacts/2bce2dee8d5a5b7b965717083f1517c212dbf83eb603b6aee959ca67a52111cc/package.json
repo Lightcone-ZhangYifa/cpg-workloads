@@ -1,0 +1,170 @@
+{
+  "build": "worker052-20261102-v002",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "task-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 480
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "verification.yices2",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 10472291,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "SAT, SMT and runtimes"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "verification.yices2",
+      "immutable_ref": "85cf17e44eac76b5d14b297c09fc9bfecf47ef65",
+      "kind": "native_bundle",
+      "license_id": "See bundled upstream LICENSE and NOTICE files",
+      "material_path": "inputs/input-1",
+      "purpose": "Actual Yices SMT2 CLI SAT/UNSAT/SAT push/pop and model 255; upstream smt-switch Yices2 adapter independently consumes the native library. Only tested bitvector/incremental scope; official Yices import, not local Yices source build.",
+      "qualification_scope": "Actual Yices SMT2 CLI SAT/UNSAT/SAT push/pop and model 255; upstream smt-switch Yices2 adapter independently consumes the native library. Only tested bitvector/incremental scope; official Yices import, not local Yices source build.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "37ba930fddde2b087e5a95097a9cec5010510346aad8a0987204e6decd220898",
+      "source_evidence": [
+        "https://github.com/SRI-CSL/yices2"
+      ],
+      "source_url": "https://codeload.github.com/SRI-CSL/yices2/tar.gz/85cf17e44eac76b5d14b297c09fc9bfecf47ef65",
+      "strip_archive_root": false,
+      "title": "Yices 2",
+      "upstream": "https://github.com/SRI-CSL/yices2",
+      "version": "2.7.0",
+      "worker_record_id": "review.verification.yices2"
+    },
+    "catalog_sha256": "3b205d34d712c3f05252b86f60c5c02b21558900e33b6e6f25620cb355f2b670",
+    "input_provenance": [
+      {
+        "bytes": 10472291,
+        "local_path": "/workspace/scratch/81acee5764ca/worker052/downloads/yices2-85cf17e44eac76b5d14b297c09fc9bfecf47ef65.tar.gz",
+        "revision": "85cf17e44eac76b5d14b297c09fc9bfecf47ef65",
+        "role": "yices2-source",
+        "sha256": "37ba930fddde2b087e5a95097a9cec5010510346aad8a0987204e6decd220898",
+        "url": "https://codeload.github.com/SRI-CSL/yices2/tar.gz/85cf17e44eac76b5d14b297c09fc9bfecf47ef65"
+      },
+      {
+        "bytes": 309795,
+        "local_path": "/workspace/scratch/81acee5764ca/worker052/downloads/smt-switch-82c361d19724fb275131a1636ade46eafa862019.tar.gz",
+        "revision": "82c361d19724fb275131a1636ade46eafa862019",
+        "role": "smt-switch-source",
+        "sha256": "17a92a100e23dc10cdf41ee3bc6af9b4f58ad11ae2f2a586ddce3d9584161317",
+        "url": "https://codeload.github.com/stanford-centaur/smt-switch/tar.gz/82c361d19724fb275131a1636ade46eafa862019"
+      },
+      {
+        "bytes": 1172209,
+        "local_path": "/workspace/scratch/81acee5764ca/worker052/downloads/cudd-f54f533303640afd5dbe47a05ebeabb3066f2a25.tar.gz",
+        "revision": "f54f533303640afd5dbe47a05ebeabb3066f2a25",
+        "role": "cudd-source",
+        "sha256": "dbe6b90f8745bf1f755953b76f1c639e07f7ee079f4abf18c871ae878f47431d",
+        "url": "https://codeload.github.com/ivmai/cudd/tar.gz/f54f533303640afd5dbe47a05ebeabb3066f2a25"
+      },
+      {
+        "bytes": 9848047,
+        "local_path": "/workspace/scratch/81acee5764ca/worker052/downloads/yices-2.7.0-x86_64-pc-linux-gnu-static-gmp.tar.gz",
+        "role": "yices-release",
+        "sha256": "49566b6f817692820538df78fe406878400d79810631c9372b2495bc81d3e00a",
+        "url": "https://github.com/SRI-CSL/yices2/releases/download/yices-2.7.0/yices-2.7.0-x86_64-pc-linux-gnu-static-gmp.tar.gz"
+      },
+      {
+        "bytes": 29268352,
+        "local_path": "/workspace/scratch/81acee5764ca/worker052/downloads/z3_solver-4.15.4.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "role": "z3-wheel",
+        "sha256": "7e103a6f203f505b8b8b8e5c931cc407c95b61556512d4921c1ddc0b3f41b08e",
+        "url": "https://files.pythonhosted.org/packages/21/c9/bb51a96af0091324c81b803f16c49f719f9f6ea0b0bb52200f5c97ec4892/z3_solver-4.15.4.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+      }
+    ],
+    "original_resource_ids": [],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "source_build_qualified": false
+    },
+    "record_id": "review.verification.yices2",
+    "runtime_requirements": [
+      "Linux x86_64; tested host ABI (minimum not inferred)",
+      "Python 3.12 tested for check.py",
+      "host libc, libstdc++, libgcc, libm, libpthread, libgmp.so.10",
+      "source rebuild additionally requires C/C++17, CMake, make and GMP development headers/libraries",
+      "Declared runtime environment: LD_LIBRARY_PATH={prefix}/lib for bundled native transitive dependencies",
+      "Validated on Linux x86_64 with glibc 2.39; no lower ABI bound is inferred. Exact ELF requirements are recorded separately."
+    ],
+    "worker_id": "worker 052"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "ldd",
+      "python3"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 10472291,
+      "extract": false,
+      "id": "verification.yices2",
+      "material_path": "inputs/input-1",
+      "sha256": "37ba930fddde2b087e5a95097a9cec5010510346aad8a0987204e6decd220898",
+      "strip_root": false,
+      "url": "https://codeload.github.com/SRI-CSL/yices2/tar.gz/85cf17e44eac76b5d14b297c09fc9bfecf47ef65"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/SRI-CSL/yices2"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Actual Yices SMT2 CLI SAT/UNSAT/SAT push/pop and model 255; upstream smt-switch Yices2 adapter independently consumes the native library. Only tested bitvector/incremental scope; official Yices import, not local Yices source build."
+      }
+    ],
+    "notes": [
+      "Qualification is limited to the explicit functional cases and fixed inputs recorded in this profile.",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "Actual Yices SMT2 CLI SAT/UNSAT/SAT push/pop and model 255; upstream smt-switch Yices2 adapter independently consumes the native library. Only tested bitvector/incremental scope; official Yices import, not local Yices source build."
+  },
+  "version": "2.7.0"
+}

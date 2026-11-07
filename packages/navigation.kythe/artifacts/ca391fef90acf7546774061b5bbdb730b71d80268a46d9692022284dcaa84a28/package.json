@@ -1,0 +1,95 @@
+{
+  "build": "cpg20261101.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{tools}/run_check.py",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assignment-functional",
+      "kind": "functional",
+      "stdout_regex": "passed",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "navigation.kythe",
+  "metadata": {
+    "baseline_catalog_modified": false,
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "C++17 extractor/indexer over 2 complete TUs and 3 files; .kzip input hashes, decoded graph anchors, ref/call, and declaration completedby definition. No Java/Go, server or entire repository claim.",
+    "record_id": "review.root.kythe",
+    "runtime_toolchain": {
+      "description": "Linux x86_64; Python 3; host glibc; see ELF compatibility evidence"
+    },
+    "worker_id": "048"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 5135249,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "kythe-v0.0.76-source.tar.gz",
+      "sha256": "1227aa502bd4ded73a89fcef03830a35d9512635e9791e8f5390d1899962aa87",
+      "strip_root": false,
+      "url": "https://codeload.github.com/kythe/kythe/tar.gz/refs/tags/v0.0.76"
+    },
+    {
+      "bytes": 353818239,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "kythe-v0.0.76.tar.gz",
+      "sha256": "eea430f7563db805c99e4d1a427ca60d7aef01cec7669986529cfe2c26296356",
+      "strip_root": false,
+      "url": "https://github.com/kythe/kythe/releases/download/v0.0.76/kythe-v0.0.76.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/kythe/kythe"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B <prefix>/check.py",
+        "description": "Run the bounded assignment qualification"
+      }
+    ],
+    "locations": [
+      {
+        "label": "installation",
+        "path": "{prefix}",
+        "purpose": "Immutable tool and qualification fixtures"
+      }
+    ],
+    "notes": [
+      "C++17 extractor/indexer over 2 complete TUs and 3 files; .kzip input hashes, decoded graph anchors, ref/call, and declaration completedby definition. No Java/Go, server or entire repository claim."
+    ],
+    "summary": "C++17 extractor/indexer over 2 complete TUs and 3 files"
+  },
+  "version": "0.0.76"
+}

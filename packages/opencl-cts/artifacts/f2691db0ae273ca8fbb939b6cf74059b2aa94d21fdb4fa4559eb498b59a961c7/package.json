@@ -1,0 +1,97 @@
+{
+  "build": "worker057-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/runtime_check.py",
+        "cts",
+        "--prefix",
+        "{prefix}",
+        "--pocl",
+        "{dependency_prefix:pocl}",
+        "--loader",
+        "{dependency_prefix:opencl-icd-loader}",
+        "--output",
+        "{build}/functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "pocl",
+      "opencl-icd-loader"
+    ],
+    "system": []
+  },
+  "id": "opencl-cts",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Official CTS compiler sub-suite representative cases on PoCL basic CPU, preserving per-case native upstream JSON; no full CTS, GPU or Khronos certification claim.",
+    "worker_id": "worker 057"
+  },
+  "provider": "source",
+  "recipe": {
+    "required_installed_paths": [],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{dependency_prefix:opencl-icd-loader}/lib:{dependency_prefix:pocl}/usr/lib/x86_64-linux-gnu:{dependency_prefix:pocl}/usr/lib/llvm-16/lib:{dependency_prefix:pocl}/usr/lib/x86_64-linux-gnu/pocl"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 19902632,
+      "extract": false,
+      "id": "opencl-cts-source",
+      "material_path": "sources/OpenCL-CTS-5b3518096ca7b82854daadb2b2fae704fe2d9cb5.tar.gz",
+      "sha256": "bb01f65a397f83eb3634eebac0c71eb8216d1f62289bc5d8b9b40371cff6b518",
+      "strip_root": false,
+      "url": "https://codeload.github.com/KhronosGroup/OpenCL-CTS/tar.gz/5b3518096ca7b82854daadb2b2fae704fe2d9cb5"
+    },
+    {
+      "bytes": 89120,
+      "extract": false,
+      "id": "opencl-headers-source",
+      "material_path": "sources/opencl-headers-6fe718c31a45fe25151362a72ef041c3a1047cbd.tar.gz",
+      "sha256": "77b6bc606fe0c2b25ef0dd4c400ed508c12fda82dd4420eba3f9e00ce64206c4",
+      "strip_root": false,
+      "url": "https://codeload.github.com/KhronosGroup/OpenCL-Headers/tar.gz/6fe718c31a45fe25151362a72ef041c3a1047cbd"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt"
+    ],
+    "examples": [
+      {
+        "command": "python3 tools/replay.py --baseline /path/to/cpg --workdir /path/to/fresh-work",
+        "description": "Original CPG independent install/check/verify/remove replay"
+      }
+    ],
+    "locations": [],
+    "notes": [
+      "Candidate worker-local qualification only; original 1862 baseline entries and global coverage are unchanged.",
+      "Offline installation requires existing compatible Linux x86_64 system libraries; original PackageManager checks ELF dependencies. Distribution name is reference metadata, not a gate."
+    ],
+    "summary": "Official CTS compiler sub-suite representative cases on PoCL basic CPU, preserving per-case native upstream JSON; no full CTS, GPU or Khronos certification claim."
+  },
+  "version": "2025-01-22-00"
+}

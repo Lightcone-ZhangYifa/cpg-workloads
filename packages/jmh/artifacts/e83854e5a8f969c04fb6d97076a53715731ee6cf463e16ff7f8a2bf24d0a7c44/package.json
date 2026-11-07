@@ -1,0 +1,91 @@
+{
+  "build": "cpg-worker033-v003",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_jmh.py",
+        "--prefix",
+        "{prefix}",
+        "--toolchain",
+        "{dependency_prefix:cpg-worker033-jvm}",
+        "--output",
+        "{build}/functional-evidence"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-offline-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "cpg-worker033-jvm"
+    ],
+    "system": []
+  },
+  "id": "jmh",
+  "metadata": {
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "scope": "Bounded functionality; no official benchmark score, speedup, OCI or full upstream source-build claim.",
+    "supporting_dependency": false,
+    "worker_id": "worker 033"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "prebuilt",
+    "required_installed_paths": [],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 658673,
+      "extract": false,
+      "id": "jmh-1.37-source.tar.gz",
+      "material_path": "upstream/jmh-1.37-source.tar.gz",
+      "sha256": "d6bc79d4b49c975573f7771c92e2b8ce93117e695a8b937bc9ab70f5d8c14867",
+      "strip_root": false,
+      "url": "https://codeload.github.com/openjdk/jmh/tar.gz/refs/tags/1.37"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://codeload.github.com/openjdk/jmh/tar.gz/refs/tags/1.37"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check_jmh.py --prefix {prefix} --toolchain {dependency_prefix:cpg-worker033-jvm} --output {build}/functional-evidence",
+        "description": "Replay the recorded bounded native check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Prepared resource",
+        "path": "{prefix}",
+        "purpose": "Offline JMH source compilation, thread-local state, Blackhole, forks and raw JSON results."
+      }
+    ],
+    "notes": [
+      "Installation and checks require no network. Original inputs, acquisition identities, source/byte licenses and all qualification scopes are retained.",
+      "Distribution metadata does not constrain the host; actual architecture, interpreter and dynamic library compatibility are checked."
+    ],
+    "summary": "Offline JMH source compilation, thread-local state, Blackhole, forks and raw JSON results."
+  },
+  "version": "1.37"
+}

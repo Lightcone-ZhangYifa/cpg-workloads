@@ -1,0 +1,139 @@
+{
+  "build": "worker053-20261102-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "task-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "runtime.libffi-support",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 62802,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "SAT, SMT and runtimes"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "runtime.libffi-support",
+      "immutable_ref": "3.4.6-1build1",
+      "kind": "native_bundle",
+      "license_id": "See bundled upstream LICENSE and NOTICE files",
+      "material_path": "inputs/input-1",
+      "purpose": "Supplement to unchanged apt.libffi-dev identity; fresh linking with exact baseline development archive; integer, double, struct arguments and result, callback closure, bad aggregate type rejection; x86_64 System V ABI only.",
+      "qualification_scope": "Supplement to unchanged apt.libffi-dev identity; fresh linking with exact baseline development archive; integer, double, struct arguments and result, callback closure, bad aggregate type rejection; x86_64 System V ABI only.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "7009959b8a3b77206325026917fb45150ac81bf6139468abc0841d5a29c8619d",
+      "source_evidence": [
+        "https://sourceware.org/libffi/"
+      ],
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/libf/libffi/libffi-dev_3.4.6-1build1_amd64.deb",
+      "strip_archive_root": false,
+      "title": "libffi",
+      "upstream": "https://sourceware.org/libffi/",
+      "version": "3.4.6-1build1",
+      "worker_record_id": "review.engineering.libffi"
+    },
+    "catalog_sha256": "a95753be90552bba7f4314bb2c4e800e8b883df062b2e5266bbf2c5153bff7ff",
+    "input_provenance": [
+      {
+        "acquisition_snapshot": "https://snapshot.ubuntu.com/ubuntu/20260828T000000Z",
+        "bytes": 62802,
+        "local_path": "/workspace/scratch/81acee5764ca/worker053/payloads/libffi/sources/libffi-dev_3.4.6-1build1_amd64.deb",
+        "revision": "3.4.6-1build1",
+        "sha256": "7009959b8a3b77206325026917fb45150ac81bf6139468abc0841d5a29c8619d",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libf/libffi/libffi-dev_3.4.6-1build1_amd64.deb"
+      }
+    ],
+    "original_resource_ids": [
+      "apt.libffi-dev"
+    ],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "source_build_qualified": false
+    },
+    "record_id": "review.engineering.libffi",
+    "runtime_requirements": [
+      "Python>=3.12",
+      "GCC-compatible C compiler and development files",
+      "POSIX threads",
+      "Validated on Linux x86_64 with glibc 2.39; no lower ABI bound is inferred. Exact ELF requirements are recorded separately."
+    ],
+    "worker_id": "worker 053"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "ldd",
+      "gcc"
+    ],
+    "runtime_environment": {}
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 62802,
+      "extract": false,
+      "id": "runtime.libffi-support",
+      "material_path": "inputs/input-1",
+      "sha256": "7009959b8a3b77206325026917fb45150ac81bf6139468abc0841d5a29c8619d",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libf/libffi/libffi-dev_3.4.6-1build1_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://sourceware.org/libffi/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Supplement to unchanged apt.libffi-dev identity; fresh linking with exact baseline development archive; integer, double, struct arguments and result, callback closure, bad aggregate type rejection; x86_64 System V ABI only."
+      }
+    ],
+    "notes": [
+      "Qualification is limited to the explicit functional cases and fixed inputs recorded in this profile.",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "Supplement to unchanged apt.libffi-dev identity; fresh linking with exact baseline development archive; integer, double, struct arguments and result, callback closure, bad aggregate type rejection; x86_64 System V ABI only."
+  },
+  "version": "3.4.6-1build1"
+}

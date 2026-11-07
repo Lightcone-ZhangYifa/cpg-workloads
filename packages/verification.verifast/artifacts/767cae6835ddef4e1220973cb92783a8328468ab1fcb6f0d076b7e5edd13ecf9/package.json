@@ -1,0 +1,129 @@
+{
+  "build": "worker105-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/functional-evidence"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-positive-negative-profile",
+      "kind": "functional",
+      "stdout_regex": "\"passed\": true",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "verification.verifast",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "hardware_qualified": false,
+    "official_benchmark_qualified": false,
+    "official_binary_release": {
+      "asset_id": 611766606,
+      "file": "workers/worker105/raw/verifast-26.10-linux.tar.gz",
+      "name": "verifast",
+      "release_tag": "26.10",
+      "sha256": "5ad2a65997457fd5996a27f93107ef7e52c90c0d12b63b6e67f7acbc73e90efd",
+      "size": 97804993,
+      "target_commitish": "master",
+      "upstream_digest": "sha256:5ad2a65997457fd5996a27f93107ef7e52c90c0d12b63b6e67f7acbc73e90efd",
+      "url": "https://github.com/verifast/verifast/releases/download/26.10/verifast-26.10-linux.tar.gz"
+    },
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Official C linked-stack tutorial proof on Linux64 with Z3v4.5; permissions/postconditions and integer overflow checks are enabled. No Rust/Java/GUI or general compiler-correctness qualification.",
+    "record_id": "review.verification.verifast",
+    "runtime_prerequisites": {
+      "glibc": "validated by ldd/ELF at installation",
+      "java": null
+    },
+    "source_build_qualified": false,
+    "worker_id": "worker 105"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/share/cpg/profile.json",
+      "{prefix}/tool/bin/verifast"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 97804993,
+      "extract": false,
+      "id": "official-binary",
+      "material_path": "verifast-26.10-linux.tar.gz",
+      "sha256": "5ad2a65997457fd5996a27f93107ef7e52c90c0d12b63b6e67f7acbc73e90efd",
+      "strip_root": false,
+      "url": "https://github.com/verifast/verifast/releases/download/26.10/verifast-26.10-linux.tar.gz"
+    },
+    {
+      "bytes": 5355241,
+      "extract": false,
+      "id": "verifast-source",
+      "material_path": "share/sources/verifast-source.tar.gz",
+      "sha256": "c1ef9e444a08dfbf7edec220d3c8cc5910914311933845b5a2a1060b7eb49ca3",
+      "strip_root": false,
+      "url": "https://codeload.github.com/verifast/verifast/tar.gz/f76012fb518703b1d98e243ac4f487f16877cfcb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/verifast/verifast",
+      "https://github.com/verifast/verifast/blob/f76012fb518703b1d98e243ac4f487f16877cfcb/soundness.md"
+    ],
+    "examples": [
+      {
+        "command": "python3 recipe/check.py --prefix /absolute/prefix --output /absolute/output",
+        "description": "Run all bounded acceptance cases; output must be outside prefix"
+      }
+    ],
+    "locations": [
+      {
+        "label": "tool",
+        "path": "tool",
+        "purpose": "Relocatable offline verifier runtime"
+      },
+      {
+        "label": "sources",
+        "path": "share/sources",
+        "purpose": "Complete pinned project source archives"
+      },
+      {
+        "label": "fixtures",
+        "path": "share/cpg/fixtures",
+        "purpose": "Positive and intentionally incorrect verification inputs"
+      }
+    ],
+    "notes": [
+      "Run-time results are limited to the declared positive and negative profile.",
+      "Preparation uses fixed downloads; installation and checks require no network.",
+      "Only immutable original downloads may be shared. A/B prefixes are independent.",
+      "Host runtime libraries are checked by the original CPG ELF compatibility checker.",
+      "C CLI subset is installed. The full official archive is a separately retained source object."
+    ],
+    "summary": "Official C linked-stack tutorial proof on Linux64 with Z3v4.5; permissions/postconditions and integer overflow checks are enabled. No Rust/Java/GUI or general compiler-correctness qualification."
+  },
+  "version": "26.10"
+}

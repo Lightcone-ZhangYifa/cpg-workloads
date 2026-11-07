@@ -1,0 +1,151 @@
+{
+  "build": "worker054-20261102-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "task-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "runtime.google-tcmalloc",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1328029,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "SAT, SMT and runtimes"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "runtime.google-tcmalloc",
+      "immutable_ref": "24d289b635e24caa445139de486622205054c232",
+      "kind": "native_bundle",
+      "license_id": "See bundled upstream LICENSE and NOTICE files",
+      "material_path": "inputs/input-1",
+      "purpose": "Actual Google TCMalloc snapshot, default 8 KiB page configuration, statically linked with its exact Bazel-selected Abseil object closure. Qualified on Linux x86_64 with GCC 13.3.0 and GNU C++11 ABI: fresh consumer compilation, 8-thread malloc/calloc/realloc and ownership/size checks, 24000 allocation rounds, 4096 cross-thread frees, aligned and C++ allocation, 16 MiB live-byte accounting, sampling configuration, stats and release-to-system API, semantic extension-only negative control, missing-library and mismatched-ABI rejection, and executable malloc symbol/load provenance. Per-CPU caches were inactive on the acceptance host. No per-CPU performance, upstream full test suite, alternative allocator configuration, dynamic loading or stable ABI qualification is claimed. Three documented GCC13 class-memaccess diagnostics remain warnings in only the observed translation units; upstream source bytes are unchanged.",
+      "qualification_scope": "Actual Google TCMalloc snapshot, default 8 KiB page configuration, statically linked with its exact Bazel-selected Abseil object closure. Qualified on Linux x86_64 with GCC 13.3.0 and GNU C++11 ABI: fresh consumer compilation, 8-thread malloc/calloc/realloc and ownership/size checks, 24000 allocation rounds, 4096 cross-thread frees, aligned and C++ allocation, 16 MiB live-byte accounting, sampling configuration, stats and release-to-system API, semantic extension-only negative control, missing-library and mismatched-ABI rejection, and executable malloc symbol/load provenance. Per-CPU caches were inactive on the acceptance host. No per-CPU performance, upstream full test suite, alternative allocator configuration, dynamic loading or stable ABI qualification is claimed. Three documented GCC13 class-memaccess diagnostics remain warnings in only the observed translation units; upstream source bytes are unchanged.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "4ae54b22c414ffa242eb3d72ae9f7520594276f23fbcbbb1c68998148f6100e7",
+      "source_evidence": [
+        "https://google.github.io/tcmalloc/"
+      ],
+      "source_url": "https://codeload.github.com/google/tcmalloc/tar.gz/24d289b635e24caa445139de486622205054c232",
+      "strip_archive_root": false,
+      "title": "Google TCMalloc",
+      "upstream": "https://google.github.io/tcmalloc/",
+      "version": "2026.11.1+git.24d289b635e2",
+      "worker_record_id": "review.engineering.google-tcmalloc"
+    },
+    "catalog_sha256": "cf66feceac6398d52883fa3b5624b6b2b5722ee83a7af9c2dca45cbcf0595c87",
+    "input_provenance": [
+      {
+        "bytes": 1328029,
+        "local_path": "/workspace/scratch/81acee5764ca/worker054/repro/inputs/tcmalloc-source.tar.gz",
+        "revision": "24d289b635e24caa445139de486622205054c232",
+        "role": "upstream-source",
+        "sha256": "4ae54b22c414ffa242eb3d72ae9f7520594276f23fbcbbb1c68998148f6100e7",
+        "url": "https://codeload.github.com/google/tcmalloc/tar.gz/24d289b635e24caa445139de486622205054c232"
+      },
+      {
+        "bytes": 64821181,
+        "local_path": "/workspace/scratch/81acee5764ca/worker054/repro/inputs/bazel-8.8.2-linux-x86_64",
+        "revision": "8.8.2",
+        "role": "fixed-official-build-tool",
+        "sha256": "bf463ba0f5f782e8fe31071bd2b821c2f6a27f03e5bb62f0879e88cbf3656e04",
+        "url": "https://github.com/bazelbuild/bazel/releases/download/8.8.2/bazel-8.8.2-linux-x86_64"
+      }
+    ],
+    "original_resource_ids": [],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "source_build_qualified": true
+    },
+    "record_id": "review.engineering.google-tcmalloc",
+    "runtime_requirements": [
+      "Linux x86_64; this binary payload is a toolchain-specific static archive.",
+      "glibc satisfying recorded ELF version requirements: maximum GLIBC version required by the freshly linked acceptance consumer is GLIBC_2.38.",
+      "libstdc++.so.6 providing GLIBCXX_3.4.32 and CXXABI_1.3.8; libgcc_s.so.1 providing GCC_3.4.",
+      "GNU g++ with C++17 and _GLIBCXX_USE_CXX11_ABI=1; GCC 13.3.0 was actually used and qualified.",
+      "Python 3.12 or newer; GNU nm and readelf, and ldd are required for functional acceptance.",
+      "LD_PRELOAD must be unset; do not combine this snapshot with another TCMalloc or Abseil ABI.",
+      "Offline source replay additionally requires gcc, GNU ar and ranlib, shell tools, and a fresh writable work directory; fixed Bazel 8.8.2 and target-specific vendored dependencies are included in the companion.",
+      "Validated on Linux x86_64 with glibc 2.39; no lower ABI bound is inferred. Exact ELF requirements are recorded separately."
+    ],
+    "worker_id": "worker 054"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "g++",
+      "ldd",
+      "nm",
+      "python3",
+      "readelf"
+    ],
+    "runtime_environment": {}
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1328029,
+      "extract": false,
+      "id": "runtime.google-tcmalloc",
+      "material_path": "inputs/input-1",
+      "sha256": "4ae54b22c414ffa242eb3d72ae9f7520594276f23fbcbbb1c68998148f6100e7",
+      "strip_root": false,
+      "url": "https://codeload.github.com/google/tcmalloc/tar.gz/24d289b635e24caa445139de486622205054c232"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://google.github.io/tcmalloc/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Actual Google TCMalloc snapshot, default 8 KiB page configuration, statically linked with its exact Bazel-selected Abseil object closure. Qualified on Linux x86_64 with GCC 13.3.0 and GNU C++11 ABI: fresh consumer compilation, 8-thread malloc/calloc/realloc and ownership/size checks, 24000 allocation rounds, 4096 cross-thread frees, aligned and C++ allocation, 16 MiB live-byte accounting, sampling configuration, stats and release-to-system API, semantic extension-only negative control, missing-library and mismatched-ABI rejection, and executable malloc symbol/load provenance. Per-CPU caches were inactive on the acceptance host. No per-CPU performance, upstream full test suite, alternative allocator configuration, dynamic loading or stable ABI qualification is claimed. Three documented GCC13 class-memaccess diagnostics remain warnings in only the observed translation units; upstream source bytes are unchanged."
+      }
+    ],
+    "notes": [
+      "Qualification is limited to the explicit functional cases and fixed inputs recorded in this profile.",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "Actual Google TCMalloc snapshot, default 8 KiB page configuration, statically linked with its exact Bazel-selected Abseil object closure. Qualified on Linux x86_64 with GCC 13.3.0 and GNU C++11 ABI: fresh consumer compilation, 8-thread malloc/calloc/realloc and ownership/size checks, 24000 allocation rounds, 4096 cross-thread frees, aligned and C++ allocation, 16 MiB live-byte accounting, sampling configuration, stats and release-to-system API, semantic extension-only negative control, missing-library and mismatched-ABI rejection, and executable malloc symbol/load provenance. Per-CPU caches were inactive on the acceptance host. No per-CPU performance, upstream full test suite, alternative allocator configuration, dynamic loading or stable ABI qualification is claimed. Three documented GCC13 class-memaccess diagnostics remain warnings in only the observed translation units; upstream source bytes are unchanged."
+  },
+  "version": "2026.11.1+git.24d289b635e2"
+}

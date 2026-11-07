@@ -1,0 +1,1065 @@
+{
+  "build": "cpg-worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/run_check.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "stdout_regex": "CPG_BOUNDED_FUNCTIONAL_PASS dynamatic",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "dynamatic",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "external_sdk_environment_keys": [],
+    "qualification_scope": "Bounded native worker profile; no new Dataset or hardware qualification.",
+    "source_lock": {
+      "binary_changes": "No imported SDK ELF bytes are altered. Dynamatic tools are genuinely built from the exact source with recorded flags.",
+      "bounded_acceptance": {
+        "branches": [
+          115,
+          72,
+          69
+        ],
+        "complete_external_trace_bytes": 65613084,
+        "complete_external_trace_sha256": "c53b8882f4d4c701df1ecd9027955a8b6e5a0e2a9d48ed82fb70841badd78cdd",
+        "continuous_throughput_qualified": false,
+        "counterexamples": 187,
+        "directory_or_mount_isolation_claimed": false,
+        "file_provenance": "validation/acceptance/file-provenance.json",
+        "functional_report": "validation/acceptance/functional-report.json",
+        "functional_sha256": "8506d2188fed8a646ae578b11697ec057432171f924ce4ed656c16c5589e720a",
+        "internet_network_operations": 0,
+        "mutant_independent_invocations": 256,
+        "physical_hardware_qualified": false,
+        "positive_independent_invocations": 256,
+        "preparation_root_accesses": 0,
+        "provenance_sha256": "3ec9e0a9cb20d6e6d5ddd3e9727fe339197e0b6fa880e65f7785a16919b39670",
+        "source_kernel_or_positive_rtl_or_testbench_modified": false
+      },
+      "build": {
+        "base_flags": "Release -O1 -DNDEBUG",
+        "buffer_algorithm_tested": "on-merges",
+        "commercial_tools_required_for_test": false,
+        "low_memory_overrides": "validation/dynamatic-low-memory-targets.json plus HandshakeDialect.cpp -O0 -g0",
+        "optional_features_disabled": [
+          "XLS",
+          "CBC",
+          "ABC",
+          "LEQ_BINARIES"
+        ],
+        "sdk_modified": false,
+        "source_modified": false
+      },
+      "build_input_inventory": "validation/build-evidence/dynamatic-build-support.json",
+      "copied_file_origins": [
+        {
+          "bytes": 957352,
+          "path": "bin/dynamatic",
+          "sha256": "3aa0b1a5c24610546bd57e05e45fe7ed941fd272f0a9d99db44f4f96da1a3797",
+          "source": "build/dynamatic/bin/dynamatic"
+        },
+        {
+          "bytes": 49472024,
+          "path": "bin/dynamatic-opt",
+          "sha256": "6a685c3df2f691527bc0db53715580f0908602ceb9f469b9515a6414fc7e56ae",
+          "source": "build/dynamatic/bin/dynamatic-opt"
+        },
+        {
+          "bytes": 13459760,
+          "path": "bin/export-dot",
+          "sha256": "6d0f1c8375b0dddbdc307fb803b14c970b07bbabe7046d29a7a8d05afc33aadf",
+          "source": "build/dynamatic/bin/export-dot"
+        },
+        {
+          "bytes": 13805304,
+          "path": "bin/export-cfg",
+          "sha256": "4624c149fd204f6caca9faa6c71806dd2de1f19d334d3b8563ce5e92a50a2fb0",
+          "source": "build/dynamatic/bin/export-cfg"
+        },
+        {
+          "bytes": 14153616,
+          "path": "bin/exp-frequency-profiler",
+          "sha256": "e980b6756956480a65a32e181441ffb1a6539ad65c5fbbad736d70876e639728",
+          "source": "build/dynamatic/bin/exp-frequency-profiler"
+        },
+        {
+          "bytes": 48732936,
+          "path": "bin/source-rewriter",
+          "sha256": "bf3341656690146db149ffcb625a734c6ba0477834ec941ccedc21a29be7e250",
+          "source": "build/dynamatic/bin/source-rewriter"
+        },
+        {
+          "bytes": 23678576,
+          "path": "bin/translate-llvm-to-std",
+          "sha256": "f01f5e59de8c433c998891a65587baa90d0b620908731138191eb2c6c4200c14",
+          "source": "build/dynamatic/bin/translate-llvm-to-std"
+        },
+        {
+          "bytes": 9319288,
+          "path": "bin/hls-verifier",
+          "sha256": "f9c7d84ed530fe2cdd99eb1ad4442323a560a4f94aea95e3d1038440ad274d66",
+          "source": "build/dynamatic/bin/hls-verifier"
+        },
+        {
+          "bytes": 14671104,
+          "path": "bin/export-rtl",
+          "sha256": "f2f6e7614c257eccc59e7d3e86562324fd628a794ae33312dacc02b9e21c7da2",
+          "source": "build/dynamatic/bin/export-rtl"
+        },
+        {
+          "bytes": 1145512,
+          "path": "bin/generators/rtl-constant-generator-verilog",
+          "sha256": "afee0f1870d6306d7df64441b5bd61b3cabad5673b21268041c19e22fbd9fd4f",
+          "source": "build/dynamatic/bin/rtl-constant-generator-verilog"
+        },
+        {
+          "bytes": 1167456,
+          "path": "bin/generators/rtl-cmpi-generator",
+          "sha256": "e56dc13b0230e5dd91a0a879e21f7bbc9d1a884eed04ed6296aa209d344be4a3",
+          "source": "build/dynamatic/bin/rtl-cmpi-generator"
+        },
+        {
+          "bytes": 1167232,
+          "path": "bin/generators/rtl-cmpf-generator",
+          "sha256": "bae893895a981eda6de605a6cb61163fab50ac73b016ca912f61b98479df07b8",
+          "source": "build/dynamatic/bin/rtl-cmpf-generator"
+        },
+        {
+          "bytes": 1171864,
+          "path": "bin/generators/rtl-text-generator",
+          "sha256": "1c4755c76197b688db05de34f8dc7c2ccdfcd8b3baaa27318b44d34d985cfed4",
+          "source": "build/dynamatic/bin/rtl-text-generator"
+        },
+        {
+          "bytes": 784912,
+          "path": "lib/dynamatic/MemDepAnalysis.so",
+          "sha256": "3d2056404e45d8d23f8920bdad4adc2d38036e626bb5c330df57098ad1a0571b",
+          "source": "build/dynamatic/lib/MemDepAnalysis.so"
+        },
+        {
+          "bytes": 666408,
+          "path": "lib/dynamatic/ArrayPartition.so",
+          "sha256": "d4541f4683ebf21e56153820194228e1cc52a4a5b9f57002710e00e56c29c3b0",
+          "source": "build/dynamatic/lib/ArrayPartition.so"
+        },
+        {
+          "bytes": 201656,
+          "path": "lib/dynamatic/CanonicalizeGEPs.so",
+          "sha256": "db715d797593fe715dbc4625f90c0a2731143b50846fb62297135b0177dce963",
+          "source": "build/dynamatic/lib/CanonicalizeGEPs.so"
+        },
+        {
+          "bytes": 136648,
+          "path": "lib/dynamatic/DynPragmasPlugin.so",
+          "sha256": "eecf71dcffbff11c887f449780553e85438f0e7e6e1921fdaedac4dbf065ff3a",
+          "source": "build/dynamatic/lib/DynPragmasPlugin.so"
+        },
+        {
+          "bytes": 136405456,
+          "path": "bin/clang-24",
+          "sha256": "8a4bcf88c21458a96f25b231be333ef91b1ac1e41d7732b03fddfe81619edcea",
+          "source": "tools/dynamatic-llvm/bin/clang-24"
+        },
+        {
+          "bytes": 70376784,
+          "path": "bin/opt",
+          "sha256": "4aa2e7bcf141c38b097ce957e29122ae1c1e950e0d94a7cf1e7241f4bbb681cd",
+          "source": "tools/dynamatic-llvm/bin/opt"
+        },
+        {
+          "bytes": 13281,
+          "path": "LICENSE",
+          "sha256": "75f7ef8767337e3dc8c3501d78a68b7a922a66bd47450e7e9191b7bf1ebeb4fb",
+          "source": "sources/dynamatic-108f8875c48c33bc35000c6910959c6945ae8aad/LICENSE"
+        },
+        {
+          "bytes": 1600,
+          "path": "share/dynamatic/README.upstream.md",
+          "sha256": "2614c8703789c2c8be745b136958d4109d1d08a14d80c4720e3cfae41b8b61a2",
+          "source": "sources/dynamatic-108f8875c48c33bc35000c6910959c6945ae8aad/README.md"
+        },
+        {
+          "bytes": 80427440,
+          "path": "lib/libclang.so.24.0git",
+          "sha256": "976bfcfd4a23389e16c5542e4944e64d936462d6899538735f8fc1e3ea3c6a22",
+          "source": "tools/dynamatic-llvm/lib/libclang.so.24.0git"
+        },
+        {
+          "bytes": 344096,
+          "path": "lib/libreadline.so.8",
+          "sha256": "0a079f958147699f7bb5bf228406a5d878dc2387fe9cdc5cce6f3e35e20380fc",
+          "source": "tools/sysroot/usr/lib/x86_64-linux-gnu/libreadline.so.8"
+        },
+        {
+          "bytes": 208328,
+          "path": "lib/libtinfo.so.6",
+          "sha256": "e6089d7bb95eee5b545f3770dd69095b0bca47d26701cad145af429561d16306",
+          "source": "tools/sysroot/usr/lib/x86_64-linux-gnu/libtinfo.so.6"
+        },
+        {
+          "bytes": 34631449,
+          "path": "raw/dynamatic-108f8875c48c33bc35000c6910959c6945ae8aad.tar.gz",
+          "sha256": "edfbd7d0c2ad82a1e04b996ff30f6e9acd7285732477f150d5c984e8ed72af88",
+          "source": "downloads/dynamatic-108f8875c48c33bc35000c6910959c6945ae8aad.tar.gz"
+        },
+        {
+          "bytes": 886453,
+          "path": "raw/googletest-2ae29b52fdff88c52fef655fa0d245fc514ca35b.tar.gz",
+          "sha256": "1f546fffcefa830a4ac988c4dd4b348916a4f57b16e89a8e88d54603ef1d9734",
+          "source": "downloads/googletest-2ae29b52fdff88c52fef655fa0d245fc514ca35b.tar.gz"
+        },
+        {
+          "bytes": 114576,
+          "path": "raw/json-3.12.0.tar.xz",
+          "sha256": "42f6e95cad6ec532fd372391373363b62a14af6d771056dbfc86160e6dfff7aa",
+          "source": "downloads/json-3.12.0.tar.xz"
+        },
+        {
+          "bytes": 34691166,
+          "path": "raw/graphviz-2.42.2.tar.gz",
+          "sha256": "b92a92bb16755b11875be9203a6216e5b827eb1d6cf8dda6824380457cd18c55",
+          "source": "downloads/graphviz-2.42.2.tar.gz"
+        },
+        {
+          "bytes": 775455,
+          "path": "raw/oss-cad-suite-build-2026-11-01.tar.gz",
+          "sha256": "c4025670fc0059c4ac3b9c9cfbd49a56126a6e7a10ed7733b28c0d51a353de0b",
+          "source": "downloads/oss-cad-suite-build-2026-11-01.tar.gz"
+        },
+        {
+          "bytes": 23511,
+          "path": "validation/check.py",
+          "sha256": "c995241d4a728615fe96b85180d110affa6fc1fc263b8fef188280bf62e9ca91",
+          "source": "scripts/check_dynamatic.py"
+        },
+        {
+          "bytes": 3990,
+          "path": "validation/rebuild_dynamatic.py",
+          "sha256": "0981825e2b3bdece73d20ccbcd37984c7882dc13735a64e02ff9f02bc5e8cee0",
+          "source": "scripts/rebuild_dynamatic.py"
+        },
+        {
+          "bytes": 1711,
+          "path": "validation/adjust_low_memory_build.py",
+          "sha256": "dad9dc8ed68e861b5eca0819c5341c86b02e495ec0f0da1f3fda67818f488e57",
+          "source": "scripts/adjust_low_memory_build.py"
+        },
+        {
+          "bytes": 1412,
+          "path": "validation/apply_dynamatic_build_profile.py",
+          "sha256": "3d0e36a5e14308748eb806a3611c644d5062de160a071c2aa172d32157b4430b",
+          "source": "scripts/apply_dynamatic_build_profile.py"
+        },
+        {
+          "bytes": 19035,
+          "path": "validation/dynamatic-low-memory-targets.json",
+          "sha256": "3d1eae12202c9510f7d76a320fe7284bf59f2d76fa89ab76bcd5b4fa9ce0b36f",
+          "source": "scripts/dynamatic-low-memory-targets.json"
+        },
+        {
+          "bytes": 8466,
+          "path": "validation/assemble_dynamatic.py",
+          "sha256": "90b915c30b933fceec83c115c7a452d45eb2b340b39ade69df743a341d54eaf5",
+          "source": "scripts/assemble_dynamatic.py"
+        },
+        {
+          "bytes": 1483,
+          "path": "validation/ghdl_observer.py",
+          "sha256": "8b667c6a913d0af62abdf017e2a59be4b648a43376b8d6d9be3a1c34f6be135f",
+          "source": "scripts/ghdl_observer.py"
+        },
+        {
+          "bytes": 331,
+          "path": "validation/test_loop_free.c",
+          "sha256": "979044cd41773a523cae8d143fdb329fc7642508c48fa82c8070394fd651e6ca",
+          "source": "sources/dynamatic-108f8875c48c33bc35000c6910959c6945ae8aad/integration-test/test_loop_free/test_loop_free.c"
+        },
+        {
+          "bytes": 2204,
+          "path": "validation/build-evidence/dynamatic-configure-argv.json",
+          "sha256": "ea301be8b235b0b61c037f295e9682aae08a60390e370a29dec6dd0fcc850c2f",
+          "source": "evidence/dynamatic-configure-argv.json"
+        },
+        {
+          "bytes": 1739,
+          "path": "validation/build-evidence/dynamatic-low-memory-build.json",
+          "sha256": "500b8ee1cdf7ff044ce30f91274c286e3e394da80ceacfc4dd382379fb12d1f8",
+          "source": "evidence/dynamatic-low-memory-build.json"
+        },
+        {
+          "bytes": 18604,
+          "path": "validation/build-evidence/dynamatic-pending-o0-profile.json",
+          "sha256": "7a168e87b658d68fece0b1833e8288f79da78f63110d21378a8e0cdd2d590885",
+          "source": "evidence/dynamatic-pending-o0-profile.json"
+        },
+        {
+          "bytes": 113,
+          "path": "validation/build-evidence/dynamatic-sdk-extraction.json",
+          "sha256": "f77ab1fa0796455fb266a49b5aed6f5c7bea7ad1b1316a0d4d31a80970e589d4",
+          "source": "evidence/dynamatic-sdk-extraction.json"
+        },
+        {
+          "bytes": 307,
+          "path": "validation/build-evidence/llvm-download-resume.json",
+          "sha256": "09c4e0cd04631195bdb5566513b992f63fc909caeab02f09e89a5862bbef79c1",
+          "source": "evidence/llvm-download-resume.json"
+        },
+        {
+          "bytes": 21642,
+          "path": "validation/build-evidence/dynamatic-llvm-release.json",
+          "sha256": "5551209af369c89c5e46379b72534df75748eacb7ca579d8b04d52871a2fdb4d",
+          "source": "evidence/dynamatic-llvm-release.json"
+        },
+        {
+          "bytes": 324609,
+          "path": "validation/build-evidence/dynamatic-source-integrity.json",
+          "sha256": "bccebcabc9b0fc66d580f2e02eb4be1e118446333a59c3808552e9fed4536d14",
+          "source": "evidence/dynamatic-source-integrity.json"
+        },
+        {
+          "bytes": 2277,
+          "path": "validation/build-evidence/native-host-profile.json",
+          "sha256": "653efea2b8716ee6c3ac79b414c9417ad49cbed0fe9ce75b9094c64fdb9f3b8a",
+          "source": "evidence/native-host-profile.json"
+        },
+        {
+          "bytes": 13283,
+          "path": "validation/build-evidence/dynamatic-build-support.json",
+          "sha256": "11f03e923bdbf159bd17d312d9cf89463a58e84cea398a739b2c87b3099adbd8",
+          "source": "evidence/dynamatic-build-support.json"
+        },
+        {
+          "bytes": 372,
+          "path": "validation/build-evidence/dynamatic-build-o0-result.json",
+          "sha256": "b386b58d1da653ef0179758e4aab105cd4c188d6833d28a340abd052e0603a91",
+          "source": "evidence/dynamatic-build-o0-result.json"
+        },
+        {
+          "bytes": 1115,
+          "path": "raw/external-archives/llvm-e974-durable-transport.json",
+          "sha256": "c9e68e94c31ac0016526f2e99fcd3a5d6b76b6782c7c0289ccd4f60df648294c",
+          "source": "evidence/llvm-e974-durable-transport.json"
+        },
+        {
+          "bytes": 9470,
+          "path": "raw/external-archives/llvm-e974-durable-receipts.json",
+          "sha256": "8b5bf31dc15f71b2a23b7fd97f492268523c44f6c11dacba42f4c7f455cd8e74",
+          "source": "evidence/llvm-e974-durable-receipts.json"
+        },
+        {
+          "bytes": 931,
+          "path": "raw/external-archives/oss-cad-durable-transport.json",
+          "sha256": "e9c917be8137bf39f15616e1204a24d482f9123ae4ac009375ba0294a395ef63",
+          "source": "evidence/oss-cad-durable-transport.json"
+        },
+        {
+          "bytes": 7319,
+          "path": "raw/external-archives/oss-cad-durable-receipts.json",
+          "sha256": "0faae3f49cb6bb5525f348bf66a75fdedb64dbcfe4aac94ec74235bfa3d825c3",
+          "source": "evidence/oss-cad-durable-receipts.json"
+        },
+        {
+          "bytes": 8735,
+          "path": "validation/README.txt",
+          "sha256": "ace707bfe80505dc3f93a3a365162afc1cdb997e11d1552f27b6cfe11d1bce00",
+          "source": "scripts/dynamatic-validation-notes.txt"
+        },
+        {
+          "bytes": 12484,
+          "path": "validation/audit_dynamatic_trace.py",
+          "sha256": "a324b40edb8640634a4f37803c3be2034227050b69666e655df6d05187214d42",
+          "source": "scripts/audit_dynamatic_trace.py"
+        },
+        {
+          "bytes": 1924773,
+          "path": "validation/acceptance/functional-report.json",
+          "sha256": "8506d2188fed8a646ae578b11697ec057432171f924ce4ed656c16c5589e720a",
+          "source": "evidence/dynamatic-final-c/report.json"
+        },
+        {
+          "bytes": 12763,
+          "path": "validation/acceptance/file-provenance.json",
+          "sha256": "3ec9e0a9cb20d6e6d5ddd3e9727fe339197e0b6fa880e65f7785a16919b39670",
+          "source": "evidence/dynamatic-file-provenance.json"
+        },
+        {
+          "bytes": 1172,
+          "path": "validation/acceptance/traced-execution.json",
+          "sha256": "2e5d13b392580e8b71964d6c218b4601632b48de0ef95f1ee95e9be3161ae6c3",
+          "source": "evidence/dynamatic-traced-execution.json"
+        },
+        {
+          "bytes": 3126,
+          "path": "validation/acceptance/independent-trace-negative-probes.json",
+          "sha256": "c08f50fcbc7c1acebb44cfbda209a08fc9ac0bb45166a780941b5866aa760e91",
+          "source": "/workspace/scratch/2c2148ee9dab/worker021/review/dynamatic-trace-review/fixed/result.json"
+        },
+        {
+          "bytes": 3649,
+          "path": "validation/acceptance/independent-code-review.json",
+          "sha256": "5e84300bb8f1733e82ff83b578b6cd7d904a7793209c8dc10e2ab169434dd6fe",
+          "source": "evidence/dynamatic-independent-code-review/review-result.json"
+        },
+        {
+          "bytes": 780,
+          "path": "validation/acceptance/llvm-reclamation.json",
+          "sha256": "97b79091dd34cb251815eef988bf8d88d095b92369ac7f70b1744d015369da66",
+          "source": "evidence/dynamatic-llvm-reclamation.json"
+        }
+      ],
+      "license": "Apache-2.0 WITH LLVM-exception for Dynamatic; original independent support-runtime licenses and matching sources are retained.",
+      "llvm_commit": "e974cfe1a130138991047eb337fd9b572bf07329",
+      "llvm_plugins": "Intentionally loaded by matching opt/clang hosts; no symbol stubs or ldd bypasses.",
+      "llvm_sdk": {
+        "bytes": 1146971914,
+        "deployment": "Complete original SDK is a separate immutable reconstruction attachment; the runtime copies only the actual required executables, resource headers and shared closure.",
+        "durable_readback_receipts": "raw/external-archives/llvm-e974-durable-receipts.json",
+        "sha256": "d95ac2dd47df4bd50b0bf7711f40a42aeb7ed516eec7c88d23be219e9b7bb6b5",
+        "transport_manifest": "raw/external-archives/llvm-e974-durable-transport.json",
+        "url": "https://github.com/ETHZ-DYNAMO/llvm-project/releases/download/llvm-e974cfe/llvm-e974cfe-x86_64-linux.tar.gz"
+      },
+      "native_host": "Linux x86_64 / Ubuntu 24.04 glibc 2.39; Python >=3.12 and native C/C++ host runtime/toolchain",
+      "recursive_ldd_resolution": {
+        "bin/clang-24": "\tlinux-vdso.so.1 (0x00007fd378b5b000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fd378b45000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007fd378b40000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fd378b3b000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fd378a52000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fd37883e000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fd378b5d000)\n",
+        "bin/dynamatic": "\tlinux-vdso.so.1 (0x00007f3feef19000)\n\tlibreadline.so.8 => /workspace/scratch/2c2148ee9dab/worker019/tools/sysroot/usr/lib/x86_64-linux-gnu/libreadline.so.8 (0x00007f3feee19000)\n\tlibclang.so.24.0git => /workspace/scratch/2c2148ee9dab/worker019/payloads/dynamatic/lib/libclang.so.24.0git (0x00007f3fead49000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f3feac57000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f3fea9d9000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f3fea9a9000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f3fea797000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f3feef1b000)\n\tlibtinfo.so.6 => /workspace/scratch/2c2148ee9dab/worker019/tools/sysroot/usr/lib/x86_64-linux-gnu/libtinfo.so.6 (0x00007f3fea763000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f3fea75e000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f3fea759000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f3fea752000)\n",
+        "bin/dynamatic-opt": "\tlinux-vdso.so.1 (0x00007f3374693000)\n\tlibclang.so.24.0git => /workspace/scratch/2c2148ee9dab/worker019/tools/dynamatic-llvm/lib/libclang.so.24.0git (0x00007f336ecdc000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f336ebea000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f336e96c000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f336e93e000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f336e72a000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f3374695000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f336e725000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f336e720000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f336e71b000)\n",
+        "bin/exp-frequency-profiler": "\tlinux-vdso.so.1 (0x00007f1fe8978000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f1fe807e000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f1fe7e00000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f1fe7dd2000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f1fe7bc0000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f1fe897a000)\n",
+        "bin/export-cfg": "\tlinux-vdso.so.1 (0x00007fdde0d2e000)\n\tlibclang.so.24.0git => /workspace/scratch/2c2148ee9dab/worker019/payloads/dynamatic/lib/libclang.so.24.0git (0x00007fdddc469000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fdddc377000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fdddc0f9000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fdddc0cb000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fdddbeb7000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fdde0d30000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fdddbeb2000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007fdddbead000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fdddbea8000)\n",
+        "bin/export-dot": "\tlinux-vdso.so.1 (0x00007f70d051f000)\n\tlibclang.so.24.0git => /workspace/scratch/2c2148ee9dab/worker019/payloads/dynamatic/lib/libclang.so.24.0git (0x00007f70cbdb9000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f70cbcc7000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f70cba49000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f70cba1b000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f70cb807000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f70d0521000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f70cb802000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f70cb7fd000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f70cb7f8000)\n",
+        "bin/export-rtl": "\tlinux-vdso.so.1 (0x00007fcc6ff25000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fcc6f794000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fcc6f516000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fcc6f4e8000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fcc6f2d6000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fcc6ff27000)\n",
+        "bin/generators/rtl-cmpf-generator": "\tlinux-vdso.so.1 (0x00007ffbb10fb000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007ffbb0f42000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007ffbb0cc4000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007ffbb0c96000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007ffbb0a84000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007ffbb10fd000)\n",
+        "bin/generators/rtl-cmpi-generator": "\tlinux-vdso.so.1 (0x00007fc25bd56000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fc25bb9d000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fc25b91f000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fc25b8f1000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fc25b6df000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fc25bd58000)\n",
+        "bin/generators/rtl-constant-generator-verilog": "\tlinux-vdso.so.1 (0x00007fd6ea832000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fd6ea67d000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fd6ea3ff000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fd6ea3d1000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fd6ea1bf000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fd6ea834000)\n",
+        "bin/generators/rtl-text-generator": "\tlinux-vdso.so.1 (0x00007f8247b26000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f824796e000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f82476f0000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f82476c2000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f82474b0000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f8247b28000)\n",
+        "bin/hls-verifier": "\tlinux-vdso.so.1 (0x00007f2b48a10000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f2b484c6000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f2b48248000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f2b4821a000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f2b48008000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f2b48a12000)\n",
+        "bin/opt": "\tlinux-vdso.so.1 (0x00007f6414b4c000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f6414b36000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f6414b31000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f6414b2c000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f6414a43000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f641482f000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f6414b4e000)\n",
+        "bin/source-rewriter": "\tlinux-vdso.so.1 (0x00007fe4f81b2000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fe4f5a56000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fe4f57d8000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fe4f57aa000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fe4f5598000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fe4f81b4000)\n",
+        "bin/translate-llvm-to-std": "\tlinux-vdso.so.1 (0x00007f39b6d7b000)\n\tlibclang.so.24.0git => /workspace/scratch/2c2148ee9dab/worker019/payloads/dynamatic/lib/libclang.so.24.0git (0x00007f39b1f91000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f39b1e9f000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f39b1c21000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f39b1bf3000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f39b19df000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f39b6d7d000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f39b19da000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f39b19d5000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f39b19d0000)\n",
+        "lib/dynamatic/ArrayPartition.so": "\tlinux-vdso.so.1 (0x00007f4506b24000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f450683b000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f4506752000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f4506724000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f4506512000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f4506b26000)\n",
+        "lib/dynamatic/CanonicalizeGEPs.so": "\tlinux-vdso.so.1 (0x00007fde1db86000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fde1d8dc000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fde1d7f3000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fde1d7c5000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fde1d5b3000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fde1db88000)\n",
+        "lib/dynamatic/DynPragmasPlugin.so": "\tlinux-vdso.so.1 (0x00007f6bfb806000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f6bfb562000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f6bfb479000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f6bfb44b000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f6bfb239000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f6bfb808000)\n",
+        "lib/dynamatic/MemDepAnalysis.so": "\tlinux-vdso.so.1 (0x00007f251087f000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f2510588000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f251049f000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f2510471000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f251025f000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f2510881000)\n",
+        "lib/libclang.so.24.0git": "\tlinux-vdso.so.1 (0x00007fde2dacc000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fde299e6000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007fde299e1000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fde299dc000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fde298f3000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fde298c3000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fde296b1000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fde2dace000)\n",
+        "lib/libreadline.so.8": "\tlinux-vdso.so.1 (0x00007f53d0f2e000)\n\tlibtinfo.so.6 => /workspace/scratch/2c2148ee9dab/worker019/payloads/dynamatic/lib/libtinfo.so.6 (0x00007f53d0e9d000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f53d0c82000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f53d0f30000)\n",
+        "lib/libtinfo.so.6": "\tlinux-vdso.so.1 (0x00007f0012a12000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f00127bb000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f0012a14000)\n"
+      },
+      "resource": "Dynamatic",
+      "runtime_support": {
+        "ghdl": {
+          "GHDL_PREFIX": "{prefix}/lib/ghdl/mcode/vhdl",
+          "backend": "mcode",
+          "binary_changes": "None; exact upstream distribution ELF, new relocatable launcher sets GHDL_PREFIX.",
+          "component": "ghdl",
+          "distribution": "https://packages.ubuntu.com/noble/ghdl-mcode",
+          "dsc_checksums_verified": [
+            {
+              "file": "ghdl_4.1.0+dfsg.orig.tar.gz",
+              "sha256": "2ef5e6e765f3b1789b2ecd83eb16074d7542ecf85f0453509f0a4512f5de520f"
+            },
+            {
+              "file": "ghdl_4.1.0+dfsg-0ubuntu2.1.debian.tar.xz",
+              "sha256": "acbb689eefc82130fc340492cc804e87ec83d60d20faf858ef262bc4543c67cc"
+            }
+          ],
+          "files": [
+            {
+              "bytes": 143,
+              "path": "bin/ghdl",
+              "sha256": "6b34ec9b3d2706ea896bd4a7aef8eeed3b9593baa64b3293d2e6f06789b66f04"
+            },
+            {
+              "bytes": 6200544,
+              "path": "bin/ghdl-mcode",
+              "sha256": "bda06e8a2af409839853cf7fb6c39ca07f5b680b2ab0684e0ee7fc7aa4a377ec"
+            },
+            {
+              "bytes": 36958,
+              "path": "lib/ghdl/include/ghdl/vhpi_user.h",
+              "sha256": "dc80461d8a7634a18169fdebb71f5d0083a2238f5e194cb66709e2c92289d7ad"
+            },
+            {
+              "bytes": 45550,
+              "path": "lib/ghdl/include/ghdl/vpi_user.h",
+              "sha256": "6ec3e0d8d9fe696fd494b609db9d83d4f61d7d47458b5a19d3bf6de35f3b4d16"
+            },
+            {
+              "bytes": 18352,
+              "path": "lib/ghdl/mcode/libghdlvpi.so",
+              "sha256": "d4472cfe3b5b1186915b1c9c563558d489e8447e2ac3f939d9c65dd0d0d2f63c"
+            },
+            {
+              "bytes": 5340,
+              "path": "lib/ghdl/mcode/vhdl/ieee/v08/ieee-obj08.cf",
+              "sha256": "7aa31e675b8cf8821764ddbd317f38ab66616e83e5d9f1b6b6636fdcb3550691"
+            },
+            {
+              "bytes": 2522,
+              "path": "lib/ghdl/mcode/vhdl/ieee/v87/ieee-obj87.cf",
+              "sha256": "a412ab409c9c531356d6f6e7bbe9d36496e74eb8e8278e3cfd2bd6c8e7754dd5"
+            },
+            {
+              "bytes": 3156,
+              "path": "lib/ghdl/mcode/vhdl/ieee/v93/ieee-obj93.cf",
+              "sha256": "ffc122881a0706667102dce6edf6769a660ece37a45196ca9e75dd554e7f492d"
+            },
+            {
+              "bytes": 590,
+              "path": "lib/ghdl/mcode/vhdl/std/v08/std-obj08.cf",
+              "sha256": "8516e77897f5a447ccae8f480b627f077049f26e9dd8e27375410969dc3405aa"
+            },
+            {
+              "bytes": 307,
+              "path": "lib/ghdl/mcode/vhdl/std/v87/std-obj87.cf",
+              "sha256": "d86eed7a7ff241d2391fff40ef0c72ff1742d25c54b2b9719244110357bf07a6"
+            },
+            {
+              "bytes": 307,
+              "path": "lib/ghdl/mcode/vhdl/std/v93/std-obj93.cf",
+              "sha256": "904da9a1dd5a7b06df2f3d0cc68bcce3f6f08a961fe9f48213f486b013db2b27"
+            },
+            {
+              "bytes": 52648,
+              "path": "lib/ghdl/src/ieee/math_complex-body.vhdl",
+              "sha256": "4f2f523002822b27a721d93f62d4220d3f0f75bc980fdc62c2642de03926029f"
+            },
+            {
+              "bytes": 34106,
+              "path": "lib/ghdl/src/ieee/math_complex.vhdl",
+              "sha256": "deddee8078c0c85f276bd5ebe1a49ac303116fc8fd6a7943c84a80eff73b969a"
+            },
+            {
+              "bytes": 64760,
+              "path": "lib/ghdl/src/ieee/math_real-body.vhdl",
+              "sha256": "ed057e95cd908b547d128d6a29dbfcf243ba64468d6e6cc780090bc9cd79f3b2"
+            },
+            {
+              "bytes": 21134,
+              "path": "lib/ghdl/src/ieee/math_real.vhdl",
+              "sha256": "33fe4fe3fc21cbe6c36ed4969d96ed25549680bb3d936f106078fe47af2fec7b"
+            },
+            {
+              "bytes": 57337,
+              "path": "lib/ghdl/src/ieee/v87/numeric_bit-body.vhdl",
+              "sha256": "7126da3c8512ada44115ab219cd7b64c7d2bb9618d2407e2dee631b2ce72d7ba"
+            },
+            {
+              "bytes": 32919,
+              "path": "lib/ghdl/src/ieee/v87/numeric_bit.vhdl",
+              "sha256": "0f92339d5699a0e6eb11e418e50f055e282a46eb18887e03c5f38e4c0a0da4bd"
+            },
+            {
+              "bytes": 83364,
+              "path": "lib/ghdl/src/ieee/v87/numeric_std-body.vhdl",
+              "sha256": "c4d608aef43de3a1d06661ff97459a97bf7a1d7c7916ef533d5aaf17f32bd7f1"
+            },
+            {
+              "bytes": 34334,
+              "path": "lib/ghdl/src/ieee/v87/numeric_std.vhdl",
+              "sha256": "35ffe09472d51ac0022f8726f77878339254af7906248fe0957092b1eaa5f460"
+            },
+            {
+              "bytes": 32350,
+              "path": "lib/ghdl/src/ieee/v87/std_logic_1164-body.vhdl",
+              "sha256": "9e425d0d2a3567fd393fa1c5914b3797ca0f8171f7a88e34cd0ca9d08a8e086e"
+            },
+            {
+              "bytes": 9402,
+              "path": "lib/ghdl/src/ieee/v87/std_logic_1164.vhdl",
+              "sha256": "1b0c056ffbc751edf9b55a38b8ee974e7611bfdffdf0784c898544b32f626d93"
+            },
+            {
+              "bytes": 57057,
+              "path": "lib/ghdl/src/ieee/v93/numeric_bit-body.vhdl",
+              "sha256": "1ea2298298ae5ea992444f6152ed1f7df85cfb8f3365c25bb9f7cf13fe65f3f4"
+            },
+            {
+              "bytes": 32879,
+              "path": "lib/ghdl/src/ieee/v93/numeric_bit.vhdl",
+              "sha256": "6e4980f3eef88fa029de15f74cf3072d66f11141fbd9dcb78de305cafbcbaf83"
+            },
+            {
+              "bytes": 83082,
+              "path": "lib/ghdl/src/ieee/v93/numeric_std-body.vhdl",
+              "sha256": "8fc0e435b380caf682572393220d41669714bcb873821b312f0358f8d3d97376"
+            },
+            {
+              "bytes": 34294,
+              "path": "lib/ghdl/src/ieee/v93/numeric_std.vhdl",
+              "sha256": "a6bdfeaf4d7163e3794acf1cc21537305d03b03482da6a90386ed734afdccd8e"
+            },
+            {
+              "bytes": 32260,
+              "path": "lib/ghdl/src/ieee/v93/std_logic_1164-body.vhdl",
+              "sha256": "80fb36ca88562630b626912c0787643f190e4aa45ff68ba3b2b281de9464a6c9"
+            },
+            {
+              "bytes": 9390,
+              "path": "lib/ghdl/src/ieee/v93/std_logic_1164.vhdl",
+              "sha256": "7cb8b9877f1017d0143e831d516e0da01f0865b2bb10751939e58bbea550b94f"
+            },
+            {
+              "bytes": 2614,
+              "path": "lib/ghdl/src/ieee2008/fixed_float_types.vhdl",
+              "sha256": "649090aaf4dbb7a6bf88a6720a265aaf3be0360f449eb1462777f1c7f48c249e"
+            },
+            {
+              "bytes": 216320,
+              "path": "lib/ghdl/src/ieee2008/fixed_generic_pkg-body.vhdl",
+              "sha256": "e994327cb532981b4c510bb674d8c1f937dc3311294a8713b6d5005360b9a880"
+            },
+            {
+              "bytes": 66781,
+              "path": "lib/ghdl/src/ieee2008/fixed_generic_pkg.vhdl",
+              "sha256": "76f98d70b4e5e80ee4411f3b669ac44beed112b8ea0d4fb89005a7aedd20ffef"
+            },
+            {
+              "bytes": 2249,
+              "path": "lib/ghdl/src/ieee2008/fixed_pkg.vhdl",
+              "sha256": "bbd601960c294aa0675a91b4576f1fcfff2d612fe911ad8cc51ca2c10b1565cd"
+            },
+            {
+              "bytes": 230768,
+              "path": "lib/ghdl/src/ieee2008/float_generic_pkg-body.vhdl",
+              "sha256": "093b095a30ca301968d3a3680c995fee5e59cd34b3b93bdd04bfb1e7b00002d4"
+            },
+            {
+              "bytes": 51264,
+              "path": "lib/ghdl/src/ieee2008/float_generic_pkg.vhdl",
+              "sha256": "f6bdde6dcd120358d8ce51b2760bdffaebd2e5a0ab5267fe9f7433eec89451d9"
+            },
+            {
+              "bytes": 2542,
+              "path": "lib/ghdl/src/ieee2008/float_pkg.vhdl",
+              "sha256": "46e9f26610bd457184960dadb39c7d0e9fd5e15a7662414e5c3e2a79e377e05a"
+            },
+            {
+              "bytes": 102,
+              "path": "lib/ghdl/src/ieee2008/ieee_bit_context.vhdl",
+              "sha256": "c6e28b5ab8ec5ff9bb2b1b6f0c13c29e2607c2efce7fd425347cedc59a575e05"
+            },
+            {
+              "bytes": 133,
+              "path": "lib/ghdl/src/ieee2008/ieee_std_context.vhdl",
+              "sha256": "d1b44965df5028bd5ae0638b818b6688f6ad72cf843e3fdc004fb6a94a52abb5"
+            },
+            {
+              "bytes": 52648,
+              "path": "lib/ghdl/src/ieee2008/math_complex-body.vhdl",
+              "sha256": "4f2f523002822b27a721d93f62d4220d3f0f75bc980fdc62c2642de03926029f"
+            },
+            {
+              "bytes": 34106,
+              "path": "lib/ghdl/src/ieee2008/math_complex.vhdl",
+              "sha256": "deddee8078c0c85f276bd5ebe1a49ac303116fc8fd6a7943c84a80eff73b969a"
+            },
+            {
+              "bytes": 64760,
+              "path": "lib/ghdl/src/ieee2008/math_real-body.vhdl",
+              "sha256": "ed057e95cd908b547d128d6a29dbfcf243ba64468d6e6cc780090bc9cd79f3b2"
+            },
+            {
+              "bytes": 21134,
+              "path": "lib/ghdl/src/ieee2008/math_real.vhdl",
+              "sha256": "33fe4fe3fc21cbe6c36ed4969d96ed25549680bb3d936f106078fe47af2fec7b"
+            },
+            {
+              "bytes": 93982,
+              "path": "lib/ghdl/src/ieee2008/numeric_bit-body.vhdl",
+              "sha256": "21fc27ef3d7ff0932ebb6c92a4d5f10865b1867ce392a008c2de1d6fde3e11ab"
+            },
+            {
+              "bytes": 63541,
+              "path": "lib/ghdl/src/ieee2008/numeric_bit.vhdl",
+              "sha256": "e54a257a6da6141ef2fb0b51dccbde127a665e474e4e8e354f28e720b5d440be"
+            },
+            {
+              "bytes": 17135,
+              "path": "lib/ghdl/src/ieee2008/numeric_bit_unsigned-body.vhdl",
+              "sha256": "bcf17a63b59f1d739c3f2f29642df97457671338eaef8e9acdb946cfbadd0236"
+            },
+            {
+              "bytes": 25675,
+              "path": "lib/ghdl/src/ieee2008/numeric_bit_unsigned.vhdl",
+              "sha256": "49bb77a8ad3eb9945040a880b5daf5895f5d98b25ae52565622ebbda1b27d8da"
+            },
+            {
+              "bytes": 139714,
+              "path": "lib/ghdl/src/ieee2008/numeric_std-body.vhdl",
+              "sha256": "10e8bdc4fedc881a972f5900abe833d24397d686e07b566479c47495acf39721"
+            },
+            {
+              "bytes": 75853,
+              "path": "lib/ghdl/src/ieee2008/numeric_std.vhdl",
+              "sha256": "318b999d6df570f08b284123348ef5bcfe93720b2471df6905bbbb9b02accd4d"
+            },
+            {
+              "bytes": 18190,
+              "path": "lib/ghdl/src/ieee2008/numeric_std_unsigned-body.vhdl",
+              "sha256": "dccecb858d476cecfb00048f1495a60c130a7561b9096b864be5a000ca597b19"
+            },
+            {
+              "bytes": 25976,
+              "path": "lib/ghdl/src/ieee2008/numeric_std_unsigned.vhdl",
+              "sha256": "a39859f391c7d635e26cfec870e601513400796b8cb02f0662094463f4d107e3"
+            },
+            {
+              "bytes": 57019,
+              "path": "lib/ghdl/src/ieee2008/std_logic_1164-body.vhdl",
+              "sha256": "6534fe4842c1133199db93725e36a9e973ea8e2ab03890433c013af813d5ce2c"
+            },
+            {
+              "bytes": 14971,
+              "path": "lib/ghdl/src/ieee2008/std_logic_1164.vhdl",
+              "sha256": "2a34c7d7b2c8ba21b1e91153741399cf2cd23c8b04028dcf53765efeea76de55"
+            },
+            {
+              "bytes": 62,
+              "path": "lib/ghdl/src/ieee2008/std_logic_textio.vhdl",
+              "sha256": "ed7010d45477c03bf4de54c51c86912d994b0d6d8e751f22ee9baedbea897892"
+            },
+            {
+              "bytes": 2129,
+              "path": "lib/ghdl/src/std/env-body.vhdl",
+              "sha256": "aefa57bd2634cdec7dcf1c798000b6a9ae99e9182eb4fce666ae45f6d0a43e79"
+            },
+            {
+              "bytes": 1009,
+              "path": "lib/ghdl/src/std/env.vhdl",
+              "sha256": "6b1b56d9aa6a614e97fec96c0e54eeb758b6400e7d93deac82854a1497875cfb"
+            },
+            {
+              "bytes": 2697,
+              "path": "lib/ghdl/src/std/v08/standard.vhdl",
+              "sha256": "0011b38930fea3168f323afe9f123d37b80d225c9f2d69209ad4a1c5c853132b"
+            },
+            {
+              "bytes": 41995,
+              "path": "lib/ghdl/src/std/v08/textio-body.vhdl",
+              "sha256": "48af4fb1a8bb1c298350bb521f20f349fce5bd69b76a0152675ef3a5f7c7951c"
+            },
+            {
+              "bytes": 7000,
+              "path": "lib/ghdl/src/std/v08/textio.vhdl",
+              "sha256": "50ff6d570df2f4b93373bf90d01b367f45d08aa94372af888f9b20110ceeb7d1"
+            },
+            {
+              "bytes": 1544,
+              "path": "lib/ghdl/src/std/v87/standard.vhdl",
+              "sha256": "87929f93c48d9c27e2e4f1a0c53000a781ce34181c7483986f68c34ab4df81eb"
+            },
+            {
+              "bytes": 42701,
+              "path": "lib/ghdl/src/std/v87/textio-body.vhdl",
+              "sha256": "fb95c39abc070941ff173343496a36f3f785f694d7379c7e1d9fe11bddef441f"
+            },
+            {
+              "bytes": 7088,
+              "path": "lib/ghdl/src/std/v87/textio.vhdl",
+              "sha256": "86fe8a16849f3f05217af26880ca9694e7375748697aa7a9fdb2d9b7b637c92b"
+            },
+            {
+              "bytes": 2461,
+              "path": "lib/ghdl/src/std/v93/standard.vhdl",
+              "sha256": "7b80191819cb6fdfbb39b56826f931b5c99a25feddab7d6340e7a689b9c6ddc9"
+            },
+            {
+              "bytes": 42669,
+              "path": "lib/ghdl/src/std/v93/textio-body.vhdl",
+              "sha256": "b1ae2459bb7e03636d8561d389dd900d8a0218cb846218ea1795dd30a0975620"
+            },
+            {
+              "bytes": 7088,
+              "path": "lib/ghdl/src/std/v93/textio.vhdl",
+              "sha256": "9c1d80220101cae3219982c2b73ec5155b31a728a0cff5a8ffb25e383b12b6ad"
+            },
+            {
+              "bytes": 70557,
+              "path": "lib/ghdl/src/synopsys/std_logic_arith.vhdl",
+              "sha256": "0526b2af10bbfe5b04b96e76d1ef2befad5727ebf39ebf556e029c6189a0bd32"
+            },
+            {
+              "bytes": 27741,
+              "path": "lib/ghdl/src/synopsys/std_logic_misc-body.vhdl",
+              "sha256": "86f6b7ce81ab06162fc6ebcb2bec0f661769909726e246be31aa5f6a0a3a6208"
+            },
+            {
+              "bytes": 6037,
+              "path": "lib/ghdl/src/synopsys/std_logic_misc.vhdl",
+              "sha256": "8e219b1d88524b8f4b0ac0702af01ee783ffea500a2e99069aedae9a957fd093"
+            },
+            {
+              "bytes": 12622,
+              "path": "lib/ghdl/src/synopsys/std_logic_signed.vhdl",
+              "sha256": "09c3a98061224a9ed272878a99b47936097c39cc5ed32f8e9bcfe1159ca4d81c"
+            },
+            {
+              "bytes": 17971,
+              "path": "lib/ghdl/src/synopsys/std_logic_textio.vhdl",
+              "sha256": "845e4bfb198bcc009849e8dd94dfd11f27b035949d7ba28dcac52c039d6b56da"
+            },
+            {
+              "bytes": 12038,
+              "path": "lib/ghdl/src/synopsys/std_logic_unsigned.vhdl",
+              "sha256": "7d1e6c664ed5f697d248640144772bf8bbd1db2ec4d040518e6aa8bfd3b2ca5c"
+            },
+            {
+              "bytes": 27997,
+              "path": "lib/ghdl/src/synopsys/v08/std_logic_misc-body.vhdl",
+              "sha256": "1697b7d36cc238666c812eb110de29cf5b0551f5b208091d1c2fe245674102dc"
+            },
+            {
+              "bytes": 6077,
+              "path": "lib/ghdl/src/synopsys/v08/std_logic_misc.vhdl",
+              "sha256": "f458ef156791d25fa5922931587421af69ab3296a067af9372575faa179f0849"
+            },
+            {
+              "bytes": 483,
+              "path": "lib/ghdl/src/upf/upf-body.vhdl",
+              "sha256": "6ef1597dcccd03e6e7542ab0d878e69482996e155129ef729c48b7f71c8d2e4e"
+            },
+            {
+              "bytes": 388,
+              "path": "lib/ghdl/src/upf/upf.vhdl",
+              "sha256": "4b58e646c6589adcc2f61a9cb0483d88b3c533b901519324f611ef88f5e19f15"
+            },
+            {
+              "bytes": 393,
+              "path": "raw/ghdl.original-launcher",
+              "sha256": "886086d503a7a5a6f263262981213941617facd970d40a137ec27bdd577b6a6c"
+            },
+            {
+              "bytes": 8588,
+              "path": "share/doc/ghdl-common/NEWS.md.gz",
+              "sha256": "5afb8c1b23a164055d808b31e62e7564c90363e7e3d2f0fdfb63959b55cefdc4"
+            },
+            {
+              "bytes": 3560,
+              "path": "share/doc/ghdl-common/README.md.gz",
+              "sha256": "35099b48cc2a8f93e2d9c31a0aa9f6ec6d4df37b8ad4e7fe93d76bbb88259bc8"
+            },
+            {
+              "bytes": 4967,
+              "path": "share/doc/ghdl-common/changelog.Debian.gz",
+              "sha256": "d50b1ee24dc69ab40ac3b11355feee4caa739c372fb027586e7e436626ab1b46"
+            },
+            {
+              "bytes": 33380,
+              "path": "share/doc/ghdl-common/copyright",
+              "sha256": "16e85ed11ee816da4dbff9491771f5525f244577c6b492a22b5ada0620e4bc6f"
+            },
+            {
+              "bytes": 68,
+              "path": "share/lintian/overrides/ghdl-mcode",
+              "sha256": "bbc5bd17221fca9aa809d48cf12d11cf5f572abb16c994dbdf3a74ef3391c7de"
+            },
+            {
+              "bytes": 1929,
+              "path": "share/man/man1/ghdl.1.gz",
+              "sha256": "7bd80ab0f6e334ca6a83e8528a969c0018aa8eab633007730bde84ef368ea5ca"
+            }
+          ],
+          "functional_smoke": "actual VHDL-2008 analyze/elaborate/JIT simulation passed",
+          "host_abi": "Ubuntu24.04 x86_64, glibc2.39; host libm,zlib,libgcc_s",
+          "launcher_new_sha256": "6b34ec9b3d2706ea896bd4a7aef8eeed3b9593baa64b3293d2e6f06789b66f04",
+          "launcher_original_sha256": "886086d503a7a5a6f263262981213941617facd970d40a137ec27bdd577b6a6c",
+          "ldd_r": "\tlinux-vdso.so.1 (0x00007f7ea6717000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f7ea601f000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007f7ea6003000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f7ea5fd5000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f7ea5dc3000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f7ea6719000)\n",
+          "raw_sources": [
+            {
+              "bytes": 2305184,
+              "file": "ghdl-mcode_4.1.0+dfsg-0ubuntu2.1_amd64.deb",
+              "sha256": "12f4d8a400f5178700320a707c3977eb9812f13e494712eba93cb09ccbd3e87c",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/ghdl/ghdl-mcode_4.1.0+dfsg-0ubuntu2.1_amd64.deb"
+            },
+            {
+              "bytes": 167028,
+              "file": "ghdl-common_4.1.0+dfsg-0ubuntu2.1_amd64.deb",
+              "sha256": "4330d1535e2102aac3efcefdc71fff653d2290bb8f0a0b6fb2d6d7ade1dfcd17",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/ghdl/ghdl-common_4.1.0+dfsg-0ubuntu2.1_amd64.deb"
+            },
+            {
+              "bytes": 2947,
+              "file": "ghdl_4.1.0+dfsg-0ubuntu2.1.dsc",
+              "sha256": "d970f3b29c96e28fc03c3bbc3bae7957886b87aba8b5dcaa6edecb456e5842b0",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/ghdl/ghdl_4.1.0+dfsg-0ubuntu2.1.dsc"
+            },
+            {
+              "bytes": 27288,
+              "file": "ghdl_4.1.0+dfsg-0ubuntu2.1.debian.tar.xz",
+              "sha256": "acbb689eefc82130fc340492cc804e87ec83d60d20faf858ef262bc4543c67cc",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/ghdl/ghdl_4.1.0+dfsg-0ubuntu2.1.debian.tar.xz"
+            },
+            {
+              "bytes": 7244516,
+              "file": "ghdl_4.1.0+dfsg.orig.tar.gz",
+              "sha256": "2ef5e6e765f3b1789b2ecd83eb16074d7542ecf85f0453509f0a4512f5de520f",
+              "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/ghdl/ghdl_4.1.0+dfsg.orig.tar.gz"
+            }
+          ],
+          "reported_version": "GHDL 4.1.0 (Ubuntu 4.1.0+dfsg-0ubuntu2.1) [Dunoon edition]\n Compiled with GNAT Version: 13.3.0\n static elaboration, mcode JIT code generator\nWritten by Tristan Gingold.\n\nCopyright (C) 2003 - 2024 Tristan Gingold.\nGHDL is free software, covered by the GNU General Public License.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n",
+          "upstream": "https://github.com/ghdl/ghdl",
+          "version": "4.1.0+dfsg-0ubuntu2.1"
+        },
+        "graphviz": {
+          "adaptation": "Only shell launcher replaced; ELF bytes unchanged; native-host glibc/Pango/Cairo/fonts required, all actual ldd dependencies recorded.",
+          "component": "graphviz",
+          "elf_sha256": "e06c800b38a7e70fe30f97f03b448129e8e6912d4044da9afdcde540ea52f940",
+          "functional_png_bytes": 15070,
+          "functional_png_sha256": "f9cb589bfd0ceb57b35d8afa6fe204f29c7fe352d40c192b03e2eda9a9f31718",
+          "launcher_after_sha256": "c9975bb45967c347d9c82e5b792b421b7d68cfbdfc1f12b5b4cf0cbd2128b905",
+          "launcher_before_sha256": "83f213b0d85e370a7ddad41eff9795791e1409d7f514c2b53e906216958bc8fb",
+          "sdk_sha256": "c61fb5b91c72ecb1f2a61b166d65fd387d5ad51b12476078e96ef8db1c6f37a3",
+          "source_commit_archive_comment": "da4c2ec6f24ca1b6d1752c6b5bc4389e55682147",
+          "source_sha256": "b92a92bb16755b11875be9203a6216e5b827eb1d6cf8dda6824380457cd18c55",
+          "source_tag": "2.42.2",
+          "source_url": "https://gitlab.com/graphviz/graphviz/-/archive/2.42.2/graphviz-2.42.2.tar.gz",
+          "supplier_commit": "4901acb76364db4fcba2cc7877139aa2bf41291c",
+          "version": "dot - graphviz version 2.43.20190912.0211 (20190912.0211)"
+        }
+      },
+      "schema_version": 1,
+      "source_archive_sha256": "edfbd7d0c2ad82a1e04b996ff30f6e9acd7285732477f150d5c984e8ed72af88",
+      "source_commit": "108f8875c48c33bc35000c6910959c6945ae8aad",
+      "source_url": "https://codeload.github.com/EPFL-LAP/dynamatic/tar.gz/108f8875c48c33bc35000c6910959c6945ae8aad",
+      "validation_revision_history": [
+        {
+          "after_sha256": "c995241d4a728615fe96b85180d110affa6fc1fc263b8fef188280bf62e9ca91",
+          "before_sha256": "1277dff8550e331e1ec7c726d6c324c16c2147ecbad5eee1176538558d165d7c",
+          "path": "validation/check.py",
+          "reason": "Actual isolated attempt a exposed frontend output-dir is a name relative to source, not an absolute path; use documented out name. Compiler and generated outputs remain unchanged."
+        },
+        {
+          "after_sha256": "cc431d59f5de8e433554f9313d001d9f066a0b8d8b43e08eb1ff3a42cab2beb2",
+          "before_sha256": "3de850e68dd881efaf43fc75052634773f100f6cb185a015dd776cf8fb354d7d",
+          "path": "validation/README.txt",
+          "reason": "Actual isolated attempt a exposed frontend output-dir is a name relative to source, not an absolute path; use documented out name. Compiler and generated outputs remain unchanged."
+        }
+      ],
+      "version": "git.108f8875c48c.llvm.e974cfe"
+    },
+    "worker_plan_id": "cpg-resource-research-20261101-v1"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib:{prefix}/lib/dynamatic:{prefix}/support/ghdl/lib/ghdl/mcode",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "wrapper": false
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1146971914,
+      "extract": false,
+      "id": "upstream-1",
+      "material_path": null,
+      "sha256": "d95ac2dd47df4bd50b0bf7711f40a42aeb7ed516eec7c88d23be219e9b7bb6b5",
+      "strip_root": false,
+      "url": "https://github.com/ETHZ-DYNAMO/llvm-project/releases/download/llvm-e974cfe/llvm-e974cfe-x86_64-linux.tar.gz"
+    },
+    {
+      "bytes": 2305184,
+      "extract": false,
+      "id": "upstream-2",
+      "material_path": null,
+      "sha256": "12f4d8a400f5178700320a707c3977eb9812f13e494712eba93cb09ccbd3e87c",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/ghdl/ghdl-mcode_4.1.0+dfsg-0ubuntu2.1_amd64.deb"
+    },
+    {
+      "bytes": 167028,
+      "extract": false,
+      "id": "upstream-3",
+      "material_path": null,
+      "sha256": "4330d1535e2102aac3efcefdc71fff653d2290bb8f0a0b6fb2d6d7ade1dfcd17",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/ghdl/ghdl-common_4.1.0+dfsg-0ubuntu2.1_amd64.deb"
+    },
+    {
+      "bytes": 2947,
+      "extract": false,
+      "id": "upstream-4",
+      "material_path": null,
+      "sha256": "d970f3b29c96e28fc03c3bbc3bae7957886b87aba8b5dcaa6edecb456e5842b0",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/ghdl/ghdl_4.1.0+dfsg-0ubuntu2.1.dsc"
+    },
+    {
+      "bytes": 27288,
+      "extract": false,
+      "id": "upstream-5",
+      "material_path": null,
+      "sha256": "acbb689eefc82130fc340492cc804e87ec83d60d20faf858ef262bc4543c67cc",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/ghdl/ghdl_4.1.0+dfsg-0ubuntu2.1.debian.tar.xz"
+    },
+    {
+      "bytes": 7244516,
+      "extract": false,
+      "id": "upstream-6",
+      "material_path": null,
+      "sha256": "2ef5e6e765f3b1789b2ecd83eb16074d7542ecf85f0453509f0a4512f5de520f",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/ghdl/ghdl_4.1.0+dfsg.orig.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the original CPG PackageManager with an explicit fresh prefix and declared SDK bindings."
+    ],
+    "documentation": [
+      "https://codeload.github.com/EPFL-LAP/dynamatic/tar.gz/108f8875c48c33bc35000c6910959c6945ae8aad"
+    ],
+    "examples": [
+      {
+        "command": "manager.check('dynamatic', prefix=prefix, kinds=['functional'], environment=bindings)",
+        "description": "Repeat the declared functional check."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Payload",
+        "path": "{prefix}",
+        "purpose": "Independent runtime, source locks and upstream materials."
+      }
+    ],
+    "notes": [
+      "One official integer control-flow kernel through genuine C/LLVM/CF/Handshake/HW/VHDL/GHDL.",
+      "256 positive and 256 mutant independent invocations, each reset; no continuous/overlapping transaction throughput or midstream-reset claim.",
+      "No physical FPGA frequency/area, commercial EDA, board, whole-language or complete regression qualification.",
+      "Runtime independence is established by complete descendant file-access provenance; directory/mount isolation attempts are not granted a pass.",
+      "Native profile requires whitespace-free work directory and recorded host development runtime.",
+      "Reference distribution is build metadata; actual ELF ABI is verified by original CPG.",
+      "This worker increment does not promote original formal counts or claim hardware qualification."
+    ],
+    "summary": "dynamatic: independently installed, immutable upstream inputs and bounded functional validation."
+  },
+  "version": "git.108f8875c48c.llvm.e974cfe"
+}

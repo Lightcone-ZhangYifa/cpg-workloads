@@ -1,0 +1,70 @@
+{
+  "build": "20261101-worker008-reference-v1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-I",
+        "-B",
+        "{recipe}/check-doc-material.py",
+        "--root",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "release-source-and-index-integrity",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 30
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "doc.mlir-transform",
+  "metadata": {
+    "commit": "7a941dfb2877a0b8cf30323fefa85ad019e0b0f5",
+    "license": "Apache-2.0 WITH LLVM-exception",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "reference.doc.mlir-transform",
+    "scope": "official static source reference; not an independent upstream software family"
+  },
+  "provider": "material",
+  "recipe": {},
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://mlir.llvm.org/docs/Dialects/Transform/",
+      "https://github.com/llvm/llvm-project/tree/llvmorg-23.1.4/mlir/docs/Tutorials/transform"
+    ],
+    "examples": [
+      {
+        "command": "python3 <worker008>/integration/doc-index.py SequenceOp --root {prefix}",
+        "description": "Locate exact TableGen and tutorial definitions"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Versioned reference",
+        "path": "{prefix}",
+        "purpose": "Read source and query line-anchored symbol/section index"
+      }
+    ],
+    "notes": [
+      "Reference material only. No MLIR tool, transform execution, dialect coverage or standalone documentation build is qualified.",
+      "Source and license files are exact members of the frozen LLVM 23.1.4 archive; source-manifest.json records each original member and SHA."
+    ],
+    "summary": "Frozen official MLIR Transform Dialect reference source, tutorials and symbol index"
+  },
+  "version": "23.1.4"
+}

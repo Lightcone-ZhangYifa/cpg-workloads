@@ -1,0 +1,117 @@
+{
+  "build": "worker077-static-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/static_check.py",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "static-material-integrity",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "score-p-materials",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 22552006,
+      "category": "observability",
+      "description": "Score-P 10.1官方完整发行源归档（含随附OTF2/CubeW/CubeLib/OPARI2源码），展开公开用户头、Doxygen源文档和全部顶层许可证；未进行构建/插桩/测量。",
+      "extract": false,
+      "id": "score-p-materials",
+      "kind": "material",
+      "license": "BSD-3-Clause and per-file licenses",
+      "license_class": "open",
+      "material_path": "upstream/scorep-10.1.tar.gz",
+      "name": "Score-P 静态API与格式材料",
+      "new_material_profile": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "policy_status": "policy-held",
+      "record_id": "review.engineering.score-p",
+      "sha256": "39edf6790c4af25679ab46e361091f177d40ad8f8cfff1b4bf81e775fc59f0c1",
+      "source_url": "https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/scorep-10.1/scorep-10.1.tar.gz",
+      "strip_archive_root": false,
+      "version": "10.1"
+    },
+    "catalog_sha256": "139fb59355525d9204e27f2c3f750a56b46091587d83179da207934984f1b71c",
+    "collector_policy": "policy-held",
+    "material_scope": "Score-P 10.1官方完整发行源归档（含随附OTF2/CubeW/CubeLib/OPARI2源码），展开公开用户头、Doxygen源文档和全部顶层许可证；未进行构建/插桩/测量。",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "benchmark": null,
+      "complete_profiler_installation": false,
+      "dataset_verified": null,
+      "functional": null,
+      "hardware": null,
+      "material": true,
+      "material_scope": "exactly the static profile documented here",
+      "oci": null,
+      "source_build": null
+    },
+    "worker_id": "worker 077"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 22552006,
+      "extract": false,
+      "id": "score-p-materials",
+      "material_path": "upstream/scorep-10.1.tar.gz",
+      "sha256": "39edf6790c4af25679ab46e361091f177d40ad8f8cfff1b4bf81e775fc59f0c1",
+      "strip_root": false,
+      "url": "https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/scorep-10.1/scorep-10.1.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://www.vi-hps.org/projects/score-p/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/reference_query.py 'SCOREP_USER_REGION_BEGIN' --limit 20",
+        "description": "Search pinned text without executing vendor code"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reference guide",
+        "path": "{prefix}/REFERENCE.zh.md",
+        "purpose": "Exact scope, API/input map, licensing and policy boundary"
+      },
+      {
+        "label": "Pinned material files",
+        "path": "{prefix}/reference",
+        "purpose": "Offline documentation, type interfaces and licensed examples"
+      }
+    ],
+    "notes": [
+      "Score-P 10.1官方完整发行源归档（含随附OTF2/CubeW/CubeLib/OPARI2源码），展开公开用户头、Doxygen源文档和全部顶层许可证；未进行构建/插桩/测量。",
+      "官方发布SHA-256逐字匹配。未运行scorep编译包装器，未链接测量库，未执行instrumented应用；不报告MPI/OpenMP/硬件资格。Score-P文档指出插桩应用可能链接带额外许可要求的组件，本包保留许可说明但不把静态源码许可推导为所有组合的许可。",
+      "Collector execution remains policy-held; reference integrity does not imply profiler functionality."
+    ],
+    "summary": "让agent理解用户region、MPI/OpenMP事件、测量配置及其进入OTF2/CUBE格式的关系。可作为并行运行时事件设计与现有trace导入的接口参考。"
+  },
+  "version": "10.1"
+}

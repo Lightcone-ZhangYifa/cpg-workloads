@@ -1,0 +1,102 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_lnt_alias.py",
+        "--prefix",
+        "{prefix}",
+        "--runtime",
+        "{dependencies.llvm-lnt.prefix}",
+        "--source",
+        "{dependencies.llvm-lnt.source}",
+        "--output",
+        "{build}/alias-checks"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "guarded-alias-real-lnt-consumer",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "llvm-lnt"
+    ],
+    "system": []
+  },
+  "id": "llvm-opt-benchmark",
+  "metadata": {
+    "catalog": {
+      "alias_of": "llvm-lnt",
+      "archive_bytes": null,
+      "category": [
+        "Compatibility",
+        "Historical resource identifiers"
+      ],
+      "dependencies": [
+        "llvm-lnt"
+      ],
+      "deployment": {
+        "adapter": "virtual"
+      },
+      "id": "llvm-opt-benchmark",
+      "immutable_ref": "alias:llvm-lnt",
+      "installed_bytes": null,
+      "kind": "virtual",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "presets": [],
+      "purpose": "The historical ID referred to LLVM LNT, not dtcxzyw's large LLVM IR corpus. New selections resolve explicitly to llvm-lnt; historical manifests remain immutable.",
+      "redistributable": true,
+      "roles": [
+        "host"
+      ],
+      "sha256": null,
+      "size_basis": "Compatibility alias with no additional payload; the selected llvm-lnt archive is counted once.",
+      "source_evidence": [
+        "https://github.com/llvm/llvm-lnt",
+        "https://github.com/dtcxzyw/llvm-opt-benchmark"
+      ],
+      "title": "Legacy LNT identifier (alias of llvm-lnt)",
+      "version": "0.7.0-alias-correction"
+    },
+    "catalog_sha256": "e5ebe3473f5773c8b92d7efe77a3f563f49c1615fa123f45f205153a01c341cd",
+    "worker032_alias_binding": {
+      "binding_scope": "actual source+runtime byte verified explicit path; not a fabricated installed legacy receipt",
+      "legacy_definition_sha256": "62a3b7da386af57c9dc92cbc5a35a31ef25290d6043fbeb3760d2097c6d5eac0"
+    }
+  },
+  "provider": "meta",
+  "recipe": {
+    "adapter": "virtual",
+    "runtime_environment": {
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "The historical ID referred to LLVM LNT, not dtcxzyw's large LLVM IR corpus. New selections resolve explicitly to llvm-lnt; historical manifests remain immutable."
+  },
+  "version": "0.7.0-alias-correction"
+}

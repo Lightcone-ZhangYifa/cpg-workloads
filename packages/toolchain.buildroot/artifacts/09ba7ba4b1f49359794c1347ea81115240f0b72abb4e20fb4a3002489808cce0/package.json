@@ -1,0 +1,170 @@
+{
+  "build": "aarch64-musl-external-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_buildroot.py",
+        "{prefix}",
+        "{build}/cross-link-check"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "aarch64-musl-cross-link",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "readelf"
+      ],
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "toolchain.buildroot",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "qualification_scope": "One external/prebuilt Bootlin aarch64-musl development profile assembled by fixed Buildroot source; six exact dynamic target-runtime symlinks are projected out with an audit, original raw retained. C/C++ cross-link and ELF inspection only. No compiler source rebuild, target execution, boot test or full target matrix.",
+    "worker": "worker 022"
+  },
+  "provider": "source",
+  "recipe": {
+    "install_argv": [
+      "python3",
+      "{recipe}/install_buildroot.py",
+      "{assets}",
+      "{build}",
+      "{prefix}"
+    ],
+    "required_host_commands": [
+      "python3",
+      "tar",
+      "dpkg-deb",
+      "make",
+      "gcc",
+      "g++",
+      "perl",
+      "wget",
+      "unzip",
+      "file",
+      "patch"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "readelf"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 6121336,
+      "extract": false,
+      "id": "buildroot",
+      "material_path": "raw/buildroot-2026.08.1.tar.xz",
+      "sha256": "34fb7bea8a213ffde39cc02e61703391560f26e0850f03138c722d0b09880f2b",
+      "strip_root": false,
+      "url": "https://buildroot.org/downloads/buildroot-2026.08.1.tar.xz"
+    },
+    {
+      "bytes": 88417988,
+      "extract": false,
+      "id": "bootlin-sdk",
+      "material_path": "raw/aarch64--musl--stable-2026.08-1.tar.xz",
+      "sha256": "b388c480a48e8e9f9b99e3d14e69219c4d61e5a2424a82faecb88a015b781a60",
+      "strip_root": false,
+      "url": "https://toolchains.bootlin.com/downloads/releases/toolchains/aarch64/tarballs/aarch64--musl--stable-2026.08-1.tar.xz"
+    },
+    {
+      "bytes": 30075,
+      "extract": false,
+      "id": "musl-compat-queue",
+      "material_path": "raw/buildroot-extra/queue.h",
+      "sha256": "c13407edd0e33be73cae72514cb234f8612e1c0e54401c9448daffd3a240158b",
+      "strip_root": false,
+      "url": "https://raw.githubusercontent.com/NetBSD/src/03be82a6b173b3c62116b7a186067fed3004dd44/sys/sys/queue.h"
+    },
+    {
+      "bytes": 462772,
+      "extract": false,
+      "id": "host-gawk",
+      "material_path": "supporting-host/raw/gawk_5.2.1-2build3_amd64.deb",
+      "sha256": "4b662062e90f62ece26ca7adfcd3a33207c7862f3dc77b8df515b5680ee00ca9",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gawk/gawk_5.2.1-2build3_amd64.deb"
+    },
+    {
+      "bytes": 15042,
+      "extract": false,
+      "id": "host-libsigsegv2",
+      "material_path": "supporting-host/raw/libsigsegv2_2.14-1ubuntu2_amd64.deb",
+      "sha256": "889f338bea4ebfd999939d946da4ac0a45668264a5aae78e023feeb0529505b8",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libs/libsigsegv/libsigsegv2_2.14-1ubuntu2_amd64.deb"
+    },
+    {
+      "bytes": 434824,
+      "extract": false,
+      "id": "host-rsync",
+      "material_path": "supporting-host/raw/rsync_3.2.7-1ubuntu1_amd64.deb",
+      "sha256": "2b4e1375f190700fd0811f65356a8fa7b044915b964e84c4c55dce81b83c8423",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/r/rsync/rsync_3.2.7-1ubuntu1_amd64.deb"
+    },
+    {
+      "bytes": 28562,
+      "extract": false,
+      "id": "host-libpopt0",
+      "material_path": "supporting-host/raw/libpopt0_1.19+dfsg-1build1_amd64.deb",
+      "sha256": "b3e7ea5192e57c847b77c527d51f5b8d4bce47988d2ba326a5c3193f6d173ded",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/popt/libpopt0_1.19+dfsg-1build1_amd64.deb"
+    },
+    {
+      "bytes": 85264,
+      "extract": false,
+      "id": "host-bc",
+      "material_path": "supporting-host/raw/bc_1.07.1-3ubuntu4_amd64.deb",
+      "sha256": "cb85d5929476088533b3c5e1db2de5ab4593a69fa54243710f762197dbaea60d",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/bc/bc_1.07.1-3ubuntu4_amd64.deb"
+    },
+    {
+      "bytes": 82668,
+      "extract": false,
+      "id": "host-cpio",
+      "material_path": "supporting-host/raw/cpio_2.15+dfsg-1ubuntu2_amd64.deb",
+      "sha256": "b3c7bb97baf1a5dabe0c672ebdc94724bdcd7251790152cfa4314efda5696817",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/c/cpio/cpio_2.15+dfsg-1ubuntu2_amd64.deb"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://buildroot.org/downloads/manual/manual.html",
+      "https://toolchains.bootlin.com/"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "independent-prefix",
+        "path": "{prefix}",
+        "purpose": "Buildroot assembly of one AArch64 musl external toolchain and sysroot"
+      }
+    ],
+    "notes": [
+      "One external/prebuilt Bootlin aarch64-musl development profile assembled by fixed Buildroot source; six exact dynamic target-runtime symlinks are projected out with an audit, original raw retained. C/C++ cross-link and ELF inspection only. No compiler source rebuild, target execution, boot test or full target matrix."
+    ],
+    "summary": "Buildroot assembly of one AArch64 musl external toolchain and sysroot"
+  },
+  "version": "2026.08.1"
+}

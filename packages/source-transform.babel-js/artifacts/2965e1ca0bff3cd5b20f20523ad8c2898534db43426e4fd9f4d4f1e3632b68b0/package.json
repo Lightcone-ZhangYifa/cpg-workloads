@@ -1,0 +1,724 @@
+{
+  "build": "worker006-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/cpg_check.py",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "worker006-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "node"
+      ],
+      "requires_paths": [
+        "{prefix}/recipe/check.py"
+      ],
+      "stdout_regex": "\"ok\"\\s*:\\s*true",
+      "timeout_seconds": 240
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "source-transform.babel-js",
+  "metadata": {
+    "artifact_profile": "npm-javascript-distribution",
+    "baseline_version": "0.21.14",
+    "category": [
+      "source_transform"
+    ],
+    "original_assignment": {
+      "after_dataset_verified": null,
+      "after_functional": null,
+      "after_material": null,
+      "alias_target": "",
+      "assessment_ids": [
+        "engineering:babel"
+      ],
+      "baseline_catalog_sha256": {},
+      "baseline_dataset_verified": null,
+      "baseline_functional_ids": [],
+      "baseline_managed_ids": [],
+      "baseline_material_ids": [],
+      "baseline_pins": {},
+      "baseline_relation": "新增候选（独立身份仍需锁定）",
+      "baseline_resource_ids": [],
+      "baseline_trusted_apt_ids": [],
+      "baseline_version": "0.21.14",
+      "canonical_url": "https://babeljs.io/docs/",
+      "category": "source_transform",
+      "cost": "M",
+      "decision": "select",
+      "decision_zh": "入选",
+      "dependencies": "",
+      "entity_kind": "resource",
+      "evidence_relpath": "",
+      "evidence_urls": [
+        "https://babeljs.io/docs/"
+      ],
+      "has_active_task": true,
+      "identity_unresolved": false,
+      "increment_package": "cpg-20261101-worker-006-delta-v001.zip",
+      "new_family_candidate": true,
+      "owned_baseline_resource_ids": [],
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "quality_evidence": "{\"basis\":\"official maintainer / standards body / upstream documentation\",\"primary_source_url\":\"https://babeljs.io/docs/\",\"primary_source_ref\":\"turn70view7\",\"concrete_capability\":\"JavaScript AST变换/插件和codemod\",\"testable_value\":\"锁parser/traverse/generator版本，做有source map的变换并运行测试\",\"scope_and_limits\":\"当前是来源与用途调研；尚未构建或执行，不能据此宣称任何目标/版本已支持。\",\"not_used_as_quality_proxy\":\"GitHub stars, search rank, or mere package presence\"}",
+      "record_id": "review.engineering.babel",
+      "research_scope": "本次公开来源评估",
+      "resource_name": "Babel",
+      "result_status": "未执行接入",
+      "reviewed_on": "2026-11-01",
+      "schema_version": 1,
+      "scope_limits": "",
+      "selected_new_family": true,
+      "selection_reason": "选入JavaScript语法变换、插件和source map接口；基线py.babel是Python国际化库，同名不构成去重。",
+      "source_refs": [
+        "turn70view7"
+      ],
+      "task": "锁parser/traverse/generator版本，做有source map的变换并运行测试",
+      "taxonomy_categories": [
+        "D08",
+        "D10"
+      ],
+      "value_to_ai": "JavaScript AST变换/插件和codemod",
+      "worker_id": "worker 006",
+      "worker_scope": "AST与源码变换 · 2"
+    },
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.engineering.babel",
+    "source_build_performed": false,
+    "upstream_artifacts": [
+      {
+        "archive_root": "package",
+        "artifact": "raw/babel__code-frame-8.0.6.tgz",
+        "bytes": 4188,
+        "cpu": null,
+        "engines": {
+          "node": "^22.18.0 || >=24.11.0"
+        },
+        "install_path": "node_modules/@babel/code-frame",
+        "integrity": "sha512-uMHhvmDmwFiLuiozaoRYTZHqMFuu3fem/X9JY78lohAuLoh8LSGGC8JqUzo2cVuBsBxkjMZNk56CE7ock8Xxkw==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@babel/code-frame",
+        "os": null,
+        "repository": {
+          "directory": "packages/babel-code-frame",
+          "type": "git",
+          "url": "https://github.com/babel/babel.git"
+        },
+        "sha256": "c940a4465965f0da56fabbebd4055f7b07c8c4c26b8ca0c8b055c82ca36fe1ff",
+        "url": "https://registry.npmjs.org/@babel/code-frame/-/code-frame-8.0.6.tgz",
+        "version": "8.0.6"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/babel__generator-8.0.10.tgz",
+        "bytes": 26668,
+        "cpu": null,
+        "engines": {
+          "node": "^22.18.0 || >=24.11.0"
+        },
+        "install_path": "node_modules/@babel/generator",
+        "integrity": "sha512-iC9p3U4Y3vp0qKjRcfFeNzpj+kkK8BVYZTbQepBWVD7vOBLH6ji0drNzKPTPtumFd2w2r/hbEKYjG4pscKa4bg==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@babel/generator",
+        "os": null,
+        "repository": {
+          "directory": "packages/babel-generator",
+          "type": "git",
+          "url": "https://github.com/babel/babel.git"
+        },
+        "sha256": "79e767ebd539e3647a87ef46af8b82fd8b2940bc206ff89dded5c18f1df15cad",
+        "url": "https://registry.npmjs.org/@babel/generator/-/generator-8.0.10.tgz",
+        "version": "8.0.10"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/babel__helper-globals-8.0.6.tgz",
+        "bytes": 6942,
+        "cpu": null,
+        "engines": {
+          "node": "^22.18.0 || >=24.11.0"
+        },
+        "install_path": "node_modules/@babel/helper-globals",
+        "integrity": "sha512-OdnA/N52LhzFpeUuVz5YGuSWjc7TPHiFmVYZbPlSgExocO2GwbxVpSni9MVs5wwW+wZ4kPuwBEBN9pIPDYz1mA==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@babel/helper-globals",
+        "os": null,
+        "repository": {
+          "directory": "packages/babel-helper-globals",
+          "type": "git",
+          "url": "https://github.com/babel/babel.git"
+        },
+        "sha256": "1fb7ea1b86257d6faaeb00a0cb5b0fae2456bc04e054d0ab47f64fead1998e06",
+        "url": "https://registry.npmjs.org/@babel/helper-globals/-/helper-globals-8.0.6.tgz",
+        "version": "8.0.6"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/babel__helper-string-parser-8.0.8.tgz",
+        "bytes": 3596,
+        "cpu": null,
+        "engines": {
+          "node": "^22.18.0 || >=24.11.0"
+        },
+        "install_path": "node_modules/@babel/helper-string-parser",
+        "integrity": "sha512-fVM+gSuKbdv9cpmyRNh5EvsDHUZCdxQH3FdnFKSkNYHpbsn95bbrxm+ES3MVeQjcqwi2O5ur/DjLfmTQaO60ng==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@babel/helper-string-parser",
+        "os": null,
+        "repository": {
+          "directory": "packages/babel-helper-string-parser",
+          "type": "git",
+          "url": "https://github.com/babel/babel.git"
+        },
+        "sha256": "fd9a1ad78c1c4bf9bec762e4f7de72bc34c2746aaae0648f06056dcb4c333864",
+        "url": "https://registry.npmjs.org/@babel/helper-string-parser/-/helper-string-parser-8.0.8.tgz",
+        "version": "8.0.8"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/babel__helper-validator-identifier-8.0.6.tgz",
+        "bytes": 7191,
+        "cpu": null,
+        "engines": {
+          "node": "^22.18.0 || >=24.11.0"
+        },
+        "install_path": "node_modules/@babel/helper-validator-identifier",
+        "integrity": "sha512-HYx0YmuchRxRSpnjvcNffnPS8DCauKNmnumIuHG3jnQAVewRA7kfJGwF13ayEpSZs7s4R/oBH4eppuXcAQd5JQ==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@babel/helper-validator-identifier",
+        "os": null,
+        "repository": {
+          "directory": "packages/babel-helper-validator-identifier",
+          "type": "git",
+          "url": "https://github.com/babel/babel.git"
+        },
+        "sha256": "9eb9bf58bace8c3d1fce42fd15abea35e10ab5061d0ab9be42b489404175110b",
+        "url": "https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identifier-8.0.6.tgz",
+        "version": "8.0.6"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/babel__parser-8.0.10.tgz",
+        "bytes": 121080,
+        "cpu": null,
+        "engines": {
+          "node": "^22.18.0 || >=24.11.0"
+        },
+        "install_path": "node_modules/@babel/parser",
+        "integrity": "sha512-h+ah2Kg0ne1Vii892dShj9gky9I5jPzkd8x4s/3xgN/P2bMWmHS3qq59tum3mCVjCBXI8uqfYyYtrfp1Mz6+1w==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@babel/parser",
+        "os": null,
+        "repository": {
+          "directory": "packages/babel-parser",
+          "type": "git",
+          "url": "https://github.com/babel/babel.git"
+        },
+        "sha256": "8accd9d62c340cf74ca1c34a8ed3343a644cda59ea900e138849de46cdedbb1c",
+        "url": "https://registry.npmjs.org/@babel/parser/-/parser-8.0.10.tgz",
+        "version": "8.0.10"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/babel__template-8.0.0.tgz",
+        "bytes": 15345,
+        "cpu": null,
+        "engines": {
+          "node": "^22.18.0 || >=24.11.0"
+        },
+        "install_path": "node_modules/@babel/template",
+        "integrity": "sha512-eAD0QW/AlbamBbw0FeGiwasbCVPq5ncW0HNVyLP3B9czqLyh4gvw+5JTSNt6le9+ziAU7mqDZsKTHf3jTb4chQ==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@babel/template",
+        "os": null,
+        "repository": {
+          "directory": "packages/babel-template",
+          "type": "git",
+          "url": "https://github.com/babel/babel.git"
+        },
+        "sha256": "6cacbdb62a8a38e3c100077fc1072d8ec9f0737122e3876fca550850eeac905e",
+        "url": "https://registry.npmjs.org/@babel/template/-/template-8.0.0.tgz",
+        "version": "8.0.0"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/babel__traverse-8.0.10.tgz",
+        "bytes": 75366,
+        "cpu": null,
+        "engines": {
+          "node": "^22.18.0 || >=24.11.0"
+        },
+        "install_path": "node_modules/@babel/traverse",
+        "integrity": "sha512-t5DaGzMi9WlhMSFT2YavI8gl8yGihoQymSQUkIq9+MUh5tO3Vx9KHwr5gMCzeBdYkvs00xNvr18PxtQTRayucA==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@babel/traverse",
+        "os": null,
+        "repository": {
+          "directory": "packages/babel-traverse",
+          "type": "git",
+          "url": "https://github.com/babel/babel.git"
+        },
+        "sha256": "033589d26df1dd392f7527992735bfca3b350624fc5d29e7f433fe0b4a1403be",
+        "url": "https://registry.npmjs.org/@babel/traverse/-/traverse-8.0.10.tgz",
+        "version": "8.0.10"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/babel__types-8.0.10.tgz",
+        "bytes": 124979,
+        "cpu": null,
+        "engines": {
+          "node": "^22.18.0 || >=24.11.0"
+        },
+        "install_path": "node_modules/@babel/types",
+        "integrity": "sha512-KV8Y+teoRsmXeEPS4sCJY1kwV+hcPzHP1qQqgCxrjKOehLdBaxpsFBfoJ8MXWFV80y6Jw56+TM95wR0Per8dYw==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@babel/types",
+        "os": null,
+        "repository": {
+          "directory": "packages/babel-types",
+          "type": "git",
+          "url": "https://github.com/babel/babel.git"
+        },
+        "sha256": "1455e460b3759697092e62a7972bf123c29b5221374709ccb1d3df4676f90637",
+        "url": "https://registry.npmjs.org/@babel/types/-/types-8.0.10.tgz",
+        "version": "8.0.10"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/jridgewell__gen-mapping-0.4.0-beta.0.tgz",
+        "bytes": 20201,
+        "cpu": null,
+        "engines": null,
+        "install_path": "node_modules/@jridgewell/gen-mapping",
+        "integrity": "sha512-JdGNkbE4GlNPYQhM0L95fBQr7ctLZJ276QXQLTad4t1oSdnnCI3fDq9DW3BqYAWv8Wc3+HS+4Gsii1oPMCfz1w==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@jridgewell/gen-mapping",
+        "os": null,
+        "repository": {
+          "directory": "packages/gen-mapping",
+          "type": "git",
+          "url": "git+https://github.com/jridgewell/sourcemaps.git"
+        },
+        "sha256": "2b279a769b39b02e2393d10ab6397ef8e43609bb25c161bc54d979d49a5a0638",
+        "url": "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.4.0-beta.0.tgz",
+        "version": "0.4.0-beta.0"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/jridgewell__resolve-uri-3.1.2.tgz",
+        "bytes": 9622,
+        "cpu": null,
+        "engines": {
+          "node": ">=6.0.0"
+        },
+        "install_path": "node_modules/@jridgewell/resolve-uri",
+        "integrity": "sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@jridgewell/resolve-uri",
+        "os": null,
+        "repository": "https://github.com/jridgewell/resolve-uri",
+        "sha256": "db52f9f62558baab13353dd39e3200750fc33e6a129a575b46226f493776e230",
+        "url": "https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz",
+        "version": "3.1.2"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/jridgewell__sourcemap-codec-1.6.0.tgz",
+        "bytes": 18401,
+        "cpu": null,
+        "engines": null,
+        "install_path": "node_modules/@jridgewell/sourcemap-codec",
+        "integrity": "sha512-T7jf+5zgsZHwNJ4lvQ7/aezbyk0nNX+zJVWpmHA7VYsEx7a7qr5Rg5IbtJFqkgze5Y2sruq1RUY8Q837Od7iFw==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@jridgewell/sourcemap-codec",
+        "os": null,
+        "repository": {
+          "directory": "packages/sourcemap-codec",
+          "type": "git",
+          "url": "git+https://github.com/jridgewell/sourcemaps.git"
+        },
+        "sha256": "f30a35f6af8c347d01b8ff2f8662272f7d986cf21b916704d86c249a90b97e25",
+        "url": "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.6.0.tgz",
+        "version": "1.6.0"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/jridgewell__trace-mapping-0.3.31.tgz",
+        "bytes": 30747,
+        "cpu": null,
+        "engines": null,
+        "install_path": "node_modules/@jridgewell/trace-mapping",
+        "integrity": "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "@jridgewell/trace-mapping",
+        "os": null,
+        "repository": {
+          "directory": "packages/trace-mapping",
+          "type": "git",
+          "url": "git+https://github.com/jridgewell/sourcemaps.git"
+        },
+        "sha256": "c64c71a119630d5abe8246889edf334b2ca9ddad094e20d623332956b1453ccf",
+        "url": "https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz",
+        "version": "0.3.31"
+      },
+      {
+        "archive_root": "jsesc",
+        "artifact": "raw/types__jsesc-2.5.1.tgz",
+        "bytes": 2892,
+        "cpu": null,
+        "engines": null,
+        "install_path": "node_modules/@types/jsesc",
+        "integrity": "sha512-9VN+6yxLOPLOav+7PwjZbxiID2bVaeq0ED4qSQmdQTdjnXJSaCVKTR58t15oqH1H5t8Ng2ZX1SabJVoN9Q34bw==",
+        "license": "MIT",
+        "license_members": [
+          "jsesc/LICENSE"
+        ],
+        "name": "@types/jsesc",
+        "os": null,
+        "repository": {
+          "directory": "types/jsesc",
+          "type": "git",
+          "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git"
+        },
+        "sha256": "9fc72849a5074e88d4918a9860b920e02b489bdd8d60111739e153ae2681e6f8",
+        "url": "https://registry.npmjs.org/@types/jsesc/-/jsesc-2.5.1.tgz",
+        "version": "2.5.1"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/js-tokens-10.0.0.tgz",
+        "bytes": 4360,
+        "cpu": null,
+        "engines": null,
+        "install_path": "node_modules/js-tokens",
+        "integrity": "sha512-lM/UBzQmfJRo9ABXbPWemivdCW8V2G8FHaHdypQaIy523snUjog0W71ayWXTjiR+ixeMyVHN2XcpnTd/liPg/Q==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "js-tokens",
+        "os": null,
+        "repository": "lydell/js-tokens",
+        "sha256": "b6867f1af4cf2c6e46fd94871944bf49fcc32ab1730bc829807812a87960c9cd",
+        "url": "https://registry.npmjs.org/js-tokens/-/js-tokens-10.0.0.tgz",
+        "version": "10.0.0"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/jsesc-3.1.0.tgz",
+        "bytes": 10038,
+        "cpu": null,
+        "engines": {
+          "node": ">=6"
+        },
+        "install_path": "node_modules/jsesc",
+        "integrity": "sha512-/sM3dO2FOzXjKQhJuo0Q173wf2KOo8t4I8vHy6lF9poUp7bKT0/NHE8fPX23PwfhnykfqnC2xRxOnVw5XuGIaA==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE-MIT.txt"
+        ],
+        "name": "jsesc",
+        "os": null,
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/mathiasbynens/jsesc.git"
+        },
+        "sha256": "0c712225ccca9a70bf83f2ac2f52a268c858c7df3b3df196f1623239d80d3c09",
+        "url": "https://registry.npmjs.org/jsesc/-/jsesc-3.1.0.tgz",
+        "version": "3.1.0"
+      },
+      {
+        "archive_root": "package",
+        "artifact": "raw/obug-3.0.0.tgz",
+        "bytes": 9311,
+        "cpu": null,
+        "engines": {
+          "node": ">=12.20.0"
+        },
+        "install_path": "node_modules/obug",
+        "integrity": "sha512-5vvB5+W7ePv+p3uqxi+RcW1XAzLW0/hxt3/4X4Lc4qHudzOhmBiBwOY6DRob4WnanAEGvNcLjF+KNOufrUoEQw==",
+        "license": "MIT",
+        "license_members": [
+          "package/LICENSE"
+        ],
+        "name": "obug",
+        "os": null,
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/sxzz/obug.git"
+        },
+        "sha256": "ecfec0c0318c048b6abde3c42f3a1c3fc35b3f69392a4b262b848aab76ff3d11",
+        "url": "https://registry.npmjs.org/obug/-/obug-3.0.0.tgz",
+        "version": "3.0.0"
+      }
+    ],
+    "worker_id": "worker 006"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/recipe/check.py",
+      "{prefix}/artifacts.json"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "node"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 4188,
+      "extract": false,
+      "id": "artifact-001",
+      "material_path": "raw/babel__code-frame-8.0.6.tgz",
+      "sha256": "c940a4465965f0da56fabbebd4055f7b07c8c4c26b8ca0c8b055c82ca36fe1ff",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@babel/code-frame/-/code-frame-8.0.6.tgz"
+    },
+    {
+      "bytes": 26668,
+      "extract": false,
+      "id": "artifact-002",
+      "material_path": "raw/babel__generator-8.0.10.tgz",
+      "sha256": "79e767ebd539e3647a87ef46af8b82fd8b2940bc206ff89dded5c18f1df15cad",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@babel/generator/-/generator-8.0.10.tgz"
+    },
+    {
+      "bytes": 6942,
+      "extract": false,
+      "id": "artifact-003",
+      "material_path": "raw/babel__helper-globals-8.0.6.tgz",
+      "sha256": "1fb7ea1b86257d6faaeb00a0cb5b0fae2456bc04e054d0ab47f64fead1998e06",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@babel/helper-globals/-/helper-globals-8.0.6.tgz"
+    },
+    {
+      "bytes": 3596,
+      "extract": false,
+      "id": "artifact-004",
+      "material_path": "raw/babel__helper-string-parser-8.0.8.tgz",
+      "sha256": "fd9a1ad78c1c4bf9bec762e4f7de72bc34c2746aaae0648f06056dcb4c333864",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@babel/helper-string-parser/-/helper-string-parser-8.0.8.tgz"
+    },
+    {
+      "bytes": 7191,
+      "extract": false,
+      "id": "artifact-005",
+      "material_path": "raw/babel__helper-validator-identifier-8.0.6.tgz",
+      "sha256": "9eb9bf58bace8c3d1fce42fd15abea35e10ab5061d0ab9be42b489404175110b",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identifier-8.0.6.tgz"
+    },
+    {
+      "bytes": 121080,
+      "extract": false,
+      "id": "artifact-006",
+      "material_path": "raw/babel__parser-8.0.10.tgz",
+      "sha256": "8accd9d62c340cf74ca1c34a8ed3343a644cda59ea900e138849de46cdedbb1c",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@babel/parser/-/parser-8.0.10.tgz"
+    },
+    {
+      "bytes": 15345,
+      "extract": false,
+      "id": "artifact-007",
+      "material_path": "raw/babel__template-8.0.0.tgz",
+      "sha256": "6cacbdb62a8a38e3c100077fc1072d8ec9f0737122e3876fca550850eeac905e",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@babel/template/-/template-8.0.0.tgz"
+    },
+    {
+      "bytes": 75366,
+      "extract": false,
+      "id": "artifact-008",
+      "material_path": "raw/babel__traverse-8.0.10.tgz",
+      "sha256": "033589d26df1dd392f7527992735bfca3b350624fc5d29e7f433fe0b4a1403be",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@babel/traverse/-/traverse-8.0.10.tgz"
+    },
+    {
+      "bytes": 124979,
+      "extract": false,
+      "id": "artifact-009",
+      "material_path": "raw/babel__types-8.0.10.tgz",
+      "sha256": "1455e460b3759697092e62a7972bf123c29b5221374709ccb1d3df4676f90637",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@babel/types/-/types-8.0.10.tgz"
+    },
+    {
+      "bytes": 20201,
+      "extract": false,
+      "id": "artifact-010",
+      "material_path": "raw/jridgewell__gen-mapping-0.4.0-beta.0.tgz",
+      "sha256": "2b279a769b39b02e2393d10ab6397ef8e43609bb25c161bc54d979d49a5a0638",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.4.0-beta.0.tgz"
+    },
+    {
+      "bytes": 9622,
+      "extract": false,
+      "id": "artifact-011",
+      "material_path": "raw/jridgewell__resolve-uri-3.1.2.tgz",
+      "sha256": "db52f9f62558baab13353dd39e3200750fc33e6a129a575b46226f493776e230",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz"
+    },
+    {
+      "bytes": 18401,
+      "extract": false,
+      "id": "artifact-012",
+      "material_path": "raw/jridgewell__sourcemap-codec-1.6.0.tgz",
+      "sha256": "f30a35f6af8c347d01b8ff2f8662272f7d986cf21b916704d86c249a90b97e25",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.6.0.tgz"
+    },
+    {
+      "bytes": 30747,
+      "extract": false,
+      "id": "artifact-013",
+      "material_path": "raw/jridgewell__trace-mapping-0.3.31.tgz",
+      "sha256": "c64c71a119630d5abe8246889edf334b2ca9ddad094e20d623332956b1453ccf",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz"
+    },
+    {
+      "bytes": 2892,
+      "extract": false,
+      "id": "artifact-014",
+      "material_path": "raw/types__jsesc-2.5.1.tgz",
+      "sha256": "9fc72849a5074e88d4918a9860b920e02b489bdd8d60111739e153ae2681e6f8",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/@types/jsesc/-/jsesc-2.5.1.tgz"
+    },
+    {
+      "bytes": 4360,
+      "extract": false,
+      "id": "artifact-015",
+      "material_path": "raw/js-tokens-10.0.0.tgz",
+      "sha256": "b6867f1af4cf2c6e46fd94871944bf49fcc32ab1730bc829807812a87960c9cd",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/js-tokens/-/js-tokens-10.0.0.tgz"
+    },
+    {
+      "bytes": 10038,
+      "extract": false,
+      "id": "artifact-016",
+      "material_path": "raw/jsesc-3.1.0.tgz",
+      "sha256": "0c712225ccca9a70bf83f2ac2f52a268c858c7df3b3df196f1623239d80d3c09",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/jsesc/-/jsesc-3.1.0.tgz"
+    },
+    {
+      "bytes": 9311,
+      "extract": false,
+      "id": "artifact-017",
+      "material_path": "raw/obug-3.0.0.tgz",
+      "sha256": "ecfec0c0318c048b6abde3c42f3a1c3fc35b3f69392a4b262b848aab76ff3d11",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/obug/-/obug-3.0.0.tgz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use this explicit prefix; do not alter global Node or Java packages."
+    ],
+    "documentation": [
+      "https://babeljs.io/docs/babel-generator",
+      "https://babeljs.io/docs/babel-traverse"
+    ],
+    "examples": [
+      {
+        "command": "python3 \"{prefix}/recipe/check.py\" \"{build}/manual-functional\"",
+        "description": "Re-run bounded functional qualification into a separate output directory"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installation",
+        "path": "{prefix}",
+        "purpose": "Pinned upstream distribution and isolated dependency closure"
+      },
+      {
+        "label": "Raw artifacts",
+        "path": "{prefix}/raw",
+        "purpose": "Original immutable packages and provenance"
+      },
+      {
+        "label": "Functional examples",
+        "path": "{prefix}/checks",
+        "purpose": "Complete positive and negative examples"
+      }
+    ],
+    "notes": [
+      "Babel JavaScript parser/traverse/generator, distinct from py.babel. Binding rename preserves tested semantics and comments; generator does not promise byte-identical whitespace.",
+      "Upstream binary/distribution installation; no Rust, TypeScript compiler, Babel or Spoon source build is claimed.",
+      "Runtime prerequisites: Python >=3.9; Node.js ^22.18.0 or >=24.11.0",
+      "Target distribution records the reference host only and is not a distro-name installation gate."
+    ],
+    "summary": "Babel JavaScript parser/traverse/generator, distinct from py.babel. Binding rename preserves tested semantics and comments; generator does not promise byte-identical whitespace."
+  },
+  "version": "8.0.10"
+}

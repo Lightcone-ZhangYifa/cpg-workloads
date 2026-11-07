@@ -1,0 +1,126 @@
+{
+  "build": "cpg-worker084-cpu-v1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-S",
+        "{prefix}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--work",
+        "{build}/functional-checks"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "real-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "magpie",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "canonical_commit": "b5f0a2e68a1c940b5ee178855f9828102b96cb9c",
+    "new_candidate": true,
+    "package_manager": "original compiler_playground 0.21.14 APIs; no controller changes",
+    "record_id": "review.optimization.magpie-gi",
+    "runtime_contract": {
+      "arch": "x86_64",
+      "host_commands": [
+        "python3"
+      ],
+      "native_runtime": [
+        "glibc"
+      ],
+      "opencl": null,
+      "os": "linux",
+      "python": "CPython 3.12"
+    },
+    "scope": "conditional small CPU/OpenCL-CPU validation; no GPU, OCI, official benchmark score or MPI qualification",
+    "worker_id": "worker 084"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "install_argv": [
+      "python3",
+      "-S",
+      "{recipe}/install.py",
+      "--prefix",
+      "{prefix}",
+      "--build",
+      "{build}",
+      "--assets",
+      "{assets}",
+      "--recipe",
+      "{recipe}"
+    ],
+    "required_host_commands": [
+      "python3",
+      "gcc"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 413146,
+      "extract": false,
+      "id": "input-3067f96e9e7166bda985",
+      "material_path": "raw/magpie-b5f0a2e68a1c940b5ee178855f9828102b96cb9c.tar.gz",
+      "sha256": "3067f96e9e7166bda98504c6ed05844488b0603c1fd7453681e80eec8bf2d9bc",
+      "strip_root": false,
+      "url": "https://codeload.github.com/bloa/magpie/tar.gz/b5f0a2e68a1c940b5ee178855f9828102b96cb9c"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the Python PackageManager API to install an explicit artifact into an independent prefix."
+    ],
+    "documentation": [
+      "https://github.com/bloa/magpie"
+    ],
+    "examples": [
+      {
+        "command": "python3 -S {prefix}/check.py --prefix {prefix} --work /your/external/check-directory",
+        "description": "Run a fresh external-work functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "profile",
+        "path": "{prefix}/profile.json",
+        "purpose": "Exact private input and runtime contract"
+      },
+      {
+        "label": "examples",
+        "path": "{prefix}/samples",
+        "purpose": "Real kernel and independent correctness harnesses"
+      }
+    ],
+    "notes": [
+      "Reference distribution is descriptive. Actual OS, architecture, interpreter and library loading are checked.",
+      "Full original source archives and exact wheels are retained in the source artifact. Optional execution subtrees do not claim complete upstream benchmark coverage.",
+      "CPU OpenCL execution does not qualify CUDA or physical GPU execution. No system profiler is used."
+    ],
+    "summary": "Locked offline magpie integration with bounded real CPU functional checks."
+  },
+  "version": "git-b5f0a2e68a1c940b5ee178855f9828102b96cb9c"
+}

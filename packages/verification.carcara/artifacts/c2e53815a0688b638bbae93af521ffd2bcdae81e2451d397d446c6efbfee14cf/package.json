@@ -1,0 +1,141 @@
+{
+  "build": "worker052-20261102-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "task-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 90
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "verification.carcara",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1348622,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "SAT, SMT and runtimes"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "verification.carcara",
+      "immutable_ref": "5d817d86bd18ea2a850a580d602f17f36959ee99",
+      "kind": "native_bundle",
+      "license_id": "See bundled upstream LICENSE and NOTICE files",
+      "material_path": "inputs/input-1",
+      "purpose": "Official Carcara 1.1.0 binary; strict Alethe proof checking, modified original assertion set rejected and semantic resolution-premise mutation rejected. Propositional minimal derivation, no ignored unknown rules or arithmetic holes. Locked Cargo vendor closure included; local source build was interrupted under shared-host memory pressure and is not claimed successful.",
+      "qualification_scope": "Official Carcara 1.1.0 binary; strict Alethe proof checking, modified original assertion set rejected and semantic resolution-premise mutation rejected. Propositional minimal derivation, no ignored unknown rules or arithmetic holes. Locked Cargo vendor closure included; local source build was interrupted under shared-host memory pressure and is not claimed successful.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "cfc52ba786fd638dd03dad308e394f3ab3e8185915c0ab83cb2b48a6cc91abb8",
+      "source_evidence": [
+        "https://github.com/ufmg-smite/carcara"
+      ],
+      "source_url": "https://codeload.github.com/ufmg-smite/carcara/tar.gz/5d817d86bd18ea2a850a580d602f17f36959ee99",
+      "strip_archive_root": false,
+      "title": "Carcara",
+      "upstream": "https://github.com/ufmg-smite/carcara",
+      "version": "1.1.0",
+      "worker_record_id": "review.verification.carcara"
+    },
+    "catalog_sha256": "c39b7db6f952fb233c3a8e25d415bdae7118a77754c659c00436a5e6c7ce752d",
+    "input_provenance": [
+      {
+        "bytes": 1348622,
+        "local_path": "/workspace/scratch/81acee5764ca/worker052/downloads/carcara-5d817d86bd18ea2a850a580d602f17f36959ee99.tar.gz",
+        "revision": "5d817d86bd18ea2a850a580d602f17f36959ee99",
+        "sha256": "cfc52ba786fd638dd03dad308e394f3ab3e8185915c0ab83cb2b48a6cc91abb8",
+        "url": "https://codeload.github.com/ufmg-smite/carcara/tar.gz/5d817d86bd18ea2a850a580d602f17f36959ee99"
+      },
+      {
+        "bytes": 5402048,
+        "local_path": "/workspace/scratch/81acee5764ca/worker052/downloads/carcara-linux",
+        "sha256": "fcd06852931d36b13e6d3f7965c81a068f5cfe2f3c5e7da2d91af500f8f1bfda",
+        "url": "https://github.com/ufmg-smite/carcara/releases/download/carcara-1.1.0/carcara-linux"
+      }
+    ],
+    "original_resource_ids": [],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "source_build_qualified": false
+    },
+    "record_id": "review.verification.carcara",
+    "runtime_requirements": [
+      "Linux x86_64; host ABI as measured in ELF audit",
+      "Python >=3.12",
+      "Rust/Cargo1.92.0 and native C toolchain only for optional offline source rebuild",
+      "Validated on Linux x86_64 with glibc 2.39; no lower ABI bound is inferred. Exact ELF requirements are recorded separately."
+    ],
+    "worker_id": "worker 052"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {}
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1348622,
+      "extract": false,
+      "id": "verification.carcara",
+      "material_path": "inputs/input-1",
+      "sha256": "cfc52ba786fd638dd03dad308e394f3ab3e8185915c0ab83cb2b48a6cc91abb8",
+      "strip_root": false,
+      "url": "https://codeload.github.com/ufmg-smite/carcara/tar.gz/5d817d86bd18ea2a850a580d602f17f36959ee99"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/ufmg-smite/carcara"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Official Carcara 1.1.0 binary; strict Alethe proof checking, modified original assertion set rejected and semantic resolution-premise mutation rejected. Propositional minimal derivation, no ignored unknown rules or arithmetic holes. Locked Cargo vendor closure included; local source build was interrupted under shared-host memory pressure and is not claimed successful."
+      }
+    ],
+    "notes": [
+      "Qualification is limited to the explicit functional cases and fixed inputs recorded in this profile.",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "Official Carcara 1.1.0 binary; strict Alethe proof checking, modified original assertion set rejected and semantic resolution-premise mutation rejected. Propositional minimal derivation, no ignored unknown rules or arithmetic holes. Locked Cargo vendor closure included; local source build was interrupted under shared-host memory pressure and is not claimed successful."
+  },
+  "version": "1.1.0"
+}

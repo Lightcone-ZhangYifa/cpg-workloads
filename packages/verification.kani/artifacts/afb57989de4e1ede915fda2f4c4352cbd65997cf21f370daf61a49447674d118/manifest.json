@@ -1,0 +1,237 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "bytes": 1610,
+      "kind": "file",
+      "mode": 493,
+      "path": "payload/bin/kani",
+      "sha256": "797c1040666929e874cc2f5a0a047f04541ff96959cc4f7327d3de75c23bbc97"
+    },
+    {
+      "bytes": 650,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/capsule-lock.json",
+      "sha256": "ee83d1045ad2ebda89f16a9d82ecf2994045cd0b88dfdc839a553d992515146b"
+    },
+    {
+      "bytes": 31657,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/runtime-manifest.json",
+      "sha256": "a3ad3b72e85dacad8c379ebc8ebb2d911993bfbd400d59d5b074534f6eb11888"
+    },
+    {
+      "bytes": 204757754,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/runtime.cpgpkg.tar.gz",
+      "sha256": "b0348079c313af3a2f1ff792b43bcd2406f5a25b62014d34690d5425a8adb6d3"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share"
+    },
+    {
+      "bytes": 404,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/NOTICE.txt",
+      "sha256": "207b7625640d96181d89e6c4267727bc062b73c0e89ae9e20ea1eb8611d3a1da"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/fixtures"
+    },
+    {
+      "bytes": 775,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/fixtures/popcount.rs",
+      "sha256": "3e0bc80ef029816c5f97d3d09e2aaef199717e4313489175ada132753e3ecd7d"
+    },
+    {
+      "bytes": 30921,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/source-lock.json",
+      "sha256": "08fff820b2328ea6ab3a92c24f3514af2e0dc28f58c97133eeac63596b7755e4"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 3385,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "db3c2fd85f53a6c465bfe3fe3f972846dfde00e44804f5afdb815cb53b105df8"
+    },
+    {
+      "bytes": 3471,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/functional.py",
+      "sha256": "d2b29001ddda6e905346627146d42358e6dc07ea645be4563a27a510089542af"
+    }
+  ],
+  "inventory_sha256": "e92ef1a3e8ac389ae952eb08b638d6e08a4a4fdbb482cce623aa412400a1619f",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "0ec55dab1010c3d64e7f055ebe584bcd0e54f1591650bda35672f8687437478a",
+  "method": "binary",
+  "package": {
+    "build": "cpg-worker103-capsule-v3",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "{prefix}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "bounded-popcount-positive-negative-unwind",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 1000
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "verification.kani",
+    "metadata": {
+      "baseline_change": false,
+      "domain_cardinality": 16,
+      "formal_baseline": "0.21.14",
+      "inner_elf_gate": "original check_binary_runtime/current_target with full raw ELF evidence",
+      "kani_commit": "0d2328a93f0e0ff66132d6bfa1a7d884877cf862",
+      "license": "MIT OR Apache-2.0 for Kani; bundled third-party licenses retained",
+      "private_library_dir": "libexec/kani/toolchain/lib",
+      "record_id": "review.verification.kani",
+      "runtime_capsule_sha256": "b0348079c313af3a2f1ff792b43bcd2406f5a25b62014d34690d5425a8adb6d3",
+      "runtime_layout": "compressed-capsule",
+      "runtime_member_inventory": "runtime-manifest.json",
+      "rust_commit": "8925ea358a0f265ca61026aadc7ecc506c545cbe",
+      "scope": "bounded functional profile",
+      "solver": "CaDiCaL 3.0.0 built into CBMC 6.11.0",
+      "unwind_negative_control": 2,
+      "unwind_positive": 5,
+      "worker_id": "worker 103"
+    },
+    "provider": "binary",
+    "recipe": {
+      "required_installed_paths": [
+        "{prefix}/bin/kani",
+        "{prefix}/runtime.cpgpkg.tar.gz",
+        "{prefix}/runtime-manifest.json",
+        "{prefix}/capsule-lock.json"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "sh",
+        "cc",
+        "gcc",
+        "ldd"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 140315343,
+        "extract": true,
+        "id": "kani-official-release",
+        "material_path": null,
+        "sha256": "32e2b484d73ede0bbf64a2cf0879c4259422497d8aec4ee67d448de9ae7843d3",
+        "strip_root": true,
+        "url": "https://github.com/model-checking/kani/releases/download/kani-0.68.0/kani-0.68.0-x86_64-unknown-linux-gnu.tar.gz"
+      },
+      {
+        "bytes": 1615615,
+        "extract": true,
+        "id": "kani-exact-source",
+        "material_path": null,
+        "sha256": "f00e032df55d1dee6aff7f9ae6b9e7f9af665b60e135892a2a210a0376492810",
+        "strip_root": true,
+        "url": "https://codeload.github.com/model-checking/kani/tar.gz/refs/tags/kani-0.68.0"
+      },
+      {
+        "bytes": 83512832,
+        "extract": true,
+        "id": "exact-nightly-frontend",
+        "material_path": null,
+        "sha256": "e531815fa551362b5a485e0d286b6c96555312d49359c0b8fe9e8f34c45594b4",
+        "strip_root": true,
+        "url": "https://static.rust-lang.org/dist/2026-08-21/rustc-nightly-x86_64-unknown-linux-gnu.tar.xz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "export PATH=\"{prefix}/bin:$PATH\""
+      ],
+      "documentation": [
+        "https://github.com/model-checking/kani",
+        "https://model-checking.github.io/kani/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/kani PROJECT/popcount.rs --harness popcount4_matches_reference --exact --unwind 5",
+          "description": "Prove the 4-bit population count for all admitted inputs"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Kani CLI",
+          "path": "{prefix}/bin/kani",
+          "purpose": "Standalone Kani proof harness execution using bundled CBMC"
+        }
+      ],
+      "notes": [
+        "Standalone Rust verification profile; shipped Kani release omits unused playback and no_core trees, and Rust toolchain is restricted to the exact frontend shared libraries. Cargo integration and native playback execution are not qualified.",
+        "Result is for exactly 16 admitted u8 values and the declared unwind bound. The insufficient-unwind case must fail; no global or unbounded program-correctness claim is made.",
+        "Negative property prints a concrete counterexample test; this profile does not execute native playback. Host Linux x86_64 libc/libm/libgcc/zlib ABI is required.",
+        "The declared host C preprocessor/compiler (cc and gcc) is required by the CBMC toolchain; the executed environment reports GCC 13.3.0.",
+        "Runtime is a SHA-locked compressed capsule. CPG0.21.14 SDK must be importable by python3. CLI/check verifies and expands the full runtime into a private writable build directory per invocation, then removes it; CPG_RUNTIME_BUILD can choose a location outside the immutable prefix. Functional logs and inputs are retained separately from the temporary runtime.",
+        "The expanded capsule is additionally checked by the original SDK ELF/runtime checker against actual current_target; its private libraries must resolve inside that expansion. Undeclared ambient LD_* variables are excluded from qualified execution."
+      ],
+      "summary": "Kani 0.68.0 + exact Rust frontend + CBMC 6.11.0 for bounded finite-domain algorithm proofs."
+    },
+    "version": "0.68.0-nightly-2026-08-21"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "inner_elf_gate": "original CPG check_binary_runtime with observed current_target and declared private library directory",
+    "preparation_archive_sha256": "6ed15aae0ae5cdef4ab002c8bbed330136a35bead582a8a77b057d353a85186b",
+    "runtime_capsule_sha256": "b0348079c313af3a2f1ff792b43bcd2406f5a25b62014d34690d5425a8adb6d3",
+    "runtime_layout": "compressed-capsule",
+    "worker": "103"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

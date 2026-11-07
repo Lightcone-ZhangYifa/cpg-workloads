@@ -1,0 +1,102 @@
+{
+  "build": "cpg-20261101-w058-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "isa.sail-riscv",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "formal_qualification_promotion": false,
+    "license_note": "Model BSD-2-Clause; third-party dependencies retain their own original notices in the complete source and binary release.",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "RV64IM executed instruction subset; fixed default-rv64.jsonc; 3 registers and 8 signature words; HTIF failure and invalid XLEN rejection",
+    "record_id": "review.engineering.sail-riscv",
+    "source_build_verified": false,
+    "source_material_scope": "Exact complete declared source archives; see source-lock.json",
+    "worker_id": "worker 058"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 876356,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "raw/sail-riscv-0.16-source.tar.gz",
+      "sha256": "73a617fae97429f0659f7dedac4dada86ea6f27183146698ef70804b23b4203e",
+      "strip_root": false,
+      "url": "https://codeload.github.com/riscv/sail-riscv/tar.gz/refs/tags/0.16"
+    },
+    {
+      "bytes": 2966239,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "raw/sail-riscv-0.16-Linux-x86_64.tar.gz",
+      "sha256": "f9bb8a32b8f3eddbdf69b3a29d96dff4ba1e77f45877165e0478418367da6bee",
+      "strip_root": false,
+      "url": "https://github.com/riscv/sail-riscv/releases/download/0.16/sail-riscv-Linux-x86_64.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt",
+      "source-lock.json",
+      "resource-evidence.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/check.py",
+        "description": "Run the declared semantic and failure-path checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent prefix",
+        "path": "{prefix}",
+        "purpose": "Tool, source fixtures and offline checks"
+      }
+    ],
+    "notes": [
+      "官方预构建模型与Sail0.20.3/60695b1e配对；未在本机重建整个模型。",
+      "只验证列出的指令子集，不推定default配置中其他已启用扩展的资格。",
+      "Sail生成器由worker059独立负责，依赖不重复计数。",
+      "没有硬件认证、编译器等价证明、Dataset或性能测量资格。"
+    ],
+    "summary": "执行固定Sail RISC-V模型并核寄存器和signature"
+  },
+  "version": "0.16"
+}

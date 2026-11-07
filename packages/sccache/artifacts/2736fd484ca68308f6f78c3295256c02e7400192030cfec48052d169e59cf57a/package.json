@@ -1,0 +1,60 @@
+{
+  "build": "worker-v002",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/tools/check_sccache.py",
+        "--payload",
+        "{prefix}",
+        "--evidence",
+        "{build}/sccache-check"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-task",
+      "kind": "functional",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "sccache",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Only the declared cases, target and pinned inputs",
+    "record_id": "review.engineering.sccache",
+    "worker_id": "worker 079"
+  },
+  "provider": "binary",
+  "recipe": {},
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/mozilla/sccache/releases/download/v0.19.0/sccache-v0.19.0-x86_64-unknown-linux-musl.tar.gz"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Independent resource prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed upstream resource and repeatable checks"
+      }
+    ],
+    "notes": [],
+    "summary": "Frozen upstream sccache local compiler cache; GCC C miss/hit/header invalidation verified"
+  },
+  "version": "0.19.0"
+}

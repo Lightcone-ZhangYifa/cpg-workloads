@@ -1,0 +1,115 @@
+{
+  "build": "cpg20261101.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{tools}/run_check.py",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assignment-functional",
+      "kind": "functional",
+      "stdout_regex": "passed",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "workbench.silver",
+  "metadata": {
+    "baseline_catalog_modified": false,
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Three real grammar builds; official hello, generated C outputs 6 and 4 25 0, host/extension separation, syntax/name/type negative cases. No Silver compiler self-bootstrap or language-server qualification.",
+    "record_id": "review.engineering.silver",
+    "runtime_toolchain": {},
+    "worker_id": "047"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "copy",
+    "required_runtime_commands": [
+      "python3",
+      "java",
+      "javac",
+      "ant",
+      "cc"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 230756039,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "silver-0.6.0.tar.gz",
+      "sha256": "c775e1c0aefe10cb82c0e0fa89110739cf5c3f9b9a614f9065a93d3f4934c3d7",
+      "strip_root": false,
+      "url": "https://github.com/melt-umn/silver/releases/download/v0.6.0/silver-0.6.0.tar.gz"
+    },
+    {
+      "bytes": 812353,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "silver-source-v0.6.0.tar.gz",
+      "sha256": "a3ce979cf446ac4b003f7b13065005265b0ce39f503ef6b65aa4d0f8de8f2a50",
+      "strip_root": false,
+      "url": "https://codeload.github.com/melt-umn/silver/tar.gz/refs/tags/v0.6.0"
+    },
+    {
+      "bytes": 604374,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "copper-source-b5d3414092847b388e10eb8599a6f4c398ee6df1.tar.gz",
+      "sha256": "4d28e8cb91302425cbafaee673f854580890e8da9794d6ea59ab6d116810c2c0",
+      "strip_root": false,
+      "url": "https://codeload.github.com/melt-umn/copper/tar.gz/b5d3414092847b388e10eb8599a6f4c398ee6df1"
+    },
+    {
+      "bytes": 108054,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "commonmark-0.17.1-sources.jar",
+      "sha256": "609898f39e52a4d3b19e9b914ba96781bbb5c5778af3eb708e7e2403fe5fa412",
+      "strip_root": false,
+      "url": "https://repo.maven.apache.org/maven2/org/commonmark/commonmark/0.17.1/commonmark-0.17.1-sources.jar"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://melt.cs.umn.edu/silver/"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B <prefix>/run.py --output <new-directory>",
+        "description": "Run the bounded assignment qualification"
+      }
+    ],
+    "locations": [
+      {
+        "label": "installation",
+        "path": "{prefix}",
+        "purpose": "Immutable tool and qualification fixtures"
+      }
+    ],
+    "notes": [
+      "Three real grammar builds; official hello, generated C outputs 6 and 4 25 0, host/extension separation, syntax/name/type negative cases. No Silver compiler self-bootstrap or language-server qualification."
+    ],
+    "summary": "Generate tutorial, host and composed attribute grammars with a new square extension."
+  },
+  "version": "0.6.0"
+}

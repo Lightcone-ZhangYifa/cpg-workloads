@@ -1,0 +1,111 @@
+{
+  "build": "cpg-20261101-w013-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--wasmtime-prefix",
+        "{dependencies.wasmtime-cranelift.prefix}",
+        "--wasm-tools-prefix",
+        "{dependencies.wasm-tools.prefix}",
+        "--output",
+        "{build}/weval-checks"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-native-function",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 360
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "wasmtime-cranelift",
+      "wasm-tools"
+    ],
+    "system": []
+  },
+  "id": "weval",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "bounded_native_function": true,
+      "hardware": false,
+      "material": true,
+      "oci": false,
+      "official_benchmark": false,
+      "source_build_of_main_tool": false
+    },
+    "record_id": "review.engineering.weval",
+    "scope": "Wizer/WAFFLE闭包；不要以主观性能收益作验收",
+    "source_files_retained": true,
+    "worker_id": "worker 013"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/bin/weval",
+      "{prefix}/share/weval/offline.py"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 116840,
+      "extract": true,
+      "id": "weval",
+      "material_path": "sources/weval",
+      "sha256": "9ef4d567579e18fb5d623e1260681d229c90ca93c76b5c9c71220b6b8b45d493",
+      "strip_root": true,
+      "url": "https://codeload.github.com/bytecodealliance/weval/tar.gz/47164ae9e5bacfdcc23ddaeb2fa491c8f61c644d"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "export PATH=\"{prefix}/bin:$PATH\""
+    ],
+    "documentation": [
+      "https://github.com/bytecodealliance/weval"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages info weval --registry registry.json --json",
+        "description": "Inspect the resource through the supplied additive registry."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Executables",
+        "path": "{prefix}/bin",
+        "purpose": "Explicit resource tools and repeatable bounded check programs."
+      },
+      {
+        "label": "Complete upstream source",
+        "path": "{prefix}/share/weval/source",
+        "purpose": "Pinned unmodified project source retained for agent inspection and development."
+      }
+    ],
+    "notes": [
+      "The target distribution records the build host. CPG checks OS, architecture and actual ELF runtime compatibility; it does not enforce a distribution name.",
+      "Native functionality is bounded by the attached fixtures; OCI, target hardware and official benchmark qualifications are not granted.",
+      "Download preparation is separate from installation; this artifact consumes local files only."
+    ],
+    "summary": "WebAssembly partial evaluation using the official small interpreter specialization example."
+  },
+  "version": "0.5.1"
+}

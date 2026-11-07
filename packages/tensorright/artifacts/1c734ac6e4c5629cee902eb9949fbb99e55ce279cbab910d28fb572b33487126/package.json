@@ -1,0 +1,162 @@
+{
+  "build": "cpg-worker107-20261102-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assigned-semantic-controls",
+      "kind": "functional",
+      "stdout_regex": "\"status\"\\s*:\\s*\"passed\"",
+      "timeout_seconds": 300
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "tensorright",
+  "metadata": {
+    "assignment": {
+      "after_dataset_verified": null,
+      "after_functional": null,
+      "after_material": null,
+      "alias_target": "",
+      "assessment_ids": [
+        "verification:tensorright"
+      ],
+      "baseline_catalog_sha256": {},
+      "baseline_dataset_verified": null,
+      "baseline_functional_ids": [],
+      "baseline_managed_ids": [],
+      "baseline_material_ids": [],
+      "baseline_pins": {},
+      "baseline_relation": "新增候选（独立身份仍需锁定）",
+      "baseline_resource_ids": [],
+      "baseline_trusted_apt_ids": [],
+      "baseline_version": "0.21.14",
+      "canonical_url": "https://github.com/ADAPT-uiuc/TensorRight",
+      "category": "张量图重写验证",
+      "cost": "中/重",
+      "decision": "conditional",
+      "decision_zh": "条件入选",
+      "dependencies": "Haskell/Stack、SMT",
+      "entity_kind": "resource",
+      "evidence_relpath": "",
+      "evidence_urls": [
+        "https://github.com/ADAPT-uiuc/TensorRight"
+      ],
+      "has_active_task": true,
+      "identity_unresolved": false,
+      "increment_package": "cpg-20261101-worker-107-delta-v001.zip",
+      "new_family_candidate": true,
+      "owned_baseline_resource_ids": [],
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "quality_evidence": "{\"primary_source_url\":\"https://github.com/ADAPT-uiuc/TensorRight\",\"retrieval_ref\":\"turn0search22\",\"specific_usefulness\":\"对张量图重写做任意秩/大小条件下的自动验证研究。\",\"inspectable_validation_surface\":\"重放一个官方合法重写和错误重写；保存边条件/shape约束。\",\"known_limit\":\"适用范围由DSL和证明假设约束，不等于真实FP硬件任意重写可交换。\",\"academic_basis\":\"官方或作者项目的实现/文档/样例；未据此宣称独立学术认可或广泛采用\",\"local_execution_evidence\":\"本次只做调研，没有执行工具、重放证明或量化缺陷检出率\",\"confidence_boundary\":\"选择指资源对AI开发的适用价值，不等于所有分支已支持或所有证明已在当前工程重放\"}",
+      "record_id": "review.verification.tensorright",
+      "research_scope": "本次公开来源评估",
+      "resource_name": "TensorRight",
+      "result_status": "未执行接入",
+      "reviewed_on": "2026-11-01",
+      "schema_version": 1,
+      "scope_limits": "适用范围由DSL和证明假设约束，不等于真实FP硬件任意重写可交换。",
+      "selected_new_family": true,
+      "selection_reason": "任意秩张量重写是独特验证能力；仅对DSL可表达和官方支持运算建证明结论。",
+      "source_refs": [
+        "turn0search22"
+      ],
+      "task": "重放一个官方合法重写和错误重写；保存边条件/shape约束。",
+      "taxonomy_categories": [
+        "V28"
+      ],
+      "value_to_ai": "对张量图重写做任意秩/大小条件下的自动验证研究。",
+      "worker_id": "worker 107",
+      "worker_scope": "翻译与重写验证 · 2"
+    },
+    "baseline_version": "0.21.14",
+    "formal_promotion": false,
+    "logical_entity_id": "tensorright",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Author artifact Int/Real tensor rewrite checks: ten positive theory cases and two equal-shape countermodels; sufficient const1<const2 condition, not IEEE floating point or full OCI execution",
+    "record_id": "review.verification.tensorright",
+    "system_runtime_requirements": [
+      "Linux x86_64",
+      "glibc",
+      "libgmp.so.10",
+      "Python3"
+    ],
+    "worker_id": "worker 107"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/check.py"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "GHCRTS": "-N1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 141080,
+      "extract": false,
+      "id": "author-artifact-source",
+      "material_path": null,
+      "sha256": "c478201f82976b4f9dd9992cae5648cc521a5b0e50c12d76fa0c98c6c70a2e1d",
+      "strip_root": false,
+      "url": "https://zenodo.org/records/14159871/files/tr-artifact.zip"
+    },
+    {
+      "bytes": 870131021,
+      "extract": false,
+      "id": "author-compiled-layer",
+      "material_path": null,
+      "sha256": "519e4d4952a44e5ba6b58e21a603a661f8bc9c48965ae0540313cd2dfaf367df",
+      "strip_root": false,
+      "url": "https://registry-1.docker.io/v2/lsrcz/tensor-right/blobs/sha256:519e4d4952a44e5ba6b58e21a603a661f8bc9c48965ae0540313cd2dfaf367df"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use a fresh independent prefix; checks consume only local inputs."
+    ],
+    "documentation": [
+      "sources-lock.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/check.py",
+        "description": "Run the bounded profile"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Validation entry",
+        "path": "{prefix}/check.py",
+        "purpose": "Replay the assigned semantic controls."
+      }
+    ],
+    "notes": [
+      "Scope is the explicitly executed profile; no formal release promotion.",
+      "Host ELF loader and system libraries are checked by the unmodified CPG manager."
+    ],
+    "summary": "Author artifact Int/Real tensor rewrite checks: ten positive theory cases and two equal-shape countermodels; sufficient const1<const2 condition, not IEEE floating point or full OCI execution"
+  },
+  "version": "0.1.0.0-author-artifact-20241114"
+}

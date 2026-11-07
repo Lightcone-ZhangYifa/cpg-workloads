@@ -1,0 +1,105 @@
+{
+  "build": "worker024.1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-I",
+        "{recipe}/capability_check.py",
+        "--resource",
+        "elfio",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "worker024-bounded-capability",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "elfio",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "dependency_family_count_increment": 0,
+    "new_upstream_family": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Linux x86_64; fixed functional corpus and malformed inputs; not whole-ISA or CPU-execution certification",
+    "test_oracle_identity": "GNU binutils and GCC",
+    "worker_id": "worker 024"
+  },
+  "provider": "source",
+  "recipe": {
+    "install_argv": [
+      "python3",
+      "{recipe}/build.py",
+      "--resource",
+      "elfio",
+      "--assets",
+      "{assets}",
+      "--build",
+      "{build}",
+      "--prefix",
+      "{prefix}",
+      "--jobs",
+      "{jobs}"
+    ],
+    "required_host_commands": [
+      "python3",
+      "g++"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/cpg-elfio-probe"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc",
+      "readelf",
+      "ar",
+      "nm"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 6589842,
+      "extract": true,
+      "id": "elfio",
+      "material_path": "elfio",
+      "sha256": "418315e42d2c4e6745b66b672e05ca9e4d29a57d7d52404b2dda855155136084",
+      "strip_root": true,
+      "url": "https://codeload.github.com/serge1/ELFIO/tar.gz/660e90514a2e80fba1c55f2cee07bbeda3d1c601"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/serge1/ELFIO"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "prefix",
+        "path": "{prefix}",
+        "purpose": "Independent installation of pinned resource"
+      }
+    ],
+    "notes": [
+      "Bounded offline capability checks; hardware execution qualifications are stated in evidence."
+    ],
+    "summary": "elfio original source and independently verified native provider"
+  },
+  "version": "commit-660e90514a2e80fba1c55f2cee07bbeda3d1c601"
+}

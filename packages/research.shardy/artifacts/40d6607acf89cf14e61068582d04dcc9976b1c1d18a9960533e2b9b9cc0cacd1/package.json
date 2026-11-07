@@ -1,0 +1,150 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/guarded_check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/profile",
+        "--runtime-prefix",
+        "{dependencies.support.openxla-cpu-runtime.prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional-profile",
+      "kind": "functional",
+      "stdout_regex": "CPG_CHECK_PASS",
+      "timeout_seconds": 2400
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "support.openxla-cpu-runtime"
+    ],
+    "system": []
+  },
+  "id": "research.shardy",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "functional_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualifications": {
+      "dataset": null,
+      "oci": false,
+      "official_benchmark": false,
+      "physical_hardware": false
+    },
+    "record_id": "review.optimization.shardy",
+    "resource_metadata": {
+      "build_claim": false,
+      "check_extra_args": [
+        "--runtime-prefix",
+        "{dependencies.support.openxla-cpu-runtime.prefix}"
+      ],
+      "check_timeout_seconds": 2400,
+      "dependencies": [
+        "support.openxla-cpu-runtime"
+      ],
+      "functional_claim": true,
+      "id": "research.shardy",
+      "limitations": [
+        "使用官方jaxlib 0.8.0 CPU预编译绑定，本会话未从源码重建XLA/LLVM依赖闭包。",
+        "源码commit由JAX 0.8.0正式源码依赖锁追溯；发布wheel未嵌入可独立核验的上游commit，不能据此宣称二进制可复现构建。",
+        "功能资格仅覆盖本包可重放的小规模profile；不代表官方全量测试、Benchmark、GPU或生产资格。",
+        "Shardy分片传播由实际sdy-propagation-pipeline执行，分区HLO由同版XLA/GSPMD生成。",
+        "执行为单主机进程内的两个逻辑CPU设备，未获得物理多设备或网络分布式运行资格。"
+      ],
+      "method": "binary",
+      "recipe_files": [
+        "common_check.py"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_target": {
+        "arch": "x86_64",
+        "glibc_min": "2.27",
+        "os": "Linux",
+        "python": "CPython 3.12"
+      },
+      "source_locks": [
+        {
+          "bytes": 3291563,
+          "id": "shardy-source",
+          "path": "sources/shardy-f7d73420eb7af1def1f7024db80256f7b8673651.zip",
+          "sha256": "377a16da94c93a3eb04d4325739b3e7a0514fa8d02395d74f2e15f1b3bff57ca",
+          "url": "https://codeload.github.com/openxla/shardy/zip/f7d73420eb7af1def1f7024db80256f7b8673651"
+        }
+      ],
+      "timeout_seconds": 2400,
+      "upstream_license": "Apache-2.0; full upstream LICENSE in payload/upstream/LICENSE",
+      "upstream_source_commit": "f7d73420eb7af1def1f7024db80256f7b8673651",
+      "version": "f7d73420eb7a"
+    },
+    "source_build_claim": false,
+    "support_only": false,
+    "upstream_license": "Apache-2.0; full upstream LICENSE in payload/upstream/LICENSE",
+    "worker_id": "worker 063"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3291563,
+      "extract": false,
+      "id": "shardy-source",
+      "material_path": "sources/shardy-f7d73420eb7af1def1f7024db80256f7b8673651.zip",
+      "sha256": "377a16da94c93a3eb04d4325739b3e7a0514fa8d02395d74f2e15f1b3bff57ca",
+      "strip_root": false,
+      "url": "https://codeload.github.com/openxla/shardy/zip/f7d73420eb7af1def1f7024db80256f7b8673651"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/openxla/shardy"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"research.shardy\")",
+        "description": "Run the declared checks through the CPG Python API"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed payload",
+        "path": "{prefix}",
+        "purpose": "Locked resources and bounded offline check inputs"
+      }
+    ],
+    "notes": [
+      "使用官方jaxlib 0.8.0 CPU预编译绑定，本会话未从源码重建XLA/LLVM依赖闭包。",
+      "源码commit由JAX 0.8.0正式源码依赖锁追溯；发布wheel未嵌入可独立核验的上游commit，不能据此宣称二进制可复现构建。",
+      "功能资格仅覆盖本包可重放的小规模profile；不代表官方全量测试、Benchmark、GPU或生产资格。",
+      "Shardy分片传播由实际sdy-propagation-pipeline执行，分区HLO由同版XLA/GSPMD生成。",
+      "执行为单主机进程内的两个逻辑CPU设备，未获得物理多设备或网络分布式运行资格。"
+    ],
+    "summary": "小张量程序给初始sharding，传播并导出分区IR，核查形状/分片约束"
+  },
+  "version": "f7d73420eb7a"
+}

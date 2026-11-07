@@ -1,0 +1,267 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 21863,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSE.txt",
+      "sha256": "b48f5dc16f144cd79ddaadce3cc8ef183778a0b4f75ab4362e134b347ca20f3d"
+    },
+    {
+      "bytes": 945,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.txt",
+      "sha256": "5a3f52caf2ea1802ac559de4ab36230fb8cf277499c55b2794f3625b4c98a117"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/examples"
+    },
+    {
+      "bytes": 303,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/examples/Certificate.v",
+      "sha256": "d89177657323bb49dca00de90c704d44b97ddfd7488d0d092392044463d738dd"
+    },
+    {
+      "bytes": 156,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/examples/Mutant.v",
+      "sha256": "76ad130aed707664fb3f4ca371360744682f9a65c6f2cda2980a80c3a0aaa15a"
+    },
+    {
+      "bytes": 14616,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/reference-check-result.json",
+      "sha256": "be2bbcc5debbe4db9cdf37ac0be4a5017e7f5df5c07b442299c64a880eedc126"
+    },
+    {
+      "bytes": 1329,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/resource.json",
+      "sha256": "c5e771b7af7f72a309023b6824f40c0173437aa48572af5ae1c84691703370cb"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/tools"
+    },
+    {
+      "bytes": 1763,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tools/env.py",
+      "sha256": "529c9ac336a563750e1c358cfaefc98c4efe07e717c7b87d3c8109f15f2938a0"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/tools/fixtures"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/tools/fixtures/smtcoq"
+    },
+    {
+      "bytes": 116,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tools/fixtures/smtcoq/sat.cnf",
+      "sha256": "c0e4c498aad566f3d1820cd16125454da78d91f0fae59b1ad09f5a2efb34cd08"
+    },
+    {
+      "bytes": 126,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tools/fixtures/smtcoq/sat.log",
+      "sha256": "8580d2b8472de9b77989775443778d572d4dfa5ef7c8a9e03a627dce13b0b593"
+    },
+    {
+      "bytes": 27629,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tools/proof_checks.py",
+      "sha256": "fe0014e232761df8f25b5b59a6fb50f2aefbc353c9f271ff6f8af9cf42ec8e91"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1354,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/run_check.py",
+      "sha256": "a3bf3ac6a7ede33f5c2fe6da20fbb0701c89b5c3a668209cc217978fa60c10fe"
+    }
+  ],
+  "inventory_sha256": "463401506b50a3617f810beb5509b2544aa2c3fe6a4073895104db5cff7b7964",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "c41dd6336ed0d11c5a8f3485146512026f674f339ec7aa757dde4d08bb2e8637",
+  "method": "binary",
+  "package": {
+    "build": "cpg-20261101-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/run_check.py",
+          "--output-root",
+          "{build}/proof-results",
+          "--",
+          "python3",
+          "-B",
+          "{prefix}/tools/proof_checks.py",
+          "--resource",
+          "smtcoq",
+          "--runtime",
+          "{dependency_prefix:support.proof-smtcoq}",
+          "--expected-coq",
+          "8.19.2",
+          "--expected-ocaml",
+          "4.09.1",
+          "--gc",
+          "s=256k,o=50,O=500"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "actual-proof-and-rejection",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 3600
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "support.proof-smtcoq"
+      ],
+      "system": []
+    },
+    "id": "verification.smtcoq",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "formal_qualification_changed": false,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "prepack_evidence_sha256": "be2bbcc5debbe4db9cdf37ac0be4a5017e7f5df5c07b442299c64a880eedc126",
+      "proof_gates": [
+        "runtime-version exit",
+        "fixed Coq and OCaml version",
+        "dedicated SMTCoq fixed-commit runtime version",
+        "Certificate exit",
+        "real SAT witness checker returned true",
+        "checked_cnf independently associated assumption audit recorded",
+        "checker_correct independently associated assumption audit recorded",
+        "Mutant exit",
+        "changed certificate semantically rejected",
+        "coqchk exit"
+      ],
+      "record_id": "review.verification.smtcoq",
+      "support_only": false,
+      "upstream": [
+        {
+          "bytes": 599398,
+          "commit": "19e91e31a0393f4314625af51509bc14ebb65d97",
+          "id": "smtcoq-extrapi",
+          "image_manifest": "sha256:2fad095c3967fe0fd1c1330834846018d9051a9177bb29dff5f952065f1546f8",
+          "repo": "smtcoq/smtcoq",
+          "sha256": "5c0623ec26bbdc45ff438c05f49511df3fd76281a5ccbec1288e31349bd9ac6e",
+          "url": "https://codeload.github.com/smtcoq/smtcoq/tar.gz/19e91e31a0393f4314625af51509bc14ebb65d97",
+          "version": "extrapi-coq-8.19+git.19e91e31a039"
+        }
+      ],
+      "worker_id": "worker 100"
+    },
+    "provider": "binary",
+    "recipe": {
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 599398,
+        "extract": false,
+        "id": "verification.smtcoq.upstream-1",
+        "material_path": "sources/smtcoq-extrapi-19e91e31a0393f4314625af51509bc14ebb65d97.tar.gz",
+        "sha256": "5c0623ec26bbdc45ff438c05f49511df3fd76281a5ccbec1288e31349bd9ac6e",
+        "strip_root": false,
+        "url": "https://codeload.github.com/smtcoq/smtcoq/tar.gz/19e91e31a0393f4314625af51509bc14ebb65d97"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://codeload.github.com/smtcoq/smtcoq/tar.gz/19e91e31a0393f4314625af51509bc14ebb65d97"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "proof-checker",
+          "path": "{prefix}/tools/proof_checks.py",
+          "purpose": "Replay the exact assigned proof and negative checks"
+        }
+      ],
+      "notes": [
+        "CPG 0.21.14 candidate overlay; formal baseline qualification is unchanged.",
+        "All generated proof files belong in an independent output directory."
+      ],
+      "summary": "SMTCoq fixed commit 19e91e31a0393f4314625af51509bc14ebb65d97, official extrapi Coq 8.19.2/OCaml 4.09.1 profile; supplied ZChaff SAT resolution certificate, one changed-antecedent negative; no external solver invocation"
+    },
+    "version": "git19e91e31a039+coq8.19.2"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.14",
+    "packing_input_sha256": "dc33682df57348d345e9a8fa369d554e7c31df9f846398eab25d004c0db4c0c3",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.verification.smtcoq",
+    "scope": "SMTCoq fixed commit 19e91e31a0393f4314625af51509bc14ebb65d97, official extrapi Coq 8.19.2/OCaml 4.09.1 profile; supplied ZChaff SAT resolution certificate, one changed-antecedent negative; no external solver invocation",
+    "support_only": false,
+    "worker_id": "worker 100"
+  },
+  "resolved_dependencies": [
+    {
+      "build": "cpg-20261101-v001",
+      "id": "support.proof-smtcoq",
+      "method": "binary",
+      "sha256": "a3bf062f21f8fa6fb2b3f64612b9aca493862e7aa93181a2bf6cc8492870e10e",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "8.19.2+ocaml4.09.1.smt19e91e31a039"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

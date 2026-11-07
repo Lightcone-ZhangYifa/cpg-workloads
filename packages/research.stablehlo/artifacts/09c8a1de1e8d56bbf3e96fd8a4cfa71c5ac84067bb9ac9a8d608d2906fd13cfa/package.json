@@ -1,0 +1,148 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/guarded_check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/profile",
+        "--runtime-prefix",
+        "{dependencies.support.openxla-cpu-runtime.prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional-profile",
+      "kind": "functional",
+      "stdout_regex": "CPG_CHECK_PASS",
+      "timeout_seconds": 2400
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "support.openxla-cpu-runtime"
+    ],
+    "system": []
+  },
+  "id": "research.stablehlo",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "functional_claim": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualifications": {
+      "dataset": null,
+      "oci": false,
+      "official_benchmark": false,
+      "physical_hardware": false
+    },
+    "record_id": "review.engineering.stablehlo",
+    "resource_metadata": {
+      "build_claim": false,
+      "check_extra_args": [
+        "--runtime-prefix",
+        "{dependencies.support.openxla-cpu-runtime.prefix}"
+      ],
+      "check_timeout_seconds": 2400,
+      "dependencies": [
+        "support.openxla-cpu-runtime"
+      ],
+      "functional_claim": true,
+      "id": "research.stablehlo",
+      "limitations": [
+        "使用官方jaxlib 0.8.0 CPU预编译绑定，本会话未从源码重建XLA/LLVM依赖闭包。",
+        "源码commit由JAX 0.8.0正式源码依赖锁追溯；发布wheel未嵌入可独立核验的上游commit，不能据此宣称二进制可复现构建。",
+        "功能资格仅覆盖本包可重放的小规模profile；不代表官方全量测试、Benchmark、GPU或生产资格。",
+        "手写2x3 f32张量；只授予opset/portable bytecode/verifier/reference interpreter范围，不作为完整编译器资格。"
+      ],
+      "method": "binary",
+      "recipe_files": [
+        "common_check.py"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_target": {
+        "arch": "x86_64",
+        "glibc_min": "2.27",
+        "os": "Linux",
+        "python": "CPython 3.12"
+      },
+      "source_locks": [
+        {
+          "bytes": 20250706,
+          "id": "stablehlo-source",
+          "path": "sources/stablehlo-0a4440a5c8de45c4f9649bf3eb4913bf3f97da0d.zip",
+          "sha256": "f1620aafc2b6d730e2ee9c33b35a59a2656a11eed10b1ef8049f175eb4fbdd9c",
+          "url": "https://codeload.github.com/openxla/stablehlo/zip/0a4440a5c8de45c4f9649bf3eb4913bf3f97da0d"
+        }
+      ],
+      "timeout_seconds": 2400,
+      "upstream_license": "Apache-2.0; full upstream LICENSE in payload/upstream/LICENSE",
+      "upstream_source_commit": "0a4440a5c8de45c4f9649bf3eb4913bf3f97da0d",
+      "version": "1.13.1"
+    },
+    "source_build_claim": false,
+    "support_only": false,
+    "upstream_license": "Apache-2.0; full upstream LICENSE in payload/upstream/LICENSE",
+    "worker_id": "worker 063"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 20250706,
+      "extract": false,
+      "id": "stablehlo-source",
+      "material_path": "sources/stablehlo-0a4440a5c8de45c4f9649bf3eb4913bf3f97da0d.zip",
+      "sha256": "f1620aafc2b6d730e2ee9c33b35a59a2656a11eed10b1ef8049f175eb4fbdd9c",
+      "strip_root": false,
+      "url": "https://codeload.github.com/openxla/stablehlo/zip/0a4440a5c8de45c4f9649bf3eb4913bf3f97da0d"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://openxla.org/stablehlo"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"research.stablehlo\")",
+        "description": "Run the declared checks through the CPG Python API"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed payload",
+        "path": "{prefix}",
+        "purpose": "Locked resources and bounded offline check inputs"
+      }
+    ],
+    "notes": [
+      "使用官方jaxlib 0.8.0 CPU预编译绑定，本会话未从源码重建XLA/LLVM依赖闭包。",
+      "源码commit由JAX 0.8.0正式源码依赖锁追溯；发布wheel未嵌入可独立核验的上游commit，不能据此宣称二进制可复现构建。",
+      "功能资格仅覆盖本包可重放的小规模profile；不代表官方全量测试、Benchmark、GPU或生产资格。",
+      "手写2x3 f32张量；只授予opset/portable bytecode/verifier/reference interpreter范围，不作为完整编译器资格。"
+    ],
+    "summary": "固定opset/bytecode版本，序列化反序列化并核shape/type verifier"
+  },
+  "version": "1.13.1"
+}

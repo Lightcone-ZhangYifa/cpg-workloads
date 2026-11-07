@@ -1,0 +1,165 @@
+{
+  "build": "worker104-functional-v001",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--work",
+        "{build}/functional-evidence"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "dataset-ref.rustsmith-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "dataset-ref.rustsmith",
+  "metadata": {
+    "catalog": {
+      "agent_visibility": "Complete raw materials, answers and references may be selected for an Environment; the developer controls their use.",
+      "archive_bytes": null,
+      "build_peak_bytes": null,
+      "category": [
+        "Dataset research",
+        "Generators and correctness"
+      ],
+      "container_strategy": "Prepare on the trusted controller. Use a compatible dev environment for builds; target receives only admitted prebuilt programs and inputs. This reference entry does not install an executable capability.",
+      "dataset_card_id": "rustsmith",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "requires_controller_only_storage": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "target_exports": [],
+        "visibility_policy": "developer_selected_complete_materials",
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/rustsmith/rustsmith"
+      ],
+      "evidence_files": [
+        "workspace-evidence/datasets-v090/generators/cards.json"
+      ],
+      "extract": true,
+      "id": "dataset-ref.rustsmith",
+      "immutable_ref": "dcf049c66f094779ab9d08e9caf6e3c61e2c6cae",
+      "installed_bytes": null,
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "BSD-3-Clause",
+      "mandatory": false,
+      "material_path": "dataset-research/rustsmith",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Prepared research direction for future Rust scope; keep outside current main speed aggregate.",
+      "qualification": {
+        "archive_measured": false,
+        "build_qualified": false,
+        "container_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "Catalogued research candidate; a source pin does not establish complete acquisition, dependency closure or native execution.",
+        "Complete materials may be selected for an Environment; experiment visibility is chosen by the developer.",
+        "A prepared schema-v1 dataset manifest and explicit adapter/oracle admission are required before training.",
+        "Archive URL is derived from the resolved repository commit; payload SHA-256 and exact bytes remain unresolved until explicit acquisition/import.",
+        "A Rust-language extension, not a native C/C++ input source.",
+        "Pin rustc language/compiler versions and ownership-feature coverage."
+      ],
+      "redistributable": "license-and-component-review-required",
+      "roles": [
+        "host"
+      ],
+      "sha256": null,
+      "size_basis": "Unacquired payload and installed footprint remain null; reference metadata bytes are not dataset size.",
+      "source_evidence": [
+        "https://github.com/rustsmith/rustsmith"
+      ],
+      "source_logical_bytes": null,
+      "source_url": "https://codeload.github.com/rustsmith/rustsmith/tar.gz/dcf049c66f094779ab9d08e9caf6e3c61e2c6cae",
+      "title": "RustSmith research material",
+      "upstream": "https://github.com/rustsmith/rustsmith",
+      "version": "HEAD observed 2026-10-23"
+    },
+    "catalog_sha256": "58c005ffba2a0f574ea3f101c68b51fe010b009652d888b60faa3ed90051f70c",
+    "worker104_profile": {
+      "dataset_verified": null,
+      "deployment_network": "not required",
+      "nightly": "2026-09-17",
+      "runtime_closure": "Rust, JVM/prover and resource binaries are supplied in immutable input archives. A compatible Linux glibc system and Python 3 are required; compiling generated Rust executables also requires the host cc/linker and C runtime development files."
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "expanded_runtime_abi_gate": "original check_binary_runtime, actual current_target and actual functional environment",
+    "input_lock": "input-lock.json",
+    "offline": true,
+    "profile": "rustsmith",
+    "qualification_scope": "bounded actual task functional profile; not an official baseline promotion",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/cpg_resource_runtime.py",
+      "{prefix}/input-lock.json"
+    ],
+    "required_runtime_commands": [
+      "cc",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": null,
+      "extract": true,
+      "id": "dataset-ref.rustsmith",
+      "material_path": "dataset-research/rustsmith",
+      "sha256": null,
+      "strip_root": true,
+      "url": "https://codeload.github.com/rustsmith/rustsmith/tar.gz/dcf049c66f094779ab9d08e9caf6e3c61e2c6cae"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Python runtime interface",
+        "path": "{prefix}/cpg_resource_runtime.py",
+        "purpose": "prepare(prefix, output) and command(runtime, tool, arguments)"
+      }
+    ],
+    "notes": [
+      "Every runtime output must be fresh. Full source archives, runtime locks and bounded functional checks are included.",
+      "This package does not certify every input, a complete language subset, or an official benchmark."
+    ],
+    "summary": "Run the pinned rustsmith toolchain in a fresh offline runtime."
+  },
+  "version": "HEAD observed 2026-10-23"
+}

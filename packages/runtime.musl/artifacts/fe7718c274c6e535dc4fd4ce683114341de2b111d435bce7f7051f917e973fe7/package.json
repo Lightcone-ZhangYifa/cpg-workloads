@@ -1,0 +1,136 @@
+{
+  "build": "worker053-20261102-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "task-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "runtime.musl",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 1080786,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "SAT, SMT and runtimes"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "runtime.musl",
+      "immutable_ref": "1.2.5",
+      "kind": "native_bundle",
+      "license_id": "See bundled upstream LICENSE and NOTICE files",
+      "material_path": "inputs/input-1",
+      "purpose": "Fixed musl source rebuilt in an isolated prefix; fresh statically linked x86_64 LP64 executable checks allocation, errno overflow, formatted output and independent pthread TLS; readelf verifies no PT_INTERP or dynamic dependencies.",
+      "qualification_scope": "Fixed musl source rebuilt in an isolated prefix; fresh statically linked x86_64 LP64 executable checks allocation, errno overflow, formatted output and independent pthread TLS; readelf verifies no PT_INTERP or dynamic dependencies.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4",
+      "source_evidence": [
+        "https://musl.libc.org/"
+      ],
+      "source_url": "https://deb.debian.org/debian/pool/main/m/musl/musl_1.2.5.orig.tar.gz",
+      "strip_archive_root": false,
+      "title": "musl libc",
+      "upstream": "https://musl.libc.org/",
+      "version": "1.2.5",
+      "worker_record_id": "review.engineering.musl"
+    },
+    "catalog_sha256": "068dfb064a07fd1ca71edd92e791df3d3b7007617b60ae77e8d86176cb02dc93",
+    "input_provenance": [
+      {
+        "bytes": 1080786,
+        "local_path": "/workspace/scratch/81acee5764ca/worker053/payloads/musl/sources/musl-1.2.5.tar.gz",
+        "revision": "1.2.5",
+        "sha256": "a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4",
+        "url": "https://deb.debian.org/debian/pool/main/m/musl/musl_1.2.5.orig.tar.gz"
+      }
+    ],
+    "original_resource_ids": [],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "source_build_qualified": true
+    },
+    "record_id": "review.engineering.musl",
+    "runtime_requirements": [
+      "Python >=3.12",
+      "gcc",
+      "readelf",
+      "Validated on Linux x86_64 with glibc 2.39; no lower ABI bound is inferred. Exact ELF requirements are recorded separately."
+    ],
+    "worker_id": "worker 053"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "ldd",
+      "gcc"
+    ],
+    "runtime_environment": {}
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1080786,
+      "extract": false,
+      "id": "runtime.musl",
+      "material_path": "inputs/input-1",
+      "sha256": "a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4",
+      "strip_root": false,
+      "url": "https://deb.debian.org/debian/pool/main/m/musl/musl_1.2.5.orig.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://musl.libc.org/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Fixed musl source rebuilt in an isolated prefix; fresh statically linked x86_64 LP64 executable checks allocation, errno overflow, formatted output and independent pthread TLS; readelf verifies no PT_INTERP or dynamic dependencies."
+      }
+    ],
+    "notes": [
+      "Qualification is limited to the explicit functional cases and fixed inputs recorded in this profile.",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "Fixed musl source rebuilt in an isolated prefix; fresh statically linked x86_64 LP64 executable checks allocation, errno overflow, formatted output and independent pthread TLS; readelf verifies no PT_INTERP or dynamic dependencies."
+  },
+  "version": "1.2.5"
+}

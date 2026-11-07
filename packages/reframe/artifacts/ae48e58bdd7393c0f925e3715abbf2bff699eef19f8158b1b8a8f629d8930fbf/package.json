@@ -1,0 +1,141 @@
+{
+  "build": "worker029-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--resource",
+        "reframe",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/assignment-acceptance"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assignment-acceptance",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "gcc"
+      ],
+      "timeout_seconds": 420
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "reframe",
+  "metadata": {
+    "additional_input_lock": "recipe/input-lock.json",
+    "catalog": {
+      "archive_bytes": 512015,
+      "category": [
+        "Compiler development",
+        "Build and continuous integration"
+      ],
+      "extract": false,
+      "id": "reframe",
+      "kind": "wheel",
+      "license_id": "BSD-3-Clause",
+      "material_path": "sources/reframe",
+      "purpose": "HPC多环境回归/benchmark编排",
+      "qualification_scope": "本地后端运行参数化编译/正确性/性能检查并导出报告",
+      "scope_limits": "远程集群需实际授权环境；不凭配置授予MPI/GPU测量。",
+      "sha256": "83d9c89a965e13f96bc40e715182c274e7466d6e6d402bc2f451150d03733745",
+      "source_url": "https://files.pythonhosted.org/packages/f6/1b/1e2e223f6893cd6f037445acbdc586ff3d74918b4b92be366cbd15f92899/reframe_hpc-4.10.4-py3-none-any.whl",
+      "strip_archive_root": false,
+      "title": "ReFrame",
+      "upstream": "https://reframe-hpc.readthedocs.io/en/stable/",
+      "version": "4.10.4"
+    },
+    "catalog_sha256": "8b1e1674b36feb7f16cd3c26f2bfcf7deb31c2cadbc61e293b1734d7a886f5f0",
+    "license_id": "BSD-3-Clause",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "provenance": "Exact PyPI digest verified for every wheel; upstream asset/source digest retained for non-Python inputs.",
+    "record_id": "review.engineering.reframe",
+    "source_compile_qualified": false,
+    "worker_id": "worker 029"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "{recipe}/install.py",
+        "--source",
+        "{source}",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ]
+    ],
+    "installation_scope": "verified upstream distribution installation; no native source compilation claimed",
+    "network_policy": "offline",
+    "qualification_scope": "本地后端运行参数化编译/正确性/性能检查并导出报告",
+    "required_host_commands": [
+      "python3"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C.UTF-8",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 512015,
+      "extract": false,
+      "id": "reframe",
+      "material_path": "sources/reframe",
+      "sha256": "83d9c89a965e13f96bc40e715182c274e7466d6e6d402bc2f451150d03733745",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/f6/1b/1e2e223f6893cd6f037445acbdc586ff3d74918b4b92be366cbd15f92899/reframe_hpc-4.10.4-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Add {prefix}/bin to PATH for this independent installation."
+    ],
+    "documentation": [
+      "https://reframe-hpc.readthedocs.io/en/stable/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --resource reframe --prefix {prefix} --output {build}/manual-acceptance",
+        "description": "Replay the assignment acceptance check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Installed resource",
+        "path": "{prefix}",
+        "purpose": "Independent local installation"
+      }
+    ],
+    "notes": [
+      "本地后端运行参数化编译/正确性/性能检查并导出报告",
+      "远程集群需实际授权环境；不凭配置授予MPI/GPU测量。",
+      "Installation requires a Linux x86_64 Python 3.12 host for the supplied wheel closure.",
+      "Download preparation is separate; installation never downloads dependencies."
+    ],
+    "summary": "HPC多环境回归/benchmark编排"
+  },
+  "version": "4.10.4"
+}

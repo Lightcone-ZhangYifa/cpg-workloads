@@ -1,0 +1,135 @@
+{
+  "build": "w078-static-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "locked-static-materials",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "likwid.materials-w078",
+  "metadata": {
+    "baseline_catalog_sha256": "537b1156bb8831cd5a8457f25c7e8c9bfdc5410463a413e79f28dc467284e1ef",
+    "baseline_definition_sha256": "6a02e29624ff32106fb168ceaf59c2f045620405495c3abae744e8eeaf0cf799",
+    "catalog": {
+      "archive_bytes": 2989555,
+      "category": [
+        "Observability",
+        "Static reference materials"
+      ],
+      "dependencies": [],
+      "documentation": "https://github.com/RRZE-HPC/likwid",
+      "extract": false,
+      "id": "likwid.materials-w078",
+      "kind": "url",
+      "license_class": "open",
+      "license_id": "GPL-3.0-or-later; bundled component notices retained",
+      "logical_resource_id": "likwid",
+      "mandatory": false,
+      "material_path": "original-archives/likwid.tar.gz",
+      "policy_held": true,
+      "profile_kind": "complete-locked-source-materials",
+      "purpose": "沿原 LIKWID 身份保存固定源码、拓扑资料和事件组定义，保留原有功能资格事实。",
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "786c6757243f4ccb2785b4c1856d06092f4dafdf92df357bc17d140ed750ae24",
+      "source_url": "https://codeload.github.com/RRZE-HPC/likwid/tar.gz/22abb561ca709ea867562f3801dcaff676a30f1a",
+      "strip_archive_root": false,
+      "technical_profile_only": true,
+      "title": "LIKWID 5.5.2：拓扑、事件组和 benchmark 资料",
+      "version": "5.5.2"
+    },
+    "catalog_sha256": "9cb62bed7a94083db2b0ed1d42b0d49902a6e14ec68fa71d74aab492bf3bf1c5",
+    "does_not_claim_tool_material_completeness": false,
+    "logical_resource_id": "likwid",
+    "policy_held": true,
+    "profile_kind": "complete-locked-source-materials",
+    "technical_profile_only": true
+  },
+  "provider": "material",
+  "recipe": {
+    "collection_enabled": false,
+    "profile_kind": "complete-locked-source-materials",
+    "required_installed_paths": [
+      "{prefix}/MATERIALS.md",
+      "{prefix}/material-index.json",
+      "{prefix}/source-lock.json",
+      "{prefix}/POLICY.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2989555,
+      "extract": false,
+      "id": "likwid.materials-w078",
+      "material_path": "original-archives/likwid.tar.gz",
+      "sha256": "786c6757243f4ccb2785b4c1856d06092f4dafdf92df357bc17d140ed750ae24",
+      "strip_root": false,
+      "url": "https://codeload.github.com/RRZE-HPC/likwid/tar.gz/22abb561ca709ea867562f3801dcaff676a30f1a"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/RRZE-HPC/likwid"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/inspect_material.py --list",
+        "description": "List static topics"
+      },
+      {
+        "command": "python3 {prefix}/inspect_material.py --search metadata --limit 10",
+        "description": "Search indexed materials"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reading guide",
+        "path": "{prefix}/MATERIALS.md",
+        "purpose": "Authored task-specific guide and limits."
+      },
+      {
+        "label": "Locked source archives",
+        "path": "{prefix}/source-lock.json",
+        "purpose": "Exact original byte identities and closure mapping."
+      }
+    ],
+    "notes": [
+      "System collection is policy-held. Static availability is not runtime or hardware qualification.",
+      "All original baseline identities and dependencies are unchanged.",
+      "Distribution metadata is descriptive; material content is not bound to one Linux distribution."
+    ],
+    "summary": "沿原 LIKWID 身份保存固定源码、拓扑资料和事件组定义，保留原有功能资格事实。"
+  },
+  "version": "5.5.2"
+}

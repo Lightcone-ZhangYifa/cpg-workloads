@@ -1,0 +1,98 @@
+{
+  "build": "worker075-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_resource.py",
+        "revng",
+        "{prefix}",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "owned-elf-lift-model-cfg",
+      "kind": "functional",
+      "stdout_regex": "CPG_RESOURCE_CHECK_PASSED",
+      "timeout_seconds": 2400
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.revng",
+  "metadata": {
+    "candidate_only": true,
+    "license": "GPL-2.0 overall / MIT individual files; retained runtime component notices and sources bundled",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": "x86_64 ELF lift, verified IR, model and CFG",
+    "record_id": "review.optimization.revng",
+    "source_build": false,
+    "worker_id": "worker 075"
+  },
+  "provider": "binary",
+  "recipe": {
+    "adapter": "commands",
+    "required_installed_paths": [
+      "{prefix}/INVENTORY.json",
+      "{prefix}/bin/revng",
+      "{prefix}/runtime/bin/python3.14"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc",
+      "readelf",
+      "objdump"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONNOUSERSITE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1841826,
+      "extract": false,
+      "id": "revng-upstream",
+      "material_path": "sources/revng-source.tar.gz",
+      "sha256": "1fdc5f5fe1592f29b3a627dea0ad3c6d2ef0ce51cec045661a951b35f7386db2",
+      "strip_root": false,
+      "url": "https://codeload.github.com/revng/revng/tar.gz/ba8cdb0278084da07b2655f19d1e5f1ce2ebbbdf"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use bin/revng for the relocated, independent runtime."
+    ],
+    "documentation": [
+      "https://github.com/revng/revng/tree/ba8cdb0278084da07b2655f19d1e5f1ce2ebbbdf"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/tools/check_resource.py revng {prefix} /absolute/new-check-dir",
+        "description": "Fresh owned ELF lifting check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "sources",
+        "path": "{prefix}/sources",
+        "purpose": "Corresponding source and build-recipe archives"
+      }
+    ],
+    "notes": [
+      "Candidate overlay only; original CPG catalog and formal qualification unchanged."
+    ],
+    "summary": "rev.ng x86_64 ELF lifting runtime profile\n\nRun bin/revng -C PROJECT project init OWNED_ELF --no-initial-auto-analysis,\nthen project analyze parse-binary and project artifact lift -o lifted.bc.\nThe bounded acceptance also saves the model and disassemble fold PTML, verifies\nthe lifted bitcode with its paired LLVM 16.0.1 opt, and checks the input hash,\ntarget, ABI, normalized symbol address and nontrivial control flow.\n\nThe source archive is exact revng ba8cdb0278084da07b2655f19d1e5f1ce2ebbbdf.\nOverall GPLv2 and individual-file MIT declarations are retained. Matching QEMU\nsource and original component notices, plus source releases and upstream build\nrecipes for retained copyleft libraries are included under sources/runtime/share.\nThe original vendor binary provenance is locked; binaries were not rebuilt here.\nOnly ELF debug information was stripped. Optional IDA import, other target\narchitectures, UI/network services and recompilation are excluded. The 1.4GB\noptional prototype database is omitted using upstream's supported no-database\npath. Original Requires-Dist metadata is preserved; this is an explicit ELF CLI\nsubset, with click 8.2.1 and pycparser 2.22 overlays matching required constraints.\nCPython 3.14.6 and LLVM 16.0.1 are bundled. Host Linux x86_64 glibc and libstdc++\nare required; gcc/binutils are used only to make and inspect the owned fixture.\nNo general semantic equivalence, recompilation or source-build claim is made.\n\nActual import audit additionally retains 13 exact-version official Python wheels for undeclared runtime imports (aiohttp, CLI rendering and database/server imports). Their versions, licenses, URLs and SHA256 are preserved in profile/revng-python-import-completion.json. Network service behavior is not qualified; offline checks deny IP sockets. Target source is unchanged.\n"
+  },
+  "version": "git.ba8cdb027808"
+}

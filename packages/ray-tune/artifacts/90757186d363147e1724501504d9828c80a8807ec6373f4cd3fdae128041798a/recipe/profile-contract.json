@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "manifest_file": "input-lock.json",
+  "manifest_sha256": "a08839b6e677013882af70a45ee0002f1c459cc69831908b894a3f20228a2950",
+  "resource": {
+    "profile": "ray-local",
+    "requirements": [
+      "PyYAML==6.0.3",
+      "attrs==26.1.0",
+      "certifi==2026.10.23",
+      "charset-normalizer==3.5.2",
+      "click==8.5.0",
+      "filelock==4.2.6",
+      "fsspec==2026.9.0",
+      "idna==3.20",
+      "jsonschema-specifications==2025.9.1",
+      "jsonschema==4.26.0",
+      "msgpack==1.2.4",
+      "numpy==2.5.4",
+      "packaging==26.3",
+      "pandas==3.1.0",
+      "protobuf==7.36.2",
+      "pyarrow==26.0.0",
+      "python-dateutil==4.0.0",
+      "ray==2.49.2",
+      "referencing==0.37.0",
+      "requests==2.34.2",
+      "rpds-py==2026.9.1",
+      "setuptools==84.2.1",
+      "tensorboardX==2.6.5",
+      "typing_extensions==4.16.0",
+      "tzdata==2026.6",
+      "urllib3==2.8.0",
+      "wheel==0.48.0"
+    ],
+    "cli_phases": [
+      [
+        "run_ray.py",
+        "--out",
+        "{evidence}/ray",
+        "--phase",
+        "start"
+      ],
+      [
+        "run_ray.py",
+        "--out",
+        "{evidence}/ray",
+        "--phase",
+        "resume"
+      ]
+    ],
+    "requires_loopback": true,
+    "requirements_file": "delta/materials/requirements-ray-tune.txt",
+    "status": "functional_class_trainable_passed; final_raw_ledger_check_pending",
+    "evidence": "delta/evidence/ray-class/result.json",
+    "source_archive": "wheelhouse/ray-local/ray-2.49.2-cp312-cp312-manylinux2014_x86_64.whl",
+    "build_dependencies": [],
+    "id": "ray-tune",
+    "result_subdirectory": "ray",
+    "wheel_directories": [
+      "wheelhouse/ray-local",
+      "wheelhouse/common"
+    ],
+    "build_requirements": [
+      "setuptools==84.2.1",
+      "wheel==0.48.0"
+    ],
+    "install_original_source": false
+  }
+}

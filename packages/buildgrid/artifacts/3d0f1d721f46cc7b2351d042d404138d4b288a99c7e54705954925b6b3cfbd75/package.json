@@ -1,0 +1,79 @@
+{
+  "build": "worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/checks/check_buildgrid_offline.py",
+        "--payload",
+        "{prefix}",
+        "--evidence",
+        "{build}/qualification"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "offline-local-reapi",
+      "kind": "functional",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "buildgrid",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Only the declared cases, target and pinned inputs",
+    "record_id": "review.engineering.buildgrid",
+    "worker_id": "worker 079"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "unshare",
+      "ip",
+      "sh",
+      "cat"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/postgres/usr/lib/x86_64-linux-gnu:{prefix}/buildbox/lib:{prefix}/python/psycopg2_binary.libs:{prefix}/python/pycurl.libs",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://buildgrid.build/operation/configuration.html",
+      "https://buildgrid.build/operation/migration.html"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Independent resource prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed upstream resource and repeatable checks"
+      }
+    ],
+    "notes": [
+      "Three genuine local REAPI requests cover identical-input cache hit and changed-input miss; invalid CAS content and unmatched platform are negative controls.",
+      "Official fixed-image BuildBox binary execution, not a successful BuildBox source rebuild; exact image digest retained.",
+      "Trusted hosttools shell fixture only; no hostile-workload sandbox or external deployment claim.",
+      "CPython3.12 and explicit Ubuntu24.04-compatible host-library requirements; original CPG ELF gate must pass every installed ELF."
+    ],
+    "summary": "Pinned BuildGrid with real local PostgreSQL, BuildBox, CAS, action-cache and REAPI execution"
+  },
+  "version": "0.8.16"
+}

@@ -1,0 +1,36 @@
+cabal-version:      3.0
+name:               cpg-megaparsec-frontend
+version:            0.1.0.0
+synopsis:           A bounded Megaparsec frontend fixture with structured diagnostics
+description:        A let-and-arithmetic language fixture for testing typed parse errors and source positions.
+license:            BSD-2-Clause
+license-file:       LICENSE
+author:             CPG contributors
+maintainer:         CPG contributors
+category:           Parsing
+build-type:         Simple
+extra-source-files: README.md, examples/*.cpg
+
+library
+  exposed-modules:  CPG.Frontend
+  hs-source-dirs:   src
+  build-depends:
+      base >=4.18 && <5
+    , bytestring >=0.11 && <0.13
+    , containers >=0.6 && <0.9
+    , megaparsec ==9.8.3
+    , parser-combinators >=1.3 && <2
+    , text >=2.0 && <3
+  default-language: Haskell2010
+  ghc-options:      -Wall
+
+executable cpg-megaparsec-frontend
+  main-is:          Main.hs
+  hs-source-dirs:   app
+  build-depends:
+      base >=4.18 && <5
+    , bytestring >=0.11 && <0.13
+    , cpg-megaparsec-frontend
+    , text >=2.0 && <3
+  default-language: Haskell2010
+  ghc-options:      -Wall -threaded

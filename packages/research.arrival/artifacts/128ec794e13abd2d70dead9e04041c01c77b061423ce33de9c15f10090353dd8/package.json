@@ -1,0 +1,127 @@
+{
+  "build": "1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/driver.py",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}",
+        "--recipe",
+        "{recipe}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "aarch64-iadd-chain",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "research.arrival",
+  "metadata": {
+    "binary_sha256": "d506017a0fd9f04e196b52c1aea846bd1afda6f748142324a53e822b6c1942ff",
+    "new_candidate": true,
+    "original_1862_unchanged": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "AArch64 iadd_base_case chain with authoritative pre-generated ISA specification; ASLp generation is not repeated; original ARM hardware not used",
+    "record_id": "review.verification.arrival",
+    "source_commit": "9b1765ab550810602cee8542eed9077274305632",
+    "toolchain": [
+      {
+        "bytes": 27218416,
+        "included_in_payload": false,
+        "name": "rust-std-1.82.0-x86_64-unknown-linux-gnu.tar.xz",
+        "sha256": "2eca3d36f7928f877c334909f35fe202fbcecce109ccf3b439284c2cb7849594",
+        "url": "https://static.rust-lang.org/dist/rust-std-1.82.0-x86_64-unknown-linux-gnu.tar.xz"
+      },
+      {
+        "bytes": 8870712,
+        "included_in_payload": false,
+        "name": "cargo-1.82.0-x86_64-unknown-linux-gnu.tar.xz",
+        "sha256": "97aeae783874a932c4500f4d36473297945edf6294d63871784217d608718e70",
+        "url": "https://static.rust-lang.org/dist/cargo-1.82.0-x86_64-unknown-linux-gnu.tar.xz"
+      },
+      {
+        "bytes": 74188168,
+        "included_in_payload": false,
+        "name": "rustc-1.82.0-x86_64-unknown-linux-gnu.tar.xz",
+        "sha256": "90b61494f5ccfd4d1ca9a5ce4a0af49a253ca435c701d9c44e3e44b5faf70cb8",
+        "url": "https://static.rust-lang.org/dist/rustc-1.82.0-x86_64-unknown-linux-gnu.tar.xz"
+      }
+    ],
+    "worker_id": "worker 109"
+  },
+  "provider": "source",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 23798520,
+      "extract": true,
+      "id": "research.arrival.upstream",
+      "material_path": "upstream",
+      "sha256": "8ef808746806c822d0056560b56094bf23f311cfb2f3c45e1dcfd2d886033551",
+      "strip_root": true,
+      "url": "https://codeload.github.com/mmcloughlin/arrival/tar.gz/9b1765ab550810602cee8542eed9077274305632"
+    },
+    {
+      "bytes": 28758333,
+      "extract": false,
+      "id": "research.arrival.cvc5",
+      "material_path": "solver/cvc5.zip",
+      "sha256": "d18f174ff9a11923c32c3f871f844ed16bd77a28f51050b8e7c8d821c98a1c2e",
+      "strip_root": false,
+      "url": "https://github.com/cvc5/cvc5/releases/download/cvc5-1.2.0/cvc5-Linux-x86_64-static.zip"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/mmcloughlin/arrival"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages check research.arrival",
+        "description": "Run declared installed checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Verifier",
+        "path": "{prefix}/bin/arrival-veri",
+        "purpose": "Original upstream Rust verifier"
+      },
+      {
+        "label": "Pinned original source",
+        "path": "{prefix}/source/arrival-9b1765ab550810602cee8542eed9077274305632.tar.gz",
+        "purpose": "Complete immutable upstream source archive"
+      }
+    ],
+    "notes": [
+      "Four applicable widths are checked; 128 bits remains inapplicable.",
+      "Original checked-in ISA semantics are consumed. ASLp regeneration, ARM hardware and full backend verification were not performed.",
+      "Runtime package is offline; source rebuilding needs the separately locked Rust preparation inputs."
+    ],
+    "summary": "Verify the frozen AArch64 iadd rule chain and reject an add-to-sub mutation."
+  },
+  "version": "git.9b1765ab550810602cee8542eed9077274305632"
+}

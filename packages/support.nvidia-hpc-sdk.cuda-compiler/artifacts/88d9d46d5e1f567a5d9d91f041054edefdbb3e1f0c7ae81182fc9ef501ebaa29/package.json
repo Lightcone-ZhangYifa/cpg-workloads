@@ -1,0 +1,161 @@
+{
+  "build": "worker040-cuda-support-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_cuda_kit.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "cuda-support-kit-availability",
+      "kind": "availability",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 60
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "support.nvidia-hpc-sdk.cuda-compiler",
+  "metadata": {
+    "is_resource_family": false,
+    "owned_baseline_resource_ids": [],
+    "parent_original_catalog": {
+      "archive_bytes": 6927405256,
+      "build_peak_bytes": null,
+      "category": [
+        "Toolchains",
+        "Vendor compilers"
+      ],
+      "container_strategy": "Use the unified selection manifest and a private local vendor overlay. Never publish payloads without component-specific redistribution clearance; no automatic license acceptance.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "vendor-local",
+        "admission_driver": "tools/vendor.py",
+        "apt_dependencies": {
+          "dev": [],
+          "target": []
+        },
+        "build_argv": [],
+        "build_role": "dev",
+        "configure_argv": [],
+        "executable_qualified": false,
+        "install_argv": [],
+        "install_roles": [
+          "dev"
+        ],
+        "installation_requires_reviewed_receipt": true,
+        "probe_requires_host": [],
+        "qualification_scope": "Reference commands only. A reviewed local payload and installation receipt must supply exact executable paths, arguments, license admission and feature probes.",
+        "reference_invocation_only": true,
+        "reference_invocations": [
+          [
+            "{prefix}/Linux_x86_64/26.9/compilers/bin/nvc",
+            "-V"
+          ]
+        ],
+        "reference_invocations_require_review": true,
+        "smoke_argv": [],
+        "state": "local-license-payload-required"
+      },
+      "documentation": "https://docs.nvidia.com/hpc-sdk/installation-guide/index.html",
+      "extract": false,
+      "id": "nvidia-hpc-sdk",
+      "immutable_ref": "vendor-release:26.9",
+      "installed_bytes": null,
+      "kind": "vendor-local",
+      "license_class": "restricted",
+      "license_id": "LicenseRef-nvidia-hpc-sdk",
+      "mandatory": false,
+      "material_path": "vendor-media/nvidia-hpc-sdk",
+      "presets": [
+        "all"
+      ],
+      "purpose": "Provide nvc, nvc++ and nvfortran as independent CPU-only reference compilers.",
+      "qualification_gaps": [
+        "A licensed local payload, exact delivered build identity, SHA-256, accepted license receipt and reviewed silent installation recipe are required.",
+        "The selected resource remains blocked until installation and real component probes succeed.",
+        "The supplier archive includes CUDA components. CPU-only deployment must inventory needed compiler/runtime files rather than require GPU drivers or GPU workload packages.",
+        "Redistribution of the full SDK is not assumed; allowed runtime redistributables are component-specific."
+      ],
+      "redistributable": false,
+      "roles": [
+        "dev"
+      ],
+      "sha256": null,
+      "size_basis": "Official fixed installer HTTP Content-Length; complete local payload SHA-256 remains required.",
+      "source_evidence": [
+        "https://developer.nvidia.com/hpc-sdk/releases",
+        "https://docs.nvidia.com/hpc-sdk/installation-guide/index.html",
+        "https://developer.download.nvidia.com/hpc-sdk/26.9/nvhpc_2026_269_Linux_x86_64_cuda_13.3.tar.gz"
+      ],
+      "source_url": "https://developer.download.nvidia.com/hpc-sdk/26.9/nvhpc_2026_269_Linux_x86_64_cuda_13.3.tar.gz",
+      "title": "NVIDIA HPC SDK CPU compilers",
+      "upstream": "https://developer.nvidia.com/hpc-sdk/releases",
+      "version": "26.9"
+    },
+    "parent_original_catalog_sha256": "2480b20ab84b08704c7c8d7e0aefe949cbe9968fa7deaf3221a2d8493c96708e",
+    "parent_resource_id": "nvidia-hpc-sdk",
+    "worker040_capability_support": {
+      "actual_component_release": "CUDA13.3.0",
+      "full_sdk_functional_promoted": false,
+      "full_sdk_material_promoted": false,
+      "hardware_execution": "blocked: libcuda.so.1 unavailable",
+      "no_new_resource_family": true,
+      "original_resource_id": "nvidia-hpc-sdk",
+      "original_version": "26.9",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "proprietary_payload_included": false,
+      "record_id": "review.engineering.cuda-compiler-sdk",
+      "scope": "owned replay probes and exact local SDK locks; separate real compiler evidence; no NVIDIA SDK distribution"
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "copy",
+    "required_installed_paths": [
+      "{prefix}/cuda_probe.py",
+      "{prefix}/cuda-local-sdk-lock.json",
+      "{prefix}/evidence/final-report.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://docs.nvidia.com/cuda/"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "support kit",
+        "path": "{prefix}",
+        "purpose": "Owned replay probes and exact local input locks"
+      }
+    ],
+    "notes": [
+      "Only support-kit availability is checked during material installation.",
+      "Original nvidia-hpc-sdk CPU compiler qualification is not changed.",
+      "Use README.zh.txt to replay compiler evidence with explicit user-provided local SDK inputs."
+    ],
+    "summary": "CUDA compiler capability support kit associated with existing nvidia-hpc-sdk; no proprietary SDK payload."
+  },
+  "version": "13.3.0"
+}

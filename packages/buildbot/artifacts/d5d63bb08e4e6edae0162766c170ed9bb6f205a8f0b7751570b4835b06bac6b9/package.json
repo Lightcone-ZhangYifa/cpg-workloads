@@ -1,0 +1,142 @@
+{
+  "build": "worker029-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--resource",
+        "buildbot",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/assignment-acceptance"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "assignment-acceptance",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "gcc"
+      ],
+      "timeout_seconds": 420
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "buildbot",
+  "metadata": {
+    "additional_input_lock": "recipe/input-lock.json",
+    "catalog": {
+      "archive_bytes": 1069975,
+      "category": [
+        "Compiler development",
+        "Build and continuous integration"
+      ],
+      "extract": false,
+      "id": "buildbot",
+      "kind": "wheel",
+      "license_id": "GPL-2.0-only",
+      "material_path": "sources/buildbot",
+      "purpose": "本地编译矩阵与CI配置验证框架",
+      "qualification_scope": "检查本地config并在隔离worker执行一次无发布build/test",
+      "scope_limits": "先核llvm-zorg依赖锁是否已含精确Buildbot；不连接上游生产master。",
+      "sha256": "5cd502825b1bbacda2ac0b24e6da5107dbbc2c54f80cd53100f85a5b2e30c400",
+      "source_url": "https://files.pythonhosted.org/packages/ff/ca/6bac250ca516d41b28a1eaeab105ebed89cf00499a1fd704cb4824b46c25/buildbot-4.3.0-py3-none-any.whl",
+      "strip_archive_root": false,
+      "title": "Buildbot",
+      "upstream": "https://buildbot.net/",
+      "version": "4.3.0"
+    },
+    "catalog_sha256": "e0066aaf4e7e0ee8fd9041aeea0bd6ab0ae433edb31b1d16dee01290302ea590",
+    "identity_resolution": "Separate executable Buildbot runtime; llvm-zorg remains unchanged repository material.",
+    "license_id": "GPL-2.0-only",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "provenance": "Exact PyPI digest verified for every wheel; upstream asset/source digest retained for non-Python inputs.",
+    "record_id": "review.engineering.buildbot",
+    "source_compile_qualified": false,
+    "worker_id": "worker 029"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "{recipe}/install.py",
+        "--source",
+        "{source}",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ]
+    ],
+    "installation_scope": "verified upstream distribution installation; no native source compilation claimed",
+    "network_policy": "loopback-only acceptance; all installation inputs local",
+    "qualification_scope": "检查本地config并在隔离worker执行一次无发布build/test",
+    "required_host_commands": [
+      "python3"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C.UTF-8",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1069975,
+      "extract": false,
+      "id": "buildbot",
+      "material_path": "sources/buildbot",
+      "sha256": "5cd502825b1bbacda2ac0b24e6da5107dbbc2c54f80cd53100f85a5b2e30c400",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/ff/ca/6bac250ca516d41b28a1eaeab105ebed89cf00499a1fd704cb4824b46c25/buildbot-4.3.0-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Add {prefix}/bin to PATH for this independent installation."
+    ],
+    "documentation": [
+      "https://buildbot.net/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --resource buildbot --prefix {prefix} --output {build}/manual-acceptance",
+        "description": "Replay the assignment acceptance check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Installed resource",
+        "path": "{prefix}",
+        "purpose": "Independent local installation"
+      }
+    ],
+    "notes": [
+      "检查本地config并在隔离worker执行一次无发布build/test",
+      "先核llvm-zorg依赖锁是否已含精确Buildbot；不连接上游生产master。",
+      "Installation requires a Linux x86_64 Python 3.12 host for the supplied wheel closure.",
+      "Download preparation is separate; installation never downloads dependencies."
+    ],
+    "summary": "本地编译矩阵与CI配置验证框架"
+  },
+  "version": "4.3.0"
+}

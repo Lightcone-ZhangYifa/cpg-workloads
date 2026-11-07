@@ -1,0 +1,102 @@
+{
+  "build": "cpg-20261101-w059-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{prefix}/check.py"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "isa.riscv-unified-db",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "formal_qualification_promotion": false,
+    "license_note": "Original per-file SPDX notices and LICENSES retained. Selected ISA YAML: BSD-3-Clause-Clear; repository also contains MIT/CC-BY-4.0/CC0-1.0 material; pure PyYAML is MIT.",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "16 specified RV64 I/M instruction definitions, fixed I 2.1.0 / M 2.0.0 / Zmmul 1.0.0; 10 independent encoding fixtures, extension/version gates and SQLite query",
+    "record_id": "review.root.riscv-unified-db",
+    "source_build_verified": false,
+    "source_material_scope": "Complete official GitHub tracked archive at exact commit, without submodule checkout; payload stages 16 instructions, 3 extensions, all schemas and notices; complete PyYAML sdist plus selected pure Python runtime",
+    "worker_id": "worker 059"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONOPTIMIZE": "0"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 58461646,
+      "extract": false,
+      "id": "input-000",
+      "material_path": "raw/riscv-unified-db-cadd46e22487a2002cead3883b34e72766103cdf.tar.gz",
+      "sha256": "e15f7ac7df5558cb0654cba7d60db31b08960e2bfb68afb02ee09ab8e7823fea",
+      "strip_root": false,
+      "url": "https://codeload.github.com/riscv/riscv-unified-db/tar.gz/cadd46e22487a2002cead3883b34e72766103cdf"
+    },
+    {
+      "bytes": 130960,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "raw/pyyaml-6.0.3.tar.gz",
+      "sha256": "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt",
+      "source-lock.json",
+      "resource-evidence.json"
+    ],
+    "examples": [
+      {
+        "command": "python3 -B {prefix}/check.py",
+        "description": "Run the declared semantic and failure-path checks"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent prefix",
+        "path": "{prefix}",
+        "purpose": "Tool, source fixtures and offline checks"
+      }
+    ],
+    "notes": [
+      "Bounded 16-instruction RV64I/M importer, not full upstream Ruby generator",
+      "IDL retained as text, not executed or proved",
+      "Manual URLs are navigation aids; query binds fixed UDB commit",
+      "No compiler equivalence, hardware, Dataset or performance qualification"
+    ],
+    "summary": "固定 ISA/扩展版本，结构化导入并查询编码字段、扩展条件和来源引用"
+  },
+  "version": "cadd46e22487a2002cead3883b34e72766103cdf"
+}

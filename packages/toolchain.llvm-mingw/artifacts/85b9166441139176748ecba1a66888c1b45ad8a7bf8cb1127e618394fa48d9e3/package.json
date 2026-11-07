@@ -1,0 +1,108 @@
+{
+  "build": "linux-x86_64-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_link_tools.py",
+        "mingw",
+        "{prefix}",
+        "{build}/mingw-check"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "pe-coff",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_link_tools.py",
+        "lld",
+        "{prefix}",
+        "{build}/lld-check"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "lld-four-formats",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "gcc",
+        "ar",
+        "readelf",
+        "node"
+      ],
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "toolchain.llvm-mingw",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "qualification_scope": "Linux x86_64 -> Windows x86_64 PE/COFF compile/link/structure only. No Windows/macOS execution. The source package transport imports prebuilt binaries; no LLVM source build.",
+    "worker": "worker 022"
+  },
+  "provider": "binary",
+  "recipe": {
+    "install_argv": [
+      "python3",
+      "{recipe}/import_release.py",
+      "{source}",
+      "{prefix}"
+    ],
+    "required_host_commands": [
+      "python3",
+      "tar"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 84017268,
+      "extract": false,
+      "id": "release",
+      "material_path": "raw/llvm-mingw-20261020-ucrt-ubuntu-22.04-x86_64.tar.xz",
+      "sha256": "55064b60b991a1e1e8090b8c2f84e82b22cfe5903d12c159d65064cf5e8ae335",
+      "strip_root": false,
+      "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20261020/llvm-mingw-20261020-ucrt-ubuntu-22.04-x86_64.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/mstorsjo/llvm-mingw/releases/tag/20261020",
+      "https://lld.llvm.org/"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "independent-prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed llvm-mingw UCRT cross toolchain, imported from the official Linux release"
+      }
+    ],
+    "notes": [
+      "Linux x86_64 -> Windows x86_64 PE/COFF compile/link/structure only. No Windows/macOS execution. The source package transport imports prebuilt binaries; no LLVM source build."
+    ],
+    "summary": "Fixed llvm-mingw UCRT cross toolchain, imported from the official Linux release"
+  },
+  "version": "20261020-ucrt"
+}

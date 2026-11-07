@@ -1,0 +1,390 @@
+{
+  "build": "worker044-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-jit-regression",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "runtime.spidermonkey",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 145639392,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "Managed runtimes and JIT"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "runtime.spidermonkey",
+      "immutable_ref": "mozjs115/115.10.0-1; orig.sha256=9f59a734cd5d5444b1afc2f83c1c7c8098fc781c04bf856550f64f240e644219",
+      "kind": "native_bundle",
+      "license_id": "MPL-2.0 and component licenses; see bundled source and licenses",
+      "material_path": "inputs/input-1",
+      "purpose": "Mozilla生产级JavaScript/Wasm引擎、JIT及可嵌入shell",
+      "qualification_scope": "Source-built standalone JavaScript shell with explicit interpreter/Baseline/Ion semantics, native tier observations, real type/shape bailouts, and 16 original Ion tests in two official harness configurations. Intl disabled. Host development sysroot and declared ELF ABI remain external prerequisites; no Firefox browser, complete upstream suite, benchmark or Dataset qualification.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "9f59a734cd5d5444b1afc2f83c1c7c8098fc781c04bf856550f64f240e644219",
+      "source_evidence": [
+        "https://spidermonkey.dev/"
+      ],
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/m/mozjs115/mozjs115_115.10.0.orig.tar.xz",
+      "strip_archive_root": false,
+      "title": "SpiderMonkey",
+      "upstream": "https://spidermonkey.dev/",
+      "version": "115.10.0",
+      "worker_record_id": "review.engineering.spidermonkey"
+    },
+    "catalog_sha256": "50dcbeb688b42130eaf70b7e2f76296641d38585aca87c90a6f53604d56a487e",
+    "input_provenance": [
+      {
+        "bytes": 145639392,
+        "filename": "mozjs115_115.10.0.orig.tar.xz",
+        "retrieved_utc": "2026-11-01T16:53:51Z",
+        "sha256": "9f59a734cd5d5444b1afc2f83c1c7c8098fc781c04bf856550f64f240e644219",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/m/mozjs115/mozjs115_115.10.0.orig.tar.xz",
+        "verified_against": "Ubuntu noble main Sources.xz checksums verified through noble-InRelease"
+      },
+      {
+        "bytes": 69840,
+        "filename": "mozjs115_115.10.0-1.debian.tar.xz",
+        "retrieved_utc": "2026-11-01T16:53:51Z",
+        "sha256": "beed09c7f5d35949da1254d8846ee571a384edc37456de24b3858542aa8fc57d",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/m/mozjs115/mozjs115_115.10.0-1.debian.tar.xz",
+        "verified_against": "Ubuntu noble main Sources.xz checksums verified through noble-InRelease"
+      },
+      {
+        "bytes": 2393,
+        "filename": "mozjs115_115.10.0-1.dsc",
+        "retrieved_utc": "2026-11-01T16:53:52Z",
+        "sha256": "d31a133550e70f840ca4aac66e92593d4c7b60c38c5cbc636a3e0f98d20527f1",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/m/mozjs115/mozjs115_115.10.0-1.dsc",
+        "verified_against": "Ubuntu noble main Sources.xz checksums verified through noble-InRelease"
+      },
+      {
+        "bytes": 3183342,
+        "depends": "libc6 (>= 2.34), libgcc-s1 (>= 4.2), libstd-rust-dev (= 1.75.0+dfsg0ubuntu1-0ubuntu7), gcc, libc-dev, binutils (>= 2.26)",
+        "filename": "rustc_1.75.0+dfsg0ubuntu1-0ubuntu7_amd64.deb",
+        "name": "rustc",
+        "sha256": "0b09b4266aa705f4f7612c6b66dde2e7d98553ab71765584f64824c375b90c2e",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/r/rustc/rustc_1.75.0+dfsg0ubuntu1-0ubuntu7_amd64.deb",
+        "version": "1.75.0+dfsg0ubuntu1-0ubuntu7"
+      },
+      {
+        "bytes": 6053268,
+        "depends": "libc6 (>= 2.38), libcurl3t64-gnutls (>= 7.28.0), libgcc-s1 (>= 4.2), libgit2-1.7 (>= 1.7.0), libssh2-1t64 (>= 1.2.5), libssl3t64 (>= 3.0.0), zlib1g (>= 1:1.2.3.4), rustc (= 1.75.0+dfsg0ubuntu1-0ubuntu7), binutils, gcc | clang | c-compiler",
+        "filename": "cargo_1.75.0+dfsg0ubuntu1-0ubuntu7_amd64.deb",
+        "name": "cargo",
+        "sha256": "3c3f1fa7cd7efced7bc2ae9c443cc1baab27c19d94fe2af5d2e0920d185e1ef6",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/r/rustc/cargo_1.75.0+dfsg0ubuntu1-0ubuntu7_amd64.deb",
+        "version": "1.75.0+dfsg0ubuntu1-0ubuntu7"
+      },
+      {
+        "bytes": 20013876,
+        "depends": "libc6 (>= 2.34), libgcc-s1 (>= 4.2), libllvm17, libstdc++6 (>= 13.1)",
+        "filename": "libstd-rust-1.75_1.75.0+dfsg0ubuntu1-0ubuntu7_amd64.deb",
+        "name": "libstd-rust-1.75",
+        "sha256": "107ba09a7087e41a3edcf0450c25d944de2f74cc342ba1008c868229a5a8f1ca",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/r/rustc/libstd-rust-1.75_1.75.0+dfsg0ubuntu1-0ubuntu7_amd64.deb",
+        "version": "1.75.0+dfsg0ubuntu1-0ubuntu7"
+      },
+      {
+        "bytes": 40598708,
+        "depends": "libstd-rust-1.75 (= 1.75.0+dfsg0ubuntu1-0ubuntu7)",
+        "filename": "libstd-rust-dev_1.75.0+dfsg0ubuntu1-0ubuntu7_amd64.deb",
+        "name": "libstd-rust-dev",
+        "sha256": "d2825444fda2eee39598aef3c4af483ef666a10540359e72905b4081a8fa9bc8",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/r/rustc/libstd-rust-dev_1.75.0+dfsg0ubuntu1-0ubuntu7_amd64.deb",
+        "version": "1.75.0+dfsg0ubuntu1-0ubuntu7"
+      },
+      {
+        "bytes": 26162724,
+        "depends": "libc6 (>= 2.38), libedit2 (>= 2.11-20080614-0), libffi8 (>= 3.4), libgcc-s1 (>= 3.3), libstdc++6 (>= 12), libtinfo6 (>= 6), libxml2 (>= 2.7.4), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.2.0)",
+        "filename": "libllvm17t64_17.0.6-9ubuntu1_amd64.deb",
+        "name": "libllvm17t64",
+        "sha256": "1863b5459ca4a6691f5e039e76157f074ee08b48176267642ee4dfea065f5db4",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-17/libllvm17t64_17.0.6-9ubuntu1_amd64.deb",
+        "version": "1:17.0.6-9ubuntu1"
+      },
+      {
+        "bytes": 528564,
+        "depends": "libc6 (>= 2.38), libgssapi-krb5-2 (>= 1.17), libhttp-parser2.9 (>= 2.1), libpcre2-8-0 (>= 10.22), libssh2-1 (>= 1.7.0), libssl3 (>= 3.0.0), zlib1g (>= 1:1.1.4)",
+        "filename": "libgit2-1.7_1.7.2+ds-1ubuntu3_amd64.deb",
+        "name": "libgit2-1.7",
+        "sha256": "58147f4f56174bb22772b12f7df2ebcbd614597965de9d0557916cd772dbef1b",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libgit2/libgit2-1.7_1.7.2+ds-1ubuntu3_amd64.deb",
+        "version": "1.7.2+ds-1ubuntu3"
+      },
+      {
+        "bytes": 22258,
+        "depends": "libc6 (>= 2.2.5)",
+        "filename": "libhttp-parser2.9_2.9.4-6build1_amd64.deb",
+        "name": "libhttp-parser2.9",
+        "sha256": "e2e970c931277795609d6163f94cba38cd30945f1035195a00b934bb042e90aa",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/h/http-parser/libhttp-parser2.9_2.9.4-6build1_amd64.deb",
+        "version": "2.9.4-6build1"
+      },
+      {
+        "bytes": 243640,
+        "depends": "libc6 (>= 2.38)",
+        "filename": "m4_1.4.19-4build1_amd64.deb",
+        "name": "m4",
+        "sha256": "30ea715845a1863abd55d11e47ab91513130bf347852d4cdeae69e9d98fa795c",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/m/m4/m4_1.4.19-4build1_amd64.deb",
+        "version": "1.4.19-4build1"
+      },
+      {
+        "bytes": 219920,
+        "depends": "m4, debianutils (>= 1.8), perl, libfile-temp-perl, dpkg (>= 1.15.4) | install-info",
+        "filename": "autoconf2.13_2.13-69_all.deb",
+        "name": "autoconf2.13",
+        "sha256": "dcb0879c5daf42797c71bc2b55d3e163f0a33942f62a654219cc2d1f132051ee",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/a/autoconf2.13/autoconf2.13_2.13-69_all.deb",
+        "version": "2.13-69"
+      },
+      {
+        "bytes": 62802,
+        "depends": "libffi8 (= 3.4.6-1build1)",
+        "filename": "libffi-dev_3.4.6-1build1_amd64.deb",
+        "name": "libffi-dev",
+        "sha256": "7009959b8a3b77206325026917fb45150ac81bf6139468abc0841d5a29c8619d",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libf/libffi/libffi-dev_3.4.6-1build1_amd64.deb",
+        "version": "3.4.6-1build1"
+      },
+      {
+        "bytes": 894096,
+        "depends": "zlib1g (= 1:1.3.dfsg-3.1ubuntu2), libc6-dev | libc-dev",
+        "filename": "zlib1g-dev_1.3.dfsg-3.1ubuntu2_amd64.deb",
+        "name": "zlib1g-dev",
+        "sha256": "7360405fbf49e35dca2f7a4ebeac7d4fe5fe3b2db99adac70e11e104f53b2642",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/z/zlib/zlib1g-dev_1.3.dfsg-3.1ubuntu2_amd64.deb",
+        "version": "1:1.3.dfsg-3.1ubuntu2"
+      },
+      {
+        "bytes": 219390,
+        "depends": "libnspr4 (>= 2:4.35), libnspr4 (<= 2:4.35-1.1build1.1~)",
+        "filename": "libnspr4-dev_4.35-1.1build1_amd64.deb",
+        "name": "libnspr4-dev",
+        "sha256": "0653deb460afd92f19fce7739b48e07c730b812af7b238e882790efdd9e0a8ba",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/n/nspr/libnspr4-dev_4.35-1.1build1_amd64.deb",
+        "version": "2:4.35-1.1build1"
+      },
+      {
+        "bytes": 332530,
+        "depends": "libbrotli1 (>= 0.6.0), libc6 (>= 2.36), libgnutls30t64 (>= 3.8.2), libgssapi-krb5-2 (>= 1.17), libidn2-0 (>= 2.0.0), libldap2 (>= 2.6.2), libnettle8t64, libnghttp2-14 (>= 1.50.0), libpsl5t64 (>= 0.16.0), librtmp1 (>= 2.3), libssh-4 (>= 0.9.0), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.1.4)",
+        "filename": "libcurl3t64-gnutls_8.5.0-2ubuntu10_amd64.deb",
+        "name": "libcurl3t64-gnutls",
+        "sha256": "6a5463c3acb9a5a8e1756ba7953a694cc4eb1c02b960f4faf4aa84d1ae7a00c5",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/c/curl/libcurl3t64-gnutls_8.5.0-2ubuntu10_amd64.deb",
+        "version": "8.5.0-2ubuntu10"
+      },
+      {
+        "bytes": 119702,
+        "depends": "libc6 (>= 2.25), libssl3 (>= 3.0.0), zlib1g (>= 1:1.1.4)",
+        "filename": "libssh2-1t64_1.11.0-4.1build2_amd64.deb",
+        "name": "libssh2-1t64",
+        "sha256": "79d66dc67390c4531d28921ee62884e59dc3a32c64b405635d65fbfb65fd4964",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/libs/libssh2/libssh2-1t64_1.11.0-4.1build2_amd64.deb",
+        "version": "1.11.0-4.1build2"
+      },
+      {
+        "bytes": 30652,
+        "depends": "libc6 (>= 2.38)",
+        "filename": "libpkgconf3_1.8.1-2build1_amd64.deb",
+        "name": "libpkgconf3",
+        "reused_raw_input_from": "worker044/tools/debs (independent extraction)",
+        "sha256": "fc3a57e8f931ec06cb7c51acc56878f1fec247ff02a7adcab26905c2faeb2792",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pkgconf/libpkgconf3_1.8.1-2build1_amd64.deb",
+        "version": "1.8.1-2build1"
+      },
+      {
+        "bytes": 16790,
+        "depends": "pkgconf-bin",
+        "filename": "pkgconf_1.8.1-2build1_amd64.deb",
+        "name": "pkgconf",
+        "reused_raw_input_from": "worker044/tools/debs (independent extraction)",
+        "sha256": "834a58031069d97d7cfb8b2f5bfd5effc69cecf7f30cc362071875f1f8dc1828",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pkgconf/pkgconf_1.8.1-2build1_amd64.deb",
+        "version": "1.8.1-2build1"
+      },
+      {
+        "bytes": 20730,
+        "depends": "libc6 (>= 2.34), libpkgconf3 (>= 1.8.0)",
+        "filename": "pkgconf-bin_1.8.1-2build1_amd64.deb",
+        "name": "pkgconf-bin",
+        "reused_raw_input_from": "worker044/tools/debs (independent extraction)",
+        "sha256": "7a812f05ee1610154b433e2ad54f6e4163fcbb306b9fb31afe959afb2e5e1545",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pkgconf/pkgconf-bin_1.8.1-2build1_amd64.deb",
+        "version": "1.8.1-2build1"
+      },
+      {
+        "bytes": 23807754,
+        "depends": "llvm-17-runtime (= 1:17.0.6-9ubuntu1), llvm-17-linker-tools (= 1:17.0.6-9ubuntu1), libc6 (>= 2.38), libcurl4t64 (>= 7.16.2), libgcc-s1 (>= 3.3), libllvm17t64, libpfm4, libstdc++6 (>= 13.1), libtinfo6 (>= 6), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.2.0)",
+        "extraction_scope": "llvm-objdump tool only; libLLVM17 and native dependencies separately available",
+        "filename": "llvm-17_17.0.6-9ubuntu1_amd64.deb",
+        "name": "llvm-17",
+        "sha256": "0d0505de84082a7d82cecbb6ecbf5843df62ea543e815b864d0271f8c98f1cd0",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-17/llvm-17_17.0.6-9ubuntu1_amd64.deb",
+        "version": "1:17.0.6-9ubuntu1"
+      },
+      {
+        "bytes": 80564,
+        "filename": "clang-18_18.1.3-1_amd64.deb",
+        "material_path": "materials/compiler-clang18/raw/clang-18_18.1.3-1_amd64.deb",
+        "name": "clang-18",
+        "scope": "Official binary C/C++ bootstrap; host development sysroot external",
+        "sha256": "3d028a3b4c0b3dc942e043db94e153baedf5c384283181d274a5e915da1b5135",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/clang-18_18.1.3-1_amd64.deb",
+        "version": "1:18.1.3-1"
+      },
+      {
+        "bytes": 13494854,
+        "filename": "libclang-cpp18_18.1.3-1_amd64.deb",
+        "material_path": "materials/compiler-clang18/raw/libclang-cpp18_18.1.3-1_amd64.deb",
+        "name": "libclang-cpp18",
+        "scope": "Official binary C/C++ bootstrap; host development sysroot external",
+        "sha256": "899e354d4719c31eb7829517a3ed8d6b64173590fb5c7fe7371ede469fbbe05d",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-18/libclang-cpp18_18.1.3-1_amd64.deb",
+        "version": "1:18.1.3-1"
+      },
+      {
+        "bytes": 27545628,
+        "filename": "libllvm18_18.1.3-1_amd64.deb",
+        "material_path": "materials/compiler-clang18/raw/libllvm18_18.1.3-1_amd64.deb",
+        "name": "libllvm18",
+        "scope": "Official binary C/C++ bootstrap; host development sysroot external",
+        "sha256": "826621c8e678dd27b4f5c3a9b26d10aae50d5de2d95575695a17c91014f5eaa5",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-18/libllvm18_18.1.3-1_amd64.deb",
+        "version": "1:18.1.3-1"
+      },
+      {
+        "bytes": 736304,
+        "filename": "libclang-common-18-dev_18.1.3-1_amd64.deb",
+        "material_path": "materials/compiler-clang18/raw/libclang-common-18-dev_18.1.3-1_amd64.deb",
+        "name": "libclang-common-18-dev",
+        "scope": "Official binary C/C++ bootstrap; host development sysroot external",
+        "sha256": "91df14d6e3829652b837e2b368e35b076124277f2962a3f3daaea296bf86e4b0",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/libclang-common-18-dev_18.1.3-1_amd64.deb",
+        "version": "1:18.1.3-1"
+      },
+      {
+        "bytes": 7815262,
+        "filename": "libclang1-18_18.1.3-1_amd64.deb",
+        "material_path": "materials/compiler-clang18/raw/libclang1-18_18.1.3-1_amd64.deb",
+        "name": "libclang1-18",
+        "scope": "Official binary C/C++ bootstrap; host development sysroot external",
+        "sha256": "c7972cec7003be32e57fcfc3ec6ca3ee65ac5d648fb9c420db52022919562855",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/llvm-toolchain-18/libclang1-18_18.1.3-1_amd64.deb",
+        "version": "1:18.1.3-1"
+      },
+      {
+        "bytes": 1294898,
+        "filename": "llvm-18-linker-tools_18.1.3-1_amd64.deb",
+        "material_path": "materials/compiler-clang18/raw/llvm-18-linker-tools_18.1.3-1_amd64.deb",
+        "name": "llvm-18-linker-tools",
+        "scope": "Official binary C/C++ bootstrap; host development sysroot external",
+        "sha256": "5724e42bd73a481386087b57dc9962c4d4d218c91175160668b6ceb297725093",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-18/llvm-18-linker-tools_18.1.3-1_amd64.deb",
+        "version": "1:18.1.3-1"
+      }
+    ],
+    "original_resource_ids": [],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "baseline_jit_qualified": true,
+      "benchmark_qualified": false,
+      "dataset_qualified": null,
+      "firefox_browser_qualified": false,
+      "full_compiler_sysroot_closure_qualified": false,
+      "full_upstream_suite_qualified": false,
+      "functional_qualified": true,
+      "intl_api_qualified": false,
+      "ion_jit_qualified": true,
+      "material_qualified": true,
+      "source_build_qualified": true,
+      "type_and_shape_deoptimization_qualified": true
+    },
+    "record_id": "review.engineering.spidermonkey",
+    "runtime_requirements": [
+      "Linux x86_64; 64-bit little-endian ELF",
+      "Python 3.12 tested; the fixed original upstream harness imports pipes",
+      "ldd for declared runtime dependency verification",
+      "ELF dependencies: libm.so.6, libz.so.1, libstdc++.so.6, libgcc_s.so.1, libc.so.6, ld-linux-x86-64.so.2",
+      "Required symbol versions: CXXABI_1.3, GCC_4.2.0, GLIBC_2.38, GLIBCXX_3.4.32",
+      "Source rebuild additionally requires the declared host compiler, sysroot and tools in materials/host-build-requirements.json"
+    ],
+    "worker_id": "worker 044"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "ldd"
+    ],
+    "runtime_environment": {}
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 145639392,
+      "extract": false,
+      "id": "runtime.spidermonkey",
+      "material_path": "inputs/input-1",
+      "sha256": "9f59a734cd5d5444b1afc2f83c1c7c8098fc781c04bf856550f64f240e644219",
+      "strip_root": false,
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/m/mozjs115/mozjs115_115.10.0.orig.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://spidermonkey.dev/"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Source-built standalone JavaScript shell with explicit interpreter/Baseline/Ion semantics, native tier observations, real type/shape bailouts, and 16 original Ion tests in two official harness configurations. Intl disabled. Host development sysroot and declared ELF ABI remain external prerequisites; no Firefox browser, complete upstream suite, benchmark or Dataset qualification."
+      }
+    ],
+    "notes": [
+      "与Firefox浏览器整包区分功能范围；只验shell和明确JIT路径。",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "Mozilla生产级JavaScript/Wasm引擎、JIT及可嵌入shell"
+  },
+  "version": "115.10.0"
+}

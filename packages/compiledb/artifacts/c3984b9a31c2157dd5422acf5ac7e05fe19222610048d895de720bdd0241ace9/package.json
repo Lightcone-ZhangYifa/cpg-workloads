@@ -1,0 +1,163 @@
+{
+  "build": "worker028-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/offline_exec.py",
+        "--",
+        "python3",
+        "{recipe}/worker028-check.py",
+        "--case",
+        "compiledb",
+        "--prefix",
+        "{prefix}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "worker028-assignment-acceptance",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "compiledb",
+  "metadata": {
+    "additional_input_lock": "recipe/python-config.json",
+    "baseline_relation": "new independent resource; original 1862 baseline unchanged",
+    "catalog": {
+      "archive_bytes": 26840,
+      "category": [
+        "Compiler development",
+        "Build and continuous integration"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "compiledb",
+      "kind": "wheel",
+      "license_id": "GPL-3.0-or-later",
+      "mandatory": false,
+      "material_path": "sources/compiledb",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "从make构建日志生成compile_commands",
+      "qualification_scope": "离线日志转数据库，检查目录/转义/参数且不执行日志命令",
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": "4c07cbb37b105951218e52e00fc4a8211fafc5f7eb7821d0a33c4225d7b28ecf",
+      "source_url": "https://files.pythonhosted.org/packages/53/1a/34e78486c39af6f0e37b0e23558dcd3d7472a6bf6127b3cb4525f2398923/compiledb-0.10.7-py3-none-any.whl",
+      "strip_archive_root": false,
+      "title": "compiledb",
+      "upstream": "https://github.com/nickdiego/compiledb",
+      "version": "0.10.7"
+    },
+    "catalog_sha256": "e1ad57f2a0365c22159bd4e0580c8276bcc57c79f46d315acd32f8578a87be1f",
+    "host_requirements": {
+      "libseccomp": "required by the no-network acceptance runner",
+      "platform": "Linux x86_64",
+      "python": "3.12 for frozen wheels; 3.12 checker validated"
+    },
+    "license_id": "GPL-3.0-or-later",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "离线日志转数据库，检查目录/转义/参数且不执行日志命令",
+    "record_id": "review.engineering.compiledb",
+    "source_compile_qualified": false,
+    "worker_id": "worker 028"
+  },
+  "provider": "python",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "{recipe}/offline_exec.py",
+        "--",
+        "python3",
+        "{recipe}/build.py",
+        "--source",
+        "{source}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}"
+      ]
+    ],
+    "network_policy": "offline installation and acceptance via seccomp; preparation is a separate networked phase",
+    "required_host_commands": [
+      "python3"
+    ],
+    "required_installed_paths": [
+      "{prefix}/bin/compiledb"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C.UTF-8",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONNOUSERSITE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 26840,
+      "extract": false,
+      "id": "compiledb",
+      "material_path": "sources/compiledb",
+      "sha256": "4c07cbb37b105951218e52e00fc4a8211fafc5f7eb7821d0a33c4225d7b28ecf",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/53/1a/34e78486c39af6f0e37b0e23558dcd3d7472a6bf6127b3cb4525f2398923/compiledb-0.10.7-py3-none-any.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the selected {prefix}/bin explicitly, or add it to PATH."
+    ],
+    "documentation": [
+      "https://github.com/nickdiego/compiledb"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/offline_exec.py -- python3 {recipe}/worker028-check.py --case compiledb --prefix {prefix} --build {build}",
+        "description": "Replay the concrete assignment acceptance case"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Installed resource",
+        "path": "{prefix}",
+        "purpose": "Independent relocatable installation with retained license notices"
+      }
+    ],
+    "notes": [
+      "Frozen Python 3.12 wheel closure; no source compilation is claimed.",
+      "compiledb command-style output loses shell quoting in version 0.10.7; use default arguments arrays.",
+      "Runtime compatibility is defined by actual architecture, ELF/GLIBC requirements and explicit host commands, not a distribution-name gate.",
+      "The Linux acceptance guard needs libseccomp; it denies fresh AF_INET and AF_INET6 sockets to the checker and all descendants. No OCI or physical-target qualification is claimed."
+    ],
+    "summary": "从make构建日志生成compile_commands"
+  },
+  "version": "0.10.7"
+}

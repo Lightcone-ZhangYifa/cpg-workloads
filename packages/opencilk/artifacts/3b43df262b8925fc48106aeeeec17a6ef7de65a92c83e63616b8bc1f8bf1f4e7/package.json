@@ -1,0 +1,105 @@
+{
+  "build": "worker055-cpu-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/entry_v2.py",
+        "--prefix",
+        "{prefix}",
+        "--work",
+        "{build}/functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "cilk-reduction-tapir",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 2400
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "opencilk",
+  "metadata": {
+    "full_original_distribution_bundled": false,
+    "license": "Apache-2.0 WITH LLVM-exception AND MIT",
+    "new_family": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_profile": "36 parallel cases, 12 independent serial cases, 3 negative control groups, verified Tapir detach/reattach/sync",
+    "record_id": "review.optimization.opencilk",
+    "scope": "Linux x86_64 CPU reducer+Tapir. No sanitizer, profiler, GPU, compiler bootstrap or official benchmark qualification.",
+    "support_inputs": {
+      "bundled_llvm": "19.1.7",
+      "host_gcc": "13.3.0"
+    },
+    "worker_id": "worker 055"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "gcc",
+      "ldd"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib/clang/19/lib/x86_64-unknown-linux-gnu"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1406208994,
+      "extract": true,
+      "id": "opencilk-upstream-binary",
+      "material_path": "sources/opencilk-3.0.0-x86_64-linux-gnu-ubuntu-24.04.tar.gz",
+      "sha256": "38e16208a0d086f72858c2024474a0a69c519830d3d3268a80e1ef50d6116838",
+      "strip_root": true,
+      "url": "https://github.com/OpenCilk/opencilk-project/releases/download/opencilk/v3.0/opencilk-3.0.0-x86_64-linux-gnu-ubuntu-24.04.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use {prefix}/bin/clang -fopencilk; do not replace system LLVM."
+    ],
+    "documentation": [
+      "https://www.opencilk.org/doc/users-guide/install/",
+      "https://www.opencilk.org/doc/reference/reducers/"
+    ],
+    "examples": [
+      {
+        "command": "{prefix}/bin/clang -O2 -fopencilk reduction.c -o reduction",
+        "description": "Compile the preserved reduction fixture."
+      }
+    ],
+    "locations": [
+      {
+        "label": "C compiler",
+        "path": "{prefix}/bin/clang",
+        "purpose": "Compile C/C++ with -fopencilk."
+      },
+      {
+        "label": "LLVM tools",
+        "path": "{prefix}/bin",
+        "purpose": "Inspect/link/verify LLVM and Tapir IR."
+      }
+    ],
+    "notes": [
+      "Official prebuilt subset; no source compiler bootstrap qualification.",
+      "Reference distribution metadata is not a distribution-name installation gate.",
+      "Host GCC headers, linker, C/C++ runtime and libz are required.",
+      "Included LLVM tools additionally support the separately qualified llvm-release libclc component."
+    ],
+    "summary": "Pinned OpenCilk 3.0 CPU C/C++ compiler and task runtime; reducer and Tapir verification profile."
+  },
+  "version": "3.0.0"
+}

@@ -1,0 +1,248 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 529,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "483dd2bf4f4f7ea297bb2b524baf121fc3e69adf35aa707381c4a2eda2ebcf3e"
+    },
+    {
+      "bytes": 11306,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/probes_v02112.py",
+      "sha256": "44ea735769d4669ef161e5c1bff3baa7b5024f839aa759e664160e1756843ff8"
+    },
+    {
+      "bytes": 23704,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/profile_probes.py",
+      "sha256": "332e073c215855cd8fa2681cb0dc31b12473b215f7ce36a8ab89d24651fa9257"
+    },
+    {
+      "bytes": 7499,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/tensorboard_wire.py",
+      "sha256": "0c0be0d67dd6fff81dca6477f1394fdb68a38eee50fbcb3efce526642ab015f4"
+    }
+  ],
+  "inventory_sha256": "a70335fa2787dca1e58ff8c23940a8a785903e4c0b2df4ace420592a91d51c5c",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "0215a6f93e94b6e5e46902f19e2c7a4bcc9525e2b7fc6ec7aee6a3ae699aedad",
+  "method": "wrapper",
+  "package": {
+    "build": "2",
+    "checks": [
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}",
+          "--version-only"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "exact-installed-version",
+        "kind": "version",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      },
+      {
+        "argv": [
+          "{prefix}/bin/python",
+          "-I",
+          "-B",
+          "{recipe}/check.py",
+          "--expected-version",
+          "{version}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "bounded-installed-operations",
+        "kind": "functional",
+        "requires_commands": [
+          "{prefix}/bin/python"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "py.mlir.numpy"
+      ],
+      "system": []
+    },
+    "id": "py.mlir.ml-dtypes",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 409890,
+        "category": [
+          "Python packages",
+          "MLIR binding environment"
+        ],
+        "container_strategy": "Prepared materials and exact role-specific install manifests; no runtime acquisition is required after readiness qualification.",
+        "dependencies": [
+          "py.mlir.numpy"
+        ],
+        "deployment": {
+          "adapter": "wheel",
+          "environment": "mlir",
+          "state": "resolved-independent-LLVM-binding-capsule; runtime-not-qualified"
+        },
+        "documentation": [
+          "https://mlir.llvm.org/docs/Bindings/Python/"
+        ],
+        "id": "py.mlir.ml-dtypes",
+        "immutable_ref": "sha256:3b4a480aa8fd54a1805b8ac10f3f91763926a74f73c0c364c10f9231854f4170",
+        "installed_bytes": null,
+        "kind": "wheel",
+        "license_class": "open",
+        "license_id": "Apache-2.0",
+        "mandatory": false,
+        "material_path": "wheels/mlir/ml_dtypes-0.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+        "package_name": "ml-dtypes",
+        "presets": [
+          "core",
+          "open",
+          "all"
+        ],
+        "purpose": "Exact Python dependency for the MLIR bindings from the locked LLVM source, isolated from analysis package constraints.",
+        "qualification_gaps": [],
+        "redistributable": "distribution-notices-and-obligations-apply",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "3b4a480aa8fd54a1805b8ac10f3f91763926a74f73c0c364c10f9231854f4170",
+        "size_basis": "official PyPI artifact size, matched to resolver SHA-256",
+        "source_evidence": [
+          "https://pypi.org/pypi/ml_dtypes/0.6.0/json"
+        ],
+        "source_logical_bytes": null,
+        "source_url": "https://files.pythonhosted.org/packages/c7/f9/7d76c1eae866f5d4636401b31b6d6dd90e4b4ced1fa7cfdfcca9c60e4bd3/ml_dtypes-0.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+        "title": "ml_dtypes (MLIR Python capsule)",
+        "version": "0.6.0"
+      },
+      "catalog_sha256": "3e8ab2cf13e4f920997a9dda9c1c865c1829138059d1737f407d96319ad1b309"
+    },
+    "provider": "python",
+    "recipe": {
+      "adapter": "wheel",
+      "environment": "mlir",
+      "install_commands": [
+        [
+          "{prefix}/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "{package_name}=={version}"
+        ]
+      ],
+      "install_from_cache_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "install",
+          "--no-index",
+          "--no-deps",
+          "--no-cache-dir",
+          "--disable-pip-version-check",
+          "{source}"
+        ]
+      ],
+      "manager": "pip",
+      "package_name": "ml-dtypes",
+      "state": "resolved-independent-LLVM-binding-capsule; runtime-not-qualified",
+      "uninstall_commands": [
+        [
+          "{prefix}/bin/python",
+          "-I",
+          "-m",
+          "pip",
+          "uninstall",
+          "--yes",
+          "--disable-pip-version-check",
+          "{package_name}"
+        ]
+      ],
+      "wrapper": true
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 409890,
+        "extract": false,
+        "id": "py.mlir.ml-dtypes",
+        "material_path": "wheels/mlir/ml_dtypes-0.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "3b4a480aa8fd54a1805b8ac10f3f91763926a74f73c0c364c10f9231854f4170",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/c7/f9/7d76c1eae866f5d4636401b31b6d6dd90e4b4ced1fa7cfdfcca9c60e4bd3/ml_dtypes-0.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "# No shell activation is required; invoke the selected environment's interpreter explicitly."
+      ],
+      "documentation": [
+        "https://mlir.llvm.org/docs/Bindings/Python/"
+      ],
+      "examples": [
+        {
+          "command": "{prefix}/bin/python -m pip show {package_name}",
+          "description": "Inspect package metadata in the selected environment."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Prepared material",
+          "path": "{assets}/wheels/mlir/ml_dtypes-0.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "purpose": "Independent verified source, input, data or upstream distribution."
+        },
+        {
+          "label": "Python environment",
+          "path": "{prefix}",
+          "purpose": "Use this environment's interpreter to avoid mixing incompatible Python packages."
+        }
+      ],
+      "notes": [
+        "Definition migration records availability contracts, not successful acquisition, installation or execution.",
+        "No executable usability check was declared by the original recipe; installation alone does not establish usability.",
+        "A payload-free wrapper forwards installation and removal to pip; that manager resolves dependencies. Declared source locks identify upstream packages, not files bundled in this wrapper.",
+        "0.21.12 candidate: fixed original wheel and declared dependency closure; qualification requires the saved two-prefix PackageManager receipt. No source-build, remote-service, OCI, or official benchmark claim."
+      ],
+      "summary": "Exact Python dependency for the MLIR bindings from the locked LLVM source, isolated from analysis package constraints."
+    },
+    "version": "0.6.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {},
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

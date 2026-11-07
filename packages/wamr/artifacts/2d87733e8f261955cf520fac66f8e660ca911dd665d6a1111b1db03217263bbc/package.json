@@ -1,0 +1,101 @@
+{
+  "build": "cpg-20261101-w013-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/share/cpg-worker013/check.py",
+        "{prefix}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "bounded-native-function",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 360
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "wamr",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "bounded_native_function": true,
+      "hardware": false,
+      "material": true,
+      "oci": false,
+      "official_benchmark": false,
+      "source_build_of_main_tool": true
+    },
+    "record_id": "review.engineering.wamr",
+    "scope": "上游重定向wasm-micro-runtime组织，记录迁移身份。",
+    "source_files_retained": true,
+    "worker_id": "worker 013"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_installed_paths": [
+      "{prefix}/share/cpg-worker013/check.py",
+      "{prefix}/share/cpg-worker013/sources/wamr-source.tar.gz"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 5979503,
+      "extract": true,
+      "id": "wamr",
+      "material_path": "sources/wamr",
+      "sha256": "4ea552d9d979f3c3d5f9e298a1594150820d2b76e8328ad68779578edea7a873",
+      "strip_root": true,
+      "url": "https://codeload.github.com/wasm-micro-runtime/wasm-micro-runtime/tar.gz/25bd7eb63e828e4bd242cc9b38d260b4b31c6605"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "export PATH=\"{prefix}/bin:$PATH\""
+    ],
+    "documentation": [
+      "https://github.com/wasm-micro-runtime/wasm-micro-runtime"
+    ],
+    "examples": [
+      {
+        "command": "cpg packages info wamr --registry registry.json --json",
+        "description": "Inspect the resource through the supplied additive registry."
+      }
+    ],
+    "locations": [
+      {
+        "label": "Executables",
+        "path": "{prefix}/bin",
+        "purpose": "Explicit resource tools and repeatable bounded check programs."
+      },
+      {
+        "label": "Complete upstream source",
+        "path": "{prefix}/share/cpg-worker013/sources",
+        "purpose": "Pinned unmodified project source retained for agent inspection and development."
+      }
+    ],
+    "notes": [
+      "The target distribution records the build host. CPG checks OS, architecture and actual ELF runtime compatibility; it does not enforce a distribution name.",
+      "Native functionality is bounded by the attached fixtures; OCI, target hardware and official benchmark qualifications are not granted.",
+      "Download preparation is separate from installation; this artifact consumes local files only."
+    ],
+    "summary": "WebAssembly Micro Runtime classic interpreter with host import and linear memory checks."
+  },
+  "version": "2.4.5"
+}

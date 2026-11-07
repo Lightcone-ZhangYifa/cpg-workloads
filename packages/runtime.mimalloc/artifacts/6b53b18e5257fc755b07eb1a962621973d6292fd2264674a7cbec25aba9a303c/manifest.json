@@ -1,0 +1,300 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 1398,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/check.py",
+      "sha256": "36ddf66403fee89ff0d3dbfa50b5eaf1cf77be5933116c6da86dd40683a303e6"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/include"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/include/mimalloc-2.1"
+    },
+    {
+      "bytes": 4044,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/include/mimalloc-2.1/mimalloc-new-delete.h",
+      "sha256": "dd4f25cae53209d45d73f8e6a2b9c219e8fc7434d97f20eba9af1a8b850030fd"
+    },
+    {
+      "bytes": 3165,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/include/mimalloc-2.1/mimalloc-override.h",
+      "sha256": "243db1b073ce985873545b746288546efb8ccadeb9860e674a7f0f701af8bac9"
+    },
+    {
+      "bytes": 37054,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/include/mimalloc-2.1/mimalloc.h",
+      "sha256": "65becba41248d139f7dd21f979d0e82adbb71e234eb18c151bb30e2c30d69a1e"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/lib"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/lib/mimalloc-2.1"
+    },
+    {
+      "bytes": 248768,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/lib/mimalloc-2.1/libmimalloc.a",
+      "sha256": "a9a1ff2436bfac980d71cf1bb88a0430b1201875b9ae5ab3b520f7d7758b6449"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/licenses"
+    },
+    {
+      "bytes": 1096,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/licenses/LICENSE",
+      "sha256": "19c99805e7a44a34b297a75d1edea9985e300066dfc024d5c99d4236d4573b5d"
+    },
+    {
+      "bytes": 444,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/profile.json",
+      "sha256": "7619cbbdfbff6c241bf3c9455717bf56d1a6f0657c7f64e9fb5225aab475a4ea"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/recipe"
+    },
+    {
+      "bytes": 2093,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/recipe/rebuild.py",
+      "sha256": "9e7442bd63d939ab1345629af1f12065b4ae2a6a1eac03e998192170c14c9954"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/sources"
+    },
+    {
+      "bytes": 336,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/sources-lock.json",
+      "sha256": "5ea6880666f4ad035f3f546b783f37f0baa4ec73759682e6eba9502221467806"
+    },
+    {
+      "bytes": 1181422,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/sources/mimalloc-2.1.7.tar.gz",
+      "sha256": "0eed39319f139afde8515010ff59baf24de9e47ea316a315398e8027d198202d"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/tests"
+    },
+    {
+      "bytes": 1122,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tests/acceptance.c",
+      "sha256": "4de60bbab1ab563da1b1edce9b4f3f3248b3e59b1cb2cf95ce3f08e3f510e6db"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 322,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "d52ffefa4d642eabe0a8294cba9db8c82029933db4fc1dfe3017e2fe1c57ae07"
+    }
+  ],
+  "inventory_sha256": "a3b55a2d2e021699cc8911a66f9bd9dc3267a1e95065d45ab6790555d88cc69f",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "235a82490009d7f8497d80cce3a8e90c2737968523eaed99061789d2b090a759",
+  "method": "binary",
+  "package": {
+    "build": "worker053-20261102-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "task-functional",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "timeout_seconds": 120
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "runtime.mimalloc",
+    "metadata": {
+      "catalog": {
+        "archive_bytes": 1181422,
+        "baseline_version": "0.21.14",
+        "category": [
+          "Compiler development",
+          "SAT, SMT and runtimes"
+        ],
+        "dependencies": [],
+        "extract": false,
+        "id": "runtime.mimalloc",
+        "immutable_ref": "2.1.7",
+        "kind": "native_bundle",
+        "license_id": "See bundled upstream LICENSE and NOTICE files",
+        "material_path": "inputs/input-1",
+        "purpose": "Fresh static linking; aligned allocations, payload preservation, 4096 cross-thread frees, zero-initialization and allocation-overflow rejection.",
+        "qualification_scope": "Fresh static linking; aligned allocations, payload preservation, 4096 cross-thread frees, zero-initialization and allocation-overflow rejection.",
+        "roles": [
+          "dev"
+        ],
+        "sha256": "0eed39319f139afde8515010ff59baf24de9e47ea316a315398e8027d198202d",
+        "source_evidence": [
+          "https://github.com/microsoft/mimalloc"
+        ],
+        "source_url": "https://codeload.github.com/microsoft/mimalloc/tar.gz/refs/tags/v2.1.7",
+        "strip_archive_root": false,
+        "title": "mimalloc",
+        "upstream": "https://github.com/microsoft/mimalloc",
+        "version": "2.1.7",
+        "worker_record_id": "review.engineering.mimalloc"
+      },
+      "catalog_sha256": "1be5a448424a39be4b6812ee43e5fc5cffa98f2bc394c0e979912833154e8fd6",
+      "input_provenance": [
+        {
+          "bytes": 1181422,
+          "local_path": "/workspace/scratch/81acee5764ca/worker053/payloads/mimalloc/sources/mimalloc-2.1.7.tar.gz",
+          "revision": "2.1.7",
+          "sha256": "0eed39319f139afde8515010ff59baf24de9e47ea316a315398e8027d198202d",
+          "url": "https://codeload.github.com/microsoft/mimalloc/tar.gz/refs/tags/v2.1.7"
+        }
+      ],
+      "original_resource_ids": [],
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "profile_qualifications": {
+        "functional_qualified": true,
+        "source_build_qualified": true
+      },
+      "record_id": "review.engineering.mimalloc",
+      "runtime_requirements": [
+        "Python>=3.12",
+        "GCC-compatible C compiler and development files",
+        "POSIX threads",
+        "Validated on Linux x86_64 with glibc 2.39; no lower ABI bound is inferred. Exact ELF requirements are recorded separately."
+      ],
+      "worker_id": "worker 053"
+    },
+    "provider": "binary",
+    "recipe": {
+      "required_runtime_commands": [
+        "python3",
+        "ldd",
+        "gcc"
+      ],
+      "runtime_environment": {}
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 1181422,
+        "extract": false,
+        "id": "runtime.mimalloc",
+        "material_path": "inputs/input-1",
+        "sha256": "0eed39319f139afde8515010ff59baf24de9e47ea316a315398e8027d198202d",
+        "strip_root": false,
+        "url": "https://codeload.github.com/microsoft/mimalloc/tar.gz/refs/tags/v2.1.7"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/microsoft/mimalloc"
+      ],
+      "examples": [
+        {
+          "command": "python3 {recipe}/check.py --prefix {prefix}",
+          "description": "Run the declared bounded functional check"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Independent runtime and source material",
+          "path": "{prefix}",
+          "purpose": "Fresh static linking; aligned allocations, payload preservation, 4096 cross-thread frees, zero-initialization and allocation-overflow rejection."
+        }
+      ],
+      "notes": [
+        "Qualification is limited to the explicit functional cases and fixed inputs recorded in this profile.",
+        "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+        "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+      ],
+      "summary": "Fresh static linking; aligned allocations, payload preservation, 4096 cross-thread frees, zero-initialization and allocation-overflow rejection."
+    },
+    "version": "2.1.7"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "inputs": [
+      {
+        "bytes": 1181422,
+        "local_path": "/workspace/scratch/81acee5764ca/worker053/payloads/mimalloc/sources/mimalloc-2.1.7.tar.gz",
+        "revision": "2.1.7",
+        "sha256": "0eed39319f139afde8515010ff59baf24de9e47ea316a315398e8027d198202d",
+        "url": "https://codeload.github.com/microsoft/mimalloc/tar.gz/refs/tags/v2.1.7"
+      }
+    ],
+    "record_id": "review.engineering.mimalloc",
+    "scope": "Fresh static linking; aligned allocations, payload preservation, 4096 cross-thread frees, zero-initialization and allocation-overflow rejection.",
+    "source_build_qualified": true,
+    "worker": "worker 053"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": []
+}

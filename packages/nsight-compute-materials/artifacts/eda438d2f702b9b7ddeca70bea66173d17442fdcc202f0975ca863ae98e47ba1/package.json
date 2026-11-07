@@ -1,0 +1,107 @@
+{
+  "build": "worker077-static-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/static_check.py",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "static-material-integrity",
+      "kind": "availability",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "nsight-compute-materials",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "category": "observability",
+      "description": "NVIDIA nsight-training 固定commit中的2026 GTC ncu教学子目录：6本notebook、2个源码样例、20张教学图片与适用MIT许可，另保留原始README。完整工具、ncu_report二进制模块及专有手册全文不在profile内。",
+      "extract": false,
+      "id": "nsight-compute-materials",
+      "kind": "virtual",
+      "license": "MIT",
+      "license_class": "open",
+      "material_path": null,
+      "name": "Nsight Compute 静态参考材料",
+      "new_material_profile": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "policy_status": "policy-held",
+      "record_id": "review.engineering.nsight-compute",
+      "sha256": null,
+      "source_url": "https://developer.nvidia.com/nsight-compute",
+      "strip_archive_root": false,
+      "version": "training-b17c40eef239"
+    },
+    "catalog_sha256": "068c82026fca68cf2cafe5932d29749782c41d1e7c4c62e1fc0ebe63f47495f4",
+    "collector_policy": "policy-held",
+    "material_scope": "NVIDIA nsight-training 固定commit中的2026 GTC ncu教学子目录：6本notebook、2个源码样例、20张教学图片与适用MIT许可，另保留原始README。完整工具、ncu_report二进制模块及专有手册全文不在profile内。",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification": {
+      "benchmark": null,
+      "complete_profiler_installation": false,
+      "dataset_verified": null,
+      "functional": null,
+      "hardware": null,
+      "material": true,
+      "material_scope": "exactly the static profile documented here",
+      "oci": null,
+      "source_build": null
+    },
+    "worker_id": "worker 077"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "any",
+    "distribution_version": "any",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://developer.nvidia.com/nsight-compute"
+    ],
+    "examples": [
+      {
+        "command": "python3 {prefix}/reference_query.py 'load_report' --limit 20",
+        "description": "Search pinned text without executing vendor code"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Static reference guide",
+        "path": "{prefix}/REFERENCE.zh.md",
+        "purpose": "Exact scope, API/input map, licensing and policy boundary"
+      },
+      {
+        "label": "Pinned material files",
+        "path": "{prefix}/reference",
+        "purpose": "Offline documentation, type interfaces and licensed examples"
+      }
+    ],
+    "notes": [
+      "NVIDIA nsight-training 固定commit中的2026 GTC ncu教学子目录：6本notebook、2个源码样例、20张教学图片与适用MIT许可，另保留原始README。完整工具、ncu_report二进制模块及专有手册全文不在profile内。",
+      "未下载或运行ncu、未导入ncu_report、未生成GPU指标。教学源码与notebook保留采集示例作为文本，不能由此推断已获准执行。软件及专有文档适用另一套NVIDIA许可；本profile只重新分发子目录明确MIT授权的教学内容。",
+      "Collector execution remains policy-held; reference integrity does not imply profiler functionality."
+    ],
+    "summary": "理解kernel级指标、source correlation、memory workload与报告比较接口。材料可帮助agent区分计数器值、比率和派生指标，并审查优化解释是否与实际度量口径一致。"
+  },
+  "version": "training-b17c40eef239"
+}

@@ -1,0 +1,135 @@
+{
+  "build": "cpg-workers031032-v003",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{tools}/capability_check.py",
+        "debug-info",
+        "--toolchain",
+        "{dependency_prefix:llvm-release}",
+        "--lock",
+        "{tools}/toolchain-lock.json",
+        "--output-parent",
+        "{build}/functional-evidence",
+        "--debuggers",
+        "{dependency_prefix:llvm-release}/../debuggers",
+        "--debuggers-lock",
+        "{tools}/debuggers-lock.json"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "worker031-bounded-native-capability",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [
+      "llvm-release"
+    ],
+    "system": []
+  },
+  "id": "llvm-feature.debug-info-validation",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": null,
+      "category": [
+        "Community development",
+        "LLVM source capabilities"
+      ],
+      "dependencies": [
+        "llvm-release"
+      ],
+      "deployment": {
+        "adapter": "virtual",
+        "state": "parent-source-capability; per-build-discovery-and-workflow-qualification-required"
+      },
+      "documentation": [
+        "https://llvm.org/docs/HowToUpdateDebugInfo.html"
+      ],
+      "id": "llvm-feature.debug-info-validation",
+      "immutable_ref": "parent-resource:llvm-release",
+      "installed_bytes": null,
+      "kind": "virtual",
+      "license_class": "open",
+      "license_id": "Parent-source-license-terms",
+      "mandatory": false,
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Exercise debugify and original-debug-info preservation, DWARF validation and cross-project debugger compatibility separately from executable-output checks.",
+      "qualification_gaps": [
+        "Use cpg-upstream tools to discover paths in the actual checkout/build; source availability alone is not execution qualification."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev"
+      ],
+      "sha256": null,
+      "size_basis": "Already contained in the selected parent source/build; no duplicated payload budget.",
+      "source_evidence": [
+        "https://llvm.org/docs/HowToUpdateDebugInfo.html"
+      ],
+      "source_logical_bytes": null,
+      "source_paths": [
+        "llvm/utils/llvm-original-di-preservation.py",
+        "llvm/lib/Transforms/Utils/Debugify.cpp",
+        "cross-project-tests"
+      ],
+      "title": "LLVM debug-info preservation diagnostics",
+      "version": "Parent source identity"
+    },
+    "catalog_sha256": "15fd37156943c4216d903b0de30771fefcf3e69dc24b1b22d9607eea50a5edf4",
+    "worker031032": {
+      "debuggers_lock_sha256": "1bfc707c6d509c650547b9d680cea95a633790e2c92db564458121ea97cc551d",
+      "dwarf_compilation_directory": "/cpg-dwarf-fixture",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_boundary": "Only this explicit material capability and declared checks. External independently copied parent paths do not qualify the complete LLVM or libprotobuf-mutator original installer.",
+      "scope": "Synthetic debugify, original debug-info preservation diagnostics, DWARF5, GDB15/LLDB18 symbol/source-line decoding, and separate executable output.",
+      "source_identity_unchanged": true,
+      "toolchain_lock_sha256": "f63377d8b4ea36ffec039a0abb48080b4f278d742198868f5be61f5e203692d1",
+      "worker_id": "worker 031"
+    }
+  },
+  "provider": "meta",
+  "recipe": {
+    "adapter": "virtual",
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "DEBUGINFOD_URLS": "",
+      "LC_ALL": "C",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "state": "parent-source-capability; per-build-discovery-and-workflow-qualification-required"
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://llvm.org/docs/HowToUpdateDebugInfo.html"
+    ],
+    "examples": [],
+    "locations": [],
+    "notes": [
+      "Definition migration records availability contracts, not successful acquisition, installation or execution."
+    ],
+    "summary": "Exercise debugify and original-debug-info preservation, DWARF validation and cross-project debugger compatibility separately from executable-output checks."
+  },
+  "version": "Parent source identity"
+}

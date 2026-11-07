@@ -1,0 +1,129 @@
+{
+  "build": "worker057-libclc-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/profile.py",
+        "check",
+        "--prefix",
+        "{prefix}",
+        "--tool-prefix",
+        "{dependency_prefix:opencilk}",
+        "--work",
+        "{build}/functional"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "libclc-device-link-and-oracle",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 2400
+    }
+  ],
+  "dependencies": {
+    "build": [
+      "opencilk"
+    ],
+    "run": [
+      "opencilk"
+    ],
+    "system": []
+  },
+  "id": "llvm-release-libclc-profile",
+  "metadata": {
+    "full_parent_functional_qualification": false,
+    "license": "Apache-2.0 WITH LLVM-exception",
+    "new_resource_family": false,
+    "parent_catalog_sha256": "246c7ec274e0325d5af3e02ad57b37eaeeb9c3f4904ec026618b9a72fae5eadf",
+    "parent_immutable_ref": "7a941dfb2877a0b8cf30323fefa85ad019e0b0f5",
+    "parent_resource_id": "llvm-release",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualified_scalar_types": [
+      "int",
+      "uint",
+      "long",
+      "ulong"
+    ],
+    "qualified_vector_types": [
+      "int4"
+    ],
+    "record_id": "review.engineering.libclc-capability",
+    "technical_component_only": true,
+    "worker_id": "worker 057"
+  },
+  "provider": "component",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "{recipe}/profile.py",
+        "build",
+        "--prefix",
+        "{prefix}",
+        "--tool-prefix",
+        "{dependency_prefix:opencilk}",
+        "--work",
+        "{build}/compile",
+        "--archive",
+        "{source}"
+      ]
+    ],
+    "required_host_commands": [
+      "python3"
+    ],
+    "required_installed_paths": [
+      "{prefix}/lib/llvm-release-libclc-profile/linked.bc",
+      "{prefix}/share/llvm-release-libclc-profile/build-provenance.json"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 179272572,
+      "extract": false,
+      "id": "llvm-release",
+      "material_path": "sources/llvm-project-23.1.4.src.tar.xz",
+      "sha256": "819ecf7351f1a66f76b2d701d8942faaf5faeb324cb90c9d5b090de142434bb2",
+      "strip_root": true,
+      "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/llvm-project-23.1.4.src.tar.xz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "README.zh.txt"
+    ],
+    "examples": [
+      {
+        "command": "python3 tools/replay.py --baseline /path/to/cpg --work /path/to/fresh-work",
+        "description": "Offline original-CPG lifecycle"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Selected device bitcode",
+        "path": "{prefix}/lib/llvm-release-libclc-profile",
+        "purpose": "add_sat/sub_sat for int,uint,long,ulong,int4 only"
+      }
+    ],
+    "notes": [
+      "LLVM source stays llvmorg-23.1.4 at its original commit and SHA256.",
+      "Qualified compiler: OpenCilk LLVM19.1.7. Unsupported narrow/vector symbols are removed by LLVM internalize/globaldce, without modifying upstream source.",
+      "Native oracle is CPU execution of compiled builtin functions, not an OpenCL device runtime.",
+      "No full LLVM/libclc build or GPU/conformance qualification."
+    ],
+    "summary": "Bounded libclc capability of the unchanged llvm-release source identity."
+  },
+  "version": "llvmorg-23.1.4"
+}

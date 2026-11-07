@@ -1,0 +1,90 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "{prefix}/bin/coqc",
+        "--version"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "pinned-kernel-version",
+      "kind": "version",
+      "stdout_regex": "(?s)(?=.*version\\ 8\\.18\\.0)(?=.*compiled\\ with\\ OCaml\\ 4\\.14\\.1)",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "support.proof-coq",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "components": [
+      "Coq 8.18.0",
+      "SerAPI 0.18.3",
+      "MathComp 2.1.0",
+      "required runtime plugins and libraries"
+    ],
+    "formal_qualification_changed": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "runtime_profile_sha256": "9851140914134729d6201b9a44420c227c69316aab86d259b71710b3b00280a6",
+    "source_lock_files": [
+      "dependency-debs.lock.json",
+      "corresponding-source-lock.json",
+      "ocaml-extra.lock.json",
+      "upstream-lock.json"
+    ],
+    "support_only": true
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "CAML_LD_LIBRARY_PATH": "{prefix}/usr/lib/ocaml/stublibs",
+      "COQCORELIB": "{prefix}/usr/lib/ocaml/coq-core",
+      "COQLIB": "{prefix}/usr/lib/ocaml/coq",
+      "COQPATH": "{prefix}/usr/lib/ocaml/coq/user-contrib",
+      "LD_LIBRARY_PATH": "{prefix}/usr/lib/x86_64-linux-gnu:{prefix}/lib/x86_64-linux-gnu:{prefix}/usr/lib/ocaml/stublibs",
+      "OCAMLFIND_CONF": "/dev/null",
+      "OCAMLLIB": "{prefix}/usr/lib/ocaml",
+      "OCAMLPATH": "{prefix}/lib:{prefix}/usr/lib/ocaml",
+      "OCAMLRUNPARAM": "s=256k,o=10,O=10"
+    }
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [
+      {
+        "label": "kernel",
+        "path": "{prefix}/bin/coqc",
+        "purpose": "Pinned Coq compiler"
+      },
+      {
+        "label": "licenses",
+        "path": "{prefix}/share/licenses",
+        "purpose": "Original component notices"
+      }
+    ],
+    "notes": [
+      "CPG 0.21.14 candidate overlay; formal baseline qualification is unchanged.",
+      "All generated proof files belong in an independent output directory."
+    ],
+    "summary": "Only SerAPI and MathComp are accepted here. Later LSP and SMTCoq may use --addon; MetaCoq 8.19 uses an independent runtime."
+  },
+  "version": "8.18.0+20261102.core1"
+}

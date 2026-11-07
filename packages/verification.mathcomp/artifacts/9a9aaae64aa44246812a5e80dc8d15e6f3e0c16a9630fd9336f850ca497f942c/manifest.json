@@ -1,0 +1,258 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 22758,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/LICENSE.txt",
+      "sha256": "2b27dddb11fdc4ffc0f6ee678d9b370c1f04b854dcd2803a33f97663af3960b7"
+    },
+    {
+      "bytes": 404,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.txt",
+      "sha256": "52e992cfb9352c1fc7139a8c75baf1b5450adba3bd2ae1f374fc61d662e1b06a"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/examples"
+    },
+    {
+      "bytes": 151,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/examples/BadLiveness.v",
+      "sha256": "9ea9ec0de1c4925130deca9954d987303f5be4a9c049da44d996e9f741fa65fe"
+    },
+    {
+      "bytes": 621,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/examples/LiveNodes.v",
+      "sha256": "2904b1e3bf43f0421f3f43fdd8de0985939110434628929fbdb9fb4d1d2fd931"
+    },
+    {
+      "bytes": 4304,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/reference-check-result.json",
+      "sha256": "d46fd790f06523ad8ebe5838ae8397ddd8b67227fabb46c842cd2b5e84c539d2"
+    },
+    {
+      "bytes": 1473,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/resource.json",
+      "sha256": "6ea37e296f0670ad96ce9164588338a6daccffdde9808c30b2f132af68dea31d"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/tools"
+    },
+    {
+      "bytes": 1763,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tools/env.py",
+      "sha256": "529c9ac336a563750e1c358cfaefc98c4efe07e717c7b87d3c8109f15f2938a0"
+    },
+    {
+      "bytes": 20713,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/tools/proof_checks.py",
+      "sha256": "1d3084029d57be295bc7538d61d650fb019215987af3456494075fdb1a31967b"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1354,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/run_check.py",
+      "sha256": "a3bf3ac6a7ede33f5c2fe6da20fbb0701c89b5c3a668209cc217978fa60c10fe"
+    }
+  ],
+  "inventory_sha256": "8ade6ccb4c85094cc87a6b800b2bbb2c6577b1e2abfd0f7afeb2db70b4cbc37f",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "8d7f674190007794a8f42bee573fe8d33e830e0abc87cd112294a56cac1e28a8",
+  "method": "binary",
+  "package": {
+    "build": "cpg-20261101-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/run_check.py",
+          "--output-root",
+          "{build}/proof-results",
+          "--",
+          "python3",
+          "-B",
+          "{prefix}/tools/proof_checks.py",
+          "--resource",
+          "mathcomp",
+          "--runtime",
+          "{dependency_prefix:support.proof-coq}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "actual-proof-and-rejection",
+        "kind": "functional",
+        "requires_commands": [
+          "python3"
+        ],
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 3600
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "support.proof-coq"
+      ],
+      "system": []
+    },
+    "id": "verification.mathcomp",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "formal_qualification_changed": false,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "prepack_evidence_sha256": "142eed90b57356d64b2570ab2dc8201d0c37a541fc52b175954343570fd8f9ae",
+      "proof_gates": [
+        "runtime-version exit",
+        "fixed Coq and OCaml version",
+        "LiveNodes exit",
+        "membership and uniqueness have no axioms",
+        "incorrect membership preservation rejected",
+        "coqchk exit"
+      ],
+      "record_id": "review.verification.mathcomp",
+      "support_only": false,
+      "upstream": [
+        {
+          "bytes": 2700,
+          "sha256": "6ef70618d1f07e25a983255ea4d3046a2b84c293f36a27ee9fe13dd9d32724d7",
+          "url": "https://snapshot.ubuntu.com/ubuntu/20260828T000000Z/pool/universe/s/ssreflect/ssreflect_2.1.0-1build4.dsc"
+        },
+        {
+          "bytes": 1835482,
+          "sha256": "ca000eb4cbd80f9088fd5f6a6745eebf9be3c0d7430fa3fde10a790b99466d26",
+          "url": "https://snapshot.ubuntu.com/ubuntu/20260828T000000Z/pool/universe/s/ssreflect/ssreflect_2.1.0.orig.tar.gz"
+        },
+        {
+          "bytes": 12836,
+          "sha256": "60e38bccd78145d80500bc3d5c4f213ba5483af1e28b1fe23ac0113edc53e81a",
+          "url": "https://snapshot.ubuntu.com/ubuntu/20260828T000000Z/pool/universe/s/ssreflect/ssreflect_2.1.0-1build4.debian.tar.xz"
+        }
+      ],
+      "worker_id": "worker 101"
+    },
+    "provider": "binary",
+    "recipe": {
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 2700,
+        "extract": false,
+        "id": "verification.mathcomp.upstream-1",
+        "material_path": "sources/ssreflect_2.1.0-1build4.dsc",
+        "sha256": "6ef70618d1f07e25a983255ea4d3046a2b84c293f36a27ee9fe13dd9d32724d7",
+        "strip_root": false,
+        "url": "https://snapshot.ubuntu.com/ubuntu/20260828T000000Z/pool/universe/s/ssreflect/ssreflect_2.1.0-1build4.dsc"
+      },
+      {
+        "bytes": 1835482,
+        "extract": false,
+        "id": "verification.mathcomp.upstream-2",
+        "material_path": "sources/ssreflect_2.1.0.orig.tar.gz",
+        "sha256": "ca000eb4cbd80f9088fd5f6a6745eebf9be3c0d7430fa3fde10a790b99466d26",
+        "strip_root": false,
+        "url": "https://snapshot.ubuntu.com/ubuntu/20260828T000000Z/pool/universe/s/ssreflect/ssreflect_2.1.0.orig.tar.gz"
+      },
+      {
+        "bytes": 12836,
+        "extract": false,
+        "id": "verification.mathcomp.upstream-3",
+        "material_path": "sources/ssreflect_2.1.0-1build4.debian.tar.xz",
+        "sha256": "60e38bccd78145d80500bc3d5c4f213ba5483af1e28b1fe23ac0113edc53e81a",
+        "strip_root": false,
+        "url": "https://snapshot.ubuntu.com/ubuntu/20260828T000000Z/pool/universe/s/ssreflect/ssreflect_2.1.0-1build4.debian.tar.xz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://snapshot.ubuntu.com/ubuntu/20260828T000000Z/pool/universe/s/ssreflect/ssreflect_2.1.0-1build4.dsc",
+        "https://snapshot.ubuntu.com/ubuntu/20260828T000000Z/pool/universe/s/ssreflect/ssreflect_2.1.0.orig.tar.gz",
+        "https://snapshot.ubuntu.com/ubuntu/20260828T000000Z/pool/universe/s/ssreflect/ssreflect_2.1.0-1build4.debian.tar.xz"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "proof-checker",
+          "path": "{prefix}/tools/proof_checks.py",
+          "purpose": "Replay the exact assigned proof and negative checks"
+        }
+      ],
+      "notes": [
+        "CPG 0.21.14 candidate overlay; formal baseline qualification is unchanged.",
+        "All generated proof files belong in an independent output directory."
+      ],
+      "summary": "MathComp 2.1.0 ssreflect; sequence deduplication preserves liveness membership and uniqueness"
+    },
+    "version": "2.1.0-1build4"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.14",
+    "packing_input_sha256": "25656398461753cf1154e59c69ff89b28e75a07502755d25a354dbee58a1efb6",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.verification.mathcomp",
+    "scope": "MathComp 2.1.0 ssreflect; sequence deduplication preserves liveness membership and uniqueness",
+    "support_only": false,
+    "worker_id": "worker 101"
+  },
+  "resolved_dependencies": [
+    {
+      "build": "cpg-20261101-v001",
+      "id": "support.proof-coq",
+      "method": "binary",
+      "sha256": "d5e6ea2a191303eea78c0f947b6baf46ddcde674fba2cdccb843011096d7e6f9",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "8.18.0+20261102.core1"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

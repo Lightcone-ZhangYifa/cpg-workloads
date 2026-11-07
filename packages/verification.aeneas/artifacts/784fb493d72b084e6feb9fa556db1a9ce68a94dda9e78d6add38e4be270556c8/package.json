@@ -1,0 +1,92 @@
+{
+  "build": "worker104-functional-v001",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--work",
+        "{build}/functional-evidence"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "verification.aeneas-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 1200
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "verification.aeneas",
+  "metadata": {
+    "worker104_profile": {
+      "dataset_verified": null,
+      "deployment_network": "not required",
+      "nightly": "2026-09-17",
+      "runtime_closure": "Rust, JVM/prover and resource binaries are supplied in immutable input archives. A compatible Linux glibc system and Python 3 are required; compiling generated Rust executables also requires the host cc/linker and C runtime development files."
+    }
+  },
+  "provider": "binary",
+  "recipe": {
+    "expanded_runtime_abi_gate": "original check_binary_runtime, actual current_target and actual functional environment",
+    "input_lock": "input-lock.json",
+    "offline": true,
+    "profile": "aeneas",
+    "qualification_scope": "bounded actual task functional profile; not an official baseline promotion",
+    "qualified": true,
+    "required_installed_paths": [
+      "{prefix}/cpg_resource_runtime.py",
+      "{prefix}/input-lock.json"
+    ],
+    "required_runtime_commands": [
+      "ldd"
+    ],
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1893694,
+      "extract": true,
+      "id": "aeneas-main",
+      "material_path": "aeneas-source",
+      "sha256": "2bbacd1fc42f5b67cbd46cb3e0acfc3b45c6876cfbc94dd579a4d4298acbed4b",
+      "strip_root": true,
+      "url": "https://codeload.github.com/AeneasVerif/aeneas/tar.gz/ab34bd28458a08c150b7cbf1873e59af74588138"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Python runtime interface",
+        "path": "{prefix}/cpg_resource_runtime.py",
+        "purpose": "prepare(prefix, output) and command(runtime, tool, arguments)"
+      }
+    ],
+    "notes": [
+      "Every runtime output must be fresh. Full source archives, runtime locks and bounded functional checks are included.",
+      "This package does not certify every input, a complete language subset, or an official benchmark."
+    ],
+    "summary": "Run the pinned aeneas toolchain in a fresh offline runtime."
+  },
+  "version": "ab34bd28458a08c150b7cbf1873e59af74588138"
+}

@@ -1,0 +1,244 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 3249,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build.py",
+      "sha256": "2b2ffdcf188617d5a44edd67068e379279dd4cfddc21a09b1cfb3835e4640542"
+    },
+    {
+      "bytes": 16945,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/capability_check.py",
+      "sha256": "fe40e0d9c1324a11be27f73ef01149d45cbd703143da3658c251d16dcc74c9f3"
+    },
+    {
+      "bytes": 3246,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/elfio_probe.cpp",
+      "sha256": "c1273b737f0dbd9a6f507dc8d3a781d718f2f6bfc8ec250a50b07d39ef0e0315"
+    },
+    {
+      "bytes": 2578,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/native_probe.c",
+      "sha256": "abf9a0e963a8db144ed4c0c55f023f8032169ca6e6d9cd285729f5ac51f25c1f"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe/oracles"
+    },
+    {
+      "bytes": 1485316,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/oracles/capstone-5.0.9-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "sha256": "273fd8d747d2e35c88f91450be51a603ecfaafb00d96d9f315dcb8689c86193e"
+    },
+    {
+      "bytes": 533,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/oracles/lock.json",
+      "sha256": "4b4fa950918bf8d0ec9343d9e32955a5915b39ca9d0754075d4fa4d3114ece59"
+    },
+    {
+      "bytes": 327,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/version_check.py",
+      "sha256": "eb38b1eacec9102f6951f83f7468a8132fad51ac4007b88a9617a9897f371d85"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 29689505,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/7587a2b2ce48df1fd68a68657b6c5a711b467c346812e46dfb9cd996cd6e2352",
+      "sha256": "7587a2b2ce48df1fd68a68657b6c5a711b467c346812e46dfb9cd996cd6e2352"
+    },
+    {
+      "bytes": 65981,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/943f91eb9ab2a8cc01ab9f8b785e769a273502071e0ee8011cdfcaad93947cec",
+      "sha256": "943f91eb9ab2a8cc01ab9f8b785e769a273502071e0ee8011cdfcaad93947cec"
+    },
+    {
+      "bytes": 812134,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/efbca210596ef954241ef40732376d50be5b6b7ca7d63a3834ef0c71f3471f36",
+      "sha256": "efbca210596ef954241ef40732376d50be5b6b7ca7d63a3834ef0c71f3471f36"
+    }
+  ],
+  "inventory_sha256": "011fedaa1e6f9287640fca8440ed52445a0427c6ee8f1c127afb271e47eee54e",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "8c0a6f7d724827bc9c566d69ffe6ad63abfdc74ddb95ae5bbf377ccbfbe983f6",
+  "method": "source",
+  "package": {
+    "build": "worker024.1",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-I",
+          "{recipe}/capability_check.py",
+          "--resource",
+          "zydis",
+          "--prefix",
+          "{prefix}"
+        ],
+        "cwd": "{prefix}",
+        "expected_returncode": 0,
+        "id": "worker024-bounded-capability",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "zydis",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "dependency_family_count_increment": 0,
+      "new_upstream_family": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "Linux x86_64; fixed functional corpus and malformed inputs; not whole-ISA or CPU-execution certification",
+      "test_oracle_identity": "py.capstone frozen original 5.0.9 wheel",
+      "worker_id": "worker 024"
+    },
+    "provider": "source",
+    "recipe": {
+      "install_argv": [
+        "python3",
+        "{recipe}/build.py",
+        "--resource",
+        "zydis",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}",
+        "--jobs",
+        "{jobs}"
+      ],
+      "required_host_commands": [
+        "python3",
+        "gcc",
+        "g++",
+        "make"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/cpg-zydis-probe"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "objdump"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 812134,
+        "extract": true,
+        "id": "zydis",
+        "material_path": "zydis",
+        "sha256": "efbca210596ef954241ef40732376d50be5b6b7ca7d63a3834ef0c71f3471f36",
+        "strip_root": true,
+        "url": "https://codeload.github.com/zyantific/zydis/tar.gz/a2278f1d254e492f6a6b39f6cb5d1f5d515659dc"
+      },
+      {
+        "bytes": 65981,
+        "extract": true,
+        "id": "zycore",
+        "material_path": "zycore",
+        "sha256": "943f91eb9ab2a8cc01ab9f8b785e769a273502071e0ee8011cdfcaad93947cec",
+        "strip_root": true,
+        "url": "https://codeload.github.com/zyantific/zycore-c/tar.gz/refs/tags/v1.5.2"
+      },
+      {
+        "bytes": 29689505,
+        "extract": false,
+        "id": "build-prerequisite.cmake",
+        "material_path": "inputs/cmake-4.1.2-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "sha256": "7587a2b2ce48df1fd68a68657b6c5a711b467c346812e46dfb9cd996cd6e2352",
+        "strip_root": true,
+        "url": "https://files.pythonhosted.org/packages/f3/56/0fc4d83f212cef10b7bbf6c5043e4582af80ad2aef6905e0dc33fbf68b11/cmake-4.1.2-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/zyantific/zydis"
+      ],
+      "examples": [],
+      "locations": [
+        {
+          "label": "prefix",
+          "path": "{prefix}",
+          "purpose": "Independent installation of pinned resource"
+        }
+      ],
+      "notes": [
+        "Bounded offline capability checks; hardware execution qualifications are stated in evidence."
+      ],
+      "summary": "zydis original source and independently verified native provider"
+    },
+    "version": "4.1.1"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline": "0.21.14",
+    "native_build_logs": "evidence/zydis-build.log",
+    "source_pins": [
+      "efbca210596ef954241ef40732376d50be5b6b7ca7d63a3834ef0c71f3471f36",
+      "943f91eb9ab2a8cc01ab9f8b785e769a273502071e0ee8011cdfcaad93947cec",
+      "7587a2b2ce48df1fd68a68657b6c5a711b467c346812e46dfb9cd996cd6e2352"
+    ]
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "zydis",
+      "path": "sources/efbca210596ef954241ef40732376d50be5b6b7ca7d63a3834ef0c71f3471f36"
+    },
+    {
+      "id": "zycore",
+      "path": "sources/943f91eb9ab2a8cc01ab9f8b785e769a273502071e0ee8011cdfcaad93947cec"
+    },
+    {
+      "id": "build-prerequisite.cmake",
+      "path": "sources/7587a2b2ce48df1fd68a68657b6c5a711b467c346812e46dfb9cd996cd6e2352"
+    }
+  ]
+}

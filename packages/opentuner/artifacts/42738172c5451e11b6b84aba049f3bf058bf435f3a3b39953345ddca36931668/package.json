@@ -1,0 +1,184 @@
+{
+  "build": "worker083-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-S",
+        "{recipe}/check_resource.py",
+        "--resource",
+        "opentuner",
+        "--prefix",
+        "{prefix}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "fresh-measured-search-and-correctness",
+      "kind": "functional",
+      "stdout_regex": "CPG_WORKER083_CHECK_PASSED",
+      "timeout_seconds": 1800
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": [
+      "apt.python3"
+    ]
+  },
+  "id": "opentuner",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 165889,
+      "archive_scope": "Selected upstream archive; external build dependencies and separately distributed datasets are excluded.",
+      "category": [
+        "Optimization search",
+        "Autotuning"
+      ],
+      "container_strategy": "Install only in a dedicated compatibility Python environment with its exact dependency closure.",
+      "dependencies": [],
+      "deployment": {
+        "adapter": "reference",
+        "qualified": false,
+        "source_dependencies": [],
+        "system_packages": [],
+        "working_directory": "{build}"
+      },
+      "documentation": [
+        "https://github.com/jansel/opentuner"
+      ],
+      "evidence_files": [
+        "workspace-evidence/resources-v050/open-research/opentuner.measurement.json",
+        "workspace-evidence/resources-v050/open-research/opentuner.refs.json"
+      ],
+      "extract": true,
+      "id": "opentuner",
+      "immutable_ref": "a9a0d36ab9dd376ef9d959ffda6377aad6ddf1aa",
+      "kind": "source_archive",
+      "license_class": "open",
+      "license_id": "MIT",
+      "mandatory": false,
+      "material_path": "sources/opentuner",
+      "presets": [
+        "open",
+        "all"
+      ],
+      "purpose": "Retain multi-technique autotuning examples for flags, parameter choices and compiler scheduling experiments.",
+      "qualification": {
+        "archive_measured": true,
+        "build_qualified": false,
+        "target_qualified": false,
+        "version_pinned": true
+      },
+      "qualification_gaps": [
+        "The source is frozen by commit; compatibility with the current Python ecosystem must be qualified.",
+        "Noise-aware repeated evaluation, correctness gates and train-only objectives remain the responsibility of the study harness."
+      ],
+      "redistributable": true,
+      "roles": [
+        "dev",
+        "host"
+      ],
+      "sha256": "546fb50a3350fa8b1e9105de2314a0f09e85c1a575352e7597ad97bc975ba8c5",
+      "size_basis": "Measured HTTP response body and SHA256; logical size sums regular archive file entries, excluding filesystem allocation, submodule payloads and external datasets.",
+      "source_evidence": [
+        "https://github.com/jansel/opentuner",
+        "https://codeload.github.com/jansel/opentuner/tar.gz/a9a0d36ab9dd376ef9d959ffda6377aad6ddf1aa",
+        "https://github.com/jansel/opentuner/commit/a9a0d36ab9dd376ef9d959ffda6377aad6ddf1aa"
+      ],
+      "source_logical_bytes": 642363,
+      "source_url": "https://codeload.github.com/jansel/opentuner/tar.gz/a9a0d36ab9dd376ef9d959ffda6377aad6ddf1aa",
+      "title": "OpenTuner search framework",
+      "upstream": "https://github.com/jansel/opentuner",
+      "version": "commit-a9a0d36ab9dd"
+    },
+    "catalog_sha256": "4e396126162f54388902dfd482d68b751ae37fe2bed8af409bee11ec062596b0",
+    "worker083_execution_profile": {
+      "input_manifest_sha256": "768d5c36640f6b4db1862032dd280077f2b6009c7cbc34dcc482640f05943103",
+      "scope": "Actual local measured compiler-parameter tuning with independent correctness gates; qualification is recorded separately in receipts"
+    }
+  },
+  "provider": "material",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-S",
+        "{recipe}/install_resource.py",
+        "--resource",
+        "opentuner",
+        "--source",
+        "{source}",
+        "--prefix",
+        "{prefix}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}"
+      ]
+    ],
+    "execution_profile": "Exact additional execution inputs; original source/dependency/catalog identity is preserved",
+    "required_host_commands": [
+      "python3",
+      "gcc"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "gcc"
+    ],
+    "runtime_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 165889,
+      "extract": true,
+      "id": "opentuner",
+      "material_path": "sources/opentuner",
+      "sha256": "546fb50a3350fa8b1e9105de2314a0f09e85c1a575352e7597ad97bc975ba8c5",
+      "strip_root": true,
+      "url": "https://codeload.github.com/jansel/opentuner/tar.gz/a9a0d36ab9dd376ef9d959ffda6377aad6ddf1aa"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/jansel/opentuner"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Complete declared main-archive materials",
+        "path": "{prefix}",
+        "purpose": "Independent upstream files, including original notices, tests, examples, inputs, answers and reference material present in the fixed archive."
+      }
+    ],
+    "notes": [
+      "The material package retains every original file and safe symbolic link in the exact fixed main archive; full content checks run on independent installations.",
+      "Canonical source fields remain unchanged. recipe/acquisition_lock and recipe/input-audit.json explicitly resolve only previously unknown SHA-256 and byte count from the same fixed URL/commit and bind the baseline definition hash.",
+      "Availability does not compile or execute corpus programs, generate missing runtime inputs, validate a numerical oracle or produce an official benchmark score. Dataset interfaces, OCI and physical-target execution need separate evidence.",
+      "Original license labels and all upstream notices remain unchanged; download and material verification do not grant license clearance.",
+      "The exact main repository Git tree has zero gitlinks. Nested vendored .gitmodules files are preserved as upstream metadata; their external test/build dependencies are not installed or qualified.",
+      "This explicit material variant only requires Python for byte, mode and link verification. The complete original build/run/system dependency contract is preserved in baseline-package.json and recipe.material_profile_original_dependencies; that native execution contract is not qualified by this profile.",
+      "New execution recipe and checks supplement the unchanged baseline identity. Preparation and installation are separate; only frozen raw inputs are shared."
+    ],
+    "summary": "Retain multi-technique autotuning examples for flags, parameter choices and compiler scheduling experiments."
+  },
+  "version": "commit-a9a0d36ab9dd"
+}

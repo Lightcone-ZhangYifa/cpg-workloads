@@ -1,0 +1,16 @@
+?start: sum
+?sum: sum "+" product -> add
+    | sum "-" product -> sub
+    | product
+?product: product "*" power -> mul
+        | power
+?power: atom "**" power -> pow
+      | atom
+?atom: NUMBER -> number
+     | NAME -> variable
+     | "(" sum ")"
+NAME: /[^\W\d]\w*/
+%import common.INT -> NUMBER
+%import common.WS
+%ignore WS
+

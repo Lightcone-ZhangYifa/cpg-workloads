@@ -1,0 +1,164 @@
+{
+  "build": "cpg-worker084-cpu-v1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-S",
+        "{prefix}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--work",
+        "{build}/functional-checks"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "real-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "cltune",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "canonical_commit": "8a56a4a314be7ccef56ad8f55e8a34a37dda0545",
+    "new_candidate": true,
+    "package_manager": "original compiler_playground 0.21.14 APIs; no controller changes",
+    "record_id": "review.optimization.cltune",
+    "runtime_contract": {
+      "arch": "x86_64",
+      "host_commands": [
+        "python3"
+      ],
+      "native_runtime": [
+        "glibc",
+        "libstdc++.so.6"
+      ],
+      "opencl": "actual system libOpenCL.so.1 plus bundled PoCL CPU ICD; no GPU qualification",
+      "os": "linux",
+      "python": "CPython 3.12"
+    },
+    "scope": "conditional small CPU/OpenCL-CPU validation; no GPU, OCI, official benchmark score or MPI qualification",
+    "worker_id": "worker 084"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "install_argv": [
+      "python3",
+      "-S",
+      "{recipe}/install.py",
+      "--prefix",
+      "{prefix}",
+      "--build",
+      "{build}",
+      "--assets",
+      "{assets}",
+      "--recipe",
+      "{recipe}"
+    ],
+    "required_host_commands": [
+      "python3",
+      "gcc",
+      "g++",
+      "make"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 139119,
+      "extract": false,
+      "id": "input-5421bfc265eb587de28d",
+      "material_path": "raw/cltune-8a56a4a314be7ccef56ad8f55e8a34a37dda0545.tar.gz",
+      "sha256": "5421bfc265eb587de28da5e1d96b6921ea89b03f62f9303e3ade2e7d162795d2",
+      "strip_root": false,
+      "url": "https://codeload.github.com/CNugteren/CLTune/tar.gz/8a56a4a314be7ccef56ad8f55e8a34a37dda0545"
+    },
+    {
+      "bytes": 89772,
+      "extract": false,
+      "id": "input-7576bc8ba67af73ef30a",
+      "material_path": "raw/opencl-headers-82f60316cc142e7b21dc1d8983b26de18858fbd9.tar.gz",
+      "sha256": "7576bc8ba67af73ef30ae28096b4d19b953e7767960f24fba0e14d97e732f62d",
+      "strip_root": false,
+      "url": "https://codeload.github.com/KhronosGroup/OpenCL-Headers/tar.gz/82f60316cc142e7b21dc1d8983b26de18858fbd9"
+    },
+    {
+      "bytes": 58106985,
+      "extract": false,
+      "id": "input-b70c3d7835afd9aabc43",
+      "material_path": "raw/pocl_binary_distribution-3.0-py2.py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "sha256": "b70c3d7835afd9aabc43dcffe0035d6a71d54eb35d8d55fc2fd4eb1e037128a9",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/7d/2d/7e7b1a6d7f807655d891a7d92fca12ea8cfae6f5dd48953f45d03d47d632/pocl_binary_distribution-3.0-py2.py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+    },
+    {
+      "bytes": 759116,
+      "extract": false,
+      "id": "input-55ecd1fe29ac98e23590",
+      "material_path": "raw/pyopencl-2026.1.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "55ecd1fe29ac98e235908ceaceae154d4660a3ebc67dfbdcfe4b4cfd8c52d270",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/74/d0/ab0f505d3662c4b87faa31a88ab350b2ee95789ad2f6d679a2b3697ec7b0/pyopencl-2026.1.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+    },
+    {
+      "bytes": 30245729,
+      "extract": false,
+      "id": "input-f773a0544c66370408f4",
+      "material_path": "raw/cmake-4.4.4-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "sha256": "f773a0544c66370408f451acd487c2c643b0dfebb48c5d64f3638bc1bb820238",
+      "strip_root": false,
+      "url": "https://files.pythonhosted.org/packages/7e/d5/664ea06d01864f25d6067f09fa218404e4d588edd5e495135ac91429fecb/cmake-4.4.4-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the Python PackageManager API to install an explicit artifact into an independent prefix."
+    ],
+    "documentation": [
+      "https://github.com/CNugteren/CLTune"
+    ],
+    "examples": [
+      {
+        "command": "python3 -S {prefix}/check.py --prefix {prefix} --work /your/external/check-directory",
+        "description": "Run a fresh external-work functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "profile",
+        "path": "{prefix}/profile.json",
+        "purpose": "Exact private input and runtime contract"
+      },
+      {
+        "label": "examples",
+        "path": "{prefix}/samples",
+        "purpose": "Real kernel and independent correctness harnesses"
+      }
+    ],
+    "notes": [
+      "Reference distribution is descriptive. Actual OS, architecture, interpreter and library loading are checked.",
+      "Full original source archives and exact wheels are retained in the source artifact. Optional execution subtrees do not claim complete upstream benchmark coverage.",
+      "CPU OpenCL execution does not qualify CUDA or physical GPU execution. No system profiler is used."
+    ],
+    "summary": "Locked offline cltune integration with bounded real CPU functional checks."
+  },
+  "version": "git-8a56a4a314be7ccef56ad8f55e8a34a37dda0545"
+}

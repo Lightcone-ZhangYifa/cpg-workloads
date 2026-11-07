@@ -1,0 +1,82 @@
+{
+  "build": "linux-elf-fork-ci-1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check_link_tools.py",
+        "native",
+        "{prefix}/bin/wild",
+        "{build}/native-check"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "native-elf-semantics",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "gcc",
+        "ar",
+        "readelf"
+      ],
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "linker.wild",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "qualification_scope": "Linux x86_64 ELF C-object linking/execution versus system linker; features=fork, no default features, ci debug=0, no LTO, no incremental compilation. No Wasm/plugins/zstd/full-platform qualification.",
+    "worker": "worker 022"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3",
+      "gcc",
+      "ar",
+      "readelf"
+    ]
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 1199487,
+      "extract": false,
+      "id": "wild-source",
+      "material_path": "raw/wild-0.11.0-source.tar.gz",
+      "sha256": "34d0c66c70b3c4744c548b2b821180d2d578b86eb747cb4a9ed1f4b11a95b337",
+      "strip_root": false,
+      "url": "https://codeload.github.com/wild-linker/wild/tar.gz/refs/tags/0.11.0"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/wild-linker/wild/releases/tag/0.11.0"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "independent-prefix",
+        "path": "{prefix}",
+        "purpose": "Wild 0.11.0 built offline from the fixed Rust closure for Linux ELF"
+      }
+    ],
+    "notes": [
+      "Linux x86_64 ELF C-object linking/execution versus system linker; features=fork, no default features, ci debug=0, no LTO, no incremental compilation. No Wasm/plugins/zstd/full-platform qualification."
+    ],
+    "summary": "Wild 0.11.0 built offline from the fixed Rust closure for Linux ELF"
+  },
+  "version": "0.11.0"
+}

@@ -1,0 +1,128 @@
+{
+  "build": "cpg-worker084-cpu-v1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-S",
+        "{prefix}/check.py",
+        "--prefix",
+        "{prefix}",
+        "--work",
+        "{build}/functional-checks"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "real-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "cppatf",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "canonical_commit": "3356735414f7bfff0e24363a2af3866e45cba183",
+    "new_candidate": true,
+    "package_manager": "original compiler_playground 0.21.14 APIs; no controller changes",
+    "record_id": "review.optimization.cppatf",
+    "runtime_contract": {
+      "arch": "x86_64",
+      "host_commands": [
+        "python3"
+      ],
+      "native_runtime": [
+        "glibc",
+        "libstdc++.so.6"
+      ],
+      "opencl": null,
+      "os": "linux",
+      "python": "CPython 3.12"
+    },
+    "scope": "conditional small CPU/OpenCL-CPU validation; no GPU, OCI, official benchmark score or MPI qualification",
+    "worker_id": "worker 084"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "install_argv": [
+      "python3",
+      "-S",
+      "{recipe}/install.py",
+      "--prefix",
+      "{prefix}",
+      "--build",
+      "{build}",
+      "--assets",
+      "{assets}",
+      "--recipe",
+      "{recipe}"
+    ],
+    "required_host_commands": [
+      "python3",
+      "gcc",
+      "g++",
+      "make"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "working_directory": "{build}"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 678671,
+      "extract": false,
+      "id": "input-5a55db7375f72a504afd",
+      "material_path": "raw/cppatf-3356735414f7bfff0e24363a2af3866e45cba183.tar.gz",
+      "sha256": "5a55db7375f72a504afd6868b57096c8930317584a37f8564d9e6b42379ff01b",
+      "strip_root": false,
+      "url": "https://codeload.github.com/atf-tuner/cppATF/tar.gz/3356735414f7bfff0e24363a2af3866e45cba183"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [
+      "Use the Python PackageManager API to install an explicit artifact into an independent prefix."
+    ],
+    "documentation": [
+      "https://github.com/atf-tuner/cppATF"
+    ],
+    "examples": [
+      {
+        "command": "python3 -S {prefix}/check.py --prefix {prefix} --work /your/external/check-directory",
+        "description": "Run a fresh external-work functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "profile",
+        "path": "{prefix}/profile.json",
+        "purpose": "Exact private input and runtime contract"
+      },
+      {
+        "label": "examples",
+        "path": "{prefix}/samples",
+        "purpose": "Real kernel and independent correctness harnesses"
+      }
+    ],
+    "notes": [
+      "Reference distribution is descriptive. Actual OS, architecture, interpreter and library loading are checked.",
+      "Full original source archives and exact wheels are retained in the source artifact. Optional execution subtrees do not claim complete upstream benchmark coverage.",
+      "CPU OpenCL execution does not qualify CUDA or physical GPU execution. No system profiler is used."
+    ],
+    "summary": "Locked offline cppatf integration with bounded real CPU functional checks."
+  },
+  "version": "git-3356735414f7bfff0e24363a2af3866e45cba183"
+}

@@ -1,0 +1,327 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "bytes": 81,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/CPG-INTEGRITY-MARKER.txt",
+      "sha256": "a1feef9a7cfc9a888efcde247d99cc74ad754b64685e49d77700472c984baa48"
+    },
+    {
+      "bytes": 1237,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/README.zh.txt",
+      "sha256": "ca8e7e8d6bb39ada57d9563d84afb2903c4c64ffbbd17f0c1033e4e2417eb502"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/fixtures"
+    },
+    {
+      "bytes": 297,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/fixtures/affine.hlo",
+      "sha256": "7daadbb3c4ccde171a3a867da253c3411c5cb9f9ddf9a77d566b42d1e4da3f35"
+    },
+    {
+      "bytes": 4645,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/probe.py",
+      "sha256": "5228ceaeccbee5d86ac3d58c838db9f609c0aed86dd3c10014193514cd096a65"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/sources"
+    },
+    {
+      "bytes": 23176617,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/sources/xla-9f150f6b75c08d6ea7b97697c4f393f1a0eb6121.tar.gz",
+      "sha256": "523d23e8ea0d16c6134be49fbd0b25848ee3f1c00821e0a91207327dd3dc71cb"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/upstream"
+    },
+    {
+      "bytes": 11356,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/upstream/LICENSE",
+      "sha256": "43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1"
+    },
+    {
+      "bytes": 1689,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/upstream/README.md",
+      "sha256": "98fc97dc1b470b3efed23cb11d574ffa6874be72884098f299834c8b5cb9a033"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/upstream/docs"
+    },
+    {
+      "bytes": 253252,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/upstream/docs/operation_semantics.md",
+      "sha256": "247341ff3410a7e5dda2d596dd4be6a01f1a3ac5c74c5d47f252fe158f03f713"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/upstream/third_party"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/upstream/third_party/shardy"
+    },
+    {
+      "bytes": 627,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/upstream/third_party/shardy/workspace.bzl",
+      "sha256": "3767ec69720a3db1660e58b6d7a401ef55f3441fc88d441ba87e60a5fd9c2720"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/upstream/third_party/stablehlo"
+    },
+    {
+      "bytes": 776,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/upstream/third_party/stablehlo/workspace.bzl",
+      "sha256": "9ffdcbcd76232696963cd08c6d4fd63a4d70f759eced70c12abc935650074ca8"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 7917,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/common_check.py",
+      "sha256": "d55634039c3db0493a972f777733de398e5a1af9f917d983f76d478d3b23e4a2"
+    },
+    {
+      "bytes": 3272,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/guarded_check.py",
+      "sha256": "2cbba3aaa7614dc5ad655202fe92893e1c784d2b5d32b3e92ce27af0446e21aa"
+    },
+    {
+      "bytes": 2478,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/payload-inventory.json",
+      "sha256": "2cafd4a0586a77c3817359b2987c6e9f559d0083a76b136e38555df9b029bc89"
+    },
+    {
+      "bytes": 112,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/resource_check.py",
+      "sha256": "387a5f23b7d04fec38f85a40ab3f999da3555c977171bb5365e5e3678d07fc14"
+    }
+  ],
+  "inventory_sha256": "4298ad9637b359bec0192a51c397ce39ea8c695b67bf1093a39384cda5803eb8",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "08ceaf86ae760c46e8d993fd14d4f73cff833405a6b043547e2d2d324407ff9b",
+  "method": "binary",
+  "package": {
+    "build": "cpg-20261101-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/guarded_check.py",
+          "--prefix",
+          "{prefix}",
+          "--output",
+          "{build}/profile",
+          "--runtime-prefix",
+          "{dependencies.support.openxla-cpu-runtime.prefix}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "bounded-functional-profile",
+        "kind": "functional",
+        "stdout_regex": "CPG_CHECK_PASS",
+        "timeout_seconds": 2400
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "support.openxla-cpu-runtime"
+      ],
+      "system": []
+    },
+    "id": "research.xla",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "functional_claim": true,
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualifications": {
+        "dataset": null,
+        "oci": false,
+        "official_benchmark": false,
+        "physical_hardware": false
+      },
+      "record_id": "review.optimization.xla",
+      "resource_metadata": {
+        "build_claim": false,
+        "check_extra_args": [
+          "--runtime-prefix",
+          "{dependencies.support.openxla-cpu-runtime.prefix}"
+        ],
+        "check_timeout_seconds": 2400,
+        "dependencies": [
+          "support.openxla-cpu-runtime"
+        ],
+        "functional_claim": true,
+        "id": "research.xla",
+        "limitations": [
+          "使用官方jaxlib 0.8.0 CPU预编译绑定，本会话未从源码重建XLA/LLVM依赖闭包。",
+          "源码commit由JAX 0.8.0正式源码依赖锁追溯；发布wheel未嵌入可独立核验的上游commit，不能据此宣称二进制可复现构建。",
+          "功能资格仅覆盖本包可重放的小规模profile；不代表官方全量测试、Benchmark、GPU或生产资格。",
+          "优化后HLO与CPU数值运行均实际检查，不以模拟墙钟或性能变化授予性能资格。"
+        ],
+        "method": "binary",
+        "recipe_files": [
+          "common_check.py"
+        ],
+        "required_runtime_commands": [
+          "python3"
+        ],
+        "runtime_target": {
+          "arch": "x86_64",
+          "glibc_min": "2.27",
+          "os": "Linux",
+          "python": "CPython 3.12"
+        },
+        "source_locks": [
+          {
+            "bytes": 23176617,
+            "id": "xla-source",
+            "path": "sources/xla-9f150f6b75c08d6ea7b97697c4f393f1a0eb6121.tar.gz",
+            "sha256": "523d23e8ea0d16c6134be49fbd0b25848ee3f1c00821e0a91207327dd3dc71cb",
+            "url": "https://api.github.com/repos/openxla/xla/tarball/9f150f6b75c08d6ea7b97697c4f393f1a0eb6121"
+          }
+        ],
+        "timeout_seconds": 2400,
+        "upstream_license": "Apache-2.0; full upstream LICENSE in payload/upstream/LICENSE",
+        "upstream_source_commit": "9f150f6b75c08d6ea7b97697c4f393f1a0eb6121",
+        "version": "0.8.0-cpu"
+      },
+      "source_build_claim": false,
+      "support_only": false,
+      "upstream_license": "Apache-2.0; full upstream LICENSE in payload/upstream/LICENSE",
+      "worker_id": "worker 063"
+    },
+    "provider": "binary",
+    "recipe": {
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "PIP_NO_INDEX": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 23176617,
+        "extract": false,
+        "id": "xla-source",
+        "material_path": "sources/xla-9f150f6b75c08d6ea7b97697c4f393f1a0eb6121.tar.gz",
+        "sha256": "523d23e8ea0d16c6134be49fbd0b25848ee3f1c00821e0a91207327dd3dc71cb",
+        "strip_root": false,
+        "url": "https://api.github.com/repos/openxla/xla/tarball/9f150f6b75c08d6ea7b97697c4f393f1a0eb6121"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://github.com/openxla/xla"
+      ],
+      "examples": [
+        {
+          "command": "manager.check(\"research.xla\")",
+          "description": "Run the declared checks through the CPG Python API"
+        }
+      ],
+      "locations": [
+        {
+          "label": "Independent installed payload",
+          "path": "{prefix}",
+          "purpose": "Locked resources and bounded offline check inputs"
+        }
+      ],
+      "notes": [
+        "使用官方jaxlib 0.8.0 CPU预编译绑定，本会话未从源码重建XLA/LLVM依赖闭包。",
+        "源码commit由JAX 0.8.0正式源码依赖锁追溯；发布wheel未嵌入可独立核验的上游commit，不能据此宣称二进制可复现构建。",
+        "功能资格仅覆盖本包可重放的小规模profile；不代表官方全量测试、Benchmark、GPU或生产资格。",
+        "优化后HLO与CPU数值运行均实际检查，不以模拟墙钟或性能变化授予性能资格。"
+      ],
+      "summary": "固定小HLO完成优化和CPU执行，保存pass前后IR；构建过大先材料"
+    },
+    "version": "0.8.0-cpu"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "record_id": "review.optimization.xla",
+    "scope": "New resource overlay; original 1862 definitions remain unchanged.",
+    "worker_id": "worker 063"
+  },
+  "resolved_dependencies": [
+    {
+      "build": "cpg-20261101-v001",
+      "id": "support.openxla-cpu-runtime",
+      "method": "material",
+      "sha256": "48fae1d6cf75c7d405fb2d1d2039830b26cf9ed603e042044158e1673d60868c",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "0.8.0"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

@@ -1,0 +1,254 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 1219,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/check.py",
+      "sha256": "3eb3816b2841a6f6b8ef3d579817176398f855399215582a3b5ce8ce5751a224"
+    },
+    {
+      "bytes": 356,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/config.json",
+      "sha256": "1bd409875eef1a779d983f5e4f9e349a7fae7e2a86c0fc36c5b3b27a0e6f1dcf"
+    },
+    {
+      "bytes": 703,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/dr_client.c",
+      "sha256": "0ad1bc91aff3566b6c1214d94197653847a230c1c1dd0d0a1155d46466bc15a5"
+    },
+    {
+      "bytes": 10481,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/functional.py",
+      "sha256": "97ebf8867cbbab39cc64d887dfad5ac6c9200a98a6d8b3b83fcc05fe465c4ab0"
+    },
+    {
+      "bytes": 3393,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install.py",
+      "sha256": "eef0796abfbc4932700c8b9da16e9bafc218e30277272c52ece69e5fb68a6991"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 428589887,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/ae02049df5c4daeb82d4087aaa0d38bf58cdd26b38fb6042dccf27cbc32ceed9",
+      "sha256": "ae02049df5c4daeb82d4087aaa0d38bf58cdd26b38fb6042dccf27cbc32ceed9"
+    }
+  ],
+  "inventory_sha256": "313f2e268cee46249765aad17b301186b0c44a86b513a63e28641e3664830554",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "7b32c270fc0eb4567128816e16b7ac8334d6a17b35d8812d0eaefcc5254725dd",
+  "method": "source",
+  "package": {
+    "build": "worker074-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-B",
+          "{recipe}/check.py",
+          "--prefix",
+          "{prefix}",
+          "--build",
+          "{build}",
+          "--recipe",
+          "{recipe}"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "dynamorio-bounded-semantics",
+        "kind": "functional",
+        "stdout_regex": "CPG074_FUNCTIONAL_PASSED",
+        "timeout_seconds": 240
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "research.dynamorio",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "candidate": true,
+      "license_provenance": "Original upstream license files retained in wheel/vendor distribution.",
+      "original_task": {
+        "after_dataset_verified": null,
+        "after_functional": null,
+        "after_material": null,
+        "alias_target": "",
+        "assessment_ids": [
+          "engineering:dynamorio"
+        ],
+        "baseline_catalog_sha256": {},
+        "baseline_dataset_verified": null,
+        "baseline_functional_ids": [],
+        "baseline_managed_ids": [],
+        "baseline_material_ids": [],
+        "baseline_pins": {},
+        "baseline_relation": "新增候选（独立身份仍需锁定）",
+        "baseline_resource_ids": [],
+        "baseline_trusted_apt_ids": [],
+        "baseline_version": "0.21.14",
+        "canonical_url": "https://dynamorio.org/",
+        "category": "observability",
+        "cost": "L",
+        "decision": "select",
+        "decision_zh": "入选",
+        "dependencies": "",
+        "entity_kind": "resource",
+        "evidence_relpath": "",
+        "evidence_urls": [
+          "https://dynamorio.org/"
+        ],
+        "has_active_task": true,
+        "identity_unresolved": false,
+        "increment_package": "cpg-20261101-worker-074-delta-v001.zip",
+        "new_family_candidate": true,
+        "owned_baseline_resource_ids": [],
+        "plan_id": "cpg-resource-research-20261101-v1",
+        "quality_evidence": "{\"basis\":\"official maintainer / standards body / upstream documentation\",\"primary_source_url\":\"https://dynamorio.org/\",\"primary_source_ref\":\"turn100view0\",\"concrete_capability\":\"生成代码的动态插桩/指令变换与诊断\",\"testable_value\":\"只对自有小测试程序运行client，核插桩事件和原语义\",\"scope_and_limits\":\"诊断/插桩与系统性能采集分开；不会替换perf或触碰无关进程。\",\"not_used_as_quality_proxy\":\"GitHub stars, search rank, or mere package presence\"}",
+        "record_id": "review.engineering.dynamorio",
+        "research_scope": "本次公开来源评估",
+        "resource_name": "DynamoRIO",
+        "result_status": "未执行接入",
+        "reviewed_on": "2026-11-01",
+        "schema_version": 1,
+        "scope_limits": "诊断/插桩与系统性能采集分开；不会替换perf或触碰无关进程。",
+        "selected_new_family": true,
+        "selection_reason": "选入以支持：生成代码的动态插桩/指令变换与诊断。可形成具体AI可调用目标：只对自有小测试程序运行client，核插桩事件和原语义。",
+        "source_refs": [
+          "turn100view0"
+        ],
+        "task": "只对自有小测试程序运行client，核插桩事件和原语义",
+        "taxonomy_categories": [
+          "D40",
+          "O19",
+          "O38"
+        ],
+        "value_to_ai": "生成代码的动态插桩/指令变换与诊断",
+        "worker_id": "worker 074",
+        "worker_scope": "二进制变换与提升 · 1"
+      },
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "record_id": "review.engineering.dynamorio",
+      "scope": "只对自有小测试程序运行client，核插桩事件和原语义",
+      "scope_limits": "诊断/插桩与系统性能采集分开；不会替换perf或触碰无关进程。",
+      "source_build_qualification": false,
+      "worker_id": "worker 074"
+    },
+    "provider": "binary",
+    "recipe": {
+      "commands": [
+        [
+          "python3",
+          "-B",
+          "{recipe}/install.py",
+          "--assets",
+          "{assets}",
+          "--prefix",
+          "{prefix}",
+          "--recipe",
+          "{recipe}"
+        ]
+      ],
+      "required_host_commands": [
+        "python3"
+      ],
+      "required_installed_paths": [
+        "{prefix}/CPG-INPUTS.json"
+      ],
+      "required_runtime_commands": [
+        "python3",
+        "gcc",
+        "nm"
+      ],
+      "runtime_environment": {
+        "LD_LIBRARY_PATH": "{prefix}/sdk/lib64/release",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONNOUSERSITE": "1"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 428589887,
+        "extract": false,
+        "id": "input.0",
+        "material_path": "raw/DynamoRIO-Linux-11.3.0.tar.gz",
+        "sha256": "ae02049df5c4daeb82d4087aaa0d38bf58cdd26b38fb6042dccf27cbc32ceed9",
+        "strip_root": false,
+        "url": "https://github.com/DynamoRIO/dynamorio/releases/download/release_11.3.0-1/DynamoRIO-Linux-11.3.0.tar.gz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [
+        "Use the isolated prefix supplied by PackageManager."
+      ],
+      "documentation": [
+        "https://dynamorio.org/"
+      ],
+      "examples": [
+        {
+          "command": "manager.check(\"research.dynamorio\")",
+          "description": "Replay declared semantic check through CPG"
+        }
+      ],
+      "locations": [
+        {
+          "label": "input-lock",
+          "path": "{prefix}/CPG-INPUTS.json",
+          "purpose": "Exact original input hashes and versions"
+        }
+      ],
+      "notes": [
+        "Candidate overlay; does not modify the formal 1862-resource catalog.",
+        "Source-form package replays original upstream wheels/vendor binaries; it does not claim a source-code compilation.",
+        "Tested on Linux x86_64 with Python 3.12; all imports and instrumented targets are private to the package/test."
+      ],
+      "summary": "只对自有小测试程序运行client，核插桩事件和原语义"
+    },
+    "version": "11.3.0"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "baseline_sdk_sha256": "7f812d6021138ad5dea246ddac58528b182389410b73fc862c8a55c3048d9db4",
+    "input_kind": "upstream_binary_distribution",
+    "source_code_compilation": false
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "input.0",
+      "path": "sources/ae02049df5c4daeb82d4087aaa0d38bf58cdd26b38fb6042dccf27cbc32ceed9"
+    }
+  ]
+}

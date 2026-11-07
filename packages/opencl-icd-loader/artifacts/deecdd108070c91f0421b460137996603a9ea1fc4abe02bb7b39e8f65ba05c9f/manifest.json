@@ -1,0 +1,247 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/bin"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/lib"
+    },
+    {
+      "kind": "symlink",
+      "mode": 511,
+      "path": "payload/lib/libOpenCL.so",
+      "target": "libOpenCL.so.1"
+    },
+    {
+      "kind": "symlink",
+      "mode": 511,
+      "path": "payload/lib/libOpenCL.so.1",
+      "target": "libOpenCL.so.1.0.0"
+    },
+    {
+      "bytes": 77304,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/lib/libOpenCL.so.1.0.0",
+      "sha256": "4a0ff4999f3365ec6e7906ef34550503c0d7281b8cf0506b06b4f820764f79a3"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/lib/pkgconfig"
+    },
+    {
+      "bytes": 253,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/lib/pkgconfig/OpenCL.pc",
+      "sha256": "5741dd32f8e5c628b1016ee8a647de7568ab81f29b1c757f12361905e6132b6b"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/cmake"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/cmake/OpenCLICDLoader"
+    },
+    {
+      "bytes": 65,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/cmake/OpenCLICDLoader/OpenCLICDLoaderConfig.cmake",
+      "sha256": "1f8f47a4439fdd8e01d5d7ca83414dafee5d47e7a9474769797a662b2dbd702f"
+    },
+    {
+      "bytes": 1856,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/cmake/OpenCLICDLoader/OpenCLICDLoaderConfigVersion.cmake",
+      "sha256": "e5c4b9451cd05e58e43102f2b1e7f87b6f9fd1badc3b307f8d28cbdb591dd615"
+    },
+    {
+      "bytes": 850,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/cmake/OpenCLICDLoader/OpenCLICDLoaderTargets-release.cmake",
+      "sha256": "6da9b33f82ee25ba037aeab79849f7ae173fc164282c6b0d91645734973bfd51"
+    },
+    {
+      "bytes": 4101,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/cmake/OpenCLICDLoader/OpenCLICDLoaderTargets.cmake",
+      "sha256": "7ecab526664c76256663440e6f7e069b5e5a3ef11a293f03c162e533c1f1a5c5"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/licenses"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "payload/share/licenses/loader"
+    },
+    {
+      "bytes": 11357,
+      "kind": "file",
+      "mode": 420,
+      "path": "payload/share/licenses/loader/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 4915,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/runtime_check.py",
+      "sha256": "9ccd4fb686fb236a99543b2da3d0aa595619ef6f32b2d3350faf26f314397b19"
+    }
+  ],
+  "inventory_sha256": "6f44a8868e3a0bcfb825360459ddc4eac228363897f577be4b6aece6d4740a67",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "21f4028aec16aeaf39481f0980364d6af88353dda0efa960a3f9485ef9003548",
+  "method": "binary",
+  "package": {
+    "build": "worker057-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{recipe}/runtime_check.py",
+          "probe",
+          "--prefix",
+          "{dependency_prefix:pocl}",
+          "--loader",
+          "{prefix}",
+          "--output",
+          "{build}/functional"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "bounded-functional",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 1800
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [
+        "pocl"
+      ],
+      "system": []
+    },
+    "id": "opencl-icd-loader",
+    "metadata": {
+      "baseline_version": "0.21.14",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "qualification_scope": "Khronos ICD Loader built from pinned source with layers disabled; actual isolated platform/device/kernel dispatch to pinned PoCL, plus empty-vendor rejection. Distinct from original ocl-icd identity.",
+      "worker_id": "worker 057"
+    },
+    "provider": "source",
+    "recipe": {
+      "required_installed_paths": [],
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "runtime_environment": {
+        "LD_LIBRARY_PATH": "{prefix}/lib:{dependency_prefix:pocl}/usr/lib/x86_64-linux-gnu:{dependency_prefix:pocl}/usr/lib/llvm-16/lib:{dependency_prefix:pocl}/usr/lib/x86_64-linux-gnu/pocl"
+      }
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 115176,
+        "extract": false,
+        "id": "opencl-icd-loader-source",
+        "material_path": "sources/OpenCL-ICD-Loader-b7bd2803acc779c03d96588e9ca9e9568a18698a.tar.gz",
+        "sha256": "e9b9fac772ae5c5ad9e6b58e7c9a3bb37a842e21c27f8ab998cce0bcc4b79e28",
+        "strip_root": false,
+        "url": "https://codeload.github.com/KhronosGroup/OpenCL-ICD-Loader/tar.gz/b7bd2803acc779c03d96588e9ca9e9568a18698a"
+      },
+      {
+        "bytes": 89120,
+        "extract": false,
+        "id": "opencl-headers-source",
+        "material_path": "sources/opencl-headers-6fe718c31a45fe25151362a72ef041c3a1047cbd.tar.gz",
+        "sha256": "77b6bc606fe0c2b25ef0dd4c400ed508c12fda82dd4420eba3f9e00ce64206c4",
+        "strip_root": false,
+        "url": "https://codeload.github.com/KhronosGroup/OpenCL-Headers/tar.gz/6fe718c31a45fe25151362a72ef041c3a1047cbd"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "README.zh.txt"
+      ],
+      "examples": [
+        {
+          "command": "python3 tools/replay.py --baseline /path/to/cpg --workdir /path/to/fresh-work",
+          "description": "Original CPG independent install/check/verify/remove replay"
+        }
+      ],
+      "locations": [],
+      "notes": [
+        "Candidate worker-local qualification only; original 1862 baseline entries and global coverage are unchanged.",
+        "Offline installation requires existing compatible Linux x86_64 system libraries; original PackageManager checks ELF dependencies. Distribution name is reference metadata, not a gate."
+      ],
+      "summary": "Khronos ICD Loader built from pinned source with layers disabled; actual isolated platform/device/kernel dispatch to pinned PoCL, plus empty-vendor rejection. Distinct from original ocl-icd identity."
+    },
+    "version": "2026.05.29"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "preparation": "Fixed official sources and Debian binary locks; no installation downloads.",
+    "validation_scope": "Khronos ICD Loader built from pinned source with layers disabled; actual isolated platform/device/kernel dispatch to pinned PoCL, plus empty-vendor rejection. Distinct from original ocl-icd identity.",
+    "worker_id": "worker 057"
+  },
+  "resolved_dependencies": [
+    {
+      "build": "worker057-v001",
+      "id": "pocl",
+      "method": "binary",
+      "sha256": "57adb542ceaadc39dead0b44a19c136d6525ead0a40ceb7c7c54ac4c3d9977c2",
+      "target": {
+        "arch": "x86_64",
+        "distribution": "ubuntu",
+        "distribution_version": "24.04",
+        "os": "linux"
+      },
+      "version": "5.0-2.1build3+llvm16.0.6"
+    }
+  ],
+  "schema_version": 1,
+  "sources": []
+}

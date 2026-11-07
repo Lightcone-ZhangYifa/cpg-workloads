@@ -1,0 +1,139 @@
+{
+  "build": "worker053-20261102-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{recipe}/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "task-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "timeout_seconds": 180
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "runtime.newlib",
+  "metadata": {
+    "catalog": {
+      "archive_bytes": 9081514,
+      "baseline_version": "0.21.14",
+      "category": [
+        "Compiler development",
+        "SAT, SMT and runtimes"
+      ],
+      "dependencies": [],
+      "extract": false,
+      "id": "runtime.newlib",
+      "immutable_ref": "4.5.0.20241231",
+      "kind": "native_bundle",
+      "license_id": "See bundled upstream LICENSE and NOTICE files",
+      "material_path": "inputs/input-1",
+      "purpose": "Source-built newlib for arm-none-eabi Cortex-M3, Thumb-2 soft-float; fresh target link with explicit syscall stubs, no unresolved symbols, and missing-stub rejection. No emulator or physical-board execution is claimed.",
+      "qualification_scope": "Source-built newlib for arm-none-eabi Cortex-M3, Thumb-2 soft-float; fresh target link with explicit syscall stubs, no unresolved symbols, and missing-stub rejection. No emulator or physical-board execution is claimed.",
+      "roles": [
+        "dev"
+      ],
+      "sha256": "33f12605e0054965996c25c1382b3e463b0af91799001f5bb8c0630f2ec8c852",
+      "source_evidence": [
+        "https://sourceware.org/newlib/info.html"
+      ],
+      "source_url": "https://sourceware.org/pub/newlib/newlib-4.5.0.20241231.tar.gz",
+      "strip_archive_root": false,
+      "title": "Newlib",
+      "upstream": "https://sourceware.org/newlib/info.html",
+      "version": "4.5.0.20241231",
+      "worker_record_id": "review.engineering.newlib"
+    },
+    "catalog_sha256": "b0cd12146877311007fe94579d4df002e7bd156c5329f3fdd20fb7bb44a5f721",
+    "input_provenance": [
+      {
+        "bytes": 9081514,
+        "local_path": "/workspace/scratch/81acee5764ca/worker053/payloads/newlib/sources/newlib-4.5.0.20241231.tar.gz",
+        "revision": "4.5.0.20241231",
+        "sha256": "33f12605e0054965996c25c1382b3e463b0af91799001f5bb8c0630f2ec8c852",
+        "url": "https://sourceware.org/pub/newlib/newlib-4.5.0.20241231.tar.gz"
+      }
+    ],
+    "original_resource_ids": [],
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "profile_qualifications": {
+      "functional_qualified": true,
+      "source_build_qualified": true
+    },
+    "record_id": "review.engineering.newlib",
+    "runtime_requirements": [
+      "Python >=3.12",
+      "arm-none-eabi-gcc",
+      "arm-none-eabi-readelf",
+      "arm-none-eabi-nm",
+      "Validated on Linux x86_64 with glibc 2.39; no lower ABI bound is inferred. Exact ELF requirements are recorded separately."
+    ],
+    "worker_id": "worker 053"
+  },
+  "provider": "binary",
+  "recipe": {
+    "required_runtime_commands": [
+      "arm-none-eabi-gcc",
+      "arm-none-eabi-nm",
+      "arm-none-eabi-readelf",
+      "ldd",
+      "python3"
+    ],
+    "runtime_environment": {}
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 9081514,
+      "extract": false,
+      "id": "runtime.newlib",
+      "material_path": "inputs/input-1",
+      "sha256": "33f12605e0054965996c25c1382b3e463b0af91799001f5bb8c0630f2ec8c852",
+      "strip_root": false,
+      "url": "https://sourceware.org/pub/newlib/newlib-4.5.0.20241231.tar.gz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://sourceware.org/newlib/info.html"
+    ],
+    "examples": [
+      {
+        "command": "python3 {recipe}/check.py --prefix {prefix}",
+        "description": "Run the declared bounded functional check"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent runtime and source material",
+        "path": "{prefix}",
+        "purpose": "Source-built newlib for arm-none-eabi Cortex-M3, Thumb-2 soft-float; fresh target link with explicit syscall stubs, no unresolved symbols, and missing-stub rejection. No emulator or physical-board execution is claimed."
+      }
+    ],
+    "notes": [
+      "Qualification is limited to the explicit functional cases and fixed inputs recorded in this profile.",
+      "The target distribution records the validation host; the unchanged manager checks OS, architecture and actual ELF/runtime requirements, without a distribution-name gate.",
+      "Runtime ABI and host Python/ldd are checked at installation; exact imported toolchain input hashes and bundled subsets are separately recorded. Qualification flags and evidence delimit actual source-build/runtime capabilities; benchmark, OCI and other-platform qualification are not inferred."
+    ],
+    "summary": "Source-built newlib for arm-none-eabi Cortex-M3, Thumb-2 soft-float; fresh target link with explicit syscall stubs, no unresolved symbols, and missing-stub rejection. No emulator or physical-board execution is claimed."
+  },
+  "version": "4.5.0.20241231"
+}

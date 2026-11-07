@@ -1,0 +1,111 @@
+{
+  "build": "20261101-worker015-v1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/share/compiler-playground/mir/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3",
+        "cc"
+      ],
+      "requires_paths": [
+        "{prefix}/share/compiler-playground/mir/check.py"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "mir",
+  "metadata": {
+    "license_id": "MIT",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": {
+      "archive_sha256": "0a444556877860ef3b95ae415b6403e9e8f9e054cb0d2686985b28f7e4ccb980",
+      "c_mir_interpreter_equals_jit_equals_gcc": true,
+      "c_source_to_mir": true,
+      "mir_cases": 51,
+      "mir_interpreter_equals_jit": true,
+      "resource_id": "mir",
+      "scope": "bounded x86_64 Linux tests; not whole-language equivalence proof",
+      "status": "passed"
+    },
+    "record_id": "review.engineering.mir",
+    "source_archive_sha256": "0a444556877860ef3b95ae415b6403e9e8f9e054cb0d2686985b28f7e4ccb980",
+    "upstream_revision": "dc2c763f1c8bc746102ce87933d866335f9e6c06",
+    "worker_id": "worker 015"
+  },
+  "provider": "source",
+  "recipe": {
+    "required_host_commands": [
+      "python3",
+      "cc"
+    ],
+    "required_runtime_commands": [
+      "python3",
+      "cc"
+    ],
+    "state": "native-source-build-and-bounded-functional-verified"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 37873063,
+      "extract": true,
+      "id": "mir",
+      "material_path": "sources/mir",
+      "sha256": "0a444556877860ef3b95ae415b6403e9e8f9e054cb0d2686985b28f7e4ccb980",
+      "strip_root": true,
+      "url": "https://codeload.github.com/vnmakarov/mir/tar.gz/dc2c763f1c8bc746102ce87933d866335f9e6c06"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/vnmakarov/mir"
+    ],
+    "examples": [
+      {
+        "command": "python3 \"{prefix}/share/compiler-playground/mir/check.py\" --prefix \"{prefix}\"",
+        "description": "Run the prefix-contained functional validation"
+      }
+    ],
+    "locations": [
+      {
+        "label": "MIR / c2mir executables",
+        "path": "{prefix}/bin",
+        "purpose": "JIT/interpreter/C11 frontend bounded native execution"
+      },
+      {
+        "label": "Pinned source archive",
+        "path": "{prefix}/share/source",
+        "purpose": "Inspect original compiler source and exact revision lock."
+      }
+    ],
+    "notes": [
+      "The native binary was built on Ubuntu 24.04 x86_64; this is reference build metadata, not a distribution restriction.",
+      "Full offline source and dependency replay is supplied by the worker015 delta. This package carries the exact upstream source archive.",
+      "Only the recorded bounded native checks are qualified; no OCI, hardware or official benchmark claim."
+    ],
+    "summary": "JIT/interpreter/C11 frontend bounded native execution"
+  },
+  "version": "git-dc2c763f1c8b"
+}

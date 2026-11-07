@@ -1,0 +1,215 @@
+{
+  "files": [
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe"
+    },
+    {
+      "bytes": 5111,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/build_and_check.py",
+      "sha256": "d8e4d40fc9030f42ed1ce2cedb950bbf8f1d66cd7958ca6bf22b390e552575be"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "recipe/fixtures"
+    },
+    {
+      "bytes": 2638,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/fixtures/cpg_orc_jitlink.cpp",
+      "sha256": "f45c17b8c310d3c7af4f979de558514544a2a86ca1ee17eab42d1a2f003c3c4f"
+    },
+    {
+      "bytes": 3397,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/install_from_sources.py",
+      "sha256": "c7670e5ea4dbe3a3847a3edd58c5cc3c7a182ba6e8c2d1551b868d9e259e84ca"
+    },
+    {
+      "bytes": 1483,
+      "kind": "file",
+      "mode": 420,
+      "path": "recipe/run_checks.py",
+      "sha256": "79814b3547ef923ce3832ad79dca2fd10c24316a6e43e1b740b1b9a8ab660c02"
+    },
+    {
+      "kind": "directory",
+      "mode": 493,
+      "path": "sources"
+    },
+    {
+      "bytes": 111075505,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/1eec4b2b4983dd80746b35818ca7bb947dcb8736e802fe59d8619b90af1636c0",
+      "sha256": "1eec4b2b4983dd80746b35818ca7bb947dcb8736e802fe59d8619b90af1636c0"
+    },
+    {
+      "bytes": 179272572,
+      "kind": "file",
+      "mode": 420,
+      "path": "sources/819ecf7351f1a66f76b2d701d8942faaf5faeb324cb90c9d5b090de142434bb2",
+      "sha256": "819ecf7351f1a66f76b2d701d8942faaf5faeb324cb90c9d5b090de142434bb2"
+    }
+  ],
+  "inventory_sha256": "f993f245fe1641244a2da99bf1daba02ad24a635fba29a9bf83b5336601edd0c",
+  "kind": "compiler_playground_resource_package",
+  "manifest_sha256": "abf04c80bf4e10da9af6c361422b948d6c51440da51999e61812371dceabf8c8",
+  "method": "source",
+  "package": {
+    "build": "worker016-v001",
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "{prefix}/run_checks.py"
+        ],
+        "cwd": "{build}",
+        "expected_returncode": 0,
+        "id": "orc-jitlink-execution",
+        "kind": "functional",
+        "stdout_regex": "\"status\": \"passed\"",
+        "timeout_seconds": 180
+      }
+    ],
+    "dependencies": {
+      "build": [],
+      "run": [],
+      "system": []
+    },
+    "id": "llvm-orc-jitlink-capability",
+    "metadata": {
+      "counted_new_upstream": false,
+      "formal_parent_qualification_promoted": false,
+      "license": "Apache-2.0 WITH LLVM-exception",
+      "parent_catalog_sha256": "246c7ec274e0325d5af3e02ad57b37eaeeb9c3f4904ec026618b9a72fae5eadf",
+      "parent_immutable_ref": "7a941dfb2877a0b8cf30323fefa85ad019e0b0f5",
+      "parent_resource_id": "llvm-release",
+      "plan_id": "cpg-resource-research-20261101-v1",
+      "record_id": "review.engineering.llvm-orc-jitlink",
+      "sdk_derivation": {
+        "asset_id": 659252374,
+        "attestation_verified": false,
+        "bytes": 1190060068,
+        "independently_verified_against_official_release": true,
+        "read_only_reused_raw_only": true,
+        "sha256": "efdd1dbd089b99bfcfcde7b8eb1236163f2e88df5a981cca4f783ec9cb5e0378",
+        "source_file": "/workspace/scratch/582ae556ca31/work/worker007-llvm/assets/raw/LLVM-23.1.4-Linux-X64.tar.zst",
+        "source_url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/LLVM-23.1.4-Linux-X64.tar.zst"
+      },
+      "worker_id": "worker 016"
+    },
+    "provider": "source",
+    "recipe": {
+      "adapter": "commands",
+      "commands": [
+        [
+          "python3",
+          "{recipe}/install_from_sources.py",
+          "--sdk-archive",
+          "{source}",
+          "--llvm-archive",
+          "{assets}/sources/llvm-project-23.1.4.src.tar.xz",
+          "--build",
+          "{build}",
+          "--prefix",
+          "{prefix}"
+        ]
+      ],
+      "required_host_commands": [
+        "python3",
+        "g++"
+      ],
+      "required_installed_paths": [
+        "{prefix}/bin/cpg-orc-jitlink",
+        "{prefix}/run_checks.py"
+      ],
+      "required_runtime_commands": [
+        "python3"
+      ]
+    },
+    "schema_version": 1,
+    "sources": [
+      {
+        "bytes": 111075505,
+        "extract": false,
+        "id": "llvm-orc-sdk-subset",
+        "material_path": "sources/llvm-sdk-subset.tar.gz",
+        "sha256": "1eec4b2b4983dd80746b35818ca7bb947dcb8736e802fe59d8619b90af1636c0",
+        "strip_root": false,
+        "url": null
+      },
+      {
+        "bytes": 179272572,
+        "extract": false,
+        "id": "llvm-release",
+        "material_path": "sources/llvm-project-23.1.4.src.tar.xz",
+        "sha256": "819ecf7351f1a66f76b2d701d8942faaf5faeb324cb90c9d5b090de142434bb2",
+        "strip_root": true,
+        "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/llvm-project-23.1.4.src.tar.xz"
+      }
+    ],
+    "target": {
+      "arch": "x86_64",
+      "distribution": "ubuntu",
+      "distribution_version": "24.04",
+      "os": "linux"
+    },
+    "usage": {
+      "activation": [],
+      "documentation": [
+        "https://llvm.org/docs/ORCv2.html",
+        "https://llvm.org/docs/JITLink.html"
+      ],
+      "examples": [
+        {
+          "command": "python3 {prefix}/run_checks.py",
+          "description": "Execute the bounded capability checks."
+        }
+      ],
+      "locations": [
+        {
+          "label": "Bounded executables",
+          "path": "{prefix}/bin",
+          "purpose": "Locally compiled upstream examples and external-symbol probe."
+        }
+      ],
+      "notes": [
+        "Not a full LLVM source build, bootstrap or check-all.",
+        "The SDK input is a measured subset of the exact official prebuilt release.",
+        "Host runtime dependencies are validated by the original CPG ELF compatibility check.",
+        "Source replay needs local g++ and libzstd/libxml2 runtime libraries; deployment never downloads them."
+      ],
+      "summary": "LLVM ORC/JITLink child capability: two pinned upstream examples and an external-symbol execution profile."
+    },
+    "version": "llvmorg-23.1.4"
+  },
+  "prefix_policy": {
+    "kind": "relocatable",
+    "prefix": null
+  },
+  "provenance": {
+    "full_llvm_source_build": false,
+    "official_llvm_source_sha256": "819ecf7351f1a66f76b2d701d8942faaf5faeb324cb90c9d5b090de142434bb2",
+    "scope": "Pinned upstream ORC examples compiled with the same-version official SDK",
+    "worker_id": "worker 016"
+  },
+  "resolved_dependencies": [],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "llvm-orc-sdk-subset",
+      "path": "sources/1eec4b2b4983dd80746b35818ca7bb947dcb8736e802fe59d8619b90af1636c0"
+    },
+    {
+      "id": "llvm-release",
+      "path": "sources/819ecf7351f1a66f76b2d701d8942faaf5faeb324cb90c9d5b090de142434bb2"
+    }
+  ]
+}

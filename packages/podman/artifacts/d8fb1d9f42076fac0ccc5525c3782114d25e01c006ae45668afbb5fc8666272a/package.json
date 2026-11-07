@@ -1,0 +1,71 @@
+{
+  "build": "worker-v001",
+  "checks": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "{recipe}/run_fresh.py",
+        "--base",
+        "{build}",
+        "--",
+        "/usr/bin/python3",
+        "{prefix}/check.py",
+        "--bundle",
+        "{prefix}",
+        "--work-dir",
+        "@WORK@"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "declared-task",
+      "kind": "functional",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "podman",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": "Only the declared cases, target and pinned inputs",
+    "record_id": "review.engineering.podman",
+    "worker_id": "worker 081"
+  },
+  "provider": "binary",
+  "recipe": {
+    "runtime_environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/containers/podman/releases/tag/v4.9.3"
+    ],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Independent resource prefix",
+        "path": "{prefix}",
+        "purpose": "Fixed upstream resource and repeatable checks"
+      }
+    ],
+    "notes": [
+      "Real uid65534/rootless info, fixed OCI digest import, corrupt blob rejection, actual offline container mount/env/RO-write checks, scoped system reset; VFS/single-UID/cgroups disabled/read-only existing proc bind. Checker supplies its own inherited network denial; do not wrap in UID0-only userns because real UID drop is required."
+    ],
+    "summary": "Pinned rootless Podman: offline OCI import, digest validation, non-root bind mounts and environment, corrupted-layer rejection"
+  },
+  "version": "4.9.3+ds1-1build2"
+}

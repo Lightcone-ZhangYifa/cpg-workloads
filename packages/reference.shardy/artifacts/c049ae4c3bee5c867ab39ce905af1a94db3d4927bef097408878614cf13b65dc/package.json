@@ -1,0 +1,122 @@
+{
+  "build": "cpg-20261101-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/guarded_check.py",
+        "--prefix",
+        "{prefix}",
+        "--output",
+        "{build}/profile"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "locked-material-index",
+      "kind": "availability",
+      "stdout_regex": "CPG_CHECK_PASS",
+      "timeout_seconds": 900
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "reference.shardy",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "functional_claim": false,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualifications": {
+      "dataset": null,
+      "oci": false,
+      "official_benchmark": false,
+      "physical_hardware": false
+    },
+    "record_id": "reference.doc.shardy",
+    "resource_metadata": {
+      "build_claim": false,
+      "functional_claim": false,
+      "id": "reference.shardy",
+      "limitations": [
+        "本项为Shardy官方资料子资产，不增加第二个上游资源族。",
+        "章节/符号索引验证不授予工具功能、算法全覆盖、分布式或硬件资格。"
+      ],
+      "method": "material",
+      "required_runtime_commands": [
+        "python3"
+      ],
+      "source_locks": [
+        {
+          "bytes": 3291563,
+          "id": "shardy-reference-origin",
+          "path": "sources/shardy-f7d73420eb7af1def1f7024db80256f7b8673651.zip",
+          "sha256": "377a16da94c93a3eb04d4325739b3e7a0514fa8d02395d74f2e15f1b3bff57ca",
+          "url": "https://codeload.github.com/openxla/shardy/zip/f7d73420eb7af1def1f7024db80256f7b8673651"
+        }
+      ],
+      "upstream_license": "Apache-2.0, included upstream/LICENSE",
+      "upstream_source_commit": "f7d73420eb7af1def1f7024db80256f7b8673651",
+      "version": "f7d73420eb7a"
+    },
+    "source_build_claim": false,
+    "support_only": false,
+    "upstream_license": "Apache-2.0, included upstream/LICENSE",
+    "worker_id": "worker 063"
+  },
+  "provider": "material",
+  "recipe": {
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 3291563,
+      "extract": false,
+      "id": "shardy-reference-origin",
+      "material_path": "sources/shardy-f7d73420eb7af1def1f7024db80256f7b8673651.zip",
+      "sha256": "377a16da94c93a3eb04d4325739b3e7a0514fa8d02395d74f2e15f1b3bff57ca",
+      "strip_root": false,
+      "url": "https://codeload.github.com/openxla/shardy/zip/f7d73420eb7af1def1f7024db80256f7b8673651"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://openxla.org/shardy/overview"
+    ],
+    "examples": [
+      {
+        "command": "manager.check(\"reference.shardy\")",
+        "description": "Run the declared checks through the CPG Python API"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Independent installed payload",
+        "path": "{prefix}",
+        "purpose": "Locked resources and bounded offline check inputs"
+      }
+    ],
+    "notes": [
+      "本项为Shardy官方资料子资产，不增加第二个上游资源族。",
+      "章节/符号索引验证不授予工具功能、算法全覆盖、分布式或硬件资格。"
+    ],
+    "summary": "建立合法可获取材料的版本、章节/符号索引及适用范围；不以材料存在授予工具功能资格。"
+  },
+  "version": "f7d73420eb7a"
+}

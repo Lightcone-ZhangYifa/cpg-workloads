@@ -1,0 +1,115 @@
+{
+  "build": "20261101-worker015-v1",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "{prefix}/share/compiler-playground/unison/check.py",
+        "--prefix",
+        "{prefix}"
+      ],
+      "cwd": "{prefix}",
+      "expected_returncode": 0,
+      "id": "bounded-functional",
+      "kind": "functional",
+      "requires_commands": [
+        "python3"
+      ],
+      "requires_paths": [
+        "{prefix}/share/compiler-playground/unison/check.py"
+      ],
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 120
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "unison",
+  "metadata": {
+    "license_id": "BSD-3-Clause",
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "qualification_scope": {
+      "blocks": 3,
+      "feasible_assignment_checked": true,
+      "function": "official documentation factorial",
+      "independent_objective_cost": 186,
+      "negative_controls": 2,
+      "operations": 35,
+      "resource_id": "unison",
+      "revision": "9f9857e742156b51e6314488f4173cd1b42c4aec",
+      "scope": "Gecode target model only; Haskell importer/LLVM pipeline/Hexagon hardware execution not qualified",
+      "solver_proven_optimal": true,
+      "status": "passed",
+      "temporaries": 33
+    },
+    "record_id": "review.optimization.unison",
+    "source_archive_sha256": "28cd9bad5499b18eab4a8a49a8d7f518db49a1f2855c351fb28ff9d6fb107f3d",
+    "upstream_revision": "9f9857e742156b51e6314488f4173cd1b42c4aec",
+    "worker_id": "worker 015"
+  },
+  "provider": "source",
+  "recipe": {
+    "required_host_commands": [
+      "python3"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LD_LIBRARY_PATH": "{prefix}/lib"
+    },
+    "state": "native-source-build-and-bounded-functional-verified"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 2041470,
+      "extract": true,
+      "id": "unison",
+      "material_path": "sources/unison",
+      "sha256": "28cd9bad5499b18eab4a8a49a8d7f518db49a1f2855c351fb28ff9d6fb107f3d",
+      "strip_root": true,
+      "url": "https://codeload.github.com/unison-code/unison/tar.gz/9f9857e742156b51e6314488f4173cd1b42c4aec"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [
+      "https://github.com/unison-code/unison"
+    ],
+    "examples": [
+      {
+        "command": "python3 \"{prefix}/share/compiler-playground/unison/check.py\" --prefix \"{prefix}\"",
+        "description": "Run the prefix-contained functional validation"
+      }
+    ],
+    "locations": [
+      {
+        "label": "Unison compiler optimizer executables",
+        "path": "{prefix}/bin",
+        "purpose": "Gecode instruction scheduling/register allocation target-model solver"
+      },
+      {
+        "label": "Pinned source archive",
+        "path": "{prefix}/share/source",
+        "purpose": "Inspect original compiler source and exact revision lock."
+      }
+    ],
+    "notes": [
+      "The native binary was built on Ubuntu 24.04 x86_64; this is reference build metadata, not a distribution restriction.",
+      "Full offline source and dependency replay is supplied by the worker015 delta. This package carries the exact upstream source archive.",
+      "Only the recorded bounded native checks are qualified; no OCI, hardware or official benchmark claim."
+    ],
+    "summary": "Gecode instruction scheduling/register allocation target-model solver"
+  },
+  "version": "git-9f9857e74215"
+}
