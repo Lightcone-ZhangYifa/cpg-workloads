@@ -10,7 +10,7 @@ import zipfile
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 from authored_inputs import descriptor_for
 from history_ledger import index_zip
-from history_intake import candidate_jobs, check_template
+from history_intake import candidate_jobs, check_template, worker_labeled_id
 
 
 class HistoryIntakeTests(unittest.TestCase):
@@ -56,6 +56,11 @@ class HistoryIntakeTests(unittest.TestCase):
             root = Path(tmp)
             (root / 'grammar.g4').write_text('grammar G;')
             self.assertEqual(check_template(root), 'authored_payload_requires_review')
+
+    def test_worker_labeled_original_identity_stays_out_of_public_tree(self):
+        self.assertTrue(worker_labeled_id('reference-pack.worker-010'))
+        self.assertTrue(worker_labeled_id('cpg-worker031-runtime'))
+        self.assertFalse(worker_labeled_id('tree-sitter'))
 
 
 if __name__ == '__main__': unittest.main()

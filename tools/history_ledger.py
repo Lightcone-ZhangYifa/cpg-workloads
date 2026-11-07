@@ -49,6 +49,7 @@ def main():
     p.add_argument('--framework-root', type=Path, required=True)
     p.add_argument('--workloads-root', type=Path, default=Path(__file__).resolve().parents[1])
     p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--intake-state', type=Path, help='Join a completed or in-progress static intake receipt')
     p.add_argument('--resume', action='store_true')
     a = p.parse_args()
     raw = a.inventory.read_bytes(); inventory_sha = hashlib.sha256(raw).hexdigest(); inv = json.loads(raw)
@@ -100,6 +101,18 @@ def main():
             if key not in cache: cache[key]=index_zip(module.PartsReader(paths))
             entry['zip_index_key']=key
         families.append(entry)
+    if a.intake_state:
+        state=json.loads(a.intake_state.read_text())
+        if state['inventory_sha256'] != inventory_sha: p.error('Intake state inventory identity changed')
+        grouped={}
+        for item in state['results'].values():
+            grouped.setdefault((item['job']['kind'],item['job']['source']),[]).append(item['status'])
+        for kind,entries,field in (('file',rows,'path'),('split',families,'family')):
+            for item in entries:
+                outcomes=grouped.get((kind,item[field]),[])
+                if outcomes:
+                    item['intake_member_outcomes']=dict(Counter(outcomes))
+                    item['disposition']='member_inspection_in_progress' if 'started' in outcomes else 'other_members_pending_review'
     result={'schema_version':1,'inventory_sha256':inventory_sha,'files':rows,'split_families':families,'zip_indexes':cache,
             'scope':'Metadata leads only; names and CRCs are not verified package identities or qualification. All inputs remain pending until explicit review.'}
     output.parent.mkdir(parents=True,exist_ok=True)
