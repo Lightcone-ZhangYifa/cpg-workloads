@@ -1326,6 +1326,22 @@ def merge_manifest():
     return value
 
 
+def record_publication(receipt):
+    """Retain a verified receipt in the index namespace it actually populates."""
+    value = load_json(receipt)
+    tag = value.get("release", {}).get("tag")
+    check_publication_receipt(value, tag)
+    directory = "historical-releases" if value.get("historical_snapshots") else "releases"
+    relative = Path("catalog") / directory / (tag + ".json")
+    destination = ROOT / relative
+    if any(path.is_symlink() for path in (destination, *destination.parents)):
+        raise ValueError("Publication receipt path must not traverse a symlink")
+    if destination.exists() and load_json(destination) != value:
+        raise ValueError("Refusing to replace a different immutable publication receipt")
+    write_json(destination, value)
+    return relative
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -1340,6 +1356,8 @@ def main():
     release.add_argument("tag")
     release.add_argument("--output", type=Path, required=True)
     sub.add_parser("manifest")
+    record = sub.add_parser("record-publication")
+    record.add_argument("--receipt", type=Path, required=True)
     args = parser.parse_args()
     if args.command == "plan":
         plan_software(args.prefix, args.batch_size)
@@ -1348,6 +1366,8 @@ def main():
         print(json.dumps({"tag": args.tag, "packages": len(plan["artifacts"]), "assets": len(assets)}))
     elif args.command == "publish":
         publish(args.tag, args.output)
+    elif args.command == "record-publication":
+        print(record_publication(args.receipt))
     else:
         value = merge_manifest()
         print(json.dumps({"published_packages": len(value["packages"]), "releases": len(value["releases"])}))

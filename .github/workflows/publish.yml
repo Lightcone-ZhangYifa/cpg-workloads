@@ -66,14 +66,10 @@ jobs:
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git checkout -B publication-index origin/main
-            mkdir -p catalog/releases
-            if test -f "catalog/releases/$tag.json"; then
-              cmp "$RUNNER_TEMP/workload-release/publication.json" "catalog/releases/$tag.json"
-            fi
-            cp "$RUNNER_TEMP/workload-release/publication.json" "catalog/releases/$tag.json"
+            receipt_path="$(python tools/release.py record-publication --receipt "$RUNNER_TEMP/workload-release/publication.json")"
             python tools/release.py manifest
             python tools/validate_repository.py
-            git add --all -- "catalog/releases/$tag.json" manifest.json profiles
+            git add --all -- "$receipt_path" manifest.json profiles
             if git diff --cached --quiet; then
               exit 0
             fi

@@ -88,6 +88,42 @@ class PipelineTests(unittest.TestCase):
         with tarfile.open(result) as archive:
             self.assertEqual(json.load(archive.extractfile("manifest.json")), self.manifest)
 
+    def test_record_publication_keeps_canonical_receipt_immutable(self):
+        value = self.published()
+        source = self.work / "receipt.json"
+        importer.write_json(source, value)
+        relative = release.record_publication(source)
+        self.assertEqual(relative, Path("catalog/releases/apt-001.json"))
+        self.assertEqual(release.record_publication(source), relative)
+        value["release"]["release_id"] += 1
+        importer.write_json(source, value)
+        with self.assertRaisesRegex(ValueError, "immutable"):
+            release.record_publication(source)
+
+    def test_record_publication_indexes_historical_bytes_separately(self):
+        record = copy.deepcopy(self.record)
+        record["index_role"] = "historical-snapshot"
+        origin = {"archive": "delivery.zip", "sha256": "b" * 64,
+                  "bytes": 100, "member": "original.cpgpkg.tar.gz"}
+        record.setdefault("origins", []).append(origin)
+        artifact = {key: record[key] for key in (
+            "id", "version", "build", "method", "target", "sha256", "bytes", "manifest_sha256")}
+        descriptor = {"schema_version": 1, "kind": "cpg_historical_snapshot",
+                      "selection": "explicit_sha256_only", "dependency_profile_qualified": False,
+                      "artifact": artifact, "origin": origin,
+                      "context": {"kind": "original-delivery-member",
+                                  "sha256": release.digest({"artifact": artifact, "origin": origin})}}
+        importer.write_json(self.root / "catalog/artifacts" / (record["sha256"] + ".json"), record)
+        importer.write_json(self.root / "catalog/historical-snapshots" / (record["sha256"] + ".json"), descriptor)
+        value = self.published("historical-001")
+        source = self.work / "historical.json"
+        importer.write_json(source, value)
+        self.assertEqual(release.record_publication(source),
+                         Path("catalog/historical-releases/historical-001.json"))
+        index = release.merge_manifest()
+        self.assertEqual(index["packages"], [])
+        self.assertEqual([row["sha256"] for row in index["historical_snapshots"]], [record["sha256"]])
+
     def test_changed_manifest_inventory_is_rejected(self):
         value = copy.deepcopy(self.manifest)
         value["package"]["version"] += "tampered"
