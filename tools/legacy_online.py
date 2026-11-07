@@ -199,8 +199,11 @@ def verify_template(template, record):
         _require(name in expected, "Unpacked recipe contains an undeclared file")
         row = expected[name]
         _relative(name)
+        source_mode = _mode(row["mode"])
+        checkout_mode = 0o755 if source_mode & 0o111 else 0o644
         _require(_file_identity(path) == {k: row[k] for k in ("sha256", "bytes")}
-                 and path.stat().st_mode & 0o7777 == _mode(row["mode"]), "Unpacked recipe member changed: " + name)
+                 and path.stat().st_mode & 0o7777 in {source_mode, checkout_mode, checkout_mode | 0o020},
+                 "Unpacked recipe member changed: " + name)
         actual.add(name)
     _require(actual == set(expected), "Unpacked recipe members are missing")
     descriptor = validate_descriptor(_json((template / "manifest.json").read_bytes()))

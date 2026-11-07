@@ -45,3 +45,15 @@ class OnlineCheckoutTests(unittest.TestCase):
         target.write_bytes(target.read_bytes() + b" ")
         with self.assertRaisesRegex(ValueError, "identity differs"):
             online_recipe.verify_template(self.template, self.record)
+
+    def test_legacy_shared_checkout_keeps_original_inventory_and_archive(self):
+        checksum = "7b4028da1414ed269c0c2a048052508c92345b04467b17af2e4bc73ee68636bb"
+        record = json.loads((ROOT / "catalog/artifacts" / (checksum + ".json")).read_text())
+        template = self.root / "legacy"
+        shutil.copytree(ROOT / record["template"], template)
+        for path in template.rglob("*"):
+            path.chmod(0o775 if path.is_dir() or path.stat().st_mode & 0o111 else 0o664)
+        online_recipe.verify_template(template, record)
+        archive = self.root / "legacy.tar.gz"
+        online_recipe.repack(template, record, archive)
+        self.assertEqual(hashlib.sha256(archive.read_bytes()).hexdigest(), checksum)
