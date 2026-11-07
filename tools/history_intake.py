@@ -35,6 +35,30 @@ def candidate_jobs(ledger, history, parts_reader):
             yield {'kind':'split','source':family['family'],'parts':family['parts'],
                    'member':member['path'],'member_bytes':member['bytes'],
                    'unsafe_container':bool(idx.get('duplicate_names') or idx.get('unsafe_names'))}
+    for row in ledger['files']:
+        name=Path(row['path']).name.lower()
+        named=name.endswith(('.cpgpkg','.cpgpkg.tar.gz','.cpgrecipe.tar.gz'))
+        if named or row.get('known_artifact_identity') or row.get('known_raw_source_lock'):
+            job={'kind':'standalone','source':row['path'],'source_sha256':row['sha256'],
+                   'source_bytes':row['bytes'],'member':Path(row['path']).name,'member_bytes':row['bytes'],
+                   'unsafe_container':False}
+            if row.get('known_raw_source_lock') and not (named or row.get('known_artifact_identity')):
+                job.update(expected_sha256=row['sha256'],lead_role='raw_source')
+            elif row.get('known_online_recipe'):
+                job['lead_role']='online_recipe'
+            yield job
+    for row in ledger['files']:
+        idx=ledger['zip_indexes'].get(row.get('zip_index_key'),{})
+        for member in idx.get('known_object_leads',[]):
+            yield {'kind':'file','source':row['path'],'source_sha256':row['sha256'],'source_bytes':row['bytes'],
+                   'member':member['path'],'member_bytes':member['bytes'],'expected_sha256':member['sha256'],
+                   'lead_role':member['role'],'unsafe_container':bool(idx.get('duplicate_names') or idx.get('unsafe_names'))}
+    for family in ledger['split_families']:
+        idx=ledger['zip_indexes'].get(family.get('zip_index_key'),{})
+        for member in idx.get('known_object_leads',[]):
+            yield {'kind':'split','source':family['family'],'parts':family['parts'],'member':member['path'],
+                   'member_bytes':member['bytes'],'expected_sha256':member['sha256'],'lead_role':member['role'],
+                   'unsafe_container':bool(idx.get('duplicate_names') or idx.get('unsafe_names'))}
 
 
 def check_template(template):
@@ -76,7 +100,7 @@ def main():
     state['ledger_sha256']=ledger_sha
     rows={Path(r['path']).name:r for r in ledger['files']}
     scratch.mkdir(parents=True,exist_ok=True);cold=a.cold_root/'packages/sha256';cold.mkdir(parents=True,exist_ok=True)
-    processed=0; verified_outer=set(); verified_splits={}
+    processed=0; verified_outer=set(); verified_splits={}; verified_cold=set()
     for job in candidate_jobs(ledger,history,module.PartsReader):
         key=hashlib.sha256(json.dumps(job,sort_keys=True).encode()).hexdigest()
         if key in state['results']:
@@ -99,13 +123,14 @@ def main():
         # 'started' survives interruption; the driver must not assume an unknown operation completed.
         try:
             if job['unsafe_container']:raise ValueError('Outer ZIP has duplicate or unsafe paths')
-            if job['kind']=='file':
+            if job['kind'] in ('file','standalone'):
                 rel=safe_relative(job['source']);source=history.joinpath(*rel.parts)
                 if source.stat().st_size!=job['source_bytes']:raise ValueError('Outer size changed')
                 if (source,job['source_sha256']) not in verified_outer:
                     if sha256(source)!=job['source_sha256']:raise ValueError('Outer SHA-256 changed')
                     verified_outer.add((source,job['source_sha256']))
-                origin={'archive':source.name,'sha256':job['source_sha256'],'bytes':job['source_bytes'],'member':job['member']}
+                origin={'archive':source.name,'sha256':job['source_sha256'],'bytes':job['source_bytes']}
+                if job['kind']=='file':origin['member']=job['member']
                 zsource=source
             else:
                 if job['source'] not in verified_splits:
@@ -124,13 +149,45 @@ def main():
                 origin={'archive':job['source'],'sha256':full_sha,'bytes':n,'member':job['member']}
                 zsource=module.PartsReader(parts)
             safe_relative(job['member'])
+            if job.get('expected_sha256'):
+                digest=job['expected_sha256'];role=job.get('lead_role')
+                candidate=(a.cold_root/'objects/sha256'/digest if role=='raw_source' else
+                    a.cold_root/'recipes/sha256'/(digest+'.cpgrecipe.tar.gz') if role=='online_recipe' else
+                    cold/(digest+'.cpgpkg.tar.gz'))
+                if candidate.exists():
+                    if candidate.is_symlink() or candidate.stat().st_size!=job['member_bytes']:
+                        raise ValueError('Existing cold object size differs')
+                    if digest not in verified_cold:
+                        if sha256(candidate)!=digest:raise ValueError('Existing cold object SHA-256 differs')
+                        verified_cold.add(digest)
+                    outcome.update(status='known_object_name_matches_verified_cold_member_unverified',
+                                   member_sha256_declared=digest)
+                    write_json(a.state,state)
+                    print(json.dumps({'status':outcome['status'],'source':job['source'],'member':job['member']}),flush=True)
+                    continue
             if job['member_bytes']>shutil.disk_usage(scratch).free-1024**3:raise ValueError('Insufficient scratch reserve')
             with tempfile.TemporaryDirectory(prefix='intake-',dir=scratch) as temp:
                 tmp=Path(temp);member=tmp/'member.cpgpkg'
-                with zipfile.ZipFile(zsource) as z:
-                    info=z.getinfo(job['member'])
-                    if info.file_size!=job['member_bytes']:raise ValueError('ZIP member size changed')
-                    with z.open(info) as inp,member.open('xb') as out:shutil.copyfileobj(inp,out)
+                if job['kind']=='standalone':
+                    with source.open('rb') as inp,member.open('xb') as out:shutil.copyfileobj(inp,out)
+                else:
+                    with zipfile.ZipFile(zsource) as z:
+                        info=z.getinfo(job['member'])
+                        if info.file_size!=job['member_bytes']:raise ValueError('ZIP member size changed')
+                        with z.open(info) as inp,member.open('xb') as out:shutil.copyfileobj(inp,out)
+                if job.get('expected_sha256') and sha256(member)!=job['expected_sha256']:
+                    raise ValueError('Content-addressed member SHA-256 mismatch')
+                if job.get('lead_role')=='raw_source':
+                    digest=job['expected_sha256'];rawdir=a.cold_root/'objects/sha256';rawdir.mkdir(parents=True,exist_ok=True)
+                    obj=rawdir/digest
+                    if not obj.exists():
+                        with member.open('rb') as inp,obj.open('xb') as out:shutil.copyfileobj(inp,out)
+                    if obj.is_symlink() or obj.stat().st_size!=job['member_bytes'] or sha256(obj)!=digest:
+                        raise ValueError('Cold raw source identity mismatch')
+                    outcome.update(status='locked_raw_source_retained',member_sha256=digest,cold_path='objects/sha256/'+digest)
+                    write_json(a.state,state)
+                    print(json.dumps({'status':outcome['status'],'source':job['source'],'member':job['member']}),flush=True)
+                    continue
                 if job['member'].endswith('/deliberately-truncated.cpgpkg'):
                     outcome['member_sha256']=sha256(member)
                 if job['member'].lower().endswith('.preparation.json'):
@@ -141,7 +198,7 @@ def main():
                     write_json(a.state,state)
                     print(json.dumps({'status':outcome['status'],'source':job['source'],'member':job['member']}),flush=True)
                     continue
-                if '.cpgrecipe' in job['member'].lower():
+                if '.cpgrecipe' in job['member'].lower() or job.get('lead_role')=='online_recipe':
                     recipe_sha=sha256(member)
                     plan=root/'catalog/acquisition-plans'/(recipe_sha+'.json')
                     if plan.is_file():

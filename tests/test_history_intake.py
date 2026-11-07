@@ -62,5 +62,21 @@ class HistoryIntakeTests(unittest.TestCase):
         self.assertTrue(worker_labeled_id('cpg-worker031-runtime'))
         self.assertFalse(worker_labeled_id('tree-sitter'))
 
+    def test_hash_named_members_are_leads_only_when_size_and_lock_match(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'x.zip'; digest = 'a' * 64
+            with zipfile.ZipFile(path, 'w') as z:
+                z.writestr('objects/' + digest, b'abc')
+            result = index_zip(path, {digest: {'source_bytes': {3}}})
+            self.assertEqual(result['known_object_leads'][0]['role'], 'raw_source')
+            self.assertFalse(result['payload_crc_verified'])
+            self.assertFalse(index_zip(path, {digest: {'source_bytes': {4}}})['known_object_leads'])
+
+    def test_standalone_package_is_a_distinct_intake_job(self):
+        ledger = {'files': [{'path': 'x.cpgpkg', 'bytes': 10, 'sha256': 'a' * 64}],
+                  'split_families': [], 'zip_indexes': {}}
+        jobs = list(candidate_jobs(ledger, None, None))
+        self.assertEqual(jobs[0]['kind'], 'standalone')
+
 
 if __name__ == '__main__': unittest.main()
