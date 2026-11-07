@@ -1,0 +1,516 @@
+diff --git a/all.h b/all.h
+index 7e67bc0..f53e091 100644
+--- a/all.h
++++ b/all.h
+@@ -63,6 +63,7 @@ struct Target {
+ 	char asloc[4];
+ 	char assym[4];
+ 	uint cansel:1;
++	uint divconst:1; /* strength reduction is profitable on this target */
+ };
+ 
+ #define BIT(n) ((bits)1 << (n))
+@@ -607,6 +608,7 @@ void ifconvert(Fn *fn);
+ 
+ /* simpl.c */
+ void simpl(Fn *);
++void divopt(Fn *);
+ 
+ /* live.c */
+ void liveon(BSet *, Blk *, Blk *);
+diff --git a/amd64/targ.c b/amd64/targ.c
+index 3edaf8b..d94d500 100644
+--- a/amd64/targ.c
++++ b/amd64/targ.c
+@@ -22,7 +22,8 @@ amd64_memargs(int op)
+ 	.memargs = amd64_memargs, \
+ 	.abi0 = elimsb, \
+ 	.isel = amd64_isel, \
+-	.cansel = 1,
++	.cansel = 1, \
++	.divconst = 1,
+ 
+ Target T_amd64_sysv = {
+ 	.name = "amd64_sysv",
+diff --git a/copy.c b/copy.c
+index 975d1df..b9255da 100644
+--- a/copy.c
++++ b/copy.c
+@@ -332,7 +332,7 @@ copyref(Fn *fn, Blk *b, Ins *i)
+ 	/* redundant and mask */
+ 	if (i->op == Oand
+ 	&& isconbits(fn, i->arg[1], &v)
+-	&& (v > 0 && ((v+1) & v) == 0)
++	&& (v > 0 && (((uint64_t)v+1) & (uint64_t)v) == 0)
+ 	&& defwidthle(fn, i->arg[0], bitwidth(v)))
+ 		return i->arg[0];
+ 
+diff --git a/main.c b/main.c
+index c413dc2..dba9047 100644
+--- a/main.c
++++ b/main.c
+@@ -77,12 +77,15 @@ func(Fn *fn)
+ 	filluse(fn);
+ 	filldom(fn);
+ 	ssacheck(fn);
++	divopt(fn);
++	filluse(fn);
+ 	gvn(fn);
+ 	fillcfg(fn);
+ 	simplcfg(fn);
+ 	filluse(fn);
+ 	filldom(fn);
+ 	gcm(fn);
++	divopt(fn);
+ 	filluse(fn);
+ 	ssacheck(fn);
+ 	if (T.cansel) {
+diff --git a/simpl.c b/simpl.c
+index 3774f29..921ebad 100644
+--- a/simpl.c
++++ b/simpl.c
+@@ -54,6 +54,186 @@ ispow2(uint64_t v)
+ 	return v && (v & (v - 1)) == 0;
+ }
+ 
++/* Signed word division by a positive non-power-of-two constant.  Find a
++ * reciprocal multiplier and shift as in Hacker's Delight, section 10-4.
++ * All arithmetic here is unsigned: the intermediate doubling can wrap.
++ */
++static uint32_t
++divmagic(uint32_t d, int *shift)
++{
++	uint32_t a, q1, r1, q2, r2, delta, m;
++	int p;
++
++	a = UINT32_C(0x7fffffff) - UINT32_C(0x80000000) % d;
++	q1 = UINT32_C(0x80000000) / a;
++	r1 = UINT32_C(0x80000000) % a;
++	q2 = UINT32_C(0x80000000) / d;
++	r2 = UINT32_C(0x80000000) % d;
++	p = 31;
++	do {
++		p++;
++		q1 *= 2;
++		r1 *= 2;
++		if (r1 >= a) {
++			q1++;
++			r1 -= a;
++		}
++		q2 *= 2;
++		r2 *= 2;
++		if (r2 >= d) {
++			q2++;
++			r2 -= d;
++		}
++		delta = d - r2;
++	} while (q1 < delta || (q1 == delta && r1 == 0));
++	*shift = p - 32;
++	m = q2 + 1;
++	return m;
++}
++
++/* Emit in reverse order, as required by emit(). */
++static void
++divword(Ins *i, uint32_t d, int neg, Fn *fn)
++{
++	Ref x, x64, prod, high, sign, q, rem;
++	uint32_t magic;
++	int shift;
++
++	magic = divmagic(d, &shift);
++	x = i->arg[0];
++	x64 = newtmp("divx", Kl, fn);
++	prod = newtmp("divprod", Kl, fn);
++	high = newtmp("divhigh", Kl, fn);
++	sign = newtmp("divsign", Kw, fn);
++	q = (i->op == Orem || neg) ? newtmp("divq", Kw, fn) : i->to;
++	if (i->op == Orem) {
++		rem = newtmp("divrem", Kw, fn);
++		emit(Osub, Kw, i->to, x, rem);
++		emit(Omul, Kw, rem, q, getcon(d, fn));
++	} else if (neg)
++		emit(Oneg, Kw, i->to, q, R);
++	/* Treating the reciprocal as unsigned incorporates the usual
++	 * signed-high correction when its top bit is set.  The widened
++	 * signed product fits in 64 bits.  Arithmetic shift rounds down;
++	 * add the original dividend's sign bit to round toward zero.
++	 */
++	emit(Oadd, Kw, q, high, sign);
++	emit(Oshr, Kw, sign, x, getcon(31, fn));
++	emit(Osar, Kl, high, prod, getcon(32 + shift, fn));
++	emit(Omul, Kl, prod, x64, getcon(magic, fn));
++	emit(Oextsw, Kl, x64, x, R);
++}
++
++/* Replace safe constant divisions with nontrapping integer operations.
++ * Signed division rounds toward zero rather than toward negative infinity,
++ * so powers of two need a bias for negative dividends.  The pass runs
++ * before GVN/GCM so the new operations can be shared and moved out of
++ * loops, and again afterward for newly exposed constants.
++ */
++void
++divopt(Fn *fn)
++{
++	Blk *b;
++	Ins *i;
++	Ref x, sign, bias, sum, part;
++	uint64_t d, mask;
++	int k, w, n, neg, changed;
++	ulong ni;
++
++	if (!T.divconst)
++		return;
++	for (b=fn->start; b; b=b->link) {
++		changed = 0;
++		for (i=&b->ins[b->nins]; i!=b->ins;) {
++			--i;
++			k = i->cls;
++			if ((i->op != Odiv && i->op != Orem)
++			|| KBASE(k) != 0
++			|| rtype(i->arg[1]) != RCon
++			|| fn->con[i->arg[1].val].type != CBits
++			|| rtype(i->arg[0]) == RCon)
++				goto Copy;
++
++			w = k == Kl ? 64 : 32;
++			d = (uint64_t)fn->con[i->arg[1].val].bits.i;
++			if (w == 32)
++				d = (uint32_t)d;
++			neg = (d >> (w-1)) != 0;
++			if (neg) {
++				d = -d;
++				if (w == 32)
++					d = (uint32_t)d;
++			}
++			if (!ispow2(d)) {
++				if (k != Kw || d == 0)
++					goto Copy;
++				if (!changed) {
++					curi = &insb[NIns];
++					ni = &b->ins[b->nins] - (i+1);
++					curi -= ni;
++					icpy(curi, i+1, ni);
++					changed = 1;
++				}
++				divword(i, d, neg, fn);
++				continue;
++			}
++			if (neg && d == 1)
++				goto Copy;
++			n = ulog2(d);
++			mask = d - 1;
++
++			if (n == 0) {
++				if (i->op == Odiv)
++					i->op = Ocopy;
++				else {
++					i->op = Ocopy;
++					i->arg[0] = CON_Z;
++				}
++				i->arg[1] = R;
++				goto Copy;
++			}
++
++			if (!changed) {
++				curi = &insb[NIns];
++				ni = &b->ins[b->nins] - (i+1);
++				curi -= ni;
++				icpy(curi, i+1, ni);
++				changed = 1;
++			}
++			x = i->arg[0];
++			bias = newtmp("divbias", k, fn);
++			sum = newtmp("divsum", k, fn);
++			if (i->op == Odiv) {
++				part = neg ? newtmp("divq", k, fn) : i->to;
++				if (neg)
++					emit(Oneg, k, i->to, part, R);
++				emit(Osar, k, part, sum, getcon(n, fn));
++			} else {
++				part = newtmp("divrem", k, fn);
++				emit(Osub, k, i->to, part, bias);
++				emit(Oand, k, part, sum, getcon(mask, fn));
++			}
++			emit(Oadd, k, sum, x, bias);
++			if (n == 1)
++				emit(Oshr, k, bias, x, getcon(w-1, fn));
++			else {
++				sign = newtmp("divsign", k, fn);
++				if (k == Kl && n >= 32)
++					emit(Oshr, k, bias, sign, getcon(w-n, fn));
++				else
++					emit(Oand, k, bias, sign, getcon(mask, fn));
++				emit(Osar, k, sign, x, getcon(w-1, fn));
++			}
++			continue;
++		Copy:
++			if (changed)
++				emiti(*i);
++		}
++		if (changed)
++			idup(b, curi, &insb[NIns]-curi);
++	}
++}
++
+ static void
+ ins(Ins **pi, int *new, Blk *b, Fn *fn)
+ {
+diff --git a/test/divconst.ssa b/test/divconst.ssa
+new file mode 100644
+index 0000000..0912a3c
+--- /dev/null
++++ b/test/divconst.ssa
+@@ -0,0 +1,252 @@
++# Constant division must round signed results toward zero, including
++# negative divisors and dividends.  Word constants may contain high bits.
++
++export function $s32(w %x, l %out) {
++@start
++	%v0 =w div %x, 1
++	%p0 =l add %out, 0
++	storew %v0, %p0
++	%v1 =w rem %x, 1
++	%p1 =l add %out, 4
++	storew %v1, %p1
++	%v2 =w div %x, 2
++	%p2 =l add %out, 8
++	storew %v2, %p2
++	%v3 =w rem %x, 2
++	%p3 =l add %out, 12
++	storew %v3, %p3
++	%v4 =w div %x, -2
++	%p4 =l add %out, 16
++	storew %v4, %p4
++	%v5 =w rem %x, -2
++	%p5 =l add %out, 20
++	storew %v5, %p5
++	%v6 =w div %x, 8
++	%p6 =l add %out, 24
++	storew %v6, %p6
++	%v7 =w rem %x, 8
++	%p7 =l add %out, 28
++	storew %v7, %p7
++	%v8 =w div %x, -8
++	%p8 =l add %out, 32
++	storew %v8, %p8
++	%v9 =w rem %x, -8
++	%p9 =l add %out, 36
++	storew %v9, %p9
++	%v10 =w div %x, 4294967299
++	%p10 =l add %out, 40
++	storew %v10, %p10
++	%v11 =w rem %x, 4294967299
++	%p11 =l add %out, 44
++	storew %v11, %p11
++	%v12 =w div %x, -3
++	%p12 =l add %out, 48
++	storew %v12, %p12
++	%v13 =w rem %x, -3
++	%p13 =l add %out, 52
++	storew %v13, %p13
++	%v14 =w div %x, 7
++	%p14 =l add %out, 56
++	storew %v14, %p14
++	%v15 =w rem %x, 7
++	%p15 =l add %out, 60
++	storew %v15, %p15
++	%v16 =w div %x, -7
++	%p16 =l add %out, 64
++	storew %v16, %p16
++	%v17 =w rem %x, -7
++	%p17 =l add %out, 68
++	storew %v17, %p17
++	%v18 =w div %x, 8095
++	%p18 =l add %out, 72
++	storew %v18, %p18
++	%v19 =w rem %x, 8095
++	%p19 =l add %out, 76
++	storew %v19, %p19
++	%v20 =w div %x, -8095
++	%p20 =l add %out, 80
++	storew %v20, %p20
++	%v21 =w rem %x, -8095
++	%p21 =l add %out, 84
++	storew %v21, %p21
++	%v22 =w div %x, 2147483647
++	%p22 =l add %out, 88
++	storew %v22, %p22
++	%v23 =w rem %x, 2147483647
++	%p23 =l add %out, 92
++	storew %v23, %p23
++	%v24 =w div %x, -2147483648
++	%p24 =l add %out, 96
++	storew %v24, %p24
++	%v25 =w rem %x, -2147483648
++	%p25 =l add %out, 100
++	storew %v25, %p25
++	ret
++}
++
++export function $s64(l %x, l %out) {
++@start
++	%v0 =l div %x, 1
++	%p0 =l add %out, 0
++	storel %v0, %p0
++	%v1 =l rem %x, 1
++	%p1 =l add %out, 8
++	storel %v1, %p1
++	%v2 =l div %x, 2
++	%p2 =l add %out, 16
++	storel %v2, %p2
++	%v3 =l rem %x, 2
++	%p3 =l add %out, 24
++	storel %v3, %p3
++	%v4 =l div %x, -2
++	%p4 =l add %out, 32
++	storel %v4, %p4
++	%v5 =l rem %x, -2
++	%p5 =l add %out, 40
++	storel %v5, %p5
++	%v6 =l div %x, 256
++	%p6 =l add %out, 48
++	storel %v6, %p6
++	%v7 =l rem %x, 256
++	%p7 =l add %out, 56
++	storel %v7, %p7
++	%v8 =l div %x, -256
++	%p8 =l add %out, 64
++	storel %v8, %p8
++	%v9 =l rem %x, -256
++	%p9 =l add %out, 72
++	storel %v9, %p9
++	%v10 =l div %x, 4294967296
++	%p10 =l add %out, 80
++	storel %v10, %p10
++	%v11 =l rem %x, 4294967296
++	%p11 =l add %out, 88
++	storel %v11, %p11
++	%v12 =l div %x, -4294967296
++	%p12 =l add %out, 96
++	storel %v12, %p12
++	%v13 =l rem %x, -4294967296
++	%p13 =l add %out, 104
++	storel %v13, %p13
++	%v14 =l div %x, -9223372036854775808
++	%p14 =l add %out, 112
++	storel %v14, %p14
++	%v15 =l rem %x, -9223372036854775808
++	%p15 =l add %out, 120
++	storel %v15, %p15
++	ret
++}
++
++export function $u32(w %x, l %out) {
++@start
++	%v0 =w udiv %x, 1
++	%p0 =l add %out, 0
++	storew %v0, %p0
++	%v1 =w urem %x, 1
++	%p1 =l add %out, 4
++	storew %v1, %p1
++	%v2 =w udiv %x, 2
++	%p2 =l add %out, 8
++	storew %v2, %p2
++	%v3 =w urem %x, 2
++	%p3 =l add %out, 12
++	storew %v3, %p3
++	%v4 =w udiv %x, 256
++	%p4 =l add %out, 16
++	storew %v4, %p4
++	%v5 =w urem %x, 256
++	%p5 =l add %out, 20
++	storew %v5, %p5
++	%v6 =w udiv %x, 2147483648
++	%p6 =l add %out, 24
++	storew %v6, %p6
++	%v7 =w urem %x, 2147483648
++	%p7 =l add %out, 28
++	storew %v7, %p7
++	ret
++}
++
++export function $u64(l %x, l %out) {
++@start
++	%v0 =l udiv %x, 1
++	%p0 =l add %out, 0
++	storel %v0, %p0
++	%v1 =l urem %x, 1
++	%p1 =l add %out, 8
++	storel %v1, %p1
++	%v2 =l udiv %x, 2
++	%p2 =l add %out, 16
++	storel %v2, %p2
++	%v3 =l urem %x, 2
++	%p3 =l add %out, 24
++	storel %v3, %p3
++	%v4 =l udiv %x, 256
++	%p4 =l add %out, 32
++	storel %v4, %p4
++	%v5 =l urem %x, 256
++	%p5 =l add %out, 40
++	storel %v5, %p5
++	%v6 =l udiv %x, 4294967296
++	%p6 =l add %out, 48
++	storel %v6, %p6
++	%v7 =l urem %x, 4294967296
++	%p7 =l add %out, 56
++	storel %v7, %p7
++	%v8 =l udiv %x, 9223372036854775808
++	%p8 =l add %out, 64
++	storel %v8, %p8
++	%v9 =l urem %x, 9223372036854775808
++	%p9 =l add %out, 72
++	storel %v9, %p9
++	ret
++}
++
++export function w $late_div(w %x) {
++@start
++	%d =w add 4, 3
++	%q =w div %x, %d
++	ret %q
++}
++
++# >>> driver
++# #include <stdint.h>
++# #include <stdio.h>
++# #include <string.h>
++#
++# extern void s32(int32_t, int32_t *), s64(int64_t, int64_t *);
++# extern void u32(uint32_t, uint32_t *), u64(uint64_t, uint64_t *);
++# extern int32_t late_div(int32_t);
++# static const int32_t ds32[] = { 1, 2, -2, 8, -8, 3, -3, 7, -7, 8095, -8095, 2147483647, INT32_MIN };
++# static const int64_t ds64[] = { 1, 2, -2, 256, -256, INT64_C(4294967296), -INT64_C(4294967296), INT64_MIN };
++# static const uint32_t du32[] = { 1, 2, 256, UINT32_C(2147483648) };
++# static const uint64_t du64[] = { 1, 2, 256, UINT64_C(4294967296), UINT64_C(9223372036854775808) };
++# static const uint64_t edges[] = { 0, 1, 2, 3, UINT64_MAX, UINT64_MAX-1,
++#   UINT32_C(0x7fffffff), UINT32_C(0x80000000), UINT32_MAX,
++#   UINT64_C(0x7fffffffffffffff), UINT64_C(0x8000000000000000) };
++# static uint64_t state = UINT64_C(0xc61f2b18ef397145);
++# static uint64_t random64(void) { state ^= state << 13; state ^= state >> 7; state ^= state << 17; return state; }
++# #define COUNT(a) (sizeof(a) / sizeof((a)[0]))
++# int main(void) {
++#   int32_t a32[2 * COUNT(ds32)], x32;
++#   int64_t a64[2 * COUNT(ds64)], x64;
++#   uint32_t b32[2 * COUNT(du32)], y32;
++#   uint64_t b64[2 * COUNT(du64)], y64;
++#   for (unsigned n=0; n<10011; n++) {
++#     y64 = n < COUNT(edges) ? edges[n] : random64();
++#     y32 = (uint32_t)y64;
++#     memcpy(&x32, &y32, sizeof x32);
++#     memcpy(&x64, &y64, sizeof x64);
++#     s32(x32, a32); s64(x64, a64); u32(y32, b32); u64(y64, b64);
++#     if (late_div(x32) != x32 / 7) return 5;
++#     for (unsigned i=0; i<COUNT(ds32); i++)
++#       if (a32[2*i] != x32 / ds32[i] || a32[2*i+1] != x32 % ds32[i]) return 1;
++#     for (unsigned i=0; i<COUNT(ds64); i++)
++#       if (a64[2*i] != x64 / ds64[i] || a64[2*i+1] != x64 % ds64[i]) return 2;
++#     for (unsigned i=0; i<COUNT(du32); i++)
++#       if (b32[2*i] != y32 / du32[i] || b32[2*i+1] != y32 % du32[i]) return 3;
++#     for (unsigned i=0; i<COUNT(du64); i++)
++#       if (b64[2*i] != y64 / du64[i] || b64[2*i+1] != y64 % du64[i]) return 4;
++#   }
++#   return 0;
++# }
++# <<<

@@ -1,0 +1,81 @@
+diff --git a/gcm.c b/gcm.c
+index e685d2a..cfa8104 100644
+--- a/gcm.c
++++ b/gcm.c
+@@ -398,9 +398,10 @@ sinkref(Fn *fn, Blk *b, Ref *pr)
+ 	*pr = r;
+ 	i.to = r;
+ 	fn->tmp[r.val].gcmbid = b->id;
+-	emiti(i);
++	/* Emit the copy with its recursively sunk operands. */
+ 	sinkref(fn, b, &i.arg[0]);
+ 	sinkref(fn, b, &i.arg[1]);
++	emiti(i);
+ }
+ 
+ /* redistribute trivial ops to point of
+diff --git a/test/gcmsink.ssa b/test/gcmsink.ssa
+new file mode 100644
+index 0000000..826ea06
+--- /dev/null
++++ b/test/gcmsink.ssa
+@@ -0,0 +1,59 @@
++# Sink nested address and branch expressions shared across blocks.
++
++export
++function w $gcmsink(l %base, l %index, w %side, w %selector) {
++@start
++	%next =l add %index, 1
++	%scaled =l mul %next, 4
++	%address =l add %base, %scaled
++	%shifted =w add %selector, 3
++	%gate =w and %shifted, 1
++	jnz %side, @left, @right
++@left
++	%lv =w loadw %address
++	%inc =w add %lv, 17
++	storew %inc, %address
++	jnz %gate, @left_true, @left_false
++@left_true
++	%lt =w add %inc, 100
++	ret %lt
++@left_false
++	%lf =w sub %inc, 100
++	ret %lf
++@right
++	%rv =w loadw %address
++	%dec =w sub %rv, 23
++	storew %dec, %address
++	jnz %gate, @right_true, @right_false
++@right_true
++	%rt =w add %dec, 200
++	ret %rt
++@right_false
++	%rf =w sub %dec, 200
++	ret %rf
++}
++
++# >>> driver
++# extern int gcmsink(int *, long long, int, int);
++# int main(void) {
++# 	int a[8], expected[8];
++# 	long long index;
++# 	int side, selector, j, value, result;
++# 	for (index=-1; index<7; index++)
++# 		for (side=-1; side<=1; side++)
++# 			for (selector=-4; selector<4; selector++) {
++# 				for (j=0; j<8; j++)
++# 					a[j] = expected[j] = 37*j - 100;
++# 				expected[index+1] += side ? 17 : -23;
++# 				value = expected[index+1];
++# 				result = side ? 100 : 200;
++# 				value += (selector+3)&1 ? result : -result;
++# 				if (gcmsink(a, index, side, selector) != value)
++# 					return 1;
++# 				for (j=0; j<8; j++)
++# 					if (a[j] != expected[j])
++# 						return 2;
++# 			}
++# 	return 0;
++# }
++# <<<
