@@ -48,6 +48,10 @@ jobs:
             sudo apt-get update
             sudo apt-get install --yes --no-install-recommends zstd
           fi
+      - name: Receive explicitly planned original artifacts, if requested
+        run: |
+          tag="${REQUEST_REF#publish/}"
+          python tools/cold_delivery.py "$tag" "$RUNNER_TEMP/cold-delivery"
       - name: Reproduce, publish, and verify exact assets
         run: |
           tag="${REQUEST_REF#publish/}"
