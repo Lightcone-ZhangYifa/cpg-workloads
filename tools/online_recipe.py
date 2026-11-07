@@ -611,7 +611,7 @@ def _verify_modern_template(template, record):
         if p.is_dir():
             _require(relative in parents or relative in directories, 'Undeclared recipe directory')
             if relative in directories:
-                _require(p.stat().st_mode & 0o7777 == directories[relative]['mode'],
+                _require(p.stat().st_mode & 0o7777 in {directories[relative]['mode'], 0o755, 0o775},
                     'Retained recipe directory mode differs')
                 seen_directories.add(relative)
             continue
@@ -621,7 +621,10 @@ def _verify_modern_template(template, record):
         # Git retains only the executable bit. Keep the exact original TAR mode
         # in archive_members, while accepting its ordinary Git checkout mode
         # for this authored source file; repacking restores the original mode.
-        permitted_source_modes = {row['mode'], 0o755 if row['mode'] & 0o111 else 0o644}
+        # A normal shared Git checkout uses umask 0002. These permissions belong
+        # to the authored source copy; repacking still restores the exact TAR mode.
+        checkout_mode = 0o755 if row['mode'] & 0o111 else 0o644
+        permitted_source_modes = {row['mode'], checkout_mode, checkout_mode | 0o020}
         _require(len(data) == row['bytes'] and hashlib.sha256(data).hexdigest() == row['sha256']
             and p.stat().st_mode & 0o7777 in permitted_source_modes,
             'Retained online recipe identity differs: ' + relative)
