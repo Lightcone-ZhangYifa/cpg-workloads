@@ -3,7 +3,8 @@
 Original ordinary .deb/.whl files under recipe/ or tools/ qualify. Exact
 recipe/inputs/<sha256> files additionally require an inventory-bound authored
 JSON HTTPS source lock. Ordinary recipe/<source-basename>.tar.gz files also
-require an exact original HTTPS lock whose URL basename agrees. Each mapping
+require an exact original HTTPS lock whose URL basename agrees. Source archives
+under recipe/*/materials/ require an exact original HTTPS byte lock. Each mapping
 binds the original CPG archive, manifest and complete inventory row.
 Public source URLs are reused only from hash-verified original JSON metadata.
 No package manager, compiler, check script or delivered executable is invoked.
@@ -58,13 +59,20 @@ def _named_source_archive(name):
             and parts[1].endswith(".tar.gz"))
 
 
+def _nested_material_archive(name):
+    parts = PurePosixPath(name).parts
+    return (len(parts) >= 4 and parts[0] == "recipe" and "materials" in parts[1:-1]
+            and name.endswith((".tar.gz", ".tgz", ".tbz", ".tar.xz", ".tar.bz2")))
+
+
 def _inputs(manifest):
     result = {}
     for name, row in _inventory(manifest).items():
         relative = PurePosixPath(name)
         if (not relative.parts or relative.parts[0] not in {"recipe", "tools"}
                 or (relative.suffix.lower() not in {".deb", ".whl"}
-                    and not _hash_named_input(name) and not _named_source_archive(name))):
+                    and not _hash_named_input(name) and not _named_source_archive(name)
+                    and not _nested_material_archive(name))):
             continue
         if (relative.is_absolute() or ".." in relative.parts or "\\" in name
                 or relative.as_posix() != name or any(ord(c) < 32 for c in name)
@@ -159,6 +167,8 @@ def descriptor_for(record, manifest, template):
                           == PurePosixPath(name).name]
             if not candidates:
                 raise ValueError("Source archive input has no matching original HTTPS basename lock")
+        if _nested_material_archive(name) and not candidates:
+            raise ValueError("Nested material archive has no exact original HTTPS source lock")
         source = candidates[0] if candidates else {
             "kind": "original_cpg_member", "artifact_sha256": record["sha256"],
             "artifact_bytes": record["bytes"], "member": name}

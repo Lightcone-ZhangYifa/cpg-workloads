@@ -32,6 +32,7 @@ class PipelineTests(unittest.TestCase):
         self.work = Path(self.scratch.name)
         self.root = self.work / "repository"
         self.root.mkdir()
+        importer.write_json(self.root / "manifest.json", {"packages": []})
         self.record = json.loads((ROOT / "tests/fixtures/release-wrapper/record.json").read_text())
         self.manifest = json.loads((ROOT / "tests/fixtures/release-wrapper/manifest.json").read_text())
         self.template = self.root / self.record["template"]

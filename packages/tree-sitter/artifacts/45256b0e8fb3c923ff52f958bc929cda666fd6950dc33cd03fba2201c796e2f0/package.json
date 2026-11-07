@@ -1,0 +1,161 @@
+{
+  "build": "worker001-v001",
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "{recipe}/fresh_check.py",
+        "--parent",
+        "{build}",
+        "--",
+        "python3",
+        "-B",
+        "{prefix}/verify.py",
+        "--scope",
+        "runtime",
+        "--runtime-prefix",
+        "{prefix}",
+        "--grammars-prefix",
+        "{prefix}",
+        "--work-dir",
+        "{build}/check-runtime",
+        "--evidence-dir",
+        "{build}/check-runtime-evidence"
+      ],
+      "cwd": "{build}",
+      "expected_returncode": 0,
+      "id": "tree-sitter-bounded-functional",
+      "kind": "functional",
+      "stdout_regex": "\"status\": \"passed\"",
+      "timeout_seconds": 600
+    }
+  ],
+  "dependencies": {
+    "build": [],
+    "run": [],
+    "system": []
+  },
+  "id": "tree-sitter",
+  "metadata": {
+    "baseline_version": "0.21.14",
+    "new_resource_family": true,
+    "plan_id": "cpg-resource-research-20261101-v1",
+    "worker_id": "worker 001"
+  },
+  "provider": "source",
+  "recipe": {
+    "adapter": "commands",
+    "commands": [
+      [
+        "python3",
+        "-B",
+        "{recipe}/source_install.py",
+        "--kind",
+        "tree-sitter",
+        "--recipe",
+        "{recipe}",
+        "--assets",
+        "{assets}",
+        "--build",
+        "{build}",
+        "--prefix",
+        "{prefix}"
+      ]
+    ],
+    "required_host_commands": [
+      "cc"
+    ],
+    "required_runtime_commands": [
+      "python3"
+    ],
+    "runtime_environment": {
+      "LC_ALL": "C",
+      "PIP_NO_INDEX": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONNOUSERSITE": "1"
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "bytes": 917307,
+      "extract": false,
+      "id": "input-001",
+      "material_path": "raw/tree-sitter-3fc4cd21bca378f8acf8c823809de4706b1808f6.tar.gz",
+      "sha256": "98e193769b4aec68795625002567f24034e7f189e30d4be36cb97078446f8af7",
+      "strip_root": false,
+      "url": "https://codeload.github.com/tree-sitter/tree-sitter/tar.gz/3fc4cd21bca378f8acf8c823809de4706b1808f6"
+    },
+    {
+      "bytes": 379400,
+      "extract": false,
+      "id": "input-002",
+      "material_path": "raw/tree-sitter-c-7fa1be1b694b6e763686793d97da01f36a0e5c12.tar.gz",
+      "sha256": "62e56fe3031e0b05831bbffd392b00c55c280e0ea953ead49a30254bf9fb9ce8",
+      "strip_root": false,
+      "url": "https://codeload.github.com/tree-sitter/tree-sitter-c/tar.gz/7fa1be1b694b6e763686793d97da01f36a0e5c12"
+    },
+    {
+      "bytes": 1136191,
+      "extract": false,
+      "id": "input-003",
+      "material_path": "raw/tree-sitter-cpp-f41e1a044c8a84ea9fa8577fdd2eab92ec96de02.tar.gz",
+      "sha256": "ad4b9b56602e9b14082637988f0042521006819960ed8c308bc24ded9ceb9331",
+      "strip_root": false,
+      "url": "https://codeload.github.com/tree-sitter/tree-sitter-cpp/tar.gz/f41e1a044c8a84ea9fa8577fdd2eab92ec96de02"
+    },
+    {
+      "bytes": 462336,
+      "extract": false,
+      "id": "input-004",
+      "material_path": "raw/tree-sitter-rust-18b0515fca567f5a10aee9978c6d2640e878671a.tar.gz",
+      "sha256": "af3dc21a2985201f764eb94709f09277500fb732f1863f9bdd6371147ca7afe7",
+      "strip_root": false,
+      "url": "https://codeload.github.com/tree-sitter/tree-sitter-rust/tar.gz/18b0515fca567f5a10aee9978c6d2640e878671a"
+    },
+    {
+      "bytes": 8101392,
+      "extract": false,
+      "id": "input-005",
+      "material_path": "raw/tree-sitter-cli-0.26.10-linux-x64.gz",
+      "sha256": "477ef03e7422f3579187859db7d5407ac345c854f9e2e6c4534d2305dac39a35",
+      "strip_root": false,
+      "url": "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.10/tree-sitter-linux-x64.gz"
+    },
+    {
+      "bytes": 937737,
+      "extract": false,
+      "id": "input-006",
+      "material_path": "raw/tree-sitter-c-0.23.1-cpp-base.tgz",
+      "sha256": "460649a4a46cd14115428ea0a00828eefc951ffb34fa5c3622effed97f4bdbef",
+      "strip_root": false,
+      "url": "https://registry.npmjs.org/tree-sitter-c/-/tree-sitter-c-0.23.1.tgz"
+    }
+  ],
+  "target": {
+    "arch": "x86_64",
+    "distribution": "ubuntu",
+    "distribution_version": "24.04",
+    "os": "linux"
+  },
+  "usage": {
+    "activation": [],
+    "documentation": [],
+    "examples": [],
+    "locations": [
+      {
+        "label": "Independent installation",
+        "path": "{prefix}",
+        "purpose": "Tree-sitter C runtime, CLI and paired C/C++/Rust parsers; Python parse/edit/snapshot"
+      }
+    ],
+    "notes": [
+      "Worker-local extension to formal CPG 0.21.14; no original catalog record or qualification is changed.",
+      "Distribution fields record the reference build; the original Manager does not impose a distribution allowlist.",
+      "Use only prepared local input. Checks produce evidence outside the installed payload."
+    ],
+    "summary": "Tree-sitter C runtime, CLI and paired C/C++/Rust parsers; Python parse/edit/snapshot"
+  },
+  "version": "0.26.10"
+}
